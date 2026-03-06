@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #B61E2E;
+  --secondary: #D6A756;
+  --accent: #1F2937;
+  --light: #F8F6F2;
+  --dark: #1F2937;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--accent);
+  background-color: var(--light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply border border-primary text-primary px-6 py-3 rounded-md hover:bg-primary/10 transition-colors duration-300;
+}
+
+.card {
+  @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.section {
+  @apply py-16 md:py-24;
+}
+
+.container {
+  @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
+}
