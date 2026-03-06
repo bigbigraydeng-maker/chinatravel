@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +24,7 @@ const ContactPage = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase
+      const { error } = await getSupabase()
         .from('enquiries')
         .insert({
           name: formData.name,
