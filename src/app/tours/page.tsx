@@ -7,6 +7,7 @@ const premiumTours = [
   {
     id: 1,
     title: 'Imperial China Tour',
+    slug: 'imperial-china-tour',
     description: 'Explore the imperial history of China with visits to Beijing, Xi\'an, and Shanghai. Small groups, premium hotels, deeper access, and expert-led experiences.',
     duration: '12 Days',
     price: 'From $3,999',
@@ -15,6 +16,7 @@ const premiumTours = [
   {
     id: 2,
     title: 'Yangtze River Cruise',
+    slug: 'yangtze-river-cruise',
     description: 'Experience the majesty of the Yangtze River with a luxury cruise. Small groups, premium accommodations, deeper access, and expert-led experiences.',
     duration: '7 Days',
     price: 'From $2,499',
@@ -23,6 +25,7 @@ const premiumTours = [
   {
     id: 3,
     title: 'Cultural China Immersion',
+    slug: 'cultural-china-immersion',
     description: 'Immerse yourself in Chinese culture with visits to traditional villages, local markets, and cultural performances. Small groups, premium hotels, deeper access, and expert-led experiences.',
     duration: '10 Days',
     price: 'From $3,299',
@@ -34,6 +37,7 @@ const valueTours = [
   {
     id: 1,
     title: 'Classic China Experience',
+    slug: 'classic-china-experience',
     description: 'A comprehensive tour covering the best of China\'s cultural and natural highlights. Carefully designed itineraries, excellent value, and quality essential experiences.',
     duration: '10 Days',
     price: 'From $2,999',
@@ -42,6 +46,7 @@ const valueTours = [
   {
     id: 2,
     title: 'China Discovery Tour',
+    slug: 'china-discovery-tour',
     description: 'A perfect introduction to China\'s top destinations. Carefully designed itineraries, excellent value, and quality essential experiences.',
     duration: '8 Days',
     price: 'From $2,199',
@@ -50,6 +55,7 @@ const valueTours = [
   {
     id: 3,
     title: 'Essential China',
+    slug: 'essential-china',
     description: 'Experience the essential highlights of China in a concise itinerary. Carefully designed itineraries, excellent value, and quality essential experiences.',
     duration: '7 Days',
     price: 'From $1,999',
@@ -100,7 +106,11 @@ const ToursPage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {premiumTours.map((tour) => (
-                <div key={tour.id} className="card group">
+                <Link 
+                  key={tour.id} 
+                  href={`/tours/${tour.slug}`}
+                  className="block card group"
+                >
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img 
                       src={tour.image_url} 
@@ -109,7 +119,7 @@ const ToursPage = () => {
                     />
                   </div>
                   <div className="p-6">
-                    <h4 className="text-xl font-semibold mb-3 font-serif">{tour.title}</h4>
+                    <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{tour.title}</h4>
                     <p className="text-gray-600 mb-6">{tour.description}</p>
                     <div className="flex justify-between items-center mb-6">
                       <span className="text-gray-700 flex items-center gap-2">
@@ -120,9 +130,9 @@ const ToursPage = () => {
                       </span>
                       <span className="text-primary font-semibold">{tour.price}</span>
                     </div>
-                    <Link href="#" className="btn-primary inline-block w-full text-center group-hover:bg-primary/95 transition-colors">View Details</Link>
+                    <div className="btn-primary inline-block w-full text-center group-hover:bg-primary/95 transition-colors">View Details</div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -135,7 +145,11 @@ const ToursPage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {valueTours.map((tour) => (
-                <div key={tour.id} className="card group">
+                <Link 
+                  key={tour.id} 
+                  href={`/tours/${tour.slug}`}
+                  className="block card group"
+                >
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <img 
                       src={tour.image_url} 
@@ -144,7 +158,7 @@ const ToursPage = () => {
                     />
                   </div>
                   <div className="p-6">
-                    <h4 className="text-xl font-semibold mb-3 font-serif">{tour.title}</h4>
+                    <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{tour.title}</h4>
                     <p className="text-gray-600 mb-6">{tour.description}</p>
                     <div className="flex justify-between items-center mb-6">
                       <span className="text-gray-700 flex items-center gap-2">
@@ -155,9 +169,9 @@ const ToursPage = () => {
                       </span>
                       <span className="text-primary font-semibold">{tour.price}</span>
                     </div>
-                    <Link href="#" className="btn-secondary inline-block w-full text-center group-hover:bg-primary/10 transition-colors">View Details</Link>
+                    <div className="btn-secondary inline-block w-full text-center group-hover:bg-primary/10 transition-colors">View Details</div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

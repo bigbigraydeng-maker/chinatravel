@@ -7,6 +7,7 @@ import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
 import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
+import GeoRecommendations from '@/components/GeoRecommendations';
 
 export const metadata: Metadata = {
   title: 'CTS Tours | China Travel Specialists',
@@ -31,9 +32,9 @@ const HomePage = () => {
   ];
 
   const articles = [
-    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20spring%20cherry%20blossoms&image_size=landscape_16_9' },
-    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20visa%20application%20process&image_size=landscape_16_9' },
-    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20safe%20travel%20tourist%20friendly&image_size=landscape_16_9' },
+    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20spring%20cherry%20blossoms&image_size=landscape_16_9', slug: 'best-time-to-visit-china' },
+    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20visa%20application%20process&image_size=landscape_16_9', slug: 'china-visa-guide-for-new-zealanders' },
+    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20safe%20travel%20tourist%20friendly&image_size=landscape_16_9', slug: 'is-china-safe-to-travel' },
   ];
 
   return (
@@ -135,6 +136,7 @@ const HomePage = () => {
                 duration="12 Days"
                 price="From $3,999"
                 image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20imperial%20tour%20historical%20sites&image_size=landscape_16_9"
+                slug="imperial-china-tour"
                 isPremium
               />
               <TourTierCard 
@@ -143,6 +145,7 @@ const HomePage = () => {
                 duration="7 Days"
                 price="From $2,499"
                 image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yangtze%20River%20cruise%20luxury%20ship&image_size=landscape_16_9"
+                slug="yangtze-river-cruise"
                 isPremium
               />
             </div>
@@ -161,6 +164,7 @@ const HomePage = () => {
                 duration="10 Days"
                 price="From $2,999"
                 image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20classic%20tour%20cultural%20highlights&image_size=landscape_16_9"
+                slug="classic-china-experience"
               />
               <TourTierCard 
                 title="China Discovery Tour"
@@ -168,13 +172,17 @@ const HomePage = () => {
                 duration="8 Days"
                 price="From $2,199"
                 image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20discovery%20tour%20popular%20destinations&image_size=landscape_16_9"
+                slug="china-discovery-tour"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. China Travel Guide */}
+      {/* 7. Personalized Recommendations */}
+      <GeoRecommendations />
+
+      {/* 8. China Travel Guide */}
       <section className="section bg-white">
         <div className="container">
           <SectionTitle subtitle="Resources" title="China Travel Guide" center />
@@ -185,6 +193,7 @@ const HomePage = () => {
                 title={article.title}
                 content={article.content}
                 image_url={article.image_url}
+                slug={article.slug}
               />
             ))}
           </div>

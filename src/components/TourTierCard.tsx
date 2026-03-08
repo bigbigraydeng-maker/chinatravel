@@ -6,12 +6,13 @@ interface TourTierCardProps {
   duration: string;
   price: string;
   image_url: string;
+  slug: string;
   isPremium?: boolean;
 }
 
-const TourTierCard = ({ title, description, duration, price, image_url, isPremium = false }: TourTierCardProps) => {
+const TourTierCard = ({ title, description, duration, price, image_url, slug, isPremium = false }: TourTierCardProps) => {
   return (
-    <div className="card group">
+    <Link href={`/tours/${slug}`} className="block card group">
       <div className="overflow-hidden">
         <img 
           src={image_url} 
@@ -20,7 +21,7 @@ const TourTierCard = ({ title, description, duration, price, image_url, isPremiu
         />
       </div>
       <div className="p-6">
-        <h4 className="text-xl font-semibold mb-3 font-serif">{title}</h4>
+        <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{title}</h4>
         <p className="text-gray-600 mb-6">{description}</p>
         <div className="flex justify-between items-center mb-6">
           <span className="text-gray-700 flex items-center gap-2">
@@ -31,8 +32,7 @@ const TourTierCard = ({ title, description, duration, price, image_url, isPremiu
           </span>
           <span className="text-primary font-semibold">{price}</span>
         </div>
-        <Link 
-          href="/tours" 
+        <div 
           className={`inline-block w-full text-center transition-colors ${
             isPremium 
               ? 'btn-primary group-hover:bg-primary/95' 
@@ -40,9 +40,9 @@ const TourTierCard = ({ title, description, duration, price, image_url, isPremiu
           }`}
         >
           View Details
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
