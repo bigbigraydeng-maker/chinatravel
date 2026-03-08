@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 // 静态旅游产品数据
 const tours = [
@@ -258,8 +257,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const TourDetailPage = () => {
-  const params = useParams<{ slug: string }>();
+const TourDetailPage = ({ params }: { params: { slug: string } }) => {
   const tour = tours.find((tour) => tour.slug === params.slug);
 
   if (!tour) {
