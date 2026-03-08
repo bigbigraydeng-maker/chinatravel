@@ -377,7 +377,7 @@ const TourDetailPage = ({ params }: { params: { slug: string } }) => {
           </div>
 
           {/* 预订按钮 */}
-          <div className="border-t border-gray-200 pt-8 text-center">
+          <div className="border-t border-gray-200 pt-8 text-center mb-16">
             <h2 className="text-2xl font-semibold mb-6 font-serif">Ready to Book?</h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -391,6 +391,62 @@ const TourDetailPage = ({ params }: { params: { slug: string } }) => {
                 className="btn-outline"
               >
                 Request More Information
+              </Link>
+            </div>
+          </div>
+
+          {/* 热门Tours推荐 */}
+          <div className="border-t border-gray-200 pt-12">
+            <h3 className="text-2xl font-semibold mb-6 font-serif text-center">Popular Tours You May Like</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {tours
+                .filter((t) => t.slug !== tour.slug)
+                .slice(0, 3)
+                .map((popularTour) => (
+                  <Link 
+                    key={popularTour.id} 
+                    href={`/tours/${popularTour.slug}`}
+                    className="group block bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <img 
+                        src={popularTour.image_url} 
+                        alt={popularTour.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      {popularTour.isPremium && (
+                        <span className="absolute top-4 right-4 px-3 py-1 bg-secondary text-primary text-sm font-semibold rounded-full">
+                          Premium
+                        </span>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">
+                        {popularTour.title}
+                      </h4>
+                      <div className="flex items-center justify-between text-sm text-gray-600">
+                        <span className="flex items-center gap-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {popularTour.duration}
+                        </span>
+                        <span className="font-semibold text-primary">{popularTour.price}</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))
+              }
+            </div>
+            <div className="text-center mt-8">
+              <Link 
+                href="/tours" 
+                className="btn-outline inline-flex items-center gap-2"
+              >
+                View All Tours
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </Link>
             </div>
           </div>
