@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 
 // 静态文章数据
 const articles = [
@@ -93,8 +92,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-const GuideDetailPage = () => {
-  const params = useParams<{ slug: string }>();
+const GuideDetailPage = ({ params }: { params: { slug: string } }) => {
   const article = articles.find((article) => article.slug === params.slug);
 
   if (!article) {
