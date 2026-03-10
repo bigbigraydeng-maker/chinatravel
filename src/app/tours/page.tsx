@@ -1,184 +1,256 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import SectionTitle from '@/components/SectionTitle';
-
-// 静态旅游产品数据
-const premiumTours = [
-  {
-    id: 1,
-    title: 'Imperial China Tour',
-    slug: 'imperial-china-tour',
-    description: 'Explore the imperial history of China with visits to Beijing, Xi\'an, and Shanghai. Small groups, premium hotels, deeper access, and expert-led experiences.',
-    duration: '12 Days',
-    price: 'From $3,999',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20imperial%20tour%20historical%20sites&image_size=landscape_16_9'
-  },
-  {
-    id: 2,
-    title: 'Yangtze River Cruise',
-    slug: 'yangtze-river-cruise',
-    description: 'Experience the majesty of the Yangtze River with a luxury cruise. Small groups, premium accommodations, deeper access, and expert-led experiences.',
-    duration: '7 Days',
-    price: 'From $2,499',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yangtze%20River%20cruise%20luxury%20ship&image_size=landscape_16_9'
-  },
-  {
-    id: 3,
-    title: 'Cultural China Immersion',
-    slug: 'cultural-china-immersion',
-    description: 'Immerse yourself in Chinese culture with visits to traditional villages, local markets, and cultural performances. Small groups, premium hotels, deeper access, and expert-led experiences.',
-    duration: '10 Days',
-    price: 'From $3,299',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20cultural%20immersion%20traditional%20village&image_size=landscape_16_9'
-  }
-];
-
-const valueTours = [
-  {
-    id: 1,
-    title: 'Classic China Experience',
-    slug: 'classic-china-experience',
-    description: 'A comprehensive tour covering the best of China\'s cultural and natural highlights. Carefully designed itineraries, excellent value, and quality essential experiences.',
-    duration: '10 Days',
-    price: 'From $2,999',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20classic%20tour%20cultural%20highlights&image_size=landscape_16_9'
-  },
-  {
-    id: 2,
-    title: 'China Discovery Tour',
-    slug: 'china-discovery-tour',
-    description: 'A perfect introduction to China\'s top destinations. Carefully designed itineraries, excellent value, and quality essential experiences.',
-    duration: '8 Days',
-    price: 'From $2,199',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20discovery%20tour%20popular%20destinations&image_size=landscape_16_9'
-  },
-  {
-    id: 3,
-    title: 'Essential China',
-    slug: 'essential-china',
-    description: 'Experience the essential highlights of China in a concise itinerary. Carefully designed itineraries, excellent value, and quality essential experiences.',
-    duration: '7 Days',
-    price: 'From $1,999',
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20essential%20highlights%20tour&image_size=landscape_16_9'
-  }
-];
+import { destinations, getAllActiveTours } from '@/lib/data/tours';
+import TourCard from '@/components/tours/TourCard';
 
 export const metadata: Metadata = {
-  title: 'China Tours - CTS Tours',
-  description: 'Explore our carefully curated collection of China tours, from premium journeys to value discoveries.',
-  keywords: ['China tours', 'China travel packages', 'Premium China tours', 'Value China tours', 'CTS Tours'],
+  title: 'Asia Tours | China, Japan, Vietnam | CTS Tours',
+  description: 'Explore Asia with CTS Tours. Signature and Discovery collections to China, Japan, and Vietnam. 98 years of expertise crafting unforgettable journeys.',
+  keywords: ['Asia tours', 'China tours', 'Japan tours', 'Vietnam tours', 'CTS Tours', 'Asia travel'],
   openGraph: {
-    title: 'China Tours - CTS Tours',
-    description: 'Explore our carefully curated collection of China tours, from premium journeys to value discoveries.',
+    title: 'Asia Tours | China, Japan, Vietnam | CTS Tours',
+    description: 'Explore Asia with CTS Tours. Signature and Discovery collections to China, Japan, and Vietnam.',
     type: 'website',
+  },
+  alternates: {
+    canonical: '/tours',
   },
 };
 
-const ToursPage = () => {
+export default function ToursPage() {
+  const featuredTours = getAllActiveTours().slice(0, 6);
+
   return (
-    <div>
-      {/* Hero 小头图 */}
-      <section className="relative h-64 flex items-center justify-center">
+    <>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20tourism%20landscape%20professional%20photography&image_size=landscape_16_9" 
-            alt="China Tours" 
+            src="https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?w=1920&q=80"
+            alt="Asia Tours"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+          <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-serif">China Tours</h1>
-          <p className="text-lg">Explore our carefully curated collection of China tours</p>
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-6">
+            Explore Asia
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-8">
+            Discover the ancient wonders and modern marvels of Asia with our expertly crafted journeys
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="#destinations"
+              className="inline-block px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              Explore Destinations
+            </Link>
+            <Link 
+              href="#featured"
+              className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors"
+            >
+              View Featured Tours
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* 产品层级展示 */}
-      <section className="section bg-white">
-        <div className="container">
-          <SectionTitle title="Our Tour Collections" center />
-          
-          {/* Premium China Journeys */}
-          <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">Premium China Journeys</h3>
-              <div className="w-16 h-1 bg-secondary"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {premiumTours.map((tour) => (
-                <Link 
-                  key={tour.id} 
-                  href={`/tours/${tour.slug}`}
-                  className="block card group"
-                >
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img 
-                      src={tour.image_url} 
-                      alt={tour.title} 
-                      className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{tour.title}</h4>
-                    <p className="text-gray-600 mb-6">{tour.description}</p>
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-gray-700 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {tour.duration}
-                      </span>
-                      <span className="text-primary font-semibold">{tour.price}</span>
-                    </div>
-                    <div className="btn-primary inline-block w-full text-center group-hover:bg-primary/95 transition-colors">View Details</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+      {/* Destinations Grid */}
+      <section id="destinations" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">
+              Our Destinations
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Choose from our carefully selected destinations, each offering unique experiences and unforgettable memories
+            </p>
           </div>
-          
-          {/* Value China Discovery */}
-          <div>
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">Value China Discovery</h3>
-              <div className="w-16 h-1 bg-secondary"></div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {valueTours.map((tour) => (
-                <Link 
-                  key={tour.id} 
-                  href={`/tours/${tour.slug}`}
-                  className="block card group"
-                >
-                  <div className="overflow-hidden rounded-lg shadow-md">
-                    <img 
-                      src={tour.image_url} 
-                      alt={tour.title} 
-                      className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {destinations.map((destination) => (
+              <Link
+                key={destination.id}
+                href={`/tours/${destination.slug}`}
+                className="group relative h-96 rounded-xl overflow-hidden shadow-lg"
+              >
+                <img 
+                  src={destination.heroImage}
+                  alt={destination.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h3 className="text-3xl font-serif font-bold mb-2">{destination.name}</h3>
+                  <p className="text-white/80 mb-4">{destination.subtitle}</p>
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm bg-white/20 px-3 py-1 rounded-full">
+                      {destination.tiers.length} Collections
+                    </span>
+                    <span className="inline-flex items-center text-sm font-medium group-hover:translate-x-1 transition-transform">
+                      Explore
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{tour.title}</h4>
-                    <p className="text-gray-600 mb-6">{tour.description}</p>
-                    <div className="flex justify-between items-center mb-6">
-                      <span className="text-gray-700 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        {tour.duration}
-                      </span>
-                      <span className="text-primary font-semibold">{tour.price}</span>
-                    </div>
-                    <div className="btn-secondary inline-block w-full text-center group-hover:bg-primary/10 transition-colors">View Details</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">
+              How It Works
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our simple three-step process to your dream Asian adventure
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Choose Your Destination',
+                description: 'Browse our collections and find the perfect journey that matches your interests and travel style.',
+                icon: '🌏'
+              },
+              {
+                step: '02',
+                title: 'Customize Your Tour',
+                description: 'Work with our specialists to personalize your itinerary, add extensions, or adjust the pace.',
+                icon: '✏️'
+              },
+              {
+                step: '03',
+                title: 'Embark on Your Journey',
+                description: 'Relax and enjoy as we handle all the details, from airport transfers to expert guides.',
+                icon: '🧳'
+              }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="text-6xl mb-4">{item.icon}</div>
+                <div className="text-5xl font-serif font-bold text-primary/20 mb-4">{item.step}</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Tours */}
+      <section id="featured" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">
+              Featured Tours
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our most popular journeys, carefully crafted for unforgettable experiences
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredTours.map((tour) => (
+              <TourCard 
+                key={tour.id}
+                tour={tour}
+                destination={tour.destination}
+                tier={tour.tier}
+              />
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link 
+              href="/tours/china"
+              className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              View All Tours
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold mb-4">
+              Why Choose CTS Tours
+            </h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              98 years of expertise crafting unforgettable journeys across Asia
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: '98 Years Heritage',
+                description: 'Nearly a century of travel expertise and local knowledge'
+              },
+              {
+                title: 'Local Experts',
+                description: 'Professional guides with deep cultural insights'
+              },
+              {
+                title: 'Curated Experiences',
+                description: 'Handpicked activities and authentic encounters'
+              },
+              {
+                title: '24/7 Support',
+                description: 'Round-the-clock assistance throughout your journey'
+              }
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-white/20 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-white/80">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-serif font-bold mb-4">
+            Ready to Start Your Journey?
+          </h2>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+            Let our travel specialists help you plan the perfect Asian adventure. 
+            Get personalized recommendations and expert advice.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link 
+              href="/contact"
+              className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Speak to a Specialist
+            </Link>
+            <Link 
+              href="#destinations"
+              className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+            >
+              Browse Destinations
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
-};
-
-export default ToursPage;
+}

@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -12,15 +13,13 @@ const Navbar = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setIsToursDropdownOpen(false);
   };
 
-  const navLinks = [
-    { href: '/explore', label: 'Explore China' },
-    { href: '/guide', label: 'Travel Guide' },
-    { href: '/tours', label: 'Tours' },
-    { href: '/experts/baker-gu', label: 'Baker Gu' },
-    { href: '/agents', label: 'Agents' },
-    { href: '/contact', label: 'Contact' },
+  const destinations = [
+    { href: '/tours/china', label: 'China' },
+    { href: '/tours/japan', label: 'Japan' },
+    { href: '/tours/vietnam', label: 'Vietnam' },
   ];
 
   return (
@@ -32,15 +31,67 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.href}
-              href={link.href} 
-              className="text-accent hover:text-primary transition-colors font-medium"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {/* Tours Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsToursDropdownOpen(true)}
+            onMouseLeave={() => setIsToursDropdownOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+              Tours
+              <svg className={`w-4 h-4 transition-transform ${isToursDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            {isToursDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
+                <Link 
+                  href="/tours"
+                  className="block px-4 py-2 text-accent hover:bg-gray-50 hover:text-primary transition-colors"
+                  onClick={() => setIsToursDropdownOpen(false)}
+                >
+                  All Tours
+                </Link>
+                <div className="border-t border-gray-100 my-1"></div>
+                {destinations.map((dest) => (
+                  <Link 
+                    key={dest.href}
+                    href={dest.href}
+                    className="block px-4 py-2 text-accent hover:bg-gray-50 hover:text-primary transition-colors"
+                    onClick={() => setIsToursDropdownOpen(false)}
+                  >
+                    {dest.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <Link 
+            href="/guide"
+            className="text-accent hover:text-primary transition-colors font-medium"
+          >
+            Travel Guide
+          </Link>
+          <Link 
+            href="/experts/baker-gu"
+            className="text-accent hover:text-primary transition-colors font-medium"
+          >
+            About
+          </Link>
+          <Link 
+            href="/agents"
+            className="text-accent hover:text-primary transition-colors font-medium"
+          >
+            Agents
+          </Link>
+          <Link 
+            href="/contact"
+            className="text-accent hover:text-primary transition-colors font-medium"
+          >
+            Contact
+          </Link>
         </nav>
         
         <div className="hidden md:block">
@@ -71,16 +122,68 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.href}
-                href={link.href} 
-                className="text-accent hover:text-primary transition-colors font-medium py-2"
-                onClick={closeMenu}
+            {/* Mobile Tours Section */}
+            <div>
+              <button 
+                onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
+                className="flex items-center justify-between w-full text-accent hover:text-primary transition-colors font-medium py-2"
               >
-                {link.label}
-              </Link>
-            ))}
+                Tours
+                <svg className={`w-4 h-4 transition-transform ${isToursDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {isToursDropdownOpen && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <Link 
+                    href="/tours"
+                    className="block text-accent hover:text-primary transition-colors py-2"
+                    onClick={closeMenu}
+                  >
+                    All Tours
+                  </Link>
+                  {destinations.map((dest) => (
+                    <Link 
+                      key={dest.href}
+                      href={dest.href}
+                      className="block text-accent hover:text-primary transition-colors py-2"
+                      onClick={closeMenu}
+                    >
+                      {dest.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link 
+              href="/guide"
+              className="text-accent hover:text-primary transition-colors font-medium py-2"
+              onClick={closeMenu}
+            >
+              Travel Guide
+            </Link>
+            <Link 
+              href="/experts/baker-gu"
+              className="text-accent hover:text-primary transition-colors font-medium py-2"
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link 
+              href="/agents"
+              className="text-accent hover:text-primary transition-colors font-medium py-2"
+              onClick={closeMenu}
+            >
+              Agents
+            </Link>
+            <Link 
+              href="/contact"
+              className="text-accent hover:text-primary transition-colors font-medium py-2"
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
             <Link 
               href="/contact" 
               className="btn-primary text-center mt-2"
