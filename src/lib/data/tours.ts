@@ -617,6 +617,549 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
+  {
+    id: 'tour-cn-dis-3',
+    slug: 'essential-china',
+    destination: 'china',
+    tier: 'discovery',
+    name: 'China Discovery — Essential China',
+    title: 'China Discovery — Essential China',
+    shortDescription: 'Perfect first-timer route. Beijing, Xi\'an, Shanghai. The name makes the itinerary scope immediately clear.',
+    duration: '9 Days',
+    price: 'From $2,699',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+    ],
+    highlights: [
+      'Great Wall at Mutianyu',
+      'Forbidden City and Tiananmen Square',
+      'Terracotta Warriors in Xi\'an',
+      'Shanghai Bund and Yu Garden',
+      'High-speed train experience'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'Airport transfer and check-in. Evening welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City',
+        description: 'Full day exploring the Forbidden City and Tiananmen Square.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 3,
+        title: 'Great Wall',
+        description: 'Day trip to Great Wall at Mutianyu with cable car.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 4,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Evening at Muslim Quarter.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 5,
+        title: 'Terracotta Warriors',
+        description: 'Full day at Terracotta Army with expert guide.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 6,
+        title: 'Xi\'an to Shanghai',
+        description: 'Fly to Shanghai. Evening Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 7,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden, Old Town, and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 8,
+        title: 'Departure',
+        description: 'Transfer to airport for onward flight.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'High-speed train tickets',
+      'Airport transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Discovery Essential China | 9 Days | CTS Tours',
+    metaDescription: 'Perfect first-timer China tour with CTS Tours. 9-day journey covering Beijing, Xi\'an, and Shanghai. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-dis-4',
+    slug: 'cultural-triangle',
+    destination: 'china',
+    tier: 'discovery',
+    name: 'China Discovery — Cultural Triangle',
+    title: 'China Discovery — Cultural Triangle',
+    shortDescription: 'Beijing, Xi\'an, Chengdu. Three major cultural centers in one journey.',
+    duration: '11 Days',
+    price: 'From $3,299',
+    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
+    ],
+    highlights: [
+      'Forbidden City and Great Wall',
+      'Terracotta Warriors',
+      'Panda Research Center in Chengdu',
+      'Sichuan cuisine experience',
+      'Cultural immersion'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'VIP transfer and welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City',
+        description: 'Full day at Forbidden City and Great Wall.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 3,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Terracotta Warriors.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 4,
+        title: 'Xi\'an to Chengdu',
+        description: 'Fly to Chengdu. Evening hot pot dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Chengdu'
+      },
+      {
+        day: 5,
+        title: 'Panda Research Center',
+        description: 'Full day at Panda Center and Jinsha Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Chengdu'
+      },
+      {
+        day: 6,
+        title: 'Chengdu City',
+        description: 'Wuhou Shrine and Jinli Ancient Street.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Chengdu'
+      },
+      {
+        day: 7,
+        title: 'Chengdu to Beijing',
+        description: 'Fly to Beijing. Evening at leisure.',
+        meals: ['Breakfast'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 8,
+        title: 'Beijing to Shanghai',
+        description: 'High-speed train to Shanghai. Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 9,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 10,
+        title: 'Shanghai to Beijing',
+        description: 'Return to Beijing. Farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 11,
+        title: 'Departure',
+        description: 'Transfer to airport.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Domestic flights and transportation',
+      'High-speed train tickets'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Discovery Cultural Triangle | 11 Days | CTS Tours',
+    metaDescription: 'Three major cultural centers with CTS Tours. 11-day journey covering Beijing, Xi\'an, and Chengdu. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-dis-5',
+    slug: 'golden-route',
+    destination: 'china',
+    tier: 'discovery',
+    name: 'China Discovery — Golden Route',
+    title: 'China Discovery — Golden Route',
+    shortDescription: 'Beijing, Xi\'an, Guilin. Classic golden triangle route.',
+    duration: '10 Days',
+    price: 'From $3,499',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
+    ],
+    highlights: [
+      'Great Wall hiking',
+      'Terracotta Warriors',
+      'Li River cruise',
+      'Guilin karst mountains',
+      'Elephant Trunk Hill'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'Airport transfer and check-in.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City',
+        description: 'Full day at Forbidden City and Great Wall.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 3,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Terracotta Warriors.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 4,
+        title: 'Xi\'an to Guilin',
+        description: 'Fly to Guilin. Evening Li River walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Guilin'
+      },
+      {
+        day: 5,
+        title: 'Li River Cruise',
+        description: 'Full day cruise to Yangshuo.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 6,
+        title: 'Yangshuo Exploration',
+        description: 'Bamboo rafting and countryside bike ride.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 7,
+        title: 'Yangshuo to Guilin',
+        description: 'Return to Guilin. Reed Flute Cave.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Guilin'
+      },
+      {
+        day: 8,
+        title: 'Guilin to Shanghai',
+        description: 'Fly to Shanghai. Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 9,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 10,
+        title: 'Departure',
+        description: 'Transfer to airport.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Domestic flights and transportation',
+      'Li River cruise'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Discovery Golden Route | 10 Days | CTS Tours',
+    metaDescription: 'Classic golden triangle with CTS Tours. 10-day journey covering Beijing, Xi\'an, and Guilin. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-dis-6',
+    slug: 'classic-china',
+    destination: 'china',
+    tier: 'discovery',
+    name: 'China Discovery — Classic China',
+    title: 'China Discovery — Classic China',
+    shortDescription: 'Beijing, Xi\'an, Shanghai, Suzhou. Comprehensive cultural route.',
+    duration: '11 Days',
+    price: 'From $3,199',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+    ],
+    highlights: [
+      'Forbidden City and Great Wall',
+      'Terracotta Warriors',
+      'Shanghai modern skyline',
+      'Suzhou water towns',
+      'Traditional gardens'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'Airport transfer and check-in.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City',
+        description: 'Full day at Forbidden City and Great Wall.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 3,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Terracotta Warriors.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 4,
+        title: 'Xi\'an to Shanghai',
+        description: 'Fly to Shanghai. Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 5,
+        title: 'Suzhou Day Trip',
+        description: 'Day trip to Suzhou water towns.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 6,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 7,
+        title: 'Zhujiajiao Water Town',
+        description: 'Day trip to ancient water town.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 8,
+        title: 'Shanghai at Leisure',
+        description: 'Free day for shopping or optional tour.',
+        meals: ['Breakfast'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 9,
+        title: 'Shanghai to Beijing',
+        description: 'Return to Beijing. Farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 10,
+        title: 'Beijing Tour',
+        description: 'Temple of Heaven and Summer Palace.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 11,
+        title: 'Departure',
+        description: 'Transfer to airport.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Domestic flights and transportation',
+      'Water town visits'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Discovery Classic China | 11 Days | CTS Tours',
+    metaDescription: 'Comprehensive cultural route with CTS Tours. 11-day journey covering Beijing, Xi\'an, Shanghai, and Suzhou. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-dis-7',
+    slug: 'china-express',
+    destination: 'china',
+    tier: 'discovery',
+    name: 'China Discovery — China Express',
+    title: 'China Discovery — China Express',
+    shortDescription: 'Beijing and Shanghai only. Short and focused for time-limited travelers.',
+    duration: '6 Days',
+    price: 'From $1,999',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
+    ],
+    highlights: [
+      'Great Wall at Mutianyu',
+      'Forbidden City',
+      'Tiananmen Square',
+      'Shanghai Bund',
+      'Yu Garden',
+      'Modern Shanghai skyline'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'Airport transfer and check-in.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City',
+        description: 'Full day at Forbidden City and Great Wall.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Beijing'
+      },
+      {
+        day: 3,
+        title: 'Beijing to Shanghai',
+        description: 'High-speed train to Shanghai. Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 4,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden, Old Town, and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 5,
+        title: 'Shanghai at Leisure',
+        description: 'Free day for shopping or optional tour.',
+        meals: ['Breakfast'],
+        accommodation: 'Novotel Shanghai'
+      },
+      {
+        day: 6,
+        title: 'Departure',
+        description: 'Transfer to airport.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'High-speed train tickets',
+      'Airport transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Discovery China Express | 6 Days | CTS Tours',
+    metaDescription: 'Short and focused China tour with CTS Tours. 6-day journey covering Beijing and Shanghai. Great value for time-limited travelers.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
   // China Stopover Tours
   {
     id: 'tour-cn-stp-1',
@@ -685,6 +1228,336 @@ export const tours: Tour[] = [
     ],
     metaTitle: 'Beijing Stopover Tour | 4 Days | CTS Tours',
     metaDescription: 'Perfect Beijing stopover with CTS Tours. 4-day tour featuring Great Wall and Forbidden City. Ideal for layovers.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-sig-4',
+    slug: 'shangri-la',
+    destination: 'china',
+    tier: 'signature',
+    name: 'China Signature — Shangri-La Tour',
+    title: 'China Signature — Shangri-La Tour',
+    shortDescription: '8-day Yangtze River cruise with Three Gorges and Shangri-La water town experience. Premium accommodations and exclusive river views.',
+    duration: '8 Days',
+    price: 'From $4,299',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
+    ],
+    highlights: [
+      'Yangtze River luxury cruise',
+      'Three Gorges scenic views',
+      'Shangri-La water town exploration',
+      'Private boat excursions',
+      'Premium river-view hotels'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Chongqing',
+        description: 'VIP transfer to luxury hotel. Welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Shangri-La Hotel Chongqing'
+      },
+      {
+        day: 2,
+        title: 'Yangtze River Cruise Begins',
+        description: 'Board luxury cruise ship. Sail through Qutang Gorge.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Yangtze Explorer'
+      },
+      {
+        day: 3,
+        title: 'Three Gorges',
+        description: 'Full day cruising through Wu, Qutang, and Xiling Gorges. Shore excursion to Fengdu.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Yangtze Explorer'
+      },
+      {
+        day: 4,
+        title: 'Yichang to Shangri-La',
+        description: 'Disembark and transfer to Shangri-La. Evening water town walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Hotel'
+      },
+      {
+        day: 5,
+        title: 'Shangri-La Exploration',
+        description: 'Full day exploring ancient water town. Private boat excursion.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Hotel'
+      },
+      {
+        day: 6,
+        title: 'Shangri-La to Yichang',
+        description: 'Return to cruise ship. Sail through Three Gorges.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Yangtze Explorer'
+      },
+      {
+        day: 7,
+        title: 'Three Gorges to Chongqing',
+        description: 'Final day cruising. Evening farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Yangtze Explorer'
+      },
+      {
+        day: 8,
+        title: 'Departure',
+        description: 'Transfer to airport for onward flight.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      '7 nights luxury cruise accommodation',
+      'All meals on board',
+      'Expert English-speaking cruise director',
+      'All shore excursions',
+      'Premium river-view hotels',
+      'Airport transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Personal expenses',
+      'Gratuities'
+    ],
+    metaTitle: 'China Signature Shangri-La Tour | 8 Days | CTS Tours',
+    metaDescription: 'Luxury Yangtze River cruise with CTS Tours. 8-day journey featuring Three Gorges and Shangri-La. Premium accommodations.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-sig-5',
+    slug: 'yunnan-explorer',
+    destination: 'china',
+    tier: 'signature',
+    name: 'China Signature — Yunnan Explorer',
+    title: 'China Signature — Yunnan Explorer',
+    shortDescription: 'Regional depth product exploring ethnic minority cultures and natural wonders of Yunnan province.',
+    duration: '9 Days',
+    price: 'From $4,499',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+    ],
+    highlights: [
+      'Kunming city exploration',
+      'Dali ancient town',
+      'Lijiang Old Town',
+      'Tiger Leaping Gorge',
+      'Ethnic minority cultural experiences',
+      'Shaxi rice terraces'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Kunming',
+        description: 'VIP transfer to luxury hotel. Welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Shangri-La Kunming'
+      },
+      {
+        day: 2,
+        title: 'Kunming to Dali',
+        description: 'Transfer to Dali. Explore ancient town and Three Pagodas.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Shangri-La Dali'
+      },
+      {
+        day: 3,
+        title: 'Dali to Lijiang',
+        description: 'Drive to Lijiang. Explore Old Town and Black Dragon Pool.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Lijiang'
+      },
+      {
+        day: 4,
+        title: 'Lijiang to Shaxi',
+        description: 'Visit Tiger Leaping Gorge. Continue to Shaxi.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Shaxi'
+      },
+      {
+        day: 5,
+        title: 'Shaxi to Kunming',
+        description: 'Return to Kunming. Evening at leisure.',
+        meals: ['Breakfast'],
+        accommodation: 'Shangri-La Kunming'
+      },
+      {
+        day: 6,
+        title: 'Kunming to Yuanyang',
+        description: 'Fly to Yuanyang. Visit rice terraces.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Yuanyang'
+      },
+      {
+        day: 7,
+        title: 'Yuanyang Exploration',
+        description: 'Full day exploring rice terraces and Hani culture.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Yuanyang'
+      },
+      {
+        day: 8,
+        title: 'Yuanyang to Kunming',
+        description: 'Return to Kunming. Farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Kunming'
+      },
+      {
+        day: 9,
+        title: 'Departure',
+        description: 'Transfer to airport for onward flight.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'All accommodation in 4-star hotels',
+      'Daily breakfast',
+      'Expert English-speaking guide',
+      'All entrance fees and activities',
+      'Domestic flights and transportation',
+      'Private transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Signature Yunnan Explorer | 9 Days | CTS Tours',
+    metaDescription: 'Regional depth exploration with CTS Tours. 9-day journey through Kunming, Dali, Lijiang, and Yuanyang. Premium accommodations.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-sig-6',
+    slug: 'natural-china',
+    destination: 'china',
+    tier: 'signature',
+    name: 'China Signature — Natural China',
+    title: 'China Signature — Natural China',
+    shortDescription: 'Nature-focused, off-circuit journey through China\'s most scenic landscapes and natural wonders.',
+    duration: '11 Days',
+    price: 'From $4,799',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+    ],
+    highlights: [
+      'Zhangjiajie Avatar Mountains',
+      'Yellow Mountain (Huangshan)',
+      'Guilin karst landscape',
+      'Li River cruise',
+      'Nature photography opportunities'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Zhangjiajie',
+        description: 'VIP transfer to luxury hotel. Welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Shangri-La Zhangjiajie'
+      },
+      {
+        day: 2,
+        title: 'Zhangjiajie Exploration',
+        description: 'Full day exploring Avatar Mountains with private guide.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Zhangjiajie'
+      },
+      {
+        day: 3,
+        title: 'Zhangjiajie to Guilin',
+        description: 'Fly to Guilin. Evening Li River walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Guilin'
+      },
+      {
+        day: 4,
+        title: 'Li River Cruise',
+        description: 'Full day cruise to Yangshuo.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 5,
+        title: 'Yangshuo Exploration',
+        description: 'Bamboo rafting and countryside bike ride.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 6,
+        title: 'Yangshuo to Guilin',
+        description: 'Return to Guilin. Visit Reed Flute Cave.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Guilin'
+      },
+      {
+        day: 7,
+        title: 'Guilin to Huangshan',
+        description: 'Fly to Huangshan. Cable car and sunset views.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Huangshan'
+      },
+      {
+        day: 8,
+        title: 'Huangshan Exploration',
+        description: 'Full day on Yellow Mountain with private guide.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Huangshan'
+      },
+      {
+        day: 9,
+        title: 'Huangshan to Shanghai',
+        description: 'Fly to Shanghai. Evening Bund walk.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Shanghai'
+      },
+      {
+        day: 10,
+        title: 'Shanghai Tour',
+        description: 'Yu Garden and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Shangri-La Shanghai'
+      },
+      {
+        day: 11,
+        title: 'Departure',
+        description: 'Transfer to airport for onward flight.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'All accommodation in 4-star hotels',
+      'Daily breakfast',
+      'Expert English-speaking guide',
+      'All entrance fees and activities',
+      'Domestic flights and transportation',
+      'Li River cruise',
+      'Huangshan cable car'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'China Signature Natural China | 11 Days | CTS Tours',
+    metaDescription: 'Nature-focused journey with CTS Tours. 11-day tour covering Zhangjiajie, Guilin, and Huangshan. Premium accommodations.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
