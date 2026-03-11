@@ -228,12 +228,12 @@ export const tours: Tour[] = [
   },
   {
     id: 'tour-cn-sig-2',
-    slug: 'imperial-journey',
+    slug: 'imperial-heritage',
     destination: 'china',
     tier: 'signature',
-    name: 'China Signature — Imperial Journey',
-    title: 'China Signature — Imperial Journey',
-    shortDescription: 'Experience China\'s imperial heritage through its grand palaces, gardens, and ancient capitals.',
+    name: 'China Signature — Imperial Heritage',
+    title: 'China Signature — Imperial Heritage',
+    shortDescription: 'Classic northern cultural route. Beijing, Xi\'an, core heritage sites. Premium accommodations, expert guides, and exclusive experiences.',
     duration: '12 Days',
     price: 'From $4,999',
     heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
@@ -244,8 +244,8 @@ export const tours: Tour[] = [
     highlights: [
       'Private after-hours access to the Forbidden City',
       'Walk the Great Wall at sunrise',
-      'Cruise the Summer Palace gardens',
-      'Explore the Summer Palace with a historian',
+      'Meet the Terracotta Warriors with an expert',
+      'Explore ancient Xi\'an city walls',
       'Dine in former imperial banquet halls'
     ],
     itinerary: [
@@ -262,6 +262,68 @@ export const tours: Tour[] = [
         description: 'Exclusive early access to the Forbidden City before public opening.',
         meals: ['Breakfast', 'Lunch'],
         accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 3,
+        title: 'Great Wall at Mutianyu',
+        description: 'Private sunrise visit to the Great Wall. Afternoon at leisure.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 4,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Evening at Muslim Quarter.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Sofitel Legend Xi\'an'
+      },
+      {
+        day: 5,
+        title: 'Terracotta Warriors',
+        description: 'Full day exploring the Terracotta Army with an expert archaeologist.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Sofitel Legend Xi\'an'
+      },
+      {
+        day: 6,
+        title: 'Xi\'an City Exploration',
+        description: 'Ancient City Wall bike ride, Big Wild Goose Pagoda, and Tang Dynasty show.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Sofitel Legend Xi\'an'
+      },
+      {
+        day: 7,
+        title: 'Xi\'an to Shanghai',
+        description: 'Fly to Shanghai. Evening Bund walking tour.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 8,
+        title: 'Shanghai Highlights',
+        description: 'Yu Garden, Old Town, and Shanghai Museum with expert guide.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 9,
+        title: 'Zhujiajiao Water Town',
+        description: 'Day trip to ancient water town with private boat ride.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 10,
+        title: 'Shanghai at Leisure',
+        description: 'Free day to explore or optional cooking class. Farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 11,
+        title: 'Departure',
+        description: 'Transfer to airport for your onward flight.',
+        meals: ['Breakfast']
       }
     ],
     inclusions: [
@@ -270,6 +332,165 @@ export const tours: Tour[] = [
       'Expert English-speaking guide',
       'All entrance fees and activities',
       'Domestic flights and transportation',
+      'VIP airport transfers',
+      'High-speed train tickets'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Personal expenses',
+      'Gratuities'
+    ],
+    metaTitle: 'China Signature Imperial Heritage | 12 Days | CTS Tours',
+    metaDescription: 'Classic northern cultural route with CTS Tours. 12-day luxury tour of Beijing, Xi\'an and Shanghai. Premium accommodations, expert guides.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-sig-3',
+    slug: 'grand-tour',
+    destination: 'china',
+    tier: 'signature',
+    name: 'China Signature — Grand Tour',
+    title: 'China Signature — Grand Tour',
+    shortDescription: 'Multi-region comprehensive itinerary. Longest duration product with strong inclusions. The ultimate China experience.',
+    duration: '16 Days',
+    price: 'From $5,999',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+    ],
+    highlights: [
+      'Beijing, Xi\'an, Shanghai, Guilin, and Yangshuo',
+      'Li River cruise through karst mountains',
+      'Private cooking class in Yangshuo',
+      'High-speed train experience',
+      'Exclusive cultural performances'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Beijing',
+        description: 'VIP airport greeting and transfer to luxury hotel. Welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 2,
+        title: 'Forbidden City & Temple of Heaven',
+        description: 'Exclusive early access to Forbidden City. Afternoon at Temple of Heaven.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 3,
+        title: 'Great Wall at Jinshanling',
+        description: 'Full day hiking the most scenic section of the Great Wall.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 4,
+        title: 'Hutongs & Summer Palace',
+        description: 'Rickshaw tour through hutongs. Afternoon at Summer Palace.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'The Peninsula Beijing'
+      },
+      {
+        day: 5,
+        title: 'Beijing to Xi\'an',
+        description: 'High-speed train to Xi\'an. Evening dumpling banquet.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Sofitel Legend Xi\'an'
+      },
+      {
+        day: 6,
+        title: 'Terracotta Warriors',
+        description: 'Full day at Terracotta Army with expert guide.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Sofitel Legend Xi\'an'
+      },
+      {
+        day: 7,
+        title: 'Xi\'an to Shanghai',
+        description: 'Fly to Shanghai. Evening acrobatics show.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 8,
+        title: 'Shanghai City Tour',
+        description: 'Yu Garden, Bund, and Shanghai Museum.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 9,
+        title: 'Zhujiajiao Water Town',
+        description: 'Day trip to ancient water town.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 10,
+        title: 'Shanghai to Guilin',
+        description: 'Fly to Guilin. Evening walk along Li River.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Shangri-La Guilin'
+      },
+      {
+        day: 11,
+        title: 'Li River Cruise',
+        description: 'Scenic cruise from Guilin to Yangshuo.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 12,
+        title: 'Yangshuo Countryside',
+        description: 'Bike ride through karst landscape. Evening cooking class.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 13,
+        title: 'Yangshuo at Leisure',
+        description: 'Free day for optional activities.',
+        meals: ['Breakfast'],
+        accommodation: 'Alila Yangshuo'
+      },
+      {
+        day: 14,
+        title: 'Yangshuo to Guilin',
+        description: 'Return to Guilin. Visit Reed Flute Cave.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Shangri-La Guilin'
+      },
+      {
+        day: 15,
+        title: 'Guilin to Shanghai',
+        description: 'Fly to Shanghai. Farewell dinner.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Park Hyatt Shanghai'
+      },
+      {
+        day: 16,
+        title: 'Departure',
+        description: 'Transfer to airport for your onward flight.',
+        meals: ['Breakfast']
+      }
+    ],
+    inclusions: [
+      'All accommodation in 5-star hotels',
+      'Daily breakfast and select meals',
+      'Expert English-speaking guide throughout',
+      'All entrance fees and activities',
+      'Domestic flights and transportation',
+      'High-speed train tickets',
+      'Li River cruise',
       'VIP airport transfers'
     ],
     exclusions: [
@@ -279,8 +500,8 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Gratuities'
     ],
-    metaTitle: 'China Signature Imperial Journey | 12 Days | CTS Tours',
-    metaDescription: 'Experience China\'s imperial heritage with CTS Tours. 12-day luxury tour featuring exclusive Forbidden City access. Expert guides, 5-star hotels.',
+    metaTitle: 'China Signature Grand Tour | 16 Days | CTS Tours',
+    metaDescription: 'The ultimate China experience with CTS Tours. 16-day comprehensive tour covering Beijing, Xi\'an, Shanghai, and Guilin. Premium all the way.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'

@@ -123,56 +123,60 @@ const HomePage = () => {
         <div className="container">
           <SectionTitle subtitle="Our Tours" title="Product Tiers" center />
           
-          {/* Premium China Journeys */}
+          {/* China Signature Collection */}
           <div className="mb-20">
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">Premium China Journeys</h3>
+              <h3 className="text-2xl font-semibold font-serif">China Signature</h3>
               <div className="w-16 h-1 bg-secondary"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <TourTierCard 
-                title="Imperial China Tour"
-                description="Explore the imperial history of China with visits to Beijing, Xi'an, and Shanghai. Small groups, premium hotels, deeper access, and expert-led experiences."
+                title="China Signature — Imperial Heritage"
+                description="Classic northern cultural route. Beijing, Xi'an, core heritage sites. Premium accommodations, expert guides, and exclusive experiences."
                 duration="12 Days"
-                price="From $3,999"
-                image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20imperial%20tour%20historical%20sites&image_size=landscape_16_9"
-                slug="imperial-china-tour"
+                price="From $4,999"
+                image_url="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
+                slug="imperial-heritage"
+                tier="signature"
                 isPremium
               />
               <TourTierCard 
-                title="Yangtze River Cruise"
-                description="Experience the majesty of the Yangtze River with a luxury cruise. Small groups, premium accommodations, deeper access, and expert-led experiences."
-                duration="7 Days"
-                price="From $2,499"
-                image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yangtze%20River%20cruise%20luxury%20ship&image_size=landscape_16_9"
-                slug="yangtze-river-cruise"
+                title="China Signature — Grand Tour"
+                description="Multi-region comprehensive itinerary. Longest duration product with strong inclusions. The ultimate China experience."
+                duration="16 Days"
+                price="From $5,999"
+                image_url="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"
+                slug="grand-tour"
+                tier="signature"
                 isPremium
               />
             </div>
           </div>
           
-          {/* Value China Discovery */}
+          {/* China Discovery Collection */}
           <div>
             <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">Value China Discovery</h3>
+              <h3 className="text-2xl font-semibold font-serif">China Discovery</h3>
               <div className="w-16 h-1 bg-secondary"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <TourTierCard 
-                title="Classic China Experience"
-                description="A comprehensive tour covering the best of China's cultural and natural highlights. Carefully designed itineraries, excellent value, and quality essential experiences."
-                duration="10 Days"
-                price="From $2,999"
-                image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20classic%20tour%20cultural%20highlights&image_size=landscape_16_9"
-                slug="classic-china-experience"
+                title="China Discovery — Beijing & Shanghai"
+                description="Two-city highlights. A natural first-timer product. The geographic name makes the itinerary instantly clear to agents."
+                duration="8 Days"
+                price="From $2,499"
+                image_url="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80"
+                slug="beijing-shanghai"
+                tier="discovery"
               />
               <TourTierCard 
-                title="China Discovery Tour"
-                description="A perfect introduction to China's top destinations. Carefully designed itineraries, excellent value, and quality essential experiences."
-                duration="8 Days"
-                price="From $2,199"
-                image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20discovery%20tour%20popular%20destinations&image_size=landscape_16_9"
-                slug="china-discovery-tour"
+                title="China Discovery — Highlights"
+                description="Core highlights route. The new name aligns with the tier structure and makes the itinerary scope immediately clear to agents."
+                duration="10 Days"
+                price="From $2,999"
+                image_url="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"
+                slug="highlights"
+                tier="discovery"
               />
             </div>
           </div>

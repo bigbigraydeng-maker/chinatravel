@@ -7,12 +7,24 @@ interface TourTierCardProps {
   price: string;
   image_url: string;
   slug: string;
+  tier: 'signature' | 'discovery' | 'stopover';
+  destination?: string;
   isPremium?: boolean;
 }
 
-const TourTierCard = ({ title, description, duration, price, image_url, slug, isPremium = false }: TourTierCardProps) => {
+const TourTierCard = ({ 
+  title, 
+  description, 
+  duration, 
+  price, 
+  image_url, 
+  slug, 
+  tier,
+  destination = 'china',
+  isPremium = false 
+}: TourTierCardProps) => {
   return (
-    <Link href={`/tours/${slug}`} className="block card group">
+    <Link href={`/tours/${destination}/${tier}/${slug}`} className="block card group">
       <div className="overflow-hidden">
         <img 
           src={image_url} 
