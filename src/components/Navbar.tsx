@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,6 +17,28 @@ const Navbar = () => {
     setIsMenuOpen(false);
     setIsToursDropdownOpen(false);
   };
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsToursDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsToursDropdownOpen(false);
+    }, 150);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const destinations = [
     { href: '/tours/china', label: 'China' },
@@ -33,11 +57,15 @@ const Navbar = () => {
         <nav className="hidden md:flex items-center gap-8">
           {/* Tours Dropdown */}
           <div 
+            ref={dropdownRef}
             className="relative"
-            onMouseEnter={() => setIsToursDropdownOpen(true)}
-            onMouseLeave={() => setIsToursDropdownOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <button className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+            <button 
+              className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium"
+              onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
+            >
               Tours
               <svg className={`w-4 h-4 transition-transform ${isToursDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -45,7 +73,11 @@ const Navbar = () => {
             </button>
             
             {isToursDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2">
+              <div 
+                className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Link 
                   href="/tours"
                   className="block px-4 py-2 text-accent hover:bg-gray-50 hover:text-primary transition-colors"
