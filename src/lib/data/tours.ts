@@ -51,6 +51,8 @@ export interface Tier {
   name: string;
   description: string;
   features: string[];
+  agentOneLiner: string;
+  definingCharacteristics: string[];
 }
 
 // Destination Definitions
@@ -76,22 +78,45 @@ export const destinations: Destination[] = [
         id: 'tier-signature',
         slug: 'signature',
         name: 'Signature',
-        description: 'Premium small-group journeys with exclusive experiences and luxury accommodations',
-        features: ['Max 12 guests', '5-star hotels', 'Expert guides', 'Exclusive access']
+        description: 'CTS\'s premium programme for travellers who want depth over coverage. Boutique accommodation, smaller groups or private departures, and itineraries designed around access and immersion.',
+        features: ['Maximum 16 passengers', '4-5 star hotels', 'Locally-led experiences', 'Baker Gu\'s oversight'],
+        agentOneLiner: 'China Signature is their premium programme — boutique hotels, small groups, deeper experiences designed by their China specialist.',
+        definingCharacteristics: [
+          'Maximum 16 passengers (group), or private departure',
+          '4-5 star hotels selected for character and location, not just star rating',
+          'Locally-led experiences, off-circuit access, itinerary depth over destination count',
+          'Baker Gu\'s direct product oversight',
+          'Airline selection is product-specific, not a tier-level promise'
+        ]
       },
       {
         id: 'tier-discovery',
         slug: 'discovery',
         name: 'Discovery',
-        description: 'Carefully crafted itineraries offering exceptional value without compromise',
-        features: ['Small groups', 'Quality hotels', 'Local guides', 'Great value']
+        description: 'A well-organised, reliable experience at an accessible price point. Core itineraries covering essential destinations, designed for first-time visitors.',
+        features: ['Standard group sizes', '3-4 star hotels', 'Must-see itineraries', 'Straightforward pricing'],
+        agentOneLiner: 'China Discovery is their well-priced option — reliable, well-organised, great for a first trip to China.',
+        definingCharacteristics: [
+          'Standard group sizes',
+          '3-4 star hotels, clean, well-located, comfortable',
+          'Must-see itineraries — well-paced, well-guided, covering highlights',
+          'Straightforward pricing that reflects value of experience',
+          'Cost-effective carriers offering good value'
+        ]
       },
       {
         id: 'tier-stopover',
         slug: 'stopover',
         name: 'Stopover',
-        description: 'Short city breaks perfect for extending your journey',
-        features: ['2-5 days', 'City focused', 'Flexible dates', 'Easy add-on']
+        description: 'Short-stay city packages for travellers transiting through China or testing destination before committing to a full itinerary.',
+        features: ['2-4 day packages', 'Consistent naming', 'Visa-friendly', 'Natural upsell path'],
+        agentOneLiner: 'China Stopover is their gateway product — perfect for transit passengers or testing a destination before a full tour.',
+        definingCharacteristics: [
+          '2-4 day city-specific packages',
+          'Consistent naming: China Stopover — [City] ([Duration])',
+          'Designed for visa-free traveller and transit passenger',
+          'Pipeline product: agent who books a stopover has a natural follow-up conversation for a full tour'
+        ]
       }
     ]
   },
@@ -117,14 +142,30 @@ export const destinations: Destination[] = [
         slug: 'signature',
         name: 'Signature',
         description: 'Immersive journeys with exclusive cultural experiences',
-        features: ['Max 10 guests', 'Ryokan stays', 'Expert guides', 'Cultural immersion']
+        features: ['Max 10 guests', 'Ryokan stays', 'Expert guides', 'Cultural immersion'],
+        agentOneLiner: 'Japan Signature is their premium programme — boutique ryokans, small groups, deeper cultural experiences designed by their Japan specialist.',
+        definingCharacteristics: [
+          'Maximum 16 passengers (group), or private departure',
+          '4-5 star hotels selected for character and location, not just star rating',
+          'Locally-led experiences, off-circuit access, itinerary depth over destination count',
+          'Baker Gu\'s direct product oversight',
+          'Airline selection is product-specific, not a tier-level promise'
+        ]
       },
       {
         id: 'tier-discovery',
         slug: 'discovery',
         name: 'Discovery',
         description: 'Essential Japan experiences at exceptional value',
-        features: ['Small groups', 'Quality hotels', 'Local guides', 'Great value']
+        features: ['Small groups', 'Quality hotels', 'Local guides', 'Great value'],
+        agentOneLiner: 'Japan Discovery is their well-priced option — reliable, well-organised, great for a first trip to Japan.',
+        definingCharacteristics: [
+          'Standard group sizes',
+          '3-4 star hotels, clean, well-located, comfortable',
+          'Must-see itineraries — well-paced, well-guided, covering highlights',
+          'Straightforward pricing that reflects value of experience',
+          'Cost-effective carriers offering good value'
+        ]
       }
     ]
   },
@@ -150,7 +191,15 @@ export const destinations: Destination[] = [
         slug: 'discovery',
         name: 'Discovery',
         description: 'Authentic Vietnam experiences showcasing the best of the country',
-        features: ['Small groups', 'Boutique hotels', 'Local guides', 'Authentic experiences']
+        features: ['Small groups', 'Boutique hotels', 'Local guides', 'Authentic experiences'],
+        agentOneLiner: 'Vietnam Discovery is their well-priced option — reliable, well-organised, great for a first trip to Vietnam.',
+        definingCharacteristics: [
+          'Standard group sizes',
+          '3-4 star hotels, clean, well-located, comfortable',
+          'Must-see itineraries — well-paced, well-guided, covering highlights',
+          'Straightforward pricing that reflects value of experience',
+          'Cost-effective carriers offering good value'
+        ]
       }
     ]
   }

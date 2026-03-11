@@ -140,6 +140,53 @@ export default function TierPage({ params }: TierPageProps) {
         </div>
       </section>
 
+      {/* Agent One-Liner */}
+      <section className="bg-gray-100 py-8">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="text-sm text-gray-500 mb-2">Agent One-Liner</p>
+                <p className="text-lg font-serif text-gray-900 italic">
+                  "{tier.agentOneLiner}"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Defining Characteristics */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-serif font-bold text-center text-gray-900 mb-12">
+            Defining Characteristics
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-4">
+              {tier.definingCharacteristics.map((characteristic, index) => (
+                <div 
+                  key={index} 
+                  className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                    <span className="text-primary font-bold text-sm">{index + 1}</span>
+                  </div>
+                  <p className="flex-1 text-gray-700 leading-relaxed">
+                    {characteristic}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Tours Grid */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
