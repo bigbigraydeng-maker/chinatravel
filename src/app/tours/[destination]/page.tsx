@@ -14,6 +14,13 @@ interface DestinationPageProps {
   };
 }
 
+// Generate static params for all destinations
+export async function generateStaticParams() {
+  return destinations.map((destination) => ({
+    destination: destination.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: DestinationPageProps): Promise<Metadata> {
   const destination = getDestinationBySlug(params.destination);
   

@@ -25,7 +25,7 @@ interface TourPageProps {
 }
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
-  const tour = getTourBySlug(params.tour);
+  const tour = getTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour) {
     return {
@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 }
 
 export default function TourPage({ params }: TourPageProps) {
-  const tour = getTourBySlug(params.tour);
+  const tour = getTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour) {
     notFound();

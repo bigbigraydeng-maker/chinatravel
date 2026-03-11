@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
   getDestinationBySlug, 
-  getToursByDestinationAndTier 
+  getToursByDestinationAndTier,
+  destinations
 } from '@/lib/data/tours';
 import TourCard from '@/components/tours/TourCard';
 
@@ -12,6 +13,22 @@ interface TierPageProps {
     destination: string;
     tier: string;
   };
+}
+
+// Generate static params for all destination/tier combinations
+export async function generateStaticParams() {
+  const params: { destination: string; tier: string }[] = [];
+  
+  destinations.forEach((destination) => {
+    destination.tiers.forEach((tier) => {
+      params.push({
+        destination: destination.slug,
+        tier: tier.slug,
+      });
+    });
+  });
+  
+  return params;
 }
 
 export async function generateMetadata({ params }: TierPageProps): Promise<Metadata> {

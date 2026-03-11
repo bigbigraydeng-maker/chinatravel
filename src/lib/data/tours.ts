@@ -1228,28 +1228,28 @@ export const tours: Tour[] = [
       'Half-day Great Wall visit',
       'Forbidden City tour',
       'Tiananmen Square',
-      'Hutong rickshaw tour',
-      'Peking duck dinner'
+      'Hutong rickshaw ride',
+      'Beijing duck dinner'
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival in Beijing',
-        description: 'Arrive and transfer to your hotel. Evening Peking duck dinner.',
+        description: 'Arrive and transfer to your hotel. Evening welcome dinner.',
         meals: ['Dinner'],
         accommodation: 'Novotel Beijing'
       },
       {
         day: 2,
         title: 'Great Wall',
-        description: 'Morning visit to the Great Wall at Mutianyu.',
+        description: 'Half-day trip to the Great Wall at Mutianyu.',
         meals: ['Breakfast', 'Lunch'],
         accommodation: 'Novotel Beijing'
       },
       {
         day: 3,
-        title: 'City Highlights',
-        description: 'Forbidden City, Tiananmen Square, and hutong tour.',
+        title: 'Beijing City Tour',
+        description: 'Forbidden City and Tiananmen Square.',
         meals: ['Breakfast', 'Lunch'],
         accommodation: 'Novotel Beijing'
       },
@@ -1266,7 +1266,7 @@ export const tours: Tour[] = [
       'English-speaking guide',
       'Entrance fees',
       'Airport transfers',
-      'One dinner'
+      'One lunch and one dinner'
     ],
     exclusions: [
       'International flights',
@@ -1276,115 +1276,51 @@ export const tours: Tour[] = [
       'Personal expenses'
     ],
     metaTitle: 'Beijing Stopover Tour | 4 Days | CTS Tours',
-    metaDescription: 'Perfect Beijing stopover with CTS Tours. 4-day tour featuring Great Wall and Forbidden City. Ideal for layovers.',
+    metaDescription: 'Make the most of your layover with CTS Tours. 4-day Beijing stopover featuring Great Wall and Forbidden City.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
   {
     id: 'tour-cn-stp-2',
-    slug: 'beijing-express',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Beijing Express',
-    title: 'China Stopover — Beijing Express (3 Days)',
-    shortDescription: 'Quick Beijing experience with Great Wall and Forbidden City. Perfect for short layovers.',
-    duration: '3 Days',
-    price: 'From $699',
-    heroImage: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80'
-    ],
-    highlights: [
-      'Great Wall at Mutianyu',
-      'Forbidden City',
-      'Tiananmen Square',
-      'Hutong exploration',
-      'Peking duck dinner'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Beijing',
-        description: 'Arrive and transfer to your hotel. Evening Peking duck dinner.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Beijing'
-      },
-      {
-        day: 2,
-        title: 'Great Wall',
-        description: 'Morning visit to the Great Wall at Mutianyu.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Beijing'
-      },
-      {
-        day: 3,
-        title: 'City Highlights',
-        description: 'Forbidden City, Tiananmen Square, and hutong tour.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Beijing Express Stopover | 3 Days | CTS Tours',
-    metaDescription: 'Quick Beijing stopover with CTS Tours. 3-day tour featuring Great Wall and Forbidden City. Perfect for short layovers.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-3',
     slug: 'shanghai',
     destination: 'china',
     tier: 'stopover',
     name: 'China Stopover — Shanghai',
     title: 'China Stopover — Shanghai (3 Days)',
-    shortDescription: 'Experience Shanghai\'s blend of modern and traditional China. Perfect for city lovers.',
+    shortDescription: 'Experience the dynamic blend of old and new in Shanghai.',
     duration: '3 Days',
-    price: 'From $599',
+    price: 'From $699',
     heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
     ],
     highlights: [
-      'Shanghai Bund walk',
-      'Yu Garden',
+      'The Bund and Pudong skyline',
+      'Yu Garden and Old Town',
       'Shanghai Museum',
-      'Old Town exploration',
-      'Modern skyline views'
+      'Xintiandi entertainment district',
+      'Acrobatics show'
     ],
     itinerary: [
       {
         day: 1,
         title: 'Arrival in Shanghai',
-        description: 'Arrive and transfer to your hotel. Evening Bund walk.',
+        description: 'Arrive and transfer to your hotel. Evening at the Bund.',
         meals: ['Dinner'],
         accommodation: 'Novotel Shanghai'
       },
       {
         day: 2,
-        title: 'Shanghai Tour',
+        title: 'Shanghai City Tour',
         description: 'Yu Garden, Old Town, and Shanghai Museum.',
         meals: ['Breakfast', 'Lunch'],
         accommodation: 'Novotel Shanghai'
       },
       {
         day: 3,
-        title: 'Modern Shanghai',
-        description: 'Pudong skyline and shopping. Departure.',
+        title: 'Departure',
+        description: 'Transfer to airport for your onward flight.',
         meals: ['Breakfast']
       }
     ],
@@ -1404,48 +1340,56 @@ export const tours: Tour[] = [
       'Personal expenses'
     ],
     metaTitle: 'Shanghai Stopover Tour | 3 Days | CTS Tours',
-    metaDescription: 'Experience Shanghai with CTS Tours. 3-day stopover featuring Bund, Yu Garden, and modern skyline.',
+    metaDescription: 'Experience Shanghai with CTS Tours. 3-day stopover featuring The Bund and Yu Garden.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
   {
-    id: 'tour-cn-stp-4',
-    slug: 'shanghai-express',
+    id: 'tour-cn-stp-3',
+    slug: 'xian',
     destination: 'china',
     tier: 'stopover',
-    name: 'China Stopover — Shanghai Express',
-    title: 'China Stopover — Shanghai Express (2 Days)',
-    shortDescription: 'Quick Shanghai experience for the shortest layovers.',
-    duration: '2 Days',
-    price: 'From $499',
-    heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
+    name: 'China Stopover — Xi\'an',
+    title: 'China Stopover — Xi\'an (3 Days)',
+    shortDescription: 'Discover the ancient capital and its famous Terracotta Warriors.',
+    duration: '3 Days',
+    price: 'From $799',
+    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
     ],
     highlights: [
-      'Shanghai Bund',
-      'Yu Garden',
-      'Old Town',
-      'Pudong skyline'
+      'Terracotta Warriors',
+      'Ancient City Wall',
+      'Muslim Quarter',
+      'Big Wild Goose Pagoda',
+      'Xian dumpling dinner'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Arrival in Shanghai',
-        description: 'Arrive and transfer to your hotel. Evening Bund walk.',
+        title: 'Arrival in Xi\'an',
+        description: 'Arrive and transfer to your hotel. Evening at Muslim Quarter.',
         meals: ['Dinner'],
-        accommodation: 'Novotel Shanghai'
+        accommodation: 'Novotel Xi\'an'
       },
       {
         day: 2,
-        title: 'Shanghai Tour',
-        description: 'Yu Garden and Old Town. Departure.',
+        title: 'Terracotta Warriors',
+        description: 'Full day at the Terracotta Army.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Xi\'an'
+      },
+      {
+        day: 3,
+        title: 'Xi\'an City Tour',
+        description: 'Ancient City Wall and Big Wild Goose Pagoda. Departure.',
         meals: ['Breakfast', 'Lunch']
       }
     ],
     inclusions: [
-      '1 night accommodation',
+      '2 nights accommodation',
       'Daily breakfast',
       'English-speaking guide',
       'Entrance fees',
@@ -1459,20 +1403,20 @@ export const tours: Tour[] = [
       'Lunch (except where specified)',
       'Personal expenses'
     ],
-    metaTitle: 'Shanghai Express Stopover | 2 Days | CTS Tours',
-    metaDescription: 'Quick Shanghai stopover with CTS Tours. 2-day tour featuring Bund and Yu Garden.',
+    metaTitle: 'Xi\'an Stopover Tour | 3 Days | CTS Tours',
+    metaDescription: 'Discover Xi\'an with CTS Tours. 3-day stopover featuring Terracotta Warriors and ancient city.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
   {
-    id: 'tour-cn-stp-5',
+    id: 'tour-cn-stp-4',
     slug: 'chengdu',
     destination: 'china',
     tier: 'stopover',
     name: 'China Stopover — Chengdu',
     title: 'China Stopover — Chengdu (3 Days)',
-    shortDescription: 'Meet giant pandas and experience Sichuan culture.',
+    shortDescription: 'Meet the pandas and experience Sichuan cuisine.',
     duration: '3 Days',
     price: 'From $699',
     heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
@@ -1481,10 +1425,10 @@ export const tours: Tour[] = [
     ],
     highlights: [
       'Giant Panda Research Center',
-      'Sichuan hot pot dinner',
       'Jinli Ancient Street',
       'Wuhou Shrine',
-      'Sichuan cuisine'
+      'Sichuan hot pot dinner',
+      'Traditional tea ceremony'
     ],
     itinerary: [
       {
@@ -1496,7 +1440,7 @@ export const tours: Tour[] = [
       },
       {
         day: 2,
-        title: 'Panda Research Center',
+        title: 'Panda Day',
         description: 'Full day at Giant Panda Research Center.',
         meals: ['Breakfast', 'Lunch'],
         accommodation: 'Novotel Chengdu'
@@ -1529,695 +1473,59 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
+  // Japan Signature Tours
   {
-    id: 'tour-cn-stp-6',
-    slug: 'guilin',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Guilin',
-    title: 'China Stopover — Guilin (3 Days)',
-    shortDescription: 'Experience Guilin\'s stunning karst landscape.',
-    duration: '3 Days',
-    price: 'From $699',
-    heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
-    ],
-    highlights: [
-      'Li River cruise',
-      'Elephant Trunk Hill',
-      'Reed Flute Cave',
-      'Karst mountains',
-      'Guilin city tour'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Guilin',
-        description: 'Arrive and transfer to your hotel. Evening Li River walk.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Guilin'
-      },
-      {
-        day: 2,
-        title: 'Li River Cruise',
-        description: 'Full day Li River cruise to Yangshuo.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Guilin'
-      },
-      {
-        day: 3,
-        title: 'Guilin Tour',
-        description: 'Elephant Trunk Hill and Reed Flute Cave. Departure.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Li River cruise',
-      'Airport transfers'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Guilin Stopover Tour | 3 Days | CTS Tours',
-    metaDescription: 'Experience Guilin with CTS Tours. 3-day stopover featuring Li River cruise and karst landscape.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-7',
-    slug: 'xian',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Xi\'an',
-    title: 'China Stopover — Xi\'an (3 Days)',
-    shortDescription: 'Discover the Terracotta Warriors and ancient Xi\'an.',
-    duration: '3 Days',
-    price: 'From $699',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
-    ],
-    highlights: [
-      'Terracotta Warriors',
-      'Ancient City Wall',
-      'Muslim Quarter',
-      'Big Wild Goose Pagoda',
-      'Tang Dynasty show'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Xi\'an',
-        description: 'Arrive and transfer to your hotel. Evening Muslim Quarter.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Xi\'an'
-      },
-      {
-        day: 2,
-        title: 'Terracotta Warriors',
-        description: 'Full day at Terracotta Army with expert guide.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Xi\'an'
-      },
-      {
-        day: 3,
-        title: 'Xi\'an Tour',
-        description: 'City Wall and Big Wild Goose Pagoda. Departure.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Xi\'an Stopover Tour | 3 Days | CTS Tours',
-    metaDescription: 'Discover Xi\'an with CTS Tours. 3-day stopover featuring Terracotta Warriors and ancient city.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-8',
-    slug: 'guangzhou',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Guangzhou',
-    title: 'China Stopover — Guangzhou (3 Days)',
-    shortDescription: 'Experience Guangzhou\'s modern city and Cantonese culture.',
-    duration: '3 Days',
-    price: 'From $599',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
-    ],
-    highlights: [
-      'Canton Tower',
-      'Shamian Island',
-      'Cantonese dim sum',
-      'Chen Clan Academy',
-      'Modern Guangzhou'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Guangzhou',
-        description: 'Arrive and transfer to your hotel. Evening dim sum dinner.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Guangzhou'
-      },
-      {
-        day: 2,
-        title: 'Guangzhou Tour',
-        description: 'Canton Tower, Shamian Island, and Chen Clan Academy.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Guangzhou'
-      },
-      {
-        day: 3,
-        title: 'Modern Guangzhou',
-        description: 'Shopping and modern city exploration. Departure.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Guangzhou Stopover Tour | 3 Days | CTS Tours',
-    metaDescription: 'Experience Guangzhou with CTS Tours. 3-day stopover featuring Canton Tower and Cantonese culture.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-9',
-    slug: 'shanghai-suzhou',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Shanghai & Suzhou',
-    title: 'China Stopover — Shanghai & Suzhou (3 Days)',
-    shortDescription: 'Shanghai city tour plus Suzhou classical gardens.',
-    duration: '3 Days',
-    price: 'From $799',
-    heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
-    ],
-    highlights: [
-      'Shanghai Bund',
-      'Suzhou classical gardens',
-      'Humble Administrator\'s Garden',
-      'Old Town Suzhou',
-      'Shanghai Museum'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Shanghai',
-        description: 'Arrive and transfer to your hotel. Evening Bund walk.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Shanghai'
-      },
-      {
-        day: 2,
-        title: 'Suzhou Day Trip',
-        description: 'Day trip to Suzhou classical gardens.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Shanghai'
-      },
-      {
-        day: 3,
-        title: 'Shanghai Tour',
-        description: 'Shanghai Museum and Old Town. Departure.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Shanghai & Suzhou Stopover | 3 Days | CTS Tours',
-    metaDescription: 'Shanghai and Suzhou with CTS Tours. 3-day stopover featuring Bund and classical gardens.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-10',
-    slug: 'shanghai-wuzhen',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Shanghai & Wuzhen',
-    title: 'China Stopover — Shanghai & Wuzhen (4 Days)',
-    shortDescription: 'Shanghai city tour plus Wuzhen water town experience.',
-    duration: '4 Days',
-    price: 'From $899',
-    heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
-    ],
-    highlights: [
-      'Shanghai Bund',
-      'Wuzhen water town',
-      'Traditional architecture',
-      'Canal boat ride',
-      'Shanghai Museum'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Shanghai',
-        description: 'Arrive and transfer to your hotel. Evening Bund walk.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Shanghai'
-      },
-      {
-        day: 2,
-        title: 'Wuzhen Water Town',
-        description: 'Day trip to Wuzhen ancient water town.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Shanghai'
-      },
-      {
-        day: 3,
-        title: 'Shanghai Tour',
-        description: 'Shanghai Museum and Old Town.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Shanghai'
-      },
-      {
-        day: 4,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
-      }
-    ],
-    inclusions: [
-      '3 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Shanghai & Wuzhen Stopover | 4 Days | CTS Tours',
-    metaDescription: 'Shanghai and Wuzhen with CTS Tours. 4-day stopover featuring Bund and water town.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-11',
-    slug: 'guilin-surrounds',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Guilin & Surrounds',
-    title: 'China Stopover — Guilin & Surrounds (4 Days)',
-    shortDescription: 'Guilin city plus Yangshuo and Longsheng rice terraces.',
-    duration: '4 Days',
-    price: 'From $899',
-    heroImage: 'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
-    ],
-    highlights: [
-      'Li River cruise',
-      'Yangshuo countryside',
-      'Longsheng rice terraces',
-      'Karst mountains',
-      'Bamboo rafting'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Guilin',
-        description: 'Arrive and transfer to your hotel. Evening Li River walk.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Guilin'
-      },
-      {
-        day: 2,
-        title: 'Li River Cruise',
-        description: 'Full day cruise to Yangshuo.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Alila Yangshuo'
-      },
-      {
-        day: 3,
-        title: 'Yangshuo to Longsheng',
-        description: 'Bamboo rafting and Longsheng rice terraces.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Guilin'
-      },
-      {
-        day: 4,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
-      }
-    ],
-    inclusions: [
-      '3 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Li River cruise',
-      'Airport transfers'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Guilin & Surrounds Stopover | 4 Days | CTS Tours',
-    metaDescription: 'Guilin and surrounds with CTS Tours. 4-day stopover featuring Li River and rice terraces.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-12',
-    slug: 'zhangjiajie',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Zhangjiajie',
-    title: 'China Stopover — Zhangjiajie (3 Days)',
-    shortDescription: 'Experience the Avatar Mountains and Zhangjiajie National Forest Park.',
-    duration: '3 Days',
-    price: 'From $799',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
-    ],
-    highlights: [
-      'Avatar Mountains',
-      'Zhangjiajie National Forest Park',
-      'Glass bridge',
-      'Tianmen Mountain',
-      'Natural scenery'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Zhangjiajie',
-        description: 'Arrive and transfer to your hotel. Evening at leisure.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Zhangjiajie'
-      },
-      {
-        day: 2,
-        title: 'Zhangjiajie National Park',
-        description: 'Full day exploring Avatar Mountains.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Zhangjiajie'
-      },
-      {
-        day: 3,
-        title: 'Tianmen Mountain',
-        description: 'Tianmen Mountain cable car. Departure.',
-        meals: ['Breakfast', 'Lunch']
-      }
-    ],
-    inclusions: [
-      '2 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Cable car tickets',
-      'Airport transfers'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Zhangjiajie Stopover | 3 Days | CTS Tours',
-    metaDescription: 'Avatar Mountains with CTS Tours. 3-day Zhangjiajie stopover featuring National Forest Park.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-13',
-    slug: 'guangzhou-shenzhen',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Guangzhou & Shenzhen',
-    title: 'China Stopover — Guangzhou & Shenzhen (4 Days)',
-    shortDescription: 'Experience modern innovation in Guangzhou and Shenzhen.',
-    duration: '4 Days',
-    price: 'From $899',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
-    ],
-    highlights: [
-      'Canton Tower',
-      'Shenzhen tech hubs',
-      'Innovation centers',
-      'Modern architecture',
-      'Cantonese cuisine'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Guangzhou',
-        description: 'Arrive and transfer to your hotel. Evening dim sum dinner.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Guangzhou'
-      },
-      {
-        day: 2,
-        title: 'Guangzhou Tour',
-        description: 'Canton Tower and modern Guangzhou.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Guangzhou'
-      },
-      {
-        day: 3,
-        title: 'Shenzhen Day Trip',
-        description: 'Day trip to Shenzhen innovation centers.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Guangzhou'
-      },
-      {
-        day: 4,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
-      }
-    ],
-    inclusions: [
-      '3 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Airport transfers',
-      'One dinner'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Guangzhou & Shenzhen Stopover | 4 Days | CTS Tours',
-    metaDescription: 'Modern innovation with CTS Tours. 4-day stopover featuring Guangzhou and Shenzhen.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-stp-14',
-    slug: 'huangshan',
-    destination: 'china',
-    tier: 'stopover',
-    name: 'China Stopover — Huangshan',
-    title: 'China Stopover — Huangshan (4 Days)',
-    shortDescription: 'Experience the legendary Yellow Mountain scenery.',
-    duration: '4 Days',
-    price: 'From $899',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
-    ],
-    highlights: [
-      'Yellow Mountain (Huangshan)',
-      'Ancient pine trees',
-      'Sea of clouds',
-      'Sunrise views',
-      'Cable car experience'
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Arrival in Huangshan',
-        description: 'Arrive and transfer to your hotel. Evening at leisure.',
-        meals: ['Dinner'],
-        accommodation: 'Novotel Huangshan'
-      },
-      {
-        day: 2,
-        title: 'Yellow Mountain',
-        description: 'Full day on Yellow Mountain with cable car.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Huangshan'
-      },
-      {
-        day: 3,
-        title: 'Huangshan Exploration',
-        description: 'Sunrise and ancient villages. Return to base.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Novotel Huangshan'
-      },
-      {
-        day: 4,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
-      }
-    ],
-    inclusions: [
-      '3 nights accommodation',
-      'Daily breakfast',
-      'English-speaking guide',
-      'Entrance fees',
-      'Cable car tickets',
-      'Airport transfers'
-    ],
-    exclusions: [
-      'International flights',
-      'Travel insurance',
-      'Visa fees',
-      'Lunch (except where specified)',
-      'Personal expenses'
-    ],
-    metaTitle: 'Huangshan Stopover | 4 Days | CTS Tours',
-    metaDescription: 'Yellow Mountain with CTS Tours. 4-day stopover featuring Huangshan scenery and cable car.',
-    isActive: true,
-    createdAt: '2024-01-01',
-    updatedAt: '2024-01-01'
-  },
-  {
-    id: 'tour-cn-sig-4',
-    slug: 'shangri-la',
-    destination: 'china',
+    id: 'tour-jp-sig-1',
+    slug: 'ultimate',
+    destination: 'japan',
     tier: 'signature',
-    name: 'China Signature — Shangri-La Tour',
-    title: 'China Signature — Shangri-La Tour',
-    shortDescription: '8-day Yangtze River cruise with Three Gorges and Shangri-La water town experience. Premium accommodations and exclusive river views.',
-    duration: '8 Days',
-    price: 'From $4,299',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    name: 'Japan Signature — Ultimate',
+    title: 'Japan Signature — Ultimate',
+    shortDescription: 'Premium Japan product. A natural Signature fit if inclusions align.',
+    duration: '14 Days',
+    price: 'From $5,999',
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80'
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
+      'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=80',
+      'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800&q=80'
     ],
     highlights: [
-      'Yangtze River luxury cruise',
-      'Three Gorges scenic views',
-      'Shangri-La water town exploration',
-      'Private boat excursions',
-      'Premium river-view hotels'
+      'Witness Mount Fuji from multiple perspectives',
+      'Stay in luxury ryokans with private onsens',
+      'Exclusive access to ancient temples',
+      'Authentic kaiseki dining experiences',
+      'Bullet train journey across Japan'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Arrival in Chongqing',
-        description: 'VIP transfer to luxury hotel. Welcome dinner.',
+        title: 'Arrival in Tokyo',
+        description: 'Welcome to Japan! Transfer to your luxury hotel and enjoy a welcome dinner.',
         meals: ['Dinner'],
-        accommodation: 'Shangri-La Hotel Chongqing'
+        accommodation: 'The Ritz-Carlton Tokyo'
       },
       {
         day: 2,
-        title: 'Yangtze River Cruise Begins',
-        description: 'Board luxury cruise ship. Sail through Qutang Gorge.',
+        title: 'Tokyo Exploration',
+        description: 'Morning visit to Meiji Shrine, afternoon in Ginza shopping district.',
         meals: ['Breakfast', 'Lunch', 'Dinner'],
-        accommodation: 'Yangtze Explorer'
+        accommodation: 'The Ritz-Carlton Tokyo'
       },
       {
         day: 3,
-        title: 'Three Gorges',
-        description: 'Full day cruising through Wu, Qutang, and Xiling Gorges. Shore excursion to Fengdu.',
+        title: 'Tokyo to Hakone',
+        description: 'Bullet train to Hakone, enjoy hot springs and Mount Fuji views.',
         meals: ['Breakfast', 'Lunch', 'Dinner'],
-        accommodation: 'Yangtze Explorer'
-      },
-      {
-        day: 4,
-        title: 'Yichang to Shangri-La',
-        description: 'Disembark and transfer to Shangri-La. Evening water town walk.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Shangri-La Hotel'
-      },
-      {
-        day: 5,
-        title: 'Shangri-La Exploration',
-        description: 'Full day exploring ancient water town. Private boat excursion.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Hotel'
-      },
-      {
-        day: 6,
-        title: 'Shangri-La to Yichang',
-        description: 'Return to cruise ship. Sail through Three Gorges.',
-        meals: ['Breakfast', 'Lunch', 'Dinner'],
-        accommodation: 'Yangtze Explorer'
-      },
-      {
-        day: 7,
-        title: 'Three Gorges to Chongqing',
-        description: 'Final day cruising. Evening farewell dinner.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Yangtze Explorer'
-      },
-      {
-        day: 8,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
+        accommodation: 'Gora Kadan Ryokan'
       }
     ],
     inclusions: [
-      '7 nights luxury cruise accommodation',
-      'All meals on board',
-      'Expert English-speaking cruise director',
-      'All shore excursions',
-      'Premium river-view hotels',
+      'All accommodation in 5-star hotels and luxury ryokans',
+      'Daily breakfast and select meals',
+      'Expert English-speaking guide',
+      'All entrance fees and activities',
+      'Domestic bullet train tickets',
       'Airport transfers'
     ],
     exclusions: [
@@ -2227,106 +1535,172 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Gratuities'
     ],
-    metaTitle: 'China Signature Shangri-La Tour | 8 Days | CTS Tours',
-    metaDescription: 'Luxury Yangtze River cruise with CTS Tours. 8-day journey featuring Three Gorges and Shangri-La. Premium accommodations.',
+    metaTitle: 'Japan Signature Ultimate Tour | 14 Days | CTS Tours',
+    metaDescription: 'Premium Japan experience with CTS Tours. 14-day luxury tour featuring Mount Fuji, ryokans, and exclusive cultural experiences.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  // Japan Discovery Tours
+  {
+    id: 'tour-jp-dis-1',
+    slug: 'highlights',
+    destination: 'japan',
+    tier: 'discovery',
+    name: 'Japan Discovery — Highlights',
+    title: 'Japan Discovery — Highlights',
+    shortDescription: 'Core Japan highlights tour. Clean Discovery placement.',
+    duration: '10 Days',
+    price: 'From $3,499',
+    heroImage: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=80',
+      'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800&q=80'
+    ],
+    highlights: [
+      'Tokyo city highlights',
+      'Kyoto ancient temples and gardens',
+      'Osaka castle and Dotonbori',
+      'Bullet train experience',
+      'Traditional Japanese cuisine'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Tokyo',
+        description: 'Arrive in Tokyo and transfer to your hotel. Evening welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Hilton Tokyo'
+      },
+      {
+        day: 2,
+        title: 'Tokyo City Tour',
+        description: 'Senso-ji Temple, Asakusa, and Tokyo Tower.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Hilton Tokyo'
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Bullet train tickets',
+      'Airport transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'Japan Discovery Highlights Tour | 10 Days | CTS Tours',
+    metaDescription: 'Core Japan highlights with CTS Tours. 10-day tour covering Tokyo, Kyoto, and Osaka. Great value, expert guides.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
   {
-    id: 'tour-cn-sig-5',
-    slug: 'yunnan-explorer',
-    destination: 'china',
-    tier: 'signature',
-    name: 'China Signature — Yunnan Explorer',
-    title: 'China Signature — Yunnan Explorer',
-    shortDescription: 'Regional depth product exploring ethnic minority cultures and natural wonders of Yunnan province.',
-    duration: '9 Days',
-    price: 'From $4,499',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    id: 'tour-jp-dis-2',
+    slug: 'explorer',
+    destination: 'japan',
+    tier: 'discovery',
+    name: 'Japan Discovery — Explorer',
+    title: 'Japan Discovery — Explorer',
+    shortDescription: 'Updated to align with the new tier structure, as \'Discovery\' now serves as a tier name across all destinations.',
+    duration: '12 Days',
+    price: 'From $3,999',
+    heroImage: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      'https://images.unsplash.com/photo-1492571350019-22de08371fd3?w=800&q=80',
+      'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&q=80'
     ],
     highlights: [
-      'Kunming city exploration',
-      'Dali ancient town',
-      'Lijiang Old Town',
-      'Tiger Leaping Gorge',
-      'Ethnic minority cultural experiences',
-      'Shaxi rice terraces'
+      'Tokyo, Kyoto, Osaka, and Hiroshima',
+      'Hiroshima Peace Memorial Park',
+      'Miyajima Island',
+      'Bullet train journey',
+      'Local market experiences'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Arrival in Kunming',
-        description: 'VIP transfer to luxury hotel. Welcome dinner.',
-        meals: ['Dinner'],
-        accommodation: 'Shangri-La Kunming'
-      },
-      {
-        day: 2,
-        title: 'Kunming to Dali',
-        description: 'Transfer to Dali. Explore ancient town and Three Pagodas.',
-        meals: ['Breakfast', 'Lunch', 'Dinner'],
-        accommodation: 'Shangri-La Dali'
-      },
-      {
-        day: 3,
-        title: 'Dali to Lijiang',
-        description: 'Drive to Lijiang. Explore Old Town and Black Dragon Pool.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Lijiang'
-      },
-      {
-        day: 4,
-        title: 'Lijiang to Shaxi',
-        description: 'Visit Tiger Leaping Gorge. Continue to Shaxi.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Shaxi'
-      },
-      {
-        day: 5,
-        title: 'Shaxi to Kunming',
-        description: 'Return to Kunming. Evening at leisure.',
+        title: 'Arrival in Tokyo',
+        description: 'Airport transfer and check-in. Evening at leisure.',
         meals: ['Breakfast'],
-        accommodation: 'Shangri-La Kunming'
-      },
-      {
-        day: 6,
-        title: 'Kunming to Yuanyang',
-        description: 'Fly to Yuanyang. Visit rice terraces.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Yuanyang'
-      },
-      {
-        day: 7,
-        title: 'Yuanyang Exploration',
-        description: 'Full day exploring rice terraces and Hani culture.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Yuanyang'
-      },
-      {
-        day: 8,
-        title: 'Yuanyang to Kunming',
-        description: 'Return to Kunming. Farewell dinner.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Shangri-La Kunming'
-      },
-      {
-        day: 9,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
+        accommodation: 'Hilton Tokyo'
       }
     ],
     inclusions: [
-      'All accommodation in 4-star hotels',
+      'Accommodation in 4-star hotels',
       'Daily breakfast',
-      'Expert English-speaking guide',
-      'All entrance fees and activities',
+      'English-speaking guide',
+      'Entrance fees',
+      'Bullet train tickets',
+      'Airport transfers'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch and dinner',
+      'Personal expenses'
+    ],
+    metaTitle: 'Japan Discovery Explorer Tour | 12 Days | CTS Tours',
+    metaDescription: 'Explore Japan with CTS Tours. 12-day journey covering Tokyo, Kyoto, Osaka, and Hiroshima. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  // Vietnam Discovery Tours
+  {
+    id: 'tour-vn-dis-1',
+    slug: 'panorama',
+    destination: 'vietnam',
+    tier: 'discovery',
+    name: 'Vietnam Discovery — Panorama',
+    title: 'Vietnam Discovery — Panorama',
+    shortDescription: 'Full country overview. Could move to Signature if inclusions warrant it — worth reviewing.',
+    duration: '14 Days',
+    price: 'From $3,499',
+    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80',
+      'https://images.unsplash.com/photo-1581093483799-f1233f8696c5?w=800&q=80'
+    ],
+    highlights: [
+      'Hanoi old quarter',
+      'Halong Bay cruise',
+      'Hue imperial city',
+      'Hoi An ancient town',
+      'Ho Chi Minh City',
+      'Mekong Delta'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Hanoi',
+        description: 'Welcome to Vietnam! Transfer to your hotel and enjoy a welcome dinner.',
+        meals: ['Dinner'],
+        accommodation: 'Sofitel Legend Metropole Hanoi'
+      },
+      {
+        day: 2,
+        title: 'Hanoi City Tour',
+        description: 'Ho Chi Minh Mausoleum, One Pillar Pagoda, and Old Quarter.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Sofitel Legend Metropole Hanoi'
+      }
+    ],
+    inclusions: [
+      'Accommodation in 4-star hotels',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Halong Bay cruise',
       'Domestic flights and transportation',
-      'Private transfers'
+      'Airport transfers'
     ],
     exclusions: [
       'International flights',
@@ -2335,120 +1709,58 @@ export const tours: Tour[] = [
       'Lunch and dinner (except where specified)',
       'Personal expenses'
     ],
-    metaTitle: 'China Signature Yunnan Explorer | 9 Days | CTS Tours',
-    metaDescription: 'Regional depth exploration with CTS Tours. 9-day journey through Kunming, Dali, Lijiang, and Yuanyang. Premium accommodations.',
+    metaTitle: 'Vietnam Discovery Panorama Tour | 14 Days | CTS Tours',
+    metaDescription: 'Full country overview with CTS Tours. 14-day journey covering Hanoi, Halong Bay, Hue, Hoi An, and Ho Chi Minh City.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   },
   {
-    id: 'tour-cn-sig-6',
-    slug: 'natural-china',
-    destination: 'china',
-    tier: 'signature',
-    name: 'China Signature — Natural China',
-    title: 'China Signature — Natural China',
-    shortDescription: 'Nature-focused, off-circuit journey through China\'s most scenic landscapes and natural wonders.',
-    duration: '11 Days',
-    price: 'From $4,799',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    id: 'tour-vn-dis-2',
+    slug: 'highlights',
+    destination: 'vietnam',
+    tier: 'discovery',
+    name: 'Vietnam Discovery — Highlights',
+    title: 'Vietnam Discovery — Highlights',
+    shortDescription: 'Core Vietnam product. Clean Discovery placement.',
+    duration: '12 Days',
+    price: 'From $2,999',
+    heroImage: 'https://images.unsplash.com/photo-1581093483799-f1233f8696c5?w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      'https://images.unsplash.com/photo-1581093483799-f1233f8696c5?w=800&q=80',
+      'https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80'
     ],
     highlights: [
-      'Zhangjiajie Avatar Mountains',
-      'Yellow Mountain (Huangshan)',
-      'Guilin karst landscape',
-      'Li River cruise',
-      'Nature photography opportunities'
+      'Hanoi cultural experiences',
+      'Halong Bay cruise',
+      'Hoi An ancient town',
+      'Ho Chi Minh City highlights',
+      'Vietnamese cuisine tasting'
     ],
     itinerary: [
       {
         day: 1,
-        title: 'Arrival in Zhangjiajie',
-        description: 'VIP transfer to luxury hotel. Welcome dinner.',
+        title: 'Arrival in Hanoi',
+        description: 'Airport transfer and check-in. Evening welcome dinner.',
         meals: ['Dinner'],
-        accommodation: 'Shangri-La Zhangjiajie'
+        accommodation: 'Hilton Hanoi Opera'
       },
       {
         day: 2,
-        title: 'Zhangjiajie Exploration',
-        description: 'Full day exploring Avatar Mountains with private guide.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Zhangjiajie'
-      },
-      {
-        day: 3,
-        title: 'Zhangjiajie to Guilin',
-        description: 'Fly to Guilin. Evening Li River walk.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Shangri-La Guilin'
-      },
-      {
-        day: 4,
-        title: 'Li River Cruise',
-        description: 'Full day cruise to Yangshuo.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Alila Yangshuo'
-      },
-      {
-        day: 5,
-        title: 'Yangshuo Exploration',
-        description: 'Bamboo rafting and countryside bike ride.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Alila Yangshuo'
-      },
-      {
-        day: 6,
-        title: 'Yangshuo to Guilin',
-        description: 'Return to Guilin. Visit Reed Flute Cave.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Guilin'
-      },
-      {
-        day: 7,
-        title: 'Guilin to Huangshan',
-        description: 'Fly to Huangshan. Cable car and sunset views.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Shangri-La Huangshan'
-      },
-      {
-        day: 8,
-        title: 'Huangshan Exploration',
-        description: 'Full day on Yellow Mountain with private guide.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Huangshan'
-      },
-      {
-        day: 9,
-        title: 'Huangshan to Shanghai',
-        description: 'Fly to Shanghai. Evening Bund walk.',
-        meals: ['Breakfast', 'Dinner'],
-        accommodation: 'Shangri-La Shanghai'
-      },
-      {
-        day: 10,
-        title: 'Shanghai Tour',
-        description: 'Yu Garden and Shanghai Museum.',
-        meals: ['Breakfast', 'Lunch'],
-        accommodation: 'Shangri-La Shanghai'
-      },
-      {
-        day: 11,
-        title: 'Departure',
-        description: 'Transfer to airport for onward flight.',
-        meals: ['Breakfast']
+        title: 'Halong Bay Cruise',
+        description: 'Full day cruise in Halong Bay with lunch and activities.',
+        meals: ['Breakfast', 'Lunch', 'Dinner'],
+        accommodation: 'Overnight cruise'
       }
     ],
     inclusions: [
-      'All accommodation in 4-star hotels',
+      'Accommodation in 4-star hotels and cruise',
       'Daily breakfast',
-      'Expert English-speaking guide',
-      'All entrance fees and activities',
+      'English-speaking guide',
+      'Entrance fees',
+      'Halong Bay cruise',
       'Domestic flights and transportation',
-      'Li River cruise',
-      'Huangshan cable car'
+      'Airport transfers'
     ],
     exclusions: [
       'International flights',
@@ -2457,35 +1769,106 @@ export const tours: Tour[] = [
       'Lunch and dinner (except where specified)',
       'Personal expenses'
     ],
-    metaTitle: 'China Signature Natural China | 11 Days | CTS Tours',
-    metaDescription: 'Nature-focused journey with CTS Tours. 11-day tour covering Zhangjiajie, Guilin, and Huangshan. Premium accommodations.',
+    metaTitle: 'Vietnam Discovery Highlights Tour | 12 Days | CTS Tours',
+    metaDescription: 'Core Vietnam experience with CTS Tours. 12-day tour covering Hanoi, Halong Bay, Hoi An, and Ho Chi Minh City. Great value.',
+    isActive: true,
+    createdAt: '2024-01-01',
+    updatedAt: '2024-01-01'
+  },
+  {
+    id: 'tour-cn-stp-5',
+    slug: 'guilin',
+    destination: 'china',
+    tier: 'stopover',
+    name: 'China Stopover — Guilin',
+    title: 'China Stopover — Guilin (3 Days)',
+    shortDescription: 'Experience Guilin\'s stunning karst landscape.',
+    duration: '3 Days',
+    price: 'From $699',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
+    ],
+    highlights: [
+      'Li River cruise',
+      'Elephant Trunk Hill',
+      'Reed Flute Cave',
+      'Rongshui Miao Village',
+      'Guilin night market'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Arrival in Guilin',
+        description: 'Arrive and transfer to your hotel. Evening walk along Li River.',
+        meals: ['Dinner'],
+        accommodation: 'Novotel Guilin'
+      },
+      {
+        day: 2,
+        title: 'Li River Cruise',
+        description: 'Scenic cruise along Li River to Yangshuo.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Novotel Guilin'
+      },
+      {
+        day: 3,
+        title: 'Guilin City Tour',
+        description: 'Elephant Trunk Hill and Reed Flute Cave. Departure.',
+        meals: ['Breakfast', 'Lunch']
+      }
+    ],
+    inclusions: [
+      '2 nights accommodation',
+      'Daily breakfast',
+      'English-speaking guide',
+      'Entrance fees',
+      'Airport transfers',
+      'One dinner'
+    ],
+    exclusions: [
+      'International flights',
+      'Travel insurance',
+      'Visa fees',
+      'Lunch (except where specified)',
+      'Personal expenses'
+    ],
+    metaTitle: 'Guilin Stopover Tour | 3 Days | CTS Tours',
+    metaDescription: 'Experience Guilin\'s karst landscape with CTS Tours. 3-day stopover featuring Li River cruise and Reed Flute Cave.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2024-01-01'
   }
 ];
 
-// Helper functions
-export function getDestinationBySlug(slug: string): Destination | undefined {
-  return destinations.find(d => d.slug === slug);
-}
-
-export function getToursByDestination(destination: string): Tour[] {
-  return tours.filter(t => t.destination === destination && t.isActive);
-}
-
-export function getToursByDestinationAndTier(destination: string, tier: string): Tour[] {
-  return tours.filter(t => 
-    t.destination === destination && 
-    t.tier === tier && 
-    t.isActive
+// Utility Functions
+export const getTourBySlug = (destination: string, tier: string, slug: string): Tour | undefined => {
+  return tours.find(tour => 
+    tour.destination === destination && 
+    tour.tier === tier && 
+    tour.slug === slug
   );
-}
+};
 
-export function getTourBySlug(slug: string): Tour | undefined {
-  return tours.find(t => t.slug === slug && t.isActive);
-}
+export const getToursByDestinationAndTier = (destination: string, tier: string): Tour[] => {
+  return tours.filter(tour => 
+    tour.destination === destination && 
+    tour.tier === tier &&
+    tour.isActive
+  );
+};
 
-export function getAllActiveTours(): Tour[] {
-  return tours.filter(t => t.isActive);
-}
+export const getToursByDestination = (destination: string): Tour[] => {
+  return tours.filter(tour => 
+    tour.destination === destination &&
+    tour.isActive
+  );
+};
+
+export const getDestinationBySlug = (slug: string): Destination | undefined => {
+  return destinations.find(dest => dest.slug === slug);
+};
+
+export const getAllActiveTours = (): Tour[] => {
+  return tours.filter(tour => tour.isActive);
+};
