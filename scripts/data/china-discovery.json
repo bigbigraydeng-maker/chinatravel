@@ -1,0 +1,373 @@
+[
+  {
+    "id": "tour-cn-dis-1",
+    "slug": "highlights",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Highlights",
+    "title": "China Discovery — Highlights",
+    "shortDescription": "A journey combining wildlife encounters with historical exploration — giant pandas, high-speed trains, Terracotta Warriors, and Jiuzhaigou's crystalline lakes.",
+    "duration": "11 Days",
+    "price": "From NZD $2,999",
+    "heroImage": "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80",
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
+    ],
+    "highlights": [
+      "Giant pandas at Dujiangyan Panda Base",
+      "High-speed train rides across China",
+      "Terracotta Warriors — Eighth Wonder of the World",
+      "Jiuzhaigou crystalline lakes",
+      "Kuan and Zhai alleys in Chengdu",
+      "Huanglong Scenic Area"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Chengdu", "description": "Evening departure from Auckland.", "meals": [] },
+      { "day": 2, "title": "Chengdu Area", "description": "Visit Giant Buddha at Lingyun Mountain. Return to Chengdu.", "meals": ["Lunch", "Dinner"], "accommodation": "Holiday Inn Express Gulou (4-star)" },
+      { "day": 3, "title": "Chengdu", "description": "Dujiangyan Panda Base by battery-powered vehicle. Ancient irrigation project tour.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express Gulou (4-star)" },
+      { "day": 4, "title": "Chengdu — Jiuzhaigou", "description": "Morning exploration of Kuan and Zhai alleys. Fast train to Jiuzhaigou Valley.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Grand Rezen Hotel (4-star)" },
+      { "day": 5, "title": "Jiuzhaigou Valley", "description": "Full-day reserve: four scenic areas, plateau lakes, waterfalls, calcified beaches.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Grand Rezen Hotel (4-star)" },
+      { "day": 6, "title": "Jiuzhaigou — Chengdu", "description": "Huanglong Scenic Area (elevation 1,700–5,588m). Return by fast train.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express Gulou (4-star)" },
+      { "day": 7, "title": "Chengdu — Xi'an", "description": "Fast train to Xi'an. Bell Tower and Huimin Street exploration.", "meals": ["Breakfast", "Dinner"], "accommodation": "Novotel Hotel Daming Palace (4-star)" },
+      { "day": 8, "title": "Xi'an", "description": "Terracotta Warriors, Circle Vision Movie, Bronze Chariot. Evening dumpling dinner.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Novotel Hotel Daming Palace (4-star)" },
+      { "day": 9, "title": "Xi'an", "description": "Old City Wall and Big Wild Goose Pagoda.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Novotel Hotel Daming Palace (4-star)" },
+      { "day": 10, "title": "Xi'an — Chengdu", "description": "Free morning. High-speed train to Chengdu. Airport transfer.", "meals": ["Breakfast"] },
+      { "day": 11, "title": "Return to New Zealand", "description": "Arrive back in New Zealand.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "China visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $10 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-2",
+    "slug": "beijing-shanghai",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Beijing & Shanghai",
+    "title": "China Discovery — Beijing & Shanghai",
+    "shortDescription": "Step into the heart of China experiencing the Great Wall, Forbidden City, Terracotta Warriors, and the contrast between ancient Beijing and modern Shanghai.",
+    "duration": "10 Days",
+    "price": "From NZD $3,099",
+    "heroImage": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80",
+      "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"
+    ],
+    "highlights": [
+      "Tian'anmen Square and Forbidden City",
+      "Great Wall at Juyongguan section",
+      "Hutong pedi-cab tour with family visit",
+      "Summer Palace with Marble Boat and Long Corridor",
+      "High-speed train experience (350 km/h)",
+      "Terracotta Warriors archaeological site",
+      "Xi'an City Wall and Big Wild Goose Pagoda"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Shanghai", "description": "Evening departure from Auckland.", "meals": [] },
+      { "day": 2, "title": "Shanghai — Beijing", "description": "Arrive Shanghai, transfer to Beijing. Hotel check-in, free time.", "meals": [], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 3, "title": "Beijing", "description": "Tian'anmen Square, National Centre for the Performing Arts, Forbidden City, Beihai Park, silk factory. Optional: evening acrobatic show.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 4, "title": "Beijing", "description": "Great Wall at Juyongguan section, jade carving factory, Bird's Nest and Water Cube photo stop.", "meals": ["Breakfast", "Lunch"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 5, "title": "Beijing", "description": "Hutong pedi-cab tour through old city neighbourhoods with family visit. Summer Palace with Marble Boat and Long Corridor.", "meals": ["Breakfast", "Lunch"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 6, "title": "Beijing — Xi'an", "description": "High-speed train G89 to Xi'an (15:00–19:12).", "meals": ["Breakfast"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 7, "title": "Xi'an", "description": "Terracotta Warriors (2,000-year-old site), Circle Vision Movie, Bronze Chariot. Evening dumpling dinner.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 8, "title": "Xi'an", "description": "City Wall and Big Wild Goose Pagoda.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 9, "title": "Xi'an — Departure", "description": "Small Wild Goose Pagoda Museum, Huimin Street. Flight to Beijing/Shanghai for Auckland connection.", "meals": ["Breakfast", "Lunch"] },
+      { "day": 10, "title": "Return to Auckland", "description": "Arrive in Auckland.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "China visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $10 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-3",
+    "slug": "essentials",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Essentials",
+    "title": "China Discovery — Essentials",
+    "shortDescription": "A comprehensive journey through China's iconic destinations — Shanghai, Suzhou, Wuxi, Hangzhou, Beijing, and Xi'an — covering all the must-see highlights.",
+    "duration": "15 Days",
+    "price": "From NZD $3,599",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80",
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
+    ],
+    "highlights": [
+      "Great Wall of China at Juyongguan",
+      "Terracotta Warriors archaeological site",
+      "Forbidden City imperial complex",
+      "Summer Palace gardens",
+      "West Lake scenic beauty in Hangzhou",
+      "Yu Garden and The Bund in Shanghai",
+      "Suzhou classical gardens",
+      "Lingshan Grand Buddha in Wuxi",
+      "Xinshi Ancient Water Town with Hanfu experience"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Shanghai", "description": "Flight to Shanghai.", "meals": [] },
+      { "day": 2, "title": "Shanghai — Suzhou", "description": "Arrive Shanghai, transfer to Suzhou. Master of the Nets Garden, Panmen gate, Shantang Street.", "meals": ["Lunch"], "accommodation": "Rosedale Chunshenhu Resort (5-star)" },
+      { "day": 3, "title": "Suzhou — Wuxi", "description": "Silk factory, Lingshan Grand Buddha scenic area, Purple Sand Museum.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Kusatsu Hotel (5-star)" },
+      { "day": 4, "title": "Wuxi", "description": "Three Kingdoms City (warship tour, horse battle show), Pearl Exhibition Center, Ancient Canal boat tour.", "meals": ["Breakfast", "Lunch"], "accommodation": "Kusatsu Hotel (5-star)" },
+      { "day": 5, "title": "Wuxi — Xinshi Town", "description": "Xinshi Town (thousand-year-old settlement). Traditional Hanfu costume photo experience. Afternoon tea.", "meals": ["Breakfast", "Dinner"], "accommodation": "Holiday Inn (4-star)" },
+      { "day": 6, "title": "Xinshi — Hangzhou", "description": "Free time until 10 AM. West Lake scenic area (Hua Gang Guan Yu, boat tour, Su Causeway), Leifeng Pagoda.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "New Century Hotel (5-star)" },
+      { "day": 7, "title": "Hangzhou — Shanghai", "description": "Hangzhou International Expo Center (G20 venue), Six Harmonies Pagoda, Meijiawu Tea Plantation with Longjing tea tasting.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 8, "title": "Shanghai", "description": "The Bund (52 buildings), Yu Garden (Ming Dynasty), World Cultural Heritage Art Exhibition Center, Nanjing Road.", "meals": ["Breakfast", "Lunch"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 9, "title": "Shanghai — Beijing", "description": "Fast train to Beijing. Hotel check-in, free time.", "meals": ["Breakfast"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 10, "title": "Beijing", "description": "Tian'anmen Square, National Centre for the Performing Arts, Forbidden City, Beihai Park, silk factory.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 11, "title": "Beijing", "description": "Great Wall at Juyongguan section, jade carving factory, Olympic Park (Bird's Nest, Water Cube).", "meals": ["Breakfast", "Lunch"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 12, "title": "Beijing", "description": "Pedi-cab Hutong tour with family home visit. Summer Palace (Marble Boat, Long Corridor).", "meals": ["Breakfast", "Lunch"], "accommodation": "Beijing Wanda Moments (4-star)" },
+      { "day": 13, "title": "Beijing — Xi'an", "description": "Morning free time. Train G89 (15:00–19:12) to Xi'an.", "meals": ["Breakfast"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 14, "title": "Xi'an", "description": "Terracotta Warriors, Circle Vision Movie, Bronze Chariot. Xi'an dumpling dinner.", "meals": ["Breakfast", "Lunch"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 15, "title": "Xi'an", "description": "Old City Wall, Big Wild Goose Pagoda.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 16, "title": "Xi'an — Departure", "description": "Small Wild Goose Pagoda Museum, Huimin Street. Flight to Beijing connecting to Auckland.", "meals": ["Breakfast", "Lunch"] },
+      { "day": 17, "title": "Arrival in Auckland", "description": "Arrive Auckland. Tour ends.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4- and 5-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "China visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $10 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-4",
+    "slug": "shanghai-beyond",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Shanghai & Beyond",
+    "title": "China Discovery — Shanghai & Beyond",
+    "shortDescription": "A journey exploring water towns, Buddhist temples, classical gardens, and modern Shanghai experiences across the Yangtze River Delta region.",
+    "duration": "10 Days",
+    "price": "From NZD $2,999",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80",
+      "https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80"
+    ],
+    "highlights": [
+      "Suzhou classical gardens and Shantang Street",
+      "Lingshan Grand Buddha in Wuxi",
+      "Three Kingdoms City with live battle show",
+      "Xinshi Ancient Water Town with Hanfu photos",
+      "West Lake boat tour and Leifeng Pagoda in Hangzhou",
+      "Longjing tea plantation",
+      "Shanghai's Bund and Yu Garden"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Shanghai", "description": "Depart Auckland Airport.", "meals": [] },
+      { "day": 2, "title": "Shanghai — Suzhou", "description": "Arrive Shanghai, transfer to Suzhou. Master of the Nets Garden, Panmen, Shantang Street.", "meals": ["Lunch"], "accommodation": "Rosedale Chunshenhu Resort Hotel (5-star)" },
+      { "day": 3, "title": "Suzhou — Wuxi", "description": "Silk factory visit, Lingshan Grand Buddha, Purple Sand Museum.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Kusatsu Hotel (5-star)" },
+      { "day": 4, "title": "Wuxi", "description": "Three Kingdoms City (warship, live horse battle show), Pearl Exhibition Center, Ancient Canal boat tour.", "meals": ["Breakfast", "Lunch"], "accommodation": "Kusatsu Hotel (5-star)" },
+      { "day": 5, "title": "Wuxi — Xinshi", "description": "Xinshi Ancient Water Town (thousand-year-old settlement). Hanfu costume photos. Afternoon tea. Hot pot dinner.", "meals": ["Breakfast", "Dinner"], "accommodation": "Holiday Inn (4-star)" },
+      { "day": 6, "title": "Xinshi — Hangzhou", "description": "Free time until 10 AM. West Lake scenic area (boat tour, Su Causeway), Leifeng Pagoda.", "meals": ["Lunch", "Dinner"], "accommodation": "New Century Hotel (5-star)" },
+      { "day": 7, "title": "Hangzhou — Shanghai", "description": "Hangzhou International Expo Center, Six Harmonies Pagoda, Meijiawu Tea Plantation with Longjing tea.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 8, "title": "Shanghai", "description": "The Bund, Yu Garden (Ming Dynasty), World Cultural Heritage Art Exhibition Center, Nanjing Road.", "meals": ["Breakfast", "Lunch"], "accommodation": "Holiday Inn Express (4-star)" },
+      { "day": 9, "title": "Shanghai — Departure", "description": "Morning free time. Afternoon airport transfer.", "meals": ["Breakfast"] },
+      { "day": 10, "title": "Auckland", "description": "Morning arrival in Auckland.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4- and 5-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "China visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $10 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-5",
+    "slug": "beijing-xian-guilin",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Beijing, Xi'an & Guilin",
+    "title": "China Discovery — Beijing, Xi'an & Guilin",
+    "shortDescription": "A guided group tour from Beijing to Guilin covering the Great Wall, Terracotta Warriors, and Li River cruise through karst landscapes with 5-star accommodation.",
+    "duration": "9 Days",
+    "price": "From NZD $3,749",
+    "heroImage": "https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80",
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
+    ],
+    "highlights": [
+      "5-star hotel accommodation throughout",
+      "Great Wall at Mutianyu section",
+      "Exclusive Impression of Liu Sanjie landscape performance",
+      "Regional cuisine: Roast Duck, hotpot, Yangshuo Beer Fish",
+      "UNESCO Terracotta Warriors site",
+      "Li River cruise through karst mountain scenery",
+      "No compulsory shopping"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Beijing Arrival", "description": "Arrive PEK airport, hotel transfer, free time.", "meals": [], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 2, "title": "Great Wall & Old City", "description": "Mutianyu Great Wall, Nanluogu Lane historic neighbourhood. Beijing Copper Hotpot dinner.", "meals": ["Breakfast", "Dinner"], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 3, "title": "Free Day in Beijing", "description": "Self-guided or optional excursions: Beijing City Highlights ($109) or Chengde Bullet Train ($199).", "meals": ["Breakfast"], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 4, "title": "Beijing — Xi'an", "description": "Tiananmen Square, Forbidden City, Beijing Roast Duck lunch, Temple of Heaven. Evening flight to Xi'an.", "meals": ["Breakfast", "Lunch"], "accommodation": "Novotel Xi'an Daming Palace" },
+      { "day": 5, "title": "Xi'an", "description": "Terracotta Warriors (UNESCO), Ancient City Wall, Big Wild Goose Pagoda, Grand Tang Dynasty Ever-bright City.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Novotel Xi'an Daming Palace" },
+      { "day": 6, "title": "Xi'an — Guilin", "description": "Small Wild Goose Pagoda, Bell Tower, Drum Tower, Shadow Play performance. Fly to Guilin.", "meals": ["Breakfast", "Lunch"], "accommodation": "Guilin Lijiang Waterfall Hotel" },
+      { "day": 7, "title": "Guilin — Yangshuo", "description": "4-star Li River cruise to Yangshuo. Explore West Street. Evening 'Impression of Liu Sanjie' performance.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Yangshuo Green Lotus Hotel" },
+      { "day": 8, "title": "Yangshuo Scenic Tour", "description": "Ten-Mile Gallery scenic drive, cable car to Ruyi Peak. Evening boat tour of four lakes.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Yangshuo Green Lotus Hotel" },
+      { "day": 9, "title": "Guilin Departure", "description": "Reed Flute Cave, Elephant Trunk Hill, Dongxi Alley (Ming/Qing district). Airport transfer.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": [
+      "Domestic flights: Beijing–Xi'an, Xi'an–Guilin",
+      "5-star hotel accommodation (twin share)",
+      "Daily meals as specified",
+      "All ground transfers per itinerary",
+      "English-speaking tour guide",
+      "Attraction admission tickets",
+      "Tips for guides and drivers"
+    ],
+    "exclusions": [
+      "International airfare and airport taxes",
+      "China visa",
+      "Travel insurance",
+      "Optional excursions",
+      "Personal expenses",
+      "Single room supplement (NZD $1,050/person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-6",
+    "slug": "yangtze",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Yangtze",
+    "title": "China Discovery — Yangtze",
+    "shortDescription": "An immersive journey through China's imperial heartland, combining ancient monuments with modern experiences and a luxury river cruise through the Three Gorges.",
+    "duration": "12 Days",
+    "price": "From NZD $5,199",
+    "heroImage": "https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=800&q=80",
+      "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
+    ],
+    "highlights": [
+      "Great Wall at Mutianyu section",
+      "Forbidden City and Temple of Heaven in Beijing",
+      "Terracotta Warriors in Xi'an",
+      "Ancient City Wall and Tang Dynasty performances",
+      "Three-night luxury Victoria Sabrina cruise",
+      "Three Gorges Dam engineering marvel",
+      "Shanghai's modern skyline and historic districts"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Beijing Arrival", "description": "Arrive PEK airport, hotel transfer.", "meals": [], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 2, "title": "Beijing", "description": "Mutianyu Great Wall, Nanluogu Lane. Beijing Copper Hotpot dinner.", "meals": ["Breakfast", "Dinner"], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 3, "title": "Beijing Free Day", "description": "Optional: Summer Palace/Qianmen/Acrobatics or Chengde Bullet Train excursion.", "meals": ["Breakfast"], "accommodation": "Sofitel Beijing Central or Grand Metropark Hotel Beijing" },
+      { "day": 4, "title": "Beijing — Xi'an", "description": "Tiananmen Square, Forbidden City, Beijing Roast Duck lunch, Temple of Heaven. Evening flight to Xi'an.", "meals": ["Breakfast", "Lunch"], "accommodation": "Novotel Xi'an Daming Palace" },
+      { "day": 5, "title": "Xi'an", "description": "Terracotta Warriors, Ancient City Wall, Big Wild Goose Pagoda, Grand Tang Dynasty Ever-bright City.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Novotel Xi'an Daming Palace" },
+      { "day": 6, "title": "Xi'an — Chongqing", "description": "Small Wild Goose Pagoda, Bell and Drum Towers, Shadow Play. Afternoon flight to Chongqing.", "meals": ["Breakfast", "Lunch"], "accommodation": "VOCO Chongqing Chaotianmen Hotel" },
+      { "day": 7, "title": "Chongqing — Yangtze Cruise", "description": "Jiefangbei Pedestrian Street, Hongyadong, Liziba Station light rail. Evening board Victoria Sabrina cruise.", "meals": ["Breakfast", "Lunch"], "accommodation": "Victoria Sabrina (balcony room)" },
+      { "day": 8, "title": "Yangtze Cruise", "description": "Shuanggui Mountain. Captain's Welcome Reception.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Victoria Sabrina (balcony room)" },
+      { "day": 9, "title": "Yangtze Cruise", "description": "Qutang Gorge, Wu Gorge, Goddess River by smaller boat. Captain's Farewell Banquet.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Victoria Sabrina (balcony room)" },
+      { "day": 10, "title": "Cruise — Yichang — Shanghai", "description": "Three Gorges Dam visit. Jingzhou Ancient Wall. Afternoon flight to Shanghai.", "meals": ["Breakfast", "Lunch"], "accommodation": "DoubleTree by Hilton Shanghai – Pudong" },
+      { "day": 11, "title": "Shanghai", "description": "Jinmao Tower 88th floor, Wukang Building, Tian Zi Fang, The Bund, City God's Temple Ancient Street.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "DoubleTree by Hilton Shanghai – Pudong" },
+      { "day": 12, "title": "Shanghai Departure", "description": "Breakfast. Airport transfer.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": [
+      "All domestic flights (Beijing/Xi'an/Chongqing/Jingzhou/Shanghai)",
+      "5-star hotel and cruise accommodation (twin share)",
+      "All specified meals",
+      "Transfer services per itinerary",
+      "English-speaking tour guide",
+      "Admission tickets to listed attractions",
+      "Gratuities for guides and drivers"
+    ],
+    "exclusions": [
+      "International airfare and airport taxes",
+      "China visa",
+      "Travel insurance",
+      "Optional programs and activities",
+      "Personal expenses",
+      "Single room supplement (NZD $1,290/person)"
+    ]
+  },
+  {
+    "id": "tour-cn-dis-7",
+    "slug": "yunnan-explorer",
+    "destination": "china",
+    "tier": "discovery",
+    "name": "China Discovery — Yunnan Explorer",
+    "title": "China Discovery — Yunnan Explorer",
+    "shortDescription": "Explore the natural wonders and cultural heritage of Yunnan through signature attractions including limestone karst formations, snow-capped mountains, ethnic performances, and historic towns.",
+    "duration": "6 Days",
+    "price": "From NZD $2,565",
+    "heroImage": "https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=800&q=80",
+      "https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80"
+    ],
+    "highlights": [
+      "Stone Forest Scenic Area — No.1 Wonder under Heaven",
+      "Jade Dragon Snow Mountain via cable car",
+      "Blue Moon Valley",
+      "Impression of Lijiang outdoor performance",
+      "Tiger Leaping Gorge",
+      "Dayan (Lijiang Old Town) — UNESCO World Heritage",
+      "Dali ancient city and Erhai Lake"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Kunming", "description": "Arrival in Kunming, 'City of Eternal Spring'. Guide transfer to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Kunming — Lijiang", "description": "Morning visit Stone Forest Scenic Area. Afternoon explore old town or Flower and Bird Market. Evening fast train to Lijiang.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Lijiang", "description": "Visit Jade Dragon Snow Mountain via cable car, then Blue Moon Valley by battery car. Evening 'Impression of Lijiang' performance (outdoor Zhang Yimou production at 3,100m).", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Lijiang — Tiger Leaping Gorge", "description": "Full-day excursion to Tiger Leaping Gorge and First Bend of Yangtze River. Optional visit to Dayan, Lijiang's UNESCO Old Town.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 5, "title": "Lijiang — Dali", "description": "Drive to Dali. Visit ancient city, Dali Museum, and boat trip on Erhai Lake.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 6, "title": "Dali Departure", "description": "Transfer to airport for departure flight.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": [
+      "4-star hotel accommodation",
+      "All meals as per itinerary",
+      "English-speaking guide",
+      "Land transfers",
+      "Admission to all sightseeing locations per itinerary"
+    ],
+    "exclusions": [
+      "Airfare",
+      "Personal expenses",
+      "Tipping (CNY 100/day/person)"
+    ]
+  }
+]

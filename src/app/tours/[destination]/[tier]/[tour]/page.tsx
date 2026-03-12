@@ -14,6 +14,7 @@ import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
 import RelatedTours from '@/components/tours/RelatedTours';
+// import ItineraryMap from '@/components/tours/ItineraryMap';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
 interface TourPageProps {
@@ -194,6 +195,7 @@ export default function TourPage({ params }: TourPageProps) {
 
               {/* Itinerary */}
               <TourItinerary itinerary={tour.itinerary} />
+
 
               {/* Inclusions & Exclusions */}
               <TourInclusions 

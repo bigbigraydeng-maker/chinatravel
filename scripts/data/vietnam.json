@@ -1,0 +1,115 @@
+[
+  {
+    "id": "tour-vn-dis-1",
+    "slug": "panorama",
+    "destination": "vietnam",
+    "tier": "discovery",
+    "name": "Vietnam Discovery — Panorama",
+    "title": "Vietnam Discovery — Panorama",
+    "shortDescription": "Kick off in Hanoi and journey through Vietnam's most iconic landscapes, from cruising Ha Long Bay to exploring imperial Hue, charming Hoi An and dynamic Ho Chi Minh City.",
+    "duration": "14 Days",
+    "price": "From NZD $4,599",
+    "heroImage": "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80",
+      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
+    ],
+    "highlights": [
+      "Ha Long Bay overnight luxury cruise with kayaking",
+      "Imperial Citadel and Thien Mu Pagoda in Hue",
+      "Hai Van Pass scenic coastal drive",
+      "Lantern-lit Ancient Town of Hoi An",
+      "Authentic Mekong Delta homestay experience",
+      "War Remnants Museum and Cu Chi Tunnels",
+      "Local cooking class in Hoi An",
+      "Water Puppet Show in Hanoi"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Hanoi", "description": "Depart Auckland for Hanoi.", "meals": [] },
+      { "day": 2, "title": "Arrival in Hanoi", "description": "Airport transfer, hotel check-in. Special welcome dinner. Free time to settle or explore.", "meals": ["Dinner"], "accommodation": "4-star Hotel in Hanoi" },
+      { "day": 3, "title": "Hanoi City Tour", "description": "Ho Chi Minh Mausoleum, Temple of Literature. Cyclo ride through Old Quarter. Evening Water Puppet Show.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hanoi" },
+      { "day": 4, "title": "Hanoi — Ha Long Bay", "description": "Travel to Ha Long Bay, board deluxe cruise. Kayaking or swimming. Sunset viewing.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Deluxe cruise cabin" },
+      { "day": 5, "title": "Ha Long Bay — Hanoi — Hue", "description": "Tai Chi session on deck. Sung Sot Cave exploration. Brunch on cruise. Afternoon flight to Hue.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hue" },
+      { "day": 6, "title": "Hue", "description": "Imperial Citadel, Thien Mu Pagoda, Dong Ba Market.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hue" },
+      { "day": 7, "title": "Hue — Hoi An", "description": "Scenic coastal drive via Hai Van Pass. Lang Co Beach stop. Marble Mountains visit. Evening lantern-lit walking tour.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hoi An" },
+      { "day": 8, "title": "Hoi An Exploration", "description": "Cooking class. Ancient Town highlights: Japanese Covered Bridge, Phuc Kien Temple. Free afternoon.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hoi An" },
+      { "day": 9, "title": "Hoi An — Ho Chi Minh City", "description": "Transfer to Da Nang Airport, flight to HCMC. War Remnants Museum, Notre-Dame Cathedral, Ben Thanh Market.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 10, "title": "Mekong Delta Excursion", "description": "Boat trip to Cai Be floating market. Traditional workshops. Local homestay experience.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Local homestay in Mekong Delta" },
+      { "day": 11, "title": "Mekong Delta — Saigon", "description": "Morning bike ride through villages. Return to Saigon. Free afternoon.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 12, "title": "Cu Chi Tunnels & Free Time", "description": "Cu Chi Tunnels visit (morning). Free afternoon for shopping and sightseeing.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 13, "title": "Departure from Saigon", "description": "Airport transfer for departure flight.", "meals": ["Breakfast"] },
+      { "day": 14, "title": "Arrive Auckland", "description": "Arrive back in Auckland.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and domestic flights",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary",
+      "Ha Long Bay overnight deluxe cruise"
+    ],
+    "exclusions": [
+      "Vietnam visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $15 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-vn-dis-2",
+    "slug": "highlights",
+    "destination": "vietnam",
+    "tier": "discovery",
+    "name": "Vietnam Discovery — Highlights",
+    "title": "Vietnam Discovery — Highlights",
+    "shortDescription": "Experience the essence of Vietnam in just 10 in-country days, traveling from Hanoi to Ho Chi Minh City, including Ha Long Bay, Hoi An's lantern-lit streets, Cu Chi Tunnels, and the lush Mekong Delta.",
+    "duration": "12 Days",
+    "price": "From NZD $4,299",
+    "heroImage": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80",
+      "https://images.unsplash.com/photo-1557750255-c76072a7aad1?w=800&q=80"
+    ],
+    "highlights": [
+      "Ha Long Bay overnight cruise with kayaking and swimming",
+      "Water Puppet Show in Hanoi",
+      "UNESCO-listed Hoi An Ancient Town with lantern-making workshop",
+      "Cu Chi Tunnels historical site",
+      "Marble Mountains scenic stop",
+      "Mekong Delta boat excursion with local workshops",
+      "Cultural exploration across Vietnam's major regions"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Hanoi", "description": "Depart Auckland, fly to Vietnam.", "meals": [] },
+      { "day": 2, "title": "Arrival in Hanoi", "description": "Arrive with airport transfer and hosted welcome dinner.", "meals": ["Dinner"], "accommodation": "4-star Hotel in Hanoi" },
+      { "day": 3, "title": "Hanoi City Tour", "description": "Ho Chi Minh Mausoleum and Temple of Literature. Explore Old Quarter by cyclo. Evening Traditional Water Puppet Show.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hanoi" },
+      { "day": 4, "title": "Hanoi — Ha Long Bay", "description": "Travel to Ha Long Bay for overnight cruise. Swimming, kayaking, sunset viewing over limestone karsts.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Deluxe cruise cabin" },
+      { "day": 5, "title": "Ha Long Bay — Da Nang — Hoi An", "description": "Morning Tai Chi on deck. Visit Sung Sot Cave. Brunch aboard ship. Flight from Hanoi to Da Nang, transfer to Hoi An.", "meals": ["Breakfast"], "accommodation": "4-star Hotel in Hoi An" },
+      { "day": 6, "title": "Hoi An Ancient Town", "description": "Discover UNESCO Old Town, Japanese Covered Bridge, Phuc Kien Assembly Hall. Afternoon lantern-making workshop.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Hoi An" },
+      { "day": 7, "title": "Hoi An — Ho Chi Minh City", "description": "Morning to Da Nang, stop at Marble Mountains. Flight to Ho Chi Minh City. Evening at leisure.", "meals": ["Breakfast"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 8, "title": "Saigon & Cu Chi Tunnels", "description": "Cu Chi Tunnels (underground network from Vietnam War). War Remnants Museum, Notre-Dame Cathedral, Central Post Office.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 9, "title": "Mekong Delta Excursion", "description": "Boat trip along winding rivers and coconut-fringed islands. Coconut candy workshops, honey tea tasting, traditional folk music. Return to Saigon.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 10, "title": "Free Day in Saigon", "description": "Full day at own pace for shopping, street food tours, or relaxation.", "meals": ["Breakfast"], "accommodation": "4-star Hotel in Saigon" },
+      { "day": 11, "title": "Departure from Saigon", "description": "Transfer to airport for departure flight.", "meals": ["Breakfast"] },
+      { "day": 12, "title": "Arrive Auckland", "description": "Arrive back in Auckland.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and domestic flights",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary",
+      "Ha Long Bay overnight deluxe cruise"
+    ],
+    "exclusions": [
+      "Vietnam visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $15 per day per person)"
+    ]
+  }
+]

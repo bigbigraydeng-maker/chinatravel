@@ -1,0 +1,316 @@
+[
+  {
+    "id": "tour-cn-stp-1",
+    "slug": "beijing",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Beijing (4 Days)",
+    "title": "China Stopover — Beijing (4 Days)",
+    "shortDescription": "Experience China's capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully curated Beijing stopover.",
+    "duration": "4 Days",
+    "price": "From NZD $2,120",
+    "heroImage": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"],
+    "highlights": [
+      "Tiananmen Square and Forbidden City",
+      "Great Wall at Juyongguan section",
+      "Ming Tombs (Chang Tomb)",
+      "Summer Palace with Marble Boat and Long Corridor",
+      "Temple of Heaven",
+      "Olympic venues (Bird's Nest & Water Cube)",
+      "Peking Duck Banquet"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Beijing", "description": "Airport transfer to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Tiananmen Square", "description": "Visit Tiananmen Square, Forbidden City (nearly 10,000 rooms), and Beihai Park. Evening Peking Duck Banquet.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Great Wall", "description": "Great Wall at Juyongguan section. Jade carving factory. Ming Tombs (Chang Tomb).", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Summer Palace", "description": "Summer Palace and gardens, Marble Boat and Long Corridor. Olympic venues photo stop. Pearl Factory. Temple of Heaven.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 5, "title": "Departure", "description": "Free time until airport transfer.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation (twin share)", "All meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to all sightseeing locations"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (recommended NZD $20/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-2",
+    "slug": "beijing-express",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Beijing Express (3 Days)",
+    "title": "China Stopover — Beijing Express (3 Days)",
+    "shortDescription": "A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authentic dining.",
+    "duration": "3 Days",
+    "price": "From NZD $1,450",
+    "heroImage": "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"],
+    "highlights": [
+      "Tiananmen Square and the Forbidden City",
+      "Great Wall at Juyongguan section",
+      "Pedicab tour through historic Hutong neighbourhoods",
+      "Local family visit",
+      "Peking Duck Banquet dinner",
+      "Free time for exploration and shopping"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Arrival in Beijing", "description": "Airport transfer. Tiananmen Square and Forbidden City tour. Evening Peking Duck Banquet.", "meals": ["Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Beijing", "description": "Great Wall at Juyongguan section. Jade factory visit. Pedicab tour of Hutong neighbourhoods. Local family visit.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Departure", "description": "Free time to explore or shop before airport transfer.", "meals": ["Breakfast"], "accommodation": "4-star hotel" }
+    ],
+    "inclusions": ["4-star hotel accommodation (twin share)", "All meals per itinerary", "English-speaking guide", "Land transfers", "Entrance fees", "Sightseeing activities"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (NZD $25/day/person)", "China visa fees"]
+  },
+  {
+    "id": "tour-cn-stp-3",
+    "slug": "shanghai",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Shanghai (3 Days)",
+    "title": "China Stopover — Shanghai (3 Days)",
+    "shortDescription": "Explore dynamic and beautiful Shanghai on China's east coast, experiencing the city's transformation from a sleepy fishing town to a modern metropolis of skyscrapers and modern lifestyle.",
+    "duration": "3 Days",
+    "price": "From NZD $1,060",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80"],
+    "highlights": ["Old Town with winding alleyways, shops, and teahouses", "Yu Garden", "Silk Spinning Mill", "Shanghai Museum", "Bund promenade stroll", "Huangpu River cruise"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Shanghai", "description": "Airport pickup and hotel transfer.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Shanghai", "description": "Old Town exploration. Yu Garden visit. Silk Spinning Mill tour. Shanghai Museum. Bund walk. Huangpu River cruise.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Shanghai Departure", "description": "Free time until airport transfer.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "All meals as per itinerary", "English-speaking guide", "Land transfers", "Admission fees per itinerary"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (recommended NZD $20/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-4",
+    "slug": "shanghai-express",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Shanghai Express (2 Days)",
+    "title": "China Stopover — Shanghai Express (2 Days)",
+    "shortDescription": "See the best Shanghai has to offer! This compact stopover showcases Shanghai's historic and modern attractions in an efficient timeframe.",
+    "duration": "2 Days",
+    "price": "From NZD $875",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80"],
+    "highlights": ["China Town exploration with traditional alleyways", "Yu Garden (tranquil classical garden)", "Tianzifang bohemian district with Shikumen architecture", "The Bund promenade", "Huangpu River scenic cruise"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Shanghai", "description": "Guided visits to China Town, Yu Garden, Tianzifang, and the Bund. Huangpu River cruise.", "meals": ["Lunch", "Dinner"], "accommodation": "Lee Gardens Hotel (4-star) or similar" },
+      { "day": 2, "title": "Departure Shanghai", "description": "Morning airport transfer for departure.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as specified", "English-speaking guide", "Land transfers", "Admission to scheduled attractions"],
+    "exclusions": ["Airfare", "Personal expenses", "Gratuities (suggested CNY 100/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-5",
+    "slug": "chengdu",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Chengdu (3 Days)",
+    "title": "China Stopover — Chengdu (3 Days)",
+    "shortDescription": "This stopover showcases Chengdu, capital of Sichuan province, known as 'The Land of Abundance'. Explore the region's natural heritage and cultural attractions.",
+    "duration": "3 Days",
+    "price": "From NZD $1,359",
+    "heroImage": "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80"],
+    "highlights": ["Giant Panda Breeding and Research Centre", "People's Park (traditional tea house)", "Jinli Street (ancient commercial boulevard)", "Broad and Narrow Alley", "Dujiangyan Irrigation System (UNESCO, 2,300+ years old)"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival in Chengdu", "description": "Guide meets at airport. Transfer to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Panda Centre & City", "description": "Giant Panda Breeding and Research Centre. Tea house at People's Park. Explore Jinli Street and Broad and Narrow Alley.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Chengdu Departure", "description": "Visit Dujiangyan Irrigation System. Transfer to airport.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "All meals per itinerary", "English-speaking guide", "Land transfers", "Admission fees to scheduled attractions"],
+    "exclusions": ["Airfare", "Personal expenses", "Gratuities (recommended NZD $25/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-6",
+    "slug": "guilin",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Guilin (3 Days)",
+    "title": "China Stopover — Guilin (3 Days)",
+    "shortDescription": "Explore Guilin's scenic landscapes featuring a Li River cruise to Yangshuo, limestone cave exploration, and iconic mountain formations.",
+    "duration": "3 Days",
+    "price": "From NZD $1,099",
+    "heroImage": "https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80"],
+    "highlights": ["Li River cruise", "Reed Flute Cave", "Elephant Trunk Hill"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival in Guilin", "description": "Guide meets at arrival. Transfer to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Guilin/Yangshuo/Guilin", "description": "5–6 hour Li River cruise through scenic mountain formations. Visit Yangshuo market. Pearl Museum visit upon return.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Guilin Departure", "description": "Reed Flute Cave (stalactites and stalagmites). Elephant Trunk Hill. Transfer to airport.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation (twin share)", "Meals as specified", "English-speaking guide", "Land transfers", "Admission fees per itinerary"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping ($25 NZD/day/person suggested)"]
+  },
+  {
+    "id": "tour-cn-stp-7",
+    "slug": "xian",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Xi'an (3 Days)",
+    "title": "China Stopover — Xi'an (3 Days)",
+    "shortDescription": "Immerse yourself in the rich history of Xi'an, China's ancient capital, with experiences centred on archaeological treasures and cultural landmarks.",
+    "duration": "3 Days",
+    "price": "From NZD $945",
+    "heroImage": "https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=800&q=80"],
+    "highlights": ["2,000-year-old Terracotta Warriors with Circle Vision Movie", "Muslim Quarter and Great Mosque", "Traditional dumpling banquet with cultural show", "Shaanxi History Museum"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival in Xi'an", "description": "Airport pickup and hotel transfer.", "meals": [], "accommodation": "4-star Xian Grand New World Hotel" },
+      { "day": 2, "title": "Xi'an Sightseeing", "description": "Terracotta Warriors Museum. Ceramic and lacquer ware factory. Muslim Quarter walking tour, Great Mosque. Evening dumpling banquet with cultural performance.", "meals": ["Breakfast", "Dinner"], "accommodation": "4-star Xian Grand New World Hotel" },
+      { "day": 3, "title": "Departure", "description": "Shaanxi History Museum (closed Mondays). Airport transfer.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as specified", "English-speaking guide", "Land transfers", "Admission fees per itinerary"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (suggested NZ$20/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-8",
+    "slug": "guangzhou",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Guangzhou (3 Days)",
+    "title": "China Stopover — Guangzhou (3 Days)",
+    "shortDescription": "Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the city's relaxed pace.",
+    "duration": "3 Days",
+    "price": "From NZD $1,399",
+    "heroImage": "https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=800&q=80"],
+    "highlights": ["Nanfeng Kiln and Shiwan pottery centre", "Ancestral Temple with Ming Dynasty architecture", "Chen Family Academy from the 1890s", "Six Banyan Temple and Hua Ta Pagoda", "Canton Tower for panoramic views", "Shamian Island cultural experiences"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Guangzhou", "description": "Guide meets travellers. Transfer to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Guangzhou — Foshan", "description": "Nanfeng Kiln in Shiwan. Zu Miao temple. Liang's Gardens. Lingnan Xintiandi. Return to Guangzhou.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Guangzhou Departure", "description": "Chen Family Academy. Six Banyan Temple and Hua Ta Pagoda. Qingping market. Shamian Island. Yuexiu Park and Canton Tower. Airport transfer.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation (twin room)", "All meals as specified", "English-speaking guide", "Land transfers", "Admission to all listed attractions"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (suggested NZD $20/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-9",
+    "slug": "shanghai-suzhou",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Shanghai & Suzhou (3 Days)",
+    "title": "China Stopover — Shanghai & Suzhou (3 Days)",
+    "shortDescription": "A vibrant fusion of tradition and modernity through Shanghai's old quarters, artistic neighbourhoods, and riverfront, plus Suzhou's water-town charm and elegant gardens.",
+    "duration": "3 Days",
+    "price": "From NZD $1,356",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80"],
+    "highlights": ["Yu Garden and Tianzifang bohemian area", "The Bund promenade and Huangpu River cruise", "Suzhou — the 'Oriental Venice'", "Garden of the Master of Fishing Net", "Silk Spinning Mill", "Canal boat cruise on 1,000-year-old waterway"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Shanghai", "description": "Airport pickup. Visit Yu Garden, explore Tianzifang (Shikumen houses), stroll the Bund. Huangpu River cruise.", "meals": ["Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Suzhou", "description": "Day trip to Suzhou. Garden of the Master of Fishing Net. Silk Spinning Mill. Canal boat cruise on ancient waterway. Shan Tang Street. Return to Shanghai.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Shanghai Departure", "description": "Airport transfer.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (NZD $25/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-10",
+    "slug": "shanghai-wuzhen",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Shanghai & Wuzhen (4 Days)",
+    "title": "China Stopover — Shanghai & Wuzhen (4 Days)",
+    "shortDescription": "Explore Shanghai's modern attractions combined with the timeless beauty of Wuzhen, the peerless water town in the south of the Yangtze River.",
+    "duration": "4 Days",
+    "price": "From NZD $1,760",
+    "heroImage": "https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80"],
+    "highlights": ["Shanghai Old Town and Yu Garden", "Silk Spinning Mill", "Shanghai Museum", "Huangpu River cruise", "Wuzhen water town", "Traditional residences and workshops"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival Shanghai", "description": "Airport pickup and hotel transfer.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Shanghai", "description": "Old Town, Yu Garden, Silk Spinning Mill, Shanghai Museum. Evening Bund stroll and Huangpu River cruise.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Wuzhen", "description": "Day trip to Wuzhen scenic area (2-hour drive). Traditional residences, workshops. Return to Shanghai.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Shanghai Departure", "description": "Free time until airport transfer.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (CNY 100/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-11",
+    "slug": "guilin-surrounds",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Guilin & Surrounds (4 Days)",
+    "title": "China Stopover — Guilin & Surrounds (4 Days)",
+    "shortDescription": "Discover breathtaking landscapes and rich cultural heritage through visits to limestone caves, terraced mountains, ethnic villages, and a scenic Li River cruise.",
+    "duration": "4 Days",
+    "price": "From NZD $1,310",
+    "heroImage": "https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80"],
+    "highlights": ["Reed Flute Cave", "Dragon's Backbone rice terraces at Longsheng", "Zhuang and Yao Minority villages", "Li River cruise through karst scenery", "Yangshuo local market"],
+    "itinerary": [
+      { "day": 1, "title": "Arrival & Reed Flute Cave", "description": "Guide meets at arrival. Hotel transfer. Visit Reed Flute Cave (if time allows).", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Guilin — Longsheng — Guilin", "description": "Full-day excursion to Longsheng. Longji area, Zhuang and Yao Minority villages, Dragon's Backbone summit. Pearl Museum.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Guilin — Yangshuo", "description": "Li River cruise through karst mountains, villages, fishermen on bamboo rafts. Explore Yangshuo's local market.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Yangshuo — Guilin", "description": "Morning free time with optional bike rentals to explore karst landscapes. Transfer to Guilin airport.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation (twin room)", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (NZD $25/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-12",
+    "slug": "zhangjiajie",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Zhangjiajie (3 Days)",
+    "title": "China Stopover — Zhangjiajie (3 Days)",
+    "shortDescription": "Experience Zhangjiajie's stunning natural landscapes, including Tianmen Mountain, the Bailong Elevator, and the famous Glass Bridge — the inspiration for Avatar.",
+    "duration": "3 Days",
+    "price": "From NZD $1,899",
+    "heroImage": "https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80"],
+    "highlights": ["Tianmen Mountain National Forest Park", "Cable car, glass skywalk, and Guigu Cliff Path", "Bailong Elevator — world's fastest sightseeing elevator", "Yuanjiajie, First Bridge Under Heaven, Tianzi Mountain", "Zhangjiajie Grand Canyon Glass Bridge"],
+    "itinerary": [
+      { "day": 1, "title": "Guangzhou — Zhangjiajie", "description": "Morning train from Guangzhou. Tianmen Mountain National Forest Park: cable car, eco shuttle, escalator at Tianmen Cave, glass skywalk.", "meals": ["Dinner"], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Zhangjiajie", "description": "Bailong Elevator to Yuanjiajie. Mihun Stage, First Bridge Under Heaven, Tianzi Mountain. Cable car descent.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Zhangjiajie Departure", "description": "Zhangjiajie Grand Canyon Glass Bridge. Transfer to railway station, return to Guangzhou.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places", "2nd-class train tickets (Guangzhou–Zhangjiajie return)"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (NZD $25/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-13",
+    "slug": "guangzhou-shenzhen",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Guangzhou & Shenzhen (4 Days)",
+    "title": "China Stopover — Guangzhou & Shenzhen (4 Days)",
+    "shortDescription": "Explore the dynamic city of Shenzhen with futuristic skyscrapers, vibrant shopping districts, and rich cultural landmarks. Experience innovation, cuisine, and a fusion of tradition and modernity.",
+    "duration": "4 Days",
+    "price": "From NZD $2,340",
+    "heroImage": "https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=800&q=80"],
+    "highlights": ["Lotus Hill Park and Deng Xiaoping Sculpture", "Shenzhen Bay Park coastal greenway", "Splendid China Folk Culture Village", "Wutong Mountain — highest peak in Shenzhen", "Ping An Finance Centre observation deck", "Dongmen Pedestrian Street"],
+    "itinerary": [
+      { "day": 1, "title": "Guangzhou — Shenzhen", "description": "Coach from Guangzhou to Shenzhen (~2 hours). Lotus Hill Park and Deng Xiaoping Sculpture.", "meals": ["Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Shenzhen Bay Park", "description": "Shenzhen Bay Park coastal greenway with mangroves. Afternoon: Splendid China + Folk Culture Village with ethnic performances.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 3, "title": "Wutong Mountain", "description": "Climb Wutong Mountain. Shenzhen Museum. Dongmen Pedestrian Street.", "meals": ["Breakfast", "Lunch"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Ping An Finance Centre — Departure", "description": "Ping An Finance Centre Cloud Top Observation Deck. Free time. Transfer to Guangzhou Baiyun Airport.", "meals": ["Breakfast"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (NZD $25/day/person)"]
+  },
+  {
+    "id": "tour-cn-stp-14",
+    "slug": "huangshan",
+    "destination": "china",
+    "tier": "stopover",
+    "name": "China Stopover — Huangshan (4 Days)",
+    "title": "China Stopover — Huangshan (4 Days)",
+    "shortDescription": "Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.",
+    "duration": "4 Days",
+    "price": "From NZD $1,635",
+    "heroImage": "https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=1920&q=80",
+    "gallery": ["https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80"],
+    "highlights": ["Cable car ride up Yellow Mountain", "Overnight stay atop Mt. Huangshan", "Magnificent sunrise (weather permitting)", "Summit of Brightness, Beginning-to-believe Peak", "Tunxi Old Street and Ink Factory", "UNESCO-listed Hongcun village (Crouching Tiger Hidden Dragon filming location)", "Nanping village (Judou filming location)"],
+    "itinerary": [
+      { "day": 1, "title": "Tunxi (Huangshan)", "description": "Arrival in Tunxi (Huangshan). Guide meets and transfers to hotel.", "meals": [], "accommodation": "4-star hotel" },
+      { "day": 2, "title": "Tunxi — Mt. Huangshan", "description": "Cable car ascent to Yellow Mountain. View Summit of Brightness, Beginning-to-believe Peak, Dropped Rock, Paiyun Pavilion, 'Monkey viewing the sea'.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel (on mountain)" },
+      { "day": 3, "title": "Mt. Huangshan — Tunxi", "description": "Watch magnificent sunrise (weather permitting). Explore mountain. Cable car down. Tunxi Old Street and Ink Factory.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "4-star hotel" },
+      { "day": 4, "title": "Yixian — Nanping — Tunxi", "description": "Visit Hongcun village (UNESCO, Crouching Tiger Hidden Dragon location) and Nanping village (Judou location). Airport transfer.", "meals": ["Breakfast", "Lunch"] }
+    ],
+    "inclusions": ["4-star hotel accommodation", "Meals as per itinerary", "English-speaking guide", "Land transfers", "Admission to sightseeing places"],
+    "exclusions": ["Airfare", "Personal expenses", "Tipping (CNY 100/day/person)"]
+  }
+]

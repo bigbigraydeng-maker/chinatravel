@@ -1,0 +1,187 @@
+[
+  {
+    "id": "tour-jp-sig-1",
+    "slug": "ultimate",
+    "destination": "japan",
+    "tier": "signature",
+    "name": "Japan Signature — Ultimate",
+    "title": "Japan Signature — Ultimate",
+    "shortDescription": "A comprehensive Japan journey combining history, culture, and natural beauty across multiple regions, featuring iconic landmarks, scenic railways, and overnight ferry travel.",
+    "duration": "18 Days",
+    "price": "From NZD $8,999",
+    "heroImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80"
+    ],
+    "highlights": [
+      "Tokyo's iconic landmarks and Sensoji Temple",
+      "Kamakura's Great Buddha",
+      "Nostalgic Oigawa Railway experience",
+      "Iga Ninja Museum",
+      "Kyoto's Fushimi Inari Taisha Shrine",
+      "Himeji Castle",
+      "Miyajima Island and Itsukushima Shrine",
+      "Hiroshima Peace Memorial",
+      "Overnight ferry experience",
+      "Edo-period villages (Narai-juku, Tsumago-juku)",
+      "Mt. Fuji and Lake Kawaguchi",
+      "Nara deer park"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — China Transit City", "description": "Depart Auckland via transit through Beijing, Shanghai, or similar Chinese hub.", "meals": [] },
+      { "day": 2, "title": "China — Tokyo", "description": "Arrive Tokyo. Meet and greet, hotel transfer.", "meals": [], "accommodation": "Shinagawa Prince Hotel or similar" },
+      { "day": 3, "title": "Tokyo Highlights", "description": "Visit Tsukiji Outer Market, Sensoji Temple, Meiji Shrine, and Shinjuku Gyoen National Garden.", "meals": ["Breakfast"], "accommodation": "Shinagawa Prince Hotel or similar" },
+      { "day": 4, "title": "Tokyo — Kamakura — Shizuoka", "description": "Explore Kamakura's Great Buddha and Tsurugaoka Hachimangu Shrine, stroll Enoshima Island.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Hotel Associa Shizuoka or similar" },
+      { "day": 5, "title": "Shizuoka — Oigawa Railway — Nagoya", "description": "Experience the nostalgic Oigawa Railway and visit a green tea plantation.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Hotel JAL City Nagoya or similar" },
+      { "day": 6, "title": "Nagoya — Iga — Kyoto", "description": "Visit the Iga Ninja Museum and Fushimi Inari Taisha Shrine.", "meals": ["Breakfast", "Lunch"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 7, "title": "Kyoto Free Day", "description": "Optional Kyoto Cultural Discovery tour including matcha experience and temples.", "meals": ["Breakfast"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 8, "title": "Kyoto — Himeji Castle — Okayama", "description": "Visit iconic Himeji Castle. Enjoy Shinkansen ride.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Okayama International Hotel or similar" },
+      { "day": 9, "title": "Okayama — Miyajima — Hiroshima", "description": "Tour Miyajima Island and Itsukushima Shrine, then Hiroshima Peace Memorial Park and Atomic Bomb Dome.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "Hiroshima Oriental Hotel or similar" },
+      { "day": 10, "title": "Hiroshima — Kintaikyo Bridge — Fukuoka", "description": "Visit Kintaikyo Bridge and Sanzoku Restaurant en route to Fukuoka.", "meals": ["Breakfast", "Lunch"], "accommodation": "Hotel JAL City Hakata or similar" },
+      { "day": 11, "title": "Fukuoka — Overnight Ferry", "description": "Visit Dazaifu Tenmangu Shrine and Canal City Hakata. Evening overnight ferry departure.", "meals": ["Breakfast"], "accommodation": "Meimon Taiyo Ferry (Second Class DLX Twin Room)" },
+      { "day": 12, "title": "Osaka", "description": "Visit Osaka Castle Park, Shinsaibashi, and Dotonbori.", "meals": ["Breakfast"], "accommodation": "Osaka KKR Hotel or similar" },
+      { "day": 13, "title": "Osaka Free Day", "description": "Optional Kyoto Seaside Excursion including Amanohashidate and thatched village.", "meals": ["Breakfast"], "accommodation": "Osaka KKR Hotel or similar" },
+      { "day": 14, "title": "Osaka — Nara — Gifu", "description": "Visit Nara Park to see the friendly deer, then proceed to Gifu.", "meals": ["Breakfast"], "accommodation": "Miyako Hotel Gifu or similar" },
+      { "day": 15, "title": "Gifu — Narai-juku & Tsumago-juku — Nagano", "description": "Stroll through the Edo-period post towns of Narai-juku and Tsumago-juku.", "meals": ["Breakfast"], "accommodation": "Ikenotaira Onsen Hotel, Nagano or similar" },
+      { "day": 16, "title": "Nagano — Mt. Fuji — Yokohama", "description": "Visit Mt. Fuji 5th Station and enjoy lake cruise on Lake Kawaguchi.", "meals": ["Breakfast"], "accommodation": "Shin-Yokohama Prince Hotel or similar" },
+      { "day": 17, "title": "Yokohama — Return", "description": "Transfer to Tokyo Narita or Haneda Airport for return flight.", "meals": ["Breakfast"] },
+      { "day": 18, "title": "Arrive in New Zealand", "description": "Arrive Auckland. Tour ends.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "Japan visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $15 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-jp-dis-1",
+    "slug": "highlights",
+    "destination": "japan",
+    "tier": "discovery",
+    "name": "Japan Discovery — Highlights",
+    "title": "Japan Discovery — Highlights",
+    "shortDescription": "Experience Japan blending timeless beauty with modern marvels. Journey includes ancient temples, bustling markets, Mt. Fuji, snow monkeys, UNESCO villages, and historic castles from Tokyo to Osaka.",
+    "duration": "18 Days",
+    "price": "From NZD $10,999",
+    "heroImage": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80",
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80"
+    ],
+    "highlights": [
+      "Mt. Fuji with Lake Ashi cruise and Hakone Ropeway",
+      "Snow monkeys bathing in hot springs (Jigokudani)",
+      "UNESCO Shirakawa-go gassho-style village",
+      "Traditional Japanese tea ceremony in Kyoto",
+      "Shinkansen bullet train experience",
+      "Hiroshima Peace Memorial",
+      "Miyajima's Itsukushima Shrine",
+      "Himeji Castle",
+      "Ancient temples and gardens throughout"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Shanghai/Beijing — Tokyo", "description": "Depart Auckland, transit in Shanghai.", "meals": [] },
+      { "day": 2, "title": "Tokyo", "description": "Arrive Tokyo, free time depending on flight schedule.", "meals": [], "accommodation": "Shinagawa Prince Hotel Tokyo or similar" },
+      { "day": 3, "title": "Tokyo Highlights", "description": "Visit Meiji Shrine, Outer Gardens of Imperial Palace, Tsukiji Market, Sensoji Temple, and Akihabara Electric Town.", "meals": ["Breakfast", "Lunch"], "accommodation": "Shinagawa Prince Hotel Tokyo or similar" },
+      { "day": 4, "title": "Deeper Tokyo", "description": "Asakusa district, Sensoji Temple, Nakamise Shopping Street. Ascend Tokyo Skytree for panoramic views.", "meals": ["Breakfast", "Lunch"], "accommodation": "Shinagawa Prince Hotel Tokyo or similar" },
+      { "day": 5, "title": "Fuji Five Lake Region", "description": "Lake Ashi boat cruise and Hakone Ropeway to Owakudani Valley.", "meals": ["Breakfast", "Lunch"], "accommodation": "Tenseien Hotel Hakone or similar" },
+      { "day": 6, "title": "Mt. Fuji — Nagano", "description": "Mt. Fuji 5th Station (weather permitting), Itchiku Kubota Art Museum, continue to Nagano.", "meals": ["Breakfast", "Lunch"], "accommodation": "Mercure Hotel Matsushiro Nagano or similar" },
+      { "day": 7, "title": "Nagano", "description": "Jigokudani Monkey Park to observe wild macaques in hot springs. Zenkoji Temple.", "meals": ["Breakfast", "Lunch"], "accommodation": "Mercure Hotel Matsushiro Nagano or similar" },
+      { "day": 8, "title": "Nagano — Takayama", "description": "Daio Wasabi Farm, Ishii Miso Brewery, Matsumoto Castle. Proceed to Takayama with hot spring experience.", "meals": ["Breakfast", "Lunch"], "accommodation": "Takayama Green Hotel or similar" },
+      { "day": 9, "title": "Takayama Cultural Tour", "description": "Miyagawa Morning Market, Takayama Jinya, Yatai Kaikan (Festival Floats), Kusakabe Folk Museum.", "meals": ["Breakfast", "Lunch"], "accommodation": "Takayama Green Hotel or similar" },
+      { "day": 10, "title": "Shirakawa-go — Kanazawa", "description": "UNESCO gassho-style village of Shirakawa-go. Traditional washi paper-making in Gokayama. Nomura Samurai House.", "meals": ["Breakfast", "Lunch"], "accommodation": "Kanazawa Tokyu Hotel or similar" },
+      { "day": 11, "title": "Kanazawa — Kyoto", "description": "Stroll through Kenrokuen Garden, then continue to Kyoto.", "meals": ["Breakfast", "Lunch"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 12, "title": "Kyoto Cultural Immersion", "description": "Kiyomizu-dera Temple, traditional tea ceremony, famous Fushimi Inari Shrine.", "meals": ["Breakfast", "Lunch"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 13, "title": "Kyoto — Hiroshima", "description": "Golden Pavilion (Kinkaku-ji) and Ryoan-ji Zen garden. Shinkansen bullet train to Hiroshima.", "meals": ["Breakfast", "Lunch"], "accommodation": "Hiroshima Prince Hotel or similar" },
+      { "day": 14, "title": "Hiroshima — Miyajima", "description": "Peace Memorial Park and Museum. Ferry to Miyajima Island and Itsukushima Shrine.", "meals": ["Breakfast", "Lunch"], "accommodation": "Hiroshima Prince Hotel or similar" },
+      { "day": 15, "title": "Himeji Castle — Osaka", "description": "Majestic Himeji Castle and Koko-en Garden. Continue to Osaka.", "meals": ["Breakfast", "Lunch"], "accommodation": "Holiday Inn Osaka Namba or similar" },
+      { "day": 16, "title": "Osaka — Nara — Osaka", "description": "Day trip to Nara: Todai-ji Temple and Isuien Garden. Return to Osaka for Dotonbori and Osaka Castle.", "meals": ["Breakfast", "Lunch"], "accommodation": "Holiday Inn Osaka Namba or similar" },
+      { "day": 17, "title": "Osaka — Departure", "description": "Depart from Osaka via Beijing or Shanghai.", "meals": ["Breakfast"] },
+      { "day": 18, "title": "Arrive Auckland", "description": "Arrive back in New Zealand.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "Japan visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $15 per day per person)"
+    ]
+  },
+  {
+    "id": "tour-jp-dis-2",
+    "slug": "explorer",
+    "destination": "japan",
+    "tier": "discovery",
+    "name": "Japan Discovery — Explorer",
+    "title": "Japan Discovery — Explorer",
+    "shortDescription": "An immersive Japan journey from Tokyo to Osaka, combining iconic sights like Mt. Fuji, Matsumoto Castle, and Shirakawa-go with cultural traditions including tea ceremonies and gold leaf crafting.",
+    "duration": "14 Days",
+    "price": "From NZD $8,699",
+    "heroImage": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80"
+    ],
+    "highlights": [
+      "Mt. Fuji visit and Lake Ashi cruise",
+      "Matsumoto Castle exploration",
+      "UNESCO-listed Shirakawa-go village",
+      "Traditional washi paper-making",
+      "Gold leaf crafting experience in Kanazawa",
+      "Kyoto temples (Golden Pavilion, Ryoan-ji)",
+      "Japanese tea ceremony participation",
+      "Mount Koya spiritual sites",
+      "Osaka Castle and Dotonbori district"
+    ],
+    "itinerary": [
+      { "day": 1, "title": "Auckland — Shanghai/Beijing — Tokyo", "description": "Depart Auckland, transit through Shanghai or Beijing.", "meals": [] },
+      { "day": 2, "title": "Tokyo", "description": "Arrive Tokyo, greeting and hotel transfer.", "meals": [], "accommodation": "Sunshine City Prince Hotel or similar" },
+      { "day": 3, "title": "Discover Tokyo", "description": "Tokyo Skytree, Sensoji Temple, Imperial Palace Outer Gardens, Hamarikyu Gardens. Evening dinner cruise on Tokyo Bay.", "meals": ["Breakfast", "Lunch"], "accommodation": "Sunshine City Prince Hotel or similar" },
+      { "day": 4, "title": "Mt. Fuji Adventure", "description": "Shinkansen to Odawara. Lake Ashi cruise, Komagatake Ropeway, Mt. Fuji's 5th Station (weather permitting).", "meals": ["Breakfast", "Lunch"], "accommodation": "Hotel Funinoko or similar" },
+      { "day": 5, "title": "Matsumoto Castle & Miso Culture", "description": "Tour iconic Matsumoto Castle and visit local brewery for traditional miso-making.", "meals": ["Breakfast", "Lunch"], "accommodation": "Mercure Hotel Matsushiro Nagano or similar" },
+      { "day": 6, "title": "Takayama Heritage", "description": "Miyagawa Morning Market, Edo-period homes, Festival Float Exhibition Hall, Kusakabe Folk Museum, Takayama Jinya.", "meals": ["Breakfast"], "accommodation": "Takayama Green Hotel or similar" },
+      { "day": 7, "title": "Shirakawa-go — Kanazawa", "description": "UNESCO Shirakawa-go village with gassho-zukuri houses. Washi paper-making. Travel to Kanazawa and visit Kenrokuen Garden.", "meals": ["Breakfast", "Lunch"], "accommodation": "Kanazawa Tokyu Hotel or similar" },
+      { "day": 8, "title": "Kanazawa — Kyoto", "description": "Gold leaf crafting, Higashi Chaya district, historic Shima Teahouse. Travel to Kyoto.", "meals": ["Breakfast", "Lunch"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 9, "title": "Kyoto Traditions", "description": "Ryoan-ji Zen garden, Golden Pavilion (Kinkaku-ji). Participate in origami and traditional Japanese tea ceremony.", "meals": ["Breakfast", "Lunch"], "accommodation": "Miyako Hotel Kyoto Hachijo or similar" },
+      { "day": 10, "title": "Kyoto — Nara", "description": "Fushimi Inari Taisha with thousands of red torii gates. Todai-ji Temple and deer in Nara Park. Isuien Garden.", "meals": ["Breakfast", "Lunch"], "accommodation": "Hotel Nikko Nara or similar" },
+      { "day": 11, "title": "Nara — Osaka via Mount Koya", "description": "Mount Koya: Okunoin Cemetery, Kongobu-ji Temple, Garan temple complex. Continue to Osaka.", "meals": ["Breakfast", "Lunch", "Dinner"], "accommodation": "KKR Hotel Osaka or similar" },
+      { "day": 12, "title": "Discover Osaka", "description": "Osaka Castle, Yodo River cruise, Dotonbori entertainment district. Free time for shopping.", "meals": ["Breakfast", "Lunch"], "accommodation": "KKR Hotel Osaka or similar" },
+      { "day": 13, "title": "Osaka — Departure", "description": "Transfer to airport for return flight to Auckland.", "meals": ["Breakfast"] },
+      { "day": 14, "title": "Arrive Auckland", "description": "Arrive back in New Zealand.", "meals": [] }
+    ],
+    "inclusions": [
+      "Return international airfares from Auckland",
+      "4-star hotel accommodation",
+      "Transportation by tour coach and second-class train",
+      "English-speaking tour guide",
+      "Entrance fees and meals as specified in the itinerary"
+    ],
+    "exclusions": [
+      "Japan visa fee (if required)",
+      "Travel insurance (strongly recommended)",
+      "Personal expenses",
+      "Transportation and guide services during free time",
+      "Meals not listed in the itinerary",
+      "Tips (suggested NZD $15 per day per person)"
+    ]
+  }
+]
