@@ -8,6 +8,7 @@ import TourTierCard from '@/components/TourTierCard';
 import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
 import GeoRecommendations from '@/components/GeoRecommendations';
+import { getTourBySlug } from '@/lib/data/tours';
 
 export const metadata: Metadata = {
   title: 'CTS Tours | China Travel Specialists',
@@ -130,29 +131,31 @@ const HomePage = () => {
               <div className="w-16 h-1 bg-secondary"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <TourTierCard 
-                title="China Signature — Imperial Heritage"
-                description="Classic northern cultural route. Beijing, Xi'an, core heritage sites. Premium accommodations, expert guides, and exclusive experiences."
-                duration="12 Days"
-                price="From $4,999"
-                image_url="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80"
-                slug="imperial-heritage"
+              {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
+              <TourTierCard
+                title={t.name}
+                description={t.shortDescription}
+                duration={t.duration}
+                price={t.price}
+                image_url={t.heroImage}
+                slug={t.slug}
                 tier="signature"
                 isPremium
-              />
-              <TourTierCard 
-                title="China Signature — Grand Tour"
-                description="Multi-region comprehensive itinerary. Longest duration product with strong inclusions. The ultimate China experience."
-                duration="16 Days"
-                price="From $5,999"
-                image_url="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"
-                slug="grand-tour"
+              />) : null; })()}
+              {(() => { const t = getTourBySlug('china', 'signature', 'grand-tour'); return t ? (
+              <TourTierCard
+                title={t.name}
+                description={t.shortDescription}
+                duration={t.duration}
+                price={t.price}
+                image_url={t.heroImage}
+                slug={t.slug}
                 tier="signature"
                 isPremium
-              />
+              />) : null; })()}
             </div>
           </div>
-          
+
           {/* China Discovery Collection */}
           <div>
             <div className="flex items-center justify-between mb-8">
@@ -160,24 +163,26 @@ const HomePage = () => {
               <div className="w-16 h-1 bg-secondary"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <TourTierCard 
-                title="China Discovery — Beijing & Shanghai"
-                description="Two-city highlights. A natural first-timer product. The geographic name makes the itinerary instantly clear to agents."
-                duration="8 Days"
-                price="From $2,499"
-                image_url="https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?w=800&q=80"
-                slug="beijing-shanghai"
+              {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
+              <TourTierCard
+                title={t.name}
+                description={t.shortDescription}
+                duration={t.duration}
+                price={t.price}
+                image_url={t.heroImage}
+                slug={t.slug}
                 tier="discovery"
-              />
-              <TourTierCard 
-                title="China Discovery — Highlights"
-                description="Core highlights route. The new name aligns with the tier structure and makes the itinerary scope immediately clear to agents."
-                duration="10 Days"
-                price="From $2,999"
-                image_url="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80"
-                slug="highlights"
+              />) : null; })()}
+              {(() => { const t = getTourBySlug('china', 'discovery', 'highlights'); return t ? (
+              <TourTierCard
+                title={t.name}
+                description={t.shortDescription}
+                duration={t.duration}
+                price={t.price}
+                image_url={t.heroImage}
+                slug={t.slug}
                 tier="discovery"
-              />
+              />) : null; })()}
             </div>
           </div>
         </div>

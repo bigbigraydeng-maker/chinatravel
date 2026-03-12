@@ -52,66 +52,66 @@ export const detectLocation = async (): Promise<Location> => {
 
 // 基于地理位置的个性化推荐
 export const getPersonalizedRecommendations = async (location: Location) => {
-  // 模拟旅游产品数据
+  // Real tour data from tours.ts (kept in sync via migration script)
   const tours: Tour[] = [
     {
       id: 1,
-      title: 'Imperial China Tour',
-      slug: 'imperial-china-tour',
-      description: 'Explore the imperial history of China with visits to Beijing, Xi\'an, and Shanghai. Small groups, premium hotels, deeper access, and expert-led experiences.',
-      duration: '12 Days',
-      price: 'From $3,999',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20imperial%20tour%20historical%20sites&image_size=landscape_16_9',
+      title: 'China Signature — Imperial Heritage',
+      slug: 'imperial-heritage',
+      description: 'Experience the highlights of Beijing and Xi\'an in this immersive tour, from the Great Wall and Forbidden City to the Terracotta Warriors, Lhasa, Yangtze River cruise, and Shanghai.',
+      duration: '17 Days',
+      price: 'From NZD $6,799',
+      image_url: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
       isPremium: true
     },
     {
       id: 2,
-      title: 'Yangtze River Cruise',
-      slug: 'yangtze-river-cruise',
-      description: 'Experience the majesty of the Yangtze River with a luxury cruise. Small groups, premium accommodations, deeper access, and expert-led experiences.',
-      duration: '7 Days',
-      price: 'From $2,499',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Yangtze%20River%20cruise%20luxury%20ship&image_size=landscape_16_9',
+      title: 'China Signature — Grand Tour',
+      slug: 'grand-tour',
+      description: 'See China in full colour on this 27-day grand tour. From the Great Wall and Terracotta Warriors to a Yangtze River cruise, pandas in Chengdu, and the scenic beauty of Guilin, Hangzhou, and Suzhou.',
+      duration: '27 Days',
+      price: 'From NZD $8,699',
+      image_url: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
       isPremium: true
     },
     {
       id: 3,
-      title: 'Cultural China Immersion',
-      slug: 'cultural-china-immersion',
-      description: 'Immerse yourself in Chinese culture with visits to traditional villages, local markets, and cultural performances. Small groups, premium hotels, deeper access, and expert-led experiences.',
-      duration: '10 Days',
-      price: 'From $3,299',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20cultural%20immersion%20traditional%20village&image_size=landscape_16_9',
+      title: 'China Signature — Silk Road',
+      slug: 'silk-road',
+      description: 'Journey through China\'s ancient trade route, from Urumqi to Xi\'an, exploring desert oases, Buddhist grottoes and colourful Danxia mountains.',
+      duration: '17 Days',
+      price: 'From NZD $4,899',
+      image_url: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80',
       isPremium: true
     },
     {
       id: 4,
-      title: 'Classic China Experience',
-      slug: 'classic-china-experience',
-      description: 'A comprehensive tour covering the best of China\'s cultural and natural highlights. Carefully designed itineraries, excellent value, and quality essential experiences.',
+      title: 'China Discovery — Beijing & Shanghai',
+      slug: 'beijing-shanghai',
+      description: 'Step into the heart of China experiencing the Great Wall, Forbidden City, Terracotta Warriors, and the contrast between ancient Beijing and modern Shanghai.',
       duration: '10 Days',
-      price: 'From $2,999',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20classic%20tour%20cultural%20highlights&image_size=landscape_16_9',
+      price: 'From NZD $3,099',
+      image_url: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
       isPremium: false
     },
     {
       id: 5,
-      title: 'China Discovery Tour',
-      slug: 'china-discovery-tour',
-      description: 'A perfect introduction to China\'s top destinations. Carefully designed itineraries, excellent value, and quality essential experiences.',
-      duration: '8 Days',
-      price: 'From $2,199',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20discovery%20tour%20popular%20destinations&image_size=landscape_16_9',
+      title: 'China Discovery — Highlights',
+      slug: 'highlights',
+      description: 'A journey combining wildlife encounters with historical exploration — giant pandas, high-speed trains, Terracotta Warriors, and Jiuzhaigou\'s crystalline lakes.',
+      duration: '11 Days',
+      price: 'From NZD $2,999',
+      image_url: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
       isPremium: false
     },
     {
       id: 6,
-      title: 'Essential China',
-      slug: 'essential-china',
-      description: 'Experience the essential highlights of China in a concise itinerary. Carefully designed itineraries, excellent value, and quality essential experiences.',
-      duration: '7 Days',
-      price: 'From $1,999',
-      image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20essential%20highlights%20tour&image_size=landscape_16_9',
+      title: 'China Discovery — Essentials',
+      slug: 'essentials',
+      description: 'A comprehensive journey through China\'s iconic destinations — Shanghai, Suzhou, Wuxi, Hangzhou, Beijing, and Xi\'an.',
+      duration: '15 Days',
+      price: 'From NZD $3,599',
+      image_url: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80',
       isPremium: false
     }
   ];
