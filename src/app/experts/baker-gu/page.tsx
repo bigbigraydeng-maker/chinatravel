@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { getRecentBlogPosts } from '@/lib/data/blogs';
 
 export const metadata: Metadata = {
   title: 'Baker Gu - China Travel Specialist | CTS Tours',
@@ -12,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 const BakerGuPage = () => {
+  const recentPosts = getRecentBlogPosts(3);
+
   return (
     <div>
       {/* Hero 小头图 */}
@@ -108,6 +112,73 @@ const BakerGuPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="section bg-light">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif">Latest from Baker</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Travel insights, destination guides, and insider tips from our China specialist
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentPosts.map((post) => (
+              <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="relative h-48">
+                  <img 
+                    src={post.heroImage} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
+                      {post.category.replace('-', ' ')}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
+                    <span>{new Date(post.publishedAt).toLocaleDateString('en-NZ', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 line-clamp-2 hover:text-primary transition-colors">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 line-clamp-3 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <Link 
+                    href={`/blog/${post.slug}`}
+                    className="text-primary font-medium hover:underline inline-flex items-center gap-1"
+                  >
+                    Read More
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link 
+              href="/blog"
+              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+            >
+              View All Articles
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>

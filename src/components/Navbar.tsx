@@ -85,6 +85,13 @@ const Navbar = () => {
                 >
                   All Tours
                 </Link>
+                <Link 
+                  href="/tours/find"
+                  className="block px-4 py-2 text-accent hover:bg-gray-50 hover:text-primary transition-colors"
+                  onClick={() => setIsToursDropdownOpen(false)}
+                >
+                  Find Your Tour
+                </Link>
                 <div className="border-t border-gray-100 my-1"></div>
                 {destinations.map((dest) => (
                   <Link 
