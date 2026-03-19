@@ -11,17 +11,21 @@ export const metadata: Metadata = {
   title: 'CTS Tours - China Travel Specialists for New Zealanders',
   description: '98 Years Heritage | Direct China Operations | Authentic Access',
   keywords: ['China travel', 'China tours', 'China specialists', 'New Zealand', 'CTS Tours'],
-  metadataBase: new URL('https://ctstours.com'),
+  metadataBase: new URL('https://chinatravel-zloe.onrender.com'),
+  icons: {
+    icon: '/logo-square.jpg',
+    apple: '/logo-square.jpg',
+  },
   openGraph: {
     title: 'CTS Tours - China Travel Specialists',
     description: 'Expert China travel services for New Zealanders',
     type: 'website',
     images: [
       {
-        url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20Great%20Wall%20scenic%20landscape&image_size=landscape_16_9',
-        width: 1200,
-        height: 630,
-        alt: 'Great Wall of China',
+        url: '/logo.png',
+        width: 885,
+        height: 244,
+        alt: 'CTS Tours - Experience The Real Asia',
       },
     ],
   },
@@ -29,6 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'CTS Tours - China Travel Specialists',
     description: '98 Years Heritage | Direct China Operations | Authentic Access',
+    images: ['/logo.png'],
   },
 };
 
