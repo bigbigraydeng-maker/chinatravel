@@ -219,11 +219,10 @@ export const tours: Tour[] = [
     shortDescription: 'Journey through China\'s ancient trade route, from Urumqi to Xi\'an, exploring desert oases, Buddhist grottoes and colourful Danxia mountains on this unforgettable Silk Road adventure.',
     duration: '17 Days',
     price: 'From NZD $4,899',
-    heroImage: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=1920&q=80',
+    heroImage: '/images/tours/silk-road-wall.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80',
-      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80',
-      'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=800&q=80'
+      '/images/tours/silk-road-wall.jpg',
+      '/images/tours/great-wall-mist.jpg'
     ],
     highlights: [
       'Heavenly Lake (Tianchi) in Tianshan Mountains',
@@ -286,10 +285,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the highlights of Beijing and Xi\'an in this immersive tour, from the Great Wall and Forbidden City to the Terracotta Warriors, Lhasa, Yangtze River cruise, and Shanghai.',
     duration: '17 Days',
     price: 'From NZD $6,799',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    heroImage: '/images/tours/great-wall-cloud-sea.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
+      '/images/tours/great-wall-cloud-sea.jpg',
+      '/images/tours/great-wall-mist.jpg'
     ],
     highlights: [
       'Great Wall and Forbidden City in Beijing',
@@ -350,10 +349,10 @@ export const tours: Tour[] = [
     shortDescription: 'See China in full colour on this 27-day grand tour. From the Great Wall and Terracotta Warriors to a Yangtze River cruise, pandas in Chengdu, and the scenic beauty of Guilin, Hangzhou, and Suzhou.',
     duration: '27 Days',
     price: 'From NZD $8,699',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    heroImage: '/images/tours/great-wall-mist.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/great-wall-mist.jpg',
+      '/images/tours/forbidden-city-aerial.jpg'
     ],
     highlights: [
       'Great Wall and Forbidden City in Beijing',
@@ -426,10 +425,10 @@ export const tours: Tour[] = [
     shortDescription: 'Uncover the natural beauty and rich culture of southwest China, from the serene lakes of Dali and ancient towns of Lijiang to the dramatic Tiger Leaping Gorge and mystical Shangri-La.',
     duration: '11 Days',
     price: 'From NZD $2,899',
-    heroImage: 'https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=1920&q=80',
+    heroImage: '/images/tours/yunnan-rice-terraces.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=800&q=80',
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80'
+      '/images/tours/yunnan-rice-terraces.jpg',
+      '/images/tours/yunnan-village.jpg'
     ],
     highlights: [
       'Erhai Lake and Santorini-style views in Dali',
@@ -485,10 +484,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover China\'s most iconic natural sights, from the pandas of Chengdu to the misty peaks of Zhangjiajie, Li River cruises, water towns, and dynamic Shanghai.',
     duration: '16 Days',
     price: 'From NZD $6,999',
-    heroImage: 'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80',
+    heroImage: '/images/tours/jiuzhaigou-lake.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80',
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80'
+      '/images/tours/jiuzhaigou-lake.jpg',
+      '/images/tours/jiuzhaigou-autumn.jpg'
     ],
     highlights: [
       'Giant Pandas at Chengdu Breeding & Research Base',
@@ -550,10 +549,10 @@ export const tours: Tour[] = [
     shortDescription: 'An immersive 8-day journey exploring breathtaking landscapes and vibrant cultures of Yunnan, from Kunming\'s Stone Forest through Dali and Lijiang to the mystical Shangri-La region.',
     duration: '8 Days',
     price: 'From NZD $3,299',
-    heroImage: 'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=1920&q=80',
+    heroImage: '/images/tours/shangri-la-monastery.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80',
-      'https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=800&q=80'
+      '/images/tours/shangri-la-monastery.jpg',
+      '/images/tours/shangri-la-monastery-lake.jpg'
     ],
     highlights: [
       'Kunming Stone Forest — highest karst terrain in the world',
@@ -605,10 +604,10 @@ export const tours: Tour[] = [
     shortDescription: 'A journey combining wildlife encounters with historical exploration — giant pandas, high-speed trains, Terracotta Warriors, and Jiuzhaigou\'s crystalline lakes.',
     duration: '11 Days',
     price: 'From NZD $2,999',
-    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1920&q=80',
+    heroImage: '/images/tours/forbidden-city-aerial.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/forbidden-city-aerial.jpg',
+      '/images/tours/forbidden-city-gold-lion.jpg'
     ],
     highlights: [
       'Giant pandas at Dujiangyan Panda Base',
@@ -662,10 +661,10 @@ export const tours: Tour[] = [
     shortDescription: 'Step into the heart of China experiencing the Great Wall, Forbidden City, Terracotta Warriors, and the contrast between ancient Beijing and modern Shanghai.',
     duration: '10 Days',
     price: 'From NZD $3,099',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    heroImage: '/images/tours/forbidden-city-gold-lion.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
-      'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=800&q=80'
+      '/images/tours/forbidden-city-gold-lion.jpg',
+      '/images/tours/shanghai-night-blue.jpg'
     ],
     highlights: [
       'Tian\'anmen Square and Forbidden City',
@@ -719,10 +718,10 @@ export const tours: Tour[] = [
     shortDescription: 'A comprehensive journey through China\'s iconic destinations — Shanghai, Suzhou, Wuxi, Hangzhou, Beijing, and Xi\'an — covering all the must-see highlights.',
     duration: '15 Days',
     price: 'From NZD $3,599',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/shanghai-night-blue.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/shanghai-night-blue.jpg',
+      '/images/tours/wuzhen-canal.jpg'
     ],
     highlights: [
       'Great Wall of China at Juyongguan',
@@ -785,10 +784,10 @@ export const tours: Tour[] = [
     shortDescription: 'A journey exploring water towns, Buddhist temples, classical gardens, and modern Shanghai experiences across the Yangtze River Delta region.',
     duration: '10 Days',
     price: 'From NZD $2,999',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/wuzhen-canal.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80',
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80'
+      '/images/tours/wuzhen-canal.jpg',
+      '/images/tours/shanghai-night-red.jpg'
     ],
     highlights: [
       'Suzhou classical gardens and Shantang Street',
@@ -842,10 +841,10 @@ export const tours: Tour[] = [
     shortDescription: 'A guided group tour from Beijing to Guilin covering the Great Wall, Terracotta Warriors, and Li River cruise through karst landscapes with 5-star accommodation.',
     duration: '9 Days',
     price: 'From NZD $3,749',
-    heroImage: 'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80',
+    heroImage: '/images/tours/guilin-mist.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/guilin-mist.jpg',
+      '/images/tours/xian-terracotta.jpg'
     ],
     highlights: [
       '5-star hotel accommodation throughout',
@@ -900,10 +899,10 @@ export const tours: Tour[] = [
     shortDescription: 'An immersive journey through China\'s imperial heartland, combining ancient monuments with modern experiences and a luxury river cruise through the Three Gorges.',
     duration: '12 Days',
     price: 'From NZD $5,199',
-    heroImage: 'https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=1920&q=80',
+    heroImage: '/images/tours/chengdu-old-town.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1598887142487-3c854d51eabb?w=800&q=80',
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/chengdu-old-town.jpg',
+      '/images/tours/guilin-river-valley.jpg'
     ],
     highlights: [
       'Great Wall at Mutianyu section',
@@ -961,10 +960,10 @@ export const tours: Tour[] = [
     shortDescription: 'Explore the natural wonders and cultural heritage of Yunnan through signature attractions including limestone karst formations, snow-capped mountains, ethnic performances, and historic towns.',
     duration: '6 Days',
     price: 'From NZD $2,565',
-    heroImage: 'https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=1920&q=80',
+    heroImage: '/images/tours/yunnan-village.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1528164344885-47d68f88c76f?w=800&q=80',
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80'
+      '/images/tours/yunnan-village.jpg',
+      '/images/tours/yunnan-rice-terraces.jpg'
     ],
     highlights: [
       'Stone Forest Scenic Area — No.1 Wonder under Heaven',
@@ -1012,9 +1011,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully curated Beijing stopover.',
     duration: '4 Days',
     price: 'From NZD $2,120',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    heroImage: '/images/tours/forbidden-city-lion.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/forbidden-city-lion.jpg',
+      '/images/tours/forbidden-city-aerial.jpg'
     ],
     highlights: [
       'Tiananmen Square and Forbidden City',
@@ -1060,9 +1060,9 @@ export const tours: Tour[] = [
     shortDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authentic dining.',
     duration: '3 Days',
     price: 'From NZD $1,450',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    heroImage: '/images/tours/forbidden-city-lion-2.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80'
+      '/images/tours/forbidden-city-lion-2.jpg'
     ],
     highlights: [
       'Tiananmen Square and the Forbidden City',
@@ -1107,9 +1107,10 @@ export const tours: Tour[] = [
     shortDescription: 'Explore dynamic and beautiful Shanghai on China\'s east coast, experiencing the city\'s transformation from a sleepy fishing town to a modern metropolis of skyscrapers and modern lifestyle.',
     duration: '3 Days',
     price: 'From NZD $1,060',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/shanghai-night-red.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80'
+      '/images/tours/shanghai-night-red.jpg',
+      '/images/tours/shanghai-night-blue.jpg'
     ],
     highlights: [
       'Old Town with winding alleyways, shops, and teahouses',
@@ -1152,9 +1153,9 @@ export const tours: Tour[] = [
     shortDescription: 'See the best Shanghai has to offer! This compact stopover showcases Shanghai\'s historic and modern attractions in an efficient timeframe.',
     duration: '2 Days',
     price: 'From NZD $875',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/shanghai-night-blue.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80'
+      '/images/tours/shanghai-night-blue.jpg'
     ],
     highlights: [
       'China Town exploration with traditional alleyways',
@@ -1195,9 +1196,10 @@ export const tours: Tour[] = [
     shortDescription: 'This stopover showcases Chengdu, capital of Sichuan province, known as \'The Land of Abundance\'. Explore the region\'s natural heritage and cultural attractions.',
     duration: '3 Days',
     price: 'From NZD $1,359',
-    heroImage: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1920&q=80',
+    heroImage: '/images/tours/chengdu-pandas.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=800&q=80'
+      '/images/tours/chengdu-pandas.jpg',
+      '/images/tours/chengdu-old-town.jpg'
     ],
     highlights: [
       'Giant Panda Breeding and Research Centre',
@@ -1239,9 +1241,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Guilin\'s scenic landscapes featuring a Li River cruise to Yangshuo, limestone cave exploration, and iconic mountain formations.',
     duration: '3 Days',
     price: 'From NZD $1,099',
-    heroImage: 'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80',
+    heroImage: '/images/tours/guilin-mist.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80'
+      '/images/tours/guilin-mist.jpg'
     ],
     highlights: [
       'Li River cruise',
@@ -1281,9 +1283,10 @@ export const tours: Tour[] = [
     shortDescription: 'Immerse yourself in the rich history of Xi\'an, China\'s ancient capital, with experiences centred on archaeological treasures and cultural landmarks.',
     duration: '3 Days',
     price: 'From NZD $945',
-    heroImage: 'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=1920&q=80',
+    heroImage: '/images/tours/xian-terracotta.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1599571234909-29ed5d1321d6?w=800&q=80'
+      '/images/tours/xian-terracotta.jpg',
+      '/images/tours/xian-terracotta-2.jpg'
     ],
     highlights: [
       '2,000-year-old Terracotta Warriors with Circle Vision Movie',
@@ -1324,9 +1327,9 @@ export const tours: Tour[] = [
     shortDescription: 'Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the city\'s relaxed pace.',
     duration: '3 Days',
     price: 'From NZD $1,399',
-    heroImage: 'https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=1920&q=80',
+    heroImage: '/images/tours/shanghai-yuyuan-night.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=800&q=80'
+      '/images/tours/shanghai-yuyuan-night.jpg'
     ],
     highlights: [
       'Nanfeng Kiln and Shiwan pottery centre',
@@ -1369,9 +1372,10 @@ export const tours: Tour[] = [
     shortDescription: 'A vibrant fusion of tradition and modernity through Shanghai\'s old quarters, artistic neighbourhoods, and riverfront, plus Suzhou\'s water-town charm and elegant gardens.',
     duration: '3 Days',
     price: 'From NZD $1,356',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/suzhou-canal.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80'
+      '/images/tours/suzhou-canal.jpg',
+      '/images/tours/wuzhen-canal.jpg'
     ],
     highlights: [
       'Yu Garden and Tianzifang bohemian area',
@@ -1414,9 +1418,10 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Shanghai\'s modern attractions combined with the timeless beauty of Wuzhen, the peerless water town in the south of the Yangtze River.',
     duration: '4 Days',
     price: 'From NZD $1,760',
-    heroImage: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=1920&q=80',
+    heroImage: '/images/tours/wuzhen-canal.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80'
+      '/images/tours/wuzhen-canal.jpg',
+      '/images/tours/suzhou-canal.jpg'
     ],
     highlights: [
       'Shanghai Old Town and Yu Garden',
@@ -1460,9 +1465,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover breathtaking landscapes and rich cultural heritage through visits to limestone caves, terraced mountains, ethnic villages, and a scenic Li River cruise.',
     duration: '4 Days',
     price: 'From NZD $1,310',
-    heroImage: 'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80',
+    heroImage: '/images/tours/guilin-river-valley.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80'
+      '/images/tours/guilin-river-valley.jpg',
+      '/images/tours/guilin-mist.jpg'
     ],
     highlights: [
       'Reed Flute Cave',
@@ -1505,9 +1511,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience Zhangjiajie\'s stunning natural landscapes, including Tianmen Mountain, the Bailong Elevator, and the famous Glass Bridge — the inspiration for Avatar.',
     duration: '3 Days',
     price: 'From NZD $1,899',
-    heroImage: 'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=1920&q=80',
+    heroImage: '/images/tours/zhangjiajie.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1513415564515-763d91423bdd?w=800&q=80'
+      '/images/tours/zhangjiajie.jpg'
     ],
     highlights: [
       'Tianmen Mountain National Forest Park',
@@ -1550,9 +1556,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore the dynamic city of Shenzhen with futuristic skyscrapers, vibrant shopping districts, and rich cultural landmarks. Experience innovation, cuisine, and a fusion of tradition and modernity.',
     duration: '4 Days',
     price: 'From NZD $2,340',
-    heroImage: 'https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=1920&q=80',
+    heroImage: '/images/tours/china-pagoda-night.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1583497632747-56906f11b29e?w=800&q=80'
+      '/images/tours/china-pagoda-night.jpg'
     ],
     highlights: [
       'Lotus Hill Park and Deng Xiaoping Sculpture',
@@ -1596,9 +1602,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.',
     duration: '4 Days',
     price: 'From NZD $1,635',
-    heroImage: 'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=1920&q=80',
+    heroImage: '/images/tours/yunnan-village.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1537531383496-f4749b09d552?w=800&q=80'
+      '/images/tours/yunnan-village.jpg'
     ],
     highlights: [
       'Cable car ride up Yellow Mountain',
