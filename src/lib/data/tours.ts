@@ -285,10 +285,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the highlights of Beijing and Xi\'an in this immersive tour, from the Great Wall and Forbidden City to the Terracotta Warriors, Lhasa, Yangtze River cruise, and Shanghai.',
     duration: '17 Days',
     price: 'From NZD $6,799',
-    heroImage: '/images/tours/great-wall-cloud-sea.jpg',
+    heroImage: '/images/tours/forbidden-city-aerial.jpg',
     gallery: [
-      '/images/tours/great-wall-cloud-sea.jpg',
-      '/images/tours/great-wall-mist.jpg'
+      '/images/tours/forbidden-city-aerial.jpg',
+      '/images/tours/forbidden-city-gold-lion.jpg'
     ],
     highlights: [
       'Great Wall and Forbidden City in Beijing',
@@ -604,10 +604,10 @@ export const tours: Tour[] = [
     shortDescription: 'A journey combining wildlife encounters with historical exploration — giant pandas, high-speed trains, Terracotta Warriors, and Jiuzhaigou\'s crystalline lakes.',
     duration: '11 Days',
     price: 'From NZD $2,999',
-    heroImage: '/images/tours/forbidden-city-aerial.jpg',
+    heroImage: '/images/tours/forbidden-city-lion.jpg',
     gallery: [
-      '/images/tours/forbidden-city-aerial.jpg',
-      '/images/tours/forbidden-city-gold-lion.jpg'
+      '/images/tours/forbidden-city-lion.jpg',
+      '/images/tours/forbidden-city-lion-2.jpg'
     ],
     highlights: [
       'Giant pandas at Dujiangyan Panda Base',
