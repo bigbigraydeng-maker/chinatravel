@@ -24,7 +24,7 @@ const BakerGuPage = () => {
           <img
             src="/images/baker-gu-zhangjiajie.jpg"
             alt="Baker Gu at Zhangjiajie — CTS Tours China Travel Specialist"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
