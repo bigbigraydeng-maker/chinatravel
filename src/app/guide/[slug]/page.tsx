@@ -13,7 +13,7 @@ Summer (June–August) is hot and humid in most regions, but it's an excellent t
 Winter (December–February) is cold in northern China, but it unlocks unique experiences. The Harbin International Ice and Snow Festival (January–February) is one of the world's most spectacular winter events. Tibet and Yunnan remain relatively mild, and major UNESCO heritage sites like the Forbidden City and Xi'an's Terracotta Warriors see far fewer visitors.
 
 One important planning note: China's Golden Week holidays — National Day (1–7 October) and Chinese New Year (late January or February) — bring enormous domestic travel crowds. We recommend avoiding these periods or booking well in advance. CTS Tours plans itineraries around seasonal highlights to ensure you experience China at its absolute best.`,
-    image_url: '/images/tours/great-wall-green.jpg',
+    image_url: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',
     created_at: '2024-03-01'
   },
   {
@@ -29,7 +29,7 @@ Standard processing takes 4–5 business days. Express and urgent processing are
 For travellers planning to stay longer, visit multiple times, or travel for business, other visa categories include: the M visa (business), F visa (exchange/non-commercial), and X visa (study). China also offers a 144-hour visa-free transit policy for travellers transiting through certain major airports including Beijing, Shanghai, and Guangzhou — useful if you are connecting to another destination.
 
 We recommend applying at least three to four weeks before your departure to allow time for any additional document requests. CTS Tours is happy to assist with the documentation you need to submit a complete, accurate application.`,
-    image_url: '/images/tours/forbidden-city-aerial.jpg',
+    image_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80',
     created_at: '2024-02-15'
   },
   {
@@ -45,7 +45,7 @@ Emergency contacts to save before you travel: Police — 110, Ambulance — 120,
 Internet access is restricted in China — Google, Facebook, Instagram, WhatsApp, and many international news sites are blocked. Download a reputable VPN before you leave New Zealand if you need access to these services. WeChat is the dominant messaging and payment app in China and worth installing in advance.
 
 Travelling with a guided tour company like CTS Tours gives you the added security of experienced local guides and 24/7 on-the-ground support throughout your journey, ensuring that any unexpected situations are handled promptly and professionally.`,
-    image_url: '/images/tours/shanghai-night-blue.jpg',
+    image_url: 'https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?w=800&q=80',
     created_at: '2024-02-01'
   },
   {
@@ -59,7 +59,7 @@ In Beijing, the must-try dish is Peking roast duck (北京烤鸭), served with t
 Sichuan food is famous for its bold, fiery flavours powered by Sichuan peppercorns. Mapo tofu, dan dan noodles, and Sichuan hotpot are all essential experiences. In Guangdong (Cantonese cuisine), dim sum brunch is a cultural ritual — steamed dumplings, char siu bao (BBQ pork buns), and turnip cake are highlights. Xi'an's Muslim Quarter is home to lamb skewers, roujiamo (Chinese burger), and biangbiang noodles.
 
 Practical tips: tap water is not safe to drink — stick to bottled water or boiled water provided by your hotel. Vegetarians can find dedicated Buddhist vegetarian restaurants in most major cities. If you have food allergies, carry a written card in Chinese listing your restrictions. CTS Tours includes carefully selected restaurant experiences in all itineraries, giving you a curated taste of each region's best dishes.`,
-    image_url: '/images/tours/chengdu-old-town.jpg',
+    image_url: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80',
     created_at: '2024-01-20'
   },
   {
@@ -75,7 +75,7 @@ For longer distances — such as Beijing to Chengdu, Shanghai to Guilin, or any 
 Within cities, metro systems in Beijing, Shanghai, Guangzhou, Chengdu, and other major cities are modern, affordable, and fully signposted in English. Didi (the Chinese equivalent of Uber) works with international Visa and Mastercard via the app's international version. Licensed metered taxis are available everywhere — always insist the driver uses the meter.
 
 CTS Tours takes care of all logistics: inter-city train or flight bookings, private airport and hotel transfers, and local transportation throughout your itinerary. You simply show up and enjoy the journey.`,
-    image_url: '/images/tours/beijing-temple.jpg',
+    image_url: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80',
     created_at: '2024-01-10'
   },
   {
@@ -93,7 +93,7 @@ In public spaces: Loud behaviour, raised voices, or public confrontations are ge
 Language: Learning a handful of Mandarin phrases will be warmly received. Nǐ hǎo (你好) means hello, xièxiè (谢谢) means thank you, and duìbuqǐ (对不起) means sorry or excuse me. Most signage in tourist areas is bilingual, and translation apps work well for everyday communication.
 
 CTS Tours guides provide cultural briefings at the start of each destination, ensuring you feel confident and respectful throughout your journey.`,
-    image_url: '/images/tours/beijing-temple-2.jpg',
+    image_url: 'https://images.unsplash.com/photo-1582192730841-2a682d7375f9?w=800&q=80',
     created_at: '2023-12-25'
   }
 ];
