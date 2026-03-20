@@ -22,9 +22,9 @@ const BakerGuPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/baker-gu-zhangjiajie.jpg"
-            alt="Baker Gu at Zhangjiajie — CTS Tours China Travel Specialist"
-            className="w-full h-full object-cover object-top"
+            src="/images/tours/zhangjiajie.jpg"
+            alt="Zhangjiajie National Forest Park — CTS Tours China Travel Specialist"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>

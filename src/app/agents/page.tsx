@@ -18,8 +18,8 @@ const AgentsPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=travel%20agent%20resources%20professional%20background&image_size=landscape_16_9" 
-            alt="Agent Resources" 
+            src="/images/tours/forbidden-city-aerial.jpg"
+            alt="Forbidden City Beijing — CTS Tours Agent Resources"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>

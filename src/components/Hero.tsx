@@ -5,8 +5,8 @@ const Hero = () => {
     <section className="relative h-screen flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20Great%20Wall%20scenic%20landscape%20professional%20photography&image_size=landscape_16_9" 
-          alt="Great Wall of China" 
+          src="/images/tours/great-wall-mist.jpg"
+          alt="Great Wall of China"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>

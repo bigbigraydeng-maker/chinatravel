@@ -53,8 +53,8 @@ const ContactPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=contact%20us%20travel%20agency%20professional%20background&image_size=landscape_16_9" 
-            alt="Contact Us" 
+            src="/images/tours/shanghai-skyline.jpg"
+            alt="Shanghai skyline — Contact CTS Tours New Zealand"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>

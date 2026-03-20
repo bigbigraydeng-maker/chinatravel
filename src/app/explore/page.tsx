@@ -8,49 +8,49 @@ const destinations = [
     id: 1, 
     name: 'Beijing', 
     description: 'Home to the Great Wall and Forbidden City', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20historic%20architecture&image_size=landscape_16_9' 
+    image_url: '/images/tours/forbidden-city-aerial.jpg' 
   },
   { 
     id: 2, 
     name: 'Xi\'an', 
     description: 'Home to the Terracotta Army and ancient city walls', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Xian%20Terracotta%20Army%20historical%20site&image_size=landscape_16_9' 
+    image_url: '/images/tours/xian-terracotta.jpg' 
   },
   { 
     id: 3, 
     name: 'Shanghai', 
     description: 'A modern metropolis with skyscrapers and historical landmarks', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9' 
+    image_url: '/images/tours/shanghai-skyline.jpg' 
   },
   { 
     id: 4, 
     name: 'Chengdu', 
     description: 'Famous for pandas and Sichuan cuisine', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chengdu%20panda%20research%20center&image_size=landscape_16_9' 
+    image_url: '/images/tours/chengdu-pandas.jpg' 
   },
   { 
     id: 5, 
     name: 'Guilin', 
     description: 'Famous for its karst mountains and Li River scenery', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Guilin%20Li%20River%20karst%20mountains&image_size=landscape_16_9' 
+    image_url: '/images/tours/guilin-mist.jpg' 
   },
   { 
     id: 6, 
     name: 'Zhangjiajie', 
     description: 'Inspiration for Avatar\'s floating mountains', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhangjiajie%20floating%20mountains%20scenic&image_size=landscape_16_9' 
+    image_url: '/images/tours/zhangjiajie.jpg' 
   },
   { 
     id: 7, 
     name: 'Lhasa', 
     description: 'Home to the Potala Palace and Tibetan culture', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Lhasa%20Potala%20Palace%20Tibetan%20culture&image_size=landscape_16_9' 
+    image_url: '/images/tours/shangri-la-monastery-lake.jpg' 
   },
   { 
     id: 8, 
     name: 'Hangzhou', 
     description: 'Famous for West Lake and traditional Chinese gardens', 
-    image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Hangzhou%20West%20Lake%20traditional%20garden&image_size=landscape_16_9' 
+    image_url: '/images/tours/suzhou-canal.jpg' 
   },
 ];
 
@@ -72,7 +72,7 @@ const ExplorePage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20scenic%20landscape%20panorama%20professional%20photography&image_size=landscape_16_9" 
+            src="/images/tours/great-wall-cloud-sea.jpg" 
             alt="China Landscapes" 
             className="w-full h-full object-cover"
           />

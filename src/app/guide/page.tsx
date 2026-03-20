@@ -83,8 +83,8 @@ const GuidePage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/baker-gu-guilin.jpg"
-            alt="Guilin Li River landscape — China travel guide by CTS Tours"
+            src="/images/tours/great-wall-cloud-sea.jpg"
+            alt="Great Wall of China at sunrise — China travel guide by CTS Tours"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-55"></div>

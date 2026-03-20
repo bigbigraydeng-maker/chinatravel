@@ -24,18 +24,18 @@ export const metadata: Metadata = {
 const HomePage = () => {
   // 静态数据
   const destinations = [
-    { name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Beijing%20Forbidden%20City%20historic%20architecture&image_size=landscape_16_9' },
-    { name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Xian%20Terracotta%20Army%20historical%20site&image_size=landscape_16_9' },
-    { name: 'Shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Shanghai%20skyline%20modern%20city&image_size=landscape_16_9' },
-    { name: 'Chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Chengdu%20panda%20research%20center&image_size=landscape_16_9' },
-    { name: 'Guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Guilin%20Li%20River%20karst%20mountains&image_size=landscape_16_9' },
-    { name: 'Zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Zhangjiajie%20floating%20mountains%20scenic&image_size=landscape_16_9' },
+    { name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
+    { name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
+    { name: 'Shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: '/images/tours/shanghai-skyline.jpg' },
+    { name: 'Chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: '/images/tours/chengdu-pandas.jpg' },
+    { name: 'Guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: '/images/tours/guilin-mist.jpg' },
+    { name: 'Zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: '/images/tours/zhangjiajie.jpg' },
   ];
 
   const articles = [
-    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20spring%20cherry%20blossoms&image_size=landscape_16_9', slug: 'best-time-to-visit-china' },
-    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20visa%20application%20process&image_size=landscape_16_9', slug: 'china-visa-guide-for-new-zealanders' },
-    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: 'https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20safe%20travel%20tourist%20friendly&image_size=landscape_16_9', slug: 'is-china-safe-to-travel' },
+    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: '/images/tours/great-wall-green.jpg', slug: 'best-time-to-visit-china' },
+    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: '/images/tours/forbidden-city-aerial.jpg', slug: 'china-visa-guide-for-new-zealanders' },
+    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: '/images/tours/shanghai-night-blue.jpg', slug: 'is-china-safe-to-travel' },
   ];
 
   return (
@@ -99,7 +99,7 @@ const HomePage = () => {
         title="China Travel Specialist"
         description="With over 20 years of experience in the Chinese travel industry, Baker Gu is our lead specialist. His deep knowledge of China's culture, history, and hidden gems ensures that our clients receive authentic and unforgettable travel experiences."
         fullDescription="Baker has traveled extensively throughout China, from the bustling cities to remote villages, building relationships with local communities and gaining insider access to unique experiences. As our lead specialist, Baker designs our most exclusive tours, ensuring that every detail is carefully crafted to provide the best possible experience for our clients."
-        image_url="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20Chinese%20travel%20expert%20portrait%20in%20traditional%20attire%20elegant%20photography&image_size=portrait_4_3"
+        image_url="/images/baker-gu-portrait.jpg"
       />
 
       {/* 5. Explore China */}
