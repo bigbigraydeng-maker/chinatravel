@@ -21,10 +21,10 @@ const BakerGuPage = () => {
       {/* Hero 小头图 */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=China%20travel%20expert%20professional%20portrait%20background&image_size=landscape_16_9" 
-            alt="Baker Gu" 
-            className="w-full h-full object-cover"
+          <img
+            src="/images/baker-gu-zhangjiajie.jpg"
+            alt="Baker Gu at Zhangjiajie — CTS Tours China Travel Specialist"
+            className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
@@ -41,9 +41,9 @@ const BakerGuPage = () => {
             <div className="md:w-2/5">
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
-                <img 
-                  src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20Chinese%20travel%20expert%20portrait%20in%20traditional%20attire%20elegant%20photography&image_size=portrait_4_3" 
-                  alt="Baker Gu" 
+                <img
+                  src="/images/baker-gu-great-wall.jpg"
+                  alt="Baker Gu — China Travel Specialist at CTS Tours New Zealand"
                   className="rounded-lg shadow-xl w-full relative z-10"
                 />
               </div>
