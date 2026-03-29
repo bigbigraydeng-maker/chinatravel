@@ -214,26 +214,27 @@ export const tours: Tour[] = [
     slug: 'silk-road',
     destination: 'china',
     tier: 'signature',
-    name: 'China Signature — Silk Road',
-    title: 'China Signature — Silk Road',
-    shortDescription: 'Journey through China\'s ancient trade route, from Urumqi to Xi\'an, exploring desert oases, Buddhist grottoes and colourful Danxia mountains on this unforgettable Silk Road adventure.',
+    name: 'China Signature — Silk Road Discovery',
+    title: 'China Signature — Silk Road Discovery',
+    shortDescription: 'Journey along China\'s ancient Silk Road from Urumqi to Xi\'an across 17 days — exploring Heavenly Lake, the Flaming Mountains, Mogao Caves, colourful Danxia mountains, Bingling Temple grottoes, and the Terracotta Warriors.',
     duration: '17 Days',
-    price: 'From NZD $4,899',
+    price: 'From NZD $6,699',
     heroImage: '/images/tours/silk-road-wall.jpg',
     gallery: [
       '/images/tours/silk-road-wall.jpg',
       '/images/tours/great-wall-mist.jpg'
     ],
     highlights: [
-      'Heavenly Lake (Tianchi) in Tianshan Mountains',
-      'Turpan ancient sites and Karez Irrigation System',
-      'Flaming Mountains and Bezeklik Thousand Buddha Caves',
-      'Mogao Caves in Dunhuang',
-      'Singing Sand Dunes and Crescent Lake',
-      'Jiayuguan Fortress and Hanging Great Wall',
-      'Zhangye Danxia colourful mountains',
-      'Bingling Temple Grottoes',
-      'Terracotta Warriors in Xi\'an'
+      'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
+      'Explore Turpan\'s ancient Jiaohe Ruins and Karez Irrigation System',
+      'See the dramatic Flaming Mountains and Bezeklik Thousand Buddha Caves',
+      'Marvel at the world-famous Mogao Caves in Dunhuang',
+      'Experience the desert oasis of Mingsha Mountain and Crescent Spring',
+      'Walk along the Hanging Great Wall and Jiayuguan Fortress',
+      'Photograph the colourful Zhangye Danxia rock formations',
+      'Take a boat trip to the Bingling Temple Grottoes',
+      'Visit the Terracotta Warriors in Xi\'an',
+      'Enjoy a free day to explore Xi\'an at your own pace'
     ],
     itinerary: [
       { day: 1, title: 'New Zealand — Shanghai', description: 'Depart New Zealand, arrive Shanghai.', meals: [] },
@@ -255,11 +256,12 @@ export const tours: Tour[] = [
       { day: 17, title: 'Shanghai — New Zealand', description: 'Depart China, return to New Zealand.', meals: [] }
     ],
     inclusions: [
-      'Return international airfares from Auckland',
-      '4-star hotel accommodation',
-      'Transportation by tour coach and second-class train',
+      'Return international airfares from New Zealand',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -267,63 +269,70 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Signature — Silk Road | 17 Days | CTS Tours',
-    metaDescription: 'Journey through China\'s ancient trade route, from Urumqi to Xi\'an, exploring desert oases, Buddhist grottoes and colourful Danxia mountains ... Book with CTS Tours.',
+    metaTitle: 'China Signature — Silk Road Discovery | 17 Days | CTS Tours',
+    metaDescription: 'Journey along China\'s ancient Silk Road — Heavenly Lake, Mogao Caves, Danxia Mountains, Terracotta Warriors. 17 days from NZD $6,699. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $1,435
   },
   {
     id: 'tour-cn-sig-2',
     slug: 'imperial-heritage',
     destination: 'china',
     tier: 'signature',
-    name: 'China Signature — Imperial Heritage',
-    title: 'China Signature — Imperial Heritage',
-    shortDescription: 'Experience the highlights of Beijing and Xi\'an in this immersive tour, from the Great Wall and Forbidden City to the Terracotta Warriors, Lhasa, Yangtze River cruise, and Shanghai.',
+    name: 'China Signature — Legacy of China',
+    title: 'China Signature — Legacy of China',
+    shortDescription: 'A 17-day journey through China\'s greatest imperial and cultural treasures — from Beijing\'s Forbidden City and the Great Wall to the Potala Palace in Lhasa, a Yangtze River Three Gorges cruise, and the dazzling skyline of Shanghai.',
     duration: '17 Days',
-    price: 'From NZD $6,799',
+    price: 'From NZD $9,999',
     heroImage: '/images/tours/forbidden-city-aerial.jpg',
     gallery: [
       '/images/tours/forbidden-city-aerial.jpg',
       '/images/tours/forbidden-city-gold-lion.jpg'
     ],
     highlights: [
-      'Great Wall and Forbidden City in Beijing',
-      'Terracotta Warriors in Xi\'an',
-      'Potala Palace and Tibetan Buddhist temples in Lhasa',
-      'Yangtze River Three Gorges cruise on 5-star vessel',
-      'Giant pandas at Chengdu Breeding Base',
-      'Traditional performances and banquets',
-      'Shanghai classical gardens and Bund'
+      'Explore the Forbidden City and Tiananmen Square in Beijing',
+      'Walk the Mutianyu section of the Great Wall',
+      'Discover the Terracotta Warriors in Xi\'an',
+      'Visit the sacred Potala Palace in Lhasa',
+      'Witness monk debating at Sera Monastery',
+      'Cruise through the Yangtze River Three Gorges',
+      'Meet giant pandas at Chengdu breeding base',
+      'Enjoy a Peking Duck banquet and Tang Dynasty show',
+      'Experience a Tibetan cultural dinner with performances',
+      'Stroll along the Bund and cruise the Huangpu River in Shanghai'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai', description: 'Evening flight to Shanghai.', meals: [] },
-      { day: 2, title: 'Shanghai — Beijing', description: 'Arrive Shanghai, connect flight to Beijing. Free time depending on arrival.', meals: [], accommodation: 'Wanda Meihua Hotel or equivalent 4-star' },
-      { day: 3, title: 'Beijing', description: 'Visit Tiananmen Square, Forbidden City, and Temple of Heaven. Evening Peking duck banquet and Chinese acrobatic show.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wanda Meihua Hotel or equivalent 4-star' },
-      { day: 4, title: 'Beijing', description: 'Great Wall experience, jade factory visit, and Summer Palace tour.', meals: ['Breakfast', 'Lunch'], accommodation: 'Wanda Meihua Hotel or equivalent 4-star' },
-      { day: 5, title: 'Beijing — Xi\'an', description: 'High-speed train to Xi\'an. Explore Muslim Quarter. Evening dumpling banquet and Tang Dynasty dance performance.', meals: ['Breakfast', 'Dinner'], accommodation: 'Mercure on Bell Tower or equivalent 4-star' },
-      { day: 6, title: 'Xi\'an', description: 'Visit Terracotta Warriors, ceramics and lacquerware workshop, and City Wall.', meals: ['Breakfast', 'Dinner'], accommodation: 'Mercure on Bell Tower or equivalent 4-star' },
-      { day: 7, title: 'Xi\'an — Lhasa', description: 'Flight from Xi\'an to Lhasa. Free time to adjust to altitude.', meals: ['Breakfast'], accommodation: 'Lhasa Jomolungma Hotel or equivalent 4-star' },
-      { day: 8, title: 'Lhasa', description: 'Visit Jokhang Temple, Barkhor Street, and Sera Monastery to watch the debating monks.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Lhasa Jomolungma Hotel or equivalent 4-star' },
-      { day: 9, title: 'Lhasa', description: 'Tour Potala Palace, Norbulingka, and Tibetan arts workshop. Evening Tibetan dinner with folk music and dance.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Lhasa Jomolungma Hotel or equivalent 4-star' },
-      { day: 10, title: 'Lhasa — Chengdu', description: 'Free time to explore Lhasa. Flight to Chengdu.', meals: ['Breakfast', 'Dinner'], accommodation: 'Local 4-star hotel' },
-      { day: 11, title: 'Chengdu — Chongqing (Yangtze Cruise)', description: 'Morning visit to Chengdu Panda Breeding Base. Afternoon high-speed train to Chongqing. Board Yangtze cruise ship.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'MV Century Paragon or Goddess No.2/3 (5-star cruise)' },
-      { day: 12, title: 'Yangtze River Cruise', description: 'Sail through the Three Gorges with shore excursions.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'MV Century Paragon or Goddess No.2/3 (5-star cruise)' },
-      { day: 13, title: 'Yangtze River Cruise', description: 'Continue sailing through the Three Gorges. Shore excursion to Shennv Stream or Shennong Stream.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'MV Century Paragon or Goddess No.2/3 (5-star cruise)' },
-      { day: 14, title: 'Three Gorges Dam — Yichang — Shanghai', description: 'Disembark and visit the Three Gorges Dam. Transfer to Yichang for evening flight to Shanghai.', meals: ['Breakfast', 'Lunch'], accommodation: 'Shanghai Regal Jinfeng Hotel or equivalent 4-star' },
-      { day: 15, title: 'Shanghai', description: 'Visit Yuyuan Garden, silk factory, and The Bund. Evening Huangpu River night cruise and Shanghai-style dinner.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Shanghai Regal Jinfeng Hotel or equivalent 4-star' },
-      { day: 16, title: 'Shanghai — Auckland', description: 'Free time. Transfer to airport for return flight.', meals: ['Breakfast'] },
-      { day: 17, title: 'Arrive Auckland', description: 'Arrive in Auckland. Tour ends.', meals: [] }
+      { day: 1, title: 'Auckland — Beijing', description: 'Take a China Eastern Airlines flight to Beijing, the capital of China.', meals: [] },
+      { day: 2, title: 'Arrival in Beijing', description: 'Upon arrival, depending on your flight time, enjoy some free time at leisure to begin experiencing the local culture.', meals: [], accommodation: 'Beijing Qianyuan Hotel or similar 5-star' },
+      { day: 3, title: 'Beijing', description: 'Visit the Temple of Heaven and join locals practicing Tai Chi. Explore Tiananmen Square and the magnificent Forbidden City. In the evening, enjoy a traditional Peking Duck banquet followed by a Chinese acrobatic performance. Note: If Forbidden City tickets are unavailable, the visit will be replaced with Jingshan Park and Prince Gong\'s Mansion.', meals: ['Breakfast', 'Dinner (Peking Duck Banquet)'], accommodation: 'Beijing Qianyuan Hotel or similar 5-star' },
+      { day: 4, title: 'Beijing', description: 'Visit the Mutianyu Great Wall and enjoy breathtaking views. Visit a jade factory to learn about traditional craftsmanship. In the afternoon, explore the Summer Palace, strolling through beautiful classical Chinese gardens.', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Qianyuan Hotel or similar 5-star' },
+      { day: 5, title: 'Beijing — Xi\'an', description: 'High-speed train from Beijing West to Xi\'an North (Train G55, 09:55–14:05, First Class seat or similar). Explore the lively Muslim Quarter. In the evening, enjoy a traditional dumpling banquet with a Tang Dynasty dance performance.', meals: ['Breakfast', 'Dinner (Dumpling Banquet)'], accommodation: 'Crowne Plaza Xi\'an Weiyang (Guangcheng) or similar 5-star' },
+      { day: 6, title: 'Xi\'an', description: 'Visit the world-famous Terracotta Warriors of Emperor Qin Shi Huang. Visit a ceramics and lacquerware workshop. Walk along the well-preserved 14th-century Ancient City Wall with panoramic views of Xi\'an\'s old city.', meals: ['Breakfast', 'Lunch'], accommodation: 'Crowne Plaza Xi\'an Weiyang (Guangcheng) or similar 5-star' },
+      { day: 7, title: 'Xi\'an — Lhasa', description: 'Take a flight from Xi\'an to Lhasa. Enjoy free time to acclimatise to the high-altitude environment.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'InterContinental Lhasa Paradise or similar 5-star' },
+      { day: 8, title: 'Lhasa', description: 'Visit the sacred Jokhang Temple, an important spiritual centre of Tibetan Buddhism. Stroll along Barkhor Street. In the afternoon, visit Sera Monastery and witness the unique monk debating sessions.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'InterContinental Lhasa Paradise or similar 5-star' },
+      { day: 9, title: 'Lhasa', description: 'Visit the magnificent Potala Palace, a symbol of Tibet. Explore Norbulingka, the former summer palace of the Dalai Lama. Visit a Tibetan handicraft workshop. In the evening, enjoy a Tibetan-style dinner with traditional singing and dancing performances.', meals: ['Breakfast', 'Dinner (Tibetan Cultural Show)'], accommodation: 'InterContinental Lhasa Paradise or similar 5-star' },
+      { day: 10, title: 'Lhasa — Chengdu', description: 'Fly from Lhasa to Chengdu. In the evening, enjoy an authentic Sichuan cuisine dinner.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star' },
+      { day: 11, title: 'Chengdu — Chongqing (Yangtze Cruise)', description: 'Visit the Chengdu Research Base of Giant Panda Breeding. Travel to Chongqing by high-speed train (First Class seat). Board your Yangtze River cruise to begin the Three Gorges journey.', meals: ['Breakfast', 'Dinner'], accommodation: 'Victoria Yangtze River Cruise (Victoria Jenna or Victoria Katarina) — International 5-star cruise' },
+      { day: 12, title: 'Yangtze River Cruise', description: 'Enjoy spectacular scenery of the Yangtze River Three Gorges. Participate in shore excursions to Shennü Stream or Shennong Stream.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Victoria Yangtze River Cruise — International 5-star cruise' },
+      { day: 13, title: 'Yangtze River Cruise', description: 'Continue cruising through the Three Gorges, taking in the breathtaking natural landscapes along the river.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Victoria Yangtze River Cruise — International 5-star cruise' },
+      { day: 14, title: 'Three Gorges Dam — Yichang — Shanghai', description: 'Visit the impressive Three Gorges Dam, the world\'s largest hydropower project. Transfer to Yichang and take an evening flight to Shanghai.', meals: ['Breakfast', 'Lunch'], accommodation: 'HUALUXE Shanghai Changfeng Park or similar 5-star' },
+      { day: 15, title: 'Shanghai', description: 'Visit Yuyuan Garden and admire its classical beauty. Visit a silk factory. Stroll along the Bund. In the evening, enjoy a Huangpu River cruise and a Shanghai-style dinner.', meals: ['Breakfast', 'Dinner (Shanghai Local Cuisine)'], accommodation: 'HUALUXE Shanghai Changfeng Park or similar 5-star' },
+      { day: 16, title: 'Shanghai — Departure', description: 'Enjoy free time at leisure before transferring to the airport for your return flight to New Zealand.', meals: ['Breakfast'] },
+      { day: 17, title: 'Arrive Auckland', description: 'Arrive in New Zealand. Tour concludes.', meals: [] }
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4-star hotel accommodation (5-star Yangtze cruise)',
-      'Transportation by tour coach, second-class train, and domestic flights',
+      'Domestic airfares within China',
+      '5-star hotel accommodation',
+      'Victoria Yangtze River Cruise (International 5-star)',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -331,39 +340,42 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Signature — Imperial Heritage | 17 Days | CTS Tours',
-    metaDescription: 'Experience the highlights of Beijing and Xi\'an in this immersive tour, from the Great Wall and Forbidden City to the Terracotta Warriors, Lh... Book with CTS Tours.',
+    metaTitle: 'China Signature — Legacy of China | 17 Days | CTS Tours',
+    metaDescription: 'Experience China\'s imperial legacy — Forbidden City, Great Wall, Terracotta Warriors, Potala Palace, Yangtze cruise, and Shanghai. 17 days from NZD $9,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $2,410
   },
   {
     id: 'tour-cn-sig-3',
     slug: 'grand-tour',
     destination: 'china',
     tier: 'signature',
-    name: 'China Signature — Grand Tour',
-    title: 'China Signature — Grand Tour',
-    shortDescription: 'See China in full colour on this 27-day grand tour. From the Great Wall and Terracotta Warriors to a Yangtze River cruise, pandas in Chengdu, and the scenic beauty of Guilin, Hangzhou, and Suzhou.',
+    name: 'China Signature — China Panorama',
+    title: 'China Signature — China Panorama',
+    shortDescription: 'The ultimate 27-day China experience — from the Great Wall and Forbidden City to a Yangtze River cruise, giant pandas in Chengdu, the Li River in Guilin, classical gardens of Suzhou, West Lake in Hangzhou, and vibrant Shanghai.',
     duration: '27 Days',
-    price: 'From NZD $8,699',
+    price: 'From NZD $10,899',
     heroImage: '/images/tours/great-wall-mist.jpg',
     gallery: [
       '/images/tours/great-wall-mist.jpg',
       '/images/tours/forbidden-city-aerial.jpg'
     ],
     highlights: [
-      'Great Wall and Forbidden City in Beijing',
-      'Terracotta Warriors in Xi\'an',
-      '5-star Yangtze River cruise through Three Gorges',
-      'Pandas at Chengdu Breeding Base',
-      'Dali, Erhai Lake, and Yunnan\'s beauty',
-      'Li River cruise to Yangshuo in Guilin',
-      'West Lake and tea plantations in Hangzhou',
-      'Suzhou classical gardens and Grand Canal',
-      'Shanghai\'s Bund and acrobatic show'
+      'Walk the Juyongguan Great Wall and explore the Forbidden City',
+      'Discover the Terracotta Warriors in Xi\'an',
+      'Cruise through the Yangtze River Three Gorges on a 5-star ship',
+      'Visit giant pandas at the Chengdu breeding base',
+      'Cruise the Li River to Yangshuo through karst landscapes',
+      'Experience West Lake and Longjing tea plantations in Hangzhou',
+      'Explore the classical Humble Administrator\'s Garden in Suzhou',
+      'Enjoy the Huangpu River cruise and Bund in Shanghai',
+      'Visit the Stone Forest in Kunming',
+      'Dress in traditional Hanfu at Xinshi Ancient Town'
     ],
     itinerary: [
       { day: 1, title: 'Auckland — China', description: 'Flight to China.', meals: [] },
@@ -396,10 +408,12 @@ export const tours: Tour[] = [
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4-star hotel accommodation (5-star Yangtze cruise)',
-      'Transportation by tour coach, second-class train, and domestic flights',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
+      'Victoria Yangtze River Cruise (International 5-star)',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -407,13 +421,15 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Signature — Grand Tour | 27 Days | CTS Tours',
-    metaDescription: 'See China in full colour on this 27-day grand tour. From the Great Wall and Terracotta Warriors to a Yangtze River cruise, pandas in Chengdu... Book with CTS Tours.',
+    metaTitle: 'China Signature — China Panorama | 27 Days | CTS Tours',
+    metaDescription: 'The ultimate 27-day China experience — Great Wall, Forbidden City, Terracotta Warriors, Yangtze cruise, pandas, Li River, West Lake, and Shanghai. From NZD $10,899. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $2,555
   },
   {
     id: 'tour-cn-sig-4',
@@ -479,51 +495,53 @@ export const tours: Tour[] = [
     slug: 'landscapes',
     destination: 'china',
     tier: 'signature',
-    name: 'China Signature — Landscapes',
-    title: 'China Signature — Landscapes',
-    shortDescription: 'Discover China\'s most iconic natural sights, from the pandas of Chengdu to the misty peaks of Zhangjiajie, Li River cruises, water towns, and dynamic Shanghai.',
+    name: 'China Signature — Natural China',
+    title: 'China Signature — Natural China',
+    shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
-    price: 'From NZD $6,999',
+    price: 'From NZD $7,670',
     heroImage: '/images/tours/jiuzhaigou-lake.jpg',
     gallery: [
       '/images/tours/jiuzhaigou-lake.jpg',
       '/images/tours/jiuzhaigou-autumn.jpg'
     ],
     highlights: [
-      'Giant Pandas at Chengdu Breeding & Research Base',
-      'Leshan Giant Buddha',
-      'Zhangjiajie Tianmen Mountain with glass skywalk',
-      'Zhangjiajie National Forest Park and Bailong Elevator',
-      'Li River cruise from Guilin to Yangshuo',
-      'Reed Flute Cave and Elephant Trunk Hill',
-      'Fenghuang and Furong ancient towns',
-      'Shanghai\'s Bund and Huangpu River cruise',
-      'Zhujiajiao Ancient Water Town'
+      'Cruise the Li River through stunning karst landscapes',
+      'Visit the Chengdu Giant Panda Breeding Research Base',
+      'Explore the Leshan Giant Buddha, the world\'s largest stone Buddha',
+      'Discover the enchanting night views of Fenghuang Ancient Town',
+      'Walk the Glass Skywalk at Tianmen Mountain',
+      'See the "Hallelujah Mountains" in Zhangjiajie National Forest Park',
+      'Cross the famous Zhangjiajie Glass Bridge',
+      'Stroll through charming Zhujiajiao Water Town',
+      'Enjoy a Huangpu River night cruise in Shanghai',
+      'Experience West Street in Yangshuo'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai', description: 'Evening flight to Shanghai.', meals: [] },
-      { day: 2, title: 'Shanghai', description: 'Arrive morning. City God Temple, Yu Garden, Nanjing Road, The Bund, Xintiandi, Tianzifang with Shikumen architecture.', meals: ['Lunch', 'Dinner'], accommodation: 'Shanghai Jin Jiang Metropolo Hotel or equivalent 4-star' },
-      { day: 3, title: 'Shanghai', description: 'Jade Buddha Temple, Oriental Pearl TV Tower, Shanghai Museum East Hall. Evening Huangpu River night cruise.', meals: ['Breakfast', 'Lunch'], accommodation: 'Shanghai Jin Jiang Metropolo Hotel or equivalent 4-star' },
-      { day: 4, title: 'Shanghai — Guilin', description: 'Morning flight to Guilin. Visit Elephant Trunk Hill Park.', meals: ['Breakfast', 'Lunch'], accommodation: 'Guilin Hotel or equivalent 4-star' },
-      { day: 5, title: 'Guilin — Yangshuo', description: '4-star Li River cruise to Yangshuo with onboard guide. Stroll West Street.', meals: ['Breakfast', 'Lunch'], accommodation: 'Yangshuo West Street Rezen Hotel or equivalent 4-star' },
-      { day: 6, title: 'Yangshuo — Guilin', description: 'Free morning. Afternoon visit Reed Flute Cave and Jingjiang Princes\' City.', meals: ['Breakfast', 'Lunch'], accommodation: 'Guilin Hotel or equivalent 4-star' },
-      { day: 7, title: 'Guilin — Chengdu', description: 'High-speed train to Chengdu. Dinner on arrival.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn Express Chengdu Gulou or equivalent 4-star' },
-      { day: 8, title: 'Chengdu', description: 'Panda Breeding & Research Base, People\'s Park (tea), Taikoo Li, Kuanzhai Alley. Optional: Sichuan Opera face-changing.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Chengdu Gulou or equivalent 4-star' },
-      { day: 9, title: 'Chengdu', description: 'Full day visiting Leshan Giant Buddha and Huanglongxi Ancient Town.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Chengdu Gulou or equivalent 4-star' },
-      { day: 10, title: 'Chengdu — Fenghuang', description: 'High-speed train to Huaihua. Night view of Fenghuang Ancient Town.', meals: ['Breakfast'], accommodation: 'Fengming Tianxia International Hotel or equivalent 4-star' },
-      { day: 11, title: 'Fenghuang — Zhangjiajie', description: 'Tour Fenghuang Ancient Town. Visit Furong Town. Proceed to Zhangjiajie.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Zhangjiajie Dongyue Xinyue Hotel or equivalent 4-star' },
-      { day: 12, title: 'Zhangjiajie — Wulingyuan', description: 'Tianmen Mountain: cable car, eco shuttle, escalator at Tianmen Cave, glass skywalk, Guigu plank path. Tujia Folk Customs Park.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wyndham Hotel or equivalent 4-star' },
-      { day: 13, title: 'Wulingyuan', description: 'Zhangjiajie National Forest Park: Bailong Elevator up, Tianzi Mountain cableway down. Yuanjiajie, Western Sea, Hallelujah Mountain, Ten-mile Gallery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wyndham Hotel or equivalent 4-star' },
-      { day: 14, title: 'Zhangjiajie — Shanghai', description: 'Golden Whip Stream, Zhangjiajie Grand Canyon, Glass Bridge. Evening flight to Shanghai.', meals: ['Breakfast', 'Lunch'], accommodation: 'Shanghai Jin Jiang Metropolo Hotel or equivalent 4-star' },
-      { day: 15, title: 'Shanghai — Zhujiajiao', description: 'Full-day visit to Zhujiajiao Ancient Water Town. Return to Shanghai, dinner, transfer to airport.', meals: ['Breakfast'] },
-      { day: 16, title: 'Shanghai — Auckland', description: 'Return flight to Auckland.', meals: [] }
+      { day: 1, title: 'Auckland — Shanghai (Overnight Flight)', description: 'Depart from Auckland on an evening flight to Shanghai. Overnight on board.', meals: [] },
+      { day: 2, title: 'Arrival in Shanghai', description: 'Upon arrival in Shanghai, meet your guide and begin your city tour. Visit the historic Yuyuan Garden and Chenghuang Temple, stroll along Nanjing Road, continue to the iconic Bund for stunning skyline views, then explore the trendy districts of Xintiandi and Tianzifang, known for their Shikumen-style architecture.', meals: ['Lunch'], accommodation: 'HUALUXE Shanghai Changfeng Park or similar 5-star' },
+      { day: 3, title: 'Shanghai', description: 'Visit the peaceful Jade Buddha Temple. Continue to the Oriental Pearl TV Tower for panoramic city views, followed by the Shanghai Museum (East Hall), showcasing rich cultural relics. In the evening, enjoy a relaxing Huangpu River night cruise offering spectacular views of illuminated Shanghai.', meals: ['Breakfast', 'Lunch'], accommodation: 'HUALUXE Shanghai Changfeng Park or similar 5-star' },
+      { day: 4, title: 'Shanghai — Guilin', description: 'Transfer to the airport for your morning flight to Guilin. Upon arrival, visit Elephant Trunk Hill, the iconic landmark of Guilin.', meals: ['Breakfast', 'Dinner'], accommodation: 'Lijiang Waterfall Hotel Guilin or similar 5-star' },
+      { day: 5, title: 'Guilin — Yangshuo', description: 'Transfer to Zhujiang Pier to board a deluxe 4-star cruise along the Li River to Yangshuo with your guide. Enjoy the breathtaking karst landscapes along the way. Upon arrival, explore the lively West Street.', meals: ['Breakfast', 'Lunch (Buffet onboard)'], accommodation: 'Licheng Yitian West Street Hotel Yangshuo or similar 4.5-star' },
+      { day: 6, title: 'Yangshuo — Guilin', description: 'Enjoy a free morning at leisure. In the afternoon, return to Guilin and visit Reed Flute Cave, known for its impressive stalactites and stalagmites, followed by Jingjiang Prince\'s City.', meals: ['Breakfast', 'Lunch'], accommodation: 'Lijiang Waterfall Hotel Guilin or similar 5-star' },
+      { day: 7, title: 'Guilin — Chengdu', description: 'Transfer to the railway station for a high-speed train from Guilin West to Chengdu East (Train D1804, 10:39–17:09, First Class seat, or similar). Upon arrival, your guide will meet you and transfer you to the hotel.', meals: ['Breakfast'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star' },
+      { day: 8, title: 'Chengdu', description: 'Visit the Chengdu Research Base of Giant Panda Breeding to see China\'s beloved pandas. Experience local life at People\'s Park with a traditional tea break. Continue to explore Taikoo Li and the historic Kuanzhai Alley.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star' },
+      { day: 9, title: 'Chengdu — Leshan', description: 'Full-day excursion to the Leshan Giant Buddha, the world\'s largest stone Buddha statue. On the way back, visit Huanglongxi Ancient Town, known for its well-preserved traditional architecture.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star' },
+      { day: 10, title: 'Chengdu — Fenghuang Ancient Town', description: 'High-speed train from Chengdu East to Huaihua South (Train G2187, 10:10–15:06, First Class seat, or similar). Upon arrival, transfer to Fenghuang Ancient Town. In the evening, enjoy the enchanting night views of this historic riverside town.', meals: ['Breakfast', 'Dinner'], accommodation: 'Kaisheng International Hotel or similar 5-star' },
+      { day: 11, title: 'Fenghuang — Zhangjiajie', description: 'Explore Fenghuang Ancient Town, famous for its traditional wooden houses and rich ethnic culture. After lunch, visit Furong Town, a picturesque village built around a waterfall, before continuing to Zhangjiajie.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wyndham Garden Zhangjiajie or similar 5-star' },
+      { day: 12, title: 'Zhangjiajie — Wulingyuan', description: 'Visit Tianmen Mountain National Forest Park, including cable car rides, eco-bus, escalator to Tianmen Cave, Glass Skywalk (with shoe covers), and the thrilling Guigu Plank Road. Visit the Tujia Folk Custom Park before heading to Wulingyuan.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wyndham Hotel Wulingyuan (Ruijing Manshan) or similar 5-star' },
+      { day: 13, title: 'Wulingyuan', description: 'Explore Zhangjiajie National Forest Park. Take the Bailong Elevator up and descend by Tianzi Mountain cable car. Visit Yuanjiajie, known for the "Hallelujah Mountains," West Sea scenic area, and enjoy a ride on the mini train through Ten-Mile Gallery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wyndham Hotel Wulingyuan (Ruijing Manshan) or similar 5-star' },
+      { day: 14, title: 'Wulingyuan — Shanghai', description: 'Visit Golden Whip Stream, a scenic walking trail through the forest. Continue to Zhangjiajie Grand Canyon and experience the famous Glass Bridge. Transfer to the airport for your evening flight to Shanghai (FM9344, 20:35–22:40 or similar).', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'HUALUXE Shanghai Changfeng Park or similar 5-star' },
+      { day: 15, title: 'Shanghai — Zhujiajiao — Departure', description: 'Day trip to Zhujiajiao Water Town, the "Venice of Shanghai," with its charming canals and ancient bridges. Return to Shanghai and transfer to Pudong International Airport after dinner.', meals: ['Breakfast'] },
+      { day: 16, title: 'Shanghai — Auckland', description: 'Departure from Shanghai, arrive Auckland.', meals: [] }
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4-star hotel accommodation',
-      'Transportation by tour coach, second-class train, and domestic flights',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -531,13 +549,14 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Signature — Landscapes | 16 Days | CTS Tours',
-    metaDescription: 'Discover China\'s most iconic natural sights, from the pandas of Chengdu to the misty peaks of Zhangjiajie, Li River cruises, water towns, an... Book with CTS Tours.',
+    metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
+    metaDescription: 'Discover China\'s most breathtaking natural landscapes — Li River, Zhangjiajie, Giant Pandas, Fenghuang Ancient Town. 16-day premium tour from NZD $7,670. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
   },
   {
     id: 'tour-cn-sig-6',
@@ -656,43 +675,45 @@ export const tours: Tour[] = [
     slug: 'beijing-shanghai',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Beijing & Shanghai',
-    title: 'China Discovery — Beijing & Shanghai',
-    shortDescription: 'Step into the heart of China experiencing the Great Wall, Forbidden City, Terracotta Warriors, and the contrast between ancient Beijing and modern Shanghai.',
+    name: 'China Discovery — A Tale of Two Cities',
+    title: 'China Discovery — A Tale of Two Cities',
+    shortDescription: 'Experience the contrast between ancient and modern China — from Beijing\'s imperial treasures and the Great Wall to Xi\'an\'s Terracotta Warriors and Shanghai\'s dazzling skyline.',
     duration: '10 Days',
-    price: 'From NZD $3,099',
+    price: 'From NZD $3,480',
     heroImage: '/images/tours/forbidden-city-gold-lion.jpg',
     gallery: [
       '/images/tours/forbidden-city-gold-lion.jpg',
       '/images/tours/shanghai-night-blue.jpg'
     ],
     highlights: [
-      'Tian\'anmen Square and Forbidden City',
-      'Great Wall at Juyongguan section',
-      'Hutong pedi-cab tour with family visit',
-      'Summer Palace with Marble Boat and Long Corridor',
-      'High-speed train experience (350 km/h)',
-      'Terracotta Warriors archaeological site',
-      'Xi\'an City Wall and Big Wild Goose Pagoda'
+      'Walk the Juyongguan Great Wall and explore the Forbidden City',
+      'Discover the Terracotta Warriors in Xi\'an',
+      'Cruise on the Li River to Yangshuo through karst landscapes',
+      'Experience West Lake and Longjing tea plantations in Hangzhou',
+      'Explore the classical Humble Administrator\'s Garden in Suzhou',
+      'Enjoy the Huangpu River cruise and Bund in Shanghai',
+      'Visit the Lingshan Grand Buddha in Wuxi',
+      'Stroll through charming Zhujiajiao Water Town'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai', description: 'Evening departure from Auckland.', meals: [] },
-      { day: 2, title: 'Shanghai — Beijing', description: 'Arrive Shanghai, transfer to Beijing. Hotel check-in, free time.', meals: [], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 3, title: 'Beijing', description: 'Tian\'anmen Square, National Centre for the Performing Arts, Forbidden City, Beihai Park, silk factory. Optional: evening acrobatic show.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 4, title: 'Beijing', description: 'Great Wall at Juyongguan section, jade carving factory, Bird\'s Nest and Water Cube photo stop.', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 5, title: 'Beijing', description: 'Hutong pedi-cab tour through old city neighbourhoods with family visit. Summer Palace with Marble Boat and Long Corridor.', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 6, title: 'Beijing — Xi\'an', description: 'High-speed train G89 to Xi\'an (15:00–19:12).', meals: ['Breakfast'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 7, title: 'Xi\'an', description: 'Terracotta Warriors (2,000-year-old site), Circle Vision Movie, Bronze Chariot. Evening dumpling dinner.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 8, title: 'Xi\'an', description: 'City Wall and Big Wild Goose Pagoda.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 9, title: 'Xi\'an — Departure', description: 'Small Wild Goose Pagoda Museum, Huimin Street. Flight to Beijing/Shanghai for Auckland connection.', meals: ['Breakfast', 'Lunch'] },
-      { day: 10, title: 'Return to Auckland', description: 'Arrive in Auckland.', meals: [] }
+      { day: 1, title: 'Auckland — Beijing', description: 'Depart from Auckland on your international flight to Beijing. Overnight on board.', meals: [] },
+      { day: 2, title: 'Arrival in Beijing', description: 'Arrive in Beijing. Meet your guide and transfer to your hotel. Enjoy some free time to rest.', meals: [], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 3, title: 'Beijing', description: 'Visit Tiananmen Square, National Centre for the Performing Arts, and the Forbidden City. Continue to Beihai Park and visit a silk factory.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 4, title: 'Beijing', description: 'Visit the Great Wall at Juyongguan section, a jade carving factory, and enjoy photo stops at the Bird\'s Nest and Water Cube.', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 5, title: 'Beijing — Xi\'an', description: 'Enjoy a pedi-cab Hutong tour through old city neighbourhoods with a family visit. Visit the Summer Palace with Marble Boat and Long Corridor. High-speed train to Xi\'an (Train G89, 15:00–19:12, First Class seat or similar).', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
+      { day: 6, title: 'Xi\'an', description: 'Visit the Terracotta Warriors, a 2,000-year-old archaeological site, Circle Vision Movie, and Bronze Chariot. Enjoy a dumpling dinner in the evening.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
+      { day: 7, title: 'Xi\'an — Guilin', description: 'Visit the City Wall and Big Wild Goose Pagoda. Flight to Guilin.', meals: ['Breakfast', 'Lunch'], accommodation: 'Guilin Hotel or similar 5-star' },
+      { day: 8, title: 'Li River Cruise — Yangshuo', description: 'Cruise on the Li River to Yangshuo through spectacular karst mountain scenery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Rezen Hotel West Street Yangshuo or similar 5-star' },
+      { day: 9, title: 'Yangshuo — Shanghai', description: 'Morning Tai Chi, countryside tour, and cormorant fishing. Flight to Shanghai. Visit the Bund and enjoy a Huangpu River cruise.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
+      { day: 10, title: 'Shanghai — Auckland', description: 'Visit Yuyuan Garden and Nanjing Road. Transfer to the airport for your return flight to Auckland.', meals: ['Breakfast', 'Lunch'] }
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4-star hotel accommodation',
-      'Transportation by tour coach and second-class train',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -700,65 +721,67 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Discovery — Beijing & Shanghai | 10 Days | CTS Tours',
-    metaDescription: 'Step into the heart of China experiencing the Great Wall, Forbidden City, Terracotta Warriors, and the contrast between ancient Beijing and ... Book with CTS Tours.',
+    metaTitle: 'China Discovery — A Tale of Two Cities | 10 Days | CTS Tours',
+    metaDescription: 'Experience the contrast between ancient and modern China — Beijing\'s imperial treasures, Xi\'an\'s Terracotta Warriors, Guilin\'s karst landscapes, and Shanghai\'s skyline. 10 days from NZD $3,480. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $1,435
   },
   {
     id: 'tour-cn-dis-3',
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Essentials',
-    title: 'China Discovery — Essentials',
-    shortDescription: 'A comprehensive journey through China\'s iconic destinations — Shanghai, Suzhou, Wuxi, Hangzhou, Beijing, and Xi\'an — covering all the must-see highlights.',
+    name: 'China Discovery — Best of China',
+    title: 'China Discovery — Best of China',
+    shortDescription: 'The ultimate 15-day China experience — from the Great Wall and Forbidden City to the Terracotta Warriors, classical gardens of Suzhou, West Lake in Hangzhou, and vibrant Shanghai.',
     duration: '15 Days',
-    price: 'From NZD $3,599',
+    price: 'From NZD $4,539',
     heroImage: '/images/tours/shanghai-night-blue.jpg',
     gallery: [
       '/images/tours/shanghai-night-blue.jpg',
       '/images/tours/wuzhen-canal.jpg'
     ],
     highlights: [
-      'Great Wall of China at Juyongguan',
-      'Terracotta Warriors archaeological site',
-      'Forbidden City imperial complex',
-      'Summer Palace gardens',
-      'West Lake scenic beauty in Hangzhou',
-      'Yu Garden and The Bund in Shanghai',
-      'Suzhou classical gardens',
-      'Lingshan Grand Buddha in Wuxi',
-      'Xinshi Ancient Water Town with Hanfu experience'
+      'Walk the Juyongguan Great Wall and explore the Forbidden City',
+      'Discover the Terracotta Warriors in Xi\'an',
+      'Cruise the Li River to Yangshuo through karst landscapes',
+      'Experience West Lake and Longjing tea plantations in Hangzhou',
+      'Explore the classical Humble Administrator\'s Garden in Suzhou',
+      'Visit the Lingshan Grand Buddha in Wuxi',
+      'Dress in traditional Hanfu at Xinshi Ancient Town',
+      'Enjoy the Huangpu River cruise and Bund in Shanghai',
+      'Visit the Stone Forest in Kunming',
+      'Stroll through the charming Zhujiajiao Water Town'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai', description: 'Flight to Shanghai.', meals: [] },
-      { day: 2, title: 'Shanghai — Suzhou', description: 'Arrive Shanghai, transfer to Suzhou. Master of the Nets Garden, Panmen gate, Shantang Street.', meals: ['Lunch'], accommodation: 'Rosedale Chunshenhu Resort (5-star)' },
-      { day: 3, title: 'Suzhou — Wuxi', description: 'Silk factory, Lingshan Grand Buddha scenic area, Purple Sand Museum.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Kusatsu Hotel (5-star)' },
-      { day: 4, title: 'Wuxi', description: 'Three Kingdoms City (warship tour, horse battle show), Pearl Exhibition Center, Ancient Canal boat tour.', meals: ['Breakfast', 'Lunch'], accommodation: 'Kusatsu Hotel (5-star)' },
-      { day: 5, title: 'Wuxi — Xinshi Town', description: 'Xinshi Town (thousand-year-old settlement). Traditional Hanfu costume photo experience. Afternoon tea.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn (4-star)' },
-      { day: 6, title: 'Xinshi — Hangzhou', description: 'Free time until 10 AM. West Lake scenic area (Hua Gang Guan Yu, boat tour, Su Causeway), Leifeng Pagoda.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'New Century Hotel (5-star)' },
-      { day: 7, title: 'Hangzhou — Shanghai', description: 'Hangzhou International Expo Center (G20 venue), Six Harmonies Pagoda, Meijiawu Tea Plantation with Longjing tea tasting.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 8, title: 'Shanghai', description: 'The Bund (52 buildings), Yu Garden (Ming Dynasty), World Cultural Heritage Art Exhibition Center, Nanjing Road.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 9, title: 'Shanghai — Beijing', description: 'Fast train to Beijing. Hotel check-in, free time.', meals: ['Breakfast'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 10, title: 'Beijing', description: 'Tian\'anmen Square, National Centre for the Performing Arts, Forbidden City, Beihai Park, silk factory.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 11, title: 'Beijing', description: 'Great Wall at Juyongguan section, jade carving factory, Olympic Park (Bird\'s Nest, Water Cube).', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 12, title: 'Beijing', description: 'Pedi-cab Hutong tour with family home visit. Summer Palace (Marble Boat, Long Corridor).', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments (4-star)' },
-      { day: 13, title: 'Beijing — Xi\'an', description: 'Morning free time. Train G89 (15:00–19:12) to Xi\'an.', meals: ['Breakfast'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 14, title: 'Xi\'an', description: 'Terracotta Warriors, Circle Vision Movie, Bronze Chariot. Xi\'an dumpling dinner.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 15, title: 'Xi\'an', description: 'Old City Wall, Big Wild Goose Pagoda.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 16, title: 'Xi\'an — Departure', description: 'Small Wild Goose Pagoda Museum, Huimin Street. Flight to Beijing connecting to Auckland.', meals: ['Breakfast', 'Lunch'] },
-      { day: 17, title: 'Arrival in Auckland', description: 'Arrive Auckland. Tour ends.', meals: [] }
+      { day: 1, title: 'Auckland — Shanghai', description: 'Depart from Auckland on your international flight to Shanghai. Overnight on board.', meals: [] },
+      { day: 2, title: 'Arrival in Shanghai', description: 'Upon arrival in Shanghai, meet your guide and begin your city tour. Visit the historic Yuyuan Garden and Chenghuang Temple, stroll along Nanjing Road, continue to the iconic Bund for stunning skyline views, then explore the trendy districts of Xintiandi and Tianzifang, known for their Shikumen-style architecture.', meals: ['Lunch'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
+      { day: 3, title: 'Shanghai — Suzhou', description: 'Travel to Suzhou and visit the Master of the Nets Garden, Panmen Gate, and Shantang Street.', meals: ['Breakfast', 'Lunch'], accommodation: 'Rosedale Chunshenhu Resort or similar 5-star' },
+      { day: 4, title: 'Suzhou — Wuxi', description: 'Visit a silk factory, the Lingshan Grand Buddha scenic area, and the Purple Sand Museum.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Kusatsu Hotel or similar 5-star' },
+      { day: 5, title: 'Wuxi', description: 'Visit Three Kingdoms City (warship tour and horse battle show), Pearl Exhibition Center, and enjoy an Ancient Canal boat tour.', meals: ['Breakfast', 'Lunch'], accommodation: 'Kusatsu Hotel or similar 5-star' },
+      { day: 6, title: 'Wuxi — Xinshi Town', description: 'Explore Xinshi Town, a thousand-year-old settlement. Experience traditional Hanfu costume photography and enjoy afternoon tea.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn or similar 4-star' },
+      { day: 7, title: 'Xinshi — Hangzhou', description: 'Free time until 10 AM. Visit West Lake scenic area (Hua Gang Guan Yu, boat tour, Su Causeway) and Leifeng Pagoda.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'New Century Hotel or similar 5-star' },
+      { day: 8, title: 'Hangzhou — Shanghai', description: 'Visit Hangzhou International Expo Center (G20 venue), Six Harmonies Pagoda, and Meijiawu Tea Plantation with Longjing tea tasting. Return to Shanghai.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
+      { day: 9, title: 'Shanghai — Beijing', description: 'High-speed train to Beijing. Hotel check-in and free time.', meals: ['Breakfast'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 10, title: 'Beijing', description: 'Visit Tiananmen Square, National Centre for the Performing Arts, Forbidden City, Beihai Park, and a silk factory.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 11, title: 'Beijing', description: 'Visit the Great Wall at Juyongguan section, jade carving factory, and Olympic Park (Bird\'s Nest, Water Cube).', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 12, title: 'Beijing', description: 'Enjoy a pedi-cab Hutong tour with a family home visit. Visit the Summer Palace (Marble Boat, Long Corridor).', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
+      { day: 13, title: 'Beijing — Xi\'an', description: 'Morning free time. High-speed train to Xi\'an (Train G89, 15:00–19:12, First Class seat or similar).', meals: ['Breakfast'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
+      { day: 14, title: 'Xi\'an', description: 'Visit the Terracotta Warriors, Circle Vision Movie, and Bronze Chariot. Enjoy Xi\'an dumpling dinner.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
+      { day: 15, title: 'Xi\'an — Auckland', description: 'Visit the Old City Wall and Big Wild Goose Pagoda. Transfer to airport for your return flight to Auckland.', meals: ['Breakfast', 'Lunch'] }
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4- and 5-star hotel accommodation',
-      'Transportation by tour coach and second-class train',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -766,22 +789,24 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Discovery — Essentials | 15 Days | CTS Tours',
-    metaDescription: 'A comprehensive journey through China\'s iconic destinations — Shanghai, Suzhou, Wuxi, Hangzhou, Beijing, and Xi\'an — covering all the must-s... Book with CTS Tours.',
+    metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
+    metaDescription: 'The ultimate 15-day China experience — Great Wall, Forbidden City, Terracotta Warriors, classical gardens, West Lake, and Shanghai. From NZD $4,539. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $1,435
   },
   {
     id: 'tour-cn-dis-4',
     slug: 'shanghai-beyond',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Shanghai & Beyond',
-    title: 'China Discovery — Shanghai & Beyond',
-    shortDescription: 'A journey exploring water towns, Buddhist temples, classical gardens, and modern Shanghai experiences across the Yangtze River Delta region.',
+    name: 'China Discovery — Shanghai & Surroundings',
+    title: 'China Discovery — Shanghai & Surroundings',
+    shortDescription: 'Discover the Yangtze River Delta region — from classical gardens of Suzhou and the Lingshan Grand Buddha in Wuxi to West Lake in Hangzhou, ancient water towns, and vibrant Shanghai.',
     duration: '10 Days',
     price: 'From NZD $2,999',
     heroImage: '/images/tours/wuzhen-canal.jpg',
@@ -790,32 +815,34 @@ export const tours: Tour[] = [
       '/images/tours/shanghai-night-red.jpg'
     ],
     highlights: [
-      'Suzhou classical gardens and Shantang Street',
-      'Lingshan Grand Buddha in Wuxi',
-      'Three Kingdoms City with live battle show',
-      'Xinshi Ancient Water Town with Hanfu photos',
-      'West Lake boat tour and Leifeng Pagoda in Hangzhou',
-      'Longjing tea plantation',
-      'Shanghai\'s Bund and Yu Garden'
+      'Explore the classical Humble Administrator\'s Garden in Suzhou',
+      'Visit the Lingshan Grand Buddha in Wuxi',
+      'Experience Three Kingdoms City with live battle show',
+      'Dress in traditional Hanfu at Xinshi Ancient Water Town',
+      'Cruise on West Lake and visit Leifeng Pagoda in Hangzhou',
+      'Visit Longjing tea plantation with tea tasting',
+      'Enjoy the Huangpu River cruise and Bund in Shanghai',
+      'Stroll through charming Zhujiajiao Water Town'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai', description: 'Depart Auckland Airport.', meals: [] },
-      { day: 2, title: 'Shanghai — Suzhou', description: 'Arrive Shanghai, transfer to Suzhou. Master of the Nets Garden, Panmen, Shantang Street.', meals: ['Lunch'], accommodation: 'Rosedale Chunshenhu Resort Hotel (5-star)' },
-      { day: 3, title: 'Suzhou — Wuxi', description: 'Silk factory visit, Lingshan Grand Buddha, Purple Sand Museum.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Kusatsu Hotel (5-star)' },
-      { day: 4, title: 'Wuxi', description: 'Three Kingdoms City (warship, live horse battle show), Pearl Exhibition Center, Ancient Canal boat tour.', meals: ['Breakfast', 'Lunch'], accommodation: 'Kusatsu Hotel (5-star)' },
-      { day: 5, title: 'Wuxi — Xinshi', description: 'Xinshi Ancient Water Town (thousand-year-old settlement). Hanfu costume photos. Afternoon tea. Hot pot dinner.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn (4-star)' },
-      { day: 6, title: 'Xinshi — Hangzhou', description: 'Free time until 10 AM. West Lake scenic area (boat tour, Su Causeway), Leifeng Pagoda.', meals: ['Lunch', 'Dinner'], accommodation: 'New Century Hotel (5-star)' },
-      { day: 7, title: 'Hangzhou — Shanghai', description: 'Hangzhou International Expo Center, Six Harmonies Pagoda, Meijiawu Tea Plantation with Longjing tea.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 8, title: 'Shanghai', description: 'The Bund, Yu Garden (Ming Dynasty), World Cultural Heritage Art Exhibition Center, Nanjing Road.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express (4-star)' },
-      { day: 9, title: 'Shanghai — Departure', description: 'Morning free time. Afternoon airport transfer.', meals: ['Breakfast'] },
-      { day: 10, title: 'Auckland', description: 'Morning arrival in Auckland.', meals: [] }
+      { day: 1, title: 'Auckland — Shanghai', description: 'Depart from Auckland on your international flight to Shanghai. Overnight on board.', meals: [] },
+      { day: 2, title: 'Arrival in Shanghai', description: 'Upon arrival in Shanghai, meet your guide and transfer to Suzhou. Visit the Master of the Nets Garden, Panmen Gate, and stroll along Shantang Street.', meals: ['Lunch'], accommodation: 'Rosedale Chunshenhu Resort Hotel or similar 5-star' },
+      { day: 3, title: 'Suzhou — Wuxi', description: 'Visit a silk factory, the Lingshan Grand Buddha scenic area, and the Purple Sand Museum.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Kusatsu Hotel or similar 5-star' },
+      { day: 4, title: 'Wuxi', description: 'Visit Three Kingdoms City (warship tour and live horse battle show), Pearl Exhibition Center, and enjoy an Ancient Canal boat tour.', meals: ['Breakfast', 'Lunch'], accommodation: 'Kusatsu Hotel or similar 5-star' },
+      { day: 5, title: 'Wuxi — Xinshi', description: 'Explore Xinshi Ancient Water Town, a thousand-year-old settlement. Experience traditional Hanfu costume photography and enjoy afternoon tea.', meals: ['Breakfast', 'Dinner'], accommodation: 'Holiday Inn or similar 4-star' },
+      { day: 6, title: 'Xinshi — Hangzhou', description: 'Free time until 10 AM. Visit West Lake scenic area (boat tour, Su Causeway) and Leifeng Pagoda.', meals: ['Lunch', 'Dinner'], accommodation: 'New Century Hotel or similar 5-star' },
+      { day: 7, title: 'Hangzhou — Shanghai', description: 'Visit Hangzhou International Expo Center, Six Harmonies Pagoda, and Meijiawu Tea Plantation with Longjing tea tasting. Return to Shanghai.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
+      { day: 8, title: 'Shanghai', description: 'Visit the Bund, Yuyuan Garden (Ming Dynasty), World Cultural Heritage Art Exhibition Center, and Nanjing Road.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
+      { day: 9, title: 'Shanghai — Auckland', description: 'Morning free time. Afternoon transfer to the airport for your return flight to Auckland.', meals: ['Breakfast'] },
+      { day: 10, title: 'Arrival in Auckland', description: 'Arrive in Auckland. Tour ends.', meals: [] }
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      '4- and 5-star hotel accommodation',
-      'Transportation by tour coach and second-class train',
+      'Domestic airfares within China',
+      '4–5 star hotel accommodation',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary'
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -823,13 +850,15 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)'
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Discovery — Shanghai & Beyond | 10 Days | CTS Tours',
-    metaDescription: 'A journey exploring water towns, Buddhist temples, classical gardens, and modern Shanghai experiences across the Yangtze River Delta region. Book with CTS Tours.',
+    metaTitle: 'China Discovery — Shanghai & Surroundings | 10 Days | CTS Tours',
+    metaDescription: 'Discover the Yangtze River Delta region — Suzhou gardens, Wuxi Buddha, West Lake, water towns, and Shanghai. 10 days from NZD $2,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $1,435
   },
   {
     id: 'tour-cn-dis-5',
@@ -955,50 +984,62 @@ export const tours: Tour[] = [
     slug: 'yunnan-explorer',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Yunnan Explorer',
-    title: 'China Discovery — Yunnan Explorer',
-    shortDescription: 'Explore the natural wonders and cultural heritage of Yunnan through signature attractions including limestone karst formations, snow-capped mountains, ethnic performances, and historic towns.',
-    duration: '6 Days',
-    price: 'From NZD $2,565',
+    name: 'China Discovery — Colorful Yunnan',
+    title: 'China Discovery — Colorful Yunnan',
+    shortDescription: 'Discover the natural beauty and rich cultural heritage of Yunnan — from the Stone Forest and Jade Dragon Snow Mountain to Tiger Leaping Gorge, Lijiang Old Town, and the stunning landscapes of Dali.',
+    duration: '11 Days',
+    price: 'From NZD $3,899',
     heroImage: '/images/tours/yunnan-village.jpg',
     gallery: [
       '/images/tours/yunnan-village.jpg',
       '/images/tours/yunnan-rice-terraces.jpg'
     ],
     highlights: [
-      'Stone Forest Scenic Area — No.1 Wonder under Heaven',
-      'Jade Dragon Snow Mountain via cable car',
-      'Blue Moon Valley',
-      'Impression of Lijiang outdoor performance',
-      'Tiger Leaping Gorge',
-      'Dayan (Lijiang Old Town) — UNESCO World Heritage',
-      'Dali ancient city and Erhai Lake'
+      'Visit the UNESCO-listed Stone Forest in Kunming',
+      'Explore Jade Dragon Snow Mountain and Blue Moon Valley',
+      'Experience the Impression of Lijiang outdoor performance',
+      'Discover Tiger Leaping Gorge, one of the world\'s deepest canyons',
+      'Walk through Dayan Old Town, a UNESCO World Heritage Site',
+      'Cruise on Erhai Lake and explore Dali Ancient City',
+      'Visit the Three Pagodas of Dali',
+      'Experience the unique culture of Yunnan\'s ethnic minorities'
     ],
     itinerary: [
-      { day: 1, title: 'Kunming', description: 'Arrival in Kunming, \'City of Eternal Spring\'. Guide transfer to hotel.', meals: [], accommodation: '4-star hotel' },
-      { day: 2, title: 'Kunming — Lijiang', description: 'Morning visit Stone Forest Scenic Area. Afternoon explore old town or Flower and Bird Market. Evening fast train to Lijiang.', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 3, title: 'Lijiang', description: 'Visit Jade Dragon Snow Mountain via cable car, then Blue Moon Valley by battery car. Evening \'Impression of Lijiang\' performance (outdoor Zhang Yimou production at 3,100m).', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 4, title: 'Lijiang — Tiger Leaping Gorge', description: 'Full-day excursion to Tiger Leaping Gorge and First Bend of Yangtze River. Optional visit to Dayan, Lijiang\'s UNESCO Old Town.', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 5, title: 'Lijiang — Dali', description: 'Drive to Dali. Visit ancient city, Dali Museum, and boat trip on Erhai Lake.', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 6, title: 'Dali Departure', description: 'Transfer to airport for departure flight.', meals: ['Breakfast'] }
+      { day: 1, title: 'New Zealand — Kunming', description: 'Depart from New Zealand on your international flight to Kunming. Overnight on board.', meals: [] },
+      { day: 2, title: 'Arrival in Kunming', description: 'Arrive in Kunming, the "City of Eternal Spring." Meet your guide and transfer to your hotel.', meals: [], accommodation: 'Kunming Hotel or similar 4-star' },
+      { day: 3, title: 'Kunming — Stone Forest', description: 'Visit the UNESCO-listed Stone Forest (Shilin), a spectacular karst landscape of limestone formations. In the afternoon, explore the old town or visit the Flower and Bird Market.', meals: ['Breakfast', 'Lunch'], accommodation: 'Kunming Hotel or similar 4-star' },
+      { day: 4, title: 'Kunming — Lijiang', description: 'Take a high-speed train to Lijiang. Upon arrival, explore the charming old town and enjoy the local culture.', meals: ['Breakfast', 'Lunch'], accommodation: 'Lijiang Hotel or similar 4-star' },
+      { day: 5, title: 'Lijiang — Jade Dragon Snow Mountain', description: 'Visit Jade Dragon Snow Mountain by cable car, then explore Blue Moon Valley by battery car. In the evening, enjoy the "Impression of Lijiang" outdoor performance, directed by Zhang Yimou.', meals: ['Breakfast', 'Lunch'], accommodation: 'Lijiang Hotel or similar 4-star' },
+      { day: 6, title: 'Lijiang — Tiger Leaping Gorge', description: 'Full-day excursion to Tiger Leaping Gorge, one of the world\'s deepest canyons, and the First Bend of the Yangtze River. Return to Lijiang.', meals: ['Breakfast', 'Lunch'], accommodation: 'Lijiang Hotel or similar 4-star' },
+      { day: 7, title: 'Lijiang — Dali', description: 'Drive to Dali. Visit Dali Ancient City, Dali Museum, and enjoy a boat trip on Erhai Lake.', meals: ['Breakfast', 'Lunch'], accommodation: 'Dali Hotel or similar 4-star' },
+      { day: 8, title: 'Dali', description: 'Explore the Three Pagodas of Dali, an iconic landmark dating back to the Nanzhao Kingdom. Visit Xizhou Village to experience Bai ethnic culture.', meals: ['Breakfast', 'Lunch'], accommodation: 'Dali Hotel or similar 4-star' },
+      { day: 9, title: 'Dali — Kunming', description: 'Return to Kunming by high-speed train. Enjoy some free time to explore the city.', meals: ['Breakfast'], accommodation: 'Kunming Hotel or similar 4-star' },
+      { day: 10, title: 'Kunming — Free Day', description: 'Enjoy a free day at leisure to explore Kunming or join optional activities.', meals: ['Breakfast'], accommodation: 'Kunming Hotel or similar 4-star' },
+      { day: 11, title: 'Kunming — New Zealand', description: 'Transfer to the airport for your return flight to New Zealand.', meals: [] }
     ],
     inclusions: [
+      'Return international airfares from New Zealand',
+      'Domestic airfares within China',
       '4-star hotel accommodation',
-      'All meals as per itinerary',
-      'English-speaking guide',
-      'Land transfers',
-      'Admission to all sightseeing locations per itinerary'
+      'English-speaking tour guide',
+      'Entrance fees and meals as specified in the itinerary',
+      'Land transport including high-speed trains'
     ],
     exclusions: [
-      'Airfare',
+      'China visa fee (if required)',
+      'Travel insurance (strongly recommended)',
       'Personal expenses',
-      'Tipping (CNY 100/day/person)'
+      'Transportation and guide services during free time',
+      'Meals not listed in the itinerary',
+      'Tips (suggested NZD $10 per day per person)',
+      'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Discovery — Yunnan Explorer | 6 Days | CTS Tours',
-    metaDescription: 'Explore the natural wonders and cultural heritage of Yunnan through signature attractions including limestone karst formations, snow-capped ... Book with CTS Tours.',
+    metaTitle: 'China Discovery — Colorful Yunnan | 11 Days | CTS Tours',
+    metaDescription: 'Discover the natural beauty and rich cultural heritage of Yunnan — Stone Forest, Jade Dragon Snow Mountain, Tiger Leaping Gorge, Lijiang Old Town, and Dali. 11 days from NZD $3,899. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-03-29'
+    // Single room supplement: NZD $1,435
   },
   // China Stopover Tours
   {
