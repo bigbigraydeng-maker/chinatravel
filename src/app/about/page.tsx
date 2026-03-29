@@ -49,9 +49,9 @@ export default function AboutPage() {
             {/* Lisa Li */}
             <Link href="/experts/lisa-li" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64">
+                <div className="relative h-64 bg-gray-200">
                   <Image 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20Lisa%20Li%20MNZM%20Chinese%20woman%20in%20business%20attire%20with%20New%20Zealand%20Order%20of%20Merit%20medal%20standing%20in%20front%20of%20New%20Zealand%20flag%20with%20green%20background%2C%20professional%20lighting%2C%20corporate%20portrait&image_size=portrait_4_3" 
+                    src="https://via.placeholder.com/600x400?text=Lisa+Li" 
                     alt="Lisa Li, Managing Director" 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -76,9 +76,9 @@ export default function AboutPage() {
             {/* Baker Gu */}
             <Link href="/experts/baker-gu" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64">
+                <div className="relative h-64 bg-gray-200">
                   <Image 
-                    src="/images/experts/baker-gu.jpg" 
+                    src="https://via.placeholder.com/600x400?text=Baker+Gu" 
                     alt="Baker Gu, China Specialist" 
                     fill 
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -111,12 +111,10 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=TAANZ%20Travel%20Agents%20Association%20of%20New%20Zealand%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20green%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="TAANZ Membership" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">TAANZ Membership</h3>
               </div>
@@ -125,12 +123,10 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=IATA%20International%20Air%20Transport%20Association%20logo%2C%20professional%20vector%20logo%2C%20blue%20color%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="IATA Certification" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">IATA Certification</h3>
               </div>
@@ -139,12 +135,10 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Tourism%20Export%20Council%20of%20New%20Zealand%20logo%2C%20professional%20vector%20logo%2C%20green%20and%20blue%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="Tourism Export Council" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">Tourism Export Council</h3>
               </div>
@@ -153,12 +147,10 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Auckland%20Business%20Chamber%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20red%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="Auckland Business Chamber" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">Auckland Business Chamber</h3>
               </div>
@@ -167,12 +159,10 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qualmark%20New%20Zealand%20tourism%20quality%20assurance%20logo%2C%20professional%20vector%20logo%2C%20green%20color%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="Qualmark" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">Qualmark</h3>
               </div>
@@ -181,12 +171,10 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Fort%C3%A9%20Global%20Network%20Business%20Solutions%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20gold%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
-                    alt="Forté Global Network" 
-                    className="w-full h-full object-contain"
-                  />
+                <div className="w-16 h-16 mr-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
                 </div>
                 <h3 className="text-xl font-bold">Forté Global Network</h3>
               </div>

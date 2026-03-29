@@ -42,7 +42,7 @@ const LisaLiPage = () => {
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
                 <img
-                  src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20Lisa%20Li%20MNZM%20Chinese%20woman%20in%20business%20attire%20with%20New%20Zealand%20Order%20of%20Merit%20medal%20standing%20in%20front%20of%20New%20Zealand%20flag%20with%20green%20background%2C%20professional%20lighting%2C%20corporate%20portrait&image_size=portrait_4_3"
+                  src="https://via.placeholder.com/600x800?text=Lisa+Li"
                   alt="Lisa Li, MNZM — Managing Director at CTS Tours New Zealand"
                   className="rounded-lg shadow-xl w-full relative z-10"
                 />
