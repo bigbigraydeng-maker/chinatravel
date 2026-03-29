@@ -114,7 +114,7 @@ const Navbar = () => {
             Travel Guide
           </Link>
           <Link 
-            href="/experts/baker-gu"
+            href="/about"
             className="text-accent hover:text-primary transition-colors font-medium"
           >
             About
@@ -203,7 +203,7 @@ const Navbar = () => {
               Travel Guide
             </Link>
             <Link 
-              href="/experts/baker-gu"
+              href="/about"
               className="text-accent hover:text-primary transition-colors font-medium py-2"
               onClick={closeMenu}
             >
