@@ -42,7 +42,7 @@ const BakerGuPage = () => {
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
                 <img
-                  src="https://via.placeholder.com/600x800?text=Baker+Gu"
+                  src="/images/baker-gu-portrait.jpg"
                   alt="Baker Gu — China Travel Specialist at CTS Tours New Zealand"
                   className="rounded-lg shadow-xl w-full relative z-10"
                 />

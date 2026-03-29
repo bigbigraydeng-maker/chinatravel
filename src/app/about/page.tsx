@@ -50,10 +50,10 @@ export default function AboutPage() {
             <Link href="/experts/lisa-li" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-64 bg-gray-200">
-                  <Image 
-                    src="https://via.placeholder.com/600x400?text=Lisa+Li" 
-                    alt="Lisa Li, Managing Director" 
-                    fill 
+                  <Image
+                    src="/images/lisa-li-portrait.jpg"
+                    alt="Lisa Li, Managing Director"
+                    fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -77,10 +77,10 @@ export default function AboutPage() {
             <Link href="/experts/baker-gu" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-64 bg-gray-200">
-                  <Image 
-                    src="https://via.placeholder.com/600x400?text=Baker+Gu" 
-                    alt="Baker Gu, China Specialist" 
-                    fill 
+                  <Image
+                    src="/images/baker-gu-portrait.jpg"
+                    alt="Baker Gu, China Specialist"
+                    fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -112,11 +112,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=TAANZ" 
-                    alt="TAANZ Membership" 
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/images/credentials/taanz.png" alt="TAANZ Membership" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-bold">TAANZ Membership</h3>
               </div>
@@ -126,11 +122,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=IATA" 
-                    alt="IATA Certification" 
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/images/credentials/iata.png" alt="IATA Certification" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-bold">IATA Certification</h3>
               </div>
@@ -140,11 +132,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=Tourism+Export" 
-                    alt="Tourism Export Council" 
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/images/credentials/tourism-export-council.png" alt="Tourism Export Council" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-bold">Tourism Export Council</h3>
               </div>
@@ -154,11 +142,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=Auckland+Chamber" 
-                    alt="Auckland Business Chamber" 
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/images/credentials/auckland-business-chamber.png" alt="Auckland Business Chamber" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-bold">Auckland Business Chamber</h3>
               </div>
@@ -168,11 +152,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=Qualmark" 
-                    alt="Qualmark" 
-                    className="w-full h-full object-contain"
-                  />
+                  <img src="/images/credentials/qualmark.png" alt="Qualmark" className="w-full h-full object-contain" />
                 </div>
                 <h3 className="text-xl font-bold">Qualmark</h3>
               </div>
@@ -182,11 +162,9 @@ export default function AboutPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
                 <div className="w-16 h-16 mr-4">
-                  <img 
-                    src="https://via.placeholder.com/64?text=Forte+Global" 
-                    alt="Forté Global Network" 
-                    className="w-full h-full object-contain"
-                  />
+                  <div className="w-full h-full rounded-lg bg-primary/10 flex items-center justify-center">
+                    <span className="text-xs font-bold text-primary text-center leading-tight">Forté Global</span>
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold">Forté Global Network</h3>
               </div>

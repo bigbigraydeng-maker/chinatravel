@@ -42,7 +42,7 @@ const LisaLiPage = () => {
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
                 <img
-                  src="https://via.placeholder.com/600x800?text=Lisa+Li"
+                  src="/images/lisa-li-portrait.jpg"
                   alt="Lisa Li, MNZM — Managing Director at CTS Tours New Zealand"
                   className="rounded-lg shadow-xl w-full relative z-10"
                 />
