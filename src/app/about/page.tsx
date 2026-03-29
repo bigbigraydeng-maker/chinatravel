@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutPage() {
   return (
@@ -44,50 +45,60 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-serif font-bold mb-12 text-center">Our Team</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Lisa Li */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="relative h-80">
-                <Image 
-                  src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20Lisa%20Li%20MNZM%20Chinese%20woman%20in%20business%20attire%20with%20New%20Zealand%20Order%20of%20Merit%20medal%20standing%20in%20front%20of%20New%20Zealand%20flag%20with%20green%20background%2C%20professional%20lighting%2C%20corporate%20portrait&image_size=portrait_4_3" 
-                  alt="Lisa Li, Managing Director" 
-                  fill 
-                  className="object-cover"
-                />
+            <Link href="/experts/lisa-li" className="group">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="relative h-64">
+                  <Image 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20Lisa%20Li%20MNZM%20Chinese%20woman%20in%20business%20attire%20with%20New%20Zealand%20Order%20of%20Merit%20medal%20standing%20in%20front%20of%20New%20Zealand%20flag%20with%20green%20background%2C%20professional%20lighting%2C%20corporate%20portrait&image_size=portrait_4_3" 
+                    alt="Lisa Li, Managing Director" 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Lisa Li, MNZM</h3>
+                  <p className="text-primary font-semibold mb-4">Managing Director, CTS Tours</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    Founder of CTS Tours New Zealand and Member of the New Zealand Order of Merit (MNZM) with over 25 years of experience connecting New Zealand and Asia through travel.
+                  </p>
+                  <div className="flex items-center text-primary font-medium">
+                    <span>Learn more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Lisa Li, MNZM</h3>
-                <p className="text-primary font-semibold mb-4">Managing Director, CTS Tours</p>
-                <p className="text-gray-700 leading-relaxed">
-                  Lisa's journey in travel didn't begin with a business plan — it began with a deep, personal connection to two very different worlds. Born in Qinghai and raised in Xi'an, she grew up surrounded by China's history, culture, and everyday life. After starting her career with China Travel Service, she moved to New Zealand in 1998.
-                </p>
-                <p className="text-gray-700 leading-relaxed mt-4">
-                  In 2000, Lisa established the New Zealand branch of China Travel Service. Over the past 25 years, she has built it into one of the most trusted bridges between New Zealand and Asia. In 2025, Lisa was appointed a Member of the New Zealand Order of Merit (MNZM) in recognition of her contribution to the tourism industry.
-                </p>
-              </div>
-            </div>
+            </Link>
             
             {/* Baker Gu */}
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="relative h-80">
-                <Image 
-                  src="/images/experts/baker-gu.jpg" 
-                  alt="Baker Gu, China Specialist" 
-                  fill 
-                  className="object-cover"
-                />
+            <Link href="/experts/baker-gu" className="group">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div className="relative h-64">
+                  <Image 
+                    src="/images/experts/baker-gu.jpg" 
+                    alt="Baker Gu, China Specialist" 
+                    fill 
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Baker Gu</h3>
+                  <p className="text-primary font-semibold mb-4">China Travel Specialist</p>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    With over 15 years of experience in the travel industry, Baker brings unparalleled expertise in Chinese destinations and cultures.
+                  </p>
+                  <div className="flex items-center text-primary font-medium">
+                    <span>Learn more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">Baker Gu</h3>
-                <p className="text-primary font-semibold mb-4">China Travel Specialist</p>
-                <p className="text-gray-700 leading-relaxed">
-                  With over 15 years of experience in the travel industry, Baker Gu brings unparalleled expertise in Chinese destinations and cultures. His passion for sharing the beauty and diversity of China has made him a trusted advisor for countless Kiwi travelers.
-                </p>
-                <p className="text-gray-700 leading-relaxed mt-4">
-                  Baker's deep knowledge of China's history, language, and customs allows him to create authentic travel experiences that go beyond the typical tourist attractions. Whether you're interested in ancient history, natural landscapes, or modern city life, Baker can craft the perfect journey for you.
-                </p>
-              </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -99,32 +110,86 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">TAANZ Membership</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=TAANZ%20Travel%20Agents%20Association%20of%20New%20Zealand%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20green%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="TAANZ Membership" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">TAANZ Membership</h3>
+              </div>
               <p className="text-gray-700">Member of the Travel Agents Association of New Zealand, ensuring professional standards and ethical business practices.</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">IATA Certification</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=IATA%20International%20Air%20Transport%20Association%20logo%2C%20professional%20vector%20logo%2C%20blue%20color%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="IATA Certification" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">IATA Certification</h3>
+              </div>
               <p className="text-gray-700">International Air Transport Association certified, providing access to global airfares and industry resources.</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">Tourism Export Council</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Tourism%20Export%20Council%20of%20New%20Zealand%20logo%2C%20professional%20vector%20logo%2C%20green%20and%20blue%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="Tourism Export Council" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">Tourism Export Council</h3>
+              </div>
               <p className="text-gray-700">Member of the Tourism Export Council of New Zealand, supporting sustainable tourism growth.</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">Auckland Business Chamber</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Auckland%20Business%20Chamber%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20red%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="Auckland Business Chamber" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">Auckland Business Chamber</h3>
+              </div>
               <p className="text-gray-700">Active member of the Auckland Business Chamber, contributing to the local business community.</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">Qualmark</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Qualmark%20New%20Zealand%20tourism%20quality%20assurance%20logo%2C%20professional%20vector%20logo%2C%20green%20color%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="Qualmark" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">Qualmark</h3>
+              </div>
               <p className="text-gray-700">Recognized by Qualmark, New Zealand's official tourism quality assurance organization.</p>
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-bold mb-4">Forté Global Network</h3>
+              <div className="flex items-center mb-4">
+                <div className="w-16 h-16 mr-4">
+                  <img 
+                    src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Fort%C3%A9%20Global%20Network%20Business%20Solutions%20logo%2C%20professional%20vector%20logo%2C%20blue%20and%20gold%20colors%2C%20clean%20design%2C%20transparent%20background&image_size=square" 
+                    alt="Forté Global Network" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-bold">Forté Global Network</h3>
+              </div>
               <p className="text-gray-700">Member of Forté Global Network Business Solutions, providing enhanced travel services and benefits to our clients.</p>
             </div>
           </div>
