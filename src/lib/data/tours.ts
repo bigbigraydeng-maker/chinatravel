@@ -2038,3 +2038,25 @@ export const getDestinationBySlug = (slug: string): Destination | undefined => {
 export const getAllActiveTours = (): Tour[] => {
   return tours.filter(tour => tour.isActive);
 };
+
+export const getToursByCityName = (cityName: string): Tour[] => {
+  const searchTerms = [cityName.toLowerCase()];
+  // Handle Xi'an variants
+  if (cityName.toLowerCase() === "xi'an" || cityName.toLowerCase() === 'xian') {
+    searchTerms.push("xi'an", 'xian', "xi\\'an");
+  }
+
+  return tours.filter(tour => {
+    if (!tour.isActive || tour.destination !== 'china') return false;
+
+    const searchableText = [
+      tour.name,
+      tour.shortDescription,
+      ...tour.highlights,
+      ...tour.itinerary.map(day => day.title),
+      ...tour.itinerary.map(day => day.description)
+    ].join(' ').toLowerCase();
+
+    return searchTerms.some(term => searchableText.includes(term));
+  });
+};

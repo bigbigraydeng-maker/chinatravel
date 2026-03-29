@@ -4,54 +4,14 @@ import SectionTitle from '@/components/SectionTitle';
 
 // 静态目的地数据
 const destinations = [
-  { 
-    id: 1, 
-    name: 'Beijing', 
-    description: 'Home to the Great Wall and Forbidden City', 
-    image_url: '/images/tours/forbidden-city-aerial.jpg' 
-  },
-  { 
-    id: 2, 
-    name: 'Xi\'an', 
-    description: 'Home to the Terracotta Army and ancient city walls', 
-    image_url: '/images/tours/xian-terracotta.jpg' 
-  },
-  { 
-    id: 3, 
-    name: 'Shanghai', 
-    description: 'A modern metropolis with skyscrapers and historical landmarks', 
-    image_url: '/images/tours/shanghai-skyline.jpg' 
-  },
-  { 
-    id: 4, 
-    name: 'Chengdu', 
-    description: 'Famous for pandas and Sichuan cuisine', 
-    image_url: '/images/tours/chengdu-pandas.jpg' 
-  },
-  { 
-    id: 5, 
-    name: 'Guilin', 
-    description: 'Famous for its karst mountains and Li River scenery', 
-    image_url: '/images/tours/guilin-mist.jpg' 
-  },
-  { 
-    id: 6, 
-    name: 'Zhangjiajie', 
-    description: 'Inspiration for Avatar\'s floating mountains', 
-    image_url: '/images/tours/zhangjiajie.jpg' 
-  },
-  { 
-    id: 7, 
-    name: 'Lhasa', 
-    description: 'Home to the Potala Palace and Tibetan culture', 
-    image_url: '/images/tours/shangri-la-monastery-lake.jpg' 
-  },
-  { 
-    id: 8, 
-    name: 'Hangzhou', 
-    description: 'Famous for West Lake and traditional Chinese gardens', 
-    image_url: '/images/tours/suzhou-canal.jpg' 
-  },
+  { id: 1, slug: 'beijing', name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
+  { id: 2, slug: 'xian', name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
+  { id: 3, slug: 'shanghai', name: 'Shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: '/images/tours/shanghai-skyline.jpg' },
+  { id: 4, slug: 'chengdu', name: 'Chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: '/images/tours/chengdu-pandas.jpg' },
+  { id: 5, slug: 'guilin', name: 'Guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: '/images/tours/guilin-mist.jpg' },
+  { id: 6, slug: 'zhangjiajie', name: 'Zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: '/images/tours/zhangjiajie.jpg' },
+  { id: 7, slug: 'lhasa', name: 'Lhasa', description: 'Home to the Potala Palace and Tibetan culture', image_url: '/images/tours/shangri-la-monastery-lake.jpg' },
+  { id: 8, slug: 'hangzhou', name: 'Hangzhou', description: 'Famous for West Lake and traditional Chinese gardens', image_url: '/images/tours/suzhou-canal.jpg' },
 ];
 
 export const metadata: Metadata = {
@@ -101,7 +61,7 @@ const ExplorePage = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2 font-serif">{destination.name}</h3>
                   <p className="text-gray-600 mb-4">{destination.description}</p>
-                  <Link href="#" className="text-primary hover:underline inline-flex items-center gap-2">
+                  <Link href={`/explore/${destination.slug}`} className="text-primary hover:underline inline-flex items-center gap-2">
                     Learn More
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
