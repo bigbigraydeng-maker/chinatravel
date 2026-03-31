@@ -8,11 +8,11 @@ const SectionTitle = ({ subtitle, title, center = false }: SectionTitleProps) =>
   return (
     <div className={`${center ? 'text-center' : ''} mb-16`}>
       {subtitle && (
-        <h3 className="text-sm uppercase tracking-widest text-primary font-bold mb-3 flex items-center gap-3 justify-center">
+        <p className="text-sm uppercase tracking-widest text-primary font-bold mb-3 flex items-center gap-3 justify-center">
           <span className="w-8 h-[2px] bg-gradient-to-r from-transparent to-primary rounded-full"></span>
           {subtitle}
           <span className="w-8 h-[2px] bg-gradient-to-l from-transparent to-primary rounded-full"></span>
-        </h3>
+        </p>
       )}
       <h2 className="text-3xl md:text-5xl font-bold mb-4 font-serif text-accent leading-tight">
         {title}

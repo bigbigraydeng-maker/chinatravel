@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ArticleCardProps {
   title: string;
@@ -11,11 +12,13 @@ const ArticleCard = ({ title, content, image_url, slug }: ArticleCardProps) => {
   return (
     <Link href={`/guide/${slug}`} className="block group">
       <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
-        <div className="overflow-hidden relative">
-          <img
+        <div className="overflow-hidden relative h-52">
+          <Image
             src={image_url}
             alt={title}
-            className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">

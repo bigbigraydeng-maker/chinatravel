@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ExpertHighlightProps {
   name: string;
@@ -22,9 +23,11 @@ const ExpertHighlight = ({ name, title, description, image_url, fullDescription 
               {/* Colorful decorative frame */}
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary/50 rounded-2xl transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"></div>
               <div className="absolute -bottom-4 -right-4 w-full h-full bg-gradient-to-br from-primary/20 via-secondary/15 to-primary/10 rounded-2xl transition-transform duration-500 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
-              <img
+              <Image
                 src={image_url}
                 alt={name}
+                width={500}
+                height={600}
                 className="rounded-2xl shadow-xl w-full relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
               />
               {/* Experience badge */}
@@ -36,10 +39,10 @@ const ExpertHighlight = ({ name, title, description, image_url, fullDescription 
           </div>
           <div className="md:w-3/5">
             <div className="mb-6">
-              <h3 className="text-sm uppercase tracking-widest text-primary font-bold mb-3 flex items-center gap-2">
+              <p className="text-sm uppercase tracking-widest text-primary font-bold mb-3 flex items-center gap-2">
                 <span className="w-8 h-[2px] bg-primary rounded-full"></span>
                 Our Expert
-              </h3>
+              </p>
               <h2 className="text-3xl md:text-4xl font-bold font-serif text-accent">
                 Meet <span className="text-primary">{name}</span>
               </h2>

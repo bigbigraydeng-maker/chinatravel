@@ -25,7 +25,7 @@ const GeoRecommendations = () => {
         const seasonal = getSeasonalRecommendations();
         setSeasonalInfo(seasonal);
       } catch (error) {
-        console.error('Error fetching GEO data:', error);
+        // Silently handle geo data fetch failure
       } finally {
         setLoading(false);
       }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface DestinationCardProps {
   name: string;
@@ -10,11 +11,13 @@ interface DestinationCardProps {
 const DestinationCard = ({ name, description, image_url, slug }: DestinationCardProps) => {
   return (
     <Link href={`/explore/${slug}`} className="group block">
-      <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-        <img
+      <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-72">
+        <Image
           src={image_url}
           alt={name}
-          className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {/* Colorful gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>

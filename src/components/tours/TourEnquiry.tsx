@@ -30,7 +30,7 @@ export default function TourEnquiry({ tourName, tourSlug }: TourEnquiryProps) {
     };
 
     // TODO: Integrate with Go High Level webhook
-    console.log('Tour enquiry:', payload);
+    // TODO: Integrate with Go High Level webhook - send payload
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     setIsSubmitting(false);

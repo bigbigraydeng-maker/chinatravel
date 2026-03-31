@@ -57,7 +57,7 @@ export default function TailorMadeForm() {
     };
 
     // TODO: Integrate with Go High Level webhook
-    console.log('Tailor Made enquiry:', payload);
+    // TODO: Integrate with Go High Level webhook - send payload
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     setIsSubmitting(false);

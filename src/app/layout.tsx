@@ -4,8 +4,18 @@ import '../styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
-const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'CTS Tours - China Travel Specialists for New Zealanders',
@@ -43,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${playfair.className}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="font-sans">
         <Navbar />
         {children}
         <Footer />

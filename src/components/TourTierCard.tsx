@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface TourTierCardProps {
   title: string;
@@ -34,11 +35,13 @@ const TourTierCard = ({
   return (
     <Link href={`/tours/${destination}/${tier}/${slug}`} className="block group">
       <div className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border border-warm-100/50 hover:-translate-y-2`}>
-        <div className="overflow-hidden relative">
-          <img
+        <div className="overflow-hidden relative h-64">
+          <Image
             src={image_url}
             alt={title}
-            className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
           {/* Colorful overlay on hover */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

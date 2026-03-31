@@ -1,16 +1,18 @@
-'use client';
-
 import Link from 'next/link';
+import Image from 'next/image';
 import SearchBar from './SearchBar';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/images/tours/great-wall-mist.jpg"
           alt="Great Wall of China"
-          className="w-full h-full object-cover scale-105 animate-[scaleIn_1.5s_ease-out_forwards]"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover scale-105"
         />
         {/* Colorful vibrant overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-primary/20 to-accent/80"></div>
@@ -21,7 +23,6 @@ const Hero = () => {
       <div className="absolute top-20 left-10 w-20 h-20 border-2 border-secondary/20 rounded-full animate-float-slow z-10"></div>
       <div className="absolute top-40 right-16 w-12 h-12 bg-secondary/10 rounded-full animate-float z-10" style={{ animationDelay: '2s' }}></div>
       <div className="absolute bottom-40 left-20 w-8 h-8 bg-white/10 rounded-full animate-float z-10" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute top-1/3 right-10 text-white/5 text-8xl font-serif select-none animate-float-slow" style={{ animationDelay: '3s' }}>&#9992;</div>
 
       <div className="relative z-10 text-center text-white w-full max-w-5xl mx-auto px-4 py-20">
         <div className="inline-block bg-gradient-to-r from-secondary/30 to-secondary/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 animate-fade-in-up border border-secondary/30">

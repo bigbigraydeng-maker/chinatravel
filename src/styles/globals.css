@@ -14,13 +14,13 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   color: var(--accent);
   background-color: var(--warm-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
 }
 
 /* Warm button styles with lively hover */
@@ -256,4 +256,47 @@ a {
 
 .tag-tailor {
   @apply bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider;
+}
+
+/* ===== ACCESSIBILITY ===== */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-float-slow,
+  .animate-pulse-glow,
+  .animate-gradient,
+  .animate-shimmer {
+    animation: none !important;
+  }
+}
+
+/* Focus visible styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 0;
+  border-color: var(--secondary);
 }

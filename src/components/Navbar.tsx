@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -78,7 +79,7 @@ const Navbar = () => {
     <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-warm-200/50">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <img src="/logo.png" alt="CTS Tours" className="h-12 w-auto" />
+          <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
