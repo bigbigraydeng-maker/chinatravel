@@ -9,30 +9,32 @@
   --light: #F8F6F2;
   --dark: #1F2937;
   --white: #FFFFFF;
+  --warm-bg: #FFF9F5;
+  --warm-border: #FFE8D6;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   color: var(--accent);
-  background-color: var(--white);
+  background-color: var(--warm-bg);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
 
-/* Warmer button styles with larger rounded corners */
+/* Warm button styles */
 .btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg;
+  @apply bg-gradient-to-r from-primary to-primary/90 text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 font-medium;
 }
 
 .btn-secondary {
-  @apply border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/10 transition-all duration-300;
+  @apply border-2 border-primary text-primary px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-all duration-300 font-medium;
 }
 
-/* Warmer card with softer shadow and rounded corners */
+/* Warm card with soft shadow */
 .card {
-  @apply bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300;
+  @apply bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-warm-100/50;
 }
 
 .section {
@@ -43,18 +45,23 @@ h1, h2, h3, h4, h5, h6 {
   @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
 }
 
-/* Warm gradient overlay for sections */
-.warm-gradient {
-  background: linear-gradient(135deg, #F8F6F2 0%, #FFF8F0 50%, #F8F6F2 100%);
-}
-
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection color */
+/* Warm selection color */
 ::selection {
   background-color: var(--secondary);
   color: var(--accent);
+}
+
+/* Warm link hover effect */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Warm divider */
+.warm-divider {
+  @apply w-20 h-1 bg-gradient-to-r from-secondary to-primary rounded-full;
 }

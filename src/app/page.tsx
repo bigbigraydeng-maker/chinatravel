@@ -43,8 +43,9 @@ const HomePage = () => {
       {/* Hero with Search */}
       <Hero />
 
-      {/* Why CTS - warmer styling */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-light">
+      {/* Why CTS */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50 to-warm-50/50 relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4">
           <SectionTitle title="Why CTS" center />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -100,7 +101,8 @@ const HomePage = () => {
       />
 
       {/* Explore China */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-warm-100/50 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Discover" title="Explore China" center />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -118,7 +120,7 @@ const HomePage = () => {
       </section>
 
       {/* Product Tiers */}
-      <section className="py-20 md:py-28 bg-light">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 to-light">
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Our Tours" title="Product Tiers" center />
 
@@ -163,7 +165,8 @@ const HomePage = () => {
       <GeoRecommendations />
 
       {/* China Travel Guide */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-48 h-48 bg-secondary/5 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Resources" title="China Travel Guide" center />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -181,24 +184,21 @@ const HomePage = () => {
       </section>
 
       {/* Heritage / Proof */}
-      <section className="py-20 md:py-28 bg-primary text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="white" />
-          </svg>
-        </div>
+      <section className="py-20 md:py-28 bg-gradient-to-br from-accent via-accent to-primary/80 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="mb-8">
-            <h3 className="text-sm uppercase tracking-wider text-secondary font-semibold mb-4">Legacy</h3>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Backed by Nearly a Century of China Travel Expertise</h2>
-            <div className="w-24 h-1 bg-secondary mx-auto mb-8"></div>
+            <h3 className="text-sm uppercase tracking-widest text-secondary font-semibold mb-4">Legacy</h3>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif leading-tight">Backed by Nearly a Century<br />of China Travel Expertise</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-secondary to-secondary/50 mx-auto mb-8 rounded-full"></div>
           </div>
-          <p className="text-xl mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-xl mb-10 max-w-3xl mx-auto font-light leading-relaxed text-white/85">
             CTS is part of China Travel Service heritage, established in 1928 with direct operational depth across China.
             This is proof of capability, not just background.
           </p>
           <div className="flex justify-center">
-            <a href="/about" className="btn-secondary bg-white text-primary hover:bg-gray-50 text-lg py-4 px-8">Learn Our Story</a>
+            <a href="/about" className="inline-block bg-white text-accent font-semibold text-lg py-4 px-10 rounded-full hover:bg-warm-50 hover:shadow-xl transition-all">Learn Our Story</a>
           </div>
         </div>
       </section>

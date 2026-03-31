@@ -13,6 +13,7 @@ import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 // import ItineraryMap from '@/components/tours/ItineraryMap';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -210,13 +211,16 @@ export default function TourPage({ params }: TourPageProps) {
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
-                <TourEnquiry 
+                <TourEnquiry
                   tourName={tour.name}
                   tourSlug={tour.slug}
                 />
-                
+
+                {/* Testimonials */}
+                <Testimonials variant="sidebar" tourFilter={tour.tier} />
+
                 {/* Quick Info Card */}
-                <div className="bg-gray-50 rounded-lg p-6">
+                <div className="bg-warm-50 rounded-2xl p-6 border border-warm-100">
                   <h3 className="font-serif font-bold text-lg mb-4">Quick Info</h3>
                   <dl className="space-y-3">
                     <div>
