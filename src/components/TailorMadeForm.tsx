@@ -99,7 +99,7 @@ export default function TailorMadeForm() {
           <div>
             <label htmlFor="tm-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
             <input type="tel" id="tm-phone" name="phone" value={formData.phone} onChange={handleChange}
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="+64 21 123 4567" />
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="+64 / 0800 287 888" />
           </div>
           <div>
             <label htmlFor="tm-country" className="block text-sm font-medium text-gray-700 mb-1">Country *</label>

@@ -88,7 +88,7 @@ export default function TourEnquiry({ tourName, tourSlug }: TourEnquiryProps) {
             <label htmlFor="eq-phone" className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
             <input type="tel" id="eq-phone" name="phone" required value={formData.phone} onChange={handleChange}
               className="w-full px-4 py-3 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
-              placeholder="+64 21 123 4567" />
+              placeholder="+64 / 0800 287 888" />
           </div>
 
           <div>

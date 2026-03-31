@@ -161,7 +161,7 @@ const HomePage = () => {
               {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
               <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
               ) : null; })()}
-              {(() => { const t = getTourBySlug('china', 'discovery', 'highlights'); return t ? (
+              {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
               <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
               ) : null; })()}
             </div>
