@@ -179,7 +179,7 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden lg:block">
-          <Link href="/contact" className="bg-primary text-white px-6 py-2.5 rounded-full hover:bg-primary/90 transition-all hover:shadow-lg font-medium">
+          <Link href="/contact" className="bg-gradient-to-r from-primary to-red-500 text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-primary/20 transition-all font-medium hover:-translate-y-0.5 hover:scale-105 animate-pulse-glow">
             Plan Your Journey
           </Link>
         </div>

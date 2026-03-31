@@ -7,6 +7,7 @@ import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
 import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
+import StatsCounter from '@/components/StatsCounter';
 import GeoRecommendations from '@/components/GeoRecommendations';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
@@ -43,9 +44,13 @@ const HomePage = () => {
       {/* Hero with Search */}
       <Hero />
 
+      {/* Stats Counter — immediate impact */}
+      <StatsCounter />
+
       {/* Why CTS */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50 to-warm-50/50 relative overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-secondary/5 rounded-full blur-3xl"></div>
+      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50/30 relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-secondary/8 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 left-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
         <div className="container mx-auto px-4">
           <SectionTitle title="Why CTS" center />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -100,9 +105,10 @@ const HomePage = () => {
         image_url="/images/baker-gu-portrait.jpg"
       />
 
-      {/* Explore China */}
-      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-60 h-60 bg-warm-100/50 rounded-full blur-3xl"></div>
+      {/* Explore China — vibrant section */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/30 to-white relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-emerald-100/30 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute top-20 right-0 w-40 h-40 bg-sky-100/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Discover" title="Explore China" center />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -120,15 +126,18 @@ const HomePage = () => {
       </section>
 
       {/* Product Tiers */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 to-light">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-warm-100/30 to-warm-50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-100/20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Our Tours" title="Product Tiers" center />
 
           {/* China Signature */}
           <div className="mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">China Signature</h3>
-              <div className="w-16 h-1 bg-secondary"></div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-sm font-bold px-5 py-2 rounded-full uppercase tracking-wider">
+                Signature
+              </div>
+              <div className="flex-1 h-[2px] bg-gradient-to-r from-amber-200 to-transparent rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
@@ -142,9 +151,11 @@ const HomePage = () => {
 
           {/* China Discovery */}
           <div>
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-2xl font-semibold font-serif">China Discovery</h3>
-              <div className="w-16 h-1 bg-secondary"></div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-sm font-bold px-5 py-2 rounded-full uppercase tracking-wider">
+                Discovery
+              </div>
+              <div className="flex-1 h-[2px] bg-gradient-to-r from-emerald-200 to-transparent rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
@@ -165,8 +176,9 @@ const HomePage = () => {
       <GeoRecommendations />
 
       {/* China Travel Guide */}
-      <section className="py-20 md:py-28 bg-white relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-48 h-48 bg-secondary/5 rounded-full blur-3xl"></div>
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">
+        <div className="absolute top-10 right-10 w-48 h-48 bg-purple-100/20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-10 left-10 w-36 h-36 bg-sky-100/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="container mx-auto px-4">
           <SectionTitle subtitle="Resources" title="China Travel Guide" center />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -184,21 +196,33 @@ const HomePage = () => {
       </section>
 
       {/* Heritage / Proof */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-accent via-accent to-primary/80 text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+      <section className="py-20 md:py-28 bg-gradient-to-br from-accent via-gray-800 to-accent text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
+        {/* Dot pattern */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="mb-8">
-            <h3 className="text-sm uppercase tracking-widest text-secondary font-semibold mb-4">Legacy</h3>
+            <div className="inline-block bg-secondary/20 backdrop-blur-sm rounded-full px-5 py-2 mb-6 border border-secondary/30">
+              <h3 className="text-sm uppercase tracking-widest text-secondary font-semibold">Legacy</h3>
+            </div>
             <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif leading-tight">Backed by Nearly a Century<br />of China Travel Expertise</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-secondary to-secondary/50 mx-auto mb-8 rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-secondary via-white/30 to-secondary mx-auto mb-8 rounded-full"></div>
           </div>
           <p className="text-xl mb-10 max-w-3xl mx-auto font-light leading-relaxed text-white/85">
             CTS is part of China Travel Service heritage, established in 1928 with direct operational depth across China.
             This is proof of capability, not just background.
           </p>
           <div className="flex justify-center">
-            <a href="/about" className="inline-block bg-white text-accent font-semibold text-lg py-4 px-10 rounded-full hover:bg-warm-50 hover:shadow-xl transition-all">Learn Our Story</a>
+            <a href="/about" className="inline-flex items-center gap-2 bg-white text-accent font-semibold text-lg py-4 px-10 rounded-full hover:bg-secondary hover:text-white hover:shadow-2xl hover:shadow-secondary/30 transition-all hover:-translate-y-1 hover:scale-105">
+              Learn Our Story
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>

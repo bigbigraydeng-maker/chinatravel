@@ -337,26 +337,35 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
 
   // Full variant (homepage)
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-secondary/5 blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-primary/5 blur-3xl"></div>
+    <section className="py-20 md:py-28 bg-gradient-to-br from-amber-50/50 via-white to-sky-50/30 relative overflow-hidden">
+      {/* Colorful decorative elements */}
+      <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-amber-200/20 blur-3xl animate-float-slow"></div>
+      <div className="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-rose-200/15 blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-emerald-100/10 blur-3xl"></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-14">
-          <p className="text-primary font-semibold uppercase tracking-wider mb-2 text-sm">What Our Travellers Say</p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-accent">Traveller Stories</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-secondary to-primary mx-auto mt-4 rounded-full"></div>
+          <div className="inline-flex items-center gap-2 bg-amber-50 rounded-full px-5 py-2 mb-4 border border-amber-200/50">
+            <svg className="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <p className="text-primary font-bold uppercase tracking-wider text-sm">What Our Travellers Say</p>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold text-accent">Traveller Stories</h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary via-secondary to-primary mx-auto mt-4 rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {getVisibleItems().map((item, idx) => (
             <div key={`${item.name}-${currentIndex}-${idx}`}
-              className="bg-white rounded-2xl shadow-md p-8 hover:shadow-xl transition-all duration-500 relative border border-warm-100/50">
-              <div className="absolute top-4 right-6 text-6xl text-primary/5 font-serif leading-none select-none">&rdquo;</div>
+              className="bg-white rounded-2xl shadow-md p-8 hover:shadow-2xl transition-all duration-500 relative border border-warm-100/50 hover:-translate-y-2 group">
+              <div className="absolute top-4 right-6 text-7xl text-primary/8 font-serif leading-none select-none">&rdquo;</div>
+
+              {/* Colorful top accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary rounded-t-2xl"></div>
 
               <div className="flex items-center gap-4 mb-5">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-lg shadow-md">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary via-red-400 to-secondary flex items-center justify-center text-white font-bold text-lg shadow-lg group-hover:scale-110 transition-transform duration-300">
                   {item.avatar}
                 </div>
                 <div>
@@ -385,7 +394,7 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
               key={idx}
               onClick={() => setCurrentIndex(idx)}
               className={`h-2.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex % displayTestimonials.length ? 'bg-primary w-8' : 'bg-gray-300 hover:bg-gray-400 w-2.5'
+                idx === currentIndex % displayTestimonials.length ? 'bg-gradient-to-r from-primary to-secondary w-8' : 'bg-gray-300 hover:bg-secondary w-2.5'
               }`}
               aria-label={`Go to testimonial ${idx + 1}`}
             />

@@ -12,6 +12,12 @@ interface TourTierCardProps {
   isPremium?: boolean;
 }
 
+const tierColors = {
+  signature: { tag: 'from-amber-400 to-orange-500', glow: 'group-hover:shadow-amber-200/30' },
+  discovery: { tag: 'from-emerald-400 to-teal-500', glow: 'group-hover:shadow-emerald-200/30' },
+  stopover: { tag: 'from-sky-400 to-blue-500', glow: 'group-hover:shadow-sky-200/30' },
+};
+
 const TourTierCard = ({
   title,
   description,
@@ -23,24 +29,33 @@ const TourTierCard = ({
   destination = 'china',
   isPremium = false
 }: TourTierCardProps) => {
+  const colors = tierColors[tier];
+
   return (
     <Link href={`/tours/${destination}/${tier}/${slug}`} className="block group">
-      <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-warm-100/50 hover:-translate-y-1">
+      <div className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border border-warm-100/50 hover:-translate-y-2`}>
         <div className="overflow-hidden relative">
           <img
             src={image_url}
             alt={title}
             className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          {isPremium && (
-            <div className="absolute top-4 left-4 bg-gradient-to-r from-secondary to-secondary/80 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              Signature
-            </div>
-          )}
+          {/* Colorful overlay on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+          {/* Tier badge with vibrant colors */}
+          <div className={`absolute top-4 left-4 bg-gradient-to-r ${colors.tag} text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg`}>
+            {tier}
+          </div>
+
+          {/* Price tag */}
+          <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-primary font-bold text-lg px-4 py-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            {price}
+          </div>
         </div>
         <div className="p-6">
           <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{title}</h4>
-          <p className="text-gray-500 mb-5 leading-relaxed">{description}</p>
+          <p className="text-gray-500 mb-5 leading-relaxed text-sm">{description}</p>
           <div className="flex justify-between items-center mb-5">
             <span className="text-gray-600 flex items-center gap-2 text-sm">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -51,13 +66,13 @@ const TourTierCard = ({
             <span className="text-primary font-bold text-lg">{price}</span>
           </div>
           <div
-            className={`inline-block w-full text-center py-3 rounded-full font-medium transition-all ${
+            className={`inline-block w-full text-center py-3 rounded-full font-medium transition-all duration-300 ${
               isPremium
-                ? 'bg-gradient-to-r from-primary to-primary/90 text-white group-hover:shadow-lg'
-                : 'border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white'
+                ? `bg-gradient-to-r ${colors.tag} text-white group-hover:shadow-lg group-hover:scale-[1.02]`
+                : 'border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-[1.02]'
             }`}
           >
-            View Details
+            View Details →
           </div>
         </div>
       </div>
