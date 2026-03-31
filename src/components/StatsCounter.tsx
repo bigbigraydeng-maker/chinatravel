@@ -11,10 +11,10 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: 98, suffix: '', label: 'Years of Heritage', icon: '🏛️', color: 'from-amber-400 to-orange-500' },
-  { value: 10000, suffix: '+', label: 'Happy Travellers', icon: '😊', color: 'from-emerald-400 to-teal-500' },
-  { value: 50, suffix: '+', label: 'Unique Tours', icon: '🗺️', color: 'from-sky-400 to-blue-500' },
-  { value: 30, suffix: '+', label: 'Destinations', icon: '📍', color: 'from-purple-400 to-pink-500' },
+  { value: 98, suffix: '', label: 'Years in China', icon: '🏛️', color: 'from-amber-400 to-orange-500' },
+  { value: 10000, suffix: '+', label: 'Kiwis Shown China', icon: '😊', color: 'from-emerald-400 to-teal-500' },
+  { value: 50, suffix: '+', label: 'Handcrafted Journeys', icon: '🗺️', color: 'from-sky-400 to-blue-500' },
+  { value: 30, suffix: '+', label: 'Destinations Explored', icon: '📍', color: 'from-purple-400 to-pink-500' },
 ];
 
 function AnimatedNumber({ target, suffix, isVisible }: { target: number; suffix: string; isVisible: boolean }) {

@@ -61,7 +61,7 @@ const HomePage = () => {
                 </svg>
               }
               title="China Specialists"
-              description="Expert knowledge and experience in Chinese travel"
+              description="We don't just know China — we live it. Our team has spent years on the ground so you don't miss a thing."
             />
             <FeatureCard
               icon={
@@ -69,8 +69,8 @@ const HomePage = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               }
-              title="98 Years Heritage"
-              description="Decades of experience in providing quality travel services"
+              title="98 Years in China"
+              description="Founded in 1928, we've been taking travellers to China longer than most airlines have existed."
             />
             <FeatureCard
               icon={
@@ -80,7 +80,7 @@ const HomePage = () => {
                 </svg>
               }
               title="Direct Operations"
-              description="Local presence in China for seamless travel experiences"
+              description="Our own offices and guides in China mean no middlemen, no surprises — just seamless travel from day one."
             />
             <FeatureCard
               icon={
@@ -90,7 +90,7 @@ const HomePage = () => {
                 </svg>
               }
               title="Authentic Access"
-              description="Unique experiences and insider access to Chinese culture"
+              description="Small groups, local guides, off-the-beaten-track stops. The China that most tourists never get to see."
             />
           </div>
         </div>
@@ -129,7 +129,7 @@ const HomePage = () => {
       <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-warm-100/30 to-warm-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-amber-100/20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="container mx-auto px-4">
-          <SectionTitle subtitle="Our Tours" title="Product Tiers" center />
+          <SectionTitle subtitle="Our Tours" title="Choose Your Journey" center />
 
           {/* China Signature */}
           <div className="mb-20">
@@ -141,10 +141,10 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium route={['Beijing', "Xi'an", 'Guilin', 'Shanghai']} />
               ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'signature', 'grand-tour'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium route={['Beijing', "Xi'an", 'Chengdu', 'Guilin', 'Shanghai']} />
               ) : null; })()}
             </div>
           </div>
@@ -159,10 +159,10 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" route={['Beijing', 'Shanghai']} />
               ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" route={["Beijing", "Xi'an", 'Shanghai']} />
               ) : null; })()}
             </div>
           </div>

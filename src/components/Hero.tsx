@@ -19,28 +19,22 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/25 via-transparent to-secondary/20"></div>
       </div>
 
-      {/* Floating decorative elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 border-2 border-secondary/20 rounded-full animate-float-slow z-10"></div>
-      <div className="absolute top-40 right-16 w-12 h-12 bg-secondary/10 rounded-full animate-float z-10" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute bottom-40 left-20 w-8 h-8 bg-white/10 rounded-full animate-float z-10" style={{ animationDelay: '1s' }}></div>
-
       <div className="relative z-10 text-center text-white w-full max-w-5xl mx-auto px-4 py-20">
-        <div className="inline-block bg-gradient-to-r from-secondary/30 to-secondary/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6 animate-fade-in-up border border-secondary/30">
-          <p className="text-secondary font-semibold uppercase tracking-widest text-sm flex items-center gap-2">
-            <span className="inline-block w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-            Since 1928
-            <span className="inline-block w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+        <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-fade-in-up border border-white/20">
+          <p className="text-white/90 font-medium tracking-widest text-sm uppercase">
+            New Zealand's China Specialists &nbsp;·&nbsp; Since 1928
           </p>
         </div>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-5 font-serif tracking-tight leading-tight animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          China Travel<br />
-          <span className="bg-gradient-to-r from-white via-secondary/90 to-white bg-clip-text text-transparent">Specialists</span>
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-serif tracking-tight leading-[1.05] animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          China.<br />
+          <span className="text-secondary">All of it.</span>
         </h1>
-        <p className="text-xl md:text-2xl mb-3 font-light text-white/95 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          Discover China with experts who know it best.
+        <p className="text-xl md:text-2xl mb-4 font-light text-white/90 max-w-2xl mx-auto animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.4s' }}>
+          Ancient dynasties. Electric cities. Misty mountains.<br className="hidden md:block" />
+          The China that takes your breath away — we'll take you there.
         </p>
-        <p className="text-base mb-10 font-light tracking-wide text-white/70 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          Direct China operations &bull; 98 years heritage &bull; Authentic access
+        <p className="text-sm mb-10 font-light tracking-widest text-white/50 uppercase animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+          Direct operations &nbsp;·&nbsp; Small groups &nbsp;·&nbsp; Authentic access
         </p>
 
         {/* Search Bar */}

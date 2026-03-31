@@ -11,12 +11,19 @@ interface TourTierCardProps {
   tier: 'signature' | 'discovery' | 'stopover';
   destination?: string;
   isPremium?: boolean;
+  route?: string[];
 }
 
 const tierColors = {
   signature: { tag: 'from-amber-400 to-orange-500', glow: 'group-hover:shadow-amber-200/30' },
   discovery: { tag: 'from-emerald-400 to-teal-500', glow: 'group-hover:shadow-emerald-200/30' },
   stopover: { tag: 'from-sky-400 to-blue-500', glow: 'group-hover:shadow-sky-200/30' },
+};
+
+const tierCTA = {
+  signature: 'Explore This Journey →',
+  discovery: 'See the Itinerary →',
+  stopover: 'View Details →',
 };
 
 const TourTierCard = ({
@@ -28,7 +35,8 @@ const TourTierCard = ({
   slug,
   tier,
   destination = 'china',
-  isPremium = false
+  isPremium = false,
+  route = [],
 }: TourTierCardProps) => {
   const colors = tierColors[tier];
 
@@ -43,21 +51,34 @@ const TourTierCard = ({
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          {/* Colorful overlay on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          {/* Gradient overlay — always visible at bottom for route strip */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
 
-          {/* Tier badge with vibrant colors */}
+          {/* Tier badge */}
           <div className={`absolute top-4 left-4 bg-gradient-to-r ${colors.tag} text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg`}>
             {tier}
           </div>
 
-          {/* Price tag */}
-          <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm text-primary font-bold text-lg px-4 py-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-            {price}
-          </div>
+          {/* Route strip — pinned to bottom of image */}
+          {route.length > 0 && (
+            <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
+              <div className="flex items-center gap-1 flex-wrap">
+                {route.map((city, i) => (
+                  <span key={city} className="flex items-center gap-1">
+                    <span className="text-white text-xs font-semibold tracking-wide drop-shadow">{city}</span>
+                    {i < route.length - 1 && (
+                      <svg className="w-3 h-3 text-white/60 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                      </svg>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <div className="p-6">
-          <h4 className="text-xl font-semibold mb-3 font-serif group-hover:text-primary transition-colors">{title}</h4>
+          <h4 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{title}</h4>
           <p className="text-gray-500 mb-5 leading-relaxed text-sm">{description}</p>
           <div className="flex justify-between items-center mb-5">
             <span className="text-gray-600 flex items-center gap-2 text-sm">
@@ -75,7 +96,7 @@ const TourTierCard = ({
                 : 'border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-[1.02]'
             }`}
           >
-            View Details →
+            {tierCTA[tier]}
           </div>
         </div>
       </div>
