@@ -32,9 +32,15 @@ export default function AboutPage() {
               </p>
               
               <h3 className="text-2xl font-bold mb-4">Our Brands</h3>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed mb-4">
                 In addition to CTS Tours, we also operate under the Asiascape Holidays brand, offering specialized travel experiences across Asia. Both brands share our commitment to quality, authenticity, and customer satisfaction.
               </p>
+              <Link href="/about/asian-escapes" className="inline-flex items-center gap-2 text-primary font-semibold hover:underline">
+                Learn more about Asiascape Holidays
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
           </div>
         </div>

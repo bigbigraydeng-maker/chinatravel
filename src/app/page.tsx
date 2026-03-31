@@ -8,6 +8,7 @@ import TourTierCard from '@/components/TourTierCard';
 import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
 import GeoRecommendations from '@/components/GeoRecommendations';
+import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
 
 export const metadata: Metadata = {
@@ -22,7 +23,6 @@ export const metadata: Metadata = {
 };
 
 const HomePage = () => {
-  // 静态数据
   const destinations = [
     { name: 'Beijing', slug: 'beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
     { name: 'Xi\'an', slug: 'xian', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
@@ -40,18 +40,15 @@ const HomePage = () => {
 
   return (
     <div>
-      {/* 1. Navbar */}
-      {/* Navbar is included in layout.tsx */}
-
-      {/* 2. Hero 区 */}
+      {/* Hero with Search */}
       <Hero />
 
-      {/* 3. Why CTS */}
-      <section className="section bg-white">
-        <div className="container">
+      {/* Why CTS - warmer styling */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-light">
+        <div className="container mx-auto px-4">
           <SectionTitle title="Why CTS" center />
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <FeatureCard 
+            <FeatureCard
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -60,7 +57,7 @@ const HomePage = () => {
               title="China Specialists"
               description="Expert knowledge and experience in Chinese travel"
             />
-            <FeatureCard 
+            <FeatureCard
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -69,7 +66,7 @@ const HomePage = () => {
               title="98 Years Heritage"
               description="Decades of experience in providing quality travel services"
             />
-            <FeatureCard 
+            <FeatureCard
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -79,7 +76,7 @@ const HomePage = () => {
               title="Direct Operations"
               description="Local presence in China for seamless travel experiences"
             />
-            <FeatureCard 
+            <FeatureCard
               icon={
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -93,8 +90,8 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 4. Baker Gu 专家模块 */}
-      <ExpertHighlight 
+      {/* Baker Gu Expert */}
+      <ExpertHighlight
         name="Baker Gu"
         title="China Travel Specialist"
         description="With over 20 years of experience in the Chinese travel industry, Baker Gu is our lead specialist. His deep knowledge of China's culture, history, and hidden gems ensures that our clients receive authentic and unforgettable travel experiences."
@@ -102,9 +99,9 @@ const HomePage = () => {
         image_url="/images/baker-gu-portrait.jpg"
       />
 
-      {/* 5. Explore China */}
-      <section className="section bg-white">
-        <div className="container">
+      {/* Explore China */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container mx-auto px-4">
           <SectionTitle subtitle="Discover" title="Explore China" center />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {destinations.map((destination, index) => (
@@ -120,12 +117,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 6. Two Product Tiers */}
-      <section className="section bg-light">
-        <div className="container">
+      {/* Product Tiers */}
+      <section className="py-20 md:py-28 bg-light">
+        <div className="container mx-auto px-4">
           <SectionTitle subtitle="Our Tours" title="Product Tiers" center />
-          
-          {/* China Signature Collection */}
+
+          {/* China Signature */}
           <div className="mb-20">
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-semibold font-serif">China Signature</h3>
@@ -133,31 +130,15 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
-              <TourTierCard
-                title={t.name}
-                description={t.shortDescription}
-                duration={t.duration}
-                price={t.price}
-                image_url={t.heroImage}
-                slug={t.slug}
-                tier="signature"
-                isPremium
-              />) : null; })()}
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium />
+              ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'signature', 'grand-tour'); return t ? (
-              <TourTierCard
-                title={t.name}
-                description={t.shortDescription}
-                duration={t.duration}
-                price={t.price}
-                image_url={t.heroImage}
-                slug={t.slug}
-                tier="signature"
-                isPremium
-              />) : null; })()}
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium />
+              ) : null; })()}
             </div>
           </div>
 
-          {/* China Discovery Collection */}
+          {/* China Discovery */}
           <div>
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-2xl font-semibold font-serif">China Discovery</h3>
@@ -165,40 +146,29 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
-              <TourTierCard
-                title={t.name}
-                description={t.shortDescription}
-                duration={t.duration}
-                price={t.price}
-                image_url={t.heroImage}
-                slug={t.slug}
-                tier="discovery"
-              />) : null; })()}
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
+              ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'discovery', 'highlights'); return t ? (
-              <TourTierCard
-                title={t.name}
-                description={t.shortDescription}
-                duration={t.duration}
-                price={t.price}
-                image_url={t.heroImage}
-                slug={t.slug}
-                tier="discovery"
-              />) : null; })()}
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" />
+              ) : null; })()}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. Personalized Recommendations */}
+      {/* Testimonials */}
+      <Testimonials />
+
+      {/* Personalized Recommendations */}
       <GeoRecommendations />
 
-      {/* 8. China Travel Guide */}
-      <section className="section bg-white">
-        <div className="container">
+      {/* China Travel Guide */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container mx-auto px-4">
           <SectionTitle subtitle="Resources" title="China Travel Guide" center />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {articles.map((article, index) => (
-              <ArticleCard 
+              <ArticleCard
                 key={index}
                 title={article.title}
                 content={article.content}
@@ -210,21 +180,21 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 8. Heritage / Proof 模块 */}
-      <section className="section bg-primary text-white relative overflow-hidden">
+      {/* Heritage / Proof */}
+      <section className="py-20 md:py-28 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
             <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="white" />
           </svg>
         </div>
-        <div className="container text-center relative z-10">
+        <div className="container mx-auto px-4 text-center relative z-10">
           <div className="mb-8">
             <h3 className="text-sm uppercase tracking-wider text-secondary font-semibold mb-4">Legacy</h3>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">Backed by Nearly a Century of China Travel Expertise</h2>
             <div className="w-24 h-1 bg-secondary mx-auto mb-8"></div>
           </div>
           <p className="text-xl mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            CTS is part of China Travel Service heritage, established in 1928 with direct operational depth across China. 
+            CTS is part of China Travel Service heritage, established in 1928 with direct operational depth across China.
             This is proof of capability, not just background.
           </p>
           <div className="flex justify-center">
@@ -233,18 +203,15 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 9. CTA */}
-      <CTASection 
+      {/* CTA */}
+      <CTASection
         title="Plan Your China Journey"
         description="Let our China specialists create a tailor-made itinerary for your perfect journey."
-        primaryButtonText="Contact CTS"
-        primaryButtonLink="/contact"
+        primaryButtonText="Tailor My Trip"
+        primaryButtonLink="/tailor-made"
         secondaryButtonText="Explore Tours"
         secondaryButtonLink="/tours"
       />
-
-      {/* 10. Footer */}
-      {/* Footer is included in layout.tsx */}
     </div>
   );
 };

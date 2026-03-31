@@ -14,23 +14,25 @@
 body {
   font-family: 'Inter', sans-serif;
   color: var(--accent);
-  background-color: var(--light);
+  background-color: var(--white);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
 }
 
+/* Warmer button styles with larger rounded corners */
 .btn-primary {
-  @apply bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 transition-colors duration-300;
+  @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-all duration-300 hover:shadow-lg;
 }
 
 .btn-secondary {
-  @apply border border-primary text-primary px-6 py-3 rounded-md hover:bg-primary/10 transition-colors duration-300;
+  @apply border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/10 transition-all duration-300;
 }
 
+/* Warmer card with softer shadow and rounded corners */
 .card {
-  @apply bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300;
+  @apply bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300;
 }
 
 .section {
@@ -39,4 +41,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .container {
   @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
+}
+
+/* Warm gradient overlay for sections */
+.warm-gradient {
+  background: linear-gradient(135deg, #F8F6F2 0%, #FFF8F0 50%, #F8F6F2 100%);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--secondary);
+  color: var(--accent);
 }
