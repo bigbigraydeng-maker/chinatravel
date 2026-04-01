@@ -48,7 +48,8 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       tour.name,
       'CTS Tours',
       'China travel',
-      'Asia tours'
+      'Asia tours',
+      ...(tour.tags ?? []),
     ],
     openGraph: {
       title: tour.title,
@@ -174,6 +175,8 @@ export default function TourPage({ params }: TourPageProps) {
         price={tour.price}
         heroImage={tour.heroImage}
         tier={tour.tier}
+        tags={tour.tags}
+        departureDates={tour.departureDates}
       />
 
       {/* Tour Content */}

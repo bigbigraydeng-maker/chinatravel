@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { slugifyTourTag } from '@/lib/data/tours';
 
 interface TourHeroProps {
   title: string;
@@ -9,15 +10,19 @@ interface TourHeroProps {
   price: string;
   heroImage: string;
   tier: string;
+  tags?: string[];
+  departureDates?: string[];
 }
 
-export default function TourHero({ 
-  title, 
-  shortDescription, 
-  duration, 
-  price, 
+export default function TourHero({
+  title,
+  shortDescription,
+  duration,
+  price,
   heroImage,
-  tier 
+  tier,
+  tags,
+  departureDates,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -54,6 +59,27 @@ export default function TourHero({
           <p className="text-xl text-white/90 mb-8 max-w-2xl">
             {shortDescription}
           </p>
+
+          {departureDates && departureDates.length > 0 && (
+            <div className="mb-6 max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-white/70 mb-2">Departure dates</p>
+              <p className="text-lg text-white">{departureDates.join(' · ')}</p>
+            </div>
+          )}
+
+          {tags && tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-8 max-w-3xl">
+              {tags.map((label) => (
+                <Link
+                  key={label}
+                  href={`/tours/find?tag=${encodeURIComponent(slugifyTourTag(label))}`}
+                  className="text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/25 backdrop-blur-sm hover:bg-white/25 transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* Quick Info */}
           <div className="flex flex-wrap gap-6 mb-8">

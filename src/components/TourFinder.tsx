@@ -1,31 +1,35 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect, useMemo } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-
-interface TourData {
-  id: string;
-  slug: string;
-  destination: string;
-  tier: string;
-  name: string;
-  shortDescription: string;
-  duration: string;
-  price: string;
-  heroImage: string;
-  highlights: string[];
-}
+import {
+  type Tour,
+  collectTourTagSummaries,
+  slugifyTourTag,
+  tourHasTagSlug,
+} from '@/lib/data/tours';
 
 interface TourFinderProps {
-  tours: TourData[];
+  tours: Tour[];
 }
 
 export default function TourFinder({ tours }: TourFinderProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') || '');
   const [destination, setDestination] = useState(searchParams.get('destination') || '');
   const [interest, setInterest] = useState(searchParams.get('interest') || '');
+  const [tagSlug, setTagSlug] = useState(searchParams.get('tag') || '');
+
+  useEffect(() => {
+    setQuery(searchParams.get('q') || '');
+    setDestination(searchParams.get('destination') || '');
+    setInterest(searchParams.get('interest') || '');
+    setTagSlug(searchParams.get('tag') || '');
+  }, [searchParams]);
+
+  const tagSummaries = useMemo(() => collectTourTagSummaries(tours), [tours]);
 
   const interestKeywords: Record<string, string[]> = {
     culture: ['culture', 'history', 'heritage', 'temple', 'forbidden city', 'terracotta', 'ancient', 'museum', 'palace'],
@@ -36,17 +40,37 @@ export default function TourFinder({ tours }: TourFinderProps) {
     photography: ['photography', 'photo', 'scenic', 'sunrise', 'landscape', 'view'],
   };
 
-  const filtered = tours.filter(tour => {
-    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tour.destination} ${tour.tier}`.toLowerCase();
+  const filtered = tours.filter((tour) => {
+    const tagBlob = (tour.tags ?? []).join(' ').toLowerCase();
+    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tagBlob} ${tour.destination} ${tour.tier}`.toLowerCase();
 
-    if (query && !searchText.includes(query.toLowerCase())) return false;
+    if (query) {
+      const q = query.toLowerCase().trim();
+      const matchesFreeText = searchText.includes(q);
+      const matchesTag = (tour.tags ?? []).some((label) => {
+        const s = slugifyTourTag(label);
+        return s.includes(q.replace(/\s+/g, '-')) || label.toLowerCase().includes(q);
+      });
+      if (!matchesFreeText && !matchesTag) return false;
+    }
     if (destination && tour.destination !== destination) return false;
     if (interest && interestKeywords[interest]) {
       const keywords = interestKeywords[interest];
       if (!keywords.some(kw => searchText.includes(kw))) return false;
     }
+    if (tagSlug && !tourHasTagSlug(tour, tagSlug)) return false;
     return true;
   });
+
+  const hasActiveFilters = Boolean(query || destination || interest || tagSlug);
+
+  const clearAll = () => {
+    setQuery('');
+    setDestination('');
+    setInterest('');
+    setTagSlug('');
+    router.replace('/tours/find', { scroll: false });
+  };
 
   return (
     <div>
@@ -63,7 +87,7 @@ export default function TourFinder({ tours }: TourFinderProps) {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search tours, destinations, experiences..."
+                placeholder="Tours, interests, or tags (e.g. Mogao Caves, Peking duck)…"
                 className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
               />
             </div>
@@ -92,11 +116,35 @@ export default function TourFinder({ tours }: TourFinderProps) {
             </select>
           </div>
         </div>
-        {(query || destination || interest) && (
-          <div className="mt-4 flex items-center gap-2">
+
+        {tagSummaries.length > 0 && (
+          <div className="mt-6 pt-6 border-t border-gray-100">
+            <p className="text-sm font-medium text-gray-700 mb-3">Browse by tag</p>
+            <div className="flex flex-wrap gap-2">
+              <Link
+                href="/tours/find"
+                className={`text-xs font-medium px-3 py-1.5 rounded-full border transition-colors ${!tagSlug ? 'bg-primary text-white border-primary' : 'border-gray-200 text-gray-700 hover:border-primary/40 hover:text-primary'}`}
+              >
+                All tags
+              </Link>
+              {tagSummaries.map(({ slug, label, count }) => (
+                <Link
+                  key={slug}
+                  href={`/tours/find?tag=${encodeURIComponent(slug)}`}
+                  className={`text-xs font-medium px-3 py-1.5 rounded-full border transition-colors ${tagSlug === slug ? 'bg-primary text-white border-primary' : 'border-gray-200 text-gray-700 hover:border-primary/40 hover:text-primary'}`}
+                >
+                  {label}
+                  <span className={`ml-1 opacity-80 ${tagSlug === slug ? '' : 'text-gray-500'}`}>({count})</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {hasActiveFilters && (
+          <div className="mt-4 flex items-center gap-2 flex-wrap">
             <span className="text-sm text-gray-500">{filtered.length} tour{filtered.length !== 1 ? 's' : ''} found</span>
-            <button onClick={() => { setQuery(''); setDestination(''); setInterest(''); }}
-              className="text-sm text-primary hover:underline">Clear filters</button>
+            <button type="button" onClick={clearAll} className="text-sm text-primary hover:underline">Clear filters</button>
           </div>
         )}
       </div>
@@ -132,6 +180,21 @@ export default function TourFinder({ tours }: TourFinderProps) {
                 </div>
                 <h3 className="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{tour.name}</h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-3">{tour.shortDescription}</p>
+                {tour.tags && tour.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {tour.tags.slice(0, 4).map((label) => (
+                      <span
+                        key={label}
+                        className="text-[10px] font-medium uppercase tracking-wide text-primary/90 bg-primary/5 px-2 py-0.5 rounded"
+                      >
+                        {label}
+                      </span>
+                    ))}
+                    {tour.tags.length > 4 ? (
+                      <span className="text-[10px] text-gray-500 self-center">+{tour.tags.length - 4}</span>
+                    ) : null}
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-primary">{tour.price}</span>
                   <span className="text-sm text-primary font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">

@@ -12,19 +12,6 @@ export const metadata: Metadata = {
 export default function FindTourPage() {
   const allTours = getAllActiveTours();
 
-  const tourData = allTours.map(t => ({
-    id: t.id,
-    slug: t.slug,
-    destination: t.destination,
-    tier: t.tier,
-    name: t.name,
-    shortDescription: t.shortDescription,
-    duration: t.duration,
-    price: t.price,
-    heroImage: t.heroImage,
-    highlights: t.highlights,
-  }));
-
   return (
     <>
       {/* Hero Section */}
@@ -63,7 +50,7 @@ export default function FindTourPage() {
       <section className="py-12 bg-light">
         <div className="container mx-auto px-4">
           <Suspense fallback={<div className="text-center py-12">Loading tours...</div>}>
-            <TourFinder tours={tourData} />
+            <TourFinder tours={allTours} />
           </Suspense>
         </div>
       </section>
