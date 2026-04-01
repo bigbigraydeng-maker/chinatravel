@@ -10,6 +10,7 @@ import {
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
+import ItineraryActions from '@/components/tours/ItineraryActions';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
@@ -195,6 +196,12 @@ export default function TourPage({ params }: TourPageProps) {
               <TourHighlights highlights={tour.highlights} />
 
               {/* Itinerary */}
+              <ItineraryActions
+                tourName={tour.name}
+                tourSlug={tour.slug}
+                destination={tour.destination}
+                tier={tour.tier}
+              />
               <TourItinerary itinerary={tour.itinerary} />
 
 
