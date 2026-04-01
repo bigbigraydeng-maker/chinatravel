@@ -507,43 +507,100 @@ export const tours: Tour[] = [
     tier: 'discovery',
     name: 'China Discovery — A Tale of Two Cities',
     title: 'China Discovery — A Tale of Two Cities',
-    shortDescription: 'Experience the contrast between ancient and modern China — from Beijing\'s imperial treasures and the Great Wall to Xi\'an\'s Terracotta Warriors and Shanghai\'s dazzling skyline.',
+    shortDescription: 'Two of China\'s most iconic cities in one journey — explore Beijing\'s imperial grandeur from the Forbidden City and Great Wall to the Hutong laneways, then travel by high-speed train to Xi\'an to stand before the legendary Terracotta Warriors.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     heroImage: '/images/tours/forbidden-city-gold-lion.jpg',
     gallery: [
       '/images/tours/forbidden-city-gold-lion.jpg',
-      '/images/tours/shanghai-night-blue.jpg'
+      '/images/tours/xian-terracotta.jpg'
     ],
     highlights: [
-      'Walk the Juyongguan Great Wall and explore the Forbidden City',
-      'Discover the Terracotta Warriors in Xi\'an',
-      'Cruise on the Li River to Yangshuo through karst landscapes',
-      'Experience West Lake and Longjing tea plantations in Hangzhou',
-      'Explore the classical Humble Administrator\'s Garden in Suzhou',
-      'Enjoy the Huangpu River cruise and Bund in Shanghai',
-      'Visit the Lingshan Grand Buddha in Wuxi',
-      'Stroll through charming Zhujiajiao Water Town'
+      'Visit the 500-year-old Temple of Heaven set in imperial gardens',
+      'Tour Tiananmen Square — the world\'s largest public square',
+      'Explore the Forbidden City, home to emperors for over 500 years',
+      'Walk the Great Wall, one of the ten wonders of the world',
+      'Photo stop at the iconic Bird\'s Nest and Water Cube Olympic Park',
+      'Experience old Beijing on a pedi-cab Hutong tour with a family visit',
+      'Discover the Terracotta Warriors — the greatest archaeological find of the century',
+      'Visit Xi\'an\'s ancient City Wall and the Tang Dynasty Big Wild Goose Pagoda'
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Beijing', description: 'Depart from Auckland on your international flight to Beijing. Overnight on board.', meals: [] },
-      { day: 2, title: 'Arrival in Beijing', description: 'Arrive in Beijing. Meet your guide and transfer to your hotel. Enjoy some free time to rest.', meals: [], accommodation: 'Beijing Wanda Moments or similar 5-star' },
-      { day: 3, title: 'Beijing', description: 'Visit Tiananmen Square, National Centre for the Performing Arts, and the Forbidden City. Continue to Beihai Park and visit a silk factory.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
-      { day: 4, title: 'Beijing', description: 'Visit the Great Wall at Juyongguan section, a jade carving factory, and enjoy photo stops at the Bird\'s Nest and Water Cube.', meals: ['Breakfast', 'Lunch'], accommodation: 'Beijing Wanda Moments or similar 5-star' },
-      { day: 5, title: 'Beijing — Xi\'an', description: 'Enjoy a pedi-cab Hutong tour through old city neighbourhoods with a family visit. Visit the Summer Palace with Marble Boat and Long Corridor. High-speed train to Xi\'an (Train G89, 15:00–19:12, First Class seat or similar).', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
-      { day: 6, title: 'Xi\'an', description: 'Visit the Terracotta Warriors, a 2,000-year-old archaeological site, Circle Vision Movie, and Bronze Chariot. Enjoy a dumpling dinner in the evening.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Express Xi\'an or similar 5-star' },
-      { day: 7, title: 'Xi\'an — Guilin', description: 'Visit the City Wall and Big Wild Goose Pagoda. Flight to Guilin.', meals: ['Breakfast', 'Lunch'], accommodation: 'Guilin Hotel or similar 5-star' },
-      { day: 8, title: 'Li River Cruise — Yangshuo', description: 'Cruise on the Li River to Yangshuo through spectacular karst mountain scenery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Rezen Hotel West Street Yangshuo or similar 5-star' },
-      { day: 9, title: 'Yangshuo — Shanghai', description: 'Morning Tai Chi, countryside tour, and cormorant fishing. Flight to Shanghai. Visit the Bund and enjoy a Huangpu River cruise.', meals: ['Breakfast', 'Lunch'], accommodation: 'Holiday Inn Express Shanghai Fangta or similar 5-star' },
-      { day: 10, title: 'Shanghai — Auckland', description: 'Visit Yuyuan Garden and Nanjing Road. Transfer to the airport for your return flight to Auckland.', meals: ['Breakfast', 'Lunch'] }
+      {
+        day: 1,
+        title: 'Auckland — Beijing',
+        description: 'Depart Auckland in the evening on your international flight to Beijing. Dinner and breakfast served on board.',
+        meals: ['Meal on board']
+      },
+      {
+        day: 2,
+        title: 'Arrival in Beijing',
+        description: 'Upon arrival in Beijing, your guide will meet you and transfer you to visit the Temple of Heaven — a 500-year-old complex of altars and pavilions set in sweeping gardens, where emperors once made offerings to the heavens. Continue to a tea factory before checking in to your hotel.',
+        meals: [],
+        accommodation: 'Beijing Wanda Moments or similar 4-star hotel'
+      },
+      {
+        day: 3,
+        title: 'Beijing',
+        description: 'Tour Tiananmen Square, the largest public square in the world. Enjoy a photo stop at the National Centre for the Performing Arts — the striking glass dome affectionately known as "The Egg". Afterwards, step inside the Forbidden City, the vast palace complex that served as home to successive emperors for more than 500 years. Continue to Beihai Park, an imperial garden to the northwest of the Forbidden City, and visit a silk factory before dinner. Tonight\'s optional excursion: an acrobatic show.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Beijing Wanda Moments or similar 4-star hotel'
+      },
+      {
+        day: 4,
+        title: 'Beijing — Great Wall',
+        description: 'This morning, travel to the Great Wall — stretching almost 4,000 miles from the Pacific Ocean to the sands of Central Asia and rightfully crowned one of the ten wonders of the world. En route, stop at a jade carving factory to watch artisans at work. Return to the city and view the Olympic Park\'s Bird\'s Nest stadium and Water Cube aquatic centre from the outside.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Beijing Wanda Moments or similar 4-star hotel'
+      },
+      {
+        day: 5,
+        title: 'Beijing — Hutong & Silk Market',
+        description: 'This morning, climb aboard a pedi-cab for a tour of the Hutong — Beijing\'s historic neighbourhoods of narrow alleyways and courtyard gardens. Experience local life with a visit to a traditional family home. After lunch, head to the Silk Market for some shopping.',
+        meals: ['Breakfast'],
+        accommodation: 'Beijing Wanda Moments or similar 4-star hotel'
+      },
+      {
+        day: 6,
+        title: 'Beijing — Xi\'an by High-Speed Train',
+        description: 'Morning is free at your leisure. Check out by noon, then board Train G89 (departs 15:00, arrives Xi\'an 19:12, 2nd-class seat or similar high-speed service). Your local Xi\'an guide will meet you on arrival and transfer you to your hotel.',
+        meals: ['Breakfast'],
+        accommodation: 'Mercure Xi\'an Downtown or similar 4-star hotel'
+      },
+      {
+        day: 7,
+        title: 'Xi\'an — Terracotta Warriors',
+        description: 'This morning, visit the greatest archaeological discovery of the century: the Terracotta Warriors, a vast underground army of more than 2,000-year-old life-size soldiers interred with Emperor Qin Shi Huang. The visit includes the Circle Vision Movie and Bronze Chariot exhibition. Tonight\'s optional excursion: Tang Palace Banquet Song and Dance Performance.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Mercure Xi\'an Downtown or similar 4-star hotel'
+      },
+      {
+        day: 8,
+        title: 'Xi\'an — City Wall & Big Wild Goose Pagoda',
+        description: 'Visit the ancient City Wall that encircles the historic centre of Xi\'an, then continue to the Big Wild Goose Pagoda — the earliest and largest surviving square brick pagoda of the Tang Dynasty, and a landmark testament to the integration of Indian Buddhist architecture into Chinese culture following the spread of Buddhism to the Central Plains.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Mercure Xi\'an Downtown or similar 4-star hotel'
+      },
+      {
+        day: 9,
+        title: 'Xi\'an — Small Wild Goose Pagoda & Huimin Street',
+        description: 'This morning, visit the Small Wild Goose Pagoda Museum, then stroll through the vibrant Huimin Street — Xi\'an\'s famous Muslim Quarter lined with street food stalls and artisan shops. Transfer to the airport for your flight to Beijing.',
+        meals: ['Breakfast']
+      },
+      {
+        day: 10,
+        title: 'Beijing — Auckland',
+        description: 'Connect with your international flight from Beijing back to New Zealand.',
+        meals: []
+      }
     ],
     inclusions: [
-      'Return international airfares from Auckland',
-      'Domestic airfares within China',
-      '4–5 star hotel accommodation',
+      'International and domestic airfares',
+      '4-star hotel accommodation throughout',
       'English-speaking tour guide',
-      'Entrance fees and meals as specified in the itinerary',
-      'Land transport including high-speed trains (First Class)'
+      'Entrance fees as specified in the itinerary',
+      'Meals as specified in the itinerary',
+      'Land transfers'
     ],
     exclusions: [
       'China visa fee (if required)',
@@ -552,14 +609,14 @@ export const tours: Tour[] = [
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
       'Tips (suggested NZD $10 per day per person)',
-      'Any items not specifically mentioned as included'
+      'Any items not specifically mentioned as included in the itinerary'
     ],
-    metaTitle: 'China Discovery — A Tale of Two Cities | 10 Days | CTS Tours',
-    metaDescription: 'Experience the contrast between ancient and modern China — Beijing\'s imperial treasures, Xi\'an\'s Terracotta Warriors, Guilin\'s karst landscapes, and Shanghai\'s skyline. 10 days from NZD $3,480. Book with CTS Tours.',
+    metaTitle: 'China Discovery — A Tale of Two Cities | Beijing & Xi\'an 10 Days | CTS Tours',
+    metaDescription: 'Explore Beijing\'s Forbidden City, Great Wall and Hutong laneways, then travel by high-speed train to Xi\'an to discover the legendary Terracotta Warriors. 10 days from NZD $3,480.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-03-29'
-    // Single room supplement: NZD $1,435
+    updatedAt: '2026-04-02'
+    // Single room supplement: NZD $395
   },
   {
     id: 'tour-cn-dis-3',
