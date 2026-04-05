@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { GoogleTagManager } from '@/components/GoogleTagManager';
 import GtmInit from '@/components/GtmInit';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
@@ -57,6 +58,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="font-sans">
         <GoogleTagManager />
         <GtmInit />
