@@ -88,24 +88,39 @@ const yunnanSubGuides = getGuidesByParent('yunnan');
 
 Every page MUST have:
 
-### 1. Metadata (`generateMetadata` preferred, static `metadata` acceptable)
+### 1. Metadata — Use `buildCtsPageMetadata()` helper (REQUIRED)
+
+**Never** hardcode the domain. Always use `buildCtsPageMetadata` from `@/lib/seo-metadata`:
+
 ```typescript
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+
 export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Specific Page Title | CTS Tours',  // 50-60 chars
+  return buildCtsPageMetadata({
+    title: 'Specific Page Title | CTS Tours',  // 50-60 chars; " | CTS Tours" auto-appended if missing
     description: 'Unique description per page...',  // 140-160 chars
+    path: '/page-slug',                             // site-relative path, starts with /
+    ogImagePath: '/images/tours/hero.jpg',          // local path OR absolute https URL
+    ogImageAlt: 'Descriptive alt text',
     keywords: ['keyword1', 'keyword2'],
-    openGraph: {
-      type: 'article',
-      url: `https://chinatravel-zloe.onrender.com/${slug}`,
-      title: '...',
-      description: '...',
-      images: [{ url: `https://chinatravel-zloe.onrender.com${heroImage}`, width: 1200, height: 630 }],
-    },
-    alternates: { canonical: `https://chinatravel-zloe.onrender.com/${slug}` },
-    robots: { index: true, follow: true },
-  };
+    ogType: 'article',                              // 'article' (default) or 'website'
+  });
 }
+```
+
+`buildCtsPageMetadata` automatically:
+- Reads `NEXT_PUBLIC_SITE_URL` env var (defaults to `https://chinatravel.co.nz`) for all absolute URLs
+- Sets `alternates.canonical` to the absolute page URL
+- Sets `openGraph.images` to 1200×630 absolute URL
+- Sets `twitter.card: 'summary_large_image'`
+- Sets `robots: { index: true, follow: true }` (override via `robots` param)
+
+**Do NOT** write `alternates.canonical`, `openGraph.url`, or `openGraph.images` manually — the helper handles these.
+
+### Environment Variable
+```env
+NEXT_PUBLIC_SITE_URL=https://chinatravel-zloe.onrender.com   # set in Render dashboard
+# Default fallback (if not set): https://chinatravel.co.nz
 ```
 
 ### 2. Schema Markup — Pass to `<SchemaMarkup data={schema} />`
@@ -329,7 +344,7 @@ git push origin main                 # triggers Render auto-deploy
 - ❌ Never instantiate Resend at module level — always inside the handler
 - ❌ Never use the same `title`/`description` across multiple pages
 - ❌ Never add `<img>` tags — always use Next.js `<Image>`
-- ❌ Never hardcode `http://` URLs — use the `SITE` constant
+- ❌ Never hardcode domain URLs in metadata — always use `buildCtsPageMetadata()` (reads `NEXT_PUBLIC_SITE_URL`)
 - ❌ Never modify `guides-complete.ts` or `guides-rest.ts` — those are deleted; `guides.ts` is the only source
 - ❌ Never skip the sitemap when adding new pages
 
