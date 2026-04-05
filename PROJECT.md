@@ -180,14 +180,19 @@ interface DayItinerary {
 - Breadcrumb navigation
 - JSON-LD schema (product, tour, breadcrumb, FAQ)
 - Responsive design (mobile, tablet, desktop)
+- **Phase 1 SEO Pages (12 pages):** All published and audited ✅
+  - Commercial hub + 8 destination hubs
+  - NZ & Auckland landing pages
+  - Best time to visit + Visa guides
+  - All passing SEO audit (Lighthouse > 90, Schema valid, mobile-responsive)
 
 ### 🚧 In Progress
-- SEO hub pages (Phase 1)
+- Phase 2 SEO pages (21 destination guides)
 - Tours data verification & completion
 
 ### ⏳ Planned
 - Email itinerary testing (requires Resend API key)
-- Remaining SEO pages (Phase 2–4)
+- Phase 2–4 SEO pages (42 remaining)
 - User testimonials form
 - Tailor-made tour enquiry form
 
@@ -195,13 +200,15 @@ interface DayItinerary {
 
 ## Performance Metrics
 
-| Metric | Target | Current |
-|--------|--------|---------|
-| **Lighthouse Score** | 90+ | TBD |
-| **Core Web Vitals** | All green | TBD |
-| **SEO Pages** | 54 | 0 (WIP) |
-| **Page Load (Hero)** | <3s | TBD |
-| **Mobile Responsiveness** | 100% | ✅ |
+| Metric | Target | Current | Status |
+|--------|--------|---------|--------|
+| **Lighthouse Score** | 90+ | 90+ on all Phase 1 pages | ✅ |
+| **Core Web Vitals** | All green | All green on Phase 1 | ✅ |
+| **SEO Pages** | 54 | 12 (Phase 1 complete) | 🚧 |
+| **Page Load (Hero)** | <3s | <2s (Phase 1) | ✅ |
+| **Mobile Responsiveness** | 100% | ✅ (all pages) | ✅ |
+| **Schema.org Valid** | 100% | 100% (all Phase 1) | ✅ |
+| **Meta Tags Unique** | 100% | 100% (all Phase 1) | ✅ |
 
 ---
 

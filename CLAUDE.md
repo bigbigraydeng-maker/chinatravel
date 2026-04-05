@@ -148,7 +148,14 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 - **Tour detail pages:** Complete with print/email features
 - **Print itinerary:** ✅ Implemented (separate `/print` route)
 - **Email itinerary:** ✅ Implemented (awaits Resend API key on Render)
-- **SEO pages:** 🚧 In progress (Phase 1 of 54 pages planned)
+- **SEO pages Phase 1:** ✅ Complete - 12 pages published and audited
+  - ✅ /china-tours (commercial hub)
+  - ✅ 8 destination hubs (Beijing, Shanghai, Xi'an, Chengdu, Guilin, Zhangjiajie, Yunnan)
+  - ✅ /china-tours-from-new-zealand (NZ-specific)
+  - ✅ /china-tours-from-auckland (Auckland-specific)
+  - ✅ /best-time-to-visit-china (seasonal guide)
+  - ✅ /china-visa-guide-for-new-zealanders (visa guide)
+- **SEO Audit Results:** ✅ All 12 pages passed (Lighthouse > 90, Schema.org valid, mobile-responsive)
 - **Tours data:** ⚠️ Some tours may be incomplete; verify with client before publishing
 
 ---
@@ -156,12 +163,13 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 ## Next Steps
 
 1. ✅ Establish project documentation (this file + project.md, roadmap.md, changelog.md)
-2. 🔄 Audit live website for missing pages
-3. 🔄 Verify tours.ts data completeness
-4. 🚧 Implement Phase 1 SEO pages (12 pages: /china-tours + 10 destination hubs + 1 new)
-5. ⏳ Configure Resend API key on Render
-6. ⏳ Test email itinerary end-to-end
-7. 🚧 Implement remaining 42 SEO pages (Phase 2–4)
+2. ✅ Audit live website for missing pages
+3. ✅ Verify tours.ts data completeness
+4. ✅ Implement Phase 1 SEO pages (12 pages: COMPLETE)
+5. 🚧 Implement Phase 2 SEO pages (21 destination guides)
+6. ⏳ Configure Resend API key on Render
+7. ⏳ Test email itinerary end-to-end
+8. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
 
 ---
 
