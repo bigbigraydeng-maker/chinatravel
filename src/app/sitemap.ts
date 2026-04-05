@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/agents`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/site-map`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // ── Phase 1 SEO Hub pages ────────────────────────────────────────────────
