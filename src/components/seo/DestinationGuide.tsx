@@ -139,14 +139,22 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
             Ready to Experience {guide.destinationName}?
           </h2>
           <p className="text-white mb-6">
-            Explore our curated tours to {guide.destinationName}
+            Explore our curated tours or inquire about a custom itinerary tailored to your preferences
           </p>
-          <a
-            href={`/tours`}
-            className="inline-block bg-white text-primary font-semibold py-3 px-8 rounded-lg hover:shadow-lg transition-shadow"
-          >
-            View All Tours
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`/tours`}
+              className="inline-block bg-white text-primary font-semibold py-3 px-8 rounded-lg hover:shadow-lg transition-shadow"
+            >
+              View All Tours
+            </a>
+            <a
+              href={`/tailor-made`}
+              className="inline-block bg-white/20 text-white border-2 border-white font-semibold py-3 px-8 rounded-lg hover:bg-white/30 transition-colors"
+            >
+              Plan Custom Trip
+            </a>
+          </div>
         </section>
       </div>
     </div>
