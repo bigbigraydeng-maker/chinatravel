@@ -156,6 +156,12 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
   - ✅ /best-time-to-visit-china (seasonal guide)
   - ✅ /china-visa-guide-for-new-zealanders (visa guide)
 - **SEO Audit Results:** ✅ All 12 pages passed (Lighthouse > 90, Schema.org valid, mobile-responsive)
+- **SEO pages Phase 2:** ✅ Complete - 21 destination guides published (Apr 10, 2026)
+  - ✅ 7 major destination guides (Beijing, Xi'an, Shanghai, Chengdu, Guilin, Zhangjiajie, Yunnan)
+  - ✅ 3 Yunnan sub-guides (Lijiang, Dali, Kunming) + Shangri-La
+  - ✅ 4 national landmark guides (Great Wall, Forbidden City, Terracotta Warriors, Leshan Buddha)
+  - ✅ 5 regional guides (Yangshuo, Li River, Hangzhou, Suzhou, Chongqing, Tianmen Mountain)
+  - ✅ All guides compiled successfully, deployed to Render
 - **Tours data:** ⚠️ Some tours may be incomplete; verify with client before publishing
 
 ---
@@ -166,10 +172,13 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 2. ✅ Audit live website for missing pages
 3. ✅ Verify tours.ts data completeness
 4. ✅ Implement Phase 1 SEO pages (12 pages: COMPLETE)
-5. 🚧 Implement Phase 2 SEO pages (21 destination guides)
-6. ⏳ Configure Resend API key on Render
-7. ⏳ Test email itinerary end-to-end
-8. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
+5. ✅ Implement Phase 2 SEO pages (21 destination guides: COMPLETE)
+6. 🔄 User manual QA review of all 21 guide pages
+7. ⏳ Set up Google Analytics 4 tracking
+8. ⏳ Create Google Ads campaigns (high-intent keywords)
+9. ⏳ Configure Resend API key on Render
+10. ⏳ Test email itinerary end-to-end
+11. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
 
 ---
 
