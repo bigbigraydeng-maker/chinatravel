@@ -10,7 +10,7 @@ interface DestinationCardProps {
 
 const DestinationCard = ({ name, description, image_url, slug }: DestinationCardProps) => {
   return (
-    <Link href={`/explore/${slug}`} className="group block">
+    <Link href={`/${slug}-tours`} className="group block">
       <div className="relative overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-72">
         <Image
           src={image_url}
