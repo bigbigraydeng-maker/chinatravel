@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { zhangjiajieToursMetadata } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: zhangjiajieToursMetadata.title,
-  description: zhangjiajieToursMetadata.description,
-  keywords: ['Zhangjiajie tours', 'Avatar mountains', 'Glass walkway', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: zhangjiajieToursMetadata.title,
     description: zhangjiajieToursMetadata.description,
-    type: 'website',
-    url: '/zhangjiajie-tours',
-    images: [{
-      url: '/images/tours/zhangjiajie.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Zhangjiajie Tours - Avatar Mountains, Glass Walkway'
-    }]
-  },
-  alternates: { canonical: '/zhangjiajie-tours' }
-};
+    path: '/zhangjiajie-tours',
+    ogImagePath: '/images/tours/zhangjiajie.jpg',
+    ogImageAlt: 'Zhangjiajie Tours - Avatar Mountains, Glass Bridge, CTS Tours',
+    keywords: ['Zhangjiajie tours New Zealand', 'Avatar mountains', 'Zhangjiajie glass bridge', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function ZhangjiajieToursPage() {
   const tours = getToursByCityName('zhangjiajie');

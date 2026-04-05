@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
+import { getSiteUrl } from '@/lib/site';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 interface BlogPostPageProps {
   params: {
@@ -39,16 +41,29 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  return {
+  const base = buildCtsPageMetadata({
     title: `${post.title} | CTS Tours Blog`,
     description: post.excerpt,
+    path: `/blog/${post.slug}`,
+    ogImagePath: post.heroImage,
+    ogImageAlt: post.title,
+    keywords: post.tags,
+    ogType: 'article',
+    openGraphTitle: post.title,
+    openGraphDescription: post.excerpt,
+  });
+
+  return {
+    ...base,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
       type: 'article',
+      url: base.openGraph?.url,
+      title: base.openGraph?.title ?? post.title,
+      description: base.openGraph?.description ?? post.excerpt,
+      siteName: base.openGraph?.siteName,
+      images: base.openGraph?.images,
       publishedTime: post.publishedAt,
       authors: [post.author],
-      images: [post.heroImage],
     },
   };
 }
@@ -59,6 +74,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const siteUrl = getSiteUrl();
+  const postUrl = `${siteUrl}/blog/${post.slug}`;
 
   const allPosts = getAllBlogPosts();
   const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
@@ -144,7 +162,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <h4 className="text-sm font-medium text-gray-500 mb-3">SHARE THIS ARTICLE</h4>
               <div className="flex gap-4">
                 <a 
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://chinatravel-zloe.onrender.com/blog/${post.slug}`)}`}
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors"
@@ -154,7 +172,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </svg>
                 </a>
                 <a 
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://chinatravel-zloe.onrender.com/blog/${post.slug}`)}`}
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center hover:bg-sky-600 transition-colors"
@@ -164,7 +182,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   </svg>
                 </a>
                 <a 
-                  href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: https://chinatravel-zloe.onrender.com/blog/${post.slug}`)}`}
+                  href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: ${postUrl}`)}`}
                   className="w-10 h-10 rounded-full bg-gray-600 text-white flex items-center justify-center hover:bg-gray-700 transition-colors"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

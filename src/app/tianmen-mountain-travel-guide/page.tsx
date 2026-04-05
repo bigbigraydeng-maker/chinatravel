@@ -2,45 +2,29 @@ import { Metadata } from 'next';
 import DestinationGuide from '@/components/seo/DestinationGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getGuideBySlug } from '@/lib/data/guides';
+import { getSiteUrl } from '@/lib/site';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 const SLUG = 'tianmen-mountain-travel-guide';
-const SITE = 'https://chinatravel-zloe.onrender.com';
-
 export async function generateMetadata(): Promise<Metadata> {
   const guide = getGuideBySlug(SLUG);
   if (!guide) return { title: 'Travel Guide | CTS Tours' };
 
-  return {
+  return buildCtsPageMetadata({
     title: guide.metaTitle,
     description: guide.metaDescription,
-    keywords: guide.keywords?.join(', '),
-    openGraph: {
-      type: 'article',
-      url: `${SITE}/${SLUG}`,
-      title: guide.metaTitle,
-      description: guide.metaDescription,
-      siteName: 'CTS Tours — China Travel Specialists',
-      images: [
-        {
-          url: `${SITE}${guide.heroImage}`,
-          width: 1200,
-          height: 630,
-          alt: guide.h1,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: guide.metaTitle,
-      description: guide.metaDescription,
-      images: [`${SITE}${guide.heroImage}`],
-    },
-    alternates: { canonical: `${SITE}/${SLUG}` },
-    robots: { index: true, follow: true },
-  };
+    path: `/${SLUG}`,
+    ogImagePath: guide.heroImage,
+    ogImageAlt: guide.h1,
+    keywords: guide.keywords,
+    ogType: 'article',
+    openGraphTitle: guide.metaTitle,
+    openGraphDescription: guide.metaDescription,
+  });
 }
 
 export default function GuidePage() {
+  const siteUrl = getSiteUrl();
   const guide = getGuideBySlug(SLUG);
   if (!guide) return <div className="text-center py-20 text-gray-500">Guide not found</div>;
 
@@ -50,25 +34,25 @@ export default function GuidePage() {
       '@type': 'Article',
       headline: guide.h1,
       description: guide.metaDescription,
-      image: `${SITE}${guide.heroImage}`,
+      image: `${siteUrl}${guide.heroImage}`,
       datePublished: guide.createdAt,
       dateModified: guide.updatedAt,
-      author: { '@type': 'Organization', name: 'CTS Tours', url: SITE },
+      author: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
       publisher: {
         '@type': 'Organization',
         name: 'CTS Tours',
-        url: SITE,
-        logo: { '@type': 'ImageObject', url: `${SITE}/images/cts-logo.png` },
+        url: siteUrl,
+        logo: { '@type': 'ImageObject', url: `${siteUrl}/images/cts-logo.png` },
       },
-      mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/${SLUG}` },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/${SLUG}` },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-        { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${SITE}/china-tours` },
-        { '@type': 'ListItem', position: 3, name: guide.destinationName, item: `${SITE}/${SLUG}` },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${siteUrl}/china-tours` },
+        { '@type': 'ListItem', position: 3, name: guide.destinationName, item: `${siteUrl}/${SLUG}` },
       ],
     },
     {

@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { guilinToursMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: guilinToursMeta.title,
-  description: guilinToursMeta.description,
-  keywords: ['Guilin tours', 'Li River', 'Guilin travel', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: guilinToursMeta.title,
     description: guilinToursMeta.description,
-    type: 'website',
-    url: '/guilin-tours',
-    images: [{
-      url: '/images/tours/guilin-mist.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Guilin Tours - Li River, Karst Mountains'
-    }]
-  },
-  alternates: { canonical: '/guilin-tours' }
-};
+    path: '/guilin-tours',
+    ogImagePath: '/images/tours/guilin-mist.jpg',
+    ogImageAlt: 'Guilin Tours - Li River Cruise, Karst Mountains, CTS Tours',
+    keywords: ['Guilin tours New Zealand', 'Li River cruise', 'karst landscape tours', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function GuilinToursPage() {
   const tours = getToursByCityName('guilin');

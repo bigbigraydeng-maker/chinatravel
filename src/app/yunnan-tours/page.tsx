@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByRegion } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { yunnanToursMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: yunnanToursMeta.title,
-  description: yunnanToursMeta.description,
-  keywords: ['Yunnan tours', 'Lijiang', 'Dali', 'Shangri-La', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: yunnanToursMeta.title,
     description: yunnanToursMeta.description,
-    type: 'website',
-    url: '/yunnan-tours',
-    images: [{
-      url: '/images/tours/great-wall-green.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Yunnan Tours - Lijiang, Dali, Shangri-La'
-    }]
-  },
-  alternates: { canonical: '/yunnan-tours' }
-};
+    path: '/yunnan-tours',
+    ogImagePath: '/images/tours/yunnan-village.jpg',
+    ogImageAlt: 'Yunnan Tours - Lijiang, Dali, Kunming, CTS Tours',
+    keywords: ['Yunnan tours New Zealand', 'Lijiang Dali tours', 'Colorful Yunnan', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function YunnanToursPage() {
   const tours = getToursByRegion(['yunnan', 'lijiang', 'dali', 'shangri-la', 'kunming']);

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
@@ -8,24 +9,17 @@ import HubHero from '@/components/seo/HubHero';
 import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: chinaVisaGuideMeta.title,
-  description: chinaVisaGuideMeta.description,
-  keywords: ['China visa', 'NZ citizens', 'L-Visa', 'China visa requirements', 'Visa guide'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: chinaVisaGuideMeta.title,
     description: chinaVisaGuideMeta.description,
-    type: 'article',
-    url: '/china-visa-guide-for-new-zealanders',
-    images: [{
-      url: '/images/tours/forbidden-city-aerial.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'China Visa Guide for NZ Citizens'
-    }]
-  },
-  alternates: { canonical: '/china-visa-guide-for-new-zealanders' }
-};
+    path: '/china-visa-guide-for-new-zealanders',
+    ogImagePath: '/images/tours/forbidden-city-aerial.jpg',
+    ogImageAlt: 'China Visa Guide for New Zealanders - Requirements and Application',
+    keywords: ['China visa New Zealand', 'China visa requirements', 'NZ passport China visa', 'China travel documents'],
+    ogType: 'article',
+  });
+}
 
 export default function ChinaVisaGuidePage() {
   const breadcrumbs = [

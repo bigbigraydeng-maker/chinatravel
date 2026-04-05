@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import SectionTitle from '@/components/SectionTitle';
@@ -10,24 +11,17 @@ import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaToursFromAucklandMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: chinaToursFromAucklandMeta.title,
-  description: chinaToursFromAucklandMeta.description,
-  keywords: ['China tours Auckland', 'AKL departures', 'Auckland China tours', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: chinaToursFromAucklandMeta.title,
     description: chinaToursFromAucklandMeta.description,
-    type: 'website',
-    url: '/china-tours-from-auckland',
-    images: [{
-      url: '/images/cts-logo.png',
-      width: 1200,
-      height: 630,
-      alt: 'China Tours from Auckland'
-    }]
-  },
-  alternates: { canonical: '/china-tours-from-auckland' }
-};
+    path: '/china-tours-from-auckland',
+    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImageAlt: 'China Tours from Auckland - Direct Departures with CTS Tours',
+    keywords: ['China tours from Auckland', 'Auckland China travel', 'CTS Tours Auckland'],
+    ogType: 'website',
+  });
+}
 
 export default function ChinaToursFromAucklandPage() {
   const allTours = getAllChinaTours();

@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chengduToursMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: chengduToursMeta.title,
-  description: chengduToursMeta.description,
-  keywords: ['Chengdu tours', 'Giant pandas', 'Chengdu travel', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: chengduToursMeta.title,
     description: chengduToursMeta.description,
-    type: 'website',
-    url: '/chengdu-tours',
-    images: [{
-      url: '/images/tours/chengdu-pandas.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Chengdu Tours - Giant Pandas'
-    }]
-  },
-  alternates: { canonical: '/chengdu-tours' }
-};
+    path: '/chengdu-tours',
+    ogImagePath: '/images/tours/chengdu-pandas.jpg',
+    ogImageAlt: 'Chengdu Tours - Giant Pandas, Sichuan Cuisine, CTS Tours',
+    keywords: ['Chengdu tours New Zealand', 'giant pandas Chengdu', 'Sichuan tours', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function ChengduToursPage() {
   const tours = getToursByCityName('chengdu');

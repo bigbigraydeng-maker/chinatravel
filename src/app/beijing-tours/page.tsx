@@ -5,25 +5,19 @@ import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { beijingToursMeta } from '@/lib/data/seo-pages';
 import { getSiteUrl } from '@/lib/site';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
-export const metadata: Metadata = {
-  title: beijingToursMeta.title,
-  description: beijingToursMeta.description,
-  keywords: ['Beijing tours', 'Great Wall', 'Forbidden City', 'Beijing travel', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: beijingToursMeta.title,
     description: beijingToursMeta.description,
-    type: 'website',
-    url: '/beijing-tours',
-    images: [{
-      url: '/images/tours/forbidden-city-aerial.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Beijing Tours - Great Wall, Forbidden City'
-    }]
-  },
-  alternates: { canonical: '/beijing-tours' }
-};
+    path: '/beijing-tours',
+    ogImagePath: '/images/tours/forbidden-city-aerial.jpg',
+    ogImageAlt: 'Beijing Tours from New Zealand — Great Wall, Forbidden City, CTS Tours',
+    keywords: ['Beijing tours New Zealand', 'Great Wall tours', 'Forbidden City', 'Beijing travel', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function BeijingToursPage() {
   const tours = getToursByCityName('beijing');

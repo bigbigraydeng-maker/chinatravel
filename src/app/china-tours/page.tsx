@@ -9,46 +9,33 @@ import RelatedGuides from '@/components/seo/RelatedGuides';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateCollectionPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaToursMeta } from '@/lib/data/seo-pages';
 
 const siteUrl = getSiteUrl();
 
-export const metadata: Metadata = {
-  title: chinaToursMeta.title,
-  description: chinaToursMeta.description,
-  keywords: [
-    'China tours',
-    'China tours from New Zealand',
-    'China travel',
-    'Signature tours',
-    'Discovery tours',
-    'Stopover tours',
-    'CTS Tours'
-  ],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: chinaToursMeta.title,
     description: chinaToursMeta.description,
-    type: 'website',
-    url: '/china-tours',
-    images: [
-      {
-        url: '/images/tours/forbidden-city-aerial.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'China Tours - CTS Tours'
-      }
-    ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: chinaToursMeta.title,
-    description: chinaToursMeta.description
-  },
-  alternates: {
-    canonical: '/china-tours'
-  }
-};
+    path: '/china-tours',
+    ogImagePath: '/images/tours/forbidden-city-aerial.jpg',
+    ogImageAlt: 'China Tours, CTS Tours',
+    keywords: [
+      'China tours',
+      'China tours from New Zealand',
+      'China travel',
+      'Signature tours',
+      'Discovery tours',
+      'Stopover tours',
+      'CTS Tours',
+    ],
+    ogType: 'website',
+    openGraphTitle: chinaToursMeta.title,
+    openGraphDescription: chinaToursMeta.description,
+  });
+}
 
 export default function ChinaToursPage() {
   const tours = getAllChinaTours();

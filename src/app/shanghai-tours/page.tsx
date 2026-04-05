@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { shanghaiToursMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: shanghaiToursMeta.title,
-  description: shanghaiToursMeta.description,
-  keywords: ['Shanghai tours', 'The Bund', 'Shanghai travel', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: shanghaiToursMeta.title,
     description: shanghaiToursMeta.description,
-    type: 'website',
-    url: '/shanghai-tours',
-    images: [{
-      url: '/images/tours/shanghai-skyline.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Shanghai Tours - The Bund, Modern City'
-    }]
-  },
-  alternates: { canonical: '/shanghai-tours' }
-};
+    path: '/shanghai-tours',
+    ogImagePath: '/images/tours/shanghai-skyline.jpg',
+    ogImageAlt: 'Shanghai Tours from New Zealand - The Bund, Skyline, CTS Tours',
+    keywords: ['Shanghai tours New Zealand', 'The Bund', 'Shanghai travel', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function ShanghaiToursPage() {
   const tours = getToursByCityName('shanghai');

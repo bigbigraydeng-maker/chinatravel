@@ -1,28 +1,22 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { xianToursMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: xianToursMeta.title,
-  description: xianToursMeta.description,
-  keywords: ["Xi'an tours", 'Terracotta Warriors', "Xi'an travel", 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: xianToursMeta.title,
     description: xianToursMeta.description,
-    type: 'website',
-    url: '/xian-tours',
-    images: [{
-      url: '/images/tours/xian-terracotta.jpg',
-      width: 1200,
-      height: 630,
-      alt: "Xi'an Tours - Terracotta Warriors"
-    }]
-  },
-  alternates: { canonical: '/xian-tours' }
-};
+    path: '/xian-tours',
+    ogImagePath: '/images/tours/xian-terracotta.jpg',
+    ogImageAlt: "Xi'an Tours - Terracotta Warriors, Ancient City Wall, CTS Tours",
+    keywords: ['Xian tours New Zealand', 'Terracotta Warriors', 'Xian travel', 'CTS Tours'],
+    ogType: 'website',
+  });
+}
 
 export default function XianToursPage() {
   const tours = getToursByCityName("xi'an");

@@ -11,32 +11,32 @@ import StatsCounter from '@/components/StatsCounter';
 import GeoRecommendations from '@/components/GeoRecommendations';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
-const SITE = 'https://chinatravel-zloe.onrender.com';
-
-export const metadata: Metadata = {
-  // 54 chars — within 50-60 target
-  title: 'CTS Tours | China Travel Specialists for New Zealanders',
-  // 155 chars — within 140-160 target
-  description: 'Discover authentic China with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
-  keywords: ['China tours New Zealand', 'China travel specialists', 'CTS Tours', 'Beijing tours', 'Shanghai tours', 'luxury China travel', 'small group China tours'],
-  openGraph: {
-    type: 'website',
-    url: SITE,
-    siteName: 'CTS Tours — China Travel Specialists',
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: 'CTS Tours | China Travel Specialists for New Zealanders',
-    description: 'Discover authentic China with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
-    images: [{ url: `${SITE}/images/tours/great-wall-mist.jpg`, width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'CTS Tours | China Travel Specialists for New Zealanders',
-    description: 'New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct operations, authentic access.',
-    images: [`${SITE}/images/tours/great-wall-mist.jpg`],
-  },
-  alternates: { canonical: SITE },
-  robots: { index: true, follow: true },
-};
+    description:
+      'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
+    path: '/',
+    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImageAlt: 'Great Wall of China mist, CTS Tours',
+    keywords: [
+      'China tours New Zealand',
+      'China travel specialists',
+      'CTS Tours',
+      'Beijing tours',
+      'Shanghai tours',
+      'luxury China travel',
+      'small group China tours',
+    ],
+    ogType: 'website',
+    openGraphTitle: 'CTS Tours | China Travel Specialists for New Zealanders',
+    openGraphDescription:
+      'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
+    openGraphSiteName: 'CTS Tours — China Travel Specialists',
+  });
+}
 
 const HomePage = () => {
   const destinations = [

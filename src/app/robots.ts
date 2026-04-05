@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site';
 
-const SITE = 'https://chinatravel-zloe.onrender.com';
+const SITE = getSiteUrl();
 
 export default function robots(): MetadataRoute.Robots {
   return {

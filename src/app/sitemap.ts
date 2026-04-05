@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
+import { getSiteUrl } from '@/lib/site';
 
-const SITE = 'https://chinatravel-zloe.onrender.com';
+const SITE = getSiteUrl();
 
 // All static routes with their priority and change frequency
 export default function sitemap(): MetadataRoute.Sitemap {

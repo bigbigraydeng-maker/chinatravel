@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import Link from 'next/link';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
@@ -11,24 +12,17 @@ import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaToursFromNZMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: chinaToursFromNZMeta.title,
-  description: chinaToursFromNZMeta.description,
-  keywords: ['China tours from New Zealand', 'Kiwi travel', 'NZ China tours', 'CTS Tours'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: chinaToursFromNZMeta.title,
     description: chinaToursFromNZMeta.description,
-    type: 'website',
-    url: '/china-tours-from-new-zealand',
-    images: [{
-      url: '/images/cts-logo.png',
-      width: 1200,
-      height: 630,
-      alt: 'China Tours from New Zealand'
-    }]
-  },
-  alternates: { canonical: '/china-tours-from-new-zealand' }
-};
+    path: '/china-tours-from-new-zealand',
+    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImageAlt: 'China Tours from New Zealand - Expert-Led Itineraries with CTS Tours',
+    keywords: ['China tours from New Zealand', 'Kiwi China travel', 'NZ China tours', 'CTS Tours New Zealand'],
+    ogType: 'website',
+  });
+}
 
 export default function ChinaToursFromNZPage() {
   const allTours = getAllChinaTours();

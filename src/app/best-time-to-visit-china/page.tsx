@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
@@ -10,24 +11,17 @@ import { getAllChinaTours } from '@/lib/data/tours';
 import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { bestTimeToVisitChinaMeta } from '@/lib/data/seo-pages';
 
-export const metadata: Metadata = {
-  title: bestTimeToVisitChinaMeta.title,
-  description: bestTimeToVisitChinaMeta.description,
-  keywords: ['Best time to visit China', 'China weather', 'China seasons', 'China travel guide'],
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  return buildCtsPageMetadata({
     title: bestTimeToVisitChinaMeta.title,
     description: bestTimeToVisitChinaMeta.description,
-    type: 'article',
-    url: '/best-time-to-visit-china',
-    images: [{
-      url: '/images/tours/great-wall-green.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Best Time to Visit China'
-    }]
-  },
-  alternates: { canonical: '/best-time-to-visit-china' }
-};
+    path: '/best-time-to-visit-china',
+    ogImagePath: '/images/tours/great-wall-green.jpg',
+    ogImageAlt: 'Best Time to Visit China - Seasonal Guide for New Zealanders',
+    keywords: ['Best time to visit China', 'China weather seasons', 'China travel guide', 'China holidays'],
+    ogType: 'article',
+  });
+}
 
 export default function BestTimeToVisitChinaPage() {
   const tours = getAllChinaTours().slice(0, 6);
