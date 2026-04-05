@@ -17,7 +17,7 @@ const HubHero: React.FC<HubHeroProps> = ({
     <section
       className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden"
       style={{
-        backgroundImage: backgroundImage.includes('http') ? `url(${backgroundImage})` : backgroundImage,
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)',
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
