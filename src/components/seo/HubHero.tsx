@@ -1,6 +1,7 @@
 // Hero section for SEO hub pages (china-tours, beijing-tours, etc.)
 
 import React from 'react';
+import Image from 'next/image';
 
 interface HubHeroProps {
   title: string;
@@ -11,19 +12,35 @@ interface HubHeroProps {
 const HubHero: React.FC<HubHeroProps> = ({
   title,
   subtitle,
-  backgroundImage = 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)'
+  backgroundImage = '/images/tours/great-wall-mist.jpg'
 }) => {
   return (
-    <section
-      className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden"
-      style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+    <section className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
+      {/* Background Image */}
+      {backgroundImage && (
+        <>
+          <Image
+            src={backgroundImage}
+            alt={title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover -z-10"
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/40 -z-5"></div>
+        </>
+      )}
+
+      {/* Fallback Gradient */}
+      {!backgroundImage && (
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background: 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)'
+          }}
+        ></div>
+      )}
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">

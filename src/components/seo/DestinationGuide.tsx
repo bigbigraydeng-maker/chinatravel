@@ -79,8 +79,9 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               <div key={i} className="overflow-hidden rounded-lg bg-gray-100 aspect-square">
                 <img
                   src={img}
-                  alt={`{guide.destinationName}`}
+                  alt={`${guide.destinationName} - Gallery Image`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform"
+                  loading="lazy"
                 />
               </div>
             ))}
