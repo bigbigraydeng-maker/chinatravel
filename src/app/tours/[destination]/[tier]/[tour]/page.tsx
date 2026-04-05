@@ -5,7 +5,6 @@ import {
   getTourBySlug, 
   getToursByDestinationAndTier,
   getDestinationBySlug,
-  Tour 
 } from '@/lib/data/tours';
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
@@ -16,8 +15,18 @@ import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
-// import ItineraryMap from '@/components/tours/ItineraryMap';
+import TrustBar from '@/components/TrustBar';
+import FloatingCta from '@/components/FloatingCta';
+import FAQSection from '@/components/FAQSection';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import {
+  generateTourSchema,
+  generateProductSchema,
+  generateBreadcrumbSchema,
+  getTourPageFaqs,
+} from '@/lib/schema-tour';
+import { getSiteUrl } from '@/lib/site';
+// import ItineraryMap from '@/components/tours/ItineraryMap';
 
 interface TourPageProps {
   params: {
@@ -39,8 +48,10 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 
   const destination = getDestinationBySlug(tour.destination);
 
+  const titleParts = [tour.name, tour.duration, tour.departureDates?.[0], 'CTS NZ'].filter(Boolean);
+
   return {
-    title: tour.metaTitle,
+    title: titleParts.join(' | '),
     description: tour.metaDescription,
     keywords: [
       `${tour.destination} tours`,
@@ -48,19 +59,21 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       tour.name,
       'CTS Tours',
       'China travel',
+      'China Tour from New Zealand',
       'Asia tours',
       ...(tour.tags ?? []),
     ],
     openGraph: {
       title: tour.title,
       description: tour.shortDescription,
-      type: 'article',
+      type: 'website',
+      url: `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
       images: [
         {
           url: tour.heroImage,
           width: 1200,
           height: 630,
-          alt: tour.title,
+          alt: `${tour.title} - ${tour.destination} Tour`,
         },
       ],
     },
@@ -84,50 +97,36 @@ export default function TourPage({ params }: TourPageProps) {
   }
 
   const destination = getDestinationBySlug(tour.destination);
+  if (!destination) {
+    notFound();
+  }
+
   const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
     .filter(t => t.slug !== tour.slug)
     .slice(0, 3);
 
-  // Generate Schema.org structured data
-  const schemaData = {
-    '@context': 'https://schema.org',
-    '@type': 'TouristTrip',
-    name: tour.title,
-    description: tour.shortDescription,
-    image: tour.heroImage,
-    touristType: {
-      '@type': 'Audience',
-      audienceType: 'Travelers'
-    },
-    offers: {
-      '@type': 'Offer',
-      price: tour.price.replace(/[^0-9]/g, ''),
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-    },
-    itinerary: {
-      '@type': 'ItemList',
-      itemListElement: tour.itinerary.map((day, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'TouristAttraction',
-          name: day.title,
-          description: day.description,
-        },
-      })),
-    },
-    provider: {
-      '@type': 'TravelAgency',
-      name: 'CTS Tours',
-      url: 'https://chinatravel.co.nz',
-    },
-  };
+  const faqs = getTourPageFaqs(destination.name);
+  const siteUrl = getSiteUrl();
+
+  const schemas = [
+    generateTourSchema(tour, destination),
+    generateProductSchema(tour),
+    generateBreadcrumbSchema(
+      [
+        { name: 'Home', url: '/' },
+        { name: 'Tours', url: '/tours' },
+        { name: tour.destination, url: `/tours/${tour.destination}` },
+        { name: tour.tier, url: `/tours/${tour.destination}/${tour.tier}` },
+        { name: tour.name, url: `/tours/${tour.destination}/${tour.tier}/${tour.slug}` },
+      ],
+      siteUrl
+    ),
+  ];
 
   return (
     <>
-      <SchemaMarkup data={schemaData} />
-      
+      <SchemaMarkup data={schemas} />
+
       {/* Breadcrumb Navigation */}
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3">
@@ -179,6 +178,8 @@ export default function TourPage({ params }: TourPageProps) {
         departureDates={tour.departureDates}
       />
 
+      <TrustBar />
+
       {/* Tour Content */}
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">
@@ -224,6 +225,8 @@ export default function TourPage({ params }: TourPageProps) {
                 <TourEnquiry
                   tourName={tour.name}
                   tourSlug={tour.slug}
+                  destination={tour.destination}
+                  tier={tour.tier}
                 />
 
                 {/* Testimonials */}
@@ -278,6 +281,15 @@ export default function TourPage({ params }: TourPageProps) {
         tours={relatedTours} 
         destination={tour.destination}
         tier={tour.tier}
+      />
+
+      <FAQSection faqs={faqs} />
+
+      {/* Floating CTA for Mobile */}
+      <FloatingCta
+        tourName={tour.name}
+        tourSlug={tour.slug}
+        enquirySectionId="enquiry"
       />
     </>
   );

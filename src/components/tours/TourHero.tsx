@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { slugifyTourTag } from '@/lib/data/tours';
+import AvailabilityBadge from '@/components/AvailabilityBadge';
 
 interface TourHeroProps {
   title: string;
@@ -12,6 +13,7 @@ interface TourHeroProps {
   tier: string;
   tags?: string[];
   departureDates?: string[];
+  showAvailability?: boolean;
 }
 
 export default function TourHero({
@@ -23,6 +25,7 @@ export default function TourHero({
   tier,
   tags,
   departureDates,
+  showAvailability = true,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -31,12 +34,12 @@ export default function TourHero({
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center">
+    <section id="hero" className="relative min-h-[70vh] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage}
-          alt={title}
+          alt={`${title} - China Tour from New Zealand | ${tier} Collection`}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
@@ -56,11 +59,20 @@ export default function TourHero({
           </h1>
 
           {/* Description */}
-          <p className="text-xl text-white/90 mb-8 max-w-2xl">
+          <p className="text-xl text-white/90 mb-6 max-w-2xl">
             {shortDescription}
           </p>
 
-          {departureDates && departureDates.length > 0 && (
+          {/* Availability Badge */}
+          {showAvailability && departureDates && departureDates.length > 0 && (
+            <AvailabilityBadge
+              departureDate={departureDates[0]}
+              seatsLeft={5}
+              showCountdown={true}
+            />
+          )}
+
+          {departureDates && departureDates.length > 0 && !showAvailability && (
             <div className="mb-6 max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-wide text-white/70 mb-2">Departure dates</p>
               <p className="text-lg text-white">{departureDates.join(' · ')}</p>

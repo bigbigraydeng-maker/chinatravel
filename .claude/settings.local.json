@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx next:*)",
+      "WebFetch(domain:xiyangyangholiday.com)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\Signature\\\\英文行程\\\\China Panorama-27D.docx' -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\Signature\\\\英文行程\\\\Natural China-16D.docx' -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\Signature\\\\英文行程\\\\legacy of China-17D.docx' -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\Signature\\\\英文行程\\\\Silk Road Discovery.docx' -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Best of China.docx' -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Colorful Yunan.docx' -t plain)",
+      "Bash(pandoc \"C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Shanghai & Surroundings.docx\" -t plain)",
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\A Tale of two city.docx' -t plain)"
+    ]
+  }
+}

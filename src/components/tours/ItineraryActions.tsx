@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import ItineraryEmailModal from './ItineraryEmailModal';
 
 interface ItineraryActionsProps {
@@ -19,6 +20,13 @@ export default function ItineraryActions({
   const [showEmailModal, setShowEmailModal] = useState(false);
 
   const handlePrint = () => {
+    triggerGtmEvent({
+      event: 'itinerary_print_open',
+      tour_slug: tourSlug,
+      tour_name: tourName,
+      pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+      timestamp: Date.now(),
+    });
     window.open(
       `/tours/${destination}/${tier}/${tourSlug}/print`,
       '_blank',

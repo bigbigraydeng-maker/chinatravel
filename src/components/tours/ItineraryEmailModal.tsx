@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { triggerGtmEvent } from '@/components/GoogleTagManager';
 
 interface ItineraryEmailModalProps {
   tourName: string;
@@ -40,6 +41,13 @@ export default function ItineraryEmailModal({
         throw new Error(data.error || 'Failed to send email.');
       }
 
+      triggerGtmEvent({
+        event: 'itinerary_email_sent',
+        tour_slug: tourSlug,
+        tour_name: tourName,
+        pagePath: window.location.pathname,
+        timestamp: Date.now(),
+      });
       setStatus('success');
     } catch (err: unknown) {
       setStatus('error');

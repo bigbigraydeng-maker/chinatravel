@@ -3,6 +3,9 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { GoogleTagManager } from '@/components/GoogleTagManager';
+import GtmInit from '@/components/GtmInit';
+import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
   title: 'CTS Tours - China Travel Specialists for New Zealanders',
   description: '98 Years Heritage | Direct China Operations | Authentic Access',
   keywords: ['China travel', 'China tours', 'China specialists', 'New Zealand', 'CTS Tours'],
-  metadataBase: new URL('https://chinatravel-zloe.onrender.com'),
+  metadataBase: new URL(getSiteUrl()),
   icons: {
     icon: '/logo-square.jpg',
     apple: '/logo-square.jpg',
@@ -55,6 +58,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans">
+        <GoogleTagManager />
+        <GtmInit />
         <Navbar />
         {children}
         <Footer />

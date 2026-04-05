@@ -690,7 +690,7 @@ export const tours: Tour[] = [
       'Terracotta Warriors',
       'high-speed train',
     ],
-    departureDates: ['13 August', '15 October', '2 November'],
+    departureDates: ['15 October', '13 August', '2 November'],
     // Single room supplement: NZD $395
   },
   {
@@ -840,7 +840,7 @@ export const tours: Tour[] = [
       'real life experience in China',
       'West Lake',
     ],
-    departureDates: ['3 August', '14 October'],
+    departureDates: ['14 October', '3 August'],
     // Single room supplement: NZD $400
   },
   {
@@ -1969,3 +1969,46 @@ export function tourHasTagSlug(tour: Tour, tagSlug: string): boolean {
   if (!tagSlug || !tour.tags?.length) return false;
   return tour.tags.some((label) => slugifyTourTag(label) === tagSlug);
 }
+
+/**
+ * Get all active China tours sorted by tier (Signature > Discovery > Stopover)
+ */
+export const getAllChinaTours = (): Tour[] => {
+  const tierOrder = { signature: 0, discovery: 1, stopover: 2 };
+  return tours
+    .filter(tour => tour.destination === 'china' && tour.isActive)
+    .sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]);
+};
+
+/**
+ * Get tours by multiple region/city names.
+ * Used for city hub pages to match tours containing any of the city names.
+ * Handles Xi'an variants, region fuzzy matching, etc.
+ */
+export const getToursByRegion = (regionNames: string[]): Tour[] => {
+  const searchTerms = regionNames.flatMap(name => {
+    const variants = [name.toLowerCase()];
+
+    // Handle Xi'an variants
+    if (name.toLowerCase() === "xi'an" || name.toLowerCase() === 'xian') {
+      variants.push("xi'an", 'xian', "xi\\'an");
+    }
+
+    return variants;
+  });
+
+  return tours.filter(tour => {
+    if (!tour.isActive || tour.destination !== 'china') return false;
+
+    const searchableText = [
+      tour.name,
+      tour.shortDescription,
+      ...tour.highlights,
+      ...(tour.tags ?? []),
+      ...tour.itinerary.map(day => day.title),
+      ...tour.itinerary.map(day => day.description)
+    ].join(' ').toLowerCase();
+
+    return searchTerms.some(term => searchableText.includes(term));
+  });
+};
