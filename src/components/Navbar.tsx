@@ -113,6 +113,9 @@ const Navbar = () => {
                 <Link href="/tours/find" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => setIsToursDropdownOpen(false)}>
                   Find Your Tour
                 </Link>
+                <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={() => setIsToursDropdownOpen(false)}>
+                  💫 China Tours Hub
+                </Link>
                 <div className="border-t border-gray-100 my-1"></div>
                 <p className="px-4 py-1.5 text-xs text-gray-400 uppercase tracking-wider">Destinations</p>
                 {destinations.map((dest) => (
@@ -165,9 +168,23 @@ const Navbar = () => {
             Tailor Made
           </Link>
 
-          <Link href="/guide" className="text-accent hover:text-primary transition-colors font-medium">
-            Travel Guide
-          </Link>
+          {/* Travel Guide Dropdown */}
+          <div className="relative group">
+            <button className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+              Travel Guide
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
+                Best Time to Visit
+              </Link>
+              <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
+                Visa Guide for NZ
+              </Link>
+            </div>
+          </div>
           <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium">
             About
           </Link>
@@ -242,6 +259,22 @@ const Navbar = () => {
                       )}
                     </div>
                   ))}
+                </div>
+              )}
+            </div>
+
+            <div>
+              <button onClick={() => setMobileExpandedDest('guides')}
+                className="flex items-center justify-between w-full text-accent hover:text-primary transition-colors font-medium py-2">
+                Travel Guide
+                <svg className={`w-4 h-4 transition-transform ${mobileExpandedDest === 'guides' ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {mobileExpandedDest === 'guides' && (
+                <div className="pl-4 mt-1 space-y-1 border-l-2 border-secondary/30 ml-2">
+                  <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>
+                  <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Visa Guide for NZ</Link>
                 </div>
               )}
             </div>

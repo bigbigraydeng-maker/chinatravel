@@ -42,6 +42,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Tours</h3>
             <ul className="space-y-2">
               <li><Link href="/tours" className="text-gray-400 hover:text-white transition-colors">All Tours</Link></li>
+              <li><Link href="/china-tours" className="text-gray-400 hover:text-white transition-colors font-medium">💫 China Tours Hub</Link></li>
               <li><Link href="/tours/china/signature" className="text-gray-400 hover:text-white transition-colors">China Signature</Link></li>
               <li><Link href="/tours/china/discovery" className="text-gray-400 hover:text-white transition-colors">China Discovery</Link></li>
               <li><Link href="/tours/china/stopover" className="text-gray-400 hover:text-white transition-colors">China Stopover</Link></li>
@@ -51,13 +52,13 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">About</h3>
+            <h3 className="text-lg font-semibold mb-4">Guides</h3>
             <ul className="space-y-2">
+              <li><Link href="/best-time-to-visit-china" className="text-gray-400 hover:text-white transition-colors">Best Time to Visit</Link></li>
+              <li><Link href="/china-visa-guide-for-new-zealanders" className="text-gray-400 hover:text-white transition-colors">Visa Guide for NZ</Link></li>
+              <li><Link href="/china-tours-from-new-zealand" className="text-gray-400 hover:text-white transition-colors">Tours from NZ</Link></li>
+              <li><Link href="/china-tours-from-auckland" className="text-gray-400 hover:text-white transition-colors">Tours from Auckland</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About CTS</Link></li>
-              <li><Link href="/about/asian-escapes" className="text-gray-400 hover:text-white transition-colors">Asiascape Holidays</Link></li>
-              <li><Link href="/experts/baker-gu" className="text-gray-400 hover:text-white transition-colors">Our Experts</Link></li>
-              <li><Link href="/guide" className="text-gray-400 hover:text-white transition-colors">Travel Guide</Link></li>
-              <li><Link href="/agents" className="text-gray-400 hover:text-white transition-colors">Agent Resources</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
