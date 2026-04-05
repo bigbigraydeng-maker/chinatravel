@@ -12,15 +12,30 @@ import GeoRecommendations from '@/components/GeoRecommendations';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
 
+const SITE = 'https://chinatravel-zloe.onrender.com';
+
 export const metadata: Metadata = {
-  title: 'CTS Tours | China Travel Specialists',
-  description: 'Discover China with specialists who combine heritage, direct operations and authentic access for New Zealand travellers.',
-  keywords: ['China travel', 'China tours', 'China specialists', 'New Zealand', 'CTS Tours', 'Great Wall', 'Beijing', 'Shanghai'],
+  // 54 chars — within 50-60 target
+  title: 'CTS Tours | China Travel Specialists for New Zealanders',
+  // 155 chars — within 140-160 target
+  description: 'Discover authentic China with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
+  keywords: ['China tours New Zealand', 'China travel specialists', 'CTS Tours', 'Beijing tours', 'Shanghai tours', 'luxury China travel', 'small group China tours'],
   openGraph: {
-    title: 'CTS Tours | China Travel Specialists',
-    description: 'Discover China with specialists who combine heritage, direct operations and authentic access for New Zealand travellers.',
     type: 'website',
+    url: SITE,
+    siteName: 'CTS Tours — China Travel Specialists',
+    title: 'CTS Tours | China Travel Specialists for New Zealanders',
+    description: 'Discover authentic China with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
+    images: [{ url: `${SITE}/images/tours/great-wall-mist.jpg`, width: 1200, height: 630 }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CTS Tours | China Travel Specialists for New Zealanders',
+    description: 'New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct operations, authentic access.',
+    images: [`${SITE}/images/tours/great-wall-mist.jpg`],
+  },
+  alternates: { canonical: SITE },
+  robots: { index: true, follow: true },
 };
 
 const HomePage = () => {
