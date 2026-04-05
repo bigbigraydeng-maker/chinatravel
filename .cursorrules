@@ -1,0 +1,347 @@
+# ChinaTravel — Cursor AI Rules
+
+## Project Identity
+This is **CTS Tours** — a luxury China tour operator website for New Zealand travellers.
+- Stack: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Supabase + Resend
+- Live site: https://chinatravel-zloe.onrender.com
+- Repo: https://github.com/bigbigraydeng-maker/chinatravel.git
+- Deploy: Render (auto-deploys on push to `main`)
+
+---
+
+## Architecture
+
+### Routing
+```
+src/app/
+├── page.tsx                          # Homepage
+├── layout.tsx                        # Root layout (Navbar + Footer)
+├── sitemap.ts                        # Auto-generates /sitemap.xml
+├── robots.ts                         # Auto-generates /robots.txt
+├── china-tours/page.tsx              # Commercial hub
+├── [destination]-tours/page.tsx      # 7 destination hubs (beijing, xian, etc.)
+├── [destination]-travel-guide/       # 21 destination guides (Phase 2)
+│   └── page.tsx
+├── best-time-to-visit-china/         # Seasonal SEO page
+├── china-visa-guide-for-new-zealanders/
+├── china-tours-from-new-zealand/
+├── china-tours-from-auckland/
+├── tours/
+│   └── [destination]/[tier]/[tour]/  # Dynamic tour detail pages
+│       └── print/                    # Print-friendly itinerary
+├── api/
+│   ├── send-itinerary/route.ts       # Email itinerary (Resend)
+│   └── tour-enquiry/route.ts         # Tour enquiry form
+└── tailor-made/page.tsx              # Custom trip inquiry
+```
+
+### Key Data Files
+```
+src/lib/data/
+├── tours.ts          # All tour products (22+ tours, destinations, tiers)
+├── guides.ts         # All 21 destination guide data (2,500+ lines)
+└── blog.ts           # Blog articles
+```
+
+### Key Components
+```
+src/components/
+├── seo/
+│   ├── DestinationGuide.tsx    # Template for all 21 guide pages (two-column layout)
+│   └── HubHero.tsx             # Hero with Next.js Image for guide/hub pages
+├── tours/
+│   ├── TourHero.tsx            # Tour detail hero
+│   ├── TourItinerary.tsx       # Day-by-day itinerary
+│   └── TourGallery.tsx         # Image gallery
+├── Hero.tsx                    # Homepage hero (Next.js Image)
+├── TourTierCard.tsx            # Product card (Signature/Discovery/Stopover)
+├── SchemaMarkup.tsx            # JSON-LD schema injector
+└── Navbar.tsx / Footer.tsx
+```
+
+---
+
+## Data Access Patterns
+
+### Tours
+```typescript
+import { tours, getTourBySlug, destinations } from '@/lib/data/tours';
+
+// Get a specific tour
+const tour = getTourBySlug('beijing', 'stopover', 'beijing');
+
+// All China tours
+const chinaTours = tours.filter(t => t.destination === 'china');
+```
+
+### Guides
+```typescript
+import { getGuideBySlug, getGuidesByParent } from '@/lib/data/guides';
+
+const guide = getGuideBySlug('beijing-travel-guide');
+const yunnanSubGuides = getGuidesByParent('yunnan');
+```
+
+---
+
+## SEO Requirements — CRITICAL
+
+Every page MUST have:
+
+### 1. Metadata (`generateMetadata` preferred, static `metadata` acceptable)
+```typescript
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Specific Page Title | CTS Tours',  // 50-60 chars
+    description: 'Unique description per page...',  // 140-160 chars
+    keywords: ['keyword1', 'keyword2'],
+    openGraph: {
+      type: 'article',
+      url: `https://chinatravel-zloe.onrender.com/${slug}`,
+      title: '...',
+      description: '...',
+      images: [{ url: `https://chinatravel-zloe.onrender.com${heroImage}`, width: 1200, height: 630 }],
+    },
+    alternates: { canonical: `https://chinatravel-zloe.onrender.com/${slug}` },
+    robots: { index: true, follow: true },
+  };
+}
+```
+
+### 2. Schema Markup — Pass to `<SchemaMarkup data={schema} />`
+```typescript
+// All guide pages use 3 schema types:
+const schema = [
+  { '@type': 'Article', headline: ..., datePublished: ..., author: ... },
+  { '@type': 'BreadcrumbList', itemListElement: [...] },
+  { '@type': 'FAQPage', mainEntity: guide.faqs.map(...) },
+];
+```
+
+### 3. Never repeat titles/descriptions across pages
+All 21 guide pages use `guide.metaTitle` and `guide.metaDescription` from `guides.ts`.
+
+---
+
+## Styling Rules
+
+### Tailwind Tokens
+```
+primary     = warm orange/amber (#D4774C approx)
+secondary   = accent teal/green
+accent      = dark navy (#1A2B4B approx)
+warm-50/100/200 = warm beige tones
+```
+
+### Typography
+- Headings: `font-serif font-bold text-accent`
+- Body: `text-gray-700 leading-relaxed text-[16px]`
+- Labels: `text-sm uppercase tracking-widest font-bold`
+
+### Common Patterns
+```tsx
+// Section with divider
+<section id="section-id" className="mb-12 scroll-mt-20">
+  <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
+    Section Title
+  </h2>
+</section>
+
+// Card
+<div className="rounded-xl border border-warm-100 p-5 hover:shadow-md hover:border-primary/30 transition-all bg-white">
+
+// CTA Button Primary
+<Link href="/tailor-made" className="bg-primary text-white font-bold px-8 py-3 rounded-lg hover:bg-primary/90">
+
+// CTA Button Secondary
+<Link href="/tours" className="bg-white/15 border border-white/30 text-white px-8 py-3 rounded-lg">
+```
+
+---
+
+## API Routes — Critical Rules
+
+### Email (Resend)
+```typescript
+// ⚠️ CRITICAL: Resend MUST be instantiated INSIDE the handler, never at module level
+export async function POST(req: Request) {
+  const resend = new Resend(process.env.RESEND_API_KEY); // ← INSIDE handler
+  // ...
+}
+// If instantiated at module level → build-time crash on Render
+```
+
+### Environment Variables
+```env
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+RESEND_API_KEY=re_...  (not yet configured on Render)
+```
+
+---
+
+## DestinationGuide Component
+
+The `DestinationGuide.tsx` is used by all 21 guide pages. It has:
+- Two-column layout: main content (2/3) + sticky sidebar (1/3)
+- `GUIDE_CONFIG` map: maps each guide slug → hub URL, related tours, related guides
+- Sections: Table of Contents → Intro → Mid-CTA → Sections → Attractions → Gallery → FAQs → Related Guides
+- Sidebar: CTA card, Quick Facts, Featured Tours (with links), Useful Links
+
+**When adding a new guide**, update `GUIDE_CONFIG` in `DestinationGuide.tsx` with:
+```typescript
+'new-destination-travel-guide': {
+  hubUrl: '/destination-tours',
+  hubLabel: 'All Destination Tours',
+  relatedTours: [...],  // 2-3 TourCard objects
+  relatedGuides: [...], // 4 GuideLink objects
+},
+```
+
+---
+
+## Image Conventions
+
+### Next.js Image (required for all images)
+```tsx
+// Hero images — use fill + priority
+<Image src={guide.heroImage} alt={guide.h1} fill priority sizes="100vw" className="object-cover" />
+
+// Card thumbnails
+<Image src={tour.image} alt={tour.name} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
+```
+
+### Image Paths
+```
+/images/tours/          # Tour product images (44 images)
+/images/guides/         # Guide page images
+  /beijing/             # 9 images: forbidden-city-*, great-wall-*, beijing-*
+  /shanghai/            # 5 images: shanghai-*
+  /chengdu/             # 2 images: chengdu-*
+  /guilin/              # 2 images: guilin-*
+  /[other-guides]/      # Each has hero.jpg + 1-2 supporting images
+```
+
+⚠️ Never use CSS `background-image` for above-the-fold images — use Next.js `<Image>` with `fill`.
+
+---
+
+## Tour Data Structure
+
+```typescript
+interface Tour {
+  slug: string;
+  destination: 'china' | 'japan' | 'vietnam';
+  tier: 'signature' | 'discovery' | 'stopover';
+  name: string;         // Format: "China Signature — Silk Road Discovery"
+  tagline: string;
+  duration: string;     // "17 Days"
+  price: string;        // "From NZD $6,699"
+  heroImage: string;    // "/images/tours/..."
+  highlights: string[];
+  itinerary: DayItinerary[];
+  inclusions: string[];
+  exclusions: string[];
+}
+
+// Tour URL structure
+/tours/[destination]/[tier]/[slug]
+// e.g. /tours/china/signature/silk-road
+```
+
+---
+
+## Guide Data Structure
+
+```typescript
+interface DestinationGuide {
+  id: string;
+  slug: string;              // 'beijing-travel-guide'
+  destinationName: string;   // 'Beijing'
+  metaTitle: string;         // 50-60 chars for SEO
+  metaDescription: string;   // 140-160 chars for SEO
+  keywords: string[];
+  h1: string;
+  heroSubtitle: string;
+  heroImage: string;         // '/images/guides/[dest]/hero.jpg'
+  introText: string[];       // 3 paragraphs
+  sections: Section[];       // 4-6 sections
+  attractions: Attraction[]; // 4-8 attractions
+  practicalInfo: PracticalInfo;
+  faqs: FAQ[];               // exactly 5 FAQs
+  relatedTourSlugs: string[];
+  relatedGuideSlugs: string[];
+  galleryImages: string[];   // 5-8 images
+  createdAt: string;
+  updatedAt: string;
+}
+```
+
+---
+
+## Common Tasks
+
+### Add a new destination guide
+1. Add data object to `src/lib/data/guides.ts`
+2. Create `src/app/[slug]/page.tsx` using the standard template (copy any existing guide page)
+3. Add entry to `GUIDE_CONFIG` in `DestinationGuide.tsx`
+4. Add to `sitemap.ts` guide list
+5. Create image directory `public/images/guides/[dest]/` with `hero.jpg`
+6. Commit: `feat: add [destination] travel guide`
+
+### Add a new tour
+1. Add tour object to `src/lib/data/tours.ts`
+2. Add to `sitemap.ts` tour list
+3. Add to `GUIDE_CONFIG` relatedTours for relevant guide pages
+4. Commit: `feat: add [tour-name] tour`
+
+### Debug build failures
+1. Run `npm run build` locally
+2. Common causes:
+   - Resend at module level → move inside handler
+   - Missing guide data → add to guides.ts
+   - Wrong image path → check public/images/
+   - TypeScript type mismatch → check interfaces in tours.ts / guides.ts
+
+---
+
+## Git Workflow
+
+```bash
+# Branch: always main
+git add -A
+git commit -m "feat: description"   # or fix:, refactor:, docs:, chore:
+git push origin main                 # triggers Render auto-deploy
+
+# Common commit types:
+# feat:     new page or feature
+# fix:      bug fix
+# refactor: code restructuring (no behavior change)
+# docs:     documentation only
+# chore:    config, tooling
+```
+
+---
+
+## What NOT to do
+
+- ❌ Never use CSS `background-image` for hero images — use `<Image fill priority>`
+- ❌ Never instantiate Resend at module level — always inside the handler
+- ❌ Never use the same `title`/`description` across multiple pages
+- ❌ Never add `<img>` tags — always use Next.js `<Image>`
+- ❌ Never hardcode `http://` URLs — use the `SITE` constant
+- ❌ Never modify `guides-complete.ts` or `guides-rest.ts` — those are deleted; `guides.ts` is the only source
+- ❌ Never skip the sitemap when adding new pages
+
+---
+
+## Current Project Status (April 2026)
+
+| Phase | Pages | Status |
+|-------|-------|--------|
+| Phase 0 | MVP (tours, homepage) | ✅ Complete |
+| Phase 1 | 12 SEO hub pages | ✅ Complete |
+| Phase 2 | 21 destination guides | ✅ Complete |
+| Phase 3 | FAQ + tool pages | ⏳ Planned |
+
+**Next up:** Google Analytics 4 setup → Google Ads campaigns
