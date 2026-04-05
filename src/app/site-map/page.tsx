@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import Link from 'next/link';
+import MermaidDiagram from '@/components/MermaidDiagram';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -14,54 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function SiteMapPage() {
-  return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-accent via-accent to-accent/80 text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Site Architecture</h1>
-          <p className="text-lg text-white/90 max-w-2xl">
-            Explore how all pages and destinations connect across the CTS Tours website.
-          </p>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          {/* Legend */}
-          <div className="mb-12 p-6 bg-warm-50 rounded-xl border border-warm-100">
-            <h2 className="text-2xl font-serif font-bold text-accent mb-4">Understanding the Map</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-primary rounded-full"></div>
-                  <span className="font-semibold">Main Pages</span>
-                </div>
-                <p className="text-gray-600">Core website destinations (Homepage, Tours, Tailor-Made)</p>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-secondary rounded-full"></div>
-                  <span className="font-semibold">Hub Pages</span>
-                </div>
-                <p className="text-gray-600">City/region tour hubs and destination guides</p>
-              </div>
-              <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 bg-accent rounded-full"></div>
-                  <span className="font-semibold">Detail Pages</span>
-                </div>
-                <p className="text-gray-600">Individual tour details and guide content</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Mermaid Diagram */}
-          <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 overflow-x-auto">
-            <div className="mermaid">
-{`flowchart TD
+const mermaidDiagram = `flowchart TD
     NAV["🧭 Global Navigation<br/>(Navbar & Footer)"]
 
     HOME["🏠 / Homepage"]
@@ -135,14 +89,59 @@ export default function SiteMapPage() {
     style TOUR_DETAIL fill:#1A2B4B,stroke:#333,color:#fff
     style SEO_HUB fill:#4CAF50,stroke:#333,color:#fff
     style NAV fill:#999,stroke:#333,color:#fff
-    style PRINT fill:#ccc,stroke:#333,color:#333`}
+    style PRINT fill:#ccc,stroke:#333,color:#333`;
+
+export default function SiteMapPage() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-accent via-accent to-accent/80 text-white py-16">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Site Architecture</h1>
+          <p className="text-lg text-white/90 max-w-2xl">
+            Explore how all pages and destinations connect across the CTS Tours website.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Legend */}
+          <div className="mb-12 p-6 bg-warm-50 rounded-xl border border-warm-100">
+            <h2 className="text-2xl font-serif font-bold text-accent mb-4">Understanding the Map</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-primary rounded-full"></div>
+                  <span className="font-semibold">Main Pages</span>
+                </div>
+                <p className="text-gray-600">Core website destinations (Homepage, Tours, Tailor-Made)</p>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-secondary rounded-full"></div>
+                  <span className="font-semibold">Hub Pages</span>
+                </div>
+                <p className="text-gray-600">City/region tour hubs and destination guides</p>
+              </div>
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-3 h-3 bg-accent rounded-full"></div>
+                  <span className="font-semibold">Detail Pages</span>
+                </div>
+                <p className="text-gray-600">Individual tour details and guide content</p>
+              </div>
             </div>
           </div>
+
+          {/* Mermaid Diagram */}
+          <MermaidDiagram diagram={mermaidDiagram} />
 
           {/* Key Statistics */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-warm-50 rounded-xl border border-warm-100">
-              <div className="text-4xl font-bold text-primary mb-2">77</div>
+              <div className="text-4xl font-bold text-primary mb-2">78</div>
               <div className="text-sm text-gray-600">Total Pages</div>
             </div>
             <div className="text-center p-6 bg-warm-50 rounded-xl border border-warm-100">
@@ -262,10 +261,6 @@ export default function SiteMapPage() {
           </div>
         </div>
       </section>
-
-      {/* Script for Mermaid rendering */}
-      <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-      <script>{`mermaid.contentLoaderMarked.options.breaks = true; mermaid.initialize({ startOnLoad: true, theme: 'default' }); mermaid.contentLoaderMarked.render();`}</script>
     </>
   );
 }
