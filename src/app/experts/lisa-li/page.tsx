@@ -22,7 +22,7 @@ const LisaLiPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/tours/beijing-forbidden-city.jpg"
+            src="/images/guides/beijing/forbidden-city-aerial.jpg"
             alt="Forbidden City, Beijing — CTS Tours Managing Director"
             className="w-full h-full object-cover object-center"
           />
