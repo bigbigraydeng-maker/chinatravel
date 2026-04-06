@@ -260,6 +260,67 @@ const GuideDetailPage = ({ params }: { params: { slug: string } }) => {
                 ))}
             </div>
           </div>
+
+          {/* Explore Related Tours */}
+          <div className="mt-16 pt-12 border-t border-gray-200">
+            <h3 className="text-xl font-semibold mb-6 font-serif">Ready to Experience China?</h3>
+            <p className="text-gray-600 mb-8">Discover our curated tour experiences to the destinations featured in this guide.</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <Link
+                href="/beijing-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">🏯</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Beijing Tours</h4>
+                <p className="text-sm text-gray-600">Great Wall, Forbidden City & more</p>
+              </Link>
+              <Link
+                href="/xian-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">⚔️</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Xi'an Tours</h4>
+                <p className="text-sm text-gray-600">Terracotta Warriors & ancient history</p>
+              </Link>
+              <Link
+                href="/shanghai-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">🌃</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Shanghai Tours</h4>
+                <p className="text-sm text-gray-600">Modern skyline & river cruises</p>
+              </Link>
+              <Link
+                href="/chengdu-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">🐼</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Chengdu Tours</h4>
+                <p className="text-sm text-gray-600">Giant pandas & spicy cuisine</p>
+              </Link>
+              <Link
+                href="/guilin-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">🏞️</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Guilin Tours</h4>
+                <p className="text-sm text-gray-600">Li River & karst landscapes</p>
+              </Link>
+              <Link
+                href="/yunnan-tours"
+                className="group p-6 border border-gray-200 rounded-lg hover:shadow-md hover:border-primary transition-all"
+              >
+                <div className="text-3xl mb-3">🌄</div>
+                <h4 className="font-semibold mb-2 group-hover:text-primary transition-colors">Yunnan Tours</h4>
+                <p className="text-sm text-gray-600">Diverse culture & natural beauty</p>
+              </Link>
+            </div>
+            <div className="mt-8 text-center">
+              <Link href="/tours" className="text-primary hover:underline font-medium">
+                View all tours →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>

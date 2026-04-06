@@ -234,6 +234,98 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
       )}
 
+      {/* Recommended Tours Section */}
+      <section className="py-16 bg-warm-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-serif font-bold mb-2 text-center">Explore Our China Tours</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Discover our carefully curated tours that bring the stories and destinations featured in this guide to life
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <Link
+              href="/beijing-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center text-5xl">
+                🏯
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Beijing</h3>
+                <p className="text-sm text-gray-600">Forbidden City, Great Wall & ancient temples</p>
+              </div>
+            </Link>
+            <Link
+              href="/xian-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-5xl">
+                ⚔️
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Xi'an</h3>
+                <p className="text-sm text-gray-600">Terracotta Warriors & Silk Road heritage</p>
+              </div>
+            </Link>
+            <Link
+              href="/shanghai-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-5xl">
+                🌃
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Shanghai</h3>
+                <p className="text-sm text-gray-600">Modern skyline, Yu Garden & river cruises</p>
+              </div>
+            </Link>
+            <Link
+              href="/chengdu-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center text-5xl">
+                🐼
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Chengdu</h3>
+                <p className="text-sm text-gray-600">Giant pandas, temples & local culture</p>
+              </div>
+            </Link>
+            <Link
+              href="/guilin-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-5xl">
+                🏞️
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Guilin</h3>
+                <p className="text-sm text-gray-600">Li River karst landscapes & bamboo rafting</p>
+              </div>
+            </Link>
+            <Link
+              href="/yunnan-tours"
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div className="relative h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center text-5xl">
+                🌄
+              </div>
+              <div className="p-6">
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Yunnan</h3>
+                <p className="text-sm text-gray-600">Ethnic minorities, ancient towns & nature</p>
+              </div>
+            </Link>
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              href="/tours"
+              className="text-primary hover:underline font-medium"
+            >
+              View all 22 available tours →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
@@ -242,13 +334,13 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             Let our experts craft your perfect China experience
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/tours"
+            <Link
+              href="/tailor-made"
               className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
             >
-              Browse Tours
+              Tailor-Made Itinerary
             </Link>
-            <Link 
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center gap-2 bg-secondary text-white px-8 py-3 rounded-lg font-medium hover:bg-secondary/90 transition-colors"
             >
