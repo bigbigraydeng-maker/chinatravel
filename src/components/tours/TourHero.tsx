@@ -68,7 +68,7 @@ export default function TourHero({
             <AvailabilityBadge
               departureDate={departureDates[0]}
               seatsLeft={5}
-              showCountdown={true}
+              showCountdown={false}
             />
           )}
 

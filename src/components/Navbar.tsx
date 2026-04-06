@@ -84,6 +84,11 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-7">
+          {/* About - First Item */}
+          <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium">
+            About
+          </Link>
+
           {/* Tours Dropdown */}
           <div
             ref={dropdownRef}
@@ -185,9 +190,6 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium">
-            About
-          </Link>
           <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium">
             Agents
           </Link>
