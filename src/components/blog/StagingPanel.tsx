@@ -107,11 +107,25 @@ export default function StagingPanel({ initialItems }: StagingPanelProps) {
   );
 
   const handleImportJson = useCallback(() => {
+    if (!importJson.trim()) {
+      setPublishNotice('❌ Paste JSON first');
+      setTimeout(() => setPublishNotice(null), 3000);
+      return;
+    }
     const row = stagingFromGenBlogJson(importJson, 'Import');
-    if (!row) return;
+    if (!row) {
+      setPublishNotice(
+        '❌ Invalid JSON. Must have: blog.title, blog.content, blog.metadata.category. ' +
+        'Check /gen-blog output format.'
+      );
+      setTimeout(() => setPublishNotice(null), 5000);
+      return;
+    }
     setItems((prev) => [...prev, row]);
     setImportJson('');
     setExpandedId(row.id);
+    setPublishNotice(`✅ Added "${row.title}"`);
+    setTimeout(() => setPublishNotice(null), 3000);
   }, [importJson]);
 
   const handleDelete = useCallback((id: string) => {
