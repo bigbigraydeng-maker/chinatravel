@@ -379,14 +379,14 @@ export const xianGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['terracotta-warriors-travel-guide', 'silk-road-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/forbidden-city-lion-2.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/beijing-temple.jpg',
-    '/images/guides/beijing/beijing-temple-2.jpg'
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    '/images/guides/xian/terracotta-detail.jpg',
+    '/images/guides/xian/muslim-quarter.jpg',
+    '/images/guides/xian/city-wall.jpg',
+    '/images/guides/xian/pagoda.jpg'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -553,10 +553,10 @@ export const shanghaiGuide: DestinationGuide = {
     '/images/guides/shanghai/shanghai-night-red.jpg',
     '/images/guides/shanghai/shanghai-skyline.jpg',
     '/images/guides/shanghai/shanghai-yuyuan-night.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1535399579326-aced68b57e4d?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -712,10 +712,10 @@ export const chengduGuide: DestinationGuide = {
   galleryImages: [
     '/images/guides/chengdu/chengdu-pandas.jpg',
     '/images/guides/chengdu/chengdu-old-town.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg'
+    'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=800&q=80',
+    'https://images.unsplash.com/photo-1535399579326-aced68b57e4d?w=800&q=80'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -871,10 +871,10 @@ export const guilinGuide: DestinationGuide = {
   galleryImages: [
     '/images/guides/guilin/guilin-mist.jpg',
     '/images/guides/guilin/guilin-river-valley.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1533105079780-92b9be3c3a02?w=800&q=80',
+    'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=800&q=80',
+    'https://images.unsplash.com/photo-1535399579326-aced68b57e4d?w=800&q=80'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -1028,12 +1028,12 @@ export const zhangjiajieGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'zhangjiajie-avatar-mountains-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1520763185298-1b434c919abe?w=800&q=80',
+    'https://images.unsplash.com/photo-1533105079780-92b9be3c3a02?w=800&q=80',
+    'https://images.unsplash.com/photo-1535399579326-aced68b57e4d?w=800&q=80',
+    'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -1196,15 +1196,15 @@ export const yunnanGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'yunnan-signature-cultural-landscape'],
   relatedGuideSlugs: ['lijiang-travel-guide', 'dali-travel-guide', 'shangri-la-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 // ============================================================================
@@ -1321,15 +1321,15 @@ export const lijangGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'lijiang-signature-naxi-heritage'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'dali-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 // ============================================================================
@@ -1433,15 +1433,15 @@ export const daliGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'dali-signature-silk-road'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'lijiang-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1504681869696-d977211a23f9?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const kunmingGuide: DestinationGuide = {
@@ -1539,14 +1539,14 @@ export const kunmingGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'stone-forest-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const shangrIlaGuide: DestinationGuide = {
@@ -1625,14 +1625,14 @@ export const shangrIlaGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'shangri-la-signature-tibetan-culture'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'meili-mountain-trek-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const greatWallGuide: DestinationGuide = {
@@ -1711,15 +1711,15 @@ export const greatWallGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1508454185391-04b3a1220b11?w=800&q=80',
+    'https://images.unsplash.com/photo-1490283751519-25143fcc1d28?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    'https://images.unsplash.com/photo-1534080564897-61f3b3f786d7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const forbiddenCityGuide: DestinationGuide = {
@@ -1784,15 +1784,15 @@ export const forbiddenCityGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide', 'great-wall-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/forbidden-city-aerial.jpg',
-    '/images/guides/beijing/forbidden-city-lion-2.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg'
+    'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 // ============================================================================
@@ -1861,14 +1861,14 @@ export const terracottaWarriorsGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['xian-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const yangshuoGuide: DestinationGuide = {
@@ -1952,15 +1952,15 @@ export const yangshuoGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'li-river-cruise-guide'],
   galleryImages: [
-    '/images/guides/guilin/guilin-mist.jpg',
-    '/images/guides/guilin/guilin-river-valley.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const liRiverCruiseGuide: DestinationGuide = {
@@ -2030,15 +2030,15 @@ export const liRiverCruiseGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'yangshuo-travel-guide'],
   galleryImages: [
-    '/images/guides/guilin/guilin-river-valley.jpg',
-    '/images/guides/guilin/guilin-mist.jpg',
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 // Rapid-fire final guides: Hangzhou, Suzhou, Chongqing, Leshan Buddha, Tianmen Mountain
@@ -2123,15 +2123,15 @@ export const hangzhouGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg',
-    '/images/guides/beijing/beijing-temple.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80',
+    'https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const suzhouGuide: DestinationGuide = {
@@ -2214,14 +2214,14 @@ export const suzhouGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide', 'hangzhou-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const chongqingGuide: DestinationGuide = {
@@ -2297,14 +2297,14 @@ export const chongqingGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['yunnan-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const leshanBuddhaGuide: DestinationGuide = {
@@ -2374,14 +2374,14 @@ export const leshanBuddhaGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['chengdu-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 export const tianmenMountainGuide: DestinationGuide = {
@@ -2451,14 +2451,14 @@ export const tianmenMountainGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['zhangjiajie-travel-guide'],
   galleryImages: [
-    '/images/guides/beijing/great-wall-mist.jpg',
-    '/images/guides/beijing/forbidden-city-gold-lion.jpg',
-    '/images/guides/beijing/forbidden-city-lion.jpg',
-    '/images/guides/beijing/great-wall-cloud-sea.jpg',
-    '/images/guides/beijing/great-wall-green.jpg'
+    'https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?w=800&q=80',
+    'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80',
+    'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
+    'https://images.unsplash.com/photo-1512207736139-39c5dd31867d?w=800&q=80',
+    'https://images.unsplash.com/photo-1518611505868-48510c2e022f?w=800&q=80'
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-07'
 };
 
 // ============================================================================
