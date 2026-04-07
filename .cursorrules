@@ -350,6 +350,285 @@ git push origin main                 # triggers Render auto-deploy
 
 ---
 
+## ⚠️ DEVELOPMENT WORKFLOW — MANDATORY
+
+### TEST-DRIVEN DEVELOPMENT (TDD)
+ALL features and bug fixes MUST follow TDD:
+
+```
+1. RED: Write failing test
+   └─ npm test → test FAILS
+
+2. GREEN: Implement minimal code
+   └─ npm test → test PASSES
+
+3. REFACTOR: Clean up code
+   └─ npm test → test still PASSES
+
+4. VERIFY: Coverage ≥ 80%
+   └─ npm test --coverage
+```
+
+**Test File Locations:**
+- Unit tests: `src/**/__tests__/[filename].test.ts`
+- Integration tests: `src/__tests__/integration/`
+- E2E tests: `e2e/` (critical user flows)
+
+**Required Test Coverage:**
+- ✅ Unit tests for all functions/components
+- ✅ Integration tests for API routes
+- ✅ E2E tests for critical user journeys
+- ✅ Minimum 80% coverage (measure with `npm test --coverage`)
+
+---
+
+### CODE REVIEW CHECKLIST
+Before pushing ANY code, verify ALL items:
+
+**🔒 Security**
+- [ ] No hardcoded secrets (API keys, tokens, passwords)
+- [ ] No SQL injection (use parameterized queries only)
+- [ ] No XSS vulnerabilities (escape user input)
+- [ ] No CSRF protection bypass
+- [ ] No exposed PII in error messages or logs
+- [ ] All user inputs validated at system boundaries
+
+**✅ Functionality**
+- [ ] All tests passing (100% pass rate)
+- [ ] Test coverage ≥ 80%
+- [ ] No `console.log` or debug statements remaining
+- [ ] Error handling explicit (no silent failures)
+- [ ] No unhandled promise rejections
+- [ ] All edge cases covered
+
+**📝 Code Quality**
+- [ ] Functions < 50 lines (split if longer)
+- [ ] Files < 800 lines (extract modules)
+- [ ] No nesting deeper than 4 levels
+- [ ] Descriptive names (no `x`, `temp`, `data`)
+- [ ] DRY principle (no code duplication)
+- [ ] Proper TypeScript types (no `any`)
+- [ ] Imports organized (React → lib → components)
+
+**⚡ Performance**
+- [ ] No N+1 queries
+- [ ] No unnecessary re-renders
+- [ ] Images optimized with Next.js Image
+- [ ] Bundle size acceptable
+
+**🔍 SEO (for public pages)**
+- [ ] Metadata configured (title, description, keywords)
+- [ ] JSON-LD schema included (if applicable)
+- [ ] Open Graph tags present
+- [ ] Canonical URLs correct
+- [ ] Internal links included (min 3-5 per page)
+- [ ] Alt text on all images
+
+**♿ Accessibility**
+- [ ] All images have descriptive alt text
+- [ ] Form labels properly associated
+- [ ] Color contrast sufficient (WCAG AA)
+- [ ] Keyboard navigation functional
+- [ ] Semantic HTML used (`<button>`, `<nav>`, etc.)
+
+---
+
+### DETECTION REPORT (MANDATORY BEFORE PUSH)
+
+Output this report after code review. DO NOT push without Zhong's explicit approval.
+
+```markdown
+# 🔍 CODE REVIEW DETECTION REPORT
+**Generated:** [timestamp]
+**Author:** Cursor AI
+**Files Modified:** [X files]
+**Tests Added:** [X tests]
+**Overall Coverage:** [XX%]
+
+---
+
+## Security Analysis
+| Check | Status | Details |
+|-------|--------|---------|
+| Hardcoded Secrets | ✅/⚠️ | [none found] |
+| SQL Injection | ✅/⚠️ | [all parameterized] |
+| XSS Protection | ✅/⚠️ | [all escaped] |
+| CSRF Protection | ✅/⚠️ | [CSRF tokens present] |
+| PII Exposure | ✅/⚠️ | [no PII in logs] |
+| Input Validation | ✅/⚠️ | [all validated] |
+
+**Security Risk Level:** 🟢 LOW | 🟡 MEDIUM | 🔴 HIGH
+
+---
+
+## Test Coverage
+| Test Type | Status | Pass Rate | Coverage |
+|-----------|--------|-----------|----------|
+| Unit Tests | ✅/❌ | XX/XX (100%) | XX% |
+| Integration Tests | ✅/❌ | XX/XX (100%) | XX% |
+| E2E Tests | ✅/❌ | XX/XX (100%) | XX% |
+| **Overall** | **✅/❌** | **100%** | **XX%** |
+
+**Coverage Target:** ≥ 80% ✅ PASS / ❌ FAIL
+
+---
+
+## Code Quality
+| Check | Status | Details |
+|-------|--------|---------|
+| Max Function Size | ✅/⚠️ | Largest: XX lines (target: <50) |
+| Max File Size | ✅/⚠️ | Largest: XX lines (target: <800) |
+| Max Nesting Level | ✅/⚠️ | Deepest: XX levels (target: <4) |
+| TypeScript Strict | ✅/⚠️ | No `any` types used |
+| Code Duplication | ✅/⚠️ | No duplicate code found |
+| Console Statements | ✅/❌ | [XX console.log found] |
+| Error Handling | ✅/⚠️ | All errors handled explicitly |
+
+---
+
+## Performance
+| Check | Status | Details |
+|-------|--------|---------|
+| N+1 Queries | ✅/⚠️ | No N+1 patterns found |
+| Re-renders | ✅/⚠️ | Optimized with useMemo/useCallback |
+| Image Optimization | ✅/⚠️ | Using Next.js Image component |
+| Bundle Size | ✅/⚠️ | [XX KB, acceptable] |
+
+---
+
+## SEO & Accessibility (for public pages)
+| Check | Status | Details |
+|-------|--------|---------|
+| Metadata | ✅/⚠️ | Title, description, keywords present |
+| JSON-LD Schema | ✅/⚠️ | [Schema type: Article, Tool, BreadcrumbList] |
+| Open Graph | ✅/⚠️ | og:title, og:description, og:image set |
+| Canonical URLs | ✅/⚠️ | All pages have canonical tags |
+| Internal Links | ✅/⚠️ | [XX links per page, target: 3-5] |
+| Alt Text | ✅/⚠️ | All images have descriptive alt text |
+| Accessibility | ✅/⚠️ | Keyboard navigation works, contrast OK |
+
+---
+
+## Issues Found
+
+### 🔴 CRITICAL (MUST FIX BEFORE PUSH)
+- [ ] Issue 1: [description]
+- [ ] Issue 2: [description]
+
+**Action Required:** Fix all critical issues and re-run tests before push
+
+### 🟡 HIGH (SHOULD FIX BEFORE PUSH)
+- [ ] Issue 1: [description]
+- [ ] Issue 2: [description]
+
+**Recommendation:** Fix high issues if time permits
+
+### 🟠 MEDIUM (OPTIONAL, CAN FIX LATER)
+- [ ] Issue 1: [description]
+
+**Recommendation:** Address in future refactor
+
+### 🔵 LOW (INFORMATIONAL)
+- [ ] Issue 1: [description]
+
+**Note:** Low severity items; nice-to-haves
+
+---
+
+## Summary
+
+**Status:** ✅ READY TO PUSH | ⚠️ REVIEW NEEDED | ❌ BLOCKED
+
+- **Critical Issues:** [X] (target: 0)
+- **High Issues:** [X] (target: 0-1)
+- **Test Pass Rate:** XX% (target: 100%)
+- **Coverage:** XX% (target: ≥80%)
+
+---
+
+## Recommendation for Zhong
+
+✅ **APPROVED** — All checks passed. Ready to push.
+
+⚠️ **MINOR FIXES NEEDED** — [X high issues]. Please fix before pushing:
+1. [Issue 1]
+2. [Issue 2]
+
+❌ **BLOCKED** — Critical issues found. Do NOT push:
+1. [Critical Issue 1]
+2. [Critical Issue 2]
+
+---
+
+## Next Steps
+
+1. [ ] Review report above
+2. [ ] Fix any critical/high issues (return to development if needed)
+3. [ ] Re-run: `npm test` (verify all pass)
+4. [ ] Re-run: `npm run build` (verify no errors)
+5. [ ] Await Zhong's explicit approval in chat
+6. [ ] Only then: `git push origin main`
+
+---
+
+## Commands Used for This Report
+\`\`\`bash
+npm test --coverage          # Unit/integration tests + coverage
+npm run type-check           # TypeScript strict check
+npm run build                # Production build validation
+npm run lint                 # Code quality check (if configured)
+\`\`\`
+```
+
+---
+
+### APPROVAL PROCESS (WORKFLOW)
+
+```
+Cursor (Developer)           Zhong (Reviewer)
+      |                            |
+      ├─ Write Tests               |
+      ├─ Implement Code            |
+      ├─ Code Review               |
+      ├─ Run Tests (PASS) ✅       |
+      ├─ Output Report ─────────→  |
+      |                  (Detection Report)
+      |                            |
+      |                      ├─ Review Report
+      |                      ├─ Check for issues
+      |<──── Message in Chat ─────┤
+      |  "APPROVED" or             |
+      |  "Fix issues X, Y"          |
+      |                            |
+      ├─ (If changes needed:)      |
+      ├─ Fix Issues                |
+      ├─ Re-test                   |
+      ├─ New Report ─────────────→ |
+      |<──── "APPROVED" ───────────┤
+      |                            |
+      └─ PUSH to main              |
+         (only after approval)     |
+```
+
+---
+
+### MANDATORY BEFORE EVERY PUSH
+
+1. ✅ `npm test` — all tests pass
+2. ✅ `npm run build` — no build errors
+3. ✅ `npm run type-check` — TypeScript strict mode
+4. ✅ Generate detection report (output above)
+5. ✅ **Wait for Zhong's explicit approval**
+6. ✅ Only then: `git push origin main`
+
+**NEVER push without:**
+- ❌ Passing tests
+- ❌ Successful local build
+- ❌ Detection report
+- ❌ Zhong's written approval
+
+---
+
 ## Current Project Status (April 2026)
 
 | Phase | Pages | Status |
@@ -357,6 +636,6 @@ git push origin main                 # triggers Render auto-deploy
 | Phase 0 | MVP (tours, homepage) | ✅ Complete |
 | Phase 1 | 12 SEO hub pages | ✅ Complete |
 | Phase 2 | 21 destination guides | ✅ Complete |
-| Phase 3 | FAQ + tool pages | ⏳ Planned |
+| Phase 3 | Tools + blog expansion | 🔄 In Progress |
 
-**Next up:** Google Analytics 4 setup → Google Ads campaigns
+**Current Task:** Phase 1 - Tools & Blog System (TDD + Code Review workflow)
