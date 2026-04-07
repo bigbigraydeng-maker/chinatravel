@@ -11,7 +11,21 @@
       "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Best of China.docx' -t plain)",
       "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Colorful Yunan.docx' -t plain)",
       "Bash(pandoc \"C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\Shanghai & Surroundings.docx\" -t plain)",
-      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\A Tale of two city.docx' -t plain)"
+      "Bash(pandoc 'C:\\\\Users\\\\Zhong\\\\Downloads\\\\discvery\\\\英文discvery\\\\A Tale of two city.docx' -t plain)",
+      "Bash(npx tsc:*)",
+      "Bash(find /c/Users/Zhong/Documents/trae_projects/ChinaTravel -name *.test.tsx -o -name *.test.ts)",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(/tmp/component_summary.txt:*)",
+      "Read(//tmp/**)",
+      "Bash(tee test-results.log)",
+      "Bash(npm install:*)",
+      "Bash(echo \"module.exports = ''test-file-stub'';\")",
+      "Bash(\"C:\\\\Users\\\\Zhong\\\\Documents\\\\trae_projects\\\\ChinaTravel\\\\__mocks__\\\\fileMock.js\")",
+      "Bash(npx jest:*)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(netstat -ano)",
+      "Bash(pkill -f \"npm run dev\")"
     ]
   }
 }

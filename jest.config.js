@@ -30,9 +30,11 @@ const customJestConfig = {
 
   // Collect coverage from these file patterns
   collectCoverageFrom: [
-    'src/components/tools/LocalFoodGuide.tsx',
+    'src/components/tools/**/*.{tsx,ts}',
+    'src/lib/tools/**/*.ts',
     '!src/**/*.d.ts',
     '!src/**/*.stories.tsx',
+    '!src/**/__tests__/**',
   ],
 
   // Coverage thresholds

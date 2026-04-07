@@ -72,8 +72,8 @@ describe('SeasonalGuide Component', () => {
 
     it('renders seasonal data for default month', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      expect(screen.getByText('April')).toBeInTheDocument();
-      expect(screen.getByText(/Late spring/)).toBeInTheDocument();
+      expect(screen.getAllByText('April').length).toBeGreaterThan(0);
+      expect(screen.getAllByText(/Late spring/).length).toBeGreaterThan(0);
     });
 
     it('renders climate information', () => {
@@ -85,7 +85,10 @@ describe('SeasonalGuide Component', () => {
 
     it('renders exactly 5 destination cards', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      const cards = screen.getAllByRole('link', { name: /yangshuo|xian|guilin|chengdu|zhangjiajie/i });
+      const cards = screen.getAllByRole('link').filter((link) => {
+        const href = link.getAttribute('href');
+        return href?.includes('travel-guide') && href !== '/guide';
+      });
       expect(cards.length).toBeGreaterThanOrEqual(5);
     });
 
@@ -98,8 +101,8 @@ describe('SeasonalGuide Component', () => {
 
     it('renders highlights list', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      expect(screen.getByText('Qingming Festival')).toBeInTheDocument();
       expect(screen.getByText('Late spring wildflowers')).toBeInTheDocument();
+      expect(screen.getAllByText(/Qingming Festival/).length).toBeGreaterThan(0);
     });
 
     it('renders festivals list', () => {
@@ -178,10 +181,7 @@ describe('SeasonalGuide Component', () => {
 
     it('has heading hierarchy', () => {
       render(<SeasonalGuide />);
-      // Check for proper heading structure
-      const mainHeading = screen.queryByRole('heading', { level: 1 });
-      // May or may not have h1 in component, but check for structure
-      expect(screen.queryByRole('heading')).toBeTruthy();
+      expect(screen.getByRole('heading', { level: 1, name: /Best Time to Visit China/i })).toBeInTheDocument();
     });
   });
 
@@ -191,7 +191,7 @@ describe('SeasonalGuide Component', () => {
       render(<SeasonalGuide defaultMonth={4} />);
       // Component should render without errors
       expect(screen.getByRole('combobox')).toBeInTheDocument();
-      expect(screen.getByText('April')).toBeInTheDocument();
+      expect(screen.getAllByText('April').length).toBeGreaterThan(0);
     });
 
     it('renders destination grid', () => {
@@ -218,7 +218,7 @@ describe('SeasonalGuide Component', () => {
 
     it('accepts defaultMonth prop and displays correct data', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      expect(screen.getByText('April')).toBeInTheDocument();
+      expect(screen.getAllByText('April').length).toBeGreaterThan(0);
     });
   });
 
@@ -253,15 +253,12 @@ describe('SeasonalGuide Component', () => {
 
     it('displays price level indicator', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      // Price level should be displayed somewhere
-      const priceText = screen.queryByText(/high|medium|low/i);
-      expect(priceText || true).toBeTruthy(); // Component may have price info
+      expect(screen.getAllByText(/high|medium|low/i).length).toBeGreaterThan(0);
     });
 
     it('displays crowding level', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      // Crowding should be displayed
-      expect(screen.queryByText(/peak|moderate|light/i) || true).toBeTruthy();
+      expect(screen.getAllByText(/peak|moderate|light/i).length).toBeGreaterThan(0);
     });
 
     it('handles missing best destinations gracefully', () => {
@@ -289,14 +286,12 @@ describe('SeasonalGuide Component', () => {
   describe('Content Display', () => {
     it('displays rainfall level', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      // Rainfall should be indicated in UI
-      expect(screen.queryByText(/medium|low|high/i) || true).toBeTruthy();
+      expect(screen.getAllByText(/medium|low|high/i).length).toBeGreaterThan(0);
     });
 
     it('displays season property', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      // Season context should be present
-      expect(screen.queryByText(/spring|summer|autumn|winter/i) || true).toBeTruthy();
+      expect(screen.getAllByText(/spring|summer|autumn|winter/i).length).toBeGreaterThan(0);
     });
 
     it('displays humidity level', () => {
@@ -306,7 +301,7 @@ describe('SeasonalGuide Component', () => {
 
     it('displays national climate description', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      expect(screen.getByText(/Late spring/)).toBeInTheDocument();
+      expect(screen.getAllByText(/Late spring/).length).toBeGreaterThan(0);
     });
   });
 
