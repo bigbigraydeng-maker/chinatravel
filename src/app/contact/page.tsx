@@ -53,7 +53,7 @@ const ContactPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/guides/shanghai/hero.jpg"
+            src="/images/guides/shanghai/shanghai-skyline.jpg"
             alt="Shanghai skyline — Contact CTS Tours New Zealand"
             className="w-full h-full object-cover"
           />
