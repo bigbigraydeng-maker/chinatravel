@@ -1,17 +1,7 @@
-export interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  author: string;
-  authorRole: string;
-  category: 'destination' | 'experience' | 'travel-tips' | 'culture';
-  tags: string[];
-  heroImage: string;
-  publishedAt: string;
-  readTime: string;
-}
+import type { BlogPost } from '@/lib/types/blog-post';
+import { phase1TravelTipPosts } from '@/lib/data/blogs-phase1-travel-tips';
+
+export type { BlogPost };
 
 export const blogPosts: BlogPost[] = [
   {
@@ -249,7 +239,8 @@ Experience Chinese tea culture on our [China Signature — Imperial Heritage](/t
     heroImage: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80',
     publishedAt: '2026-02-20',
     readTime: '5 min read'
-  }
+  },
+  ...phase1TravelTipPosts,
 ];
 
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {

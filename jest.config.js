@@ -31,7 +31,9 @@ const customJestConfig = {
   // Collect coverage from these file patterns
   collectCoverageFrom: [
     'src/components/tools/**/*.{tsx,ts}',
+    'src/components/blog/**/*.{tsx,ts}',
     'src/lib/tools/**/*.ts',
+    'src/lib/blog-staging/**/*.ts',
     '!src/**/*.d.ts',
     '!src/**/*.stories.tsx',
     '!src/**/__tests__/**',
