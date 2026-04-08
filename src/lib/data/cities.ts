@@ -14,7 +14,7 @@ export const cities: City[] = [
   {
     slug: 'beijing',
     name: 'Beijing',
-    heroImage: '/images/tours/forbidden-city-aerial.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     description: 'Home to the Great Wall and Forbidden City',
     culturalIntro: [
       'Beijing, the capital of China for over 800 years, is a city where ancient imperial grandeur meets modern dynamism. As the political and cultural heart of the nation, it houses some of the most significant historical sites in the world, including the Forbidden City — the largest palace complex ever built — and the iconic Great Wall of China, which winds through the mountains just north of the city.',
@@ -36,7 +36,7 @@ export const cities: City[] = [
   {
     slug: 'xian',
     name: "Xi'an",
-    heroImage: '/images/tours/xian-terracotta.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg',
     description: 'Home to the Terracotta Army and ancient city walls',
     culturalIntro: [
       "Xi'an, one of the Four Great Ancient Capitals of China, served as the seat of power for 13 dynasties over more than 1,100 years. It was the eastern terminus of the legendary Silk Road, making it one of the most cosmopolitan cities in the ancient world. Today, it remains a living museum of Chinese civilisation.",
@@ -58,7 +58,7 @@ export const cities: City[] = [
   {
     slug: 'shanghai',
     name: 'Shanghai',
-    heroImage: '/images/tours/shanghai-skyline.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg',
     description: 'A modern metropolis with skyscrapers and historical landmarks',
     culturalIntro: [
       'Shanghai is China\'s most cosmopolitan city, a dazzling fusion of East and West that has captivated travellers for centuries. The Bund — a waterfront promenade lined with colonial-era architecture — faces the futuristic skyline of Pudong across the Huangpu River, creating one of the most iconic cityscapes in the world.',
@@ -80,7 +80,7 @@ export const cities: City[] = [
   {
     slug: 'chengdu',
     name: 'Chengdu',
-    heroImage: '/images/tours/chengdu-pandas.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg',
     description: 'Famous for pandas and Sichuan cuisine',
     culturalIntro: [
       'Chengdu, the capital of Sichuan province, is one of China\'s most relaxed and liveable cities. It is best known as the home of the giant panda — the Chengdu Research Base of Giant Panda Breeding allows visitors to observe these beloved animals in a naturalistic setting, often just metres away from playful cubs.',
@@ -102,7 +102,7 @@ export const cities: City[] = [
   {
     slug: 'guilin',
     name: 'Guilin',
-    heroImage: '/images/tours/guilin-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
     description: 'Famous for its karst mountains and Li River scenery',
     culturalIntro: [
       'Guilin\'s landscape is the stuff of Chinese paintings come to life. The city and its surroundings are defined by dramatic karst peaks that rise like ancient sentinels from emerald-green rice paddies and winding rivers. A cruise along the Li River from Guilin to Yangshuo is widely regarded as one of the most beautiful river journeys in the world.',
@@ -124,7 +124,7 @@ export const cities: City[] = [
   {
     slug: 'zhangjiajie',
     name: 'Zhangjiajie',
-    heroImage: '/images/tours/zhangjiajie.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
     description: "Inspiration for Avatar's floating mountains",
     culturalIntro: [
       'Zhangjiajie National Forest Park, a UNESCO Global Geopark, is home to over 3,000 towering sandstone pillars that rise dramatically from lush subtropical forest. These otherworldly formations inspired the floating Hallelujah Mountains in James Cameron\'s film Avatar, and seeing them shrouded in morning mist is an unforgettable experience.',
@@ -146,7 +146,7 @@ export const cities: City[] = [
   {
     slug: 'lhasa',
     name: 'Lhasa',
-    heroImage: '/images/tours/shangri-la-monastery-lake.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery-lake.jpg',
     description: 'Home to the Potala Palace and Tibetan culture',
     culturalIntro: [
       'Lhasa, the spiritual heart of Tibetan Buddhism, sits at 3,650 metres on the Tibetan Plateau — the highest city of its size in the world. Its name means "Place of the Gods", and the city\'s centrepiece is the magnificent Potala Palace, a 13-storey architectural marvel that served as the winter residence of the Dalai Lama for centuries.',
@@ -168,7 +168,7 @@ export const cities: City[] = [
   {
     slug: 'hangzhou',
     name: 'Hangzhou',
-    heroImage: '/images/tours/suzhou-canal.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg',
     description: 'Famous for West Lake and traditional Chinese gardens',
     culturalIntro: [
       'Hangzhou has been celebrated as an earthly paradise for over a thousand years. Marco Polo declared it "the finest and most splendid city in the world" when he visited in the 13th century. At its heart lies West Lake, a UNESCO World Heritage Site whose misty waters, willow-lined causeways, and lakeside pagodas have inspired Chinese poets, painters, and philosophers for millennia.',

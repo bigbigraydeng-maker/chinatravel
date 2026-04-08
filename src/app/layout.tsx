@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import ConditionalChrome from '@/components/ConditionalChrome';
 import { GoogleTagManager } from '@/components/GoogleTagManager';
 import GtmInit from '@/components/GtmInit';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -64,9 +63,7 @@ export default function RootLayout({
       <body className="font-sans">
         <GoogleTagManager />
         <GtmInit />
-        <Navbar />
-        {children}
-        <Footer />
+        <ConditionalChrome>{children}</ConditionalChrome>
       </body>
     </html>
   );
