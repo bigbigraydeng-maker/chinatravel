@@ -27,7 +27,9 @@
       "Bash(netstat -ano)",
       "Bash(pkill -f \"npm run dev\")",
       "Bash(git add:*)",
-      "Bash(git commit -m \"feat: add loading states to navigation and tour card buttons:*)"
+      "Bash(git commit -m \"feat: add loading states to navigation and tour card buttons:*)",
+      "Bash(git commit -m \"feat: add loading state to all navigation links in Navbar:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
