@@ -25,7 +25,9 @@
       "Bash(npx jest:*)",
       "Bash(pkill -f \"next dev\")",
       "Bash(netstat -ano)",
-      "Bash(pkill -f \"npm run dev\")"
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"feat: add loading states to navigation and tour card buttons:*)"
     ]
   }
 }
