@@ -167,15 +167,22 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
   - `b59233c - chore: git sync for loading state improvements`
 
 #### Phase 5.3: 修复 Guide 和 Destination 图片加载 ✅
-- **问题:** /guide 页面和 /tours/china 等页面上有大量图片无法加载（显示为空白灰色框）
-- **根本原因:** guides.ts 中的所有 21 个 guide 的 heroImage 和 tours.ts 中 destination 的 heroImage 都使用 Unsplash URLs，而非 Supabase Storage
-- **修复实施:**
-  - ✅ 更新所有 21 个 guide 的 heroImage 从 Unsplash 替换为 Supabase Storage URLs
-  - ✅ 更新 China destination 的 heroImage 为 silk-road-wall.jpg（tour-images bucket）
-  - ✅ 日本和越南保持 Unsplash（暂无对应 tour 图片）
-  - ✅ 创建辅助脚本：fix-guides-images.ts、fix-destinations-images.ts
-  - ✅ 所有 URL 验证通过（HTTP 200 OK）
-- **提交:** `b700a28 - fix: update all guide and destination hero images to Supabase Storage URLs`
+- **第一次尝试 (失败):**
+  - 更新所有 21 个 guide 的 heroImage 从 Unsplash 替换为 Supabase Storage URLs
+  - 更新 China destination 的 heroImage 为 silk-road-wall.jpg
+  - 提交：`b700a28 - fix: update all guide and destination hero images to Supabase Storage URLs`
+  - **问题发现:** Supabase guide-images bucket 中实际上没有这些文件（只有 zhangjiajie）
+
+- **第二次尝试 (失败):**
+  - 创建上传脚本 upload-guides-direct.ts 来批量上传缺失的 guide 图片
+  - **失败原因:** Supabase RLS 策略不允许直接上传（"signature verification failed"）
+
+- **最终解决方案 (成功):**
+  - ✅ 恢复所有 21 个 guide 使用 Unsplash CDN URLs（高质量，可靠）
+  - ✅ China destination 保留 silk-road-wall.jpg（tour-images 可访问）
+  - ✅ 所有图片立即可加载，用户体验恢复
+  - ✅ 构建验证通过，无错误
+- **提交:** `6688012 - fix: revert guide hero images from Supabase to Unsplash CDN`
 
 ---
 
