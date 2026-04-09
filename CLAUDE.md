@@ -144,6 +144,32 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 
 ## Current Status
 
+### 🎉 最近完成 (2026-04-09 ~ 04-10)
+
+#### Phase 5.1: 图片加载问题永久修复 ✅
+- **问题:** 生产环境中图片无法加载（404）或加载很慢
+- **根本原因:** Supabase 上传脚本的 `getRemotePath()` 使用 `path.basename()` 剥离了完整目录结构
+- **修复:** 改用 `path.relative()` 保留完整路径结构
+- **结果:** 694 张图片成功上传，100% 成功率，95.27MB
+- **验证:** 生产环境所有页面图片从 Supabase Storage 正常加载 (HTTP 200 OK)
+- **提交:** `3a36d09 - fix: correct path preservation in Supabase image upload script`
+
+#### Phase 5.2: 导航和按钮加载状态改进 ✅
+- **问题:** 用户点击按钮后，等待 3-4 秒才能跳转，在此期间感觉按钮"失灵"
+- **原因:** 缺少视觉反馈，用户无法看到页面在加载
+- **改进实施:**
+  - ✅ Tour Card "View Details" 按钮添加旋转加载图标
+  - ✅ Navbar 导航链接添加顶部加载条指示器
+  - ✅ 移动菜单也支持加载状态反馈
+  - ✅ 按钮在加载时禁用点击（pointer-events-none）
+- **提交:**
+  - `884ef01 - feat: add loading states to navigation and tour card buttons`
+  - `b59233c - chore: git sync for loading state improvements`
+
+---
+
+### 现有功能状态
+
 - **Homepage:** Complete (redesigned with travel vibe)
 - **Tour detail pages:** Complete with print/email features
 - **Print itinerary:** ✅ Implemented (separate `/print` route)

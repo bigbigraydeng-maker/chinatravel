@@ -39,7 +39,7 @@ Ready to embark on your own Silk Road adventure? [Contact us](/contact) to start
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Silk Road', 'Adventure', 'Cultural', 'Signature'],
-    heroImage: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
     publishedAt: '2026-03-15',
     readTime: '5 min read'
   },
