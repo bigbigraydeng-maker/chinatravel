@@ -37,7 +37,11 @@
       "Bash(curl -s -I https://chinatravel-zloe.onrender.com/)",
       "Bash(find . -name url-mapping.json -o -name *mapping* -type f)",
       "Bash(ls -la scripts/*.ts)",
-      "Bash(npx ts-node:*)"
+      "Bash(npx ts-node:*)",
+      "Bash(curl -s -I https://chinatravel-zloe.onrender.com/guide)",
+      "Bash(curl -I https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/guide-images/guides/beijing/hero/hero.jpg)",
+      "Bash(curl -I https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg)",
+      "Bash(grep -E \"SUPABASE\" .env*)"
     ]
   }
 }
