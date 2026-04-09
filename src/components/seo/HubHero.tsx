@@ -25,17 +25,17 @@ const HubHero: React.FC<HubHeroProps> = ({
             fill
             priority
             sizes="100vw"
-            className="object-cover -z-10"
+            className="object-cover z-0"
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40 -z-5"></div>
+          <div className="absolute inset-0 bg-black/40 z-[1]"></div>
         </>
       )}
 
       {/* Fallback Gradient */}
       {!backgroundImage && (
         <div
-          className="absolute inset-0 -z-10"
+          className="absolute inset-0 z-0"
           style={{
             background: 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)'
           }}
@@ -43,7 +43,7 @@ const HubHero: React.FC<HubHeroProps> = ({
       )}
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-[2] container mx-auto px-4">
         <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 leading-tight">
           {title}
         </h1>
