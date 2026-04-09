@@ -67,7 +67,7 @@ export const destinations: Destination[] = [
     name: 'China',
     subtitle: 'The Middle Kingdom Awaits',
     description: 'Discover the ancient wonders and modern marvels of China. From the Great Wall to the Terracotta Warriors, experience a civilization that spans over 5,000 years.',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1920&q=80',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
     highlights: [
       'Walk the Great Wall of China',
       'Explore the Forbidden City',

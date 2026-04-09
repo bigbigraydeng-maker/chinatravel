@@ -34,7 +34,10 @@
       "Bash(/tmp/test_report.md:*)",
       "Bash(curl -s -o /dev/null -w \"HTTP状态: %{http_code}\\\\n\" \"https://chinatravel-zloe.onrender.com\")",
       "Bash(__NEW_LINE_0e9e7705eab7879a__ cat:*)",
-      "Bash(curl -s -I https://chinatravel-zloe.onrender.com/)"
+      "Bash(curl -s -I https://chinatravel-zloe.onrender.com/)",
+      "Bash(find . -name url-mapping.json -o -name *mapping* -type f)",
+      "Bash(ls -la scripts/*.ts)",
+      "Bash(npx ts-node:*)"
     ]
   }
 }
