@@ -177,12 +177,16 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
   - 创建上传脚本 upload-guides-direct.ts 来批量上传缺失的 guide 图片
   - **失败原因:** Supabase RLS 策略不允许直接上传（"signature verification failed"）
 
-- **最终解决方案 (成功):**
-  - ✅ 恢复所有 21 个 guide 使用 Unsplash CDN URLs（高质量，可靠）
-  - ✅ China destination 保留 silk-road-wall.jpg（tour-images 可访问）
-  - ✅ 所有图片立即可加载，用户体验恢复
+- **第三次尝试 (最终成功):**
+  - 发现第二次使用的 Unsplash photo IDs 全部无效（404）
+  - ✅ 更新所有 21 个 guide 为经验证的有效 Unsplash photo URL
+  - ✅ URL：`https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80`
+  - ✅ China destination 保留 silk-road-wall.jpg（tour-images）
+  - ✅ 所有 guides 图片现在正常加载
   - ✅ 构建验证通过，无错误
-- **提交:** `6688012 - fix: revert guide hero images from Supabase to Unsplash CDN`
+- **提交:**
+  - `6688012 - fix: revert guide hero images from Supabase to Unsplash CDN`
+  - `e2cfcca - fix: update all guide images to use valid Unsplash photo URL`
 
 ---
 
