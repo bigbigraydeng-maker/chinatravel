@@ -383,10 +383,10 @@ export const xianGuide: DestinationGuide = {
     'https://images.unsplash.com/photo-1527189377686-36bccf4ff21c?w=800&q=80',
     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
-    '/images/guides/xian/terracotta-detail.jpg',
-    '/images/guides/xian/muslim-quarter.jpg',
-    '/images/guides/xian/city-wall.jpg',
-    '/images/guides/xian/pagoda.jpg'
+    'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
+    'https://images.unsplash.com/photo-1464207687429-7505649dae38?w=800&q=80',
+    'https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?w=800&q=80',
+    'https://images.unsplash.com/photo-1504154849935-ca6bef5b1e9f?w=800&q=80'
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-06'
@@ -575,7 +575,7 @@ export const chengduGuide: DestinationGuide = {
   keywords: ['Chengdu travel', 'giant pandas', 'Sichuan cuisine', 'temples', 'panda research'],
   h1: 'Chengdu Travel Guide: Pandas, Culture & Spicy Delights',
   heroSubtitle: 'Where Ancient Wisdom Meets Gentle Giants',
-  heroImage: '/images/guides/chengdu/hero.jpg',
+  heroImage: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1200&q=80',
   introText: [
     'Chengdu, capital of Sichuan Province in central China, embodies the nation\'s more relaxed, culturally distinct interior. Known colloquially as the "Land of Abundance," this city of 16 million residents maintains a distinctive identity shaped by geography (surrounded by fertile plains), history (independent kingdom during several dynasties), and culinary traditions (Sichuan peppercorn heat defines regional cuisine). The city consistently ranks among China\'s most livable destinations, with residents prioritising leisure, hospitality, and quality of life.',
     'The primary draw for international visitors—the Giant Panda Breeding Research Base—houses the world\'s largest population of captive giant pandas outside zoos. Visitors encounter these endangered species in naturalistic habitats, observe research activities, and understand conservation efforts. Beyond pandas, Chengdu reveals sophisticated Buddhist temples, classical gardens, and an emerging contemporary arts scene. The city\'s teahouse culture, where locals spend entire afternoons engaging in chess, mahjong, and conversation, reflects deeply rooted social traditions.',
@@ -734,7 +734,7 @@ export const guilinGuide: DestinationGuide = {
   keywords: ['Guilin travel', 'Li River', 'karst mountains', 'Yangshuo', 'cormorant fishing'],
   h1: 'Guilin Travel Guide: Where Mountains Meet Water',
   heroSubtitle: 'China\'s Most Picturesque Landscape',
-  heroImage: '/images/guides/guilin/hero.jpg',
+  heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80',
   introText: [
     'Guilin, located in Guangxi Zhuang Autonomous Region in southern China, represents one of the world\'s most visually distinctive regions. The karst limestone mountain formations rising dramatically from the Li River have inspired painters, poets, and philosophers for centuries. These otherworldly landscapes—featuring distinctive peak shapes, hidden caves, and emerald waterways—influenced classical Chinese landscape painting aesthetics. The region\'s natural beauty transcends merely scenic; it embodies philosophical principles connecting humans to nature\'s sublime forces.',
     'The iconic Li River journey from Guilin to Yangshuo comprises one of China\'s essential travel experiences. This 83-kilometre cruise through karst mountains, past rural villages and bamboo groves, showcases landscapes featured in classical artwork. Traditional cormorant fishing—an ancient technique using trained birds for nocturnal fishing—persists in modified form for tourism, though historical significance remains profound.',
