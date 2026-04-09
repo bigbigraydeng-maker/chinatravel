@@ -41,7 +41,11 @@
       "Bash(curl -s -I https://chinatravel-zloe.onrender.com/guide)",
       "Bash(curl -I https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/guide-images/guides/beijing/hero/hero.jpg)",
       "Bash(curl -I https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg)",
-      "Bash(grep -E \"SUPABASE\" .env*)"
+      "Bash(grep -E \"SUPABASE\" .env*)",
+      "Bash(curl -I \"https://images.unsplash.com/photo-1508684175866-29ac7090006f?w=1200&q=80\")",
+      "Bash(curl -I \"https://images.unsplash.com/photo-1513457656999-4c8bde1f38c8?w=1200&q=80\")",
+      "Bash(curl -I \"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80\")",
+      "Bash(/tmp/fix_guides.ts:*)"
     ]
   }
 }
