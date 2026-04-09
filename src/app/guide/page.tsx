@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import SectionTitle from '@/components/SectionTitle';
 import { getAllGuides } from '@/lib/data/guides';
 
@@ -25,11 +26,14 @@ export const metadata: Metadata = {
 function GuideCard({ guide }: { guide: any }) {
   return (
     <Link href={`/${guide.slug}`} className="block group">
-      <div className="overflow-hidden rounded-lg shadow-md mb-3 aspect-square bg-gray-100">
-        <img
+      <div className="overflow-hidden rounded-lg shadow-md mb-3 aspect-square bg-gray-100 relative">
+        <Image
           src={guide.heroImage}
           alt={guide.destinationName}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
         />
       </div>
       <h3 className="font-semibold text-accent text-sm group-hover:text-primary transition-colors line-clamp-2">

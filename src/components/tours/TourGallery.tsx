@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface TourGalleryProps {
   images: string[];
@@ -25,10 +26,13 @@ export default function TourGallery({ images, tourName }: TourGalleryProps) {
             onClick={() => setSelectedImage(index)}
             className="relative aspect-square overflow-hidden rounded-lg group"
           >
-            <img 
+            <Image
               src={image}
               alt={`${tourName} - Image ${index + 1}`}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              fill
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
           </button>
@@ -66,12 +70,16 @@ export default function TourGallery({ images, tourName }: TourGalleryProps) {
           )}
 
           {/* Image */}
-          <img 
-            src={images[selectedImage]}
-            alt={`${tourName} - Image ${selectedImage + 1}`}
-            className="max-w-full max-h-[80vh] object-contain"
-            onClick={(e) => e.stopPropagation()}
-          />
+          <div className="relative max-w-full max-h-[80vh] w-full h-full" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={images[selectedImage]}
+              alt={`${tourName} - Image ${selectedImage + 1}`}
+              fill
+              sizes="90vw"
+              className="object-contain"
+              priority={true}
+            />
+          </div>
 
           {/* Next */}
           {selectedImage < images.length - 1 && (

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
 
 export const metadata: Metadata = {
@@ -54,10 +55,13 @@ export default function BlogPage() {
               <Link href={`/blog/${featuredPost.slug}`} className="block group">
                 <div className="relative rounded-xl overflow-hidden shadow-xl">
                   <div className="relative h-80 md:h-96">
-                    <img 
-                      src={featuredPost.heroImage} 
+                    <Image
+                      src={featuredPost.heroImage}
                       alt={featuredPost.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      priority={true}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -94,10 +98,13 @@ export default function BlogPage() {
               <article key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                 <Link href={`/blog/${post.slug}`} className="block">
                   <div className="relative h-48">
-                    <img 
-                      src={post.heroImage} 
+                    <Image
+                      src={post.heroImage}
                       alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
                     />
                     <div className="absolute top-4 left-4">
                       <span className={`${categoryColors[post.category]} text-white px-3 py-1 rounded-full text-sm font-medium`}>

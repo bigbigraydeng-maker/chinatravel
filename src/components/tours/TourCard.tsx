@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Tour } from '@/lib/data/tours';
 
@@ -29,10 +30,13 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
     <div className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
       <div className="relative h-56 overflow-hidden">
-        <img 
+        <Image
           src={tour.heroImage}
           alt={tour.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
         />
         <div className="absolute top-4 left-4">
           <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${tierColors[tier as keyof typeof tierColors]}`}>
