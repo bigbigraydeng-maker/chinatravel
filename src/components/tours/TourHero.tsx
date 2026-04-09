@@ -63,19 +63,34 @@ export default function TourHero({
             {shortDescription}
           </p>
 
-          {/* Availability Badge */}
-          {showAvailability && departureDates && departureDates.length > 0 && (
-            <AvailabilityBadge
-              departureDate={departureDates[0]}
-              seatsLeft={5}
-              showCountdown={false}
-            />
-          )}
-
-          {departureDates && departureDates.length > 0 && !showAvailability && (
-            <div className="mb-6 max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wide text-white/70 mb-2">Departure dates</p>
-              <p className="text-lg text-white">{departureDates.join(' · ')}</p>
+          {/* Departures — next departure + full list */}
+          {departureDates && departureDates.length > 0 && (
+            <div className="mb-6 max-w-2xl space-y-4">
+              {showAvailability && (
+                <AvailabilityBadge
+                  departureDate={departureDates[0]}
+                  seatsLeft={5}
+                  showCountdown={false}
+                />
+              )}
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-white/70 mb-2">
+                  {showAvailability ? 'All departure dates' : 'Departure dates'}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {departureDates.map((d) => (
+                    <span
+                      key={d}
+                      className="text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-xs text-white/60 mt-2">
+                  Dates refer to scheduled group departures; year 2026 where applicable — confirm at booking.
+                </p>
+              </div>
             </div>
           )}
 

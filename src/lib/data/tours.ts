@@ -690,7 +690,7 @@ export const tours: Tour[] = [
       'Terracotta Warriors',
       'high-speed train',
     ],
-    departureDates: ['15 October', '13 August', '2 November'],
+    departureDates: ['13 August', '15 October', '2 November'],
     // Single room supplement: NZD $395
   },
   {
@@ -840,7 +840,7 @@ export const tours: Tour[] = [
       'real life experience in China',
       'West Lake',
     ],
-    departureDates: ['14 October', '3 August'],
+    departureDates: ['3 August', '14 October'],
     // Single room supplement: NZD $400
   },
   {

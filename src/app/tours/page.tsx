@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { destinations, getAllActiveTours } from '@/lib/data/tours';
 import TourCard from '@/components/tours/TourCard';
+import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -51,7 +52,19 @@ export default function ToursPage() {
             >
               View Featured Tours
             </Link>
+            <Link 
+              href="#cts-departure-schedule"
+              className="inline-block px-8 py-4 border-2 border-white/80 text-white font-semibold rounded-lg hover:bg-white/15 transition-colors"
+            >
+              出发日期总表 · Departure dates
+            </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-14 bg-warm-50/70 border-y border-warm-100">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <CtsDepartureScheduleBlock />
         </div>
       </section>
 

@@ -37,6 +37,23 @@ const Hero = () => {
           Direct operations &nbsp;·&nbsp; Small groups &nbsp;·&nbsp; Authentic access
         </p>
 
+        <div
+          className="max-w-2xl mx-auto mb-8 px-4 py-3 rounded-2xl bg-black/35 backdrop-blur-md border border-white/15 text-white/95 text-sm md:text-base animate-fade-in-up"
+          style={{ animationDelay: '0.55s' }}
+        >
+          <p className="font-medium mb-1">CTS China · Signature & Discovery 出发日期已更新（2026）</p>
+          <p className="text-white/80 text-xs md:text-sm mb-3">
+            查看全套团期：Silk Road、Legacy of China、双城记、云南彩色线等。
+          </p>
+          <Link
+            href="/tours#cts-departure-schedule"
+            className="inline-flex items-center gap-2 text-secondary font-semibold hover:underline"
+          >
+            打开出发日期总表
+            <span className="text-white/60 font-normal">View full departure schedule →</span>
+          </Link>
+        </div>
+
         {/* Search Bar */}
         <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <SearchBar />

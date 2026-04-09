@@ -18,6 +18,7 @@ import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
+import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
   generateTourSchema,
@@ -195,6 +196,10 @@ export default function TourPage({ params }: TourPageProps) {
                   {tour.shortDescription}
                 </p>
               </section>
+
+              {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
+                <CtsDepartureScheduleBlock currentSlug={tour.slug} />
+              )}
 
               {/* Highlights */}
               <TourHighlights highlights={tour.highlights} />

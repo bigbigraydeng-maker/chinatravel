@@ -19,7 +19,9 @@ export default function AvailabilityBadge({
     if (!showCountdown || !departureDate) return;
 
     const calculateTimeLeft = () => {
-      const targetDate = departureDate ? new Date(departureDate) : new Date();
+      const raw = departureDate?.trim() ?? '';
+      const withYear = raw && /^\d{1,2}\s+[A-Za-z]+$/i.test(raw) ? `${raw} 2026` : raw;
+      const targetDate = raw ? new Date(withYear) : new Date();
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
@@ -39,6 +41,13 @@ export default function AvailabilityBadge({
   }, [departureDate, showCountdown]);
 
   const isLowAvailability = seatsLeft <= 5;
+
+  const formatDeparture = (raw: string) => {
+    const trimmed = raw.trim();
+    const withYear = /^\d{1,2}\s+[A-Za-z]+$/i.test(trimmed) ? `${trimmed} 2026` : trimmed;
+    const d = new Date(withYear);
+    return Number.isNaN(d.getTime()) ? trimmed : d.toLocaleDateString('en-NZ', { month: 'short', day: 'numeric', year: 'numeric' });
+  };
 
   return (
     <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 mb-6">
@@ -60,13 +69,7 @@ export default function AvailabilityBadge({
         <div className="flex items-center gap-4">
           <div className="flex-1">
             <p className="text-xs text-amber-700 mb-1">Next Departure</p>
-            <p className="font-bold text-amber-900">
-              {new Date(departureDate).toLocaleDateString('en-NZ', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-            </p>
+            <p className="font-bold text-amber-900">{formatDeparture(departureDate)}</p>
           </div>
 
           {showCountdown && (
