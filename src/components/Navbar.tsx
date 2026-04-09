@@ -121,13 +121,13 @@ const Navbar = () => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >
-                <Link href="/tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => setIsToursDropdownOpen(false)}>
+                <Link href="/tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
                   All Tours
                 </Link>
-                <Link href="/tours/find" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => setIsToursDropdownOpen(false)}>
+                <Link href="/tours/find" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
                   Find Your Tour
                 </Link>
-                <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={() => setIsToursDropdownOpen(false)}>
+                <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
                   💫 China Tours Hub
                 </Link>
                 <div className="border-t border-gray-100 my-1"></div>
@@ -270,15 +270,15 @@ const Navbar = () => {
                           </button>
                           {mobileExpandedDest === dest.slug && (
                             <div className="pl-4 space-y-1">
-                              <Link href={dest.href} className="block text-sm text-accent hover:text-primary py-1.5" onClick={closeMenu}>All {dest.label} Tours</Link>
+                              <Link href={dest.href} className="block text-sm text-accent hover:text-primary py-1.5" onClick={() => { closeMenu(); handleNavClick(); }}>All {dest.label} Tours</Link>
                               {dest.tiers.map((tier) => (
-                                <Link key={tier.href} href={tier.href} className="block text-sm text-accent hover:text-primary py-1.5" onClick={closeMenu}>{tier.label}</Link>
+                                <Link key={tier.href} href={tier.href} className="block text-sm text-accent hover:text-primary py-1.5" onClick={() => { closeMenu(); handleNavClick(); }}>{tier.label}</Link>
                               ))}
                             </div>
                           )}
                         </>
                       ) : (
-                        <Link href={dest.href} className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>{dest.label}</Link>
+                        <Link href={dest.href} className="block text-accent hover:text-primary transition-colors py-2" onClick={() => { closeMenu(); handleNavClick(); }}>{dest.label}</Link>
                       )}
                     </div>
                   ))}
