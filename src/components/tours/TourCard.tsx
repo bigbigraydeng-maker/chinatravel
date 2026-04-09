@@ -1,6 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Tour } from '@/lib/data/tours';
 
 interface TourCardProps {
@@ -10,6 +12,13 @@ interface TourCardProps {
 }
 
 export default function TourCard({ tour, destination, tier }: TourCardProps) {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleViewDetails = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setIsLoading(true);
+  };
+
   const tierColors = {
     signature: 'bg-amber-100 text-amber-800',
     discovery: 'bg-blue-100 text-blue-800',
@@ -64,11 +73,26 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
             <span className="text-sm text-gray-500">From</span>
             <p className="text-xl font-bold text-primary">{tour.price}</p>
           </div>
-          <Link 
+          <Link
             href={`/tours/${destination}/${tier}/${tour.slug}`}
-            className="px-6 py-2 bg-primary text-white text-sm font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+            onClick={handleViewDetails}
+            className={`px-6 py-2 bg-primary text-white text-sm font-semibold rounded-lg transition-all flex items-center gap-2 ${
+              isLoading
+                ? 'opacity-75 cursor-wait pointer-events-none'
+                : 'hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20'
+            }`}
           >
-            View Details
+            {isLoading ? (
+              <>
+                <svg className="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Loading...
+              </>
+            ) : (
+              'View Details'
+            )}
           </Link>
         </div>
       </div>

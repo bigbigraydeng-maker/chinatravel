@@ -8,9 +8,14 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
   const [activeDestination, setActiveDestination] = useState<string | null>(null);
+  const [isNavigating, setIsNavigating] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const destTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleNavClick = () => {
+    setIsNavigating(true);
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -77,6 +82,10 @@ const Navbar = () => {
 
   return (
     <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-warm-200/50">
+      {/* Loading Indicator */}
+      {isNavigating && (
+        <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary via-red-500 to-primary animate-pulse w-full"></div>
+      )}
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto" />
@@ -130,7 +139,10 @@ const Navbar = () => {
                   >
                     <Link href={dest.href}
                       className="flex items-center justify-between px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors"
-                      onClick={() => setIsToursDropdownOpen(false)}
+                      onClick={() => {
+                        setIsToursDropdownOpen(false);
+                        handleNavClick();
+                      }}
                     >
                       {dest.label}
                       {dest.tiers.length > 0 && (
@@ -175,20 +187,26 @@ const Navbar = () => {
 
           {/* Travel Guide Dropdown */}
           <div className="relative group">
-            <button className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+            <Link href="/guide" className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
               Travel Guide
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
+            </Link>
             <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <Link href="/guide" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+                All Travel Guides
+              </Link>
+              <Link href="/blog" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+                Travel Blog
+              </Link>
               <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
                 Best Time to Visit
               </Link>
               <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
                 Visa Guide for NZ
               </Link>
-              <Link href="/travel-tools" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary">
+              <Link href="/travel-tools" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors text-primary font-medium">
                 Travel Tools
               </Link>
             </div>

@@ -1,0 +1,776 @@
+{
+  "timestamp": "2026-04-08T01:53:34.505Z",
+  "totalImages": 96,
+  "totalOriginalSize": 210916272,
+  "totalOptimizedSize": 73520482,
+  "images": [
+    {
+      "filename": "chengdu-pandas.jpg",
+      "category": "guides/chengdu/chengdu-pandas",
+      "originalSize": 12297504,
+      "webpSize": 2303750,
+      "jpegSize": 2321733,
+      "compressed": 57
+    },
+    {
+      "filename": "chengdu-pandas.jpg",
+      "category": "tours/chengdu-pandas",
+      "originalSize": 12297504,
+      "webpSize": 2303750,
+      "jpegSize": 2321733,
+      "compressed": 57
+    },
+    {
+      "filename": "jiuzhaigou-lake.jpg",
+      "category": "tours/jiuzhaigou-lake",
+      "originalSize": 11016608,
+      "webpSize": 1333776,
+      "jpegSize": 1412758,
+      "compressed": 69.8
+    },
+    {
+      "filename": "baker-gu-zhangjiajie.png",
+      "category": "baker-gu-zhangjiajie",
+      "originalSize": 5852668,
+      "webpSize": 396490,
+      "jpegSize": 498067,
+      "compressed": 81.5
+    },
+    {
+      "filename": "baker-gu-guilin.png",
+      "category": "baker-gu-guilin",
+      "originalSize": 5720477,
+      "webpSize": 332730,
+      "jpegSize": 434050,
+      "compressed": 83.9
+    },
+    {
+      "filename": "jiuzhaigou-autumn.jpg",
+      "category": "tours/jiuzhaigou-autumn",
+      "originalSize": 4036597,
+      "webpSize": 863440,
+      "jpegSize": 771255,
+      "compressed": 45
+    },
+    {
+      "filename": "shangri-la-monastery.jpg",
+      "category": "tours/shangri-la-monastery",
+      "originalSize": 3564677,
+      "webpSize": 784796,
+      "jpegSize": 776617,
+      "compressed": 39.3
+    },
+    {
+      "filename": "yunnan-rice-terraces.jpg",
+      "category": "tours/yunnan-rice-terraces",
+      "originalSize": 3453538,
+      "webpSize": 731214,
+      "jpegSize": 677274,
+      "compressed": 44.8
+    },
+    {
+      "filename": "shanghai-yuyuan-night.jpg",
+      "category": "guides/shanghai/shanghai-yuyuan-night",
+      "originalSize": 3230514,
+      "webpSize": 381270,
+      "jpegSize": 479712,
+      "compressed": 58.7
+    },
+    {
+      "filename": "shanghai-yuyuan-night.jpg",
+      "category": "tours/shanghai-yuyuan-night",
+      "originalSize": 3230514,
+      "webpSize": 381270,
+      "jpegSize": 479712,
+      "compressed": 58.7
+    },
+    {
+      "filename": "great-wall-green.jpg",
+      "category": "guides/beijing/great-wall-green",
+      "originalSize": 2780888,
+      "webpSize": 552408,
+      "jpegSize": 535150,
+      "compressed": 46.4
+    },
+    {
+      "filename": "great-wall-green.jpg",
+      "category": "tours/great-wall-green",
+      "originalSize": 2780888,
+      "webpSize": 552408,
+      "jpegSize": 535150,
+      "compressed": 46.4
+    },
+    {
+      "filename": "silk-road-wall.jpg",
+      "category": "tours/silk-road-wall",
+      "originalSize": 2750498,
+      "webpSize": 523778,
+      "jpegSize": 521383,
+      "compressed": 49.1
+    },
+    {
+      "filename": "xian-terracotta-2.jpg",
+      "category": "tours/xian-terracotta-2",
+      "originalSize": 2624522,
+      "webpSize": 470598,
+      "jpegSize": 528041,
+      "compressed": 44.4
+    },
+    {
+      "filename": "chengdu-old-town.jpg",
+      "category": "guides/chengdu/chengdu-old-town",
+      "originalSize": 2586697,
+      "webpSize": 513808,
+      "jpegSize": 566756,
+      "compressed": 38.5
+    },
+    {
+      "filename": "chengdu-old-town.jpg",
+      "category": "tours/chengdu-old-town",
+      "originalSize": 2586697,
+      "webpSize": 513808,
+      "jpegSize": 566756,
+      "compressed": 38.5
+    },
+    {
+      "filename": "xian-terracotta.jpg",
+      "category": "tours/xian-terracotta",
+      "originalSize": 2505983,
+      "webpSize": 505906,
+      "jpegSize": 553314,
+      "compressed": 37.7
+    },
+    {
+      "filename": "forbidden-city-aerial.jpg",
+      "category": "guides/beijing/forbidden-city-aerial",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/beijing/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/chongqing/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/dali/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/forbidden-city/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/great-wall/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/hangzhou/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/kunming/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/leshan-buddha/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/li-river/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/lijiang/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/shangri-la/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/suzhou/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/terracotta-warriors/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/tianmen-mountain/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/xian/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/yangshuo/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/yunnan/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/zhangjiajie/hero",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "forbidden-city-aerial.jpg",
+      "category": "tours/forbidden-city-aerial",
+      "originalSize": 2501054,
+      "webpSize": 425002,
+      "jpegSize": 467682,
+      "compressed": 50.5
+    },
+    {
+      "filename": "guilin-mist.jpg",
+      "category": "guides/guilin/guilin-mist",
+      "originalSize": 2361068,
+      "webpSize": 480426,
+      "jpegSize": 490353,
+      "compressed": 43
+    },
+    {
+      "filename": "guilin-mist.jpg",
+      "category": "tours/guilin-mist",
+      "originalSize": 2361068,
+      "webpSize": 480426,
+      "jpegSize": 490353,
+      "compressed": 43
+    },
+    {
+      "filename": "forbidden-city-lion.jpg",
+      "category": "guides/beijing/forbidden-city-lion",
+      "originalSize": 2200085,
+      "webpSize": 356676,
+      "jpegSize": 407385,
+      "compressed": 49.6
+    },
+    {
+      "filename": "forbidden-city-lion.jpg",
+      "category": "tours/forbidden-city-lion",
+      "originalSize": 2200085,
+      "webpSize": 356676,
+      "jpegSize": 407385,
+      "compressed": 49.6
+    },
+    {
+      "filename": "guilin-river-valley.jpg",
+      "category": "guides/guilin/guilin-river-valley",
+      "originalSize": 2126006,
+      "webpSize": 465706,
+      "jpegSize": 465777,
+      "compressed": 41.2
+    },
+    {
+      "filename": "guilin-river-valley.jpg",
+      "category": "tours/guilin-river-valley",
+      "originalSize": 2126006,
+      "webpSize": 465706,
+      "jpegSize": 465777,
+      "compressed": 41.2
+    },
+    {
+      "filename": "beijing-temple-2.jpg",
+      "category": "guides/beijing/beijing-temple-2",
+      "originalSize": 2061585,
+      "webpSize": 268870,
+      "jpegSize": 314427,
+      "compressed": 59.8
+    },
+    {
+      "filename": "beijing-temple-2.jpg",
+      "category": "tours/beijing-temple-2",
+      "originalSize": 2061585,
+      "webpSize": 268870,
+      "jpegSize": 314427,
+      "compressed": 59.8
+    },
+    {
+      "filename": "shangri-la-monastery-lake.jpg",
+      "category": "tours/shangri-la-monastery-lake",
+      "originalSize": 1971664,
+      "webpSize": 453928,
+      "jpegSize": 476906,
+      "compressed": 35.3
+    },
+    {
+      "filename": "great-wall-mist.jpg",
+      "category": "guides/beijing/great-wall-mist",
+      "originalSize": 1932130,
+      "webpSize": 300030,
+      "jpegSize": 341945,
+      "compressed": 54.6
+    },
+    {
+      "filename": "great-wall-mist.jpg",
+      "category": "tours/great-wall-mist",
+      "originalSize": 1932130,
+      "webpSize": 300030,
+      "jpegSize": 341945,
+      "compressed": 54.6
+    },
+    {
+      "filename": "suzhou-canal.jpg",
+      "category": "tours/suzhou-canal",
+      "originalSize": 1708677,
+      "webpSize": 334244,
+      "jpegSize": 416531,
+      "compressed": 19.6
+    },
+    {
+      "filename": "beijing-temple.jpg",
+      "category": "guides/beijing/beijing-temple",
+      "originalSize": 1704758,
+      "webpSize": 220370,
+      "jpegSize": 279708,
+      "compressed": 48
+    },
+    {
+      "filename": "beijing-temple.jpg",
+      "category": "tours/beijing-temple",
+      "originalSize": 1704758,
+      "webpSize": 220370,
+      "jpegSize": 279708,
+      "compressed": 48
+    },
+    {
+      "filename": "shanghai-night-red.jpg",
+      "category": "guides/shanghai/shanghai-night-red",
+      "originalSize": 1675636,
+      "webpSize": 235220,
+      "jpegSize": 288506,
+      "compressed": 55
+    },
+    {
+      "filename": "shanghai-night-red.jpg",
+      "category": "tours/shanghai-night-red",
+      "originalSize": 1675636,
+      "webpSize": 235220,
+      "jpegSize": 288506,
+      "compressed": 55
+    },
+    {
+      "filename": "baker-gu-great-wall.png",
+      "category": "baker-gu-great-wall",
+      "originalSize": 1670923,
+      "webpSize": 135412,
+      "jpegSize": 157196,
+      "compressed": 72
+    },
+    {
+      "filename": "china-pagoda-night.jpg",
+      "category": "tours/china-pagoda-night",
+      "originalSize": 1663899,
+      "webpSize": 282864,
+      "jpegSize": 325427,
+      "compressed": 47.5
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/beijing/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/chongqing/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/dali/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/forbidden-city/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/great-wall/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/hangzhou/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/kunming/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/leshan-buddha/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/li-river/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/lijiang/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/shangri-la/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/suzhou/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/terracotta-warriors/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/tianmen-mountain/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/yangshuo/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/yunnan/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "guides/zhangjiajie/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "forbidden-city-gold-lion.jpg",
+      "category": "tours/forbidden-city-gold-lion",
+      "originalSize": 1633777,
+      "webpSize": 224622,
+      "jpegSize": 288198,
+      "compressed": 51.9
+    },
+    {
+      "filename": "great-wall-cloud-sea.jpg",
+      "category": "guides/beijing/great-wall-cloud-sea",
+      "originalSize": 1610088,
+      "webpSize": 265258,
+      "jpegSize": 299385,
+      "compressed": 50.8
+    },
+    {
+      "filename": "great-wall-cloud-sea.jpg",
+      "category": "tours/great-wall-cloud-sea",
+      "originalSize": 1610088,
+      "webpSize": 265258,
+      "jpegSize": 299385,
+      "compressed": 50.8
+    },
+    {
+      "filename": "forbidden-city-lion-2.jpg",
+      "category": "guides/beijing/forbidden-city-lion-2",
+      "originalSize": 1466240,
+      "webpSize": 208398,
+      "jpegSize": 283838,
+      "compressed": 49.3
+    },
+    {
+      "filename": "forbidden-city-lion-2.jpg",
+      "category": "tours/forbidden-city-lion-2",
+      "originalSize": 1466240,
+      "webpSize": 208398,
+      "jpegSize": 283838,
+      "compressed": 49.3
+    },
+    {
+      "filename": "baker-gu-portrait.png",
+      "category": "baker-gu-portrait",
+      "originalSize": 1431860,
+      "webpSize": 51062,
+      "jpegSize": 78579,
+      "compressed": 83.9
+    },
+    {
+      "filename": "shanghai-night-blue.jpg",
+      "category": "guides/shanghai/shanghai-night-blue",
+      "originalSize": 1115158,
+      "webpSize": 139340,
+      "jpegSize": 202381,
+      "compressed": 54.5
+    },
+    {
+      "filename": "shanghai-night-blue.jpg",
+      "category": "tours/shanghai-night-blue",
+      "originalSize": 1115158,
+      "webpSize": 139340,
+      "jpegSize": 202381,
+      "compressed": 54.5
+    },
+    {
+      "filename": "baker-gu-zhangjiajie.jpg",
+      "category": "baker-gu-zhangjiajie",
+      "originalSize": 584406,
+      "webpSize": 401772,
+      "jpegSize": 544586,
+      "compressed": -93.2
+    },
+    {
+      "filename": "baker-gu-guilin.jpg",
+      "category": "baker-gu-guilin",
+      "originalSize": 512102,
+      "webpSize": 336186,
+      "jpegSize": 476647,
+      "compressed": -88.2
+    },
+    {
+      "filename": "hero.jpg",
+      "category": "guides/shanghai/hero",
+      "originalSize": 366530,
+      "webpSize": 67870,
+      "jpegSize": 80835,
+      "compressed": 5.1
+    },
+    {
+      "filename": "shanghai-skyline.jpg",
+      "category": "guides/shanghai/shanghai-skyline",
+      "originalSize": 366530,
+      "webpSize": 67870,
+      "jpegSize": 80835,
+      "compressed": 5.1
+    },
+    {
+      "filename": "shanghai-skyline.jpg",
+      "category": "tours/shanghai-skyline",
+      "originalSize": 366530,
+      "webpSize": 67870,
+      "jpegSize": 80835,
+      "compressed": 5.1
+    },
+    {
+      "filename": "wuzhen-canal.jpg",
+      "category": "tours/wuzhen-canal",
+      "originalSize": 287992,
+      "webpSize": 178654,
+      "jpegSize": 168030,
+      "compressed": -170.1
+    },
+    {
+      "filename": "baker-gu-great-wall.jpg",
+      "category": "baker-gu-great-wall",
+      "originalSize": 185129,
+      "webpSize": 137354,
+      "jpegSize": 172357,
+      "compressed": -162.2
+    },
+    {
+      "filename": "zhangjiajie.jpg",
+      "category": "tours/zhangjiajie",
+      "originalSize": 161099,
+      "webpSize": 129138,
+      "jpegSize": 141462,
+      "compressed": -337.2
+    },
+    {
+      "filename": "yunnan-village.jpg",
+      "category": "tours/yunnan-village",
+      "originalSize": 140942,
+      "webpSize": 73910,
+      "jpegSize": 80072,
+      "compressed": -87.7
+    },
+    {
+      "filename": "lisa-li-portrait.jpg",
+      "category": "lisa-li-portrait",
+      "originalSize": 122858,
+      "webpSize": 92870,
+      "jpegSize": 125396,
+      "compressed": -155.6
+    },
+    {
+      "filename": "baker-gu-portrait.jpg",
+      "category": "baker-gu-portrait",
+      "originalSize": 95728,
+      "webpSize": 54220,
+      "jpegSize": 89504,
+      "compressed": -156.6
+    },
+    {
+      "filename": "tourism-export-council.png",
+      "category": "credentials/tourism-export-council",
+      "originalSize": 7411,
+      "webpSize": 2482,
+      "jpegSize": 2789,
+      "compressed": 28.9
+    },
+    {
+      "filename": "iata.png",
+      "category": "credentials/iata",
+      "originalSize": 5945,
+      "webpSize": 2872,
+      "jpegSize": 3331,
+      "compressed": -4.3
+    },
+    {
+      "filename": "taanz.png",
+      "category": "credentials/taanz",
+      "originalSize": 5549,
+      "webpSize": 2334,
+      "jpegSize": 2820,
+      "compressed": 7.1
+    },
+    {
+      "filename": "auckland-business-chamber.png",
+      "category": "credentials/auckland-business-chamber",
+      "originalSize": 4596,
+      "webpSize": 1296,
+      "jpegSize": 1996,
+      "compressed": 28.4
+    },
+    {
+      "filename": "qualmark.png",
+      "category": "credentials/qualmark",
+      "originalSize": 4554,
+      "webpSize": 2610,
+      "jpegSize": 431,
+      "compressed": 33.2
+    }
+  ]
+}
