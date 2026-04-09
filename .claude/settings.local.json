@@ -30,7 +30,10 @@
       "Bash(git commit -m \"feat: add loading states to navigation and tour card buttons:*)",
       "Bash(git commit -m \"feat: add loading state to all navigation links in Navbar:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(/tmp/test_report.md:*)",
+      "Bash(curl -s -o /dev/null -w \"HTTP状态: %{http_code}\\\\n\" \"https://chinatravel-zloe.onrender.com\")",
+      "Bash(__NEW_LINE_0e9e7705eab7879a__ cat:*)"
     ]
   }
 }
