@@ -89,9 +89,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} CTS Tours. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Part of China Travel Service Group, est. 1928</p>
+        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col gap-4 text-gray-400 text-sm md:flex-row md:items-center md:justify-between">
+          <p className="text-center md:text-left">&copy; {new Date().getFullYear()} CTS Tours. All rights reserved.</p>
+          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 md:text-right">
+            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+            <p>Part of China Travel Service Group, est. 1928</p>
+          </div>
         </div>
       </div>
     </footer>
