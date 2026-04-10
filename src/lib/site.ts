@@ -1,9 +1,9 @@
 /**
  * Canonical site origin for metadata, canonical URLs, and JSON-LD.
- * Set NEXT_PUBLIC_SITE_URL in production (e.g. https://chinatravel.co.nz).
+ * Production: https://www.ctstours.co.nz — set NEXT_PUBLIC_SITE_URL in Render/hosting.
  */
 export function getSiteUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://chinatravel.co.nz';
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://www.ctstours.co.nz';
   return raw.replace(/\/$/, '');
 }
 

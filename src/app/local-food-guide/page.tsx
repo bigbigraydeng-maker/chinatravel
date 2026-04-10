@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { getSiteUrl } from '@/lib/site';
 import LocalFoodGuide from '@/components/tools/LocalFoodGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
+
+const site = getSiteUrl();
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -28,11 +31,11 @@ const webPageSchema = {
   name: 'Chinese Local Food Guide - Regional Cuisines',
   description:
     'Interactive guide to authentic Chinese regional cuisines and local food specialties by destination.',
-  url: 'https://chinatravel.co.nz/local-food-guide',
+  url: `${site}/local-food-guide`,
   isPartOf: {
     '@type': 'WebSite',
     name: 'CTS Tours - China Travel Specialists',
-    url: 'https://chinatravel.co.nz',
+    url: site,
   },
   datePublished: '2026-04-07',
   dateModified: '2026-04-07',
@@ -43,9 +46,9 @@ const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://chinatravel.co.nz' },
-    { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: 'https://chinatravel.co.nz/guide' },
-    { '@type': 'ListItem', position: 3, name: 'Food Guide', item: 'https://chinatravel.co.nz/local-food-guide' },
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+    { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${site}/guide` },
+    { '@type': 'ListItem', position: 3, name: 'Food Guide', item: `${site}/local-food-guide` },
   ],
 };
 

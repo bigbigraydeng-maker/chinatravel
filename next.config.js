@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
+const CANONICAL_HOST = 'www.ctstours.co.nz';
+
+/** Hosts that should 308 to https://www.ctstours.co.nz (same Next.js app on Render). */
+const LEGACY_HOSTS = [
+  'chinatravel.co.nz',
+  'www.chinatravel.co.nz',
+  'ctstours.co.nz', // apex → www
+];
+// Optional: set REDIRECT_ONRENDER_HOST=chinatravel-zloe.onrender.com if that hostname still serves this app.
+if (process.env.REDIRECT_ONRENDER_HOST) {
+  LEGACY_HOSTS.push(process.env.REDIRECT_ONRENDER_HOST.trim());
+}
+
 const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -17,6 +30,14 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return LEGACY_HOSTS.map((host) => ({
+      source: '/:path*',
+      has: [{ type: 'host', value: host }],
+      destination: `https://${CANONICAL_HOST}/:path*`,
+      permanent: true,
+    }));
+  },
   async headers() {
     return [
       {

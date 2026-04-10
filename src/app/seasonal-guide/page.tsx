@@ -1,7 +1,10 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { getSiteUrl } from '@/lib/site';
 import SeasonalGuide from '@/components/tools/SeasonalGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
+
+const site = getSiteUrl();
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -28,11 +31,11 @@ const webPageSchema = {
   name: 'Best Time to Visit China - Seasonal Weather Guide',
   description:
     'Interactive seasonal guide for visiting China. Compare weather, prices, and crowds by month.',
-  url: 'https://chinatravel.co.nz/seasonal-guide',
+  url: `${site}/seasonal-guide`,
   isPartOf: {
     '@type': 'WebSite',
     name: 'CTS Tours - China Travel Specialists',
-    url: 'https://chinatravel.co.nz',
+    url: site,
   },
   datePublished: '2026-04-07',
   dateModified: '2026-04-07',
@@ -47,19 +50,19 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://chinatravel.co.nz',
+      item: site,
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Travel Guides',
-      item: 'https://chinatravel.co.nz/guide',
+      item: `${site}/guide`,
     },
     {
       '@type': 'ListItem',
       position: 3,
       name: 'Seasonal Guide',
-      item: 'https://chinatravel.co.nz/seasonal-guide',
+      item: `${site}/seasonal-guide`,
     },
   ],
 };

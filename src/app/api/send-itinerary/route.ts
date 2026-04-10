@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getTourBySlug } from '@/lib/data/tours';
+import { getSiteUrl } from '@/lib/site';
 
 const FROM_ADDRESS = 'CTS Tours <itinerary@chinatravel.co.nz>';
 const REPLY_TO = 'ctstours1@chinatravel.co.nz';
@@ -53,6 +54,8 @@ export async function POST(req: NextRequest) {
       .map((item) => `<li style="margin-bottom:4px;font-size:13px;color:#374151;">✗ &nbsp;${item}</li>`)
       .join('');
 
+    const logoUrl = `${getSiteUrl()}/logo.png`;
+
     const html = `
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +73,7 @@ export async function POST(req: NextRequest) {
           <!-- Header -->
           <tr>
             <td style="background:#1f2937;padding:24px 32px;text-align:left;">
-              <img src="https://chinatravel.co.nz/logo.png" alt="CTS Tours" height="40" style="display:block;margin-bottom:8px;" />
+              <img src="${logoUrl}" alt="CTS Tours" height="40" style="display:block;margin-bottom:8px;" />
               <p style="margin:0;font-size:12px;color:#9ca3af;">China Travel Specialists — Since 1928</p>
             </td>
           </tr>
