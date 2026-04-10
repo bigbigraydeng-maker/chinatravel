@@ -37,29 +37,12 @@ const Hero = () => {
           Direct operations &nbsp;·&nbsp; Small groups &nbsp;·&nbsp; Authentic access
         </p>
 
-        <div
-          className="max-w-2xl mx-auto mb-8 px-4 py-3 rounded-2xl bg-black/35 backdrop-blur-md border border-white/15 text-white/95 text-sm md:text-base animate-fade-in-up"
-          style={{ animationDelay: '0.55s' }}
-        >
-          <p className="font-medium mb-1">CTS China · Signature & Discovery departures updated (2026)</p>
-          <p className="text-white/80 text-xs md:text-sm mb-3">
-            Full schedule: Silk Road, Legacy of China, twin-city routes, Yunnan highlights, and more.
-          </p>
-          <Link
-            href="/tours#cts-departure-schedule"
-            className="inline-flex items-center gap-2 text-secondary font-semibold hover:underline"
-          >
-            Open departure schedule
-            <span className="text-white/60 font-normal">View full departure schedule →</span>
-          </Link>
-        </div>
-
         {/* Search Bar */}
-        <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+        <div className="mb-10 animate-fade-in-up" style={{ animationDelay: '0.55s' }}>
           <SearchBar />
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.65s' }}>
           <Link href="/explore" className="bg-gradient-to-r from-primary via-primary to-red-500 text-white text-lg py-4 px-10 rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all font-medium hover:-translate-y-1 hover:scale-105 animate-pulse-glow">
             Explore China
           </Link>
@@ -70,7 +53,7 @@ const Hero = () => {
       </div>
 
       {/* Colorful bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-warm-50 via-warm-50/50 to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-warm-50 via-warm-50/50 to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 };
