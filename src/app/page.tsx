@@ -1,15 +1,17 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 import Hero from '@/components/Hero';
 import SectionTitle from '@/components/SectionTitle';
 import FeatureCard from '@/components/FeatureCard';
 import ExpertHighlight from '@/components/ExpertHighlight';
 import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
-import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
 import StatsCounter from '@/components/StatsCounter';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
+import { allGuides } from '@/lib/data/guides';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,11 +49,7 @@ const HomePage = () => {
     { name: 'Zhangjiajie', slug: 'zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
   ];
 
-  const articles = [
-    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg', href: '/best-time-to-visit-china' },
-    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg', href: '/china-visa-guide-for-new-zealanders' },
-    { title: 'China Tours from New Zealand', content: 'Discover our curated collection of China tours designed specifically for New Zealand travellers. From the Great Wall to the Li River, experience the best of China with local expertise.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg', href: '/china-tours-from-new-zealand' },
-  ];
+  const featuredGuides = allGuides.slice(0, 3);
 
   return (
     <div>
@@ -186,22 +184,47 @@ const HomePage = () => {
       {/* Testimonials */}
       <Testimonials />
 
-      {/* China Travel Guide */}
+      {/* Destination Guides */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">
         <div className="absolute top-10 right-10 w-48 h-48 bg-purple-100/20 rounded-full blur-3xl animate-float-slow"></div>
         <div className="absolute bottom-10 left-10 w-36 h-36 bg-sky-100/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="container mx-auto px-4">
-          <SectionTitle subtitle="Resources" title="China Travel Guide" center />
+          <SectionTitle subtitle="Resources" title="Destination Guides" center />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {articles.map((article, index) => (
-              <ArticleCard
-                key={index}
-                title={article.title}
-                content={article.content}
-                image_url={article.image_url}
-                href={article.href}
-              />
+            {featuredGuides.map((guide) => (
+              <Link key={guide.id} href={`/${guide.slug}`} className="block group">
+                <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
+                  <div className="overflow-hidden relative h-52">
+                    <Image
+                      src={guide.heroImage}
+                      alt={guide.destinationName}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      Guide
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{guide.h1.replace(/Travel Guide:?\s*/i, '')}</h3>
+                    <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">{guide.introText[0].substring(0, 120)}...</p>
+                    <div className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
+                      Read Guide
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </Link>
             ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/guide" className="text-primary hover:underline font-medium">
+              View all {allGuides.length} destination guides →
+            </Link>
           </div>
         </div>
       </section>
