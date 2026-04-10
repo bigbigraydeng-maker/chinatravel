@@ -60,6 +60,14 @@ const Footer = () => {
               <li><Link href="/china-tours-from-auckland" className="text-gray-400 hover:text-white transition-colors">Tours from Auckland</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About CTS</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
+              <li>
+                <Link
+                  href="/terms-and-conditions"
+                  className="text-gray-300 hover:text-white transition-colors font-medium"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -89,14 +97,25 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col gap-4 text-gray-400 text-sm md:flex-row md:items-center md:justify-between">
-          <p className="text-center md:text-left">&copy; {new Date().getFullYear()} CTS Tours. All rights reserved.</p>
-          <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-6 md:text-right">
-            <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
-              Terms & Conditions
-            </Link>
-            <p>Part of China Travel Service Group, est. 1928</p>
-          </div>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm md:text-left">
+          <p className="mb-3 md:mb-0 md:inline">
+            &copy; {new Date().getFullYear()} CTS Tours. All rights reserved.
+          </p>
+          <span className="mx-2 hidden text-gray-600 md:inline" aria-hidden>
+            ·
+          </span>
+          <Link
+            href="/terms-and-conditions"
+            className="block font-medium text-gray-300 hover:text-white transition-colors md:inline"
+          >
+            Terms & Conditions
+          </Link>
+          <span className="mx-2 hidden text-gray-600 md:inline" aria-hidden>
+            ·
+          </span>
+          <p className="mt-2 text-gray-500 md:mt-0 md:inline">
+            Part of China Travel Service Group, est. 1928
+          </p>
         </div>
       </div>
     </footer>
