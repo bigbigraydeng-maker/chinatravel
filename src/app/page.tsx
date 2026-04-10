@@ -164,7 +164,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* China Discovery */}
+          {/* China Discovery — featured departures */}
           <div>
             <div className="flex items-center gap-4 mb-8">
               <div className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-sm font-bold px-5 py-2 rounded-full uppercase tracking-wider">
@@ -173,11 +173,11 @@ const HomePage = () => {
               <div className="flex-1 h-[2px] bg-gradient-to-r from-emerald-200 to-transparent rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" route={['Beijing', 'Shanghai']} />
+              {(() => { const t = getTourBySlug('china', 'discovery', 'shanghai-beyond'); return t ? (
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="14 Oct 2026" route={['Shanghai', 'Suzhou', 'Wuxi', 'Hangzhou']} />
               ) : null; })()}
-              {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" route={["Beijing", "Xi'an", 'Shanghai']} />
+              {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="15 Oct 2026" route={['Beijing', "Xi'an"]} />
               ) : null; })()}
             </div>
           </div>
