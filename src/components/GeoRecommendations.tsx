@@ -110,7 +110,7 @@ const GeoRecommendations = () => {
               {recommendations.articles.map((article: any) => (
                 <Link 
                   key={article.id} 
-                  href={article.url || `/guide/${article.slug}`}
+                  href={article.url || `/blog`}
                   className="block group"
                 >
                   <div className="bg-white rounded-lg shadow-md overflow-hidden">

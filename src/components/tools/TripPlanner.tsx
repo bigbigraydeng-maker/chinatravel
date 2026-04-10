@@ -367,7 +367,7 @@ export default function TripPlanner({
               {relatedGuides.map((g) => (
                 <li key={g.id}>
                   <Link
-                    href={`/guide/${g.slug}`}
+                    href={`/${g.slug}`}
                     className="flex gap-4 rounded-xl border border-warm-200 bg-white p-3 transition hover:border-secondary/40 hover:shadow-md"
                   >
                     <div className="relative h-24 w-28 shrink-0 overflow-hidden rounded-lg">

@@ -5,12 +5,12 @@ interface ArticleCardProps {
   title: string;
   content: string;
   image_url: string;
-  slug: string;
+  href: string;
 }
 
-const ArticleCard = ({ title, content, image_url, slug }: ArticleCardProps) => {
+const ArticleCard = ({ title, content, image_url, href }: ArticleCardProps) => {
   return (
-    <Link href={`/guide/${slug}`} className="block group">
+    <Link href={href} className="block group">
       <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
         <div className="overflow-hidden relative h-52">
           <Image

@@ -49,9 +49,9 @@ const HomePage = () => {
   ];
 
   const articles = [
-    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg', slug: 'best-time-to-visit-china' },
-    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg', slug: 'china-visa-guide-for-new-zealanders' },
-    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg', slug: 'is-china-safe-to-travel' },
+    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg', href: '/best-time-to-visit-china' },
+    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg', href: '/china-visa-guide-for-new-zealanders' },
+    { title: 'China Tours from New Zealand', content: 'Discover our curated collection of China tours designed specifically for New Zealand travellers. From the Great Wall to the Li River, experience the best of China with local expertise.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg', href: '/china-tours-from-new-zealand' },
   ];
 
   return (
@@ -203,7 +203,7 @@ const HomePage = () => {
                 title={article.title}
                 content={article.content}
                 image_url={article.image_url}
-                slug={article.slug}
+                href={article.href}
               />
             ))}
           </div>

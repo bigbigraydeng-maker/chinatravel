@@ -271,7 +271,7 @@ function MatcherResults() {
               <p className="mt-2 text-sm text-gray-600">{guide.heroSubtitle}</p>
               <p className="mt-3 line-clamp-3 text-sm text-gray-700">{guide.introText[0]}</p>
               <Link
-                href={`/guide/${guide.slug}`}
+                href={`/${guide.slug}`}
                 className="mt-4 inline-block font-semibold text-primary hover:underline"
               >
                 Open travel guide

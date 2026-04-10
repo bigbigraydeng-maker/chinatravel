@@ -145,7 +145,7 @@ export const getPersonalizedRecommendations = async (location: Location) => {
       id: 3,
       title: 'Is China Safe to Travel?',
       slug: 'is-china-safe-to-travel',
-      url: '/guide/is-china-safe-to-travel',
+      url: '/blog',
       content: 'China is consistently rated as one of the safest countries in Asia for international tourists. Crime rates are low, and cities have extensive public safety infrastructure.',
       image_url: `${SB}/forbidden-city-gold-lion.jpg`,
       created_at: '2024-01-05T00:00:00Z'
