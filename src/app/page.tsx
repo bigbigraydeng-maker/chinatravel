@@ -7,7 +7,6 @@ import FeatureCard from '@/components/FeatureCard';
 import ExpertHighlight from '@/components/ExpertHighlight';
 import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
-import CTASection from '@/components/CTASection';
 import StatsCounter from '@/components/StatsCounter';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
@@ -229,47 +228,31 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Heritage / Proof */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-accent via-gray-800 to-accent text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/15 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-        {/* Dot pattern */}
-        <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }}></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="mb-8">
-            <div className="inline-block bg-secondary/20 backdrop-blur-sm rounded-full px-5 py-2 mb-6 border border-secondary/30">
-              <h3 className="text-sm uppercase tracking-widest text-secondary font-semibold">Legacy</h3>
+      {/* Combined Heritage + CTA */}
+      <section className="py-12 md:py-16 bg-gradient-to-br from-primary via-red-600 to-primary text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-white/70 text-sm font-medium tracking-wide uppercase mb-3">Est. 1928 · China Travel Service Heritage</p>
+            <h2 className="text-2xl md:text-4xl font-bold mb-4 font-serif leading-tight">Plan Your China Journey</h2>
+            <p className="text-white/80 mb-8 max-w-xl mx-auto">
+              Let our specialists craft your perfect itinerary — backed by nearly a century of direct China operations.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="/tailor-made" className="bg-white text-primary font-bold py-3 px-8 rounded-full hover:shadow-xl transition-all hover:-translate-y-0.5">
+                Tailor My Trip
+              </a>
+              <a href="/tours" className="border-2 border-white/40 text-white font-medium py-3 px-8 rounded-full hover:bg-white/10 hover:border-white transition-all">
+                Explore Tours
+              </a>
+              <a href="/about" className="text-white/70 font-medium py-3 px-6 hover:text-white transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-white/70">
+                Our Story
+              </a>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 font-serif leading-tight">Backed by Nearly a Century<br />of China Travel Expertise</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-secondary via-white/30 to-secondary mx-auto mb-8 rounded-full"></div>
-          </div>
-          <p className="text-xl mb-10 max-w-3xl mx-auto font-light leading-relaxed text-white/85">
-            CTS is part of China Travel Service heritage, established in 1928 with direct operational depth across China.
-            This is proof of capability, not just background.
-          </p>
-          <div className="flex justify-center">
-            <a href="/about" className="inline-flex items-center gap-2 bg-white text-accent font-semibold text-lg py-4 px-10 rounded-full hover:bg-secondary hover:text-white hover:shadow-2xl hover:shadow-secondary/30 transition-all hover:-translate-y-1 hover:scale-105">
-              Learn Our Story
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <CTASection
-        title="Plan Your China Journey"
-        description="Let our China specialists create a tailor-made itinerary for your perfect journey."
-        primaryButtonText="Tailor My Trip"
-        primaryButtonLink="/tailor-made"
-        secondaryButtonText="Explore Tours"
-        secondaryButtonLink="/tours"
-      />
     </div>
   );
 };
