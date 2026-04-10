@@ -34,7 +34,7 @@ export default function GuidePage() {
       '@type': 'Article',
       headline: guide.h1,
       description: guide.metaDescription,
-      image: `${siteUrl}${guide.heroImage}`,
+      image: `${guide.heroImage.startsWith('http') ? guide.heroImage : `${siteUrl}${guide.heroImage}`}`,
       datePublished: guide.createdAt,
       dateModified: guide.updatedAt,
       author: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
