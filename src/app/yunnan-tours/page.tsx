@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: yunnanToursMeta.title,
     description: yunnanToursMeta.description,
     path: '/yunnan-tours',
-    ogImagePath: '/images/tours/yunnan-village.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg',
     ogImageAlt: 'Yunnan Tours - Lijiang, Dali, Kunming, CTS Tours',
     keywords: ['Yunnan tours New Zealand', 'Lijiang Dali tours', 'Colorful Yunnan', 'CTS Tours'],
     ogType: 'website',
@@ -39,7 +39,7 @@ export default function YunnanToursPage() {
         cityName={yunnanToursMeta.cityName}
         heroTitle={yunnanToursMeta.h1}
         heroSubtitle={yunnanToursMeta.heroSubtitle}
-        heroImage="/images/tours/great-wall-green.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg"
         introText={yunnanToursMeta.introText}
         highlights={yunnanToursMeta.highlights}
         bestTimeToVisit={yunnanToursMeta.bestTimeToVisit}

@@ -5,14 +5,14 @@ import SectionTitle from '@/components/SectionTitle';
 
 // Static destination cards (no CMS)
 const destinations = [
-  { id: 1, slug: 'beijing', name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
-  { id: 2, slug: 'xian', name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
-  { id: 3, slug: 'shanghai', name: 'Shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: '/images/tours/shanghai-skyline.jpg' },
-  { id: 4, slug: 'chengdu', name: 'Chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: '/images/tours/chengdu-pandas.jpg' },
-  { id: 5, slug: 'guilin', name: 'Guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: '/images/tours/guilin-mist.jpg' },
-  { id: 6, slug: 'zhangjiajie', name: 'Zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: '/images/tours/zhangjiajie.jpg' },
-  { id: 7, slug: 'lhasa', name: 'Lhasa', description: 'Home to the Potala Palace and Tibetan culture', image_url: '/images/tours/shangri-la-monastery-lake.jpg' },
-  { id: 8, slug: 'hangzhou', name: 'Hangzhou', description: 'Famous for West Lake and traditional Chinese gardens', image_url: '/images/tours/suzhou-canal.jpg' },
+  { id: 1, slug: 'beijing', name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg' },
+  { id: 2, slug: 'xian', name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
+  { id: 3, slug: 'shanghai', name: 'Shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
+  { id: 4, slug: 'chengdu', name: 'Chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
+  { id: 5, slug: 'guilin', name: 'Guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg' },
+  { id: 6, slug: 'zhangjiajie', name: 'Zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
+  { id: 7, slug: 'lhasa', name: 'Lhasa', description: 'Home to the Potala Palace and Tibetan culture', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery-lake.jpg' },
+  { id: 8, slug: 'hangzhou', name: 'Hangzhou', description: 'Famous for West Lake and traditional Chinese gardens', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg' },
 ];
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ const ExplorePage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/tours/great-wall-cloud-sea.jpg"
+            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-cloud-sea.jpg"
             alt="China Landscapes"
             fill
             sizes="100vw"

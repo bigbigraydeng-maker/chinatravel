@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: xianToursMeta.title,
     description: xianToursMeta.description,
     path: '/xian-tours',
-    ogImagePath: '/images/tours/xian-terracotta.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg',
     ogImageAlt: "Xi'an Tours - Terracotta Warriors, Ancient City Wall, CTS Tours",
     keywords: ['Xian tours New Zealand', 'Terracotta Warriors', 'Xian travel', 'CTS Tours'],
     ogType: 'website',
@@ -39,7 +39,7 @@ export default function XianToursPage() {
         cityName={xianToursMeta.cityName}
         heroTitle={xianToursMeta.h1}
         heroSubtitle={xianToursMeta.heroSubtitle}
-        heroImage="/images/tours/xian-terracotta.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg"
         introText={xianToursMeta.introText}
         highlights={xianToursMeta.highlights}
         bestTimeToVisit={xianToursMeta.bestTimeToVisit}

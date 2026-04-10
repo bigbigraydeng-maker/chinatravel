@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: zhangjiajieToursMetadata.title,
     description: zhangjiajieToursMetadata.description,
     path: '/zhangjiajie-tours',
-    ogImagePath: '/images/tours/zhangjiajie.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
     ogImageAlt: 'Zhangjiajie Tours - Avatar Mountains, Glass Bridge, CTS Tours',
     keywords: ['Zhangjiajie tours New Zealand', 'Avatar mountains', 'Zhangjiajie glass bridge', 'CTS Tours'],
     ogType: 'website',
@@ -39,7 +39,7 @@ export default function ZhangjiajieToursPage() {
         cityName={zhangjiajieToursMetadata.cityName}
         heroTitle={zhangjiajieToursMetadata.h1}
         heroSubtitle={zhangjiajieToursMetadata.heroSubtitle}
-        heroImage="/images/tours/zhangjiajie.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg"
         introText={zhangjiajieToursMetadata.introText}
         highlights={zhangjiajieToursMetadata.highlights}
         bestTimeToVisit={zhangjiajieToursMetadata.bestTimeToVisit}

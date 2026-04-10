@@ -22,7 +22,7 @@ const BakerGuPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/tours/zhangjiajie.jpg"
+            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg"
             alt="Zhangjiajie National Forest Park — CTS Tours China Travel Specialist"
             className="w-full h-full object-cover object-center"
           />

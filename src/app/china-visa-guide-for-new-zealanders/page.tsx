@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: chinaVisaGuideMeta.title,
     description: chinaVisaGuideMeta.description,
     path: '/china-visa-guide-for-new-zealanders',
-    ogImagePath: '/images/tours/forbidden-city-aerial.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     ogImageAlt: 'China Visa Guide for New Zealanders - Requirements and Application',
     keywords: ['China visa New Zealand', 'China visa requirements', 'NZ passport China visa', 'China travel documents'],
     ogType: 'article',

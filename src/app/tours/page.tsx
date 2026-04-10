@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Asia Tours | China, Japan, Vietnam | CTS Tours',
     description: 'Explore Asia with CTS Tours — Signature, Discovery and Stopover collections to China, Japan, and Vietnam. 98 years of expertise crafting unforgettable journeys from New Zealand.',
     path: '/tours',
-    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'Asia Tours — China, Japan, Vietnam with CTS Tours',
     keywords: ['Asia tours', 'China tours', 'Japan tours', 'Vietnam tours', 'CTS Tours', 'Asia travel New Zealand'],
     ogType: 'website',

@@ -18,7 +18,7 @@ const AgentsPage = () => {
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/tours/forbidden-city-aerial.jpg"
+            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
             alt="Forbidden City Beijing — CTS Tours Agent Resources"
             className="w-full h-full object-cover"
           />

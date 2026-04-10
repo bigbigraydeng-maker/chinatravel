@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: chinaToursFromAucklandMeta.title,
     description: chinaToursFromAucklandMeta.description,
     path: '/china-tours-from-auckland',
-    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'China Tours from Auckland - Direct Departures with CTS Tours',
     keywords: ['China tours from Auckland', 'Auckland China travel', 'CTS Tours Auckland'],
     ogType: 'website',
@@ -69,7 +69,7 @@ export default function ChinaToursFromAucklandPage() {
       <HubHero
         title={chinaToursFromAucklandMeta.h1}
         subtitle={chinaToursFromAucklandMeta.heroSubtitle}
-        backgroundImage="linear-gradient(135deg, rgba(139, 90, 60, 0.8) 0%, rgba(212, 165, 116, 0.8) 100%), url('/images/tours/forbidden-city-aerial.jpg')"
+        backgroundImage="linear-gradient(135deg, rgba(139, 90, 60, 0.8) 0%, rgba(212, 165, 116, 0.8) 100%), url('https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg')"
       />
 
       <TrustBar />

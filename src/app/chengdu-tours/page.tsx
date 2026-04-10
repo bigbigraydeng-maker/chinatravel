@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: chengduToursMeta.title,
     description: chengduToursMeta.description,
     path: '/chengdu-tours',
-    ogImagePath: '/images/tours/chengdu-pandas.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg',
     ogImageAlt: 'Chengdu Tours - Giant Pandas, Sichuan Cuisine, CTS Tours',
     keywords: ['Chengdu tours New Zealand', 'giant pandas Chengdu', 'Sichuan tours', 'CTS Tours'],
     ogType: 'website',
@@ -39,7 +39,7 @@ export default function ChengduToursPage() {
         cityName={chengduToursMeta.cityName}
         heroTitle={chengduToursMeta.h1}
         heroSubtitle={chengduToursMeta.heroSubtitle}
-        heroImage="/images/tours/chengdu-pandas.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg"
         introText={chengduToursMeta.introText}
         highlights={chengduToursMeta.highlights}
         bestTimeToVisit={chengduToursMeta.bestTimeToVisit}

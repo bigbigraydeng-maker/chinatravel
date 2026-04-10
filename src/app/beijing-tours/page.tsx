@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: beijingToursMeta.title,
     description: beijingToursMeta.description,
     path: '/beijing-tours',
-    ogImagePath: '/images/tours/forbidden-city-aerial.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     ogImageAlt: 'Beijing Tours from New Zealand — Great Wall, Forbidden City, CTS Tours',
     keywords: ['Beijing tours New Zealand', 'Great Wall tours', 'Forbidden City', 'Beijing travel', 'CTS Tours'],
     ogType: 'website',
@@ -45,7 +45,7 @@ export default function BeijingToursPage() {
         cityName={beijingToursMeta.cityName}
         heroTitle={beijingToursMeta.h1}
         heroSubtitle={beijingToursMeta.heroSubtitle}
-        heroImage="/images/tours/forbidden-city-aerial.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
         introText={beijingToursMeta.introText}
         highlights={beijingToursMeta.highlights}
         bestTimeToVisit={beijingToursMeta.bestTimeToVisit}
