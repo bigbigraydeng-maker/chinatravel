@@ -226,7 +226,6 @@ export const tours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg'
     ],
     highlights: [
       'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
@@ -494,10 +493,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
     price: 'From NZD $7,670',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/jiuzhaigou-lake.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/jiuzhaigou-lake.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/jiuzhaigou-autumn.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
     ],
     highlights: [
       'Cruise the Li River through stunning karst landscapes',
@@ -1242,9 +1241,9 @@ export const tours: Tour[] = [
     shortDescription: 'Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the city\'s relaxed pace.',
     duration: '3 Days',
     price: 'From NZD $1,399',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-yuyuan-night.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-yuyuan-night.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg',
     ],
     highlights: [
       'Nanfeng Kiln and Shiwan pottery centre',
@@ -1517,9 +1516,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.',
     duration: '4 Days',
     price: 'From NZD $1,635',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg',
     ],
     highlights: [
       'Cable car ride up Yellow Mountain',
