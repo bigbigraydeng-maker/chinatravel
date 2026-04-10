@@ -2,27 +2,15 @@
 
 import Script from 'next/script';
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const GA_MEASUREMENT_ID = 'G-SB9EYP2X1L';
 
-/**
- * Google Analytics 4 script component
- * Load GA4 and initialize gtag.js
- * Requires NEXT_PUBLIC_GA_ID environment variable
- */
 export function GoogleAnalytics() {
-  if (!GA_ID) {
-    return null;
-  }
-
   return (
     <>
-      {/* Google Analytics Script */}
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
-
-      {/* Initialize gtag */}
       <Script
         id="ga-init"
         strategy="afterInteractive"
@@ -31,10 +19,7 @@ export function GoogleAnalytics() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_ID}', {
-              page_path: window.location.pathname,
-              send_page_view: true,
-            });
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `,
         }}
       />
@@ -43,3 +28,4 @@ export function GoogleAnalytics() {
 }
 
 export default GoogleAnalytics;
+

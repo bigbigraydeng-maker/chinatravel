@@ -240,7 +240,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         </section>
       )}
 
-      {/* Recommended Tours Section */}
+      {/* Explore Destinations */}
       <section className="py-16 bg-warm-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-serif font-bold mb-2 text-center">Explore Our China Tours</h2>

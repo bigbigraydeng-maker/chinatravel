@@ -8,7 +8,6 @@ import TourTierCard from '@/components/TourTierCard';
 import ArticleCard from '@/components/ArticleCard';
 import CTASection from '@/components/CTASection';
 import StatsCounter from '@/components/StatsCounter';
-import GeoRecommendations from '@/components/GeoRecommendations';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -186,9 +185,6 @@ const HomePage = () => {
 
       {/* Testimonials */}
       <Testimonials />
-
-      {/* Personalized Recommendations */}
-      <GeoRecommendations />
 
       {/* China Travel Guide */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">
