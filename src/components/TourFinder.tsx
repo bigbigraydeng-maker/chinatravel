@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   type Tour,
@@ -165,7 +166,14 @@ export default function TourFinder({ tours }: TourFinderProps) {
             <Link key={tour.id} href={`/tours/${tour.destination}/${tour.tier}/${tour.slug}`}
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group">
               <div className="relative h-48 bg-gray-200 overflow-hidden">
-                <img src={tour.heroImage} alt={tour.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image
+                  src={tour.heroImage}
+                  alt={tour.name}
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute top-3 left-3">
                   <span className="bg-white/90 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full capitalize">
                     {tour.tier}

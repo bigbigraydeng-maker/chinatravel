@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const articles = [
   {
@@ -163,11 +164,16 @@ const GuideDetailPage = ({ params }: { params: { slug: string } }) => {
       {/* Hero */}
       <section className="relative h-80 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src={article.image_url}
-            alt={article.title}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative h-full w-full">
+            <Image
+              src={article.image_url}
+              alt={article.title}
+              fill
+              sizes="100vw"
+              priority
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
@@ -238,10 +244,12 @@ const GuideDetailPage = ({ params }: { params: { slug: string } }) => {
                     href={`/guide/${related.slug}`}
                     className="group flex gap-4 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
                   >
-                    <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded">
-                      <img
+                    <div className="relative w-24 h-24 flex-shrink-0 overflow-hidden rounded">
+                      <Image
                         src={related.image_url}
                         alt={related.title}
+                        fill
+                        sizes="96px"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
@@ -89,9 +90,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Hero */}
       <section className="relative h-80 md:h-96">
         <div className="absolute inset-0">
-          <img 
-            src={post.heroImage} 
+          <Image
+            src={post.heroImage}
             alt={post.title}
+            fill
+            sizes="100vw"
+            priority
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
@@ -205,9 +209,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <article key={relatedPost.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <Link href={`/blog/${relatedPost.slug}`} className="block">
                     <div className="relative h-48">
-                      <img 
-                        src={relatedPost.heroImage} 
+                      <Image
+                        src={relatedPost.heroImage}
                         alt={relatedPost.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       />
                     </div>

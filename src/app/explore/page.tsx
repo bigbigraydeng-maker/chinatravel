@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionTitle from '@/components/SectionTitle';
 
@@ -31,9 +32,12 @@ const ExplorePage = () => {
       {/* Hero 小头图 */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/tours/great-wall-cloud-sea.jpg" 
-            alt="China Landscapes" 
+          <Image
+            src="/images/tours/great-wall-cloud-sea.jpg"
+            alt="China Landscapes"
+            fill
+            sizes="100vw"
+            priority
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
@@ -51,11 +55,13 @@ const ExplorePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {destinations.map((destination) => (
               <div key={destination.id} className="group">
-                <div className="overflow-hidden rounded-lg shadow-md mb-4">
-                  <img 
-                    src={destination.image_url} 
-                    alt={destination.name} 
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                <div className="relative h-64 overflow-hidden rounded-lg shadow-md mb-4">
+                  <Image
+                    src={destination.image_url}
+                    alt={destination.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div>

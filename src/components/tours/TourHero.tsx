@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { slugifyTourTag } from '@/lib/data/tours';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
@@ -37,11 +38,16 @@ export default function TourHero({
     <section id="hero" className="relative min-h-[70vh] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={heroImage}
-          alt={`${title} - China Tour from New Zealand | ${tier} Collection`}
-          className="w-full h-full object-cover"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src={heroImage}
+            alt={`${title} - China Tour from New Zealand | ${tier} Collection`}
+            fill
+            priority
+            sizes="100vw"
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </div>
 

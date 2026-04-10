@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { detectLocation, getPersonalizedRecommendations, getSeasonalRecommendations } from '@/lib/geo';
 
@@ -95,10 +96,12 @@ const GeoRecommendations = () => {
                   className="block group"
                 >
                   <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div className="h-48 overflow-hidden">
-                      <img 
-                        src={tour.image_url} 
-                        alt={tour.title} 
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={tour.image_url}
+                        alt={tour.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
@@ -139,10 +142,12 @@ const GeoRecommendations = () => {
                   className="block group"
                 >
                   <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <div className="h-48 overflow-hidden">
-                      <img 
-                        src={article.image_url} 
-                        alt={article.title} 
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={article.image_url}
+                        alt={article.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>

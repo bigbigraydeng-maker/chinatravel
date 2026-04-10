@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
@@ -102,11 +103,16 @@ export default function TierPage({ params }: TierPageProps) {
       {/* Hero Section */}
       <section className="relative h-[50vh] min-h-[400px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
-            src={destination.heroImage} 
-            alt={`${destination.name} ${tier.name} Tours`}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative h-full w-full">
+            <Image
+              src={destination.heroImage}
+              alt={`${destination.name} ${tier.name} Tours`}
+              fill
+              priority
+              sizes="100vw"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 text-center text-white px-4">

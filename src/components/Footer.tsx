@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="mb-4">
-              <img src="/logo.png" alt="CTS Tours" className="h-12 w-auto bg-white rounded px-2 py-1" />
+              <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto bg-white rounded px-2 py-1" />
             </div>
             <p className="text-gray-400 mb-4">China Travel Specialists for New Zealanders</p>
             <p className="text-gray-400 text-sm mb-6">98 Years Heritage | Direct China Operations | Authentic Access</p>

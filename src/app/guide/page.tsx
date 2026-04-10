@@ -69,11 +69,16 @@ const GuidePage = () => {
       {/* Hero */}
       <section className="relative h-80 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
-            alt="China travel guides by CTS Tours"
-            className="w-full h-full object-cover object-center"
-          />
+          <div className="relative h-full w-full">
+            <Image
+              src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80"
+              alt="China travel guides by CTS Tours"
+              fill
+              sizes="100vw"
+              priority
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
           <div className="absolute inset-0 bg-black bg-opacity-55"></div>
         </div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">

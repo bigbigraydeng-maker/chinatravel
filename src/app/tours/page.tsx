@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { destinations, getAllActiveTours } from '@/lib/data/tours';
 import TourCard from '@/components/tours/TourCard';
@@ -25,9 +26,12 @@ export default function ToursPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image
             src="https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?w=1920&q=80"
             alt="Asia Tours"
+            fill
+            sizes="100vw"
+            priority
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50" />
@@ -87,9 +91,12 @@ export default function ToursPage() {
                 href={`/tours/${destination.slug}`}
                 className="group relative h-96 rounded-xl overflow-hidden shadow-lg"
               >
-                <img 
+                <Image
                   src={destination.heroImage}
                   alt={destination.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />

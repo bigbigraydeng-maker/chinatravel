@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'qbturrydultenhlfmdcm.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'trae-api-cn.mchost.guru',
+      },
     ],
   },
   compress: true,

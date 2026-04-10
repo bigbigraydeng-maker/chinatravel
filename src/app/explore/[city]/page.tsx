@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getCityBySlug, cities } from '@/lib/data/cities';
@@ -64,9 +65,12 @@ export default function CityPage({ params }: CityPageProps) {
       {/* Hero */}
       <section className="relative h-72 md:h-96 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src={city.heroImage}
             alt={`${city.name} — CTS Tours`}
+            fill
+            sizes="100vw"
+            priority
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
