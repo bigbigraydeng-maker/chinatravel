@@ -19,7 +19,7 @@ export interface CityHubMeta extends SeoPageMeta {
   heroImage?: string; // Optional hero image
 }
 
-// ===== 商业Hub页 =====
+// ===== Commercial hub pages =====
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
@@ -52,7 +52,7 @@ export const chinaToursMeta: SeoPageMeta = {
   ]
 };
 
-// ===== 城市Hub页 =====
+// ===== City hub pages =====
 
 export const beijingToursMeta: CityHubMeta = {
   slug: 'beijing-tours',
@@ -197,7 +197,7 @@ export const chengduToursMeta: CityHubMeta = {
     },
     {
       question: 'What is Sichuan cuisine like?',
-      answer: 'Sichuan cuisine is famous for fiery heat from Sichuan peppercorns (má là = numb + spicy). Popular dishes include hot pot (火锅, huǒguō), mapo tofu (麻婆豆腐), and chongqing chicken (辣子鸡). It\'s intensely flavorful. CTS will inform you of heat levels for each dish—ask for mild options if you prefer.'
+      answer: 'Sichuan cuisine is famous for fiery heat from Sichuan peppercorns (má là = numb + spicy). Popular dishes include hot pot (huoguo), mapo tofu, and Chongqing la zi ji (spicy chicken). It\'s intensely flavorful. CTS will inform you of heat levels for each dish—ask for mild options if you prefer.'
     },
     {
       question: 'Can I see pandas and Mount Emei in one trip?',
@@ -320,7 +320,7 @@ export const yunnanToursMeta: CityHubMeta = {
   ]
 };
 
-// ===== 地域定向页 =====
+// ===== Geo-targeted landing pages =====
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
@@ -384,7 +384,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
   ]
 };
 
-// ===== 指南页 =====
+// ===== Guide pages =====
 
 export const bestTimeToVisitChinaMeta: SeoPageMeta = {
   slug: 'best-time-to-visit-china',

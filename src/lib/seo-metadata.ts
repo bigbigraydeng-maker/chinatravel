@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import { getSiteUrl } from '@/lib/site';
 
 /**
- * CTS 全站 SEO 元数据约定（与 layout 的 metadataBase 一致，优先用 NEXT_PUBLIC_SITE_URL）：
- * - title：目标约 50–60 字符，通常以「具体标题 | CTS Tours」结尾（由 {@link withCtsTitleSuffix} 补全）
- * - description：每页唯一，目标约 140–160 字符（由内容侧控制长度）
- * - openGraph：绝对 url、1200×630 图、type 默认 article（列表/首页可用 website）
- * - alternates.canonical：与 OG url 同源同路径
- * - robots：默认 index + follow
+ * Site-wide CTS SEO metadata conventions (align with layout metadataBase; prefer NEXT_PUBLIC_SITE_URL):
+ * - title: aim for ~50–60 characters; usually ends with a specific title plus " | CTS Tours" via {@link withCtsTitleSuffix}
+ * - description: unique per page, ~140–160 characters (length enforced by page content)
+ * - openGraph: absolute URLs, 1200×630 image, type defaults to article (use website for listings/home)
+ * - alternates.canonical: same origin and path as the OG url
+ * - robots: default index + follow
  */
 
 export type BuildCtsPageMetadataInput = {
   title: string;
   description: string;
-  /** 站点内路径，须以 / 开头，例如 /china-tours */
+  /** In-site path, must start with /, e.g. /china-tours */
   path: string;
-  /** 绝对 URL，或以 / 开头的站内图片路径 */
+  /** Absolute URL or in-site image path starting with / */
   ogImagePath: string;
   ogImageAlt?: string;
   keywords?: string[];
@@ -26,7 +26,7 @@ export type BuildCtsPageMetadataInput = {
   robots?: Metadata['robots'];
 };
 
-/** 若标题中尚未包含 “CTS Tours”，则追加 “ | CTS Tours”。 */
+/** Append " | CTS Tours" when the title does not already include "CTS Tours". */
 export function withCtsTitleSuffix(title: string): string {
   const t = title.trim();
   if (/\bCTS\s*Tours\b/i.test(t)) return t;

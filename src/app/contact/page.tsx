@@ -49,7 +49,7 @@ const ContactPage = () => {
 
   return (
     <div>
-      {/* Hero 小头图 */}
+      {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
@@ -65,7 +65,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* 联系表单 */}
+      {/* Contact form */}
       <section className="section bg-white">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

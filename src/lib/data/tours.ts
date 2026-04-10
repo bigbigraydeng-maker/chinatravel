@@ -130,7 +130,7 @@ export const destinations: Destination[] = [
     name: 'Japan',
     subtitle: 'Where Tradition Meets Tomorrow',
     description: 'Experience the perfect harmony of ancient traditions and cutting-edge modernity. From serene temples to bustling Tokyo, Japan offers unforgettable journeys.',
-    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80',
     highlights: [
       'Witness Mount Fuji',
       'Explore ancient Kyoto temples',
@@ -974,7 +974,7 @@ export const tours: Tour[] = [
     shortDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authentic dining.',
     duration: '3 Days',
     price: 'From NZD $1,450',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion-2.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion-2.jpg'
     ],
@@ -1067,7 +1067,7 @@ export const tours: Tour[] = [
     shortDescription: 'See the best Shanghai has to offer! This compact stopover showcases Shanghai\'s historic and modern attractions in an efficient timeframe.',
     duration: '2 Days',
     price: 'From NZD $875',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg'
     ],
@@ -1565,10 +1565,10 @@ export const tours: Tour[] = [
     shortDescription: 'A comprehensive Japan journey combining history, culture, and natural beauty across multiple regions, featuring iconic landmarks, scenic railways, and overnight ferry travel.',
     duration: '18 Days',
     price: 'From NZD $8,999',
-    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
-      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80'
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=800&q=80'
     ],
     highlights: [
       'Tokyo\'s iconic landmarks and Sensoji Temple',
@@ -1635,10 +1635,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience Japan blending timeless beauty with modern marvels. Journey includes ancient temples, bustling markets, Mt. Fuji, snow monkeys, UNESCO villages, and historic castles from Tokyo to Osaka.',
     duration: '18 Days',
     price: 'From NZD $10,999',
-    heroImage: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1920&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',
-      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80'
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80'
     ],
     highlights: [
       'Mt. Fuji with Lake Ashi cruise and Hakone Ropeway',
@@ -1702,10 +1702,10 @@ export const tours: Tour[] = [
     shortDescription: 'An immersive Japan journey from Tokyo to Osaka, combining iconic sights like Mt. Fuji, Matsumoto Castle, and Shirakawa-go with cultural traditions including tea ceremonies and gold leaf crafting.',
     duration: '14 Days',
     price: 'From NZD $8,699',
-    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1920&q=80',
     gallery: [
-      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80',
-      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80'
+      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=800&q=80'
     ],
     highlights: [
       'Mt. Fuji visit and Lake Ashi cruise',

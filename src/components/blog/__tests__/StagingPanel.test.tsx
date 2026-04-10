@@ -20,7 +20,7 @@ function row(overrides: Partial<StagingContent>): StagingContent {
       keywords: ['a'],
       category: 'travel-tips',
     },
-    socialVersions: { linkedin: 'L', xiaohongshu: '小红书', weibo: '微' },
+    socialVersions: { linkedin: 'L', xiaohongshu: 'XHS copy', weibo: 'WB' },
     status: 'draft',
     createdAt: '2026-04-01T10:00:00.000Z',
     updatedAt: '2026-04-01T11:00:00.000Z',
@@ -110,9 +110,9 @@ describe('StagingPanel', () => {
     const user = userEvent.setup();
     render(<StagingPanel initialItems={[row({})]} />);
     await user.click(screen.getByRole('button', { name: 'Edit' }));
-    await user.click(screen.getByRole('button', { name: 'linkedin' }));
+    await user.click(screen.getByRole('button', { name: 'LinkedIn' }));
     expect(screen.getByLabelText(/linkedin copy/i)).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'weibo' }));
+    await user.click(screen.getByRole('button', { name: 'Weibo' }));
     expect(screen.getByLabelText(/weibo copy/i)).toBeInTheDocument();
   });
 
@@ -120,7 +120,7 @@ describe('StagingPanel', () => {
     const user = userEvent.setup();
     render(<StagingPanel initialItems={[row({ socialVersions: { linkedin: 'abc' } })]} />);
     await user.click(screen.getByRole('button', { name: 'Edit' }));
-    await user.click(screen.getByRole('button', { name: 'linkedin' }));
+    await user.click(screen.getByRole('button', { name: 'LinkedIn' }));
     expect(screen.getByText(/Chars:/i)).toBeInTheDocument();
   });
 
@@ -303,11 +303,11 @@ describe('StagingPanel', () => {
     expect(screen.getByDisplayValue('New meta')).toBeInTheDocument();
   });
 
-  it('opens 小红书 tab', async () => {
+  it('opens Xiaohongshu tab', async () => {
     const user = userEvent.setup();
     render(<StagingPanel initialItems={[row({ socialVersions: { xiaohongshu: 'xhs' } })]} />);
     await user.click(screen.getByRole('button', { name: 'Edit' }));
-    await user.click(screen.getByRole('button', { name: '小红书' }));
+    await user.click(screen.getByRole('button', { name: 'Xiaohongshu' }));
     expect(screen.getByLabelText(/xiaohongshu copy/i)).toBeInTheDocument();
   });
 

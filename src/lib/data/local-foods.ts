@@ -1,7 +1,8 @@
 export interface LocalFood {
   id: string;
   name: string;
-  chineseName: string;
+  /** Romanized or English secondary label (Latin script only) */
+  romanizedName: string;
   destination: string; // Slug of destination guide
   destinationName: string; // Display name
   description: string; // 100-150 words
@@ -15,11 +16,11 @@ export interface LocalFood {
 }
 
 export const localFoods: LocalFood[] = [
-  // Beijing 北京
+  // Beijing
   {
     id: 'beijing-001',
     name: 'Peking Duck',
-    chineseName: '北京烤鸭',
+    romanizedName: 'Beijing kao ya',
     destination: 'beijing',
     destinationName: 'Beijing',
     description: 'The quintessential Beijing dish. Roasted over fruitwood for hours until the skin is golden and crispy, then sliced tableside. Traditionally wrapped in thin crepes with hoisin sauce and cucumber. A UNESCO Intangible Cultural Heritage.',
@@ -33,7 +34,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'beijing-002',
     name: 'Jianbing',
-    chineseName: '煎饼',
+    romanizedName: 'Jian bing',
     destination: 'beijing',
     destinationName: 'Beijing',
     description: 'A savory crepe found at street carts throughout Beijing. Made from flour and eggs, it\'s folded with scallions, a crispy cracker, and sweet or salty sauce. Perfect for breakfast and costs just 1-2 yuan.',
@@ -46,7 +47,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'beijing-003',
     name: 'Maoxuewang',
-    chineseName: '毛血旺',
+    romanizedName: 'Mao xue wang',
     destination: 'beijing',
     destinationName: 'Beijing',
     description: 'A spicy hotpot dish with blood and meat in chili broth. An adventurous must-try for the brave. The name translates to "furry blood"—quite literal but incredibly flavorful.',
@@ -59,7 +60,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'beijing-004',
     name: 'Zhajiang Noodles',
-    chineseName: '炸酱面',
+    romanizedName: 'Zha jiang mian',
     destination: 'beijing',
     destinationName: 'Beijing',
     description: 'Wheat noodles topped with a thick, salty-sweet sauce made from fermented soybean and pork. Served with julienned cucumber, daikon, and soybean sprouts. Beijing\'s everyday comfort food.',
@@ -72,7 +73,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'beijing-005',
     name: 'Youtiao',
-    chineseName: '油条',
+    romanizedName: 'You tiao',
     destination: 'beijing',
     destinationName: 'Beijing',
     description: 'Long, crispy fried dough sticks. Eaten for breakfast dipped in soy milk (doujiang) or congee. A beloved street food found everywhere in China, perfect for early risers.',
@@ -83,11 +84,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Shanghai 上海
+  // Shanghai
   {
     id: 'shanghai-001',
     name: 'Xiaolongbao',
-    chineseName: '小笼包',
+    romanizedName: 'Xiao long bao',
     destination: 'shanghai',
     destinationName: 'Shanghai',
     description: 'Delicate soup dumplings with a thin wrapper and pork-filled center. Hot broth is sealed inside the dumpling—eat carefully to avoid splashing. The signature Shanghai dish.',
@@ -101,7 +102,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'shanghai-002',
     name: 'Shengian',
-    chineseName: '生煎',
+    romanizedName: 'Sheng jian',
     destination: 'shanghai',
     destinationName: 'Shanghai',
     description: 'Pan-fried dumplings with soup inside. The bottom is crispy from being fried in the pan, while the top stays tender. Topped with sesame and scallions.',
@@ -114,7 +115,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'shanghai-003',
     name: 'Luosifen',
-    chineseName: '螺蛳粉',
+    romanizedName: 'Luo si fen',
     destination: 'shanghai',
     destinationName: 'Shanghai',
     description: 'Rice noodles in a rich, pungent snail broth with fermented bean paste. Strong aroma—not for everyone, but deeply addictive. Originated in Liuzhou, now popular everywhere.',
@@ -127,7 +128,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'shanghai-004',
     name: 'Chives Box',
-    chineseName: '韭菜盒子',
+    romanizedName: 'Jiu cai he zi',
     destination: 'shanghai',
     destinationName: 'Shanghai',
     description: 'Crispy pan-fried pastry stuffed with Chinese chives (garlic chives), egg, and glass noodles. Eaten as breakfast or snack. Simple but extraordinarily satisfying.',
@@ -138,11 +139,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Xi'an 西安
+  // Xi'an
   {
     id: 'xian-001',
     name: 'Biang Biang Noodles',
-    chineseName: '陕西面条',
+    romanizedName: 'Shaanxi noodles',
     destination: 'xian',
     destinationName: 'Xi\'an',
     description: 'Wide, thick wheat noodles topped with chili oil, minced meat, and vegetables. The name "biang biang" mimics the sound of slapping dough on the counter. Authentic street food from Shaanxi province.',
@@ -156,7 +157,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'xian-002',
     name: 'Roujiamo',
-    chineseName: '肉夹馍',
+    romanizedName: 'Rou jia mo',
     destination: 'xian',
     destinationName: 'Xi\'an',
     description: 'A crispy flatbread sandwich filled with slow-cooked, spiced meat. Often compared to a Chinese hamburger. Beloved breakfast food. The meat is stewed for hours with 20+ spices.',
@@ -169,7 +170,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'xian-003',
     name: 'Yangrou Paomo',
-    chineseName: '羊肉泡馍',
+    romanizedName: 'Yang rou pao mo',
     destination: 'xian',
     destinationName: 'Xi\'an',
     description: 'A hearty soup with lamb, bread soaked in rich broth, and cilantro. Breakfast dish favored for its warming properties. The bread is torn into small pieces before serving.',
@@ -180,11 +181,11 @@ export const localFoods: LocalFood[] = [
     season: 'autumn-winter'
   },
 
-  // Chengdu 成都
+  // Chengdu
   {
     id: 'chengdu-001',
     name: 'Mapo Tofu',
-    chineseName: '麻婆豆腐',
+    romanizedName: 'Ma po dou fu',
     destination: 'chengdu',
     destinationName: 'Chengdu',
     description: 'Silken tofu in a numbing, spicy Sichuan peppercorn sauce with minced pork. One of China\'s most iconic dishes. The "ma" sensation from Sichuan peppercorns is unlike anything else.',
@@ -198,7 +199,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'chengdu-002',
     name: 'Chongqing Chicken (La Zi Ji)',
-    chineseName: '辣子鸡',
+    romanizedName: 'La zi ji',
     destination: 'chengdu',
     destinationName: 'Chengdu',
     description: 'Diced chicken fried with dried red chilies, Sichuan peppercorns, and spices. A pile of chili peppers hides tender chicken underneath. Genuinely spicy—not for the faint of heart.',
@@ -211,7 +212,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'chengdu-003',
     name: 'Hot Pot (Huoguo)',
-    chineseName: '火锅',
+    romanizedName: 'Huo guo',
     destination: 'chengdu',
     destinationName: 'Chengdu',
     description: 'A bubbling broth at the table where you cook raw ingredients—meat, seafood, vegetables, tofu. Dip in sauce. A social, interactive dining experience. Chengdu style uses spicy oil-based broth.',
@@ -222,11 +223,11 @@ export const localFoods: LocalFood[] = [
     season: 'autumn-winter'
   },
 
-  // Hangzhou 杭州
+  // Hangzhou
   {
     id: 'hangzhou-001',
     name: 'West Lake Fish in Vinegar Sauce',
-    chineseName: '西湖醋鱼',
+    romanizedName: 'Xi hu cu yu',
     destination: 'hangzhou',
     destinationName: 'Hangzhou',
     description: 'Fresh grass carp from West Lake, poached and served in a sweet-sour vinegar sauce. Delicate, light, and beautifully presented. A poetic Hangzhou signature.',
@@ -240,7 +241,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'hangzhou-002',
     name: 'Longjing Tea',
-    chineseName: '龙井茶',
+    romanizedName: 'Long jing cha',
     destination: 'hangzhou',
     destinationName: 'Hangzhou',
     description: 'Hangzhou\'s most famous tea, grown in the Dragon Well (Longjing) area. Delicate green tea with a chestnut aroma. Fresh, fragrant, and complex. Visit tea plantations to see production.',
@@ -253,7 +254,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'hangzhou-003',
     name: 'Beggar\'s Chicken',
-    chineseName: '叫花鸡',
+    romanizedName: 'Jiao hua ji',
     destination: 'hangzhou',
     destinationName: 'Hangzhou',
     description: 'Whole chicken wrapped in lotus leaves and clay, slow-roasted until tender and fragrant. Theatrical presentation—the server breaks the clay at your table. Ancient Hangzhou specialty.',
@@ -264,11 +265,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Guilin 桂林
+  // Guilin
   {
     id: 'guilin-001',
     name: 'Guilin Rice Noodles (Guilin Mifen)',
-    chineseName: '桂林米粉',
+    romanizedName: 'Guilin mi fen',
     destination: 'guilin',
     destinationName: 'Guilin',
     description: 'Thin rice noodles served in a clear broth with various toppings—pork, peanuts, pickles, and greens. Guilin\'s signature breakfast. Light, fresh, and endlessly comforting.',
@@ -282,7 +283,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'guilin-002',
     name: 'Snails in Broth (Luosifen)',
-    chineseName: '螺蛳粉',
+    romanizedName: 'Luo si fen',
     destination: 'guilin',
     destinationName: 'Guilin',
     description: 'Originated in nearby Liuzhou. Rice noodles in a pungent snail broth with fermented beans. Aromatic, complex, addictive. Often considered one of China\'s greatest street foods.',
@@ -293,11 +294,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Chongqing 重庆
+  // Chongqing
   {
     id: 'chongqing-001',
     name: 'Chongqing Hot Pot',
-    chineseName: '重庆火锅',
+    romanizedName: 'Chongqing huo guo',
     destination: 'chongqing',
     destinationName: 'Chongqing',
     description: 'The spiciest hotpot in China. A bubbling red broth of chili oil, Sichuan peppercorns, and spices. Cook thinly sliced meat, organ meats, vegetables, and fungi. For spice lovers only.',
@@ -311,7 +312,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'chongqing-002',
     name: 'Dumplings (Xiao Long Bao)',
-    chineseName: '小笼包',
+    romanizedName: 'Xiao long bao',
     destination: 'chongqing',
     destinationName: 'Chongqing',
     description: 'Chongqing\'s version of soup dumplings, often with chili oil incorporated. Spicy, tender, and filled with hot broth. A perfect complement to Chongqing\'s bold flavors.',
@@ -322,11 +323,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Yunnan 云南
+  // Yunnan
   {
     id: 'yunnan-001',
     name: 'Rice Noodles in Soup (Yunnan Mixian)',
-    chineseName: '云南米线',
+    romanizedName: 'Yunnan mi xian',
     destination: 'yunnan',
     destinationName: 'Yunnan',
     description: 'Silky rice noodles served in a light broth with various toppings—sesame, peanuts, herbs. Each region in Yunnan has its own style. A staple throughout the province.',
@@ -340,7 +341,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'yunnan-002',
     name: 'Pu-erh Tea',
-    chineseName: '普洱茶',
+    romanizedName: 'Pu er cha',
     destination: 'yunnan',
     destinationName: 'Yunnan',
     description: 'Dark, earthy tea from Yunnan\'s Pu\'er region. Can be aged for years, improving with time. Heavy, complex, warming. Visit tea plantations to see terraced gardens.',
@@ -353,7 +354,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'yunnan-003',
     name: 'Crossing the Bridge Noodles (Guo Qiao Mi Xian)',
-    chineseName: '过桥米线',
+    romanizedName: 'Guo qiao mi xian',
     destination: 'yunnan',
     destinationName: 'Yunnan',
     description: 'A legendary Yunnan dish with poetic origins. Rice noodles served in hot broth with raw ingredients on the side—cook them in the broth at your table. Beautiful and interactive.',
@@ -364,11 +365,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Suzhou 苏州
+  // Suzhou
   {
     id: 'suzhou-001',
     name: 'Suzhou Noodles (Su Zhou Cu Mian)',
-    chineseName: '苏州面',
+    romanizedName: 'Suzhou mian',
     destination: 'suzhou',
     destinationName: 'Suzhou',
     description: 'Soft, delicate noodles topped with a savory sauce (with or without broth). Often served with a perfect soft-boiled egg. Refined simplicity characteristic of Suzhou cuisine.',
@@ -382,7 +383,7 @@ export const localFoods: LocalFood[] = [
   {
     id: 'suzhou-002',
     name: 'Fresh Water Shrimp (Tai Hu Bai Xia)',
-    chineseName: '太湖白虾',
+    romanizedName: 'Tai hu bai xia',
     destination: 'suzhou',
     destinationName: 'Suzhou',
     description: 'Delicate, sweet shrimp from Tai Lake. Often served simply stir-fried with salt or in a light sauce to preserve their natural sweetness. A local treasure.',
@@ -393,11 +394,11 @@ export const localFoods: LocalFood[] = [
     season: 'spring-autumn'
   },
 
-  // Lijiang 丽江
+  // Lijiang
   {
     id: 'lijiang-001',
     name: 'Naxi Grilled Fish',
-    chineseName: '纳西烤鱼',
+    romanizedName: 'Na xi kao yu',
     destination: 'lijiang',
     destinationName: 'Lijiang',
     description: 'Fish from local mountain streams, grilled whole with Naxi spices. Smoky, tender, and infused with regional flavors. A specialty of the Naxi minority ethnic group.',
@@ -409,11 +410,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Dali 大理
+  // Dali
   {
     id: 'dali-001',
     name: 'Bai Ethnic Cuisine',
-    chineseName: '白族料理',
+    romanizedName: 'Bai minority cuisine',
     destination: 'dali',
     destinationName: 'Dali',
     description: 'Unique Bai minority cuisine featuring fresh mountain vegetables, preserved foods, and unique preparations. Lighter and more herbal than Chinese cuisines elsewhere.',
@@ -425,11 +426,11 @@ export const localFoods: LocalFood[] = [
     season: 'year-round'
   },
 
-  // Yangshuo 阳朔
+  // Yangshuo
   {
     id: 'yangshuo-001',
     name: 'Yangshuo Beer Fish',
-    chineseName: '啤酒鱼',
+    romanizedName: 'Pi jiu yu',
     destination: 'yangshuo',
     destinationName: 'Yangshuo',
     description: 'River fish braised in beer, tomato sauce, and spices. A Yangshuo specialty. The beer tenderizes the meat while adding subtle sweetness. Signature riverside restaurant dish.',

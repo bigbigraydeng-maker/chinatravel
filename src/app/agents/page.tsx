@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const AgentsPage = () => {
   return (
     <div>
-      {/* Hero 小头图 */}
+      {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img 
@@ -30,7 +30,7 @@ const AgentsPage = () => {
         </div>
       </section>
 
-      {/* 骨架页内容 */}
+      {/* Page body */}
       <section className="section bg-white">
         <div className="container">
           <div className="text-center mb-16">
@@ -41,7 +41,7 @@ const AgentsPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Brochure 区域 */}
+            {/* Brochure column */}
             <div className="card p-8 text-center">
               <div className="w-20 h-20 bg-light rounded-full flex items-center justify-center mx-auto mb-6 border border-primary/10">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -59,7 +59,7 @@ const AgentsPage = () => {
               </div>
             </div>
 
-            {/* Selling Points 区域 */}
+            {/* Selling points column */}
             <div className="card p-8 text-center">
               <div className="w-20 h-20 bg-light rounded-full flex items-center justify-center mx-auto mb-6 border border-primary/10">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,7 +77,7 @@ const AgentsPage = () => {
               </div>
             </div>
 
-            {/* Support Materials 区域 */}
+            {/* Support materials column */}
             <div className="card p-8 text-center">
               <div className="w-20 h-20 bg-light rounded-full flex items-center justify-center mx-auto mb-6 border border-primary/10">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +96,7 @@ const AgentsPage = () => {
             </div>
           </div>
 
-          {/* 联系信息 */}
+          {/* Contact CTA */}
           <div className="mt-16 text-center">
             <h3 className="text-2xl font-semibold mb-6 font-serif">Get in Touch</h3>
             <p className="text-gray-600 mb-8 max-w-3xl mx-auto">

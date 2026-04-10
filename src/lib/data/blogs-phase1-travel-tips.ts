@@ -77,7 +77,7 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 
 ## Maps: local apps beat Western defaults
 
-**Amap (高德)** and **Baidu Maps** dominate. They offer walking/transit routing in Chinese; some listings have English. Learn to **star your hotel** and screenshot key addresses. Apple Maps has improved in major cities but is not universal. Download **offline packs** when the app allows.
+**Amap (Gaode)** and **Baidu Maps** dominate. They offer walking/transit routing in Chinese; some listings have English. Learn to **star your hotel** and screenshot key addresses. Apple Maps has improved in major cities but is not universal. Download **offline packs** when the app allows.
 
 ## Translation: speech beats typing in a rush
 
@@ -85,7 +85,7 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 
 ## WeChat: messaging + mini-programs
 
-**WeChat (微信)** is ubiquitous for chat, restaurant ordering, and official account updates. Set up your profile early; some features need **real-name verification** tied to a phone number. Your CTS consultant can advise what travellers typically need versus what can wait.
+**WeChat (Weixin)** is ubiquitous for chat, restaurant ordering, and official account updates. Set up your profile early; some features need **real-name verification** tied to a phone number. Your CTS consultant can advise what travellers typically need versus what can wait.
 
 ## Payments: Alipay & WeChat Pay for international cards
 
@@ -270,37 +270,37 @@ function socialFor(postId: string): StagingContent['socialVersions'] {
     'blog-packing-china': {
       linkedin: `What Kiwi travellers should pack for China — by season.\n\n• Layers beat bulky coats in spring/autumn\n• Voltage 220V + adapter essentials\n• Footwear for temples & wet stone\n• Cash + two cards backup\n\n${commonCta}\n#ChinaTravel #PackingList #NZ`,
       xiaohongshu:
-        '新西兰出发去中国怎么打包？✈️\n春捂秋冻+雨衣！👟舒服的鞋比皮鞋重要~\n插座转换器+充电宝别忘🔌\n更多清单见 CTS ChinaTravel 正文 👇\n#中国旅行 #打包攻略 #新西兰',
+        'Packing for China from NZ ✈️\nLayers + rain shell beat one heavy coat. 👟 Comfortable shoes beat dress shoes.\nAdapter + power bank before you fly 🔌\nFull checklist in CTS ChinaTravel 👇\n#ChinaTravel #PackingList #NZ',
         weibo:
-        '【中国行前打包】四季分层穿搭+220V插座+舒适步行鞋。纽村友友记得双卡备份+少量现金。详情戳 CTS Tours 长文。#中国旅游 #打包指南',
+        'Pre-trip packing for China: layered clothing, 220V adapter, walking shoes. Kiwis: two cards + a little cash. Full article on CTS Tours. #ChinaTravel #PackingGuide',
     },
     'blog-apps-china': {
       linkedin: `China travel stack for 2026 trips: VPN tested pre-departure, Amap/Baidu for routing, WeChat ecosystem, Alipay/WeChat Pay setups, offline translation packs.\n\nPlan before AKL departure.\n\n${commonCta}\n#TravelTech #China`,
       xiaohongshu:
-        '出国前下好这些App📱！地图/翻译/支付一篇看懂~\n记得在奥克兰就测好网络工具✅\n自由行间隙超省心\n#中国旅行攻略 #APP推荐',
+        'Install these before you fly 📱 Maps, translation, payments — one read-through.\nTest VPN and apps in Auckland ✅\nSaves hassle on free days.\n#ChinaTravel #Apps',
       weibo:
-        '行前必备：地图（高德/百度）、翻译离线包、微信支付宝。奥克兰出发前装完测试。#中国旅行 #实用帖',
+        'Before departure: maps (Gaode/Baidu), offline translation, WeChat/Alipay. Install and test before leaving Auckland. #ChinaTravel #TravelTips',
     },
     'blog-safety-china': {
       linkedin: `Safety realism for China first-timers: low violent crime in tourist cores, watch for tea-house scams, queue culture, hospital/insurance basics, 110/120/119 saves offline.\n\n${commonCta}\n#TravelSafety`,
       xiaohongshu:
-        '第一次去中国安全吗？整体很安全⚠️但要注意“茶托”套路和提升支付防盗意识❤️保存紧急号码！#旅行安全 #中国',
+        'Is China safe for first-timers? Generally yes ⚠️ Watch tea-house scams, keep an eye on payments, save emergency numbers ❤️ #TravelSafety #China',
       weibo:
-        '中国旅游安全小贴士：公共交通便捷、治安整体好；警惕茶座高额消费陷阱，备好医保与紧急电话。#安全出行',
+        'China travel safety: good public transport and low violent crime; beware overpriced tea-house invites; carry insurance and emergency contacts. #TravelSafety',
     },
     'blog-best-time-china': {
       linkedin: `Seasonality across China is not one curve: compare Apr–May vs Sep–Oct windows, Golden Week pricing, regional humidity & typhoon risk, winter north vs mild south.\n\n${commonCta}\n#TripPlanning`,
       xiaohongshu:
-        '什么时候来中国最好？春天&秋天真心舒适🍂国庆黄金周要提前订！南北气候差很多~ 看你打卡哪儿 #最佳旅行时间',
+        'When is the best time for China? Spring & autumn feel best 🍂 Book early for Golden Week! North vs south climate differs a lot — match dates to your route. #TripPlanning',
       weibo:
-        '南北四季差异大，首访可瞄准4-5月或9-10月；国庆春节价格飙升需早规划。#中国旅游 #季节性',
+        'Seasons vary north to south; first trips often aim for Apr–May or Sep–Oct; Golden Week and CNY spike prices — plan early. #ChinaTravel #Seasons',
     },
     'blog-photo-china': {
       linkedin: `Photography field notes: dawn beats bus-loads at major sites; ND filters on rivers; drone permits strict—assume no-fly in many parks; cultural consent beats viral shots.\n\n${commonCta}\n#TravelPhotography`,
       xiaohongshu:
-        '拍中国风光记住三件事：早起、轻便镜头组、尊重禁飞区🚫晨雾漓江真的绝了📸\n#旅拍 #风光摄影',
+        'Three photo tips in China: wake early, pack a light kit, respect no-fly zones 🚫 Misty Li River mornings 📸\n#TravelPhotography #Landscape',
       weibo:
-        '旅拍提示：晨昏光最佳，漓江/张家界留意雾霾与雨雾；无人机务必查法规。#摄影 #中国旅游',
+        'Photo tips: golden hour light; Li River/Zhangjiajie haze and rain; check drone rules every time. #Photography #ChinaTravel',
     },
   };
   return maps[postId];

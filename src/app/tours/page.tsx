@@ -60,7 +60,7 @@ export default function ToursPage() {
               href="#cts-departure-schedule"
               className="inline-block px-8 py-4 border-2 border-white/80 text-white font-semibold rounded-lg hover:bg-white/15 transition-colors"
             >
-              出发日期总表 · Departure dates
+              Departure dates
             </Link>
           </div>
         </div>

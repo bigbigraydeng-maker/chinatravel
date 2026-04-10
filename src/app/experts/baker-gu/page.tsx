@@ -18,7 +18,7 @@ const BakerGuPage = () => {
 
   return (
     <div>
-      {/* Hero 小头图 */}
+      {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <img
@@ -34,7 +34,7 @@ const BakerGuPage = () => {
         </div>
       </section>
 
-      {/* 专家简介 */}
+      {/* Expert bio */}
       <section className="section bg-white">
         <div className="container">
           <div className="flex flex-col md:flex-row items-center gap-12">

@@ -91,13 +91,13 @@ export default function LocalFoodGuide({
         );
       }
 
-      // Search by name or Chinese name
+      // Search by name, romanized label, or description
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase();
         filtered = filtered.filter(
           (food) =>
             food.name.toLowerCase().includes(query) ||
-            food.chineseName.toLowerCase().includes(query) ||
+            food.romanizedName.toLowerCase().includes(query) ||
             food.description.toLowerCase().includes(query)
         );
       }
@@ -344,7 +344,7 @@ export default function LocalFoodGuide({
                       <div className="relative w-full h-48 bg-gray-200">
                         <Image
                           src={food.imageUrl}
-                          alt={`${food.name} - ${food.chineseName}`}
+                          alt={`${food.name} - ${food.romanizedName}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -358,7 +358,7 @@ export default function LocalFoodGuide({
                           <h3 className="text-lg font-semibold text-accent">
                             {food.name}
                           </h3>
-                          <p className="text-sm text-gray-500">{food.chineseName}</p>
+                          <p className="text-sm text-gray-500">{food.romanizedName}</p>
                         </div>
 
                         {/* Description */}

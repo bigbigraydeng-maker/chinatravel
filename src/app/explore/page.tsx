@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SectionTitle from '@/components/SectionTitle';
 
-// 静态目的地数据
+// Static destination cards (no CMS)
 const destinations = [
   { id: 1, slug: 'beijing', name: 'Beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
   { id: 2, slug: 'xian', name: 'Xi\'an', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const ExplorePage = () => {
   return (
     <div>
-      {/* Hero 小头图 */}
+      {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
@@ -48,7 +48,7 @@ const ExplorePage = () => {
         </div>
       </section>
 
-      {/* 目的地卡片网格 */}
+      {/* Destination card grid */}
       <section className="section bg-white">
         <div className="container">
           <SectionTitle subtitle="Destinations" title="Explore Our China Destinations" center />

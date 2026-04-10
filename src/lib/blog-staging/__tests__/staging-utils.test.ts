@@ -42,7 +42,7 @@ describe('staging-utils', () => {
       expect(charCountAscii('abc')).toBe(3);
     });
     it('weibo counts graphemes', () => {
-      expect(charCountWeibo('你好')).toBe(2);
+      expect(charCountWeibo('hi')).toBe(2);
     });
     it('exports soft limits', () => {
       expect(LINKEDIN_SOFT_MAX).toBeGreaterThan(1000);

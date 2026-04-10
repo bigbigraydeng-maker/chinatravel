@@ -191,10 +191,10 @@ describe('LocalFoodGuide Component', () => {
     expect(screen.getByTestId('food-list')).toBeInTheDocument();
   });
 
-  test('24: search by Chinese name works', async () => {
+  test('24: search by romanized name works', async () => {
     render(<LocalFoodGuide />);
     const input = screen.getByTestId('search-input');
-    await userEvent.type(input, '北京');
+    await userEvent.type(input, 'Beijing kao');
     expect(screen.getByTestId('food-list')).toBeInTheDocument();
   });
 

@@ -3,7 +3,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 let supabase: SupabaseClient | null = null;
 
 export const getSupabase = (): SupabaseClient => {
-  // 确保只在客户端环境中创建
+  // Instantiate only in the browser (uses NEXT_PUBLIC_* keys)
   if (typeof window === 'undefined') {
     throw new Error('Supabase client should only be used in browser environment');
   }

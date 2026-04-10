@@ -26,21 +26,27 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'qbturrydultenhlfmdcm.supabase.co',
       },
-      {
-        protocol: 'https',
-        hostname: 'trae-api-cn.mchost.guru',
-      },
     ],
   },
   compress: true,
   poweredByHeader: false,
   async redirects() {
-    return LEGACY_HOSTS.map((host) => ({
+    const hostRedirects = LEGACY_HOSTS.map((host) => ({
       source: '/:path*',
       has: [{ type: 'host', value: host }],
       destination: `https://${CANONICAL_HOST}/:path*`,
       permanent: true,
     }));
+
+    const pathRedirects = [
+      {
+        source: '/guide/china-visa-guide-for-new-zealanders',
+        destination: '/china-visa-guide-for-new-zealanders',
+        permanent: true,
+      },
+    ];
+
+    return [...hostRedirects, ...pathRedirects];
   },
   async headers() {
     return [

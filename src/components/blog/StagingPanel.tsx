@@ -392,7 +392,15 @@ export default function StagingPanel({ initialItems }: StagingPanelProps) {
                   }`}
                   onClick={() => setSocialTab(tab)}
                 >
-                  {tab === 'blog' ? 'Blog' : tab === 'xiaohongshu' ? '小红书' : tab}
+                  {tab === 'blog'
+                    ? 'Blog'
+                    : tab === 'xiaohongshu'
+                      ? 'Xiaohongshu'
+                      : tab === 'linkedin'
+                        ? 'LinkedIn'
+                        : tab === 'weibo'
+                          ? 'Weibo'
+                          : tab}
                 </button>
               ))}
             </div>

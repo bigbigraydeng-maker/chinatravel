@@ -55,7 +55,7 @@ Travelling with a guided tour company like CTS Tours gives you the added securit
     slug: 'chinese-food-guide-for-tourists',
     content: `One of the greatest pleasures of travelling in China is the extraordinary diversity of its regional cuisines. Food varies dramatically from province to province — what you eat in Beijing bears little resemblance to the cuisine of Sichuan or Guangdong.
 
-In Beijing, the must-try dish is Peking roast duck (北京烤鸭), served with thin pancakes, spring onion, cucumber, and hoisin sauce. Zhajiangmian (noodles in fermented soybean paste) and jianbing (savoury crepes) are popular street breakfasts. In Shanghai, xiaolongbao (soup dumplings) and hairy crab (in season October–November) are iconic. Shanghai cuisine tends to be sweeter and uses more braising and red-cooking techniques.
+In Beijing, the must-try dish is Peking roast duck, served with thin pancakes, spring onion, cucumber, and hoisin sauce. Zhajiangmian (noodles in fermented soybean paste) and jianbing (savoury crepes) are popular street breakfasts. In Shanghai, xiaolongbao (soup dumplings) and hairy crab (in season October–November) are iconic. Shanghai cuisine tends to be sweeter and uses more braising and red-cooking techniques.
 
 Sichuan food is famous for its bold, fiery flavours powered by Sichuan peppercorns. Mapo tofu, dan dan noodles, and Sichuan hotpot are all essential experiences. In Guangdong (Cantonese cuisine), dim sum brunch is a cultural ritual — steamed dumplings, char siu bao (BBQ pork buns), and turnip cake are highlights. Xi'an's Muslim Quarter is home to lamb skewers, roujiamo (Chinese burger), and biangbiang noodles.
 
@@ -69,7 +69,7 @@ Practical tips: tap water is not safe to drink — stick to bottled water or boi
     slug: 'transportation-in-china',
     content: `China has built one of the most impressive transportation networks in the world, making it easier than ever to travel efficiently between its major destinations.
 
-High-speed rail (高铁, gāotiě) is the standout option for inter-city travel. China's network now exceeds 40,000 km — the longest in the world. G-class trains (the fastest, reaching 350 km/h) connect Beijing to Shanghai in just 4.5 hours, Beijing to Xi'an in around 4.5 hours, and Shanghai to Hangzhou in under an hour. Trains are clean, punctual, and offer first and second-class seating. Booking in advance is recommended during peak periods.
+High-speed rail (HSR, gāotiě) is the standout option for inter-city travel. China's network now exceeds 40,000 km — the longest in the world. G-class trains (the fastest, reaching 350 km/h) connect Beijing to Shanghai in just 4.5 hours, Beijing to Xi'an in around 4.5 hours, and Shanghai to Hangzhou in under an hour. Trains are clean, punctual, and offer first and second-class seating. Booking in advance is recommended during peak periods.
 
 For longer distances — such as Beijing to Chengdu, Shanghai to Guilin, or any route to Tibet — domestic flights are the practical choice. China has dozens of airlines and hundreds of domestic routes, with competitive pricing when booked in advance. Note that flights to Tibet require a Tibet Travel Permit in addition to your visa, which CTS Tours arranges on your behalf.
 
@@ -91,7 +91,7 @@ Dining etiquette: Meals in China are typically shared family-style, with dishes 
 
 In public spaces: Loud behaviour, raised voices, or public confrontations are generally frowned upon. Queue etiquette is improving in major cities but can be informal in smaller towns. Dress modestly when visiting temples and religious sites — shoulders and knees should be covered.
 
-Language: Learning a handful of Mandarin phrases will be warmly received. Nǐ hǎo (你好) means hello, xièxiè (谢谢) means thank you, and duìbuqǐ (对不起) means sorry or excuse me. Most signage in tourist areas is bilingual, and translation apps work well for everyday communication.
+Language: Learning a handful of Mandarin phrases will be warmly received. Nǐ hǎo means hello, xièxiè means thank you, and duìbuqǐ means sorry or excuse me. Most signage in tourist areas is bilingual, and translation apps work well for everyday communication.
 
 CTS Tours guides provide cultural briefings at the start of each destination, ensuring you feel confident and respectful throughout your journey.`,
     image_url: 'https://images.unsplash.com/photo-1582192730841-2a682d7375f9?w=800&q=80',

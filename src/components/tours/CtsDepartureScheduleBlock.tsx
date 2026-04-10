@@ -73,7 +73,7 @@ export default function CtsDepartureScheduleBlock({
     >
       <div className="mb-8">
         <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-2">
-          CTS Tours 出发日期总表
+          CTS Tours departure schedule
         </h2>
         <p className="text-gray-600 text-sm md:text-base">
           Group departures from New Zealand (dates as published). Contact us to reserve a seat or request a private
@@ -85,7 +85,7 @@ export default function CtsDepartureScheduleBlock({
         <div>
           <h3 className="text-lg font-serif font-bold text-amber-800 mb-4 flex items-center gap-2">
             <span aria-hidden>⭐</span>
-            Signature 系列出发日期
+            Signature series departures
           </h3>
           <RowGrid rows={CHINA_SIGNATURE_DEPARTURES} currentSlug={currentSlug} />
         </div>
@@ -93,7 +93,7 @@ export default function CtsDepartureScheduleBlock({
         <div>
           <h3 className="text-lg font-serif font-bold text-blue-800 mb-4 flex items-center gap-2">
             <span aria-hidden>⭐</span>
-            Discovery 系列出发日期
+            Discovery series departures
           </h3>
           <RowGrid rows={CHINA_DISCOVERY_DEPARTURES} currentSlug={currentSlug} />
         </div>
