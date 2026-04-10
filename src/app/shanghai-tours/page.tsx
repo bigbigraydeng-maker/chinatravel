@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: shanghaiToursMeta.title,
     description: shanghaiToursMeta.description,
     path: '/shanghai-tours',
-    ogImagePath: '/images/tours/shanghai-skyline.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg',
     ogImageAlt: 'Shanghai Tours from New Zealand - The Bund, Skyline, CTS Tours',
     keywords: ['Shanghai tours New Zealand', 'The Bund', 'Shanghai travel', 'CTS Tours'],
     ogType: 'website',
@@ -39,7 +39,7 @@ export default function ShanghaiToursPage() {
         cityName={shanghaiToursMeta.cityName}
         heroTitle={shanghaiToursMeta.h1}
         heroSubtitle={shanghaiToursMeta.heroSubtitle}
-        heroImage="/images/tours/shanghai-skyline.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg"
         introText={shanghaiToursMeta.introText}
         highlights={shanghaiToursMeta.highlights}
         bestTimeToVisit={shanghaiToursMeta.bestTimeToVisit}

@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: 'Site Architecture & Navigation Map',
     description: 'Visual map of all CTS Tours pages and how they connect internally. Understand our information architecture and explore the complete site structure.',
     path: '/site-map',
-    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'CTS Tours site architecture map',
     keywords: ['site map', 'site structure', 'navigation', 'site architecture', 'page relationships'],
     ogType: 'website',

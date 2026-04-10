@@ -12,37 +12,37 @@ const asianDestinations = [
     name: 'Japan',
     description: 'Cherry blossoms, ancient temples, and cutting-edge culture. From Tokyo to Kyoto, experience the harmony of old and new.',
     highlights: ['Tokyo & Osaka city breaks', 'Cherry blossom season specials', 'Cultural immersion tours', 'Ski holidays in Hokkaido'],
-    image: '/images/tours/japan-hero.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/japan-hero.jpg',
   },
   {
     name: 'Vietnam',
     description: 'From the emerald waters of Halong Bay to the lantern-lit streets of Hoi An, Vietnam enchants every traveller.',
     highlights: ['Halong Bay cruises', 'Ho Chi Minh City food tours', 'Hoi An cultural experiences', 'Sapa trekking adventures'],
-    image: '/images/tours/vietnam-hero.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/vietnam-hero.jpg',
   },
   {
     name: 'Thailand',
     description: 'Golden temples, pristine beaches, and legendary cuisine. Thailand offers something for every type of traveller.',
     highlights: ['Bangkok & Chiang Mai combos', 'Island hopping packages', 'Thai cooking experiences', 'Wellness retreats'],
-    image: '/images/tours/thailand-placeholder.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/thailand-placeholder.jpg',
   },
   {
     name: 'Bali & Indonesia',
     description: 'Volcanic landscapes, rice terraces, and spiritual temples. Bali and beyond offer unforgettable island experiences.',
     highlights: ['Bali cultural tours', 'Ubud wellness retreats', 'Komodo Island adventures', 'Beach resort packages'],
-    image: '/images/tours/bali-placeholder.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/bali-placeholder.jpg',
   },
   {
     name: 'Cambodia',
     description: 'Home to the magnificent Angkor Wat and a rich, resilient culture that captivates visitors from around the world.',
     highlights: ['Angkor Wat sunrise tours', 'Phnom Penh heritage walks', 'Floating village visits', 'Cambodia & Vietnam combos'],
-    image: '/images/tours/cambodia-placeholder.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/cambodia-placeholder.jpg',
   },
   {
     name: 'South Korea',
     description: 'K-culture, ancient palaces, and incredible food. South Korea is Asia\'s rising travel star.',
     highlights: ['Seoul city experiences', 'K-culture tours', 'Temple stay programs', 'Jeju Island getaways'],
-    image: '/images/tours/korea-placeholder.jpg',
+    image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/korea-placeholder.jpg',
   },
 ];
 

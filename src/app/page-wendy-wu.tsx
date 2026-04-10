@@ -13,42 +13,42 @@ const HomePageWendyWu = () => {
       slug: 'beijing',
       description: 'Imperial grandeur & ancient walls',
       color: 'from-amber-400 to-orange-500',
-      image: '/images/tours/forbidden-city-aerial.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg'
     },
     {
       name: 'Xi\'an',
       slug: 'xian',
       description: 'Terracotta warriors & silk roads',
       color: 'from-orange-400 to-red-500',
-      image: '/images/tours/xian-terracotta.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg'
     },
     {
       name: 'Shanghai',
       slug: 'shanghai',
       description: 'Modern meets traditional',
       color: 'from-rose-400 to-pink-500',
-      image: '/images/tours/shanghai-skyline.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg'
     },
     {
       name: 'Chengdu',
       slug: 'chengdu',
       description: 'Pandas & spice in the mountains',
       color: 'from-emerald-400 to-teal-500',
-      image: '/images/tours/chengdu-pandas.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg'
     },
     {
       name: 'Guilin',
       slug: 'guilin',
       description: 'Karst mountains & misty rivers',
       color: 'from-sky-400 to-cyan-500',
-      image: '/images/tours/guilin-mist.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg'
     },
     {
       name: 'Zhangjiajie',
       slug: 'zhangjiajie',
       description: 'Avatar\'s floating mountains',
       color: 'from-purple-400 to-indigo-500',
-      image: '/images/tours/zhangjiajie.jpg'
+      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg'
     },
   ];
 
@@ -147,7 +147,7 @@ const HomePageWendyWu = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-rose-400 rounded-2xl transform -rotate-3 opacity-30"></div>
                 <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden">
                   <Image
-                    src="/images/tours/forbidden-city-aerial.jpg"
+                    src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
                     alt="Great Wall of China"
                     width={500}
                     height={500}

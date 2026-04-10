@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: bestTimeToVisitChinaMeta.title,
     description: bestTimeToVisitChinaMeta.description,
     path: '/best-time-to-visit-china',
-    ogImagePath: '/images/tours/great-wall-green.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg',
     ogImageAlt: 'Best Time to Visit China - Seasonal Guide for New Zealanders',
     keywords: ['Best time to visit China', 'China weather seasons', 'China travel guide', 'China holidays'],
     ogType: 'article',

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
 import HubHero from './HubHero';
 
+const TI = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
+
 // ─── Per-guide config: hub link, related tours, related guides ─────────────
 interface TourCard {
   name: string;
@@ -36,9 +38,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'beijing-travel-guide': {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
-      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: '/images/tours/forbidden-city-lion.jpg', tier: 'stopover' },
-      { name: 'Beijing Express (3 Days)', duration: '3 Days', price: 'From NZD $1,450', url: '/tours/china/stopover/beijing-express', image: '/images/tours/forbidden-city-lion-2.jpg', tier: 'stopover' },
-      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: '/images/tours/forbidden-city-aerial.jpg', tier: 'signature' },
+      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'Beijing Express (3 Days)', duration: '3 Days', price: 'From NZD $1,450', url: '/tours/china/stopover/beijing-express', image: `${TI}/forbidden-city-lion-2.jpg`, tier: 'stopover' },
+      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Great Wall Guide', slug: 'great-wall-travel-guide', emoji: '🏯' },
@@ -50,9 +52,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'xian-travel-guide': {
     hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
     relatedTours: [
-      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: '/images/tours/xian-terracotta.jpg', tier: 'stopover' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: '/images/tours/shanghai-night-blue.jpg', tier: 'discovery' },
-      { name: 'Silk Road Discovery (17 Days)', duration: '17 Days', price: 'From NZD $6,699', url: '/tours/china/signature/silk-road', image: '/images/tours/silk-road-wall.jpg', tier: 'signature' },
+      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
+      { name: 'Silk Road Discovery (17 Days)', duration: '17 Days', price: 'From NZD $6,699', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
@@ -64,9 +66,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'shanghai-travel-guide': {
     hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
     relatedTours: [
-      { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: '/images/tours/shanghai-night-red.jpg', tier: 'stopover' },
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-shanghai', image: '/images/tours/forbidden-city-gold-lion.jpg', tier: 'discovery' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: '/images/tours/wuzhen-canal.jpg', tier: 'discovery' },
+      { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: `${TI}/shanghai-night-red.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-shanghai', image: `${TI}/forbidden-city-gold-lion.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
@@ -78,9 +80,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'chengdu-travel-guide': {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
-      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: '/images/tours/chengdu-pandas.jpg', tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: '/images/tours/jiuzhaigou-lake.jpg', tier: 'signature' },
-      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: '/images/tours/great-wall-mist.jpg', tier: 'signature' },
+      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
+      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Leshan Buddha', slug: 'leshan-buddha-travel-guide', emoji: '🏔️' },
@@ -92,9 +94,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'guilin-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: '/images/tours/guilin-mist.jpg', tier: 'stopover' },
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/guilin-river-valley.jpg', tier: 'stopover' },
-      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: '/images/tours/great-wall-mist.jpg', tier: 'signature' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-mist.jpg`, tier: 'stopover' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Yangshuo Travel Guide', slug: 'yangshuo-travel-guide', emoji: '🚵' },
@@ -106,8 +108,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'zhangjiajie-travel-guide': {
     hubUrl: '/zhangjiajie-tours', hubLabel: 'All Zhangjiajie Tours',
     relatedTours: [
-      { name: 'Zhangjiajie Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,899', url: '/tours/china/stopover/zhangjiajie', image: '/images/tours/zhangjiajie.jpg', tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: '/images/tours/jiuzhaigou-lake.jpg', tier: 'signature' },
+      { name: 'Zhangjiajie Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,899', url: '/tours/china/stopover/zhangjiajie', image: `${TI}/zhangjiajie.jpg`, tier: 'stopover' },
+      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Tianmen Mountain', slug: 'tianmen-mountain-travel-guide', emoji: '⛰️' },
@@ -119,8 +121,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yunnan-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: '/images/tours/yunnan-village.jpg', tier: 'discovery' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: '/images/tours/jiuzhaigou-lake.jpg', tier: 'signature' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Lijiang Travel Guide', slug: 'lijiang-travel-guide', emoji: '🏘️' },
@@ -132,7 +134,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'lijiang-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: '/images/tours/yunnan-village.jpg', tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -144,7 +146,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'dali-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: '/images/tours/yunnan-village.jpg', tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -156,7 +158,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'kunming-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: '/images/tours/yunnan-village.jpg', tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -168,7 +170,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'shangri-la-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: '/images/tours/yunnan-village.jpg', tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -180,8 +182,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'great-wall-travel-guide': {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
-      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: '/images/tours/forbidden-city-lion.jpg', tier: 'stopover' },
-      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: '/images/tours/forbidden-city-aerial.jpg', tier: 'signature' },
+      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
@@ -193,8 +195,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'forbidden-city-travel-guide': {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
-      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: '/images/tours/forbidden-city-lion.jpg', tier: 'stopover' },
-      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: '/images/tours/forbidden-city-aerial.jpg', tier: 'signature' },
+      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
@@ -206,8 +208,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'terracotta-warriors-travel-guide': {
     hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
     relatedTours: [
-      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: '/images/tours/xian-terracotta.jpg', tier: 'stopover' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: '/images/tours/shanghai-night-blue.jpg', tier: 'discovery' },
+      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
@@ -219,8 +221,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'leshan-buddha-travel-guide': {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
-      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: '/images/tours/chengdu-pandas.jpg', tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: '/images/tours/jiuzhaigou-lake.jpg', tier: 'signature' },
+      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
@@ -232,8 +234,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yangshuo-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/guilin-river-valley.jpg', tier: 'stopover' },
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: '/images/tours/guilin-mist.jpg', tier: 'stopover' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-mist.jpg`, tier: 'stopover' },
     ],
     relatedGuides: [
       { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
@@ -245,8 +247,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'li-river-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/guilin-river-valley.jpg', tier: 'stopover' },
-      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: '/images/tours/great-wall-mist.jpg', tier: 'signature' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
@@ -258,8 +260,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'hangzhou-travel-guide': {
     hubUrl: '/china-tours', hubLabel: 'All China Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: '/images/tours/wuzhen-canal.jpg', tier: 'discovery' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: '/images/tours/shanghai-night-blue.jpg', tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
@@ -271,8 +273,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'suzhou-travel-guide': {
     hubUrl: '/china-tours', hubLabel: 'All China Tours',
     relatedTours: [
-      { name: 'Shanghai & Suzhou (3 Days)', duration: '3 Days', price: 'From NZD $1,356', url: '/tours/china/stopover/shanghai-suzhou', image: '/images/tours/suzhou-canal.jpg', tier: 'stopover' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: '/images/tours/wuzhen-canal.jpg', tier: 'discovery' },
+      { name: 'Shanghai & Suzhou (3 Days)', duration: '3 Days', price: 'From NZD $1,356', url: '/tours/china/stopover/shanghai-suzhou', image: `${TI}/suzhou-canal.jpg`, tier: 'stopover' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
@@ -284,8 +286,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'chongqing-travel-guide': {
     hubUrl: '/china-tours', hubLabel: 'All China Tours',
     relatedTours: [
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: '/images/tours/jiuzhaigou-lake.jpg', tier: 'signature' },
-      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: '/images/tours/great-wall-mist.jpg', tier: 'signature' },
+      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
+      { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
@@ -297,7 +299,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'tianmen-mountain-travel-guide': {
     hubUrl: '/zhangjiajie-tours', hubLabel: 'All Zhangjiajie Tours',
     relatedTours: [
-      { name: 'Zhangjiajie Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,899', url: '/tours/china/stopover/zhangjiajie', image: '/images/tours/zhangjiajie.jpg', tier: 'stopover' },
+      { name: 'Zhangjiajie Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,899', url: '/tours/china/stopover/zhangjiajie', image: `${TI}/zhangjiajie.jpg`, tier: 'stopover' },
     ],
     relatedGuides: [
       { name: 'Zhangjiajie Guide', slug: 'zhangjiajie-travel-guide', emoji: '🌫️' },
@@ -311,8 +313,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
 const DEFAULT_CONFIG: GuideConfig = {
   hubUrl: '/china-tours', hubLabel: 'All China Tours',
   relatedTours: [
-    { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: '/images/tours/great-wall-mist.jpg', tier: 'discovery' },
-    { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: '/images/tours/forbidden-city-aerial.jpg', tier: 'signature' },
+    { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/great-wall-mist.jpg`, tier: 'discovery' },
+    { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
   ],
   relatedGuides: [
     { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },

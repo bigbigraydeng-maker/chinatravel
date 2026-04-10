@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
     path: '/',
-    ogImagePath: '/images/tours/great-wall-mist.jpg',
+    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'Great Wall of China mist, CTS Tours',
     keywords: [
       'China tours New Zealand',
@@ -40,18 +40,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const HomePage = () => {
   const destinations = [
-    { name: 'Beijing', slug: 'beijing', description: 'Home to the Great Wall and Forbidden City', image_url: '/images/tours/forbidden-city-aerial.jpg' },
-    { name: 'Xi\'an', slug: 'xian', description: 'Home to the Terracotta Army and ancient city walls', image_url: '/images/tours/xian-terracotta.jpg' },
-    { name: 'Shanghai', slug: 'shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: '/images/tours/shanghai-skyline.jpg' },
-    { name: 'Chengdu', slug: 'chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: '/images/tours/chengdu-pandas.jpg' },
-    { name: 'Guilin', slug: 'guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: '/images/tours/guilin-mist.jpg' },
-    { name: 'Zhangjiajie', slug: 'zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: '/images/tours/zhangjiajie.jpg' },
+    { name: 'Beijing', slug: 'beijing', description: 'Home to the Great Wall and Forbidden City', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg' },
+    { name: 'Xi\'an', slug: 'xian', description: 'Home to the Terracotta Army and ancient city walls', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
+    { name: 'Shanghai', slug: 'shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
+    { name: 'Chengdu', slug: 'chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
+    { name: 'Guilin', slug: 'guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg' },
+    { name: 'Zhangjiajie', slug: 'zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
   ];
 
   const articles = [
-    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: '/images/tours/great-wall-green.jpg', slug: 'best-time-to-visit-china' },
-    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: '/images/tours/forbidden-city-aerial.jpg', slug: 'china-visa-guide-for-new-zealanders' },
-    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: '/images/tours/shanghai-night-blue.jpg', slug: 'is-china-safe-to-travel' },
+    { title: 'Best Time to Visit China', content: 'The best time to visit China depends on the region and your interests. Spring (March to May) and autumn (September to November) are generally considered the best seasons, with mild weather and beautiful scenery.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg', slug: 'best-time-to-visit-china' },
+    { title: 'China Visa Guide for New Zealanders', content: 'New Zealand citizens require a visa to enter China. The application process can be done online or through the Chinese Embassy. Make sure to apply well in advance of your trip.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg', slug: 'china-visa-guide-for-new-zealanders' },
+    { title: 'Is China Safe to Travel?', content: 'China is generally a safe country for tourists. Crime rates are low, and the local people are friendly and helpful. However, it\'s always important to take standard travel precautions.', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg', slug: 'is-china-safe-to-travel' },
   ];
 
   return (

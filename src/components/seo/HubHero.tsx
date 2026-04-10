@@ -12,7 +12,7 @@ interface HubHeroProps {
 const HubHero: React.FC<HubHeroProps> = ({
   title,
   subtitle,
-  backgroundImage = '/images/tours/great-wall-mist.jpg'
+  backgroundImage = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg'
 }) => {
   return (
     <section className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
