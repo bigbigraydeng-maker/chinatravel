@@ -56,14 +56,17 @@ export default function AboutPage() {
             {/* Lisa Li */}
             <Link href="/experts/lisa-li" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64 bg-gray-200">
-                  <Image
-                    src={migratedSite('lisa-li-portrait.jpg')}
-                    alt="Lisa Li, Managing Director"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 432px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                {/* Oversized inner layer + overflow hidden zooms Lisa out to align visually with Baker card */}
+                <div className="relative h-64 overflow-hidden bg-gray-200">
+                  <div className="absolute left-1/2 top-1/2 h-[182%] w-[182%] -translate-x-1/2 -translate-y-1/2">
+                    <Image
+                      src={migratedSite('lisa-li-portrait.jpg')}
+                      alt="Lisa Li, Managing Director"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 432px"
+                      className="object-cover object-[center_35%] group-hover:scale-[1.03] transition-transform duration-300"
+                    />
+                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Lisa Li, MNZM</h3>
