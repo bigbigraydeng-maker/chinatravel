@@ -312,7 +312,6 @@ const Navbar = () => {
             <Link href="/tailor-made" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>
               Tailor Made
             </Link>
-            <Link href="/guide" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Travel Guide</Link>
             <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
             <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Agents</Link>
             <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Contact</Link>
