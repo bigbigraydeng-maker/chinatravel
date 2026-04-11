@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -10,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Free interactive tools for New Zealand travellers: seasonal guide, trip planner, destination matcher, and local food map. Plan your China journey with CTS.',
     path: '/travel-tools',
-    ogImagePath: 'https://images.unsplash.com/photo-1473163928189-364b2c4e1135?w=1200&q=80',
+    ogImagePath: migratedUnsplash('photo-1473163928189-364b2c4e1135'),
     keywords: [
       'travel planner',
       'destination matcher',

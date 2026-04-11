@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { migratedUnsplash } from '@/lib/site-media';
 import LocalFoodGuide from '@/components/tools/LocalFoodGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
@@ -12,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Discover authentic Chinese regional cuisines. Explore local specialties, flavors, and where to find them. Your guide to Chinese food culture by destination.',
     path: '/local-food-guide',
-    ogImagePath: '/images/guides/food-guide-hero.jpg',
+    ogImagePath: migratedUnsplash('photo-1544025162-d76694265947'),
     keywords: [
       'Chinese food guide',
       'local cuisines',

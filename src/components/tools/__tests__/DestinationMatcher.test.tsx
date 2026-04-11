@@ -16,6 +16,7 @@ import {
   scoreStyleFit,
   scoreToStars,
 } from '@/lib/tools/destination-matcher-logic';
+import { migratedUnsplash } from '@/lib/site-media';
 
 function mockGuide(overrides: Partial<DestinationGuide> = {}): DestinationGuide {
   return {
@@ -27,7 +28,7 @@ function mockGuide(overrides: Partial<DestinationGuide> = {}): DestinationGuide 
     keywords: ['imperial', 'unesco'],
     h1: 'Beijing Guide',
     heroSubtitle: 'Capital',
-    heroImage: '/images/guides/shanghai/hero.jpg',
+    heroImage: migratedUnsplash('photo-1528127269322-539801943592'),
     introText: ['Walk the Great Wall and explore the Forbidden City.'],
     sections: [
       {
@@ -299,7 +300,7 @@ describe('DestinationMatcher component', () => {
     await user.click(screen.getByRole('radio', { name: /Hidden gems/i }));
     await user.click(screen.getByRole('button', { name: 'See matches' }));
     const link = screen.getAllByRole('link', { name: /Open travel guide/i })[0];
-    expect(link.getAttribute('href')).toMatch(/^\/guide\//);
+    expect(link.getAttribute('href')).toMatch(/^\/[a-z0-9-]+-travel-guide$/);
   });
 
   it('start over returns to questionnaire', async () => {

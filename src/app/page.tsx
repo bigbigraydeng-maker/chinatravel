@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import SectionTitle from '@/components/SectionTitle';
 import FeatureCard from '@/components/FeatureCard';
 import ExpertHighlight from '@/components/ExpertHighlight';
+import { migratedSite } from '@/lib/site-media';
 import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
 import StatsCounter from '@/components/StatsCounter';
@@ -113,7 +114,7 @@ const HomePage = () => {
         title="China Travel Specialist"
         description="With over 20 years of experience in the Chinese travel industry, Baker Gu is our lead specialist. His deep knowledge of China's culture, history, and hidden gems ensures that our clients receive authentic and unforgettable travel experiences."
         fullDescription="Baker has traveled extensively throughout China, from the bustling cities to remote villages, building relationships with local communities and gaining insider access to unique experiences. As our lead specialist, Baker designs our most exclusive tours, ensuring that every detail is carefully crafted to provide the best possible experience for our clients."
-        image_url="/images/baker-gu-portrait.jpg"
+        image_url={migratedSite('baker-gu-portrait.jpg')}
       />
 
       {/* Explore China — vibrant section */}

@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import { phase1TravelTipPosts } from '@/lib/data/blogs-phase1-travel-tips';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
 
@@ -39,7 +40,7 @@ Ready to embark on your own Silk Road adventure? [Contact us](/contact) to start
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Silk Road', 'Adventure', 'Cultural', 'Signature'],
-    heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
     publishedAt: '2026-03-15',
     readTime: '5 min read'
   },
@@ -81,7 +82,7 @@ Planning your panda adventure? Our [China Discovery — Cultural Triangle](/tour
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ['Pandas', 'Chengdu', 'Wildlife', 'Family-Friendly'],
-    heroImage: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1564349683136-77e08dba1ef7'),
     publishedAt: '2026-03-10',
     readTime: '4 min read'
   },
@@ -150,7 +151,7 @@ Ready to start planning? [Browse our tours](/tours) or [contact us](/contact) fo
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['First-Time', 'Tips', 'Practical', 'New Zealand'],
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
     publishedAt: '2026-03-05',
     readTime: '6 min read'
   },
@@ -191,7 +192,7 @@ Experience the Avatar Mountains on our [China Discovery — Golden Route](/tours
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Avatar Mountains', 'Zhangjiajie', 'Nature', 'Photography'],
-    heroImage: 'https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1513415756790-2ac1db1297d0'),
     publishedAt: '2026-02-28',
     readTime: '4 min read'
   },
@@ -236,7 +237,7 @@ Experience Chinese tea culture on our [China Signature — Imperial Heritage](/t
     authorRole: 'China Travel Specialist',
     category: 'culture',
     tags: ['Tea', 'Culture', 'Hangzhou', 'Tradition'],
-    heroImage: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1556679343-c7306c1976bc'),
     publishedAt: '2026-02-20',
     readTime: '5 min read'
   },

@@ -28,6 +28,7 @@ const ExpertHighlight = ({ name, title, description, image_url, fullDescription 
                 alt={name}
                 width={500}
                 height={600}
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="rounded-2xl shadow-xl w-full relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
               />
               {/* Experience badge */}

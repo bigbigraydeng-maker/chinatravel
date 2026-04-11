@@ -3,6 +3,7 @@
 
 import { Tour } from './data/tours';
 import { getSiteUrl } from './site';
+import { migratedUnsplash } from './site-media';
 
 /**
  * Generate CollectionPage schema for tour hub pages
@@ -148,7 +149,7 @@ export const generateArticleSchema = (
     '@type': 'Article',
     headline: title,
     description: description,
-    image: '/images/hero-bg.jpg', // Fallback hero image
+    image: migratedUnsplash('photo-1464817739973-0128fe77aaa1'), // Fallback hero (Supabase CDN)
     author: {
       '@type': 'Organization',
       name: author

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { migratedUnsplash } from '@/lib/site-media';
 import SeasonalGuide from '@/components/tools/SeasonalGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
@@ -12,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Discover the best time to visit China by month. Compare weather conditions, prices, crowds, and activities. Plan your perfect China trip with our interactive seasonal guide.',
     path: '/seasonal-guide',
-    ogImagePath: '/images/guides/seasonal-guide-hero.jpg',
+    ogImagePath: migratedUnsplash('photo-1473163928189-364b2c4e1135'),
     keywords: [
       'best time to visit China',
       'China weather by month',

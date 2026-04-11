@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { migratedSite } from '@/lib/site-media';
 
 export default function AboutPage() {
   return (
@@ -57,9 +58,10 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-64 bg-gray-200">
                   <Image
-                    src="/images/lisa-li-portrait.jpg"
+                    src={migratedSite('lisa-li-portrait.jpg')}
                     alt="Lisa Li, Managing Director"
                     fill
+                    sizes="(max-width: 768px) 100vw, 432px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -84,9 +86,10 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-64 bg-gray-200">
                   <Image
-                    src="/images/baker-gu-portrait.jpg"
+                    src={migratedSite('baker-gu-portrait.jpg')}
                     alt="Baker Gu, China Specialist"
                     fill
+                    sizes="(max-width: 768px) 100vw, 432px"
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -117,8 +120,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img src="/images/credentials/taanz.png" alt="TAANZ Membership" className="w-full h-full object-contain" />
+                <div className="relative w-16 h-16 mr-4 shrink-0">
+                  <Image
+                    src={migratedSite('credentials-taanz.png')}
+                    alt="TAANZ Membership"
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">TAANZ Membership</h3>
               </div>
@@ -127,8 +136,14 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img src="/images/credentials/iata.png" alt="IATA Certification" className="w-full h-full object-contain" />
+                <div className="relative w-16 h-16 mr-4 shrink-0">
+                  <Image
+                    src={migratedSite('credentials-iata.png')}
+                    alt="IATA Certification"
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">IATA Certification</h3>
               </div>
@@ -137,8 +152,14 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img src="/images/credentials/tourism-export-council.png" alt="Tourism Export Council" className="w-full h-full object-contain" />
+                <div className="relative w-16 h-16 mr-4 shrink-0">
+                  <Image
+                    src={migratedSite('credentials-tourism-export-council.png')}
+                    alt="Tourism Export Council"
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">Tourism Export Council</h3>
               </div>
@@ -147,8 +168,14 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img src="/images/credentials/auckland-business-chamber.png" alt="Auckland Business Chamber" className="w-full h-full object-contain" />
+                <div className="relative w-16 h-16 mr-4 shrink-0">
+                  <Image
+                    src={migratedSite('credentials-auckland-business-chamber.png')}
+                    alt="Auckland Business Chamber"
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">Auckland Business Chamber</h3>
               </div>
@@ -157,8 +184,14 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <img src="/images/credentials/qualmark.png" alt="Qualmark" className="w-full h-full object-contain" />
+                <div className="relative w-16 h-16 mr-4 shrink-0">
+                  <Image
+                    src={migratedSite('credentials-qualmark.png')}
+                    alt="Qualmark"
+                    fill
+                    sizes="64px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">Qualmark</h3>
               </div>

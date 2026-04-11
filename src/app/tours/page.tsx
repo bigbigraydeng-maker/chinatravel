@@ -5,6 +5,7 @@ import { destinations, getAllActiveTours } from '@/lib/data/tours';
 import TourCard from '@/components/tours/TourCard';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -27,7 +28,7 @@ export default function ToursPage() {
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?w=1920&q=80"
+            src={migratedUnsplash('photo-1464817739973-0128fe77aaa1')}
             alt="Asia Tours"
             fill
             sizes="100vw"

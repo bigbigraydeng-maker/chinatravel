@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import type { StagingContent } from '@/lib/types/staging';
+import { migratedUnsplash } from '@/lib/site-media';
 
 /** Phase 1 travel-tips posts — also seeded into /blog/staging */
 export const phase1TravelTipPosts: BlogPost[] = [
@@ -58,7 +59,7 @@ Ready to match packing to a real route? [Browse China tours](/china-tours) or [c
     authorRole: 'China Travel Content',
     category: 'travel-tips',
     tags: ['packing China', 'what to pack', 'China travel', 'luggage tips', 'seasonal packing'],
-    heroImage: 'https://images.unsplash.com/photo-1553531384-cc64ac80f931?w=1200&q=80',
+    heroImage: migratedUnsplash('photo-1553531384-cc64ac80f931'),
     publishedAt: '2026-04-08',
     readTime: '14 min read',
   },
@@ -114,7 +115,7 @@ Need an itinerary where logistics are handled for you? [Explore guided China tou
     authorRole: 'China Travel Content',
     category: 'travel-tips',
     tags: ['China apps', 'travel apps', 'VPN', 'maps', 'translation'],
-    heroImage: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80',
+    heroImage: migratedUnsplash('photo-1512941937669-90a1b58e7e9c'),
     publishedAt: '2026-04-08',
     readTime: '12 min read',
   },
@@ -168,7 +169,7 @@ If you want a calm first China trip with tested hotels and guides, [browse our C
     authorRole: 'China Travel Content',
     category: 'travel-tips',
     tags: ['safety China', 'travel safety', 'scams', 'etiquette', 'cultural tips'],
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1200&q=80',
+    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
     publishedAt: '2026-04-08',
     readTime: '13 min read',
   },
@@ -211,7 +212,7 @@ Ready to pick dates with a human? [Read our month-by-month seasonal tool](/seaso
     authorRole: 'China Travel Content',
     category: 'travel-tips',
     tags: ['best time China', 'China weather', 'seasons', 'travel seasons', 'crowds'],
-    heroImage: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&q=80',
+    heroImage: migratedUnsplash('photo-1469474968028-56623f02e42e'),
     publishedAt: '2026-04-08',
     readTime: '14 min read',
   },
@@ -258,7 +259,7 @@ Share your shot list with us — [tailor-made planning](/tailor-made) can alloca
     authorRole: 'China Travel Content',
     category: 'travel-tips',
     tags: ['photography China', 'hidden gems', 'photo locations', 'travel photography', 'landscape'],
-    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200&q=80',
+    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
     publishedAt: '2026-04-08',
     readTime: '13 min read',
   },

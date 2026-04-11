@@ -3,6 +3,7 @@ import DestinationMatcher from '@/components/tools/DestinationMatcher';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -10,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Answer a few questions about interests, pace, travel party, and style. Get ranked China destination guides tailored to how you like to travel.',
     path: '/destination-matcher',
-    ogImagePath: 'https://images.unsplash.com/photo-1528127269322-539801943592?w=1200&q=80',
+    ogImagePath: migratedUnsplash('photo-1528127269322-539801943592'),
     keywords: ['destination matcher', 'China travel recommendations', 'where to go in China', 'CTS Tours'],
     ogType: 'website',
   });

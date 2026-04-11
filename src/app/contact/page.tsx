@@ -1,7 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { getSupabase } from '@/lib/supabase';
+import { migratedSite } from '@/lib/site-media';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -52,10 +54,13 @@ const ContactPage = () => {
       {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/guides/shanghai/shanghai-skyline.jpg"
+          <Image
+            src={migratedSite('shanghai-skyline.jpg')}
             alt="Shanghai skyline — Contact CTS Tours New Zealand"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>

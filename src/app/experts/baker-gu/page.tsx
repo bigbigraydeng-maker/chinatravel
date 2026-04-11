@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { getRecentBlogPosts } from '@/lib/data/blogs';
+import { migratedSite, tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'Baker Gu - China Travel Specialist | CTS Tours',
@@ -21,10 +23,13 @@ const BakerGuPage = () => {
       {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg"
+          <Image
+            src={tourImage('zhangjiajie.jpg')}
             alt="Zhangjiajie National Forest Park — CTS Tours China Travel Specialist"
-            className="w-full h-full object-cover object-center"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
@@ -41,10 +46,13 @@ const BakerGuPage = () => {
             <div className="md:w-2/5">
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
-                <img
-                  src="/images/baker-gu-portrait.jpg"
+                <Image
+                  src={migratedSite('baker-gu-portrait.jpg')}
                   alt="Baker Gu — China Travel Specialist at CTS Tours New Zealand"
-                  className="rounded-lg shadow-xl w-full relative z-10"
+                  width={640}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="rounded-lg shadow-xl w-full relative z-10 h-auto"
                 />
               </div>
             </div>

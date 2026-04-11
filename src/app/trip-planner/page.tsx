@@ -3,6 +3,7 @@ import TripPlanner from '@/components/tools/TripPlanner';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -10,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Plan your China trip with our interactive planner. Match duration, interests, budget, and season to recommended CTS tours, blog articles, and destination guides.',
     path: '/trip-planner',
-    ogImagePath: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=1200&q=80',
+    ogImagePath: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
     keywords: ['trip planner', 'China itinerary', 'personalized tours', 'CTS Tours', 'China travel'],
     ogType: 'website',
   });

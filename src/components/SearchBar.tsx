@@ -28,13 +28,13 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <form onSubmit={handleSearch} className="relative">
+    <div className="w-full max-w-4xl mx-auto min-w-0">
+      <form onSubmit={handleSearch} className="relative min-w-0">
         {/* Main search bar */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          <div className="flex items-center">
-            <div className="flex-1 flex items-center px-6 py-4">
-              <svg className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden min-w-0">
+          <div className="flex items-center min-w-0">
+            <div className="flex-1 flex items-center min-w-0 pl-3 pr-2 py-3 sm:px-6 sm:py-4">
+              <svg className="w-5 h-5 text-gray-400 mr-2 sm:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <input
@@ -42,13 +42,13 @@ export default function SearchBar() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search destinations, tours, experiences..."
-                className="flex-1 outline-none text-gray-700 placeholder-gray-400 text-lg"
+                className="min-w-0 flex-1 w-0 outline-none text-gray-700 placeholder-gray-400 text-base sm:text-lg"
               />
             </div>
             <button
               type="button"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="hidden md:flex items-center gap-1 px-4 py-2 mr-2 text-sm text-gray-500 hover:text-primary transition-colors"
+              className="hidden md:flex items-center gap-1 px-4 py-2 mr-2 text-sm text-gray-500 hover:text-primary transition-colors shrink-0"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
@@ -57,7 +57,7 @@ export default function SearchBar() {
             </button>
             <button
               type="submit"
-              className="bg-primary text-white px-8 py-4 font-semibold hover:bg-primary/90 transition-colors text-lg"
+              className="shrink-0 bg-primary text-white px-4 py-3 sm:px-8 sm:py-4 font-semibold hover:bg-primary/90 transition-colors text-base sm:text-lg"
             >
               Search
             </button>

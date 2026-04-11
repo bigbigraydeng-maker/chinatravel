@@ -23,6 +23,7 @@ import {
   TRIP_BUDGET_OPTIONS,
   TRIP_SEASON_OPTIONS,
 } from '@/lib/tools/trip-planner-logic';
+import { migratedUnsplash } from '@/lib/site-media';
 
 function mockTour(overrides: Partial<Tour> = {}): Tour {
   return {
@@ -35,7 +36,7 @@ function mockTour(overrides: Partial<Tour> = {}): Tour {
     shortDescription: 'Explore the Great Wall and ancient temples across Beijing.',
     duration: '10 Days',
     price: 'From NZD 5,000',
-    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
     gallery: [],
     highlights: ['Great Wall', 'Temple of Heaven'],
     itinerary: [
@@ -64,7 +65,7 @@ function mockBlog(overrides: Partial<BlogPost> = {}): BlogPost {
     authorRole: 'R',
     category: 'destination',
     tags: ['History', 'Culture'],
-    heroImage: 'https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=800&q=80',
+    heroImage: migratedUnsplash('photo-1569949381669-ecf31ae8e613'),
     publishedAt: '2026-01-01',
     readTime: '5 min',
     ...overrides,
@@ -81,7 +82,7 @@ function mockGuide(overrides: Partial<DestinationGuide> = {}): DestinationGuide 
     keywords: ['temple', 'great wall'],
     h1: 'Beijing Guide',
     heroSubtitle: 'Imperial capital',
-    heroImage: '/images/guides/shanghai/hero.jpg',
+    heroImage: migratedUnsplash('photo-1528127269322-539801943592'),
     introText: ['Temples and the Great Wall await.'],
     sections: [],
     attractions: [],

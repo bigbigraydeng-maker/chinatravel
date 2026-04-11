@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
+import { migratedSite } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'Agent Resources - CTS Tours',
@@ -17,10 +19,13 @@ const AgentsPage = () => {
       {/* Hero banner */}
       <section className="relative h-64 flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
+          <Image
+            src={migratedSite('forbidden-city-aerial-portrait.jpg')}
             alt="Forbidden City Beijing — CTS Tours Agent Resources"
-            className="w-full h-full object-cover"
+            fill
+            sizes="100vw"
+            priority
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         </div>
