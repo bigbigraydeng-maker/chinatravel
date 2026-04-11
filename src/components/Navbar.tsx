@@ -296,6 +296,12 @@ const Navbar = () => {
               </button>
               {mobileExpandedDest === 'guides' && (
                 <div className="pl-4 mt-1 space-y-1 border-l-2 border-secondary/30 ml-2">
+                  <Link href="/guide" className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                    All Travel Guides
+                  </Link>
+                  <Link href="/blog" className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                    Travel Blog
+                  </Link>
                   <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>
                   <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>China entry (NZ)</Link>
                   <Link href="/travel-tools" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-primary" onClick={closeMenu}>Travel Tools</Link>
