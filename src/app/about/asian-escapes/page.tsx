@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Asiascape Holidays | On-Ground Operations for Agents | CTS Tours',
@@ -149,35 +148,6 @@ export default function AsianEscapesPage() {
             on the ground: your guide, your driver, your transfers, your daily logistics. It&apos;s all coordinated
             by one team, not pieced together from different suppliers.
           </blockquote>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto max-w-2xl px-4 text-center">
-          <h2 className="mb-4 font-serif text-2xl font-bold text-gray-900">Next steps</h2>
-          <p className="mb-8 text-gray-600">
-            Selling China? Point clients to CTS product pages. For agent tools and support, use the links below.
-          </p>
-          <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
-            <Link
-              href="/agents"
-              className="inline-block rounded-lg bg-primary px-8 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
-            >
-              Agent resources
-            </Link>
-            <Link
-              href="/tours/china"
-              className="inline-block rounded-lg border-2 border-primary px-8 py-3 font-semibold text-primary transition-colors hover:bg-primary/5"
-            >
-              Explore China tours
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-block rounded-lg border-2 border-gray-300 px-8 py-3 font-semibold text-gray-800 transition-colors hover:bg-gray-50"
-            >
-              Contact us
-            </Link>
-          </div>
         </div>
       </section>
     </div>
