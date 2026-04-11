@@ -336,6 +336,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
         title={guide.h1}
         subtitle={guide.heroSubtitle}
         backgroundImage={guide.heroImage}
+        imageClassName={guide.heroImageClassName}
       />
 
       {/* ── Breadcrumb ── */}
@@ -500,21 +501,25 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   {guide.destinationName} Photo Gallery
                 </h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {guide.galleryImages.map((img, i) => (
+                  {guide.galleryImages.map((item, i) => {
+                    const src = typeof item === 'string' ? item : item.src;
+                    const extra = typeof item === 'string' ? '' : item.imgClass ?? '';
+                    return (
                     <div
-                      key={i}
+                      key={`${src}-${i}`}
                       className="relative overflow-hidden rounded-lg aspect-square bg-warm-100 group"
                     >
                       <Image
-                        src={img}
+                        src={src}
                         alt={`${guide.destinationName} - ${i + 1}`}
                         fill
                         sizes="(max-width: 768px) 50vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className={['object-cover group-hover:scale-105 transition-transform duration-500', extra].filter(Boolean).join(' ')}
                         loading="lazy"
                       />
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </section>
             )}

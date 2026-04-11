@@ -7,12 +7,15 @@ interface HubHeroProps {
   title: string;
   subtitle: string;
   backgroundImage?: string;
+  /** Merged with default `object-cover` on the hero image (e.g. object-[center_30%]). */
+  imageClassName?: string;
 }
 
 const HubHero: React.FC<HubHeroProps> = ({
   title,
   subtitle,
-  backgroundImage = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg'
+  backgroundImage = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
+  imageClassName,
 }) => {
   return (
     <section className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
@@ -25,7 +28,7 @@ const HubHero: React.FC<HubHeroProps> = ({
             fill
             priority
             sizes="100vw"
-            className="object-cover z-0"
+            className={['object-cover z-0', imageClassName].filter(Boolean).join(' ')}
           />
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/40 z-[1]"></div>

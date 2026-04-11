@@ -3,7 +3,13 @@
 
 const SB = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public';
 const TI = `${SB}/tour-images`;
-const GI = `${SB}/guide-images/guides`;
+
+/** Curated gallery slot: plain URL or URL + Tailwind for square thumbnail framing. */
+export type GuideGalleryImage = string | { src: string; imgClass?: string };
+
+export function galleryItem(src: string, imgClass?: string): GuideGalleryImage {
+  return imgClass ? { src, imgClass } : src;
+}
 
 export interface Attraction {
   name: string;
@@ -44,6 +50,8 @@ export interface DestinationGuide {
   h1: string;
   heroSubtitle: string;
   heroImage: string;
+  /** Optional Tailwind classes merged onto the guide hero background image (e.g. object-[center_20%]). */
+  heroImageClassName?: string;
   introText: string[];
   sections: Section[];
   attractions: Attraction[];
@@ -51,7 +59,7 @@ export interface DestinationGuide {
   faqs: FAQ[];
   relatedTourSlugs: string[];
   relatedGuideSlugs: string[];
-  galleryImages: string[];
+  galleryImages: GuideGalleryImage[];
   createdAt: string;
   updatedAt: string;
 }
@@ -70,6 +78,7 @@ export const beijingGuide: DestinationGuide = {
   h1: 'Beijing Travel Guide: Discover China\'s Imperial Capital',
   heroSubtitle: 'From Ancient Palaces to Modern Metropolis',
   heroImage: `${TI}/forbidden-city-aerial.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Beijing, the heart of China for over 3,000 years, seamlessly blends ancient imperial grandeur with contemporary urban dynamism. As capital of the world\'s most populous nation, this sprawling metropolis offers travellers an unparalleled window into Chinese civilisation, from the architectural marvels of the Forbidden City to the engineering wonder of the Great Wall. Whether you\'re tracing the footsteps of emperors through ornate palace halls or savouring authentic Peking duck in century-old restaurants, Beijing delivers an immersive cultural experience.',
     'For New Zealand visitors, Beijing serves as the natural gateway to China. The city\'s exceptional museums house treasures spanning dynasties, whilst its revitalised hutong neighbourhoods reveal the intimate daily life of Beijing\'s residents. Modern infrastructure and English signage in tourist areas make navigation straightforward, whilst the underground metro system—one of the world\'s most efficient—connects you instantly to centuries-old temples, imperial gardens, and vibrant night markets.',
@@ -212,18 +221,15 @@ export const beijingGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['great-wall-travel-guide', 'forbidden-city-travel-guide'],
+  // Hero already uses aerial palace — gallery: Great Wall + temple only; verified tour-images; no duplicates.
   galleryImages: [
-    `${GI}/beijing/forbidden-city-aerial/forbidden-city-aerial.jpg`,
-    `${GI}/beijing/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg`,
-    `${GI}/beijing/forbidden-city-lion/forbidden-city-lion.jpg`,
-    `${GI}/beijing/forbidden-city-lion-2/forbidden-city-lion-2.jpg`,
-    `${GI}/beijing/great-wall-cloud-sea/great-wall-cloud-sea.jpg`,
-    `${GI}/beijing/great-wall-green/great-wall-green.jpg`,
-    `${GI}/beijing/great-wall-mist/great-wall-mist.jpg`,
-    `${GI}/beijing/beijing-temple/beijing-temple.jpg`,
+    `${TI}/great-wall-mist.jpg`,
+    `${TI}/great-wall-cloud-sea.jpg`,
+    `${TI}/great-wall-green.jpg`,
+    `${TI}/beijing-temple.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -240,6 +246,7 @@ export const xianGuide: DestinationGuide = {
   h1: 'Xi\'an Travel Guide: Land of the Terracotta Army',
   heroSubtitle: 'Where Ancient Warriors Await Discovery',
   heroImage: `${TI}/xian-terracotta.jpg`,
+  heroImageClassName: 'object-[center_25%]',
   introText: [
     'Xi\'an, once capital of 13 Chinese dynasties including the Qin, Tang, and Ming, stands as one of the world\'s oldest continuously inhabited cities and a cornerstone of Chinese civilisation. For over 2,000 years, this strategic location served as the eastern terminus of the Silk Road, facilitating unprecedented cultural and commercial exchange between East and West. The city\'s name itself—meaning "Western Peace"—reflects its historical significance as a cosmopolitan centre where Buddhist, Islamic, and Christian traditions coexisted alongside Confucian and Taoist thought.',
     'Xi\'an\'s most iconic attraction, the Terracotta Army, remains one of archaeology\'s greatest discoveries. Unearthed in 1974 by local farmers, this astonishing assemblage of 8,000+ life-sized terracotta soldiers guards Emperor Qin Shi Huang\'s mausoleum, representing humanity\'s dedication to the afterlife. Beyond this celebrated site, Xi\'an reveals layers of history through its fully intact medieval city walls—among the world\'s best-preserved—temples housing Buddhist reliquaries, and vibrant Muslim Quarter bazaars.',
@@ -382,16 +389,14 @@ export const xianGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['terracotta-warriors-travel-guide', 'silk-road-travel-guide'],
+  // Hero = terracotta; gallery omits Beijing/Guilin wall shots; second pit with top-weighted crop.
   galleryImages: [
-    `${TI}/xian-terracotta.jpg`,
-    `${TI}/xian-terracotta-2.jpg`,
     `${TI}/silk-road-wall.jpg`,
     `${TI}/china-pagoda-night.jpg`,
-    `${TI}/forbidden-city-aerial.jpg`,
-    `${TI}/great-wall-mist.jpg`,
+    galleryItem(`${TI}/xian-terracotta-2.jpg`, 'object-top'),
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -408,6 +413,7 @@ export const shanghaiGuide: DestinationGuide = {
   h1: 'Shanghai Travel Guide: East Meets West on the Huangpu River',
   heroSubtitle: 'Asia\'s Most Cosmopolitan City',
   heroImage: `${TI}/shanghai-night-blue.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Shanghai, China\'s largest city and global financial centre, represents the nation\'s modernisation at warp speed. Rising from a modest fishing village to a treaty port in the 19th century, Shanghai became a hotbed of cultural innovation, revolutionary thought, and economic ambition. Today, this metropolis of 24 million inhabitants showcases futuristic architecture alongside colonial heritage, world-class museums alongside traditional temples, and international cuisine alongside centuries-old street food traditions.',
     'The Bund—Shanghai\'s iconic waterfront—presents a striking architectural timeline: 19th-century neoclassical trading houses contrast sharply with 21st-century supertall towers across the Huangpu River. This juxtaposition encapsulates Shanghai\'s essence: a bridge between historical trading empires and contemporary digital revolution. For New Zealand visitors, Shanghai functions as both a tourist destination in its own right and a convenient hub for regional connections via Pudong International Airport.',
@@ -551,15 +557,11 @@ export const shanghaiGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'shanghai-signature-modern-heritage'],
   relatedGuideSlugs: ['hangzhou-travel-guide', 'zhujiajiao-water-town-guide'],
   galleryImages: [
-    `${GI}/shanghai/shanghai-night-blue/shanghai-night-blue.jpg`,
-    `${GI}/shanghai/shanghai-night-red/shanghai-night-red.jpg`,
-    `${GI}/shanghai/shanghai-skyline/shanghai-skyline.jpg`,
-    `${GI}/shanghai/shanghai-yuyuan-night/shanghai-yuyuan-night.jpg`,
+    `${TI}/shanghai-night-red.jpg`,
     `${TI}/shanghai-skyline.jpg`,
-    `${TI}/wuzhen-canal.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -576,6 +578,7 @@ export const chengduGuide: DestinationGuide = {
   h1: 'Chengdu Travel Guide: Pandas, Culture & Spicy Delights',
   heroSubtitle: 'Where Ancient Wisdom Meets Gentle Giants',
   heroImage: `${TI}/chengdu-pandas.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Chengdu, capital of Sichuan Province in central China, embodies the nation\'s more relaxed, culturally distinct interior. Known colloquially as the "Land of Abundance," this city of 16 million residents maintains a distinctive identity shaped by geography (surrounded by fertile plains), history (independent kingdom during several dynasties), and culinary traditions (Sichuan peppercorn heat defines regional cuisine). The city consistently ranks among China\'s most livable destinations, with residents prioritising leisure, hospitality, and quality of life.',
     'The primary draw for international visitors—the Giant Panda Breeding Research Base—houses the world\'s largest population of captive giant pandas outside zoos. Visitors encounter these endangered species in naturalistic habitats, observe research activities, and understand conservation efforts. Beyond pandas, Chengdu reveals sophisticated Buddhist temples, classical gardens, and an emerging contemporary arts scene. The city\'s teahouse culture, where locals spend entire afternoons engaging in chess, mahjong, and conversation, reflects deeply rooted social traditions.',
@@ -710,15 +713,11 @@ export const chengduGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['leshan-buddha-travel-guide', 'emei-mountain-travel-guide'],
   galleryImages: [
-    `${GI}/chengdu/chengdu-pandas/chengdu-pandas.jpg`,
-    `${GI}/chengdu/chengdu-old-town/chengdu-old-town.jpg`,
-    `${TI}/chengdu-pandas.jpg`,
     `${TI}/chengdu-old-town.jpg`,
     `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/yunnan-village.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -735,6 +734,7 @@ export const guilinGuide: DestinationGuide = {
   h1: 'Guilin Travel Guide: Where Mountains Meet Water',
   heroSubtitle: 'China\'s Most Picturesque Landscape',
   heroImage: `${TI}/guilin-mist.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Guilin, located in Guangxi Zhuang Autonomous Region in southern China, represents one of the world\'s most visually distinctive regions. The karst limestone mountain formations rising dramatically from the Li River have inspired painters, poets, and philosophers for centuries. These otherworldly landscapes—featuring distinctive peak shapes, hidden caves, and emerald waterways—influenced classical Chinese landscape painting aesthetics. The region\'s natural beauty transcends merely scenic; it embodies philosophical principles connecting humans to nature\'s sublime forces.',
     'The iconic Li River journey from Guilin to Yangshuo comprises one of China\'s essential travel experiences. This 83-kilometre cruise through karst mountains, past rural villages and bamboo groves, showcases landscapes featured in classical artwork. Traditional cormorant fishing—an ancient technique using trained birds for nocturnal fishing—persists in modified form for tourism, though historical significance remains profound.',
@@ -869,15 +869,10 @@ export const guilinGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['yangshuo-travel-guide', 'li-river-cruise-guide'],
   galleryImages: [
-    `${GI}/guilin/guilin-mist/guilin-mist.jpg`,
-    `${GI}/guilin/guilin-river-valley/guilin-river-valley.jpg`,
-    `${TI}/guilin-mist.jpg`,
     `${TI}/guilin-river-valley.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/zhangjiajie.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -894,6 +889,7 @@ export const zhangjiajieGuide: DestinationGuide = {
   h1: 'Zhangjiajie Travel Guide: Mountains That Touch the Sky',
   heroSubtitle: 'Home of Avatar\'s Pandora Landscape',
   heroImage: `${TI}/zhangjiajie.jpg`,
+  heroImageClassName: 'object-[center_30%]',
   introText: [
     'Zhangjiajie, located in Hunan Province in central China, presents one of the world\'s most dramatic mountain landscapes. The region gained international prominence when director James Cameron scouted Zhangjiajie National Forest Park as inspiration for Avatar\'s alien landscapes. The distinctive sandstone pillars—some reaching 1,000+ metres—rise vertically from mist-shrouded valleys, creating an otherworldly atmosphere that defies ordinary photography.',
     'The region\'s primary attraction, Zhangjiajie National Forest Park (Wulingyuan UNESCO World Heritage Site), encompasses 3,100 square kilometres of protected landscape. The famous glass walkway—constructed on a cliff face 1,430 metres high—offers vertigo-inducing perspectives across the mountain wilderness. Beyond adrenaline-fuelled attractions, the park rewards hikers with profound connections to landscape, mist-draped temples, and solitary mountain encounters.',
@@ -1027,16 +1023,9 @@ export const zhangjiajieGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'zhangjiajie-avatar-mountains-guide'],
-  galleryImages: [
-    `${TI}/zhangjiajie.jpg`,
-    `${TI}/guilin-mist.jpg`,
-    `${TI}/guilin-river-valley.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/yunnan-village.jpg`,
-  ],
+  galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-06'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -1053,6 +1042,7 @@ export const yunnanGuide: DestinationGuide = {
   h1: 'Yunnan Travel Guide: Province of Colour and Culture',
   heroSubtitle: 'Where Mountains, Minorities & Mystique Meet',
   heroImage: `${TI}/yunnan-rice-terraces.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Yunnan Province in southwestern China represents the nation\'s most ethnically diverse and visually stunning region. Home to 25 recognised ethnic minorities (more than any other Chinese province), Yunnan\'s landscapes range from tropical jungles to snow-capped mountains, rice terraces to pristine lakes. This geographical and cultural diversity has attracted explorers, anthropologists, and adventure travellers for centuries. The province\'s name itself—"South of the Clouds"—evokes the mysterious, mist-shrouded topography.',
     'Kunming, the provincial capital (4 million residents), serves as the primary gateway. The city\'s "City of Eternal Spring" nickname reflects its mild year-round climate. However, Yunnan\'s true character emerges in smaller towns and villages: the cobblestone streets and white-washed architecture of Dali, the mist-shrouded hills and traditional cultures around Lijiang and Shangri-La, and the agricultural communities terracing mountains across generations.',
@@ -1196,15 +1186,11 @@ export const yunnanGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'yunnan-signature-cultural-landscape'],
   relatedGuideSlugs: ['lijiang-travel-guide', 'dali-travel-guide', 'shangri-la-travel-guide'],
   galleryImages: [
-    `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/yunnan-village.jpg`,
     `${TI}/shangri-la-monastery.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/guilin-mist.jpg`,
-    `${TI}/china-pagoda-night.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -1222,6 +1208,7 @@ export const lijangGuide: DestinationGuide = {
   h1: 'Lijiang: Gateway to Naxi Culture & Yunnan Mountains',
   heroSubtitle: 'Ancient Town of Water, Stone & Cultural Heritage',
   heroImage: `${TI}/yunnan-village.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Lijiang, nestled on the north bank of the Jinsha River (Yangtze\'s upper course) at 2,400 metres elevation, represents one of China\'s best-preserved ancient towns. The Naxi ethnic people, unique to this region, developed distinctive cultural practices: their own written language (Dongba script), classical music tradition (Naxi music), and architectural conventions reflected in the walled Old Town. UNESCO recognised Lijiang as World Heritage site, acknowledging its architectural significance and living cultural practices.',
     'The Old Town\'s layout—characterised by the absence of defensive walls (unusual for Chinese walled towns), intricate water channels, and wooden architecture featuring elaborate carvings—reflects both feng shui principles and practical adaptation to mountain geography. The town functions simultaneously as archaeological heritage site and living community: residents maintain traditional crafts, restaurants serve Naxi cuisine, and shops sell locally-produced goods.',
@@ -1321,15 +1308,11 @@ export const lijangGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'lijiang-signature-naxi-heritage'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'dali-travel-guide'],
   galleryImages: [
-    `${TI}/yunnan-village.jpg`,
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/shangri-la-monastery.jpg`,
-    `${TI}/china-pagoda-night.jpg`,
-    `${TI}/chengdu-old-town.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -1348,6 +1331,7 @@ export const daliGuide: DestinationGuide = {
   h1: 'Dali: Where Silk Road Dreams Meet Mountain Beauty',
   heroSubtitle: 'Ancient Nanzhao Kingdom Capital',
   heroImage: `${TI}/china-pagoda-night.jpg`,
+  heroImageClassName: 'object-[center_30%]',
   introText: [
     'Dali served as capital of the Nanzhao Kingdom (738-1095 AD), a powerful state controlling southwestern China, parts of Burma, and Tibet. The kingdom\'s merchants, diplomats, and monks traversed the South Silk Road, bringing goods, ideas, and religions to this mountain valley. The Three Pagodas, visible across the valley, stand as physical testament to centuries of religious, political, and commercial importance.',
     'The modern town preserves Ming and Qing architecture within the walled Old Town. Bai ethnic people, numbering approximately 1.9 million and concentrated in Yunnan\'s Dali area, maintain distinctive cultural practices: traditional clothing, handicrafts, and architectural conventions visible throughout the town. Whitewashed buildings with dark tile roofs, ornate wooden doors, and intricate carvings reflect Bai aesthetic preferences.',
@@ -1435,13 +1419,9 @@ export const daliGuide: DestinationGuide = {
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/yunnan-village.jpg`,
-    `${TI}/shangri-la-monastery.jpg`,
-    `${TI}/guilin-river-valley.jpg`,
-    `${TI}/wuzhen-canal.jpg`,
-    `${TI}/suzhou-canal.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const kunmingGuide: DestinationGuide = {
@@ -1455,6 +1435,7 @@ export const kunmingGuide: DestinationGuide = {
   h1: 'Kunming: Yunnan\'s Gateway of Eternal Spring',
   heroSubtitle: 'Year-Round Mild Climate and Cultural Hub',
   heroImage: `${TI}/yunnan-village.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'Kunming, capital of Yunnan Province (population 4 million), earns the nickname "City of Eternal Spring" due to its consistently mild climate. The city functions as primary gateway to Yunnan for most international visitors, hosting international airport and serving as transport hub for rail and bus networks. Despite its modern development and urban scale, Kunming retains cultural character: temples, colonial-era architecture, vibrant markets, and proximity to natural attractions.',
     'The city\'s location at 1,891 metres elevation creates pleasant year-round weather. Winters rarely freeze; summers remain comfortable compared to coastal cities. This climatic stability, combined with agricultural abundance (Yunnan\'s location on Tropic of Cancer supports diverse crops), historically attracted merchants, pilgrims, and scholars to this region.',
@@ -1539,12 +1520,8 @@ export const kunmingGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'stone-forest-travel-guide'],
   galleryImages: [
-    `${TI}/yunnan-village.jpg`,
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/china-pagoda-night.jpg`,
-    `${TI}/chengdu-pandas.jpg`,
-    `${TI}/guilin-mist.jpg`,
-    `${TI}/shangri-la-monastery.jpg`
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1560,7 +1537,8 @@ export const shangrIlaGuide: DestinationGuide = {
   keywords: ['Shangri-La', 'Tibetan culture', 'Songzanlin Temple', 'Meili Mountain', 'high altitude'],
   h1: 'Shangri-La: Tibet\'s Gateway in Yunnan',
   heroSubtitle: 'Sacred Mountains & Tibetan Spiritual Traditions',
-  heroImage: `${TI}/silk-road-wall.jpg`,
+  heroImage: `${TI}/shangri-la-monastery.jpg`,
+  heroImageClassName: 'object-[center_30%]',
   introText: [
     'Shangri-La (formerly Zhongdian), elevation 3,276 metres, serves as primary Yunnan gateway for Tibetan cultural exploration. The town functions as regional administrative centre for Tibetan communities spanning Yunnan, Sichuan, and Tibet provinces. Songzanlin Temple, Tibet\'s largest lamasery outside Tibet Autonomous Region, dominates the landscape with golden roofs visible for kilometres. Approximately 700 monks maintain active Buddhist practice, preserving philosophical knowledge and spiritual traditions.',
     'The high altitude creates physiological challenges for visitors not accustomed to thin air. Proper acclimatisation proves essential; most visitors spend first day resting. However, the altitude rewards visitors with dramatic mountain scenery, pristine ecosystems, and communities maintaining deep spiritual practices. Meili Snow Mountain, sacred peak in Tibetan Buddhism, looms to the northwest; pilgrims circumambulate the sacred circuit seeking spiritual advancement.',
@@ -1626,14 +1604,11 @@ export const shangrIlaGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'shangri-la-signature-tibetan-culture'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'meili-mountain-trek-guide'],
   galleryImages: [
-    `${TI}/shangri-la-monastery.jpg`,
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/yunnan-village.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/great-wall-cloud-sea.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const greatWallGuide: DestinationGuide = {
@@ -1647,6 +1622,7 @@ export const greatWallGuide: DestinationGuide = {
   h1: 'Great Wall of China: Engineering Marvel & Cultural Icon',
   heroSubtitle: '21,000km of Ancient Defensive Fortification',
   heroImage: `${TI}/great-wall-mist.jpg`,
+  heroImageClassName: 'object-[center_40%]',
   introText: [
     'The Great Wall of China represents humanity\'s most ambitious construction project, stretching over 21,000 kilometres across northern China. Built and rebuilt across millennia (7th century BC to 17th century AD), the wall served defensive purposes protecting Chinese kingdoms from northern invasions. Most surviving sections date from Ming Dynasty (1368-1644), rebuilt using brick and stone for greater durability than earlier rammed earth versions.',
     'The wall\'s construction required enormous labour, resources, and engineering sophistication. The architectural achievement transcends mere military functionality; the structure integrates into landscapes at grand scales. UNESCO recognised the Great Wall as World Heritage site, acknowledging both historical and aesthetic significance.',
@@ -1712,15 +1688,11 @@ export const greatWallGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide'],
   galleryImages: [
-    `${TI}/great-wall-mist.jpg`,
     `${TI}/great-wall-cloud-sea.jpg`,
     `${TI}/great-wall-green.jpg`,
-    `${TI}/beijing-temple.jpg`,
-    `${TI}/forbidden-city-aerial.jpg`,
-    `${TI}/forbidden-city-lion.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const forbiddenCityGuide: DestinationGuide = {
@@ -1734,6 +1706,7 @@ export const forbiddenCityGuide: DestinationGuide = {
   h1: 'Forbidden City: World\'s Largest Imperial Palace Complex',
   heroSubtitle: '980 Buildings Spanning 24 Imperial Dynasties',
   heroImage: `${TI}/forbidden-city-aerial.jpg`,
+  heroImageClassName: 'object-[center_35%]',
   introText: [
     'The Forbidden City (Gugong Palace Museum), located at Beijing\'s heart, represents the world\'s largest and most intact imperial palace complex. Built 1406 during Ming Dynasty, the palace housed 24 emperors from Ming and Qing dynasties, governing the world\'s most populous empire. The 72-hectare walled complex contains 980 buildings arranged in symmetrical courtyards reflecting ancient Chinese cosmological principles.',
     'The architecture embodies imperial power and cosmic harmony. The symmetrical layout, with the emperor\'s residence at the symbolic centre, represents his role as link between heaven and earth. Golden roof tiles, imperial dragons, and symbolic colours (red for luck, gold for wealth, yellow for imperial authority) saturate every surface.',
@@ -1785,12 +1758,8 @@ export const forbiddenCityGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide', 'great-wall-travel-guide'],
   galleryImages: [
-    `${TI}/forbidden-city-aerial.jpg`,
-    `${TI}/forbidden-city-gold-lion.jpg`,
-    `${TI}/forbidden-city-lion.jpg`,
-    `${TI}/forbidden-city-lion-2.jpg`,
     `${TI}/beijing-temple.jpg`,
-    `${TI}/great-wall-mist.jpg`
+    galleryItem(`${TI}/forbidden-city-gold-lion.jpg`, 'object-top'),
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1811,6 +1780,7 @@ export const terracottaWarriorsGuide: DestinationGuide = {
   h1: 'Terracotta Warriors: Greatest Archaeological Discovery',
   heroSubtitle: '8,000 Life-Sized Soldiers Guarding an Emperor',
   heroImage: `${TI}/xian-terracotta.jpg`,
+  heroImageClassName: 'object-[center_25%]',
   introText: [
     'The Terracotta Army, discovered 1974 by local farmers, represents one of archaeology\'s greatest finds. Approximately 8,000 life-sized terracotta soldiers, accompanied by horses, chariots, and weapons, were crafted around 210 BC to guard Emperor Qin Shi Huang\'s mausoleum. Each warrior displays distinct facial features, hairstyles, and armour, suggesting individual portraiture. The scale and sophistication of this funerary complex illustrates imperial power and devotion to the afterlife.',
     'Three main pits have been excavated. Pit 1 contains the largest warrior concentration (approximately 6,000); Pit 2 houses mixed military units; Pit 3 contains higher-ranking officers. Visitors observe warriors at various archaeological states—some still partially buried, others fully restored. Ongoing excavation work demonstrates contemporary archaeological techniques. The site includes museums, restoration facilities, and exhibitions contextualising the Qin Dynasty.',
@@ -1862,12 +1832,8 @@ export const terracottaWarriorsGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['xian-travel-guide'],
   galleryImages: [
-    `${TI}/xian-terracotta.jpg`,
-    `${TI}/xian-terracotta-2.jpg`,
     `${TI}/silk-road-wall.jpg`,
-    `${TI}/china-pagoda-night.jpg`,
-    `${TI}/forbidden-city-aerial.jpg`,
-    `${TI}/great-wall-mist.jpg`
+    galleryItem(`${TI}/xian-terracotta-2.jpg`, 'object-top'),
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1954,15 +1920,10 @@ export const yangshuoGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'li-river-cruise-guide'],
   galleryImages: [
-    `${TI}/guilin-river-valley.jpg`,
     `${TI}/guilin-mist.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/zhangjiajie.jpg`,
-    `${TI}/wuzhen-canal.jpg`,
-    `${TI}/suzhou-canal.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const liRiverCruiseGuide: DestinationGuide = {
@@ -2032,15 +1993,10 @@ export const liRiverCruiseGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'yangshuo-travel-guide'],
   galleryImages: [
-    `${TI}/guilin-mist.jpg`,
     `${TI}/guilin-river-valley.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/zhangjiajie.jpg`,
-    `${TI}/yunnan-village.jpg`,
-    `${TI}/wuzhen-canal.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 // Rapid-fire final guides: Hangzhou, Suzhou, Chongqing, Leshan Buddha, Tianmen Mountain
@@ -2055,6 +2011,7 @@ export const hangzhouGuide: DestinationGuide = {
   h1: 'Hangzhou: Silk Capital & West Lake Paradise',
   heroSubtitle: 'Where History & Natural Beauty Merge',
   heroImage: `${TI}/wuzhen-canal.jpg`,
+  heroImageClassName: 'object-[center_40%]',
   introText: [
     'Hangzhou, located 180km south of Shanghai, served as capital of the Southern Song Dynasty (1127-1279). The city\'s reputation for beauty—particularly West Lake—inspired poets, painters, and scholars across centuries. The saying "Above there is paradise (heaven), below there is Hangzhou" reflects the city\'s legendary aesthetic charm. Modern Hangzhou combines heritage preservation with contemporary development, evident in its role as Chinese internet technology centre (Alibaba headquarters).',
     'West Lake (Hangzhou), a UNESCO World Heritage site, represents the primary attraction. The scenic lake—surrounded by temples, gardens, causeways, and misty mountains—creates one of China\'s most photographed landscapes. The "Ten Views of West Lake" define seasonal visiting patterns and classic beauty standards. Tea culture pervades Hangzhou; Longjing (Dragon Well) tea, grown on surrounding hillsides, represents premium Chinese tea.',
@@ -2125,15 +2082,11 @@ export const hangzhouGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide'],
   galleryImages: [
-    `${TI}/wuzhen-canal.jpg`,
+    `${TI}/china-pagoda-night.jpg`,
     `${TI}/suzhou-canal.jpg`,
-    `${TI}/shanghai-skyline.jpg`,
-    `${TI}/shanghai-night-blue.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/china-pagoda-night.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const suzhouGuide: DestinationGuide = {
@@ -2216,14 +2169,10 @@ export const suzhouGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide', 'hangzhou-travel-guide'],
   galleryImages: [
-    `${TI}/suzhou-canal.jpg`,
     `${TI}/wuzhen-canal.jpg`,
-    `${TI}/shanghai-skyline.jpg`,
-    `${TI}/china-pagoda-night.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const chongqingGuide: DestinationGuide = {
@@ -2235,7 +2184,8 @@ export const chongqingGuide: DestinationGuide = {
   keywords: ['Chongqing', 'Yangtze', 'Three Gorges', 'hot pot', 'mountain city'],
   h1: 'Chongqing: Gateway to Yangtze Gorges',
   heroSubtitle: 'Mountain City & Spice Capital',
-  heroImage: `${TI}/shanghai-night-red.jpg`,
+  heroImage: `${TI}/jiuzhaigou-lake.jpg`,
+  heroImageClassName: 'object-[center_45%]',
   introText: [
     'Chongqing, sprawling across mountains above the Yangtze and Jialing Rivers, functions as primary departure point for Yangtze River cruises exploring the famous Three Gorges. The city\'s dramatic topography—featuring steep hillsides, river valleys, and urban development clinging to cliffsides—creates distinctive urban character. As gateway to central China, Chongqing serves as important transport hub connecting Beijing, Shanghai, Kunming, and regional destinations.',
     'The city earned reputation as spice capital; Chongqing hot pot (Sichuan ma la) features numbing Sichuan peppercorns and chilli heat. The dining culture reflects deep regional identity. Beyond cuisine, Chongqing offers Three Gorges Dam visits, river boat experiences, cave temples, and mountain cable cars providing city panoramas.',
@@ -2298,15 +2248,9 @@ export const chongqingGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['yunnan-travel-guide'],
-  galleryImages: [
-    `${TI}/chengdu-old-town.jpg`,
-    `${TI}/chengdu-pandas.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/yunnan-village.jpg`,
-    `${TI}/zhangjiajie.jpg`
-  ],
+  galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const leshanBuddhaGuide: DestinationGuide = {
@@ -2319,7 +2263,8 @@ export const leshanBuddhaGuide: DestinationGuide = {
   keywords: ['Leshan Buddha', 'giant statue', 'sculpture', 'Buddhist site'],
   h1: 'Leshan Giant Buddha: World\'s Largest Stone Buddha',
   heroSubtitle: '71 Metres of Carved Devotion',
-  heroImage: `${TI}/chengdu-old-town.jpg`,
+  heroImage: `${TI}/china-pagoda-night.jpg`,
+  heroImageClassName: 'object-[center_30%]',
   introText: [
     'The Leshan Giant Buddha, carved into a riverside cliff (8th century), represents one of humanity\'s most ambitious sculptural achievements. At 71 metres tall, this colossal Buddha dwarfs all other stone Buddha statues globally. The construction spanned 90 years (713-803 AD), employing thousands of workers using hand tools. The scale, technical sophistication, and artistic vision embodied in this sculpture astound contemporary observers.',
     'The Buddha\'s face displays serene contemplation; drainage channels carved throughout prevent water damage and erosion. The scale becomes apparent only through comparison: visitors ascending the cliff face alongside the Buddha gradually comprehend the immense proportions. Boat tours provide full-figure perspective; cliff-side pathways permit intimate proximity to facial features and carved details.',
@@ -2375,16 +2320,9 @@ export const leshanBuddhaGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['chengdu-travel-guide'],
-  galleryImages: [
-    `${TI}/chengdu-pandas.jpg`,
-    `${TI}/chengdu-old-town.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
-    `${TI}/yunnan-village.jpg`,
-    `${TI}/zhangjiajie.jpg`,
-    `${TI}/guilin-mist.jpg`
-  ],
+  galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const tianmenMountainGuide: DestinationGuide = {
@@ -2398,6 +2336,7 @@ export const tianmenMountainGuide: DestinationGuide = {
   h1: 'Tianmen Mountain: Gateway to Heaven',
   heroSubtitle: 'World\'s Longest Cable Car & Sacred Peak',
   heroImage: `${TI}/zhangjiajie.jpg`,
+  heroImageClassName: 'object-[center_30%]',
   introText: [
     'Tianmen Mountain (Tianmen Shan, Heaven\'s Gate Mountain), located near Zhangjiajie city (30km), features distinctive geography: a natural rock arch (Heaven\'s Gate) at the summit holds geomantic significance in Chinese cosmology. The world\'s longest non-stop cable car (7,455 metres) ascends 1,279 metres vertically, completing the journey in just 8 minutes. The cable car passage climbs through multiple elevation zones, offering dramatic aerial perspectives.',
     'The 999-step cliff staircase descent provides heart-pounding alternative to cable car return. Ancient emperors performed ceremonies at this site believing concentrated cosmic forces existed here. Modern visitors seek similar transformation through physical effort and mountain immersion. The cable car experience dominates most visits; hiking paths provide quieter alternatives for adventure-seekers.',
@@ -2453,13 +2392,7 @@ export const tianmenMountainGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['zhangjiajie-travel-guide'],
-  galleryImages: [
-    `${TI}/zhangjiajie.jpg`,
-    `${TI}/guilin-mist.jpg`,
-    `${TI}/guilin-river-valley.jpg`,
-    `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`
-  ],
+  galleryImages: [],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
 };
