@@ -577,8 +577,8 @@ export const chengduGuide: DestinationGuide = {
   keywords: ['Chengdu travel', 'giant pandas', 'Sichuan cuisine', 'temples', 'panda research'],
   h1: 'Chengdu Travel Guide: Pandas, Culture & Spicy Delights',
   heroSubtitle: 'Where Ancient Wisdom Meets Gentle Giants',
-  heroImage: `${TI}/chengdu-pandas.jpg`,
-  heroImageClassName: 'object-[center_35%]',
+  heroImage: `${TI}/chengdu-old-town.jpg`,
+  heroImageClassName: 'object-[center_32%]',
   introText: [
     'Chengdu, capital of Sichuan Province in central China, embodies the nation\'s more relaxed, culturally distinct interior. Known colloquially as the "Land of Abundance," this city of 16 million residents maintains a distinctive identity shaped by geography (surrounded by fertile plains), history (independent kingdom during several dynasties), and culinary traditions (Sichuan peppercorn heat defines regional cuisine). The city consistently ranks among China\'s most livable destinations, with residents prioritising leisure, hospitality, and quality of life.',
     'The primary draw for international visitors—the Giant Panda Breeding Research Base—houses the world\'s largest population of captive giant pandas outside zoos. Visitors encounter these endangered species in naturalistic habitats, observe research activities, and understand conservation efforts. Beyond pandas, Chengdu reveals sophisticated Buddhist temples, classical gardens, and an emerging contemporary arts scene. The city\'s teahouse culture, where locals spend entire afternoons engaging in chess, mahjong, and conversation, reflects deeply rooted social traditions.',
@@ -713,8 +713,8 @@ export const chengduGuide: DestinationGuide = {
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['leshan-buddha-travel-guide', 'emei-mountain-travel-guide'],
   galleryImages: [
-    `${TI}/chengdu-old-town.jpg`,
-    `${TI}/jiuzhaigou-lake.jpg`,
+    galleryItem(`${TI}/chengdu-pandas.jpg`, 'object-[center_42%]'),
+    galleryItem(`${TI}/china-pagoda-night.jpg`, 'object-[center_38%]'),
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
