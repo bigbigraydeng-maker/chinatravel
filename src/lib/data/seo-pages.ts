@@ -328,7 +328,9 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
   description: 'China tours tailored for New Zealand travellers. Direct flights from Auckland, visa-free entry guidance for NZ passports, NZD pricing, local Aotearoa-based support since 1928.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Tailored for Kiwis. Direct flights from Auckland. Visa-free entry support for NZ passports. Local NZ support.',
-  introText: 'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry).',
+  introText:
+    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry).\n\n' +
+    'Whether you want a first-time highlights loop (Beijing, Xi\'an, Shanghai), a deeper regional journey (Yunnan, the Silk Road, or the Yangtze), or a short stopover bolted onto business travel, our Auckland-based consultants quote in NZD, explain what is included, and stay with you from enquiry to touchdown back home.',
   faqs: [
     {
       question: 'Do New Zealand citizens need a China visa?',

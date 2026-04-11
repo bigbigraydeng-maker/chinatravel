@@ -51,7 +51,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
       <HubHero
         title={heroTitle}
         subtitle={heroSubtitle}
-        backgroundImage={heroImage || 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)'}
+        backgroundImage={heroImage}
       />
 
       <TrustBar />

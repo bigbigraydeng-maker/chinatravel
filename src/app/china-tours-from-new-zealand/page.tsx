@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
-import Link from 'next/link';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import SectionTitle from '@/components/SectionTitle';
@@ -11,6 +11,9 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaToursFromNZMeta } from '@/lib/data/seo-pages';
+
+const TOUR_IMG =
+  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -71,7 +74,8 @@ export default function ChinaToursFromNZPage() {
       <HubHero
         title={chinaToursFromNZMeta.h1}
         subtitle={chinaToursFromNZMeta.heroSubtitle}
-        backgroundImage="linear-gradient(135deg, rgba(139, 90, 60, 0.8) 0%, rgba(212, 165, 116, 0.8) 100%), url('https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg')"
+        backgroundImage={`${TOUR_IMG}/great-wall-mist.jpg`}
+        imageClassName="object-[center_35%]"
       />
 
       <TrustBar />
@@ -87,9 +91,109 @@ export default function ChinaToursFromNZPage() {
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
                   Tailored for Kiwis
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {chinaToursFromNZMeta.introText}
+                <div className="text-lg text-gray-700 leading-relaxed space-y-4">
+                  {chinaToursFromNZMeta.introText.split('\n\n').map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </section>
+
+              {/* Inline imagery — classic gateways */}
+              <section className="space-y-6">
+                <h2 className="text-3xl font-serif font-bold text-gray-900">
+                  Classic gateways from New Zealand
+                </h2>
+                <p className="text-gray-700 leading-relaxed">
+                  Most CTS journeys begin in Shanghai or Beijing after your direct flight from Auckland.
+                  From there you can head to imperial landmarks, ancient capitals, river landscapes, and
+                  modern megacities — all with English-speaking guides and hand-picked hotels.
                 </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <figure className="rounded-xl overflow-hidden border border-warm-100 bg-warm-50 shadow-sm">
+                    <div className="relative aspect-[4/3] w-full">
+                      <Image
+                        src={`${TOUR_IMG}/shanghai-skyline.jpg`}
+                        alt="Shanghai skyline at dusk — a common first stop after flying from New Zealand"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <figcaption className="p-3 text-sm text-gray-600">
+                      Shanghai — Pudong skyline and the Bund, often the first chapter of a China tour.
+                    </figcaption>
+                  </figure>
+                  <figure className="rounded-xl overflow-hidden border border-warm-100 bg-warm-50 shadow-sm">
+                    <div className="relative aspect-[4/3] w-full">
+                      <Image
+                        src={`${TOUR_IMG}/forbidden-city-aerial.jpg`}
+                        alt="Aerial view of Beijing's Forbidden City"
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <figcaption className="p-3 text-sm text-gray-600">
+                      Beijing — Forbidden City and the Great Wall within easy reach of the capital.
+                    </figcaption>
+                  </figure>
+                  <figure className="rounded-xl overflow-hidden border border-warm-100 bg-warm-50 shadow-sm">
+                    <div className="relative aspect-[4/3] w-full">
+                      <Image
+                        src={`${TOUR_IMG}/xian-terracotta.jpg`}
+                        alt="Terracotta Army near Xi'an"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <figcaption className="p-3 text-sm text-gray-600">
+                      Xi&apos;an — Terracotta Warriors and China&apos;s ancient capital culture.
+                    </figcaption>
+                  </figure>
+                </div>
+              </section>
+
+              <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-warm-100 shadow-sm">
+                  <Image
+                    src={`${TOUR_IMG}/guilin-mist.jpg`}
+                    alt="Karst peaks and mist along the Li River near Guilin"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="space-y-4 text-gray-700 leading-relaxed">
+                  <h2 className="text-2xl font-serif font-bold text-gray-900">
+                    Nature &amp; pacing for Kiwi travellers
+                  </h2>
+                  <p>
+                    New Zealanders often ask for a mix of iconic sights and breathing room. Routes that
+                    combine Guilin or Zhangjiajie with Shanghai or Chengdu give you dramatic landscapes
+                    without sacrificing comfort — sensible driving days, time for coffee or a wander, and
+                    guides who understand Western expectations around meals and rest.
+                  </p>
+                  <p>
+                    If you are travelling as a family or a small group, tell us how you like to move:
+                    we can lean toward earlier starts and free afternoons, or denser sightseeing with
+                    built-in recovery days.
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Seasonal timing: see{' '}
+                    <a href="/best-time-to-visit-china" className="text-primary font-medium hover:underline">
+                      best time to visit China
+                    </a>{' '}
+                    for month-by-month notes. Entry rules for NZ passports are summarised in our{' '}
+                    <a
+                      href="/china-visa-guide-for-new-zealanders"
+                      className="text-primary font-medium hover:underline"
+                    >
+                      China entry guide for New Zealanders
+                    </a>
+                    .
+                  </p>
+                </div>
               </section>
 
               {/* Why Choose CTS for NZ Travellers */}

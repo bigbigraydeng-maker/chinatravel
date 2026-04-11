@@ -94,7 +94,7 @@ export default function ChinaToursPage() {
       <HubHero
         title={chinaToursMeta.h1}
         subtitle={chinaToursMeta.heroSubtitle}
-        backgroundImage="linear-gradient(135deg, rgba(139, 90, 60, 0.8) 0%, rgba(212, 165, 116, 0.8) 100%), url('https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg')"
+        backgroundImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
       />
 
       <TrustBar />

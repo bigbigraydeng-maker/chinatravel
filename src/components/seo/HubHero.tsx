@@ -11,38 +11,49 @@ interface HubHeroProps {
   imageClassName?: string;
 }
 
+const DEFAULT_HERO =
+  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg';
+
+/** Next/Image only accepts a real URL/path — not CSS like `linear-gradient(...), url(...)`. */
+function isOptimizableImageSrc(src: string): boolean {
+  const s = src.trim();
+  if (!s) return false;
+  if (s.includes('linear-gradient') || s.includes('radial-gradient')) return false;
+  return s.startsWith('http://') || s.startsWith('https://') || s.startsWith('/');
+}
+
 const HubHero: React.FC<HubHeroProps> = ({
   title,
   subtitle,
-  backgroundImage = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
+  backgroundImage = DEFAULT_HERO,
   imageClassName,
 }) => {
+  const raw = backgroundImage?.trim() || DEFAULT_HERO;
+  const useNextImage = isOptimizableImageSrc(raw);
+
   return (
     <section className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
-      {/* Background Image */}
-      {backgroundImage && (
+      {useNextImage ? (
         <>
           <Image
-            src={backgroundImage}
+            src={raw}
             alt={title}
             fill
             priority
             sizes="100vw"
             className={['object-cover z-0', imageClassName].filter(Boolean).join(' ')}
           />
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-black/40 z-[1]"></div>
+          <div className="absolute inset-0 bg-black/40 z-[1]" aria-hidden />
         </>
-      )}
-
-      {/* Fallback Gradient */}
-      {!backgroundImage && (
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background: 'linear-gradient(135deg, #8B5A3C 0%, #D4A574 100%)'
-          }}
-        ></div>
+      ) : (
+        <>
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: raw }}
+            aria-hidden
+          />
+          <div className="absolute inset-0 bg-black/40 z-[1]" aria-hidden />
+        </>
       )}
 
       {/* Content */}
