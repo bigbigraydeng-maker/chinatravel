@@ -1454,7 +1454,7 @@ export const kunmingGuide: DestinationGuide = {
   keywords: ['Kunming', 'Stone Forest', 'eternal spring', 'Yunnan gateway', 'temples'],
   h1: 'Kunming: Yunnan\'s Gateway of Eternal Spring',
   heroSubtitle: 'Year-Round Mild Climate and Cultural Hub',
-  heroImage: `${TI}/forbidden-city-lion-2.jpg`,
+  heroImage: `${TI}/yunnan-village.jpg`,
   introText: [
     'Kunming, capital of Yunnan Province (population 4 million), earns the nickname "City of Eternal Spring" due to its consistently mild climate. The city functions as primary gateway to Yunnan for most international visitors, hosting international airport and serving as transport hub for rail and bus networks. Despite its modern development and urban scale, Kunming retains cultural character: temples, colonial-era architecture, vibrant markets, and proximity to natural attractions.',
     'The city\'s location at 1,891 metres elevation creates pleasant year-round weather. Winters rarely freeze; summers remain comfortable compared to coastal cities. This climatic stability, combined with agricultural abundance (Yunnan\'s location on Tropic of Cancer supports diverse crops), historically attracted merchants, pilgrims, and scholars to this region.',
@@ -1547,7 +1547,7 @@ export const kunmingGuide: DestinationGuide = {
     `${TI}/shangri-la-monastery.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const shangrIlaGuide: DestinationGuide = {
@@ -1733,7 +1733,7 @@ export const forbiddenCityGuide: DestinationGuide = {
   keywords: ['Forbidden City', 'imperial palace', 'UNESCO', 'Chinese architecture'],
   h1: 'Forbidden City: World\'s Largest Imperial Palace Complex',
   heroSubtitle: '980 Buildings Spanning 24 Imperial Dynasties',
-  heroImage: `${TI}/forbidden-city-gold-lion.jpg`,
+  heroImage: `${TI}/forbidden-city-aerial.jpg`,
   introText: [
     'The Forbidden City (Gugong Palace Museum), located at Beijing\'s heart, represents the world\'s largest and most intact imperial palace complex. Built 1406 during Ming Dynasty, the palace housed 24 emperors from Ming and Qing dynasties, governing the world\'s most populous empire. The 72-hectare walled complex contains 980 buildings arranged in symmetrical courtyards reflecting ancient Chinese cosmological principles.',
     'The architecture embodies imperial power and cosmic harmony. The symmetrical layout, with the emperor\'s residence at the symbolic centre, represents his role as link between heaven and earth. Golden roof tiles, imperial dragons, and symbolic colours (red for luck, gold for wealth, yellow for imperial authority) saturate every surface.',
@@ -1793,7 +1793,7 @@ export const forbiddenCityGuide: DestinationGuide = {
     `${TI}/great-wall-mist.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
@@ -1810,7 +1810,7 @@ export const terracottaWarriorsGuide: DestinationGuide = {
   keywords: ['Terracotta Warriors', 'Qin Dynasty', 'archaeological marvel', 'mausoleum'],
   h1: 'Terracotta Warriors: Greatest Archaeological Discovery',
   heroSubtitle: '8,000 Life-Sized Soldiers Guarding an Emperor',
-  heroImage: `${TI}/xian-terracotta-2.jpg`,
+  heroImage: `${TI}/xian-terracotta.jpg`,
   introText: [
     'The Terracotta Army, discovered 1974 by local farmers, represents one of archaeology\'s greatest finds. Approximately 8,000 life-sized terracotta soldiers, accompanied by horses, chariots, and weapons, were crafted around 210 BC to guard Emperor Qin Shi Huang\'s mausoleum. Each warrior displays distinct facial features, hairstyles, and armour, suggesting individual portraiture. The scale and sophistication of this funerary complex illustrates imperial power and devotion to the afterlife.',
     'Three main pits have been excavated. Pit 1 contains the largest warrior concentration (approximately 6,000); Pit 2 houses mixed military units; Pit 3 contains higher-ranking officers. Visitors observe warriors at various archaeological states—some still partially buried, others fully restored. Ongoing excavation work demonstrates contemporary archaeological techniques. The site includes museums, restoration facilities, and exhibitions contextualising the Qin Dynasty.',
@@ -1870,7 +1870,7 @@ export const terracottaWarriorsGuide: DestinationGuide = {
     `${TI}/great-wall-mist.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 export const yangshuoGuide: DestinationGuide = {
@@ -2397,7 +2397,7 @@ export const tianmenMountainGuide: DestinationGuide = {
   keywords: ['Tianmen Mountain', 'cable car', 'heaven gate', 'Zhangjiajie'],
   h1: 'Tianmen Mountain: Gateway to Heaven',
   heroSubtitle: 'World\'s Longest Cable Car & Sacred Peak',
-  heroImage: `${TI}/forbidden-city-lion.jpg`,
+  heroImage: `${TI}/zhangjiajie.jpg`,
   introText: [
     'Tianmen Mountain (Tianmen Shan, Heaven\'s Gate Mountain), located near Zhangjiajie city (30km), features distinctive geography: a natural rock arch (Heaven\'s Gate) at the summit holds geomantic significance in Chinese cosmology. The world\'s longest non-stop cable car (7,455 metres) ascends 1,279 metres vertically, completing the journey in just 8 minutes. The cable car passage climbs through multiple elevation zones, offering dramatic aerial perspectives.',
     'The 999-step cliff staircase descent provides heart-pounding alternative to cable car return. Ancient emperors performed ceremonies at this site believing concentrated cosmic forces existed here. Modern visitors seek similar transformation through physical effort and mountain immersion. The cable car experience dominates most visits; hiking paths provide quieter alternatives for adventure-seekers.',
@@ -2461,7 +2461,7 @@ export const tianmenMountainGuide: DestinationGuide = {
     `${TI}/jiuzhaigou-lake.jpg`
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-07'
+  updatedAt: '2026-04-11'
 };
 
 // ============================================================================
