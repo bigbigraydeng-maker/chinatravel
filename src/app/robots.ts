@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/api/',
           '/_next/',
-          '/print',
+          // Internal tooling; page also sets noindex. Disallow reduces bot load on heavy client bundle.
           '/blog/staging',
         ],
       },

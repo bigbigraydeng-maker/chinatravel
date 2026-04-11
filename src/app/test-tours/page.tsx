@@ -1,4 +1,11 @@
+import type { Metadata } from 'next';
 import { getToursByDestination, getToursByDestinationAndTier } from '@/lib/data/tours';
+
+export const metadata: Metadata = {
+  title: 'Tour data check (internal) | CTS Tours',
+  description: 'Internal listing of tours from data files for QA. Not for public search.',
+  robots: { index: false, follow: false },
+};
 
 export default function TestToursPage() {
   const japanTours = getToursByDestination('japan');
