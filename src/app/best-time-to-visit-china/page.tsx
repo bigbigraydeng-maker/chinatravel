@@ -44,9 +44,9 @@ export default function BestTimeToVisitChinaPage() {
 
   const relatedGuides = [
     {
-      title: 'China Visa Guide',
+      title: 'China entry for NZ (visa-free)',
       slug: 'china-visa-guide-for-new-zealanders',
-      description: 'L-Visa requirements, timeline, costs for NZ citizens'
+      description: 'Visa-free entry for NZ passports: requirements, dates, and what to bring'
     },
     {
       title: 'All China Tours',

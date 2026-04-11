@@ -116,8 +116,8 @@ export default function ChinaToursFromNZPage() {
                       desc: 'Since 1928, taking New Zealand travellers to China. Trust & reliability.'
                     },
                     {
-                      title: 'Visa Guidance',
-                      desc: 'Expert visa advice for NZ citizens. 4-6 week L-Visa processing.'
+                      title: 'Entry for NZ passports',
+                      desc: 'Clear advice on the China visa-free window for NZ ordinary passports (30 days; confirm dates and documents before travel).'
                     },
                     {
                       title: 'Flexible Payments',
@@ -173,8 +173,8 @@ export default function ChinaToursFromNZPage() {
                       <dd className="font-medium">Sept - Oct</dd>
                     </div>
                     <div>
-                      <dt className="text-gray-600">Visa Required</dt>
-                      <dd className="font-medium">Yes, L-Visa</dd>
+                      <dt className="text-gray-600">Entry (NZ passport)</dt>
+                      <dd className="font-medium">Visa-free up to 30 days (confirm policy before travel)</dd>
                     </div>
                   </dl>
                 </div>

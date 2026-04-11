@@ -155,7 +155,7 @@ export default function ChinaToursFromAucklandPage() {
                   {[
                     'Browse tours on this page or visit /china-tours',
                     'Contact our Auckland office or call us with your preferred tour',
-                    'Discuss visa, dates, and any customizations with your consultant',
+                    'Discuss entry requirements, dates, and any customizations with your consultant',
                     'Arrange your departure from Auckland Airport (AKL)',
                     'We handle all logistics—flights, hotels, guides—everything',
                     'Enjoy your China adventure!'

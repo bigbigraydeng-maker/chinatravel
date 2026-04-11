@@ -35,7 +35,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'What is included in CTS China tours?',
-      answer: 'Inclusions vary by tour but typically include: return international airfares from Auckland/New Zealand, domestic flights and train travel in China (often high-speed first class), hotel accommodation, English-speaking tour guides, all entrance fees listed in the itinerary, and meals as specified. Exclusions typically include visa fees, travel insurance, personal expenses, and tips.'
+      answer: 'Inclusions vary by tour but typically include: return international airfares from Auckland/New Zealand, domestic flights and train travel in China (often high-speed first class), hotel accommodation, English-speaking tour guides, all entrance fees listed in the itinerary, and meals as specified. Exclusions typically include travel insurance, personal expenses, and tips. New Zealand ordinary passport holders can usually enter China visa-free for tourism for up to 30 days under current policy (check our visa-free guide for dates and conditions); any traditional visa fees apply only if your trip needs one.'
     },
     {
       question: 'How long are CTS China tours?',
@@ -324,15 +324,15 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand | Direct Flights, No Visa For 72 Hours | CTS Tours NZ',
-  description: 'China tours tailored for New Zealand travellers. Direct flights from Auckland, visa guidance, NZ dollar pricing, local Aotearoa-based support since 1928.',
+  title: 'China Tours from New Zealand | Direct Flights, Visa-Free Entry | CTS Tours NZ',
+  description: 'China tours tailored for New Zealand travellers. Direct flights from Auckland, visa-free entry guidance for NZ passports, NZD pricing, local Aotearoa-based support since 1928.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Tailored for Kiwis. Direct flights from Auckland. Expert visa guidance. Local NZ support.',
-  introText: 'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are specifically designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, visa support, and consultation from our local Aotearoa team.',
+  heroSubtitle: 'Tailored for Kiwis. Direct flights from Auckland. Visa-free entry support for NZ passports. Local NZ support.',
+  introText: 'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry).',
   faqs: [
     {
       question: 'Do New Zealand citizens need a China visa?',
-      answer: 'Yes, New Zealand citizens require a visa to visit China. However, some cities (Shanghai, Beijing, Chengdu) offer a 72-hour visa-free transit if you\'re connecting to another country. Most our tours require a standard L (tourist) visa, which takes 4-6 weeks to process. CTS provides visa guidance; however, you arrange your visa independently. Visa fees are not included in tour prices.'
+      answer: 'For most leisure trips, no. New Zealand ordinary passport holders can enter mainland China visa-free for up to 30 days for tourism and several other purposes, under a policy currently published to run until 31 December 2026. You still need a valid passport, onward or return travel, and suitable accommodation or tour documentation at immigration. Stays over 30 days, work, study, or other special cases may still need a traditional visa — see our NZ entry guide for details. Rules can change; confirm before you travel.'
     },
     {
       question: 'What is the flight duration from New Zealand to China?',
@@ -340,7 +340,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'Do CTS prices include international airfares?',
-      answer: 'Yes! All our published prices (e.g., "From NZD $4,850") include return international airfares from New Zealand, domestic flights/trains in China, accommodation, meals, guide services, and entrance fees as detailed in each tour itinerary. Exclusions (visa, travel insurance, tips) are clearly listed on each tour.'
+      answer: 'Yes! All our published prices (e.g., "From NZD $4,850") include return international airfares from New Zealand, domestic flights/trains in China, accommodation, meals, guide services, and entrance fees as detailed in each tour itinerary. Exclusions (travel insurance, tips, and any visa fees only if your itinerary needs a traditional visa) are clearly listed on each tour.'
     },
     {
       question: 'What is the time difference between New Zealand and China?',

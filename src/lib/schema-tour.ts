@@ -137,9 +137,9 @@ export function generateBreadcrumbSchema(
 export function getTourPageFaqs(destinationLabel: string): Array<{ question: string; answer: string }> {
   return [
     {
-      question: 'How do I apply for a China visa from New Zealand?',
+      question: 'Do New Zealand passport holders need a visa for China?',
       answer:
-        'Requirements change over time. CTS can guide you on current visa categories and documents. For the latest rules, check the Chinese Visa Application Service Centre (New Zealand) and plan ahead — we recommend starting the process as soon as you have firm travel dates.',
+        'Most leisure trips qualify for visa-free entry: NZ ordinary passport holders can usually stay up to 30 days without a tourist visa under current policy (published to 31 December 2026). Bring a valid passport, return or onward travel, and hotel or tour documentation. If your trip exceeds 30 days or is for work, study, or other restricted purposes, you may need a traditional visa — CTS can point you to current requirements and our NZ entry guide.',
     },
     {
       question: 'What is typically included in the tour price?',

@@ -267,7 +267,7 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -345,7 +345,7 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (first class where specified)',
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -447,7 +447,7 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -537,7 +537,7 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -668,7 +668,7 @@ export const tours: Tour[] = [
       'Land transfers'
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -742,7 +742,7 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -818,7 +818,7 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -888,7 +888,7 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (if required)',
+      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -1003,7 +1003,7 @@ export const tours: Tour[] = [
       'Airfare',
       'Personal expenses',
       'Tipping (NZD $25/day/person)',
-      'China visa fees'
+      'China visa fees (only if a traditional visa is required for your trip)'
     ],
     metaTitle: 'China Stopover — Beijing Express (3 Days) | 3 Days | CTS Tours',
     metaDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authe... Book with CTS Tours.',

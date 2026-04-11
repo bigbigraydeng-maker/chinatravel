@@ -64,9 +64,9 @@ export default function ChinaToursPage() {
       description: 'Month-by-month guide to planning your perfect China trip'
     },
     {
-      title: 'China Visa Guide for NZ Citizens',
+      title: 'China Entry Guide for NZ Citizens (Visa-Free)',
       slug: 'china-visa-guide-for-new-zealanders',
-      description: 'Complete L-Visa requirements, timeline, and costs'
+      description: 'Visa-free entry for NZ passports: documents, stay limits, and exceptions'
     }
   ];
 
@@ -211,7 +211,7 @@ export default function ChinaToursPage() {
       <RelatedGuides
         guides={relatedGuides}
         title="Plan Your China Journey"
-        subtitle="Get expert guidance on timing and visas"
+        subtitle="Get expert guidance on timing and NZ passport entry to China"
       />
 
       {/* FAQs */}

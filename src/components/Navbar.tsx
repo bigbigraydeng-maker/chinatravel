@@ -204,7 +204,7 @@ const Navbar = () => {
                 Best Time to Visit
               </Link>
               <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
-                Visa Guide for NZ
+                China entry (NZ)
               </Link>
               <Link href="/travel-tools" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors text-primary font-medium">
                 Travel Tools
@@ -297,7 +297,7 @@ const Navbar = () => {
               {mobileExpandedDest === 'guides' && (
                 <div className="pl-4 mt-1 space-y-1 border-l-2 border-secondary/30 ml-2">
                   <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>
-                  <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Visa Guide for NZ</Link>
+                  <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>China entry (NZ)</Link>
                   <Link href="/travel-tools" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-primary" onClick={closeMenu}>Travel Tools</Link>
                 </div>
               )}

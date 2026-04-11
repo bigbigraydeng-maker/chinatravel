@@ -15,8 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description: chinaVisaGuideMeta.description,
     path: '/china-visa-guide-for-new-zealanders',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
-    ogImageAlt: 'China Visa Guide for New Zealanders - Requirements and Application',
-    keywords: ['China visa New Zealand', 'China visa requirements', 'NZ passport China visa', 'China travel documents'],
+    ogImageAlt: 'China visa-free entry for New Zealand passport holders — requirements and documents',
+    keywords: ['China visa free New Zealand', 'NZ passport China entry', 'China visa requirements', '30 day visa free China', 'China travel documents'],
     ogType: 'article',
   });
 }
@@ -25,7 +25,7 @@ export default function ChinaVisaGuidePage() {
   const breadcrumbs = [
     { name: 'Home', url: '/' },
     { name: 'Guides', url: '/china-tours' },
-    { name: 'Visa Guide', url: '/china-visa-guide-for-new-zealanders' }
+    { name: 'NZ entry guide', url: '/china-visa-guide-for-new-zealanders' }
   ];
 
   const schemas = [

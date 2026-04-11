@@ -16,8 +16,9 @@ interface FAQSectionProps {
 
 const defaultFaqs: FAQ[] = [
   {
-    question: 'How to apply for a China visa from New Zealand?',
-    answer: 'New Zealand passport holders need a visa to visit China. You can apply through the Chinese Visa Application Service Centre in Auckland or Wellington. We recommend applying at least 4-6 weeks before your departure date. CTS can provide invitation letters and assistance with the visa application process for all booked tours.',
+    question: 'Do New Zealand passport holders need a visa for China?',
+    answer:
+      'For most CTS holidays, no. New Zealand ordinary passport holders can usually enter China visa-free for up to 30 days for tourism (and other permitted purposes), under policy currently published to 31 December 2026. Bring a valid passport, return or onward tickets, and accommodation or tour confirmation. Longer stays, work, study, or other cases may still need a visa — see our China entry guide for NZ travellers and confirm the latest rules before departure.',
   },
   {
     question: 'What is the best time to visit China?',

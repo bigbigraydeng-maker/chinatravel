@@ -551,7 +551,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   href="/china-visa-guide-for-new-zealanders"
                   className="text-sm text-primary font-medium hover:underline flex items-center gap-1"
                 >
-                  📄 China Visa Guide for NZ Travellers →
+                  📄 NZ entry & visa-free guide →
                 </Link>
               </div>
             </section>
@@ -634,9 +634,11 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                     <dt className="text-gray-500">Best Time</dt>
                     <dd className="font-medium text-accent text-right">{guide.practicalInfo.bestTime}</dd>
                   </div>
-                  <div className="flex justify-between gap-2">
-                    <dt className="text-gray-500">Visa Required</dt>
-                    <dd className="font-medium text-accent text-right">Yes — for NZ travellers</dd>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2">
+                    <dt className="text-gray-500 shrink-0">Entry (NZ passport)</dt>
+                    <dd className="font-medium text-accent sm:text-right">
+                      Visa-free up to 30 days (policy to 31 Dec 2026; confirm before travel)
+                    </dd>
                   </div>
                   <div className="flex justify-between gap-2">
                     <dt className="text-gray-500">Budget Range</dt>
@@ -652,7 +654,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                     href="/china-visa-guide-for-new-zealanders"
                     className="text-primary text-sm font-medium hover:underline"
                   >
-                    Read NZ Visa Guide →
+                    Read NZ entry guide →
                   </Link>
                 </div>
               </div>
@@ -713,7 +715,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   </li>
                   <li>
                     <Link href="/china-visa-guide-for-new-zealanders" className="text-primary hover:underline flex items-center gap-2">
-                      📄 China visa for NZ travellers
+                      📄 China entry for NZ passport holders
                     </Link>
                   </li>
                   <li>
