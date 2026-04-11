@@ -116,6 +116,14 @@ export default function TravelToolsPage() {
               </article>
             ))}
           </div>
+          <p className="mt-10 text-center text-xs text-gray-500">
+            <Link
+              href="/travel-tools/ai-marketing-2026"
+              className="underline decoration-warm-300 underline-offset-2 hover:text-primary"
+            >
+              CTS team · 2026 AI × SEO / ads workflow (internal, noindex)
+            </Link>
+          </p>
         </section>
 
         <section className="border-t border-warm-200 bg-warm-50/80 px-4 py-16">
