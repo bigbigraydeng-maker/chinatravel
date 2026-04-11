@@ -8,9 +8,17 @@ interface TourEnquiryProps {
   tourSlug: string;
   destination: string;
   tier: string;
+  /** Shown in enquiry notification email (e.g. campaign landing page name) */
+  source?: string;
 }
 
-export default function TourEnquiry({ tourName, tourSlug, destination, tier }: TourEnquiryProps) {
+export default function TourEnquiry({
+  tourName,
+  tourSlug,
+  destination,
+  tier,
+  source = 'Tour Page Enquiry',
+}: TourEnquiryProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,7 +43,7 @@ export default function TourEnquiry({ tourName, tourSlug, destination, tier }: T
       email: formData.email.trim(),
       phone: formData.phone.trim(),
       message: formData.message.trim() || undefined,
-      source: 'Tour Page Enquiry',
+      source,
     };
 
     try {

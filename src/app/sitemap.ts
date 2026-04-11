@@ -8,6 +8,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
   // ── Core pages ──────────────────────────────────────────────────────────
+  const campaignOctober2026: MetadataRoute.Sitemap = [
+    `${SITE}/campaigns/october-2026`,
+    `${SITE}/campaigns/october-2026/shanghai-surroundings`,
+    `${SITE}/campaigns/october-2026/tale-of-two-cities`,
+  ].map((url) => ({
+    url,
+    lastModified: now,
+    changeFrequency: 'weekly' as const,
+    priority: 0.65,
+  }));
+
   const corePages: MetadataRoute.Sitemap = [
     { url: SITE, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE}/tours`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
@@ -104,5 +115,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...corePages, ...hubPages, ...guidePages, ...tourSlugs];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...guidePages, ...tourSlugs];
 }

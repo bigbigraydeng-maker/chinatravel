@@ -13,6 +13,8 @@ interface TourTierCardProps {
   isPremium?: boolean;
   route?: string[];
   departure?: string;
+  /** When set, card links here (e.g. campaign LP) instead of the default tour URL */
+  href?: string;
 }
 
 const tierColors = {
@@ -39,11 +41,13 @@ const TourTierCard = ({
   isPremium = false,
   route = [],
   departure,
+  href,
 }: TourTierCardProps) => {
   const colors = tierColors[tier];
+  const tourHref = href ?? `/tours/${destination}/${tier}/${slug}`;
 
   return (
-    <Link href={`/tours/${destination}/${tier}/${slug}`} className="block group">
+    <Link href={tourHref} className="block group">
       <div className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border border-warm-100/50 hover:-translate-y-2`}>
         <div className="overflow-hidden relative h-64">
           <Image

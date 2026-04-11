@@ -171,10 +171,10 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'shanghai-beyond'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="14 Oct 2026" route={['Shanghai', 'Suzhou', 'Wuxi', 'Hangzhou']} />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="14 Oct 2026" route={['Shanghai', 'Suzhou', 'Wuxi', 'Hangzhou']} href="/campaigns/october-2026/shanghai-surroundings" />
               ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-shanghai'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="15 Oct 2026" route={['Beijing', "Xi'an"]} />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="15 Oct 2026" route={['Beijing', "Xi'an"]} href="/campaigns/october-2026/tale-of-two-cities" />
               ) : null; })()}
             </div>
           </div>

@@ -5,7 +5,7 @@
 **ChinaTravel** is a luxury China tour operator website for New Zealand travellers. It's built with Next.js 14 (App Router), TypeScript, Tailwind CSS, and Supabase. Deployed on Render.
 
 **Repository:** `https://github.com/bigbigraydeng-maker/chinatravel.git`
-**Live Site:** `https://chinatravel-zloe.onrender.com/`
+**Live Site:** `https://www.ctstours.co.nz/`
 **Stack:** Next.js 14 + TypeScript + Tailwind CSS + Supabase + Resend (email)
 
 ---

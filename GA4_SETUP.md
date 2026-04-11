@@ -23,7 +23,7 @@ This project now has Google Analytics 4 integration ready. You need to:
   - **Time zone:** New Zealand (UTC+12)
   - **Currency:** NZD
   - **Data stream type:** Web
-  - **Website URL:** https://chinatravel-zloe.onrender.com (or production domain)
+  - **Website URL:** https://www.ctstours.co.nz
 
 ### 1.3 Get Your Measurement ID
 After creating the property:
@@ -67,7 +67,7 @@ If you want to test locally:
 ### 3.1 Check in GA4 Dashboard
 1. Go to **Google Analytics** → **Your Property**
 2. Look for **Realtime** report in left sidebar
-3. Visit your website (https://chinatravel-zloe.onrender.com)
+3. Visit your website (https://www.ctstours.co.nz)
 4. You should see **1 active user** in Realtime report
 5. Click around pages — counters should update in real-time
 
@@ -165,6 +165,35 @@ Example: Track "Inquiry Completion"
 1. Create conversion for `begin_checkout` event
 2. Check GA4 dashboard in 24-48 hours
 3. See how many users completed inquiries
+
+---
+
+## October 2026 Discovery campaigns (UTM + canonical)
+
+**Canonical:** Campaign pages use **self-referencing canonical** on the clean URL (no query string), e.g.  
+`https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings`  
+So Google treats the campaign page as the primary URL; **UTM parameters belong only on ad / email links**, not in the canonical tag.
+
+**Paths:**
+
+| Tour | Path |
+|------|------|
+| Shanghai & Surroundings (14 Oct spotlight) | `/campaigns/october-2026/shanghai-surroundings` |
+| A Tale of Two Cities — Beijing & Xi’an (15 Oct spotlight) | `/campaigns/october-2026/tale-of-two-cities` |
+
+**UTM (paste after your live origin, e.g. `https://www.ctstours.co.nz`):**
+
+- **Google Ads (example):**  
+  `.../shanghai-surroundings?utm_source=google&utm_medium=cpc&utm_campaign=oct26_discovery&utm_content=shanghai_14oct`  
+  `.../tale-of-two-cities?utm_source=google&utm_medium=cpc&utm_campaign=oct26_discovery&utm_content=tale_15oct`
+
+- **Meta / Facebook (example):**  
+  `.../shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct26_discovery&utm_content=shanghai_feed`  
+  `.../tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct26_discovery&utm_content=tale_feed`
+
+Use **`utm_content`** (or **`utm_term`** for search) to distinguish creatives or keywords. Keep **`utm_campaign`** consistent for the October push so GA4 groups traffic in one campaign.
+
+In code, `buildOctober2026CampaignAdUrl()` in `src/lib/campaigns/october-2026-discovery.ts` builds the same shape of URL from a site origin + slug + UTM fields.
 
 ---
 
