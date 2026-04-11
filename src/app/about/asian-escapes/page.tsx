@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
@@ -36,6 +37,16 @@ export default function AsianEscapesPage() {
           <div className="absolute bottom-10 right-20 h-60 w-60 rounded-full border border-white/20" />
         </div>
         <div className="container relative z-10 mx-auto px-4">
+          <div className="mx-auto mb-8 flex max-w-lg justify-center rounded-2xl bg-white/95 p-6 shadow-xl ring-1 ring-white/30 md:mb-10 md:p-8">
+            <Image
+              src="/images/brand/asiascape-holidays-logo.png"
+              alt="AsiaScape Holidays logo — map pin with Asian motifs and wordmark"
+              width={440}
+              height={280}
+              className="h-auto w-full max-w-[min(100%,360px)] object-contain"
+              priority
+            />
+          </div>
           <p className="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-secondary">
             For travel agents · A CTS Tours brand
           </p>
