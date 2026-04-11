@@ -222,7 +222,7 @@ const HomePage = () => {
             ))}
           </div>
           <div className="text-center mt-10">
-            <Link href="/guide" className="text-primary hover:underline font-medium">
+            <Link href="/guide" prefetch={false} className="text-primary hover:underline font-medium">
               View all {allGuides.length} destination guides →
             </Link>
           </div>

@@ -147,7 +147,7 @@ const GuidePage = () => {
               Browse our complete guide collection or connect with a CTS specialist to plan your personalized China journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/blog" className="bg-primary text-white px-8 py-3 rounded-full hover:shadow-lg transition-shadow font-medium">
+              <Link href="/blog" prefetch={false} className="bg-primary text-white px-8 py-3 rounded-full hover:shadow-lg transition-shadow font-medium">
                 Read Our Blog
               </Link>
               <Link href="/contact" className="border-2 border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-colors font-medium">

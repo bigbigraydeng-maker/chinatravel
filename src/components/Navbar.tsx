@@ -187,17 +187,17 @@ const Navbar = () => {
 
           {/* Travel Guide Dropdown */}
           <div className="relative group">
-            <Link href="/guide" className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+            <Link href="/guide" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
               Travel Guide
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
             <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link href="/guide" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+              <Link href="/guide" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
                 All Travel Guides
               </Link>
-              <Link href="/blog" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+              <Link href="/blog" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
                 Travel Blog
               </Link>
               <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
@@ -296,10 +296,10 @@ const Navbar = () => {
               </button>
               {mobileExpandedDest === 'guides' && (
                 <div className="pl-4 mt-1 space-y-1 border-l-2 border-secondary/30 ml-2">
-                  <Link href="/guide" className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                  <Link href="/guide" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
                     All Travel Guides
                   </Link>
-                  <Link href="/blog" className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                  <Link href="/blog" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
                     Travel Blog
                   </Link>
                   <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>

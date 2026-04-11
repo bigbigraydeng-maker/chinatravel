@@ -17,14 +17,8 @@ function isAuthed(request: NextRequest, secret: string): boolean {
   return false;
 }
 
-export function middleware(request: NextRequest) {
+function handleAdmin(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
-
-  const isAdminArea = pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
-  if (!isAdminArea) {
-    return NextResponse.next();
-  }
-
   const secret = adminSecret();
 
   if (!secret) {
@@ -76,6 +70,28 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(loginUrl);
 }
 
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const isAdminArea = pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
+
+  if (isAdminArea) {
+    return handleAdmin(request);
+  }
+
+  // Full page loads: avoid long-lived HTML cache pointing at deleted build chunks after deploy
+  // (fixes 404 + wrong MIME on /_next/static/chunks/... after a new release).
+  if (request.headers.get('sec-fetch-dest') === 'document') {
+    const res = NextResponse.next();
+    res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    return res;
+  }
+
+  return NextResponse.next();
+}
+
 export const config = {
-  matcher: ['/admin/:path*', '/api/admin/:path*'],
+  matcher: [
+    '/',
+    '/((?!_next/static|_next/image|favicon.ico).*)',
+  ],
 };
