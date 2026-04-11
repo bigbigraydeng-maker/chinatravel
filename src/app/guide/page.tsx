@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SectionTitle from '@/components/SectionTitle';
 import { getAllGuides } from '@/lib/data/guides';
-import { migratedUnsplash } from '@/lib/site-media';
+import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'China Travel Guides | 21 Expert Destination Guides | CTS Tours',
@@ -72,8 +72,8 @@ const GuidePage = () => {
         <div className="absolute inset-0 z-0">
           <div className="relative h-full w-full">
             <Image
-              src={migratedUnsplash('photo-1528360983277-13d401cdc186')}
-              alt="China travel guides by CTS Tours"
+              src={tourImage('great-wall-mist.jpg')}
+              alt="Great Wall of China — hero for China travel guides by CTS Tours"
               fill
               sizes="100vw"
               priority
