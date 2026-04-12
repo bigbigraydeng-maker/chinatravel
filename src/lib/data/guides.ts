@@ -733,7 +733,7 @@ export const guilinGuide: DestinationGuide = {
   keywords: ['Guilin travel', 'Li River', 'karst mountains', 'Yangshuo', 'cormorant fishing'],
   h1: 'Guilin Travel Guide: Where Mountains Meet Water',
   heroSubtitle: 'China\'s Most Picturesque Landscape',
-  heroImage: `${TI}/guilin-mist.jpg`,
+  heroImage: `${TI}/guilin-river-valley.jpg`,
   heroImageClassName: 'object-[center_35%]',
   introText: [
     'Guilin, located in Guangxi Zhuang Autonomous Region in southern China, represents one of the world\'s most visually distinctive regions. The karst limestone mountain formations rising dramatically from the Li River have inspired painters, poets, and philosophers for centuries. These otherworldly landscapes—featuring distinctive peak shapes, hidden caves, and emerald waterways—influenced classical Chinese landscape painting aesthetics. The region\'s natural beauty transcends merely scenic; it embodies philosophical principles connecting humans to nature\'s sublime forces.',
@@ -1920,7 +1920,7 @@ export const yangshuoGuide: DestinationGuide = {
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'li-river-cruise-guide'],
   galleryImages: [
-    `${TI}/guilin-mist.jpg`,
+    `${TI}/guilin-river-valley.jpg`,
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1936,7 +1936,7 @@ export const liRiverCruiseGuide: DestinationGuide = {
   keywords: ['Li River', 'cruise', 'karst', 'scenic journey', 'Guilin'],
   h1: 'Li River Cruise: World\'s Most Scenic Boat Journey',
   heroSubtitle: '83km Through UNESCO Karst Landscape',
-  heroImage: `${TI}/guilin-mist.jpg`,
+  heroImage: `${TI}/guilin-river-valley.jpg`,
   introText: [
     'The Li River cruise from Guilin to Yangshuo comprises one of China\'s quintessential travel experiences. This 83-kilometre journey passes through karst landscapes so visually distinctive that they inspired classical Chinese painting aesthetics. The mountain formations—rising vertically from the river, featuring distinctive peak shapes, and framed by mist—create environmental drama unmatched elsewhere in China.',
     'Full-day cruises depart Guilin morning (8-9am), reaching Yangshuo evening (5-6pm), with stops for lunch and village visits. Shorter segments (4-hour cruises) compress the experience without sacrificing dramatic scenery. Private boats and bamboo rafting offer alternative perspectives. Water levels and weather influence visibility; optimal conditions occur spring and autumn.',
@@ -2263,8 +2263,8 @@ export const leshanBuddhaGuide: DestinationGuide = {
   keywords: ['Leshan Buddha', 'giant statue', 'sculpture', 'Buddhist site'],
   h1: 'Leshan Giant Buddha: World\'s Largest Stone Buddha',
   heroSubtitle: '71 Metres of Carved Devotion',
-  heroImage: `${TI}/china-pagoda-night.jpg`,
-  heroImageClassName: 'object-[center_30%]',
+  heroImage: `${TI}/migrated/unsplash/photo-1558618666-fcd25c85cd64.jpg`,
+  heroImageClassName: 'object-[center_40%]',
   introText: [
     'The Leshan Giant Buddha, carved into a riverside cliff (8th century), represents one of humanity\'s most ambitious sculptural achievements. At 71 metres tall, this colossal Buddha dwarfs all other stone Buddha statues globally. The construction spanned 90 years (713-803 AD), employing thousands of workers using hand tools. The scale, technical sophistication, and artistic vision embodied in this sculpture astound contemporary observers.',
     'The Buddha\'s face displays serene contemplation; drainage channels carved throughout prevent water damage and erosion. The scale becomes apparent only through comparison: visitors ascending the cliff face alongside the Buddha gradually comprehend the immense proportions. Boat tours provide full-figure perspective; cliff-side pathways permit intimate proximity to facial features and carved details.',

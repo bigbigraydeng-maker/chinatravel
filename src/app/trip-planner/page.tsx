@@ -102,7 +102,7 @@ export default function TripPlannerPage() {
         name: 'Are flights included in recommended tours?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Inclusions vary by product. Open any tour page for detailed inclusions and exclusions, or ask our consultants for flight-inclusive packaging.',
+          text: 'Yes. Return international airfares from New Zealand are included in our published tour prices. Check the Inclusions section on each tour page for full details.',
         },
       },
       {

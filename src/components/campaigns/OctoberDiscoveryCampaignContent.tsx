@@ -40,7 +40,7 @@ export default function OctoberDiscoveryCampaignContent({
         </section>
 
         <section>
-          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">What you will see (published highlights)</h2>
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Tour highlights</h2>
           <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
             {tour.highlights.map((h, i) => (
               <li key={`${i}-${h.slice(0, 24)}`}>{h}</li>
@@ -61,10 +61,10 @@ export default function OctoberDiscoveryCampaignContent({
             transfer.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            <strong>Not included:</strong> China visa fee (only if a traditional visa is required); travel
-            insurance (strongly recommended); personal expenses; transport and guide during free time;
-            meals not listed; tips (suggested NZD $10 per day per person); optional activities; anything not
-            specifically mentioned as included — exactly as listed on the main tour page.
+            <strong>Not included:</strong> Travel insurance (strongly recommended); personal expenses;
+            transport and guide during free time; meals not listed; tips (suggested NZD $10 per day per
+            person); optional activities; anything not specifically mentioned as included — exactly as
+            listed on the main tour page.
           </p>
         </section>
 
@@ -122,7 +122,7 @@ export default function OctoberDiscoveryCampaignContent({
       </section>
 
       <section>
-        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Published highlights</h2>
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Tour highlights</h2>
         <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
           {tour.highlights.map((h, i) => (
             <li key={`${i}-${h.slice(0, 24)}`}>{h}</li>
@@ -137,9 +137,9 @@ export default function OctoberDiscoveryCampaignContent({
           English-speaking tour guide; entrance fees as specified; meals as specified; land transfers.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          <strong>Not included:</strong> China visa (if a traditional visa is required); travel insurance
-          (strongly recommended); personal expenses; transport and guide during free time; meals not listed;
-          tips (suggested NZD $10 per day per person); anything not specifically mentioned as included.
+          <strong>Not included:</strong> Travel insurance (strongly recommended); personal expenses;
+          transport and guide during free time; meals not listed; tips (suggested NZD $10 per day per
+          person); anything not specifically mentioned as included.
         </p>
       </section>
 

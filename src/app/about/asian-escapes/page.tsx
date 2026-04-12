@@ -150,6 +150,37 @@ export default function AsianEscapesPage() {
           </blockquote>
         </div>
       </section>
+
+      <section className="py-16 md:py-20 bg-warm-50/50">
+        <div className="container mx-auto max-w-3xl px-4">
+          <h2 className="mb-8 font-serif text-2xl font-bold text-gray-900 md:text-3xl text-center">
+            Our Clients on the Ground
+          </h2>
+          <p className="text-center text-gray-600 mb-10 text-lg">
+            Real CTS travellers at the Great Wall of China — guided by Asiascape&apos;s on-ground team.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="overflow-hidden rounded-2xl shadow-lg">
+              <Image
+                src="/images/great-wall-cts-1.jpg"
+                alt="CTS Tours traveller holding CTS sign at the Great Wall of China"
+                width={640}
+                height={480}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-lg">
+              <Image
+                src="/images/great-wall-cts-2.jpg"
+                alt="CTS Tours traveller holding CTS sign at the Great Wall of China"
+                width={640}
+                height={480}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

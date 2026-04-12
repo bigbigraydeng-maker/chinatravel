@@ -132,7 +132,7 @@ export const destinations: Destination[] = [
     name: 'Japan',
     subtitle: 'Where Tradition Meets Tomorrow',
     description: 'Experience the perfect harmony of ancient traditions and cutting-edge modernity. From serene temples to bustling Tokyo, Japan offers unforgettable journeys.',
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: migratedUnsplash('photo-1540959733332-eab4deabeeaf'),
     highlights: [
       'Witness Mount Fuji',
       'Explore ancient Kyoto temples',
@@ -269,7 +269,6 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -347,7 +346,6 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (first class where specified)',
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -449,7 +447,6 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -495,9 +492,9 @@ export const tours: Tour[] = [
     shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
     price: 'From NZD $7,670',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
     ],
     highlights: [
@@ -539,7 +536,6 @@ export const tours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -670,7 +666,6 @@ export const tours: Tour[] = [
       'Land transfers'
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -744,7 +739,6 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -820,7 +814,6 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -890,7 +883,6 @@ export const tours: Tour[] = [
       'Land transfer',
     ],
     exclusions: [
-      'China visa fee (only if a traditional visa is required for your trip)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -1005,7 +997,6 @@ export const tours: Tour[] = [
       'Airfare',
       'Personal expenses',
       'Tipping (NZD $25/day/person)',
-      'China visa fees (only if a traditional visa is required for your trip)'
     ],
     metaTitle: 'China Stopover — Beijing Express (3 Days) | 3 Days | CTS Tours',
     metaDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authe... Book with CTS Tours.',
@@ -1157,9 +1148,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Guilin\'s scenic landscapes featuring a Li River cruise to Yangshuo, limestone cave exploration, and iconic mountain formations.',
     duration: '3 Days',
     price: 'From NZD $1,099',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg'
     ],
     highlights: [
       'Li River cruise',
@@ -1384,7 +1375,7 @@ export const tours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg'
     ],
     highlights: [
       'Reed Flute Cave',

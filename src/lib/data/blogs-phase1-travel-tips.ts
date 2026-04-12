@@ -92,14 +92,31 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 
 **Alipay** and **WeChat Pay** increasingly accept **foreign cards** for short-term “Tour Card” style setups — policies evolve. Carry **CNY cash** for backup (street food, small towns). Notify your **NZ bank** of travel to reduce card blocks.
 
+## Ride-hailing: DiDi for foreigners
+
+**DiDi** is China's dominant ride-hailing platform — equivalent to Uber or Ola. Since 2023, DiDi has significantly improved its **international version** for visitors:
+
+- Download **DiDi** (Didi — Car Booking App) from your App Store before departure
+- Register with your **New Zealand mobile number** and a **Visa or Mastercard**
+- The app has an **English-language interface** and shows fares upfront in CNY
+- In major cities (Beijing, Shanghai, Chengdu, Xi'an, Guilin, Hangzhou), DiDi works reliably for airport runs, hotel transfers, and evening outings
+
+**Practical tips for NZ travellers:**
+- Type your **destination in English** — the app translates automatically
+- **Express** (快车) is the standard affordable option; **Premiere** for airport runs with luggage
+- Share your **trip status** with a travel companion for peace of mind
+- On CTS Discovery and Signature tours, your guide handles transfers — DiDi is most useful for **free evenings** and personal excursions
+- As a fallback, **Amap** (Gaode Maps) has a built-in ride-calling feature that integrates with multiple providers including DiDi
+
 ## Priority install order (simplified)
 
 1. VPN (tested)  
 2. Amap or Baidu Maps  
 3. WeChat  
-4. Alipay (if using)  
-5. Translation + offline packs  
-6. Airline / hotel apps  
+4. DiDi (ride-hailing)  
+5. Alipay (if using)  
+6. Translation + offline packs  
+7. Airline / hotel apps  
 
 ## On tour vs independent time
 

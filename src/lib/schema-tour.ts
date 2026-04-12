@@ -144,7 +144,7 @@ export function getTourPageFaqs(destinationLabel: string): Array<{ question: str
     {
       question: 'What is typically included in the tour price?',
       answer:
-        'Each tour lists specific inclusions and exclusions on this page (accommodation style, meals, guiding, transport between cities, and entries where stated). International flights to/from New Zealand are usually not included unless clearly noted — ask us for a quote if you need flights bundled.',
+        'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
     },
     {
       question: `When is the best time to visit ${destinationLabel}?`,
@@ -154,7 +154,7 @@ export function getTourPageFaqs(destinationLabel: string): Array<{ question: str
     {
       question: 'Are international flights from New Zealand included?',
       answer:
-        'Unless explicitly stated on the tour page, airfare is not included. CTS Auckland can help arrange competitive airfares and connect them with your land package.',
+        'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
     },
     {
       question: 'How do I book and what payment options are available?',

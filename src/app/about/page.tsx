@@ -203,14 +203,12 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="w-16 h-16 mr-4">
-                  <div className="w-full h-full rounded-lg bg-primary/10 flex items-center justify-center">
-                    <span className="text-xs font-bold text-primary text-center leading-tight">Forté Global</span>
-                  </div>
+                <div className="relative w-16 h-16 mr-4 shrink-0 flex items-center justify-center rounded-lg bg-blue-50 border border-blue-100">
+                  <span className="text-sm font-bold text-blue-700 text-center leading-tight">TIA</span>
                 </div>
-                <h3 className="text-xl font-bold">Forté Global Network</h3>
+                <h3 className="text-xl font-bold">Tourism Industry Aotearoa</h3>
               </div>
-              <p className="text-gray-700">Member of Forté Global Network Business Solutions, providing enhanced travel services and benefits to our clients.</p>
+              <p className="text-gray-700">Member of <a href="https://www.tia.org.nz/about" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Tourism Industry Aotearoa (TIA)</a>, New Zealand's peak tourism industry body representing businesses across the visitor economy.</p>
             </div>
           </div>
         </div>
@@ -242,8 +240,8 @@ export default function AboutPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Direct China Operations</h3>
-                <p className="text-gray-700">On-the-ground presence and partnerships throughout China, ensuring seamless travel experiences.</p>
+                <h3 className="text-xl font-bold mb-2">Direct Asia Operations</h3>
+                <p className="text-gray-700">On-the-ground presence and partnerships throughout China, Japan, and Vietnam, ensuring seamless travel experiences via our Asiascape Holidays ground operations brand.</p>
               </div>
             </div>
             

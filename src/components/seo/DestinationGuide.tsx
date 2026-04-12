@@ -94,7 +94,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'guilin-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-mist.jpg`, tier: 'stopover' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
       { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
@@ -235,7 +235,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
       { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-mist.jpg`, tier: 'stopover' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
     ],
     relatedGuides: [
       { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
@@ -644,10 +644,6 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                     <dd className="font-medium text-accent sm:text-right">
                       Visa-free up to 30 days (policy to 31 Dec 2026; confirm before travel)
                     </dd>
-                  </div>
-                  <div className="flex justify-between gap-2">
-                    <dt className="text-gray-500">Budget Range</dt>
-                    <dd className="font-medium text-accent text-right">{guide.practicalInfo.budget.split('.')[0]}</dd>
                   </div>
                   <div className="flex justify-between gap-2">
                     <dt className="text-gray-500">Currency</dt>

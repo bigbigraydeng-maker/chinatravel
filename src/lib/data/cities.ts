@@ -102,7 +102,7 @@ export const cities: City[] = [
   {
     slug: 'guilin',
     name: 'Guilin',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
     description: 'Famous for its karst mountains and Li River scenery',
     culturalIntro: [
       'Guilin\'s landscape is the stuff of Chinese paintings come to life. The city and its surroundings are defined by dramatic karst peaks that rise like ancient sentinels from emerald-green rice paddies and winding rivers. A cruise along the Li River from Guilin to Yangshuo is widely regarded as one of the most beautiful river journeys in the world.',
