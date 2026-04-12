@@ -139,7 +139,7 @@ export const CONTENT_PIVOT = {
   /** 与你对齐的议题（下一版任务可拆细颗粒度）。 */
   discussionTopics: [
     'FAQ：当前产品页使用目的地级通用 5 问（getTourPageFaqs）；需按线路加厚、可接 tour 级字段或独立 FAQ 数据。',
-    '地图：行程按日地图（坐标/城市点）；代码侧 Tour 页曾预留 ItineraryMap，需数据与交互方案。',
+    '地图：产品页已上线「Map view / Detailed view」示意路线图（由标题/住宿文本推断城市；非精确地理底图）。若需真地图或坐标级精度，再排期。',
     'FB / INS + 博客：以支点页定 master brief，再拆每周/每日发帖与长文节奏（当前计划表颗粒度偏大，另表维护亦可）。',
     '社媒英文稿：先在 Obsidian（magic/chinatravel）锁「内容方向 + 四周柱」，再用 AI 按槽位批量生成，人工只做事实核对与口吻润色。',
     '图片：tours 图库 + 社媒裁切规格（9:16 / 1:1 等）与命名规范一并定稿。',

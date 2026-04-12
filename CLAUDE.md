@@ -32,7 +32,8 @@ src/components/
   ├── tours/
   │   ├── TourHero.tsx                  # Tour header
   │   ├── TourHighlights.tsx            # 4-6 highlights
-  │   ├── TourItinerary.tsx             # Day-by-day itinerary
+  │   ├── TourItinerary.tsx             # Day-by-day itinerary (Map view + Detailed view when route inferable)
+  │   ├── ItineraryRouteSchematic.tsx   # SVG schematic China map + route (derived from itinerary text)
   │   ├── ItineraryActions.tsx          # Print/Email buttons
   │   ├── ItineraryEmailModal.tsx       # Email form
   │   ├── TourInclusions.tsx            # Inclusions/Exclusions

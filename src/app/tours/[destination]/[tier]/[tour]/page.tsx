@@ -29,7 +29,6 @@ import {
   getTourPageFaqs,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
-// import ItineraryMap from '@/components/tours/ItineraryMap';
 
 interface TourPageProps {
   params: {
