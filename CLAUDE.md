@@ -58,12 +58,15 @@ src/components/
   - **Critical:** Resend must be instantiated INSIDE the POST handler, never at module level (prevents build-time crash)
   - Example: `const resend = new Resend(process.env.RESEND_API_KEY);` inside handler function
 - **Environment variable:** `RESEND_API_KEY` (not yet configured on Render)
+- **Marketing plan board:** `/marketing-plan` — optional password gate via `MARKETING_PLAN_ACCESS_KEY` (min 12 chars). When set, visitors hit `/marketing-plan/login` first; cookie is HttpOnly. When unset, the board stays public (convenient for local dev).
 
 ### 6. Environment Variables
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://...supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 RESEND_API_KEY=re_... (will be configured later)
+# Optional: password-protect /marketing-plan (Render: set as secret)
+# MARKETING_PLAN_ACCESS_KEY=long-random-string-at-least-12-chars
 ```
 
 ### 7. Git Workflow
@@ -97,7 +100,8 @@ RESEND_API_KEY=re_... (will be configured later)
 
 ```bash
 # Development
-npm run dev              # Start dev server on :3000
+npm run dev              # Start dev on :3010 (bind 0.0.0.0 — use http://127.0.0.1:3010 if localhost fails)
+npm run dev:alt          # Alternate port :3055 if 3010 is blocked or in use
 npm run build            # Build for production
 npm test                 # Run test suite
 

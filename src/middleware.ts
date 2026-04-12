@@ -1,8 +1,19 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { ADMIN_COOKIE_NAME } from '@/lib/auth/admin-cookie';
+import {
+  MARKETING_PLAN_COOKIE_NAME,
+  isValidMarketingPlanSession,
+  marketingPlanAccessKey,
+} from '@/lib/auth/marketing-plan-session';
 
 const ADMIN_LOGIN = '/admin/login';
+
+function applyMarketingPlanSeoHeaders(pathname: string, res: NextResponse) {
+  if (pathname.startsWith('/marketing-plan') || pathname.startsWith('/api/marketing-plan')) {
+    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+}
 
 function adminSecret(): string | undefined {
   return process.env.ADMIN_SECRET_KEY;
@@ -70,23 +81,49 @@ function handleAdmin(request: NextRequest): NextResponse {
   return NextResponse.redirect(loginUrl);
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  const mpKey = marketingPlanAccessKey();
+  const marketingPlanPublic =
+    pathname.startsWith('/marketing-plan/login') ||
+    pathname === '/api/marketing-plan-auth' ||
+    pathname === '/api/marketing-plan-logout';
+
+  if (
+    mpKey &&
+    (pathname.startsWith('/marketing-plan') || pathname.startsWith('/api/marketing-plan')) &&
+    !marketingPlanPublic
+  ) {
+    const cookie = request.cookies.get(MARKETING_PLAN_COOKIE_NAME)?.value;
+    const ok = await isValidMarketingPlanSession(mpKey, cookie);
+    if (!ok) {
+      if (pathname.startsWith('/api/marketing-plan')) {
+        const res = NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        applyMarketingPlanSeoHeaders(pathname, res);
+        return res;
+      }
+      const login = new URL('/marketing-plan/login', request.url);
+      login.searchParams.set('next', pathname + request.nextUrl.search);
+      const res = NextResponse.redirect(login);
+      applyMarketingPlanSeoHeaders(pathname, res);
+      return res;
+    }
+  }
+
   const isAdminArea = pathname.startsWith('/admin') || pathname.startsWith('/api/admin');
 
   if (isAdminArea) {
     return handleAdmin(request);
   }
 
+  const res = NextResponse.next();
   // Full page loads: avoid long-lived HTML cache pointing at deleted build chunks after deploy
-  // (fixes 404 + wrong MIME on /_next/static/chunks/... after a new release).
   if (request.headers.get('sec-fetch-dest') === 'document') {
-    const res = NextResponse.next();
     res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
-    return res;
   }
-
-  return NextResponse.next();
+  applyMarketingPlanSeoHeaders(pathname, res);
+  return res;
 }
 
 export const config = {
