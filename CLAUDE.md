@@ -59,6 +59,7 @@ src/components/
   - Example: `const resend = new Resend(process.env.RESEND_API_KEY);` inside handler function
 - **Environment variable:** `RESEND_API_KEY` (not yet configured on Render)
 - **Marketing hub:** `/marketing` — placeholder for future site-wide ops/SEO board. **October campaign board:** `/marketing/campaign` — optional password via `MARKETING_PLAN_ACCESS_KEY` (min 12 chars); login at `/marketing/campaign/login`; cookie path is campaign-only. Old `/marketing-plan` 308s to `/marketing/campaign`.
+- **Marketing tasks — `reviewLinks` (验收链接):** In `src/lib/data/marketing-plan-2026.ts`, any task whose deliverable is visible on the public site (e.g. T006 免签模块、产品页、签证指南) should include optional `reviewLinks: { label, href }[]` so the campaign board「今日 W1」can deep-link to `#visa-nudge`, `#faq`, product URLs, etc. Add anchors on components when needed (`ChinaVisaNudge` → `id="visa-nudge"`, `FAQSection` → `id="faq"`).
 
 ### 6. Environment Variables
 ```env

@@ -17,6 +17,8 @@ export interface MarketingTask {
   status: TaskStatus;
   deliverable: string;
   notes?: string;
+  /** On-site URLs for QA / client review (shown on campaign board “今日 W1”). */
+  reviewLinks?: { label: string; href: string }[];
 }
 
 export interface KeyResult {
@@ -384,6 +386,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'done',
     deliverable: '项目管理表（本页）',
     notes: '/marketing/campaign',
+    reviewLinks: [{ label: '本统筹页', href: '/marketing/campaign' }],
   },
   { id: 'T004', module: '策略与项目管理', name: '建立素材命名与文件管理规则', priority: 'P1', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '文件规范' },
   {
@@ -396,6 +399,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'done',
     deliverable: '新 Hero 文案',
     notes: 'tours.ts shortDescription + metaDescription（十月/NZ/免签提示）。',
+    reviewLinks: [
+      { label: 'A Tale of Two Cities 产品页', href: '/tours/china/discovery/beijing-shanghai' },
+      { label: 'Shanghai & Beyond 产品页', href: '/tours/china/discovery/shanghai-beyond' },
+    ],
   },
   {
     id: 'T006',
@@ -407,6 +414,11 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'done',
     deliverable: '页面模块上线',
     notes: 'ChinaVisaNudge 组件，仅两条战役产品页；链至签证指南。',
+    reviewLinks: [
+      { label: 'NZ 中国签证指南（长文）', href: '/china-visa-guide-for-new-zealanders' },
+      { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai#visa-nudge' },
+      { label: '免签条 · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond#visa-nudge' },
+    ],
   },
   {
     id: 'T007',
@@ -418,8 +430,25 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'done',
     deliverable: 'CTA 优化版',
     notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案。',
+    reviewLinks: [
+      { label: '首屏 CTA · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai' },
+      { label: '首屏 CTA · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond' },
+    ],
   },
-  { id: 'T008', module: '网站优化', name: 'FAQ 扩展为完整问答', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'FAQ 完整版' },
+  {
+    id: 'T008',
+    module: '网站优化',
+    name: 'FAQ 扩展为完整问答',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: 'FAQ 完整版',
+    reviewLinks: [
+      { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai#faq' },
+      { label: 'FAQ · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond#faq' },
+    ],
+  },
   { id: 'T009', module: '网站优化', name: '增加 thank-you page', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'thank-you page' },
   { id: 'T010', module: '网站优化', name: '增加 trust signals 模块', priority: 'P2', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '信任模块' },
   { id: 'T011', module: '网站优化', name: '内链 supporting content 到产品页', priority: 'P1', startWeek: 'W2', endWeek: 'W4', status: 'not_started', deliverable: '内链结构' },
@@ -433,13 +462,27 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'done',
     deliverable: 'GA4 正常采集',
     notes: '全站 gtag 已随 layout 加载；自定义事件与 Ads 转化见 T013/T016。',
+    reviewLinks: [{ label: '首页（验证 gtag）', href: '/' }],
   },
   { id: 'T013', module: '追踪与数据', name: '配置 Google Ads conversion', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '主转化事件' },
   { id: 'T014', module: '追踪与数据', name: '配置 Meta Pixel', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'Pixel 安装完成' },
   { id: 'T015', module: '追踪与数据', name: '配置 Meta Conversions API', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'CAPI 完成' },
   { id: 'T016', module: '追踪与数据', name: '设定主/辅转化事件', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '转化字典' },
   { id: 'T017', module: '追踪与数据', name: '建立每周数据看板', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: 'Dashboard' },
-  { id: 'T018', module: 'Google Ads', name: '梳理关键词结构', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '关键词清单' },
+  {
+    id: 'T018',
+    module: 'Google Ads',
+    name: '梳理关键词结构',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '关键词清单',
+    reviewLinks: [
+      { label: 'China tours 商业枢纽', href: '/china-tours' },
+      { label: 'NZ 出发专题', href: '/china-tours-from-new-zealand' },
+    ],
+  },
   { id: 'T019', module: 'Google Ads', name: '搭建 Brand campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '品牌词广告' },
   { id: 'T020', module: 'Google Ads', name: '搭建 China tours generic campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '泛词搜索广告' },
   { id: 'T021', module: 'Google Ads', name: '搭建 Beijing / Xi’an campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '产品专属 campaign' },
@@ -455,7 +498,20 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T031', module: 'Meta Ads', name: '搭建再营销广告', priority: 'P0', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: 'remarketing campaign' },
   { id: 'T032', module: 'Meta Ads', name: '上线并观察首轮数据', priority: 'P0', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '广告表现数据' },
   { id: 'T033', module: 'Meta Ads', name: '创意优化', priority: 'P1', startWeek: 'W5', endWeek: 'W6', status: 'not_started', deliverable: '第二轮素材与文案' },
-  { id: 'T034', module: 'SEO / GEO', name: '建立内容关键词与主题结构', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '内容规划表' },
+  {
+    id: 'T034',
+    module: 'SEO / GEO',
+    name: '建立内容关键词与主题结构',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'not_started',
+    deliverable: '内容规划表',
+    reviewLinks: [
+      { label: '内容支点 · china-tours', href: '/china-tours' },
+      { label: '最佳旅行时间', href: '/best-time-to-visit-china' },
+    ],
+  },
   {
     id: 'T035',
     module: 'SEO / GEO',
@@ -466,6 +522,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'review',
     deliverable: '博客 1',
     notes: '站内已有 /china-visa-guide-for-new-zealanders；需定：新文合并、内链或差异化角度。',
+    reviewLinks: [{ label: '现有签证指南页', href: '/china-visa-guide-for-new-zealanders' }],
   },
   { id: 'T036', module: 'SEO / GEO', name: '文章 2：Best first trip — Beijing or Shanghai', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '博客 2' },
   { id: 'T037', module: 'SEO / GEO', name: '文章 3：Is October a good time to visit China', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '博客 3' },
@@ -473,9 +530,48 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T039', module: 'SEO / GEO', name: '文章 5：Shanghai & surroundings guide', priority: 'P2', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '博客 5' },
   { id: 'T040', module: 'SEO / GEO', name: '文章 6：Beijing / Xi’an first-timer guide', priority: 'P2', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '博客 6' },
   { id: 'T041', module: 'SEO / GEO', name: '完成内链布局', priority: 'P1', startWeek: 'W4', endWeek: 'W4', status: 'not_started', deliverable: '内链上线' },
-  { id: 'T042', module: 'SEO / GEO', name: '产品页 meta / title / description 优化', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '页面 SEO 基础优化' },
-  { id: 'T043', module: 'AI 内容系统', name: '建立 Beijing / Xi’an master brief', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '主档案' },
-  { id: 'T044', module: 'AI 内容系统', name: '建立 Shanghai master brief', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '主档案' },
+  {
+    id: 'T042',
+    module: 'SEO / GEO',
+    name: '产品页 meta / title / description 优化',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '页面 SEO 基础优化',
+    reviewLinks: [
+      { label: 'Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai' },
+      { label: 'Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond' },
+    ],
+  },
+  {
+    id: 'T043',
+    module: 'AI 内容系统',
+    name: '建立 Beijing / Xi’an master brief',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'not_started',
+    deliverable: '主档案',
+    reviewLinks: [
+      { label: '产品页', href: '/tours/china/discovery/beijing-shanghai' },
+      { label: 'October 战役页', href: '/campaigns/october-2026/tale-of-two-cities' },
+    ],
+  },
+  {
+    id: 'T044',
+    module: 'AI 内容系统',
+    name: '建立 Shanghai master brief',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'not_started',
+    deliverable: '主档案',
+    reviewLinks: [
+      { label: '产品页', href: '/tours/china/discovery/shanghai-beyond' },
+      { label: 'October 战役页', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
   { id: 'T045', module: 'AI 内容系统', name: '输出 Facebook 内容模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'FB 模板' },
   { id: 'T046', module: 'AI 内容系统', name: '输出 Instagram caption 模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'IG 模板' },
   { id: 'T047', module: 'AI 内容系统', name: '输出 Google Ads copy 模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'Ads 模板' },

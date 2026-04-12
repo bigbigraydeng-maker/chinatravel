@@ -6,7 +6,7 @@ import Link from 'next/link';
  */
 export default function ChinaVisaNudge() {
   return (
-    <div className="border-b border-secondary/30 bg-secondary/10">
+    <div id="visa-nudge" className="scroll-mt-24 border-b border-secondary/30 bg-secondary/10">
       <div className="container mx-auto px-4 py-4">
         <p className="text-center text-sm text-accent md:text-base">
           <span className="font-semibold text-primary">Visa-free China for NZ travellers</span>
