@@ -35,6 +35,16 @@ const nextConfig = {
       },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
+      {
+        source: '/tours/china/discovery/beijing-shanghai',
+        destination: '/tours/china/discovery/beijing-xian',
+        permanent: true,
+      },
+      {
+        source: '/tours/china/discovery/shanghai-beyond',
+        destination: '/tours/china/discovery/shanghai-surroundings',
+        permanent: true,
+      },
     ];
 
     return [...hostRedirects, ...pathRedirects];

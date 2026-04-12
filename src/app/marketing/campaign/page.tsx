@@ -27,11 +27,12 @@ import {
 export const metadata: Metadata = {
   title: 'October 2026 dual-product campaign plan | CTS Tours',
   description:
-    'Password-protected execution board for two October 2026 China tour products: OKRs, milestones, and tasks.',
+    'Password-protected board: Beijing & Xi’an (A Tale of Two Cities) and Shanghai & Surroundings — OKRs, milestones, tasks.',
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   openGraph: {
     title: 'CTS Tours — October 2026 campaign dashboard',
-    description: 'Internal OKR and task board for Beijing + Shanghai and Shanghai & Beyond.',
+    description:
+      'Internal OKR and task board for October 2026: Beijing & Xi’an (A Tale of Two Cities) and Shanghai & Surroundings.',
     type: 'website',
   },
 };

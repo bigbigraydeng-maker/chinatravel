@@ -559,7 +559,7 @@
   },
   {
     id: 'tour-cn-dis-2',
-    slug: 'beijing-shanghai',
+    slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
     name: 'China Discovery — Beijing & Shanghai',

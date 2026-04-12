@@ -89,9 +89,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { slug: 'grand-tour', tier: 'signature' },
     { slug: 'landscapes', tier: 'signature' },
     // Discovery
-    { slug: 'beijing-shanghai', tier: 'discovery' },
+    { slug: 'beijing-xian', tier: 'discovery' },
     { slug: 'essentials', tier: 'discovery' },
-    { slug: 'shanghai-beyond', tier: 'discovery' },
+    { slug: 'shanghai-surroundings', tier: 'discovery' },
     { slug: 'yunnan-explorer', tier: 'discovery' },
     // Stopover
     { slug: 'beijing', tier: 'stopover' },

@@ -13,7 +13,7 @@
 - **`/campaigns/october-2026/shanghai-surroundings`** — Shanghai & Surroundings (hero date: 14 Oct)  
 - **`/campaigns/october-2026/tale-of-two-cities`** — Beijing & Xi’an (hero date: 15 Oct)  
 
-**Ads:** append **UTM** to these URLs only on paid/social links; **canonical** on each page is the path **without** `?utm_*` (see `GA4_SETUP.md`). Standard product URLs remain `/tours/china/discovery/shanghai-beyond` and `/tours/china/discovery/beijing-shanghai`.
+**Ads:** append **UTM** to these URLs only on paid/social links; **canonical** on each page is the path **without** `?utm_*` (see `GA4_SETUP.md`). Standard product URLs: `/tours/china/discovery/shanghai-surroundings` and `/tours/china/discovery/beijing-xian` (308 from legacy `shanghai-beyond` / `beijing-shanghai`).
 
 ---
 

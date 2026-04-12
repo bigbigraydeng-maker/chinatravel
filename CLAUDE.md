@@ -21,6 +21,7 @@ Before making any changes, always confirm you are working on **ChinaTravel** and
 - **Tour interface:** See tours.ts for `Tour` and `DayItinerary` structure
 - **Destinations:** beijing, xian, shanghai, chengdu, guilin, zhangjiajie, yunnan
 - **Tiers:** signature, discovery, stopover
+- **October campaign Discovery slugs (canonical paths):** `beijing-xian` = *A Tale of Two Cities* (Beijing + Xi’an only — **no Shanghai**). `shanghai-surroundings` = *Shanghai & Surroundings* (not “Beyond”). Legacy URLs `/tours/china/discovery/beijing-shanghai` and `.../shanghai-beyond` **308** to these paths (`next.config.js`).
 
 ### 3. Component Locations
 ```

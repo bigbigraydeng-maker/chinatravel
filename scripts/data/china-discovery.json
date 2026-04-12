@@ -53,7 +53,7 @@
   },
   {
     "id": "tour-cn-dis-2",
-    "slug": "beijing-shanghai",
+    "slug": "beijing-xian",
     "destination": "china",
     "tier": "discovery",
     "name": "China Discovery — Beijing & Shanghai",
@@ -166,11 +166,11 @@
   },
   {
     "id": "tour-cn-dis-4",
-    "slug": "shanghai-beyond",
+    "slug": "shanghai-surroundings",
     "destination": "china",
     "tier": "discovery",
-    "name": "China Discovery — Shanghai & Beyond",
-    "title": "China Discovery — Shanghai & Beyond",
+    "name": "China Discovery — Shanghai & Surroundings",
+    "title": "China Discovery — Shanghai & Surroundings",
     "shortDescription": "A journey exploring water towns, Buddhist temples, classical gardens, and modern Shanghai experiences across the Yangtze River Delta region.",
     "duration": "10 Days",
     "price": "From NZD $2,999",

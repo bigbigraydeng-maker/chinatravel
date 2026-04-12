@@ -9,8 +9,8 @@
 
 | 项目 | Shanghai & Surroundings | A Tale of Two Cities |
 |------|-------------------------|------------------------|
-| **数据 slug** | `shanghai-beyond` | `beijing-shanghai`（行程为 **北京 + 西安**，非北京+上海） |
-| **主产品 URL** | `/tours/china/discovery/shanghai-beyond` | `/tours/china/discovery/beijing-shanghai` |
+| **数据 slug** | `shanghai-surroundings` | `beijing-xian`（行程 **北京 + 西安**） |
+| **主产品 URL** | `/tours/china/discovery/shanghai-surroundings` | `/tours/china/discovery/beijing-xian` |
 | **活动 LP（策略 A：首页+广告同路径）** | `/campaigns/october-2026/shanghai-surroundings` | `/campaigns/october-2026/tale-of-two-cities` |
 | **天数 / 价格** | 10 天 · NZD $2,999 pp | 10 天 · From NZD $3,480 |
 | **主推出发日** | 14 October（另有 3 August） | 15 October（另有 13 Aug、2 Nov） |

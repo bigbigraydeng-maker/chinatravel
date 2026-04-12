@@ -7,7 +7,7 @@ export const OCTOBER_2026_DISCOVERY_SLUGS = ['shanghai-surroundings', 'tale-of-t
 export type October2026DiscoverySlug = (typeof OCTOBER_2026_DISCOVERY_SLUGS)[number];
 
 export type October2026DiscoveryConfig = {
-  tourSlug: 'shanghai-beyond' | 'beijing-shanghai';
+  tourSlug: 'shanghai-surroundings' | 'beijing-xian';
   /** First date = hero “next departure” for this campaign */
   heroDepartureOrder: string[];
   enquirySource: string;
@@ -21,7 +21,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
   October2026DiscoveryConfig
 > = {
   'shanghai-surroundings': {
-    tourSlug: 'shanghai-beyond',
+    tourSlug: 'shanghai-surroundings',
     heroDepartureOrder: ['14 October', '3 August'],
     enquirySource: 'Campaign LP: Oct 2026 — Shanghai & Surroundings',
     otherCampaignSlug: 'tale-of-two-cities',
@@ -30,7 +30,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
       'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $2,999. Featured departure 14 October 2026 — enquire with CTS Auckland.',
   },
   'tale-of-two-cities': {
-    tourSlug: 'beijing-shanghai',
+    tourSlug: 'beijing-xian',
     heroDepartureOrder: ['15 October', '13 August', '2 November'],
     enquirySource: 'Campaign LP: Oct 2026 — A Tale of Two Cities',
     otherCampaignSlug: 'shanghai-surroundings',

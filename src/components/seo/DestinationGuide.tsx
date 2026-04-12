@@ -67,8 +67,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
     relatedTours: [
       { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: `${TI}/shanghai-night-red.jpg`, tier: 'stopover' },
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-shanghai', image: `${TI}/forbidden-city-gold-lion.jpg`, tier: 'discovery' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-gold-lion.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
@@ -260,7 +260,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'hangzhou-travel-guide': {
     hubUrl: '/china-tours', hubLabel: 'All China Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
@@ -274,7 +274,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/china-tours', hubLabel: 'All China Tours',
     relatedTours: [
       { name: 'Shanghai & Suzhou (3 Days)', duration: '3 Days', price: 'From NZD $1,356', url: '/tours/china/stopover/shanghai-suzhou', image: `${TI}/suzhou-canal.jpg`, tier: 'stopover' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-beyond', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },

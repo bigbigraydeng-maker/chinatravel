@@ -44,7 +44,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
 export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
   {
     label: 'A Tale of Two Cities',
-    slug: 'beijing-shanghai',
+    slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
     dates: ['13 August', '15 October', '2 November'],
@@ -58,7 +58,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
   },
   {
     label: 'Shanghai & Surroundings',
-    slug: 'shanghai-beyond',
+    slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
     dates: ['3 August', '14 October'],

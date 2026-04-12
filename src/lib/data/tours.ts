@@ -565,7 +565,7 @@ export const tours: Tour[] = [
   // China Discovery Tours
   {
     id: 'tour-cn-dis-2',
-    slug: 'beijing-shanghai',
+    slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
     name: 'China Discovery — A Tale of Two Cities',
@@ -773,7 +773,7 @@ export const tours: Tour[] = [
   },
   {
     id: 'tour-cn-dis-4',
-    slug: 'shanghai-beyond',
+    slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
     name: 'China Discovery — Shanghai & Surroundings',

@@ -56,7 +56,7 @@ export const MARKETING_PLAN_META = {
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
   lastUpdated: '2026-04-13',
   /** 主推产品 */
-  heroProducts: ['Beijing + Shanghai', 'Shanghai & Beyond'],
+  heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /** 北极星时间锚（可按实际调整） */
   sprintNote:
     '本页仅服务于上述两个 10 月出发产品线的推广执行；目标 4 月底前有真实询盘进线（单人执行建议优先 P0：追踪 → 落地页 → Search）。',
@@ -121,10 +121,10 @@ export function milestoneWeekLabel(weekLabel: string): string {
 export const CONTENT_PIVOT = {
   discoveryTours: [
     {
-      label: 'A Tale of Two Cities（北京 · 西安 · 上海）',
-      path: '/tours/china/discovery/beijing-shanghai',
+      label: 'A Tale of Two Cities（北京 · 西安；无上海）',
+      path: '/tours/china/discovery/beijing-xian',
     },
-    { label: 'Shanghai & Beyond', path: '/tours/china/discovery/shanghai-beyond' },
+    { label: 'Shanghai & Surroundings', path: '/tours/china/discovery/shanghai-surroundings' },
   ],
   octoberCampaigns: [
     {
@@ -141,6 +141,7 @@ export const CONTENT_PIVOT = {
     'FAQ：当前产品页使用目的地级通用 5 问（getTourPageFaqs）；需按线路加厚、可接 tour 级字段或独立 FAQ 数据。',
     '地图：行程按日地图（坐标/城市点）；代码侧 Tour 页曾预留 ItineraryMap，需数据与交互方案。',
     'FB / INS + 博客：以支点页定 master brief，再拆每周/每日发帖与长文节奏（当前计划表颗粒度偏大，另表维护亦可）。',
+    '社媒英文稿：先在 Obsidian（magic/chinatravel）锁「内容方向 + 四周柱」，再用 AI 按槽位批量生成，人工只做事实核对与口吻润色。',
     '图片：tours 图库 + 社媒裁切规格（9:16 / 1:1 等）与命名规范一并定稿。',
   ],
 } as const;
@@ -175,7 +176,7 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   {
     area: '战役产品页首屏 / 免签条 / CTA',
     status: 'done',
-    note: 'beijing-shanghai、shanghai-beyond：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge 链至 /china-visa-guide-for-new-zealanders。',
+    note: 'beijing-xian、shanghai-surroundings：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge 链至 /china-visa-guide-for-new-zealanders。',
   },
 ];
 
@@ -400,8 +401,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     deliverable: '新 Hero 文案',
     notes: 'tours.ts shortDescription + metaDescription（十月/NZ/免签提示）。',
     reviewLinks: [
-      { label: 'A Tale of Two Cities 产品页', href: '/tours/china/discovery/beijing-shanghai' },
-      { label: 'Shanghai & Beyond 产品页', href: '/tours/china/discovery/shanghai-beyond' },
+      { label: 'A Tale of Two Cities 产品页', href: '/tours/china/discovery/beijing-xian' },
+      { label: 'Shanghai & Surroundings 产品页', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -416,8 +417,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: 'ChinaVisaNudge 组件，仅两条战役产品页；链至签证指南。',
     reviewLinks: [
       { label: 'NZ 中国签证指南（长文）', href: '/china-visa-guide-for-new-zealanders' },
-      { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai#visa-nudge' },
-      { label: '免签条 · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond#visa-nudge' },
+      { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#visa-nudge' },
+      { label: '免签条 · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
     ],
   },
   {
@@ -431,8 +432,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     deliverable: 'CTA 优化版',
     notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案。',
     reviewLinks: [
-      { label: '首屏 CTA · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai' },
-      { label: '首屏 CTA · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond' },
+      { label: '首屏 CTA · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
+      { label: '首屏 CTA · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -445,8 +446,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: 'FAQ 完整版',
     reviewLinks: [
-      { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai#faq' },
-      { label: 'FAQ · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond#faq' },
+      { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#faq' },
+      { label: 'FAQ · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#faq' },
     ],
   },
   { id: 'T009', module: '网站优化', name: '增加 thank-you page', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'thank-you page' },
@@ -540,8 +541,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: '页面 SEO 基础优化',
     reviewLinks: [
-      { label: 'Tale of Two Cities', href: '/tours/china/discovery/beijing-shanghai' },
-      { label: 'Shanghai & Beyond', href: '/tours/china/discovery/shanghai-beyond' },
+      { label: 'Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
+      { label: 'Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -554,7 +555,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: '主档案',
     reviewLinks: [
-      { label: '产品页', href: '/tours/china/discovery/beijing-shanghai' },
+      { label: '产品页', href: '/tours/china/discovery/beijing-xian' },
       { label: 'October 战役页', href: '/campaigns/october-2026/tale-of-two-cities' },
     ],
   },
@@ -568,7 +569,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: '主档案',
     reviewLinks: [
-      { label: '产品页', href: '/tours/china/discovery/shanghai-beyond' },
+      { label: '产品页', href: '/tours/china/discovery/shanghai-surroundings' },
       { label: 'October 战役页', href: '/campaigns/october-2026/shanghai-surroundings' },
     ],
   },

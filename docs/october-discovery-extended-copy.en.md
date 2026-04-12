@@ -2,8 +2,8 @@
 
 **Source of truth:** On-site tour pages only — do not add cities, sights, or inclusions not listed there.
 
-- [China Discovery — Shanghai & Surroundings](https://www.ctstours.co.nz/tours/china/discovery/shanghai-beyond) (`shanghai-beyond`)
-- [China Discovery — A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-shanghai) (`beijing-shanghai` — itinerary is **Beijing + Xi’an**, high-speed train)
+- [China Discovery — Shanghai & Surroundings](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) (`shanghai-surroundings`)
+- [China Discovery — A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) (`beijing-xian` — itinerary is **Beijing + Xi’an**, high-speed train; legacy `/beijing-shanghai` redirects here)
 
 **Use:** Paste sections into CMS / campaign LPs. Replace bracketed notes after internal review (e.g. inventory, visa wording).
 
@@ -105,4 +105,4 @@ CTA: `View 15 Oct departure`
 - [ ] Visa sentence matches your current NZ-passport guidance page.  
 - [ ] Tips amount identical on both tours if policy is unified.  
 - [ ] Testimonials: prefer quotes that match **each** itinerary (avoid Shanghai skyline on Beijing–Xi’an only page).  
-- [ ] URL note: consider a future redirect or canonical explanation for `beijing-shanghai` vs **Beijing + Xi’an** content — copy above already clarifies in-body.
+- [x] URL: canonical product path is `/tours/china/discovery/beijing-xian` (308 from old `/beijing-shanghai`).

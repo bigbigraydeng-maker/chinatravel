@@ -99,7 +99,7 @@ export default function OctoberDiscoveryCampaignContent({
     );
   }
 
-  // tale-of-two-cities — itinerary is Beijing + Xi'an (URL slug is beijing-shanghai)
+  // tale-of-two-cities — Beijing + Xi'an; product path /tours/china/discovery/beijing-xian
   return (
     <div className="space-y-14">
       <section className="rounded-2xl border border-amber-200 bg-amber-50/30 p-6 md:p-8">
