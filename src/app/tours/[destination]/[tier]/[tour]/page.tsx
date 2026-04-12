@@ -16,6 +16,8 @@ import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
+import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
+import { isOctoberCampaignTourSlug } from '@/lib/campaigns/october-campaign-tours';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
@@ -108,6 +110,7 @@ export default function TourPage({ params }: TourPageProps) {
 
   const faqs = getTourPageFaqs(destination.name);
   const siteUrl = getSiteUrl();
+  const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
 
   const schemas = [
     generateTourSchema(tour, destination),
@@ -177,7 +180,11 @@ export default function TourPage({ params }: TourPageProps) {
         tier={tour.tier}
         tags={tour.tags}
         departureDates={tour.departureDates}
+        primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
+        secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
       />
+
+      {isOctoberCampaignTour ? <ChinaVisaNudge /> : null}
 
       <TrustBar />
 

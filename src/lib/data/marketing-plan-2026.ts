@@ -170,6 +170,11 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
     status: 'not_started',
     note: '询盘 API 已有；独立 thank-you 与 Ads 转化字典未在仓库验收。',
   },
+  {
+    area: '战役产品页首屏 / 免签条 / CTA',
+    status: 'done',
+    note: 'beijing-shanghai、shanghai-beyond：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge 链至 /china-visa-guide-for-new-zealanders。',
+  },
 ];
 
 export const OBJECTIVES: Objective[] = [
@@ -182,7 +187,7 @@ export const OBJECTIVES: Objective[] = [
         title: '完成两个产品页的转化优化升级',
         metric: '询盘率、CTA 点击率、表单完成率',
         aprilTarget: '两页首轮优化上线',
-        status: 'in_progress',
+        status: 'review',
       },
       {
         id: 'KR2',
@@ -381,9 +386,39 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: '/marketing/campaign',
   },
   { id: 'T004', module: '策略与项目管理', name: '建立素材命名与文件管理规则', priority: 'P1', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '文件规范' },
-  { id: 'T005', module: '网站优化', name: '两个产品页首屏文案增强', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '新 Hero 文案' },
-  { id: 'T006', module: '网站优化', name: '增加免签信息模块', priority: 'P1', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '页面模块上线' },
-  { id: 'T007', module: '网站优化', name: '优化 enquiry CTA 按钮', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: 'CTA 优化版' },
+  {
+    id: 'T005',
+    module: '网站优化',
+    name: '两个产品页首屏文案增强',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'done',
+    deliverable: '新 Hero 文案',
+    notes: 'tours.ts shortDescription + metaDescription（十月/NZ/免签提示）。',
+  },
+  {
+    id: 'T006',
+    module: '网站优化',
+    name: '增加免签信息模块',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'done',
+    deliverable: '页面模块上线',
+    notes: 'ChinaVisaNudge 组件，仅两条战役产品页；链至签证指南。',
+  },
+  {
+    id: 'T007',
+    module: '网站优化',
+    name: '优化 enquiry CTA 按钮',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'done',
+    deliverable: 'CTA 优化版',
+    notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案。',
+  },
   { id: 'T008', module: '网站优化', name: 'FAQ 扩展为完整问答', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'FAQ 完整版' },
   { id: 'T009', module: '网站优化', name: '增加 thank-you page', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'thank-you page' },
   { id: 'T010', module: '网站优化', name: '增加 trust signals 模块', priority: 'P2', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '信任模块' },
@@ -448,6 +483,19 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T049', module: 'AI 内容系统', name: '输出 EDM 模板', priority: 'P2', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '邮件模板' },
   { id: 'T050', module: 'AI 内容系统', name: '输出 AI 内容 SOP', priority: 'P2', startWeek: 'W6', endWeek: 'W7', status: 'not_started', deliverable: 'SOP 文档' },
 ];
+
+const PRIORITY_SORT: Record<Priority, number> = { P0: 0, P1: 1, P2: 2 };
+
+/** Tasks whose `startWeek` equals the token (e.g. W1), sorted P0 → P2 then by id — for “today’s backlog” on the campaign board. */
+export function marketingTasksStartingInWeek(weekToken: string): MarketingTask[] {
+  return [...MARKETING_TASKS]
+    .filter(t => t.startWeek === weekToken)
+    .sort((a, b) => {
+      const d = PRIORITY_SORT[a.priority] - PRIORITY_SORT[b.priority];
+      if (d !== 0) return d;
+      return a.id.localeCompare(b.id);
+    });
+}
 
 export const KPI_GROUPS: { title: string; items: string[] }[] = [
   {

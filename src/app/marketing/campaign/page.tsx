@@ -13,6 +13,7 @@ import {
   PHASES,
   WEEKLY_CHECKLIST,
   milestoneWeekLabel,
+  marketingTasksStartingInWeek,
   priorityClass,
   statusBadgeClass,
   taskStatusLabel,
@@ -232,6 +233,7 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
 }
 
 const navItems = [
+  { href: '#today', label: '今日 W1' },
   { href: '#overview', label: '总览' },
   { href: '#pivot', label: '内容支点' },
   { href: '#audit', label: '对照检查' },
@@ -245,6 +247,7 @@ const navItems = [
 
 export default function MarketingPlanPage() {
   const passwordGateEnabled = Boolean(marketingPlanAccessKey());
+  const w1StartingTasks = marketingTasksStartingInWeek('W1');
   const byModule = groupTasksByModule(MARKETING_TASKS);
   const counts = MARKETING_TASKS.reduce(
     (acc, t) => {
@@ -311,6 +314,43 @@ export default function MarketingPlanPage() {
       </div>
 
       <div className="mx-auto max-w-6xl space-y-12 px-4 py-10">
+        <section id="today" className="scroll-mt-28 rounded-2xl border border-primary/30 bg-gradient-to-br from-amber-50 to-white p-6 shadow-soft">
+          <h2 className="font-serif text-2xl font-semibold text-accent">今日工作（W1 起始任务）</h2>
+          <p className="mt-2 text-sm text-gray-700">
+            锚点周一 <span className="font-mono font-medium">{CAMPAIGN_W1_MONDAY_ISO}</span>（W1）；下列为 <strong>startWeek = W1</strong>{' '}
+            的全部任务，已按 <strong>P0 → P1 → P2</strong> 与 ID 排序，自上而下逐项推进即可。
+          </p>
+          <p className="mt-1 text-xs text-gray-500">周区间：{weekTokenRangeLabel('W1')}</p>
+          <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm text-gray-800">
+            {w1StartingTasks.map(t => (
+              <li key={t.id} className="marker:font-semibold marker:text-primary">
+                <span className="font-mono text-xs text-gray-500">{t.id}</span>
+                {' · '}
+                <span className="font-medium">{t.name}</span>
+                <span className="ml-2 inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold text-gray-700">
+                  {t.priority}
+                </span>
+                <span
+                  className={`ml-2 inline-flex rounded-full border px-2 py-0.5 text-xs font-medium ${statusBadgeClass(t.status)}`}
+                >
+                  {taskStatusLabel(t.status)}
+                </span>
+                <span className="mt-1 block pl-0 text-xs text-gray-600">
+                  <span className="text-gray-500">交付：</span>
+                  {t.deliverable}
+                  {t.notes ? (
+                    <>
+                      {' '}
+                      <span className="text-gray-500">备注：</span>
+                      {t.notes}
+                    </>
+                  ) : null}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
         <section id="overview" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
           <h2 className="font-serif text-2xl font-semibold text-accent">项目总目标</h2>
           <p className="mt-3 text-gray-700 leading-relaxed">

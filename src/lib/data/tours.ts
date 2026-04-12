@@ -570,7 +570,8 @@ export const tours: Tour[] = [
     tier: 'discovery',
     name: 'China Discovery — A Tale of Two Cities',
     title: 'China Discovery — A Tale of Two Cities',
-    shortDescription: 'Two of China\'s most iconic cities in one journey — explore Beijing\'s imperial grandeur from the Forbidden City and Great Wall to the Hutong laneways, then travel by high-speed train to Xi\'an to stand before the legendary Terracotta Warriors.',
+    shortDescription:
+      'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published departures include mid-October.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-gold-lion.jpg',
@@ -674,10 +675,11 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary'
     ],
     metaTitle: 'China Discovery — A Tale of Two Cities | Beijing & Xi\'an 10 Days | CTS Tours',
-    metaDescription: 'Explore Beijing\'s Forbidden City, Great Wall and Hutong laneways, then travel by high-speed train to Xi\'an to discover the legendary Terracotta Warriors. 10 days from NZD $3,480.',
+    metaDescription:
+      'Beijing & Xi\'an Discovery from New Zealand — October departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-02',
+    updatedAt: '2026-04-13',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -776,7 +778,8 @@ export const tours: Tour[] = [
     tier: 'discovery',
     name: 'China Discovery — Shanghai & Surroundings',
     title: 'China Discovery — Shanghai & Surroundings',
-    shortDescription: 'Yangtze Delta discovery — Suzhou\'s Master of the Nets Garden and canalside Shantang Street, Wuxi\'s Three Kingdoms City and lakeside Li Garden, Hanfu and afternoon tea in Xinshi Ancient Town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund and Nanjing Road.',
+    shortDescription:
+      'October-ready from Auckland — Yangtze Delta loop: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); mid-October departure published.',
     duration: '10 Days',
     price: 'NZD $2,999 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
@@ -823,10 +826,11 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Shanghai & Surroundings | 10 Days | CTS Tours',
-    metaDescription: 'Suzhou gardens and canals, Wuxi lakeside sights, Xinshi water town, Hangzhou West Lake, and Shanghai — 10 days from NZD $2,999. Book with CTS Tours.',
+    metaDescription:
+      'Shanghai & surroundings from NZ — October departure, Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,999. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-02',
+    updatedAt: '2026-04-13',
     tags: [
       'Shanghai',
       'The Bund',

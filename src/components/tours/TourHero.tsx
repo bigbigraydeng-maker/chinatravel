@@ -15,6 +15,10 @@ interface TourHeroProps {
   tags?: string[];
   departureDates?: string[];
   showAvailability?: boolean;
+  /** Override primary hero CTA (e.g. October campaign tours). */
+  primaryCtaLabel?: string;
+  /** Override secondary hero CTA label. */
+  secondaryCtaLabel?: string;
 }
 
 export default function TourHero({
@@ -27,6 +31,8 @@ export default function TourHero({
   tags,
   departureDates,
   showAvailability = true,
+  primaryCtaLabel = 'Enquire Now',
+  secondaryCtaLabel = 'View Itinerary',
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -136,7 +142,7 @@ export default function TourHero({
               href="#enquiry"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
-              Enquire Now
+              {primaryCtaLabel}
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -145,7 +151,7 @@ export default function TourHero({
               href="#itinerary"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
-              View Itinerary
+              {secondaryCtaLabel}
             </Link>
           </div>
         </div>
