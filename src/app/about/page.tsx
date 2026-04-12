@@ -56,17 +56,14 @@ export default function AboutPage() {
             {/* Lisa Li */}
             <Link href="/experts/lisa-li" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                {/* Larger inner box + clip = zoomed-out framing so the portrait matches Baker card head size */}
-                <div className="relative h-64 overflow-hidden bg-gray-200">
-                  <div className="absolute left-1/2 top-1/2 h-[290%] w-[290%] -translate-x-1/2 -translate-y-1/2">
-                    <Image
-                      src={migratedSite('lisa-li-portrait.jpg')}
-                      alt="Lisa Li, Managing Director"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 432px"
-                      className="object-cover object-[center_32%] group-hover:scale-[1.02] transition-transform duration-300"
-                    />
-                  </div>
+                <div className="relative h-72 overflow-hidden bg-gray-200">
+                  <Image
+                    src={migratedSite('lisa-li-portrait.jpg')}
+                    alt="Lisa Li, Managing Director"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 432px"
+                    className="object-cover object-[center_25%] group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Lisa Li, MNZM</h3>
@@ -87,13 +84,13 @@ export default function AboutPage() {
             {/* Baker Gu */}
             <Link href="/experts/baker-gu" className="group">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div className="relative h-64 bg-gray-200">
+                <div className="relative h-72 overflow-hidden bg-gray-200">
                   <Image
                     src={migratedSite('baker-gu-portrait.jpg')}
                     alt="Baker Gu, China Specialist"
                     fill
                     sizes="(max-width: 768px) 100vw, 432px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover object-[center_40%] group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">

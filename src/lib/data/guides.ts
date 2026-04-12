@@ -3,6 +3,7 @@
 
 const SB = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public';
 const TI = `${SB}/tour-images`;
+export const migratedUnsplash = (photoId: string) => `${TI}/migrated/unsplash/${photoId}.jpg`;
 
 /** Curated gallery slot: plain URL or URL + Tailwind for square thumbnail framing. */
 export type GuideGalleryImage = string | { src: string; imgClass?: string };
@@ -2184,7 +2185,7 @@ export const chongqingGuide: DestinationGuide = {
   keywords: ['Chongqing', 'Yangtze', 'Three Gorges', 'hot pot', 'mountain city'],
   h1: 'Chongqing: Gateway to Yangtze Gorges',
   heroSubtitle: 'Mountain City & Spice Capital',
-  heroImage: `${TI}/jiuzhaigou-lake.jpg`,
+  heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
   heroImageClassName: 'object-[center_45%]',
   introText: [
     'Chongqing, sprawling across mountains above the Yangtze and Jialing Rivers, functions as primary departure point for Yangtze River cruises exploring the famous Three Gorges. The city\'s dramatic topography—featuring steep hillsides, river valleys, and urban development clinging to cliffsides—creates distinctive urban character. As gateway to central China, Chongqing serves as important transport hub connecting Beijing, Shanghai, Kunming, and regional destinations.',

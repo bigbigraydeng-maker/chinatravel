@@ -132,7 +132,7 @@ export const destinations: Destination[] = [
     name: 'Japan',
     subtitle: 'Where Tradition Meets Tomorrow',
     description: 'Experience the perfect harmony of ancient traditions and cutting-edge modernity. From serene temples to bustling Tokyo, Japan offers unforgettable journeys.',
-    heroImage: migratedUnsplash('photo-1540959733332-eab4deabeeaf'),
+    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),  // Japan nature + culture
     highlights: [
       'Witness Mount Fuji',
       'Explore ancient Kyoto temples',
