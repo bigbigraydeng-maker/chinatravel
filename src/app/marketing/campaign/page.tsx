@@ -218,13 +218,17 @@ export default function MarketingPlanPage() {
       <div className="border-b border-warm-200 bg-white/90 backdrop-blur print:hidden">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs font-medium uppercase tracking-wide text-primary">CTS Tours · 内部统筹看板</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-primary">CTS Tours · 十月战役统筹（非全站）</p>
             <h1 className="font-serif text-xl font-semibold text-accent sm:text-2xl">{MARKETING_PLAN_META.title}</h1>
             <p className="mt-1 text-sm text-gray-600">
               数据版本：<span className="font-medium">{MARKETING_PLAN_META.lastUpdated}</span>
               {' · '}
               <Link href="/" className="text-primary underline-offset-2 hover:underline">
                 返回网站首页
+              </Link>
+              {' · '}
+              <Link href="/marketing" className="text-primary underline-offset-2 hover:underline">
+                全站营销入口
               </Link>
             </p>
           </div>
@@ -238,7 +242,7 @@ export default function MarketingPlanPage() {
               </span>
             </div>
             {passwordGateEnabled && (
-              <form action="/api/marketing-plan-logout" method="POST" className="text-right">
+              <form action="/api/marketing/campaign-logout" method="POST" className="text-right">
                 <button
                   type="submit"
                   className="text-xs font-medium text-gray-500 underline-offset-2 hover:text-accent hover:underline"

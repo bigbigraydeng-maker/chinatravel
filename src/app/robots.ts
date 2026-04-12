@@ -15,7 +15,7 @@ export default function robots(): MetadataRoute.Robots {
           // Internal tooling; page also sets noindex. Disallow reduces bot load on heavy client bundle.
           '/blog/staging',
           // Client-shared marketing execution board; noindex + disallow keeps it out of search results.
-          '/marketing-plan',
+          '/marketing',
         ],
       },
     ],

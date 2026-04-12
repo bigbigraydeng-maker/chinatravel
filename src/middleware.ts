@@ -9,10 +9,16 @@ import {
 
 const ADMIN_LOGIN = '/admin/login';
 
-function applyMarketingPlanSeoHeaders(pathname: string, res: NextResponse) {
-  if (pathname.startsWith('/marketing-plan') || pathname.startsWith('/api/marketing-plan')) {
+function applyMarketingSeoHeaders(pathname: string, res: NextResponse) {
+  if (pathname.startsWith('/marketing') || pathname.startsWith('/api/marketing/')) {
     res.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
+}
+
+function isMarketingCampaignPublic(pathname: string): boolean {
+  if (pathname.startsWith('/marketing/campaign/login')) return true;
+  if (pathname === '/api/marketing/campaign-auth' || pathname === '/api/marketing/campaign-logout') return true;
+  return false;
 }
 
 function adminSecret(): string | undefined {
@@ -85,28 +91,24 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const mpKey = marketingPlanAccessKey();
-  const marketingPlanPublic =
-    pathname.startsWith('/marketing-plan/login') ||
-    pathname === '/api/marketing-plan-auth' ||
-    pathname === '/api/marketing-plan-logout';
 
   if (
     mpKey &&
-    (pathname.startsWith('/marketing-plan') || pathname.startsWith('/api/marketing-plan')) &&
-    !marketingPlanPublic
+    !isMarketingCampaignPublic(pathname) &&
+    (pathname.startsWith('/marketing/campaign') || pathname.startsWith('/api/marketing/campaign-'))
   ) {
     const cookie = request.cookies.get(MARKETING_PLAN_COOKIE_NAME)?.value;
     const ok = await isValidMarketingPlanSession(mpKey, cookie);
     if (!ok) {
-      if (pathname.startsWith('/api/marketing-plan')) {
+      if (pathname.startsWith('/api/marketing/campaign-')) {
         const res = NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-        applyMarketingPlanSeoHeaders(pathname, res);
+        applyMarketingSeoHeaders(pathname, res);
         return res;
       }
-      const login = new URL('/marketing-plan/login', request.url);
+      const login = new URL('/marketing/campaign/login', request.url);
       login.searchParams.set('next', pathname + request.nextUrl.search);
       const res = NextResponse.redirect(login);
-      applyMarketingPlanSeoHeaders(pathname, res);
+      applyMarketingSeoHeaders(pathname, res);
       return res;
     }
   }
@@ -122,7 +124,7 @@ export async function middleware(request: NextRequest) {
   if (request.headers.get('sec-fetch-dest') === 'document') {
     res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
   }
-  applyMarketingPlanSeoHeaders(pathname, res);
+  applyMarketingSeoHeaders(pathname, res);
   return res;
 }
 

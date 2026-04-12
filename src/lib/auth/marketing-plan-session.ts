@@ -1,11 +1,14 @@
 /**
- * Password gate for /marketing-plan (Edge-safe Web Crypto).
+ * Password gate for /marketing/campaign (Edge-safe Web Crypto).
  * Cookie value is HMAC-SHA256(accessKey, fixed salt) — not the raw password.
  */
 
 export const MARKETING_PLAN_COOKIE_NAME = 'cts_mp_session';
 
-const HMAC_MESSAGE = 'cts-marketing-plan-dashboard-v1';
+/** HttpOnly cookie is limited to campaign routes (not the /marketing hub). */
+export const MARKETING_CAMPAIGN_COOKIE_PATH = '/marketing/campaign';
+
+const HMAC_MESSAGE = 'cts-marketing-campaign-dashboard-v2';
 
 export async function computeMarketingPlanSessionToken(accessKey: string): Promise<string> {
   const enc = new TextEncoder();

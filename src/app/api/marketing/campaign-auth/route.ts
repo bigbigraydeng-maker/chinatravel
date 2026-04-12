@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
+  MARKETING_CAMPAIGN_COOKIE_PATH,
   MARKETING_PLAN_COOKIE_NAME,
   computeMarketingPlanSessionToken,
   marketingPlanAccessKey,
@@ -10,7 +11,7 @@ export async function POST(request: Request) {
   const accessKey = marketingPlanAccessKey();
   if (!accessKey) {
     return NextResponse.json(
-      { error: 'Marketing plan gate is not configured (set MARKETING_PLAN_ACCESS_KEY).' },
+      { error: 'Marketing campaign gate is not configured (set MARKETING_PLAN_ACCESS_KEY).' },
       { status: 503 }
     );
   }
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    path: '/marketing-plan',
+    path: MARKETING_CAMPAIGN_COOKIE_PATH,
     maxAge: 60 * 60 * 24 * 14,
   });
   return res;

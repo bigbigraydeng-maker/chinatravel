@@ -1,6 +1,6 @@
 /**
  * CTSTours 2026 Q2–Q3 数字营销统筹（Phase 1）
- * 更新方式：直接改本文件中的 status、备注与日期；部署后客户通过 /marketing-plan 查看。
+ * 更新方式：直接改本文件中的 status、备注与日期；部署后客户通过 /marketing/campaign 查看。
  */
 
 export type TaskStatus = 'not_started' | 'in_progress' | 'review' | 'done' | 'blocked';

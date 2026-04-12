@@ -33,6 +33,8 @@ const nextConfig = {
         destination: '/china-visa-guide-for-new-zealanders',
         permanent: true,
       },
+      { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
+      { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
     ];
 
     return [...hostRedirects, ...pathRedirects];

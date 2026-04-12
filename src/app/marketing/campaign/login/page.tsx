@@ -6,7 +6,9 @@ import { Suspense, useState } from 'react';
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const nextPath = searchParams.get('next')?.startsWith('/marketing-plan') ? searchParams.get('next')! : '/marketing-plan';
+  const rawNext = searchParams.get('next');
+  const nextPath =
+    rawNext?.startsWith('/marketing/campaign') && !rawNext.includes('..') ? rawNext : '/marketing/campaign';
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -16,7 +18,7 @@ function LoginForm() {
     setError(null);
     setLoading(true);
     try {
-      const res = await fetch('/api/marketing-plan-auth', {
+      const res = await fetch('/api/marketing/campaign-auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
