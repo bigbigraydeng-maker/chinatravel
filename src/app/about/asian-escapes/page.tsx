@@ -152,31 +152,41 @@ export default function AsianEscapesPage() {
       </section>
 
       <section className="py-16 md:py-20 bg-warm-50/50">
-        <div className="container mx-auto max-w-3xl px-4">
-          <h2 className="mb-8 font-serif text-2xl font-bold text-gray-900 md:text-3xl text-center">
-            Our Clients on the Ground
-          </h2>
-          <p className="text-center text-gray-600 mb-10 text-lg">
-            Real CTS travellers at the Great Wall of China — guided by Asiascape&apos;s on-ground team.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src="/images/great-wall-cts-1.jpg"
-                alt="CTS Tours traveller holding CTS sign at the Great Wall of China"
-                width={640}
-                height={480}
-                className="w-full h-auto object-cover"
-              />
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="space-y-5">
+              <h2 className="font-serif text-2xl font-bold text-gray-900 md:text-3xl">
+                Our Team on the Ground
+              </h2>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                These are Asiascape&apos;s own team members — not contractors — working the Great Wall on a
+                live CTS tour. They carry Asiascape signage, lead the group through ticketing and access
+                points, and manage the full day on-site.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                When you book through CTS, this is who your clients will be with. Trained, briefed, and
+                part of the same organisation — not sourced from a third-party pool on the day.
+              </p>
             </div>
-            <div className="overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src="/images/great-wall-cts-2.jpg"
-                alt="CTS Tours traveller holding CTS sign at the Great Wall of China"
-                width={640}
-                height={480}
-                className="w-full h-auto object-cover"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div className="overflow-hidden rounded-xl shadow-md">
+                <Image
+                  src="/images/great-wall-cts-1.jpg"
+                  alt="Asiascape staff member with CTS Tours signage at the Great Wall of China"
+                  width={480}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="overflow-hidden rounded-xl shadow-md">
+                <Image
+                  src="/images/great-wall-cts-2.jpg"
+                  alt="Asiascape staff member with CTS Tours signage at the Great Wall of China"
+                  width={480}
+                  height={600}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
