@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { marketingPlanAccessKey } from '@/lib/auth/marketing-plan-session';
 import {
+  CAMPAIGN_W1_MONDAY_ISO,
+  CONTENT_PIVOT,
+  EXECUTION_AUDIT,
   KPI_GROUPS,
   MARKETING_PLAN_META,
   MARKETING_TASKS,
@@ -9,9 +12,11 @@ import {
   OBJECTIVES,
   PHASES,
   WEEKLY_CHECKLIST,
+  milestoneWeekLabel,
   priorityClass,
   statusBadgeClass,
   taskStatusLabel,
+  weekTokenRangeLabel,
   type MarketingTask,
   type Milestone,
   type TaskStatus,
@@ -62,10 +67,8 @@ function MilestoneCardsMobile({ items }: { items: Milestone[] }) {
             <span className="font-semibold text-accent">
               {m.id} {m.name}
             </span>
-            <span className="shrink-0 rounded-full bg-warm-100 px-2 py-0.5 text-xs font-medium text-gray-700">
-              {m.week}
-            </span>
           </div>
+          <p className="mt-1 text-xs text-gray-600">{milestoneWeekLabel(m.week)}</p>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{m.description}</p>
           <p className="mt-3 border-t border-warm-100 pt-2 text-sm text-gray-800">
             <span className="font-medium text-gray-500">输出：</span>
@@ -95,7 +98,7 @@ function MilestoneTableDesktop({ items }: { items: Milestone[] }) {
               <td className="whitespace-nowrap px-4 py-3 font-medium text-accent">
                 {m.id} {m.name}
               </td>
-              <td className="whitespace-nowrap px-4 py-3 text-gray-700">{m.week}</td>
+              <td className="min-w-[10rem] px-4 py-3 text-sm text-gray-700">{milestoneWeekLabel(m.week)}</td>
               <td className="px-4 py-3 text-gray-700">{m.description}</td>
               <td className="px-4 py-3 text-gray-700">{m.output}</td>
             </tr>
@@ -130,15 +133,33 @@ function TaskCardsMobile({ rows }: { rows: MarketingTask[] }) {
           <dl className="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-sm">
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-gray-400">开始</dt>
-              <dd className="mt-0.5 text-accent">{t.startWeek}</dd>
+              <dd className="mt-0.5 text-accent">
+                <span className="font-semibold">{t.startWeek}</span>
+                <span className="mt-0.5 block text-xs font-normal leading-snug text-gray-500">
+                  {weekTokenRangeLabel(t.startWeek)}
+                </span>
+              </dd>
             </div>
             <div>
               <dt className="text-xs font-medium uppercase tracking-wide text-gray-400">截止</dt>
-              <dd className="mt-0.5 text-accent">{t.endWeek}</dd>
+              <dd className="mt-0.5 text-accent">
+                <span className="font-semibold">{t.endWeek}</span>
+                <span className="mt-0.5 block text-xs font-normal leading-snug text-gray-500">
+                  {weekTokenRangeLabel(t.endWeek)}
+                </span>
+              </dd>
             </div>
             <div className="col-span-2">
               <dt className="text-xs font-medium uppercase tracking-wide text-gray-400">交付物</dt>
-              <dd className="mt-0.5 leading-relaxed text-gray-800">{t.deliverable}</dd>
+              <dd className="mt-0.5 leading-relaxed text-gray-800">
+                {t.deliverable}
+                {t.notes ? (
+                  <span className="mt-1 block text-xs text-gray-500">
+                    <span className="font-medium text-gray-600">备注：</span>
+                    {t.notes}
+                  </span>
+                ) : null}
+              </dd>
             </div>
           </dl>
         </li>
@@ -156,8 +177,8 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
             <th className="whitespace-nowrap px-3 py-2 font-semibold">ID</th>
             <th className="min-w-[12rem] px-3 py-2 font-semibold">任务</th>
             <th className="whitespace-nowrap px-3 py-2 font-semibold">优先级</th>
-            <th className="whitespace-nowrap px-3 py-2 font-semibold">开始</th>
-            <th className="whitespace-nowrap px-3 py-2 font-semibold">截止</th>
+            <th className="min-w-[7.5rem] px-3 py-2 font-semibold">开始</th>
+            <th className="min-w-[7.5rem] px-3 py-2 font-semibold">截止</th>
             <th className="whitespace-nowrap px-3 py-2 font-semibold">状态</th>
             <th className="min-w-[10rem] px-3 py-2 font-semibold">交付物</th>
           </tr>
@@ -174,8 +195,18 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
                   {t.priority}
                 </span>
               </td>
-              <td className="whitespace-nowrap px-3 py-2 text-gray-600">{t.startWeek}</td>
-              <td className="whitespace-nowrap px-3 py-2 text-gray-600">{t.endWeek}</td>
+              <td className="px-3 py-2 align-top text-gray-600">
+                <span className="font-medium text-accent">{t.startWeek}</span>
+                <span className="mt-0.5 block max-w-[11rem] text-xs leading-snug text-gray-500">
+                  {weekTokenRangeLabel(t.startWeek)}
+                </span>
+              </td>
+              <td className="px-3 py-2 align-top text-gray-600">
+                <span className="font-medium text-accent">{t.endWeek}</span>
+                <span className="mt-0.5 block max-w-[11rem] text-xs leading-snug text-gray-500">
+                  {weekTokenRangeLabel(t.endWeek)}
+                </span>
+              </td>
               <td className="whitespace-nowrap px-3 py-2 align-top">
                 <span
                   className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-medium ${statusBadgeClass(t.status)}`}
@@ -183,7 +214,15 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
                   {taskStatusLabel(t.status)}
                 </span>
               </td>
-              <td className="px-3 py-2 align-top text-gray-700">{t.deliverable}</td>
+              <td className="px-3 py-2 align-top text-gray-700">
+                {t.deliverable}
+                {t.notes ? (
+                  <span className="mt-1 block text-xs text-gray-500">
+                    <span className="font-medium text-gray-600">备注：</span>
+                    {t.notes}
+                  </span>
+                ) : null}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -194,6 +233,8 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
 
 const navItems = [
   { href: '#overview', label: '总览' },
+  { href: '#pivot', label: '内容支点' },
+  { href: '#audit', label: '对照检查' },
   { href: '#okr', label: 'OKR' },
   { href: '#milestones', label: '里程碑' },
   { href: '#tasks', label: '任务表' },
@@ -288,6 +329,86 @@ export default function MarketingPlanPage() {
               </>
             )}
           </div>
+          <p className="mt-4 text-xs text-gray-500">
+            周次说明：<strong>W1</strong> 对应周一为 <code className="rounded bg-warm-100 px-1">{CAMPAIGN_W1_MONDAY_ISO}</code>
+            （可在数据文件中修改 <code className="rounded bg-warm-100 px-1">CAMPAIGN_W1_MONDAY_ISO</code>）；每列为周一至周日。
+          </p>
+        </section>
+
+        <section id="pivot" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
+          <h2 className="font-serif text-2xl font-semibold text-accent">内容支点（canonical）</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            以下页面作为 AI 扩展、社媒与博客的「事实源」；细颗粒度发帖/发文计划可另表（Obsidian / Sheet）维护，本页只锁范围与链接。
+          </p>
+          <div className="mt-4 grid gap-6 md:grid-cols-2">
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">Discovery 产品页</h3>
+              <ul className="mt-2 space-y-2">
+                {CONTENT_PIVOT.discoveryTours.map(item => (
+                  <li key={item.path}>
+                    <Link href={item.path} className="font-medium text-primary underline-offset-2 hover:underline">
+                      {item.label}
+                    </Link>
+                    <code className="mt-0.5 block text-xs text-gray-500">{item.path}</code>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">October 2026 战役页</h3>
+              <ul className="mt-2 space-y-2">
+                {CONTENT_PIVOT.octoberCampaigns.map(item => (
+                  <li key={item.path}>
+                    <Link href={item.path} className="font-medium text-primary underline-offset-2 hover:underline">
+                      {item.label}
+                    </Link>
+                    <code className="mt-0.5 block text-xs text-gray-500">{item.path}</code>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-6 border-t border-warm-100 pt-4">
+            <h3 className="text-sm font-semibold text-accent">待与你对齐的扩展项</h3>
+            <ul className="mt-2 list-inside list-disc space-y-2 text-sm text-gray-700">
+              {CONTENT_PIVOT.discussionTopics.map((line, i) => (
+                <li key={i}>{line}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section id="audit" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
+          <h2 className="font-serif text-2xl font-semibold text-accent">对照检查（仓库现状）</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            人工快照，随开发更新；状态与任务表中的 <code className="rounded bg-warm-100 px-1">status</code> 可交叉核对。
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-warm-100">
+            <table className="min-w-full text-left text-sm">
+              <thead className="bg-warm-50 text-xs uppercase tracking-wide text-gray-600">
+                <tr>
+                  <th className="px-3 py-2 font-semibold">领域</th>
+                  <th className="px-3 py-2 font-semibold">状态</th>
+                  <th className="px-3 py-2 font-semibold">说明</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-warm-100">
+                {EXECUTION_AUDIT.map((row, i) => (
+                  <tr key={i} className="hover:bg-warm-50/60">
+                    <td className="px-3 py-2 font-medium text-accent">{row.area}</td>
+                    <td className="whitespace-nowrap px-3 py-2">
+                      <span
+                        className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-medium ${statusBadgeClass(row.status)}`}
+                      >
+                        {taskStatusLabel(row.status)}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-gray-700">{row.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <section id="okr" className="scroll-mt-28">
@@ -373,7 +494,7 @@ export default function MarketingPlanPage() {
             {PHASES.map(p => (
               <article key={p.phase} className="rounded-2xl border border-warm-200 bg-white p-5 shadow-soft">
                 <h3 className="font-serif text-lg font-semibold text-primary">{p.phase}</h3>
-                <p className="mt-1 text-sm text-gray-500">{p.weeks}</p>
+                <p className="mt-1 text-sm text-gray-500">{milestoneWeekLabel(p.weeks)}</p>
                 <p className="mt-3 text-gray-800">{p.goal}</p>
                 <div className="mt-4">
                   <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">关键结果</p>
