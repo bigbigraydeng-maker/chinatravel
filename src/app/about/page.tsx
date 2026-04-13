@@ -200,8 +200,14 @@ export default function AboutPage() {
             
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center mb-4">
-                <div className="relative w-16 h-16 mr-4 shrink-0 flex items-center justify-center rounded-lg bg-blue-50 border border-blue-100">
-                  <span className="text-sm font-bold text-blue-700 text-center leading-tight">TIA</span>
+                <div className="relative w-24 h-16 mr-4 shrink-0">
+                  <Image
+                    src="/credentials-tia.png"
+                    alt="Tourism Industry Aotearoa"
+                    fill
+                    sizes="96px"
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-bold">Tourism Industry Aotearoa</h3>
               </div>

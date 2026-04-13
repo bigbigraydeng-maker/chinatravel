@@ -54,7 +54,7 @@ export interface PhaseBlock {
 export const MARKETING_PLAN_META = {
   title: 'CTSTours 2026年10月双产品专属数字推广统筹（Phase 1）',
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
-  lastUpdated: '2026-04-13',
+  lastUpdated: '2026-04-14',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /** 北极星时间锚（可按实际调整） */
@@ -140,9 +140,9 @@ export const CONTENT_PIVOT = {
   discussionTopics: [
     'FAQ：当前产品页使用目的地级通用 5 问（getTourPageFaqs）；需按线路加厚、可接 tour 级字段或独立 FAQ 数据。',
     '地图：产品页已上线「Map view / Detailed view」示意路线图（由标题/住宿文本推断城市；非精确地理底图）。若需真地图或坐标级精度，再排期。',
-    'FB / INS + 博客：以支点页定 master brief，再拆每周/每日发帖与长文节奏（当前计划表颗粒度偏大，另表维护亦可）。',
+    'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。',
     '社媒英文稿：先在 Obsidian（magic/chinatravel）锁「内容方向 + 四周柱」，再用 AI 按槽位批量生成，人工只做事实核对与口吻润色。',
-    '图片：tours 图库 + 社媒裁切规格（9:16 / 1:1 等）与命名规范一并定稿。',
+    '图片：Unsplash 选图 → 写入 tours.ts `gallery`（产品页 #gallery）；同一批源图导出社媒裁切（9:16 / 4:5 / 1:1）与命名、署名存档（与 T004 / T051–T053 对齐）。',
   ],
 } as const;
 
@@ -177,6 +177,11 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
     area: '战役产品页首屏 / 免签条 / CTA',
     status: 'done',
     note: 'beijing-xian、shanghai-surroundings：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge 链至 /china-visa-guide-for-new-zealanders。',
+  },
+  {
+    area: '产品页 Gallery / 社媒图',
+    status: 'in_progress',
+    note: 'Unsplash 选图与图库扩充排入 T051–T053；代码入口 tours.ts `gallery` + TourGallery。',
   },
 ];
 
@@ -492,7 +497,17 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T024', module: 'Google Ads', name: '广告上线', priority: 'P0', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '广告正式启动' },
   { id: 'T025', module: 'Google Ads', name: '首轮优化', priority: 'P1', startWeek: 'W4', endWeek: 'W5', status: 'not_started', deliverable: '优化报告' },
   { id: 'T026', module: 'Meta Ads', name: '明确冷流量视频方向', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '创意 brief' },
-  { id: 'T027', module: 'Meta Ads', name: '整理图片/短视频素材', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '素材库' },
+  {
+    id: 'T027',
+    module: 'Meta Ads',
+    name: '整理图片/短视频素材',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '素材库',
+    notes: '与 T051–T052 共用：产品 Gallery 选定图可派生广告/社媒裁切包。',
+  },
   { id: 'T028', module: 'Meta Ads', name: '编写 FB/IG 广告文案', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '广告文案包' },
   { id: 'T029', module: 'Meta Ads', name: '搭建冷流量 campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '冷流量广告' },
   { id: 'T030', module: 'Meta Ads', name: '搭建 Lead Ads', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '表单广告' },
@@ -579,6 +594,44 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T048', module: 'AI 内容系统', name: '输出 remarketing 文案模板', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: 'RMKT 模板' },
   { id: 'T049', module: 'AI 内容系统', name: '输出 EDM 模板', priority: 'P2', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '邮件模板' },
   { id: 'T050', module: 'AI 内容系统', name: '输出 AI 内容 SOP', priority: 'P2', startWeek: 'W6', endWeek: 'W7', status: 'not_started', deliverable: 'SOP 文档' },
+  {
+    id: 'T051',
+    module: '图库与社媒素材',
+    name: 'Unsplash 选图并扩充两条战役产品 Gallery',
+    priority: 'P0',
+    startWeek: 'W2',
+    endWeek: 'W3',
+    status: 'not_started',
+    deliverable: 'tours.ts 中 beijing-xian / shanghai-surroundings 的 gallery 更新',
+    notes:
+      '在 Unsplash 按目的地关键词筛图；优先横版 1200px+；写入 `gallery: string[]`（必要时同步 hero）。生产可继续用 CDN URL 或按既有流程上传 Supabase tour-images。',
+    reviewLinks: [
+      { label: 'Beijing–Xi’an · Gallery', href: '/tours/china/discovery/beijing-xian#gallery' },
+      { label: 'Shanghai · Gallery', href: '/tours/china/discovery/shanghai-surroundings#gallery' },
+    ],
+  },
+  {
+    id: 'T052',
+    module: '图库与社媒素材',
+    name: '从 Gallery 源图导出社媒/广告裁切包',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W3',
+    status: 'not_started',
+    deliverable: '每产品 1:1 / 4:5 / 9:16 各若干张 + 命名清单',
+    notes: '与 master brief、T027 素材库同一目录或 Obsidian「Gallery and social assets」交叉引用。',
+  },
+  {
+    id: 'T053',
+    module: '图库与社媒素材',
+    name: '定稿 Unsplash 使用与署名存档流程',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '表格或 Obsidian：每图 photographer、Unsplash 链接、用途（站/FB/IG）',
+    notes: '与 T004 文件命名规则合并；站内需 alt 文案时一并记入。',
+  },
 ];
 
 const PRIORITY_SORT: Record<Priority, number> = { P0: 0, P1: 1, P2: 2 };

@@ -45,6 +45,41 @@ const MODULE_ORDER = [
   'Meta Ads',
   'SEO / GEO',
   'AI 内容系统',
+  /** T051–T053：图库 Unsplash + 裁切 + 署名；放在表末便于在 T050 后连续查看 */
+  '图库与社媒素材',
+];
+
+/** Stable fragment IDs for the task table (scroll / deep-link). */
+function moduleTasksAnchorId(module: string): string {
+  const map: Record<string, string> = {
+    策略与项目管理: 'strategy',
+    网站优化: 'site',
+    追踪与数据: 'tracking',
+    'Google Ads': 'google-ads',
+    'Meta Ads': 'meta',
+    'SEO / GEO': 'seo',
+    'AI 内容系统': 'ai',
+    图库与社媒素材: 'gallery-social',
+  };
+  return `tasks-mod-${map[module] ?? 'other'}`;
+}
+
+type CampaignNavItem =
+  | { kind: 'hash'; href: string; label: string }
+  | { kind: 'route'; href: string; label: string };
+
+const campaignNavItems: CampaignNavItem[] = [
+  { kind: 'hash', href: '#today', label: '今日 W1' },
+  { kind: 'hash', href: '#overview', label: '总览' },
+  { kind: 'hash', href: '#pivot', label: '内容支点' },
+  { kind: 'hash', href: '#audit', label: '对照检查' },
+  { kind: 'hash', href: '#okr', label: 'OKR' },
+  { kind: 'hash', href: '#milestones', label: '里程碑' },
+  { kind: 'route', href: '/campaign/social', label: '社媒发帖' },
+  { kind: 'hash', href: '#tasks', label: '任务表' },
+  { kind: 'hash', href: '#phases', label: '阶段' },
+  { kind: 'hash', href: '#kpi', label: 'KPI' },
+  { kind: 'hash', href: '#weekly', label: '周节奏' },
 ];
 
 function groupTasksByModule(tasks: MarketingTask[]): Map<string, MarketingTask[]> {
@@ -162,6 +197,19 @@ function TaskCardsMobile({ rows }: { rows: MarketingTask[] }) {
                     {t.notes}
                   </span>
                 ) : null}
+                {t.reviewLinks?.length ? (
+                  <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                    {t.reviewLinks.map(link => (
+                      <Link
+                        key={`${t.id}-${link.href}-${link.label}`}
+                        href={link.href}
+                        className="text-xs font-medium text-primary underline-offset-2 hover:underline"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </dd>
             </div>
           </dl>
@@ -225,6 +273,19 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
                     {t.notes}
                   </span>
                 ) : null}
+                {t.reviewLinks?.length ? (
+                  <div className="mt-2 flex flex-wrap gap-x-2 gap-y-1">
+                    {t.reviewLinks.map(link => (
+                      <Link
+                        key={`${t.id}-${link.href}-${link.label}`}
+                        href={link.href}
+                        className="text-xs font-medium text-primary underline-offset-2 hover:underline"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                ) : null}
               </td>
             </tr>
           ))}
@@ -233,19 +294,6 @@ function TaskTableDesktop({ rows }: { rows: MarketingTask[] }) {
     </div>
   );
 }
-
-const navItems = [
-  { href: '#today', label: '今日 W1' },
-  { href: '#overview', label: '总览' },
-  { href: '#pivot', label: '内容支点' },
-  { href: '#audit', label: '对照检查' },
-  { href: '#okr', label: 'OKR' },
-  { href: '#milestones', label: '里程碑' },
-  { href: '#tasks', label: '任务表' },
-  { href: '#phases', label: '阶段' },
-  { href: '#kpi', label: 'KPI' },
-  { href: '#weekly', label: '周节奏' },
-];
 
 export default function MarketingPlanPage() {
   const passwordGateEnabled = Boolean(marketingPlanAccessKey());
@@ -303,15 +351,25 @@ export default function MarketingPlanPage() {
           className="mx-auto flex max-w-6xl flex-wrap gap-2 border-t border-warm-100 px-4 py-2 text-sm print:hidden"
           aria-label="页面内导航"
         >
-          {navItems.map(item => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full border border-transparent px-3 py-1 text-gray-600 hover:border-warm-200 hover:bg-warm-50 hover:text-accent"
-            >
-              {item.label}
-            </a>
-          ))}
+          {campaignNavItems.map(item =>
+            item.kind === 'route' ? (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="rounded-full border border-transparent px-3 py-1 text-gray-600 hover:border-warm-200 hover:bg-warm-50 hover:text-accent"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="rounded-full border border-transparent px-3 py-1 text-gray-600 hover:border-warm-200 hover:bg-warm-50 hover:text-accent"
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
       </div>
 
@@ -330,6 +388,13 @@ export default function MarketingPlanPage() {
             投放、SEO/GEO 内容、AI 内容生产、线索收集与优化系统。
           </p>
           <p className="mt-3 font-medium text-primary">{MARKETING_PLAN_META.sprintNote}</p>
+          <div className="mt-4 rounded-xl border border-primary/25 bg-primary/5 p-4 text-sm text-accent">
+            <p className="font-semibold text-accent">社媒发帖计划（战役内）</p>
+            <p className="mt-1 text-gray-700">
+              短链收藏：<Link href="/campaign/social" className="font-mono text-primary underline-offset-2 hover:underline">/campaign/social</Link>
+              （308 跳转至发帖表，与密码门一致）。
+            </p>
+          </div>
           <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950 print:border-gray-300 print:bg-gray-50">
             <strong>客户查看说明：</strong>
             本页通过固定链接分享即可远程查看；已设置不收录（noindex），适合作为进度同步页面，请勿在公开渠道当广告落地页传播。
@@ -349,7 +414,11 @@ export default function MarketingPlanPage() {
         <section id="pivot" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
           <h2 className="font-serif text-2xl font-semibold text-accent">内容支点（canonical）</h2>
           <p className="mt-2 text-sm text-gray-600">
-            以下页面作为 AI 扩展、社媒与博客的「事实源」；细颗粒度发帖/发文计划可另表（Obsidian / Sheet）维护，本页只锁范围与链接。
+            以下页面作为 AI 扩展、社媒与博客的「事实源」。有机发帖排期见{' '}
+            <Link href="/campaign/social" className="font-medium text-primary underline-offset-2 hover:underline">
+              社媒发帖计划（短链 /campaign/social）
+            </Link>
+            ；亦可与 Obsidian / Sheet 双轨维护。
           </p>
           <div className="mt-4 grid gap-6 md:grid-cols-2">
             <div>
@@ -481,6 +550,33 @@ export default function MarketingPlanPage() {
             状态枚举：<strong>未开始</strong> · <strong>进行中</strong> · <strong>复核</strong> · <strong>完成</strong> ·{' '}
             <strong>阻塞</strong> — 与数据文件中的英文 key 对应。
           </p>
+          <div className="mt-3 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950">
+            <strong>T051–T053 在哪？</strong>已单独放在任务表最末模块「<strong>图库与社媒素材</strong>」（接在「AI 内容系统」T050 之后）。「今日 W1」仍只显示{' '}
+            <code className="rounded bg-white/80 px-1">startWeek = W1</code> 的任务，故不含 T051。含 <strong>复核链接</strong> 的行在「交付物」列下方（如 T051 的
+            Gallery）。
+          </div>
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
+            <span className="text-gray-600">跳转模块：</span>
+            {MODULE_ORDER.map(module => {
+              const rows = byModule.get(module);
+              if (!rows?.length) return null;
+              return (
+                <a
+                  key={module}
+                  href={`#${moduleTasksAnchorId(module)}`}
+                  className="rounded-full border border-warm-200 bg-white px-3 py-1 text-gray-700 hover:border-primary/30 hover:text-primary"
+                >
+                  {module}
+                </a>
+              );
+            })}
+            <Link
+              href="/campaign/social"
+              className="rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-medium text-primary hover:bg-primary/10"
+            >
+              社媒发帖计划 →
+            </Link>
+          </div>
 
           <div className="mt-6 space-y-10">
             {MODULE_ORDER.map(module => {
@@ -488,7 +584,9 @@ export default function MarketingPlanPage() {
               if (!rows?.length) return null;
               return (
                 <div key={module}>
-                  <h3 className="font-serif text-lg font-semibold text-accent">{module}</h3>
+                  <h3 id={moduleTasksAnchorId(module)} className="scroll-mt-28 font-serif text-lg font-semibold text-accent">
+                    {module}
+                  </h3>
                   <div className="mt-3 space-y-3">
                     <TaskCardsMobile rows={rows} />
                     <TaskTableDesktop rows={rows} />

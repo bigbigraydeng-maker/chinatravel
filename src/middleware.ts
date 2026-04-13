@@ -10,7 +10,11 @@ import {
 const ADMIN_LOGIN = '/admin/login';
 
 function applyMarketingSeoHeaders(pathname: string, res: NextResponse) {
-  if (pathname.startsWith('/marketing') || pathname.startsWith('/api/marketing/')) {
+  if (
+    pathname.startsWith('/marketing') ||
+    pathname.startsWith('/api/marketing/') ||
+    pathname === '/campaign/social'
+  ) {
     res.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
 }

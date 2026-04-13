@@ -26,6 +26,15 @@ export default function MarketingHubPage() {
             </Link>
             <p className="mt-2 text-sm text-gray-600">OKR、里程碑、任务表；可选密码保护（MARKETING_PLAN_ACCESS_KEY）。</p>
           </li>
+          <li>
+            <Link
+              href="/campaign/social"
+              className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
+            >
+              十月战役 · 社媒发帖计划 →
+            </Link>
+            <p className="mt-2 text-sm text-gray-600">短链 /campaign/social；FB / IG 四周发帖表（与战役同密码门）。</p>
+          </li>
         </ul>
         <p className="mt-10 text-center text-sm text-gray-500">
           <Link href="/" className="text-primary underline-offset-2 hover:underline">

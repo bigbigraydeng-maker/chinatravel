@@ -35,6 +35,8 @@ const nextConfig = {
       },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
+      /** Short URL for organic social grid (same as /marketing/campaign/social; cookie applies after redirect). */
+      { source: '/campaign/social', destination: '/marketing/campaign/social', permanent: true },
       {
         source: '/tours/china/discovery/beijing-shanghai',
         destination: '/tours/china/discovery/beijing-xian',

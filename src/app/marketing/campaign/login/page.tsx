@@ -8,7 +8,11 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const rawNext = searchParams.get('next');
   const nextPath =
-    rawNext?.startsWith('/marketing/campaign') && !rawNext.includes('..') ? rawNext : '/marketing/campaign';
+    rawNext &&
+    !rawNext.includes('..') &&
+    (rawNext.startsWith('/marketing/campaign') || rawNext === '/campaign/social')
+      ? rawNext
+      : '/marketing/campaign';
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
