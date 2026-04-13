@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getTourBySlug } from '@/lib/data/tours';
+import PrintPageActions from '@/components/tours/PrintPageActions';
 
 interface PrintPageProps {
   params: {
@@ -154,21 +155,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
           </p>
         </div>
 
-        {/* Print Button — hidden on print */}
-        <div className="no-print" style={{ textAlign: 'center', marginTop: '32px' }}>
-          <button
-            onClick={() => window.print()}
-            style={{ background: '#c0392b', color: 'white', border: 'none', padding: '12px 32px', borderRadius: '24px', fontSize: '14px', fontWeight: 600, cursor: 'pointer' }}
-          >
-            Print / Save as PDF
-          </button>
-          <button
-            onClick={() => window.history.back()}
-            style={{ marginLeft: '12px', background: 'transparent', color: '#374151', border: '1px solid #d1d5db', padding: '12px 24px', borderRadius: '24px', fontSize: '14px', cursor: 'pointer' }}
-          >
-            ← Back to Tour
-          </button>
-        </div>
+        <PrintPageActions />
       </div>
     </>
   );

@@ -1,10 +1,23 @@
 /**
  * Canonical site origin for metadata, canonical URLs, and JSON-LD.
  * Production: https://www.ctstours.co.nz — set NEXT_PUBLIC_SITE_URL in Render/hosting.
+ * Accepts values with or without scheme; invalid URLs fall back to production default
+ * so `new URL(getSiteUrl())` in root layout never throws at runtime.
  */
 export function getSiteUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || 'https://www.ctstours.co.nz';
-  return raw.replace(/\/$/, '');
+  const fallback = 'https://www.ctstours.co.nz';
+  let raw = process.env.NEXT_PUBLIC_SITE_URL?.trim() || fallback;
+  raw = raw.replace(/\/$/, '');
+  if (!/^https?:\/\//i.test(raw)) {
+    raw = `https://${raw.replace(/^\/+/, '')}`;
+  }
+  try {
+    const u = new URL(raw);
+    const base = `${u.origin}${u.pathname.replace(/\/$/, '')}`;
+    return base || u.origin;
+  } catch {
+    return fallback;
+  }
 }
 
 /** Schema.org TravelAgency — use in JSON-LD (URL resolved at call time). */

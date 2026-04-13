@@ -15,28 +15,38 @@ import { allGuides } from '@/lib/data/guides';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
-  return buildCtsPageMetadata({
-    title: 'CTS Tours | China Travel Specialists for New Zealanders',
-    description:
-      'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
-    path: '/',
-    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
-    ogImageAlt: 'Great Wall of China mist, CTS Tours',
-    keywords: [
-      'China tours New Zealand',
-      'China travel specialists',
-      'CTS Tours',
-      'Beijing tours',
-      'Shanghai tours',
-      'luxury China travel',
-      'small group China tours',
-    ],
-    ogType: 'website',
-    openGraphTitle: 'CTS Tours | China Travel Specialists for New Zealanders',
-    openGraphDescription:
-      'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
-    openGraphSiteName: 'CTS Tours — China Travel Specialists',
-  });
+  try {
+    return buildCtsPageMetadata({
+      title: 'CTS Tours | China Travel Specialists for New Zealanders',
+      description:
+        'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
+      path: '/',
+      ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
+      ogImageAlt: 'Great Wall of China mist, CTS Tours',
+      keywords: [
+        'China tours New Zealand',
+        'China travel specialists',
+        'CTS Tours',
+        'Beijing tours',
+        'Shanghai tours',
+        'luxury China travel',
+        'small group China tours',
+      ],
+      ogType: 'website',
+      openGraphTitle: 'CTS Tours | China Travel Specialists for New Zealanders',
+      openGraphDescription:
+        'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
+      openGraphSiteName: 'CTS Tours — China Travel Specialists',
+    });
+  } catch (err) {
+    console.error('[home generateMetadata]', err);
+    return {
+      title: 'CTS Tours | China Travel Specialists for New Zealanders',
+      description:
+        "Discover authentic China with CTS Tours — New Zealand's China travel specialists since 1928.",
+      robots: { index: true, follow: true },
+    };
+  }
 }
 
 const HomePage = () => {
@@ -209,7 +219,10 @@ const HomePage = () => {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{guide.h1.replace(/Travel Guide:?\s*/i, '')}</h3>
-                    <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">{guide.introText[0].substring(0, 120)}...</p>
+                    <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">
+                      {(guide.introText[0]?.substring(0, 120) ?? '').trim()}
+                      {guide.introText[0] ? '...' : ''}
+                    </p>
                     <div className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
                       Read Guide
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
