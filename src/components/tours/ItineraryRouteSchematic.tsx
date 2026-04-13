@@ -67,12 +67,14 @@ function SegmentIcon({ transport, x, y }: { transport: MapTransport; x: number; 
 /** Stylised mainland silhouette (schematic, not cartographic). */
 function ChinaSilhouette() {
   return (
-    <path
-      fill="#e8eaed"
-      stroke="#d1d5db"
-      strokeWidth={1}
-      d="M 180 420 Q 220 300 360 260 T 620 240 T 820 300 Q 860 380 840 480 Q 780 560 600 580 Q 400 600 260 540 Q 160 500 180 420 Z"
-    />
+    <g transform="scale(0.5) translate(100, 100)">
+      <path
+        fill="#e8eaed"
+        stroke="#d1d5db"
+        strokeWidth={2}
+        d="M 180 420 Q 220 300 360 260 T 620 240 T 820 300 Q 860 380 840 480 Q 780 560 600 580 Q 400 600 260 540 Q 160 500 180 420 Z"
+      />
+    </g>
   );
 }
 
