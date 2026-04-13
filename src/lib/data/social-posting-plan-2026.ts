@@ -1,7 +1,7 @@
 /**
  * October 2026 campaign — organic social posting grid (FB / IG).
  * Edit rows here; `/marketing/campaign/social` renders this file.
- * Rhythm aligns with Obsidian: Social media — 4-week rolling template (EN).
+ * Rhythm aligns with Obsidian（01-Magiclab/Projects/China Travel）与 /marketing/campaign 统筹。
  */
 
 export type SocialChannel = 'Facebook' | 'Instagram' | 'Both';
@@ -27,9 +27,9 @@ export interface SocialPostRow {
 export const SOCIAL_CAMPAIGN_META = {
   title: 'October 2026 · 社媒发帖计划（有机内容）',
   subtitle: '双产品战役：Beijing & Xi’an · Shanghai & Surroundings',
-  lastUpdated: '2026-04-13',
+  lastUpdated: '2026-04-14',
   cadence:
-    '冷启动建议：Facebook 每周 3–4 帖；Instagram 每周 3–4 帖（可同主题但文案/首图区分，勿完全复制）。与付费广告 pillar 对齐。',
+    '冷启动建议：Facebook 每周 3–4 帖；Instagram 每周 3–4 帖（可同主题但文案/首图区分，勿完全复制）。与付费 pillar 对齐；主 URL 与营销统筹「全站两簇」一致：签证指南、china-tours 枢纽、双 Discovery 产品。长文案在 Obsidian「01-Magiclab/Projects/China Travel」锁稿。',
 };
 
 const U = 'https://www.ctstours.co.nz';
@@ -119,6 +119,7 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     primaryUrl: `${U}/china-tours`,
     assetFile: '',
     status: 'draft',
+    notes: '枢纽页；若话题偏「从新西兰出发」，文案中可二次贴纸链至 /china-tours-from-new-zealand（主链仍保持单一 URL）。',
   },
   {
     id: 'S08',
@@ -152,9 +153,10 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     channel: 'Facebook',
     pillar: 'Proof',
     topicOneLiner: 'Client moment or “why CTS” — anonymise if needed',
-    primaryUrl: `${U}/china-tours`,
+    primaryUrl: `${U}/about`,
     assetFile: '',
     status: 'draft',
+    notes: 'Proof 支柱：信任与 specialist 叙事以 About 为主落地；文末可指回 /china-tours（统筹 T054）。',
   },
   {
     id: 'S11',
@@ -236,6 +238,6 @@ export const SOCIAL_CHECKLIST: string[] = [
   '单一主 URL（与站点战役口径一致）',
   '素材文件名符合 T004 约定',
   'Alt text（无障碍）',
-  '上线 Pixel 后为链接加 UTM',
+  '付费链接加 UTM（Google Search 首发；Meta Pixel 为 Phase 1b，上线后社媒亦同）',
   '签证表述：confirm latest rules；不作入境保证',
 ];
