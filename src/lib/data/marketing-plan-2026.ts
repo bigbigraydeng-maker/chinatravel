@@ -196,8 +196,8 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   },
   {
     area: 'thank-you / 主转化字典',
-    status: 'not_started',
-    note: '询盘 API 已有；独立 thank-you 与 Ads 转化字典未在仓库验收。',
+    status: 'done',
+    note: '已上线 /thank-you；询盘成功跳转；GTM tour_enquiry_thank_you；主转化事件与 Ads 字典仍待 T013/T016 定稿。',
   },
   {
     area: '战役产品页首屏 / 免签条 / CTA',
@@ -499,7 +499,22 @@ export const MARKETING_TASKS: MarketingTask[] = [
       { label: 'FAQ · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#faq' },
     ],
   },
-  { id: 'T009', module: '网站优化', name: '增加 thank-you page', priority: 'P1', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'thank-you page' },
+  {
+    id: 'T009',
+    module: '网站优化',
+    name: '增加 thank-you page',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'done',
+    deliverable: 'thank-you page',
+    notes:
+      '路由 /thank-you + ThankYouClient GTM；TourEnquiry 成功后 router.push；noindex。验收页 /marketing/preview 含本机相对链接与生产 URL 复制。',
+    reviewLinks: [
+      { label: 'Thank-you 页', href: '/thank-you' },
+      { label: '上线预览清单', href: '/marketing/preview' },
+    ],
+  },
   { id: 'T010', module: '网站优化', name: '增加 trust signals 模块', priority: 'P2', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '信任模块' },
   { id: 'T011', module: '网站优化', name: '内链 supporting content 到产品页', priority: 'P1', startWeek: 'W2', endWeek: 'W4', status: 'not_started', deliverable: '内链结构' },
   {

@@ -28,6 +28,17 @@ export default function MarketingHubPage() {
           </li>
           <li>
             <Link
+              href="/marketing/preview"
+              className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
+            >
+              上线预览 · 验收链接 →
+            </Link>
+            <p className="mt-2 text-sm text-gray-600">
+              聚合当前环境的基准 URL、双 Discovery 产品、十月战役 LP、thank-you 等，新标签打开便于发给甲方验收。
+            </p>
+          </li>
+          <li>
+            <Link
               href="/marketing/campaign/client-meeting"
               className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
             >

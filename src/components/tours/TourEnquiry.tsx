@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 
 interface TourEnquiryProps {
@@ -19,6 +20,7 @@ export default function TourEnquiry({
   tier,
   source = 'Tour Page Enquiry',
 }: TourEnquiryProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,7 +28,6 @@ export default function TourEnquiry({
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,7 +59,6 @@ export default function TourEnquiry({
         throw new Error(typeof data.error === 'string' ? data.error : 'Submission failed. Please try again.');
       }
 
-      setIsSubmitted(true);
       triggerGtmEvent({
         event: 'tour_enquiry_submit',
         form_type: 'tour_enquiry',
@@ -67,6 +67,13 @@ export default function TourEnquiry({
         pagePath: window.location.pathname,
         timestamp: Date.now(),
       });
+      const q = new URLSearchParams({
+        tour: tourName,
+        slug: tourSlug,
+        destination,
+        tier,
+      });
+      router.push(`/thank-you?${q.toString()}`);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
     } finally {
@@ -77,22 +84,6 @@ export default function TourEnquiry({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
-  if (isSubmitted) {
-    return (
-      <div id="enquiry" className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center">
-        <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <h3 className="text-xl font-bold text-green-800 mb-2">Thank You!</h3>
-        <p className="text-green-700">
-          Your enquiry has been submitted. Our travel specialists will contact you within 24 hours.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div id="enquiry" className="bg-white border border-warm-200 rounded-2xl overflow-hidden shadow-lg">
