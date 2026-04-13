@@ -3,6 +3,7 @@ import Link from 'next/link';
 import {
   SOCIAL_CAMPAIGN_META,
   SOCIAL_CHECKLIST,
+  SOCIAL_CHECKLIST_SCOPE,
   SOCIAL_POST_ROWS,
   type SocialPostRow,
   type SocialPostStatus,
@@ -194,6 +195,7 @@ export default function SocialPostingPlanPage() {
 
         <section className="rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
           <h2 className="font-serif text-lg font-semibold text-accent">发帖前检查</h2>
+          <p className="mt-3 text-sm leading-relaxed text-gray-600">{SOCIAL_CHECKLIST_SCOPE}</p>
           <ol className="mt-4 list-inside list-decimal space-y-2 text-sm text-gray-800">
             {SOCIAL_CHECKLIST.map((item, i) => (
               <li key={i} className="pl-1">

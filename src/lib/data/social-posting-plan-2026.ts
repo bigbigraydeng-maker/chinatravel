@@ -233,11 +233,15 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
   },
 ];
 
+/** 发帖前检查：适用范围（与 SOCIAL_POST_ROWS 的 channel 列一致）。 */
+export const SOCIAL_CHECKLIST_SCOPE =
+  '下列各项适用于 Facebook 与 Instagram 的有机发帖。上表「渠道」为 Instagram / Facebook 时只发该渠；为 Both 时两渠可发（建议文案或首图区分，勿完全复制）。「Reels / 屏上字」以 Instagram 为主，Facebook Reels 可沿用同一套 Hook 思路。';
+
 export const SOCIAL_CHECKLIST: string[] = [
-  'Hook（首行 / Reels 屏上字）',
+  'Hook：首行吸睛（两渠通用）；若做竖屏短视频，准备屏上大字幕（Reels 以 Instagram 为主，FB 亦可发 Reels）',
   '单一主 URL（与站点战役口径一致）',
   '素材文件名符合 T004 约定',
-  'Alt text（无障碍）',
-  '付费链接加 UTM（Google Search 首发；Meta Pixel 为 Phase 1b，上线后社媒亦同）',
+  'Alt text（无障碍；IG 图片帖与 FB 均需）',
+  '付费或 boosting 所带外链加 UTM（Meta Pixel Phase 1b 上线后，便于与 organic 区分）',
   '签证表述：confirm latest rules；不作入境保证',
 ];
