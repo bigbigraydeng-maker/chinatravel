@@ -384,10 +384,18 @@ export default function MarketingPlanPage() {
           <h2 className="font-serif text-2xl font-semibold text-accent">项目总目标</h2>
           <p className="mt-3 text-gray-700 leading-relaxed">
             在 2026 年 4–7 月完成针对新西兰市场的第一阶段数字营销系统搭建，围绕{' '}
-            <strong>10 月出发</strong> 的两个核心产品（{MARKETING_PLAN_META.heroProducts.join('、')}），建立可持续运转的：网站转化、Google/Meta
-            投放、SEO/GEO 内容、AI 内容生产、线索收集与优化系统。
+            <strong>10 月出发</strong> 的两个核心产品（{MARKETING_PLAN_META.heroProducts.join('、')}），建立可持续运转的：网站转化、
+            <strong>Google Search</strong> 首波投放与测量、SEO/GEO 内容（含 NZ visa-free / China specialist 两簇）、AI
+            内容生产、线索收集与优化；<strong>Meta 付费为 Phase 1b</strong>，不阻塞 4 月 Search 与主转化字典。
           </p>
           <p className="mt-3 font-medium text-primary">{MARKETING_PLAN_META.sprintNote}</p>
+          <p className="mt-2 text-sm text-gray-600">
+            Obsidian 项目路径：
+            <span className="ml-1 rounded bg-warm-100 px-1.5 py-0.5 font-mono text-gray-800">
+              {MARKETING_PLAN_META.obsidianProjectPath}
+            </span>
+            （长文案 / 周柱与本页双轨）
+          </p>
           <div className="mt-4 rounded-xl border border-primary/25 bg-primary/5 p-4 text-sm text-accent">
             <p className="font-semibold text-accent">社媒发帖计划（战役内）</p>
             <p className="mt-1 text-gray-700">
@@ -447,6 +455,23 @@ export default function MarketingPlanPage() {
                 ))}
               </ul>
             </div>
+          </div>
+          <div className="mt-6 rounded-xl border border-warm-100 bg-warm-50/60 p-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">全站 SEO 词簇（4 月优先）</h3>
+            <ul className="mt-3 space-y-3 text-sm text-gray-700">
+              {CONTENT_PIVOT.siteWideSeoThemes.map(item => (
+                <li key={item.primaryPath}>
+                  <div className="font-medium text-accent">{item.theme}</div>
+                  <div className="mt-1">
+                    主 URL：
+                    <Link href={item.primaryPath} className="ml-1 font-medium text-primary underline-offset-2 hover:underline">
+                      {item.primaryPath}
+                    </Link>
+                  </div>
+                  <p className="mt-1 text-xs leading-relaxed text-gray-600">{item.supportingNotes}</p>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="mt-6 border-t border-warm-100 pt-4">
             <h3 className="text-sm font-semibold text-accent">待与你对齐的扩展项</h3>

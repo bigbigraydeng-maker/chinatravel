@@ -57,9 +57,14 @@ export const MARKETING_PLAN_META = {
   lastUpdated: '2026-04-14',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
+  /**
+   * Obsidian 项目目录（库内相对路径；与仓库本文件双轨）。
+   * 长文案、四周柱、素材清单放此目录；验收链接仍以本站为准。
+   */
+  obsidianProjectPath: '01-Magiclab/Projects/China Travel',
   /** 北极星时间锚（可按实际调整） */
   sprintNote:
-    '本页仅服务于上述两个 10 月出发产品线的推广执行；目标 4 月底前有真实询盘进线（单人执行建议优先 P0：追踪 → 落地页 → Search）。',
+    '4 月阶段重心：SEO + 两产品落地 + 数据监控（GA4 / Google Ads 转化）+ 内容支点；全站优先两簇英文意图（NZ China visa free、China specialist）内链到签证指南与 china-tours / About。首波付费 = Google Search 小预算验证；Meta 冷流量与再营销为 Phase 1b，待 Search 与主转化字典跑通后再开，避免并行内耗。目标 4 月底前有真实询盘进线。',
 };
 
 /** Phase 1 第 1 周 = 该日所在周一（UTC 日历日，用于展示；与 NZ 本地日对齐时请按需要微调锚点）。 */
@@ -136,12 +141,27 @@ export const CONTENT_PIVOT = {
       path: '/campaigns/october-2026/shanghai-surroundings',
     },
   ],
+  /** 全站 SEO 优先词簇：各簇 1 个主 URL + 辅链，避免站内多页抢同一意图。 */
+  siteWideSeoThemes: [
+    {
+      theme: 'NZ / China visa-free（政策检索 + 行动）',
+      primaryPath: '/china-visa-guide-for-new-zealanders',
+      supportingNotes:
+        '产品页 ChinaVisaNudge → 指南；T035 定稿：扩写免签段落 / 合并为新文 / 仅内链 — 三选一写进 Obsidian + 本页 T035 notes。',
+    },
+    {
+      theme: 'China specialist / NZ China tours（信任 + 商业）',
+      primaryPath: '/china-tours',
+      supportingNotes:
+        'About、NZ 出发专题、双 Discovery 产品页互链；标题与首屏证据导向（TAANZ、年限、服务范围），执行见 T054。',
+    },
+  ],
   /** 与你对齐的议题（下一版任务可拆细颗粒度）。 */
   discussionTopics: [
     'FAQ：当前产品页使用目的地级通用 5 问（getTourPageFaqs）；需按线路加厚、可接 tour 级字段或独立 FAQ 数据。',
     '地图：产品页已上线「Map view / Detailed view」示意路线图（由标题/住宿文本推断城市；非精确地理底图）。若需真地图或坐标级精度，再排期。',
     'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。',
-    '社媒英文稿：先在 Obsidian（magic/chinatravel）锁「内容方向 + 四周柱」，再用 AI 按槽位批量生成，人工只做事实核对与口吻润色。',
+    '社媒英文稿与长文案：先在 Obsidian「01-Magiclab/Projects/China Travel」锁「内容方向 + 四周柱」，再按槽位生成；与本页 tasks 双轨验收。',
     '图片：Unsplash 选图 → 写入 tours.ts `gallery`（产品页 #gallery）；同一批源图导出社媒裁切（9:16 / 4:5 / 1:1）与命名、署名存档（与 T004 / T051–T053 对齐）。',
   ],
 } as const;
@@ -156,7 +176,12 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   {
     area: 'GA4 基础收集',
     status: 'done',
-    note: 'layout 挂载 GoogleAnalytics（Measurement ID 在组件内）；Ads/Meta 转化与自定义事件仍待 T013–T016。',
+    note: 'layout 挂载 GoogleAnalytics（Measurement ID 在组件内）；Google Ads 转化与主转化字典仍待 T013/T016；Meta Pixel 顺延 Phase 1b（T014）。',
+  },
+  {
+    area: 'Obsidian 与统筹双轨',
+    status: 'done',
+    note: '项目路径已写入 MARKETING_PLAN_META.obsidianProjectPath；长文案与周柱在库内维护，进度以本页为准。',
   },
   {
     area: '10 月 Discovery 战役着陆页',
@@ -233,9 +258,9 @@ export const OBJECTIVES: Objective[] = [
       },
       {
         id: 'KR2',
-        title: 'Meta Ads 完成冷流量 + 再营销广告搭建并上线',
+        title: 'Meta Ads：冷流量 + 再营销结构（Phase 1b）',
         metric: '两套结构 live',
-        aprilTarget: '冷流量 + 简单再营销',
+        aprilTarget: '5 月起或 Google Search + 主转化稳定后上线；4 月仅筹备素材/开户可并行',
         status: 'not_started',
       },
       {
@@ -260,7 +285,7 @@ export const OBJECTIVES: Objective[] = [
     keyResults: [
       {
         id: 'KR1',
-        title: '完成 6 篇围绕 10 月产品的 SEO 文章',
+        title: '完成 6 篇围绕 10 月产品的 SEO 文章（含 visa-free NZ、specialist 两簇与双产品支撑）',
         metric: '上线 + 内链',
         aprilTarget: '至少 2 篇高意向（其余可顺延）',
         status: 'not_started',
@@ -314,7 +339,13 @@ export const OBJECTIVES: Objective[] = [
 export const MILESTONES: Milestone[] = [
   { id: 'M1', week: 'Week 1', name: '项目启动', description: '目标、产品定位、分工确认', output: '项目框架确认' },
   { id: 'M2', week: 'Week 2', name: '网站转化底座完成', description: '产品页优化、追踪、CTA/FAQ/thank-you', output: '网站具备投放条件' },
-  { id: 'M3', week: 'Week 3', name: '广告系统上线', description: 'Google Search + Meta 冷流量 + 再营销', output: '开始获取流量与线索' },
+  {
+    id: 'M3',
+    week: 'Week 3',
+    name: '首波付费上线',
+    description: 'Google Search 启动（小预算）；Meta 投放 Phase 1b 不阻塞本里程碑',
+    output: '付费搜索开始进线，线索可复盘',
+  },
   { id: 'M4', week: 'Week 4', name: 'SEO/GEO 内容首批上线', description: '6 篇 supporting content 并内链', output: '内容增长系统启动' },
   { id: 'M5', week: 'Week 5', name: '第一轮数据复盘', description: '汇总广告、页面、转化数据', output: '找到有效方向' },
   { id: 'M6', week: 'Week 6', name: '第二轮优化执行', description: '广告文案、素材、落地页', output: '提升询盘效率' },
@@ -327,28 +358,33 @@ export const PHASES: PhaseBlock[] = [
     phase: 'Phase 1：基础搭建期',
     weeks: 'Week 1–2',
     goal: '网站、追踪、信息结构、广告前置条件搭好。',
-    keyResults: ['产品定位明确', '页面优化完成', '埋点完成', '广告结构确定', '素材开始准备'],
+    keyResults: ['产品定位明确', '页面优化完成', '埋点完成', 'Google Search 广告结构确定', '素材开始准备'],
     acceptance: [
       '两个产品页首轮优化完成',
-      '关键转化事件可追踪',
-      'Google / Meta 账户结构已搭好',
-      '6 篇内容选题已确认',
+      '关键转化事件可追踪（GA4 + Google Ads 主转化优先）',
+      'Google Search 账户与关键词骨架已搭好',
+      '6 篇内容选题已确认（含 visa-free / specialist 两簇与双产品支撑）',
       'AI master brief 已完成',
     ],
   },
   {
     phase: 'Phase 2：上线启动期',
     weeks: 'Week 3–4',
-    goal: '广告正式启动，内容正式上线。',
-    keyResults: ['Google Search 上线', 'Meta 冷流量与再营销上线', '首批 supporting content 上线', '有第一批流量与询盘数据'],
-    acceptance: ['广告正常跑量', '网站有稳定访问', '有初步线索数据', '数据看板可用'],
+    goal: 'Google Search 正式启动；SEO 首批 supporting 上线；Meta 不列为 4 月必达。',
+    keyResults: [
+      'Google Search 上线并有花费',
+      '首批 supporting content 上线（至少覆盖 T035–T037 中的高意向篇）',
+      '全站两簇词（visa-free、specialist）内链自检完成',
+      '有第一批流量与询盘数据',
+    ],
+    acceptance: ['Search 正常跑量', '网站有稳定访问', '有初步线索数据', 'GA4 关键路径可看'],
   },
   {
     phase: 'Phase 3：优化验证期',
     weeks: 'Week 5–6',
     goal: '找到更有效的转化组合。',
     keyResults: ['调整广告文案', '调整创意', '优化 CTA 与页面模块', '优化关键词与受众'],
-    acceptance: ['CTR 提升', '询盘率提升', '冷流量与再营销逻辑更清晰', '停留与互动改善'],
+    acceptance: ['CTR 提升', '询盘率提升', 'Search 与（若已开）Meta 再营销逻辑更清晰', '停留与互动改善'],
   },
   {
     phase: 'Phase 4：放大复制期',
@@ -380,7 +416,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W1',
     status: 'in_progress',
     deliverable: 'KPI 表 + 周报模板',
-    notes: '可与 Obsidian 周记模板同步字段。',
+    notes: '可与 Obsidian（MARKETING_PLAN_META.obsidianProjectPath）周记模板同步字段。',
   },
   {
     id: 'T003',
@@ -471,8 +507,28 @@ export const MARKETING_TASKS: MarketingTask[] = [
     reviewLinks: [{ label: '首页（验证 gtag）', href: '/' }],
   },
   { id: 'T013', module: '追踪与数据', name: '配置 Google Ads conversion', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '主转化事件' },
-  { id: 'T014', module: '追踪与数据', name: '配置 Meta Pixel', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: 'Pixel 安装完成' },
-  { id: 'T015', module: '追踪与数据', name: '配置 Meta Conversions API', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'CAPI 完成' },
+  {
+    id: 'T014',
+    module: '追踪与数据',
+    name: '配置 Meta Pixel',
+    priority: 'P1',
+    startWeek: 'W3',
+    endWeek: 'W3',
+    status: 'not_started',
+    deliverable: 'Pixel 安装完成',
+    notes: 'Phase 1b：不阻塞 4 月 Search；与 T013/T016 错开，避免同一周并行调试。',
+  },
+  {
+    id: 'T015',
+    module: '追踪与数据',
+    name: '配置 Meta Conversions API',
+    priority: 'P2',
+    startWeek: 'W4',
+    endWeek: 'W4',
+    status: 'not_started',
+    deliverable: 'CAPI 完成',
+    notes: 'Pixel 稳定后再接 CAPI。',
+  },
   { id: 'T016', module: '追踪与数据', name: '设定主/辅转化事件', priority: 'P0', startWeek: 'W1', endWeek: 'W2', status: 'not_started', deliverable: '转化字典' },
   { id: 'T017', module: '追踪与数据', name: '建立每周数据看板', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: 'Dashboard' },
   {
@@ -484,9 +540,13 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W2',
     status: 'not_started',
     deliverable: '关键词清单',
+    notes:
+      '全站意图：NZ China visa free、China specialist / china tours from NZ → 对应落地与 CONTENT_PIVOT.siteWideSeoThemes；品牌 + 双产品 + 泛词分层，附一页核心否定词。',
     reviewLinks: [
       { label: 'China tours 商业枢纽', href: '/china-tours' },
       { label: 'NZ 出发专题', href: '/china-tours-from-new-zealand' },
+      { label: 'NZ 中国签证指南', href: '/china-visa-guide-for-new-zealanders' },
+      { label: 'About（specialist 信任）', href: '/about' },
     ],
   },
   { id: 'T019', module: 'Google Ads', name: '搭建 Brand campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '品牌词广告' },
@@ -496,7 +556,17 @@ export const MARKETING_TASKS: MarketingTask[] = [
   { id: 'T023', module: 'Google Ads', name: '编写 ads copy 3 套角度', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '文案包' },
   { id: 'T024', module: 'Google Ads', name: '广告上线', priority: 'P0', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '广告正式启动' },
   { id: 'T025', module: 'Google Ads', name: '首轮优化', priority: 'P1', startWeek: 'W4', endWeek: 'W5', status: 'not_started', deliverable: '优化报告' },
-  { id: 'T026', module: 'Meta Ads', name: '明确冷流量视频方向', priority: 'P0', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '创意 brief' },
+  {
+    id: 'T026',
+    module: 'Meta Ads',
+    name: '明确冷流量视频方向',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '创意 brief',
+    notes: 'Phase 1b：可与 T051 图库并行筹备，不占用 Search 上线周。',
+  },
   {
     id: 'T027',
     module: 'Meta Ads',
@@ -509,10 +579,40 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: '与 T051–T052 共用：产品 Gallery 选定图可派生广告/社媒裁切包。',
   },
   { id: 'T028', module: 'Meta Ads', name: '编写 FB/IG 广告文案', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '广告文案包' },
-  { id: 'T029', module: 'Meta Ads', name: '搭建冷流量 campaign', priority: 'P0', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '冷流量广告' },
-  { id: 'T030', module: 'Meta Ads', name: '搭建 Lead Ads', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '表单广告' },
-  { id: 'T031', module: 'Meta Ads', name: '搭建再营销广告', priority: 'P0', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: 'remarketing campaign' },
-  { id: 'T032', module: 'Meta Ads', name: '上线并观察首轮数据', priority: 'P0', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '广告表现数据' },
+  {
+    id: 'T029',
+    module: 'Meta Ads',
+    name: '搭建冷流量 campaign',
+    priority: 'P1',
+    startWeek: 'W4',
+    endWeek: 'W4',
+    status: 'not_started',
+    deliverable: '冷流量广告',
+    notes: 'Phase 1b。',
+  },
+  { id: 'T030', module: 'Meta Ads', name: '搭建 Lead Ads', priority: 'P2', startWeek: 'W4', endWeek: 'W5', status: 'not_started', deliverable: '表单广告' },
+  {
+    id: 'T031',
+    module: 'Meta Ads',
+    name: '搭建再营销广告',
+    priority: 'P1',
+    startWeek: 'W4',
+    endWeek: 'W5',
+    status: 'not_started',
+    deliverable: 'remarketing campaign',
+    notes: 'Phase 1b：依赖 Pixel 与站内关键事件。',
+  },
+  {
+    id: 'T032',
+    module: 'Meta Ads',
+    name: '上线并观察首轮数据',
+    priority: 'P1',
+    startWeek: 'W5',
+    endWeek: 'W5',
+    status: 'not_started',
+    deliverable: '广告表现数据',
+    notes: 'Phase 1b。',
+  },
   { id: 'T033', module: 'Meta Ads', name: '创意优化', priority: 'P1', startWeek: 'W5', endWeek: 'W6', status: 'not_started', deliverable: '第二轮素材与文案' },
   {
     id: 'T034',
@@ -523,8 +623,11 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W1',
     status: 'not_started',
     deliverable: '内容规划表',
+    notes: '必含两簇：CONTENT_PIVOT.siteWideSeoThemes；Obsidian 同主题可放长表与 Brief。',
     reviewLinks: [
       { label: '内容支点 · china-tours', href: '/china-tours' },
+      { label: 'NZ 中国签证指南', href: '/china-visa-guide-for-new-zealanders' },
+      { label: 'About', href: '/about' },
       { label: '最佳旅行时间', href: '/best-time-to-visit-china' },
     ],
   },
@@ -537,7 +640,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W2',
     status: 'review',
     deliverable: '博客 1',
-    notes: '站内已有 /china-visa-guide-for-new-zealanders；需定：新文合并、内链或差异化角度。',
+    notes:
+      '站内已有 /china-visa-guide-for-new-zealanders；定稿三选一写此处 + Obsidian：① 扩写免签专段 ② 合并独立短文进指南 ③ 仅加强内链与 FAQ；避免与产品页免签条重复标题竞争。',
     reviewLinks: [{ label: '现有签证指南页', href: '/china-visa-guide-for-new-zealanders' }],
   },
   { id: 'T036', module: 'SEO / GEO', name: '文章 2：Best first trip — Beijing or Shanghai', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '博客 2' },
@@ -619,7 +723,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W3',
     status: 'not_started',
     deliverable: '每产品 1:1 / 4:5 / 9:16 各若干张 + 命名清单',
-    notes: '与 master brief、T027 素材库同一目录或 Obsidian「Gallery and social assets」交叉引用。',
+    notes:
+      '与 master brief、T027 素材库同一目录或 Obsidian（MARKETING_PLAN_META.obsidianProjectPath）中「Gallery and social assets」交叉引用。',
   },
   {
     id: 'T053',
@@ -629,8 +734,25 @@ export const MARKETING_TASKS: MarketingTask[] = [
     startWeek: 'W2',
     endWeek: 'W2',
     status: 'not_started',
-    deliverable: '表格或 Obsidian：每图 photographer、Unsplash 链接、用途（站/FB/IG）',
+    deliverable: '表格或 Obsidian（项目路径见 META）：每图 photographer、Unsplash 链接、用途（站/FB/IG）',
     notes: '与 T004 文件命名规则合并；站内需 alt 文案时一并记入。',
+  },
+  {
+    id: 'T054',
+    module: 'SEO / GEO',
+    name: 'China specialist 全站最小集（信任文案 + URL 分工）',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '关键词→URL 表 + About / china-tours 首段定稿',
+    notes:
+      '与 CONTENT_PIVOT.siteWideSeoThemes 第二簇一致；长版证据清单可写 Obsidian，本站保持简洁可验证表述。',
+    reviewLinks: [
+      { label: 'China tours 枢纽', href: '/china-tours' },
+      { label: 'About', href: '/about' },
+      { label: 'NZ 出发', href: '/china-tours-from-new-zealand' },
+    ],
   },
 ];
 
