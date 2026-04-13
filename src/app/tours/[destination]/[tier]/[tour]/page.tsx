@@ -16,6 +16,8 @@ import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
+import TourTrustSignals from '@/components/tours/TourTrustSignals';
+import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import { isOctoberCampaignTourSlug } from '@/lib/campaigns/october-campaign-tours';
 import FloatingCta from '@/components/FloatingCta';
@@ -187,6 +189,8 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TrustBar />
 
+      <TourTrustSignals />
+
       {/* Tour Content */}
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">
@@ -202,6 +206,8 @@ export default function TourPage({ params }: TourPageProps) {
                   {tour.shortDescription}
                 </p>
               </section>
+
+              {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
 
               {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
                 <CtsDepartureScheduleBlock currentSlug={tour.slug} />

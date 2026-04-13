@@ -113,7 +113,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Credentials */}
-      <section className="py-16 bg-light">
+      <section id="credentials" className="scroll-mt-24 py-16 bg-light">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-serif font-bold mb-12 text-center">Our Credentials</h2>
           
