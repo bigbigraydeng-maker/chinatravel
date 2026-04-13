@@ -11,8 +11,14 @@ export interface ChecklistItem {
 export interface MeetingBoardParsed {
   lastUpdated?: string;
   subtitle?: string;
+  /** 下次会议日期或说明（YAML `nextMeeting`，会前投屏用） */
+  nextMeeting?: string;
   /** 「如何使用」等说明（展示在页顶） */
   usageMd?: string;
+  /** 下次会前要逐条核对的清单（`- [ ]`） */
+  followUpItems: ChecklistItem[];
+  /** 周间/会间跟进 prose（Markdown） */
+  followUpLogMd: string;
   /** Freeform markdown (会议记录、备注等) */
   meetingNotesMd: string;
   todos: ChecklistItem[];
@@ -23,6 +29,7 @@ export interface MeetingBoardParsed {
 
 const FM_LAST = /^lastUpdated:\s*(.+)\s*$/im;
 const FM_SUB = /^subtitle:\s*(.+)\s*$/im;
+const FM_NEXT = /^nextMeeting:\s*(.+)\s*$/im;
 
 function stripCheckbox(line: string): { done: boolean; text: string } | null {
   const m = /^\s*-\s*\[([ xX])\]\s*(.+)\s*$/.exec(line);
@@ -45,6 +52,18 @@ function isDevSection(title: string): boolean {
   return /^开发/.test(t) || /技术项|开发任务/.test(t);
 }
 
+/** 下次会前 Follow-up 核对清单 */
+function isFollowUpChecklistSection(title: string): boolean {
+  const t = title.trim();
+  return /follow[\s-]?up/i.test(t) || /会前跟进|下次会前|会前核对/.test(t);
+}
+
+/** 定期跟进 / 周间记录（Markdown 正文） */
+function isFollowUpLogSection(title: string): boolean {
+  const t = title.trim();
+  return /^定期跟进/.test(t) || /跟进记录|周间同步|跟进日志/.test(t);
+}
+
 function parseChecklist(body: string): ChecklistItem[] {
   const out: ChecklistItem[] = [];
   for (const line of body.split('\n')) {
@@ -61,6 +80,7 @@ export function parseMeetingBoardMd(raw: string): MeetingBoardParsed {
   let body = raw;
   let lastUpdated: string | undefined;
   let subtitle: string | undefined;
+  let nextMeeting: string | undefined;
 
   const fm = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/.exec(raw);
   if (fm) {
@@ -68,8 +88,10 @@ export function parseMeetingBoardMd(raw: string): MeetingBoardParsed {
     body = fm[2];
     const lu = FM_LAST.exec(fmBlock);
     const su = FM_SUB.exec(fmBlock);
+    const nx = FM_NEXT.exec(fmBlock);
     if (lu) lastUpdated = lu[1].trim().replace(/^["']|["']$/g, '');
     if (su) subtitle = su[1].trim().replace(/^["']|["']$/g, '');
+    if (nx) nextMeeting = nx[1].trim().replace(/^["']|["']$/g, '');
   }
 
   const sections: { title: string; body: string }[] = [];
@@ -93,7 +115,9 @@ export function parseMeetingBoardMd(raw: string): MeetingBoardParsed {
   }
 
   let meetingNotesMd = '';
+  let followUpLogMd = '';
   let usageMd: string | undefined;
+  const followUpItems: ChecklistItem[] = [];
   const todos: ChecklistItem[] = [];
   const devItems: ChecklistItem[] = [];
   const extraSections: { title: string; bodyMd: string }[] = [];
@@ -101,6 +125,14 @@ export function parseMeetingBoardMd(raw: string): MeetingBoardParsed {
   for (const s of sections) {
     if (isMeetingSection(s.title)) {
       meetingNotesMd = meetingNotesMd ? `${meetingNotesMd}\n\n## ${s.title}\n\n${s.body}` : s.body;
+      continue;
+    }
+    if (isFollowUpChecklistSection(s.title)) {
+      followUpItems.push(...parseChecklist(s.body));
+      continue;
+    }
+    if (isFollowUpLogSection(s.title)) {
+      followUpLogMd = followUpLogMd ? `${followUpLogMd}\n\n## ${s.title}\n\n${s.body}` : s.body;
       continue;
     }
     if (isTodoSection(s.title)) {
@@ -118,5 +150,16 @@ export function parseMeetingBoardMd(raw: string): MeetingBoardParsed {
     extraSections.push({ title: s.title, bodyMd: s.body });
   }
 
-  return { lastUpdated, subtitle, usageMd, meetingNotesMd, todos, devItems, extraSections };
+  return {
+    lastUpdated,
+    subtitle,
+    nextMeeting,
+    usageMd,
+    followUpItems,
+    followUpLogMd,
+    meetingNotesMd,
+    todos,
+    devItems,
+    extraSections,
+  };
 }
