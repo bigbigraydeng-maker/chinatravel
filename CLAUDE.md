@@ -250,6 +250,97 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 
 ---
 
+## 图片管理工作流（2026-04-13 建立）
+
+### 图片来源优先级
+
+| 优先级 | 来源 | 用途 | 存储位置 |
+|--------|------|------|---------|
+| 1 | 自拍 / 专业摄影 | 团队照片、景区独拍 | Supabase `migrated/site/` |
+| 2 | Unsplash CDN | 景点、风景、旅行氛围 | Supabase `migrated/unsplash/` |
+| 3 | Pexels / Pixabay | Plan B，需检查 license | 迁移到 Supabase 后使用 |
+
+### Zhong 自己更新图片的流程
+
+**步骤 1：在 Unsplash 找图**
+- 搜索关键词（英文），如 `chongqing gorge`, `three gorges yangtze`
+- 找到满意图片后，从 URL 复制 **Photo ID**
+  - 示例：`https://unsplash.com/photos/photo-xyz123abc` → ID 为 `photo-xyz123abc`
+
+**步骤 2：告诉 Claude**
+```
+更新 [页面名称] hero 图片，用 photo-xyz123abc
+```
+
+**步骤 3：Claude 自动执行**
+1. 验证 photo ID 在 Supabase 是否存在（HTTP 200）
+2. 在 `tours.ts` 或 `guides.ts` 更新 `migratedUnsplash('photo-xyz123abc')`
+3. `npm run build` 验证 → git commit → git push → Render 自动部署
+
+### 图片命名规范
+
+```
+✅ Unsplash:   photo-1506905925346-21bda4d32df4.jpg   （用原始 Photo ID）
+✅ 自拍:       chongqing-three-gorges-landscape.jpg    （地点-主体-类型）
+✅ 团队:       lisa-li-portrait.jpg                   （姓名-类型）
+❌ 避免:       image1.jpg, photo.jpg, IMG_1234.JPG
+```
+
+### 图片规格标准
+
+| 用途 | 最小宽度 | 宽高比 | 最大文件大小 |
+|------|---------|--------|------------|
+| Hero 图（桌面） | 1200px | 16:9 | 300KB |
+| 团队照片 | 432px | 3:4 | 100KB |
+| Guide 缩略图 | 400px | 1:1 | 80KB |
+
+### credentials 图片位置
+
+- 其他 credentials（TAANZ、IATA 等）：`Supabase migrated/site/credentials-*.png`
+- TIA logo：`src/public/credentials-tia.png`（本地 public，待迁移至 Supabase）
+- 来源：https://www.tia.org.nz/assets/Uploads/TIA_Logo_Colour-Full-website-v2.png
+
+---
+
+## 行程路线地图组件（ItineraryRouteSchematic）
+
+**文件位置：** `src/components/tours/ItineraryRouteSchematic.tsx`
+**数据来源：** `src/lib/itinerary-map/extractRouteFromItinerary.ts`
+
+### 城市坐标系（viewBox 1000×640）
+
+```typescript
+// CITY_SCHEMATIC_POS 中的关键坐标
+beijing:    { x: 540, y: 260 }  // 北部
+xian:       { x: 470, y: 320 }  // 中北部
+shanghai:   { x: 720, y: 380 }  // 东部
+guilin:     { x: 560, y: 480 }  // 南部
+chengdu:    { x: 410, y: 400 }  // 西南部
+kunming:    { x: 340, y: 500 }  // 西南端
+
+// 全部城市范围：X: 340–720, Y: 260–500
+// ChinaSilhouette 路径须覆盖此范围
+```
+
+### ⚠️ 已知问题 & 注意事项
+
+1. **上海附近路线城市密集**（上海、苏州、无锡、杭州坐标间距 <30px），标签容易重叠
+2. **ChinaSilhouette 路径调整历史**：经过多次迭代，目前用直接坐标路径（不用 transform scaling），bbox 约 X:259–804, Y:193–532
+3. **修改轮廓路径时**，必须确保路径在 viewBox 坐标中覆盖 X:320–760, Y:190–520
+4. **调试方法**（浏览器控制台）：
+```javascript
+// 测量轮廓和城市的实际 viewBox 坐标
+const svg = document.querySelector('svg[role="img"]');
+const scale = svg.getBoundingClientRect().width / 1000;
+svg.querySelectorAll('circle[r="14"]').forEach(c => {
+  const r = c.getBoundingClientRect();
+  const svgR = svg.getBoundingClientRect();
+  console.log('city:', Math.round((r.x+r.width/2-svgR.x)/scale), Math.round((r.y+r.height/2-svgR.y)/scale));
+});
+```
+
+---
+
 ## Next Steps
 
 1. ✅ Establish project documentation (this file + project.md, roadmap.md, changelog.md)
