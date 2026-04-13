@@ -163,6 +163,7 @@ export const CONTENT_PIVOT = {
     'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。',
     '社媒英文稿与长文案：先在 Obsidian「01-Magiclab/Projects/China Travel」锁「内容方向 + 四周柱」，再按槽位生成；与本页 tasks 双轨验收。',
     '图片：Unsplash 选图 → 写入 tours.ts `gallery`（产品页 #gallery）；同一批源图导出社媒裁切（9:16 / 4:5 / 1:1）与命名、署名存档（与 T004 / T051–T053 对齐）。',
+    '外链与客座、社媒 KOC：少而精；执行顺序与 pitch 角度见仓库 `docs/outreach-guest-posts-and-backlinks.md`；战役任务 **T055–T057**（客座清单 → 首轮 pitch → KOC 试点 brief）。客座/编辑推荐落地用干净 URL；付费或 KOC 合作帖须披露（如 #ad）。',
   ],
 } as const;
 
@@ -207,6 +208,11 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
     area: '产品页 Gallery / 社媒图',
     status: 'in_progress',
     note: 'Unsplash 选图与图库扩充排入 T051–T053；代码入口 tours.ts `gallery` + TourGallery。',
+  },
+  {
+    area: '外链 / 客座与 KOC',
+    status: 'not_started',
+    note: '已纳入任务 T055–T057；执行手册见仓库 docs/outreach-guest-posts-and-backlinks.md。',
   },
 ];
 
@@ -754,6 +760,63 @@ export const MARKETING_TASKS: MarketingTask[] = [
       { label: 'NZ 出发', href: '/china-tours-from-new-zealand' },
     ],
   },
+  {
+    id: 'T055',
+    module: '外链与合作推广',
+    name: '建立外链/客座目标清单与跟踪表',
+    priority: 'P1',
+    startWeek: 'W3',
+    endWeek: 'W3',
+    status: 'not_started',
+    deliverable: '≥5 个目标站点/栏目 + 联系人 + 跟进日期（表格）',
+    notes:
+      '原则：少而精、相关受众；NAP + GBP 与手册 §1 顺序优先。勿批量提交链接农场。客座/编辑推荐内链用干净 URL（非 UTM）。',
+    reviewLinks: [
+      {
+        label: '执行手册（客座与外链）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/outreach-guest-posts-and-backlinks.md',
+      },
+      { label: 'Contact（NAP 一致性）', href: '/contact' },
+      { label: 'China tours 枢纽', href: '/china-tours' },
+    ],
+  },
+  {
+    id: 'T056',
+    module: '外链与合作推广',
+    name: '发送首轮个性化客座 / outreach pitch（≥3）',
+    priority: 'P1',
+    startWeek: 'W4',
+    endWeek: 'W4',
+    status: 'not_started',
+    deliverable: '≥3 封已发 pitch + 表格状态更新',
+    notes: '与手册 §2 角度表对齐；每人/每站单独写开头与选题，避免群发模板感。',
+    reviewLinks: [
+      {
+        label: '执行手册（pitch 与渠道）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/outreach-guest-posts-and-backlinks.md',
+      },
+      { label: 'NZ 签证指南（常见落地）', href: '/china-visa-guide-for-new-zealanders' },
+      { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
+  {
+    id: 'T057',
+    module: '外链与合作推广',
+    name: '社媒 KOC 试点：brief + 人选短名单 + 披露口径',
+    priority: 'P2',
+    startWeek: 'W5',
+    endWeek: 'W6',
+    status: 'not_started',
+    deliverable: '1 页合作 brief + 1–2 人短名单与评估结论',
+    notes:
+      '建议在 Google Search 与主转化（T013/T016）跑稳后再执行。视觉与叙事与 T043–T044、T045–T046 一致；付费或馈赠合作须在平台标注 #ad / paid partnership（NZ Fair Trading）。',
+    reviewLinks: [
+      { label: '社媒发帖计划', href: '/campaign/social' },
+      { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
 ];
 
 const PRIORITY_SORT: Record<Priority, number> = { P0: 0, P1: 1, P2: 2 };
@@ -784,7 +847,14 @@ export const KPI_GROUPS: { title: string; items: string[] }[] = [
   },
   {
     title: 'SEO / GEO KPI',
-    items: ['文章收录数量', 'impressions', 'organic clicks', '长尾关键词覆盖', '产品页 organic landing sessions'],
+    items: [
+      '文章收录数量',
+      'impressions',
+      'organic clicks',
+      '长尾关键词覆盖',
+      '产品页 organic landing sessions',
+      '高信任引荐外链（客座/精选合作）条数与落地页',
+    ],
   },
 ];
 
