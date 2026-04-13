@@ -4,7 +4,11 @@ import {
   SOCIAL_CAMPAIGN_META,
   SOCIAL_CHECKLIST,
   SOCIAL_CHECKLIST_SCOPE,
+  SOCIAL_FEATURED_PRODUCTS,
   SOCIAL_POST_ROWS,
+  SOCIAL_UTM_EXAMPLES,
+  SOCIAL_UTM_SPEC,
+  type SocialFeaturedProduct,
   type SocialPostRow,
   type SocialPostStatus,
 } from '@/lib/data/social-posting-plan-2026';
@@ -36,6 +40,12 @@ function socialStatusClass(s: SocialPostStatus): string {
     default:
       return 'bg-gray-100 text-gray-700 border-gray-200';
   }
+}
+
+function featuredCardClass(accent: SocialFeaturedProduct['accent']): string {
+  return accent === 'primary'
+    ? 'border-l-4 border-l-primary border border-warm-200'
+    : 'border-l-4 border-l-secondary border border-warm-200';
 }
 
 function pillarClass(pillar: SocialPostRow['pillar']): string {
@@ -173,6 +183,84 @@ export default function SocialPostingPlanPage() {
       </div>
 
       <div className="mx-auto max-w-6xl space-y-10 px-4 py-10">
+        <section className="space-y-4">
+          <div>
+            <h2 className="font-serif text-2xl font-semibold text-accent">十月主推 · 双 Discovery</h2>
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">
+              下列为 October 战役优先落地的两条产品线。下表各帖的「主链接」应与此口径一致；教育/枢纽帖可链至签证或{' '}
+              <Link href="/china-tours" className="text-primary underline-offset-2 hover:underline">
+                /china-tours
+              </Link>
+              。
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {SOCIAL_FEATURED_PRODUCTS.map(product => (
+              <article
+                key={product.id}
+                className={`rounded-2xl bg-white p-5 shadow-soft ${featuredCardClass(product.accent)}`}
+              >
+                <p className="text-xs font-medium uppercase tracking-wide text-gray-500">Featured · Discovery</p>
+                <h3 className="mt-1 font-serif text-xl font-semibold text-accent">{product.headline}</h3>
+                <p className="mt-2 text-sm text-gray-700">{product.tagline}</p>
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                  <Link
+                    href={product.campaignUrl}
+                    className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-center text-sm font-medium text-white underline-offset-2 hover:opacity-95"
+                  >
+                    战役落地页
+                  </Link>
+                  <Link
+                    href={product.tourUrl}
+                    className="inline-flex items-center justify-center rounded-lg border border-warm-300 bg-warm-50 px-4 py-2 text-center text-sm font-medium text-accent underline-offset-2 hover:bg-warm-100"
+                  >
+                    产品详情
+                  </Link>
+                </div>
+                <p className="mt-3 break-all font-mono text-xs text-gray-500">{product.campaignUrl}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
+          <h2 className="font-serif text-lg font-semibold text-accent">外链 UTM 命名（与投放 / GA4 对齐）</h2>
+          <p className="mt-3 text-sm leading-relaxed text-gray-700">{SOCIAL_UTM_SPEC.intro}</p>
+          <div className="mt-4 overflow-x-auto rounded-xl border border-warm-100">
+            <table className="w-full min-w-[36rem] text-left text-sm">
+              <thead className="bg-warm-100/80 text-xs uppercase tracking-wide text-gray-600">
+                <tr>
+                  <th className="px-3 py-2 font-semibold">参数</th>
+                  <th className="px-3 py-2 font-semibold">取值格式</th>
+                  <th className="px-3 py-2 font-semibold">说明</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-warm-100">
+                {SOCIAL_UTM_SPEC.rows.map(row => (
+                  <tr key={row.param} className="text-gray-800">
+                    <td className="whitespace-nowrap px-3 py-2 font-mono text-xs">{row.param}</td>
+                    <td className="px-3 py-2 font-mono text-xs">{row.format}</td>
+                    <td className="px-3 py-2 text-gray-600">{row.hint}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <h3 className="mt-6 font-serif text-base font-semibold text-accent">示例链接（可复制）</h3>
+          <p className="mt-2 text-xs text-gray-500">
+            上表「主链接」列仍为干净 URL，便于核对落地页；实际发帖或广告后台粘贴时使用下列带 UTM 的完整链接。
+          </p>
+          <ul className="mt-4 space-y-4">
+            {SOCIAL_UTM_EXAMPLES.map(ex => (
+              <li key={ex.title} className="rounded-lg border border-warm-100 bg-warm-50/50 p-4">
+                <p className="font-medium text-gray-900">{ex.title}</p>
+                <p className="mt-1 text-xs text-gray-600">{ex.scenario}</p>
+                <p className="mt-2 break-all font-mono text-xs text-primary">{ex.url}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         <section className="rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
           <h2 className="font-serif text-lg font-semibold text-accent">说明</h2>
           <p className="mt-3 text-sm leading-relaxed text-gray-700">{SOCIAL_CAMPAIGN_META.cadence}</p>

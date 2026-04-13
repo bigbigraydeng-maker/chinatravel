@@ -34,6 +34,118 @@ export const SOCIAL_CAMPAIGN_META = {
 
 const U = 'https://www.ctstours.co.nz';
 
+/** GA4 / Ads 对齐：十月双产品战役固定 campaign 维度（勿随意改名）。 */
+export const SOCIAL_UTM_CAMPAIGN_VALUE = 'oct2026_dual';
+
+export type SocialUtmSource = 'facebook' | 'instagram';
+export type SocialUtmMedium = 'organic' | 'paid_social';
+
+export interface SocialUtmParams {
+  source: SocialUtmSource;
+  medium: SocialUtmMedium;
+  /** 发帖表 `SOCIAL_POST_ROWS.id`（如 S02）或产品线键（beijing_xian / shanghai_surroundings）。 */
+  content: string;
+}
+
+/** 在绝对 URL 上追加 UTM；用于社媒外链与投放报表对齐。 */
+export function buildSocialTrackedUrl(absoluteUrl: string, params: SocialUtmParams): string {
+  const url = new URL(absoluteUrl);
+  url.searchParams.set('utm_source', params.source);
+  url.searchParams.set('utm_medium', params.medium);
+  url.searchParams.set('utm_campaign', SOCIAL_UTM_CAMPAIGN_VALUE);
+  url.searchParams.set('utm_content', params.content);
+  return url.toString();
+}
+
+export interface SocialFeaturedProduct {
+  /** 与 `utm_content` 产品线键一致时可复用。 */
+  id: 'beijing_xian' | 'shanghai_surroundings';
+  headline: string;
+  tagline: string;
+  /** October 战役落地（转化帖优先）。 */
+  campaignUrl: string;
+  tourUrl: string;
+  accent: 'primary' | 'secondary';
+}
+
+export const SOCIAL_FEATURED_PRODUCTS: SocialFeaturedProduct[] = [
+  {
+    id: 'beijing_xian',
+    headline: 'A Tale of Two Cities',
+    tagline: 'Beijing & Xi’an · Discovery · 十月战役主推之一',
+    campaignUrl: `${U}/campaigns/october-2026/tale-of-two-cities`,
+    tourUrl: `${U}/tours/china/discovery/beijing-xian`,
+    accent: 'primary',
+  },
+  {
+    id: 'shanghai_surroundings',
+    headline: 'Shanghai & Surroundings',
+    tagline: '江南与城市高光 · Discovery · 十月战役主推之二',
+    campaignUrl: `${U}/campaigns/october-2026/shanghai-surroundings`,
+    tourUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
+    accent: 'secondary',
+  },
+];
+
+export const SOCIAL_UTM_SPEC = {
+  campaignValue: SOCIAL_UTM_CAMPAIGN_VALUE,
+  intro:
+    '有机发帖与付费 / boost 建议共用同一 utm_campaign，便于在 GA4 中汇总「十月双产品」；用 utm_medium 区分 organic 与 paid_social；用 utm_content 区分具体帖（S01…）或产品线键，便于与上表对照。',
+  rows: [
+    {
+      param: 'utm_source',
+      format: 'facebook | instagram',
+      hint: '以实际发帖账号所在平台为准。',
+    },
+    {
+      param: 'utm_medium',
+      format: 'organic | paid_social',
+      hint: '未付费曝光用 organic；boost 或广告用 paid_social。',
+    },
+    {
+      param: 'utm_campaign',
+      format: SOCIAL_UTM_CAMPAIGN_VALUE,
+      hint: '与战役看板、投放命名对齐；改名需同步 GA4 探索报表与历史对比口径。',
+    },
+    {
+      param: 'utm_content',
+      format: 'S01…S16 或 beijing_xian | shanghai_surroundings',
+      hint: '优先用发帖表 ID，便于执行复盘；纯品牌帖可用产品线键。',
+    },
+  ],
+} as const;
+
+/** 可复制示例（完整 URL）；实际发帖时替换 source / medium / content 即可。 */
+export const SOCIAL_UTM_EXAMPLES: readonly { title: string; scenario: string; url: string }[] = [
+  {
+    title: '有机 Instagram → 北京线产品页（对照发帖表 S02）',
+    scenario: 'utm_content 用 S02 与表格一行一一对应。',
+    url: buildSocialTrackedUrl(`${U}/tours/china/discovery/beijing-xian`, {
+      source: 'instagram',
+      medium: 'organic',
+      content: 'S02',
+    }),
+  },
+  {
+    title: '有机 Facebook → 上海线战役落地（对照 S08）',
+    scenario: '转化帖常用战役 URL。',
+    url: buildSocialTrackedUrl(`${U}/campaigns/october-2026/shanghai-surroundings`, {
+      source: 'facebook',
+      medium: 'organic',
+      content: 'S08',
+    }),
+  },
+  {
+    title: '付费 / boost Facebook → 北京线战役落地',
+    scenario: '与 organic 区分：utm_medium=paid_social；content 仍建议对齐帖或创意编号。',
+    url: buildSocialTrackedUrl(`${U}/campaigns/october-2026/tale-of-two-cities`, {
+      source: 'facebook',
+      medium: 'paid_social',
+      content: 'beijing_xian',
+    }),
+  },
+];
+
 export const SOCIAL_POST_ROWS: SocialPostRow[] = [
   {
     id: 'S01',
