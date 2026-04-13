@@ -324,6 +324,10 @@ export default function MarketingPlanPage() {
               <Link href="/marketing" className="text-primary underline-offset-2 hover:underline">
                 全站营销入口
               </Link>
+              {' · '}
+              <Link href="/marketing/campaign/client-meeting" className="text-primary underline-offset-2 hover:underline">
+                甲方会议看板
+              </Link>
             </p>
           </div>
           <div className="flex flex-col items-stretch gap-2 sm:items-end">

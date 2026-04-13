@@ -28,6 +28,17 @@ export default function MarketingHubPage() {
           </li>
           <li>
             <Link
+              href="/marketing/campaign/client-meeting"
+              className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
+            >
+              甲方会议看板（待办 / 开发事项）→
+            </Link>
+            <p className="mt-2 text-sm text-gray-600">
+              内容由 <code className="rounded bg-warm-100 px-1 text-xs">docs/client-meeting-board.md</code> 驱动，与战役看板同一密码门。
+            </p>
+          </li>
+          <li>
+            <Link
               href="/campaign/social"
               className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
             >
