@@ -64,14 +64,17 @@ function SegmentIcon({ transport, x, y }: { transport: MapTransport; x: number; 
   );
 }
 
-/** Stylised mainland silhouette (schematic, not cartographic). */
+/** Stylised mainland silhouette (schematic, not cartographic).
+ *  Path scaled 0.7×, translated so centroid aligns with city cluster (530, 380).
+ *  City x range: 340–720  y range: 260–500  → silhouette bbox: ~285–775 × 261–499
+ */
 function ChinaSilhouette() {
   return (
-    <g transform="scale(0.5) translate(100, 100)">
+    <g transform="translate(173, 93) scale(0.7)">
       <path
         fill="#e8eaed"
         stroke="#d1d5db"
-        strokeWidth={2}
+        strokeWidth={1.5}
         d="M 180 420 Q 220 300 360 260 T 620 240 T 820 300 Q 860 380 840 480 Q 780 560 600 580 Q 400 600 260 540 Q 160 500 180 420 Z"
       />
     </g>
