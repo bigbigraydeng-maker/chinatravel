@@ -31,7 +31,7 @@ import {
   generateTourSchema,
   generateProductSchema,
   generateBreadcrumbSchema,
-  getTourPageFaqs,
+  getTourPageFaqsForTour,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
 
@@ -103,7 +103,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 3);
 
-  const faqs = getTourPageFaqs(destination.name);
+  const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
   const mainTourPath = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
 
@@ -199,7 +199,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 destination={tour.destination}
                 tier={tour.tier}
               />
-              <TourItinerary itinerary={tour.itinerary} />
+              <TourItinerary itinerary={tour.itinerary} tourCities={tour.tourCities} />
 
               <TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} />
 

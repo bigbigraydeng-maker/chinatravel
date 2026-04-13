@@ -26,7 +26,7 @@ import {
   generateTourSchema,
   generateProductSchema,
   generateBreadcrumbSchema,
-  getTourPageFaqs,
+  getTourPageFaqsForTour,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
 
@@ -107,7 +107,7 @@ export default function TourPage({ params }: TourPageProps) {
     .filter(t => t.slug !== tour.slug)
     .slice(0, 3);
 
-  const faqs = getTourPageFaqs(destination.name);
+  const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
   const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
 
@@ -217,7 +217,7 @@ export default function TourPage({ params }: TourPageProps) {
                 destination={tour.destination}
                 tier={tour.tier}
               />
-              <TourItinerary itinerary={tour.itinerary} />
+              <TourItinerary itinerary={tour.itinerary} tourCities={tour.tourCities} />
 
 
               {/* Inclusions & Exclusions */}

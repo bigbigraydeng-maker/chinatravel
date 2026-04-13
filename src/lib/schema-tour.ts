@@ -133,6 +133,17 @@ export function generateBreadcrumbSchema(
   };
 }
 
+/** Resolves FAQs for a tour: uses `tour.faqs` when present, otherwise generic destination FAQs. */
+export function getTourPageFaqsForTour(
+  tour: Tour,
+  destinationLabel: string
+): Array<{ question: string; answer: string }> {
+  if (tour.faqs && tour.faqs.length > 0) {
+    return tour.faqs;
+  }
+  return getTourPageFaqs(destinationLabel);
+}
+
 /** Default FAQs for tour detail pages (NZ audience, GEO-friendly). */
 export function getTourPageFaqs(destinationLabel: string): Array<{ question: string; answer: string }> {
   return [

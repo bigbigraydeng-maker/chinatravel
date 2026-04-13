@@ -158,7 +158,7 @@ export const CONTENT_PIVOT = {
   ],
   /** 与你对齐的议题（下一版任务可拆细颗粒度）。 */
   discussionTopics: [
-    'FAQ：当前产品页使用目的地级通用 5 问（getTourPageFaqs）；需按线路加厚、可接 tour 级字段或独立 FAQ 数据。',
+    'FAQ：十月双 Discovery（beijing-xian、shanghai-surroundings）已用 tours.ts `faqs` 线路问答；其余产品仍默认目的地级 5 问（getTourPageFaqs），可按需补 `faqs`。',
     '地图：产品页已上线「Map view / Detailed view」示意路线图（由标题/住宿文本推断城市；非精确地理底图）。若需真地图或坐标级精度，再排期。',
     'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。',
     '社媒英文稿与长文案：先在 Obsidian「01-Magiclab/Projects/China Travel」锁「内容方向 + 四周柱」，再按槽位生成；与本页 tasks 双轨验收。',
@@ -490,8 +490,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P1',
     startWeek: 'W1',
     endWeek: 'W2',
-    status: 'not_started',
+    status: 'done',
     deliverable: 'FAQ 完整版',
+    notes:
+      'Tour 可选字段 `faqs` + getTourPageFaqsForTour；十月两条 Discovery 各 8 条线路向问答（产品页与 October 战役页同数据）。',
     reviewLinks: [
       { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#faq' },
       { label: 'FAQ · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#faq' },

@@ -10,9 +10,10 @@ import ItineraryRouteSchematic from '@/components/tours/ItineraryRouteSchematic'
 
 interface TourItineraryProps {
   itinerary: DayItinerary[];
+  tourCities?: string[]; // 城市ID列表，优先使用
 }
 
-export default function TourItinerary({ itinerary }: TourItineraryProps) {
+export default function TourItinerary({ itinerary, tourCities }: TourItineraryProps) {
   const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1]));
   const [view, setView] = useState<'map' | 'detailed'>('map');
 
@@ -91,7 +92,7 @@ export default function TourItinerary({ itinerary }: TourItineraryProps) {
             ))}
           </div>
           <div className="min-h-[280px] lg:sticky lg:top-28 lg:self-start">
-            <ItineraryRouteSchematic route={route} />
+            <ItineraryRouteSchematic route={route} tourCities={tourCities} />
             <p className="mt-3 text-center text-xs text-gray-500">
               Schematic route for planning — not a geographic map. City order is derived from your itinerary text.
             </p>

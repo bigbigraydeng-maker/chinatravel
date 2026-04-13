@@ -2,9 +2,12 @@
 
 import type { ExtractedItineraryRoute, MapTransport } from '@/lib/itinerary-map/extractRouteFromItinerary';
 import { CITY_SCHEMATIC_POS } from '@/lib/itinerary-map/extractRouteFromItinerary';
+import { calculateMapBounds, calculateSvgViewBox, geoToSvgBatch } from '@/lib/itinerary-map/coordinate-transform';
+import { getCityCoord, type CityCoord } from '@/lib/itinerary-map/city-geo-coordinates';
 
 type Props = {
-  route: ExtractedItineraryRoute;
+  route?: ExtractedItineraryRoute;
+  tourCities?: string[];
 };
 
 function pos(id: string) {
@@ -50,218 +53,247 @@ function SegmentIcon({ transport, x, y }: { transport: MapTransport; x: number; 
       <g transform={`translate(${x},${y})`} aria-hidden>
         <circle r={r} fill="white" stroke="#dc2626" strokeWidth={1.5} />
         {/* 高铁图标 */}
-        <rect x={-7} y={-4} width={14} height={8} rx={2} fill="#dc2626" />
-        <rect x={-5} y={-7} width={10} height={5} rx={1} fill="#dc2626" />
-        <line x1={-4} y1={1} x2={4} y2={1} stroke="white" strokeWidth={1} />
+        <path
+          d="M-2 -3 L2 -3 L3 -1 L3 3 L1 4 L1 5 L-1 5 L-1 4 L-3 3 L-3 -1 Z"
+          fill="#dc2626"
+          transform="scale(1.2)"
+        />
+      </g>
+    );
+  }
+  if (transport === 'coach') {
+    return (
+      <g transform={`translate(${x},${y})`} aria-hidden>
+        <circle r={r} fill="white" stroke="#dc2626" strokeWidth={1.5} />
+        {/* 车辆图标 */}
+        <path
+          d="M-3 -2 L3 -2 L4 0 L4 2 L3 3 L-3 3 L-4 2 L-4 0 Z M-2 1 L-1 1 M1 1 L2 1"
+          fill="#dc2626"
+          stroke="#dc2626"
+          strokeWidth={0.5}
+          strokeLinecap="round"
+        />
       </g>
     );
   }
   return (
-    <g transform={`translate(${x},${y})`} aria-hidden>
-      <circle r={r} fill="white" stroke="#64748b" strokeWidth={1.5} />
-      <rect x={-5} y={-3} width={10} height={7} rx={1} fill="#64748b" />
-    </g>
+    <circle cx={x} cy={y} r={r} fill="white" stroke="#dc2626" strokeWidth={1.5} />
   );
 }
 
-/**
- * 中国大陆轮廓（示意图，非精确投影）
- * 路径节点参考 CITY_SCHEMATIC_POS 坐标系（viewBox 1000×640）
- * 顺时针，从东北角开始
- */
-function ChinaSilhouette() {
-  return (
-    <path
-      fill="white"
-      stroke="#94a3b8"
-      strokeWidth={1.2}
-      d="
-        M 850 120
-        Q 840 138 820 158
-        Q 800 178 778 198
-        Q 745 212 700 218
-        Q 728 238 758 268
-        Q 788 284 810 300
-        Q 800 324 778 340
-        Q 774 360 778 380
-        Q 798 395 820 410
-        Q 808 432 798 452
-        Q 778 472 768 492
-        Q 752 508 738 522
-        Q 722 538 718 552
-        Q 698 562 678 572
-        Q 648 581 618 590
-        Q 588 598 558 600
-        Q 518 598 478 590
-        Q 448 584 418 578
-        Q 382 570 348 558
-        Q 318 546 288 528
-        Q 258 508 228 488
-        Q 198 463 168 428
-        Q 146 398 138 358
-        Q 128 318 98 278
-        Q 118 243 148 208
-        Q 174 183 198 158
-        Q 248 138 298 118
-        Q 362 106 428 93
-        Q 503 86 578 88
-        Q 638 90 698 98
-        Q 743 105 788 108
-        Q 820 113 850 120 Z
-      "
-    />
-  );
-}
+export default function ItineraryRouteSchematic({ route, tourCities }: Props) {
+  // Use parameterized approach if tourCities provided, otherwise fall back to route-based
+  const useParameterized = tourCities && tourCities.length > 0;
 
-function displayCoords(
-  stops: { cityId: string }[],
-  index: number
-): { x: number; y: number } {
-  const s = stops[index];
-  const base = pos(s.cityId);
-  let dup = 0;
-  for (let j = 0; j < index; j++) {
-    if (stops[j].cityId === s.cityId) dup += 1;
+  if (!useParameterized && (!route || route.segments.length === 0)) {
+    return (
+      <div className="text-center text-gray-500 p-4">
+        Unable to render route map
+      </div>
+    );
   }
-  return { x: base.x + dup * 28, y: base.y - dup * 22 };
-}
 
-/** 根据城市位置自动选择标签对齐方向，避免超出边界 */
-function labelAnchor(x: number): 'start' | 'middle' | 'end' {
-  if (x < 300) return 'start';
-  if (x > 700) return 'end';
-  return 'middle';
-}
+  // Parameterized map rendering
+  if (useParameterized && tourCities) {
+    const bounds = calculateMapBounds(tourCities);
+    const viewBox = calculateSvgViewBox(bounds);
 
-function labelOffset(x: number): { dx: number; dy: number } {
-  if (x < 300) return { dx: 18, dy: 5 };
-  if (x > 700) return { dx: -18, dy: 5 };
-  return { dx: 0, dy: -20 };
-}
+    // Convert city IDs to geographic coordinates and then to SVG coordinates
+    const geoCoords = tourCities
+      .map(id => getCityCoord(id))
+      .filter((coord): coord is CityCoord => coord !== null)
+      .map(coord => ({ lon: coord.lon, lat: coord.lat }));
 
-export default function ItineraryRouteSchematic({ route }: Props) {
-  const { stops, segments } = route;
-  const vbW = 1000;
-  const vbH = 640;
+    const svgCoords = geoToSvgBatch(geoCoords, bounds, viewBox);
 
-  const summary = stops
-    .map(s => `${s.label.replace(/'/g, '\u2019')} (${s.nights}N)`)
-    .join(' — ');
+    // Create city position lookup for consistent rendering
+    const cityPositions: Record<string, { x: number; y: number }> = {};
+    tourCities.forEach((cityId, idx) => {
+      const coord = svgCoords[idx];
+      if (coord) {
+        cityPositions[cityId] = { x: coord.x, y: coord.y };
+      }
+    });
 
-  return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-md">
-      <div className="relative aspect-[5/3] min-h-[280px] w-full md:min-h-[340px]">
+    const viewBoxString = `${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`;
+
+    return (
+      <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow-sm">
         <svg
-          viewBox={`0 0 ${vbW} ${vbH}`}
-          className="h-full w-full"
+          viewBox={viewBoxString}
+          className="w-full max-w-2xl"
+          style={{ aspectRatio: `${viewBox.width} / ${viewBox.height}` }}
           role="img"
-          aria-label="Tour route map across China"
+          aria-label="Tour Route Map"
         >
+          {/* Background */}
+          <rect
+            x={viewBox.x}
+            y={viewBox.y}
+            width={viewBox.width}
+            height={viewBox.height}
+            fill="#fafafa"
+            stroke="#e5e7eb"
+            strokeWidth="1"
+          />
+
+          {/* Route segments */}
+          {tourCities.map((cityId, idx) => {
+            if (idx === 0) return null; // Skip first city as starting point
+            const fromId = tourCities[idx - 1];
+            const fromPos = cityPositions[fromId];
+            const toPos = cityPositions[cityId];
+
+            if (!fromPos || !toPos) return null;
+
+            const bend = idx % 2 === 0 ? 30 : -30;
+            const cx1 = fromPos.x + (toPos.x - fromPos.x) * 0.25 + bend;
+            const cy1 = fromPos.y + (toPos.y - fromPos.y) * 0.1 - Math.abs(bend) * 0.8;
+            const cx2 = fromPos.x + (toPos.x - fromPos.x) * 0.75 + bend * 0.4;
+            const cy2 = toPos.y + (fromPos.y - toPos.y) * 0.1 - Math.abs(bend) * 0.4;
+            const mx = (fromPos.x + toPos.x) / 2 + bend * 0.6;
+            const my = (fromPos.y + toPos.y) / 2 - Math.abs(bend) * 0.7;
+
+            return (
+              <g key={`${fromId}-${cityId}-${idx}`}>
+                {/* Route curve */}
+                <path
+                  d={`M ${fromPos.x} ${fromPos.y} C ${cx1} ${cy1} ${cx2} ${cy2} ${toPos.x} ${toPos.y}`}
+                  fill="none"
+                  stroke="#dc2626"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  markerEnd="url(#arrowhead)"
+                />
+                {/* Transport icon placeholder */}
+                <circle cx={mx} cy={my} r={14} fill="white" stroke="#dc2626" strokeWidth={1.5} />
+              </g>
+            );
+          })}
+
+          {/* City nodes */}
+          {tourCities.map(cityId => {
+            const pos = cityPositions[cityId];
+            if (!pos) return null;
+            return (
+              <g key={cityId}>
+                <circle cx={pos.x} cy={pos.y} r="5" fill="#1e293b" />
+                <circle cx={pos.x} cy={pos.y} r="8" fill="none" stroke="#1e293b" strokeWidth="1" opacity="0.3" />
+              </g>
+            );
+          })}
+
+          {/* Arrow marker definition */}
           <defs>
-            {/* 海洋渐变：蓝绿色，与参考图一致 */}
-            <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#a8d8ea" />
-              <stop offset="100%" stopColor="#7ec8e3" />
-            </linearGradient>
-            {/* 箭头 marker */}
             <marker
-              id="arrowRed"
-              markerWidth="8"
-              markerHeight="8"
-              refX="6"
+              id="arrowhead"
+              markerWidth="10"
+              markerHeight="10"
+              refX="9"
               refY="3"
               orient="auto"
             >
-              <path d="M0,0 L0,6 L8,3 z" fill="#dc2626" />
+              <polygon points="0 0, 10 3, 0 6" fill="#dc2626" />
             </marker>
           </defs>
-
-          {/* 海洋背景 */}
-          <rect width={vbW} height={vbH} fill="url(#oceanGrad)" />
-
-          {/* 中国大陆 */}
-          <ChinaSilhouette />
-
-          {/* CHINA 文字标签 */}
-          <text
-            x={420}
-            y={370}
-            textAnchor="middle"
-            fill="#94a3b8"
-            style={{ fontSize: '22px', fontWeight: 700, letterSpacing: '0.18em', opacity: 0.6 }}
-          >
-            CHINA
-          </text>
-
-          {/* 路线弧线 */}
-          {stops.slice(0, -1).map((_, i) => {
-            const a = displayCoords(stops, i);
-            const b = displayCoords(stops, i + 1);
-            const seg = segments[i];
-            const bend = (i % 2 === 0 ? 1 : -1) * 55;
-            const { cx1, cy1, cx2, cy2, mx, my } = curvePoints(a.x, a.y, b.x, b.y, bend);
-            const d = `M ${a.x} ${a.y} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${b.x} ${b.y}`;
-            return (
-              <g key={`edge-${stops[i].cityId}-${i}`}>
-                <path
-                  d={d}
-                  fill="none"
-                  stroke="#dc2626"
-                  strokeWidth={2.5}
-                  strokeLinecap="round"
-                  strokeDasharray="none"
-                  markerEnd="url(#arrowRed)"
-                  opacity={0.9}
-                />
-                {seg ? <SegmentIcon transport={seg.transport} x={mx} y={my} /> : null}
-              </g>
-            );
-          })}
-
-          {/* 城市标记 */}
-          {stops.map((s, i) => {
-            const { x, y } = displayCoords(stops, i);
-            const anchor = labelAnchor(x);
-            const { dx, dy } = labelOffset(x);
-            return (
-              <g key={`${s.cityId}-${s.firstDay}`}>
-                {/* 黑色实心圆点（参考图样式） */}
-                <circle cx={x} cy={y} r={7} fill="#1e293b" />
-                <circle cx={x} cy={y} r={10} fill="none" stroke="#1e293b" strokeWidth={1.5} opacity={0.3} />
-                {/* 城市名 + 天数 */}
-                <text
-                  x={x + dx}
-                  y={y + dy}
-                  textAnchor={anchor}
-                  fill="#1e293b"
-                  style={{
-                    fontSize: '13px',
-                    fontWeight: 700,
-                    letterSpacing: '0.06em',
-                    textShadow: '0 0 4px white, 0 0 4px white',
-                  }}
-                >
-                  {s.label}
-                </text>
-                <text
-                  x={x + dx}
-                  y={y + dy + 16}
-                  textAnchor={anchor}
-                  fill="#dc2626"
-                  style={{ fontSize: '11px', fontWeight: 600 }}
-                >
-                  ({s.nights}N)
-                </text>
-              </g>
-            );
-          })}
         </svg>
       </div>
+    );
+  }
 
-      {/* 底部摘要栏 */}
-      <div className="border-t border-gray-200 bg-gray-50 px-4 py-3 text-center text-xs font-semibold tracking-wide text-gray-600 md:text-sm">
-        {summary}
-      </div>
+  // Route-based rendering (original approach)
+  const cities = route!.segments.map(s => [s.fromId, s.toId]).flat();
+  const uniqueCities = Array.from(new Set(cities));
+
+  // 计算viewBox
+  const xCoords = uniqueCities.map(id => pos(id).x);
+  const yCoords = uniqueCities.map(id => pos(id).y);
+  const minX = Math.min(...xCoords);
+  const maxX = Math.max(...xCoords);
+  const minY = Math.min(...yCoords);
+  const maxY = Math.max(...yCoords);
+
+  const padding = 80;
+  const viewBoxX = minX - padding;
+  const viewBoxY = minY - padding;
+  const viewBoxWidth = maxX - minX + padding * 2;
+  const viewBoxHeight = maxY - minY + padding * 2;
+
+  return (
+    <div className="w-full flex justify-center bg-white p-4 rounded-lg shadow-sm">
+      <svg
+        viewBox={`${viewBoxX} ${viewBoxY} ${viewBoxWidth} ${viewBoxHeight}`}
+        className="w-full max-w-2xl"
+        style={{ aspectRatio: `${viewBoxWidth} / ${viewBoxHeight}` }}
+        role="img"
+        aria-label="Tour Route Map"
+      >
+        {/* 背景 */}
+        <rect
+          x={viewBoxX}
+          y={viewBoxY}
+          width={viewBoxWidth}
+          height={viewBoxHeight}
+          fill="#fafafa"
+          stroke="#e5e7eb"
+          strokeWidth="1"
+        />
+
+        {/* 路线段 */}
+        {route!.segments.map((segment, idx) => {
+          const fromPos = pos(segment.fromId);
+          const toPos = pos(segment.toId);
+          const bend = idx % 2 === 0 ? 30 : -30;
+          const { cx1, cy1, cx2, cy2, mx, my } = curvePoints(
+            fromPos.x,
+            fromPos.y,
+            toPos.x,
+            toPos.y,
+            bend
+          );
+
+          return (
+            <g key={`${segment.fromId}-${segment.toId}-${idx}`}>
+              {/* 路线曲线 */}
+              <path
+                d={`M ${fromPos.x} ${fromPos.y} C ${cx1} ${cy1} ${cx2} ${cy2} ${toPos.x} ${toPos.y}`}
+                fill="none"
+                stroke="#dc2626"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                markerEnd="url(#arrowhead)"
+              />
+              {/* 交通方式图标 */}
+              <SegmentIcon transport={segment.transport} x={mx} y={my} />
+            </g>
+          );
+        })}
+
+        {/* 城市节点 */}
+        {uniqueCities.map(cityId => {
+          const { x, y } = pos(cityId);
+          return (
+            <g key={cityId}>
+              <circle cx={x} cy={y} r="5" fill="#1e293b" />
+              <circle cx={x} cy={y} r="8" fill="none" stroke="#1e293b" strokeWidth="1" opacity="0.3" />
+            </g>
+          );
+        })}
+
+        {/* 箭头定义 */}
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#dc2626" />
+          </marker>
+        </defs>
+      </svg>
     </div>
   );
 }
