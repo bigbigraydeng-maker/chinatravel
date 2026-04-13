@@ -65,19 +65,18 @@ function SegmentIcon({ transport, x, y }: { transport: MapTransport; x: number; 
 }
 
 /** Stylised mainland silhouette (schematic, not cartographic).
- *  Path scaled 0.7×, translated so centroid aligns with city cluster (530, 380).
- *  City x range: 340–720  y range: 260–500  → silhouette bbox: ~285–775 × 261–499
+ *  Path coordinates sized to directly contain all CITY_SCHEMATIC_POS entries.
+ *  City bbox: X 340–720, Y 260–500. Silhouette adds ~100px padding each side.
+ *  No external transform needed — coordinates match SVG space directly.
  */
 function ChinaSilhouette() {
   return (
-    <g transform="translate(173, 93) scale(0.7)">
-      <path
-        fill="#e8eaed"
-        stroke="#d1d5db"
-        strokeWidth={1.5}
-        d="M 180 420 Q 220 300 360 260 T 620 240 T 820 300 Q 860 380 840 480 Q 780 560 600 580 Q 400 600 260 540 Q 160 500 180 420 Z"
-      />
-    </g>
+    <path
+      fill="#e8eaed"
+      stroke="#d1d5db"
+      strokeWidth={1}
+      d="M 260 430 Q 295 270 450 215 Q 590 200 695 210 T 810 285 Q 835 385 815 490 Q 770 565 585 568 Q 395 565 305 520 Q 210 478 260 430 Z"
+    />
   );
 }
 
@@ -112,9 +111,7 @@ export default function ItineraryRouteSchematic({ route }: Props) {
             </linearGradient>
           </defs>
           <rect width={vbW} height={vbH} fill="url(#seaGrad)" />
-          <g transform="translate(0, 20) scale(0.95)">
-            <ChinaSilhouette />
-          </g>
+          <ChinaSilhouette />
 
           {stops.slice(0, -1).map((_, i) => {
             const a = displayCoords(stops, i);
