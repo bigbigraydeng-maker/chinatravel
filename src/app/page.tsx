@@ -38,8 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
       openGraphSiteName: 'CTS Tours — China Travel Specialists',
     });
-  } catch (err) {
-    console.error('[home generateMetadata]', err);
+  } catch {
     return {
       title: 'CTS Tours | China Travel Specialists for New Zealanders',
       description:
