@@ -2,15 +2,15 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Asiascape Holidays | On-Ground Operations for Agents | CTS Tours',
+  title: 'Asiascape Holidays | On-the-Ground Team in Asia | CTS Tours',
   description:
-    'Asiascape Holidays is the ground operations arm of CTS Tours across China, Japan, Korea, and Vietnam — one coordinated system for agents and clients from arrival to departure.',
+    'Asiascape Holidays is CTS Tours’ ground operations across China, Japan, Korea, and Vietnam — one coordinated team from airport meet-and-greet through every day of your trip.',
   keywords: [
     'Asiascape Holidays',
-    'CTS Tours agents',
+    'CTS Tours China',
     'Asia ground operations',
-    'China tour agents New Zealand',
-    'meet and greet Asia',
+    'China tours New Zealand',
+    'airport meet and greet China',
   ],
 };
 
@@ -47,10 +47,10 @@ export default function AsianEscapesPage() {
             />
           </div>
           <p className="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-secondary">
-            For travel agents · A CTS Tours brand
+            The on-the-ground face of CTS Tours in Asia
           </p>
           <h1 className="mx-auto max-w-4xl text-center font-serif text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
-            Asiascape Holidays — Your Clients&apos; On-Ground Experience
+            Asiascape Holidays — who meets you when you land
           </h1>
         </div>
       </section>
@@ -59,14 +59,13 @@ export default function AsianEscapesPage() {
         <div className="container mx-auto max-w-3xl px-4">
           <div className="space-y-6 text-lg leading-relaxed text-gray-700">
             <p>
-              Asiascape Holidays is the ground operations arm of CTS Tours across China, Japan, Korea, and
-              Vietnam. It is the brand your clients will see and interact with from the moment they arrive at
-              their destination — ensuring consistent, high-quality service from arrival to departure.
+              Asiascape Holidays is CTS Tours’ ground operations across China, Japan, Korea, and Vietnam. From
+              the moment you arrive, it is the name and team you will see at the airport, on transfers, and
+              throughout your sightseeing — one consistent standard from arrival to departure.
             </p>
             <p>
-              For agents, this is an important part of the CTS story. You are not booking separate, unrelated
-              ground operators in each country. You are working with one coordinated system, backed by CTS&apos;s
-              direct operational presence.
+              You are not pieced together from unrelated local suppliers in each country. Your itinerary is
+              delivered by a coordinated CTS system, backed by our own operational presence on the ground.
             </p>
           </div>
         </div>
@@ -75,39 +74,39 @@ export default function AsianEscapesPage() {
       <section className="border-y border-warm-200 bg-warm-50/50 py-16 md:py-20">
         <div className="container mx-auto max-w-3xl px-4">
           <h2 className="mb-10 font-serif text-2xl font-bold text-gray-900 md:text-3xl">
-            What Your Clients Will Experience
+            What you can expect on the ground
           </h2>
 
           <div className="space-y-12">
             <div>
-              <h3 className="mb-4 text-lg font-semibold text-accent">On arrival</h3>
+              <h3 className="mb-4 text-lg font-semibold text-accent">When you arrive</h3>
               <BulletList
                 items={[
-                  'Meet and greet at the airport with Asiascape signage — clear identification for peace of mind',
-                  'Local Asiascape representative ready to assist immediately',
-                  'Coordinated transfer to hotel — no confusion, no waiting',
+                  'Airport meet and greet with clear Asiascape signage so you know who to look for',
+                  'A local Asiascape representative on hand to help straight away',
+                  'Coordinated transfer to your hotel — no guesswork or long waits',
                 ]}
               />
             </div>
 
             <div>
-              <h3 className="mb-4 text-lg font-semibold text-accent">During the trip</h3>
+              <h3 className="mb-4 text-lg font-semibold text-accent">During your trip</h3>
               <BulletList
                 items={[
-                  'Professional local guides and drivers, coordinated by Asiascape',
-                  'Asiascape flag and branding for easy group recognition at meeting points and during tours',
-                  'Coordinated transfers, sightseeing, and daily logistics handled seamlessly',
+                  'Professional local guides and drivers, organised by Asiascape',
+                  'Asiascape flags and branding at meeting points so groups are easy to spot',
+                  'Transfers, sightseeing, and day-to-day logistics handled as one flow',
                 ]}
               />
             </div>
 
             <div>
-              <h3 className="mb-4 text-lg font-semibold text-accent">Extras (by programme)</h3>
+              <h3 className="mb-4 text-lg font-semibold text-accent">Extras (where your programme includes them)</h3>
               <BulletList
                 items={[
-                  'Branded lanyards, hats, or umbrellas for group identification',
-                  "Emergency contact support through Asiascape's local teams",
-                  'On-ground assistance when clients need help — from restaurant recommendations to medical support',
+                  'Branded lanyards, hats, or umbrellas on some departures for easy group recognition',
+                  "Emergency contact through Asiascape's local teams",
+                  'Practical help when you need it — from dining suggestions to arranging support if something goes wrong',
                 ]}
               />
             </div>
@@ -117,22 +116,23 @@ export default function AsianEscapesPage() {
 
       <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-3xl px-4">
-          <h2 className="mb-8 font-serif text-2xl font-bold text-gray-900 md:text-3xl">Why this helps you sell</h2>
+          <h2 className="mb-8 font-serif text-2xl font-bold text-gray-900 md:text-3xl">
+            Why that matters for your holiday
+          </h2>
           <BulletList
             items={[
-              'Removes uncertainty for first-time Asia travellers — they know exactly who to look for on arrival',
-              'Easy to explain to clients: “Look for the Asiascape sign when you land — your guide will be right there”',
-              'Consistent service standard across multiple destinations — same operational system in China, Japan, Korea, and Vietnam',
-              'Reliable local teams backed by CTS Tours — not outsourced to a third-party ground handler your client has never heard of',
-              'Reduces complaints and confusion on arrival — the handoff from flight to ground is managed, not left to chance',
+              'Less uncertainty for first-time visitors to Asia — you know exactly who is meeting you after a long flight',
+              'A simple story: look for the Asiascape sign; your guide and driver are part of the same team',
+              'The same operational approach across China, Japan, Korea, and Vietnam where we operate',
+              'Local teams employed and trained within the CTS structure — not an unknown third-party ground handler',
+              'A managed handoff from plane to hotel and each day after — not left to chance at the kerb',
             ]}
           />
 
           <p className="mt-10 text-lg leading-relaxed text-gray-700">
-            <strong>Your advantage with CTS + Asiascape:</strong> You are not booking separate operators in each
-            country. You are working with one coordinated system. When a client travels to China with CTS, the
-            Asiascape team on the ground is part of the same organisation — not a subcontractor. That&apos;s a
-            genuine differentiator, and it&apos;s worth saying out loud to clients.
+            <strong>CTS and Asiascape together:</strong> you are not booking a different ground operator in every
+            destination. When you travel to China with CTS, the Asiascape team on the ground is part of the same
+            organisation — not a one-off subcontractor. That continuity is something we are proud to stand behind.
           </p>
         </div>
       </section>
@@ -140,13 +140,13 @@ export default function AsianEscapesPage() {
       <section className="bg-accent py-16 text-white md:py-20">
         <div className="container mx-auto max-w-3xl px-4">
           <h2 className="mb-6 text-center font-serif text-xl font-bold uppercase tracking-wide text-white/95 md:text-2xl">
-            Client-ready script
+            In plain words
           </h2>
           <blockquote className="rounded-2xl border border-white/20 bg-white/10 p-8 text-lg leading-relaxed text-white/95 backdrop-blur-sm md:p-10">
-            When you arrive in China, you&apos;ll be met at the airport by the Asiascape team — they&apos;re the
-            local operations arm of CTS Tours. You&apos;ll see their signage straight away. They handle everything
-            on the ground: your guide, your driver, your transfers, your daily logistics. It&apos;s all coordinated
-            by one team, not pieced together from different suppliers.
+            When you arrive in China, the Asiascape team meets you at the airport — they are CTS Tours’ local
+            operations crew. You will see their signage right away. They look after the ground side of your trip:
+            your guide, your driver, your transfers, and the day-to-day running order. It is one coordinated team,
+            not a patchwork of unrelated suppliers.
           </blockquote>
         </div>
       </section>
@@ -156,16 +156,16 @@ export default function AsianEscapesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="space-y-5">
               <h2 className="font-serif text-2xl font-bold text-gray-900 md:text-3xl">
-                Our Team on the Ground
+                Our team on the ground
               </h2>
               <p className="text-gray-700 leading-relaxed text-lg">
-                These are Asiascape&apos;s own team members — not contractors — working the Great Wall on a
-                live CTS tour. They carry Asiascape signage, lead the group through ticketing and access
-                points, and manage the full day on-site.
+                These are Asiascape&apos;s own team members — not casual day hires — at work on the Great Wall
+                during a live CTS tour. They carry Asiascape signage, lead the group through ticketing and entry,
+                and manage the full day on site.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                When you book through CTS, this is who your clients will be with. Trained, briefed, and
-                part of the same organisation — not sourced from a third-party pool on the day.
+                When you book with CTS, this is the kind of crew you travel with: trained, briefed, and part of the
+                same organisation — not pulled from an anonymous pool on the morning of your visit.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
