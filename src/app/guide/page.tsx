@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import SectionTitle from '@/components/SectionTitle';
 import { getAllGuides } from '@/lib/data/guides';
 import { tourImage } from '@/lib/site-media';
@@ -67,26 +68,15 @@ const GuidePage = () => {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="relative h-80 flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <div className="relative h-full w-full">
-            <Image
-              src={tourImage('great-wall-mist.jpg')}
-              alt="Great Wall of China — hero for China travel guides by CTS Tours"
-              fill
-              sizes="100vw"
-              priority
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="absolute inset-0 bg-black bg-opacity-55"></div>
-        </div>
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 font-serif">China Travel Guides</h1>
-          <p className="text-lg md:text-xl">21 expert destination guides from CTS Tours specialists</p>
-        </div>
-      </section>
+      <ImmersivePageHero
+        eyebrow="Travel guide"
+        chineseAccent="行旅华夏 · 专家指南"
+        title="China Travel Guides"
+        subtitle="21 expert destination guides from CTS Tours specialists"
+        imageSrc={tourImage('great-wall-mist.jpg')}
+        imageAlt="Great Wall of China — China travel guides by CTS Tours"
+        priority
+      />
 
       {/* Content */}
       <section className="section bg-white">

@@ -1,19 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { migratedSite } from '@/lib/site-media';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
+import { migratedSite, tourImage } from '@/lib/site-media';
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="bg-primary text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">About CTS Tours</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Connecting New Zealanders to the wonders of Asia for over 20 years
-          </p>
-        </div>
-      </section>
+      <ImmersivePageHero
+        eyebrow="About"
+        chineseAccent="知行中国 · 廿载同行"
+        title="About CTS Tours"
+        subtitle="Connecting New Zealanders to the wonders of Asia for over 20 years"
+        imageSrc={tourImage('forbidden-city-aerial.jpg')}
+        imageAlt="Forbidden City Beijing — about CTS Tours, China travel specialists for New Zealand"
+        priority
+      />
 
       {/* Company Overview */}
       <section className="py-16 bg-light">

@@ -2185,8 +2185,8 @@ export const chongqingGuide: DestinationGuide = {
   keywords: ['Chongqing', 'Yangtze', 'Three Gorges', 'hot pot', 'mountain city'],
   h1: 'Chongqing: Gateway to Yangtze Gorges',
   heroSubtitle: 'Mountain City & Spice Capital',
-  heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
-  heroImageClassName: 'object-[center_45%]',
+  heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
+  heroImageClassName: 'object-[center_42%]',
   introText: [
     'Chongqing, sprawling across mountains above the Yangtze and Jialing Rivers, functions as primary departure point for Yangtze River cruises exploring the famous Three Gorges. The city\'s dramatic topography—featuring steep hillsides, river valleys, and urban development clinging to cliffsides—creates distinctive urban character. As gateway to central China, Chongqing serves as important transport hub connecting Beijing, Shanghai, Kunming, and regional destinations.',
     'The city earned reputation as spice capital; Chongqing hot pot (Sichuan ma la) features numbing Sichuan peppercorns and chilli heat. The dining culture reflects deep regional identity. Beyond cuisine, Chongqing offers Three Gorges Dam visits, river boat experiences, cave temples, and mountain cable cars providing city panoramas.',
@@ -2251,7 +2251,7 @@ export const chongqingGuide: DestinationGuide = {
   relatedGuideSlugs: ['yunnan-travel-guide'],
   galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-15'
 };
 
 export const leshanBuddhaGuide: DestinationGuide = {

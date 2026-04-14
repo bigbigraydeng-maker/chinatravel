@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { marketingPlanAccessKey } from '@/lib/auth/marketing-plan-session';
 import TodayW1Panel from './TodayW1Panel';
+import CampaignCollapsibleSection from './CampaignCollapsibleSection';
 import {
   CAMPAIGN_W1_MONDAY_ISO,
   CONTENT_PIVOT,
@@ -383,16 +384,15 @@ export default function MarketingPlanPage() {
         </nav>
       </div>
 
-      <div className="mx-auto max-w-6xl space-y-12 px-4 py-10">
+      <div className="mx-auto max-w-6xl space-y-4 px-4 py-10">
         <TodayW1Panel
           tasks={w1StartingTasks}
           weekRangeLabel={weekTokenRangeLabel('W1')}
           anchorIso={CAMPAIGN_W1_MONDAY_ISO}
         />
 
-        <section id="overview" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
-          <h2 className="font-serif text-2xl font-semibold text-accent">项目总目标</h2>
-          <p className="mt-3 text-gray-700 leading-relaxed">
+        <CampaignCollapsibleSection id="overview" title="项目总目标" description="看板式折叠 · 点击栏目标题展开">
+          <p className="text-gray-700 leading-relaxed">
             在 2026 年 4–7 月完成针对新西兰市场的第一阶段数字营销系统搭建，围绕{' '}
             <strong>10 月出发</strong> 的两个核心产品（{MARKETING_PLAN_META.heroProducts.join('、')}），建立可持续运转的：网站转化、
             <strong>Google Search</strong> 首波投放与测量、SEO/GEO 内容（含 NZ visa-free / China specialist 两簇）、AI
@@ -427,11 +427,10 @@ export default function MarketingPlanPage() {
             周次说明：<strong>W1</strong> 对应周一为 <code className="rounded bg-warm-100 px-1">{CAMPAIGN_W1_MONDAY_ISO}</code>
             （可在数据文件中修改 <code className="rounded bg-warm-100 px-1">CAMPAIGN_W1_MONDAY_ISO</code>）；每列为周一至周日。
           </p>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="pivot" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
-          <h2 className="font-serif text-2xl font-semibold text-accent">内容支点（canonical）</h2>
-          <p className="mt-2 text-sm text-gray-600">
+        <CampaignCollapsibleSection id="pivot" title="内容支点（canonical）" description="Discovery / 战役页 / SEO 词簇">
+          <p className="text-sm text-gray-600">
             以下页面作为 AI 扩展、社媒与博客的「事实源」。有机发帖排期见{' '}
             <Link href="/campaign/social" className="font-medium text-primary underline-offset-2 hover:underline">
               社媒发帖计划（短链 /campaign/social）
@@ -491,11 +490,10 @@ export default function MarketingPlanPage() {
               ))}
             </ul>
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="audit" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
-          <h2 className="font-serif text-2xl font-semibold text-accent">对照检查（仓库现状）</h2>
-          <p className="mt-2 text-sm text-gray-600">
+        <CampaignCollapsibleSection id="audit" title="对照检查（仓库现状）" description="执行快照 · 与任务 status 交叉核对">
+          <p className="text-sm text-gray-600">
             人工快照，随开发更新；状态与任务表中的 <code className="rounded bg-warm-100 px-1">status</code> 可交叉核对。
           </p>
           <div className="mt-4 overflow-x-auto rounded-xl border border-warm-100">
@@ -524,11 +522,10 @@ export default function MarketingPlanPage() {
               </tbody>
             </table>
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="okr" className="scroll-mt-28">
-          <h2 className="font-serif text-2xl font-semibold text-accent">OKR 跟进</h2>
-          <p className="mt-2 text-sm text-gray-600">
+        <CampaignCollapsibleSection id="okr" title="OKR 跟进" description="在 marketing-plan-2026.ts 更新 KR 状态">
+          <p className="text-sm text-gray-600">
             在 <code className="rounded bg-warm-100 px-1">src/lib/data/marketing-plan-2026.ts</code> 中更新每条 KR 的{' '}
             <code className="rounded bg-warm-100 px-1">status</code> 与说明。
           </p>
@@ -569,19 +566,22 @@ export default function MarketingPlanPage() {
               </article>
             ))}
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="milestones" className="scroll-mt-28">
-          <h2 className="font-serif text-2xl font-semibold text-accent">Milestone 总表</h2>
-          <div className="mt-4 space-y-3">
+        <CampaignCollapsibleSection id="milestones" title="Milestone 总表" description={`共 ${MILESTONES.length} 个节点`}>
+          <div className="space-y-3">
             <MilestoneCardsMobile items={MILESTONES} />
             <MilestoneTableDesktop items={MILESTONES} />
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="tasks" className="scroll-mt-28">
-          <h2 className="font-serif text-2xl font-semibold text-accent">核心任务表</h2>
-          <p className="mt-2 text-sm text-gray-600">
+        <CampaignCollapsibleSection
+          id="tasks"
+          title="核心任务表"
+          description="按模块折叠 · 跳转链接可自动展开对应模块"
+          badge={`${MARKETING_TASKS.length} 条`}
+        >
+          <p className="text-sm text-gray-600">
             状态枚举：<strong>未开始</strong> · <strong>进行中</strong> · <strong>复核</strong> · <strong>完成</strong> ·{' '}
             <strong>阻塞</strong> — 与数据文件中的英文 key 对应。
           </p>
@@ -613,28 +613,30 @@ export default function MarketingPlanPage() {
             </Link>
           </div>
 
-          <div className="mt-6 space-y-10">
+          <div className="mt-6 space-y-4">
             {MODULE_ORDER.map(module => {
               const rows = byModule.get(module);
               if (!rows?.length) return null;
               return (
-                <div key={module}>
-                  <h3 id={moduleTasksAnchorId(module)} className="scroll-mt-28 font-serif text-lg font-semibold text-accent">
-                    {module}
-                  </h3>
-                  <div className="mt-3 space-y-3">
+                <CampaignCollapsibleSection
+                  key={module}
+                  id={moduleTasksAnchorId(module)}
+                  title={module}
+                  variant="nested"
+                  badge={`${rows.length} 条`}
+                >
+                  <div className="space-y-3">
                     <TaskCardsMobile rows={rows} />
                     <TaskTableDesktop rows={rows} />
                   </div>
-                </div>
+                </CampaignCollapsibleSection>
               );
             })}
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="phases" className="scroll-mt-28">
-          <h2 className="font-serif text-2xl font-semibold text-accent">阶段划分与验收</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <CampaignCollapsibleSection id="phases" title="阶段划分与验收" description={`${PHASES.length} 个阶段`}>
+          <div className="grid gap-6 md:grid-cols-2">
             {PHASES.map(p => (
               <article key={p.phase} className="rounded-2xl border border-warm-200 bg-white p-5 shadow-soft">
                 <h3 className="font-serif text-lg font-semibold text-primary">{p.phase}</h3>
@@ -659,11 +661,10 @@ export default function MarketingPlanPage() {
               </article>
             ))}
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="kpi" className="scroll-mt-28">
-          <h2 className="font-serif text-2xl font-semibold text-accent">KPI 建议（跟踪用）</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        <CampaignCollapsibleSection id="kpi" title="KPI 建议（跟踪用）" description="按渠道分组">
+          <div className="grid gap-4 sm:grid-cols-2">
             {KPI_GROUPS.map(group => (
               <div key={group.title} className="rounded-2xl border border-warm-200 bg-white p-5 shadow-soft">
                 <h3 className="font-serif text-base font-semibold text-accent">{group.title}</h3>
@@ -675,18 +676,17 @@ export default function MarketingPlanPage() {
               </div>
             ))}
           </div>
-        </section>
+        </CampaignCollapsibleSection>
 
-        <section id="weekly" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-6 shadow-soft">
-          <h2 className="font-serif text-2xl font-semibold text-accent">每周固定检查（5 件事）</h2>
-          <ol className="mt-4 list-inside list-decimal space-y-2 text-gray-800">
+        <CampaignCollapsibleSection id="weekly" title="每周固定检查（5 件事）" description="周会节奏">
+          <ol className="list-inside list-decimal space-y-2 text-gray-800">
             {WEEKLY_CHECKLIST.map((item, i) => (
               <li key={i} className="pl-1">
                 {item}
               </li>
             ))}
           </ol>
-        </section>
+        </CampaignCollapsibleSection>
 
         <footer className="border-t border-warm-200 pb-8 pt-6 text-center text-xs text-gray-500 print:pt-2">
           CTS Tours · Phase 1 数字营销统筹 · 仅作进度同步 · {MARKETING_PLAN_META.lastUpdated}

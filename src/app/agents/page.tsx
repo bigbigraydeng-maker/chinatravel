@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { migratedSite } from '@/lib/site-media';
 
 export const metadata: Metadata = {
@@ -16,24 +17,15 @@ export const metadata: Metadata = {
 const AgentsPage = () => {
   return (
     <div>
-      {/* Hero banner */}
-      <section className="relative h-64 flex items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={migratedSite('forbidden-city-aerial-portrait.jpg')}
-            alt="Forbidden City Beijing — CTS Tours Agent Resources"
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-        </div>
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 font-serif">Agent Resources</h1>
-          <p className="text-lg">CTS supports trade partners with specialist China expertise</p>
-        </div>
-      </section>
+      <ImmersivePageHero
+        eyebrow="Trade partners"
+        chineseAccent="同业共行 · 专业支持"
+        title="Agent Resources"
+        subtitle="CTS supports trade partners with specialist China expertise"
+        imageSrc={migratedSite('forbidden-city-aerial-portrait.jpg')}
+        imageAlt="Forbidden City Beijing — CTS Tours agent resources"
+        priority
+      />
 
       {/* Page body */}
       <section className="section bg-white">

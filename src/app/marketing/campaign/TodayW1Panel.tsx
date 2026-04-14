@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useLayoutEffect, useState } from 'react';
 import Link from 'next/link';
 import type { MarketingTask } from '@/lib/data/marketing-plan-2026';
 import { statusBadgeClass, taskStatusLabel } from '@/lib/data/marketing-plan-2026';
@@ -14,8 +14,19 @@ type Props = {
 };
 
 export default function TodayW1Panel({ tasks, weekRangeLabel, anchorIso }: Props) {
-  const [panelOpen, setPanelOpen] = useState(true);
+  const [panelOpen, setPanelOpen] = useState(false);
   const [showAll, setShowAll] = useState(false);
+
+  const syncHash = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    if (window.location.hash.slice(1) === 'today') setPanelOpen(true);
+  }, []);
+
+  useLayoutEffect(() => {
+    syncHash();
+    window.addEventListener('hashchange', syncHash);
+    return () => window.removeEventListener('hashchange', syncHash);
+  }, [syncHash]);
 
   const visibleTasks = showAll ? tasks : tasks.slice(0, PREVIEW_COUNT);
   const hiddenCount = Math.max(0, tasks.length - PREVIEW_COUNT);

@@ -57,10 +57,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
+      <body className="font-sans antialiased">
         <GoogleAnalytics />
-      </head>
-      <body className="font-sans">
         <GoogleTagManager />
         <GtmInit />
         <ConditionalChrome>{children}</ConditionalChrome>

@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import TailorMadeForm from '@/components/TailorMadeForm';
 import TailorMadeQuickPlan from '@/components/TailorMadeQuickPlan';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbListSchema, generateWebPageSchema } from '@/lib/schema-seo';
+import { tourImage } from '@/lib/site-media';
 
 const PAGE_PATH = '/tailor-made';
 const PAGE_TITLE = 'Tailor Made Tours';
@@ -176,22 +178,18 @@ export default function TailorMadePage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <section className="relative bg-accent text-white py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent via-accent/95 to-primary/80" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 rounded-full border border-white/30" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full border border-white/20" />
-        </div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <p className="text-secondary font-semibold uppercase tracking-wider mb-3">Tailor-made holidays</p>
-          <p className="text-lg md:text-xl text-white/80 font-serif mb-4">Your tour, your way</p>
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6">Tailor Made Journeys</h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-            No two travellers are alike. If you want a flexible itinerary with none of the stress of organising it
-            yourself, we combine your ideas with our China and Asia expertise—so you get the trip you imagined, not a
-            generic package.
-          </p>
+      <ImmersivePageHero
+        eyebrow="Tailor-made holidays"
+        chineseAccent="定制旅程"
+        title="Tailor Made Journeys"
+        subtitle="Your tour, your way"
+        description="No two travellers are alike. If you want a flexible itinerary with none of the stress of organising it yourself, we combine your ideas with our China and Asia expertise—so you get the trip you imagined, not a generic package."
+        imageSrc={tourImage('guilin-river-valley.jpg')}
+        imageAlt="Li River karst landscape — tailor-made China and Asia tours, CTS Tours"
+        tall
+        priority
+      >
+        <div className="mx-auto max-w-3xl md:max-w-none">
           <TailorMadeQuickPlan />
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
             <a
@@ -208,7 +206,7 @@ export default function TailorMadePage() {
             </a>
           </div>
         </div>
-      </section>
+      </ImmersivePageHero>
 
       <TrustBar />
 
