@@ -6,6 +6,7 @@ import { getBlogPostBySlug, getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedSite } from '@/lib/site-media';
+import { renderBlogPostHtml } from '@/lib/blog-html';
 
 interface BlogPostPageProps {
   params: {
@@ -152,15 +153,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
                 {post.excerpt}
               </p>
-              <div 
+              <div
                 className="text-gray-700 leading-relaxed blog-content"
-                dangerouslySetInnerHTML={{ 
-                  __html: post.content
-                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                    .replace(/\n\n/g, '</p><p class="mb-6">')
-                    .replace(/\n/g, '<br/>')
-                    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>')
-                }}
+                dangerouslySetInnerHTML={{ __html: renderBlogPostHtml(post.content) }}
               />
             </div>
 
