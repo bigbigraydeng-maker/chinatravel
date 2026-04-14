@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { getSupabase } from '@/lib/supabase';
 import { migratedSite } from '@/lib/site-media';
+import { triggerGtmEvent } from '@/components/GoogleTagManager';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const ContactPage = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -24,26 +25,37 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setSubmitError(null);
 
     try {
-      const { error } = await getSupabase()
-        .from('enquiries')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
           travel_interest: formData.travel_interest,
-          message: formData.message
-        });
+          message: formData.message.trim(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
 
-      if (error) {
-        throw error;
+      if (!res.ok) {
+        throw new Error(typeof data.error === 'string' ? data.error : 'Submission failed. Please try again.');
       }
+
+      triggerGtmEvent({
+        event: 'contact_form_submit',
+        form_type: 'contact_page',
+        travel_interest: formData.travel_interest,
+        pagePath: typeof window !== 'undefined' ? window.location.pathname : '/contact',
+      });
 
       setSuccess(true);
       setFormData({ name: '', email: '', phone: '', travel_interest: '', message: '' });
     } catch (error) {
-      console.error('Error submitting form:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong.');
     } finally {
       setIsLoading(false);
     }
@@ -149,6 +161,11 @@ const ContactPage = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitError && (
+                    <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+                      {submitError}
+                    </p>
+                  )}
                   <div>
                     <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>
                     <input

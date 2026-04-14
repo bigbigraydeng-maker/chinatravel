@@ -57,7 +57,7 @@ export const MARKETING_PLAN_META = {
   lastUpdated: '2026-04-14',
   /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
   lastSiteSyncNote:
-    'T034 关键词主题表（仓库 docs）、T041 内链（Plan your trip + china-tours / NZ 专题）、T042 产品 metaTitle 与 generateMetadata 对齐、T054 About / china-tours 首段 specialist 表述。',
+    'O3 闭环：T034、T054、T036–T040、T041、T042、T008；T035 免签簇已定稿（签证指南为主落地 + October 双 CTA + 内链/FAQ，与产品页免签条分工）。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -150,7 +150,7 @@ export const CONTENT_PIVOT = {
       theme: 'NZ / China visa-free（政策检索 + 行动）',
       primaryPath: '/china-visa-guide-for-new-zealanders',
       supportingNotes:
-        '产品页 ChinaVisaNudge → 指南；T035 定稿：扩写免签段落 / 合并为新文 / 仅内链 — 三选一写进 Obsidian + 本页 T035 notes。',
+        '产品页 ChinaVisaNudge → 指南；T035 已定稿：以 /china-visa-guide-for-new-zealanders 为主承载，含 October 双 CTA 与内链/FAQ 强化。',
     },
     {
       theme: 'China specialist / NZ China tours（信任 + 商业）',
@@ -194,8 +194,9 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   },
   {
     area: '产品页 FAQ 深度',
-    status: 'in_progress',
-    note: '仍为通用 FAQ；加厚与结构化需单独排期（见讨论议题）。',
+    status: 'done',
+    note:
+      '十月双 Discovery 已各 8 条线路向 FAQ（tours.ts `faqs` + #faq；战役页同步）；全站 JSON-LD 含 FAQ 等。其余 tier 仍为目的地默认问答，可按产品补 `faqs`（见 CONTENT_PIVOT.discussionTopics）。',
   },
   {
     area: 'thank-you / 主转化字典',
@@ -243,7 +244,7 @@ export const OBJECTIVES: Objective[] = [
         title: '完成 thank-you page、FAQ、CTA、信任模块优化',
         metric: '模块上线 + 可追踪互动',
         aprilTarget: 'thank-you + CTA + FAQ 最小集',
-        status: 'not_started',
+        status: 'done',
       },
       {
         id: 'KR4',
@@ -294,25 +295,32 @@ export const OBJECTIVES: Objective[] = [
     keyResults: [
       {
         id: 'KR1',
-        title: '完成 6 篇围绕 10 月产品的 SEO 文章（含 visa-free NZ、specialist 两簇与双产品支撑）',
-        metric: '上线 + 内链',
-        aprilTarget: '至少 2 篇高意向（其余可顺延）',
-        status: 'not_started',
+        title:
+          '完成 6 篇围绕 10 月产品的 SEO 文章（含 visa-free NZ、specialist 两簇与双产品支撑）',
+        metric: '5 篇 /blog + 签证指南免签簇（T035 定稿）= 6 条内容支柱闭环',
+        aprilTarget: 'visa-free / specialist 两簇与双产品支撑已覆盖',
+        status: 'done',
       },
       {
         id: 'KR2',
         title: '完成产品页 FAQ 强化与结构化信息增强',
-        status: 'not_started',
+        metric: '十月双 Discovery：线路 FAQ + 页面/战役 JSON-LD；T042 meta/OG',
+        aprilTarget: '主推产品页与 October LP 已对齐',
+        status: 'done',
       },
       {
         id: 'KR3',
         title: '完成产品页与 supporting content 的内链结构',
-        status: 'not_started',
+        metric: 'T011 TourSupportingContentLinks + T041 hub/博客互链',
+        aprilTarget: 'Plan your trip、china-tours、NZ 专题、博客 ↔ 产品/战役',
+        status: 'done',
       },
       {
         id: 'KR4',
         title: '让网站形成「产品页 + 内容页 + 再营销页」的增长闭环',
-        status: 'not_started',
+        metric: '博客 → Discovery / October LP → contact；枢纽 china-tours / 签证指南',
+        aprilTarget: '首版闭环已跑通；外链/KOC 见 T055–T057 放大',
+        status: 'done',
       },
     ],
   },
@@ -355,7 +363,13 @@ export const MILESTONES: Milestone[] = [
     description: 'Google Search 启动（小预算）；Meta 投放 Phase 1b 不阻塞本里程碑',
     output: '付费搜索开始进线，线索可复盘',
   },
-  { id: 'M4', week: 'Week 4', name: 'SEO/GEO 内容首批上线', description: '6 篇 supporting content 并内链', output: '内容增长系统启动' },
+  {
+    id: 'M4',
+    week: 'Week 4',
+    name: 'SEO/GEO 内容首批上线',
+    description: '5 篇博客 + 签证指南免签簇（T035）已定稿上线；全站内链与 meta 基础完成',
+    output: 'SEO/GEO 内容增长基础设施已启用',
+  },
   { id: 'M5', week: 'Week 5', name: '第一轮数据复盘', description: '汇总广告、页面、转化数据', output: '找到有效方向' },
   { id: 'M6', week: 'Week 6', name: '第二轮优化执行', description: '广告文案、素材、落地页', output: '提升询盘效率' },
   { id: 'M7', week: 'Week 7', name: '可复制 SOP 完成', description: 'AI 内容 SOP + 广告结构模板', output: '形成复制能力' },
@@ -372,7 +386,7 @@ export const PHASES: PhaseBlock[] = [
       '两个产品页首轮优化完成',
       '关键转化事件可追踪（GA4 + Google Ads 主转化优先）',
       'Google Search 账户与关键词骨架已搭好',
-      '6 篇内容选题已确认（含 visa-free / specialist 两簇与双产品支撑）',
+      '6 篇内容选题已确认；5 篇 /blog + 签证指南 visa-free 簇（T035）已定稿',
       'AI master brief 已完成',
     ],
   },
@@ -382,8 +396,8 @@ export const PHASES: PhaseBlock[] = [
     goal: 'Google Search 正式启动；SEO 首批 supporting 上线；Meta 不列为 4 月必达。',
     keyResults: [
       'Google Search 上线并有花费',
-      '首批 supporting content 上线（至少覆盖 T035–T037 中的高意向篇）',
-      '全站两簇词（visa-free、specialist）内链自检完成',
+      '首批 supporting content 已上线（T036–T040；visa-free 簇见指南页 + T035）',
+      '全站两簇词（visa-free、specialist）内链与 T042 meta 基础已完成',
       '有第一批流量与询盘数据',
     ],
     acceptance: ['Search 正常跑量', '网站有稳定访问', '有初步线索数据', 'GA4 关键路径可看'],
@@ -439,7 +453,23 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: '/marketing/campaign',
     reviewLinks: [{ label: '本统筹页', href: '/marketing/campaign' }],
   },
-  { id: 'T004', module: '策略与项目管理', name: '建立素材命名与文件管理规则', priority: 'P1', startWeek: 'W1', endWeek: 'W1', status: 'not_started', deliverable: '文件规范' },
+  {
+    id: 'T004',
+    module: '策略与项目管理',
+    name: '建立素材命名与文件管理规则',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'done',
+    deliverable: '文件规范',
+    notes: 'docs/asset-naming-and-file-management.md；与 T027 素材库、T052 裁切包、T053 署名表同一命名原则。',
+    reviewLinks: [
+      {
+        label: '素材命名与文件管理（仓库）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/asset-naming-and-file-management.md',
+      },
+    ],
+  },
   {
     id: 'T005',
     module: '网站优化',
@@ -712,10 +742,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P1',
     startWeek: 'W2',
     endWeek: 'W2',
-    status: 'review',
-    deliverable: '博客 1',
+    status: 'done',
+    deliverable: '签证指南免签簇（主落地）',
     notes:
-      '站内已有 /china-visa-guide-for-new-zealanders；已加 October 2026 双战役 CTA（#october-discovery-cta）。定稿三选一写此处 + Obsidian：① 扩写免签专段 ② 合并独立短文进指南 ③ 仅加强内链与 FAQ；避免与产品页免签条重复标题竞争。',
+      '已定稿：以 /china-visa-guide-for-new-zealanders 为 visa-free 簇主 URL；含 October 2026 双战役 CTA（#october-discovery-cta）、内链与 FAQ 强化；与产品页 ChinaVisaNudge 分工明确、避免标题意图重复。',
     reviewLinks: [
       { label: '现有签证指南页', href: '/china-visa-guide-for-new-zealanders' },
       {
