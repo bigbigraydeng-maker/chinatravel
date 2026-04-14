@@ -6,12 +6,27 @@ import {
   canRenderItineraryMap,
   extractRouteFromItinerary,
 } from '@/lib/itinerary-map/extractRouteFromItinerary';
+import ItineraryActions from '@/components/tours/ItineraryActions';
+
 interface TourItineraryProps {
   itinerary: DayItinerary[];
   tourCities?: string[]; // 城市ID列表，优先使用
+  /** When all are set, Print/Email appears in the itinerary section header (not mid-page). */
+  tourName?: string;
+  tourSlug?: string;
+  destination?: string;
+  tier?: string;
 }
 
-export default function TourItinerary({ itinerary, tourCities }: TourItineraryProps) {
+export default function TourItinerary({
+  itinerary,
+  tourCities,
+  tourName,
+  tourSlug,
+  destination,
+  tier,
+}: TourItineraryProps) {
+  const showSaveActions = Boolean(tourSlug && tourName && destination && tier);
   const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1]));
   const [view, setView] = useState<'map' | 'detailed'>('map');
 
@@ -20,7 +35,18 @@ export default function TourItinerary({ itinerary, tourCities }: TourItineraryPr
 
   return (
     <section id="itinerary" className="scroll-mt-24">
-      <h2 className="mb-8 font-serif text-3xl font-bold text-gray-900">Day-by-Day Itinerary</h2>
+      <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <h2 className="font-serif text-3xl font-bold text-gray-900">Day-by-Day Itinerary</h2>
+        {showSaveActions ? (
+          <ItineraryActions
+            tourName={tourName!}
+            tourSlug={tourSlug!}
+            destination={destination!}
+            tier={tier!}
+            variant="toolbar"
+          />
+        ) : null}
+      </div>
 
       {showMapView && route ? (
         <div className="mb-8 flex justify-center">

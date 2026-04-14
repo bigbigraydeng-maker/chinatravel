@@ -9,6 +9,8 @@ interface ItineraryActionsProps {
   tourSlug: string;
   destination: string;
   tier: string;
+  /** block: standalone row with bottom margin; toolbar: sits in itinerary header next to title */
+  variant?: 'block' | 'toolbar';
 }
 
 export default function ItineraryActions({
@@ -16,6 +18,7 @@ export default function ItineraryActions({
   tourSlug,
   destination,
   tier,
+  variant = 'block',
 }: ItineraryActionsProps) {
   const [showEmailModal, setShowEmailModal] = useState(false);
 
@@ -36,8 +39,14 @@ export default function ItineraryActions({
 
   return (
     <>
-      <div className="flex items-center gap-3 mb-6">
-        <span className="text-sm text-gray-500 font-medium">Save this itinerary:</span>
+      <div
+        className={`flex flex-wrap items-center gap-x-3 gap-y-2 ${
+          variant === 'toolbar'
+            ? 'w-full lg:w-auto lg:justify-end'
+            : 'mb-6'
+        }`}
+      >
+        <span className="text-sm text-gray-500 font-medium shrink-0">Save this itinerary:</span>
         <button
           onClick={handlePrint}
           className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-50 hover:border-gray-400 transition-all"
