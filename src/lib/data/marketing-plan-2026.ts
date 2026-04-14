@@ -467,6 +467,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: 'ChinaVisaNudge：标准 Discovery 产品页 + October 战役 LP（/campaigns/october-2026/*）；链至签证指南。',
     reviewLinks: [
       { label: 'NZ 中国签证指南（长文）', href: '/china-visa-guide-for-new-zealanders' },
+      {
+        label: '签证指南 · October Discovery 双 CTA',
+        href: '/china-visa-guide-for-new-zealanders#october-discovery-cta',
+      },
       { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#visa-nudge' },
       { label: '免签条 · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
       { label: '免签条 · October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities#visa-nudge' },
@@ -706,15 +710,38 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'review',
     deliverable: '博客 1',
     notes:
-      '站内已有 /china-visa-guide-for-new-zealanders；定稿三选一写此处 + Obsidian：① 扩写免签专段 ② 合并独立短文进指南 ③ 仅加强内链与 FAQ；避免与产品页免签条重复标题竞争。',
-    reviewLinks: [{ label: '现有签证指南页', href: '/china-visa-guide-for-new-zealanders' }],
+      '站内已有 /china-visa-guide-for-new-zealanders；已加 October 2026 双战役 CTA（#october-discovery-cta）。定稿三选一写此处 + Obsidian：① 扩写免签专段 ② 合并独立短文进指南 ③ 仅加强内链与 FAQ；避免与产品页免签条重复标题竞争。',
+    reviewLinks: [
+      { label: '现有签证指南页', href: '/china-visa-guide-for-new-zealanders' },
+      {
+        label: 'October Discovery 双 CTA（锚点）',
+        href: '/china-visa-guide-for-new-zealanders#october-discovery-cta',
+      },
+    ],
   },
   { id: 'T036', module: 'SEO / GEO', name: '文章 2：Best first trip — Beijing or Shanghai', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '博客 2' },
   { id: 'T037', module: 'SEO / GEO', name: '文章 3：Is October a good time to visit China', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: '博客 3' },
   { id: 'T038', module: 'SEO / GEO', name: '文章 4：What is included in a guided China tour', priority: 'P2', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '博客 4' },
   { id: 'T039', module: 'SEO / GEO', name: '文章 5：Shanghai & surroundings guide', priority: 'P2', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '博客 5' },
   { id: 'T040', module: 'SEO / GEO', name: '文章 6：Beijing / Xi’an first-timer guide', priority: 'P2', startWeek: 'W3', endWeek: 'W4', status: 'not_started', deliverable: '博客 6' },
-  { id: 'T041', module: 'SEO / GEO', name: '完成内链布局', priority: 'P1', startWeek: 'W4', endWeek: 'W4', status: 'not_started', deliverable: '内链上线' },
+  {
+    id: 'T041',
+    module: 'SEO / GEO',
+    name: '完成内链布局',
+    priority: 'P1',
+    startWeek: 'W4',
+    endWeek: 'W4',
+    status: 'not_started',
+    deliverable: '内链上线',
+    reviewLinks: [
+      {
+        label: '签证指南 · October 双 CTA',
+        href: '/china-visa-guide-for-new-zealanders#october-discovery-cta',
+      },
+      { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
   {
     id: 'T042',
     module: 'SEO / GEO',

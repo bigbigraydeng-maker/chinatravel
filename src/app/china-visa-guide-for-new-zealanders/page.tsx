@@ -6,6 +6,7 @@ import CTASection from '@/components/CTASection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
+import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
 import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
@@ -199,6 +200,8 @@ export default function ChinaVisaGuidePage() {
                   ))}
                 </div>
               </section>
+
+              <VisaGuideOctoberCampaignCtas />
 
               {/* Eligibility & Exceptions */}
               <section>
