@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { prefillFromSearchParams } from '@/lib/tailor-made-enquiry-params';
 
 const destinationOptions = ['China', 'Japan', 'Vietnam', 'Multiple Countries'];
 const interestOptions = [
@@ -15,7 +17,30 @@ const budgetOptions = [
   'Flexible / Not sure',
 ];
 
-export default function TailorMadeForm() {
+const accommodationOptions = [
+  'Four-star hotels (well-located, great value)',
+  'Five-star hotels (upgraded comfort)',
+  'Mix of four- and five-star',
+  'Top-tier / suite-style where available',
+  'Not sure — advise me',
+];
+
+const referralOptions = [
+  '',
+  'Internet search',
+  'Referral from a friend',
+  'Travel agent',
+  'Social media',
+  'Email or newsletter',
+  'Travel show or event',
+  'Returning CTS traveller',
+  'Other',
+];
+
+function TailorMadeFormInner() {
+  const searchParams = useSearchParams();
+  const [prefillBanner, setPrefillBanner] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,10 +52,34 @@ export default function TailorMadeForm() {
     duration: '',
     travellers: '',
     budget: '',
+    accommodation: '',
+    includeFlights: '',
+    referralSource: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    const patch = prefillFromSearchParams(searchParams);
+    const allowed = new Set(destinationOptions);
+    const destFiltered = (patch.destinations ?? []).filter((d) => allowed.has(d));
+    const has =
+      !!patch.travelDate ||
+      !!patch.duration ||
+      !!patch.travellers ||
+      destFiltered.length > 0;
+    if (!has) return;
+
+    setFormData((prev) => ({
+      ...prev,
+      ...(patch.travelDate ? { travelDate: patch.travelDate } : {}),
+      ...(patch.duration ? { duration: patch.duration } : {}),
+      ...(patch.travellers ? { travellers: patch.travellers } : {}),
+      ...(destFiltered.length ? { destinations: destFiltered } : {}),
+    }));
+    setPrefillBanner(true);
+  }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -82,9 +131,22 @@ export default function TailorMadeForm() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg space-y-8">
+      {prefillBanner && (
+        <div className="-mt-2 mb-2 rounded-lg bg-warm-50 border border-warm-200 px-4 py-3 text-sm text-gray-800">
+          <span className="font-semibold text-primary">Pre-filled from your selection.</span>{' '}
+          Review trip length, month, and party size below, then add your contact details.
+        </div>
+      )}
+      <p className="text-sm text-gray-600 -mt-2">
+        CTS Tours is committed to protecting your privacy. We do not sell your details. See our{' '}
+        <a href="/terms-and-conditions" className="text-primary font-medium hover:underline">
+          terms &amp; conditions
+        </a>{' '}
+        for how we handle enquiries.
+      </p>
       {/* Personal Info */}
       <div>
-        <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-100">Your Details</h3>
+        <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-100">Your details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="tm-name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
@@ -155,10 +217,10 @@ export default function TailorMadeForm() {
 
       {/* Trip Details */}
       <div>
-        <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-100">Trip Details</h3>
+        <h3 className="text-lg font-bold mb-4 pb-2 border-b border-gray-100">Trip details</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="tm-date" className="block text-sm font-medium text-gray-700 mb-1">Preferred Travel Date</label>
+            <label htmlFor="tm-date" className="block text-sm font-medium text-gray-700 mb-1">Preferred travel date</label>
             <input type="date" id="tm-date" name="travelDate" value={formData.travelDate} onChange={handleChange}
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" />
           </div>
@@ -176,16 +238,45 @@ export default function TailorMadeForm() {
             </select>
           </div>
           <div>
-            <label htmlFor="tm-travellers" className="block text-sm font-medium text-gray-700 mb-1">Number of Travellers</label>
+            <label htmlFor="tm-travellers" className="block text-sm font-medium text-gray-700 mb-1">Number of travellers</label>
             <input type="text" id="tm-travellers" name="travellers" value={formData.travellers} onChange={handleChange}
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" placeholder="e.g. 2 adults, 1 child" />
           </div>
           <div>
-            <label htmlFor="tm-budget" className="block text-sm font-medium text-gray-700 mb-1">Budget Range</label>
+            <label htmlFor="tm-budget" className="block text-sm font-medium text-gray-700 mb-1">Budget per person (indicative)</label>
             <select id="tm-budget" name="budget" value={formData.budget} onChange={handleChange}
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors">
               <option value="">Select budget range</option>
               {budgetOptions.map(b => <option key={b} value={b}>{b}</option>)}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="tm-accommodation" className="block text-sm font-medium text-gray-700 mb-1">Accommodation style</label>
+            <select id="tm-accommodation" name="accommodation" value={formData.accommodation} onChange={handleChange}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors">
+              <option value="">Select preference</option>
+              {accommodationOptions.map((a) => (
+                <option key={a} value={a}>{a}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="tm-flights" className="block text-sm font-medium text-gray-700 mb-1">Include international flights?</label>
+            <select id="tm-flights" name="includeFlights" value={formData.includeFlights} onChange={handleChange}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors">
+              <option value="">Select</option>
+              <option value="Yes">Yes — please include options</option>
+              <option value="No">No — land-only</option>
+              <option value="Not sure">Not sure yet</option>
+            </select>
+          </div>
+          <div className="md:col-span-2">
+            <label htmlFor="tm-referral" className="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
+            <select id="tm-referral" name="referralSource" value={formData.referralSource} onChange={handleChange}
+              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors">
+              {referralOptions.map((opt) => (
+                <option key={opt || 'empty'} value={opt}>{opt || 'Optional — select one'}</option>
+              ))}
             </select>
           </div>
         </div>
@@ -220,4 +311,8 @@ export default function TailorMadeForm() {
       </p>
     </form>
   );
+}
+
+export default function TailorMadeForm() {
+  return <TailorMadeFormInner />;
 }
