@@ -70,11 +70,11 @@ const Footer = () => {
           <div className="col-span-2 md:col-span-1">
             <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Contact</h3>
             <div className="space-y-2 md:space-y-3 text-gray-400 text-sm md:text-base">
-              <a href="mailto:ctstours1@chinatravel.co.nz" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="mailto:info@ctstours.co.nz" className="flex items-center gap-2 hover:text-white transition-colors">
                 <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                ctstours1@chinatravel.co.nz
+                info@ctstours.co.nz
               </a>
               <a href="tel:0800287888" className="flex items-center gap-2 hover:text-white transition-colors">
                 <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

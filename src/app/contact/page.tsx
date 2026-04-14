@@ -85,7 +85,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <a href="mailto:ctstours1@chinatravel.co.nz" className="text-primary hover:underline">ctstours1@chinatravel.co.nz</a>
+                    <a href="mailto:info@ctstours.co.nz" className="text-primary hover:underline">info@ctstours.co.nz</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

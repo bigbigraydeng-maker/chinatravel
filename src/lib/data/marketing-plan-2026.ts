@@ -602,11 +602,12 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P0',
     startWeek: 'W1',
     endWeek: 'W2',
-    status: 'not_started',
-    deliverable: '关键词清单',
+    status: 'in_progress',
+    deliverable: '关键词清单 V2（含匹配类型、RSA 文案、CSV 导入）',
     notes:
-      '全站意图：NZ China visa free、China specialist / china tours from NZ → 对应落地与 CONTENT_PIVOT.siteWideSeoThemes；品牌 + 双产品 + 泛词分层，附一页核心否定词。',
+      '已产出 docs/t018-keyword-structure-v2.md + docs/t018-keyword-import-v2.csv。V2 含 Exact/Phrase 执行规范、核心 RSA 文案包、可直接导入 Google Ads Editor 的 CSV；含 Brand 变体、Visa Free 重点 ad group、双产品分层（含 beijing shanghai 承接词）与 Generic 放量池，并对齐 CONTENT_PIVOT.siteWideSeoThemes。',
     reviewLinks: [
+      { label: 'T018 执行台（V1/V2/CSV）', href: '/marketing/campaign/t018' },
       { label: 'China tours 商业枢纽', href: '/china-tours' },
       { label: 'NZ 出发专题', href: '/china-tours-from-new-zealand' },
       { label: 'NZ 中国签证指南', href: '/china-visa-guide-for-new-zealanders' },

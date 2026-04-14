@@ -3,8 +3,8 @@ import { Resend } from 'resend';
 import { getTourBySlug } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
 
-const FROM_ADDRESS = 'CTS Tours <itinerary@chinatravel.co.nz>';
-const REPLY_TO = 'ctstours1@chinatravel.co.nz';
+const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
+const REPLY_TO = 'info@ctstours.co.nz';
 
 export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -161,7 +161,7 @@ export async function POST(req: NextRequest) {
             <td style="background:#1f2937;padding:24px 32px;text-align:center;">
               <p style="margin:0 0 6px;font-size:13px;color:#d1d5db;">Ready to book this tour? Our China specialists are here to help.</p>
               <p style="margin:0;font-size:15px;font-weight:700;color:#ffffff;">
-                0800 CTS 888 &nbsp;·&nbsp; ctstours1@chinatravel.co.nz
+                0800 CTS 888 &nbsp;·&nbsp; info@ctstours.co.nz
               </p>
             </td>
           </tr>

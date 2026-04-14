@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSiteUrl } from '@/lib/site';
 
-const FROM_ADDRESS = 'CTS Tours <enquiries@chinatravel.co.nz>';
-const DEFAULT_NOTIFY = 'ctstours1@chinatravel.co.nz';
+const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
+const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
 
 export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;

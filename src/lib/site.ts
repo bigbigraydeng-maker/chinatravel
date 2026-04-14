@@ -27,7 +27,7 @@ export function getCtsTravelAgencySchema() {
     name: 'CTS Tours',
     url: getSiteUrl(),
     telephone: '+64-800-287-888',
-    email: 'ctstours1@chinatravel.co.nz',
+    email: 'info@ctstours.co.nz',
     address: {
       '@type': 'PostalAddress' as const,
       streetAddress: '2F CTS House, 175 Queen Street',

@@ -44,7 +44,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
           </div>
           <div style={{ textAlign: 'right', fontSize: '12px', color: '#374151' }}>
             <p>0800 CTS 888 (0800 287 888)</p>
-            <p>ctstours1@chinatravel.co.nz</p>
+            <p>info@ctstours.co.nz</p>
             <p>2F CTS House, 175 Queen Street, Auckland</p>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
             Ready to book? Contact our China specialists today.
           </p>
           <p style={{ fontSize: '14px', fontWeight: 700 }}>
-            0800 CTS 888 &nbsp;·&nbsp; ctstours1@chinatravel.co.nz
+            0800 CTS 888 &nbsp;·&nbsp; info@ctstours.co.nz
           </p>
         </div>
 

@@ -38,7 +38,7 @@ Accommodation is named at **4–5 star standard** on the product page for each s
 
 ### Section: October departure — 14 October
 
-Your group departure date is published as **14 October** (with year **2026** where applicable on site — **always confirm at booking**). Use this section for a short **“how to hold a seat / what happens next”** call-to-action: enquiry form, phone **0800 CTS 888**, or email **ctstours1@chinatravel.co.nz**, and our **Auckland** office address on **Queen Street** as published in the site footer.
+Your group departure date is published as **14 October** (with year **2026** where applicable on site — **always confirm at booking**). Use this section for a short **“how to hold a seat / what happens next”** call-to-action: enquiry form, phone **0800 CTS 888**, or email **info@ctstours.co.nz**, and our **Auckland** office address on **Queen Street** as published in the site footer.
 
 ### Section: How this differs from “A Tale of Two Cities”
 
