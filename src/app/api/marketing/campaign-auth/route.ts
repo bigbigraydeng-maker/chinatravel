@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
-  MARKETING_CAMPAIGN_COOKIE_PATH,
+  MARKETING_PLAN_COOKIE_PATH,
   MARKETING_PLAN_COOKIE_NAME,
   computeMarketingPlanSessionToken,
   marketingPlanAccessKey,
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    path: MARKETING_CAMPAIGN_COOKIE_PATH,
+    path: MARKETING_PLAN_COOKIE_PATH,
     maxAge: 60 * 60 * 24 * 14,
   });
   return res;

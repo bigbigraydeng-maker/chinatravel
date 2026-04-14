@@ -19,7 +19,7 @@ function applyMarketingSeoHeaders(pathname: string, res: NextResponse) {
   }
 }
 
-function isMarketingCampaignPublic(pathname: string): boolean {
+function isMarketingGatePublic(pathname: string): boolean {
   if (pathname.startsWith('/marketing/campaign/login')) return true;
   if (pathname === '/api/marketing/campaign-auth' || pathname === '/api/marketing/campaign-logout') return true;
   return false;
@@ -98,8 +98,8 @@ export async function middleware(request: NextRequest) {
 
   if (
     mpKey &&
-    !isMarketingCampaignPublic(pathname) &&
-    (pathname.startsWith('/marketing/campaign') || pathname.startsWith('/api/marketing/campaign-'))
+    !isMarketingGatePublic(pathname) &&
+    (pathname.startsWith('/marketing') || pathname.startsWith('/api/marketing/campaign-'))
   ) {
     const cookie = request.cookies.get(MARKETING_PLAN_COOKIE_NAME)?.value;
     const ok = await isValidMarketingPlanSession(mpKey, cookie);

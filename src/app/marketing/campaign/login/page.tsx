@@ -7,12 +7,14 @@ import { Suspense, useState } from 'react';
 function LoginForm() {
   const searchParams = useSearchParams();
   const rawNext = searchParams.get('next');
-  const nextPath =
-    rawNext &&
-    !rawNext.includes('..') &&
-    (rawNext.startsWith('/marketing/campaign') || rawNext === '/campaign/social')
-      ? rawNext
-      : '/marketing/campaign';
+  const nextPath = (() => {
+    if (!rawNext || rawNext.includes('..')) return '/marketing';
+    if (rawNext === '/campaign/social') return rawNext;
+    if (rawNext.startsWith('/marketing') && !rawNext.startsWith('/marketing/campaign/login')) {
+      return rawNext;
+    }
+    return '/marketing';
+  })();
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
