@@ -12,6 +12,18 @@ const PLANNING_LINKS: SupportingContentLink[] = [
   { label: 'China tours from New Zealand', href: '/china-tours-from-new-zealand' },
 ];
 
+/** T041: October Discovery hero products → campaign LPs + matching blog (deduped with global cap). */
+const DISCOVERY_OCTOBER_EXTRA: Record<string, SupportingContentLink[]> = {
+  'beijing-xian': [
+    { label: 'October 2026 · Beijing & Xi’an spotlight', href: '/campaigns/october-2026/tale-of-two-cities' },
+    { label: 'Blog · Beijing & Xi’an first-timer guide', href: '/blog/beijing-xian-first-visit-guide-nz' },
+  ],
+  'shanghai-surroundings': [
+    { label: 'October 2026 · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+    { label: 'Blog · Shanghai & Jiangnan guide', href: '/blog/shanghai-surroundings-jiangnan-guide-nz' },
+  ],
+};
+
 /** City IDs from tourCities / itinerary map → hub + guide URLs (deduped later). */
 const CITY_LINK_GROUPS: Record<string, SupportingContentLink[]> = {
   beijing: [
@@ -116,6 +128,9 @@ export function getTourSupportingLinks(tour: Tour, maxLinks = 10): SupportingCon
   };
 
   push(PLANNING_LINKS);
+
+  const octExtra = DISCOVERY_OCTOBER_EXTRA[tour.slug];
+  if (octExtra) push(octExtra);
 
   const sortedCities = Array.from(cityIds).sort();
   for (const id of sortedCities) {

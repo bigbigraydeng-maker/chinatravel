@@ -57,7 +57,7 @@ export const MARKETING_PLAN_META = {
   lastUpdated: '2026-04-14',
   /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
   lastSiteSyncNote:
-    'October 战役 LP 与标准产品页对齐：Hero 十月 CTA、ChinaVisaNudge、TrustBar、TourTrustSignals、Plan your trip（#planning-resources）；战役长文案内删除重复的 Tour highlights 列表。',
+    'T034 关键词主题表（仓库 docs）、T041 内链（Plan your trip + china-tours / NZ 专题）、T042 产品 metaTitle 与 generateMetadata 对齐、T054 About / china-tours 首段 specialist 表述。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -690,10 +690,15 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P0',
     startWeek: 'W1',
     endWeek: 'W1',
-    status: 'not_started',
+    status: 'done',
     deliverable: '内容规划表',
-    notes: '必含两簇：CONTENT_PIVOT.siteWideSeoThemes；Obsidian 同主题可放长表与 Brief。',
+    notes:
+      '仓库 `docs/t034-content-keyword-topic-structure.md`（与 CONTENT_PIVOT、T018、T036–T040 对齐）；Obsidian 可放扩写版。',
     reviewLinks: [
+      {
+        label: 'T034 关键词与主题结构（GitHub）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t034-content-keyword-topic-structure.md',
+      },
       { label: '内容支点 · china-tours', href: '/china-tours' },
       { label: 'NZ 中国签证指南', href: '/china-visa-guide-for-new-zealanders' },
       { label: 'About', href: '/about' },
@@ -786,8 +791,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P1',
     startWeek: 'W4',
     endWeek: 'W4',
-    status: 'not_started',
+    status: 'done',
     deliverable: '内链上线',
+    notes:
+      '双 Discovery 产品页 Plan your trip 增加 October LP + 对应博客；/china-tours 相关资源块；/china-tours-from-new-zealand「Popular NZ planning links」。',
     reviewLinks: [
       {
         label: '签证指南 · October 双 CTA',
@@ -795,6 +802,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
       },
       { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
       { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+      { label: 'Beijing–Xi’an · Plan your trip', href: '/tours/china/discovery/beijing-xian#planning-resources' },
+      { label: 'Shanghai · Plan your trip', href: '/tours/china/discovery/shanghai-surroundings#planning-resources' },
     ],
   },
   {
@@ -804,8 +813,9 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P1',
     startWeek: 'W1',
     endWeek: 'W2',
-    status: 'not_started',
+    status: 'done',
     deliverable: '页面 SEO 基础优化',
+    notes: 'tours.ts 中两条 Discovery 的 metaTitle / metaDescription 定稿；产品页 generateMetadata 使用 metaTitle 与 Open Graph / Twitter 一致。',
     reviewLinks: [
       { label: 'Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
       { label: 'Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
@@ -891,10 +901,10 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P1',
     startWeek: 'W1',
     endWeek: 'W2',
-    status: 'not_started',
+    status: 'done',
     deliverable: '关键词→URL 表 + About / china-tours 首段定稿',
     notes:
-      '与 CONTENT_PIVOT.siteWideSeoThemes 第二簇一致；长版证据清单可写 Obsidian，本站保持简洁可验证表述。',
+      '关键词→URL 见 T034 文档 §1；About 首段 specialist + TAANZ/IATA + 链至 china-tours / 签证指南；china-tours 枢纽 intro + meta description 强化 specialist。',
     reviewLinks: [
       { label: 'China tours 枢纽', href: '/china-tours' },
       { label: 'About', href: '/about' },

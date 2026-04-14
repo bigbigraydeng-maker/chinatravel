@@ -679,9 +679,10 @@ export const tours: Tour[] = [
       'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary'
     ],
-    metaTitle: 'China Discovery — A Tale of Two Cities | Beijing & Xi\'an 10 Days | CTS Tours',
+    metaTitle:
+      'Beijing & Xi\'an China Tour from NZ | October 2026 | Great Wall & Terracotta Warriors | CTS',
     metaDescription:
-      'Beijing & Xi\'an Discovery from New Zealand — October departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS visa guide.',
+      'China specialist–led Beijing & Xi\'an Discovery from New Zealand — October departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-04-14',
@@ -873,9 +874,9 @@ export const tours: Tour[] = [
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
-    metaTitle: 'China Discovery — Shanghai & Surroundings | 10 Days | CTS Tours',
+    metaTitle: 'Shanghai & Jiangnan China Tour from NZ | October 2026 | West Lake & Bund | CTS',
     metaDescription:
-      'Shanghai & surroundings from NZ — October departure, Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,999. Visa-free options for many NZ travellers — CTS China visa guide.',
+      'China specialist–led Shanghai & Jiangnan loop from NZ — October departure, Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,999. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-04-14',

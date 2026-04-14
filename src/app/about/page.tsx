@@ -22,6 +22,22 @@ export default function AboutPage() {
             <h2 className="text-3xl font-serif font-bold mb-8 text-center">Company Overview</h2>
             
             <div className="bg-white rounded-lg shadow-lg p-8">
+              <p className="text-gray-800 mb-8 leading-relaxed border-l-4 border-primary pl-4">
+                CTS Tours New Zealand is Aotearoa&apos;s dedicated{' '}
+                <strong>China travel specialist</strong>: a{' '}
+                <Link href="/about#credentials" className="text-primary font-semibold hover:underline">
+                  TAANZ member and IATA-accredited
+                </Link>{' '}
+                agency with consultants in Auckland and direct access to China Travel Service operations in-market. For itineraries and departures, see our{' '}
+                <Link href="/china-tours" className="text-primary font-semibold hover:underline">
+                  China tours hub
+                </Link>{' '}
+                and{' '}
+                <Link href="/china-visa-guide-for-new-zealanders" className="text-primary font-semibold hover:underline">
+                  NZ passport entry guide
+                </Link>
+                .
+              </p>
               <h3 className="text-2xl font-bold mb-4">Who We Are</h3>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 CTS Tours is the New Zealand branch of China Travel Service, one of the world's leading travel organizations. Established in 2000 by Lisa Li, MNZM, we have grown to become a trusted name in travel between New Zealand and Asia.

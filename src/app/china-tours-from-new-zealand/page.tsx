@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
@@ -96,6 +97,50 @@ export default function ChinaToursFromNZPage() {
                     <p key={i}>{para}</p>
                   ))}
                 </div>
+              </section>
+
+              <section
+                aria-labelledby="nz-quick-links-heading"
+                className="rounded-2xl border border-warm-200 bg-warm-50/80 p-6 md:p-8"
+              >
+                <h2 id="nz-quick-links-heading" className="text-xl font-serif font-bold text-gray-900 mb-3">
+                  Popular NZ planning links
+                </h2>
+                <p className="text-gray-700 text-sm md:text-base mb-4">
+                  Same routes as our standard product pages — October spotlight pages add campaign context and dates.
+                </p>
+                <ul className="grid gap-2 sm:grid-cols-2 text-sm">
+                  <li>
+                    <Link href="/china-visa-guide-for-new-zealanders" className="text-primary font-medium hover:underline">
+                      China entry &amp; visa-free guide (NZ passports)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/china-tours" className="text-primary font-medium hover:underline">
+                      Full China tours hub
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/tours/china/discovery/beijing-xian" className="text-primary font-medium hover:underline">
+                      Discovery · Beijing &amp; Xi&apos;an (standard product)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/campaigns/october-2026/tale-of-two-cities" className="text-primary font-medium hover:underline">
+                      October 2026 · Beijing &amp; Xi&apos;an spotlight
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/tours/china/discovery/shanghai-surroundings" className="text-primary font-medium hover:underline">
+                      Discovery · Shanghai &amp; Surroundings (standard product)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/campaigns/october-2026/shanghai-surroundings" className="text-primary font-medium hover:underline">
+                      October 2026 · Shanghai &amp; Surroundings spotlight
+                    </Link>
+                  </li>
+                </ul>
               </section>
 
               {/* Inline imagery — classic gateways */}

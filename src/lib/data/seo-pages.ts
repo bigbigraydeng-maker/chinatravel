@@ -24,10 +24,12 @@ export interface CityHubMeta extends SeoPageMeta {
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
   title: 'China Tours from New Zealand | Signature, Discovery & Stopover | CTS Tours',
-  description: 'Discover authentic China tours for New Zealand travellers. Signature luxury, Discovery value, and Stopover packages. 98 years of expertise.',
+  description:
+    'China tours from New Zealand by CTS—TAANZ member, IATA-accredited China specialists. Signature luxury, Discovery value, and Stopover packages with Auckland support and direct China operations since 1928.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Signature luxury, Discovery value, Stopover adventures',
-  introText: 'Choose from 50+ carefully curated China tours across all three CTS collections. Whether you are seeking boutique 4-5 star experiences with small groups, reliable well-organised journeys at excellent value, or quick city stopovers, we have the perfect itinerary for you. Direct operations in China since 1928.',
+  introText:
+    'CTS is New Zealand’s China travel specialist: TAANZ member, IATA-accredited, with consultants in Auckland and direct operations through China Travel Service—so your route, hotels, and guides are chosen by people who sell and operate China every week. Choose from 50+ curated itineraries across Signature (boutique 4–5 star, small groups), Discovery (great-value escorted loops), and Stopover city breaks. Start with entry rules in our China visa guide for New Zealanders, then browse collections below.',
   faqs: [
     {
       question: 'What is the difference between CTS China Signature, Discovery, and Stopover collections?',

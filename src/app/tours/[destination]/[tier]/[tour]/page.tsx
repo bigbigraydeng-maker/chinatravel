@@ -54,9 +54,10 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   const destination = getDestinationBySlug(tour.destination);
 
   const titleParts = [tour.name, tour.duration, tour.departureDates?.[0], 'CTS NZ'].filter(Boolean);
+  const documentTitle = tour.metaTitle || titleParts.join(' | ');
 
   return {
-    title: titleParts.join(' | '),
+    title: documentTitle,
     description: tour.metaDescription,
     keywords: [
       `${tour.destination} tours`,
@@ -65,11 +66,12 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
       'CTS Tours',
       'China travel',
       'China Tour from New Zealand',
+      'China tours from New Zealand',
       'Asia tours',
       ...(tour.tags ?? []),
     ],
     openGraph: {
-      title: tour.title,
+      title: documentTitle,
       description: tour.shortDescription,
       type: 'website',
       url: `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
@@ -84,7 +86,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
     },
     twitter: {
       card: 'summary_large_image',
-      title: tour.title,
+      title: documentTitle,
       description: tour.shortDescription,
       images: [tour.heroImage],
     },

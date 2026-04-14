@@ -67,6 +67,21 @@ export default function ChinaToursPage() {
       title: 'China Entry Guide for NZ Citizens (Visa-Free)',
       slug: 'china-visa-guide-for-new-zealanders',
       description: 'Visa-free entry for NZ passports: documents, stay limits, and exceptions'
+    },
+    {
+      title: 'October 2026 · Beijing & Xi’an spotlight',
+      slug: 'campaigns/october-2026/tale-of-two-cities',
+      description: 'Campaign landing for the Beijing–Xi’an Discovery route'
+    },
+    {
+      title: 'October 2026 · Shanghai & Surroundings',
+      slug: 'campaigns/october-2026/shanghai-surroundings',
+      description: 'Campaign landing for the Jiangnan loop Discovery tour'
+    },
+    {
+      title: 'First trip: Beijing or Shanghai?',
+      slug: 'blog/first-trip-china-beijing-or-shanghai',
+      description: 'How to choose a gateway when you are new to China'
     }
   ];
 
