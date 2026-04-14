@@ -55,6 +55,7 @@ const LOCAL_FILES = [
   { local: 'images/credentials/tourism-export-council.png', remote: 'migrated/site/credentials-tourism-export-council.png' },
   { local: 'images/credentials/auckland-business-chamber.png', remote: 'migrated/site/credentials-auckland-business-chamber.png' },
   { local: 'images/credentials/qualmark.png', remote: 'migrated/site/credentials-qualmark.png' },
+  { local: 'credentials-tia.png', remote: 'migrated/site/credentials-tia.png' },
 ];
 
 async function main() {
