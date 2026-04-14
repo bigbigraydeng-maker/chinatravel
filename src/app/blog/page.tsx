@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
+import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'Travel Blog | CTS Tours',
@@ -10,6 +12,14 @@ export const metadata: Metadata = {
     title: 'Travel Blog | CTS Tours',
     description: 'Travel insights, destination guides, and insider tips from our China travel specialists.',
     type: 'website',
+    images: [
+      {
+        url: tourImage('chengdu-pandas.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Giant pandas in Chengdu — CTS Tours travel blog',
+      },
+    ],
   },
 };
 
@@ -35,17 +45,14 @@ export default function BlogPage() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="bg-primary text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-            Travel Blog
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Insights, guides, and stories from our China travel specialists
-          </p>
-        </div>
-      </section>
+      <ImmersivePageHero
+        eyebrow="Journal"
+        title="Travel Blog"
+        subtitle="Insights, guides, and stories from our China travel specialists"
+        imageSrc={tourImage('chengdu-pandas.jpg')}
+        imageAlt="Giant pandas in Chengdu — CTS Tours travel blog"
+        priority
+      />
 
       {/* Featured Post */}
       {featuredPost && (

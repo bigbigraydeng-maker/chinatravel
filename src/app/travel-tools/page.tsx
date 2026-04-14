@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { Metadata } from 'next';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
-import { migratedUnsplash } from '@/lib/site-media';
+import { tourImage } from '@/lib/site-media';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -11,7 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Free interactive tools for New Zealand travellers: seasonal guide, trip planner, destination matcher, and local food map. Plan your China journey with CTS.',
     path: '/travel-tools',
-    ogImagePath: migratedUnsplash('photo-1473163928189-364b2c4e1135'),
+    ogImagePath: tourImage('yunnan-rice-terraces.jpg'),
+    ogImageAlt: 'Yunnan rice terraces — China travel planning tools, CTS Tours',
     keywords: [
       'travel planner',
       'destination matcher',
@@ -81,17 +83,14 @@ export default function TravelToolsPage() {
     <>
       <SchemaMarkup data={[webPageSchema, breadcrumbSchema]} />
       <main>
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-rose-600 to-rose-800 px-4 py-16 text-white md:py-24">
-          <div className="container relative z-10 mx-auto max-w-4xl text-center">
-            <h1 className="font-serif text-4xl font-bold tracking-tight md:text-5xl">
-              China Travel Planning Tools
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90 md:text-xl">
-              Interactive tools to help you plan your perfect China journey — from seasons and
-              destinations to itineraries and flavours.
-            </p>
-          </div>
-        </section>
+        <ImmersivePageHero
+          eyebrow="Plan your trip"
+          title="China Travel Planning Tools"
+          subtitle="Interactive tools to help you plan your perfect China journey — from seasons and destinations to itineraries and flavours."
+          imageSrc={tourImage('yunnan-rice-terraces.jpg')}
+          imageAlt="Yunnan rice terraces — China travel planning tools, CTS Tours"
+          priority
+        />
 
         <section className="container mx-auto max-w-6xl px-4 py-14">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

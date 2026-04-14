@@ -8,7 +8,6 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white">
       <ImmersivePageHero
         eyebrow="About"
-        chineseAccent="知行中国 · 廿载同行"
         title="About CTS Tours"
         subtitle="Connecting New Zealanders to the wonders of Asia for over 20 years"
         imageSrc={tourImage('forbidden-city-aerial.jpg')}

@@ -70,7 +70,6 @@ const GuidePage = () => {
     <div>
       <ImmersivePageHero
         eyebrow="Travel guide"
-        chineseAccent="行旅华夏 · 专家指南"
         title="China Travel Guides"
         subtitle="21 expert destination guides from CTS Tours specialists"
         imageSrc={tourImage('great-wall-mist.jpg')}

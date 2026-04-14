@@ -10,7 +10,6 @@ export type ImmersivePageHeroProps = {
   imageSrc: string;
   imageAlt: string;
   priority?: boolean;
-  chineseAccent?: string;
   eyebrow?: string;
   children?: ReactNode;
   layout?: 'center' | 'bottom';
@@ -29,7 +28,6 @@ export default function ImmersivePageHero({
   imageSrc,
   imageAlt,
   priority = false,
-  chineseAccent,
   eyebrow,
   children,
   layout = 'center',
@@ -86,11 +84,6 @@ export default function ImmersivePageHero({
           {eyebrow ? (
             <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.28em] text-white/70 md:text-xs">
               {eyebrow}
-            </p>
-          ) : null}
-          {chineseAccent ? (
-            <p className="mb-3 font-serif text-sm font-normal tracking-[0.12em] text-white/75 md:text-base">
-              {chineseAccent}
             </p>
           ) : null}
           <h1

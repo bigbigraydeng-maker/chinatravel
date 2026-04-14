@@ -1,12 +1,29 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { getAllActiveTours, destinations } from '@/lib/data/tours';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import TourFinder from '@/components/TourFinder';
+import { getAllActiveTours, destinations } from '@/lib/data/tours';
+import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'Find Your Tour | CTS Tours',
-  description: 'Find your perfect tour by destination, interest, and travel style. Discover tours across China, Japan, and Vietnam.',
+  description:
+    'Find your perfect tour by destination, interest, and travel style. Discover tours across China, Japan, and Vietnam.',
+  openGraph: {
+    title: 'Find Your Tour | CTS Tours',
+    description:
+      'Find your perfect tour by destination, interest, and travel style. Discover tours across China, Japan, and Vietnam.',
+    type: 'website',
+    images: [
+      {
+        url: tourImage('xian-terracotta.jpg'),
+        width: 1200,
+        height: 630,
+        alt: 'Terracotta Army, Xi’an — find your tour with CTS Tours',
+      },
+    ],
+  },
 };
 
 export default function FindTourPage() {
@@ -14,17 +31,14 @@ export default function FindTourPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary to-primary/90 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">
-            Find Your Perfect Tour
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Search and filter tours across China, Japan, and Vietnam
-          </p>
-        </div>
-      </section>
+      <ImmersivePageHero
+        eyebrow="Tour search"
+        title="Find Your Perfect Tour"
+        subtitle="Search and filter tours across China, Japan, and Vietnam"
+        imageSrc={tourImage('xian-terracotta.jpg')}
+        imageAlt="Terracotta Army, Xi’an — find tours across China, Japan, and Vietnam, CTS Tours"
+        priority
+      />
 
       {/* Destination Quick Links */}
       <section className="py-10 bg-white">
@@ -38,7 +52,7 @@ export default function FindTourPage() {
               >
                 <span className="font-bold">{dest.name}</span>
                 <span className="text-xs text-gray-500 ml-2">
-                  {allTours.filter(t => t.destination === dest.slug).length} tours
+                  {allTours.filter((t) => t.destination === dest.slug).length} tours
                 </span>
               </Link>
             ))}
@@ -58,9 +72,7 @@ export default function FindTourPage() {
       {/* CTA */}
       <section className="py-16 bg-accent text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-4">
-            Can&apos;t Find What You&apos;re Looking For?
-          </h2>
+          <h2 className="text-3xl font-serif font-bold mb-4">Can&apos;t Find What You&apos;re Looking For?</h2>
           <p className="text-white/80 max-w-2xl mx-auto mb-8">
             Let our specialists design a tailor-made journey just for you.
           </p>

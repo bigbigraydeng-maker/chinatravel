@@ -7,7 +7,6 @@ export default function ContactPage() {
     <div>
       <ImmersivePageHero
         eyebrow="Contact"
-        chineseAccent="随时启程 · 我们在此"
         title="Contact Us"
         subtitle="Get in touch with our China travel specialists"
         imageSrc={migratedSite('shanghai-skyline.jpg')}

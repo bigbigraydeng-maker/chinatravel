@@ -180,7 +180,6 @@ export default function TailorMadePage() {
 
       <ImmersivePageHero
         eyebrow="Tailor-made holidays"
-        chineseAccent="定制旅程"
         title="Tailor Made Journeys"
         subtitle="Your tour, your way"
         description="No two travellers are alike. If you want a flexible itinerary with none of the stress of organising it yourself, we combine your ideas with our China and Asia expertise—so you get the trip you imagined, not a generic package."

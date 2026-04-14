@@ -19,7 +19,6 @@ const AgentsPage = () => {
     <div>
       <ImmersivePageHero
         eyebrow="Trade partners"
-        chineseAccent="同业共行 · 专业支持"
         title="Agent Resources"
         subtitle="CTS supports trade partners with specialist China expertise"
         imageSrc={migratedSite('forbidden-city-aerial-portrait.jpg')}
