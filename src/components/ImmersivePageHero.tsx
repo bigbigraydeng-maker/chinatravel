@@ -98,7 +98,11 @@ export default function ImmersivePageHero({
             </p>
           ) : null}
           {description ? (
-            <p className="mt-4 text-base font-light leading-relaxed text-white/88 md:text-lg [text-shadow:0_1px_12px_rgba(0,0,0,0.3)]">
+            <p
+              className={`mt-4 max-w-2xl rounded-xl bg-black/35 px-4 py-3.5 text-base font-light leading-relaxed !text-white backdrop-blur-[2px] [text-shadow:0_1px_2px_rgba(0,0,0,0.65),0_2px_20px_rgba(0,0,0,0.35)] md:text-lg md:px-5 md:py-4 ${
+                textAlign === 'left' ? 'mx-auto md:mx-0' : 'mx-auto'
+              }`}
+            >
               {description}
             </p>
           ) : null}
