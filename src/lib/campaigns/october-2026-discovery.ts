@@ -22,7 +22,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
 > = {
   'shanghai-surroundings': {
     tourSlug: 'shanghai-surroundings',
-    heroDepartureOrder: ['14 October', '3 August'],
+    heroDepartureOrder: ['14 October'],
     enquirySource: 'Campaign LP: Oct 2026 — Shanghai & Surroundings',
     otherCampaignSlug: 'tale-of-two-cities',
     metaTitleSuffix: 'October 2026 departure | Shanghai & Surroundings | CTS NZ',
@@ -31,7 +31,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
   },
   'tale-of-two-cities': {
     tourSlug: 'beijing-xian',
-    heroDepartureOrder: ['15 October', '13 August', '2 November'],
+    heroDepartureOrder: ['15 October'],
     enquirySource: 'Campaign LP: Oct 2026 — A Tale of Two Cities',
     otherCampaignSlug: 'shanghai-surroundings',
     metaTitleSuffix: 'October 2026 departure | Beijing & Xi’an | CTS NZ',

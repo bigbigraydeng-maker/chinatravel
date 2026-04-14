@@ -1,6 +1,8 @@
+import { OCTOBER_2026_DISCOVERY_BY_SLUG } from '@/lib/campaigns/october-2026-discovery';
+
 /**
  * China Signature & Discovery group departures — single source for schedule UI.
- * Keep in sync with `departureDates` on each tour in tours.ts.
+ * October Discovery hero products: dates/order match `OCTOBER_2026_DISCOVERY_BY_SLUG` (same as tours.ts).
  */
 export type DepartureScheduleRow = {
   label: string;
@@ -47,7 +49,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
-    dates: ['13 August', '15 October', '2 November'],
+    dates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder],
   },
   {
     label: 'Best of China',
@@ -61,7 +63,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
-    dates: ['3 August', '14 October'],
+    dates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder],
   },
   {
     label: 'Colourful Yunnan',

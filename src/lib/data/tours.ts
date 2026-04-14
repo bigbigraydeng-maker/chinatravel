@@ -1,4 +1,5 @@
 import { migratedUnsplash } from '@/lib/site-media';
+import { OCTOBER_2026_DISCOVERY_BY_SLUG } from '@/lib/campaigns/october-2026-discovery';
 
 // CMS Data Model for Tours
 // This can be replaced with Supabase integration later
@@ -575,7 +576,7 @@ export const tours: Tour[] = [
     name: 'China Discovery — A Tale of Two Cities',
     title: 'China Discovery — A Tale of Two Cities',
     shortDescription:
-      'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published departures include mid-October.',
+      'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published group departure in October as listed on this page.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-gold-lion.jpg',
@@ -692,7 +693,8 @@ export const tours: Tour[] = [
       'Terracotta Warriors',
       'high-speed train',
     ],
-    departureDates: ['13 August', '15 October', '2 November'],
+    /** Same order as `/campaigns/october-2026/tale-of-two-cities` (hero “next departure” = first). */
+    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder],
     tourCities: ['beijing', 'xian'],
     faqs: [
       {
@@ -728,7 +730,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart, and is a single room available?',
         answer:
-          'Published departures include mid-October and other dates listed on this page (subject to change — confirm at booking). If you prefer your own room, a single supplement applies — ask CTS for the current amount on your chosen departure. Twin-share pricing is shown as the lead-in rate.',
+          'Published departure for this programme is 15 October (year as on site — subject to change; confirm at booking). If you prefer your own room, a single supplement applies — ask CTS for the current amount. Twin-share pricing is shown as the lead-in rate.',
       },
       {
         question: 'How do I book or ask a specific question about this route?',
@@ -884,7 +886,8 @@ export const tours: Tour[] = [
       'real life experience in China',
       'West Lake',
     ],
-    departureDates: ['3 August', '14 October'],
+    /** Same order as `/campaigns/october-2026/shanghai-surroundings` (hero “next departure” = first). */
+    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder],
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     faqs: [
       {
@@ -920,12 +923,12 @@ export const tours: Tour[] = [
       {
         question: 'Is October a good time for this route?',
         answer:
-          'Autumn is popular: mild temperatures, comfortable for walking gardens, lakeside parks, and West Lake. Bring light layers and waterproofs for occasional rain. If you tell us your preferred style (crowds vs shoulder-season feel), we can suggest how October departures compare with other dates.',
+          'Autumn is popular: mild temperatures, comfortable for walking gardens, lakeside parks, and West Lake. Bring light layers and waterproofs for occasional rain. Ask CTS if you want tips tailored to the mid-October departure.',
       },
       {
         question: 'Can I have a single room, and when does the tour depart?',
         answer:
-          'Twin-share pricing is shown; a single room supplement applies — ask CTS for the current amount on your departure. Published dates include August and mid-October options (confirm live availability). Call 0800 CTS 888 (0800 287 888) or use the enquiry form to hold a seat and confirm the exact price for your room choice.',
+          'Twin-share pricing is shown; a single room supplement applies — ask CTS for the current amount on your departure. Published departure for this programme is 14 October (year as on site — subject to change; confirm live availability). Call 0800 CTS 888 (0800 287 888) or use the enquiry form to hold a seat and confirm the exact price for your room choice.',
       },
     ],
   },
