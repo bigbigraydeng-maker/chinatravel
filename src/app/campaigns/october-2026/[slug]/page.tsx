@@ -109,7 +109,6 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
 
   const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
-  const mainTourPath = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
 
   const schemas = [
     generateTourSchema(tour, destination),
@@ -151,14 +150,6 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
             <li className="text-gray-400">/</li>
             <li className="text-gray-900 font-medium">{tour.name}</li>
           </ol>
-          <p className="mt-2 text-xs text-gray-500">
-            Campaign URL (use with UTM in ads; page{' '}
-            <code className="text-gray-600">canonical</code> is this path without query strings). Standard
-            itinerary page:{' '}
-            <Link href={mainTourPath} className="text-primary hover:underline">
-              {mainTourPath}
-            </Link>
-          </p>
         </div>
       </nav>
 
@@ -233,7 +224,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 <Testimonials variant="sidebar" tourFilter={tour.tier} />
 
                 <div className="bg-warm-50 rounded-2xl p-6 border border-warm-100">
-                  <h3 className="font-serif font-bold text-lg mb-4">Quick info</h3>
+                  <h3 className="font-serif font-bold text-lg mb-4">Quick Info</h3>
                   <dl className="space-y-3">
                     <div>
                       <dt className="text-sm text-gray-600">Destination</dt>
@@ -254,18 +245,20 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                   </dl>
                 </div>
 
-                <Link
-                  href={mainTourPath}
-                  className="block text-center py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
-                >
-                  Open standard tour page
-                </Link>
-                <Link
-                  href={`/tours/${tour.destination}/${tour.tier}`}
-                  className="block text-center py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
-                >
-                  View all Discovery tours
-                </Link>
+                <div className="space-y-2">
+                  <Link
+                    href={`/tours/${tour.destination}/${tour.tier}`}
+                    className="block text-center py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    View All {tour.tier.charAt(0).toUpperCase() + tour.tier.slice(1)} Tours
+                  </Link>
+                  <Link
+                    href={`/tours/${tour.destination}`}
+                    className="block text-center py-3 px-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                  >
+                    View All {tour.destination.charAt(0).toUpperCase() + tour.destination.slice(1)} Tours
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -100,10 +100,13 @@ const Navbar = () => {
 
           <Link
             href="/#spotlight"
-            className="text-accent hover:text-primary transition-colors font-medium"
+            className="text-accent hover:text-primary transition-colors font-medium inline-flex items-center gap-2 rounded-lg py-1 -my-1"
             onClick={handleNavClick}
           >
-            Spotlight
+            <span>Spotlight</span>
+            <span className="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm ring-1 ring-white/30">
+              Hot
+            </span>
           </Link>
 
           {/* Tours Dropdown */}
@@ -321,8 +324,18 @@ const Navbar = () => {
               Tailor Made
             </Link>
             <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
-            <Link href="/#spotlight" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={() => { closeMenu(); handleNavClick(); }}>
-              Spotlight
+            <Link
+              href="/#spotlight"
+              className="text-accent hover:text-primary transition-colors font-medium py-2 inline-flex items-center justify-between gap-2"
+              onClick={() => {
+                closeMenu();
+                handleNavClick();
+              }}
+            >
+              <span>Spotlight</span>
+              <span className="rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+                Hot
+              </span>
             </Link>
             <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Agents</Link>
             <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Contact</Link>
