@@ -41,24 +41,10 @@ export default function OctoberDiscoveryCampaignContent({
 
         <p className="text-sm text-gray-600 rounded-xl border border-warm-200 bg-white/80 px-4 py-3 leading-relaxed">
           Optional extras such as the <strong>Shanghai Acrobatics Show</strong> and the{' '}
-          <strong>Maglev</strong> ride are <strong>not included</strong> in the tour price (see inclusions
-          below). Highlights are listed once in the <strong>Tour highlights</strong> section further down.
+          <strong>Maglev</strong> ride are <strong>not included</strong> in the tour price (see{' '}
+          <strong>What&apos;s Included</strong> below). Highlights are listed once in the{' '}
+          <strong>Tour highlights</strong> section further down.
         </p>
-
-        <section className="rounded-2xl border border-warm-200 bg-white p-6 md:p-8">
-          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Inclusions &amp; the fine print</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            <strong>Included:</strong> international and domestic airfares; hotel accommodation as specified;
-            English-speaking tour guide; entrance fees and meals as specified in the itinerary; land
-            transfer.
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            <strong>Not included:</strong> Travel insurance (strongly recommended); personal expenses;
-            transport and guide during free time; meals not listed; tips (suggested NZD $10 per day per
-            person); optional activities; anything not specifically mentioned as included — exactly as
-            listed on the main tour page.
-          </p>
-        </section>
 
         <section>
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
@@ -110,19 +96,6 @@ export default function OctoberDiscoveryCampaignContent({
           Chariot where specified), the <strong>ancient City Wall</strong>, <strong>Big Wild Goose Pagoda</strong>,{' '}
           the <strong>Small Wild Goose Pagoda Museum</strong>, and <strong>Huimin Street</strong> — matching the
           published day-by-day itinerary — before flying back via Beijing to Auckland.
-        </p>
-      </section>
-
-      <section className="rounded-2xl border border-warm-200 bg-white p-6 md:p-8">
-        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Inclusions &amp; exclusions</h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          <strong>Included:</strong> international and domestic airfares; 4-star hotel accommodation throughout;
-          English-speaking tour guide; entrance fees as specified; meals as specified; land transfers.
-        </p>
-        <p className="text-gray-700 leading-relaxed">
-          <strong>Not included:</strong> Travel insurance (strongly recommended); personal expenses;
-          transport and guide during free time; meals not listed; tips (suggested NZD $10 per day per
-          person); anything not specifically mentioned as included.
         </p>
       </section>
 
