@@ -101,13 +101,32 @@ const AgentsPage = () => {
             </div>
           </div>
 
-          {/* Contact CTA */}
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-semibold mb-6 font-serif">Get in Touch</h3>
-            <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
-              For more information about our agent resources or to become a partner, please contact our team.
-            </p>
-            <a href="/contact" className="btn-primary inline-block">Contact Us</a>
+          <div className="mt-16">
+            <a
+              href="https://chinaunlocked.ctstours.co.nz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full rounded-2xl border border-warm-100 bg-white p-5 md:p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
+              aria-label="Open China Unlocked in a new tab"
+            >
+              <div className="flex flex-col items-center text-center gap-5 md:gap-6">
+                <Image
+                  src="/images/brand/china-unlocked-cts-lockup.jpg"
+                  alt="China Unlocked and CTS Tours logo lockup"
+                  width={1000}
+                  height={200}
+                  className="h-auto w-full max-w-[640px]"
+                />
+                <div className="space-y-2">
+                  <p className="text-gray-800 text-sm md:text-base font-medium">
+                    China Travel Specialist certification programme designed for New Zealand travel agents.
+                  </p>
+                  <p className="text-gray-700 text-sm md:text-base">
+                    Learn to sell China with confidence: visa-free access, product tiers, client objection-handling, and CTS positioning.
+                  </p>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </section>
