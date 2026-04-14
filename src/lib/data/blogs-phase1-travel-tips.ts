@@ -9,9 +9,9 @@ export const phase1TravelTipPosts: BlogPost[] = [
     slug: 'what-to-pack-china-complete-packing-list-by-season',
     title: 'What to Pack for China: Complete Packing List by Season',
     excerpt:
-      'Practical packing list for New Zealand travellers: seasonal layers, power adapters, medicines, culture-smart items, and luggage tips — from Auckland departures to your return flight.',
+      'I’m Baker Gu — the packing list I give Kiwi clients before they fly: layers, adapters, meds, culture-smart bits, and how I keep bags light for long China legs.',
     content: `
-What you pack for China depends on season, region, and how you move between cities. This guide helps **first-time visitors from New Zealand** avoid over-packing while staying comfortable — whether you are joining a [CTS small-group tour](/tours/china) or building a tailor-made itinerary from Auckland.
+I’m **Baker Gu**, CTS’s China travel specialist. What you pack depends on season, region, and how we stitch cities together. I wrote this so **first-time visitors from New Zealand** can avoid over-packing but stay comfortable — whether you join one of [our small-group tours](/tours/china) or I build a tailor-made route from Auckland.
 
 ## Spring (March–May): Layers and rain-ready gear
 
@@ -47,16 +47,16 @@ Avoid packing *controversial political slogans* on clothing or large quantities 
 
 ## Money-smart packing for NZ travellers
 
-Budget roughly **NZD 40–120 per day** for casual meals and souvenirs on top of prepaid tours — carry **two cards** (Visa/Mastercard plus a backup) and some **CNY cash** for small vendors. Your CTS adviser can suggest amounts per itinerary.
+Budget roughly **NZD 40–120 per day** for casual meals and souvenirs on top of prepaid tours — carry **two cards** (Visa/Mastercard plus a backup) and some **CNY cash** for small vendors. I’ll suggest amounts once I see your exact itinerary.
 
 ## Final luggage strategy
 
 Use **packing cubes**, **one soft “spare” fold** for shopping, and weigh bags before **Auckland** check-in. If you join a fast-paced route, **carry-on–only** is possible but tight — most guests prefer a **medium checked bag** plus a **20–28L daypack** for water, snacks, and layers.
 
-Ready to match packing to a real route? [Browse China tours](/china-tours) or [contact our Auckland-based team](/contact) for a personalised departure checklist.
+Want me to match this list to a real route? [Browse China tours](/china-tours) or [contact me and the Auckland team](/contact) for a departure checklist with your name on it.
     `,
-    author: 'CTS Editorial',
-    authorRole: 'China Travel Content',
+    author: 'Baker Gu',
+    authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['packing China', 'what to pack', 'China travel', 'luggage tips', 'seasonal packing'],
     heroImage: migratedUnsplash('photo-1553531384-cc64ac80f931'),
@@ -68,13 +68,13 @@ Ready to match packing to a real route? [Browse China tours](/china-tours) or [c
     slug: 'essential-travel-apps-china-navigation-communication-payment',
     title: 'Essential Travel Apps for China: Navigation, Communication & Payment',
     excerpt:
-      'VPN, maps, translation, WeChat, Alipay — a practical stack for Kiwi travellers who need to get around, pay, and stay in touch in mainland China.',
+      'I’m Baker Gu — the app stack I install for clients before AKL: VPN, maps, WeChat, payments, translation — so free evenings don’t turn into guesswork.',
     content: `
-Mainland China’s digital ecosystem favours **local apps**. Planning from Auckland, set expectations: many Western services are inconsistent without preparation. This guide prioritises what to download **before departure**, what works on the ground, and how **CTS-guided journeys** reduce friction — but independent pockets of time still reward a good app stack.
+I’m **Baker Gu**. Mainland China’s digital ecosystem favours **local apps**. From Auckland, set expectations: many Western services are inconsistent without preparation. Here is what I tell people to download **before departure**, what actually works on the ground, and how **the journeys I design** keep friction low — though your free evenings still reward a solid stack.
 
 ## VPN: plan before you land
 
-Research **reputable VPN providers** that your airline Wi-Fi and hotel networks tolerate. Install and test on your phone **before** leaving New Zealand; enable **auto-connect** on untrusted networks. VPN legality and reliability change — verify current policies. On group tours, your guide may help with offline maps for backup.
+Research **reputable VPN providers** that your airline Wi-Fi and hotel networks tolerate. Install and test on your phone **before** leaving New Zealand; enable **auto-connect** on untrusted networks. VPN legality and reliability change — verify current policies. On my group tours, your guide can help with offline maps for backup.
 
 ## Maps: local apps beat Western defaults
 
@@ -86,7 +86,7 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 
 ## WeChat: messaging + mini-programs
 
-**WeChat (Weixin)** is ubiquitous for chat, restaurant ordering, and official account updates. Set up your profile early; some features need **real-name verification** tied to a phone number. Your CTS consultant can advise what travellers typically need versus what can wait.
+**WeChat (Weixin)** is ubiquitous for chat, restaurant ordering, and official account updates. Set up your profile early; some features need **real-name verification** tied to a phone number. Ask me or the team what travellers typically need versus what can wait.
 
 ## Payments: Alipay & WeChat Pay for international cards
 
@@ -105,7 +105,7 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 - Type your **destination in English** — the app translates automatically
 - **Express** (快车) is the standard affordable option; **Premiere** for airport runs with luggage
 - Share your **trip status** with a travel companion for peace of mind
-- On CTS Discovery and Signature tours, your guide handles transfers — DiDi is most useful for **free evenings** and personal excursions
+- On my Discovery and Signature tours, your guide handles transfers — DiDi is most useful for **free evenings** and personal excursions
 - As a fallback, **Amap** (Gaode Maps) has a built-in ride-calling feature that integrates with multiple providers including DiDi
 
 ## Priority install order (simplified)
@@ -120,16 +120,16 @@ Research **reputable VPN providers** that your airline Wi-Fi and hotel networks 
 
 ## On tour vs independent time
 
-CTS **Discovery** and **Signature** products handle core transfers and many meals — you may only need maps for free evenings. **Stopover** packages in single cities are ideal for practising this stack at a smaller scale — see [China stopover tours](/tours/china/stopover).
+My **Discovery** and **Signature** programmes handle core transfers and many meals — you may only need maps for free evenings. **Stopover** packages in single cities are ideal for practising this stack at a smaller scale — see [China stopover tours](/tours/china/stopover).
 
 ## Etiquette and batteries
 
 Download content for **long train rides**; carry a **20,000mAh power bank** (check airline limits). Respect **photography rules** in stations and airports — security checks are strict.
 
-Need an itinerary where logistics are handled for you? [Explore guided China tours](/tours/china) or [request a quote](/contact).
+Want an itinerary where I handle the logistics? [Explore guided China tours](/tours/china) or [request a quote](/contact).
     `,
-    author: 'CTS Editorial',
-    authorRole: 'China Travel Content',
+    author: 'Baker Gu',
+    authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['China apps', 'travel apps', 'VPN', 'maps', 'translation'],
     heroImage: migratedUnsplash('photo-1512941937669-90a1b58e7e9c'),
@@ -141,9 +141,9 @@ Need an itinerary where logistics are handled for you? [Explore guided China tou
     slug: 'safety-guide-travelling-china-tips-scams-etiquette',
     title: 'Safety Guide for Travelling in China: Tips, Scams & Cultural Etiquette',
     excerpt:
-      'Crime, health, scams, etiquette, and emergencies — a calm, practical safety briefing for New Zealand travellers visiting China for the first time.',
+      'I’m Baker Gu — how I brief first-time Kiwis on safety: what’s genuinely low-risk, what annoys people, and the etiquette that keeps days smooth.',
     content: `
-China is **generally very safe** for foreign visitors: violent crime in tourist areas is uncommon, and public transport is extensive. Most “problems” are **avoidable misunderstandings**, **traffic**, **food hygiene choices**, or **digital-payment learning curves**. This article helps cautious first-timers from **Auckland** plan confidently.
+I’m **Baker Gu**. China is **generally very safe** for foreign visitors: violent crime in tourist areas is uncommon, and public transport is extensive. Most “problems” are **avoidable misunderstandings**, **traffic**, **food hygiene choices**, or **digital-payment learning curves**. I use this note for cautious first-timers from **Auckland** who want straight talk, not fear.
 
 ## Personal safety overview
 
@@ -152,7 +152,7 @@ China is **generally very safe** for foreign visitors: violent crime in tourist 
 ## Common tourist pitfalls (not “danger”, but annoyance)
 
 - **Tea house / art student** invitations to overpriced venues — polite decline.  
-- **Unofficial “tour guides”** at station exits — meet only pre-arranged CTS signage or verified drivers.  
+- **Unofficial “tour guides”** at station exits — meet only **pre-arranged CTS signage** or verified drivers I’ve confirmed for you.  
 - **Currency confusion** — always confirm **CNY** totals on Alipay/WeChat screens before paying.
 
 ## Cultural etiquette that keeps interactions smooth
@@ -168,11 +168,11 @@ Bring **travel insurance** with medical evacuation clarity. Major cities have **
 
 ## Emergency numbers and documents
 
-Save **your embassy/consulate** contact, **hotel address in Chinese**, and **CTS 24/7 handling** details if on tour. Police **110**, ambulance **120**, fire **119** — write them in your notes app offline.
+Save **your embassy/consulate** contact, **hotel address in Chinese**, and **our 24/7 tour handling** details if you are with us. Police **110**, ambulance **120**, fire **119** — write them in your notes app offline.
 
-## Why a specialist operator matters
+## Why I still push specialist routing
 
-Structured itineraries reduce **variable risk**: vetted airport meets, **seat-forward planning** on high-speed rail, and **English-speaking local guides** who understand pacing for mixed ages. Compare [Signature vs Discovery](/tours/china) with our team.
+Structured itineraries reduce **variable risk**: vetted airport meets, **seat-forward planning** on high-speed rail, and **English-speaking local guides** who understand pacing for mixed ages. I’ll walk you through [Signature vs Discovery](/tours/china) on a call — no brochure theatre.
 
 ## Insurance checklist (NZ)
 
@@ -180,10 +180,10 @@ Structured itineraries reduce **variable risk**: vetted airport meets, **seat-fo
 - **Trip delay** for weather diversions  
 - **Device** cover for loss  
 
-If you want a calm first China trip with tested hotels and guides, [browse our China collection](/china-tours-from-new-zealand) or [speak to CTS](/contact).
+If you want a calm first China trip with hotels and guides I stand behind, [browse our China collection](/china-tours-from-new-zealand) or [speak to me and the team](/contact).
     `,
-    author: 'CTS Editorial',
-    authorRole: 'China Travel Content',
+    author: 'Baker Gu',
+    authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['safety China', 'travel safety', 'scams', 'etiquette', 'cultural tips'],
     heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
@@ -195,9 +195,9 @@ If you want a calm first China trip with tested hotels and guides, [browse our C
     slug: 'best-time-visit-china-seasonal-weather-crowds-guide',
     title: 'Best Time to Visit China: Complete Seasonal Weather & Crowds Guide',
     excerpt:
-      'Compare spring, summer, autumn, and winter across China; learn when prices peak, when Golden Week hits, and how to time the regions you care about.',
+      'I’m Baker Gu — how I pick months for Kiwis: north vs south weather, Golden Week reality, and when I’d pay more to avoid a bad week.',
     content: `
-There is no single “best month” for all of China — the country spans **subtropical coasts**, **high plateaus**, and **continental interiors**. For **Kiwi travellers** balancing weather, crowds, and airfare, we usually steer **first trips** toward **april–may** or **september–october** windows — with caveats below.
+I’m **Baker Gu**. There is no single “best month” for all of China — the country spans **subtropical coasts**, **high plateaus**, and **continental interiors**. For **Kiwi travellers** balancing weather, crowds, and airfare, I usually steer **first trips** toward **april–may** or **september–october** windows — with caveats below.
 
 ## National patterns: four seasons at a glance
 
@@ -213,7 +213,7 @@ There is no single “best month” for all of China — the country spans **sub
 
 ## Holidays and pricing
 
-Domestic **Golden Week** and **Chinese New Year** spike **hotel rates** and train sell-outs. CTS pricing reflects market reality — we help you **route around** peaks where possible or **lock inventory** early.
+Domestic **Golden Week** and **Chinese New Year** spike **hotel rates** and train sell-outs. Our pricing reflects market reality — I help you **route around** peaks where possible or **lock inventory** early.
 
 ## Weather extremes
 
@@ -221,12 +221,12 @@ Typhoons can affect **east coast** summer flights; **sandstorms** occasionally h
 
 ## Photography and festivals
 
-**Ethnic festivals** and **lantern dates** vary by lunar calendar — align with CTS if you want lantern markets or **minority New Year** experiences. For camera-focused trips, read our [photography hidden gems](/blog/photography-guide-china-best-locations-hidden-gems) companion post.
+**Ethnic festivals** and **lantern dates** vary by lunar calendar — loop me in if you want lantern markets or **minority New Year** experiences. For camera-focused trips, read my [photography hidden gems](/blog/photography-guide-china-best-locations-hidden-gems) companion post.
 
 Ready to pick dates with a human? [Read our month-by-month seasonal tool](/seasonal-guide) then [request an itinerary](/contact).
     `,
-    author: 'CTS Editorial',
-    authorRole: 'China Travel Content',
+    author: 'Baker Gu',
+    authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['best time China', 'China weather', 'seasons', 'travel seasons', 'crowds'],
     heroImage: migratedUnsplash('photo-1469474968028-56623f02e42e'),
@@ -238,9 +238,9 @@ Ready to pick dates with a human? [Read our month-by-month seasonal tool](/seaso
     slug: 'photography-guide-china-best-locations-hidden-gems',
     title: 'Photography Guide to China: Best Locations & Hidden Gems',
     excerpt:
-      'Where to shoot beyond the obvious icons — light, lenses, drones, etiquette, and quieter corners from Zhangjiajie to Yangshuo, written for travelling photographers.',
+      'I’m Baker Gu — field notes for photographers: light, lenses, drone reality, and the side gates I ask guides to use so you’re not fighting busloads.',
     content: `
-China rewards photographers who **wake early** and **stay flexible**. Icons like the **Forbidden City** and **Great Wall** are essential — but **secondary ridges**, **riverside dawn mists**, and **old town lanes** often yield your favourite frames. Here is a **practical field guide** for travellers flying from **New Zealand** with limited gear.
+I’m **Baker Gu**. China rewards photographers who **wake early** and **stay flexible**. Icons like the **Forbidden City** and **Great Wall** are essential — but **secondary ridges**, **riverside dawn mists**, and **old town lanes** often yield your favourite frames. Here is the **field guide** I give travellers flying from **New Zealand** with limited gear.
 
 ## Classic locations that earn their fame
 
@@ -248,7 +248,7 @@ China rewards photographers who **wake early** and **stay flexible**. Icons like
 
 ## Hidden-gem mindset
 
-Swap “secret GPS pins” for **process**: ride the **second cable car**, walk **20 minutes past** the main platform, eat lunch where **local buses** stop — edges of parks quieten first. **CTS local guides** know **side gates** with shorter morning queues.
+Swap “secret GPS pins” for **process**: ride the **second cable car**, walk **20 minutes past** the main platform, eat lunch where **local buses** stop — edges of parks quieten first. **The guides I brief** know **side gates** with shorter morning queues.
 
 ## Light and timing
 
@@ -270,10 +270,10 @@ A **24–70mm equivalent** covers 80% of city needs; add a **70–200mm** for mo
 
 Photographers often combine **Guilin + Zhangjiajie** with a **Yangtze segment** — explore [China Signature](/tours/china/signature) pacing or ask for a **Discovery** overview loop on [China tours hub](/china-tours).
 
-Share your shot list with us — [tailor-made planning](/tailor-made) can allocate **golden-hour windows** without rushing luggage transfers.
+Send me your shot list — [tailor-made planning](/tailor-made) lets me allocate **golden-hour windows** without rushing luggage transfers.
     `,
-    author: 'CTS Editorial',
-    authorRole: 'China Travel Content',
+    author: 'Baker Gu',
+    authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['photography China', 'hidden gems', 'photo locations', 'travel photography', 'landscape'],
     heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),

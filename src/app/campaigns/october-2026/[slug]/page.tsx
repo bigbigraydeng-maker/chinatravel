@@ -19,6 +19,7 @@ import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
+import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
@@ -173,6 +174,8 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         primaryCtaLabel="Enquire for October departures"
         secondaryCtaLabel="View day-by-day itinerary"
       />
+
+      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
 
       <ChinaVisaNudge />
 

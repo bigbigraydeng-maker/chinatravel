@@ -19,6 +19,7 @@ import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
+import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import { isOctoberCampaignTourSlug } from '@/lib/campaigns/october-campaign-tours';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
@@ -184,6 +185,8 @@ export default function TourPage({ params }: TourPageProps) {
         primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
       />
+
+      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
 
       {isOctoberCampaignTour ? <ChinaVisaNudge /> : null}
 

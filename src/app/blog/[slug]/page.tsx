@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { getBlogPostBySlug, getAllBlogPosts, BlogPost } from '@/lib/data/blogs';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { migratedSite } from '@/lib/site-media';
 
 interface BlogPostPageProps {
   params: {
@@ -114,8 +115,25 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {post.title}
             </h1>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">
-                BG
+              <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border-2 border-white/40 shadow-md">
+                {post.author === 'Baker Gu' ? (
+                  <Image
+                    src={migratedSite('baker-gu-portrait.jpg')}
+                    alt="Baker Gu, China Travel Specialist"
+                    fill
+                    className="object-cover object-top"
+                    sizes="48px"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-primary text-lg font-bold text-white">
+                    {post.author
+                      .split(/\s+/)
+                      .map((n) => n[0])
+                      .join('')
+                      .slice(0, 2)
+                      .toUpperCase() || '?'}
+                  </div>
+                )}
               </div>
               <div>
                 <p className="text-white font-medium">{post.author}</p>

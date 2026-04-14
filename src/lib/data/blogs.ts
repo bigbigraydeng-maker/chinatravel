@@ -1,5 +1,6 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import { phase1TravelTipPosts } from '@/lib/data/blogs-phase1-travel-tips';
+import { seoT036ToT040BlogPosts } from '@/lib/data/blogs-seo-t036-t040';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -9,17 +10,17 @@ export const blogPosts: BlogPost[] = [
     id: 'blog-1',
     slug: 'why-silk-road-should-be-your-next-adventure',
     title: 'Why the Silk Road Should Be Your Next Adventure',
-    excerpt: 'Discover the ancient trade route that connected East and West, and find out why this journey through China\'s western frontiers is a must for culturally curious travellers.',
+    excerpt: 'I’m Baker Gu — here’s why I still believe the Silk Road belongs on your list, and how I design our Signature route through China’s western frontiers.',
     content: `
-The Silk Road isn't just a historical trade route—it's a living museum of cultures, landscapes, and stories that have shaped the world we know today.
+I’m **Baker Gu**, CTS’s China travel specialist. The Silk Road isn’t just a historical trade route to me — it’s a living museum of cultures, landscapes, and stories that I never get tired of showing people.
 
 **A Journey Through Time**
 
 From the ancient city of Kashgar, where Sunday markets have operated for over 2,000 years, to the Buddhist art of the Mogao Caves in Dunhuang, every stop on the Silk Road tells a story. This is where East met West, where merchants traded not just silk and spices, but ideas, religions, and technologies.
 
-**What Makes Our Silk Road Tour Special**
+**What makes my Silk Road tour special**
 
-Our 14-day Signature Silk Road journey takes you beyond the typical tourist trail. You'll:
+My 14-day Signature Silk Road journey takes you beyond the typical tourist trail. You will:
 
 - Explore the Rainbow Mountains of Zhangye, a geological wonder that looks like it was painted by an artist
 - Ride camels through the Singing Sand Dunes at sunset
@@ -34,7 +35,7 @@ The Silk Road is best experienced from April to October, when the weather is mil
 
 *"I've travelled the Silk Road dozens of times, and it still takes my breath away. There's something magical about standing in a caravanserai where merchants rested a thousand years ago, knowing you're walking in their footsteps. This isn't just a tour—it's a pilgrimage through history."*
 
-Ready to embark on your own Silk Road adventure? [Contact us](/contact) to start planning your journey.
+Ready to walk it with me? [Contact our team](/contact) and ask for Baker’s Silk Road — or browse [China Signature tours](/tours/china/signature).
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -48,17 +49,17 @@ Ready to embark on your own Silk Road adventure? [Contact us](/contact) to start
     id: 'blog-2',
     slug: 'giant-pandas-chengdu-complete-guide',
     title: 'Giant Pandas in Chengdu: A Complete Guide',
-    excerpt: 'Everything you need to know about visiting China\'s most beloved residents, from the best time to visit to exclusive experiences you won\'t find anywhere else.',
+    excerpt: 'I’m Baker Gu — how I plan panda time in Chengdu, what I book for morning light, and the Signature experiences I add when clients ask for more than a quick look.',
     content: `
-There are few wildlife experiences as universally beloved as seeing giant pandas in their natural habitat. Chengdu, the capital of Sichuan province, offers the world's best opportunities to see these magnificent creatures up close.
+I’m **Baker Gu**. There are few wildlife moments I recommend as often as seeing giant pandas in Chengdu — the capital of Sichuan still offers the best opportunities to get close, if you time the day right.
 
 **The Chengdu Research Base of Giant Panda Breeding**
 
 This world-renowned facility is home to over 100 giant pandas and is the most popular destination for panda enthusiasts. The best time to visit is early morning (8-10am) when pandas are most active during their bamboo breakfast.
 
-**Exclusive Experiences**
+**Exclusive experiences I add**
 
-Our Signature tours include special access that most visitors never experience:
+On my Signature tours I fight for access most visitors never get:
 
 - **Volunteer Programme**: Spend a day as a panda keeper, preparing bamboo and helping with daily care
 - **Red Panda Encounter**: Get up close with the adorable (and equally endangered) red pandas
@@ -76,7 +77,7 @@ Chengdu offers much more than just pandas. Don't miss:
 
 *"Most tourists rush through the panda base in two hours. I recommend spending at least half a day. The morning feeding is magical, but watching pandas nap in the afternoon bamboo groves is equally enchanting. And don't skip the red pandas—they're incredibly playful and often more active than their larger cousins."*
 
-Planning your panda adventure? Our [China Discovery — Cultural Triangle](/tours/china/discovery/cultural-triangle) includes Chengdu and the Panda Research Center.
+Planning your panda adventure? I slot Chengdu into routes like [Best of China — Discovery](/tours/china/discovery/essentials) or our [Chengdu stopover](/tours/china/stopover/chengdu) when you only have a few days.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -141,11 +142,11 @@ A few phrases go a long way:
 
 Public restrooms often don't provide toilet paper. Always carry tissues.
 
-**10. Book with a Specialist**
+**10. Book with a specialist (I mean it)**
 
-China is vast and complex. A specialist operator like CTS ensures you see the best while avoiding tourist traps. We've been serving Kiwi travellers for over 20 years—we know what works.
+China is vast — I have spent twenty-plus years learning which routes deserve your days and which are just brochure filler. I built CTS’s China programmes so I could stand behind every hotel move and guide call.
 
-Ready to start planning? [Browse our tours](/tours) or [contact us](/contact) for a personalised consultation.
+Ready to start? [Browse our tours](/tours) or [contact me and the team](/contact) for a straight conversation.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -159,9 +160,9 @@ Ready to start planning? [Browse our tours](/tours) or [contact us](/contact) fo
     id: 'blog-4',
     slug: 'avatar-mountains-zhangjiajie-guide',
     title: 'The Real Avatar Mountains: Zhangjiajie Revealed',
-    excerpt: 'The floating peaks that inspired Avatar\'s Pandora are real—and they\'re even more spectacular in person. Here\'s how to experience them.',
+    excerpt: 'I’m Baker Gu — how I plan Zhangjiajie so you see the Avatar peaks without wasting your legs on the wrong queue.',
     content: `
-When James Cameron created the floating mountains of Pandora in Avatar, he drew inspiration from a real place: Zhangjiajie National Forest Park in China\'s Hunan province.
+I’m **Baker Gu**. When James Cameron dreamed up Pandora’s floating mountains, he was looking at a real place: Zhangjiajie National Forest Park in Hunan — and I still get a jolt every time I take clients up there.
 
 **The Inspiration**
 
@@ -186,7 +187,7 @@ The famous "Southern Sky Column" that inspired Avatar\'s floating mountains. A 3
 
 April to October offers the best weather, though summer can be crowded. For photographers, the misty shoulder seasons (April-May, September-October) create the most atmospheric conditions.
 
-Experience the Avatar Mountains on our [China Discovery — Golden Route](/tours/china/discovery/golden-route).
+Experience the peaks on my [Zhangjiajie stopover](/tours/china/stopover/zhangjiajie) or woven into a longer [Discovery or Signature](/tours/china/discovery) loop — tell me how many days you have.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -200,9 +201,9 @@ Experience the Avatar Mountains on our [China Discovery — Golden Route](/tours
     id: 'blog-5',
     slug: 'understanding-chinese-tea-culture',
     title: 'Understanding Chinese Tea Culture: A Journey Through the Leaf',
-    excerpt: 'From the tea houses of Chengdu to the plantations of Hangzhou, discover the ancient art and modern practice of Chinese tea culture.',
+    excerpt: 'I’m Baker Gu — tea is how I slow clients down in China; here’s how I read the six great teas and where I take you on tour.',
     content: `
-Tea is to China what wine is to France—not just a beverage, but a way of life, a cultural touchstone, and an art form that has been refined over thousands of years.
+I’m **Baker Gu**. Tea is to China what wine is to France — not just a drink, but a way of life, and I use it to help travellers actually feel the country between temple visits.
 
 **A Brief History**
 
@@ -217,11 +218,11 @@ Legend has it that Emperor Shen Nong discovered tea in 2737 BC when leaves from 
 5. **Pu-erh** - Fermented and aged, earthy and complex. Yunnan\'s specialty.
 6. **Yellow Tea** - Rare and subtle, similar to green but with a unique processing method.
 
-**Tea Experiences on Our Tours**
+**Where I take you on my tours**
 
-- **Hangzhou**: Visit the Dragon Well tea plantations and learn to pick and process tea leaves
-- **Chengdu**: Spend an afternoon in a traditional tea house, watching locals play mahjong
-- **Fujian**: Explore the birthplace of Oolong tea in the Wuyi Mountains
+- **Hangzhou**: Dragon Well plantations — I like you to see leaves picked and fired
+- **Chengdu**: Old tea houses where locals play mahjong — I use it as a breathing day
+- **Fujian**: When we build a longer east coast arc, I chase Oolong country in the Wuyi foothills
 
 **The Gongfu Tea Ceremony**
 
@@ -231,7 +232,7 @@ This traditional brewing method, originating in Fujian and Guangdong, is an art 
 
 *"In China, tea is never rushed. When a host refills your cup, tap the table with two fingers—it\'s a silent thank you. And never let your guest\'s cup go empty. These small gestures show respect and understanding of the culture."*
 
-Experience Chinese tea culture on our [China Signature — Imperial Heritage](/tours/china/signature/imperial-heritage) tour.
+Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/imperial-heritage) or tell me your dates and I will weave tea stops into your route.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -241,6 +242,7 @@ Experience Chinese tea culture on our [China Signature — Imperial Heritage](/t
     publishedAt: '2026-02-20',
     readTime: '5 min read'
   },
+  ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
 ];
 
