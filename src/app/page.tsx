@@ -8,6 +8,7 @@ import ExpertHighlight from '@/components/ExpertHighlight';
 import { migratedSite } from '@/lib/site-media';
 import DestinationCard from '@/components/DestinationCard';
 import TourTierCard from '@/components/TourTierCard';
+import SpotlightTours from '@/components/SpotlightTours';
 import StatsCounter from '@/components/StatsCounter';
 import Testimonials from '@/components/Testimonials';
 import { getTourBySlug } from '@/lib/data/tours';
@@ -117,6 +118,8 @@ const HomePage = () => {
         </div>
       </section>
 
+      <SpotlightTours />
+
       {/* Baker Gu Expert */}
       <ExpertHighlight
         name="Baker Gu"
@@ -179,13 +182,24 @@ const HomePage = () => {
               <div className="flex-1 h-[2px] bg-gradient-to-r from-emerald-200 to-transparent rounded-full"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {(() => { const t = getTourBySlug('china', 'discovery', 'shanghai-surroundings'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="14 Oct 2026" route={['Shanghai', 'Suzhou', 'Wuxi', 'Hangzhou']} href="/campaigns/october-2026/shanghai-surroundings" />
+              {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0] ? `${t.departureDates[0]} 2026` : undefined} route={['Beijing', "Xi'an", 'Hangzhou', 'Shanghai']} />
               ) : null; })()}
-              {(() => { const t = getTourBySlug('china', 'discovery', 'beijing-xian'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure="15 Oct 2026" route={['Beijing', "Xi'an"]} href="/campaigns/october-2026/tale-of-two-cities" />
+              {(() => { const t = getTourBySlug('china', 'discovery', 'yunnan-explorer'); return t ? (
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0] ? `${t.departureDates[0]} 2026` : undefined} route={['Dali', 'Lijiang', 'Shangri-La']} />
               ) : null; })()}
             </div>
+            <p className="text-center text-gray-600 mt-10 text-sm">
+              See our current{' '}
+              <Link href="/#spotlight" className="text-primary font-medium hover:underline">
+                Spotlight
+              </Link>{' '}
+              tours above, or browse{' '}
+              <Link href="/tours/china/discovery" className="text-primary font-medium hover:underline">
+                all China Discovery tours
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>

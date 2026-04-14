@@ -98,6 +98,14 @@ const Navbar = () => {
             About
           </Link>
 
+          <Link
+            href="/#spotlight"
+            className="text-accent hover:text-primary transition-colors font-medium"
+            onClick={handleNavClick}
+          >
+            Spotlight
+          </Link>
+
           {/* Tours Dropdown */}
           <div
             ref={dropdownRef}
@@ -313,6 +321,9 @@ const Navbar = () => {
               Tailor Made
             </Link>
             <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
+            <Link href="/#spotlight" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={() => { closeMenu(); handleNavClick(); }}>
+              Spotlight
+            </Link>
             <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Agents</Link>
             <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Contact</Link>
             <Link href="/contact" className="bg-primary text-white text-center py-3 rounded-full font-medium mt-2" onClick={closeMenu}>Plan Your Journey</Link>
