@@ -55,6 +55,9 @@ export const MARKETING_PLAN_META = {
   title: 'CTSTours 2026年10月双产品专属数字推广统筹（Phase 1）',
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
   lastUpdated: '2026-04-14',
+  /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
+  lastSiteSyncNote:
+    'October 战役 LP 与标准产品页对齐：Hero 十月 CTA、ChinaVisaNudge、TrustBar、TourTrustSignals、Plan your trip（#planning-resources）；战役长文案内删除重复的 Tour highlights 列表。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -187,7 +190,7 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   {
     area: '10 月 Discovery 战役着陆页',
     status: 'done',
-    note: '/campaigns/october-2026/* 与上述 Discovery 产品页已联动。',
+    note: '/campaigns/october-2026/* 与 tours 数据联动；已与标准产品页同步 Hero 十月 CTA、免签条、TrustBar、TourTrustSignals、Plan your trip；战役长文案取消与下方 TourHighlights 重复的亮点列表。',
   },
   {
     area: '产品页 FAQ 深度',
@@ -202,7 +205,7 @@ export const EXECUTION_AUDIT: { area: string; status: TaskStatus; note: string }
   {
     area: '战役产品页首屏 / 免签条 / CTA',
     status: 'done',
-    note: 'beijing-xian、shanghai-surroundings：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge 链至 /china-visa-guide-for-new-zealanders。',
+    note: '标准产品页与 October 战役 LP：shortDescription + meta；TourHero 十月线 CTA；ChinaVisaNudge → /china-visa-guide-for-new-zealanders；两套路由一致。',
   },
   {
     area: '产品页 Gallery / 社媒图',
@@ -226,7 +229,7 @@ export const OBJECTIVES: Objective[] = [
         title: '完成两个产品页的转化优化升级',
         metric: '询盘率、CTA 点击率、表单完成率',
         aprilTarget: '两页首轮优化上线',
-        status: 'review',
+        status: 'done',
       },
       {
         id: 'KR2',
@@ -461,11 +464,13 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W1',
     status: 'done',
     deliverable: '页面模块上线',
-    notes: 'ChinaVisaNudge 组件，仅两条战役产品页；链至签证指南。',
+    notes: 'ChinaVisaNudge：标准 Discovery 产品页 + October 战役 LP（/campaigns/october-2026/*）；链至签证指南。',
     reviewLinks: [
       { label: 'NZ 中国签证指南（长文）', href: '/china-visa-guide-for-new-zealanders' },
       { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#visa-nudge' },
       { label: '免签条 · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
+      { label: '免签条 · October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities#visa-nudge' },
+      { label: '免签条 · October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings#visa-nudge' },
     ],
   },
   {
@@ -477,10 +482,12 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W1',
     status: 'done',
     deliverable: 'CTA 优化版',
-    notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案。',
+    notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案（标准页 + October 战役 LP）。',
     reviewLinks: [
       { label: '首屏 CTA · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
       { label: '首屏 CTA · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: '首屏 CTA · October · Tale', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: '首屏 CTA · October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings' },
     ],
   },
   {
@@ -497,6 +504,8 @@ export const MARKETING_TASKS: MarketingTask[] = [
     reviewLinks: [
       { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#faq' },
       { label: 'FAQ · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#faq' },
+      { label: 'FAQ · October · Tale', href: '/campaigns/october-2026/tale-of-two-cities#faq' },
+      { label: 'FAQ · October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings#faq' },
     ],
   },
   {
@@ -524,9 +533,11 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W2',
     status: 'done',
     deliverable: '信任模块',
-    notes: '产品页 Hero 下：TrustBar + TourTrustSignals（TAANZ/IATA/Qualmark/TEC + 链到 /about#credentials）。锚点 #trust-signals。',
+    notes: 'Hero 下：TrustBar + TourTrustSignals（TAANZ/IATA/Qualmark/TEC + 链到 /about#credentials）。锚点 #trust-signals。标准产品页与 October 战役 LP 一致。',
     reviewLinks: [
       { label: 'Trust signals（Discovery 例）', href: '/tours/china/discovery/beijing-xian#trust-signals' },
+      { label: 'Trust signals · October · Tale', href: '/campaigns/october-2026/tale-of-two-cities#trust-signals' },
+      { label: 'Trust signals · October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings#trust-signals' },
       { label: 'Credentials（About）', href: '/about#credentials' },
     ],
   },
@@ -539,10 +550,12 @@ export const MARKETING_TASKS: MarketingTask[] = [
     endWeek: 'W4',
     status: 'done',
     deliverable: '内链结构',
-    notes: 'TourSupportingContentLinks：签证/季节/NZ 出发 + 按 tourCities/行程推断的城市 hub 与指南内链。锚点 #planning-resources。',
+    notes: 'TourSupportingContentLinks：签证/季节/NZ 出发 + 按 tourCities/行程推断的城市 hub 与指南内链。锚点 #planning-resources。October 战役 LP 已同步。',
     reviewLinks: [
       { label: '内链模块（北京–西安线）', href: '/tours/china/discovery/beijing-xian#planning-resources' },
       { label: '内链模块（长三角线）', href: '/tours/china/discovery/shanghai-surroundings#planning-resources' },
+      { label: '内链模块 · October · Tale', href: '/campaigns/october-2026/tale-of-two-cities#planning-resources' },
+      { label: '内链模块 · October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings#planning-resources' },
     ],
   },
   {

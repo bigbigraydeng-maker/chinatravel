@@ -329,6 +329,12 @@ export default function MarketingPlanPage() {
                 甲方会议看板
               </Link>
             </p>
+            {'lastSiteSyncNote' in MARKETING_PLAN_META && MARKETING_PLAN_META.lastSiteSyncNote ? (
+              <p className="mt-1 max-w-3xl text-xs leading-relaxed text-gray-500">
+                <span className="font-medium text-gray-600">站点同步：</span>
+                {MARKETING_PLAN_META.lastSiteSyncNote}
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-col items-stretch gap-2 sm:items-end">
             <div className="flex flex-wrap justify-end gap-2 text-xs">

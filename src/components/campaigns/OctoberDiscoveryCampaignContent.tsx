@@ -39,19 +39,11 @@ export default function OctoberDiscoveryCampaignContent({
           </p>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Tour highlights</h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
-            {tour.highlights.map((h, i) => (
-              <li key={`${i}-${h.slice(0, 24)}`}>{h}</li>
-            ))}
-          </ul>
-          <p className="text-sm text-gray-600 mt-4">
-            Optional extras such as the <strong>Shanghai Acrobatics Show</strong> and{' '}
-            <strong>Maglev</strong> ride are <strong>not included</strong> in the tour price (see
-            inclusions on this page).
-          </p>
-        </section>
+        <p className="text-sm text-gray-600 rounded-xl border border-warm-200 bg-white/80 px-4 py-3 leading-relaxed">
+          Optional extras such as the <strong>Shanghai Acrobatics Show</strong> and the{' '}
+          <strong>Maglev</strong> ride are <strong>not included</strong> in the tour price (see inclusions
+          below). Highlights are listed once in the <strong>Tour highlights</strong> section further down.
+        </p>
 
         <section className="rounded-2xl border border-warm-200 bg-white p-6 md:p-8">
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Inclusions &amp; the fine print</h2>
@@ -119,15 +111,6 @@ export default function OctoberDiscoveryCampaignContent({
           the <strong>Small Wild Goose Pagoda Museum</strong>, and <strong>Huimin Street</strong> — matching the
           published day-by-day itinerary — before flying back via Beijing to Auckland.
         </p>
-      </section>
-
-      <section>
-          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Tour highlights</h2>
-        <ul className="list-disc pl-5 space-y-2 text-gray-700 leading-relaxed">
-          {tour.highlights.map((h, i) => (
-            <li key={`${i}-${h.slice(0, 24)}`}>{h}</li>
-          ))}
-        </ul>
       </section>
 
       <section className="rounded-2xl border border-warm-200 bg-white p-6 md:p-8">

@@ -22,6 +22,7 @@ Before making any changes, always confirm you are working on **ChinaTravel** and
 - **Destinations:** beijing, xian, shanghai, chengdu, guilin, zhangjiajie, yunnan
 - **Tiers:** signature, discovery, stopover
 - **October campaign Discovery slugs (canonical paths):** `beijing-xian` = *A Tale of Two Cities* (Beijing + Xi’an only — **no Shanghai**). `shanghai-surroundings` = *Shanghai & Surroundings* (not “Beyond”). Legacy URLs `/tours/china/discovery/beijing-shanghai` and `.../shanghai-beyond` **308** to these paths (`next.config.js`).
+- **Tour page vs October campaign LP — keep public UI in sync:** The standard product template is `src/app/tours/[destination]/[tier]/[tour]/page.tsx`. The ad/landing URLs are `src/app/campaigns/october-2026/[slug]/page.tsx` (data wired via `src/lib/campaigns/october-2026-discovery.ts`). **Whenever you add or change shared blocks on the tour page** — e.g. `ChinaVisaNudge` (`#visa-nudge`), `TrustBar`, `TourTrustSignals` (`#trust-signals`), `TourSupportingContentLinks` (“Plan your trip”, `#planning-resources`), or October-specific `TourHero` CTA copy — **apply the same to the October campaign page** in the same order after the hero, unless there is a short explicit note in the PR/commit explaining a deliberate exception. Campaign-only content (`OctoberDiscoveryCampaignContent`, breadcrumb note, canonical/UTM copy, `enquirySource`) stays on the LP only.
 
 ### 3. Component Locations
 ```

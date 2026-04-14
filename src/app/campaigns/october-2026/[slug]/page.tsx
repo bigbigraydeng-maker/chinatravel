@@ -16,6 +16,9 @@ import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
+import TourTrustSignals from '@/components/tours/TourTrustSignals';
+import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
+import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
@@ -167,18 +170,30 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         tier={tour.tier}
         tags={tour.tags}
         departureDates={cfg.heroDepartureOrder}
+        primaryCtaLabel="Enquire for October departures"
+        secondaryCtaLabel="View day-by-day itinerary"
       />
 
+      <ChinaVisaNudge />
+
       <TrustBar />
+
+      <TourTrustSignals />
 
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-16">
               <section id="overview">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Tour overview</h2>
+                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Tour Overview</h2>
                 <p className="text-lg text-gray-700 leading-relaxed">{tour.shortDescription}</p>
               </section>
+
+              {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
+
+              {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
+                <CtsDepartureScheduleBlock currentSlug={tour.slug} />
+              )}
 
               <OctoberDiscoveryCampaignContent
                 tour={tour}
@@ -186,10 +201,6 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 otherCampaignSlug={cfg.otherCampaignSlug}
                 otherTourTitle={otherTour?.title ?? 'Our other October Discovery departure'}
               />
-
-              {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
-                <CtsDepartureScheduleBlock currentSlug={tour.slug} />
-              )}
 
               <TourHighlights highlights={tour.highlights} />
 
