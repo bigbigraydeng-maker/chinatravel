@@ -33,9 +33,10 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
         <Image
           src={tour.heroImage}
           alt={tour.name}
-          fill
+          width={1200}
+          height={900}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         <div className="absolute top-4 left-4">
