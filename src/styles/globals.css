@@ -19,22 +19,6 @@ body {
   background-color: var(--warm-bg);
 }
 
-/*
- * Prevent distortion on normal <img> — but do NOT apply height:auto / max-width to
- * Next.js `fill` images: they rely on width+height filling a positioned parent and
- * Tailwind `object-cover` / `object-contain` for aspect ratio.
- */
-img:not([data-nimg='fill']) {
-  max-width: 100%;
-  height: auto;
-}
-
-img[data-nimg='fill'] {
-  width: 100%;
-  height: 100%;
-  max-width: none;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-playfair), 'Playfair Display', serif;
 }
