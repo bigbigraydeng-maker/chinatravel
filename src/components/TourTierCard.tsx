@@ -58,13 +58,13 @@ const TourTierCard = ({
             : 'border-warm-100/50'
         }`}
       >
-        <div className="overflow-hidden relative h-64">
+        <div className="overflow-hidden relative aspect-[16/10]">
           <Image
             src={image_url}
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
           />
           {/* Gradient overlay — always visible at bottom for route strip */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>

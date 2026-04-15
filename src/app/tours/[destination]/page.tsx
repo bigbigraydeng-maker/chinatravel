@@ -83,7 +83,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
               fill
               priority
               sizes="100vw"
-              className="w-full h-full object-cover"
+              className="object-cover object-center"
             />
           </div>
           <div className="absolute inset-0 bg-black/50" />
@@ -225,7 +225,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
                 <Link
                   key={otherDest.id}
                   href={`/tours/${otherDest.slug}`}
-                  className="group relative h-64 rounded-lg overflow-hidden"
+                  className="group relative aspect-[16/9] rounded-lg overflow-hidden"
                 >
                   <Image
                     src={otherDest.heroImage}
@@ -233,7 +233,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
                     fill
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-white">

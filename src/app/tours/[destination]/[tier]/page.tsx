@@ -110,7 +110,7 @@ export default function TierPage({ params }: TierPageProps) {
               fill
               priority
               sizes="100vw"
-              className="w-full h-full object-cover"
+              className="object-cover object-center"
             />
           </div>
           <div className="absolute inset-0 bg-black/60" />

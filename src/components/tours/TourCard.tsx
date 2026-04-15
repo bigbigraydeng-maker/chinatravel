@@ -29,13 +29,13 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   return (
     <div className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={tour.heroImage}
           alt={tour.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         <div className="absolute top-4 left-4">

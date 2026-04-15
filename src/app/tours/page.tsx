@@ -33,7 +33,7 @@ export default function ToursPage() {
             fill
             sizes="100vw"
             priority
-            className="w-full h-full object-cover"
+            className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
@@ -90,7 +90,7 @@ export default function ToursPage() {
               <Link
                 key={destination.id}
                 href={`/tours/${destination.slug}`}
-                className="group relative h-96 rounded-xl overflow-hidden shadow-lg"
+                className="group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg"
               >
                 <Image
                   src={destination.heroImage}
@@ -98,7 +98,7 @@ export default function ToursPage() {
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

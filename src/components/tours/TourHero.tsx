@@ -51,7 +51,7 @@ export default function TourHero({
             fill
             priority
             sizes="100vw"
-            className="w-full h-full object-cover"
+            className="object-cover object-center"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
