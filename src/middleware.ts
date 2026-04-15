@@ -94,13 +94,6 @@ function handleAdmin(request: NextRequest): NextResponse {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  /* Newspaper / manual URL typo: space instead of hyphen (decoded pathname contains U+0020). */
-  if (pathname === '/spotlight/october 2026') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/spotlight/october-2026';
-    return NextResponse.redirect(url, 308);
-  }
-
   const mpKey = marketingPlanAccessKey();
 
   if (
