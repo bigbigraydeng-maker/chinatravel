@@ -77,3 +77,31 @@ export function buildOctober2026CampaignAdUrl(
   if (utm.term) q.set('utm_term', utm.term);
   return `${origin}${path}?${q.toString()}`;
 }
+
+/** Path only — canonical for the newspaper-style dual-product poster (no UTM). */
+export const SPOTLIGHT_POSTER_OCT_2026_PATH = '/spotlight/october-2026' as const;
+
+/**
+ * Full URL for a **single** print/QR entry to the dual-product October 2026 poster page.
+ * Use this when one QR code must land on both tours; product CTAs on the page still carry their own `utm_content`.
+ */
+export function buildSpotlightPosterAdUrl(
+  siteOrigin: string,
+  utm: {
+    source: string;
+    medium: string;
+    campaign: string;
+    content?: string;
+    term?: string;
+  }
+): string {
+  const origin = siteOrigin.replace(/\/$/, '');
+  const q = new URLSearchParams({
+    utm_source: utm.source,
+    utm_medium: utm.medium,
+    utm_campaign: utm.campaign,
+  });
+  if (utm.content) q.set('utm_content', utm.content);
+  if (utm.term) q.set('utm_term', utm.term);
+  return `${origin}${SPOTLIGHT_POSTER_OCT_2026_PATH}?${q.toString()}`;
+}

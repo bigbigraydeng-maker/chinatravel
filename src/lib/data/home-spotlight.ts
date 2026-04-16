@@ -40,6 +40,7 @@ export function getSpotlightDepartureLabel(campaignSlug: October2026DiscoverySlu
   return short ? `${short} 2026` : '';
 }
 
+/** Public homepage cards link to October 2026 campaign LPs (poster LP is print/QR-only). */
 export function getSpotlightCampaignHref(campaignSlug: October2026DiscoverySlug): string {
   return getOctober2026CampaignPath(campaignSlug);
 }
