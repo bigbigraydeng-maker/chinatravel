@@ -54,10 +54,10 @@ export interface PhaseBlock {
 export const MARKETING_PLAN_META = {
   title: 'CTSTours 2026年10月双产品专属数字推广统筹（Phase 1）',
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
-  lastUpdated: '2026-04-14',
+  lastUpdated: '2026-04-17',
   /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
   lastSiteSyncNote:
-    'O3 闭环：T034、T054、T036–T040、T041、T042、T008；T035 免签簇已定稿（签证指南为主落地 + October 双 CTA + 内链/FAQ，与产品页免签条分工）。',
+    'NZ Herald 平面投放已纳入统筹：里程碑 M1b + O1·KR5；执行 T058（LP+UTM）及 T059–T060（见报后归因与剪报归档）。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -253,6 +253,13 @@ export const OBJECTIVES: Objective[] = [
         aprilTarget: '各 3 套可投',
         status: 'not_started',
       },
+      {
+        id: 'KR5',
+        title: '完成 NZ Herald 平面广告线上下承接（Spotlight 海报页 + 双产品独立 UTM）',
+        metric: 'utm_campaign=oct2026_spotlight 可分产品归因；版式与战役 LP 口径一致',
+        aprilTarget: '见报日（4/16）前链接与页面就绪；见报后 1 周内复盘',
+        status: 'in_progress',
+      },
     ],
   },
   {
@@ -355,6 +362,13 @@ export const OBJECTIVES: Objective[] = [
 
 export const MILESTONES: Milestone[] = [
   { id: 'M1', week: 'Week 1', name: '项目启动', description: '目标、产品定位、分工确认', output: '项目框架确认' },
+  {
+    id: 'M1b',
+    week: 'Week 1',
+    name: 'NZ Herald 报纸投放',
+    description: '本地报章见报；读者扫码/输入 URL 承接至 October 战役 LP，双产品分链追踪（T058 UTM）',
+    output: '印刷与线上下同一战役口径；oct2026_spotlight 可归因',
+  },
   { id: 'M2', week: 'Week 2', name: '网站转化底座完成', description: '产品页优化、追踪、CTA/FAQ/thank-you', output: '网站具备投放条件' },
   {
     id: 'M3',
@@ -388,6 +402,7 @@ export const PHASES: PhaseBlock[] = [
       'Google Search 账户与关键词骨架已搭好',
       '6 篇内容选题已确认；5 篇 /blog + 签证指南 visa-free 簇（T035）已定稿',
       'AI master brief 已完成',
+      'NZ Herald 平面：双产品 UTM 链接已定稿；Spotlight 承接页与报纸主视觉对齐（T058；复盘见 T059–T060）',
     ],
   },
   {
@@ -660,11 +675,21 @@ export const MARKETING_TASKS: MarketingTask[] = [
     module: 'Meta Ads',
     name: '明确冷流量视频方向',
     priority: 'P1',
-    startWeek: 'W2',
+    /** W1：与统筹页「今日 W1」面板一致（仅列出 startWeek=W1）；已提前启动则锚在本周。 */
+    startWeek: 'W1',
     endWeek: 'W2',
-    status: 'not_started',
+    status: 'in_progress',
     deliverable: '创意 brief',
-    notes: 'Phase 1b：可与 T051 图库并行筹备，不占用 Search 上线周。',
+    notes:
+      'Phase 1b：已启动冷流量视频方向（双 Discovery 各 3 角度）与 Hook/CTA 框架；与 T051 图库并行，不占用 Search 上线周。执行文档：docs/t026-meta-cold-video-brief.md。',
+    reviewLinks: [
+      {
+        label: 'T026 执行文档（仓库）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t026-meta-cold-video-brief.md',
+      },
+      { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
   },
   {
     id: 'T027',
@@ -996,6 +1021,70 @@ export const MARKETING_TASKS: MarketingTask[] = [
       { label: '社媒发帖计划', href: '/campaign/social' },
       { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
       { label: 'October · Shanghai', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
+  {
+    id: 'T058',
+    module: '网站优化',
+    name: 'NZ Herald 16号营销：报纸海报同款 landing page + 双产品 UTM',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W1',
+    status: 'in_progress',
+    deliverable: '上线海报同款落地页并生成两个可分产品追踪的 newspaper UTM 链接',
+    notes:
+      '目标：网页主视觉尽量与报纸版一致；用于 16 号本地报纸投放后的线上承接与分产品归因。图像优先复用现有图库（tour-images）。',
+    reviewLinks: [
+      { label: 'Spotlight 海报页', href: '/spotlight/october-2026' },
+      {
+        label: 'UTM · Shanghai & Surroundings',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_spotlight&utm_content=shanghai_surroundings',
+      },
+      {
+        label: 'UTM · Tale of Two Cities',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_spotlight&utm_content=tale_of_two_cities',
+      },
+    ],
+  },
+  {
+    id: 'T059',
+    module: '渠道与报刊',
+    name: 'NZ Herald 见报后：oct2026_spotlight 流量与询盘归因简报',
+    priority: 'P0',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '1 页简报：sessions / key events / 双 utm_content 对比 + 结论与下一步',
+    notes:
+      '投放后 D+1～D+7 在 GA4 中按手动活动名与 utm_content 过滤；与询盘邮件中 enquiry 来源交叉核对（若已标注）。',
+    reviewLinks: [
+      { label: '统筹看板 · T058 UTM', href: '/marketing/campaign' },
+      {
+        label: 'UTM · Shanghai（对照）',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_spotlight&utm_content=shanghai_surroundings',
+      },
+      {
+        label: 'UTM · Tale（对照）',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_spotlight&utm_content=tale_of_two_cities',
+      },
+    ],
+  },
+  {
+    id: 'T060',
+    module: '渠道与报刊',
+    name: 'NZ Herald 版面剪报 / 数字版截图归档与素材命名',
+    priority: 'P1',
+    startWeek: 'W1',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '归档文件夹 + 命名符合 asset 规范；Obsidian 或共享盘可检索',
+    notes: '与 T004 命名规则一致；便于后续社媒二次传播或复盘 deck。',
+    reviewLinks: [
+      {
+        label: '素材命名（仓库）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/asset-naming-and-file-management.md',
+      },
+      { label: 'Spotlight 海报页', href: '/spotlight/october-2026' },
     ],
   },
 ];
