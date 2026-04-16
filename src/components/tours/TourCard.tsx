@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { Tour } from '@/lib/data/tours';
 
 interface TourCardProps {
@@ -13,7 +12,6 @@ interface TourCardProps {
 }
 
 export default function TourCard({ tour, destination, tier }: TourCardProps) {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleViewDetails = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -27,17 +25,16 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   };
 
   return (
-    <div className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
+    <div className="group min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      {/* Image — fill + aspect box avoids grid min-width/intrinsic-size collapse vs width/height + h-full */}
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={tour.heroImage}
           alt={tour.name}
-          width={1200}
-          height={900}
+          fill
+          priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
+          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-4 left-4">
           <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${tierColors[tier as keyof typeof tierColors]}`}>

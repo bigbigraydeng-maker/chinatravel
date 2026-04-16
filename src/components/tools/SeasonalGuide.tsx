@@ -41,10 +41,6 @@ const CROWDING_COLORS = {
   peak: 'text-red-500',
 };
 
-const STAR_RATING = (rating: number) => {
-  return '★'.repeat(rating) + '☆'.repeat(5 - rating);
-};
-
 export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
   // Get current month if not provided
   const currentMonth = defaultMonth || new Date().getMonth() + 1;
@@ -182,13 +178,10 @@ export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
                 className="group bg-white border border-warm-100 rounded-lg overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300"
               >
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
+                  <div className="mb-3">
                     <h3 className="text-xl font-semibold text-accent group-hover:text-primary transition-colors">
                       {destination.name}
                     </h3>
-                    <span className="text-yellow-400 text-sm">
-                      {STAR_RATING(destination.rating)}
-                    </span>
                   </div>
                   <p className="text-gray-600 leading-relaxed mb-4">{destination.reason}</p>
                   <div className="text-primary font-semibold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">

@@ -195,6 +195,10 @@ Use **`utm_content`** (or **`utm_term`** for search) to distinguish creatives or
 
 In code, `buildOctober2026CampaignAdUrl()` in `src/lib/campaigns/october-2026-discovery.ts` builds the same shape of URL from a site origin + slug + UTM fields.
 
+### Site-wide UTM naming (tours, guides, blogs)
+
+For **paid and tracked links** across product tours, destination guides, and blog posts, use the shared convention in **[docs/utm-conventions.md](docs/utm-conventions.md)** (`tour_` / `guide_` / `blog_` campaign prefixes, `utm_content` patterns, and how this relates to legacy `oct26_discovery` / social `oct2026_dual` names).
+
 ---
 
 ## Troubleshooting

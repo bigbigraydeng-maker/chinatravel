@@ -11,7 +11,6 @@ export interface SeasonalData {
   bestDestinations: Array<{
     slug: string;
     name: string;
-    rating: number; // 1-5
     reason: string;
   }>;
   highlights: string[];
@@ -35,31 +34,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'harbin',
         name: 'Harbin',
-        rating: 5,
         reason: 'Ice festival season. Frozen landscapes create otherworldly beauty. Best month for ice sculpture.'
       },
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 4,
         reason: 'Crisp winter air. Fewer tourists. Great for exploring Great Wall. Duty to experience Beijing winter.'
       },
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Mild winter (10-15°C). Perfect weather. Spring-like conditions. Escape the cold.'
       },
       {
         slug: 'shangri-la',
         name: 'Shangri-La',
-        rating: 4,
         reason: 'Clear skies. Snow-capped mountains. Less rain. Trekking season begins.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 4,
         reason: 'Cool, dry weather. Comfortable walking conditions. Excellent for historical sightseeing.'
       }
     ],
@@ -105,31 +99,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Spring flowers begin blooming. Cherry blossoms and wildflowers. Ideal temperatures.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Mild weather (10-18°C). Clear visibility. Li River tours are pleasant.'
       },
       {
         slug: 'shanghai',
         name: 'Shanghai',
-        rating: 3,
         reason: 'Cool but increasingly pleasant. Damp and gray sometimes. Spring breaks emerge.'
       },
       {
         slug: 'hangzhou',
         name: 'Hangzhou',
-        rating: 3,
         reason: 'Warming season begins. Tea plantations prepare for spring harvest.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Clear mountain skies. Cable cars and hiking become more accessible. Lower crowds.'
       }
     ],
@@ -175,31 +164,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 5,
         reason: 'Cherry blossoms, spring colors. Mild temps perfect for walking. Peak spring beauty.'
       },
       {
         slug: 'yangshuo',
         name: 'Yangshuo',
-        rating: 5,
         reason: 'Perfect weather (18-25°C). Rice fields flood for planting. Photography gold.'
       },
       {
         slug: 'hanzhou',
         name: 'Hangzhou',
-        rating: 5,
         reason: 'Longjing tea harvest season begins. Spring flowers. Romantic West Lake.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 4,
         reason: 'Warm, dry spring weather. Pollen manageable. Historical sites perfect for walking.'
       },
       {
         slug: 'shanghai',
         name: 'Shanghai',
-        rating: 4,
         reason: 'Spring arrives. Flowers bloom. Comfortable 15-20°C temperatures.'
       }
     ],
@@ -247,31 +231,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yangshuo',
         name: 'Yangshuo',
-        rating: 5,
         reason: 'Rice paddies fully planted. Water reflections create perfect mirror images. Peak beauty.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 5,
         reason: 'Perfect spring weather. Blossoms still visible. Ideal for historical tours.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Spring rains create misty landscapes. Perfect for photographer. 20-26°C.'
       },
       {
         slug: 'chengdu',
         name: 'Chengdu',
-        rating: 4,
         reason: 'Late spring weather. Panda breeding season continues. Outdoor hot pot season.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Green mountains. Clear visibility. Cable cars fully operational. Peak season.'
       }
     ],
@@ -319,31 +298,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Dry season continues. Wildflowers peak. 20-28°C. Ideal conditions.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Spring rain creates gorgeous mist. Li River perfect. 23-28°C.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 4,
         reason: 'Dry season. Alpine flowers bloom. Clear mountain views. 15-25°C.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Full green vegetation. Waterfalls active. Misty mountain views. 20-26°C.'
       },
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 3,
         reason: 'Very hot beginning. Dust storms possible late May. 20-30°C.'
       }
     ],
@@ -391,31 +365,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 4,
         reason: 'Dry season ending but still pleasant. 20-28°C. Summer rains begin late month.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 4,
         reason: 'Cool mountain elevation (2400m). 18-25°C. Escape the heat. Clear skies.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Mountain coolness. Misty from rain. 22-28°C. Lush green.'
       },
       {
         slug: 'harbin',
         name: 'Harbin',
-        rating: 3,
         reason: 'Summer arrives. Cool compared to south. 20-26°C. Outdoor culture.'
       },
       {
         slug: 'chengdu',
         name: 'Chengdu',
-        rating: 2,
         reason: 'Hot and humid. 25-33°C. Rain frequent. Panda watching still good.'
       }
     ],
@@ -465,31 +434,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 5,
         reason: 'Mountain elevation keeps temperature 18-26°C. Escape summer heat. Dry pockets.'
       },
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 4,
         reason: 'Rainy season but still pleasant. Mountains cool. 20-28°C in highlands.'
       },
       {
         slug: 'harbin',
         name: 'Harbin',
-        rating: 4,
         reason: 'Coolest major city in China. 21-27°C. Summer culture vibrant. Music festivals.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 3,
         reason: 'Mountain coolness but very rainy. 22-28°C. Fewer tourists. Waterfalls active.'
       },
       {
         slug: 'chengdu',
         name: 'Chengdu',
-        rating: 2,
         reason: 'Very hot and humid. 25-35°C. Rainy. Only good for panda breeding season.'
       }
     ],
@@ -539,31 +503,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Rainy season benefits landscape. 20-28°C. Fewer tourists, low prices.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 5,
         reason: 'Cool mountain temperatures 18-26°C. Escape summer heat. Dry areas within Yunnan.'
       },
       {
         slug: 'harbin',
         name: 'Harbin',
-        rating: 4,
         reason: 'Cool summer continues. 21-27°C. Summer culture at peak. Music festivals.'
       },
       {
         slug: 'shangri-la',
         name: 'Shangri-La',
-        rating: 4,
         reason: 'Alpine temperatures 15-24°C. Cool escape. Trekking season active.'
       },
       {
         slug: 'great-wall',
         name: 'Great Wall',
-        rating: 2,
         reason: 'Too hot for hiking. 24-32°C. Afternoon thunderstorms frequent.'
       }
     ],
@@ -612,31 +571,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Rainy season ends. Clear skies begin. 20-28°C. Ideal conditions return.'
       },
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 5,
         reason: 'Perfect autumn weather arrives. 15-25°C. Clear skies. Less dust.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 5,
         reason: 'Clear mountain skies. 15-25°C. Autumn colors begin. Perfect trekking.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 5,
         reason: 'Fall arrives. 18-26°C. Comfortable walking. Historical sites shine.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Rainy season ends. Clear rivers reflect mountains. 22-28°C.'
       }
     ],
@@ -684,31 +638,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 5,
         reason: 'Peak autumn colors. Crisp air. 12-22°C. Perfect for Great Wall hikes.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 5,
         reason: 'Clear mountain visibility. Autumn colors. 15-23°C. Excellent conditions.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 5,
         reason: 'Crisp autumn. Mountain colors. 10-22°C. Perfect trekking season.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 5,
         reason: 'Ideal autumn weather. 15-24°C. Clear skies. Historical sites perfect.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Crystal clear rivers. Autumn colors emerging. 18-26°C. Photography gold.'
       }
     ],
@@ -757,31 +706,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 4,
         reason: 'Autumn ending. Fewer tourists. 5-18°C. Clear skies. Winter approaching.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 5,
         reason: 'Perfect fall weather. 8-22°C. Autumn colors peak. Trekking ideal.'
       },
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Dry season returns. 15-25°C. Clear mountain skies. Excellent visibility.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 5,
         reason: 'Perfect weather. 15-23°C. Clear rivers. Autumn foliage. Photography time.'
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Late fall colors. Clear visibility. 12-22°C. Fewer crowds.'
       }
     ],
@@ -830,31 +774,26 @@ export const seasonalCalendar: SeasonalData[] = [
       {
         slug: 'yunnan',
         name: 'Yunnan',
-        rating: 5,
         reason: 'Dry season perfect. 15-25°C. Escape northern winter. Ideal conditions.'
       },
       {
         slug: 'lijiang',
         name: 'Lijiang',
-        rating: 4,
         reason: 'Cool 5-20°C. Clear skies. Snow possible on mountains. Beautiful.'
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Cool 10-18°C. Clear visibility. River cruises less crowded.'
       },
       {
         slug: 'beijing',
         name: 'Beijing',
-        rating: 3,
         reason: 'Freezing (-5 to 5°C). Possible snow. Winter aesthetic. Cold but beautiful.'
       },
       {
         slug: 'xian',
         name: 'Xi\'an',
-        rating: 3,
         reason: 'Cold (0-10°C). Possible snow. Fewer tourists. Winter charm.'
       }
     ],
@@ -899,12 +838,6 @@ export const getSeasonalDataBySeason = (season: 'spring' | 'summer' | 'autumn' |
   return seasonalCalendar.filter(data => data.season === season);
 };
 
-export const getDestinationRatingByMonth = (month: number, destinationSlug: string): number => {
-  const data = getSeasonalDataByMonth(month);
-  if (!data) return 0;
-  const dest = data.bestDestinations.find(d => d.slug === destinationSlug);
-  return dest?.rating || 0;
-};
 
 export const getMonthRecommendation = (month: number): string => {
   const data = getSeasonalDataByMonth(month);

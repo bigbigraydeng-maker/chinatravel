@@ -633,21 +633,19 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
               {/* Quick Facts */}
               <div className="rounded-2xl border border-warm-100 bg-white p-5">
-                <h3 className="font-bold text-accent text-sm uppercase tracking-widest mb-4">Quick Facts</h3>
-                <dl className="space-y-3 text-sm">
-                  <div className="flex justify-between gap-2">
-                    <dt className="text-gray-500">Best Time</dt>
-                    <dd className="font-medium text-accent text-right">{guide.practicalInfo.bestTime}</dd>
-                  </div>
-                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2">
-                    <dt className="text-gray-500 shrink-0">Entry (NZ passport)</dt>
-                    <dd className="font-medium text-accent sm:text-right">
-                      Visa-free up to 30 days (policy to 31 Dec 2026; confirm before travel)
+                <h3 className="font-bold text-accent text-sm mb-4">Quick Facts</h3>
+                <dl className="space-y-4 text-sm">
+                  <div>
+                    <dt className="text-gray-500 mb-1.5">Best Time</dt>
+                    <dd className="font-medium text-accent leading-relaxed">
+                      {guide.practicalInfo.bestTime}
                     </dd>
                   </div>
-                  <div className="flex justify-between gap-2">
-                    <dt className="text-gray-500">Currency</dt>
-                    <dd className="font-medium text-accent text-right">Chinese Yuan (CNY)</dd>
+                  <div>
+                    <dt className="text-gray-500 mb-1.5">Entry (NZ passport)</dt>
+                    <dd className="font-medium text-accent leading-relaxed">
+                      Visa-free up to 30 days (policy to 31 Dec 2026; confirm before travel)
+                    </dd>
                   </div>
                 </dl>
                 <div className="mt-4 pt-4 border-t border-warm-100">

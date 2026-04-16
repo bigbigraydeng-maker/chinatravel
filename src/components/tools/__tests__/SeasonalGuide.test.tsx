@@ -23,31 +23,26 @@ describe('SeasonalGuide Component', () => {
       {
         slug: 'yangshuo',
         name: 'Yangshuo',
-        rating: 5,
         reason: 'Rice paddies fully planted.',
       },
       {
         slug: 'xian',
         name: "Xi'an",
-        rating: 5,
         reason: 'Perfect spring weather.',
       },
       {
         slug: 'guilin',
         name: 'Guilin',
-        rating: 4,
         reason: 'Spring rains create misty landscapes.',
       },
       {
         slug: 'chengdu',
         name: 'Chengdu',
-        rating: 4,
         reason: 'Late spring weather.',
       },
       {
         slug: 'zhangjiajie',
         name: 'Zhangjiajie',
-        rating: 4,
         reason: 'Green mountains. Clear visibility.',
       },
     ],
@@ -92,9 +87,8 @@ describe('SeasonalGuide Component', () => {
       expect(cards.length).toBeGreaterThanOrEqual(5);
     });
 
-    it('renders star ratings for destinations', () => {
+    it('renders destination reasons', () => {
       render(<SeasonalGuide defaultMonth={4} />);
-      // Check for rating text or visual indicators
       const reasonTexts = screen.getAllByText(/Rice paddies|Perfect spring|misty landscapes/);
       expect(reasonTexts.length).toBeGreaterThan(0);
     });

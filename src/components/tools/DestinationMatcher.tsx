@@ -59,17 +59,6 @@ const initialAnswers = (): DestinationMatcherAnswers => ({
   style: null,
 });
 
-function StarRow({ stars }: { stars: number }) {
-  const full = '★'.repeat(stars);
-  const empty = '☆'.repeat(5 - stars);
-  return (
-    <span className="text-amber-500" aria-label={`${stars} out of 5 stars`}>
-      {full}
-      {empty}
-    </span>
-  );
-}
-
 function MatcherSteps() {
   const { step, setStep, answers, setInterest, setFitness, setGroup, setStyle, goNext, goBack } =
     useDestinationMatcher();
@@ -249,7 +238,7 @@ function MatcherResults() {
         </button>
       </div>
       <div className="grid gap-8 md:grid-cols-2">
-        {matches.map(({ guide, stars }) => (
+        {matches.map(({ guide }) => (
           <article
             key={guide.id}
             className="overflow-hidden rounded-2xl border border-warm-200 bg-white shadow-sm transition hover:shadow-lg"
@@ -264,10 +253,7 @@ function MatcherResults() {
               />
             </div>
             <div className="p-5">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <h3 className="font-serif text-xl font-semibold text-accent">{guide.destinationName}</h3>
-                <StarRow stars={stars} />
-              </div>
+              <h3 className="font-serif text-xl font-semibold text-accent">{guide.destinationName}</h3>
               <p className="mt-2 text-sm text-gray-600">{guide.heroSubtitle}</p>
               <p className="mt-3 line-clamp-3 text-sm text-gray-700">{guide.introText[0]}</p>
               <Link

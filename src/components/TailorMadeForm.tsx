@@ -59,6 +59,7 @@ function TailorMadeFormInner() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const patch = prefillFromSearchParams(searchParams);
@@ -98,19 +99,44 @@ function TailorMadeFormInner() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
     const payload = {
-      ...formData,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      country: formData.country.trim(),
+      destinations: formData.destinations,
+      interests: formData.interests,
+      travelDate: formData.travelDate.trim(),
+      duration: formData.duration.trim(),
+      travellers: formData.travellers.trim(),
+      budget: formData.budget.trim(),
+      accommodation: formData.accommodation.trim(),
+      includeFlights: formData.includeFlights.trim(),
+      referralSource: formData.referralSource.trim(),
+      message: formData.message.trim(),
       source: 'Tailor Made Page',
-      submittedAt: new Date().toISOString(),
     };
 
-    // TODO: Integrate with Go High Level webhook
-    // TODO: Integrate with Go High Level webhook - send payload
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const res = await fetch('/api/tailor-made-enquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (!res.ok) {
+        throw new Error(typeof data.error === 'string' ? data.error : 'Submission failed. Please try again.');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
@@ -131,6 +157,11 @@ function TailorMadeFormInner() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-xl p-8 shadow-lg space-y-8">
+      {submitError && (
+        <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3" role="alert">
+          {submitError}
+        </p>
+      )}
       {prefillBanner && (
         <div className="-mt-2 mb-2 rounded-lg bg-warm-50 border border-warm-200 px-4 py-3 text-sm text-gray-800">
           <span className="font-semibold text-primary">Pre-filled from your selection.</span>{' '}

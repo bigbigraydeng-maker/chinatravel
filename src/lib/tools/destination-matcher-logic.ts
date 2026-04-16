@@ -133,13 +133,6 @@ export function scoreGuideForMatcher(
 export interface MatchedDestination {
   guide: DestinationGuide;
   score: number;
-  stars: number;
-}
-
-export function scoreToStars(score: number): number {
-  if (score <= 0) return 1;
-  const stars = Math.round(score / 18);
-  return Math.min(5, Math.max(1, stars));
 }
 
 export function getMatchedDestinations(
@@ -150,7 +143,7 @@ export function getMatchedDestinations(
   const scored = guides
     .map((guide) => {
       const score = scoreGuideForMatcher(guide, answers);
-      return { guide, score, stars: scoreToStars(score) };
+      return { guide, score };
     })
     .filter((x) => x.score > 0)
     .sort((a, b) => b.score - a.score || a.guide.destinationName.localeCompare(b.guide.destinationName));
@@ -158,7 +151,6 @@ export function getMatchedDestinations(
   const fallback = guides.slice(0, limit).map((guide) => ({
     guide,
     score: 10,
-    stars: 3 as const,
   }));
   return fallback;
 }

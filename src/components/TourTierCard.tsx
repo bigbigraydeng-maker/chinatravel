@@ -50,7 +50,7 @@ const TourTierCard = ({
   const tourHref = href ?? `/tours/${destination}/${tier}/${slug}`;
 
   return (
-    <Link href={tourHref} className="block group">
+    <Link href={tourHref} className="block min-w-0 group">
       <div
         className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border hover:-translate-y-2 ${
           spotlightFeatured
@@ -63,6 +63,7 @@ const TourTierCard = ({
             src={image_url}
             alt={title}
             fill
+            priority
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
           />

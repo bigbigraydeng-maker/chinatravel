@@ -14,7 +14,6 @@ import {
   scoreGroupBoost,
   scoreGuideForMatcher,
   scoreStyleFit,
-  scoreToStars,
 } from '@/lib/tools/destination-matcher-logic';
 import { migratedUnsplash } from '@/lib/site-media';
 
@@ -116,18 +115,6 @@ describe('destination matcher logic', () => {
     });
   });
 
-  describe('scoreToStars', () => {
-    it('maps low scores to 1', () => {
-      expect(scoreToStars(0)).toBe(1);
-    });
-    it('caps at 5', () => {
-      expect(scoreToStars(500)).toBe(5);
-    });
-    it('maps mid scores', () => {
-      expect(scoreToStars(36)).toBe(2);
-    });
-  });
-
   describe('getMatchedDestinations', () => {
     it('returns up to limit guides', () => {
       const g1 = mockGuide({ id: '1', slug: 'beijing-travel-guide' });
@@ -213,10 +200,6 @@ describe('destination matcher logic — extra cases', () => {
     expect(MATCHER_FITNESS_OPTIONS).toHaveLength(3);
     expect(MATCHER_GROUP_OPTIONS).toHaveLength(4);
     expect(MATCHER_STYLE_OPTIONS).toHaveLength(3);
-  });
-
-  it('scoreToStars returns 3 for moderate score', () => {
-    expect(scoreToStars(54)).toBe(3);
   });
 
   it('scoreGroupBoost solo Shanghai', () => {
@@ -361,17 +344,4 @@ describe('DestinationMatcher component — flows', () => {
     expect(screen.getByText(/What excites you most/i)).toBeInTheDocument();
   });
 
-  it('displays star rating label in results', async () => {
-    const user = userEvent.setup();
-    render(<DestinationMatcher guides={guides} />);
-    await user.click(screen.getByRole('radio', { name: /History & heritage/i }));
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('radio', { name: /Relaxed pace/i }));
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('radio', { name: /Honeymoon/i }));
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('radio', { name: /Iconic must-see/i }));
-    await user.click(screen.getByRole('button', { name: 'See matches' }));
-    expect(screen.getAllByLabelText(/out of 5 stars/i).length).toBeGreaterThan(0);
-  });
 });

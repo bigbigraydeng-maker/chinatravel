@@ -164,13 +164,13 @@ export default function TourFinder({ tours }: TourFinderProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((tour) => (
             <Link key={tour.id} href={`/tours/${tour.destination}/${tour.tier}/${tour.slug}`}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group">
-              <div className="relative aspect-[16/10] bg-gray-200 overflow-hidden">
+              className="min-w-0 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group">
+              <div className="relative aspect-[16/10] w-full bg-gray-200 overflow-hidden">
                 <Image
                   src={tour.heroImage}
                   alt={tour.name}
                   fill
-                  loading="lazy"
+                  priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />

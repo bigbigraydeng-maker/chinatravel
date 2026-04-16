@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome';
-import { GoogleTagManager } from '@/components/GoogleTagManager';
-import GtmInit from '@/components/GtmInit';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import CookieConsentManager from '@/components/CookieConsentManager';
 import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
@@ -58,9 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans antialiased">
-        <GoogleAnalytics />
-        <GoogleTagManager />
-        <GtmInit />
+        <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
       </body>
     </html>
