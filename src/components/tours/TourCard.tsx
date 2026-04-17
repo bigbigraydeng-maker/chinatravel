@@ -24,7 +24,7 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
 
   return (
     <div className="group min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative aspect-[4/3] w-full min-h-[11rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[13rem]">
+      <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden bg-warm-100">
         <Image
           src={tour.heroImage}
           alt={tour.name}
