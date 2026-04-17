@@ -3,7 +3,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByRegion } from '@/lib/data/tours';
-import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { yunnanToursMeta } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,8 +28,7 @@ export default function YunnanToursPage() {
       { name: 'Tours', url: '/tours' },
       { name: 'China Tours', url: '/china-tours' },
       { name: 'Yunnan', url: '/yunnan-tours' }
-    ]),
-    generateFAQPageSchema('/yunnan-tours', yunnanToursMeta.faqs)
+    ])
   ];
 
   return (

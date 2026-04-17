@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Tour } from '@/lib/data/tours';
 import TourCard from './TourCard';
@@ -25,7 +23,7 @@ export default function RelatedTours({ tours, destination, tier }: RelatedToursP
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tours.map((tour) => (
             <TourCard 
               key={tour.id}

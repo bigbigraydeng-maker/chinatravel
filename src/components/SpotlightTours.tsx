@@ -39,7 +39,7 @@ export default function SpotlightTours() {
         <p className="text-center text-gray-600 max-w-2xl mx-auto -mt-8 mb-12 text-base md:text-lg leading-relaxed">
           High demand right now — our strongest recommendations for October, backed by our ad spend and the routes we&apos;re promoting first.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {HOME_SPOTLIGHT_TOURS.map((ref) => {
             const t = getTourBySlug(ref.destination, ref.tier, ref.slug);
             if (!t) return null;

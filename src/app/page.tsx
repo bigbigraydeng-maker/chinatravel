@@ -163,7 +163,7 @@ const HomePage = () => {
               </div>
               <div className="flex-1 h-[2px] bg-gradient-to-r from-amber-200 to-transparent rounded-full"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
               <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium route={['Beijing', "Xi'an", 'Guilin', 'Shanghai']} />
               ) : null; })()}
@@ -181,7 +181,7 @@ const HomePage = () => {
               </div>
               <div className="flex-1 h-[2px] bg-gradient-to-r from-emerald-200 to-transparent rounded-full"></div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
               <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0] ? `${t.departureDates[0]} 2026` : undefined} route={['Beijing', "Xi'an", 'Hangzhou', 'Shanghai']} />
               ) : null; })()}

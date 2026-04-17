@@ -10,7 +10,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
-import { generateCollectionPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateCollectionPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursMeta } from '@/lib/data/seo-pages';
 
 const siteUrl = getSiteUrl();
@@ -53,8 +53,7 @@ export default function ChinaToursPage() {
       '/china-tours',
       tours
     ),
-    generateBreadcrumbListSchema(breadcrumbs),
-    generateFAQPageSchema('/china-tours', chinaToursMeta.faqs)
+    generateBreadcrumbListSchema(breadcrumbs)
   ];
 
   const relatedGuides = [

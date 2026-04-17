@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
-import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { beijingToursMeta } from '@/lib/data/seo-pages';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -34,8 +34,7 @@ export default function BeijingToursPage() {
       { name: 'Tours', url: '/tours' },
       { name: 'China Tours', url: '/china-tours' },
       { name: 'Beijing', url: '/beijing-tours' }
-    ]),
-    generateFAQPageSchema('/beijing-tours', beijingToursMeta.faqs)
+    ])
   ];
 
   return (

@@ -161,11 +161,11 @@ export default function TourFinder({ tours }: TourFinderProps) {
           <Link href="/tailor-made" className="btn-primary">Request a Tailor Made Tour</Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filtered.map((tour) => (
             <Link key={tour.id} href={`/tours/${tour.destination}/${tour.tier}/${tour.slug}`}
               className="min-w-0 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group">
-              <div className="relative aspect-[16/10] w-full bg-gray-200 overflow-hidden">
+              <div className="relative aspect-[16/10] w-full min-h-[10rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[12rem]">
                 <Image
                   src={tour.heroImage}
                   alt={tour.name}

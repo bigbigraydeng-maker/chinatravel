@@ -203,7 +203,7 @@ export default function TierPage({ params }: TierPageProps) {
           </div>
 
           {tours.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
               {tours.map((tour) => (
                 <TourCard 
                   key={tour.id} 

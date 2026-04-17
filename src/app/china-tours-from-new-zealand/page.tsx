@@ -10,7 +10,7 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllChinaTours } from '@/lib/data/tours';
-import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromNZMeta } from '@/lib/data/seo-pages';
 
 const TOUR_IMG =
@@ -47,8 +47,7 @@ export default function ChinaToursFromNZPage() {
       '/china-tours-from-new-zealand',
       { name: 'New Zealand', address: 'Auckland, New Zealand' }
     ),
-    generateBreadcrumbListSchema(breadcrumbs),
-    generateFAQPageSchema('/china-tours-from-new-zealand', chinaToursFromNZMeta.faqs)
+    generateBreadcrumbListSchema(breadcrumbs)
   ];
 
   return (

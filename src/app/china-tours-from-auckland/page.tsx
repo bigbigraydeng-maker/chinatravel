@@ -8,7 +8,7 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllChinaTours } from '@/lib/data/tours';
-import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromAucklandMeta } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,8 +41,7 @@ export default function ChinaToursFromAucklandPage() {
       '/china-tours-from-auckland',
       { name: 'Auckland', address: 'Auckland, New Zealand' }
     ),
-    generateBreadcrumbListSchema(breadcrumbs),
-    generateFAQPageSchema('/china-tours-from-auckland', chinaToursFromAucklandMeta.faqs)
+    generateBreadcrumbListSchema(breadcrumbs)
   ];
 
   return (

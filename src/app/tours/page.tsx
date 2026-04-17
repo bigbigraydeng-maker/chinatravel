@@ -178,7 +178,7 @@ export default function ToursPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredTours.map((tour) => (
               <TourCard 
                 key={tour.id}

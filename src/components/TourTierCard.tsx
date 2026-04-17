@@ -58,7 +58,7 @@ const TourTierCard = ({
             : 'border-warm-100/50'
         }`}
       >
-        <div className="overflow-hidden relative aspect-[16/10]">
+        <div className="relative aspect-[16/10] w-full min-h-[10rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[12rem]">
           <Image
             src={image_url}
             alt={title}

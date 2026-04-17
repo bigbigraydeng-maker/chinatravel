@@ -39,7 +39,7 @@ const TourGrid: React.FC<TourGridProps> = ({
   }
 
   return (
-    <div className={`grid ${gridColsClass} gap-8`}>
+    <div className={`grid items-start ${gridColsClass} gap-8`}>
       {tours.map((tour) => (
         <TourTierCard
           key={tour.id}

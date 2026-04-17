@@ -8,7 +8,7 @@ import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import { getAllChinaTours } from '@/lib/data/tours';
-import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { bestTimeToVisitChinaMeta } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,8 +38,7 @@ export default function BestTimeToVisitChinaPage() {
       bestTimeToVisitChinaMeta.description,
       '/best-time-to-visit-china'
     ),
-    generateBreadcrumbListSchema(breadcrumbs),
-    generateFAQPageSchema('/best-time-to-visit-china', bestTimeToVisitChinaMeta.faqs)
+    generateBreadcrumbListSchema(breadcrumbs)
   ];
 
   const relatedGuides = [

@@ -7,7 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
-import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -35,8 +35,7 @@ export default function ChinaVisaGuidePage() {
       chinaVisaGuideMeta.description,
       '/china-visa-guide-for-new-zealanders'
     ),
-    generateBreadcrumbListSchema(breadcrumbs),
-    generateFAQPageSchema('/china-visa-guide-for-new-zealanders', chinaVisaGuideMeta.faqs)
+    generateBreadcrumbListSchema(breadcrumbs)
   ];
 
   const relatedGuides = [

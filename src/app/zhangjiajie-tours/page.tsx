@@ -3,7 +3,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getToursByCityName } from '@/lib/data/tours';
-import { generateTouristDestinationSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
+import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { zhangjiajieToursMetadata } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,8 +28,7 @@ export default function ZhangjiajieToursPage() {
       { name: 'Tours', url: '/tours' },
       { name: 'China Tours', url: '/china-tours' },
       { name: 'Zhangjiajie', url: '/zhangjiajie-tours' }
-    ]),
-    generateFAQPageSchema('/zhangjiajie-tours', zhangjiajieToursMetadata.faqs)
+    ])
   ];
 
   return (
