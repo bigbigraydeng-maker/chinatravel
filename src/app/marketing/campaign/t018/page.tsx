@@ -24,6 +24,9 @@ export default async function T018WorkbenchPage() {
             <Link href="/marketing/campaign" className="rounded-full border border-warm-200 px-3 py-1 hover:bg-warm-50">
               返回战役看板
             </Link>
+            <Link href="/marketing/campaign/t019" className="rounded-full border border-warm-200 px-3 py-1 hover:bg-warm-50">
+              T019 Search 投放工作台
+            </Link>
             <a href="#v2" className="rounded-full border border-warm-200 px-3 py-1 hover:bg-warm-50">
               看 V2
             </a>
