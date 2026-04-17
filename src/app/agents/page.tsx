@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   },
 };
 
+const CHINA_UNLOCKED_REGISTER_URL =
+  'https://os.ctstours.co.nz/widget/form/zBLTPanEAiP9Eifa1qAb';
+const CHINA_UNLOCKED_PORTAL_URL = 'https://chinaunlocked.ctstours.co.nz';
+
 const AgentsPage = () => {
   return (
     <div>
@@ -93,13 +97,7 @@ const AgentsPage = () => {
           </div>
 
           <div className="mt-16">
-            <a
-              href="https://chinaunlocked.ctstours.co.nz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full rounded-2xl border border-warm-100 bg-white p-5 md:p-7 shadow-sm transition hover:shadow-md hover:border-primary/30"
-              aria-label="Open China Unlocked in a new tab"
-            >
+            <div className="block w-full rounded-2xl border border-warm-100 bg-white p-5 md:p-7 shadow-sm">
               <div className="flex flex-col items-center text-center gap-5 md:gap-6">
                 <Image
                   src="/images/brand/china-unlocked-cts-lockup.jpg"
@@ -116,8 +114,26 @@ const AgentsPage = () => {
                     Learn to sell China with confidence: visa-free access, product tiers, client objection-handling, and CTS positioning.
                   </p>
                 </div>
+                <div className="flex w-full max-w-xl flex-col gap-3 sm:flex-row sm:justify-center">
+                  <a
+                    href={CHINA_UNLOCKED_REGISTER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-1 items-center justify-center rounded-xl bg-primary px-6 py-3.5 text-center text-sm font-bold text-white transition-colors hover:bg-primary/90 sm:flex-initial sm:min-w-[200px]"
+                  >
+                    Register
+                  </a>
+                  <a
+                    href={CHINA_UNLOCKED_PORTAL_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex flex-1 items-center justify-center rounded-xl border-2 border-primary bg-white px-6 py-3.5 text-center text-sm font-bold text-primary transition-colors hover:bg-primary/5 sm:flex-initial sm:min-w-[200px]"
+                  >
+                    Already registered
+                  </a>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </section>
