@@ -105,3 +105,151 @@ export function buildSpotlightPosterAdUrl(
   if (utm.term) q.set('utm_term', utm.term);
   return `${origin}${SPOTLIGHT_POSTER_OCT_2026_PATH}?${q.toString()}`;
 }
+
+/** Production origin for UTM final URLs in marketing data (ads / board). */
+export const CTS_SITE_ORIGIN = 'https://www.ctstours.co.nz';
+
+/** Facebook surface for Post vs Reels vs Story — maps to `utm_content` tokens. */
+export type FacebookSurfacePlacement = 'post' | 'reels' | 'story';
+
+const FB_META_COLD_CONTENT: Record<October2026DiscoverySlug, Record<FacebookSurfacePlacement, string>> = {
+  'tale-of-two-cities': {
+    post: 'tale_fb_post',
+    reels: 'tale_fb_reels',
+    story: 'tale_fb_story',
+  },
+  'shanghai-surroundings': {
+    post: 'shanghai_fb_post',
+    reels: 'shanghai_fb_reels',
+    story: 'shanghai_fb_story',
+  },
+};
+
+/**
+ * Meta cold-traffic / paid social links (T026): Facebook Post, Reels, Story per October LP.
+ * Canonical HTML stays path-only; use these on Meta Ads or boosted posts.
+ */
+export function buildOctober2026MetaFacebookSurfaceUrl(
+  siteOrigin: string,
+  slug: October2026DiscoverySlug,
+  surface: FacebookSurfacePlacement
+): string {
+  return buildOctober2026CampaignAdUrl(siteOrigin, slug, {
+    source: 'facebook',
+    medium: 'paid_social',
+    campaign: 'oct2026_meta_cold',
+    content: FB_META_COLD_CONTENT[slug][surface],
+  });
+}
+
+/** Organic Page posts (no ad spend): swap to medium=social + campaign=oct2026_discovery_fb_organic. */
+export function buildOctober2026FacebookOrganicSurfaceUrl(
+  siteOrigin: string,
+  slug: October2026DiscoverySlug,
+  surface: FacebookSurfacePlacement
+): string {
+  return buildOctober2026CampaignAdUrl(siteOrigin, slug, {
+    source: 'facebook',
+    medium: 'social',
+    campaign: 'oct2026_discovery_fb_organic',
+    content: FB_META_COLD_CONTENT[slug][surface],
+  });
+}
+
+export type October2026FacebookSurfaceRow = {
+  slug: October2026DiscoverySlug;
+  productLabel: string;
+  postUrl: string;
+  reelsUrl: string;
+  storyUrl: string;
+};
+
+/** Prebuilt Meta cold URLs for the marketing board (paid_social · oct2026_meta_cold). */
+export const OCTOBER_2026_META_FACEBOOK_SURFACE_URLS: October2026FacebookSurfaceRow[] = [
+  {
+    slug: 'tale-of-two-cities',
+    productLabel: 'A Tale of Two Cities（北京 · 西安）',
+    postUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'post'),
+    reelsUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'reels'),
+    storyUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'story'),
+  },
+  {
+    slug: 'shanghai-surroundings',
+    productLabel: 'Shanghai & Surroundings',
+    postUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'post'),
+    reelsUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'reels'),
+    storyUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'story'),
+  },
+];
+
+/** Google Ads — `utm_campaign` aligned with `docs/utm-conventions.md` (tour_ prefix). */
+export const OCTOBER_2026_GOOGLE_ADS_UTM_CAMPAIGN = 'tour_discovery_oct2026' as const;
+
+/** Search RSA vs Performance Max — separate `utm_content` for GA4 splits. */
+export type GoogleAdsOctoberPlacement = 'search_rsa' | 'pmax';
+
+const GOOGLE_ADS_CONTENT: Record<October2026DiscoverySlug, Record<GoogleAdsOctoberPlacement, string>> = {
+  'tale-of-two-cities': {
+    search_rsa: 'google_rsa_tale',
+    pmax: 'google_pmax_tale',
+  },
+  'shanghai-surroundings': {
+    search_rsa: 'google_rsa_shanghai',
+    pmax: 'google_pmax_shanghai',
+  },
+};
+
+/** Final URL for October campaign LP + Google UTM (`utm_source=google`, `utm_medium=cpc`). */
+export function buildOctober2026GoogleAdsUrl(
+  siteOrigin: string,
+  slug: October2026DiscoverySlug,
+  placement: GoogleAdsOctoberPlacement
+): string {
+  return buildOctober2026CampaignAdUrl(siteOrigin, slug, {
+    source: 'google',
+    medium: 'cpc',
+    campaign: OCTOBER_2026_GOOGLE_ADS_UTM_CAMPAIGN,
+    content: GOOGLE_ADS_CONTENT[slug][placement],
+  });
+}
+
+export type October2026GoogleAdsRow = {
+  slug: October2026DiscoverySlug;
+  productLabel: string;
+  searchRsaUrl: string;
+  pmaxUrl: string;
+};
+
+/** Prebuilt Google Ads URLs for the marketing board (cpc · tour_discovery_oct2026). */
+export const OCTOBER_2026_GOOGLE_ADS_URL_ROWS: October2026GoogleAdsRow[] = [
+  {
+    slug: 'tale-of-two-cities',
+    productLabel: 'A Tale of Two Cities（北京 · 西安）',
+    searchRsaUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'search_rsa'),
+    pmaxUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'pmax'),
+  },
+  {
+    slug: 'shanghai-surroundings',
+    productLabel: 'Shanghai & Surroundings',
+    searchRsaUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'search_rsa'),
+    pmaxUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'pmax'),
+  },
+];
+
+/** Same `utm_content` as cold links; use for unpaid Page posts / organic only. */
+export const OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS: October2026FacebookSurfaceRow[] = [
+  {
+    slug: 'tale-of-two-cities',
+    productLabel: 'A Tale of Two Cities（北京 · 西安）',
+    postUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'post'),
+    reelsUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'reels'),
+    storyUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'tale-of-two-cities', 'story'),
+  },
+  {
+    slug: 'shanghai-surroundings',
+    productLabel: 'Shanghai & Surroundings',
+    postUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'post'),
+    reelsUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'reels'),
+    storyUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'story'),
+  },
+];

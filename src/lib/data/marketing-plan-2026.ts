@@ -3,6 +3,12 @@
  * 更新方式：直接改本文件中的 status、备注与日期；部署后客户通过 /marketing/campaign 查看。
  */
 
+export {
+  CTS_SITE_ORIGIN,
+  OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS,
+  OCTOBER_2026_META_FACEBOOK_SURFACE_URLS,
+} from '@/lib/campaigns/october-2026-discovery';
+
 export type TaskStatus = 'not_started' | 'in_progress' | 'review' | 'done' | 'blocked';
 
 export type Priority = 'P0' | 'P1' | 'P2';
@@ -54,10 +60,10 @@ export interface PhaseBlock {
 export const MARKETING_PLAN_META = {
   title: 'CTSTours 2026年10月双产品专属数字推广统筹（Phase 1）',
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
-  lastUpdated: '2026-04-17',
+  lastUpdated: '2026-04-18',
   /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
   lastSiteSyncNote:
-    'NZ Herald 平面投放已纳入统筹：里程碑 M1b + O1·KR5；执行 T058（LP+UTM）及 T059–T060（见报后归因与剪报归档）。',
+    'October 双战役 LP：统筹页「广告链接」#ad-urls 汇总 Google（Search RSA / PMax）与 Meta 付费 FB 分面 UTM；「内容支点」保留 Facebook 双表与有机发帖。NZ Herald 平面：T058–T060。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -656,6 +662,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes:
       '已产出 docs/t018-keyword-structure-v2.md + docs/t018-keyword-import-v2.csv。V2 含 Exact/Phrase 执行规范、核心 RSA 文案包、可直接导入 Google Ads Editor 的 CSV；含 Brand 变体、Visa Free 重点 ad group、双产品分层（含 beijing shanghai 承接词）与 Generic 放量池，并对齐 CONTENT_PIVOT.siteWideSeoThemes。',
     reviewLinks: [
+      { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
       { label: 'T019 Search 投放工作台（T018–T025）', href: '/marketing/campaign/t019#google-search-launch' },
       { label: 'T018 执行台（V1/V2/CSV）', href: '/marketing/campaign/t018' },
       { label: 'China tours 商业枢纽', href: '/china-tours' },
@@ -708,6 +715,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: '产品专属 campaign',
     reviewLinks: [
+      { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
       { label: '工作台 · T021 步骤', href: '/marketing/campaign/t019#step-t021' },
       { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
     ],
@@ -722,6 +730,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'not_started',
     deliverable: '产品专属 campaign',
     reviewLinks: [
+      { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
       { label: '工作台 · T022 步骤', href: '/marketing/campaign/t019#step-t022' },
       { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
     ],
@@ -776,14 +785,39 @@ export const MARKETING_TASKS: MarketingTask[] = [
     status: 'in_progress',
     deliverable: '创意 brief',
     notes:
-      'Phase 1b：已启动冷流量视频方向（双 Discovery 各 3 角度）与 Hook/CTA 框架；与 T051 图库并行，不占用 Search 上线周。执行文档：docs/t026-meta-cold-video-brief.md。',
+      'Phase 1b：已启动冷流量视频方向（双 Discovery 各 3 角度）与 Hook/CTA 框架；与 T051 图库并行，不占用 Search 上线周。执行文档：docs/t026-meta-cold-video-brief.md。Facebook Post/Reels/Story 分链：utm_source=facebook，utm_content=tale_fb_* / shanghai_fb_*；投放用 paid_social + oct2026_meta_cold；纯公共主页有机发帖用 social + oct2026_discovery_fb_organic（见统筹页「内容支点」表）。',
     reviewLinks: [
+      { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
       {
         label: 'T026 执行文档（仓库）',
         href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t026-meta-cold-video-brief.md',
       },
       { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
       { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Post',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_post',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Reels',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_reels',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Story',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_story',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Post',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_post',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Reels',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_reels',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Story',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_story',
+      },
     ],
   },
   {
@@ -797,7 +831,44 @@ export const MARKETING_TASKS: MarketingTask[] = [
     deliverable: '素材库',
     notes: '与 T051–T052 共用：产品 Gallery 选定图可派生广告/社媒裁切包。',
   },
-  { id: 'T028', module: 'Meta Ads', name: '编写 FB/IG 广告文案', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: '广告文案包' },
+  {
+    id: 'T028',
+    module: 'Meta Ads',
+    name: '编写 FB/IG 广告文案',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W2',
+    status: 'not_started',
+    deliverable: '广告文案包',
+    notes: 'Final URL 使用统筹页已给出的 October LP + Facebook 分面 UTM（Post/Reels/Story）；与 T026 同一套 utm_content 命名。',
+    reviewLinks: [
+      { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Post',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_post',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Reels',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_reels',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Tale · Story',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_story',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Post',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_post',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Reels',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_reels',
+      },
+      {
+        label: 'Meta 冷流量 UTM · Shanghai · Story',
+        href: 'https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=shanghai_fb_story',
+      },
+    ],
+  },
   {
     id: 'T029',
     module: 'Meta Ads',
@@ -978,8 +1049,9 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P0',
     startWeek: 'W1',
     endWeek: 'W1',
-    status: 'not_started',
+    status: 'done',
     deliverable: '主档案',
+    notes: 'Repo: docs/t043-beijing-xian-master-brief.md。与产品页、tours.ts、October LP、T026 Meta brief 同轴。',
     reviewLinks: [
       { label: '产品页', href: '/tours/china/discovery/beijing-xian' },
       { label: 'October 战役页', href: '/campaigns/october-2026/tale-of-two-cities' },
@@ -992,8 +1064,9 @@ export const MARKETING_TASKS: MarketingTask[] = [
     priority: 'P0',
     startWeek: 'W1',
     endWeek: 'W1',
-    status: 'not_started',
+    status: 'done',
     deliverable: '主档案',
+    notes: 'Repo: docs/t044-shanghai-surroundings-master-brief.md。与产品页、tours.ts、October LP、T026 Meta brief 同轴。',
     reviewLinks: [
       { label: '产品页', href: '/tours/china/discovery/shanghai-surroundings' },
       { label: 'October 战役页', href: '/campaigns/october-2026/shanghai-surroundings' },

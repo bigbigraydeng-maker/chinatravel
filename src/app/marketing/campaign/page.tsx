@@ -4,6 +4,12 @@ import { marketingPlanAccessKey } from '@/lib/auth/marketing-plan-session';
 import TodayW1Panel from './TodayW1Panel';
 import CampaignCollapsibleSection from './CampaignCollapsibleSection';
 import {
+  OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS,
+  OCTOBER_2026_GOOGLE_ADS_URL_ROWS,
+  OCTOBER_2026_GOOGLE_ADS_UTM_CAMPAIGN,
+  OCTOBER_2026_META_FACEBOOK_SURFACE_URLS,
+} from '@/lib/campaigns/october-2026-discovery';
+import {
   CAMPAIGN_W1_MONDAY_ISO,
   CONTENT_PIVOT,
   EXECUTION_AUDIT,
@@ -71,6 +77,7 @@ type CampaignNavItem =
 
 const campaignNavItems: CampaignNavItem[] = [
   { kind: 'hash', href: '#today', label: '今日 W1' },
+  { kind: 'hash', href: '#ad-urls', label: '广告链接' },
   { kind: 'hash', href: '#overview', label: '总览' },
   { kind: 'hash', href: '#pivot', label: '内容支点' },
   { kind: 'hash', href: '#audit', label: '对照检查' },
@@ -91,6 +98,25 @@ function groupTasksByModule(tasks: MarketingTask[]): Map<string, MarketingTask[]
     map.set(t.module, list);
   }
   return map;
+}
+
+/** Full final URL for ads — click textarea then Ctrl+C（或拖选复制）. */
+function ReadOnlyCampaignUrl({ id, label, url }: { id: string; label: string; url: string }) {
+  return (
+    <div className="min-w-[12rem] max-w-[28rem] flex-1">
+      <label htmlFor={id} className="mb-1 block text-[10px] font-semibold uppercase tracking-wide text-gray-500">
+        {label}
+      </label>
+      <textarea
+        id={id}
+        readOnly
+        rows={2}
+        defaultValue={url}
+        className="w-full resize-y rounded border border-warm-200 bg-white px-2 py-1.5 font-mono text-[10px] leading-snug text-gray-800 shadow-inner outline-none ring-primary/30 focus:ring-1"
+        spellCheck={false}
+      />
+    </div>
+  );
 }
 
 function krStatusClass(status: TaskStatus): string {
@@ -391,6 +417,75 @@ export default function MarketingPlanPage() {
           anchorIso={CAMPAIGN_W1_MONDAY_ISO}
         />
 
+        <CampaignCollapsibleSection
+          id="ad-urls"
+          title="广告链接速取（Google + Meta）"
+          description="October 2026 双产品 · 最终到达 URL + UTM · 与代码生成一致"
+        >
+          <p className="text-sm leading-relaxed text-gray-700">
+            将下列<strong>整段 URL</strong>粘贴到 Google Ads「最终到达网址」或 Meta 广告层级对应字段即可。站内 canonical 仍不带参数；仅对外投放链接带 UTM。
+            Facebook / Instagram <strong>广告预览</strong>链接仍在各平台 Ads Manager 内生成，此处不存放。
+          </p>
+          <div className="mt-4 rounded-lg border border-warm-200 bg-white p-4 text-xs text-gray-600">
+            <p className="font-semibold text-accent">参数约定（本区块）</p>
+            <ul className="mt-2 list-inside list-disc space-y-1">
+              <li>
+                <strong>Google</strong>：<code className="rounded bg-warm-100 px-1">utm_source=google</code>{' '}
+                <code className="rounded bg-warm-100 px-1">utm_medium=cpc</code>{' '}
+                <code className="rounded bg-warm-100 px-1">utm_campaign={OCTOBER_2026_GOOGLE_ADS_UTM_CAMPAIGN}</code>
+                （与 <code className="rounded bg-warm-100 px-1">docs/utm-conventions.md</code> 中 tour_ 前缀一致）
+              </li>
+              <li>
+                <strong>Meta 付费</strong>：<code className="rounded bg-warm-100 px-1">utm_source=facebook</code>{' '}
+                <code className="rounded bg-warm-100 px-1">utm_medium=paid_social</code>{' '}
+                <code className="rounded bg-warm-100 px-1">utm_campaign=oct2026_meta_cold</code>
+              </li>
+              <li>
+                <strong>公共主页有机发帖</strong>（未投放）见下方「内容支点」→ Facebook 第二组表。
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-6 space-y-8">
+            {OCTOBER_2026_GOOGLE_ADS_URL_ROWS.map(g => {
+              const fbPaid = OCTOBER_2026_META_FACEBOOK_SURFACE_URLS.find(r => r.slug === g.slug);
+              if (!fbPaid) return null;
+              const baseId = `ad-url-${g.slug}`;
+              return (
+                <article
+                  key={g.slug}
+                  className="rounded-2xl border border-primary/15 bg-gradient-to-b from-white to-warm-50/80 p-4 shadow-soft sm:p-5"
+                >
+                  <h3 className="font-serif text-base font-semibold text-accent">{g.productLabel}</h3>
+                  <p className="mt-1 font-mono text-[11px] text-gray-500">/campaigns/october-2026/{g.slug}</p>
+                  <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
+                    <ReadOnlyCampaignUrl id={`${baseId}-g-rsa`} label="Google · Search RSA（cpc）" url={g.searchRsaUrl} />
+                    <ReadOnlyCampaignUrl id={`${baseId}-g-pmax`} label="Google · Performance Max（cpc）" url={g.pmaxUrl} />
+                  </div>
+                  <p className="mt-3 text-[11px] text-gray-500">
+                    搜索广告若启用动态关键字，可在 Ads 中用追踪模板追加{' '}
+                    <code className="rounded bg-warm-100 px-1">utm_term={'{keyword}'}</code>（视账户语法而定）。
+                  </p>
+                  <div className="mt-5 border-t border-warm-100 pt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Meta 付费 · Facebook 分面</p>
+                    <div className="mt-3 flex flex-col gap-4 xl:flex-row xl:flex-wrap">
+                      <ReadOnlyCampaignUrl id={`${baseId}-fb-post`} label="FB Post（paid_social）" url={fbPaid.postUrl} />
+                      <ReadOnlyCampaignUrl id={`${baseId}-fb-reels`} label="FB Reels" url={fbPaid.reelsUrl} />
+                      <ReadOnlyCampaignUrl id={`${baseId}-fb-story`} label="FB Story" url={fbPaid.storyUrl} />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <p className="mt-4 text-[11px] text-gray-500">
+            生成逻辑：
+            <code className="rounded bg-warm-100 px-1">src/lib/campaigns/october-2026-discovery.ts</code>（
+            <code className="rounded bg-warm-100 px-1">buildOctober2026GoogleAdsUrl</code> ·{' '}
+            <code className="rounded bg-warm-100 px-1">buildOctober2026MetaFacebookSurfaceUrl</code>）。
+          </p>
+        </CampaignCollapsibleSection>
+
         <CampaignCollapsibleSection id="overview" title="项目总目标" description="看板式折叠 · 点击栏目标题展开">
           <p className="text-gray-700 leading-relaxed">
             在 2026 年 4–7 月完成针对新西兰市场的第一阶段数字营销系统搭建，围绕{' '}
@@ -464,6 +559,100 @@ export default function MarketingPlanPage() {
                 ))}
               </ul>
             </div>
+          </div>
+          <div className="mt-6 space-y-4 rounded-xl border border-primary/20 bg-primary/5 p-4">
+            <div>
+              <h3 className="text-sm font-semibold text-accent">Facebook · Post / Reels / Story 专属 UTM（October 战役 LP）</h3>
+              <p className="mt-1 text-xs leading-relaxed text-gray-600">
+                同一套 <code className="rounded bg-warm-100 px-1">utm_content</code>（Post / Reels / Story）用于分面归因。
+                <strong className="font-medium text-gray-800"> Meta 冷流量 / 付费社交</strong>：
+                <code className="ml-1 rounded bg-warm-100 px-1 text-[11px]">utm_source=facebook</code>{' '}
+                <code className="rounded bg-warm-100 px-1 text-[11px]">utm_medium=paid_social</code>{' '}
+                <code className="rounded bg-warm-100 px-1 text-[11px]">utm_campaign=oct2026_meta_cold</code>。
+                <strong className="ml-1 font-medium text-gray-800">公共主页纯有机发帖</strong>（未投放）：改用{' '}
+                <code className="rounded bg-warm-100 px-1 text-[11px]">utm_medium=social</code> +{' '}
+                <code className="rounded bg-warm-100 px-1 text-[11px]">utm_campaign=oct2026_discovery_fb_organic</code>
+                （下表第二组）。
+              </p>
+            </div>
+            <div className="overflow-x-auto rounded-lg border border-warm-100 bg-white">
+              <table className="min-w-full text-left text-xs">
+                <caption className="border-b border-warm-100 bg-warm-50 px-3 py-2 text-left text-[11px] font-semibold text-accent">
+                  Meta 冷流量（paid_social · oct2026_meta_cold）
+                </caption>
+                <thead className="bg-warm-50 text-[10px] uppercase tracking-wide text-gray-600">
+                  <tr>
+                    <th className="px-2 py-2 font-semibold">产品</th>
+                    <th className="px-2 py-2 font-semibold">Post</th>
+                    <th className="px-2 py-2 font-semibold">Reels</th>
+                    <th className="px-2 py-2 font-semibold">Story</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-warm-100">
+                  {OCTOBER_2026_META_FACEBOOK_SURFACE_URLS.map(row => (
+                    <tr key={row.slug} className="hover:bg-warm-50/50">
+                      <td className="whitespace-nowrap px-2 py-2 font-medium text-gray-800">{row.productLabel}</td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.postUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.reelsUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.storyUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="overflow-x-auto rounded-lg border border-warm-100 bg-white">
+              <table className="min-w-full text-left text-xs">
+                <caption className="border-b border-warm-100 bg-warm-50 px-3 py-2 text-left text-[11px] font-semibold text-accent">
+                  公共主页有机发帖（social · oct2026_discovery_fb_organic）
+                </caption>
+                <thead className="bg-warm-50 text-[10px] uppercase tracking-wide text-gray-600">
+                  <tr>
+                    <th className="px-2 py-2 font-semibold">产品</th>
+                    <th className="px-2 py-2 font-semibold">Post</th>
+                    <th className="px-2 py-2 font-semibold">Reels</th>
+                    <th className="px-2 py-2 font-semibold">Story</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-warm-100">
+                  {OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS.map(row => (
+                    <tr key={`org-${row.slug}`} className="hover:bg-warm-50/50">
+                      <td className="whitespace-nowrap px-2 py-2 font-medium text-gray-800">{row.productLabel}</td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.postUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.reelsUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                      <td className="max-w-[200px] break-all px-2 py-2">
+                        <a href={row.storyUrl} className="text-primary underline-offset-2 hover:underline" target="_blank" rel="noreferrer">
+                          复制用链接
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-[11px] text-gray-500">
+              完整 URL 见浏览器地址栏打开后复制；与{' '}
+              <code className="rounded bg-warm-100 px-1">src/lib/campaigns/october-2026-discovery.ts</code> 中生成逻辑一致。
+            </p>
           </div>
           <div className="mt-6 rounded-xl border border-warm-100 bg-warm-50/60 p-4">
             <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-500">全站 SEO 词簇（4 月优先）</h3>
