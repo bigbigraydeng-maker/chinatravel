@@ -1,4 +1,3 @@
-import { migratedUnsplash } from '@/lib/site-media';
 import { OCTOBER_2026_DISCOVERY_BY_SLUG } from '@/lib/campaigns/october-2026-discovery';
 
 // CMS Data Model for Tours
@@ -137,7 +136,7 @@ export const destinations: Destination[] = [
     name: 'Japan',
     subtitle: 'Where Tradition Meets Tomorrow',
     description: 'Experience the perfect harmony of ancient traditions and cutting-edge modernity. From serene temples to bustling Tokyo, Japan offers unforgettable journeys.',
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),  // Japan nature + culture
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',  // Japan nature + culture
     highlights: [
       'Witness Mount Fuji',
       'Explore ancient Kyoto temples',
@@ -186,7 +185,7 @@ export const destinations: Destination[] = [
     name: 'Vietnam',
     subtitle: 'Timeless Charm, Unforgettable Experiences',
     description: 'From the emerald waters of Halong Bay to the ancient streets of Hoi An, Vietnam captivates with its natural beauty, rich history, and warm hospitality.',
-    heroImage: migratedUnsplash('photo-1528127269322-539801943592'),
+    heroImage: 'https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     highlights: [
       'Cruise Halong Bay',
       'Explore Hoi An Ancient Town',
@@ -1654,10 +1653,10 @@ export const tours: Tour[] = [
     shortDescription: 'A comprehensive Japan journey combining history, culture, and natural beauty across multiple regions, featuring iconic landmarks, scenic railways, and overnight ferry travel.',
     duration: '18 Days',
     price: 'From NZD $8,999',
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
-      migratedUnsplash('photo-1545569341-9eb8b30979d9')
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Tokyo\'s iconic landmarks and Sensoji Temple',
@@ -1724,10 +1723,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience Japan blending timeless beauty with modern marvels. Journey includes ancient temples, bustling markets, Mt. Fuji, snow monkeys, UNESCO villages, and historic castles from Tokyo to Osaka.',
     duration: '18 Days',
     price: 'From NZD $10,999',
-    heroImage: migratedUnsplash('photo-1545569341-9eb8b30979d9'),
+    heroImage: 'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      migratedUnsplash('photo-1545569341-9eb8b30979d9'),
-      migratedUnsplash('photo-1493976040374-85c8e12f0c0e')
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Mt. Fuji with Lake Ashi cruise and Hakone Ropeway',
@@ -1791,10 +1790,10 @@ export const tours: Tour[] = [
     shortDescription: 'An immersive Japan journey from Tokyo to Osaka, combining iconic sights like Mt. Fuji, Matsumoto Castle, and Shirakawa-go with cultural traditions including tea ceremonies and gold leaf crafting.',
     duration: '14 Days',
     price: 'From NZD $8,699',
-    heroImage: migratedUnsplash('photo-1528360983277-13d401cdc186'),
+    heroImage: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      migratedUnsplash('photo-1528360983277-13d401cdc186'),
-      migratedUnsplash('photo-1545569341-9eb8b30979d9')
+      'https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Mt. Fuji visit and Lake Ashi cruise',
@@ -1855,10 +1854,10 @@ export const tours: Tour[] = [
     shortDescription: 'Kick off in Hanoi and journey through Vietnam\'s most iconic landscapes, from cruising Ha Long Bay to exploring imperial Hue, charming Hoi An and dynamic Ho Chi Minh City.',
     duration: '14 Days',
     price: 'From NZD $4,599',
-    heroImage: migratedUnsplash('photo-1557750255-c76072a7aad1'),
+    heroImage: 'https://images.unsplash.com/photo-1557750255-c76072a7aad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      migratedUnsplash('photo-1557750255-c76072a7aad1'),
-      migratedUnsplash('photo-1583417319070-4a69db38a482')
+      'https://images.unsplash.com/photo-1557750255-c76072a7aad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Ha Long Bay overnight luxury cruise with kayaking',
@@ -1918,10 +1917,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the essence of Vietnam in just 10 in-country days, traveling from Hanoi to Ho Chi Minh City, including Ha Long Bay, Hoi An\'s lantern-lit streets, Cu Chi Tunnels, and the lush Mekong Delta.',
     duration: '12 Days',
     price: 'From NZD $4,299',
-    heroImage: migratedUnsplash('photo-1583417319070-4a69db38a482'),
+    heroImage: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      migratedUnsplash('photo-1583417319070-4a69db38a482'),
-      migratedUnsplash('photo-1557750255-c76072a7aad1')
+      'https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1557750255-c76072a7aad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Ha Long Bay overnight cruise with kayaking and swimming',
