@@ -24,14 +24,16 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
 
   return (
     <div className="group min-w-0 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-      <div className="relative aspect-[3/2] w-full shrink-0 overflow-hidden bg-warm-100">
+      <div className="relative aspect-[3/2] w-full min-h-[11rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[13rem]">
         <Image
           src={tour.heroImage}
           alt={tour.name}
-          fill
-          priority
+          width={1200}
+          height={800}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          className="absolute inset-0 h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          loading="eager"
+          decoding="async"
         />
         <div className="absolute top-4 left-4 z-[1]">
           <span
