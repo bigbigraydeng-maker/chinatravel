@@ -74,7 +74,7 @@ export const destinations: Destination[] = [
     name: 'China',
     subtitle: 'The Middle Kingdom Awaits',
     description: 'Discover the ancient wonders and modern marvels of China. From the Great Wall to the Terracotta Warriors, experience a civilization that spans over 5,000 years.',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     highlights: [
       'Walk the Great Wall of China',
       'Explore the Forbidden City',
@@ -230,9 +230,9 @@ export const tours: Tour[] = [
     shortDescription: 'Journey along China\'s ancient Silk Road from Urumqi to Xi\'an across 17 days — exploring Heavenly Lake, the Flaming Mountains, Mogao Caves, colourful Danxia mountains, Bingling Temple grottoes, and the Terracotta Warriors.',
     duration: '17 Days',
     price: 'From NZD $6,699',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     ],
     highlights: [
       'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
@@ -309,10 +309,10 @@ export const tours: Tour[] = [
     shortDescription: 'A 17-day journey through China\'s greatest imperial and cultural treasures — from Beijing\'s Forbidden City and the Great Wall to the Potala Palace in Lhasa, a Yangtze River Three Gorges cruise, and the dazzling skyline of Shanghai.',
     duration: '17 Days',
     price: 'NZD $9,999',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-gold-lion.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg'
     ],
     highlights: [
       'Temple of Heaven with optional Tai Chi among locals; Tian\'anmen Square and Forbidden City (see itinerary for Monday closure & ticket substitution)',
@@ -396,10 +396,10 @@ export const tours: Tour[] = [
     shortDescription: 'The ultimate 27-day China experience — from the Great Wall and Forbidden City to a Yangtze River cruise, giant pandas in Chengdu, the Li River in Guilin, classical gardens of Suzhou, West Lake in Hangzhou, and vibrant Shanghai.',
     duration: '27 Days',
     price: 'From NZD $10,899',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg'
     ],
     highlights: [
       'Walk the Juyongguan Great Wall and explore the Forbidden City',
@@ -497,10 +497,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
     price: 'From NZD $7,670',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/zhangjiajie/zhangjiajie.jpg',
     ],
     highlights: [
       'Cruise the Li River through stunning karst landscapes',
@@ -579,10 +579,10 @@ export const tours: Tour[] = [
       'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published group departure in October as listed on this page.',
     duration: '10 Days',
     price: 'From NZD $3,480',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-gold-lion.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-gold-lion.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg'
     ],
     highlights: [
       'Visit the 500-year-old Temple of Heaven set in imperial gardens',
@@ -750,10 +750,10 @@ export const tours: Tour[] = [
     shortDescription: 'Fifteen days from Beijing\'s Temple of Heaven, Forbidden City, Great Wall and hutongs, by high-speed train to Xi\'an\'s Terracotta Army, then by air to Hangzhou via Puyuan\'s fashion ancient town, West Lake and Longjing tea, finishing in Shanghai before your return via Beijing.',
     duration: '15 Days',
     price: 'NZD $4,539 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg'
     ],
     highlights: [
       'Temple of Heaven, Tian\'anmen Square, Forbidden City (or substitute Jingshan Park & Prince Gong\'s Mansion if tickets unavailable), Beihai Park, and the Great Wall',
@@ -831,10 +831,10 @@ export const tours: Tour[] = [
       'October-ready from Auckland — Yangtze Delta loop: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); mid-October departure published.',
     duration: '10 Days',
     price: 'NZD $2,999 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-red.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg'
     ],
     highlights: [
       'Master of the Nets Garden, Panmen, and Shantang Street in Suzhou',
@@ -943,10 +943,10 @@ export const tours: Tour[] = [
     shortDescription: 'Yunnan by air via Beijing — Erhai and Bai culture around Dali (including Shuanglang and “Santorini” viewpoints), Lijiang\'s Lashi Lake and Shuhe, then overland to Shangri-La through Tiger Leaping Gorge, Songzanlin Monastery, and Napa Lake before returning to Auckland via Beijing.',
     duration: '11 Days',
     price: 'NZD $3,899 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-village/yunnan-village.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-rice-terraces.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-village/yunnan-village.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-rice-terraces/yunnan-rice-terraces.jpg'
     ],
     highlights: [
       'International flights routed Auckland — Beijing — Dali, returning Lijiang — Beijing — Auckland',
@@ -1015,10 +1015,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully curated Beijing stopover.',
     duration: '4 Days',
     price: 'From NZD $2,120',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-lion/forbidden-city-lion.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-lion/forbidden-city-lion.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg'
     ],
     highlights: [
       'Tiananmen Square and Forbidden City',
@@ -1064,9 +1064,9 @@ export const tours: Tour[] = [
     shortDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authentic dining.',
     duration: '3 Days',
     price: 'From NZD $1,450',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion-2.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-lion-2/forbidden-city-lion-2.jpg'
     ],
     highlights: [
       'Tiananmen Square and the Forbidden City',
@@ -1110,10 +1110,10 @@ export const tours: Tour[] = [
     shortDescription: 'Explore dynamic and beautiful Shanghai on China\'s east coast, experiencing the city\'s transformation from a sleepy fishing town to a modern metropolis of skyscrapers and modern lifestyle.',
     duration: '3 Days',
     price: 'From NZD $1,060',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-red.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-red.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg'
     ],
     highlights: [
       'Old Town with winding alleyways, shops, and teahouses',
@@ -1156,9 +1156,9 @@ export const tours: Tour[] = [
     shortDescription: 'See the best Shanghai has to offer! This compact stopover showcases Shanghai\'s historic and modern attractions in an efficient timeframe.',
     duration: '2 Days',
     price: 'From NZD $875',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-skyline/shanghai-skyline.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg'
     ],
     highlights: [
       'China Town exploration with traditional alleyways',
@@ -1199,10 +1199,10 @@ export const tours: Tour[] = [
     shortDescription: 'This stopover showcases Chengdu, capital of Sichuan province, known as \'The Land of Abundance\'. Explore the region\'s natural heritage and cultural attractions.',
     duration: '3 Days',
     price: 'From NZD $1,359',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-pandas/chengdu-pandas.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-old-town.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-pandas/chengdu-pandas.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-old-town/chengdu-old-town.jpg'
     ],
     highlights: [
       'Giant Panda Breeding and Research Centre',
@@ -1244,9 +1244,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Guilin\'s scenic landscapes featuring a Li River cruise to Yangshuo, limestone cave exploration, and iconic mountain formations.',
     duration: '3 Days',
     price: 'From NZD $1,099',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg'
     ],
     highlights: [
       'Li River cruise',
@@ -1286,10 +1286,10 @@ export const tours: Tour[] = [
     shortDescription: 'Immerse yourself in the rich history of Xi\'an, China\'s ancient capital, with experiences centred on archaeological treasures and cultural landmarks.',
     duration: '3 Days',
     price: 'From NZD $945',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta-2.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta-2/xian-terracotta-2.jpg'
     ],
     highlights: [
       '2,000-year-old Terracotta Warriors with Circle Vision Movie',
@@ -1330,9 +1330,9 @@ export const tours: Tour[] = [
     shortDescription: 'Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the city\'s relaxed pace.',
     duration: '3 Days',
     price: 'From NZD $1,399',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
     ],
     highlights: [
       'Nanfeng Kiln and Shiwan pottery centre',
@@ -1375,10 +1375,10 @@ export const tours: Tour[] = [
     shortDescription: 'A vibrant fusion of tradition and modernity through Shanghai\'s old quarters, artistic neighbourhoods, and riverfront, plus Suzhou\'s water-town charm and elegant gardens.',
     duration: '3 Days',
     price: 'From NZD $1,356',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg'
     ],
     highlights: [
       'Yu Garden and Tianzifang bohemian area',
@@ -1421,10 +1421,10 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Shanghai\'s modern attractions combined with the timeless beauty of Wuzhen, the peerless water town in the south of the Yangtze River.',
     duration: '4 Days',
     price: 'From NZD $1,760',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg'
     ],
     highlights: [
       'Shanghai Old Town and Yu Garden',
@@ -1468,10 +1468,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover breathtaking landscapes and rich cultural heritage through visits to limestone caves, terraced mountains, ethnic villages, and a scenic Li River cruise.',
     duration: '4 Days',
     price: 'From NZD $1,310',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg'
     ],
     highlights: [
       'Reed Flute Cave',
@@ -1514,9 +1514,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience Zhangjiajie\'s stunning natural landscapes, including Tianmen Mountain, the Bailong Elevator, and the famous Glass Bridge — the inspiration for Avatar.',
     duration: '3 Days',
     price: 'From NZD $1,899',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/zhangjiajie/zhangjiajie.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/zhangjiajie/zhangjiajie.jpg'
     ],
     highlights: [
       'Tianmen Mountain National Forest Park',
@@ -1559,9 +1559,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore the dynamic city of Shenzhen with futuristic skyscrapers, vibrant shopping districts, and rich cultural landmarks. Experience innovation, cuisine, and a fusion of tradition and modernity.',
     duration: '4 Days',
     price: 'From NZD $2,340',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/china-pagoda-night.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg'
     ],
     highlights: [
       'Lotus Hill Park and Deng Xiaoping Sculpture',
@@ -1605,10 +1605,10 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.',
     duration: '4 Days',
     price: 'From NZD $1,635',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/suzhou-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg',
     ],
     highlights: [
       'Cable car ride up Yellow Mountain',
