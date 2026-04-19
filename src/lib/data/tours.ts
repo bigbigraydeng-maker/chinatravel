@@ -1014,9 +1014,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully curated Beijing stopover.',
     duration: '4 Days',
     price: 'From NZD $2,120',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-lion/forbidden-city-lion.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-lion/forbidden-city-lion.jpg',
+      'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg'
     ],
     highlights: [
