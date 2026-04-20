@@ -678,8 +678,7 @@ export const tours: Tour[] = [
       'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary'
     ],
-    metaTitle:
-      'Beijing & Xi\'an China Tour from NZ | October 2026 | Great Wall & Terracotta Warriors | CTS',
+    metaTitle: 'Beijing & Xi\'an Discovery Tour | October 2026 | CTS NZ',
     metaDescription:
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — October departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
@@ -873,7 +872,7 @@ export const tours: Tour[] = [
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
-    metaTitle: 'Shanghai & Jiangnan China Tour from NZ | October 2026 | West Lake & Bund | CTS',
+    metaTitle: 'Shanghai & Surroundings Discovery | October 2026 | CTS NZ',
     metaDescription:
       'China specialist–led Shanghai & Jiangnan loop from NZ — October departure, Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,999. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,

@@ -59,7 +59,7 @@ export const chinaToursMeta: SeoPageMeta = {
 export const beijingToursMeta: CityHubMeta = {
   slug: 'beijing-tours',
   cityName: 'Beijing',
-  title: 'Beijing Tours from New Zealand | Great Wall, Forbidden City, Summer Palace | CTS Tours',
+  title: 'Beijing Tours from New Zealand | Great Wall | CTS Tours',
   description: 'Explore Beijing with CTS Tours. From the Great Wall to the Forbidden City and Ming Tombs. Signature and Discovery tours from NZD $3,999.',
   h1: 'Beijing Tours from New Zealand',
   heroSubtitle: 'Walk the Great Wall. Explore the Forbidden City. Immerse in 5,000 years of history.',
@@ -97,7 +97,7 @@ export const beijingToursMeta: CityHubMeta = {
 export const xianToursMeta: CityHubMeta = {
   slug: 'xian-tours',
   cityName: "Xi'an",
-  title: "Xi'an Tours from New Zealand | Terracotta Warriors, Ancient City Walls | CTS Tours",
+  title: "Xi'an Tours NZ | Terracotta Warriors | CTS Tours",
   description: "Visit Xi'an with CTS Tours. Meet the Terracotta Warriors, walk the ancient city walls, explore Buddhist temples. Signature and Discovery tours available.",
   h1: "Xi'an Tours from New Zealand",
   heroSubtitle: 'Marvel at the Terracotta Warriors. Walk 2,000-year-old city walls. Experience China\'s ancient capital.',
@@ -135,7 +135,7 @@ export const xianToursMeta: CityHubMeta = {
 export const shanghaiToursMeta: CityHubMeta = {
   slug: 'shanghai-tours',
   cityName: 'Shanghai',
-  title: 'Shanghai Tours from New Zealand | The Bund, Yu Garden, Modern City | CTS Tours',
+  title: 'Shanghai Tours from New Zealand | The Bund | CTS Tours',
   description: 'Explore Shanghai with CTS Tours. The Bund, Yu Garden, modern skyline, and water town villages. Signature and Discovery tours from NZD $3,500.',
   h1: 'Shanghai Tours from New Zealand',
   heroSubtitle: 'Experience the Bund\'s colonial elegance. Explore ancient water towns. Embrace the modern metropolis.',
@@ -211,7 +211,7 @@ export const chengduToursMeta: CityHubMeta = {
 export const guilinToursMeta: CityHubMeta = {
   slug: 'guilin-tours',
   cityName: 'Guilin',
-  title: 'Guilin Tours from New Zealand | Li River Cruise, Karst Mountains | CTS Tours',
+  title: 'Guilin Tours from New Zealand | Li River Cruise | CTS Tours',
   description: 'Explore Guilin with CTS Tours. Cruise the Li River, explore karst mountains, visit Yangshuo. Signature and Discovery tours available.',
   h1: 'Guilin Tours from New Zealand',
   heroSubtitle: 'Cruise the Li River\'s dreamscape. Hike dramatic karst peaks. Discover rural Yangshuo.',
@@ -287,7 +287,7 @@ export const zhangjiajieToursMetadata: CityHubMeta = {
 export const yunnanToursMeta: CityHubMeta = {
   slug: 'yunnan-tours',
   cityName: 'Yunnan',
-  title: 'Yunnan Tours from New Zealand | Lijiang, Dali, Shangri-La, Kunming | CTS Tours',
+  title: 'Yunnan Tours from New Zealand | Lijiang & Dali | CTS Tours',
   description: 'Explore Yunnan with CTS Tours. Lijiang ancient town, Dali, Shangri-La mountains, Kunming gardens. Signature and Discovery tours available.',
   h1: 'Yunnan Tours from New Zealand',
   heroSubtitle: 'Journey through mountains, monasteries, and ancient towns. Experience China\'s most diverse region.',
@@ -326,7 +326,7 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand | Direct Flights, Visa-Free Entry | CTS Tours NZ',
+  title: 'China Tours from New Zealand | Visa-Free Entry | CTS Tours',
   description: 'China tours tailored for New Zealand travellers. Direct flights from Auckland, visa-free entry guidance for NZ passports, NZD pricing, local Aotearoa-based support since 1928.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Tailored for Kiwis. Direct flights from Auckland. Visa-free entry support for NZ passports. Local NZ support.',
@@ -392,7 +392,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
 
 export const bestTimeToVisitChinaMeta: SeoPageMeta = {
   slug: 'best-time-to-visit-china',
-  title: 'Best Time to Visit China | Month-by-Month Guide for New Zealand Travellers',
+  title: 'Best Time to Visit China | NZ Seasonal Guide | CTS Tours',
   description: 'When to visit China? Detailed season guide covering weather, crowds, prices for all major regions. Plan your ideal trip.',
   h1: 'Best Time to Visit China: Month-by-Month Guide',
   heroSubtitle: 'Perfect your China trip timing. Every region has its ideal season.',
@@ -419,7 +419,7 @@ export const bestTimeToVisitChinaMeta: SeoPageMeta = {
 
 export const chinaVisaGuideMeta: SeoPageMeta = {
   slug: 'china-visa-guide-for-new-zealanders',
-  title: 'China Visa-Free for New Zealand Citizens | 30 Days No Visa Required | CTS Tours',
+  title: 'China Visa-Free for New Zealand Citizens | CTS Tours',
   description: 'Great news! New Zealand citizens can now visit China visa-free for 30 days (until 31 Dec 2026). Requirements, travel tips, and what to know before you go.',
   h1: 'China Visa-Free for New Zealand Citizens',
   heroSubtitle: '✅ No visa required for 30-day stays. Valid until 31 December 2026. Simple entry requirements.',

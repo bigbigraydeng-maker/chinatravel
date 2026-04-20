@@ -7,19 +7,23 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
+        // Allow all bots (including Google-Extended for AI Overview)
         userAgent: '*',
-        allow: '/',
+        allow: [
+          '/',
+          '/_next/static/', // Allow JS/CSS bundles so Google can render pages
+        ],
         disallow: [
           '/api/',
-          '/_next/',
-          // Internal tooling; page also sets noindex. Disallow reduces bot load on heavy client bundle.
+          // Internal tooling; page also sets noindex.
           '/blog/staging',
-          // Client-shared marketing execution board; noindex + disallow keeps it out of search results.
+          // Client-shared marketing board; noindex + disallow keeps it out of search results.
           '/marketing',
         ],
       },
     ],
     sitemap: `${SITE}/sitemap.xml`,
-    host: SITE,
+    // Note: 'host' directive removed — it is non-standard (Yandex-only) and
+    // causes "invalid robots.txt format" errors in Google Search Console / Semrush.
   };
 }

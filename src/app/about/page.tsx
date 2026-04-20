@@ -1,7 +1,14 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { migratedSite, tourImage } from '@/lib/site-media';
+
+export const metadata: Metadata = {
+  title: 'About CTS Tours | China Travel Specialists since 1928',
+  description:
+    "Learn about CTS Tours — New Zealand's dedicated China travel specialist with nearly 100 years of heritage, TAANZ membership, and direct operations in China. Meet our expert team.",
+};
 
 export default function AboutPage() {
   return (
