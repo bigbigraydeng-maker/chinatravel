@@ -173,7 +173,7 @@ export const shanghaiToursMeta: CityHubMeta = {
 export const chengduToursMeta: CityHubMeta = {
   slug: 'chengdu-tours',
   cityName: 'Chengdu',
-  title: 'Chengdu Tours from New Zealand | Giant Pandas, Ancient Temples | CTS Tours',
+  title: 'Chengdu Tours from New Zealand | Giant Pandas | CTS Tours',
   description: 'Visit Chengdu with CTS Tours. Meet giant pandas at the Panda Reserve, explore temples, enjoy authentic Sichuan cuisine. Tours from NZD $3,700.',
   h1: 'Chengdu Tours from New Zealand',
   heroSubtitle: 'Meet giant pandas. Explore ancient temples. Savour world-famous Sichuan cuisine.',
@@ -249,7 +249,7 @@ export const guilinToursMeta: CityHubMeta = {
 export const zhangjiajieToursMetadata: CityHubMeta = {
   slug: 'zhangjiajie-tours',
   cityName: 'Zhangjiajie',
-  title: 'Zhangjiajie Tours from New Zealand | Avatar Mountains, Glass Walkway | CTS Tours',
+  title: 'Zhangjiajie Tours NZ | Avatar Mountains | CTS Tours',
   description: 'Visit Zhangjiajie with CTS Tours. Explore the Avatar-inspired mountains, walk the glass skywalk, experience Tujia culture. Tours from NZD $2,999.',
   h1: 'Zhangjiajie Tours from New Zealand',
   heroSubtitle: 'Discover the mountains that inspired Avatar. Walk the world\'s highest glass walkway. Experience untamed wilderness.',
@@ -359,7 +359,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
 
 export const chinaToursFromAucklandMeta: SeoPageMeta = {
   slug: 'china-tours-from-auckland',
-  title: 'China Tours from Auckland | Flights from AKL, Local Support | CTS Tours',
+  title: 'China Tours from Auckland | Direct Flights | CTS Tours',
   description: 'China tours departing Auckland (AKL). Non-stop flights to Shanghai or Beijing. Kiwi travellers supported by our NZ-based consultants.',
   h1: 'China Tours from Auckland',
   heroSubtitle: 'Non-stop from Auckland Airport. Local Kiwi expertise. Seamless journey.',
