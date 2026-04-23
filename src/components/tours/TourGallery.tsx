@@ -9,6 +9,11 @@ interface TourGalleryProps {
 }
 
 export default function TourGallery({ images, tourName }: TourGalleryProps) {
+  // TODO: re-enable once high-quality images are ready
+  void images; void tourName;
+  return null;
+
+  // eslint-disable-next-line no-unreachable
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   if (images.length === 0) return null;
