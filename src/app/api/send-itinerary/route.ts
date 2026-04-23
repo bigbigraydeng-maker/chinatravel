@@ -3,7 +3,8 @@ import { Resend } from 'resend';
 import { getTourBySlug } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
 
-const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
+// TODO: switch back to 'CTS Tours <info@ctstours.co.nz>' once ctstours.co.nz is verified in Resend dashboard
+const FROM_ADDRESS = 'CTS Tours <onboarding@resend.dev>';
 const REPLY_TO = 'info@ctstours.co.nz';
 
 export async function POST(req: NextRequest) {
@@ -198,7 +199,4 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('Send itinerary error:', err);
-    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
-  }
-}
+    console.error('Send itiner
