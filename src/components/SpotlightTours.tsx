@@ -1,11 +1,7 @@
 import SectionTitle from '@/components/SectionTitle';
 import TourTierCard from '@/components/TourTierCard';
 import { getTourBySlug } from '@/lib/data/tours';
-import {
-  HOME_SPOTLIGHT_TOURS,
-  getSpotlightCampaignHref,
-  getSpotlightDepartureLabel,
-} from '@/lib/data/home-spotlight';
+import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 
 /**
  * Season spotlight — pairs with primary paid + editorial pushes (see `home-spotlight.ts`).
@@ -36,10 +32,10 @@ export default function SpotlightTours() {
           </div>
         </div>
         <SectionTitle subtitle="This season" title="Spotlight" center />
-        <p className="text-center text-gray-600 max-w-2xl mx-auto -mt-8 mb-12 text-base md:text-lg leading-relaxed">
-          High demand right now — our strongest recommendations for October, backed by our ad spend and the routes we&apos;re promoting first.
+        <p className="text-center text-gray-600 max-w-3xl mx-auto -mt-8 mb-12 text-base md:text-lg leading-relaxed">
+          High demand right now — our strongest recommendations for October and November, backed by our ad spend and the routes we&apos;re promoting first.
         </p>
-        <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 items-start md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {HOME_SPOTLIGHT_TOURS.map((ref) => {
             const t = getTourBySlug(ref.destination, ref.tier, ref.slug);
             if (!t) return null;
@@ -53,9 +49,9 @@ export default function SpotlightTours() {
                 image_url={t.heroImage}
                 slug={t.slug}
                 tier="discovery"
-                departure={getSpotlightDepartureLabel(ref.campaignSlug)}
+                departure={ref.departureLabel}
                 route={ref.route}
-                href={getSpotlightCampaignHref(ref.campaignSlug)}
+                href={ref.campaignHref}
                 spotlightFeatured
               />
             );
