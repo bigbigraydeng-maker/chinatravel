@@ -4,10 +4,13 @@ import { useState, useCallback, useEffect } from 'react';
 import {
   Copy, Trash2, Pencil, X, ChevronLeft, ChevronRight,
   Check, Upload, Search, Image as ImageIcon, Loader2,
-  ChevronDown, ChevronUp,
+  ChevronDown, ChevronUp, Link as LinkIcon,
 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+
+type ImageRef = { file: string; line: number };
+type UsageMap = Record<string, ImageRef[]>;
 
 type ImageRow = {
   id: string;
@@ -106,21 +109,56 @@ function CopyUrlPopover({
   );
 }
 
+// ─── Refs Popover ─────────────────────────────────────────────────────────────
+
+function RefsPopover({ refs, onClose }: { refs: ImageRef[]; onClose: () => void }) {
+  return (
+    <div
+      className="absolute z-30 bottom-full mb-1 left-0 rounded-lg border border-warm-200 bg-white shadow-xl p-3 w-80 text-xs"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className="flex items-center justify-between mb-2">
+        <span className="font-semibold text-warm-900">
+          {refs.length} reference{refs.length !== 1 ? 's' : ''} in codebase
+        </span>
+        <button type="button" onClick={onClose} className="text-warm-400 hover:text-warm-700">
+          <X size={12} />
+        </button>
+      </div>
+      <div className="space-y-1 max-h-48 overflow-y-auto">
+        {refs.map((r, i) => (
+          <div key={i} className="flex items-start gap-2 rounded bg-warm-50 px-2 py-1.5">
+            <LinkIcon size={11} className="text-warm-400 mt-0.5 shrink-0" />
+            <span className="font-mono text-warm-700 break-all leading-relaxed">
+              {r.file}
+              <span className="text-primary font-semibold">:{r.line}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── Image Card ───────────────────────────────────────────────────────────────
 
 function ImageCard({
   row,
+  refs,
   onDelete,
   onRename,
   onOpen,
 }: {
   row: ImageRow;
+  refs: ImageRef[];
   onDelete: (id: string) => void;
   onRename: (id: string, path: string) => void;
   onOpen: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
   const [showCopy, setShowCopy] = useState(false);
+  const [showRefs, setShowRefs] = useState(false);
+  const refCount = refs.length;
 
   return (
     <div
@@ -129,6 +167,7 @@ function ImageCard({
       onMouseLeave={() => {
         setHovered(false);
         setShowCopy(false);
+        setShowRefs(false);
       }}
       onClick={onOpen}
     >
@@ -144,7 +183,27 @@ function ImageCard({
         <p className="truncate text-xs font-medium text-warm-900" title={row.name}>
           {row.name}
         </p>
-        <p className="text-xs text-warm-500">{formatBytes(row.size)}</p>
+        <div className="flex items-center justify-between gap-1 mt-0.5">
+          <p className="text-xs text-warm-500">{formatBytes(row.size)}</p>
+          {/* Usage badge */}
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              title={refCount === 0 ? 'Not used anywhere in codebase' : `Used in ${refCount} place${refCount !== 1 ? 's' : ''}`}
+              onClick={() => setShowRefs((v) => !v)}
+              className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold leading-none transition ${
+                refCount === 0
+                  ? 'bg-amber-100 text-amber-700 hover:bg-amber-200'
+                  : 'bg-green-100 text-green-700 hover:bg-green-200'
+              }`}
+            >
+              {refCount === 0 ? 'unused' : `${refCount} ref${refCount !== 1 ? 's' : ''}`}
+            </button>
+            {showRefs && refs.length > 0 && (
+              <RefsPopover refs={refs} onClose={() => setShowRefs(false)} />
+            )}
+          </div>
+        </div>
       </div>
 
       {hovered && (
@@ -635,12 +694,24 @@ export default function ImageManager() {
   const [search, setSearch] = useState('');
   const [draftSearch, setDraftSearch] = useState('');
   const [bucket, setBucket] = useState('');
+  const [unusedOnly, setUnusedOnly] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [renaming, setRenaming] = useState<{ id: string; path: string } | null>(null);
   const [deleting, setDeleting] = useState<Set<string>>(new Set());
+  const [usageMap, setUsageMap] = useState<UsageMap>({});
+  const [usageLoading, setUsageLoading] = useState(true);
 
   const PAGE_SIZE = 40;
+
+  // Fetch usage map once on mount
+  useEffect(() => {
+    fetch('/api/admin/images/usage', { credentials: 'include' })
+      .then((r) => r.json())
+      .then((j) => { if (!j.error) setUsageMap(j); })
+      .catch(() => undefined)
+      .finally(() => setUsageLoading(false));
+  }, []);
 
   const load = useCallback(
     async (pageOverride?: number) => {
@@ -737,7 +808,10 @@ export default function ImageManager() {
     });
   };
 
-  const images = data?.images ?? [];
+  const allImages = data?.images ?? [];
+  const images = unusedOnly
+    ? allImages.filter((img) => !usageMap[img.publicUrl]?.length)
+    : allImages;
 
   return (
     <div className="space-y-5">
@@ -787,15 +861,29 @@ export default function ImageManager() {
           </button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setShowUpload((v) => !v)}
-          className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:opacity-95 self-end"
-        >
-          <Upload size={14} />
-          Upload images
-          {showUpload ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-        </button>
+        <div className="flex items-center gap-2 self-end">
+          <button
+            type="button"
+            onClick={() => { setUnusedOnly((v) => !v); setPage(1); }}
+            className={`flex items-center gap-1.5 rounded-md border px-4 py-2 text-sm font-medium transition ${
+              unusedOnly
+                ? 'border-amber-400 bg-amber-50 text-amber-800'
+                : 'border-warm-300 bg-white text-warm-700 hover:bg-warm-50'
+            }`}
+          >
+            {unusedOnly ? <Check size={13} /> : null}
+            Unused only
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowUpload((v) => !v)}
+            className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:opacity-95"
+          >
+            <Upload size={14} />
+            Upload images
+            {showUpload ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </button>
+        </div>
       </div>
 
       {/* Upload zone */}
@@ -807,11 +895,18 @@ export default function ImageManager() {
 
       {/* Stats */}
       {data && (
-        <p className="text-sm text-warm-600">
-          {data.total} image{data.total !== 1 ? 's' : ''}
-          {data.totalBytes != null && ` · ${formatBytes(data.totalBytes)}`}
-          {search && ` matching "${search}"`}
-        </p>
+        <div className="flex items-center gap-3 flex-wrap">
+          <p className="text-sm text-warm-600">
+            {unusedOnly ? `${images.length} unused` : `${data.total} image${data.total !== 1 ? 's' : ''}`}
+            {data.totalBytes != null && !unusedOnly && ` · ${formatBytes(data.totalBytes)}`}
+            {search && ` matching "${search}"`}
+          </p>
+          {usageLoading && (
+            <span className="flex items-center gap-1 text-xs text-warm-400">
+              <Loader2 size={11} className="animate-spin" /> scanning refs…
+            </span>
+          )}
+        </div>
       )}
 
       {/* Grid */}
@@ -835,6 +930,7 @@ export default function ImageManager() {
             <div key={row.id} className={deleting.has(row.id) ? 'opacity-40 pointer-events-none' : ''}>
               <ImageCard
                 row={row}
+                refs={usageMap[row.publicUrl] ?? []}
                 onDelete={handleDelete}
                 onRename={(id, path) => setRenaming({ id, path })}
                 onOpen={() => setLightboxIdx(idx)}
