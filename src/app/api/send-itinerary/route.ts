@@ -3,12 +3,16 @@ import { Resend } from 'resend';
 import { getTourBySlug } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
 
-// TODO: switch back to 'CTS Tours <info@ctstours.co.nz>' once ctstours.co.nz is verified in Resend dashboard
-const FROM_ADDRESS = 'CTS Tours <onboarding@resend.dev>';
+const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const REPLY_TO = 'info@ctstours.co.nz';
 
 export async function POST(req: NextRequest) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error('send-itinerary: RESEND_API_KEY is not set');
+    return NextResponse.json({ error: 'Email service not configured.' }, { status: 503 });
+  }
+  const resend = new Resend(apiKey);
   try {
     const { email, name, tourSlug, destination, tier } = await req.json();
 
@@ -199,4 +203,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (err) {
-    console.error('Send itiner
+    console.error('Send itinerary error:', err);
+    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
+  }
+}
