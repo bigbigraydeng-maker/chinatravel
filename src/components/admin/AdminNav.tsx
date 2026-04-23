@@ -5,7 +5,8 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/admin', label: 'Dashboard' },
-  { href: '/admin/images', label: 'Images' },
+  { href: '/admin/image-manager', label: '图片管家' },
+  { href: '/admin/images', label: 'Images (table)' },
   { href: '/admin/images/upload', label: 'Upload' },
   { href: '/admin/images/analyze', label: 'Analyze' },
 ];
