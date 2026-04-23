@@ -19,6 +19,12 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  // pdfkit 自带 .afm 字体文件，走 fs.readFileSync 读取；
+  // 必须把它从 webpack bundle 中排除，否则 Next.js 打包时不会把
+  // data/*.afm 一并搬进 .next/server/vendor-chunks，运行时会 ENOENT。
+  experimental: {
+    serverComponentsExternalPackages: ['pdfkit'],
+  },
   async redirects() {
     const hostRedirects = LEGACY_HOSTS.map((host) => ({
       source: '/:path*',
@@ -45,6 +51,18 @@ const nextConfig = {
       {
         source: '/tours/china/discovery/shanghai-beyond',
         destination: '/tours/china/discovery/shanghai-surroundings',
+        permanent: true,
+      },
+      /** Legacy WordPress /wp-content/ → /tours (backlinks cleanup for SEO) */
+      {
+        source: '/wp-content/:path*',
+        destination: '/tours',
+        permanent: true,
+      },
+      /** Legacy WordPress /wp-json/ → /tours (REST API cleanup) */
+      {
+        source: '/wp-json/:path*',
+        destination: '/tours',
         permanent: true,
       },
     ];
