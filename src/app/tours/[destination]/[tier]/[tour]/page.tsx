@@ -209,6 +209,12 @@ export default function TourPage({ params }: TourPageProps) {
                 <p className="text-lg text-gray-700 leading-relaxed">
                   {tour.shortDescription}
                 </p>
+                {tour.singleSupplement && (
+                  <p className="mt-4 text-sm text-gray-600">
+                    <span className="font-semibold text-gray-800">Single supplement:</span>{' '}
+                    {tour.singleSupplement}
+                  </p>
+                )}
               </section>
 
               {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}

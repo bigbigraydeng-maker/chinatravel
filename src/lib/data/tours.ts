@@ -32,6 +32,8 @@ export interface Tour {
   tourCities?: string[];
   /** When set, product and campaign pages use these FAQs instead of destination-generic defaults */
   faqs?: Array<{ question: string; answer: string }>;
+  /** Single room supplement price, e.g. 'NZD $400' */
+  singleSupplement?: string;
 }
 
 export interface DayItinerary {
@@ -1013,7 +1015,7 @@ export const tours: Tour[] = [
     shortDescription:
       "Two of China's most talked-about cities in one 10-day trip — futuristic Chongqing's neon cliffside skyline, the famous monorail through a building, and UNESCO Dazu Rock Carvings, then laid-back Chengdu's giant pandas and teahouse culture. Connected by bullet train. Departs 1 November.",
     duration: '10 Days',
-    price: 'From NZD $2,750',
+    price: 'From NZD $2,999',
     heroImage:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg',
     gallery: [
@@ -1130,6 +1132,7 @@ export const tours: Tour[] = [
     tags: ['Chongqing', 'Chengdu', 'Sichuan', 'Pandas', 'UNESCO', 'High-speed train', 'Cyberpunk', 'Hongyadong'],
     departureDates: ['1 November'],
     tourCities: ['chongqing', 'chengdu'],
+    singleSupplement: 'NZD $400',
   },
 
   // China Stopover Tours

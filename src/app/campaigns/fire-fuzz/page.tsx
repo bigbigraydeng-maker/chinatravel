@@ -131,6 +131,12 @@ export default function FireFuzzCampaignPage() {
               <section id="overview">
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Tour Overview</h2>
                 <p className="text-lg text-gray-700 leading-relaxed">{tour.shortDescription}</p>
+                {tour.singleSupplement && (
+                  <p className="mt-4 text-sm text-gray-600">
+                    <span className="font-semibold text-gray-800">Single supplement:</span>{' '}
+                    {tour.singleSupplement}
+                  </p>
+                )}
                 <div className="mt-6 rounded-2xl border border-primary/20 bg-amber-50/60 p-5">
                   <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-1">
                     Featured departure
@@ -193,10 +199,12 @@ export default function FireFuzzCampaignPage() {
                       <dt className="text-gray-500">Price from</dt>
                       <dd className="font-semibold text-gray-900">{tour.price}</dd>
                     </div>
-                    <div>
-                      <dt className="text-gray-500">Single supplement</dt>
-                      <dd className="font-semibold text-gray-900">NZD $400</dd>
-                    </div>
+                    {tour.singleSupplement && (
+                      <div>
+                        <dt className="text-gray-500">Single supplement</dt>
+                        <dd className="font-semibold text-gray-900">{tour.singleSupplement}</dd>
+                      </div>
+                    )}
                     <div>
                       <dt className="text-gray-500">Departure</dt>
                       <dd className="font-semibold text-gray-900">{FIRE_FUZZ_CONFIG.heroDepartureDate} 2026</dd>
