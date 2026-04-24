@@ -1,14 +1,16 @@
 import { google } from 'googleapis';
 
 export function getGscClient() {
-  const raw = process.env.GSC_SERVICE_ACCOUNT_JSON;
-  if (!raw) throw new Error('GSC_SERVICE_ACCOUNT_JSON not set');
+  const clientId     = process.env.GSC_CLIENT_ID;
+  const clientSecret = process.env.GSC_CLIENT_SECRET;
+  const refreshToken = process.env.GSC_REFRESH_TOKEN;
 
-  const credentials = JSON.parse(raw);
-  const auth = new google.auth.GoogleAuth({
-    credentials,
-    scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
-  });
+  if (!clientId || !clientSecret || !refreshToken) {
+    throw new Error('GSC_CLIENT_ID, GSC_CLIENT_SECRET, GSC_REFRESH_TOKEN must all be set');
+  }
 
-  return google.searchconsole({ version: 'v1', auth });
+  const oauth2 = new google.auth.OAuth2(clientId, clientSecret, 'urn:ietf:wg:oauth:2.0:oob');
+  oauth2.setCredentials({ refresh_token: refreshToken });
+
+  return google.searchconsole({ version: 'v1', auth: oauth2 });
 }
