@@ -23,9 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     ogImageAlt: 'China Tours, CTS Tours',
     keywords: [
-      'China tours',
+      'China tour packages',
+      'China holiday packages',
+      'China travel packages',
       'China tours from New Zealand',
-      'China travel',
+      'China tours',
       'Signature tours',
       'Discovery tours',
       'Stopover tours',

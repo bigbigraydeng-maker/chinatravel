@@ -10,17 +10,21 @@ export const metadata: Metadata = {
 };
 
 const TARGET_KEYWORDS = [
+  // Phase 2 核心目标词（KD 4-9，立即可攻）
   'china tours from new zealand',
-  'china tours',
   'china tour packages',
-  'beijing tour',
-  'shanghai tour',
-  'chengdu panda tour',
-  'guilin tour',
-  'great wall tour',
-  'terracotta warriors tour',
-  'china travel guide',
-  'china visa new zealand',
+  'china holiday packages',
+  'china travel packages',
+  // Phase 3 攻坚词
+  'china tours',
+  'great wall of china tour',
+  'beijing holiday packages',
+  // 现有排名词（监控）
+  'china travel',
+  'china travel service',
+  // 长期目标
+  'luxury china tours',
+  'chengdu panda sanctuary',
 ];
 
 function positionColor(pos: number): string {

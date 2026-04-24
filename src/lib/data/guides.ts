@@ -1633,11 +1633,11 @@ export const greatWallGuide: DestinationGuide = {
   slug: 'great-wall-travel-guide',
   destinationName: 'Great Wall of China',
   parentDestination: 'beijing',
-  metaTitle: 'Great Wall Travel Guide | UNESCO World Heritage | CTS Tours',
-  metaDescription: 'Great Wall travel guide: Badaling, Mutianyu, sections near Beijing. Engineering marvel & cultural icon.',
-  keywords: ['Great Wall', 'Badaling', 'Mutianyu', 'Ming Dynasty', 'engineering marvel'],
-  h1: 'Great Wall of China: Engineering Marvel & Cultural Icon',
-  heroSubtitle: '21,000km of Ancient Defensive Fortification',
+  metaTitle: 'Great Wall of China Tour | Beijing Day Trips & Guided Tours | CTS Tours',
+  metaDescription: 'Plan your Great Wall of China tour from Beijing. Compare Badaling, Mutianyu & Simatai sections. Expert guided tours, practical tips, and Great Wall packages for New Zealand travellers.',
+  keywords: ['Great Wall of China tour', 'Great Wall tour', 'Badaling tour', 'Mutianyu tour', 'Beijing day trips', 'Great Wall guided tour', 'Ming Dynasty wall'],
+  h1: 'Great Wall of China Tour: Complete Visitor Guide',
+  heroSubtitle: 'Guided Tours from Beijing · Badaling, Mutianyu & Simatai Sections Compared',
   heroImage: `${TI}/great-wall-mist.jpg`,
   heroImageClassName: 'object-[center_40%]',
   introText: [
@@ -1694,12 +1694,20 @@ export const greatWallGuide: DestinationGuide = {
   },
   faqs: [
     {
-      question: 'Which wall section should I visit?',
-      answer: 'Badaling for first-time visitors and accessibility. Mutianyu for fewer crowds and forest beauty. Simatai/Jinshanling for serious hikers seeking authentic experience.'
+      question: 'Which Great Wall of China tour section should I visit?',
+      answer: 'Badaling is best for first-time visitors — fully restored, accessible, and 43km from central Beijing. Mutianyu offers fewer crowds and forested scenery (74km from city). Simatai and Jinshanling suit serious hikers seeking unrestored, dramatic sections. Most CTS guided tours visit Mutianyu or Badaling as day trips from Beijing.'
     },
     {
-      question: 'Can I walk the entire Great Wall?',
-      answer: 'No; sections are disconnected across vast distances. Visitors explore individual sections (2-6 hours typically). Long-distance trekking exists on select restored and unrestored sections.'
+      question: 'How long does a Great Wall of China tour take from Beijing?',
+      answer: 'A typical guided Great Wall tour takes 6–8 hours including travel time from Beijing. Badaling and Mutianyu are 90 minutes each way by road. Most visitors spend 2–3 hours on the wall itself. CTS includes Great Wall visits in multi-day Beijing itineraries as a highlight day trip.'
+    },
+    {
+      question: 'Can I book a guided Great Wall tour from New Zealand?',
+      answer: 'Yes. CTS Tours (based in Auckland) includes Great Wall guided tours in our Beijing tour packages. Our local Beijing guides are English-speaking, expert, and included in all tour prices — no booking hassle on arrival. Contact our Auckland team to add a Great Wall day trip to your China itinerary.'
+    },
+    {
+      question: 'What is the best time to visit the Great Wall of China?',
+      answer: 'Spring (April–May) and autumn (September–October) offer mild weather, clear skies, and vivid colours. Summer is warm but can be hazy; winter is cold but crowd-free with dramatic snow-dusted scenery. Avoid Chinese public holidays (National Day in October, Labour Day in May) when crowds peak significantly.'
     }
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],

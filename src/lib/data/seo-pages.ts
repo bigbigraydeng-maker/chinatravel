@@ -23,33 +23,33 @@ export interface CityHubMeta extends SeoPageMeta {
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
-  title: 'China Tours from New Zealand | Signature, Discovery & Stopover | CTS Tours',
+  title: 'China Tour Packages & Holiday Deals from New Zealand | CTS Tours',
   description:
-    'China tours from New Zealand by CTS—TAANZ member, IATA-accredited China specialists. Signature luxury, Discovery value, and Stopover packages with Auckland support and direct China operations since 1928.',
-  h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Signature luxury, Discovery value, Stopover adventures',
+    'Explore our China tour packages and holiday deals for New Zealand travellers. Signature luxury, Discovery value & Stopover breaks. TAANZ-member, IATA-accredited China travel specialists. Transparent NZD pricing.',
+  h1: 'China Tour Packages from New Zealand',
+  heroSubtitle: 'Signature luxury · Discovery value · Stopover breaks. Tailored China holiday packages for Kiwis.',
   introText:
-    'CTS Tours is New Zealand’s China travel specialist. We are a TAANZ member and IATA-accredited. Our Auckland consultants work with China Travel Service directly.\n\nYour route, hotels, and guides are chosen by people who plan and operate China trips every week. Browse more than fifty curated itineraries.\n\nWe offer Signature (boutique four- and five-star hotels, small groups), Discovery (great-value escorted loops), and Stopover city breaks. Read our China visa guide for New Zealand passport holders, then explore the collections below.',
+    'CTS Tours is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency with direct China operations since 1928. Our Auckland consultants design and operate every China holiday package in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made China travel package.',
   faqs: [
     {
-      question: 'What is the difference between CTS China Signature, Discovery, and Stopover collections?',
-      answer: 'Signature tours offer premium accommodations (4-5 star), small groups (max 16), locally-led experiences, and deep itinerary immersion designed by our China specialists. Discovery tours provide reliable, well-organised journeys with 3-4 star hotels at excellent value for first-time visitors. Stopover packages are short 2-4 day city breaks perfect for transit passengers or testing a destination before a full tour.'
+      question: 'What China tour packages does CTS offer?',
+      answer: 'CTS offers three collections of China tour packages: Signature (premium 4–5 star hotels, small groups up to 16, bespoke itineraries), Discovery (great-value guided packages with comfortable 3–4 star hotels, ideal for first-time visitors), and Stopover (short 2–4 day city breaks). All packages include international flights from New Zealand, accommodation, guides, and most meals.'
     },
     {
-      question: 'What is included in CTS China tours?',
-      answer: 'Inclusions vary by tour but typically include: return international airfares from Auckland/New Zealand, domestic flights and train travel in China (often high-speed first class), hotel accommodation, English-speaking tour guides, all entrance fees listed in the itinerary, and meals as specified. Exclusions typically include travel insurance, personal expenses, and tips. New Zealand ordinary passport holders can usually enter China visa-free for tourism for up to 30 days under current policy (check our visa-free guide for dates and conditions); any traditional visa fees apply only if your trip needs one.'
+      question: 'Do you offer China holiday packages from New Zealand?',
+      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland, Wellington, or Christchurch. Our Auckland-based consultants handle everything — flights, hotels, China guides, domestic transport, and visa-free entry advice for NZ passport holders.'
     },
     {
-      question: 'How long are CTS China tours?',
-      answer: 'Our China tours range from 2-4 day stopovers to comprehensive 17+ day Silk Road journeys. Most Signature and Discovery tours are 5-10 days, allowing deep exploration without excessive travel fatigue. See individual tour details for specific durations.'
+      question: 'What is included in a CTS China travel package?',
+      answer: 'Inclusions vary by package but typically cover: return international flights from New Zealand, domestic flights or high-speed trains in China, hotel accommodation (3–5 star depending on tier), English-speaking local guides, entrance fees listed in the itinerary, and meals as specified. Exclusions (travel insurance, personal expenses, tips) are clearly listed on each tour page.'
     },
     {
-      question: 'When is the best time to visit China?',
-      answer: 'Spring (March-May) and autumn (September-November) offer mild weather and clear skies, making them ideal seasons for sightseeing. However, the best time depends on your specific destinations—northern cities peak in spring/autumn, southern regions suit winter escapes, and some areas (like Yunnan) are pleasant year-round. See our detailed guide for destination-specific recommendations.'
+      question: 'How long are your China holiday packages?',
+      answer: 'Our China packages range from 2–4 day Stopover city breaks to 17+ day Silk Road journeys. Most popular Signature and Discovery packages run 8–12 days, covering 2–3 cities with an immersive but comfortable pace. Custom-length China travel packages are also available — contact us for a tailored quote.'
     },
     {
-      question: 'Do I need a China visa?',
-      answer: 'Great news! New Zealand citizens can now enter China visa-free for 30 days (valid until 31 December 2026). No visa application needed—just bring your valid passport, return flight proof, and hotel booking. This makes booking and travelling with CTS faster and easier than ever!'
+      question: 'When is the best time to book a China tour package?',
+      answer: 'We recommend booking 2–3 months ahead for spring (March–May) and autumn (September–November) travel — China\'s peak seasons with ideal weather. For Chinese New Year or Golden Week (October) travel, book 4–6 months ahead as these periods fill quickly. Contact our Auckland team anytime for availability.'
     }
   ]
 };
@@ -326,33 +326,33 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand | Visa-Free Entry | CTS Tours',
-  description: 'China tours tailored for New Zealand travellers. Direct flights from Auckland, visa-free entry guidance for NZ passports, NZD pricing, local Aotearoa-based support since 1928.',
+  title: 'China Tours from New Zealand | Expert China Travel Specialists | CTS Tours',
+  description: 'China tours from New Zealand designed by NZ-based China specialists. Departing Auckland, Wellington & Christchurch. Visa-free entry for NZ passports. NZD pricing. Book with CTS Tours — New Zealand\'s China travel experts since 1928.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Tailored for Kiwis. Direct flights from Auckland. Visa-free entry support for NZ passports. Local NZ support.',
+  heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
   introText:
-    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry).\n\n' +
+    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). Flights depart from Auckland (AKL), Wellington (WLG), and Christchurch (CHC), with connecting domestic legs arranged at no extra cost.\n\n' +
     'Whether you want a first-time highlights loop (Beijing, Xi\'an, Shanghai), a deeper regional journey (Yunnan, the Silk Road, or the Yangtze), or a short stopover bolted onto business travel, our Auckland-based consultants quote in NZD, explain what is included, and stay with you from enquiry to touchdown back home.',
   faqs: [
     {
-      question: 'Do New Zealand citizens need a China visa?',
-      answer: 'For most leisure trips, no. New Zealand ordinary passport holders can enter mainland China visa-free for up to 30 days for tourism and several other purposes, under a policy currently published to run until 31 December 2026. You still need a valid passport, onward or return travel, and suitable accommodation or tour documentation at immigration. Stays over 30 days, work, study, or other special cases may still need a traditional visa — see our NZ entry guide for details. Rules can change; confirm before you travel.'
+      question: 'How do I book a China tour from New Zealand?',
+      answer: 'Booking is simple: browse our China tour packages online, then contact our Auckland-based consultants via phone or enquiry form. We quote in NZD, explain inclusions, and handle all bookings — flights, hotels, guides, and visas where required. Most bookings are confirmed within 48 hours.'
     },
     {
-      question: 'What is the flight duration from New Zealand to China?',
-      answer: 'Direct flights from Auckland to Shanghai or Beijing take 12-13 hours. All CTS tours include return international airfares from your nearest New Zealand airport. We arrange the most convenient routing, and most international flights depart/arrive Auckland (AKL).'
+      question: 'Do New Zealand citizens need a visa for China?',
+      answer: 'No visa required for most NZ travellers. New Zealand ordinary passport holders can enter mainland China visa-free for up to 30 days for tourism, currently valid until 31 December 2026. Bring your valid passport, return flight confirmation, and accommodation details. See our full NZ China visa guide for conditions and updates.'
     },
     {
-      question: 'Do CTS prices include international airfares?',
-      answer: 'Yes! All our published prices (e.g., "From NZD $4,850") include return international airfares from New Zealand, domestic flights/trains in China, accommodation, meals, guide services, and entrance fees as detailed in each tour itinerary. Exclusions (travel insurance, tips, and any visa fees only if your itinerary needs a traditional visa) are clearly listed on each tour.'
+      question: 'What flights go from New Zealand to China?',
+      answer: 'Direct flights from Auckland (AKL) to Shanghai (PVG) take approximately 12–13 hours. Flights to Beijing (PEK) are also available, sometimes with a short connection. All CTS China tour packages include return international airfares from your nearest New Zealand airport — Auckland, Wellington, or Christchurch.'
     },
     {
-      question: 'What is the time difference between New Zealand and China?',
-      answer: 'China Standard Time (CST) is 6 hours behind New Zealand Standard Time (NZST) in winter, or 4 hours behind during NZ daylight saving. Jet lag is typically minimal given the relatively short flight and time difference. CTS provides jet lag advice and allows a day of rest upon arrival in China.'
+      question: 'How long is the flight from Auckland to Beijing or Shanghai?',
+      answer: 'Auckland to Shanghai is approximately 12–13 hours direct. Auckland to Beijing is similar, around 12–14 hours depending on routing. CTS arranges the most convenient connections so your total travel time is minimised.'
     },
     {
-      question: 'Can I pay in New Zealand dollars?',
-      answer: 'Yes. All tour prices are quoted in NZD. You pay CTS (based in Aotearoa) in NZD. We handle currency conversion for payments to hotels, guides, and operators in China. This simplifies budgeting and avoids hidden exchange rate fluctuations.'
+      question: 'Can I pay for China tours in New Zealand dollars?',
+      answer: 'Yes. All CTS tour prices are quoted and paid in NZD. There are no hidden exchange rate markups — what you see is what you pay. Our Auckland team handles all currency conversion for in-China costs including hotels, guides, and domestic transport.'
     }
   ]
 };
