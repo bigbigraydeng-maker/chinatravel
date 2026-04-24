@@ -1451,8 +1451,8 @@ export const kunmingGuide: DestinationGuide = {
   keywords: ['Kunming', 'Stone Forest', 'eternal spring', 'Yunnan gateway', 'temples'],
   h1: 'Kunming: Yunnan\'s Gateway of Eternal Spring',
   heroSubtitle: 'Year-Round Mild Climate and Cultural Hub',
-  heroImage: `${TI}/yunnan-village.jpg`,
-  heroImageClassName: 'object-[center_35%]',
+  heroImage: `${TI}/kunming-dianchi-lake.jpg`,
+  heroImageClassName: 'object-[center_40%]',
   introText: [
     'Kunming, capital of Yunnan Province (population 4 million), earns the nickname "City of Eternal Spring" due to its consistently mild climate. The city functions as primary gateway to Yunnan for most international visitors, hosting international airport and serving as transport hub for rail and bus networks. Despite its modern development and urban scale, Kunming retains cultural character: temples, colonial-era architecture, vibrant markets, and proximity to natural attractions.',
     'The city\'s location at 1,891 metres elevation creates pleasant year-round weather. Winters rarely freeze; summers remain comfortable compared to coastal cities. This climatic stability, combined with agricultural abundance (Yunnan\'s location on Tropic of Cancer supports diverse crops), historically attracted merchants, pilgrims, and scholars to this region.',
@@ -2027,8 +2027,8 @@ export const hangzhouGuide: DestinationGuide = {
   keywords: ['Hangzhou', 'West Lake', 'silk', 'tea', 'gardens'],
   h1: 'Hangzhou: Silk Capital & West Lake Paradise',
   heroSubtitle: 'Where History & Natural Beauty Merge',
-  heroImage: `${TI}/wuzhen-canal.jpg`,
-  heroImageClassName: 'object-[center_40%]',
+  heroImage: `${TI}/hangzhou-west-lake.jpg`,
+  heroImageClassName: 'object-[center_50%]',
   introText: [
     'Hangzhou, located 180km south of Shanghai, served as capital of the Southern Song Dynasty (1127-1279). The city\'s reputation for beauty—particularly West Lake—inspired poets, painters, and scholars across centuries. The saying "Above there is paradise (heaven), below there is Hangzhou" reflects the city\'s legendary aesthetic charm. Modern Hangzhou combines heritage preservation with contemporary development, evident in its role as Chinese internet technology centre (Alibaba headquarters).',
     'West Lake (Hangzhou), a UNESCO World Heritage site, represents the primary attraction. The scenic lake—surrounded by temples, gardens, causeways, and misty mountains—creates one of China\'s most photographed landscapes. The "Ten Views of West Lake" define seasonal visiting patterns and classic beauty standards. Tea culture pervades Hangzhou; Longjing (Dragon Well) tea, grown on surrounding hillsides, represents premium Chinese tea.',
