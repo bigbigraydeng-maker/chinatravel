@@ -27,6 +27,13 @@ export async function syncGscData(targetDate?: string) {
       dimensions: ['query', 'page'],
       rowLimit: 1000,
       dataState: 'all',
+      dimensionFilterGroups: [{
+        filters: [{
+          dimension: 'country',
+          operator: 'equals',
+          expression: 'nzl',
+        }],
+      }],
     },
   });
 
