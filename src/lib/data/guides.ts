@@ -877,7 +877,7 @@ export const guilinGuide: DestinationGuide = {
     }
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
-  relatedGuideSlugs: ['yangshuo-travel-guide', 'li-river-cruise-guide'],
+  relatedGuideSlugs: ['yangshuo-travel-guide', 'li-river-travel-guide'],
   galleryImages: [
     `${TI}/guilin-river-valley.jpg`,
   ],
@@ -1935,7 +1935,7 @@ export const yangshuoGuide: DestinationGuide = {
     }
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
-  relatedGuideSlugs: ['guilin-travel-guide', 'li-river-cruise-guide'],
+  relatedGuideSlugs: ['guilin-travel-guide', 'li-river-travel-guide'],
   galleryImages: [
     `${TI}/guilin-river-valley.jpg`,
   ],
@@ -1945,7 +1945,7 @@ export const yangshuoGuide: DestinationGuide = {
 
 export const liRiverCruiseGuide: DestinationGuide = {
   id: 'guide-li-river-cruise',
-  slug: 'li-river-cruise-guide',
+  slug: 'li-river-travel-guide',
   destinationName: 'Li River Cruise',
   parentDestination: 'guilin',
   metaTitle: 'Li River Cruise Travel Guide | Scenic Journey | CTS Tours',
@@ -2458,7 +2458,7 @@ export function getGuidesByRegion(region: 'north' | 'central' | 'south' | 'south
   const regionMap: Record<string, string[]> = {
     north: ['beijing', 'great-wall', 'forbidden-city'],
     central: ['xian', 'terracotta-warriors', 'chongqing', 'leshan-buddha'],
-    south: ['guilin', 'yangshuo', 'li-river-cruise', 'zhangjiajie', 'tianmen-mountain'],
+    south: ['guilin', 'yangshuo', 'li-river-travel-guide', 'zhangjiajie', 'tianmen-mountain'],
     southwest: ['chengdu', 'yunnan', 'lijiang', 'dali', 'kunming', 'shangri-la'],
     east: ['shanghai', 'hangzhou', 'suzhou']
   };
