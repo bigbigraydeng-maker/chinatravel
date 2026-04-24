@@ -113,6 +113,7 @@ export default function FireFuzzCampaignPage() {
         departureDates={[FIRE_FUZZ_CONFIG.heroDepartureDate]}
         primaryCtaLabel="Enquire about this tour"
         secondaryCtaLabel="View day-by-day itinerary"
+        singleSupplement={tour.singleSupplement}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />

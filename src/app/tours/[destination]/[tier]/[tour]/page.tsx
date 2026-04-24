@@ -174,7 +174,7 @@ export default function TourPage({ params }: TourPageProps) {
       </nav>
 
       {/* Tour Hero */}
-      <TourHero 
+      <TourHero
         title={tour.title}
         shortDescription={tour.shortDescription}
         duration={tour.duration}
@@ -185,6 +185,7 @@ export default function TourPage({ params }: TourPageProps) {
         departureDates={tour.departureDates}
         primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
+        singleSupplement={tour.singleSupplement}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />

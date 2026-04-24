@@ -19,6 +19,8 @@ interface TourHeroProps {
   primaryCtaLabel?: string;
   /** Override secondary hero CTA label. */
   secondaryCtaLabel?: string;
+  /** Single room supplement price, shown below the price row */
+  singleSupplement?: string;
 }
 
 export default function TourHero({
@@ -33,6 +35,7 @@ export default function TourHero({
   showAvailability = true,
   primaryCtaLabel = 'Enquire Now',
   secondaryCtaLabel = 'View Itinerary',
+  singleSupplement,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -121,7 +124,7 @@ export default function TourHero({
           )}
 
           {/* Quick Info */}
-          <div className="flex flex-wrap gap-6 mb-8">
+          <div className="flex flex-wrap gap-6 mb-2">
             <div className="flex items-center gap-2 text-white">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -135,6 +138,11 @@ export default function TourHero({
               <span className="text-lg">{price}</span>
             </div>
           </div>
+          {singleSupplement && (
+            <p className="text-sm text-white/70 mb-8">
+              Single supplement: {singleSupplement}
+            </p>
+          )}
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
