@@ -298,7 +298,7 @@ export const tours: Tour[] = [
       'high-speed train',
     ],
     departureDates: ['25 August', '14 October'],
-    // Single room supplement: NZD $1,435
+    singleSupplement: 'NZD $1,435',
   },
   {
     id: 'tour-cn-sig-2',
@@ -385,7 +385,7 @@ export const tours: Tour[] = [
       'ancient culture',
     ],
     departureDates: ['13 August', '15 October'],
-    // Single room supplement: NZD $2,410
+    singleSupplement: 'NZD $2,410',
   },
   {
     id: 'tour-cn-sig-3',
@@ -486,7 +486,7 @@ export const tours: Tour[] = [
       'Suzhou gardens',
     ],
     departureDates: ['14 October'],
-    // Single room supplement: NZD $2,555
+    singleSupplement: 'NZD $2,555',
   },
   {
     id: 'tour-cn-sig-5',
@@ -567,6 +567,7 @@ export const tours: Tour[] = [
       'Huangpu River cruise',
     ],
     departureDates: ['20 August', '25 October'],
+    singleSupplement: 'NZD $1,215',
   },
   // China Discovery Tours
   {
@@ -818,7 +819,7 @@ export const tours: Tour[] = [
       'Puyuan',
     ],
     departureDates: ['3 September'],
-    // Single room supplement: NZD $695
+    singleSupplement: 'NZD $695',
   },
   {
     id: 'tour-cn-dis-4',
@@ -890,6 +891,7 @@ export const tours: Tour[] = [
     /** Same order as `/campaigns/october-2026/shanghai-surroundings` (hero “next departure” = first). */
     departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder],
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
+    singleSupplement: 'NZD $400',
     faqs: [
       {
         question: 'Does this tour visit Beijing or the Terracotta Warriors?',
@@ -1002,7 +1004,7 @@ export const tours: Tour[] = [
       'Lijiang',
     ],
     departureDates: ['10 September'],
-    // Single room supplement: NZD $340
+    singleSupplement: 'NZD $340',
   },
   // China Discovery — Fire & Fuzz (Chongqing + Chengdu)
   {
