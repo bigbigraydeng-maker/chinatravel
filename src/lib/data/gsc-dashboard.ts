@@ -22,7 +22,7 @@ export async function getTopKeywords(limit = 20) {
     .limit(limit);
 
   if (error) throw error;
-  return data;
+  return data ?? [];
 }
 
 export async function getKeywordTrend(query: string, days = 30) {
@@ -39,5 +39,5 @@ export async function getKeywordTrend(query: string, days = 30) {
     .order('date', { ascending: true });
 
   if (error) throw error;
-  return data;
+  return data ?? [];
 }
