@@ -74,7 +74,7 @@ export const beijingGuide: DestinationGuide = {
   slug: 'beijing-travel-guide',
   destinationName: 'Beijing',
   metaTitle: 'Beijing Travel Guide | China\'s Imperial Capital | CTS',
-  metaDescription: 'Explore Beijing\'s iconic landmarks: Great Wall, Forbidden City, Temple of Heaven. Expert travel guide for New Zealand visitors.',
+  metaDescription: 'Discover Beijing\'s imperial landmarks: Great Wall, Forbidden City, Temple of Heaven & hidden hutong gems. Expert travel guide for New Zealand visitors to China\'s capital.',
   keywords: ['Beijing travel', 'Forbidden City', 'Great Wall', 'Chinese culture', 'Beijing attractions'],
   h1: 'Beijing Travel Guide: Discover China\'s Imperial Capital',
   heroSubtitle: 'From Ancient Palaces to Modern Metropolis',
@@ -249,9 +249,12 @@ export const xianGuide: DestinationGuide = {
   heroImage: `${TI}/xian-terracotta.jpg`,
   heroImageClassName: 'object-[center_25%]',
   introText: [
-    'Xi\'an, once capital of 13 Chinese dynasties including the Qin, Tang, and Ming, stands as one of the world\'s oldest continuously inhabited cities and a cornerstone of Chinese civilisation. For over 2,000 years, this strategic location served as the eastern terminus of the Silk Road, facilitating unprecedented cultural and commercial exchange between East and West. The city\'s name itself—meaning "Western Peace"—reflects its historical significance as a cosmopolitan centre where Buddhist, Islamic, and Christian traditions coexisted alongside Confucian and Taoist thought.',
-    'Xi\'an\'s most iconic attraction, the Terracotta Army, remains one of archaeology\'s greatest discoveries. Unearthed in 1974 by local farmers, this astonishing assemblage of 8,000+ life-sized terracotta soldiers guards Emperor Qin Shi Huang\'s mausoleum, representing humanity\'s dedication to the afterlife. Beyond this celebrated site, Xi\'an reveals layers of history through its fully intact medieval city walls—among the world\'s best-preserved—temples housing Buddhist reliquaries, and vibrant Muslim Quarter bazaars.',
-    'For New Zealand travellers, Xi\'an complements Beijing perfectly within an itinerary, offering distinct historical eras and cultural flavours. The city\'s transport infrastructure—modern airport, high-speed rail connections to Beijing and Shanghai, extensive metro system—ensures seamless integration into multi-destination tours. Whether exploring 2,000-year-old devotional caves, walking moonlit city walls, or sampling authentic Shaanxi cuisine, Xi\'an delivers profound connections to ancient China.'
+    'Xi\'an was the capital of thirteen Chinese dynasties, including the Qin, Tang, and Ming. It is one of the world\'s oldest cities that people still live in today.',
+    'For more than two thousand years, Xi\'an sat at the eastern end of the Silk Road. Traders and faiths met here. The name means "Western Peace."',
+    'The Terracotta Army is Xi\'an\'s headline sight. Farmers found the warriors in 1974. Thousands of life-sized figures still guard Emperor Qin\'s tomb.',
+    'You can also walk Ming-era city walls, visit Buddhist pagodas, and browse the Muslim Quarter for food and crafts.',
+    'Flights and high-speed trains link Xi\'an to Beijing and Shanghai. The metro is easy to use in the centre.',
+    'For New Zealand visitors, Xi\'an pairs well with Beijing on one trip. Allow time for noodles, bread dishes, and night views from the walls.'
   ],
   sections: [
     {
@@ -397,7 +400,7 @@ export const xianGuide: DestinationGuide = {
     galleryItem(`${TI}/xian-terracotta-2.jpg`, 'object-top'),
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -416,9 +419,11 @@ export const shanghaiGuide: DestinationGuide = {
   heroImage: `${TI}/shanghai-night-blue.jpg`,
   heroImageClassName: 'object-[center_35%]',
   introText: [
-    'Shanghai, China\'s largest city and global financial centre, represents the nation\'s modernisation at warp speed. Rising from a modest fishing village to a treaty port in the 19th century, Shanghai became a hotbed of cultural innovation, revolutionary thought, and economic ambition. Today, this metropolis of 24 million inhabitants showcases futuristic architecture alongside colonial heritage, world-class museums alongside traditional temples, and international cuisine alongside centuries-old street food traditions.',
-    'The Bund—Shanghai\'s iconic waterfront—presents a striking architectural timeline: 19th-century neoclassical trading houses contrast sharply with 21st-century supertall towers across the Huangpu River. This juxtaposition encapsulates Shanghai\'s essence: a bridge between historical trading empires and contemporary digital revolution. For New Zealand visitors, Shanghai functions as both a tourist destination in its own right and a convenient hub for regional connections via Pudong International Airport.',
-    'The city pulses with contemporary energy yet preserves pockets of historical authenticity. The Yu Garden complex encapsulates centuries of Chinese aesthetic philosophy within compressed spaces; the French Concession neighbourhood preserves colonial-era architecture alongside trendy cafes and galleries; and newly-renovated water towns (Zhujiajiao, Tongli) on the city\'s periphery offer glimpses of pre-industrial Shanghai. A well-planned itinerary balances iconic attractions with cultural exploration and culinary adventures.'
+    'Shanghai is China\'s largest city and a global finance hub. About twenty-four million people live here. Skyscrapers sit next to historic streets.',
+    'The city grew from a small port to a 19th-century treaty port. Today you see art deco banks on the Bund and towers in Pudong across the river.',
+    'Pudong Airport is a main gateway for New Zealand travellers. Shanghai works well as a stop or as a base for side trips.',
+    'Yu Garden shows classic Chinese garden design. The French Concession has cafés and tree-lined walks.',
+    'Water towns like Zhujiajiao are a short trip away. Plan a mix of icons, museums, and local food.'
   ],
   sections: [
     {
@@ -562,7 +567,7 @@ export const shanghaiGuide: DestinationGuide = {
     `${TI}/shanghai-skyline.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -581,9 +586,11 @@ export const chengduGuide: DestinationGuide = {
   heroImage: `${TI}/chengdu-old-town.jpg`,
   heroImageClassName: 'object-[center_32%]',
   introText: [
-    'Chengdu, capital of Sichuan Province in central China, embodies the nation\'s more relaxed, culturally distinct interior. Known colloquially as the "Land of Abundance," this city of 16 million residents maintains a distinctive identity shaped by geography (surrounded by fertile plains), history (independent kingdom during several dynasties), and culinary traditions (Sichuan peppercorn heat defines regional cuisine). The city consistently ranks among China\'s most livable destinations, with residents prioritising leisure, hospitality, and quality of life.',
-    'The primary draw for international visitors—the Giant Panda Breeding Research Base—houses the world\'s largest population of captive giant pandas outside zoos. Visitors encounter these endangered species in naturalistic habitats, observe research activities, and understand conservation efforts. Beyond pandas, Chengdu reveals sophisticated Buddhist temples, classical gardens, and an emerging contemporary arts scene. The city\'s teahouse culture, where locals spend entire afternoons engaging in chess, mahjong, and conversation, reflects deeply rooted social traditions.',
-    'Chengdu functions excellently as a multi-day destination or hub for regional exploration. High-speed rail connections to Beijing (12 hours), Shanghai (14 hours), and Guilin (9 hours) integrate it into larger itineraries. The nearby Emei Mountain and Mount Leshan (both UNESCO sites) offer day-trip mountain experiences. For New Zealand visitors seeking authentic China beyond major tourist circuits, Chengdu delivers cultural immersion with genuine hospitality.'
+    'Chengdu is the capital of Sichuan Province. Roughly sixteen million people live here. Locals are known for teahouses, slow meals, and spicy food.',
+    'The Giant Panda Breeding Research Base is the top draw. You can see pandas in large outdoor enclosures and learn how breeding helps the species.',
+    'Temples, old lanes, and new art districts round out the city. Teahouses are social hubs for chess, mahjong, and jasmine tea.',
+    'High-speed trains run to Beijing, Shanghai, and Guilin. Leshan Giant Buddha and Mount Emei are popular day trips.',
+    'If you want food, culture, and pandas in one place, Chengdu is a strong choice for New Zealand visitors.'
   ],
   sections: [
     {
@@ -718,7 +725,7 @@ export const chengduGuide: DestinationGuide = {
     galleryItem(`${TI}/china-pagoda-night.jpg`, 'object-[center_38%]'),
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -737,9 +744,11 @@ export const guilinGuide: DestinationGuide = {
   heroImage: `${TI}/guilin-river-valley.jpg`,
   heroImageClassName: 'object-[center_35%]',
   introText: [
-    'Guilin, located in Guangxi Zhuang Autonomous Region in southern China, represents one of the world\'s most visually distinctive regions. The karst limestone mountain formations rising dramatically from the Li River have inspired painters, poets, and philosophers for centuries. These otherworldly landscapes—featuring distinctive peak shapes, hidden caves, and emerald waterways—influenced classical Chinese landscape painting aesthetics. The region\'s natural beauty transcends merely scenic; it embodies philosophical principles connecting humans to nature\'s sublime forces.',
-    'The iconic Li River journey from Guilin to Yangshuo comprises one of China\'s essential travel experiences. This 83-kilometre cruise through karst mountains, past rural villages and bamboo groves, showcases landscapes featured in classical artwork. Traditional cormorant fishing—an ancient technique using trained birds for nocturnal fishing—persists in modified form for tourism, though historical significance remains profound.',
-    'Guilin functions as both destination and gateway for exploration of southern China. The region\'s accessibility (airport connections to Beijing, Shanghai, Chengdu) integrates seamlessly into multi-destination itineraries. Beyond the Li River\'s photogenic appeal, the region offers cave exploration, hiking opportunities, and authentic experiences in rural villages. For New Zealand visitors seeking quintessential "postcard China," Guilin delivers ineffably.'
+    'Guilin lies in Guangxi in southern China. Limestone peaks rise straight from the Li River. The scenery has inspired Chinese art for centuries.',
+    'The Li River cruise to Yangshuo is the classic experience. You pass peaks, villages, and bamboo for about eighty-three kilometres.',
+    'Cormorant fishing shows still run for visitors. They nod to an older river culture.',
+    'Flights connect Guilin to Beijing, Shanghai, and Chengdu. You can add caves, cycling, or village walks.',
+    'For New Zealand travellers who want postcard China, Guilin and Yangshuo are hard to beat.'
   ],
   sections: [
     {
@@ -873,7 +882,7 @@ export const guilinGuide: DestinationGuide = {
     `${TI}/guilin-river-valley.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -892,9 +901,11 @@ export const zhangjiajieGuide: DestinationGuide = {
   heroImage: `${TI}/zhangjiajie.jpg`,
   heroImageClassName: 'object-[center_30%]',
   introText: [
-    'Zhangjiajie, located in Hunan Province in central China, presents one of the world\'s most dramatic mountain landscapes. The region gained international prominence when director James Cameron scouted Zhangjiajie National Forest Park as inspiration for Avatar\'s alien landscapes. The distinctive sandstone pillars—some reaching 1,000+ metres—rise vertically from mist-shrouded valleys, creating an otherworldly atmosphere that defies ordinary photography.',
-    'The region\'s primary attraction, Zhangjiajie National Forest Park (Wulingyuan UNESCO World Heritage Site), encompasses 3,100 square kilometres of protected landscape. The famous glass walkway—constructed on a cliff face 1,430 metres high—offers vertigo-inducing perspectives across the mountain wilderness. Beyond adrenaline-fuelled attractions, the park rewards hikers with profound connections to landscape, mist-draped temples, and solitary mountain encounters.',
-    'Zhangjiajie functions as a dedicated destination requiring 2-3 days for meaningful exploration, or as a stopover within longer itineraries. The city (population 1.5 million) integrates well with high-speed rail networks connecting to Beijing (11 hours), Shanghai (12 hours), and Chengdu (6 hours). For New Zealand travellers seeking adventure combined with natural grandeur, Zhangjiajie represents unmissable experiences.'
+    'Zhangjiajie is in Hunan Province in central China. Sandstone pillars rise more than a thousand metres in places. Mist often fills the valleys.',
+    'James Cameron used the national park as a visual reference for Avatar. Expect crowds at famous viewpoints and on the glass skywalk.',
+    'Wulingyuan is a UNESCO World Heritage site. Cable cars, elevators, and trails help you move between peaks.',
+    'Allow at least two or three full days for the forest park and Tianmen Mountain. Trains link the city to Beijing, Shanghai, and Chengdu.',
+    'For New Zealand visitors who love heights and hiking, Zhangjiajie is a standout nature stop.'
   ],
   sections: [
     {
@@ -1026,7 +1037,7 @@ export const zhangjiajieGuide: DestinationGuide = {
   relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'zhangjiajie-avatar-mountains-guide'],
   galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -1045,9 +1056,12 @@ export const yunnanGuide: DestinationGuide = {
   heroImage: `${TI}/yunnan-rice-terraces.jpg`,
   heroImageClassName: 'object-[center_35%]',
   introText: [
-    'Yunnan Province in southwestern China represents the nation\'s most ethnically diverse and visually stunning region. Home to 25 recognised ethnic minorities (more than any other Chinese province), Yunnan\'s landscapes range from tropical jungles to snow-capped mountains, rice terraces to pristine lakes. This geographical and cultural diversity has attracted explorers, anthropologists, and adventure travellers for centuries. The province\'s name itself—"South of the Clouds"—evokes the mysterious, mist-shrouded topography.',
-    'Kunming, the provincial capital (4 million residents), serves as the primary gateway. The city\'s "City of Eternal Spring" nickname reflects its mild year-round climate. However, Yunnan\'s true character emerges in smaller towns and villages: the cobblestone streets and white-washed architecture of Dali, the mist-shrouded hills and traditional cultures around Lijiang and Shangri-La, and the agricultural communities terracing mountains across generations.',
-    'For New Zealand travellers, Yunnan rewards extended exploration. The diversity permits multiple-week itineraries exploring different regions, ethnic communities, and landscapes. Shorter visits concentrate on Kunming, Dali, and Lijiang (5-7 days); more comprehensive tours extend to Shangri-La, Meili Snow Mountain, and remote villages. The region\'s accessibility (direct flights to Bangkok, good rail connections to coastal cities) makes Yunnan an ideal primary focus or multi-week regional hub.'
+    'Yunnan is in southwest China. Twenty-five ethnic groups are officially recognised here. Landscapes range from steamy valleys to snowy peaks.',
+    'The province name means "South of the Clouds." Rice terraces, stone forests, and old towns sit within a few hours of each other.',
+    'Kunming is the capital. Locals call it the "City of Eternal Spring" for its mild weather.',
+    'Dali, Lijiang, and Shangri-La are the best-known stops. Each has its own culture, food, and pace.',
+    'You can fly into Kunming and join trains or coaches between towns. One week covers highlights; two weeks allow villages and treks.',
+    'For New Zealand travellers, Yunnan suits slow travel, photography, and food-focused trips.'
   ],
   sections: [
     {
@@ -1191,7 +1205,7 @@ export const yunnanGuide: DestinationGuide = {
     `${TI}/shangri-la-monastery.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
@@ -1211,9 +1225,11 @@ export const lijangGuide: DestinationGuide = {
   heroImage: `${TI}/yunnan-village.jpg`,
   heroImageClassName: 'object-[center_35%]',
   introText: [
-    'Lijiang, nestled on the north bank of the Jinsha River (Yangtze\'s upper course) at 2,400 metres elevation, represents one of China\'s best-preserved ancient towns. The Naxi ethnic people, unique to this region, developed distinctive cultural practices: their own written language (Dongba script), classical music tradition (Naxi music), and architectural conventions reflected in the walled Old Town. UNESCO recognised Lijiang as World Heritage site, acknowledging its architectural significance and living cultural practices.',
-    'The Old Town\'s layout—characterised by the absence of defensive walls (unusual for Chinese walled towns), intricate water channels, and wooden architecture featuring elaborate carvings—reflects both feng shui principles and practical adaptation to mountain geography. The town functions simultaneously as archaeological heritage site and living community: residents maintain traditional crafts, restaurants serve Naxi cuisine, and shops sell locally-produced goods.',
-    'Lijiang serves as ideal base for exploring greater Yunnan. The town offers contemporary amenities (hotels, restaurants, cafes) catering to independent travellers, yet preserves authentic cultural character. High-altitude location permits day trips to Jade Dragon Snow Mountain and surrounding Naxi villages. Many visitors extend stays beyond initial planned duration, captivated by the town\'s laid-back atmosphere and cultural richness.'
+    'Lijiang sits on the Jinsha River at about 2,400 metres above sea level. The Naxi people have lived here for generations.',
+    'The Old Town is a UNESCO site. Narrow lanes, wooden houses, and small canals define the streetscape.',
+    'Naxi culture includes Dongba script, old music traditions, and hearty mountain food.',
+    'You can day-trip to Jade Dragon Snow Mountain and nearby villages. Hotels and cafés cater to international guests.',
+    'Many visitors stay longer than planned. The pace is relaxed, and the mountain air is clear in dry season.'
   ],
   sections: [
     {
@@ -1313,7 +1329,7 @@ export const lijangGuide: DestinationGuide = {
     `${TI}/shangri-la-monastery.jpg`,
   ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-11'
+  updatedAt: '2026-04-21'
 };
 
 // ============================================================================
