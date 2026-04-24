@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: chinatravel
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: GSC_SERVICE_ACCOUNT_JSON
+        sync: false
+      - key: GSC_SITE_URL
+        value: sc-domain:ctstours.co.nz
+      - key: GSC_SYNC_SECRET
+        generateValue: true
+
+crons:
+  - name: gsc-daily-sync
+    schedule: "0 9 * * *"
+    command: |
+      curl -X POST https://www.ctstours.co.nz/api/gsc/sync \
+        -H "Authorization: Bearer $GSC_SYNC_SECRET" \
+        -H "Content-Type: application/json" \
+        -d '{}'
