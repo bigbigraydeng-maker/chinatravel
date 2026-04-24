@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTopKeywords, getKeywordTrend } from '@/lib/data/gsc-dashboard';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'SEO 数据看板 | CTS Tours',
   robots: { index: false, follow: false },
