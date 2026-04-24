@@ -124,9 +124,11 @@ export default function ChinaToursPage() {
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
                   Explore Our Collections
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {chinaToursMeta.introText}
-                </p>
+                <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+                  {chinaToursMeta.introText.split(/\n\n+/).map((para, i) => (
+                    <p key={i}>{para.trim()}</p>
+                  ))}
+                </div>
               </section>
 
               {/* Tours Grid */}

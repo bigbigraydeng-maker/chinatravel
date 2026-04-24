@@ -60,10 +60,10 @@ export interface PhaseBlock {
 export const MARKETING_PLAN_META = {
   title: 'CTSTours 2026年10月双产品专属数字推广统筹（Phase 1）',
   /** 每次改完任务状态可顺手改日期，便于客户知道页面对应版本 */
-  lastUpdated: '2026-04-18',
+  lastUpdated: '2026-04-19',
   /** 最近一次与本文件同步的网站改动（便于客户对照）；与 git 可略有先后。 */
   lastSiteSyncNote:
-    'October 双战役 LP：统筹页「广告链接」#ad-urls 汇总 Google（Search RSA / PMax）与 Meta 付费 FB 分面 UTM；「内容支点」保留 Facebook 双表与有机发帖。NZ Herald 平面：T058–T060。',
+    'October 双战役 LP：统筹页「广告链接」#ad-urls 汇总 Google（Search RSA / PMax）与 Meta 付费 FB 分面 UTM；「内容支点」保留 Facebook 双表与有机发帖。NZ Herald 平面：T058–T060。4 月下旬起：FB/INS 有机内容采用 Claude Cowork（图文提示词 + 英文 caption）→ LoveArt 出图 → Buffer 排期；口径以 T043/T044 master brief 与 T026 为准，任务 T061。',
   /** 主推产品 */
   heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
   /**
@@ -169,7 +169,7 @@ export const CONTENT_PIVOT = {
   discussionTopics: [
     'FAQ：十月双 Discovery（beijing-xian、shanghai-surroundings）已用 tours.ts `faqs` 线路问答；其余产品仍默认目的地级 5 问（getTourPageFaqs），可按需补 `faqs`。',
     '地图：产品页已上线「Map view / Detailed view」示意路线图（由标题/住宿文本推断城市；非精确地理底图）。若需真地图或坐标级精度，再排期。',
-    'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。',
+    'FB / INS + 博客：以支点页定 master brief；有机发帖排期见 /campaign/social（可与 Obsidian 四周模板双轨）。生产栈：Claude Cowork（提示词 + 英文稿统筹）→ LoveArt（版式与视觉）→ Buffer（定时）；见 T061。',
     '社媒英文稿与长文案：先在 Obsidian「01-Magiclab/Projects/China Travel」锁「内容方向 + 四周柱」，再按槽位生成；与本页 tasks 双轨验收。',
     '图片：Unsplash 选图 → 写入 tours.ts `gallery`（产品页 #gallery）；同一批源图导出社媒裁切（9:16 / 4:5 / 1:1）与命名、署名存档（与 T004 / T051–T053 对齐）。',
     '外链与客座、社媒 KOC：少而精；执行顺序与 pitch 角度见仓库 `docs/outreach-guest-posts-and-backlinks.md`；战役任务 **T055–T057**（客座清单 → 首轮 pitch → KOC 试点 brief）。客座/编辑推荐落地用干净 URL；付费或 KOC 合作帖须披露（如 #ad）。',
@@ -344,17 +344,17 @@ export const OBJECTIVES: Objective[] = [
       {
         id: 'KR1',
         title: '建立两个产品的 master brief',
-        status: 'not_started',
+        status: 'done',
       },
       {
         id: 'KR2',
         title: '形成 Facebook / Instagram / Google Ads / Email / SEO 的统一内容素材库',
-        status: 'not_started',
+        status: 'in_progress',
       },
       {
         id: 'KR3',
         title: '建立每周固定内容产出机制',
-        status: 'not_started',
+        status: 'in_progress',
       },
       {
         id: 'KR4',
@@ -1072,8 +1072,41 @@ export const MARKETING_TASKS: MarketingTask[] = [
       { label: 'October 战役页', href: '/campaigns/october-2026/shanghai-surroundings' },
     ],
   },
-  { id: 'T045', module: 'AI 内容系统', name: '输出 Facebook 内容模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'FB 模板' },
-  { id: 'T046', module: 'AI 内容系统', name: '输出 Instagram caption 模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'IG 模板' },
+  {
+    id: 'T045',
+    module: 'AI 内容系统',
+    name: '输出 Facebook 内容模板',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W3',
+    status: 'in_progress',
+    deliverable: 'FB 发帖模板 + 提示词结构（供 Cowork 批量生成）',
+    notes:
+      '与 T061 同轨：用 Claude Cowork 按槽位生成「LoveArt 用图提示词 + 英文主贴文案」；有机帖 UTM 见统筹页「内容支点」Facebook 表（utm_medium=social，utm_campaign=oct2026_discovery_fb_organic）。',
+    reviewLinks: [
+      { label: 'T061 Cowork 任务说明（仓库）', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t061-claude-cowork-fb-ig-orchestration-brief.md' },
+      { label: 'T043 Beijing / Xi’an master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t043-beijing-xian-master-brief.md' },
+      { label: 'T044 Shanghai master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t044-shanghai-surroundings-master-brief.md' },
+      { label: '统筹页 · 广告与有机链接', href: '/marketing/campaign#ad-urls' },
+    ],
+  },
+  {
+    id: 'T046',
+    module: 'AI 内容系统',
+    name: '输出 Instagram caption 模板',
+    priority: 'P1',
+    startWeek: 'W2',
+    endWeek: 'W3',
+    status: 'in_progress',
+    deliverable: 'IG Feed / Reels caption 模板 + hashtag 规则',
+    notes:
+      '与 T061 同轨：Cowork 输出需区分 Feed 长说明 vs Reels 短 hook；视觉由 LoveArt 按 4:5 / 9:16 导出；Buffer 统一排期。',
+    reviewLinks: [
+      { label: 'T061 Cowork 任务说明（仓库）', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t061-claude-cowork-fb-ig-orchestration-brief.md' },
+      { label: 'October · Tale（有机可链）', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai（有机可链）', href: '/campaigns/october-2026/shanghai-surroundings' },
+    ],
+  },
   { id: 'T047', module: 'AI 内容系统', name: '输出 Google Ads copy 模板', priority: 'P1', startWeek: 'W2', endWeek: 'W2', status: 'not_started', deliverable: 'Ads 模板' },
   { id: 'T048', module: 'AI 内容系统', name: '输出 remarketing 文案模板', priority: 'P1', startWeek: 'W2', endWeek: 'W3', status: 'not_started', deliverable: 'RMKT 模板' },
   { id: 'T049', module: 'AI 内容系统', name: '输出 EDM 模板', priority: 'P2', startWeek: 'W3', endWeek: 'W3', status: 'not_started', deliverable: '邮件模板' },
@@ -1253,6 +1286,35 @@ export const MARKETING_TASKS: MarketingTask[] = [
         href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/asset-naming-and-file-management.md',
       },
       { label: 'Spotlight 海报页', href: '/spotlight/october-2026' },
+    ],
+  },
+  {
+    id: 'T061',
+    module: 'AI 内容系统',
+    name: 'FB/INS 有机内容管线：Claude Cowork 统筹 + LoveArt + Buffer',
+    priority: 'P0',
+    startWeek: 'W2',
+    endWeek: 'W3',
+    status: 'in_progress',
+    deliverable:
+      '（1）Cowork 用任务说明文档 t061；（2）4/21–4/30 槽位级「图提示词 + 英文 caption + 落地链接」表；（3）LoveArt 出图包 + Buffer 排期截图或日历导出',
+    notes:
+      '双 Discovery 有机占比 ≥60%；关键词优先级 Visa Free（首句/封面字），免责声明见 T043/T044。付费广告 UTM 勿用于纯公共主页有机帖（与 T026 分工）。Zhong 执行：Cowork → LoveArt → Buffer。',
+    reviewLinks: [
+      {
+        label: 'T061 Claude Cowork 任务说明（仓库）',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t061-claude-cowork-fb-ig-orchestration-brief.md',
+      },
+      { label: 'T043 · Beijing / Xi’an master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t043-beijing-xian-master-brief.md' },
+      { label: 'T044 · Shanghai & Surroundings master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t044-shanghai-surroundings-master-brief.md' },
+      {
+        label: 'T026 Meta 冷流量视频 brief',
+        href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t026-meta-cold-video-brief.md',
+      },
+      { label: 'NZ 签证指南（Visa-free 簇）', href: '/china-visa-guide-for-new-zealanders' },
+      { label: 'October · Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities' },
+      { label: 'October · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
+      { label: '统筹页', href: '/marketing/campaign' },
     ],
   },
 ];

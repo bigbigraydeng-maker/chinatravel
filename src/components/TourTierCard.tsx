@@ -130,7 +130,7 @@ const TourTierCard = ({
               Trending · Limited October departures
             </p>
           )}
-          <h4 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{title}</h4>
+          <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{title}</h3>
           <p className="text-gray-500 mb-5 leading-relaxed text-sm">{description}</p>
           <div className="flex justify-between items-center mb-5">
             <span className="text-gray-600 flex items-center gap-2 text-sm">

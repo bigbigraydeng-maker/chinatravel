@@ -29,7 +29,7 @@ export const chinaToursMeta: SeoPageMeta = {
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Signature luxury, Discovery value, Stopover adventures',
   introText:
-    'CTS is New Zealand’s China travel specialist: TAANZ member, IATA-accredited, with consultants in Auckland and direct operations through China Travel Service—so your route, hotels, and guides are chosen by people who sell and operate China every week. Choose from 50+ curated itineraries across Signature (boutique 4–5 star, small groups), Discovery (great-value escorted loops), and Stopover city breaks. Start with entry rules in our China visa guide for New Zealanders, then browse collections below.',
+    'CTS Tours is New Zealand’s China travel specialist. We are a TAANZ member and IATA-accredited. Our Auckland consultants work with China Travel Service directly.\n\nYour route, hotels, and guides are chosen by people who plan and operate China trips every week. Browse more than fifty curated itineraries.\n\nWe offer Signature (boutique four- and five-star hotels, small groups), Discovery (great-value escorted loops), and Stopover city breaks. Read our China visa guide for New Zealand passport holders, then explore the collections below.',
   faqs: [
     {
       question: 'What is the difference between CTS China Signature, Discovery, and Stopover collections?',

@@ -85,10 +85,14 @@ export function TermsArticle() {
         <h3 className={h3Class}>For bookings made directly through CTS Tours</h3>
         <p className={pClass}>
           Please submit a Booking Form along with a deposit. A non-refundable deposit of $1,000 per person is required
-          to confirm your booking, payable within 3 working days of reservation. Your booking is not confirmed until the
-          deposit has been received by CTS Tours. Bookings without a deposit paid on time are subject to possible
-          cancellation and the Late Payment Fees set forth in this document. Full payment is required at the time of
-          booking if the total booking cost is below $1,000 per person.
+          to confirm your booking. Pay the deposit within 3 working days of reservation.
+        </p>
+        <p className={pClass}>
+          Your booking is not confirmed until CTS Tours has received the deposit. If the deposit is late, we may cancel
+          the booking. Late fees in this document may apply.
+        </p>
+        <p className={pClass}>
+          If the total booking cost is below $1,000 per person, full payment is due at the time of booking.
         </p>
         <h3 className={h3Class}>For vouchers purchased through a third party vendor</h3>
         <p className={pClass}>
@@ -97,9 +101,11 @@ export function TermsArticle() {
           secure your dates.
         </p>
         <p className={pClass}>
-          CTS Tours reserves the right to correct any errors in rates quoted or calculated, or any omissions made at any
-          time during booking and invoicing. Any verbal quote provided is an indication only of the final price and is
-          subject to confirmation in writing.
+          CTS Tours may correct errors in rates quoted or calculated, or omissions, at any time during booking and
+          invoicing.
+        </p>
+        <p className={pClass}>
+          A verbal quote is a guide only. The final price is confirmed in writing.
         </p>
       </section>
 
@@ -114,35 +120,34 @@ export function TermsArticle() {
       <section id="finalisation-passport" className={sectionClass}>
         <h2 className={h2Class}>Booking Finalisation and Passport Copies</h2>
         <p className={pClass}>
-          All booking components and arrangements, including the selection of dates, tour extensions, optional
-          programmes, stopovers, early arrivals or stay behinds, upgrades and provision of passport copies etc, must be
-          finalised within 30 days of booking, or 90 days before departure, whichever comes first. Amendments thereafter
-          incur penalties set forth in this document.
+          All booking components must be finalised within 30 days of booking, or 90 days before departure, whichever
+          comes first. This includes dates, extensions, optional programmes, stopovers, early arrivals, stay behinds,
+          upgrades, and passport copies.
+        </p>
+        <p className={pClass}>Changes after that date may incur penalties set out in this document.</p>
+        <p className={pClass}>
+          You must provide passport copies (valid or expired) at booking. Names must match a valid passport in full.
         </p>
         <p className={pClass}>
-          It is a condition of booking that passport copies, valid or expired, are provided at the time of booking. All
-          names must be full names exactly matched to a valid passport. If the passport copy is not provided within 30
-          days of booking, or 90 days before departure, whichever comes first, travel documents will be issued according
-          to the names submitted on the booking form. CTS Tours will not be liable for any costs that arise due to name
-          corrections. Fees apply for reissue of travel documents.
+          If we do not receive passport copies by the same deadline (30 days after booking or 90 days before departure,
+          whichever is first), travel documents will use the names on the booking form. CTS Tours is not liable for
+          costs from name corrections. Fees apply to reissue travel documents.
         </p>
         <p className={pClass}>
-          Documentation will be issued close to departure according to the schedule outlined under the Travel
-          Documentation section. A surcharge from $100 per person is payable for any request for the issuance of travel
-          documents, such as air tickets, earlier than that timeframe.
+          We issue documentation close to departure as set out under Travel Documentation. A surcharge from $100 per
+          person applies if you ask for travel documents (such as air tickets) earlier than that schedule.
         </p>
       </section>
 
       <section id="balance-payment" className={sectionClass}>
         <h2 className={h2Class}>Balance of Payment</h2>
         <p className={pClass}>
-          The final balance of all travel arrangements is due within 90 days prior to departure for China, Japan, South
-          Korea, Vietnam, Europe, Australia and New Zealand itineraries shorter than 15 days in total duration, except for
-          packages with Ocean Cruises.
+          For China, Japan, South Korea, Vietnam, Europe, Australia, and New Zealand: if the itinerary is under 15 days
+          and does not include an ocean cruise, the final balance is due 90 days before departure.
         </p>
         <p className={pClass}>
-          The final balance of all travel arrangements for all destinations with Ocean Cruises, all packages 15 days or
-          longer in total duration, and any packages not mentioned, is due within 120 days prior to departure.
+          If the package includes an ocean cruise, lasts 15 days or longer, or is not listed above, the final balance is
+          due 120 days before departure.
         </p>
         <p className={pClass}>
           Payments by credit card incur a non-refundable processing fee. Accepted credit cards are Visa and MasterCard

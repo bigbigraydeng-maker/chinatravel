@@ -50,4 +50,19 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   },
 ];
 
-// ----
+// ---------------------------------------------------------------------------
+// Legacy helpers — kept for backward-compat with any code still importing them.
+// New code should read campaignHref / departureLabel directly from the ref.
+// ---------------------------------------------------------------------------
+
+/** @deprecated Use ref.departureLabel directly. */
+export function getSpotlightDepartureLabel(campaignSlug: October2026DiscoverySlug): string {
+  const raw = OCTOBER_2026_DISCOVERY_BY_SLUG[campaignSlug].heroDepartureOrder[0] ?? '';
+  const short = raw.replace('October', 'Oct');
+  return short ? `${short} 2026` : '';
+}
+
+/** @deprecated Use ref.campaignHref directly. */
+export function getSpotlightCampaignHref(campaignSlug: October2026DiscoverySlug): string {
+  return getOctober2026CampaignPath(campaignSlug);
+}

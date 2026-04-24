@@ -58,9 +58,9 @@ export default function TrustBar() {
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md transition-all text-primary">
                 {badge.icon}
               </div>
-              <h3 className="font-bold text-gray-900 text-sm md:text-base mb-1">
+              <p className="font-bold text-gray-900 text-sm md:text-base mb-1">
                 {badge.title}
-              </h3>
+              </p>
               <p className="text-xs text-gray-600">
                 {badge.description}
               </p>

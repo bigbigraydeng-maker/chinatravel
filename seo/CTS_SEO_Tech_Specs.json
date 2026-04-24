@@ -1,0 +1,383 @@
+{
+  "project": "CTS Tours SEO Automation",
+  "date": "2026-04-24",
+  "phase": "P0-P3 Development Roadmap",
+  "modules": [
+    {
+      "id": "GSC_IMPORT",
+      "name": "GSC 数据实时导入",
+      "priority": "P0",
+      "timeline": "W1 (Apr 24-28)",
+      "owner": "Claude Code",
+      "description": "从Google Search Console导入impressions/clicks/position/ctr数据到Supabase",
+      "api_endpoint": "/api/seo/gsc-sync",
+      "tech_stack": [
+        "Next.js API Route",
+        "Google Search Console Reporting API",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Authenticate with GSC API (OAuth 2.0)",
+        "step2": "Query Performance report for last 3 months",
+        "step3": "Filter by 11 target keywords",
+        "step4": "Store in Supabase gsc_metrics table",
+        "step5": "Set up cron job for daily sync"
+      },
+      "output": "Supabase table: gsc_metrics (keyword, clicks, impressions, position, ctr, date)",
+      "effort_hours": 12,
+      "depends_on": []
+    },
+    {
+      "id": "RANKING_TRACKER",
+      "name": "关键词排名周追踪",
+      "priority": "P1",
+      "timeline": "W2-W3 (May 5-12)",
+      "owner": "Claude Code",
+      "description": "从GSC自动提取11个关键词的排名变化，生成周对比报告",
+      "api_endpoint": "/api/seo/ranking-weekly",
+      "tech_stack": [
+        "Node.js cron",
+        "Supabase",
+        "React Chart.js"
+      ],
+      "implementation": {
+        "step1": "Query Supabase gsc_metrics for past 2 weeks",
+        "step2": "Group by keyword and calculate average position",
+        "step3": "Compare vs previous week (±变化)",
+        "step4": "Generate weekly report (PDF)",
+        "step5": "Store trends in ranking_history table"
+      },
+      "output": "Weekly ranking report + dashboard visualization",
+      "effort_hours": 16,
+      "depends_on": [
+        "GSC_IMPORT"
+      ]
+    },
+    {
+      "id": "SITE_CRAWLER",
+      "name": "CTS网站爬虫 & 内部链接分析",
+      "priority": "P1",
+      "timeline": "W2-W3 (May 5-12)",
+      "owner": "Claude Code",
+      "description": "爬取ctstours.co.nz所有页面，分析字数、meta标签、内部链接、标题结构",
+      "api_endpoint": "/api/seo/site-audit",
+      "tech_stack": [
+        "Puppeteer / Cheerio",
+        "Node.js",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Crawl all pages from sitemap.xml",
+        "step2": "Extract: URL, title, meta, H1-H3, word count, images",
+        "step3": "Build internal link graph (page A -> page B)",
+        "step4": "Analyze anchor text for target keywords",
+        "step5": "Store in Supabase page_audit table",
+        "step6": "Identify orphan pages and over-linked pages"
+      },
+      "output": "Supabase table: page_audit (url, title, word_count, meta, links, kw_coverage)",
+      "effort_hours": 20,
+      "depends_on": []
+    },
+    {
+      "id": "BACKLINK_VERIFY",
+      "name": "反链获取验证系统",
+      "priority": "P2",
+      "timeline": "W6-W8 (Jun 2-23)",
+      "owner": "Claude Code",
+      "description": "验证从外部来源获得的反链是否真实存在和活跃，防止虚假反链",
+      "api_endpoint": "/api/seo/backlink-verify",
+      "tech_stack": [
+        "Node.js",
+        "Backlink APIs (Moz/Ahrefs)",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Maintain list of target backlinks (from outreach)",
+        "step2": "Weekly check via Moz API or manual HTTP check",
+        "step3": "Verify: URL exists, link is live, anchor text matches",
+        "step4": "Track: date_acquired, domain_authority, status",
+        "step5": "Alert if backlink disappears or changes",
+        "step6": "Calculate actual link juice gained"
+      },
+      "output": "Supabase table: backlinks_acquired (source_domain, source_url, target_page, status, da, date_acquired)",
+      "effort_hours": 16,
+      "depends_on": []
+    },
+    {
+      "id": "RANKING_ALERTS",
+      "name": "排名变化监测 & Slack告警",
+      "priority": "P2",
+      "timeline": "W3-W4 (May 12-26)",
+      "owner": "Claude Code",
+      "description": "每日检测11个关键词排名变化（±5），发送Slack通知",
+      "api_endpoint": "/api/seo/ranking-alerts",
+      "tech_stack": [
+        "Node.js cron (daily 08:00)",
+        "Slack API",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Daily cron triggers at 8 AM NZ time",
+        "step2": "Query GSC for yesterday's rankings",
+        "step3": "Compare with previous day",
+        "step4": "If position change > ±5, trigger alert",
+        "step5": "Format Slack message: 'china-tours ↓3 (5→8)'",
+        "step6": "Send to #seo-alerts Slack channel"
+      },
+      "output": "Daily Slack notifications + ranking_changes log",
+      "effort_hours": 12,
+      "depends_on": [
+        "GSC_IMPORT"
+      ]
+    },
+    {
+      "id": "CONTENT_DASHBOARD",
+      "name": "内容性能仪表板",
+      "priority": "P2",
+      "timeline": "W5-W6 (May 26-Jun 9)",
+      "owner": "Claude Code",
+      "description": "展示每个优化页面的性能（访问、跳出率、停留时间、目标转化）",
+      "api_endpoint": "/api/seo/content-performance",
+      "tech_stack": [
+        "React",
+        "GA4 API",
+        "Supabase",
+        "Chart.js"
+      ],
+      "implementation": {
+        "step1": "Connect GA4 API to pull page metrics",
+        "step2": "Query: sessions, bounce_rate, avg_session_duration, conversions per URL",
+        "step3": "Create React dashboard with 4 tabs: Overview, Pages, Keywords, Trend",
+        "step4": "Add filters: date range, compare vs baseline",
+        "step5": "Store in Supabase content_performance table"
+      },
+      "output": "React dashboard + GA4 data sync",
+      "effort_hours": 24,
+      "depends_on": [
+        "SITE_CRAWLER"
+      ]
+    },
+    {
+      "id": "BACKLINK_DISCOVERY",
+      "name": "反链机会发现引擎",
+      "priority": "P3",
+      "timeline": "W8-W10 (Jun 23-Jul 7)",
+      "owner": "Claude Code",
+      "description": "分析竞争对手的反链来源，识别CTS可以获取的相同反链机会",
+      "api_endpoint": "/api/seo/backlink-opportunities",
+      "tech_stack": [
+        "Python ML",
+        "Semrush Backlink Gap API",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Get TOP 3 competitors for each keyword (from Semrush)",
+        "step2": "Query Semrush Backlink Gap API",
+        "step3": "Find domains that link to competitors but NOT to CTS",
+        "step4": "Score opportunities by: DA, relevance, nz-local",
+        "step5": "Rank by effort/impact ratio",
+        "step6": "Generate priority outreach list"
+      },
+      "output": "Supabase table: backlink_opportunities (domain, da, relevance_score, contact_info)",
+      "effort_hours": 20,
+      "depends_on": []
+    },
+    {
+      "id": "CONTENT_OPTIMIZATION_AI",
+      "name": "AI驱动内容优化建议",
+      "priority": "P3",
+      "timeline": "W9-W11 (Jun 30-Jul 14)",
+      "owner": "Claude Code",
+      "description": "使用Claude API分析页面内容，推荐具体优化点（字数、关键词密度、结构等）",
+      "api_endpoint": "/api/seo/content-optimize-ai",
+      "tech_stack": [
+        "Claude API",
+        "Node.js",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Fetch page content via SITE_CRAWLER results",
+        "step2": "Send to Claude: 'Analyze this page for keyword [X], current ranking [Y], suggest improvements'",
+        "step3": "Claude response: {optimize_title, add_faq, expand_sections, internal_links, cta_suggestions}",
+        "step4": "Score suggestions by impact (high/medium/low)",
+        "step5": "Store in content_suggestions table",
+        "step6": "Display as checklist in dashboard"
+      },
+      "output": "Content optimization checklist per page",
+      "effort_hours": 24,
+      "depends_on": [
+        "SITE_CRAWLER"
+      ]
+    },
+    {
+      "id": "COMPETITOR_RANKING",
+      "name": "竞争对手排名监测",
+      "priority": "P3",
+      "timeline": "W10-W12 (Jul 7-23)",
+      "owner": "Claude Code",
+      "description": "监测TOP 3竞争对手的11个关键词排名变化，发现排名漂移机会",
+      "api_endpoint": "/api/seo/competitor-ranking",
+      "tech_stack": [
+        "Semrush API",
+        "Node.js cron",
+        "Supabase"
+      ],
+      "implementation": {
+        "step1": "Weekly query Semrush API for TOP 3 competitors per keyword",
+        "step2": "Track: competitor domain, current rank, rank change, visibility",
+        "step3": "Alert if competitor rank drops (opportunity to fill gap)",
+        "step4": "Calculate: if we rank #2-5, likely within +100 words to overtake",
+        "step5": "Send monthly competitor report"
+      },
+      "output": "Supabase table: competitor_rankings (keyword, domain, rank, visibility)",
+      "effort_hours": 16,
+      "depends_on": []
+    }
+  ],
+  "supabase_tables": {
+    "gsc_metrics": {
+      "columns": [
+        "keyword",
+        "clicks",
+        "impressions",
+        "position",
+        "ctr",
+        "date",
+        "device"
+      ],
+      "primary_key": "id",
+      "sync_frequency": "Daily 08:00 NZ"
+    },
+    "page_audit": {
+      "columns": [
+        "url",
+        "title",
+        "meta_desc",
+        "h1",
+        "word_count",
+        "internal_links",
+        "keyword_coverage"
+      ],
+      "primary_key": "id",
+      "sync_frequency": "Weekly Monday"
+    },
+    "ranking_history": {
+      "columns": [
+        "keyword",
+        "position_today",
+        "position_week_ago",
+        "change_direction",
+        "trend",
+        "date"
+      ],
+      "primary_key": "id",
+      "sync_frequency": "Daily"
+    },
+    "backlinks_acquired": {
+      "columns": [
+        "source_domain",
+        "source_url",
+        "target_page",
+        "anchor_text",
+        "domain_authority",
+        "status",
+        "date_acquired"
+      ],
+      "primary_key": "id"
+    },
+    "content_performance": {
+      "columns": [
+        "page_url",
+        "sessions",
+        "bounce_rate",
+        "avg_duration",
+        "conversions",
+        "date"
+      ],
+      "primary_key": "id",
+      "sync_frequency": "Daily via GA4 API"
+    },
+    "content_suggestions": {
+      "columns": [
+        "page_url",
+        "keyword",
+        "current_rank",
+        "suggestion_type",
+        "priority",
+        "implementation_steps"
+      ],
+      "primary_key": "id"
+    },
+    "backlink_opportunities": {
+      "columns": [
+        "domain",
+        "domain_authority",
+        "relevance_score",
+        "contact_name",
+        "contact_email",
+        "effort_level",
+        "status"
+      ],
+      "primary_key": "id"
+    },
+    "competitor_rankings": {
+      "columns": [
+        "keyword",
+        "competitor_domain",
+        "rank",
+        "visibility_score",
+        "rank_change",
+        "date"
+      ],
+      "primary_key": "id",
+      "sync_frequency": "Weekly Wednesday"
+    }
+  },
+  "execution_phases": {
+    "phase_0_foundation": {
+      "week": "W1-W2",
+      "deliverables": [
+        "✅ GSC API integration complete",
+        "✅ Supabase tables created",
+        "✅ 3-month baseline data imported",
+        "✅ Daily cron jobs configured"
+      ]
+    },
+    "phase_1_visibility": {
+      "week": "W3-W4",
+      "deliverables": [
+        "✅ Site crawler running weekly",
+        "✅ Ranking alerts enabled",
+        "✅ Weekly ranking report generated",
+        "✅ Internal link graph mapped"
+      ]
+    },
+    "phase_2_optimization": {
+      "week": "W5-W8",
+      "deliverables": [
+        "✅ Content performance dashboard live",
+        "✅ AI optimization suggestions flowing",
+        "✅ Page audit checklist ready",
+        "✅ Quick wins content optimized (3 pages)"
+      ]
+    },
+    "phase_3_verification": {
+      "week": "W9-W11",
+      "deliverables": [
+        "✅ Backlink verification system active",
+        "✅ Backlink opportunities list prioritized",
+        "✅ Competitor ranking dashboard live",
+        "✅ 10+ backlinks acquired and verified"
+      ]
+    },
+    "phase_4_monitoring": {
+      "week": "W12",
+      "deliverables": [
+        "✅ Full SEO automation stack live",
+        "✅ Weekly reports auto-generated",
+        "✅ Alerts configured",
+        "✅ Handoff to Zhong ready"
+      ]
+    }
+  }
+}
