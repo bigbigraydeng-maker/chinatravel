@@ -73,19 +73,11 @@ export default function GuidePage() {
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
-            Visit Chongqing on a China Tour
+            Book the Chongqing & Chengdu Tour from New Zealand
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Chongqing — gateway to the Yangtze River and the Three Gorges — features in CTS extended itineraries. Auckland-based, NZD pricing.
+            CTS Tours offers <strong>China Discovery — Fire &amp; Fuzz</strong>: 10 days covering Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas, and the bullet train to Chengdu. From NZD $2,750. Auckland-based team, NZD pricing, small groups.
           </p>
           <a
-            href="/china-tours"
-            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
-          >
-            View China Tour Packages →
-          </a>
-        </div>
-      </section>
-    </>
-  );
-}
+            href="/tours/china/discovery/chongqing-chengdu"
+            className="inline-block bg-primary text-white font-semibold px-6 

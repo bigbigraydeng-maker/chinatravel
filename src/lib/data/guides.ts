@@ -2204,78 +2204,144 @@ export const chongqingGuide: DestinationGuide = {
   id: 'guide-chongqing',
   slug: 'chongqing-travel-guide',
   destinationName: 'Chongqing',
-  metaTitle: 'Chongqing Travel Guide | Gorge Cruises | Spicy Cuisine | CTS Tours',
-  metaDescription: 'Chongqing travel guide: Yangtze River cruises, Three Gorges, hot pot capital, mountain city.',
-  keywords: ['Chongqing', 'Yangtze', 'Three Gorges', 'hot pot', 'mountain city'],
-  h1: 'Chongqing: Gateway to Yangtze Gorges',
-  heroSubtitle: 'Mountain City & Spice Capital',
+  metaTitle: 'Chongqing Travel Guide 2025 | Liziba Station, Hongyadong & Things To Do | CTS Tours NZ',
+  metaDescription: 'Complete Chongqing travel guide: Liziba monorail through a building, Hongyadong cliffside lights, Dazu UNESCO carvings, hot pot, and the 8D cyberpunk city that went viral worldwide.',
+  keywords: ['Chongqing travel guide', 'Liziba Station', 'Hongyadong', 'Chongqing things to do', 'Dazu Rock Carvings', 'Chongqing tour', 'cyberpunk Chongqing', 'Chongqing hot pot'],
+  h1: 'Chongqing Travel Guide: The City That Went Viral',
+  heroSubtitle: 'Liziba Monorail · Hongyadong · Dazu UNESCO · Hot Pot Capital',
   heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
   heroImageClassName: 'object-[center_42%]',
   introText: [
-    'Chongqing, sprawling across mountains above the Yangtze and Jialing Rivers, functions as primary departure point for Yangtze River cruises exploring the famous Three Gorges. The city\'s dramatic topography—featuring steep hillsides, river valleys, and urban development clinging to cliffsides—creates distinctive urban character. As gateway to central China, Chongqing serves as important transport hub connecting Beijing, Shanghai, Kunming, and regional destinations.',
-    'The city earned reputation as spice capital; Chongqing hot pot (Sichuan ma la) features numbing Sichuan peppercorns and chilli heat. The dining culture reflects deep regional identity. Beyond cuisine, Chongqing offers Three Gorges Dam visits, river boat experiences, cave temples, and mountain cable cars providing city panoramas.',
-    'Most visitors pass through Chongqing whilst boarding or disembarking Yangtze cruises. 1-2 days permits city exploration before/after river journeys. The city\'s scale and complexity challenge independent navigation; organised tours or hotel assistance simplify logistics. Chongqing\'s development as modern metropolis contrasts starkly with surrounding rural river communities, creating vivid transitions.'
+    'Chongqing is the city everyone has seen on their phone — the monorail that passes through a residential building, the Ghibli-esque cliffside complex glowing gold at night, the neon-drenched skyline stacked up a mountain above two rivers. It went viral on TikTok and Douyin for good reason: nowhere else in China looks like this.',
+    'Built across dramatic limestone hills at the confluence of the Yangtze and Jialing Rivers, Chongqing is a city of vertical layers. Roads pass over rooftops. Skyscrapers sit beside ancient temples. A pedestrian bridge hangs at the 13th floor. The locals call it "8D Magic" — every angle reveals something impossible-looking.',
+    'Beyond the viral moments, Chongqing rewards genuine exploration. The Dazu Rock Carvings (UNESCO World Heritage) contain 50,000 Buddhist sculptures that most Western visitors have never heard of. Ciqikou Ancient Town preserves a Song Dynasty street layout. And the hot pot here — the real Chongqing version, with beef tallow, dried chillies, and face-numbing Sichuan pepper — is among the most memorable meals in China.'
   ],
   sections: [
     {
-      title: 'Yangtze River Cruises & Three Gorges',
-      id: 'yangtze-cruises',
+      title: 'Liziba Station — The Monorail Through a Building',
+      id: 'liziba-station',
       content: [
-        'The Three Gorges (Qutang, Wu, Xiling) represent one of world\'s most dramatic river passages. Modern Yangtze cruises depart Chongqing, navigating through the famous gorges to Yichang (central China). Cruise durations vary: 3-4 days standard; longer cruises (5-7 days) permit additional stops and leisurely pace. The Three Gorges Dam, world\'s largest hydroelectric facility, creates the reservoir inundating ancient gorge landscapes.'
+        'Liziba is the single most shareable moment in Chongqing — and possibly all of China. Chongqing Rail Transit Line 2 passes directly through the 6th to 8th floors of a 19-storey residential building in Yuzhong District. The station and building were constructed simultaneously in 2004; the rubber-tyred trains run quietly enough that residents above and below are barely disturbed.',
+        'The best way to experience it: ride Line 2 through the building for the inside view, then watch from the street-level plaza below for the money shot. Trains run every few minutes. Allow 30–60 minutes — you will want to watch it multiple times and photograph it from every angle. It never stops being surreal.'
+      ]
+    },
+    {
+      title: 'Hongyadong — The Cliffside City at Night',
+      id: 'hongyadong',
+      content: [
+        'Hongyadong is the hero image of Chongqing: an 11-storey stilted complex (diaojiaolou style) built directly into the cliff face above the Jialing River. At night, it is lit with thousands of red and golden lanterns, creating a glowing, layered spectacle that rises from the riverbank like a scene from a Miyazaki film.',
+        'Visit after dark. The full lighting effect is only visible once the sun goes down, and the contrast between the illuminated complex and the dark river below is the most photographed angle in the city. Cross to the Qiansimen Bridge for the full panoramic view. The complex itself contains restaurants, bars, and tea houses across interconnected stairways — explore freely, entrance is free.'
+      ]
+    },
+    {
+      title: 'Dazu Rock Carvings — UNESCO Hidden Gem',
+      id: 'dazu-rock-carvings',
+      content: [
+        'The Dazu Rock Carvings are one of the great surprises of Chinese travel: a UNESCO World Heritage Site (inscribed 1999) that most Western visitors have never heard of. Located 100km from Chongqing city, the site contains approximately 50,000 stone statues and over 100,000 characters of inscriptions carved between the 9th and 13th centuries.',
+        'The carvings are extraordinary in scope and quality. The Baodingshan site features large-scale narrative Buddhist scenes including a 31-metre reclining Nirvana Buddha. Beishan contains earlier, more densely packed sculptures of outstanding aesthetic quality. Uniquely, the carvings synthesise Buddhism, Taoism, and Confucianism in a single artistic programme — a reflection of Song Dynasty religious culture that has no parallel elsewhere in China.',
+        'Plan a full morning: the drive from Chongqing takes approximately 1.5 hours each way. A guided visit adds considerable context to what you are seeing.'
+      ]
+    },
+    {
+      title: 'Huguang Guild Hall & Ciqikou Ancient Town',
+      id: 'historic-districts',
+      content: [
+        'The Huguang Guild Hall (built 1759, Qing Dynasty) is one of China's best-preserved guild hall complexes, built by merchants from Hubei and Hunan who came to Chongqing during the great population migration to Sichuan. The complex climbs a terraced hillside above the Yangtze River across 8,500 square metres of courtyards, opera theatres, and carved pavilions.',
+        'Ciqikou Ancient Town, dating from the Song Dynasty, preserves the city's original street layout: narrow flagstone lanes, wooden teahouses, and street food stalls selling Sichuan snacks. It sits at the confluence of the Jialing River and a small tributary, and offers a vivid sensory contrast to the futuristic cityscape visible just beyond its rooftops.'
+      ]
+    },
+    {
+      title: 'Chongqing Hot Pot — The Real Thing',
+      id: 'chongqing-hot-pot',
+      content: [
+        'Chongqing is the birthplace and undisputed capital of Chinese hot pot — significantly different from the versions served elsewhere. The traditional Chongqing version uses beef tallow, dried chillies, and Sichuan peppercorn (which numbs more than burns). The communal dining format is as much a cultural ritual as a meal.',
+        'Order a split pot (鸳鸯锅) if your group has varying spice tolerance — half original broth, half mild. The classic items to order: thinly sliced beef, tripe, duck intestine, tofu skin, lotus root, and Mao blood curd (maoxuewang). A hot pot dinner here is one of the most memorable meals in China.'
       ]
     }
   ],
   attractions: [
     {
-      name: 'Yangtze River Cruises',
-      description: 'Cruises through Three Gorges; famous river passage and dramatic scenery.',
-      visitDuration: '3-7 days depending on itinerary',
-      bestTime: 'Spring and autumn for weather',
-      ticketInfo: '¥2000-8000+ depending on cruise class'
+      name: 'Liziba Station (李子坝站)',
+      description: 'Chongqing Rail Transit Line 2 passes through the 6th–8th floors of a residential building. The most photographed railway station in China.',
+      visitDuration: '30–60 minutes',
+      bestTime: 'Any time — daytime for photography, evening for atmosphere',
+      ticketInfo: 'Free to watch from street; small fare to ride Line 2 through the building'
     },
     {
-      name: 'Three Gorges Dam',
-      description: 'World\'s largest hydroelectric facility; visitor centre and guided tours.',
-      visitDuration: '2-3 hours',
-      bestTime: 'Any season; early morning visiting recommended',
-      ticketInfo: '¥72 entry; day trip from Chongqing'
+      name: 'Hongyadong (洪崖洞)',
+      description: '11-storey stilted cliffside complex above the Jialing River. Best experienced after dark when fully illuminated.',
+      visitDuration: '1–2 hours',
+      bestTime: 'After sunset (8pm onward for full lighting)',
+      ticketInfo: 'Free to enter complex; restaurants/bars charge separately'
+    },
+    {
+      name: 'Dazu Rock Carvings (大足石刻)',
+      description: 'UNESCO World Heritage Site with 50,000 stone sculptures carved over 400 years. Located 100km from city.',
+      visitDuration: '3–4 hours on site; full day with travel',
+      bestTime: 'Weekdays; spring and autumn',
+      ticketInfo: '¥115 Baodingshan; ¥70 Beishan'
+    },
+    {
+      name: 'Huguang Guild Hall (湖广会馆)',
+      description: 'Beautifully preserved Qing Dynasty merchant complex (1759) above the Yangtze River.',
+      visitDuration: '1–1.5 hours',
+      bestTime: 'Morning',
+      ticketInfo: '¥30'
+    },
+    {
+      name: 'Ciqikou Ancient Town (磁器口)',
+      description: 'Song Dynasty market street with flagstone lanes, teahouses, and Sichuan street food.',
+      visitDuration: '1–2 hours',
+      bestTime: 'Morning or late afternoon to avoid peak crowds',
+      ticketInfo: 'Free entry; individual vendors charge separately'
+    },
+    {
+      name: 'Yangtze River Cableway (长江索道)',
+      description: 'Iconic aerial tramway (opened 1987) crossing the Yangtze River. One of the last urban cable car commuter systems in China.',
+      visitDuration: '30–45 minutes',
+      bestTime: 'Early morning to avoid queues',
+      ticketInfo: '¥25 single; ¥45 return'
     }
   ],
   practicalInfo: {
-    transportation: 'Jiangbei Airport (26km) connects major cities. Metro expanding; river ferries common. Yangtze cruises board here.',
-    climate: 'Hot summers, mild winters, rainy spring.',
-    bestTime: 'April-May and September-October.',
-    budget: 'Meals ¥30-80; accommodation ¥150-400; cruises ¥2000-8000+.',
-    language: 'Mandarin; English limited.',
-    safety: 'Safe city; river cruises fully regulated.'
+    transportation: 'Jiangbei Airport (CKG) connects to Auckland via Beijing or Shanghai. Chongqing Rail Transit (metro) covers all key tourist sites. Line 2 passes through Liziba Station.',
+    climate: 'Hot, humid summers (June–August, up to 40°C). Mild winters. Spring and autumn are ideal. Chongqing is known as one of China's "Three Furnaces" — July and August are intense.',
+    bestTime: 'April–May and September–October for comfortable temperatures and clear skies.',
+    budget: 'Hot pot dinner ¥60–120/person; hotel ¥300–600/night; metro fare ¥2–10; Dazu day trip ¥200–400 with transport.',
+    language: 'Mandarin. English is limited outside major hotels and tourist sites — a guide or translation app is strongly recommended.',
+    safety: 'Safe city for tourists. Watch footing on steep hillside streets and stairs, especially after rain.'
   },
   faqs: [
     {
       question: 'How many days should I spend in Chongqing?',
-      answer: '1-2 days exploring city before/after Yangtze cruise. Most time allocates to river journey. Limited Chongqing-only itineraries.'
+      answer: '3–4 days is ideal to cover Liziba Station, Hongyadong, Dazu Rock Carvings, Ciqikou, and a proper hot pot dinner without rushing. On a tighter itinerary, 2 full days covers the key highlights.'
     },
     {
-      question: 'What\'s the Three Gorges Dam?',
-      answer: 'World\'s largest hydroelectric facility; engineering marvel. Day trips from Chongqing; approximately 2-3 hours drive. Visitor centre with tours available.'
+      question: 'What is the Liziba Station monorail through a building?',
+      answer: 'Liziba is a station on Chongqing Rail Transit Line 2 where the train passes directly through the 6th to 8th floors of a 19-storey residential building. The station and building were constructed at the same time in 2004. It is completely real and operational — you can ride through the building on Line 2, or watch from the street-level viewing plaza below.'
     },
     {
-      question: 'Can I do city exploration without Yangtze cruise?',
-      answer: 'Yes; museums, temples, cable cars, hot pot experiences available independently. However, Three Gorges represent primary Chongqing attraction.'
+      question: 'Is Chongqing safe and easy to navigate?',
+      answer: 'Chongqing is safe for tourists. The metro system is modern and well-signposted. The main challenge is the city's dramatic vertical topography — steep steps, hillside streets, and elevated walkways can be tiring. A guided tour makes logistics significantly easier, especially for day trips to Dazu.'
     },
     {
-      question: 'Is Chongqing hot pot authentically spicy?',
-      answer: 'Yes; "ma la" (numbing-spicy) Chongqing hot pot features intense Sichuan peppercorns and chilli. Milder versions available; communicate preferences.'
+      question: 'What is the best time of year to visit Chongqing?',
+      answer: 'April–May and September–October offer the most comfortable temperatures. July and August can reach 40°C with high humidity — manageable but intense. Chongqing is often misty in winter, which actually adds to the atmospheric city photography.'
     },
     {
-      question: 'How do I access Yangtze cruises?',
-      answer: 'Hotels offer booking services; travel agencies throughout city sell cruise tickets. Advance booking recommended (1-2 weeks) for better pricing.'
+      question: 'Do New Zealanders need a visa to visit China?',
+      answer: 'New Zealand passport holders currently benefit from China's visa-free entry policy (up to 15 days for tourism). For longer trips, a standard tourist visa is required. Check the latest requirements before travel, as policies can change.'
+    },
+    {
+      question: 'Can I visit Chongqing as part of a tour from New Zealand?',
+      answer: 'Yes — CTS Tours offers a dedicated Chongqing and Chengdu tour from New Zealand: China Discovery — Fire & Fuzz (10 days, from NZD $2,750). The tour combines 4 nights in Chongqing with 3 nights in Chengdu, connected by high-speed bullet train, with expert guide throughout.'
     }
   ],
-  relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
-  relatedGuideSlugs: ['yunnan-travel-guide'],
+  relatedTourSlugs: ['chongqing-chengdu'],
+  relatedGuideSlugs: ['chengdu-travel-guide', 'yunnan-travel-guide'],
   galleryImages: [],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-15'
+  updatedAt: '2026-04-25'
 };
 
 export const leshanBuddhaGuide: DestinationGuide = {
