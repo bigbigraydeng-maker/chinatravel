@@ -73,7 +73,7 @@ export default function GuidePage() {
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
-            Book the Chongqing & Chengdu Tour from New Zealand
+            Book the Chongqing &amp; Chengdu Tour from New Zealand
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
             CTS Tours offers <strong>China Discovery — Fire &amp; Fuzz</strong>: 10 days covering Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas, and the bullet train to Chengdu. From NZD $2,999. Auckland-based team, NZD pricing, small groups.
