@@ -1726,7 +1726,7 @@ export const forbiddenCityGuide: DestinationGuide = {
   destinationName: 'Forbidden City',
   parentDestination: 'beijing',
   metaTitle: 'Forbidden City Tour Guide 2025 | Visit Beijing\'s Imperial Palace | CTS Tours NZ',
-  metaDescription: 'Plan your Forbidden City tour: guided visit through 980 buildings, 72 hectares of imperial history, and the stories of 24 emperors. Part of CTS Tours\' Beijing itineraries from NZ — visa-free entry, NZD pricing.',
+  metaDescription: 'Plan your Forbidden City tour: skip the queues with a guided visit, explore 980 buildings across 72 hectares, and learn the stories of 24 emperors. Part of CTS Tours\' Beijing itineraries from NZ — visa-free entry, NZD pricing.',
   keywords: ['Forbidden City', 'imperial palace', 'UNESCO', 'Chinese architecture'],
   h1: 'Forbidden City: World\'s Largest Imperial Palace Complex',
   heroSubtitle: '980 Buildings Spanning 24 Imperial Dynasties',
