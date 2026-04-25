@@ -23,7 +23,7 @@ export interface CityHubMeta extends SeoPageMeta {
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
-  title: 'China Holiday Packages from New Zealand 2025 | Flights Included | NZD Pricing | CTS Tours',
+  title: 'China Tours & Holiday Packages from New Zealand 2025 | Flights Included | NZD Pricing | CTS Tours',
   description:
     'China holiday packages from New Zealand — flights included, NZD pricing, visa-free for Kiwi passports. Signature luxury, Discovery value & Stopover city breaks. TAANZ-bonded, Auckland-based team since 1928. Get a free quote.',
   h1: 'China Tour Packages from New Zealand',

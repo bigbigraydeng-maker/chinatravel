@@ -42,6 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'yunnan-tours',
     'china-tours-from-new-zealand',
     'china-tours-from-auckland',
+    'china-tours-from-australia',
     'best-time-to-visit-china',
     'china-visa-guide-for-new-zealanders',
   ].map((slug) => ({
@@ -108,6 +109,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { slug: 'zhangjiajie', tier: 'stopover' },
     { slug: 'guangzhou-shenzhen', tier: 'stopover' },
     { slug: 'huangshan', tier: 'stopover' },
+    // Discovery
+    { slug: 'chongqing-chengdu', tier: 'discovery' },
   ].map(({ slug, tier }) => ({
     url: `${SITE}/tours/china/${tier}/${slug}`,
     lastModified: now,
@@ -115,5 +118,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...guidePages, ...tourSlugs];
+  // ── Long-tail blog posts (batch 1) ──────────────────────────────────────
+  const blogPages: MetadataRoute.Sitemap = [
+    // Line A: Beijing / Xi'an
+    'beijing-xian-itinerary-10-days',
+    'first-time-china-beijing-xian',
+    'beijing-to-xian-high-speed-train',
+    'terracotta-warriors-guide-nz',
+    'beijing-xian-tour-new-zealand',
+    // Line B: Shanghai & Surroundings
+    'shanghai-suzhou-hangzhou-itinerary',
+    'west-lake-hangzhou-travel-guide',
+    'suzhou-gardens-guide-nz',
+    'shanghai-10-days-itinerary',
+    'china-water-towns-jiangnan-guide',
+    // Line C: Chongqing / Chengdu
+    'chongqing-chengdu-itinerary-10-days',
+    'how-many-days-in-chongqing',
+    'chongqing-vs-chengdu',
+    'liziba-station-chongqing-guide',
+    'chengdu-panda-tour-new-zealand',
+  ].map((slug) => ({
+    url: `${SITE}/blog/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }));
+
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...guidePages, ...tourSlugs, ...blogPages];
 }
