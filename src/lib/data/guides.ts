@@ -2246,8 +2246,8 @@ export const chongqingGuide: DestinationGuide = {
       title: 'Huguang Guild Hall & Ciqikou Ancient Town',
       id: 'historic-districts',
       content: [
-        'The Huguang Guild Hall (built 1759, Qing Dynasty) is one of China's best-preserved guild hall complexes, built by merchants from Hubei and Hunan who came to Chongqing during the great population migration to Sichuan. The complex climbs a terraced hillside above the Yangtze River across 8,500 square metres of courtyards, opera theatres, and carved pavilions.',
-        'Ciqikou Ancient Town, dating from the Song Dynasty, preserves the city's original street layout: narrow flagstone lanes, wooden teahouses, and street food stalls selling Sichuan snacks. It sits at the confluence of the Jialing River and a small tributary, and offers a vivid sensory contrast to the futuristic cityscape visible just beyond its rooftops.'
+        'The Huguang Guild Hall (built 1759, Qing Dynasty) is one of China\'s best-preserved guild hall complexes, built by merchants from Hubei and Hunan who came to Chongqing during the great population migration to Sichuan. The complex climbs a terraced hillside above the Yangtze River across 8,500 square metres of courtyards, opera theatres, and carved pavilions.',
+        'Ciqikou Ancient Town, dating from the Song Dynasty, preserves the city\'s original street layout: narrow flagstone lanes, wooden teahouses, and street food stalls selling Sichuan snacks. It sits at the confluence of the Jialing River and a small tributary, and offers a vivid sensory contrast to the futuristic cityscape visible just beyond its rooftops.'
       ]
     },
     {
@@ -2305,7 +2305,7 @@ export const chongqingGuide: DestinationGuide = {
   ],
   practicalInfo: {
     transportation: 'Jiangbei Airport (CKG) connects to Auckland via Beijing or Shanghai. Chongqing Rail Transit (metro) covers all key tourist sites. Line 2 passes through Liziba Station.',
-    climate: 'Hot, humid summers (June–August, up to 40°C). Mild winters. Spring and autumn are ideal. Chongqing is known as one of China's "Three Furnaces" — July and August are intense.',
+    climate: 'Hot, humid summers (June–August, up to 40°C). Mild winters. Spring and autumn are ideal. Chongqing is known as one of China\'s "Three Furnaces" — July and August are intense.',
     bestTime: 'April–May and September–October for comfortable temperatures and clear skies.',
     budget: 'Hot pot dinner ¥60–120/person; hotel ¥300–600/night; metro fare ¥2–10; Dazu day trip ¥200–400 with transport.',
     language: 'Mandarin. English is limited outside major hotels and tourist sites — a guide or translation app is strongly recommended.',
@@ -2322,7 +2322,7 @@ export const chongqingGuide: DestinationGuide = {
     },
     {
       question: 'Is Chongqing safe and easy to navigate?',
-      answer: 'Chongqing is safe for tourists. The metro system is modern and well-signposted. The main challenge is the city's dramatic vertical topography — steep steps, hillside streets, and elevated walkways can be tiring. A guided tour makes logistics significantly easier, especially for day trips to Dazu.'
+      answer: 'Chongqing is safe for tourists. The metro system is modern and well-signposted. The main challenge is the city\'s dramatic vertical topography — steep steps, hillside streets, and elevated walkways can be tiring. A guided tour makes logistics significantly easier, especially for day trips to Dazu.'
     },
     {
       question: 'What is the best time of year to visit Chongqing?',
@@ -2330,7 +2330,7 @@ export const chongqingGuide: DestinationGuide = {
     },
     {
       question: 'Do New Zealanders need a visa to visit China?',
-      answer: 'New Zealand passport holders currently benefit from China's visa-free entry policy (up to 15 days for tourism). For longer trips, a standard tourist visa is required. Check the latest requirements before travel, as policies can change.'
+      answer: 'New Zealand passport holders currently benefit from China\'s visa-free entry policy (up to 15 days for tourism). For longer trips, a standard tourist visa is required. Check the latest requirements before travel, as policies can change.'
     },
     {
       question: 'Can I visit Chongqing as part of a tour from New Zealand?',
