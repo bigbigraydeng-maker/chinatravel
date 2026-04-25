@@ -23,9 +23,9 @@ export interface CityHubMeta extends SeoPageMeta {
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
-  title: 'China Tour Packages & Holiday Deals from New Zealand | CTS Tours',
+  title: 'China Holiday Packages from New Zealand 2025 | Flights Included | NZD Pricing | CTS Tours',
   description:
-    'Explore our China tour packages and holiday deals for New Zealand travellers. Signature luxury, Discovery value & Stopover breaks. TAANZ-member, IATA-accredited China travel specialists. Transparent NZD pricing.',
+    'China holiday packages from New Zealand — flights included, NZD pricing, visa-free entry for Kiwis. Luxury Signature tours, value Discovery tours & short Stopover breaks. TAANZ-bonded. Auckland-based team since 1928.',
   h1: 'China Tour Packages from New Zealand',
   heroSubtitle: 'Signature luxury · Discovery value · Stopover breaks. Tailored China holiday packages for Kiwis.',
   introText:
@@ -326,8 +326,8 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand | Expert China Travel Specialists | CTS Tours',
-  description: 'China tours from New Zealand designed by NZ-based China specialists. Departing Auckland, Wellington & Christchurch. Visa-free entry for NZ passports. NZD pricing. Book with CTS Tours — New Zealand\'s China travel experts since 1928.',
+  title: 'China Tours from New Zealand 2025 | Visa-Free · NZD Pricing · Flights Included | CTS Tours',
+  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, flights from Auckland included. Small groups, expert guides, 90+ years running China tours. Depart Auckland, Wellington & Christchurch. Get a quote from our NZ team.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
   introText:
