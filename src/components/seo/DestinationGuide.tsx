@@ -39,7 +39,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
 
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI_REF}/forbidden-city-aerial.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
       { name: 'Beijing Express (3 Days)', duration: '3 Days', price: 'From NZD $1,450', url: '/tours/china/stopover/beijing-express', image: `${TI}/forbidden-city-lion-2.jpg`, tier: 'stopover' },
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
@@ -54,7 +54,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
     relatedTours: [
 
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI_REF}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
       { name: 'Silk Road Discovery (17 Days)', duration: '17 Days', price: 'From NZD $6,699', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
     ],
@@ -83,7 +83,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI_REF}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
       { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
@@ -186,7 +186,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
 
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI_REF}/great-wall-mist.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/great-wall-mist.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -200,7 +200,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
 
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI_REF}/forbidden-city-aerial.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -214,7 +214,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
     relatedTours: [
 
-      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI_REF}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
@@ -228,7 +228,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI_REF}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
       { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -294,7 +294,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chongqing-tours', hubLabel: 'All Chongqing Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI_REF}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
