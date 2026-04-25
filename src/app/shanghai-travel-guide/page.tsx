@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-warm-50 border-t border-warm-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
+            Book a Shanghai Tour from New Zealand
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Explore the Bund, Yu Garden, and modern Pudong on a CTS Tours Shanghai package. Small groups, NZD pricing, all-inclusive.
+          </p>
+          <a
+            href="/shanghai-tours"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+          >
+            Explore Shanghai Tours →
+          </a>
+        </div>
+      </section>
     </>
   );
 }

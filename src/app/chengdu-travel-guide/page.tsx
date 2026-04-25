@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-warm-50 border-t border-warm-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
+            Book a Chengdu & Giant Panda Tour
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Our Chengdu packages include a morning at the Giant Panda Breeding Research Base — the highlight of every trip. NZD pricing, Auckland team.
+          </p>
+          <a
+            href="/chengdu-tours"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+          >
+            Explore Chengdu Tours →
+          </a>
+        </div>
+      </section>
     </>
   );
 }

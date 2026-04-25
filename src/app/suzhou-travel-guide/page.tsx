@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-warm-50 border-t border-warm-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
+            Explore Suzhou on a China Tour
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            Suzhou's classical gardens are a highlight of CTS multi-city tours. Perfect as a day trip from Shanghai in our all-inclusive packages.
+          </p>
+          <a
+            href="/china-tours"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+          >
+            View China Tour Packages →
+          </a>
+        </div>
+      </section>
     </>
   );
 }

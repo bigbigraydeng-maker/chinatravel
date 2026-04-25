@@ -76,14 +76,13 @@ export default function GuidePage() {
             Book a Great Wall of China Tour
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            CTS Tours includes guided Great Wall visits in our Beijing itineraries.
-            Auckland-based team, NZD pricing, all-inclusive packages.
+            CTS Tours includes guided Great Wall visits in our Beijing itineraries. Auckland-based team, NZD pricing, all-inclusive packages.
           </p>
           <a
-            href="/china-tours"
+            href="/beijing-tours"
             className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
           >
-            View China Tour Packages →
+            Explore Beijing Tours →
           </a>
         </div>
       </section>

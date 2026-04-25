@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-warm-50 border-t border-warm-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
+            Cruise the Li River with CTS Tours
+          </h2>
+          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
+            A Li River cruise is the centrepiece of every CTS Guilin package. Auckland-based team, NZD pricing, all-inclusive itineraries.
+          </p>
+          <a
+            href="/guilin-tours"
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+          >
+            Explore Guilin Tours →
+          </a>
+        </div>
+      </section>
     </>
   );
 }
