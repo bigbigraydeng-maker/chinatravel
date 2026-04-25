@@ -38,7 +38,7 @@ export default function ChongqingToursPage() {
         cityName={chongqingToursMeta.cityName}
         heroTitle={chongqingToursMeta.h1}
         heroSubtitle={chongqingToursMeta.heroSubtitle}
-        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg"
+        heroImage="/blog/chongqing-night-skyline-hongyadong.jpg"
         introText={chongqingToursMeta.introText}
         highlights={chongqingToursMeta.highlights}
         bestTimeToVisit={chongqingToursMeta.bestTimeToVisit}
