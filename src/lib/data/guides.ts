@@ -2204,9 +2204,20 @@ export const chongqingGuide: DestinationGuide = {
   id: 'guide-chongqing',
   slug: 'chongqing-travel-guide',
   destinationName: 'Chongqing',
-  metaTitle: 'Chongqing Travel Guide 2025 | Liziba Station, Hongyadong & Things To Do | CTS Tours NZ',
-  metaDescription: 'Complete Chongqing travel guide: Liziba monorail through a building, Hongyadong cliffside lights, Dazu UNESCO carvings, hot pot, and the 8D cyberpunk city that went viral worldwide.',
-  keywords: ['Chongqing travel guide', 'Liziba Station', 'Hongyadong', 'Chongqing things to do', 'Dazu Rock Carvings', 'Chongqing tour', 'cyberpunk Chongqing', 'Chongqing hot pot'],
+  metaTitle: 'Chongqing City Tour & Travel Guide 2025 | Liziba, Hongyadong, Dazu | CTS Tours NZ',
+  metaDescription: 'Plan your Chongqing city tour: Liziba monorail through a building, Hongyadong cliffside lights, Dazu UNESCO carvings, Sichuan hot pot, and the 8D cyberpunk skyline that took social media by storm. Guided tours from NZ with CTS.',
+  keywords: [
+    'Chongqing travel guide',
+    'Chongqing city tour',
+    'things to do in Chongqing',
+    'Liziba Station',
+    'Hongyadong',
+    'Chongqing things to do',
+    'Dazu Rock Carvings',
+    'Chongqing tour',
+    'cyberpunk Chongqing',
+    'Chongqing hot pot',
+  ],
   h1: 'Chongqing Travel Guide: The City That Went Viral',
   heroSubtitle: 'Liziba Monorail · Hongyadong · Dazu UNESCO · Hot Pot Capital',
   heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
@@ -2257,7 +2268,16 @@ export const chongqingGuide: DestinationGuide = {
         'Chongqing is the birthplace and undisputed capital of Chinese hot pot — significantly different from the versions served elsewhere. The traditional Chongqing version uses beef tallow, dried chillies, and Sichuan peppercorn (which numbs more than burns). The communal dining format is as much a cultural ritual as a meal.',
         'Order a split pot (鸳鸯锅) if your group has varying spice tolerance — half original broth, half mild. The classic items to order: thinly sliced beef, tripe, duck intestine, tofu skin, lotus root, and Mao blood curd (maoxuewang). A hot pot dinner here is one of the most memorable meals in China.'
       ]
-    }
+    },
+    {
+      title: 'Planning Your Chongqing City Tour',
+      id: 'planning-chongqing-city-tour',
+      content: [
+        'A Chongqing city tour typically covers three zones: the Yuzhong Peninsula (city centre, Hongyadong, Jiefangbei), the eastern riverbanks (Liziba Station, Yangtze cableway), and the outlying day trip to Dazu Rock Carvings. Most visitors stay 3–4 nights, which is enough to cover all highlights without rushing.',
+        'Getting around is easy — Rail Transit Line 2 connects Liziba, the city centre, and main tourist zones. For Dazu, a guided coach transfer (about 2 hours each way) is the most convenient option. CTS Tours handles all logistics on the Fire & Fuzz 10-day tour, which combines Chongqing with Chengdu via high-speed train.',
+        'Best time for a Chongqing city tour: Spring (March–May) and autumn (September–November) offer mild temperatures. Summer is very hot and humid. The famous fog — which makes Hongyadong look even more surreal — is thickest from November through February.',
+      ],
+    },
   ],
   attractions: [
     {

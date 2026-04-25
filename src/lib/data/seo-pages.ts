@@ -576,6 +576,43 @@ export const suzhouToursMeta: CityHubMeta = {
   ]
 };
 
+export const chinaToursFromAustraliaMeta: SeoPageMeta = {
+  slug: 'china-tours-from-australia',
+  title: 'China Tours from Australia 2025 | Expert-Led China Travel | CTS Tours',
+  description: 'China tours from Australia designed by specialists with 90+ years of experience. Departing Sydney, Melbourne & Brisbane. Visa-free for Australian passports. Expert guides, small groups. Book with CTS Tours.',
+  h1: 'China Tours from Australia',
+  heroSubtitle: 'Departing Sydney · Melbourne · Brisbane. Visa-free for AU passports. Expert-guided small groups.',
+  introText:
+    'CTS has been running China tours for nearly a century. For Australian travellers, we offer direct departures from Sydney (SYD), Melbourne (MEL), and Brisbane (BNE), with all logistics handled by our China specialists. Australian passport holders can enter mainland China visa-free for up to 30 days for tourism — making now an ideal time to go.\n\n' +
+    'Whether you want a first-time China highlights loop covering Beijing, Xi\'an, and Shanghai, a Yangtze cruise with Chongqing and Chengdu, or a deeper journey through Yunnan or the Silk Road, our consultants tailor itineraries to your schedule and budget. All prices are quoted in AUD.',
+  faqs: [
+    {
+      question: 'Do Australian citizens need a visa for China?',
+      answer: 'No visa is required for most Australian travellers. Australian ordinary passport holders can enter mainland China visa-free for up to 30 days for tourism. Bring your valid Australian passport, return flight confirmation, and hotel booking details. Check the Australian Department of Foreign Affairs for the latest conditions before travelling.'
+    },
+    {
+      question: 'Which Australian cities have direct flights to China?',
+      answer: 'Sydney (SYD) has the most direct flights to Shanghai (PVG) and Beijing (PEK), with flight times of approximately 11–12 hours. Melbourne (MEL) and Brisbane (BNE) also have regular services, sometimes with a short connection. CTS arranges the most convenient routing from your nearest Australian airport.'
+    },
+    {
+      question: 'How long is the flight from Sydney to Beijing or Shanghai?',
+      answer: 'Sydney to Shanghai is approximately 11–12 hours direct. Sydney to Beijing is similar, around 11–13 hours depending on routing. From Melbourne and Brisbane, add approximately 1–2 hours for connections if required.'
+    },
+    {
+      question: 'Are CTS China tour prices quoted in Australian dollars?',
+      answer: 'Yes. For Australian travellers, all prices are quoted in AUD with no hidden currency markups. Your consultant will provide a full cost breakdown covering international flights, accommodation, guided tours, and included meals before you commit to any booking.'
+    },
+    {
+      question: 'What is the best China tour for first-time Australian visitors?',
+      answer: 'The most popular first-time itinerary combines Beijing (Great Wall, Forbidden City, Temple of Heaven), Xi\'an (Terracotta Warriors, city walls), and Shanghai (Bund, Yu Garden, French Concession) — typically 10–14 days. For something more adventurous, our Fire & Fuzz tour combines Chongqing and Chengdu with giant pandas and the famous Liziba monorail-through-a-building.'
+    },
+    {
+      question: 'How far in advance should I book a China tour from Australia?',
+      answer: 'We recommend booking at least 8–12 weeks in advance to secure preferred departure dates, group availability, and optimal flight pricing. For peak travel periods (October–November, April–May), book 4–6 months ahead. Contact our team for current availability.'
+    },
+  ]
+};
+
 // ===== Export all page metadata =====
 
 export const allSeoPages: Record<string, SeoPageMeta> = {
@@ -592,6 +629,7 @@ export const allSeoPages: Record<string, SeoPageMeta> = {
   'suzhou-tours': suzhouToursMeta,
   'china-tours-from-new-zealand': chinaToursFromNZMeta,
   'china-tours-from-auckland': chinaToursFromAucklandMeta,
+  'china-tours-from-australia': chinaToursFromAustraliaMeta,
   'best-time-to-visit-china': bestTimeToVisitChinaMeta,
   'china-visa-guide-for-new-zealanders': chinaVisaGuideMeta
 };
