@@ -46,6 +46,7 @@ export default function ChengduToursPage() {
         faqs={chengduToursMeta.faqs}
         guideLinks={[
           { label: 'Chengdu Travel Guide', href: '/chengdu-travel-guide', emoji: '🐼', description: 'Pandas, temples & hot pot' },
+          { label: 'Panda Sanctuary Guide', href: '/chengdu-panda-sanctuary', emoji: '🎋', description: '200+ pandas · morning feeding · visitor tips' },
           { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', emoji: '🗿', description: 'Giant cliffside Buddha visitor tips' },
         ]}
       />

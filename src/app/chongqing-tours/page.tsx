@@ -46,6 +46,8 @@ export default function ChongqingToursPage() {
         faqs={chongqingToursMeta.faqs}
         guideLinks={[
           { label: 'Chongqing Travel Guide', href: '/chongqing-travel-guide', emoji: '🌉', description: 'Mountain city, gorges & hot pot' },
+          { label: 'Liziba Station Guide', href: '/liziba-station-chongqing', emoji: '🚝', description: 'The train that runs through a building' },
+          { label: 'Hongyadong Guide', href: '/hongyadong-chongqing', emoji: '🏮', description: 'Clifftop night market & river views' },
         ]}
       />
     </>
