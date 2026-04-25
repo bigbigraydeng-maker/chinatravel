@@ -28,13 +28,14 @@ export const metadata: Metadata = {
 function GuideCard({ guide }: { guide: any }) {
   return (
     <Link href={`/${guide.slug}`} className="block group">
-      <div className="overflow-hidden rounded-lg shadow-md mb-3 aspect-square bg-gray-100 relative">
+      <div className="overflow-hidden rounded-lg shadow-md mb-3 aspect-square bg-gray-100">
         <Image
           src={guide.heroImage}
           alt={guide.destinationName}
-          fill
+          width={400}
+          height={400}
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
       </div>
