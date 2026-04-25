@@ -44,6 +44,11 @@ export default function ShanghaiToursPage() {
         bestTimeToVisit={shanghaiToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={shanghaiToursMeta.faqs}
+        guideLinks={[
+          { label: 'Shanghai Travel Guide', href: '/shanghai-travel-guide', emoji: '🌃', description: 'Bund, French Concession & more' },
+          { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', emoji: '🍵', description: 'West Lake day trip from Shanghai' },
+          { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', emoji: '🌿', description: 'Classical gardens & canal towns' },
+        ]}
       />
     </>
   );

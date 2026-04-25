@@ -6,6 +6,7 @@ import React from 'react';
 import { Tour } from '@/lib/data/tours';
 import HubHero from './HubHero';
 import TourGrid from './TourGrid';
+import GuideLinksSection, { GuideLinkCard } from './GuideLinksSection';
 import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
@@ -29,6 +30,9 @@ interface CityHubProps {
   // FAQs
   faqs: Array<{ question: string; answer: string }>;
 
+  // Optional guide links shown after the tours section
+  guideLinks?: GuideLinkCard[];
+
   // Meta description (for SEO)
   metaDescription?: string;
 }
@@ -43,6 +47,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
   bestTimeToVisit,
   tours,
   faqs,
+  guideLinks,
   metaDescription
 }) => {
   return (
@@ -169,6 +174,14 @@ const CityTourHub: React.FC<CityHubProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Guide links */}
+      {guideLinks && guideLinks.length > 0 && (
+        <GuideLinksSection
+          title={`${cityName} Travel Guides`}
+          links={guideLinks}
+        />
+      )}
 
       {/* FAQs */}
       {faqs.length > 0 && <FAQSection faqs={faqs} />}

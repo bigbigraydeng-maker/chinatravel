@@ -460,6 +460,122 @@ export const chinaVisaGuideMeta: SeoPageMeta = {
   ]
 };
 
+// ===== New city hub pages =====
+
+export const chongqingToursMeta: CityHubMeta = {
+  slug: 'chongqing-tours',
+  cityName: 'Chongqing',
+  title: 'Chongqing Tours from New Zealand | Three Gorges | CTS Tours',
+  description: 'Explore Chongqing with CTS Tours. Sail the Yangtze Three Gorges, discover the mountain megacity, savour authentic hot pot, and visit UNESCO-listed Dazu Rock Carvings.',
+  h1: 'Chongqing Tours from New Zealand',
+  heroSubtitle: 'Sail the Yangtze Three Gorges. Explore China\'s mountain megacity. Savour authentic Chongqing hot pot.',
+  introText: 'Chongqing is unlike any other Chinese city — a sprawling mountain metropolis perched above the confluence of the Yangtze and Jialing rivers. Famous as the gateway to the legendary Three Gorges, this UNESCO-rich city rewards visitors with dramatic river scenery, the ancient Dazu Rock Carvings, multi-level cable cars threading between skyscrapers, and one of China\'s most celebrated cuisine traditions: the fiery original Chongqing hot pot. Our Chongqing tours combine the city experience with unforgettable Yangtze cruises and scenic highlights of the surrounding Sichuan highlands.',
+  searchTerms: ['chongqing', 'three gorges', 'yangtze', 'dazu'],
+  highlights: [
+    'Cruise the legendary Three Gorges on the Yangtze River',
+    'Explore the ancient Ciqikou Porcelain Village (Ming Dynasty)',
+    'Ride the Yangtze River cable car over steep mountain terrain',
+    'Visit the UNESCO-listed Dazu Rock Carvings',
+    'Savour the original Chongqing hot pot — spicier than all imitations',
+    'Explore Hongya Cave, a multi-storey riverside entertainment complex'
+  ],
+  bestTimeToVisit: 'Spring (March–May) and autumn (September–October) are ideal — mild temperatures and clear river views. Summer is hot and humid. Winter is cool and often misty, which can add atmosphere to the gorges but reduces visibility.',
+  faqs: [
+    {
+      question: 'What is the Three Gorges cruise like?',
+      answer: 'The Three Gorges cruise sails along the Yangtze through Qutang, Wu, and Xiling gorges — some of China\'s most dramatic river scenery. Cruise ships range from comfortable day boats to multi-day luxury vessels with cabins, restaurants, and scenic viewing decks. CTS arranges the right vessel for your itinerary, typically combined with Chongqing city sightseeing.'
+    },
+    {
+      question: 'What are the Dazu Rock Carvings?',
+      answer: 'The Dazu Rock Carvings are a UNESCO World Heritage Site featuring over 50,000 Buddhist, Taoist, and Confucian sculptures carved into cliffsides between the 9th and 13th centuries. The Baodingshan and Beishan sites are the most impressive, with detailed narrative reliefs up to 31 metres tall. They\'re a highlight for any visitor to Chongqing.'
+    },
+    {
+      question: 'Is Chongqing hot pot different from Sichuan hot pot?',
+      answer: 'Yes — Chongqing hot pot is widely considered the original version and is known for being intensely spicy and numbing (má là) with a tallow-based broth. Sichuan hot pot in other cities has often been adapted to be milder. In Chongqing, restaurants use traditional recipes dating back centuries. CTS can recommend the best local spots and advise on heat levels for your group.'
+    },
+    {
+      question: 'Can I combine Chongqing with a Chengdu tour?',
+      answer: 'Absolutely — Chongqing and Chengdu are just 2 hours apart by high-speed train, making them an ideal pairing. A popular itinerary combines 2 days in Chengdu (pandas, temples) with 3 days in Chongqing (city, Three Gorges cruise). CTS offers combined tours covering both cities comfortably.'
+    }
+  ]
+};
+
+export const hangzhouToursMeta: CityHubMeta = {
+  slug: 'hangzhou-tours',
+  cityName: 'Hangzhou',
+  title: 'Hangzhou Tours from New Zealand | West Lake | CTS Tours',
+  description: 'Explore Hangzhou with CTS Tours. Stroll scenic West Lake, sip Longjing Dragon Well tea, explore silk museums and classical gardens. Day tours & multi-day packages available.',
+  h1: 'Hangzhou Tours from New Zealand',
+  heroSubtitle: 'Stroll scenic West Lake. Sip Longjing Dragon Well tea. Discover classical gardens and silk heritage.',
+  introText: 'Hangzhou, the capital of Zhejiang Province, has enchanted poets, emperors, and travellers for over a thousand years. Its centrepiece, West Lake (Xihu), is a UNESCO World Heritage landscape of willow-lined causeways, pagodas, and mist-shrouded hills. Beyond the lake, Hangzhou is China\'s silk capital and home to the world\'s finest Longjing (Dragon Well) green tea, grown on terraced hillsides just minutes from the city. Most of our Hangzhou tours are combined with Shanghai or Suzhou as part of a wider Jiangnan (waterways region) itinerary.',
+  searchTerms: ['hangzhou', 'west lake', 'longjing', 'xihu', 'suzhou', 'zhujiajiao'],
+  highlights: [
+    'Stroll the UNESCO-listed West Lake causeways at dawn or dusk',
+    'Visit a traditional Longjing (Dragon Well) tea plantation and taste the harvest',
+    'Explore the China National Silk Museum — the world\'s largest silk collection',
+    'Walk the Hefang Street historic district with Qing Dynasty architecture',
+    'Cruise West Lake by private boat to Six Harmonies Pagoda',
+    'Day trip to Suzhou\'s classical gardens or Wuzhen water town'
+  ],
+  bestTimeToVisit: 'Spring (March–May) is peak season — West Lake blooms with lotus flowers and the new Longjing tea harvest begins. Autumn (September–October) offers clear skies and golden hillsides. Summer is hot and humid; winter is cool and atmospheric around the lake.',
+  faqs: [
+    {
+      question: 'What is West Lake (Xihu)?',
+      answer: 'West Lake is a UNESCO World Heritage Site and one of China\'s most celebrated landscapes. The lake covers 6.5 sq km and is surrounded by lush hills, ancient temples, and causeways. Famous views include the Broken Bridge, Three Pools Mirroring the Moon, and Leifeng Pagoda. The lake has inspired Chinese poetry and art for over 1,000 years.'
+    },
+    {
+      question: 'What is Longjing (Dragon Well) tea?',
+      answer: 'Longjing is China\'s most prestigious green tea, grown on terraced hillsides around the Longjing Village area southwest of Hangzhou. The flat, jade-green leaves are hand-picked and pan-fried to preserve their delicate flavour. Visiting a tea plantation during the spring harvest (late March–early May) is a highlight. CTS includes tea tastings in relevant itineraries.'
+    },
+    {
+      question: 'How far is Hangzhou from Shanghai?',
+      answer: 'Hangzhou is approximately 175 km from Shanghai — about 45 minutes by high-speed train. It\'s an ideal day trip from Shanghai, or a 2-night stop as part of a wider Jiangnan tour. CTS offers Shanghai-Hangzhou-Suzhou combinations that cover the best of China\'s waterways region in 4–5 days.'
+    },
+    {
+      question: 'Is Hangzhou good for a stopover?',
+      answer: 'Yes! Even a single full day in Hangzhou allows you to visit West Lake, try Longjing tea, and stroll Hefang Street. For a more relaxed experience, 2 nights is ideal. CTS\'s Stopover range includes short Hangzhou city breaks that pair naturally with Shanghai departures.'
+    }
+  ]
+};
+
+export const suzhouToursMeta: CityHubMeta = {
+  slug: 'suzhou-tours',
+  cityName: 'Suzhou',
+  title: 'Suzhou Tours from New Zealand | Classical Gardens | CTS Tours',
+  description: 'Explore Suzhou with CTS Tours. Wander UNESCO-listed classical gardens, cruise ancient canals, and experience China\'s silk capital. Day tours & multi-day packages from NZD $1,356.',
+  h1: 'Suzhou Tours from New Zealand',
+  heroSubtitle: 'Wander UNESCO-listed classical gardens. Cruise ancient canals. Experience China\'s silk capital.',
+  introText: 'Suzhou, just 30 minutes by high-speed train from Shanghai, is one of China\'s most refined destinations. Known as the "Venice of the East," its network of canals, hump-backed bridges, and classical gardens has earned it multiple UNESCO World Heritage listings. The city\'s gardens — including the Humble Administrator\'s Garden and Master of Nets Garden — are masterpieces of Chinese landscape design, combining rockeries, pavilions, ponds, and plants in precise harmony. Suzhou is also famous for its silk embroidery and brocade traditions, both of which can be explored at excellent local museums.',
+  searchTerms: ['suzhou', 'classical gardens', 'canal', 'silk', 'humble administrator', 'tiger hill'],
+  highlights: [
+    'Explore the Humble Administrator\'s Garden — Suzhou\'s largest UNESCO-listed classical garden',
+    'Stroll the ancient canals of Pingjiang Road at dusk',
+    'Visit the Suzhou Silk Museum to learn about 2,000 years of silk craftsmanship',
+    'Admire Tiger Hill, a 2,500-year-old pagoda leaning at 3 degrees',
+    'Cruise by gondola through narrow waterways between Ming Dynasty houses',
+    'Day trip to nearby Tongli or Zhouzhuang water town villages'
+  ],
+  bestTimeToVisit: 'Spring (March–May) and autumn (September–October) are ideal — comfortable temperatures and gardens in bloom. Summer is hot and humid. Winter is cool and quiet, perfect for exploring gardens without crowds.',
+  faqs: [
+    {
+      question: 'What are Suzhou\'s classical gardens?',
+      answer: 'Suzhou has nine UNESCO-listed classical gardens, each created during the Ming or Qing dynasties as private retreats for scholars and officials. The most famous are the Humble Administrator\'s Garden (Zhuozheng Yuan), Lion Grove Garden, and Lingering Garden. Each is designed to evoke mountain landscapes and philosophical ideals through careful arrangement of water, rocks, plants, and architecture.'
+    },
+    {
+      question: 'How do I get from Shanghai to Suzhou?',
+      answer: 'High-speed trains run from Shanghai Hongqiao or Shanghai station to Suzhou in 25–35 minutes. CTS arranges all transport as part of your tour. Suzhou makes an excellent day trip from Shanghai, or a 1–2 night stop on a wider Jiangnan itinerary.'
+    },
+    {
+      question: 'What is Pingjiang Road?',
+      answer: 'Pingjiang Road is one of Suzhou\'s best-preserved ancient streets, running alongside a canal for nearly a kilometre. Lined with teahouses, silk shops, local snack stalls, and traditional architecture, it\'s the most atmospheric area of the old city to explore on foot. Evening is particularly lovely when lanterns reflect on the water.'
+    },
+    {
+      question: 'Can I combine Suzhou with Hangzhou?',
+      answer: 'Yes — Suzhou and Hangzhou are both served by high-speed trains and are often combined in 4–5 day Jiangnan itineraries alongside Shanghai. CTS\'s Shanghai & Surroundings Discovery tour covers Shanghai, Suzhou\'s gardens, and the Hangzhou West Lake area. Contact us to build a custom Jiangnan itinerary.'
+    }
+  ]
+};
+
 // ===== Export all page metadata =====
 
 export const allSeoPages: Record<string, SeoPageMeta> = {
@@ -471,6 +587,9 @@ export const allSeoPages: Record<string, SeoPageMeta> = {
   'guilin-tours': guilinToursMeta,
   'zhangjiajie-tours': zhangjiajieToursMetadata,
   'yunnan-tours': yunnanToursMeta,
+  'chongqing-tours': chongqingToursMeta,
+  'hangzhou-tours': hangzhouToursMeta,
+  'suzhou-tours': suzhouToursMeta,
   'china-tours-from-new-zealand': chinaToursFromNZMeta,
   'china-tours-from-auckland': chinaToursFromAucklandMeta,
   'best-time-to-visit-china': bestTimeToVisitChinaMeta,

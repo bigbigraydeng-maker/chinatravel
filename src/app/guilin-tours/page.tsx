@@ -44,6 +44,11 @@ export default function GuilinToursPage() {
         bestTimeToVisit={guilinToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={guilinToursMeta.faqs}
+        guideLinks={[
+          { label: 'Guilin Travel Guide', href: '/guilin-travel-guide', emoji: '🏞️', description: 'Karst peaks & Li River overview' },
+          { label: 'Li River Travel Guide', href: '/li-river-travel-guide', emoji: '🚢', description: 'Cruise guide & scenic tips' },
+          { label: 'Yangshuo Travel Guide', href: '/yangshuo-travel-guide', emoji: '🚴', description: 'Village cycling & countryside hikes' },
+        ]}
       />
     </>
   );

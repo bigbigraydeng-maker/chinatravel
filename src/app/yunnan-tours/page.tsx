@@ -38,12 +38,18 @@ export default function YunnanToursPage() {
         cityName={yunnanToursMeta.cityName}
         heroTitle={yunnanToursMeta.h1}
         heroSubtitle={yunnanToursMeta.heroSubtitle}
-        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-green.jpg"
+        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/yunnan-village.jpg"
         introText={yunnanToursMeta.introText}
         highlights={yunnanToursMeta.highlights}
         bestTimeToVisit={yunnanToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={yunnanToursMeta.faqs}
+        guideLinks={[
+          { label: 'Yunnan Travel Guide', href: '/yunnan-travel-guide', emoji: '🌸', description: 'Region overview & travel tips' },
+          { label: 'Lijiang Travel Guide', href: '/lijiang-travel-guide', emoji: '🏘️', description: 'Naxi Old Town & Jade Dragon Snow Mountain' },
+          { label: 'Dali Travel Guide', href: '/dali-travel-guide', emoji: '🏞️', description: 'Erhai Lake & Bai minority culture' },
+          { label: 'Shangri-La Travel Guide', href: '/shangri-la-travel-guide', emoji: '🏔️', description: 'Tibetan highland monasteries' },
+        ]}
       />
     </>
   );

@@ -44,6 +44,10 @@ export default function ZhangjiajieToursPage() {
         bestTimeToVisit={zhangjiajieToursMetadata.bestTimeToVisit}
         tours={tours}
         faqs={zhangjiajieToursMetadata.faqs}
+        guideLinks={[
+          { label: 'Zhangjiajie Travel Guide', href: '/zhangjiajie-travel-guide', emoji: '🏔️', description: 'Avatar peaks explorer guide' },
+          { label: 'Tianmen Mountain Guide', href: '/tianmen-mountain-travel-guide', emoji: '🪟', description: 'Glass walkway & cable car tips' },
+        ]}
       />
     </>
   );

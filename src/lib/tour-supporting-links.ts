@@ -39,9 +39,11 @@ const CITY_LINK_GROUPS: Record<string, SupportingContentLink[]> = {
     { label: 'Shanghai travel guide', href: '/shanghai-travel-guide' },
   ],
   hangzhou: [
+    { label: 'Hangzhou tours', href: '/hangzhou-tours' },
     { label: 'Hangzhou travel guide', href: '/hangzhou-travel-guide' },
   ],
   suzhou: [
+    { label: 'Suzhou tours', href: '/suzhou-tours' },
     { label: 'Suzhou travel guide', href: '/suzhou-travel-guide' },
   ],
   wuxi: [
@@ -68,7 +70,11 @@ const CITY_LINK_GROUPS: Record<string, SupportingContentLink[]> = {
     { label: 'Chengdu travel guide', href: '/chengdu-travel-guide' },
   ],
   chongqing: [
+    { label: 'Chongqing tours', href: '/chongqing-tours' },
     { label: 'Chongqing travel guide', href: '/chongqing-travel-guide' },
+  ],
+  'shangri-la': [
+    { label: 'Shangri-La travel guide', href: '/shangri-la-travel-guide' },
   ],
   zhangjiajie: [
     { label: 'Zhangjiajie tours', href: '/zhangjiajie-tours' },

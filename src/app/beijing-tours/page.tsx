@@ -50,6 +50,11 @@ export default function BeijingToursPage() {
         bestTimeToVisit={beijingToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={beijingToursMeta.faqs}
+        guideLinks={[
+          { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', emoji: '🏯', description: 'History, hikes & access tips' },
+          { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', emoji: '🏛️', description: 'Imperial palace inside out' },
+          { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', emoji: '🌆', description: 'Full city visitor guide' },
+        ]}
       />
     </>
   );

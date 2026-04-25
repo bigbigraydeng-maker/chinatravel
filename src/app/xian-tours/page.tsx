@@ -44,6 +44,10 @@ export default function XianToursPage() {
         bestTimeToVisit={xianToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={xianToursMeta.faqs}
+        guideLinks={[
+          { label: "Xi'an Travel Guide", href: '/xian-travel-guide', emoji: '🏙️', description: 'Full city visitor guide' },
+          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', emoji: '⚔️', description: 'Everything to know before you go' },
+        ]}
       />
     </>
   );

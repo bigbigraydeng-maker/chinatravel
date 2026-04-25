@@ -258,7 +258,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     ],
   },
   'hangzhou-travel-guide': {
-    hubUrl: '/china-tours', hubLabel: 'All China Tours',
+    hubUrl: '/hangzhou-tours', hubLabel: 'All Hangzhou Tours',
     relatedTours: [
       { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
@@ -271,7 +271,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     ],
   },
   'suzhou-travel-guide': {
-    hubUrl: '/china-tours', hubLabel: 'All China Tours',
+    hubUrl: '/suzhou-tours', hubLabel: 'All Suzhou Tours',
     relatedTours: [
       { name: 'Shanghai & Suzhou (3 Days)', duration: '3 Days', price: 'From NZD $1,356', url: '/tours/china/stopover/shanghai-suzhou', image: `${TI}/suzhou-canal.jpg`, tier: 'stopover' },
       { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,999', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
@@ -284,7 +284,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     ],
   },
   'chongqing-travel-guide': {
-    hubUrl: '/china-tours', hubLabel: 'All China Tours',
+    hubUrl: '/chongqing-tours', hubLabel: 'All Chongqing Tours',
     relatedTours: [
       { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
