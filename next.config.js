@@ -65,6 +65,17 @@ const nextConfig = {
         destination: '/tours',
         permanent: true,
       },
+      /** Legacy /china/ → /china-tours (old URL still indexed, 92 GSC impressions wasted) */
+      { source: '/china', destination: '/china-tours', permanent: true },
+      { source: '/china/', destination: '/china-tours', permanent: true },
+      /** Legacy /tour/* old URL structure → correct routes (indexed by Google, returning 404) */
+      { source: '/tour/two-cities', destination: '/tours/china/discovery/beijing-xian', permanent: true },
+      { source: '/tour/two-cities/', destination: '/tours/china/discovery/beijing-xian', permanent: true },
+      { source: '/tour/golden-china', destination: '/tours/china/discovery/essentials', permanent: true },
+      { source: '/tour/golden-china/', destination: '/tours/china/discovery/essentials', permanent: true },
+      { source: '/tour/china-panorama', destination: '/tours/china/signature/grand-tour', permanent: true },
+      { source: '/tour/china-panorama/', destination: '/tours/china/signature/grand-tour', permanent: true },
+      { source: '/tour/:path*', destination: '/china-tours', permanent: true },
     ];
 
     return [...hostRedirects, ...pathRedirects];
