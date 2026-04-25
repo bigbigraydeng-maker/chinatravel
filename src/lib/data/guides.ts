@@ -2523,4 +2523,39 @@ export const allGuides: DestinationGuide[] = [
   lijangGuide,
   daliGuide,
   kunmingGuide,
-  shangrI
+  shangrIlaGuide,
+  greatWallGuide,
+  forbiddenCityGuide,
+  terracottaWarriorsGuide,
+  yangshuoGuide,
+  liRiverCruiseGuide,
+  hangzhouGuide,
+  suzhouGuide,
+  chongqingGuide,
+  leshanBuddhaGuide,
+  tianmenMountainGuide
+];
+
+export function getAllGuides(): DestinationGuide[] {
+  return allGuides;
+}
+
+export function getGuideBySlug(slug: string): DestinationGuide | undefined {
+  return allGuides.find(guide => guide.slug === slug);
+}
+
+export function getGuidesByParent(parentDestination: string): DestinationGuide[] {
+  return allGuides.filter(guide => guide.parentDestination === parentDestination);
+}
+
+export function getGuidesByRegion(region: 'north' | 'central' | 'south' | 'southwest' | 'east'): DestinationGuide[] {
+  const regionMap: Record<string, string[]> = {
+    north: ['beijing', 'great-wall', 'forbidden-city'],
+    central: ['xian', 'terracotta-warriors', 'chongqing', 'leshan-buddha'],
+    south: ['guilin', 'yangshuo', 'li-river-travel-guide', 'zhangjiajie', 'tianmen-mountain'],
+    southwest: ['chengdu', 'yunnan', 'lijiang', 'dali', 'kunming', 'shangri-la'],
+    east: ['shanghai', 'hangzhou', 'suzhou']
+  };
+
+  return allGuides.filter(guide => regionMap[region]?.includes(guide.slug));
+}
