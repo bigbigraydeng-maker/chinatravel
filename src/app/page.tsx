@@ -20,12 +20,14 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildCtsPageMetadata({
       title: 'CTS Tours | China Travel Specialists for New Zealanders',
       description:
-        'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries from NZD $875.',
+        'Plan your China trip with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led china trips and small-group tours from NZD $875. Visa-free for NZ passports.',
       path: '/',
       ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
       ogImageAlt: 'Great Wall of China mist, CTS Tours',
       keywords: [
         'China tours New Zealand',
+        'China trips',
+        'china trips from New Zealand',
         'China travel specialists',
         'CTS Tours',
         'Beijing tours',
