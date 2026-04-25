@@ -88,9 +88,9 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
+      { name: 'Panda Sanctuary Guide', slug: 'chengdu-panda-sanctuary', emoji: '🐼' },
       { name: 'Leshan Buddha', slug: 'leshan-buddha-travel-guide', emoji: '🏔️' },
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
-      { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
       { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
     ],
   },
@@ -298,10 +298,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
+      { name: 'Liziba Station Guide', slug: 'liziba-station-chongqing', emoji: '🚝' },
+      { name: 'Hongyadong Guide', slug: 'hongyadong-chongqing', emoji: '🏮' },
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
       { name: 'Leshan Buddha', slug: 'leshan-buddha-travel-guide', emoji: '🏔️' },
-      { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
-      { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
     ],
   },
   'tianmen-mountain-travel-guide': {

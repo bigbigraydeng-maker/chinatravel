@@ -613,6 +613,116 @@ export const chinaToursFromAustraliaMeta: SeoPageMeta = {
   ]
 };
 
+// ===== Fire & Fuzz SEO cluster — attraction pages =====
+
+export const chengduPandaSanctuaryMeta: SeoPageMeta = {
+  slug: 'chengdu-panda-sanctuary',
+  title: 'Chengdu Giant Panda Sanctuary Tour 2026 | See Pandas Up Close | CTS Tours NZ',
+  description: 'Visit the Chengdu Research Base of Giant Panda Breeding — home to 200+ giant pandas. Morning feeding visits, bamboo forests, red pandas. Part of CTS Tours\' Fire & Fuzz 10-day Chongqing & Chengdu tour from New Zealand. Visa-free entry for NZ passports.',
+  h1: 'Chengdu Giant Panda Sanctuary: A Complete Guide for New Zealand Visitors',
+  heroSubtitle: 'Home to 200+ giant and red pandas · Morning feeding visits · Included in Fire & Fuzz 10-day tour from NZ',
+  introText:
+    'The Chengdu Research Base of Giant Panda Breeding (成都大熊猫繁育研究基地) is the world\'s leading giant panda conservation and breeding facility. Established in 1987 with just six rescued pandas, it has grown to house more than 200 giant pandas and red pandas across 3,500 acres of bamboo forest habitat in northern Chengdu.\n\nFor New Zealand travellers, a morning visit to the panda base is the single most emotionally resonant experience available in any China itinerary. Giant pandas are most active during their morning feeding session — typically between 8:00am and 10:00am — when they can be observed at close range eating bamboo, climbing, and interacting. After 10am, pandas retreat to shade and sleep for much of the day.\n\nCTS Tours includes a Day 7 morning visit to the panda base as part of the Fire & Fuzz 10-day Chongqing and Chengdu tour. All logistics are handled — transfers from central Chengdu, guide commentary, and entry fees are included in the tour price.',
+  faqs: [
+    {
+      question: 'What is the Chengdu Panda Sanctuary?',
+      answer: 'The Chengdu Research Base of Giant Panda Breeding (成都大熊猫繁育研究基地) is the world\'s leading giant panda conservation and breeding facility, established in 1987. Located in Chengdu, Sichuan Province, it is home to more than 200 giant pandas and red pandas across 3,500 acres of bamboo forest habitat. It is the best place in the world to see giant pandas up close in a naturalistic environment.'
+    },
+    {
+      question: 'What time should I visit Chengdu Panda Base?',
+      answer: 'Visit as early as possible — ideally by 8:00am. Giant pandas are most active during their morning feeding session, typically between 8:00am and 10:00am. After 10am, pandas often retreat to shade and sleep for much of the day. CTS Tours schedules the panda base visit first thing on Day 7 of the Fire & Fuzz itinerary specifically for this reason.'
+    },
+    {
+      question: 'Can I hold a panda at Chengdu?',
+      answer: 'Holding pandas has been discontinued at the Chengdu Research Base as part of their animal welfare policy. However, you can get very close to the pandas during morning feeding, and photography is permitted from designated viewing areas. The experience of watching pandas eat bamboo at arm\'s length is genuinely remarkable.'
+    },
+    {
+      question: 'How do I get from Chongqing to Chengdu Panda Base?',
+      answer: 'From Chongqing city, take a high-speed train to Chengdu (approximately 65–80 minutes). From central Chengdu, the panda base is accessible by Metro Line 3 (Panda Avenue station) in about 40 minutes. CTS Tours handles all transfers and logistics as part of the Fire & Fuzz itinerary — no individual bookings required.'
+    },
+    {
+      question: 'Is a Chengdu panda visit included in CTS tours?',
+      answer: 'Yes. The Chengdu Research Base of Giant Panda Breeding is included in CTS Tours\' Fire & Fuzz 10-day tour (Chongqing & Chengdu Discovery). Day 7 begins with a morning visit to the panda base, timed for the morning feeding session. The tour departs from New Zealand and covers all transport, accommodation, guided visits, and most meals.'
+    },
+    {
+      question: 'Do New Zealand passport holders need a visa for China?',
+      answer: 'No visa is currently required. New Zealand ordinary passport holders can enter mainland China visa-free for up to 30 days for tourism purposes. Bring your valid NZ passport, return flight confirmation, and hotel booking details. CTS Tours can advise on the latest entry requirements when you book.'
+    }
+  ]
+};
+
+export const lizibastationChongqingMeta: SeoPageMeta = {
+  slug: 'liziba-station-chongqing',
+  title: 'Liziba Station Chongqing: The Train That Runs Through a Building | CTS Tours NZ',
+  description: 'Liziba Station in Chongqing is the world\'s only monorail station built inside a residential tower — trains pass through the 6th floor of a 19-storey building. How to visit, best viewing spots, and how to include it in a Chongqing tour from New Zealand.',
+  h1: 'Liziba Station, Chongqing: A Complete Visitor Guide',
+  heroSubtitle: 'The world\'s only monorail station inside a residential building · Chongqing Rail Transit Line 2 · Free to watch from street level',
+  introText:
+    'Liziba Station (李子坝站) is one of the most extraordinary pieces of urban infrastructure on earth. A working monorail station on Chongqing Rail Transit Line 2, it is built directly inside the 6th to 8th floors of a 19-storey residential and commercial tower in Yuzhong District. Trains pass through the building multiple times per hour. Residents live above and below the tracks. The building was co-constructed with the station simultaneously in 2004 — not retrofitted — as an engineering solution to Chongqing\'s mountainous terrain and extreme urban density.\n\nThe station has become one of China\'s most viral travel images, featured by BBC, CNN, National Geographic, and virtually every major travel publication. Low-noise rubber-tyred trains mean residents are minimally disturbed — the system works, and has worked continuously since it opened in June 2005.\n\nFor visitors, the experience works on two levels: watching from the dedicated street-level observation area as trains glide through the building above, and riding Line 2 through the station to experience it from inside the train. CTS Tours includes a Liziba visit on Day 1 of the Fire & Fuzz Chongqing and Chengdu tour.',
+  faqs: [
+    {
+      question: 'What is Liziba Station in Chongqing?',
+      answer: 'Liziba Station (李子坝站) is a monorail station on Chongqing Rail Transit Line 2 that is built directly inside a 19-storey residential and commercial tower. Trains pass through the 6th to 8th floors of the building at regular intervals. It is the only station of its kind in the world, and has become one of Chongqing\'s most photographed attractions.'
+    },
+    {
+      question: 'How do I get to Liziba Station Chongqing?',
+      answer: 'Take Chongqing Rail Transit Line 2 directly to Liziba Station — the station itself is the attraction. Alternatively, walk to the observation area on the street below the station (Li Zi Ba Zheng Jie) to watch trains passing through the building from the outside. The street-level viewing area is free and clearly signposted.'
+    },
+    {
+      question: 'Is Liziba Station free to visit?',
+      answer: 'Watching from the street-level observation area is completely free. To ride the train through the building, you need a standard Chongqing Metro ticket (approximately CNY 4, roughly NZD 1). Most visitors combine both — watching from outside first, then riding through to experience it from inside the train.'
+    },
+    {
+      question: 'Why was Liziba Station built inside a building?',
+      answer: 'Chongqing is a mountainous city with extremely limited flat land. The station was co-constructed with the building simultaneously in 2004 — not retrofitted — as a solution to the city\'s terrain constraints and high urban density. The trains use rubber tyres rather than steel wheels, significantly reducing noise and vibration for building residents.'
+    },
+    {
+      question: 'Is Liziba Station included in CTS tours?',
+      answer: 'Yes. Liziba Station is one of the signature experiences in CTS Tours\' Fire & Fuzz 10-day Chongqing and Chengdu Discovery tour. Day 1 includes a guided visit to Liziba, with time to watch from the observation area and ride through on the train. The guide provides full context on why the station was built this way and what makes Chongqing\'s urban planning so distinctive.'
+    },
+    {
+      question: 'What else is near Liziba Station?',
+      answer: 'Ciqikou Ancient Town (磁器口), a well-preserved Song Dynasty commercial street known for Sichuan street food, is approximately a 20-minute walk from Liziba. Hongyadong, the iconic illuminated clifftop complex, is about 3km away and best visited after dark. Both are included in the Fire & Fuzz itinerary.'
+    }
+  ]
+};
+
+export const hongyadongChongqingMeta: SeoPageMeta = {
+  slug: 'hongyadong-chongqing',
+  title: 'Hongyadong Chongqing: The Cliffside Night Market That Glows Like a Miyazaki Film | CTS Tours NZ',
+  description: 'Hongyadong is Chongqing\'s most iconic landmark — an 11-storey stilted building complex glowing on the clifftop above the Jialing River. Best visited after dark. Complete visitor guide plus how to see it as part of a Chongqing tour from New Zealand.',
+  h1: 'Hongyadong, Chongqing: Visitor Guide to the Clifftop Night Market',
+  heroSubtitle: '11-storey cliffside complex · Best after dark · The defining image of Chongqing',
+  introText:
+    'Hongyadong (洪崖洞) is the image most people picture when they think of Chongqing. An 11-storey stilted building complex — built in the traditional diaojiaolou style — constructed directly into the clifftop above the Jialing River in Yuzhong District. After dark, the entire facade illuminates in red and gold, its layers of windows and balconies reflected in the river below.\n\nThe complex houses restaurants, bars, teahouses, and shops across multiple levels, connected by staircases and lifts. It is open all day, but a daytime visit misses the point entirely — the atmosphere that has made Hongyadong one of China\'s most shared travel images only exists after sunset.\n\nIn 2019, social media users noted the striking visual similarity between Hongyadong at night and the bathhouse in Studio Ghibli\'s Spirited Away. The comparison spread globally, and Chongqing\'s international visitor numbers accelerated sharply. CTS Tours includes a Hongyadong evening visit — followed by a Jialing River night cruise past the lit facade — on Day 4 of the Fire & Fuzz Chongqing and Chengdu tour.',
+  faqs: [
+    {
+      question: 'What is Hongyadong in Chongqing?',
+      answer: 'Hongyadong (洪崖洞) is an 11-storey stilted building complex built directly into the clifftop above the Jialing River in central Chongqing. It houses restaurants, bars, teahouses, and shops across multiple levels. The complex is famous for its spectacular night lighting — thousands of red and golden lights that illuminate the cliffside after dark, making it the most photographed landmark in Chongqing.'
+    },
+    {
+      question: 'When is the best time to visit Hongyadong?',
+      answer: 'After dark — ideally between 7:30pm and 10:00pm. The full lighting effect is only visible once the sun goes down, and the reflection in the Jialing River adds a second layer to the visual. The complex is open all day, but daytime visits miss the defining atmosphere entirely. CTS Tours schedules the Hongyadong visit on Day 4 evening.'
+    },
+    {
+      question: 'Is Hongyadong like Spirited Away?',
+      answer: 'Many visitors have noted the strong visual similarity between Hongyadong and the bathhouse in Studio Ghibli\'s Spirited Away — the layered glowing windows, the cliffside water setting, and the overall atmosphere. Studio Ghibli has never officially confirmed any connection, but the comparison went viral in 2019 and significantly boosted Chongqing\'s international tourism profile.'
+    },
+    {
+      question: 'Where is the best viewpoint for Hongyadong?',
+      answer: 'The best full-building view is from Qiansimen Bridge (千厮门大桥), approximately a 10-minute walk away. From the bridge you can see the entire 11-storey lit facade reflected in the Jialing River. The Jialing River night cruise (included in the Fire & Fuzz tour) passes directly in front of Hongyadong — the water view at night is the most dramatic angle.'
+    },
+    {
+      question: 'Is Hongyadong included in CTS tours?',
+      answer: 'Yes. Hongyadong is included in CTS Tours\' Fire & Fuzz 10-day Chongqing and Chengdu Discovery tour. Day 4 includes an evening visit to Hongyadong followed by a Jialing River night cruise. The full itinerary also includes Liziba Station, the Dazu Rock Carvings UNESCO site, and the Chengdu Panda Base.'
+    },
+    {
+      question: 'Is entry to Hongyadong free?',
+      answer: 'Entry to the Hongyadong complex is free. Individual restaurants, bars, and shops charge normal prices. The Jialing River night cruise, included in the Fire & Fuzz tour, is a separate ticketed experience — CTS handles all bookings as part of the package.'
+    }
+  ]
+};
+
 // ===== Export all page metadata =====
 
 export const allSeoPages: Record<string, SeoPageMeta> = {
@@ -631,7 +741,10 @@ export const allSeoPages: Record<string, SeoPageMeta> = {
   'china-tours-from-auckland': chinaToursFromAucklandMeta,
   'china-tours-from-australia': chinaToursFromAustraliaMeta,
   'best-time-to-visit-china': bestTimeToVisitChinaMeta,
-  'china-visa-guide-for-new-zealanders': chinaVisaGuideMeta
+  'china-visa-guide-for-new-zealanders': chinaVisaGuideMeta,
+  'chengdu-panda-sanctuary': chengduPandaSanctuaryMeta,
+  'liziba-station-chongqing': lizibastationChongqingMeta,
+  'hongyadong-chongqing': hongyadongChongqingMeta,
 };
 
 export const getSeoPageMeta = (slug: string): SeoPageMeta | undefined => {

@@ -45,6 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'china-tours-from-australia',
     'best-time-to-visit-china',
     'china-visa-guide-for-new-zealanders',
+    'chengdu-panda-sanctuary',
+    'liziba-station-chongqing',
+    'hongyadong-chongqing',
   ].map((slug) => ({
     url: `${SITE}/${slug}`,
     lastModified: now,
