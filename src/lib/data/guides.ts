@@ -1725,8 +1725,8 @@ export const forbiddenCityGuide: DestinationGuide = {
   slug: 'forbidden-city-travel-guide',
   destinationName: 'Forbidden City',
   parentDestination: 'beijing',
-  metaTitle: 'Forbidden City Travel Guide | Imperial Palace | UNESCO Site | CTS Tours',
-  metaDescription: 'Forbidden City guide: 980 buildings, 24 emperors, world\'s largest palace complex. Beijing\'s premier attraction.',
+  metaTitle: 'Forbidden City Tour Guide 2025 | Visit Beijing\'s Imperial Palace | CTS Tours NZ',
+  metaDescription: 'Plan your Forbidden City tour: guided visit through 980 buildings, 72 hectares of imperial history, and the stories of 24 emperors. Part of CTS Tours\' Beijing itineraries from NZ — visa-free entry, NZD pricing.',
   keywords: ['Forbidden City', 'imperial palace', 'UNESCO', 'Chinese architecture'],
   h1: 'Forbidden City: World\'s Largest Imperial Palace Complex',
   heroSubtitle: '980 Buildings Spanning 24 Imperial Dynasties',
@@ -2523,39 +2523,4 @@ export const allGuides: DestinationGuide[] = [
   lijangGuide,
   daliGuide,
   kunmingGuide,
-  shangrIlaGuide,
-  greatWallGuide,
-  forbiddenCityGuide,
-  terracottaWarriorsGuide,
-  yangshuoGuide,
-  liRiverCruiseGuide,
-  hangzhouGuide,
-  suzhouGuide,
-  chongqingGuide,
-  leshanBuddhaGuide,
-  tianmenMountainGuide
-];
-
-export function getAllGuides(): DestinationGuide[] {
-  return allGuides;
-}
-
-export function getGuideBySlug(slug: string): DestinationGuide | undefined {
-  return allGuides.find(guide => guide.slug === slug);
-}
-
-export function getGuidesByParent(parentDestination: string): DestinationGuide[] {
-  return allGuides.filter(guide => guide.parentDestination === parentDestination);
-}
-
-export function getGuidesByRegion(region: 'north' | 'central' | 'south' | 'southwest' | 'east'): DestinationGuide[] {
-  const regionMap: Record<string, string[]> = {
-    north: ['beijing', 'great-wall', 'forbidden-city'],
-    central: ['xian', 'terracotta-warriors', 'chongqing', 'leshan-buddha'],
-    south: ['guilin', 'yangshuo', 'li-river-travel-guide', 'zhangjiajie', 'tianmen-mountain'],
-    southwest: ['chengdu', 'yunnan', 'lijiang', 'dali', 'kunming', 'shangri-la'],
-    east: ['shanghai', 'hangzhou', 'suzhou']
-  };
-
-  return allGuides.filter(guide => regionMap[region]?.includes(guide.slug));
-}
+  shangrI
