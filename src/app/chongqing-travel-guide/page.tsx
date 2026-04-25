@@ -76,8 +76,16 @@ export default function GuidePage() {
             Book the Chongqing & Chengdu Tour from New Zealand
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            CTS Tours offers <strong>China Discovery — Fire &amp; Fuzz</strong>: 10 days covering Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas, and the bullet train to Chengdu. From NZD $2,750. Auckland-based team, NZD pricing, small groups.
+            CTS Tours offers <strong>China Discovery — Fire &amp; Fuzz</strong>: 10 days covering Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas, and the bullet train to Chengdu. From NZD $2,999. Auckland-based team, NZD pricing, small groups.
           </p>
           <a
             href="/tours/china/discovery/chongqing-chengdu"
-            className="inline-block bg-primary text-white font-semibold px-6 
+            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+          >
+            View Fire &amp; Fuzz Tour →
+          </a>
+        </div>
+      </section>
+    </>
+  );
+}
