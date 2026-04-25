@@ -35,6 +35,14 @@ export function renderBlogPostHtml(content: string): string {
       continue;
     }
 
+    const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgMatch) {
+      out.push(
+        `<figure class="my-8 rounded-xl overflow-hidden"><img src="${imgMatch[2]}" alt="${imgMatch[1]}" class="w-full object-cover max-h-80 rounded-xl" loading="lazy" /></figure>`
+      );
+      continue;
+    }
+
     const lines = trimmed.split('\n');
     const isList =
       lines.length > 1 &&

@@ -1,6 +1,7 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import { phase1TravelTipPosts } from '@/lib/data/blogs-phase1-travel-tips';
 import { seoT036ToT040BlogPosts } from '@/lib/data/blogs-seo-t036-t040';
+import { chinaHolidayPackagesBlogPost } from '@/lib/data/blogs-china-holiday-packages';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -242,6 +243,7 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
     publishedAt: '2026-02-20',
     readTime: '5 min read'
   },
+  chinaHolidayPackagesBlogPost,
   ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
 ];

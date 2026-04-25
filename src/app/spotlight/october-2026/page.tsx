@@ -79,8 +79,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg';
   const posterBeijingXianImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg';
-  const posterFireFuzzImage =
-    'https://images.unsplash.com/photo-PoFNeom7HC4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
+  const posterFireFuzzImage = '/blog/chongqing-night-skyline-hongyadong.jpg';
 
   const focus = searchParams?.focus;
   const highlightShanghai = focus === 'shanghai-surroundings';
@@ -271,7 +270,20 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                     <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
                     <p className="text-4xl font-bold">$2,750pp</p>
                   </div>
-                  <div className="mt-5">
+                  <div className="mt-4 grid grid-cols-4 gap-1.5">
+                    {[
+                      { src: '/blog/group-chongqing-costume-riverside-1.jpg', alt: 'Travellers in traditional Chinese robes at Chongqing riverside' },
+                      { src: '/blog/group-chongqing-costume-riverside-2.jpg', alt: 'Couple in Chinese costume at Chongqing night market' },
+                      { src: '/blog/group-chongqing-costume-riverside-3.jpg', alt: 'Group in golden Chinese robes at Chongqing waterfront' },
+                      { src: '/blog/group-chongqing-costume-riverside-4.jpg', alt: 'Travellers enjoying Chongqing riverside entertainment in costume' },
+                    ].map((img) => (
+                      <div key={img.src} className="relative aspect-square rounded overflow-hidden">
+                        <Image src={img.src} alt={img.alt} fill className="object-cover object-top" sizes="80px" />
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-1.5 text-[11px] text-gray-500 italic">Travellers enjoying Chongqing&apos;s riverside experience</p>
+                  <div className="mt-4">
                     <Link
                       href={fireFuzzUtmUrl}
                       className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"

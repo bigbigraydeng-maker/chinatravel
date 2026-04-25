@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Suspense } from 'react';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
 import TailorMadeForm from '@/components/TailorMadeForm';
@@ -303,6 +304,75 @@ export default function TailorMadePage() {
                 <p className="text-sm text-gray-600 leading-relaxed">{p.body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Real Travellers Photo Gallery */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10 max-w-3xl mx-auto">
+            <p className="text-primary font-semibold uppercase tracking-wider mb-2">Real travellers</p>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">Moments from the road</h2>
+            <p className="text-gray-600 mt-4">
+              Real photos from real CTS groups — across China&apos;s cities, landscapes, and cultural experiences.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto">
+            <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-lake-deck-beijing.jpg"
+                alt="CTS group at a lakeside pavilion near Beijing"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative aspect-square rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-great-wall-cts.jpg"
+                alt="CTS group on the Great Wall of China"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+            <div className="relative aspect-square rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-ancient-gate-night.jpg"
+                alt="CTS group at an illuminated ancient gate at night"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+            <div className="relative aspect-square rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-temple-of-heaven-beijing.jpg"
+                alt="CTS group at the Temple of Heaven, Beijing"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
+            <div className="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-shanghai-bund-skyline.jpg"
+                alt="CTS group at the Shanghai Bund with Pudong skyline"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
+            <div className="relative aspect-square rounded-xl overflow-hidden">
+              <Image
+                src="/blog/group-bullet-train-large.jpg"
+                alt="CTS group aboard China's high-speed rail"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 50vw, 25vw"
+              />
+            </div>
           </div>
         </div>
       </section>
