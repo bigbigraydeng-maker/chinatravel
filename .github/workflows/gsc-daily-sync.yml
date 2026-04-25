@@ -2,17 +2,17 @@ name: GSC Daily Sync
 
 on:
   schedule:
-    # Every day at 9am UTC (10pm NZT) — GSC data has 2-3 day lag
     - cron: '0 9 * * *'
-  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Sync yesterday's GSC data
+      - name: Sync GSC data (NZ, yesterday)
         run: |
-          curl -s -X POST https://www.ctstours.co.nz/api/gsc/sync \
+          result=$(curl -s -X POST https://www.ctstours.co.nz/api/gsc/sync \
             -H "Authorization: Bearer ${{ secrets.GSC_SYNC_SECRET }}" \
-            -H "Content-Type: application/json" \
-            | tee /dev/stderr | grep -q '"success":true'
+            -H "Content-Type: application/json")
+          echo "$result"
+          echo "$result" | grep -q '"success":true' && echo "Sync OK" || exit 1
