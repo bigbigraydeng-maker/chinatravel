@@ -94,9 +94,9 @@ RESEND_API_KEY=re_... (will be configured later)
   - Missing images cause build errors → use placeholder until assets available
 
 ### 10. Chat Language
-- **Default:** English
-- **User may request:** Chinese (中文) responses mid-session
-- If user says "中文", switch all responses to Chinese from that point
+- **Default:** 中文（所有输出必须用中文，包括分析、报告、说明、代码注释建议等）
+- **Exception:** Code itself stays in English (variable names, function names, comments in code files)
+- **Instruction:** All Cowork-side responses, specs, plans, QA reports must be written in Chinese
 
 ---
 

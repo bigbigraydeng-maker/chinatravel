@@ -1,0 +1,17 @@
+# CTS Tours - Toxic Backlinks Disavow File
+# Generated: 2026-04-24
+# SEO Action: Disavow 44 toxic backlinks from Semrush Backlink Audit
+# Toxic backlinks detected linking to /wp-content/ and /wp-json/ (legacy WordPress pages)
+
+# Domain-level disavow (most efficient for known spammy networks)
+domain:backlinktime.com
+domain:smallshipgreekislandcruises2016gokuis.blogspot.com
+domain:platformsandalsloma.blogspot.com
+domain:celebritycruisesdresscodedakanbu.blogspot.com
+domain:southafricantravelmagazineszdukeHI.blogspot.com
+
+# Additional suspicious domains from Semrush audit
+# (Add individual domains or pages as needed based on full Semrush report)
+# For a complete list, export from Semrush:
+# Backlink Audit → Review backlinks → Mark all 44 as "For Review"
+# → Export to get exact domains and URLs
