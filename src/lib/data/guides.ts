@@ -1874,7 +1874,7 @@ export const yangshuoGuide: DestinationGuide = {
   keywords: ['Yangshuo', 'Li River', 'karst', 'rock climbing', 'adventure'],
   h1: 'Yangshuo: Adventure Hub in Karst Country',
   heroSubtitle: 'Gateway to Dragon\'s Backbone & Li River',
-  heroImage: `${TI}/guilin-river-valley.jpg`,
+  heroImage: '/images/tours/yangshuo-karst-aerial.jpg',
   introText: [
     'Yangshuo village, 83km downstream from Guilin, evolved from quiet riverside settlement to international adventure tourism hub whilst retaining authentic village character. The West Street area attracts backpackers and independent travellers with budget accommodation, language schools, and adventure operators. Surrounding countryside—featuring karst mountains, bamboo groves, agricultural fields, and traditional villages—offers exploration opportunities.',
     'Yangshuo functions as ideal base for multi-day Guilin region exploration. Bicycle rentals (¥10-20 daily) permit independent countryside discovery. Rock climbing, caving, hiking, and river activities cater to adventure seekers. The relaxed village atmosphere creates extended-stay appeal; many visitors arrive for 2-3 days and remain weeks.',
@@ -1961,7 +1961,7 @@ export const liRiverCruiseGuide: DestinationGuide = {
   keywords: ['Li River', 'cruise', 'karst', 'scenic journey', 'Guilin'],
   h1: 'Li River Cruise: World\'s Most Scenic Boat Journey',
   heroSubtitle: '83km Through UNESCO Karst Landscape',
-  heroImage: `${TI}/guilin-river-valley.jpg`,
+  heroImage: '/images/tours/li-river-karst-boats.jpg',
   introText: [
     'The Li River cruise from Guilin to Yangshuo comprises one of China\'s quintessential travel experiences. This 83-kilometre journey passes through karst landscapes so visually distinctive that they inspired classical Chinese painting aesthetics. The mountain formations—rising vertically from the river, featuring distinctive peak shapes, and framed by mist—create environmental drama unmatched elsewhere in China.',
     'Full-day cruises depart Guilin morning (8-9am), reaching Yangshuo evening (5-6pm), with stops for lunch and village visits. Shorter segments (4-hour cruises) compress the experience without sacrificing dramatic scenery. Private boats and bamboo rafting offer alternative perspectives. Water levels and weather influence visibility; optimal conditions occur spring and autumn.',
@@ -2288,7 +2288,7 @@ export const leshanBuddhaGuide: DestinationGuide = {
   keywords: ['Leshan Buddha', 'giant statue', 'sculpture', 'Buddhist site'],
   h1: 'Leshan Giant Buddha: World\'s Largest Stone Buddha',
   heroSubtitle: '71 Metres of Carved Devotion',
-  heroImage: `${TI}/migrated/unsplash/photo-1558618666-fcd25c85cd64.jpg`,
+  heroImage: '/images/tours/leshan-buddha-statue.jpg',
   heroImageClassName: 'object-[center_40%]',
   introText: [
     'The Leshan Giant Buddha, carved into a riverside cliff (8th century), represents one of humanity\'s most ambitious sculptural achievements. At 71 metres tall, this colossal Buddha dwarfs all other stone Buddha statues globally. The construction spanned 90 years (713-803 AD), employing thousands of workers using hand tools. The scale, technical sophistication, and artistic vision embodied in this sculpture astound contemporary observers.',
@@ -2360,7 +2360,7 @@ export const tianmenMountainGuide: DestinationGuide = {
   keywords: ['Tianmen Mountain', 'cable car', 'heaven gate', 'Zhangjiajie'],
   h1: 'Tianmen Mountain: Gateway to Heaven',
   heroSubtitle: 'World\'s Longest Cable Car & Sacred Peak',
-  heroImage: `${TI}/zhangjiajie.jpg`,
+  heroImage: '/images/tours/tianmen-mountain-glass-walkway.jpg',
   heroImageClassName: 'object-[center_30%]',
   introText: [
     'Tianmen Mountain (Tianmen Shan, Heaven\'s Gate Mountain), located near Zhangjiajie city (30km), features distinctive geography: a natural rock arch (Heaven\'s Gate) at the summit holds geomantic significance in Chinese cosmology. The world\'s longest non-stop cable car (7,455 metres) ascends 1,279 metres vertically, completing the journey in just 8 minutes. The cable car passage climbs through multiple elevation zones, offering dramatic aerial perspectives.',
