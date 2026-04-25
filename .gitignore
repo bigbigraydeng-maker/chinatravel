@@ -33,3 +33,9 @@ out
 .env.development.local
 .env.test.local
 .env.production.localcoverage/
+
+# SEO research output (含 Semrush API key 的脚本、CSV、报告等本地产物，不进 git)
+/seo/
+
+# Claude Code worktrees
+/.claude/worktrees/

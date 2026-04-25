@@ -25,6 +25,12 @@ const TARGET_KEYWORDS = [
   // 长期目标
   'luxury china tours',
   'chengdu panda sanctuary',
+  // Semrush NZ 新发现（2026-04-25）
+  'chinese visa nz',
+  'do new zealanders need a visa for china',
+  'auckland to china',
+  'flights to china from nz',
+  'traveling to china',
 ];
 
 type TrendPoint = { date: string; clicks: number; impressions: number; position: number };
