@@ -23,7 +23,7 @@ export interface CityHubMeta extends SeoPageMeta {
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
-  title: 'China Tours & Holiday Packages from New Zealand 2025 | Flights Included | NZD Pricing | CTS Tours',
+  title: 'China Tours & Holiday Packages from New Zealand 2026 | Flights Included | NZD Pricing | CTS Tours',
   description:
     'China holiday packages from New Zealand — flights included, NZD pricing, visa-free for Kiwi passports. Signature luxury, Discovery value & Stopover city breaks. TAANZ-bonded, Auckland-based team since 1928. Get a free quote.',
   h1: 'China Tour Packages from New Zealand',
@@ -326,7 +326,7 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand 2025 | Visa-Free · NZD Pricing · Flights Included | CTS Tours',
+  title: 'China Tours from New Zealand 2026 | Visa-Free · NZD Pricing · Flights Included | CTS Tours',
   description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, flights from Auckland included. Small groups, expert guides, 90+ years running China tours. Depart Auckland, Wellington & Christchurch. Get a free quote from our NZ team.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
@@ -578,7 +578,7 @@ export const suzhouToursMeta: CityHubMeta = {
 
 export const chinaToursFromAustraliaMeta: SeoPageMeta = {
   slug: 'china-tours-from-australia',
-  title: 'China Tours from Australia 2025 | Expert-Led China Travel | CTS Tours',
+  title: 'China Tours from Australia 2026 | Expert-Led China Travel | CTS Tours',
   description: 'China tours from Australia designed by specialists with 90+ years of experience. Departing Sydney, Melbourne & Brisbane. Visa-free for Australian passports. Expert guides, small groups. Book with CTS Tours.',
   h1: 'China Tours from Australia',
   heroSubtitle: 'Departing Sydney · Melbourne · Brisbane. Visa-free for AU passports. Expert-guided small groups.',
