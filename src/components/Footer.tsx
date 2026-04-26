@@ -14,6 +14,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 text-sm mb-2">China Travel Specialists for New Zealanders</p>
             <p className="text-gray-400 text-xs mb-4">98 Years Heritage | Direct China Operations</p>
+            <p className="text-gray-500 text-xs mb-2 uppercase tracking-wide">Follow us</p>
             <div className="flex items-center gap-3">
               <a
                 href="https://www.facebook.com/CTSTOURS/"

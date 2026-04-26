@@ -11,6 +11,7 @@ import TourTierCard from '@/components/TourTierCard';
 import SpotlightTours from '@/components/SpotlightTours';
 import StatsCounter from '@/components/StatsCounter';
 import Testimonials from '@/components/Testimonials';
+import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import { getTourBySlug } from '@/lib/data/tours';
 import { allGuides } from '@/lib/data/guides';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -208,6 +209,9 @@ const HomePage = () => {
 
       {/* Testimonials */}
       <Testimonials />
+
+      {/* Facebook Follow CTA */}
+      <FacebookFollowStrip />
 
       {/* Destination Guides */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">
