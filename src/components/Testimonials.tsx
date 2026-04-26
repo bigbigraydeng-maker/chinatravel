@@ -687,6 +687,127 @@ function ReviewCard({ t, showDivider, isExpanded, isLiked, isWanted, likeCount, 
   );
 }
 
+// ── Spotlight card variants ────────────────────────────────────────────────────
+
+interface SpotlightCardBaseProps {
+  t: Testimonial;
+  isExpanded: boolean;
+  isLiked: boolean;
+  isWanted: boolean;
+  likeCount: number;
+  wantCount: number;
+  onToggleLike: () => void;
+  onToggleWant: () => void;
+  onToggleExpand: () => void;
+}
+
+const ACCENT_BG: Record<string, string> = {
+  amber: 'from-amber-50/60 to-white',
+  blue:  'from-blue-50/60 to-white',
+  red:   'from-red-50/60 to-white',
+};
+
+/** Large featured card — first review in each spotlight group */
+function FeaturedSpotlightCard({ t, isExpanded, isLiked, isWanted, likeCount, wantCount, onToggleLike, onToggleWant, onToggleExpand, accentBg = 'amber' }: SpotlightCardBaseProps & { accentBg?: string }) {
+  const TEXT_LIMIT = 280;
+  const needsTruncate = t.text.length > TEXT_LIMIT;
+  const displayText = isExpanded || !needsTruncate ? t.text : t.text.slice(0, TEXT_LIMIT) + '…';
+  return (
+    <div className={`px-6 pt-6 pb-5 bg-gradient-to-br ${ACCENT_BG[accentBg] ?? ACCENT_BG.amber}`}>
+      <div className="flex items-start gap-4">
+        <Avatar t={t} />
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="font-bold text-gray-900 leading-tight text-base">{t.name}</p>
+              <p className="text-sm text-gray-500">{t.location}, New Zealand</p>
+            </div>
+            <button
+              onClick={onToggleLike}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all flex-shrink-0 ${isLiked ? 'bg-primary/10 border-primary/30 text-primary' : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'}`}
+              aria-label={isLiked ? 'Unlike' : 'Like this review'}
+            >
+              <ThumbIcon filled={isLiked} />
+              <span className="text-sm font-semibold">{likeCount}</span>
+            </button>
+          </div>
+          <div className="flex items-center gap-3 mt-2">
+            <StarRating rating={t.rating} />
+            <span className="text-xs text-gray-400">·</span>
+            <span className="text-xs text-gray-400">{t.date}</span>
+          </div>
+        </div>
+      </div>
+      <h3 className="font-bold text-gray-900 mt-4 text-lg leading-snug">{t.title}</h3>
+      <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+        {displayText}
+        {needsTruncate && (
+          <button onClick={onToggleExpand} className="ml-1 text-primary hover:underline font-medium text-sm">
+            {isExpanded ? 'show less' : 'read more'}
+          </button>
+        )}
+      </p>
+      <div className="mt-3 space-y-0.5 text-xs text-gray-500">
+        <p><span className="font-semibold text-gray-700">Tour Customized by:</span>{' '}{t.customizedBy}</p>
+        <p>
+          <span className="font-semibold text-gray-700">Tour:</span>{' '}
+          <span className="text-primary font-semibold cursor-pointer hover:underline">{t.tour}</span>
+        </p>
+      </div>
+      <div className="flex items-center gap-3 mt-4">
+        <button
+          onClick={onToggleLike}
+          className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${isLiked ? 'bg-primary/10 border-primary/30 text-primary font-semibold' : 'bg-white border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'}`}
+        >
+          <ThumbIcon filled={isLiked} />
+          Helpful · {likeCount}
+        </button>
+        <button
+          onClick={onToggleWant}
+          className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${isWanted ? 'bg-rose-50 border-rose-300 text-rose-600 font-semibold' : 'bg-white border-gray-200 text-gray-500 hover:border-rose-300 hover:text-rose-500'}`}
+        >
+          <HeartIcon filled={isWanted} />
+          Want to Go · {wantCount}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** Compact card — 2nd and 3rd reviews in each spotlight group, shown in a 2-col grid */
+function MiniSpotlightCard({ t, isLiked, isWanted, likeCount, wantCount, onToggleLike, onToggleWant }: Omit<SpotlightCardBaseProps, 'isExpanded' | 'onToggleExpand'>) {
+  return (
+    <div className="px-5 py-5 h-full flex flex-col">
+      <div className="flex items-center gap-2.5 mb-3">
+        <Avatar t={t} size="sm" />
+        <div className="min-w-0">
+          <p className="font-semibold text-sm text-gray-900 truncate">{t.name}</p>
+          <p className="text-xs text-gray-500">{t.location}, NZ · {t.date}</p>
+        </div>
+      </div>
+      <StarRating rating={t.rating} />
+      <p className="font-semibold text-sm text-gray-800 mt-2 leading-snug">{t.title}</p>
+      <p className="text-xs text-gray-500 mt-1.5 leading-relaxed line-clamp-4 flex-1">{t.text}</p>
+      <div className="flex items-center gap-2 mt-3">
+        <button
+          onClick={onToggleLike}
+          className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition-all ${isLiked ? 'bg-primary/10 border-primary/30 text-primary font-semibold' : 'bg-white border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'}`}
+        >
+          <ThumbIcon filled={isLiked} />
+          {likeCount}
+        </button>
+        <button
+          onClick={onToggleWant}
+          className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-full border transition-all ${isWanted ? 'bg-rose-50 border-rose-300 text-rose-600 font-semibold' : 'bg-white border-gray-200 text-gray-500 hover:border-rose-300 hover:text-rose-500'}`}
+        >
+          <HeartIcon filled={isWanted} />
+          Want to Go · {wantCount}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Spotlight tag colour config ────────────────────────────────────────────────
 
 const SPOTLIGHT_TAGS = ["Beijing & Xi'an", 'Shanghai & Surroundings', 'Chongqing & Chengdu'] as const;
@@ -695,6 +816,12 @@ const SPOTLIGHT_TAG_STYLES: Record<string, { border: string; badge: string }> = 
   "Beijing & Xi'an":        { border: 'border-amber-400', badge: 'border-amber-400 text-amber-700 bg-amber-50' },
   'Shanghai & Surroundings': { border: 'border-blue-400',  badge: 'border-blue-400  text-blue-700  bg-blue-50'  },
   'Chongqing & Chengdu':    { border: 'border-red-400',   badge: 'border-red-400   text-red-700   bg-red-50'   },
+};
+
+const SPOTLIGHT_ACCENT_BG: Record<string, string> = {
+  "Beijing & Xi'an":        'amber',
+  'Shanghai & Surroundings': 'blue',
+  'Chongqing & Chengdu':    'red',
 };
 
 // ── Main component ─────────────────────────────────────────────────────────────
@@ -754,6 +881,35 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
       onToggleLike={() => toggleLike(t)}
       onToggleWant={() => toggleWant(t)}
       onToggleExpand={() => setExpanded(prev => ({ ...prev, [t.id]: !expanded[t.id] }))}
+    />
+  );
+
+  const renderFeaturedCard = (t: Testimonial, accentBg: string) => (
+    <FeaturedSpotlightCard
+      key={t.id}
+      t={t}
+      accentBg={accentBg}
+      isExpanded={!!expanded[t.id]}
+      isLiked={!!liked[t.id]}
+      isWanted={!!wanted[t.id]}
+      likeCount={getLikeCount(t)}
+      wantCount={getWantCount(t)}
+      onToggleLike={() => toggleLike(t)}
+      onToggleWant={() => toggleWant(t)}
+      onToggleExpand={() => setExpanded(prev => ({ ...prev, [t.id]: !expanded[t.id] }))}
+    />
+  );
+
+  const renderMiniCard = (t: Testimonial) => (
+    <MiniSpotlightCard
+      key={t.id}
+      t={t}
+      isLiked={!!liked[t.id]}
+      isWanted={!!wanted[t.id]}
+      likeCount={getLikeCount(t)}
+      wantCount={getWantCount(t)}
+      onToggleLike={() => toggleLike(t)}
+      onToggleWant={() => toggleWant(t)}
     />
   );
 
@@ -860,14 +1016,28 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
             const tagItems = spotlightItems.filter(t => t.spotlightTag === tag);
             if (!tagItems.length) return null;
             const style = SPOTLIGHT_TAG_STYLES[tag] ?? { border: 'border-primary', badge: 'border-primary text-primary bg-white' };
+            const accentBg = SPOTLIGHT_ACCENT_BG[tag] ?? 'amber';
+            const [featured, ...miniCards] = tagItems;
             return (
               <div key={tag} className={`mb-5 rounded-2xl border-2 ${style.border} overflow-hidden shadow-sm`}>
+                {/* Group header */}
                 <div className="px-5 py-3 flex items-center gap-2 bg-white border-b border-gray-100">
                   <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${style.badge}`}>{tag}</span>
                   <span className="text-xs text-gray-400">{tagItems.length} reviews</span>
                 </div>
                 <div className="bg-white">
-                  {tagItems.map((t, idx) => renderCard(t, idx))}
+                  {/* Featured (large) card — first review */}
+                  {renderFeaturedCard(featured, accentBg)}
+                  {/* Mini (compact) cards — 2nd & 3rd reviews in a 2-col grid */}
+                  {miniCards.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-px border-t border-gray-100 bg-gray-100">
+                      {miniCards.map(t => (
+                        <div key={t.id} className="bg-white">
+                          {renderMiniCard(t)}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             );

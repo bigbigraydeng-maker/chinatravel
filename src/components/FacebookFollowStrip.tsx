@@ -4,7 +4,7 @@ const FB_URL = 'https://www.facebook.com/CTSTOURS/';
 
 export default function FacebookFollowStrip() {
   return (
-    <section className="bg-gradient-to-r from-[#1877F2]/8 via-[#1877F2]/5 to-[#1877F2]/8 border-y border-[#1877F2]/15">
+    <section className="bg-blue-50 border-y border-blue-200">
       <div className="container mx-auto px-4 py-8 md:py-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
 
