@@ -30,9 +30,166 @@ interface Testimonial {
   customizedBy: 'Baker' | 'Lisa';
   initialLikes: number;
   initialWants: number;
+  spotlightTag?: string; // e.g. "Beijing & Xi'an", "Shanghai & Surroundings", "Chongqing & Chengdu"
 }
 
-const allTestimonials: Testimonial[] = [
+// ── Spotlight reviews (pinned first) ─────────────────────────────────────────
+
+const spotlightTestimonials: Testimonial[] = [
+  // --- Beijing + Xi'an: China Discovery — A Tale of Two Cities ---
+  {
+    id: 101,
+    name: 'Claire & Tom Mackenzie',
+    location: 'Wellington',
+    tour: "China Discovery — A Tale of Two Cities",
+    rating: 5,
+    title: "Beijing to Xi'an on the Bullet Train — The Perfect 10 Days",
+    text: "The visa-free entry for Kiwis (it came in mid-2024) made booking so much easier than we ever expected — no embassy queues, no paperwork, just flights booked and off we went. Baker's itinerary was brilliantly paced: three days in Beijing (Forbidden City, hutong evening walk, Great Wall at Mutianyu at sunrise), then a bullet train to Xi'an for the Terracotta Warriors and the Muslim Quarter's lamb skewers. Two of the world's great historical capitals in ten days. Couldn't have asked for more.",
+    avatarInitials: 'CM',
+    colorIndex: 0,
+    date: 'Jan 2025',
+    customizedBy: 'Baker',
+    initialLikes: 219,
+    initialWants: 171,
+    spotlightTag: "Beijing & Xi'an",
+  },
+  {
+    id: 102,
+    name: 'Michael & Bev Larsen',
+    location: 'Dunedin',
+    tour: "China Discovery — A Tale of Two Cities",
+    rating: 5,
+    title: "Great Wall at Dawn, Terracotta Warriors After Lunch — Incredible",
+    text: "As Dunediners, we're no strangers to spectacular scenery — but nothing prepared us for standing on the Great Wall with mist rolling through the valleys below. Lisa matched that moment perfectly with our private guide at the Terracotta Warriors pit two days later. The scale is genuinely hard to believe until you're standing in front of it. The Xi'an Muslim Quarter lamb skewers and pomegranate juice were the perfect ending to a brilliant day. Ten days, two ancient capitals, zero complaints.",
+    avatarInitials: 'ML',
+    colorIndex: 5,
+    date: 'Oct 2024',
+    customizedBy: 'Lisa',
+    initialLikes: 196,
+    initialWants: 149,
+    spotlightTag: "Beijing & Xi'an",
+  },
+  {
+    id: 103,
+    name: 'Fiona Hewitt',
+    location: 'Auckland',
+    tour: "China Discovery — A Tale of Two Cities",
+    rating: 5,
+    title: "Solo Kiwi Traveller — Visa-Free Entry Made This Finally Happen",
+    text: "I'd been putting off China for years, mostly because of the visa process. Then visa-free access opened for NZ passport holders in mid-2024 and I had no more excuses. Baker sorted the rest: a great small group for the Beijing–Xi'an itinerary, a private morning at the Wall before the tour buses arrived, and a Xi'an family dinner that turned into a two-hour dumpling lesson. I've been talking about this trip non-stop since I got home. The no-visa thing genuinely is a game-changer for Kiwis.",
+    avatarInitials: 'FH',
+    colorIndex: 3,
+    date: 'Mar 2025',
+    customizedBy: 'Baker',
+    initialLikes: 183,
+    initialWants: 138,
+    spotlightTag: "Beijing & Xi'an",
+  },
+
+  // --- Shanghai & Surroundings ---
+  {
+    id: 201,
+    name: 'Simon & Kate Brennan',
+    location: 'Christchurch',
+    tour: 'China Discovery — Shanghai & Surroundings',
+    rating: 5,
+    title: 'Shanghai, Suzhou, Hangzhou — Three Cities, One Perfect Trip',
+    text: "We've done a fair bit of Asia, but Shanghai & Surroundings completely redefined our benchmark for a well-designed tour. The contrast between the futuristic Bund skyline and the classical gardens of Suzhou made us feel like we'd moved through 1,000 years of history in two days. Lisa arranged a private silk-making demonstration in Suzhou that our daughter (14) still talks about. And Hangzhou's West Lake at dusk — we sat on a pavilion and watched the sun drop behind the mountains. One of the most beautiful evenings of our lives.",
+    avatarInitials: 'SB',
+    colorIndex: 1,
+    date: 'Dec 2024',
+    customizedBy: 'Lisa',
+    initialLikes: 204,
+    initialWants: 159,
+    spotlightTag: 'Shanghai & Surroundings',
+  },
+  {
+    id: 202,
+    name: 'Graham & Shirley Voss',
+    location: 'Hamilton',
+    tour: 'China Discovery — Shanghai & Surroundings',
+    rating: 5,
+    title: 'The Bund at Night Is Worth the Long-Haul Flight Alone',
+    text: "We knew the Shanghai skyline would be impressive. We didn't expect it to stop us mid-sentence. Baker timed our Bund walk perfectly — the lights came up as we arrived and the entire Pudong skyline reflected in the Huangpu River. Suzhou's Humble Administrator's Garden the next morning was a completely different kind of beauty: quiet, intricate, centuries old. NZ travellers can now enter China visa-free (from mid-2024), which made the whole booking process incredibly smooth. Worth every cent.",
+    avatarInitials: 'GV',
+    colorIndex: 6,
+    date: 'Aug 2024',
+    customizedBy: 'Baker',
+    initialLikes: 178,
+    initialWants: 132,
+    spotlightTag: 'Shanghai & Surroundings',
+  },
+  {
+    id: 203,
+    name: 'Rachel Donohue',
+    location: 'Tauranga',
+    tour: 'China Discovery — Shanghai & Surroundings',
+    rating: 5,
+    title: 'Suzhou and Hangzhou Are Hidden Gems — Don\'t Sleep on This Tour',
+    text: "Everyone talks about Beijing and Xi'an, but honestly? Suzhou and Hangzhou stole the show for me. The canal streets of Suzhou after dark, the silk market, the traditional garden tea ceremony — it felt like stepping into a classical Chinese painting. Then Hangzhou's West Lake and the Longjing tea plantations up in the hills. Lisa had everything seamlessly organised. As a solo Tauranga traveller, I felt looked after every single day. Coming back for the Tale of Two Cities next time.",
+    avatarInitials: 'RD',
+    colorIndex: 9,
+    date: 'Feb 2025',
+    customizedBy: 'Lisa',
+    initialLikes: 167,
+    initialWants: 124,
+    spotlightTag: 'Shanghai & Surroundings',
+  },
+
+  // --- Fire & Fuzz: Chongqing × Chengdu ---
+  {
+    id: 301,
+    name: 'Josh & Amy Tanner',
+    location: 'Auckland',
+    tour: 'Fire & Fuzz — Chongqing × Chengdu',
+    rating: 5,
+    title: "Chongqing's Neon Skyline + Chengdu's Pandas — Absolutely Wicked",
+    text: "We nearly booked Beijing instead. So glad we didn't. Chongqing is like nothing else on earth — a neon-lit mountain city where the monorail literally passes through a skyscraper (the Liziba station is completely insane), the ancient Hongyadong stilt houses glow over the river at night, and the hotpot is so fiery you'll question your life choices in the best possible way. Then Chengdu arrived like a deep breath: morning pandas, afternoon teahouse, Sichuan opera with face-changing. Baker knew exactly how these two cities complement each other. Do not sleep on this one.",
+    avatarInitials: 'JT',
+    colorIndex: 4,
+    date: 'Jan 2025',
+    customizedBy: 'Baker',
+    initialLikes: 225,
+    initialWants: 178,
+    spotlightTag: 'Chongqing & Chengdu',
+  },
+  {
+    id: 302,
+    name: 'Mel & Chris Orton',
+    location: 'Wellington',
+    tour: 'Fire & Fuzz — Chongqing × Chengdu',
+    rating: 5,
+    title: 'The Liziba Monorail Through a Skyscraper Is Real — And We Rode It',
+    text: "I sent a video of the Liziba station to my mates back in Wellington and none of them believed it was real. The Line 2 train literally passes through the middle of a residential block — completely extraordinary and totally normal to locals. Chongqing itself is a vertical city built on clifftops above the Yangtze; watching the fog roll in over Hongyadong from the riverbank at night is something I'll never forget. Chengdu was the perfect counterweight: quieter, greener, with the giant pandas as the absolute highlight of our kids' lives.",
+    avatarInitials: 'MO',
+    colorIndex: 7,
+    date: 'Nov 2024',
+    customizedBy: 'Lisa',
+    initialLikes: 198,
+    initialWants: 152,
+    spotlightTag: 'Chongqing & Chengdu',
+  },
+  {
+    id: 303,
+    name: 'Bec Connelly',
+    location: 'Queenstown',
+    tour: 'Fire & Fuzz — Chongqing × Chengdu',
+    rating: 5,
+    title: 'Hotpot, Pandas, and a City Built on Cliffs — This Route Is Fire',
+    text: "Baker recommended Chongqing & Chengdu when I called asking about Beijing, and honestly — thank you. Chongqing was a revelation: the city climbs up the hillside in layers, the food is extraordinary (Sichuan hotpot will make your eyes water in the best way), and the Dazu Rock Carvings were a genuine surprise that most tourists miss. Baker had everything dialled in: small group, guides who actually live in these cities, and perfect balance of guided time and free evenings. Chengdu pandas on the final morning sealed the deal. Absolutely coming back.",
+    avatarInitials: 'BC',
+    colorIndex: 2,
+    date: 'Mar 2025',
+    customizedBy: 'Baker',
+    initialLikes: 187,
+    initialWants: 144,
+    spotlightTag: 'Chongqing & Chengdu',
+  },
+];
+
+// ── General reviews ───────────────────────────────────────────────────────────
+
+const generalTestimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Margaret & John Patterson',
@@ -395,6 +552,144 @@ const allTestimonials: Testimonial[] = [
   },
 ];
 
+// Spotlight reviews lead; general reviews follow
+const allTestimonials: Testimonial[] = [...spotlightTestimonials, ...generalTestimonials];
+
+// ── Module-level UI helpers (stable identity — no re-creation on each render) ──
+
+function StarRating({ rating }: { rating: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-red-500' : 'text-gray-200'}`} fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function Avatar({ t }: { t: Testimonial }) {
+  return (
+    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${AVATAR_COLORS[t.colorIndex]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md`}>
+      {t.avatarInitials}
+    </div>
+  );
+}
+
+interface ReviewCardProps {
+  t: Testimonial;
+  showDivider: boolean;
+  isExpanded: boolean;
+  isLiked: boolean;
+  isWanted: boolean;
+  likeCount: number;
+  wantCount: number;
+  onToggleLike: () => void;
+  onToggleWant: () => void;
+  onToggleExpand: () => void;
+}
+
+function ReviewCard({ t, showDivider, isExpanded, isLiked, isWanted, likeCount, wantCount, onToggleLike, onToggleWant, onToggleExpand }: ReviewCardProps) {
+  const TEXT_LIMIT = 220;
+  const needsTruncate = t.text.length > TEXT_LIMIT;
+  const displayText = isExpanded || !needsTruncate ? t.text : t.text.slice(0, TEXT_LIMIT) + '…';
+
+  return (
+    <div>
+      {showDivider && <hr className="border-gray-100 mx-6" />}
+      <div className={`px-6 py-7 ${t.spotlightTag ? 'bg-amber-50/30' : ''}`}>
+        {/* Row 1: Avatar + Name + Location | Like count */}
+        <div className="flex items-start gap-4">
+          <Avatar t={t} />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-bold text-gray-900 leading-tight">{t.name}</p>
+                <p className="text-sm text-gray-500">{t.location}, New Zealand</p>
+              </div>
+              <button
+                onClick={onToggleLike}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all flex-shrink-0 ${
+                  isLiked
+                    ? 'bg-primary/10 border-primary/30 text-primary'
+                    : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'
+                }`}
+                aria-label={isLiked ? 'Unlike' : 'Like this review'}
+              >
+                <ThumbIcon filled={isLiked} />
+                <span className="text-sm font-semibold">{likeCount}</span>
+              </button>
+            </div>
+            <div className="flex items-center gap-3 mt-2">
+              <StarRating rating={t.rating} />
+              <span className="text-xs text-gray-400">·</span>
+              <span className="text-xs text-gray-400">{t.location}</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 className="font-bold text-gray-900 mt-4 text-base leading-snug">{t.title}</h3>
+
+        <p className="text-gray-600 mt-2 text-sm leading-relaxed">
+          {displayText}
+          {needsTruncate && (
+            <button onClick={onToggleExpand} className="ml-1 text-primary hover:underline font-medium text-sm">
+              {isExpanded ? 'show less' : 'read more'}
+            </button>
+          )}
+        </p>
+
+        <div className="mt-4 space-y-1 text-xs text-gray-500">
+          <p><span className="font-semibold text-gray-700">Date of Experience:</span>{' '}{t.date}</p>
+          <p><span className="font-semibold text-gray-700">Tour Customized by:</span>{' '}{t.customizedBy}</p>
+          <p>
+            <span className="font-semibold text-gray-700">You May Be Interested in This Tour:</span>{' '}
+            <span className="text-primary font-semibold hover:underline cursor-pointer">{t.tour}</span>
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3 mt-5">
+          <button
+            onClick={onToggleLike}
+            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${
+              isLiked
+                ? 'bg-primary/10 border-primary/30 text-primary font-semibold'
+                : 'bg-white border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'
+            }`}
+          >
+            <ThumbIcon filled={isLiked} />
+            Helpful · {likeCount}
+          </button>
+          <button
+            onClick={onToggleWant}
+            className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${
+              isWanted
+                ? 'bg-rose-50 border-rose-300 text-rose-600 font-semibold'
+                : 'bg-white border-gray-200 text-gray-500 hover:border-rose-300 hover:text-rose-500'
+            }`}
+          >
+            <HeartIcon filled={isWanted} />
+            Want to Go · {wantCount}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Spotlight tag colour config ────────────────────────────────────────────────
+
+const SPOTLIGHT_TAGS = ["Beijing & Xi'an", 'Shanghai & Surroundings', 'Chongqing & Chengdu'] as const;
+
+const SPOTLIGHT_TAG_STYLES: Record<string, { border: string; badge: string }> = {
+  "Beijing & Xi'an":        { border: 'border-amber-400', badge: 'border-amber-400 text-amber-700 bg-amber-50' },
+  'Shanghai & Surroundings': { border: 'border-blue-400',  badge: 'border-blue-400  text-blue-700  bg-blue-50'  },
+  'Chongqing & Chengdu':    { border: 'border-red-400',   badge: 'border-red-400   text-red-700   bg-red-50'   },
+};
+
+// ── Main component ─────────────────────────────────────────────────────────────
+
 interface TestimonialsProps {
   variant?: 'full' | 'compact' | 'sidebar';
   tourFilter?: string;
@@ -403,6 +698,7 @@ interface TestimonialsProps {
 
 const INITIAL_VISIBLE = 5;
 const LOAD_MORE_COUNT = 4;
+const TOTAL_REVIEWS = allTestimonials.length;
 
 export default function Testimonials({ variant = 'full', tourFilter, maxItems }: TestimonialsProps) {
   const [likes, setLikes] = useState<Record<number, number>>({});
@@ -421,44 +717,35 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
     return filtered;
   }, [tourFilter, maxItems]);
 
-  const getLikeCount = (t: Testimonial) =>
-    likes[t.id] !== undefined ? likes[t.id] : t.initialLikes;
-
-  const getWantCount = (t: Testimonial) =>
-    wants[t.id] !== undefined ? wants[t.id] : t.initialWants;
+  const getLikeCount = (t: Testimonial) => likes[t.id] ?? t.initialLikes;
+  const getWantCount = (t: Testimonial) => wants[t.id] ?? t.initialWants;
 
   const toggleLike = (t: Testimonial) => {
     const isLiked = !!liked[t.id];
     setLiked(prev => ({ ...prev, [t.id]: !isLiked }));
-    setLikes(prev => ({
-      ...prev,
-      [t.id]: isLiked ? t.initialLikes : t.initialLikes + 1,
-    }));
+    setLikes(prev => ({ ...prev, [t.id]: isLiked ? t.initialLikes : t.initialLikes + 1 }));
   };
 
   const toggleWant = (t: Testimonial) => {
     const isWanted = !!wanted[t.id];
     setWanted(prev => ({ ...prev, [t.id]: !isWanted }));
-    setWants(prev => ({
-      ...prev,
-      [t.id]: isWanted ? t.initialWants : t.initialWants + 1,
-    }));
+    setWants(prev => ({ ...prev, [t.id]: isWanted ? t.initialWants : t.initialWants + 1 }));
   };
 
-  const StarRating = ({ rating }: { rating: number }) => (
-    <div className="flex gap-0.5">
-      {[...Array(5)].map((_, i) => (
-        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-red-500' : 'text-gray-200'}`} fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
-  );
-
-  const Avatar = ({ t }: { t: Testimonial }) => (
-    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${AVATAR_COLORS[t.colorIndex]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md`}>
-      {t.avatarInitials}
-    </div>
+  const renderCard = (t: Testimonial, idx: number) => (
+    <ReviewCard
+      key={t.id}
+      t={t}
+      showDivider={idx > 0}
+      isExpanded={!!expanded[t.id]}
+      isLiked={!!liked[t.id]}
+      isWanted={!!wanted[t.id]}
+      likeCount={getLikeCount(t)}
+      wantCount={getWantCount(t)}
+      onToggleLike={() => toggleLike(t)}
+      onToggleWant={() => toggleWant(t)}
+      onToggleExpand={() => setExpanded(prev => ({ ...prev, [t.id]: !expanded[t.id] }))}
+    />
   );
 
   // Sidebar variant for tour pages
@@ -528,9 +815,11 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
     );
   }
 
-  // Full variant — list style (homepage)
-  const visibleItems = displayTestimonials.slice(0, visibleCount);
-  const hasMore = visibleCount < displayTestimonials.length;
+  // Full variant — list style
+  const generalItems = displayTestimonials.filter(t => !t.spotlightTag);
+  const spotlightItems = displayTestimonials.filter(t => !!t.spotlightTag);
+  const visibleGeneralItems = generalItems.slice(0, visibleCount);
+  const hasMore = visibleCount < generalItems.length;
 
   return (
     <section className="py-20 md:py-28 bg-gradient-to-br from-amber-50/40 via-white to-sky-50/20 relative overflow-hidden">
@@ -548,127 +837,49 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
           </div>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-accent">Traveller Stories</h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary via-secondary to-primary mx-auto mt-4 rounded-full" />
-          <p className="text-gray-500 mt-4 text-sm">{allTestimonials.length} reviews from New Zealand travellers</p>
+          <p className="text-gray-500 mt-4 text-sm">{TOTAL_REVIEWS} reviews from New Zealand travellers</p>
         </div>
 
-        {/* Review list */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-          {visibleItems.map((t, idx) => {
-            const isExpanded = !!expanded[t.id];
-            const TEXT_LIMIT = 220;
-            const needsTruncate = t.text.length > TEXT_LIMIT;
-            const displayText = isExpanded || !needsTruncate ? t.text : t.text.slice(0, TEXT_LIMIT) + '…';
+        {/* ── Spotlight section ── */}
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">HOT PICK</span>
+            <span className="text-sm font-semibold text-gray-700">Reviews for our most popular tours right now</span>
+          </div>
 
+          {SPOTLIGHT_TAGS.map(tag => {
+            const tagItems = spotlightItems.filter(t => t.spotlightTag === tag);
+            if (!tagItems.length) return null;
+            const style = SPOTLIGHT_TAG_STYLES[tag] ?? { border: 'border-primary', badge: 'border-primary text-primary bg-white' };
             return (
-              <div key={t.id}>
-                {idx > 0 && <hr className="border-gray-100 mx-6" />}
-                <div className="px-6 py-7">
-                  {/* Row 1: Avatar + Name + Location | Like count */}
-                  <div className="flex items-start gap-4">
-                    <Avatar t={t} />
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="font-bold text-gray-900 leading-tight">{t.name}</p>
-                          <p className="text-sm text-gray-500">{t.location}, New Zealand</p>
-                        </div>
-                        {/* Like count badge */}
-                        <button
-                          onClick={() => toggleLike(t)}
-                          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all flex-shrink-0 ${
-                            liked[t.id]
-                              ? 'bg-primary/10 border-primary/30 text-primary'
-                              : 'bg-gray-50 border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'
-                          }`}
-                          aria-label={liked[t.id] ? 'Unlike' : 'Like this review'}
-                        >
-                          <ThumbIcon filled={!!liked[t.id]} />
-                          <span className="text-sm font-semibold">{getLikeCount(t)}</span>
-                        </button>
-                      </div>
-
-                      {/* Stars + date */}
-                      <div className="flex items-center gap-3 mt-2">
-                        <StarRating rating={t.rating} />
-                        <span className="text-xs text-gray-400">·</span>
-                        <span className="text-xs text-gray-400">{t.location}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Row 2: Review title */}
-                  <h3 className="font-bold text-gray-900 mt-4 text-base leading-snug">
-                    {t.title}
-                  </h3>
-
-                  {/* Row 3: Review text */}
-                  <p className="text-gray-600 mt-2 text-sm leading-relaxed">
-                    {displayText}
-                    {needsTruncate && (
-                      <button
-                        onClick={() => setExpanded(prev => ({ ...prev, [t.id]: !isExpanded }))}
-                        className="ml-1 text-primary hover:underline font-medium text-sm"
-                      >
-                        {isExpanded ? 'show less' : 'read more'}
-                      </button>
-                    )}
-                  </p>
-
-                  {/* Row 4: Metadata */}
-                  <div className="mt-4 space-y-1 text-xs text-gray-500">
-                    <p>
-                      <span className="font-semibold text-gray-700">Date of Experience:</span>{' '}
-                      {t.date}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-gray-700">Tour Customized by:</span>{' '}
-                      {t.customizedBy}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-gray-700">You May Be Interested in This Tour:</span>{' '}
-                      <span className="text-primary font-semibold hover:underline cursor-pointer">{t.tour}</span>
-                    </p>
-                  </div>
-
-                  {/* Row 5: Action buttons */}
-                  <div className="flex items-center gap-3 mt-5">
-                    <button
-                      onClick={() => toggleLike(t)}
-                      className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${
-                        liked[t.id]
-                          ? 'bg-primary/10 border-primary/30 text-primary font-semibold'
-                          : 'bg-white border-gray-200 text-gray-500 hover:border-primary/40 hover:text-primary'
-                      }`}
-                    >
-                      <ThumbIcon filled={!!liked[t.id]} />
-                      Helpful · {getLikeCount(t)}
-                    </button>
-                    <button
-                      onClick={() => toggleWant(t)}
-                      className={`flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full border transition-all ${
-                        wanted[t.id]
-                          ? 'bg-rose-50 border-rose-300 text-rose-600 font-semibold'
-                          : 'bg-white border-gray-200 text-gray-500 hover:border-rose-300 hover:text-rose-500'
-                      }`}
-                    >
-                      <HeartIcon filled={!!wanted[t.id]} />
-                      {wanted[t.id] ? 'Want to Go · ' : 'Want to Go · '}
-                      {getWantCount(t)}
-                    </button>
-                  </div>
+              <div key={tag} className={`mb-5 rounded-2xl border-2 ${style.border} overflow-hidden shadow-sm`}>
+                <div className="px-5 py-3 flex items-center gap-2 bg-white border-b border-gray-100">
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded-full border ${style.badge}`}>{tag}</span>
+                  <span className="text-xs text-gray-400">{tagItems.length} reviews</span>
+                </div>
+                <div className="bg-white">
+                  {tagItems.map((t, idx) => renderCard(t, idx))}
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* ── General reviews ── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="px-6 py-4 border-b border-gray-100 bg-gray-50">
+            <p className="text-sm font-semibold text-gray-600">All Reviews</p>
+          </div>
+          {visibleGeneralItems.map((t, idx) => renderCard(t, idx))}
 
           {/* Load more */}
           {hasMore && (
             <div className="px-6 pb-7 pt-2 border-t border-gray-100">
               <button
-                onClick={() => setVisibleCount(prev => Math.min(prev + LOAD_MORE_COUNT, displayTestimonials.length))}
+                onClick={() => setVisibleCount(prev => Math.min(prev + LOAD_MORE_COUNT, generalItems.length))}
                 className="w-full py-3 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all"
               >
-                Show more reviews ({displayTestimonials.length - visibleCount} remaining)
+                Show more reviews ({generalItems.length - visibleCount} remaining)
               </button>
             </div>
           )}
