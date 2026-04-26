@@ -569,10 +569,19 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function Avatar({ t }: { t: Testimonial }) {
+function Avatar({ t, size = 'md' }: { t: Testimonial; size?: 'sm' | 'md' }) {
+  // Derive a stable avatar image number (1-70) from the testimonial id
+  const imgNum = ((Math.abs(t.id) * 13 + t.colorIndex * 7) % 70) + 1;
+  const dim = size === 'sm' ? 'w-9 h-9' : 'w-12 h-12';
   return (
-    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${AVATAR_COLORS[t.colorIndex]} flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-md`}>
-      {t.avatarInitials}
+    <div className={`${dim} rounded-full overflow-hidden flex-shrink-0 shadow-md ring-2 ring-white bg-gradient-to-br ${AVATAR_COLORS[t.colorIndex]}`}>
+      <img
+        src={`https://i.pravatar.cc/80?img=${imgNum}`}
+        alt={t.name}
+        width={48}
+        height={48}
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 }
@@ -762,7 +771,7 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
         {items.map((item) => (
           <div key={item.id} className="bg-warm-50 rounded-xl p-5 border border-warm-100">
             <div className="flex items-center gap-2 mb-2">
-              <Avatar t={item} />
+              <Avatar t={item} size="sm" />
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-sm truncate">{item.name}</p>
                 <p className="text-xs text-gray-500">{item.location}, NZ</p>
@@ -784,7 +793,7 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
                 className={`flex items-center gap-1 text-xs transition-colors ${wanted[item.id] ? 'text-rose-500 font-semibold' : 'text-gray-400 hover:text-rose-500'}`}
               >
                 <HeartIcon filled={!!wanted[item.id]} />
-                Want to Go
+                Want to Go · {getWantCount(item)}
               </button>
             </div>
           </div>
