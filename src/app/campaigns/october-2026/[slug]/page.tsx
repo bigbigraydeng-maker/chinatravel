@@ -21,6 +21,7 @@ import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
+import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import OctoberDiscoveryCampaignContent from '@/components/campaigns/OctoberDiscoveryCampaignContent';
@@ -268,6 +269,9 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
       <RelatedTours tours={relatedTours} destination={tour.destination} tier={tour.tier} />
 
       <FAQSection faqs={faqs} />
+
+      {/* Facebook Follow CTA */}
+      <FacebookFollowStrip />
 
       <FloatingCta tourName={tour.name} tourSlug={tour.slug} enquirySectionId="enquiry" />
     </>

@@ -21,6 +21,7 @@ import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import { isOctoberCampaignTourSlug } from '@/lib/campaigns/october-campaign-tours';
 import FloatingCta from '@/components/FloatingCta';
+import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import FAQSection from '@/components/FAQSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -313,6 +314,9 @@ export default function TourPage({ params }: TourPageProps) {
       />
 
       <FAQSection faqs={faqs} />
+
+      {/* Facebook Follow CTA */}
+      <FacebookFollowStrip />
 
       {/* Floating CTA for Mobile */}
       <FloatingCta
