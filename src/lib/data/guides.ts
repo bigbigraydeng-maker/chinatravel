@@ -38,6 +38,7 @@ export interface Section {
   title: string;
   id: string;
   content: string[];
+  link?: { label: string; href: string };
 }
 
 export interface DestinationGuide {
@@ -600,7 +601,8 @@ export const chengduGuide: DestinationGuide = {
         'The Giant Panda Base, established 1987, operates as both research institution and tourism attraction. Housing approximately 150 pandas (70% of the world\'s captive population), the base spans 666 hectares of naturalistic habitat. Visitors walk bamboo-shaded pathways observing pandas at various life stages in semi-wild conditions. The facility prioritises animal welfare; research focuses on breeding programmes, habitat restoration, and reintroduction to wild populations.',
         'Early morning visits (7-8am) offer optimal panda viewing; animals are most active and cooler temperatures prevent lethargy. Different enclosures house pandas by age: cubs in nursery areas (most photogenic), juveniles in intermediate habitats, and adults in expansive territories. The museum complex explains conservation science, showing how Sichuan\'s bamboo forests (panda primary food) are being protected. Educational programmes detail habitat challenges and reintroduction successes.',
         'Photography is exceptional during morning hours. Most visitors spend 3-4 hours at the base, combining panda observation with museum exhibits and walking meditation gardens. The base provides shuttle buses; independent entrance requires taxis from city. Tour operators typically include base visits as part of Chengdu itineraries, often combining with other attractions for efficiency.'
-      ]
+      ],
+      link: { label: 'Chengdu Panda Sanctuary: complete visitor guide →', href: '/chengdu-panda-sanctuary' },
     },
     {
       title: 'Buddhist Temples & Spiritual Heritage',
@@ -2234,7 +2236,8 @@ export const chongqingGuide: DestinationGuide = {
       content: [
         'Liziba is the single most shareable moment in Chongqing — and possibly all of China. Chongqing Rail Transit Line 2 passes directly through the 6th to 8th floors of a 19-storey residential building in Yuzhong District. The station and building were constructed simultaneously in 2004; the rubber-tyred trains run quietly enough that residents above and below are barely disturbed.',
         'The best way to experience it: ride Line 2 through the building for the inside view, then watch from the street-level plaza below for the money shot. Trains run every few minutes. Allow 30–60 minutes — you will want to watch it multiple times and photograph it from every angle. It never stops being surreal.'
-      ]
+      ],
+      link: { label: 'Liziba Station: complete visitor guide →', href: '/liziba-station-chongqing' },
     },
     {
       title: 'Hongyadong — The Cliffside City at Night',
@@ -2242,7 +2245,8 @@ export const chongqingGuide: DestinationGuide = {
       content: [
         'Hongyadong is the hero image of Chongqing: an 11-storey stilted complex (diaojiaolou style) built directly into the cliff face above the Jialing River. At night, it is lit with thousands of red and golden lanterns, creating a glowing, layered spectacle that rises from the riverbank like a scene from a Miyazaki film.',
         'Visit after dark. The full lighting effect is only visible once the sun goes down, and the contrast between the illuminated complex and the dark river below is the most photographed angle in the city. Cross to the Qiansimen Bridge for the full panoramic view. The complex itself contains restaurants, bars, and tea houses across interconnected stairways — explore freely, entrance is free.'
-      ]
+      ],
+      link: { label: 'Hongyadong: complete visitor guide →', href: '/hongyadong-chongqing' },
     },
     {
       title: 'Dazu Rock Carvings — UNESCO Hidden Gem',
