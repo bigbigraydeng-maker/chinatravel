@@ -167,27 +167,11 @@ export default function ItineraryActions({ itinerary }: ItineraryActionsProps) {
           )}
         </button>
 
-        <button
-          onClick={handleExportPDF}
-          disabled={isExporting}
-          className="w-full py-3 px-4 bg-primary hover:bg-primary/90 disabled:bg-gray-300 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-        >
-          {isExporting ? (
-            <>
-              <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              导出中...
-            </>
-          ) : (
-            <>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-              </svg>
-              下载精美 PDF
-            </>
-          )}
-        </button>
+        {/* PDF 导出暂时隐藏 —— 中文字体支持需要重做（计划用 HTML→PDF 方案替换 pdfkit） */}
+        {/* 保留 handler 备用：handleExportPDF, isExporting */}
+        <div className="text-xs text-gray-500 bg-gray-50 border border-gray-200 rounded-lg p-3">
+          💡 <strong>PDF 输出维护中</strong>：当前推荐使用「Word 草稿」编辑后另存为 PDF。
+        </div>
 
         <button
           onClick={handleSendEmail}

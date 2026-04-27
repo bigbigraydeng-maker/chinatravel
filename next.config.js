@@ -19,11 +19,11 @@ const nextConfig = {
   },
   compress: true,
   poweredByHeader: false,
-  // pdfkit 自带 .afm 字体文件，走 fs.readFileSync 读取；
-  // 必须把它从 webpack bundle 中排除，否则 Next.js 打包时不会把
-  // data/*.afm 一并搬进 .next/server/vendor-chunks，运行时会 ENOENT。
+  // 服务端运行时直接 require()，不走 webpack 打包：
+  // - pdfkit 自带 .afm 字体文件，走 fs.readFileSync 读取，被 webpack 打包后会 ENOENT
+  // - docx 的 CJS/ESM 双模块结构在 webpack 里命名导入会全部 undefined（AlignmentType/Document/...）
   experimental: {
-    serverComponentsExternalPackages: ['pdfkit'],
+    serverComponentsExternalPackages: ['pdfkit', 'docx'],
   },
   async redirects() {
     const hostRedirects = LEGACY_HOSTS.map((host) => ({

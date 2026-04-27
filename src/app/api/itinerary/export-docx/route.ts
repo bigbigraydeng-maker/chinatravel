@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GeneratedItinerary } from '@/lib/itinerary/engine'
+// 注：next.config.js 的 serverComponentsExternalPackages: ['docx'] 让 Next.js 不打包 docx，
+// 直接 require()，命名导入即可正常工作（无需 namespace import 解构）
 import {
   Document,
   Packer,
@@ -51,6 +53,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error)
     console.error('[DOCX Export] Failed:', message)
+    console.error('[DOCX Export] Stack:', error instanceof Error ? error.stack : 'N/A')
     return NextResponse.json(
       { message: 'Word 文档生成失败: ' + message },
       { status: 500 }
@@ -87,9 +90,23 @@ const FONT_CN = '宋体'
 
 // 颜色（十六进制，不带 #）
 const COLOR_PRIMARY = '8B6F47' // 暖棕色
+const COLOR_PRIMARY_LIGHT = 'D4A574' // 浅金色（封面装饰条）
 const COLOR_ACCENT = '2C1810'  // 深棕黑
 const COLOR_GRAY = '666666'
+const COLOR_LIGHT_GRAY = '888888'
 const COLOR_LIGHT_BG = 'FFF9F0'
+
+// 城市名映射（accommodation.city 字段是英文 slug，需转中文）
+const CITY_CN: Record<string, string> = {
+  auckland: '奥克兰',
+  rotorua: '罗托鲁阿',
+  queenstown: '皇后镇',
+  hobbiton: '霍比特人村',
+  waitomo: '怀托摩',
+  taupo: '陶波',
+  wellington: '惠灵顿',
+  christchurch: '基督城',
+}
 
 /** 标题行（Heading 1） */
 function h1(text: string): Paragraph {
@@ -126,20 +143,37 @@ function h2(text: string): Paragraph {
   })
 }
 
-/** 小标题 */
+/** 小标题：如果以 ▎ 开头，则把 ▎ 单独用品牌橙色渲染 */
 function h3(text: string): Paragraph {
+  const useColorBar = text.startsWith('▎')
+  const titleText = useColorBar ? text.slice(1) : text
+
+  const runs: TextRun[] = []
+  if (useColorBar) {
+    runs.push(
+      new TextRun({
+        text: '▎',
+        bold: true,
+        size: 28,
+        font: FONT_CN,
+        color: COLOR_PRIMARY,
+      })
+    )
+  }
+  runs.push(
+    new TextRun({
+      text: titleText,
+      bold: true,
+      size: 26, // 13pt
+      font: FONT_CN,
+      color: COLOR_ACCENT,
+    })
+  )
+
   return new Paragraph({
     heading: HeadingLevel.HEADING_3,
     spacing: { before: 200, after: 100 },
-    children: [
-      new TextRun({
-        text,
-        bold: true,
-        size: 26, // 13pt
-        font: FONT_CN,
-        color: COLOR_ACCENT,
-      }),
-    ],
+    children: runs,
   })
 }
 
@@ -182,12 +216,149 @@ function labeledLine(label: string, value: string): Paragraph {
   })
 }
 
-/** 带项目符号的列表项 */
-function bullet(text: string, level: number = 0): Paragraph {
+/** 带项目符号的列表项（用「•」字符，避开 docx numbering 配置） */
+function bullet(text: string): Paragraph {
   return new Paragraph({
-    bullet: { level },
     spacing: { after: 80, line: 320 },
+    indent: { left: 360 },
     children: [
+      new TextRun({
+        text: `• ${text}`,
+        size: 22,
+        font: FONT_CN,
+        color: '333333',
+      }),
+    ],
+  })
+}
+
+/** 装饰横条（封面顶部/底部用） */
+function decorativeBar(color: string, height: number = 80): Table {
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      bottom: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      left: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      insideHorizontal: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      insideVertical: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+    },
+    rows: [
+      new TableRow({
+        height: { value: height, rule: 'exact' as any },
+        children: [
+          new TableCell({
+            width: { size: 100, type: WidthType.PERCENTAGE },
+            shading: { type: ShadingType.CLEAR, fill: color, color: 'auto' },
+            children: [new Paragraph({ children: [new TextRun({ text: '', size: 2 })] })],
+          }),
+        ],
+      }),
+    ],
+  })
+}
+
+/** 每日行程的彩色 Banner：左侧大号 DAY XX，右侧标题 + 主题 */
+function dayBanner(dayNum: number, title: string, theme: string): Table {
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: {
+      top: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      bottom: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      left: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      right: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      insideHorizontal: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+      insideVertical: { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' },
+    },
+    rows: [
+      new TableRow({
+        children: [
+          // 左：DAY XX（暖橙底，白字）
+          new TableCell({
+            width: { size: 22, type: WidthType.PERCENTAGE },
+            shading: { type: ShadingType.CLEAR, fill: COLOR_PRIMARY, color: 'auto' },
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { before: 240, after: 120 },
+                children: [
+                  new TextRun({
+                    text: 'DAY',
+                    bold: true,
+                    size: 20,
+                    font: FONT_CN,
+                    color: 'FFFFFF',
+                  }),
+                ],
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                spacing: { after: 240 },
+                children: [
+                  new TextRun({
+                    text: String(dayNum).padStart(2, '0'),
+                    bold: true,
+                    size: 64,
+                    font: FONT_CN,
+                    color: 'FFFFFF',
+                  }),
+                ],
+              }),
+            ],
+          }),
+          // 右：标题 + 主题（米色底）
+          new TableCell({
+            width: { size: 78, type: WidthType.PERCENTAGE },
+            shading: { type: ShadingType.CLEAR, fill: COLOR_LIGHT_BG, color: 'auto' },
+            children: [
+              new Paragraph({
+                spacing: { before: 360, after: 120 },
+                indent: { left: 360 },
+                children: [
+                  new TextRun({
+                    text: title,
+                    bold: true,
+                    size: 36,
+                    font: FONT_CN,
+                    color: COLOR_ACCENT,
+                  }),
+                ],
+              }),
+              new Paragraph({
+                spacing: { after: 360 },
+                indent: { left: 360 },
+                children: [
+                  new TextRun({
+                    text: `主题：${theme}`,
+                    italics: true,
+                    size: 22,
+                    font: FONT_CN,
+                    color: COLOR_PRIMARY,
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
+  })
+}
+
+/** 行程亮点：圆点编号 + 文字 */
+function numberedHighlight(num: number, text: string): Paragraph {
+  return new Paragraph({
+    spacing: { after: 100, line: 320 },
+    indent: { left: 240 },
+    children: [
+      new TextRun({
+        text: `${num.toString().padStart(2, '0')}  `,
+        bold: true,
+        size: 24,
+        font: FONT_CN,
+        color: COLOR_PRIMARY,
+      }),
       new TextRun({
         text,
         size: 22,
@@ -372,10 +543,13 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
   const children: Array<Paragraph | Table> = []
 
   // ========== 封面 ==========
+  // 顶部装饰条（约 1cm 高）
+  children.push(decorativeBar(COLOR_PRIMARY, 567))
+
   children.push(
     new Paragraph({
       alignment: AlignmentType.CENTER,
-      spacing: { before: 2000, after: 400 },
+      spacing: { before: 1600, after: 400 },
       children: [
         new TextRun({
           text: '新西兰旅游服务',
@@ -448,7 +622,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
   children.push(
     new Paragraph({
       alignment: AlignmentType.CENTER,
-      spacing: { after: 200 },
+      spacing: { after: 1200 },
       children: [
         new TextRun({
           text: `行程编号：${itinerary.id}`,
@@ -459,6 +633,9 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
       ],
     })
   )
+
+  // 封面底部装饰条（约 0.5cm 高，浅金色）
+  children.push(decorativeBar(COLOR_PRIMARY_LIGHT, 280))
 
   // ========== 第 2 页：客户信息 ==========
   children.push(pageBreakParagraph())
@@ -494,36 +671,30 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
   // ========== 行程亮点 ==========
   if (highlights && highlights.length > 0) {
     children.push(h2('行程亮点'))
-    highlights.forEach((hl) => {
-      children.push(bullet(hl))
+    highlights.forEach((hl, idx) => {
+      children.push(numberedHighlight(idx + 1, hl))
     })
   }
 
   // ========== 每日行程（分页） ==========
-  days.forEach((day, idx) => {
+  days.forEach((day) => {
     // 每天新起一页
     children.push(pageBreakParagraph())
 
-    children.push(h1(day.title))
+    // 用彩色 Day Banner 替代普通标题
+    children.push(dayBanner(day.day, day.title, day.theme))
+
+    // banner 后空一行
     children.push(
       new Paragraph({
-        alignment: AlignmentType.CENTER,
-        spacing: { after: 300 },
-        children: [
-          new TextRun({
-            text: `主题：${day.theme}`,
-            italics: true,
-            size: 24,
-            font: FONT_CN,
-            color: COLOR_PRIMARY,
-          }),
-        ],
+        spacing: { after: 200 },
+        children: [new TextRun({ text: '', size: 2 })],
       })
     )
 
     // 时段安排
     if (day.schedule) {
-      children.push(h3('时段安排'))
+      children.push(h3('▎时段安排'))
       if (day.schedule.morning) {
         children.push(labeledLine('上午', day.schedule.morning))
       }
@@ -537,33 +708,36 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
     // 主要景点
     if (day.attractions && day.attractions.length > 0) {
-      children.push(h3('主要景点'))
+      children.push(h3('▎主要景点'))
       day.attractions.forEach((attr) => {
+        // 景点名（粗体深色）
         children.push(
           new Paragraph({
-            spacing: { after: 60 },
+            spacing: { before: 100, after: 40 },
             children: [
               new TextRun({
-                text: `• ${attr.name}`,
+                text: `▸ ${attr.name}`,
                 bold: true,
-                size: 22,
+                size: 24,
                 font: FONT_CN,
                 color: COLOR_ACCENT,
               }),
             ],
           })
         )
+        // 描述（浅灰斜体，缩进）
         if (attr.description) {
           children.push(
             new Paragraph({
-              spacing: { after: 120 },
-              indent: { left: 360 },
+              spacing: { after: 160, line: 320 },
+              indent: { left: 480 },
               children: [
                 new TextRun({
                   text: attr.description,
-                  size: 22,
+                  italics: true,
+                  size: 20,
                   font: FONT_CN,
-                  color: '555555',
+                  color: COLOR_LIGHT_GRAY,
                 }),
               ],
             })
@@ -574,7 +748,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
     // 餐食
     if (day.meals && (day.meals.breakfast || day.meals.lunch || day.meals.dinner)) {
-      children.push(h3('餐食安排'))
+      children.push(h3('▎餐食安排'))
       if (day.meals.breakfast) children.push(labeledLine('早餐', day.meals.breakfast))
       if (day.meals.lunch) children.push(labeledLine('午餐', day.meals.lunch))
       if (day.meals.dinner) children.push(labeledLine('晚餐', day.meals.dinner))
@@ -582,14 +756,17 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
     // 住宿
     if (day.accommodation) {
-      children.push(h3('住宿安排'))
+      children.push(h3('▎住宿安排'))
       children.push(
         labeledLine(
           '酒店',
           `${day.accommodation.name}（${day.accommodation.stars} 星）`
         )
       )
-      children.push(labeledLine('所在城市', day.accommodation.city))
+      // 城市名转中文
+      const cityCn =
+        CITY_CN[day.accommodation.city.toLowerCase()] || day.accommodation.city
+      children.push(labeledLine('所在城市', cityCn))
       children.push(
         labeledLine(
           '参考房价',
@@ -600,7 +777,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
     // 备注
     if (day.notes) {
-      children.push(h3('温馨提示'))
+      children.push(h3('▎温馨提示'))
       children.push(p(day.notes, { color: COLOR_GRAY }))
     }
   })
