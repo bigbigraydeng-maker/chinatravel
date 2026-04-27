@@ -15,6 +15,7 @@ import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import FloatingCta from '@/components/FloatingCta';
 import FAQSection from '@/components/FAQSection';
+import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import RelatedTours from '@/components/tours/RelatedTours';
 import Testimonials from '@/components/Testimonials';
 import TrustBar from '@/components/TrustBar';
@@ -229,6 +230,8 @@ export default function FireFuzzCampaignPage() {
       {relatedTours.length > 0 && (
         <RelatedTours tours={relatedTours} destination={tour.destination} tier={tour.tier} />
       )}
+
+      <FacebookFollowStrip />
 
       <FloatingCta tourName={tour.name} tourSlug={tour.slug} />
     </>
