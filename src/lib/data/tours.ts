@@ -608,7 +608,7 @@ export const tours: Tour[] = [
         day: 2,
         title: 'Arrival in Beijing',
         description: 'Upon arrival in Beijing, your guide will meet you and transfer you to visit the Temple of Heaven — a 500-year-old complex of altars and pavilions set in sweeping gardens, where emperors once made offerings to the heavens. Continue to a tea factory before checking in to your hotel.',
-        meals: [],
+        meals: ['Lunch'],
         accommodation: 'Beijing Wanda Moments or similar 4-star hotel'
       },
       {
