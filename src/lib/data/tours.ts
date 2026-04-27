@@ -581,6 +581,7 @@ export const tours: Tour[] = [
       'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published group departure in October as listed on this page.',
     duration: '10 Days',
     price: 'From NZD $3,480',
+    singleSupplement: 'NZD $395',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
