@@ -198,6 +198,9 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
 
               <TourHighlights highlights={tour.highlights} />
 
+              {/* Facebook Follow — inline CTA between highlights and itinerary */}
+              <FacebookFollowStrip variant="inline" />
+
               <TourItinerary
                 itinerary={tour.itinerary}
                 tourCities={tour.tourCities}

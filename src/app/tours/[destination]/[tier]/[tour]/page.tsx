@@ -228,6 +228,9 @@ export default function TourPage({ params }: TourPageProps) {
               {/* Highlights */}
               <TourHighlights highlights={tour.highlights} />
 
+              {/* Facebook Follow — inline CTA between highlights and itinerary */}
+              <FacebookFollowStrip variant="inline" />
+
               {/* Itinerary */}
               <TourItinerary
                 itinerary={tour.itinerary}
