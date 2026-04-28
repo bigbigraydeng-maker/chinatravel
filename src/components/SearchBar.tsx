@@ -19,6 +19,59 @@ const destinations = [
   { value: 'vietnam', label: 'Vietnam' },
 ];
 
+// 中文关键词到英文的映射 - 支持中文用户搜索
+const chineseToEnglish: Record<string, string> = {
+  '北京': 'Beijing',
+  '上海': 'Shanghai',
+  '西安': 'Xi\'an',
+  '成都': 'Chengdu',
+  '桂林': 'Guilin',
+  '张家界': 'Zhangjiajie',
+  '云南': 'Yunnan',
+  '丽江': 'Lijiang',
+  '大理': 'Dali',
+  '昆明': 'Kunming',
+  '香格里拉': 'Shangri-La',
+  '杭州': 'Hangzhou',
+  '苏州': 'Suzhou',
+  '重庆': 'Chongqing',
+  '阳朔': 'Yangshuo',
+  '长城': 'Great Wall',
+  '故宫': 'Forbidden City',
+  '兵马俑': 'Terracotta',
+  '熊猫': 'panda',
+  '乐山大佛': 'Leshan',
+  '天门山': 'Tianmen',
+  '中国': 'China',
+  '日本': 'Japan',
+  '越南': 'Vietnam',
+  '美食': 'food',
+  '文化': 'culture',
+  '历史': 'history',
+  '自然': 'nature',
+  '家庭': 'family',
+  '奢华': 'luxury',
+  '摄影': 'photography',
+};
+
+// 智能翻译查询：如果输入包含中文，转换为英文
+function translateQuery(query: string): string {
+  if (!query) return query;
+  const trimmed = query.trim();
+  // 完整匹配中文词
+  if (chineseToEnglish[trimmed]) {
+    return chineseToEnglish[trimmed];
+  }
+  // 部分匹配：逐个替换包含的中文词
+  let translated = trimmed;
+  Object.entries(chineseToEnglish).forEach(([cn, en]) => {
+    if (translated.includes(cn)) {
+      translated = translated.replace(new RegExp(cn, 'g'), en);
+    }
+  });
+  return translated;
+}
+
 export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [destination, setDestination] = useState('');
@@ -29,10 +82,14 @@ export default function SearchBar() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // 智能翻译：将中文搜索词转换为英文（因为 tour 数据是英文的）
+    const translatedQuery = translateQuery(query);
+
     // Fire GA4 event for search submission
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'hero_search_submit', {
         search_query: query || 'empty',
+        translated_query: translatedQuery,
         destination: destination || 'all',
         interest: interest || 'all',
         event_category: 'engagement',
@@ -41,14 +98,15 @@ export default function SearchBar() {
     }
 
     const params = new URLSearchParams();
-    if (query) params.set('q', query);
+    if (translatedQuery) params.set('q', translatedQuery);
     if (destination) params.set('destination', destination);
     if (interest) params.set('interest', interest);
     router.push(`/tours/find?${params.toString()}`);
   };
 
   const handleQuickSearch = (term: string) => {
-    router.push(`/tours/find?q=${encodeURIComponent(term)}`);
+    const translatedTerm = translateQuery(term);
+    router.push(`/tours/find?q=${encodeURIComponent(translatedTerm)}`);
   };
 
   return (
