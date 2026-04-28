@@ -1,18 +1,10 @@
 /**
  * Hero component tests
  *
- * NOTE: These tests reflect the CURRENT source code behaviour of
- * `src/components/Hero.tsx` in this branch. The component currently
- * exposes two CTAs ("Explore China" and "Tailor My Trip") and embeds
- * the SearchBar; it does NOT yet wire `window.gtag` GA4 events.
- *
- * The GA4-instrumented variant referenced in the broader marketing
- * spec ("Browse Our China Tours →" / "Chat with a Kiwi Travel Expert"
- * + `hero_cta_primary_click` / `hero_cta_secondary_click`) is described
- * below in commented-out test stubs so they can be activated once the
- * GA4 wiring lands in source. We do NOT modify Hero.tsx as part of this
- * task — these tests exist to (a) lock in current behaviour and (b)
- * pre-stage the GA4 spec.
+ * Tests for the GA4-instrumented Hero with:
+ * - Primary CTA: "Browse Our China Tours →" → /tours/find
+ * - Secondary CTA: "Chat with a Kiwi Travel Expert" → /contact
+ * - GA4 events: hero_cta_primary_click, hero_cta_secondary_click
  */
 import { render, screen, fireEvent } from '@testing-library/react';
 import Hero from '../Hero';
@@ -35,17 +27,20 @@ jest.mock('next/image', () => ({
 // Mock next/link to a plain <a>.
 jest.mock('next/link', () => ({
   __esModule: true,
-  default: ({ href, children, ...rest }: any) => (
-    <a href={typeof href === 'string' ? href : '#'} {...rest}>
+  default: ({ href, children, onClick, ...rest }: any) => (
+    <a
+      href={typeof href === 'string' ? href : '#'}
+      onClick={onClick}
+      {...rest}
+    >
       {children}
     </a>
   ),
 }));
 
-describe('Hero component (current source)', () => {
+describe('Hero component', () => {
   beforeEach(() => {
     mockPush.mockClear();
-    // Always provide a fresh window.gtag mock; some future tests assert on it.
     (window as any).gtag = jest.fn();
   });
 
@@ -58,22 +53,23 @@ describe('Hero component (current source)', () => {
     expect(
       screen.getByText(/New Zealand's China Specialists/i)
     ).toBeInTheDocument();
-    // Headline is split across two lines: "China." and "All of it."
     expect(screen.getByText(/All of it\./i)).toBeInTheDocument();
   });
 
-  it('renders the primary CTA "Explore China" linking to /explore', () => {
+  it('renders the primary CTA "Browse Our China Tours" linking to /tours/find', () => {
     render(<Hero />);
-    const cta = screen.getByRole('link', { name: /Explore China/i });
+    const cta = screen.getByRole('link', { name: /Browse Our China Tours/i });
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/explore');
+    expect(cta).toHaveAttribute('href', '/tours/find');
   });
 
-  it('renders the secondary CTA "Tailor My Trip" linking to /tailor-made', () => {
+  it('renders the secondary CTA "Chat with a Kiwi Travel Expert" linking to /contact', () => {
     render(<Hero />);
-    const cta = screen.getByRole('link', { name: /Tailor My Trip/i });
+    const cta = screen.getByRole('link', {
+      name: /Chat with a Kiwi Travel Expert/i,
+    });
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/tailor-made');
+    expect(cta).toHaveAttribute('href', '/contact');
   });
 
   it('embeds a search input (SearchBar child component)', () => {
@@ -88,22 +84,23 @@ describe('Hero component (current source)', () => {
     expect(() => render(<Hero />)).not.toThrow();
   });
 
-  // ---------------------------------------------------------------
-  // GA4 event-tracking tests (skipped until the source is updated to
-  // call window.gtag inside the CTA onClick handlers).
-  // ---------------------------------------------------------------
-  it.skip('fires window.gtag("event", "hero_cta_primary_click") on primary CTA click', () => {
+  it('fires window.gtag("event", "hero_cta_primary_click") on primary CTA click', () => {
     render(<Hero />);
     const cta = screen.getByRole('link', { name: /Browse Our China Tours/i });
     fireEvent.click(cta);
     expect((window as any).gtag).toHaveBeenCalledWith(
       'event',
       'hero_cta_primary_click',
-      expect.objectContaining({ event_category: expect.any(String) })
+      expect.objectContaining({
+        button_text: 'Browse Our China Tours',
+        destination_url: '/tours/find',
+        event_category: 'engagement',
+        event_label: 'hero_primary_cta',
+      })
     );
   });
 
-  it.skip('fires window.gtag("event", "hero_cta_secondary_click") on secondary CTA click', () => {
+  it('fires window.gtag("event", "hero_cta_secondary_click") on secondary CTA click', () => {
     render(<Hero />);
     const cta = screen.getByRole('link', {
       name: /Chat with a Kiwi Travel Expert/i,
@@ -112,7 +109,18 @@ describe('Hero component (current source)', () => {
     expect((window as any).gtag).toHaveBeenCalledWith(
       'event',
       'hero_cta_secondary_click',
-      expect.objectContaining({ event_category: expect.any(String) })
+      expect.objectContaining({
+        button_text: 'Chat with a Kiwi Travel Expert',
+        event_category: 'engagement',
+        event_label: 'hero_secondary_cta',
+      })
     );
+  });
+
+  it('does not call window.gtag when gtag is undefined (graceful degradation)', () => {
+    delete (window as any).gtag;
+    render(<Hero />);
+    const cta = screen.getByRole('link', { name: /Browse Our China Tours/i });
+    expect(() => fireEvent.click(cta)).not.toThrow();
   });
 });
