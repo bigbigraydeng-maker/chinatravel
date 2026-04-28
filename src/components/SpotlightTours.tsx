@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SectionTitle from '@/components/SectionTitle';
 import TourTierCard from '@/components/TourTierCard';
 import { getTourBySlug } from '@/lib/data/tours';
@@ -56,6 +57,22 @@ export default function SpotlightTours() {
               />
             );
           })}
+        </div>
+
+        {/* View all spotlight departures */}
+        <div className="mt-12 text-center">
+          <Link
+            href="/campaigns/october-2026"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary via-primary to-red-500 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all hover:-translate-y-1 hover:scale-105"
+          >
+            View all spotlight departures
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+          <p className="mt-3 text-sm text-gray-600">
+            All October &amp; November 2026 group tours · Limited seats
+          </p>
         </div>
       </div>
     </section>
