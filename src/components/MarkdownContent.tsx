@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface MarkdownContentProps {
   content: string;
@@ -12,6 +13,7 @@ interface MarkdownContentProps {
 export default function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
       components={{
         // H1 in content is the article title — already rendered by the page header, so suppress it here.
         h1: () => null,
@@ -78,6 +80,52 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
             {children}
           </a>
         ),
+        // Comparison tables
+        table: ({ children }) => (
+          <div className="overflow-x-auto my-8">
+            <table className="w-full text-sm border-collapse border border-gray-200 rounded-lg">
+              {children}
+            </table>
+          </div>
+        ),
+        thead: ({ children }) => (
+          <thead className="bg-gray-50 text-gray-700 font-semibold">
+            {children}
+          </thead>
+        ),
+        tbody: ({ children }) => (
+          <tbody className="divide-y divide-gray-100">
+            {children}
+          </tbody>
+        ),
+        tr: ({ children }) => (
+          <tr className="hover:bg-gray-50 transition-colors">
+            {children}
+          </tr>
+        ),
+        th: ({ children }) => (
+          <th className="px-4 py-3 text-left border-b border-gray-200 whitespace-nowrap">
+            {children}
+          </th>
+        ),
+        td: ({ children }) => (
+          <td className="px-4 py-3 text-gray-600 align-top">
+            {children}
+          </td>
+        ),
+        // Suppress placeholder images — only render real HTTP/HTTPS image URLs
+        img: ({ src, alt }) => {
+          if (!src || src.startsWith('placeholder') || !src.startsWith('http')) return null;
+          return (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={src}
+              alt={alt ?? ''}
+              className="w-full rounded-lg my-6 object-cover"
+              loading="lazy"
+            />
+          );
+        },
       }}
     >
       {content}
