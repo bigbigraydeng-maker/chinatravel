@@ -164,6 +164,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         departureDates={cfg.heroDepartureOrder}
         primaryCtaLabel="Enquire for October departures"
         secondaryCtaLabel="View day-by-day itinerary"
+        singleSupplement={tour.singleSupplement}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
