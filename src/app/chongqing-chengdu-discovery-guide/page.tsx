@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getDiscoveryGuideBySlug } from '@/lib/data/discovery-guides';
 import { getSiteUrl } from '@/lib/site';
@@ -75,7 +76,9 @@ export default function DiscoveryGuidePage() {
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">{guide.h1}</h1>
             <p className="text-lg text-gray-600">{guide.metaDescription}</p>
           </header>
-          <div className="prose prose-lg max-w-none mb-12" dangerouslySetInnerHTML={{ __html: guide.content.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>') }} />
+          <div className="prose prose-lg max-w-none mb-12">
+            <ReactMarkdown>{guide.content}</ReactMarkdown>
+          </div>
           {guide.faqs.length > 0 && (
             <section className="mt-16 border-t pt-12">
               <h2 className="font-serif text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
