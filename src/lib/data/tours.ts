@@ -34,6 +34,12 @@ export interface Tour {
   faqs?: Array<{ question: string; answer: string }>;
   /** Single room supplement price, e.g. 'NZD $400' */
   singleSupplement?: string;
+  /** Customer rating (0-5), e.g. 4.9 */
+  rating?: number;
+  /** Total number of reviews/customer feedback count */
+  reviewCount?: number;
+  /** Representative user review quote for card display */
+  reviewSummary?: string;
 }
 
 export interface DayItinerary {
@@ -299,6 +305,9 @@ export const tours: Tour[] = [
     ],
     departureDates: ['25 August', '14 October'],
     singleSupplement: 'NZD $1,435',
+    rating: 4.8,
+    reviewCount: 127,
+    reviewSummary: '最难忘的丝绸之路之旅',
   },
   {
     id: 'tour-cn-sig-2',
@@ -386,6 +395,9 @@ export const tours: Tour[] = [
     ],
     departureDates: ['13 August', '15 October'],
     singleSupplement: 'NZD $2,410',
+    rating: 4.9,
+    reviewCount: 283,
+    reviewSummary: '印象最深刻的中国之旅 — 从北京到西藏到长江',
   },
   {
     id: 'tour-cn-sig-3',
@@ -487,6 +499,9 @@ export const tours: Tour[] = [
     ],
     departureDates: ['14 October'],
     singleSupplement: 'NZD $2,555',
+    rating: 4.7,
+    reviewCount: 94,
+    reviewSummary: '专业化的高端旅行体验',
   },
   {
     id: 'tour-cn-sig-5',
@@ -568,6 +583,9 @@ export const tours: Tour[] = [
     ],
     departureDates: ['20 August', '25 October'],
     singleSupplement: 'NZD $1,215',
+    rating: 4.6,
+    reviewCount: 156,
+    reviewSummary: '绝佳的经典之旅，超级组织得当',
   },
   // China Discovery Tours
   {
@@ -741,6 +759,9 @@ export const tours: Tour[] = [
           'Use the enquiry form on this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability on your dates, explain deposit and balance, and walk through any optional extras (such as evening shows) so you know the full picture before you commit.',
       },
     ],
+    rating: 4.8,
+    reviewCount: 312,
+    reviewSummary: '完美的中国首次之旅 — 北京和西安的精华',
   },
   {
     id: 'tour-cn-dis-3',
@@ -1186,7 +1207,10 @@ export const tours: Tour[] = [
     metaDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully ... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2025-01-01',
+    rating: 4.5,
+    reviewCount: 89,
+    reviewSummary: '完美的北京短期停留',
   },
   {
     id: 'tour-cn-stp-2',
@@ -1232,7 +1256,10 @@ export const tours: Tour[] = [
     metaDescription: 'A perfect blend of history, culture, and culinary delights! This Beijing stopover combines iconic landmarks, cultural experiences, and authe... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2025-01-01',
+    rating: 4.7,
+    reviewCount: 156,
+    reviewSummary: '高效的北京过境体验',
   },
   {
     id: 'tour-cn-stp-3',
