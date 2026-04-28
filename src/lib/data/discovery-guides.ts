@@ -22,8 +22,8 @@ export const discoveryGuides: Record<string, DiscoveryGuide> = {
     metaDescription: 'Discover iconic northern China on this 10-day escorted tour. From the Forbidden City to the Great Wall and Terracotta Warriors, experience 5,000 years of history.',
     keywords: 'beijing xian tour from new zealand, great wall terracotta warriors tour, first time china trip, beijing great wall tour, xi\'an terracotta warriors, china tour for beginners',
     h1: 'Beijing & Xi\'an: A Tale of Two Cities — Your First-Time China Adventure',
-    heroImage: '/images/beijing-xian-forbidden-city-hero.jpg',
-    ogImage: '/images/beijing-xian-forbidden-city-hero.jpg',
+    heroImage: '/images/tours/great-wall-mist.jpg',
+    ogImage: '/images/tours/great-wall-mist.jpg',
     createdAt: '2026-04-28',
     updatedAt: '2026-04-29',
     destinationName: 'Beijing & Xi\'an',
@@ -75,7 +75,7 @@ The trade-off at the Forbidden City is scale. It is vast enough to overwhelm wit
 
 I'd put the Forbidden City early in the Beijing leg, not later. It sets the visual language for everything else: the colour palette, the architectural grammar, the sense of deliberate hierarchy that you'll recognise again at the Temple of Heaven and even at the Xi'an City Walls. Seeing it first makes the rest of Beijing more legible.
 
-![The Gate of Supreme Harmony viewed across the inner courtyard in early morning light](placeholder-forbidden-city-main.jpg)
+![The Forbidden City's Hall of Supreme Harmony viewed across the inner courtyard in early morning light](/images/tours/forbidden-city-aerial.jpg)
 
 <a id="forbidden-city-how-to"></a>
 ### How to move through it without getting lost
@@ -106,7 +106,7 @@ The trade-off here is straightforward. Mutianyu is the best-organised and best-m
 
 I'd push back on the idea that a busy site means a lesser experience here. Mutianyu's watchtowers have enough space that you can always find a quieter stretch between the main cable car landing and the eastern end. The views from Watchtower 14, looking west along the ridgeline, are worth the extra ten minutes of walking.
 
-![Looking east along the Mutianyu section of the Great Wall in autumn light](placeholder-mutianyu-wall.jpg)
+![Looking east along the Mutianyu section of the Great Wall in morning mist](/images/tours/great-wall-mist.jpg)
 
 <a id="mutianyu-options"></a>
 ### Cable car, hike, or toboggan — which to choose
@@ -134,7 +134,7 @@ The trade-off in the hutongs is one of atmosphere versus authenticity. The most-
 
 I'd put the hutong visit in the morning, before lunch, when residents are out buying vegetables and the light is soft. An afternoon visit works too, but the lunch-hour lull between 11am and 1pm means some of the small shops and courtyard entries are quieter than they'll be later.
 
-![A Beijing rickshaw winding through a hutong alleyway near the Drum Tower](placeholder-hutong-rickshaw.jpg)
+![A stone guardian lion at the Forbidden City, symbol of imperial Beijing](/images/tours/forbidden-city-gold-lion.jpg)
 
 <a id="hutongs-who"></a>
 ### Who should prioritise this
@@ -161,7 +161,6 @@ The trade-off is that the Temple of Heaven is often treated as a half-day add-on
 
 I usually recommend this for couples and travellers who want a counterpoint to the imperial grandeur of the Forbidden City. Where the palace is about enclosure and hierarchy, the Temple of Heaven is about the sky. The design logic is vertical rather than horizontal, and that changes the experience entirely.
 
-![The Hall of Prayer for Good Harvests at sunrise with morning mist over the surrounding parkland](placeholder-temple-of-heaven.jpg)
 
 <a id="temple-timing"></a>
 ### Best time to visit and what to look for
@@ -187,7 +186,6 @@ The trade-off is time of day versus landscape. Evening departures mean you miss 
 
 I'll be direct about something: the train journey is one of the moments in this itinerary that lands differently in person than it reads on paper. NZ travellers who arrive expecting a connecting service and leave thinking it was one of the highlights are not unusual. There is something specific about moving across China at 300km/h on a seat you booked six weeks ago from Auckland — it lands the scale of the country in a way that flying does not.
 
-![The interior of a Chinese high-speed rail 2nd class carriage with wide seats and clean lines](placeholder-hsr-interior.jpg)
 
 <a id="rail-onboard"></a>
 ### What to expect on board
@@ -217,7 +215,7 @@ The trade-off is that Pit 1 is the overwhelming focus of most visits, which mean
 
 I'd give this a full morning, arriving as the site opens. The audio guide (available on-site in English) is good enough that a private guide is not essential for a first visit, though having context around the burial customs and the Qin dynasty's administrative machinery makes the warrior programme make more sense.
 
-![The main excavation in Pit 1 showing rows of terracotta warriors in the Qin Shi Huang mausoleum complex](placeholder-terracotta-pit1.jpg)
+![The main excavation in Pit 1 showing rows of terracotta warriors in the Qin Shi Huang mausoleum complex](/images/tours/xian-terracotta.jpg)
 
 <a id="warriors-pits"></a>
 ### How to visit all three pits without rushing
@@ -245,7 +243,6 @@ The trade-off is that the walls are long, and doing the full 13.7 kilometres on 
 
 I'd do the city walls in the late afternoon, arriving an hour before sunset. The battlements cast good shadows in the raking light, the crenellations and watchtowers look like what they are rather than a tourist attraction, and the view of modern Xi'an spreading beyond the ancient perimeter is one of the more useful things you can see on this itinerary — it makes the relationship between ancient and contemporary China visible in a single glance.
 
-![Cycling along the top of Xi'an City Walls in late afternoon light with the modern city visible beyond the battlements](placeholder-xian-walls-cycling.jpg)
 
 <a id="walls-options"></a>
 ### Bicycle or walk — making the most of 13.7 km
@@ -273,7 +270,6 @@ The trade-off is crowds and noise. Huimin Jie is one of the busiest eating stree
 
 I'd put the Muslim Quarter on the first Xi'an evening, before the Terracotta Warriors day. Arriving around 6pm, when the evening foot traffic is building but not yet at peak, is the sweet spot. It also means you eat well, walk it off, and arrive back at the hotel without having spent the evening in a restaurant.
 
-![The lantern-lit entrance to Xi'an's Muslim Quarter at dusk with the minaret of the Great Mosque visible in the background](placeholder-muslim-quarter-evening.jpg)
 
 <a id="muslim-food"></a>
 ### What to eat, what to skip
@@ -380,8 +376,8 @@ For NZ travellers making their first China trip, this northern route — two cit
     metaDescription: 'Explore the Fire & Fuzz: Liziba Station, Hongyadong, Dazu Rock Carvings (UNESCO), Chengdu Pandas & Sichuan hotpot. A 10-day Discovery tour for NZ couples.',
     keywords: 'Chongqing tour, Chengdu travel, China Discovery tour, UNESCO Dazu Rock Carvings, Chengdu pandas, Sichuan hotpot, Liziba Station, Hongyadong, New Zealand China tours',
     h1: 'Chongqing & Chengdu: Why New Zealand Travellers Are Discovering China\'s Fire & Fuzz',
-    heroImage: '/images/chongqing-hongyadong-neon.jpg',
-    ogImage: '/images/chongqing-hongyadong-neon.jpg',
+    heroImage: '/images/tours/chengdu-pandas.jpg',
+    ogImage: '/images/tours/chengdu-pandas.jpg',
     createdAt: '2026-04-28',
     updatedAt: '2026-04-28',
     destinationName: 'Chongqing & Chengdu',
@@ -700,8 +696,8 @@ Chengdu rewards the slower pace that Chongqing doesn't particularly invite. Use 
     metaDescription: 'Escape Shanghai\'s skyline. Discover UNESCO gardens in Suzhou, West Lake\'s serenity, Jiangnan water-town elegance. Perfect for NZ travellers seeking gardens & tea culture.',
     keywords: 'shanghai tour from new zealand, jiangnan discovery, suzhou gardens, west lake hangzhou, shanghai water towns, china travel nz, jiangnan tourism',
     h1: 'Shanghai & Surroundings: The Jiangnan Discovery — Why NZ Travellers Are Choosing Elegance Over Crowds',
-    heroImage: '/images/shanghai-jiangnan-west-lake-hero.jpg',
-    ogImage: '/images/shanghai-jiangnan-west-lake-hero.jpg',
+    heroImage: '/images/tours/suzhou-canal.jpg',
+    ogImage: '/images/tours/suzhou-canal.jpg',
     createdAt: '2026-04-28',
     updatedAt: '2026-04-28',
     destinationName: 'Shanghai & Surroundings',
@@ -754,7 +750,7 @@ The honest trade-off is crowding. The Bund is one of the most-visited stretches 
 
 Shanghai welcomed [9.36 million inbound visitors in 2025, up 39.58% year-on-year](https://www.prnewswire.com/news-releases/shanghai-records-surge-in-inbound-tourism-in-2025--welcoming-over-9-36-million-visitors-302687135.html). That growth is visible on the Bund at peak hours.
 
-![The Bund waterfront promenade at dusk, Pudong skyline reflected in the Huangpu River](placeholder-bund-waterfront.jpg)
+![The Bund waterfront promenade at dusk, Pudong skyline in the background](/images/tours/shanghai-skyline.jpg)
 
 <a id="when-to-visit-the-bund"></a>
 
@@ -784,7 +780,7 @@ The [Classical Gardens of Suzhou were inscribed on the UNESCO World Heritage Lis
 
 The trade-off here is time versus depth. A rushed one-hour tick-off visit is genuinely a waste. These gardens reward people who are willing to sit in a pavilion for ten minutes and notice what changes. I'd recommend blocking at least two hours across one or two gardens rather than speed-running four in a morning. Retirees and garden enthusiasts in particular will find this is the section of the Jiangnan route they talk about longest.
 
-![Humble Administrator's Garden, Suzhou — pavilions and reflected willow trees over divided water](placeholder-suzhou-garden.jpg)
+![Classical canal scene in Suzhou — stone bridges and whitewashed Jiangnan buildings reflected in the water](/images/tours/suzhou-canal.jpg)
 
 <a id="how-to-get-the-most-from-suzhou-gardens"></a>
 
@@ -815,7 +811,7 @@ The Su Causeway — a 2.8-kilometre raised path crossing the lake — gives you 
 
 The trade-off is that West Lake is not a hidden gem. It is one of China's most celebrated landscapes, and the main lakeside paths near Broken Bridge and Leifeng Pagoda can be very crowded on weekends. Weekday mornings are significantly calmer. The northern and western shores, away from the main tourist circuits, reward walkers who are willing to go slightly off the standard route.
 
-![West Lake, Hangzhou — Su Causeway lined with willows, Leifeng Pagoda in the background](placeholder-west-lake.jpg)
+![Water town canal scene in Jiangnan — traditional whitewashed buildings lining a serene waterway](/images/tours/wuzhen-canal.jpg)
 
 <a id="who-should-prioritise-west-lake"></a>
 
@@ -844,7 +840,6 @@ The Lingshan Grand Buddha, on the northern shore of Taihu, is an 88-metre tall b
 
 The trade-off at Wuxi is that Lake Taihu's scale actually works slightly against intimate engagement. It is a lake best experienced from specific vantage points — Turtle Head Isle (Yuantouzhu) is the most visited, with cherry blossoms in spring and clear open-water views in autumn — rather than circumnavigated. The lake's southern and western shores are largely industrial or agricultural. Focus on the northern shore.
 
-![Lingshan Grand Buddha on the northern shore of Lake Taihu, Wuxi](placeholder-lingshan-buddha.jpg)
 
 <a id="how-to-combine-wuxi"></a>
 
@@ -877,7 +872,7 @@ I find water towns work best when you resist the urge to cover them systematical
 
 The trade-off is honest: if classical garden aesthetics or urban skyline energy are your primary interests, a water town can feel repetitive after an hour or two. The towns are beautiful but tonally similar at a surface level — what distinguishes them is the absence of management, not the presence of spectacle. If that kind of quiet is what you are looking for, Xinshi delivers.
 
-![Xinshi Ancient Water Town — canal view with stone bridges and whitewashed Jiangnan buildings](placeholder-xinshi-canal.jpg)
+![Traditional water town canal scene — stone bridges and whitewashed Jiangnan buildings reflected in the waterway](/images/tours/wuzhen-canal.jpg)
 
 <a id="who-should-go-xinshi"></a>
 
@@ -914,7 +909,6 @@ October adds a specific seasonal dimension that other months cannot offer: hairy
 
 Several meals on the CTS tour are deliberately left at your own expense — a choice that allows you to explore local noodle shops, street vendors, and neighbourhood restaurants at your own pace rather than sitting through group set menus. This is a feature, not an oversight.
 
-![Xiaolongbao soup dumplings being lifted from a bamboo steamer basket, Shanghai](placeholder-xiaolongbao.jpg)
 
 <a id="what-to-order-shanghai"></a>
 
@@ -948,7 +942,7 @@ If you want to go up rather than across, Shanghai Tower's observation deck on th
 
 The trade-off with Pudong is that it is urban spectacle rather than cultural depth. You come to see what was built and to calibrate your sense of scale, not to understand Shanghai's social history or cultural texture. For that, you need the older parts of the city — the French Concession, Tianzifang, or the Back Bund neighbourhoods.
 
-![Lujiazui skyline from the Bund — Shanghai Tower, Shanghai World Financial Center, and Oriental Pearl Tower at dusk](placeholder-pudong-skyline.jpg)
+![Shanghai Bund at night — the Pudong skyline in deep blue illumination reflected across the Huangpu River](/images/tours/shanghai-night-blue.jpg)
 
 <a id="best-way-to-do-pudong"></a>
 

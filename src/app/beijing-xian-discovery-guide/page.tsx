@@ -76,6 +76,14 @@ export default function DiscoveryGuidePage() {
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">{guide.h1}</h1>
             <p className="text-lg text-gray-600">{guide.metaDescription}</p>
           </header>
+          <div className="mb-10 rounded-xl overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/tours/great-wall-mist.jpg"
+              alt="The Great Wall of China at Mutianyu in morning mist"
+              className="w-full h-72 md:h-96 object-cover"
+            />
+          </div>
           <div className="mb-12">
             <MarkdownContent content={guide.content} />
           </div>
