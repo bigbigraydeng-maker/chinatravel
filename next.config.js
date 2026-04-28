@@ -75,7 +75,47 @@ const nextConfig = {
       { source: '/tour/golden-china/', destination: '/tours/china/discovery/essentials', permanent: true },
       { source: '/tour/china-panorama', destination: '/tours/china/signature/grand-tour', permanent: true },
       { source: '/tour/china-panorama/', destination: '/tours/china/signature/grand-tour', permanent: true },
+      /** GSC top page: /tour/yunnan-delights/ — 11 clicks, 59 impressions (Yunnan tour landing) */
+      { source: '/tour/yunnan-delights', destination: '/tours/china/discovery/yunnan-explorer', permanent: true },
+      { source: '/tour/yunnan-delights/', destination: '/tours/china/discovery/yunnan-explorer', permanent: true },
       { source: '/tour/:path*', destination: '/china-tours', permanent: true },
+
+      /** GSC top page: /www/ — 154 clicks, 2757 impressions (legacy WP host-prefix leak) → home */
+      { source: '/www', destination: '/', permanent: true },
+      { source: '/www/', destination: '/', permanent: true },
+      { source: '/www/:path*', destination: '/', permanent: true },
+
+      /** GSC top page: /about/about-cts/ — 10 clicks, 391 impressions (old WP slug) → /about */
+      { source: '/about/about-cts', destination: '/about', permanent: true },
+      { source: '/about/about-cts/', destination: '/about', permanent: true },
+
+      /** Semrush backlink (NZ Herald): /latest-specials/winter-getaway-hainan-island/ → /china-tours */
+      { source: '/latest-specials', destination: '/china-tours', permanent: true },
+      { source: '/latest-specials/', destination: '/china-tours', permanent: true },
+      { source: '/latest-specials/:path*', destination: '/china-tours', permanent: true },
+
+      /** Legacy WordPress taxonomy/feed/author/pagination archives (return 404, no SEO value) */
+      { source: '/feed', destination: '/', permanent: true },
+      { source: '/feed/', destination: '/', permanent: true },
+      { source: '/feed/:path*', destination: '/', permanent: true },
+      { source: '/comments/feed', destination: '/', permanent: true },
+      { source: '/comments/feed/', destination: '/', permanent: true },
+      { source: '/category/:path*', destination: '/blog', permanent: true },
+      { source: '/tag/:path*', destination: '/blog', permanent: true },
+      { source: '/author/:path*', destination: '/about', permanent: true },
+      { source: '/page/:path*', destination: '/', permanent: true },
+
+      /** Common legacy travel-site URL shapes → /china-tours hub */
+      { source: '/destinations', destination: '/china-tours', permanent: true },
+      { source: '/destinations/', destination: '/china-tours', permanent: true },
+      { source: '/destinations/:path*', destination: '/china-tours', permanent: true },
+      { source: '/destination/:path*', destination: '/china-tours', permanent: true },
+      { source: '/packages', destination: '/china-tours', permanent: true },
+      { source: '/packages/', destination: '/china-tours', permanent: true },
+      { source: '/packages/:path*', destination: '/china-tours', permanent: true },
+      { source: '/specials', destination: '/china-tours', permanent: true },
+      { source: '/specials/', destination: '/china-tours', permanent: true },
+      { source: '/specials/:path*', destination: '/china-tours', permanent: true },
     ];
 
     return [...hostRedirects, ...pathRedirects];
