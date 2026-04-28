@@ -20,31 +20,45 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'CTS Tours - China Travel Specialists for New Zealanders',
-  description: '98 Years Heritage | Direct China Operations | Authentic Access',
-  keywords: ['China travel', 'China tours', 'China specialists', 'New Zealand', 'CTS Tours'],
+  title: 'China Tours from New Zealand | CTS Tours - Since 1928',
+  description:
+    "New Zealand's China travel specialists since 1928. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
+  keywords: [
+    'China tours from New Zealand',
+    'China travel specialists',
+    'New Zealand China tours',
+    'CTS Tours',
+    'China tours NZ',
+    'Beijing tours',
+    'Shanghai tours',
+    'luxury China travel',
+  ],
   metadataBase: new URL(getSiteUrl()),
   icons: {
     icon: '/logo-square.jpg',
     apple: '/logo-square.jpg',
   },
   openGraph: {
-    title: 'CTS Tours - China Travel Specialists',
-    description: 'Expert China travel services for New Zealanders',
+    title: 'China Tours from New Zealand | CTS Tours - Since 1928',
+    description:
+      "New Zealand's China travel specialists since 1928. Expertly crafted tours, direct China operations, authentic experiences.",
     type: 'website',
+    locale: 'en_NZ',
+    siteName: 'CTS Tours',
     images: [
       {
         url: '/logo.png',
-        width: 885,
-        height: 244,
-        alt: 'CTS Tours - Experience The Real Asia',
+        width: 1200,
+        height: 630,
+        alt: 'CTS Tours — China Travel Specialists for New Zealanders since 1928',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CTS Tours - China Travel Specialists',
-    description: '98 Years Heritage | Direct China Operations | Authentic Access',
+    title: 'China Tours from New Zealand | CTS Tours - Since 1928',
+    description:
+      "New Zealand's China travel specialists since 1928. Direct China operations, authentic experiences. Free quote today.",
     images: ['/logo.png'],
   },
 };
