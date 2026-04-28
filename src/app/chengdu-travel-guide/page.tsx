@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-purple-50 border-t border-purple-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-purple-900 mb-3">
+            Explore Chongqing & Chengdu Together
+          </h2>
+          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
+            Combine Chengdu's giant pandas with Chongqing's Three Gorges and riverside culture. Experience Southwest China's most dynamic cities on one curated journey.
+          </p>
+          <a
+            href="/chongqing-chengdu-discovery-guide"
+            className="inline-block bg-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-700 transition"
+          >
+            Chongqing & Chengdu Discovery Guide →
+          </a>
+        </div>
+      </section>
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">

@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-blue-50 border-t border-blue-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-blue-900 mb-3">
+            Explore Beijing & Xi'an Together
+          </h2>
+          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
+            Combine Beijing's imperial heritage with Xi'an's terracotta warriors. Our carefully curated Beijing & Xi'an discovery packages connect China's two most iconic destinations.
+          </p>
+          <a
+            href="/beijing-xian-discovery-guide"
+            className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          >
+            Beijing & Xi'an Discovery Guide →
+          </a>
+        </div>
+      </section>
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">

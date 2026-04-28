@@ -55,6 +55,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // ── Discovery Guides (Product dimension) ───────────────────────────────
+  const discoveryGuides: MetadataRoute.Sitemap = [
+    'beijing-xian-discovery-guide',
+    'shanghai-surroundings-discovery-guide',
+    'chongqing-chengdu-discovery-guide',
+  ].map((slug) => ({
+    url: `${SITE}/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
   // ── Phase 2: 21 Destination Travel Guides ───────────────────────────────
   const guidePages: MetadataRoute.Sitemap = [
     'beijing-travel-guide',
@@ -148,5 +160,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...guidePages, ...tourSlugs, ...blogPages];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...tourSlugs, ...blogPages];
 }

@@ -70,6 +70,22 @@ export default function GuidePage() {
     <>
       <SchemaMarkup data={schema} />
       <DestinationGuide guide={guide} />
+      <section className="bg-emerald-50 border-t border-emerald-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-emerald-900 mb-3">
+            Discover Shanghai & Its Surroundings
+          </h2>
+          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
+            Combine Hangzhou's West Lake with Shanghai's urban energy and discover charming water towns and classical gardens across the Jiangnan region.
+          </p>
+          <a
+            href="/shanghai-surroundings-discovery-guide"
+            className="inline-block bg-emerald-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-emerald-700 transition"
+          >
+            Shanghai & Surroundings Discovery Guide →
+          </a>
+        </div>
+      </section>
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
