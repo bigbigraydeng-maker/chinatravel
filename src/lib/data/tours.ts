@@ -307,7 +307,7 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $1,435',
     rating: 4.8,
     reviewCount: 127,
-    reviewSummary: '最难忘的丝绸之路之旅',
+    reviewSummary: 'The most unforgettable Silk Road journey',
   },
   {
     id: 'tour-cn-sig-2',
@@ -397,7 +397,7 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $2,410',
     rating: 4.9,
     reviewCount: 283,
-    reviewSummary: '印象最深刻的中国之旅 — 从北京到西藏到长江',
+    reviewSummary: 'The most memorable China experience — from Beijing to Tibet to the Yangtze',
   },
   {
     id: 'tour-cn-sig-3',
@@ -501,7 +501,7 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $2,555',
     rating: 4.7,
     reviewCount: 94,
-    reviewSummary: '专业化的高端旅行体验',
+    reviewSummary: 'Outstanding professional luxury travel experience',
   },
   {
     id: 'tour-cn-sig-5',
@@ -585,7 +585,7 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $1,215',
     rating: 4.6,
     reviewCount: 156,
-    reviewSummary: '绝佳的经典之旅，超级组织得当',
+    reviewSummary: 'Excellent classical journey, superbly organized',
   },
   // China Discovery Tours
   {
@@ -761,7 +761,7 @@ export const tours: Tour[] = [
     ],
     rating: 4.8,
     reviewCount: 312,
-    reviewSummary: '完美的中国首次之旅 — 北京和西安的精华',
+    reviewSummary: 'Perfect first China experience — the essence of Beijing and Xi\'an',
   },
   {
     id: 'tour-cn-dis-3',
@@ -1210,7 +1210,7 @@ export const tours: Tour[] = [
     updatedAt: '2025-01-01',
     rating: 4.5,
     reviewCount: 89,
-    reviewSummary: '完美的北京短期停留',
+    reviewSummary: 'Perfect Beijing stopover',
   },
   {
     id: 'tour-cn-stp-2',
@@ -1259,7 +1259,7 @@ export const tours: Tour[] = [
     updatedAt: '2025-01-01',
     rating: 4.7,
     reviewCount: 156,
-    reviewSummary: '高效的北京过境体验',
+    reviewSummary: 'Efficient Beijing transit experience',
   },
   {
     id: 'tour-cn-stp-3',
