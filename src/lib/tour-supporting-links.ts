@@ -15,12 +15,17 @@ const PLANNING_LINKS: SupportingContentLink[] = [
 /** T041: October Discovery hero products → campaign LPs + matching blog (deduped with global cap). */
 const DISCOVERY_OCTOBER_EXTRA: Record<string, SupportingContentLink[]> = {
   'beijing-xian': [
-    { label: 'October 2026 · Beijing & Xi’an spotlight', href: '/campaigns/october-2026/tale-of-two-cities' },
-    { label: 'Blog · Beijing & Xi’an first-timer guide', href: '/blog/beijing-xian-first-visit-guide-nz' },
+    { label: "Guide · Beijing & Xi'an Discovery", href: '/beijing-xian-discovery-guide' },
+    { label: "October 2026 · Beijing & Xi'an spotlight", href: '/campaigns/october-2026/tale-of-two-cities' },
+    { label: "Blog · Beijing & Xi'an first-timer guide", href: '/blog/beijing-xian-first-visit-guide-nz' },
   ],
   'shanghai-surroundings': [
+    { label: 'Guide · Shanghai & Surroundings Discovery', href: '/shanghai-surroundings-discovery-guide' },
     { label: 'October 2026 · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
     { label: 'Blog · Shanghai & Jiangnan guide', href: '/blog/shanghai-surroundings-jiangnan-guide-nz' },
+  ],
+  'chongqing-chengdu': [
+    { label: 'Guide · Chongqing & Chengdu Discovery', href: '/chongqing-chengdu-discovery-guide' },
   ],
 };
 
@@ -31,8 +36,8 @@ const CITY_LINK_GROUPS: Record<string, SupportingContentLink[]> = {
     { label: 'Beijing travel guide', href: '/beijing-travel-guide' },
   ],
   xian: [
-    { label: 'Xi’an tours', href: '/xian-tours' },
-    { label: 'Xi’an travel guide', href: '/xian-travel-guide' },
+    { label: "Xi'an tours", href: '/xian-tours' },
+    { label: "Xi'an travel guide", href: '/xian-travel-guide' },
   ],
   shanghai: [
     { label: 'Shanghai tours', href: '/shanghai-tours' },

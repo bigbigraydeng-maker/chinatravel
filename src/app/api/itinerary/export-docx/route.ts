@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GeneratedItinerary } from '@/lib/itinerary/engine'
+import { getAttractionImageUrl, NZ_COVER_IMAGE_URL } from '@/lib/itinerary/attraction-images'
 // 注：next.config.js 的 serverComponentsExternalPackages: ['docx'] 让 Next.js 不打包 docx，
 // 直接 require()，命名导入即可正常工作（无需 namespace import 解构）
 import {
@@ -15,6 +16,9 @@ import {
   BorderStyle,
   WidthType,
   ShadingType,
+  ImageRun,
+  Footer,
+  PageNumber,
 } from 'docx'
 
 /** 空白段落 + 下一个段落 pageBreakBefore 的替代方案：
@@ -126,6 +130,29 @@ function h1(text: string): Paragraph {
   })
 }
 
+/** Section 大标题（左对齐 + 橙色色块前缀，比 h1 居中更有"专业感"） */
+function sectionTitle(text: string): Paragraph {
+  return new Paragraph({
+    spacing: { before: 240, after: 200 },
+    children: [
+      new TextRun({
+        text: '▎',
+        bold: true,
+        size: 48,
+        font: FONT_CN,
+        color: COLOR_PRIMARY,
+      }),
+      new TextRun({
+        text: ` ${text}`,
+        bold: true,
+        size: 36, // 18pt
+        font: FONT_CN,
+        color: COLOR_ACCENT,
+      }),
+    ],
+  })
+}
+
 /** 副标题 */
 function h2(text: string): Paragraph {
   return new Paragraph({
@@ -228,6 +255,51 @@ function bullet(text: string): Paragraph {
         font: FONT_CN,
         color: '333333',
       }),
+    ],
+  })
+}
+
+/** 异步加载图片为 Buffer（5 秒超时，失败返回 null） */
+async function loadImageBuffer(url: string): Promise<Buffer | null> {
+  try {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 5000)
+    const res = await fetch(url, { signal: controller.signal })
+    clearTimeout(timer)
+    if (!res.ok) return null
+    const arr = await res.arrayBuffer()
+    return Buffer.from(arr)
+  } catch (e) {
+    console.warn(`[DOCX Export] image load failed: ${url}`, e instanceof Error ? e.message : e)
+    return null
+  }
+}
+
+/** 把图片 Buffer 包装成一个段落（带左缩进与下间距） */
+function imageParagraph(buffer: Buffer): Paragraph {
+  return new Paragraph({
+    indent: { left: 480 },
+    spacing: { before: 80, after: 200 },
+    children: [
+      new ImageRun({
+        data: buffer,
+        transformation: { width: 360, height: 220 },
+      } as any),
+    ],
+  })
+}
+
+/** 封面 hero 大图段落（横幅风格，几乎铺满页面宽度） */
+function coverImageParagraph(buffer: Buffer): Paragraph {
+  return new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { before: 0, after: 0 },
+    children: [
+      new ImageRun({
+        data: buffer,
+        // 640 px ≈ 16.9cm（贴合 A4 正文宽度 17cm），270 px ≈ 7.1cm（cinematic 21:9）
+        transformation: { width: 640, height: 270 },
+      } as any),
     ],
   })
 }
@@ -543,13 +615,19 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
   const children: Array<Paragraph | Table> = []
 
   // ========== 封面 ==========
-  // 顶部装饰条（约 1cm 高）
-  children.push(decorativeBar(COLOR_PRIMARY, 567))
+  // 顶部 Hero：先尝试加载大封面图，失败回退到纯色装饰条
+  const coverBuf = await loadImageBuffer(NZ_COVER_IMAGE_URL)
+  if (coverBuf) {
+    children.push(coverImageParagraph(coverBuf))
+  } else {
+    // fallback：依然用原装饰条（约 1cm 高）
+    children.push(decorativeBar(COLOR_PRIMARY, 567))
+  }
 
   children.push(
     new Paragraph({
       alignment: AlignmentType.CENTER,
-      spacing: { before: 1600, after: 400 },
+      spacing: { before: coverBuf ? 600 : 1600, after: 400 },
       children: [
         new TextRun({
           text: '新西兰旅游服务',
@@ -639,7 +717,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
   // ========== 第 2 页：客户信息 ==========
   children.push(pageBreakParagraph())
-  children.push(h1('客户信息'))
+  children.push(sectionTitle('客户信息'))
   children.push(
     buildInfoTable([
       ['姓名', request.customer.name],
@@ -653,7 +731,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
   )
 
   // ========== 费用预算 ==========
-  children.push(h2('费用预算'))
+  children.push(sectionTitle('费用预算'))
   children.push(
     buildCostTable(
       [
@@ -670,11 +748,29 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
   // ========== 行程亮点 ==========
   if (highlights && highlights.length > 0) {
-    children.push(h2('行程亮点'))
+    children.push(sectionTitle('行程亮点'))
     highlights.forEach((hl, idx) => {
       children.push(numberedHighlight(idx + 1, hl))
     })
   }
+
+  // ========== 预加载所有景点图片（并行 fetch，5s 超时各自独立） ==========
+  // 平铺所有景点 → 唯一 id → 用映射表/fallback 取 URL → 并发 fetch Buffer
+  const attractionImageMap = new Map<string, Buffer>()
+  const allAttractions = days.flatMap((d) => d.attractions || [])
+  const uniqueAttractionIds = Array.from(new Set(allAttractions.map((a) => a.id)))
+  const imageLoadResults = await Promise.all(
+    uniqueAttractionIds.map(async (id) => {
+      const attr = allAttractions.find((a) => a.id === id)
+      const url = getAttractionImageUrl(id, attr?.image)
+      if (!url) return [id, null] as const
+      const buf = await loadImageBuffer(url)
+      return [id, buf] as const
+    })
+  )
+  imageLoadResults.forEach(([id, buf]) => {
+    if (buf) attractionImageMap.set(id, buf)
+  })
 
   // ========== 每日行程（分页） ==========
   days.forEach((day) => {
@@ -729,7 +825,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
         if (attr.description) {
           children.push(
             new Paragraph({
-              spacing: { after: 160, line: 320 },
+              spacing: { after: 80, line: 320 },
               indent: { left: 480 },
               children: [
                 new TextRun({
@@ -742,6 +838,11 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
               ],
             })
           )
+        }
+        // 景点图片（已预加载，有就插）
+        const imgBuf = attractionImageMap.get(attr.id)
+        if (imgBuf) {
+          children.push(imageParagraph(imgBuf))
         }
       })
     }
@@ -784,7 +885,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
 
   // ========== 结尾 ==========
   children.push(pageBreakParagraph())
-  children.push(h1('重要说明'))
+  children.push(sectionTitle('重要说明'))
   children.push(p('1. 本行程为初稿，请与我们的行程顾问确认细节。'))
   children.push(p('2. 所有价格以最终确认函为准，可能因季节、汇率、酒店政策有所调整。'))
   children.push(p('3. 如需修改景点、酒店、餐食偏好，请在签订合同前告知。'))
@@ -820,6 +921,50 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
     })
   )
 
+  // ========== 页脚（每页底部品牌行 + 页码） ==========
+  const footer = new Footer({
+    children: [
+      new Paragraph({
+        spacing: { before: 100, after: 0 },
+        border: {
+          top: { style: BorderStyle.SINGLE, size: 4, color: COLOR_PRIMARY_LIGHT, space: 4 },
+        },
+        children: [
+          new TextRun({
+            text: '新西兰旅游服务 NZ Tours',
+            size: 16,
+            font: FONT_CN,
+            color: COLOR_PRIMARY,
+          }),
+          new TextRun({
+            text: `\t\t${request.customer.name} · ${destName} ${request.days} 日\t\t`,
+            size: 16,
+            font: FONT_CN,
+            color: COLOR_GRAY,
+          }),
+          new TextRun({
+            children: [PageNumber.CURRENT],
+            size: 16,
+            font: FONT_CN,
+            color: COLOR_GRAY,
+          }),
+          new TextRun({
+            text: ' / ',
+            size: 16,
+            font: FONT_CN,
+            color: COLOR_GRAY,
+          }),
+          new TextRun({
+            children: [PageNumber.TOTAL_PAGES],
+            size: 16,
+            font: FONT_CN,
+            color: COLOR_GRAY,
+          }),
+        ],
+      }),
+    ],
+  })
+
   // ========== 打包文档 ==========
   const doc = new Document({
     creator: '新西兰旅游服务 (NZ Tours)',
@@ -837,6 +982,7 @@ async function generateDocxBuffer(itinerary: GeneratedItinerary): Promise<Buffer
             },
           },
         },
+        footers: { default: footer },
         children,
       },
     ],

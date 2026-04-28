@@ -2509,12 +2509,430 @@ export const tianmenMountainGuide: DestinationGuide = {
 };
 
 // ============================================================================
+// BEIJING & XI'AN DISCOVERY GUIDE
+// ============================================================================
+
+export const beijingXianDiscoveryGuide: DestinationGuide = {
+  id: 'guide-beijing-xian-discovery',
+  slug: 'beijing-xian-discovery-guide',
+  destinationName: 'Beijing & Xi\'an Discovery',
+  metaTitle: 'Beijing & Xi\'an Discovery Guide | 5,000 Years of Chinese History',
+  metaDescription: 'Experience imperial Beijing and ancient Xi\'an in 10 days. Explore the Forbidden City, Great Wall, and Terracotta Warriors. Perfect first-timer guide for New Zealand travellers.',
+  keywords: ['Beijing', 'Xi\'an', 'Forbidden City', 'Terracotta Warriors', 'Great Wall', 'discovery tour', 'cultural travel'],
+  h1: 'Beijing & Xi\'an Discovery: 5,000 Years of Chinese History',
+  heroSubtitle: 'From Imperial Palaces to Ancient Armies',
+  heroImage: `${TI}/forbidden-city-aerial.jpg`,
+  introText: [
+    'This carefully designed 10-day journey explores two of China\'s most significant historical destinations. Beijing, the imperial heart of China for 3,000 years, reveals the Forbidden City\'s 980 buildings and the Great Wall\'s magnificent engineering. Xi\'an, home of the Terracotta Warriors, takes you back 2,200 years to China\'s first unified empire.',
+    'Perfect for first-time visitors to China, this combination offers the ideal introduction to Chinese civilisation. Experience the grandeur of imperial architecture, the determination of the Great Wall builders, and the artistry of ancient armies. Each destination requires 5 days to appreciate fully—enough time to see headline attractions and discover hidden gems.'
+  ],
+  sections: [
+    {
+      title: 'Beijing: Seat of Emperors',
+      id: 'beijing-seat-of-emperors',
+      content: [
+        'Beijing served as capital for 13 consecutive dynasties, accumulating unparalleled imperial heritage. The Forbidden City represents the pinnacle of Ming architectural achievement, with 980 buildings containing treasures spanning centuries. The Great Wall, built over millennia, stretches across mountains protecting the northern frontier.',
+        'Must-see attractions include the Forbidden City (3-4 hours), Great Wall at Badaling (3 hours from city), Temple of Heaven (2 hours), and the Summer Palace (3-4 hours). Start with early morning Forbidden City visits to beat crowds; afternoon Great Wall visits work well. Evening temple fairs and rooftop dining showcase contemporary Beijing.'
+      ]
+    },
+    {
+      title: 'Xi\'an: Ancient Civilisation Capital',
+      id: 'xian-ancient-capital',
+      content: [
+        'Xi\'an stands as the birthplace of unified China. As capital of 13 dynasties beginning with China\'s first unified empire (Qin Dynasty, 221-206 BC), Xi\'an accumulated immense cultural significance. The Terracotta Warriors discovery in 1974 revealed an army of 8,000 clay soldiers guarding China\'s first emperor underground.',
+        'The Ancient City Wall, dating to 1370, offers 13.7km of walkable history. The Muslim Quarter preserves Silk Road trading heritage with authentic street food. The Big Goose Pagoda and Wild Goose Pagoda represent Buddhist architecture at different dynasties. The Shaanxi History Museum provides comprehensive context for Xi\'an\'s imperial era.'
+      ]
+    },
+    {
+      title: 'Practical Itinerary',
+      id: 'practical-itinerary',
+      content: [
+        'Days 1-5 in Beijing: Forbidden City (Day 1), Great Wall Badaling (Day 2), Temple of Heaven + Summer Palace (Day 3), Ming Tombs + Mutianyu Wall (Day 4), Lama Temple + 798 Art District (Day 5).',
+        'Days 6-10 in Xi\'an: Terracotta Warriors (Day 6), Ancient City Wall + Muslim Quarter (Day 7), Big Goose Pagoda + Shaanxi Museum (Day 8), Dayan Tower + nightlife (Day 9), free time or shorter excursions (Day 10).',
+        'Internal flights from Beijing to Xi\'an take 3 hours; high-speed train takes 4.5 hours. Book flights in advance for better rates.'
+      ]
+    }
+  ],
+  attractions: [
+    {
+      name: 'Forbidden City',
+      description: 'World\'s largest imperial palace complex with 980 buildings housing imperial treasures.',
+      visitDuration: '3-4 hours minimum',
+      bestTime: 'Early morning to avoid crowds; spring and autumn for weather',
+      ticketInfo: '¥60 adults'
+    },
+    {
+      name: 'Great Wall (Badaling)',
+      description: 'Restored wall section 43km from Beijing with cable cars and scenic hiking.',
+      visitDuration: '3-4 hours',
+      bestTime: 'Spring and autumn for ideal weather and visibility',
+      ticketInfo: '¥40 adults; cable car ¥100 return'
+    },
+    {
+      name: 'Terracotta Warriors',
+      description: 'Underground army of 8,000 clay soldiers guarding China\'s first emperor.',
+      visitDuration: '3 hours',
+      bestTime: 'Early morning visits; spring and autumn seasons',
+      ticketInfo: '¥150 adults'
+    },
+    {
+      name: 'Ancient City Wall (Xi\'an)',
+      description: '13.7km of walkable Ming Dynasty wall encircling Xi\'an\'s old city.',
+      visitDuration: '1-2 hours',
+      bestTime: 'Late afternoon or sunset for photography and cooler temperatures',
+      ticketInfo: '¥54 adults'
+    },
+    {
+      name: 'Big Goose Pagoda',
+      description: 'Seven-storey Buddhist pagoda built 652 AD, housing Buddhist scriptures.',
+      visitDuration: '1.5 hours',
+      bestTime: 'Morning visits; evening light shows seasonal',
+      ticketInfo: '¥50 adults'
+    },
+    {
+      name: 'Muslim Quarter',
+      description: 'Historic Silk Road trading district preserving street food and markets.',
+      visitDuration: '2-3 hours',
+      bestTime: 'Evening for food stalls and street atmosphere',
+      ticketInfo: 'Free to explore; food costs vary'
+    }
+  ],
+  practicalInfo: {
+    transportation: 'Beijing has efficient metro system. Xi\'an has buses and taxis. Internal flights or trains connect cities (3-4.5 hours).',
+    climate: 'Beijing: cold winters (-5 to 5°C), hot summers (25-35°C). Xi\'an: similar with slightly warmer summers.',
+    bestTime: 'April-May or September-October offer ideal temperatures and lower rainfall.',
+    budget: 'Budget ¥100-150/day for accommodation, ¥50-100/day for food, ¥200+ per major attraction.',
+    language: 'English spoken in major attractions and hotels; download translation apps for neighbourhood restaurants.',
+    safety: 'Both cities are very safe for tourists. Tap water is not drinkable; bottled water is inexpensive and widely available.'
+  },
+  faqs: [
+    {
+      question: 'How many days do I need?',
+      answer: '10 days minimum: 5 in Beijing, 5 in Xi\'an. This allows time to see major attractions without rushing.'
+    },
+    {
+      question: 'What\'s the best season to visit?',
+      answer: 'April-May (spring) and September-October (autumn) offer ideal temperatures. Winter is cold; summer is very hot and humid.'
+    },
+    {
+      question: 'Is the Terracotta Warriors site worth the visit?',
+      answer: 'Absolutely. It\'s one of archaeology\'s greatest discoveries and essential context for understanding ancient China.'
+    },
+    {
+      question: 'Can I walk the entire Great Wall?',
+      answer: 'The wall stretches 21,000km. Near Beijing, accessible restored sections range from 1-5km walks. Badaling suits most visitors; Mutianyu offers fewer crowds.'
+    },
+    {
+      question: 'How do I get around?',
+      answer: 'Beijing has world-class metro (fastest option). Xi\'an relies on buses and taxis. Taxis are cheap; ride-hailing apps (Didi) work in both cities.'
+    },
+    {
+      question: 'What should I eat?',
+      answer: 'Beijing: Peking duck, jianbing (crepes), street dumplings. Xi\'an: roujiamo (meat sandwiches), biangbiang noodles, street skewers. Both offer incredible regional cuisine.'
+    },
+    {
+      question: 'Do I need a Chinese visa?',
+      answer: 'New Zealand citizens need visas for mainland China. Apply online (e-visa) or at Chinese embassy. Processing typically takes 4-6 business days.'
+    },
+    {
+      question: 'Is it possible as a first-time visitor?',
+      answer: 'Yes. This combination is ideal for first-timers—safe cities, excellent infrastructure, world-class attractions, and comprehensible cultural context.'
+    }
+  ],
+  relatedTourSlugs: ['beijing-xian', 'best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-classic-signature'],
+  relatedGuideSlugs: ['beijing-travel-guide', 'xian-travel-guide'],
+  galleryImages: [],
+  createdAt: '2026-04-01',
+  updatedAt: '2026-04-28'
+};
+
+// ============================================================================
+// SHANGHAI & SURROUNDINGS DISCOVERY GUIDE
+// ============================================================================
+
+export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
+  id: 'guide-shanghai-surroundings-discovery',
+  slug: 'shanghai-surroundings-discovery-guide',
+  destinationName: 'Shanghai & Surroundings Discovery',
+  metaTitle: 'Shanghai & Surroundings Guide | Modern City + Ancient Water Towns',
+  metaDescription: 'Discover dynamic Shanghai\'s Bund and discover classical Jiangnan water towns like Zhujiajiao and Tongli. Perfect blend of contemporary China and timeless traditions.',
+  keywords: ['Shanghai', 'water towns', 'Jiangnan', 'Zhujiajiao', 'Tongli', 'Bund', 'discovery tour'],
+  h1: 'Shanghai & Surroundings: Modern Metropolis Meets Timeless Water Towns',
+  heroSubtitle: 'Contemporary Energy and Classical Beauty',
+  heroImage: `${TI}/shanghai-bund-night.jpg`,
+  introText: [
+    'Shanghai represents 21st-century China: gleaming skyscrapers, cutting-edge technology, and cosmopolitan energy. Yet within 90 minutes, ancient water towns preserve centuries-old Jiangnan culture—narrow canals, stone bridges, and traditional gardens transport you back centuries.',
+    'This 7-10 day journey offers perfect balance: modern Shanghai\'s shopping, dining, and nightlife complemented by peaceful water town explorations. Experience the contrast between where China is heading and where it came from.'
+  ],
+  sections: [
+    {
+      title: 'Shanghai: The Modern Metropolis',
+      id: 'shanghai-metropolis',
+      content: [
+        'Shanghai\'s transformation from colonial trading post to global financial centre happened in decades. The Bund showcases this duality: historic European architecture alongside Chinese-built skyscrapers. Today, Shanghai attracts designers, entrepreneurs, and artists creating cutting-edge culture.',
+        'Must-see areas: The Bund (riverfront historic district), Lujiazui (financial district with Oriental Pearl Tower), French Concession (tree-lined streets with galleries and cafes), Jing\'an (shopping and nightlife), Yu Garden (classical garden design). Spend 3-4 days exploring Shanghai\'s neighbourhoods, food scene, and museums.'
+      ]
+    },
+    {
+      title: 'Water Towns: Classical Jiangnan',
+      id: 'water-towns-jiangnan',
+      content: [
+        'Zhujiajiao, Tongli, and Zhouzhuang represent classical Jiangnan culture—canals replacing streets, stone bridges connecting residential clusters, and traditional architecture reflecting Ming and Qing dynasties. These water towns inspired classical Chinese paintings and poetry.',
+        'Zhujiajiao (90 minutes from Shanghai) offers day-trip convenience. Tongli provides overnight options with homestay experiences. Both feature authentic waterside restaurants, traditional snack shops, and boat rides through canals. Visit mid-week to avoid Shanghai weekend crowds.'
+      ]
+    },
+    {
+      title: 'Practical Itinerary',
+      id: 'practical-itinerary-shanghai',
+      content: [
+        'Days 1-4 in Shanghai: Bund and French Concession (Day 1), Jing\'an and shopping (Day 2), Yu Garden and Tea House (Day 3), Lujiazui and museums (Day 4).',
+        'Days 5-6: Zhujiajiao water town day trip (Day 5) or overnight in Tongli (Days 5-6).',
+        'Days 7-8: Alternative attractions—Longhua Temple, Suzhou Ancient Gardens day trip, or additional Shanghai neighbourhoods.',
+        'Public buses and metro connect Shanghai to nearby towns. Zhujiajiao buses depart every 10 minutes from Hongkou Stadium metro station.'
+      ]
+    }
+  ],
+  attractions: [
+    {
+      name: 'The Bund',
+      description: 'Historic riverfront district with colonial-era buildings and Shanghai skyline views.',
+      visitDuration: '2-3 hours walking',
+      bestTime: 'Evening for dramatic lighting and crowds; early morning for photography without crowds',
+      ticketInfo: 'Free to walk; museums and viewing platforms have individual charges'
+    },
+    {
+      name: 'Yu Garden',
+      description: 'Classical Ming Dynasty garden with rockeries, pavilions, and traditional landscape design.',
+      visitDuration: '1.5-2 hours',
+      bestTime: 'Weekday mornings to avoid crowds; spring and autumn for landscaping',
+      ticketInfo: '¥40 adults'
+    },
+    {
+      name: 'Zhujiajiao Water Town',
+      description: 'Ancient canal town with stone bridges, traditional architecture, and waterside restaurants.',
+      visitDuration: '4-6 hours',
+      bestTime: 'Weekday mid-morning; sunset for photography',
+      ticketInfo: '¥100 for scenic area entrance; boat rides ¥50-80'
+    },
+    {
+      name: 'Tongli Water Town',
+      description: 'Picturesque canal town with 15 bridges and classical gardens suited for overnight stays.',
+      visitDuration: '6-8 hours or overnight',
+      bestTime: 'Weekdays; evening boat rides showcase canal ambience',
+      ticketInfo: '¥100 for scenic area; homestay accommodation ¥300-500'
+    },
+    {
+      name: 'Oriental Pearl Tower',
+      description: 'Iconic 468-meter tower with observation decks and rotating restaurants.',
+      visitDuration: '2-3 hours',
+      bestTime: 'Early evening for sunset views and night city lights',
+      ticketInfo: '¥150 for observation deck'
+    },
+    {
+      name: 'French Concession',
+      description: 'Tree-lined neighbourhood with preserved colonial villas, galleries, cafes, and boutiques.',
+      visitDuration: '2-3 hours walking',
+      bestTime: 'Late afternoon for shopping and cafe culture; cool morning walks',
+      ticketInfo: 'Free to explore; dining and shopping costs vary'
+    }
+  ],
+  practicalInfo: {
+    transportation: 'Shanghai metro covers most areas. Buses require Mandarin or translation apps. Taxis and Didi (ride-hailing) are affordable. Regional buses to water towns depart frequently from metro stations.',
+    climate: 'Humid subtropical: hot-humid summers (30-35°C), cool-damp winters (0-8°C). Spring and autumn are ideal.',
+    bestTime: 'April-May and September-October offer perfect temperatures and clear skies.',
+    budget: '¥80-120/day for decent accommodation, ¥40-80/day for food, ¥50-150 per attraction.',
+    language: 'Shanghai is more English-friendly than most Chinese cities. Hotel and restaurant staff speak basic English. Download translation apps for neighbourhood interactions.',
+    safety: 'Shanghai is very safe. Air quality varies; check AQI during your visit. Street-level restaurant hygiene is generally excellent despite casual appearance.'
+  },
+  faqs: [
+    {
+      question: 'How many days for Shanghai and water towns?',
+      answer: '7-10 days ideal: 4 days Shanghai, 1-2 days water towns, remainder for deeper exploration or day trips.'
+    },
+    {
+      question: 'Can I do water towns as day trips?',
+      answer: 'Yes. Zhujiajiao works perfectly as day trip (4-6 hours). Tongli benefits from overnight stay for evening canal atmosphere, but day trips possible.'
+    },
+    {
+      question: 'Which water town should I choose?',
+      answer: 'Zhujiajiao: closest to Shanghai, easiest access, busier. Tongli: better for overnight stays, more peaceful, classical garden feel.'
+    },
+    {
+      question: 'What\'s the food scene like?',
+      answer: 'Shanghai excels at xiaolongbao (soup dumplings), noodles, and seafood. Water towns offer fresh fish, local vegetables, and historical snack dishes.'
+    },
+    {
+      question: 'Is Shanghai very touristy?',
+      answer: 'Bund and major attractions are touristy. French Concession and local neighbourhoods feel authentic. Water towns outside weekends remain peaceful and local.'
+    },
+    {
+      question: 'What shopping opportunities exist?',
+      answer: 'Lujiazui has luxury malls. Jing\'an offers department stores. Qipu Road has bargain wholesale. French Concession features designer boutiques and galleries.'
+    },
+    {
+      question: 'Can I visit both Shanghai and other regions?',
+      answer: 'Yes. Hangzhou (2.5 hours) and Suzhou (1 hour) are easily combined. High-speed trains connect to Beijing and other regions.'
+    },
+    {
+      question: 'Is Shanghai suitable as first China experience?',
+      answer: 'Good for modern China appreciation. Less traditional than Beijing/Xi\'an. Combining with water towns gives cultural balance for comprehensive first visit.'
+    }
+  ],
+  relatedTourSlugs: ['shanghai-surroundings', 'shanghai-hangzhou-suzhou-discovery'],
+  relatedGuideSlugs: ['shanghai-travel-guide'],
+  galleryImages: [],
+  createdAt: '2026-04-01',
+  updatedAt: '2026-04-28'
+};
+
+// ============================================================================
+// CHONGQING & CHENGDU DISCOVERY GUIDE
+// ============================================================================
+
+export const chongqingChengduDiscoveryGuide: DestinationGuide = {
+  id: 'guide-chongqing-chengdu-discovery',
+  slug: 'chongqing-chengdu-discovery-guide',
+  destinationName: 'Chongqing & Chengdu Discovery',
+  metaTitle: 'Chongqing & Chengdu Guide | Cultural Heartland & Hidden Gems',
+  metaDescription: 'Explore central China\'s cultural richness: Chongqing\'s Yangtze River gorges, Chengdu\'s giant pandas, temples, and warm hospitality. Perfect for adventurers seeking authentic experiences.',
+  keywords: ['Chongqing', 'Chengdu', 'pandas', 'Yangtze River', 'giant pandas', 'cultural travel', 'hidden gems'],
+  h1: 'Chongqing & Chengdu: Central China\'s Cultural Heartland',
+  heroSubtitle: 'Ancient Temples, Natural Wonders, and Warm Hospitality',
+  heroImage: `${TI}/chengdu-panda-center.jpg`,
+  introText: [
+    'Central China\'s cultural gems remain less visited than Beijing and Shanghai, yet offer equally compelling experiences. Chongqing, built dramatically on hillsides overlooking the Yangtze River, offers gorge scenery and authentic street food. Chengdu, home to giant pandas and Buddhist temples, embodies relaxed sophistication.',
+    'This 8-10 day journey reveals hidden China: stunning natural landscapes, world-class cultural sites, and locals famous for hospitality. Temperature and humidity require acclimatisation; reward is authentic experiences far removed from tourist crowds.'
+  ],
+  sections: [
+    {
+      title: 'Chongqing: River City Drama',
+      id: 'chongqing-river-city',
+      content: [
+        'Chongqing\'s 30 million residents navigate steep hillsides and river canyons. The city served as China\'s WWII capital, preserving museums and monuments. The Yangtze River offers breathtaking Three Gorges scenery accessible via cruises or bus-boat combinations.',
+        'Must-see: Dazu Rock Carvings (UNESCO site with Buddhist sculptures), Hongya Cave (ancient riverside settlement with restaurants and museums), Liberation Monument (city centre landmark), Chongqing Museum (Chinese history and Three Gorges geology). Consider 1-3 day Yangtze cruise for ultimate scenery.'
+      ]
+    },
+    {
+      title: 'Chengdu: Panda Capital and Temple City',
+      id: 'chengdu-panda-temple',
+      content: [
+        'Chengdu\'s relaxed energy contrasts with most Chinese cities. The giant panda breeding centre enables close encounters with China\'s iconic animal. Ancient temples, classical gardens, and teahouse culture reveal Chengdu\'s contemplative side. The city\'s spicy cuisine is legendary among Chinese food enthusiasts.',
+        'Must-see: Giant Panda Breeding Centre (essential early morning visit), Wenshu Monastery (active Buddhist temple with teahouse), Jinsha Museum (Bronze Age artefacts), Qingyang Palace (Taoist temple), Du Fu\'s Cottage (poet\'s residence and classical garden).'
+      ]
+    },
+    {
+      title: 'Practical Itinerary',
+      id: 'practical-itinerary-chongqing',
+      content: [
+        'Days 1-4 in Chongqing: Hongya Cave and Yangtze riverfront (Day 1), Dazu Rock Carvings day trip (Day 2), Chongqing Museum and city exploration (Day 3), optional shorter Yangtze cruise (Day 4).',
+        'Days 5-8 in Chengdu: Giant Panda Breeding Centre (early morning Day 5), Wenshu Monastery and teahouse (Day 6), Jinsha Museum and Qingyang Palace (Day 7), Du Fu\'s Cottage or day trip to Leshan Buddha (Day 8).',
+        'High-speed train connects cities in 1.5 hours; flights available. Internal trains offer scenic routes.'
+      ]
+    }
+  ],
+  attractions: [
+    {
+      name: 'Giant Panda Breeding Centre',
+      description: 'World\'s largest giant panda conservation facility with 100+ pandas in natural settings.',
+      visitDuration: '3-4 hours',
+      bestTime: 'Very early morning (before 9am) when pandas most active; arrive by 7:30am',
+      ticketInfo: '¥55 adults'
+    },
+    {
+      name: 'Dazu Rock Carvings',
+      description: 'UNESCO site with 50,000+ Buddhist and Taoist sculptures carved across hillsides.',
+      visitDuration: '4-6 hours',
+      bestTime: 'Early morning for better lighting and fewer visitors; spring and autumn ideal',
+      ticketInfo: '¥115 for both main sites'
+    },
+    {
+      name: 'Three Gorges Yangtze Cruise',
+      description: 'Spectacular river scenery through limestone gorges; 1-3 day cruises available.',
+      visitDuration: '1-3 days',
+      bestTime: 'Spring and autumn for moderate water levels and pleasant weather',
+      ticketInfo: '¥500-3,000+ depending on cruise length and cabin quality'
+    },
+    {
+      name: 'Hongya Cave (Hongyadong)',
+      description: 'Ancient riverside settlement built into cave cliffs, now a complex with restaurants and museums.',
+      visitDuration: '2-3 hours',
+      bestTime: 'Evening for dramatic lighting; sunset is spectacular',
+      ticketInfo: 'Free to explore; dining and shopping costs vary'
+    },
+    {
+      name: 'Wenshu Monastery',
+      description: 'Active Buddhist temple with centuries of history, teahouse, and vegetarian restaurant.',
+      visitDuration: '1.5-2 hours',
+      bestTime: 'Morning for peaceful temple atmosphere; midday for teahouse social experience',
+      ticketInfo: 'Free to enter; teahouse tea ¥10-30'
+    },
+    {
+      name: 'Leshan Giant Buddha',
+      description: '71-meter-tall cliff-carved Buddha carved 1,200 years ago; day trip from Chengdu.',
+      visitDuration: '6-8 hours (day trip)',
+      bestTime: 'Clear weather days; spring and autumn seasons',
+      ticketInfo: '¥90 adults'
+    }
+  ],
+  practicalInfo: {
+    transportation: 'Metro and buses cover cities. Taxis and Didi affordable. High-speed trains connect Chongqing-Chengdu in 1.5 hours. Regional buses access day-trip destinations.',
+    climate: 'Humid subtropical with hot-humid summers (28-35°C), cool-damp winters (6-12°C), frequent spring rains. Pack umbrella year-round.',
+    bestTime: 'April-May (spring) and September-October (autumn) offer ideal temperatures and clear skies.',
+    budget: '¥70-100/day for accommodation, ¥40-70/day for food, ¥50-150 per major attraction.',
+    language: 'English less prevalent than tier-1 cities. Locals in tourist areas speak some English. Translation apps essential for neighbourhood exploration.',
+    safety: 'Both cities very safe. Hillside navigation in Chongqing requires caution (steep steps, slippery when wet). Street food hygiene excellent despite humble appearance.'
+  },
+  faqs: [
+    {
+      question: 'How many days for both cities?',
+      answer: '8-10 days ideal: 4 in Chongqing, 4 in Chengdu, 2 days travel buffer or longer Yangtze cruise.'
+    },
+    {
+      question: 'Is panda visit guaranteed?',
+      answer: 'Yes. Pandas visible daily, but activity varies seasonally. Early morning visits see more activity. Guides note pandas sleep afternoons.'
+    },
+    {
+      question: 'How difficult is Three Gorges cruise?',
+      answer: 'Very easy. Cruises are tourist-friendly; ship handles all logistics. Walking on deck and boat-to-shore excursions require normal fitness.'
+    },
+    {
+      question: 'What\'s special about the food?',
+      answer: 'Chongqing famous for hot pot (spicy communal cooking). Chengdu for mapo tofu (numbing-spicy dish). Both regions: street snacks like dumplings and noodles outstanding.'
+    },
+    {
+      question: 'Are these cities crowded with tourists?',
+      answer: 'Much less touristy than Beijing/Shanghai. Panda centre attracts crowds (reason for early visits). Local temples and neighbourhoods feel authentic and uncrowded.'
+    },
+    {
+      question: 'Is the humid climate difficult?',
+      answer: 'High humidity takes adjustment. Lightweight, breathable clothing essential. Most attractions are indoors or provide shade. Drink lots of water.'
+    },
+    {
+      question: 'What day trips are worth doing?',
+      answer: 'From Chongqing: Dazu Rock Carvings (must-do), Three Gorges Yangtze cruise. From Chengdu: Leshan Buddha (6-hour day trip), Jiuzhaigou scenic area (1.5-hour drive, 2+ days recommended).'
+    },
+    {
+      question: 'Can I combine these cities with other regions?',
+      answer: 'Yes. Chengdu is on routes to Kunming (2 hours flight), Tibet (1 hour flight), or Yangtze downstream towards Shanghai. Flexible positioning for broader China itineraries.'
+    }
+  ],
+  relatedTourSlugs: ['chongqing-chengdu', 'chengdu-yunnan-cultural-discovery'],
+  relatedGuideSlugs: ['chengdu-travel-guide', 'chongqing-travel-guide'],
+  galleryImages: [],
+  createdAt: '2026-04-01',
+  updatedAt: '2026-04-28'
+};
+
+// ============================================================================
 // EXPORT FUNCTIONS
 // ============================================================================
 
 export const allGuides: DestinationGuide[] = [
   beijingGuide,
   xianGuide,
+  beijingXianDiscoveryGuide,
+  shanghaiSurroundingsDiscoveryGuide,
+  chongqingChengduDiscoveryGuide,
   shanghaiGuide,
   chengduGuide,
   guilinGuide,
