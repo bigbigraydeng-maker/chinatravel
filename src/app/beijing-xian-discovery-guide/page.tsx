@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
-import DestinationGuide from '@/components/seo/DestinationGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getGuideBySlug } from '@/lib/data/guides';
+import { getDiscoveryGuideBySlug } from '@/lib/data/discovery-guides';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 
 const SLUG = 'beijing-xian-discovery-guide';
+
 export async function generateMetadata(): Promise<Metadata> {
-  const guide = getGuideBySlug(SLUG);
-  if (!guide) return { title: 'Travel Guide | CTS Tours' };
+  const guide = getDiscoveryGuideBySlug(SLUG);
+  if (!guide) return { title: 'Discovery Guide | CTS Tours' };
 
   return buildCtsPageMetadata({
     title: guide.metaTitle,
@@ -16,16 +16,16 @@ export async function generateMetadata(): Promise<Metadata> {
     path: `/${SLUG}`,
     ogImagePath: guide.heroImage,
     ogImageAlt: guide.h1,
-    keywords: guide.keywords,
+    keywords: guide.keywords.split(', '),
     ogType: 'article',
     openGraphTitle: guide.metaTitle,
     openGraphDescription: guide.metaDescription,
   });
 }
 
-export default function GuidePage() {
+export default function DiscoveryGuidePage() {
   const siteUrl = getSiteUrl();
-  const guide = getGuideBySlug(SLUG);
+  const guide = getDiscoveryGuideBySlug(SLUG);
   if (!guide) return <div className="text-center py-20 text-gray-500">Guide not found</div>;
 
   const schema = [
@@ -51,7 +51,7 @@ export default function GuidePage() {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${siteUrl}/china-tours` },
+        { '@type': 'ListItem', position: 2, name: 'Discovery Guides', item: `${siteUrl}/china-tours` },
         { '@type': 'ListItem', position: 3, name: guide.destinationName, item: `${siteUrl}/${SLUG}` },
       ],
     },
@@ -69,20 +69,57 @@ export default function GuidePage() {
   return (
     <>
       <SchemaMarkup data={schema} />
-      <DestinationGuide guide={guide} />
+      <article className="py-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <header className="mb-12">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">{guide.h1}</h1>
+            <p className="text-lg text-gray-600">{guide.metaDescription}</p>
+          </header>
+          <div className="prose prose-lg max-w-none mb-12" dangerouslySetInnerHTML={{ __html: guide.content.replace(/\n\n/g, '</p><p>').replace(/^/, '<p>').replace(/$/, '</p>') }} />
+          {guide.faqs.length > 0 && (
+            <section className="mt-16 border-t pt-12">
+              <h2 className="font-serif text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
+              <div className="space-y-8">
+                {guide.faqs.map((faq, idx) => (
+                  <details key={idx} className="group border-b pb-6">
+                    <summary className="font-semibold text-lg text-gray-900 cursor-pointer">{faq.question}</summary>
+                    <p className="mt-4 text-gray-700 text-base">{faq.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      </article>
+      <section className="bg-blue-50 border-t border-blue-200 py-10">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-serif text-2xl font-semibold text-blue-900 mb-3">
+            Explore Beijing & Xi&apos;an Together
+          </h2>
+          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
+            Combine Beijing's imperial history with Xi&apos;an's ancient warriors. Experience the full arc of Chinese civilization on one epic journey.
+          </p>
+          <a
+            href="/beijing-xian-discovery-guide"
+            className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          >
+            Beijing & Xi&apos;an Discovery Guide →
+          </a>
+        </div>
+      </section>
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
-            Beijing & Xi'an Discovery Tour
+            Book the Beijing &amp; Xi&apos;an Tour from New Zealand
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Experience 5,000 years of Chinese history on this carefully designed 10-day escorted tour. Perfect for New Zealand first-timers who want to explore the Forbidden City and Terracotta Warriors without the complexity.
+            CTS Tours offers <strong>Beijing &amp; Xi&apos;an: A Tale of Two Cities</strong>: 10 days covering the Forbidden City, Great Wall, Terracotta Warriors, and ancient hutongs. From NZD $3,480. Auckland-based team, NZD pricing, small groups.
           </p>
           <a
-            href="/tours/beijing-xian"
+            href="/tours/china/discovery/beijing-xian"
             className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
           >
-            View Beijing & Xi'an Tours →
+            View Beijing &amp; Xi&apos;an Tour →
           </a>
         </div>
       </section>
