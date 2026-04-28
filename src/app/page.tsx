@@ -15,20 +15,22 @@ import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import { getTourBySlug } from '@/lib/data/tours';
 import { allGuides } from '@/lib/data/guides';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { getSiteUrl } from '@/lib/site';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
     return buildCtsPageMetadata({
-      title: 'CTS Tours | China Travel Specialists for New Zealanders',
+      title: 'China Tours from New Zealand | CTS Tours - Since 1928',
       description:
-        'Plan your China trip with CTS Tours — New Zealand\'s China travel specialists since 1928. Expert-led china trips and small-group tours from NZD $875. Visa-free for NZ passports.',
+        "New Zealand's China travel specialists since 1928. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
       path: '/',
       ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
       ogImageAlt: 'Great Wall of China mist, CTS Tours',
       keywords: [
-        'China tours New Zealand',
-        'China trips',
-        'china trips from New Zealand',
+        'China tours from New Zealand',
+        'China tours NZ',
+        'China trips from New Zealand',
         'China travel specialists',
         'CTS Tours',
         'Beijing tours',
@@ -37,20 +39,83 @@ export async function generateMetadata(): Promise<Metadata> {
         'small group China tours',
       ],
       ogType: 'website',
-      openGraphTitle: 'CTS Tours | China Travel Specialists for New Zealanders',
+      openGraphTitle: 'China Tours from New Zealand | CTS Tours - Since 1928',
       openGraphDescription:
-        'Discover authentic China with CTS Tours, New Zealand\'s China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.',
-      openGraphSiteName: 'CTS Tours — China Travel Specialists',
+        "Discover authentic China with CTS Tours, New Zealand's China travel specialists since 1928. Expert-led small groups, direct China operations, and immersive itineraries.",
+      openGraphSiteName: 'CTS Tours',
     });
   } catch {
     return {
-      title: 'CTS Tours | China Travel Specialists for New Zealanders',
+      title: 'China Tours from New Zealand | CTS Tours - Since 1928',
       description:
-        "Discover authentic China with CTS Tours — New Zealand's China travel specialists since 1928.",
+        "New Zealand's China travel specialists since 1928. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
       robots: { index: true, follow: true },
     };
   }
 }
+
+const buildHomePageSchemas = () => {
+  const siteUrl = getSiteUrl();
+
+  const organizationSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TravelAgency',
+    name: 'CTS Tours',
+    alternateName: 'China Travel Service',
+    url: siteUrl,
+    logo: `${siteUrl}/logo.png`,
+    image: `${siteUrl}/logo.png`,
+    foundingDate: '1928',
+    description:
+      "New Zealand's China travel specialists since 1928. Direct China operations, authentic experiences, expertly crafted tours.",
+    areaServed: [
+      { '@type': 'Country', name: 'New Zealand' },
+      { '@type': 'Country', name: 'China' },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '2F CTS House, 175 Queen Street',
+      addressLocality: 'Auckland',
+      addressCountry: 'NZ',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'info@ctstours.co.nz',
+      telephone: '+64-800-287-888',
+      contactType: 'customer service',
+      areaServed: 'NZ',
+      availableLanguage: ['English', 'Chinese'],
+    },
+    sameAs: [
+      'https://www.facebook.com/CTSTOURS/',
+      'https://www.instagram.com/chinatravelservices/',
+    ],
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url: siteUrl,
+    name: 'CTS Tours',
+    alternateName: 'China Travel Service',
+    description:
+      "New Zealand's China travel specialists since 1928.",
+    publisher: {
+      '@type': 'Organization',
+      name: 'CTS Tours',
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteUrl}/tours/find?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
+  return [organizationSchema, websiteSchema];
+};
 
 const HomePage = () => {
   const destinations = [
@@ -63,9 +128,13 @@ const HomePage = () => {
   ];
 
   const featuredGuides = allGuides.slice(0, 3);
+  const homePageSchemas = buildHomePageSchemas();
 
   return (
     <div>
+      {/* JSON-LD: Organization (TravelAgency) + WebSite with SearchAction */}
+      <SchemaMarkup data={homePageSchemas} />
+
       {/* Hero with Search */}
       <Hero />
 
