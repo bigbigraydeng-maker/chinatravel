@@ -277,7 +277,7 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials */}
-      <Testimonials />
+      <Testimonials hideSpotlight />
 
       {/* Facebook Follow CTA */}
       <FacebookFollowStrip />

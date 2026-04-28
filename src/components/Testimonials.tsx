@@ -830,13 +830,14 @@ interface TestimonialsProps {
   variant?: 'full' | 'compact' | 'sidebar';
   tourFilter?: string;
   maxItems?: number;
+  hideSpotlight?: boolean;
 }
 
-const INITIAL_VISIBLE = 5;
+const INITIAL_VISIBLE = 3;
 const LOAD_MORE_COUNT = 4;
 const TOTAL_REVIEWS = allTestimonials.length;
 
-export default function Testimonials({ variant = 'full', tourFilter, maxItems }: TestimonialsProps) {
+export default function Testimonials({ variant = 'full', tourFilter, maxItems, hideSpotlight = false }: TestimonialsProps) {
   const [likes, setLikes] = useState<Record<number, number>>({});
   const [liked, setLiked] = useState<Record<number, boolean>>({});
   const [wanted, setWanted] = useState<Record<number, boolean>>({});
@@ -1006,6 +1007,7 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
         </div>
 
         {/* ── Spotlight section ── */}
+        {!hideSpotlight && (
         <div className="mb-6">
           <div className="flex items-center gap-2 mb-4">
             <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">HOT PICK</span>
@@ -1043,6 +1045,7 @@ export default function Testimonials({ variant = 'full', tourFilter, maxItems }:
             );
           })}
         </div>
+        )}
 
         {/* ── General reviews ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
