@@ -3,6 +3,27 @@ import Image from 'next/image';
 import SearchBar from './SearchBar';
 
 const Hero = () => {
+  const handlePrimaryCTAClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'hero_cta_primary_click', {
+        button_text: 'Browse Our China Tours',
+        destination_url: '/tours/find',
+        event_category: 'engagement',
+        event_label: 'hero_primary_cta',
+      });
+    }
+  };
+
+  const handleSecondaryCTAClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'hero_cta_secondary_click', {
+        button_text: 'Chat with a Kiwi Travel Expert',
+        event_category: 'engagement',
+        event_label: 'hero_secondary_cta',
+      });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -43,12 +64,12 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.65s' }}>
-          <Link href="/explore" className="bg-gradient-to-r from-primary via-primary to-red-500 text-white text-lg py-4 px-10 rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all font-medium hover:-translate-y-1 hover:scale-105 animate-pulse-glow">
-            Explore China
+          <Link href="/tours/find" onClick={handlePrimaryCTAClick} className="bg-gradient-to-r from-primary via-primary to-red-500 text-white text-lg py-4 px-10 rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all font-medium hover:-translate-y-1 hover:scale-105 animate-pulse-glow">
+            Browse Our China Tours →
           </Link>
-          <Link href="/tailor-made" className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 text-lg py-4 px-10 rounded-full hover:bg-white/25 hover:border-secondary/50 transition-all font-medium hover:-translate-y-1">
-            Tailor My Trip
-          </Link>
+          <button onClick={handleSecondaryCTAClick} className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 text-lg py-4 px-10 rounded-full hover:bg-white/25 hover:border-secondary/50 transition-all font-medium hover:-translate-y-1">
+            Chat with a Kiwi Travel Expert
+          </button>
         </div>
       </div>
 

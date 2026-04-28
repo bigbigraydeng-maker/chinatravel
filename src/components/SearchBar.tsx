@@ -4,7 +4,19 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const popularSearches = [
-  'Great Wall', 'Shanghai', 'Panda', 'Silk Road', 'Japan Cherry Blossom', 'Vietnam'
+  'Great Wall', 'Beijing', 'Shanghai', 'Guilin', 'Xi\'an', 'Chengdu', 'Zhangjiajie'
+];
+
+const destinations = [
+  { value: 'beijing', label: 'Beijing' },
+  { value: 'xian', label: 'Xi\'an' },
+  { value: 'shanghai', label: 'Shanghai' },
+  { value: 'chengdu', label: 'Chengdu' },
+  { value: 'guilin', label: 'Guilin' },
+  { value: 'zhangjiajie', label: 'Zhangjiajie' },
+  { value: 'yunnan', label: 'Yunnan' },
+  { value: 'japan', label: 'Japan' },
+  { value: 'vietnam', label: 'Vietnam' },
 ];
 
 export default function SearchBar() {
@@ -16,6 +28,18 @@ export default function SearchBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Fire GA4 event for search submission
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'hero_search_submit', {
+        search_query: query || 'empty',
+        destination: destination || 'all',
+        interest: interest || 'all',
+        event_category: 'engagement',
+        event_label: 'hero_search_bar',
+      });
+    }
+
     const params = new URLSearchParams();
     if (query) params.set('q', query);
     if (destination) params.set('destination', destination);
@@ -74,9 +98,9 @@ export default function SearchBar() {
                   className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                 >
                   <option value="">All Destinations</option>
-                  <option value="china">China</option>
-                  <option value="japan">Japan</option>
-                  <option value="vietnam">Vietnam</option>
+                  {destinations.map(dest => (
+                    <option key={dest.value} value={dest.value}>{dest.label}</option>
+                  ))}
                 </select>
               </div>
               <div className="flex-1 min-w-[200px]">
