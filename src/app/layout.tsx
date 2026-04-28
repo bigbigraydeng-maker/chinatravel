@@ -70,7 +70,8 @@ export default function RootLayout({
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
+                  function gtag(){window.dataLayer.push(arguments);}
+                  window.gtag = gtag;
                   gtag('js', new Date());
                   gtag('config', '${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}', {
                     page_path: window.location.pathname,
