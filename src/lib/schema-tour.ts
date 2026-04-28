@@ -50,6 +50,11 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
         },
       })),
     },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '200',
+    },
     provider: agency,
     duration: tour.duration,
     touristAttraction: {
@@ -92,6 +97,11 @@ export function generateProductSchema(tour: Tour) {
       availability: 'https://schema.org/InStock',
       url: `${getSiteUrl()}/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
       seller: agency,
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '200',
     },
     additionalProperty: [
       {

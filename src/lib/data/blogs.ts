@@ -1,6 +1,7 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import { phase1TravelTipPosts } from '@/lib/data/blogs-phase1-travel-tips';
 import { longtailBatch1Posts } from '@/lib/data/blogs-longtail-batch1';
+import { longtailBatch2Posts } from '@/lib/data/blogs-longtail-batch2';
 import { seoT036ToT040BlogPosts } from '@/lib/data/blogs-seo-t036-t040';
 import { chinaHolidayPackagesBlogPost } from '@/lib/data/blogs-china-holiday-packages';
 import { migratedUnsplash } from '@/lib/site-media';
@@ -248,6 +249,7 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
   ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
   ...longtailBatch1Posts,
+  ...longtailBatch2Posts,
 ];
 
 export const getBlogPostBySlug = (slug: string): BlogPost | undefined => {

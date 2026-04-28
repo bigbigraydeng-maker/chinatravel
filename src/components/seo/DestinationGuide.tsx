@@ -456,6 +456,14 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                       {para}
                     </p>
                   ))}
+                  {section.link && (
+                    <a
+                      href={section.link.href}
+                      className="inline-block text-primary font-medium hover:underline text-[15px]"
+                    >
+                      {section.link.label}
+                    </a>
+                  )}
                 </div>
               </section>
             ))}
