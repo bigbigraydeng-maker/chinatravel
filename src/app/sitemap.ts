@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/site';
+import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
 
 const SITE = getSiteUrl();
 
@@ -133,6 +134,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  // ── Phase 3: FAQ Pages ─────────────────────────────────────────────────────
+  const faqPages: MetadataRoute.Sitemap = [
+    { url: `${SITE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE}/faq/${faqPlanningYourChinaTrip.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${SITE}/faq/${faqBeijingTravel.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    { url: `${SITE}/faq/${faqGreatWall.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+  ];
+
   // ── Long-tail blog posts (batch 1) ──────────────────────────────────────
   const blogPages: MetadataRoute.Sitemap = [
     // Line A: Beijing / Xi'an
@@ -160,5 +169,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...tourSlugs, ...blogPages];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...tourSlugs, ...blogPages];
 }
