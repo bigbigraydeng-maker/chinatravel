@@ -5,11 +5,13 @@ import React from 'react';
 interface FlipbookSectionProps {
   flipbookId: string;
   title?: string;
+  initialSearch?: string;
 }
 
 export default function FlipbookSection({
   flipbookId,
-  title = "Interactive Guide"
+  title = "Interactive Guide",
+  initialSearch
 }: FlipbookSectionProps) {
   return (
     <section id="flipbook-guide" className="bg-gradient-to-br from-warm-50 to-white py-12 rounded-2xl border border-warm-200">
@@ -31,7 +33,7 @@ export default function FlipbookSection({
       <div className="px-6">
         <div className="rounded-xl overflow-hidden shadow-lg bg-gray-100 flex items-center justify-center" style={{ aspectRatio: '16/10', minHeight: '400px' }}>
           <iframe
-            src={`https://flipbook.page/n/${flipbookId}`}
+            src={`https://flipbook.page/n/${flipbookId}${initialSearch ? `?q=${encodeURIComponent(initialSearch)}` : ''}`}
             width="100%"
             height="100%"
             frameBorder="0"

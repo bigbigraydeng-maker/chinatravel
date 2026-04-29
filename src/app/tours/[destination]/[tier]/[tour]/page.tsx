@@ -247,6 +247,7 @@ export default function TourPage({ params }: TourPageProps) {
                 <FlipbookSection
                   flipbookId="1862be1931f3495da91b4149f3456542"
                   title="Explore Guilin - Interactive Guide"
+                  initialSearch="Guilin"
                 />
               )}
 
