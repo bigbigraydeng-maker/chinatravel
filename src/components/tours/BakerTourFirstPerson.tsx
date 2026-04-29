@@ -37,7 +37,7 @@ export default function BakerTourFirstPerson({ tourSlug, tourName, destination }
               src={migratedSite('baker-gu-portrait.jpg')}
               alt="Baker Gu, China Travel Specialist"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
               sizes="96px"
             />
           </div>

@@ -52,7 +52,7 @@ const TourTierCard = ({
   return (
     <Link href={tourHref} className="block min-w-0 group">
       <div
-        className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border hover:-translate-y-2 ${
+        className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border hover:-translate-y-2 flex flex-col h-full ${
           spotlightFeatured
             ? 'border-primary/35 ring-2 ring-primary/25 ring-offset-2 ring-offset-amber-50/30 shadow-xl shadow-primary/10 hover:shadow-2xl hover:shadow-primary/15'
             : 'border-warm-100/50'
@@ -123,15 +123,15 @@ const TourTierCard = ({
             </div>
           )}
         </div>
-        <div className="p-6">
+        <div className="p-6 flex flex-col h-full">
           {spotlightFeatured && (
             <p className="mb-2 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
               <span className="inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-orange-500" aria-hidden />
               Trending · Limited October departures
             </p>
           )}
-          <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{title}</h3>
-          <p className="text-gray-500 mb-5 leading-relaxed text-sm">{description}</p>
+          <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors line-clamp-2">{title}</h3>
+          <p className="text-gray-500 mb-5 leading-relaxed text-sm flex-1 line-clamp-3">{description}</p>
           <div className="flex justify-between items-center mb-5">
             <span className="text-gray-600 flex items-center gap-2 text-sm">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
