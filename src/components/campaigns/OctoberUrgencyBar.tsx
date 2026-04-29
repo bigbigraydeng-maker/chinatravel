@@ -4,10 +4,9 @@ import { getRemainingSeats } from '@/lib/campaigns/seat-availability';
  * OctoberUrgencyBar — soft scarcity strip rendered just below TourHero on
  * October 2026 / November 2026 campaign LPs.
  *
- * Shows three urgency cues:
+ * Shows two urgency cues:
  *   1. Countdown to departure (computed at build time / SSR — no client JS)
  *   2. "Only X seats remaining" (deterministic via getRemainingSeats)
- *   3. Early-bird saving (configurable via prop, default NZD $200)
  *
  * Why deterministic / SSR-only?
  *  - No hydration mismatches between server and client.
@@ -20,14 +19,11 @@ interface OctoberUrgencyBarProps {
   departureSortDate: string;
   /** Tour slug used to derive a stable seat count (5–10). */
   tourSlug: string;
-  /** Optional override for the early-bird saving copy. */
-  earlyBirdSavings?: string;
 }
 
 export default function OctoberUrgencyBar({
   departureSortDate,
   tourSlug,
-  earlyBirdSavings = 'NZD $200',
 }: OctoberUrgencyBarProps) {
   // Compute days-to-departure at render time. On Next.js static build/ISR this
   // is captured at build; on a fresh request the value updates automatically.
@@ -86,27 +82,6 @@ export default function OctoberUrgencyBar({
       value: `${seats}`,
       subline: 'group capped at 16–20 travellers',
     },
-    {
-      icon: (
-        <svg
-          className="w-7 h-7"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          aria-hidden
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M7 11l5-5m0 0l5 5m-5-5v12"
-          />
-        </svg>
-      ),
-      label: 'Early-bird saving',
-      value: `Save ${earlyBirdSavings}`,
-      subline: 'when you book before bookings close',
-    },
   ];
 
   return (
@@ -115,7 +90,7 @@ export default function OctoberUrgencyBar({
       className="bg-gradient-to-r from-primary/10 via-orange-50 to-primary/10 border-y border-orange-200/80"
     >
       <div className="container mx-auto px-4 py-5 md:py-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5 max-w-3xl mx-auto">
           {cards.map((card) => (
             <div
               key={card.label}
