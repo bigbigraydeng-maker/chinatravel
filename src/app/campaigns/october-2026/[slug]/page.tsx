@@ -25,6 +25,8 @@ import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import OctoberDiscoveryCampaignContent from '@/components/campaigns/OctoberDiscoveryCampaignContent';
+import OctoberUrgencyBar from '@/components/campaigns/OctoberUrgencyBar';
+import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import {
   OCTOBER_2026_DISCOVERY_BY_SLUG,
   OCTOBER_2026_DISCOVERY_SLUGS,
@@ -103,6 +105,13 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
   const otherCfg = OCTOBER_2026_DISCOVERY_BY_SLUG[cfg.otherCampaignSlug];
   const otherTour = getTourBySlug('china', 'discovery', otherCfg.tourSlug);
 
+  // Look up the matching spotlight entry to drive the urgency bar's countdown.
+  // Match either by `tourSlug` (Tour data slug) or by campaign LP URL suffix.
+  const spotlight = OCTOBER_2026_SPOTLIGHT_TOURS.find(
+    (s) => s.slug === tour.slug || s.href.endsWith(`/${campaignSlug}`)
+  );
+  const departureSortDate = spotlight?.departureSortDate ?? '2026-10-14';
+
   const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 3);
@@ -128,7 +137,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
       <SchemaMarkup data={schemas} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
             <li>
               <Link href="/" className="hover:text-primary transition-colors">
@@ -150,6 +159,12 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
             <li className="text-gray-400">/</li>
             <li className="text-gray-900 font-medium">{tour.name}</li>
           </ol>
+          <Link
+            href="/campaigns/october-2026"
+            className="text-xs md:text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+          >
+            ← Back to October 2026 hub
+          </Link>
         </div>
       </nav>
 
@@ -162,12 +177,12 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         tier={tour.tier}
         tags={tour.tags}
         departureDates={cfg.heroDepartureOrder}
-        primaryCtaLabel="Enquire for October departures"
-        secondaryCtaLabel="View day-by-day itinerary"
+        primaryCtaLabel="Reserve My Seat →"
+        secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
       />
 
-      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
+      <OctoberUrgencyBar departureSortDate={departureSortDate} tourSlug={tour.slug} />
 
       <ChinaVisaNudge />
 
@@ -270,12 +285,11 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         </div>
       </div>
 
+      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
+
       <RelatedTours tours={relatedTours} destination={tour.destination} tier={tour.tier} />
 
       <FAQSection faqs={faqs} />
-
-      {/* Facebook Follow CTA */}
-      <FacebookFollowStrip />
 
       <FloatingCta tourName={tour.name} tourSlug={tour.slug} enquirySectionId="enquiry" />
     </>
