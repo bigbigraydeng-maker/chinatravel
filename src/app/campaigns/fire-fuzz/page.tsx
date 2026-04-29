@@ -20,6 +20,7 @@ import RelatedTours from '@/components/tours/RelatedTours';
 import Testimonials from '@/components/Testimonials';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import OctoberUrgencyBar from '@/components/campaigns/OctoberUrgencyBar';
 import {
   generateTourSchema,
   generateProductSchema,
@@ -82,7 +83,7 @@ export default function FireFuzzCampaignPage() {
       <SchemaMarkup data={schemas} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
-        <div className="container mx-auto px-4 py-3">
+        <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
             <li>
               <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -100,6 +101,12 @@ export default function FireFuzzCampaignPage() {
             <li className="text-gray-400">/</li>
             <li className="text-gray-900 font-medium">{tour.name}</li>
           </ol>
+          <Link
+            href="/campaigns/october-2026"
+            className="text-xs md:text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+          >
+            ← Back to October 2026 hub
+          </Link>
         </div>
       </nav>
 
@@ -112,12 +119,12 @@ export default function FireFuzzCampaignPage() {
         tier={tour.tier}
         tags={tour.tags}
         departureDates={[FIRE_FUZZ_CONFIG.heroDepartureDate]}
-        primaryCtaLabel="Enquire about this tour"
-        secondaryCtaLabel="View day-by-day itinerary"
+        primaryCtaLabel="Reserve My Seat →"
+        secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
       />
 
-      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
+      <OctoberUrgencyBar departureSortDate="2026-11-01" tourSlug="chongqing-chengdu" />
 
       <ChinaVisaNudge />
 
@@ -230,11 +237,11 @@ export default function FireFuzzCampaignPage() {
         </div>
       </div>
 
+      <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
+
       {relatedTours.length > 0 && (
         <RelatedTours tours={relatedTours} destination={tour.destination} tier={tour.tier} />
       )}
-
-      <FacebookFollowStrip />
 
       <FloatingCta tourName={tour.name} tourSlug={tour.slug} />
     </>
