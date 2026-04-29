@@ -107,7 +107,7 @@ export default function October2026CampaignIndexPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-accent via-accent/95 to-accent/90 text-white">
         <div className="absolute inset-0 opacity-25" aria-hidden>
           <Image
-            src="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg"
+            src="https://images.unsplash.com/photo-1612756336279-b9eb5b6b71d9?q=80&w=1920&auto=format&fit=crop"
             alt=""
             fill
             priority
