@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
+import { getBlogPostBySlug } from '@/lib/data/blogs';
 import HubHero from './HubHero';
 
 const TI = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
@@ -599,6 +600,49 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 ))}
               </div>
             </section>
+
+            {/* Related Blog Articles */}
+            {guide.relatedBlogSlugs && guide.relatedBlogSlugs.length > 0 && (
+              <section className="mb-12">
+                <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
+                  Recommended Reading
+                </h2>
+                <div className="grid sm:grid-cols-3 gap-5">
+                  {guide.relatedBlogSlugs.map((slug) => {
+                    const post = getBlogPostBySlug(slug);
+                    if (!post) return null;
+                    return (
+                      <Link
+                        key={slug}
+                        href={`/blog/${slug}`}
+                        className="flex flex-col rounded-xl border border-warm-100 hover:border-primary/40 hover:shadow-md hover:-translate-y-1 transition-all overflow-hidden bg-white group"
+                      >
+                        <div className="flex-1 p-5 flex flex-col">
+                          <div className="mb-3">
+                            <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+                              {post.category}
+                            </span>
+                          </div>
+                          <h3 className="text-lg font-semibold text-accent mb-3 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                            {post.title}
+                          </h3>
+                          <p className="text-gray-600 text-sm leading-relaxed flex-1 line-clamp-3 mb-4">
+                            {post.excerpt}
+                          </p>
+                          <div className="flex items-center justify-between text-xs text-gray-500">
+                            <span>{post.author}</span>
+                            {post.readTime && <span>{post.readTime} min read</span>}
+                          </div>
+                        </div>
+                        <div className="px-5 py-3 bg-warm-50 border-t border-warm-100 text-sm text-primary font-semibold group-hover:text-primary/80 transition-colors">
+                          Read Article →
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {/* Related Guides */}
             <section className="mb-12">

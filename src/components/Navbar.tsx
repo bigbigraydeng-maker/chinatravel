@@ -214,6 +214,9 @@ const Navbar = () => {
               <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
                 Best Time to Visit
               </Link>
+              <Link href="/faq" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-secondary">
+                FAQ
+              </Link>
               <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
                 China entry (NZ)
               </Link>
@@ -314,6 +317,7 @@ const Navbar = () => {
                     Travel Blog
                   </Link>
                   <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>
+                  <Link href="/faq" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-secondary" onClick={closeMenu}>FAQ</Link>
                   <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>China entry (NZ)</Link>
                   <Link href="/travel-tools" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-primary" onClick={closeMenu}>Travel Tools</Link>
                 </div>

@@ -61,6 +61,7 @@ export interface DestinationGuide {
   faqs: FAQ[];
   relatedTourSlugs: string[];
   relatedGuideSlugs: string[];
+  relatedBlogSlugs?: string[]; // Related blog articles (2-3 per guide for SEO + UX)
   galleryImages: GuideGalleryImage[];
   createdAt: string;
   updatedAt: string;
@@ -223,6 +224,7 @@ export const beijingGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['great-wall-travel-guide', 'forbidden-city-travel-guide'],
+  relatedBlogSlugs: ['first-time-china-travel-tips', 'beijing-xian-itinerary-10-days', 'photography-guide-china-best-locations-hidden-gems'],
   // Hero already uses aerial palace — gallery: Great Wall + temple only; verified tour-images; no duplicates.
   galleryImages: [
     `${TI}/great-wall-mist.jpg`,
@@ -394,6 +396,7 @@ export const xianGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['terracotta-warriors-travel-guide', 'silk-road-travel-guide'],
+  relatedBlogSlugs: ['terracotta-warriors-guide-nz', 'beijing-xian-itinerary-10-days', 'first-time-china-beijing-xian'],
   // Hero = terracotta; gallery omits Beijing/Guilin wall shots; second pit with top-weighted crop.
   galleryImages: [
     `${TI}/silk-road-wall.jpg`,
@@ -563,6 +566,7 @@ export const shanghaiGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'shanghai-signature-modern-heritage'],
   relatedGuideSlugs: ['hangzhou-travel-guide', 'zhujiajiao-water-town-guide'],
+  relatedBlogSlugs: ['shanghai-10-days-itinerary', 'shanghai-surroundings-jiangnan-guide-nz', 'first-trip-china-beijing-or-shanghai'],
   galleryImages: [
     `${TI}/shanghai-night-red.jpg`,
     `${TI}/shanghai-skyline.jpg`,
@@ -722,6 +726,7 @@ export const chengduGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['leshan-buddha-travel-guide', 'emei-mountain-travel-guide'],
+  relatedBlogSlugs: ['giant-pandas-chengdu-complete-guide', 'chengdu-panda-tour-new-zealand', 'chongqing-vs-chengdu'],
   galleryImages: [
     galleryItem(`${TI}/chengdu-pandas.jpg`, 'object-[center_42%]'),
     galleryItem(`${TI}/china-pagoda-night.jpg`, 'object-[center_38%]'),
@@ -880,6 +885,7 @@ export const guilinGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['yangshuo-travel-guide', 'li-river-travel-guide'],
+  relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'best-time-visit-china-seasonal-weather-crowds-guide', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/guilin-river-valley.jpg`,
   ],
@@ -1037,6 +1043,7 @@ export const zhangjiajieGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'zhangjiajie-avatar-mountains-guide'],
+  relatedBlogSlugs: ['avatar-mountains-zhangjiajie-guide', 'photography-guide-china-best-locations-hidden-gems', 'best-time-visit-china-seasonal-weather-crowds-guide'],
   galleryImages: [],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-21'
@@ -1202,6 +1209,7 @@ export const yunnanGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'yunnan-signature-cultural-landscape'],
   relatedGuideSlugs: ['lijiang-travel-guide', 'dali-travel-guide', 'shangri-la-travel-guide'],
+  relatedBlogSlugs: ['understanding-chinese-tea-culture', 'why-silk-road-should-be-your-next-adventure', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
     `${TI}/yunnan-village.jpg`,
     `${TI}/shangri-la-monastery.jpg`,
@@ -1326,6 +1334,7 @@ export const lijangGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'lijiang-signature-naxi-heritage'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'dali-travel-guide'],
+  relatedBlogSlugs: ['understanding-chinese-tea-culture', 'best-time-visit-china-seasonal-weather-crowds-guide', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/shangri-la-monastery.jpg`,
@@ -1435,6 +1444,7 @@ export const daliGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'dali-signature-silk-road'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'lijiang-travel-guide'],
+  relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'understanding-chinese-tea-culture', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/yunnan-village.jpg`,
@@ -1538,6 +1548,7 @@ export const kunmingGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'stone-forest-travel-guide'],
+  relatedBlogSlugs: ['chengdu-things-to-do', 'best-time-visit-china-seasonal-weather-crowds-guide', 'first-time-china-travel-tips'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/china-pagoda-night.jpg`,
@@ -1622,6 +1633,7 @@ export const shangrIlaGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'shangri-la-signature-tibetan-culture'],
   relatedGuideSlugs: ['yunnan-travel-guide', 'meili-mountain-trek-guide'],
+  relatedBlogSlugs: ['why-silk-road-should-be-your-next-adventure', 'photography-guide-china-best-locations-hidden-gems', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
     `${TI}/yunnan-village.jpg`,
@@ -1714,6 +1726,7 @@ export const greatWallGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide'],
+  relatedBlogSlugs: ['photography-guide-china-best-locations-hidden-gems', 'best-time-visit-china-seasonal-weather-crowds-guide', 'safety-guide-travelling-china-tips-scams-etiquette'],
   galleryImages: [
     `${TI}/great-wall-cloud-sea.jpg`,
     `${TI}/great-wall-green.jpg`,
@@ -1784,6 +1797,7 @@ export const forbiddenCityGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],
   relatedGuideSlugs: ['beijing-travel-guide', 'great-wall-travel-guide'],
+  relatedBlogSlugs: ['beijing-xian-first-visit-guide-nz', 'first-time-china-travel-tips', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
     `${TI}/beijing-temple.jpg`,
     galleryItem(`${TI}/forbidden-city-gold-lion.jpg`, 'object-top'),
@@ -1858,6 +1872,7 @@ export const terracottaWarriorsGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'xian-signature-ancient-capitals'],
   relatedGuideSlugs: ['xian-travel-guide'],
+  relatedBlogSlugs: ['terracotta-warriors-guide-nz', 'beijing-xian-itinerary-10-days', 'first-time-china-beijing-xian'],
   galleryImages: [
     `${TI}/silk-road-wall.jpg`,
     galleryItem(`${TI}/xian-terracotta-2.jpg`, 'object-top'),
@@ -1946,6 +1961,7 @@ export const yangshuoGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'li-river-travel-guide'],
+  relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'photography-guide-china-best-locations-hidden-gems', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/guilin-river-valley.jpg`,
   ],
@@ -2019,6 +2035,7 @@ export const liRiverCruiseGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'guilin-signature-karst-rivers'],
   relatedGuideSlugs: ['guilin-travel-guide', 'yangshuo-travel-guide'],
+  relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'best-time-visit-china-seasonal-weather-crowds-guide', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
     `${TI}/guilin-river-valley.jpg`,
   ],
@@ -2108,6 +2125,7 @@ export const hangzhouGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide'],
+  relatedBlogSlugs: ['west-lake-hangzhou-travel-guide', 'understanding-chinese-tea-culture', 'shanghai-surroundings-jiangnan-guide-nz'],
   galleryImages: [
     `${TI}/china-pagoda-night.jpg`,
     `${TI}/suzhou-canal.jpg`,
@@ -2195,6 +2213,7 @@ export const suzhouGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan'],
   relatedGuideSlugs: ['shanghai-travel-guide', 'hangzhou-travel-guide'],
+  relatedBlogSlugs: ['suzhou-gardens-guide-nz', 'shanghai-surroundings-jiangnan-guide-nz', 'shanghai-10-days-itinerary'],
   galleryImages: [
     `${TI}/wuzhen-canal.jpg`,
   ],
@@ -2363,6 +2382,7 @@ export const chongqingGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['chongqing-chengdu'],
   relatedGuideSlugs: ['chengdu-travel-guide', 'yunnan-travel-guide'],
+  relatedBlogSlugs: ['chongqing-hot-pot-guide', 'how-many-days-in-chongqing', 'chongqing-vs-chengdu'],
   galleryImages: [],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-25'
@@ -2435,6 +2455,7 @@ export const leshanBuddhaGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['colorful-yunnan-beijing-hub', 'chengdu-signature-panda-culture'],
   relatedGuideSlugs: ['chengdu-travel-guide'],
+  relatedBlogSlugs: ['leshan-giant-buddha-day-trip', 'chengdu-things-to-do', 'best-time-visit-china-seasonal-weather-crowds-guide'],
   galleryImages: [],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -2507,6 +2528,7 @@ export const tianmenMountainGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
   relatedGuideSlugs: ['zhangjiajie-travel-guide'],
+  relatedBlogSlugs: ['photography-guide-china-best-locations-hidden-gems', 'best-time-visit-china-seasonal-weather-crowds-guide', 'safety-guide-travelling-china-tips-scams-etiquette'],
   galleryImages: [],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -2645,6 +2667,7 @@ export const beijingXianDiscoveryGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['beijing-xian', 'best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-classic-signature'],
   relatedGuideSlugs: ['beijing-travel-guide', 'xian-travel-guide'],
+  relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'photography-guide-china-best-locations-hidden-gems', 'first-time-china-travel-tips'],
   galleryImages: [],
   createdAt: '2026-04-01',
   updatedAt: '2026-04-28'
@@ -2784,6 +2807,7 @@ export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['shanghai-surroundings', 'shanghai-hangzhou-suzhou-discovery'],
   relatedGuideSlugs: ['shanghai-travel-guide'],
+  relatedBlogSlugs: ['shanghai-10-days-itinerary', 'china-water-towns-jiangnan-guide', 'shanghai-surroundings-jiangnan-guide-nz'],
   galleryImages: [],
   createdAt: '2026-04-01',
   updatedAt: '2026-04-28'
@@ -2922,6 +2946,7 @@ export const chongqingChengduDiscoveryGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['chongqing-chengdu', 'chengdu-yunnan-cultural-discovery'],
   relatedGuideSlugs: ['chengdu-travel-guide', 'chongqing-travel-guide'],
+  relatedBlogSlugs: ['giant-pandas-chengdu-complete-guide', 'chengdu-panda-tour-new-zealand', 'chongqing-vs-chengdu'],
   galleryImages: [],
   createdAt: '2026-04-01',
   updatedAt: '2026-04-28'

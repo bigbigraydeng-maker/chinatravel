@@ -59,6 +59,7 @@ const Footer = () => {
             <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Guides</h3>
             <ul className="space-y-1.5 md:space-y-2 text-sm md:text-base">
               <li><Link href="/best-time-to-visit-china" className="text-gray-400 hover:text-white transition-colors">Best Time to Visit</Link></li>
+              <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors font-medium">FAQ</Link></li>
               <li><Link href="/china-visa-guide-for-new-zealanders" className="text-gray-400 hover:text-white transition-colors">China entry (NZ)</Link></li>
               <li><Link href="/china-tours-from-new-zealand" className="text-gray-400 hover:text-white transition-colors">Tours from NZ</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About CTS</Link></li>
