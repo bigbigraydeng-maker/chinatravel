@@ -23,6 +23,7 @@ import { isOctoberCampaignTourSlug } from '@/lib/campaigns/october-campaign-tour
 import FloatingCta from '@/components/FloatingCta';
 import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import FAQSection from '@/components/FAQSection';
+import FlipbookSection from '@/components/tours/FlipbookSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
@@ -241,6 +242,13 @@ export default function TourPage({ params }: TourPageProps) {
                 tier={tour.tier}
               />
 
+              {/* Flipbook Beta - Guilin Stopover */}
+              {tour.destination === 'china' && tour.tier === 'stopover' && tour.slug === 'guilin' && (
+                <FlipbookSection
+                  flipbookId="1862be1931f3495da91b4149f3456542"
+                  title="Explore Guilin - Interactive Guide"
+                />
+              )}
 
               {/* Inclusions & Exclusions */}
               <TourInclusions 
