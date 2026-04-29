@@ -1358,7 +1358,7 @@ export const daliGuide: DestinationGuide = {
   keywords: ['Dali', 'Bai culture', 'Three Pagodas', 'Erhai Lake', 'Silk Road'],
   h1: 'Dali: Where Silk Road Dreams Meet Mountain Beauty',
   heroSubtitle: 'Ancient Nanzhao Kingdom Capital',
-  heroImage: `${TI}/china-pagoda-night.jpg`,
+  heroImage: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
   heroImageClassName: 'object-[center_30%]',
   introText: [
     'Dali served as capital of the Nanzhao Kingdom (738-1095 AD), a powerful state controlling southwestern China, parts of Burma, and Tibet. The kingdom\'s merchants, diplomats, and monks traversed the South Silk Road, bringing goods, ideas, and religions to this mountain valley. The Three Pagodas, visible across the valley, stand as physical testament to centuries of religious, political, and commercial importance.',

@@ -1491,9 +1491,9 @@ export const tours: Tour[] = [
     shortDescription: 'Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the city\'s relaxed pace.',
     duration: '3 Days',
     price: 'From NZD $1,399',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1549492423-400259a2e574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
+      'https://images.unsplash.com/photo-1549492423-400259a2e574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     ],
     highlights: [
       'Nanfeng Kiln and Shiwan pottery centre',
@@ -1720,9 +1720,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore the dynamic city of Shenzhen with futuristic skyscrapers, vibrant shopping districts, and rich cultural landmarks. Experience innovation, cuisine, and a fusion of tradition and modernity.',
     duration: '4 Days',
     price: 'From NZD $2,340',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1549492423-400259a2e574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg'
+      'https://images.unsplash.com/photo-1549492423-400259a2e574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85'
     ],
     highlights: [
       'Lotus Hill Park and Deng Xiaoping Sculpture',
@@ -1766,9 +1766,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.',
     duration: '4 Days',
     price: 'From NZD $1,635',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
+    heroImage: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
+      'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg',
     ],
     highlights: [
