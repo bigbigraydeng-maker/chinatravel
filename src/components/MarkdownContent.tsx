@@ -18,7 +18,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         // H1 in content is the article title — already rendered by the page header, so suppress it here.
         h1: () => null,
         h2: ({ children }) => (
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mt-10 mb-4 border-b border-gray-100 pb-2">
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4 border-b border-gray-100 pb-3">
             {children}
           </h2>
         ),
@@ -62,13 +62,34 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
             {children}
           </em>
         ),
+        // Editorial callout box — used for "Practical rule:" highlights
         blockquote: ({ children }) => (
-          <blockquote className="border-l-4 border-primary pl-5 italic text-gray-600 my-6 bg-warm-50 py-3 rounded-r-lg">
-            {children}
+          <blockquote className="my-8 bg-warm-50 rounded-xl px-6 py-5 border-l-4 border-primary not-italic relative overflow-hidden">
+            {/* decorative quote mark */}
+            <svg
+              className="absolute top-3 right-4 text-primary/10 w-10 h-10 shrink-0"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden
+            >
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+            <div className="text-gray-700 text-base leading-relaxed font-medium pr-10">
+              {children}
+            </div>
           </blockquote>
         ),
+        // Decorative section break
         hr: () => (
-          <hr className="my-8 border-gray-200" />
+          <div className="my-12 flex items-center gap-5" aria-hidden>
+            <div className="flex-1 h-px bg-gray-200" />
+            <div className="flex gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
+            </div>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
         ),
         a: ({ children, href }) => (
           <a
@@ -113,17 +134,25 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
             {children}
           </td>
         ),
-        // Suppress placeholder images — only render real HTTP/HTTPS image URLs
+        // Images: allow http(s) URLs and local /images/... paths; suppress placeholders
         img: ({ src, alt }) => {
-          if (!src || src.startsWith('placeholder') || !src.startsWith('http')) return null;
+          if (!src || src.startsWith('placeholder')) return null;
+          if (!src.startsWith('http') && !src.startsWith('/')) return null;
           return (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={src}
-              alt={alt ?? ''}
-              className="w-full rounded-lg my-6 object-cover"
-              loading="lazy"
-            />
+            <figure className="my-10">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                alt={alt ?? ''}
+                className="w-full rounded-2xl object-cover shadow-sm max-h-[480px]"
+                loading="lazy"
+              />
+              {alt && (
+                <figcaption className="text-center text-sm text-gray-400 mt-3 italic leading-snug">
+                  {alt}
+                </figcaption>
+              )}
+            </figure>
           );
         },
       }}

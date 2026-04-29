@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import MarkdownContent from '@/components/MarkdownContent';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { getDiscoveryGuideBySlug } from '@/lib/data/discovery-guides';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -52,7 +53,7 @@ export default function DiscoveryGuidePage() {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Discovery Guides', item: `${siteUrl}/china-tours` },
+        { '@type': 'ListItem', position: 2, name: 'Discovery Guides', item: `${siteUrl}/guide` },
         { '@type': 'ListItem', position: 3, name: guide.destinationName, item: `${siteUrl}/${SLUG}` },
       ],
     },
@@ -70,31 +71,55 @@ export default function DiscoveryGuidePage() {
   return (
     <>
       <SchemaMarkup data={schema} />
-      <article className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <header className="mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6">{guide.h1}</h1>
-            <p className="text-lg text-gray-600">{guide.metaDescription}</p>
-          </header>
-          <div className="mb-10 rounded-xl overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/tours/great-wall-mist.jpg"
-              alt="The Great Wall of China at Mutianyu in morning mist"
-              className="w-full h-72 md:h-96 object-cover"
-            />
+
+      {/* Immersive hero with full-bleed photo */}
+      <ImmersivePageHero
+        eyebrow="Discovery Guide · Beijing & Xi'an"
+        title={guide.h1}
+        imageSrc={guide.heroImage}
+        imageAlt={guide.destinationName}
+        priority
+        layout="bottom"
+        textAlign="left"
+      />
+
+      {/* Article body */}
+      <article className="py-12 md:py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-3xl">
+
+          {/* Article meta strip */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-10 pb-6 border-b border-gray-100 text-sm text-gray-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">CTS Tours</span>
+            <span className="text-gray-200">·</span>
+            <span>Updated April 2026</span>
+            <span className="text-gray-200">·</span>
+            <span>~15 min read</span>
           </div>
-          <div className="mb-12">
-            <MarkdownContent content={guide.content} />
-          </div>
+
+          {/* Lead paragraph */}
+          <p className="text-xl text-gray-600 font-light leading-relaxed mb-10 border-l-4 border-warm-200 pl-5">
+            {guide.metaDescription}
+          </p>
+
+          {/* Main article content */}
+          <MarkdownContent content={guide.content} />
+
+          {/* FAQ accordion */}
           {guide.faqs.length > 0 && (
-            <section className="mt-16 border-t pt-12">
-              <h2 className="font-serif text-3xl font-bold text-gray-900 mb-8">Frequently Asked Questions</h2>
-              <div className="space-y-8">
+            <section className="mt-16 border-t border-gray-100 pt-12">
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
                 {guide.faqs.map((faq, idx) => (
-                  <details key={idx} className="group border-b pb-6">
-                    <summary className="font-semibold text-lg text-gray-900 cursor-pointer">{faq.question}</summary>
-                    <p className="mt-4 text-gray-700 text-base">{faq.answer}</p>
+                  <details key={idx} className="group border border-gray-200 rounded-xl overflow-hidden">
+                    <summary className="flex items-center justify-between cursor-pointer px-6 py-4 bg-gray-50 hover:bg-warm-50 transition-colors list-none">
+                      <span className="font-semibold text-base text-gray-900 pr-4">{faq.question}</span>
+                      <span className="text-primary text-xl shrink-0 transition-transform group-open:rotate-45">+</span>
+                    </summary>
+                    <p className="px-6 py-5 text-gray-700 text-base leading-relaxed border-t border-gray-100">
+                      {faq.answer}
+                    </p>
                   </details>
                 ))}
               </div>
@@ -102,35 +127,22 @@ export default function DiscoveryGuidePage() {
           )}
         </div>
       </article>
-      <section className="bg-blue-50 border-t border-blue-200 py-10">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-serif text-2xl font-semibold text-blue-900 mb-3">
-            Explore Beijing & Xi&apos;an Together
+
+      {/* Tour CTA */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-warm-50 to-warm-100 border-t border-warm-200">
+        <div className="container mx-auto px-4 max-w-2xl text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">Ready to Go?</p>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-accent mb-5">
+            Beijing &amp; Xi&apos;an: A Tale of Two Cities
           </h2>
-          <p className="text-gray-700 mb-6 max-w-xl mx-auto">
-            Combine Beijing's imperial history with Xi&apos;an's ancient warriors. Experience the full arc of Chinese civilization on one epic journey.
-          </p>
-          <a
-            href="/beijing-xian-discovery-guide"
-            className="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            Beijing & Xi&apos;an Discovery Guide →
-          </a>
-        </div>
-      </section>
-      <section className="bg-warm-50 border-t border-warm-200 py-10">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
-            Book the Beijing &amp; Xi&apos;an Tour from New Zealand
-          </h2>
-          <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            CTS Tours offers <strong>Beijing &amp; Xi&apos;an: A Tale of Two Cities</strong>: 10 days covering the Forbidden City, Great Wall, Terracotta Warriors, and ancient hutongs. From NZD $3,480. Auckland-based team, NZD pricing, small groups.
+          <p className="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
+            10 days from Auckland. Forbidden City, Great Wall, Terracotta Warriors — guided by specialists who know when to arrive, where to linger, and what to skip. From <strong className="text-accent">NZD $3,480</strong>.
           </p>
           <a
             href="/tours/china/discovery/beijing-xian"
-            className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
+            className="inline-block bg-primary text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition text-base shadow-md hover:shadow-lg"
           >
-            View Beijing &amp; Xi&apos;an Tour →
+            View the Beijing &amp; Xi&apos;an Tour →
           </a>
         </div>
       </section>
