@@ -128,6 +128,9 @@ const HomePage = () => {
   ];
 
   const featuredGuides = allGuides.slice(0, 3);
+  const discoveryGuides = allGuides.filter(g =>
+    ['beijing-xian-discovery-guide', 'chongqing-chengdu-discovery-guide', 'shanghai-surroundings-discovery-guide'].includes(g.slug)
+  );
   const homePageSchemas = buildHomePageSchemas();
 
   return (
@@ -281,6 +284,46 @@ const HomePage = () => {
 
       {/* Facebook Follow CTA */}
       <FacebookFollowStrip />
+
+      {/* Discovery Tour Guides */}
+      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50/20 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-100/20 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="container mx-auto px-4">
+          <SectionTitle subtitle="In-Depth Guides" title="China Discovery Tour Guides" center />
+          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 -mt-4">
+            Three route-by-route guides for our most popular Discovery itineraries — what to see, when to go, and what to expect at each stop.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {discoveryGuides.map((guide) => (
+              <Link key={guide.id} href={`/${guide.slug}`} className="block group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
+                <div className="overflow-hidden h-52 bg-gray-100">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={guide.heroImage}
+                    alt={guide.destinationName}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Discovery Guide</span>
+                  <h3 className="text-xl font-semibold mb-2 mt-1 font-serif group-hover:text-primary transition-colors line-clamp-2">{guide.destinationName}</h3>
+                  <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">
+                    {(guide.introText[0]?.substring(0, 120) ?? '').trim()}
+                    {guide.introText[0] ? '...' : ''}
+                  </p>
+                  <div className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
+                    Read Guide
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Destination Guides */}
       <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">

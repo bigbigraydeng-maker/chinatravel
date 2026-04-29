@@ -67,6 +67,10 @@ const GuidePage = () => {
     ['yangshuo-travel-guide', 'li-river-travel-guide', 'hangzhou-travel-guide', 'suzhou-travel-guide', 'chongqing-travel-guide'].includes(g.slug)
   );
 
+  const discoveryGuides = guides.filter(g =>
+    ['beijing-xian-discovery-guide', 'chongqing-chengdu-discovery-guide', 'shanghai-surroundings-discovery-guide'].includes(g.slug)
+  );
+
   return (
     <div>
       <ImmersivePageHero
@@ -85,6 +89,37 @@ const GuidePage = () => {
           <p className="text-center text-gray-600 max-w-3xl mx-auto mb-16 -mt-4">
             Comprehensive travel guides for major destinations, regional specialties, iconic landmarks, and hidden gems. Each guide features attractions, practical information, FAQs, and insider tips from our China specialists.
           </p>
+
+          {/* Discovery Tour Guides */}
+          <div className="mb-20">
+            <h2 className="text-2xl md:text-3xl font-bold font-serif text-accent mb-2">✈️ China Discovery Tour Guides</h2>
+            <p className="text-gray-600 mb-8">3 in-depth itinerary guides for our Discovery tours — what to see, when to go, and how to make the most of each route</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {discoveryGuides.map((guide) => (
+                <Link key={guide.id} href={`/${guide.slug}`} className="block group bg-warm-50 rounded-xl overflow-hidden border border-warm-100 hover:shadow-lg transition-shadow">
+                  <div className="overflow-hidden h-48 bg-gray-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={guide.heroImage}
+                      alt={guide.destinationName}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <span className="text-xs font-semibold text-primary uppercase tracking-wide">Discovery Guide</span>
+                    <h3 className="font-serif text-lg font-bold text-accent mt-1 mb-2 group-hover:text-primary transition-colors">
+                      {guide.destinationName}
+                    </h3>
+                    <p className="text-gray-600 text-sm line-clamp-2">
+                      {(guide.introText[0]?.substring(0, 110) ?? '').trim()}{guide.introText[0] ? '...' : ''}
+                    </p>
+                    <span className="inline-block mt-3 text-primary text-sm font-medium group-hover:underline">Read the guide →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
 
           {/* Major Destinations */}
           <div className="mb-20">
