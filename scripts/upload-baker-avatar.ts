@@ -48,7 +48,7 @@ async function uploadBakerAvatar() {
     // Upload to Supabase Storage
     const fileName = 'baker-gu-portrait.jpg';
     const bucketName = 'tour-images'; // Baker avatar goes to tour-images bucket
-    const filePath = fileName;
+    const filePath = `migrated/site/${fileName}`; // Must match migratedSite() path
 
     console.log(`Uploading ${filePath} to ${bucketName}...`);
 
