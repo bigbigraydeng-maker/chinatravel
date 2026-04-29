@@ -161,6 +161,7 @@ The trade-off is that the Temple of Heaven is often treated as a half-day add-on
 
 I usually recommend this for couples and travellers who want a counterpoint to the imperial grandeur of the Forbidden City. Where the palace is about enclosure and hierarchy, the Temple of Heaven is about the sky. The design logic is vertical rather than horizontal, and that changes the experience entirely.
 
+![The Hall of Prayer for Good Harvests at the Temple of Heaven, Beijing — a circular blue-roofed masterpiece built in 1420](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Temple_of_Heaven_20160323_01.jpg/1200px-Temple_of_Heaven_20160323_01.jpg)
 
 <a id="temple-timing"></a>
 ### Best time to visit and what to look for
@@ -243,6 +244,7 @@ The trade-off is that the walls are long, and doing the full 13.7 kilometres on 
 
 I'd do the city walls in the late afternoon, arriving an hour before sunset. The battlements cast good shadows in the raking light, the crenellations and watchtowers look like what they are rather than a tourist attraction, and the view of modern Xi'an spreading beyond the ancient perimeter is one of the more useful things you can see on this itinerary — it makes the relationship between ancient and contemporary China visible in a single glance.
 
+![The 14th-century Ming Dynasty city walls of Xi'an stretching along the perimeter of the ancient capital](https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/City_wall_of_Xi%27an_51550-Xian_%2827959363326%29.jpg/1200px-City_wall_of_Xi%27an_51550-Xian_%2827959363326%29.jpg)
 
 <a id="walls-options"></a>
 ### Bicycle or walk — making the most of 13.7 km
@@ -353,6 +355,21 @@ For NZ travellers making their first China trip, this northern route — two cit
 
 ---
 
+---
+
+## Sources & References
+
+*Data in this guide is sourced from verified public records:*
+
+- [Forbidden City — Palace Museum collection](https://www.dpm.org.cn/): 1.86 million artefacts; 14 million+ annual visitors
+- [UNESCO — Forbidden City inscription (1987)](https://whc.unesco.org/en/list/439/)
+- [UNESCO — Great Wall inscription (1987)](https://whc.unesco.org/en/list/438/)
+- [Britannica — Great Wall of China](https://www.britannica.com/topic/Great-Wall-of-China): 21,196km total length, 8,850km Ming section
+- [UNESCO — Temple of Heaven inscription (1998)](https://whc.unesco.org/en/list/881/)
+- [UNESCO — Terracotta Warriors (1987)](https://whc.unesco.org/en/list/441/)
+- [China Discovery — Xi'an City Walls](https://www.chinadiscovery.com/shaanxi/xian/ancient-city-wall.html): 13.75km perimeter, 12m height
+- [TravelChinaGuide — Beijing–Xi'an High-Speed Rail](https://www.travelchinaguide.com/china-trains/beijing-xian-highspeed.htm): journey distance and timing
+
 *Ready to take this from a reading list to a real itinerary? CTS Tours' [A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) departs Auckland in October from NZD $3,480, including international flights, 4-star accommodation in both cities, guided touring, listed meals, and the Beijing–Xi'an high-speed rail in 2nd class. For a broader look at planning a first China visit, the [Beijing & Xi'an first-visit guide for NZ travellers](/blog/beijing-xian-first-visit-guide-nz) covers the logistics questions most commonly asked before departure.*`,
     faqs: [
       {
@@ -428,6 +445,8 @@ The rubber-tyred trains are a deliberate design choice: they run significantly q
 
 I'd put this on your first full afternoon in Chongqing. It takes 30–60 minutes to see properly, it's free to watch from street level, and it sets the tone for everything that follows in the city. Chongqing solves problems that don't exist elsewhere in the world — extreme topography, extreme density — and Liziba is the most visible example of that.
 
+![A Chongqing Rail Transit Line 2 train passing through the residential building at Liziba Station — the world's first through-building monorail station](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/%E6%9D%8E%E5%AD%90%E5%9D%9D%E7%AB%99%E8%BD%BB%E8%BD%A8%E7%A9%BF%E6%A5%BC_0023.png/1200px-%E6%9D%8E%E5%AD%90%E5%9D%9D%E7%AB%99%E8%BD%BB%E8%BD%A8%E7%A9%BF%E6%A5%BC_0023.png)
+
 <!-- VIDEO EMBED: Liziba Station viral clip showing train passing through building floors 6-8, ideally filmed from street-level plaza looking up -->
 
 <a id="liziba-how-to-see"></a>
@@ -454,7 +473,7 @@ Hongyadong is built in the diaojiaolou style — traditional stilted architectur
 
 The practical reality: the complex itself is busy and commercialised, particularly on weekend evenings. The food and shopping are geared toward tourists. I'd push back on spending a full evening eating inside the complex — better to eat elsewhere and come here specifically for the view and the atmosphere. The real value is the exterior spectacle and the feel of the cliffside setting, not the shops inside.
 
-![Hongyadong cliffside complex lit at night in red and gold, reflected in the Jialing River below](https://images.unsplash.com/photo-AZd8cnWO_iI?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
+![Hongyadong cliffside complex lit at night in red and gold, reflected in the Jialing River below](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Hongyadong.jpg/900px-Hongyadong.jpg)
 
 <a id="hongyadong-timing"></a>
 ### When to Go and Where to Stand
@@ -478,6 +497,8 @@ The carvings date from the 9th to 13th centuries and are unusual for synthesisin
 
 The main visitor sites are Baodingshan and Beishan. I'd prioritise Baodingshan: it contains the large-scale narrative carvings commissioned in the late 12th to 13th centuries, including a 31-metre reclining Nirvana Buddha that is one of the largest in the world. The scale of this figure is difficult to prepare yourself for — it lies along an entire cliff face, carved at near life-size proportions for every detail. Beishan is earlier (9th–10th century), more purely Buddhist, and densely packed — worth visiting for specialists or travellers with more time at the site.
 
+![The Dazu Rock Carvings at Baodingshan — UNESCO World Heritage Site with 50,000 Buddhist sculptures carved between the 9th and 13th centuries](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Dazu_2007_685_full_view.jpg/1200px-Dazu_2007_685_full_view.jpg)
+
 <a id="dazu-prioritise"></a>
 ### Baodingshan vs Beishan: How to Prioritise
 
@@ -499,6 +520,8 @@ Walk through the Huguang Guild Hall's main gate and the neon skyline disappears.
 The historical context is what makes it more than a pretty building. The Huguang Guild Hall was built to serve merchants from Hubei and Hunan provinces during the "Huguang Migration to Sichuan" — a massive government-organised population resettlement that took place across the Qing Dynasty, moving millions of people from central China into the depopulated Sichuan Basin after a period of prolonged war and famine. Chongqing became the commercial hub of this migration, and guild halls like this one were where the merchants organised their affairs, resolved disputes, staged operas, worshipped their patron saints, and maintained connections to their home provinces. It was a complete civic and commercial ecosystem — not just a meeting room, but a world.
 
 I find the contrast jarring in exactly the right way. You walk out of the Guild Hall gate and you're back in a city of elevated freeways and glass towers. The juxtaposition is sharper here than almost anywhere else in Chongqing — the ancient merchant world and the cyberpunk skyline visible from the same spot.
+
+![The Huguang Guild Hall complex in Chongqing, built in 1759 during the Qianlong reign — one of China's best-preserved guild hall complexes](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/HuguangHall1.jpg/1200px-HuguangHall1.jpg)
 
 <a id="huguang-who"></a>
 ### Who Should Prioritise This
@@ -523,7 +546,7 @@ I want to be precise about what this experience is and isn't, because the distin
 
 The morning window matters. Giant pandas are most active between 8am and 10am, during feeding. By late morning they have eaten and are characteristically inert. If your group arrives after 10am, you will see a lot of sleeping. I'd plan to be at the gate when it opens at 7:30am.
 
-![Giant panda eating bamboo in the morning feeding session at Chengdu Research Base](https://images.unsplash.com/photo-fFO5DsFV5gk?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80)
+![Giant panda eating bamboo in the morning feeding session at Chengdu Research Base](/images/tours/chengdu-pandas.jpg)
 
 <a id="panda-morning"></a>
 ### Getting the Most Out of Your Morning
@@ -547,6 +570,8 @@ On a typical Saturday morning in People's Park in central Chengdu, you'll find s
 This is the Matchmaking Corner (相亲角). It is genuinely one of the most unexpected and affecting experiences in any China itinerary, and it rewards observation more than participation. The cultural context runs deep: China's decades-long one-child policy produced a generation of only children whose parents have an unusually intense investment in their children's marriage prospects. The "only child" pressure to marry and produce grandchildren is compounded by significant social expectations around timing — late twenties is already considered delayed in many Chinese families. The Matchmaking Corner is where this pressure finds its most visible, organised expression.
 
 Outside the matchmaking activity, People's Park is also one of the best places to observe the Chengdu that locals actually inhabit. Bamboo chairs around the teahouses stay occupied for hours. People play mahjong in pavilions. Itinerant ear-cleaners (掏耳朵) move through the park with their specialised tools — a Chengdu institution that has been practised for generations and is still an unremarkable part of daily life here.
+
+![People's Park in Chengdu — where locals gather at teahouses, and parents display matchmaking notices for their children on weekends](/images/tours/chengdu-old-town.jpg)
 
 <a id="peoples-park-what"></a>
 ### What to Expect and How Long to Spend
@@ -672,6 +697,18 @@ If I were advising a NZ couple doing this trip, I'd say: arrive in Chongqing wit
 Chengdu rewards the slower pace that Chongqing doesn't particularly invite. Use the teahouses. Don't rush the Panda Base. Sit in People's Park longer than feels necessary. The city's claim to be China's most relaxed major city is more than marketing — it's a genuinely different urban culture, and you need a little time to settle into it.
 
 ---
+
+---
+
+## Sources & References
+
+*Data in this guide is sourced from verified public records:*
+
+- [UNESCO — Dazu Rock Carvings inscription (1999)](https://whc.unesco.org/en/list/912): 75 protected sites, ~50,000 statues
+- [IUCN Red List — Giant Panda](https://www.iucnredlist.org/species/712/121745718): ~1,800 wild pandas as of 2016 assessment
+- [UNESCO — Leshan Giant Buddha (1996)](https://whc.unesco.org/en/list/779): inscribed jointly with Mt. Emei
+- Chongqing Rail Transit Line 2 — Liziba Station opened June 2005 (Chongqing Metro official records)
+- Chengdu Research Base of Giant Panda Breeding — established 1987 (official base records)
 
 *The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) departs Auckland 1 November 2026 and returns 10 November. From NZD $2,750 per person (twin share), single supplement NZD $400. Minimum 15 persons. Includes international and domestic flights, 4-star accommodation, English-speaking guide, bullet train, and meals as specified.*`,
     faqs: [
@@ -810,6 +847,8 @@ West Lake is one of those places that photographs well, but visiting it still ma
 The Su Causeway — a 2.8-kilometre raised path crossing the lake — gives you the classic West Lake experience: walking or cycling between willows and peach trees, with the water on both sides and Leifeng Pagoda visible above the southern treeline. In October, the osmanthus trees are in bloom and the hillsides have started to turn. This is, honestly, one of the better times to be here. The hazing summer humidity has cleared, the autumn colours are beginning, and the Dragon Well tea (Longjing) harvest village of Longjing, a short drive from the lake, is finishing its autumn picking.
 
 The trade-off is that West Lake is not a hidden gem. It is one of China's most celebrated landscapes, and the main lakeside paths near Broken Bridge and Leifeng Pagoda can be very crowded on weekends. Weekday mornings are significantly calmer. The northern and western shores, away from the main tourist circuits, reward walkers who are willing to go slightly off the standard route.
+
+![West Lake (Xi Hu) in Hangzhou — UNESCO World Heritage landscape inscribed in 2011, covering 6.39 square kilometres](https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/West_Lake%2C_Hangzhou_2025.jpg/1200px-West_Lake%2C_Hangzhou_2025.jpg)
 
 ![Water town canal scene in Jiangnan — traditional whitewashed buildings lining a serene waterway](/images/tours/wuzhen-canal.jpg)
 
@@ -1028,6 +1067,19 @@ Four days in Shanghai is enough to cover the Bund, Pudong, the French Concession
 A day trip to Tongji or Wuzhen from Suzhou or Hangzhou adds a second water-town comparison — useful if the Xinshi experience resonates and you want to understand how managed tourism changes (or doesn't change) the same basic canal-town format. It is also the kind of extension a specialist can build into a custom itinerary.
 
 ---
+
+---
+
+## Sources & References
+
+*Data in this guide is sourced from verified public records:*
+
+- [UNESCO — Classical Gardens of Suzhou (1997)](https://whc.unesco.org/en/list/813/): 9 gardens inscribed
+- [UNESCO — West Lake Cultural Landscape (2011)](https://whc.unesco.org/en/list/1334/)
+- [Wikipedia — West Lake](https://en.wikipedia.org/wiki/West_Lake): 6.39 km² surface area
+- [Wikipedia — Lake Tai](https://en.wikipedia.org/wiki/Lake_Tai): China's third-largest freshwater lake at 2,338 km²
+- [PRNewsWire — Shanghai inbound tourism 2025](https://www.prnewswire.com/news-releases/): 9.36 million inbound visitors, +39.58% YoY
+- [Wikipedia — Shanghai Tower](https://en.wikipedia.org/wiki/Shanghai_Tower): world's third-tallest building at 632m
 
 If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,999 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
 
