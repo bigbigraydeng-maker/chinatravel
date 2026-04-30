@@ -2686,7 +2686,7 @@ export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
   keywords: ['Shanghai', 'water towns', 'Jiangnan', 'Zhujiajiao', 'Tongli', 'Bund', 'discovery tour'],
   h1: 'Shanghai & Surroundings: Modern Metropolis Meets Timeless Water Towns',
   heroSubtitle: 'Contemporary Energy and Classical Beauty',
-  heroImage: `${TI}/shanghai-bund-night.jpg`,
+  heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
   introText: [
     'Shanghai represents 21st-century China: gleaming skyscrapers, cutting-edge technology, and cosmopolitan energy. Yet within 90 minutes, ancient water towns preserve centuries-old Jiangnan culture—narrow canals, stone bridges, and traditional gardens transport you back centuries.',
     'This 7-10 day journey offers perfect balance: modern Shanghai\'s shopping, dining, and nightlife complemented by peaceful water town explorations. Experience the contrast between where China is heading and where it came from.'
@@ -2826,7 +2826,7 @@ export const chongqingChengduDiscoveryGuide: DestinationGuide = {
   keywords: ['Chongqing', 'Chengdu', 'pandas', 'Yangtze River', 'giant pandas', 'cultural travel', 'hidden gems'],
   h1: 'Chongqing & Chengdu: Central China\'s Cultural Heartland',
   heroSubtitle: 'Ancient Temples, Natural Wonders, and Warm Hospitality',
-  heroImage: `${TI}/chengdu-panda-center.jpg`,
+  heroImage: 'https://images.unsplash.com/photo-1581252584837-95f73fd23574?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
   introText: [
     'Central China\'s cultural gems remain less visited than Beijing and Shanghai, yet offer equally compelling experiences. Chongqing, built dramatically on hillsides overlooking the Yangtze River, offers gorge scenery and authentic street food. Chengdu, home to giant pandas and Buddhist temples, embodies relaxed sophistication.',
     'This 8-10 day journey reveals hidden China: stunning natural landscapes, world-class cultural sites, and locals famous for hospitality. Temperature and humidity require acclimatisation; reward is authentic experiences far removed from tourist crowds.'
