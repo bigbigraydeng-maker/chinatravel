@@ -1766,9 +1766,9 @@ export const tours: Tour[] = [
     shortDescription: 'Experience the breathtaking beauty of Huangshan with a scenic cable car ride up Yellow Mountain, overnight stay atop the mountain, and visits to UNESCO-listed Hongcun and Nanping villages.',
     duration: '4 Days',
     price: 'From NZD $1,635',
-    heroImage: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+    heroImage: 'https://images.unsplash.com/photo-1568454158153-6bf6cfda9070?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1568454158153-6bf6cfda9070?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/suzhou-canal/suzhou-canal.jpg',
     ],
     highlights: [
