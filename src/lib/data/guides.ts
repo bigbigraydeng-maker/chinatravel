@@ -2686,7 +2686,7 @@ export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
   keywords: ['Shanghai', 'water towns', 'Jiangnan', 'Zhujiajiao', 'Tongli', 'Bund', 'discovery tour'],
   h1: 'Shanghai & Surroundings: Modern Metropolis Meets Timeless Water Towns',
   heroSubtitle: 'Contemporary Energy and Classical Beauty',
-  heroImage: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+  heroImage: 'https://images.unsplash.com/photo-1689827515397-51140415eb6d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   introText: [
     'Shanghai represents 21st-century China: gleaming skyscrapers, cutting-edge technology, and cosmopolitan energy. Yet within 90 minutes, ancient water towns preserve centuries-old Jiangnan culture—narrow canals, stone bridges, and traditional gardens transport you back centuries.',
     'This 7-10 day journey offers perfect balance: modern Shanghai\'s shopping, dining, and nightlife complemented by peaceful water town explorations. Experience the contrast between where China is heading and where it came from.'
