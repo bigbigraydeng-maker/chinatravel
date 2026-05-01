@@ -7,6 +7,7 @@ import {
   extractRouteFromItinerary,
 } from '@/lib/itinerary-map/extractRouteFromItinerary';
 import ItineraryActions from '@/components/tours/ItineraryActions';
+import ItineraryRouteSchematic from '@/components/tours/ItineraryRouteSchematic';
 
 interface TourItineraryProps {
   itinerary: DayItinerary[];
@@ -116,12 +117,7 @@ export default function TourItinerary({
             ))}
           </div>
           <div className="min-h-[280px] lg:sticky lg:top-28 lg:self-start">
-            <div
-              className="flex min-h-[280px] w-full items-center justify-center rounded-xl border border-dashed border-gray-300 bg-warm-50/80"
-              aria-label="Route map placeholder"
-            >
-              <span className="font-serif text-lg font-medium text-gray-500">coming soon</span>
-            </div>
+            <ItineraryRouteSchematic route={route} tourCities={tourCities} />
             <p className="mt-3 text-center text-xs text-gray-500">
               Schematic route for planning — not a geographic map. City order is derived from your itinerary text.
             </p>
