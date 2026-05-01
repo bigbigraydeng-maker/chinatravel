@@ -8,6 +8,7 @@ import {
 } from '@/lib/itinerary-map/extractRouteFromItinerary';
 import ItineraryActions from '@/components/tours/ItineraryActions';
 import ItineraryRouteSchematic from '@/components/tours/ItineraryRouteSchematic';
+import ItineraryRouteVideo from '@/components/tours/ItineraryRouteVideo';
 
 interface TourItineraryProps {
   itinerary: DayItinerary[];
@@ -117,9 +118,9 @@ export default function TourItinerary({
             ))}
           </div>
           <div className="min-h-[280px] lg:sticky lg:top-28 lg:self-start">
-            <ItineraryRouteSchematic route={route} tourCities={tourCities} />
+            <ItineraryRouteVideo />
             <p className="mt-3 text-center text-xs text-gray-500">
-              Schematic route for planning — not a geographic map. City order is derived from your itinerary text.
+              Route visualization for planning — watch how you'll travel through each destination.
             </p>
           </div>
         </div>
