@@ -4,8 +4,10 @@ import * as path from 'path';
 import sharp from 'sharp';
 
 async function uploadBakerAvatar() {
-  // Load environment variables from .env.local
-  const envPath = '.env.local';
+  // Load environment variables from .env.local (from main repo)
+  const envPath = process.cwd().includes('worktrees')
+    ? '../../../.env.local'
+    : '.env.local';
   const envContent = fs.readFileSync(envPath, 'utf-8');
   const envVars = Object.fromEntries(
     envContent
@@ -30,7 +32,7 @@ async function uploadBakerAvatar() {
   });
 
   // Path to the new avatar image
-  const imagePath = 'C:\\Users\\Zhong\\Desktop\\微信图片_20260429172032_169_1.png';
+  const imagePath = 'C:\\Users\\Zhong\\Documents\\trae_projects\\ChinaTravel\\public\\images\\baker-gu-portrait-optimized.jpg';
 
   if (!fs.existsSync(imagePath)) {
     throw new Error(`Image file not found: ${imagePath}`);
