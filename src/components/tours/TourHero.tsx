@@ -44,22 +44,29 @@ export default function TourHero({
     stopover: 'bg-green-500'
   };
 
-  const handleEnquireClick = () => {
-    // Extract tour title from the page or URL context
-    triggerGtmEvent({
-      event: 'click_enquire_now',
-      tourTitle: title,
-      tourTier: tier,
-      pagePath: window.location.pathname,
-      timestamp: Date.now(),
-    });
+  // Extract tour destination and slug from URL path (format: /tours/destination/tier/slug)
+  const getTourRouteParams = () => {
+    if (typeof window === 'undefined') return { destination: '', slug: '' };
+
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    // pathParts format: ["tours", "destination", "tier", "slug"]
+    if (pathParts.length >= 4) {
+      return {
+        destination: pathParts[1],
+        slug: pathParts[3],
+      };
+    }
+    return { destination: '', slug: '' };
   };
 
-  const handleItineraryClick = () => {
+  const handleCtaClick = (eventName: 'click_enquire_now' | 'click_view_itinerary') => () => {
+    const { destination, slug } = getTourRouteParams();
     triggerGtmEvent({
-      event: 'click_view_itinerary',
+      event: eventName,
       tourTitle: title,
+      tourDestination: destination,
       tourTier: tier,
+      tourSlug: slug,
       pagePath: window.location.pathname,
       timestamp: Date.now(),
     });
@@ -172,7 +179,7 @@ export default function TourHero({
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="#enquiry"
-              onClick={handleEnquireClick}
+              onClick={handleCtaClick('click_enquire_now')}
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               {primaryCtaLabel}
@@ -182,7 +189,7 @@ export default function TourHero({
             </Link>
             <Link
               href="#itinerary"
-              onClick={handleItineraryClick}
+              onClick={handleCtaClick('click_view_itinerary')}
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
               {secondaryCtaLabel}

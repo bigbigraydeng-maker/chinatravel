@@ -14,16 +14,20 @@ export default function TourCardViewDetailsButton({ href: _href }: { href: strin
 
     // Extract tour details from URL (format: /tours/destination/tier/slug)
     const pathParts = _href.split('/').filter(Boolean); // ["tours", "destination", "tier", "slug"]
-    const [, destination, tier, slug] = pathParts;
 
-    triggerGtmEvent({
-      event: 'view_tour_details',
-      tourDestination: destination,
-      tourTier: tier,
-      tourSlug: slug,
-      pagePath: window.location.pathname,
-      timestamp: Date.now(),
-    });
+    // Validate URL format before destructuring
+    if (pathParts.length >= 4) {
+      const [, destination, tier, slug] = pathParts;
+
+      triggerGtmEvent({
+        event: 'view_tour_details',
+        tourDestination: destination,
+        tourTier: tier,
+        tourSlug: slug,
+        pagePath: window.location.pathname,
+        timestamp: Date.now(),
+      });
+    }
   };
 
   return (

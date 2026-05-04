@@ -10,6 +10,13 @@ interface GtmEvent {
   [key: string]: string | number | boolean | undefined;
 }
 
+// Extend Window interface for GTM dataLayer
+declare global {
+  interface Window {
+    dataLayer: GtmEvent[];
+  }
+}
+
 export function GoogleTagManager() {
   if (!GTM_ID) {
     return null;
@@ -35,20 +42,34 @@ export function GoogleTagManager() {
 }
 
 export function triggerGtmEvent(eventData: GtmEvent) {
-  if (typeof window !== 'undefined' && GTM_ID) {
-    const dataLayer = (window as any).dataLayer;
-    if (dataLayer) {
-      dataLayer.push(eventData);
-    }
+  if (typeof window === 'undefined') {
+    return; // Server-side render, skip
   }
+
+  if (!GTM_ID) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[GTM] GTM_ID not configured. Event not sent:', eventData);
+    }
+    return;
+  }
+
+  const dataLayer = window.dataLayer;
+  if (!dataLayer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[GTM] dataLayer not initialized. Event not sent:', eventData);
+    }
+    return;
+  }
+
+  dataLayer.push(eventData);
 }
 
 export function useGtmTracking() {
   useEffect(() => {
     if (typeof window !== 'undefined' && GTM_ID) {
-      (window as any).dataLayer = (window as any).dataLayer || [];
-      
-      const dataLayer = (window as any).dataLayer;
+      window.dataLayer = window.dataLayer || [];
+
+      const dataLayer = window.dataLayer;
       
       dataLayer.push({
         event: 'pageview',
