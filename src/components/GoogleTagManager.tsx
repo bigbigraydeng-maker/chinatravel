@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Script from 'next/script';
+import { captureUtmParams } from '@/lib/utils/utm-parser';
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
@@ -70,7 +71,11 @@ export function useGtmTracking() {
       window.dataLayer = window.dataLayer || [];
 
       const dataLayer = window.dataLayer;
-      
+
+      // Capture UTM parameters from URL (handles both query string and hash)
+      // This is important for bit.ly short links that may put params in hash
+      captureUtmParams();
+
       dataLayer.push({
         event: 'pageview',
         pagePath: window.location.pathname,
