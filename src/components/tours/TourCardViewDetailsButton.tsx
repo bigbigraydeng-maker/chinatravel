@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { triggerGtmEvent } from '@/components/GoogleTagManager';
 
 // Rendered as <span> (not <a>) because the parent TourCard is already an <a>;
 // nesting anchors is invalid HTML and triggers React hydration mismatch.
@@ -8,10 +9,27 @@ import { useState } from 'react';
 export default function TourCardViewDetailsButton({ href: _href }: { href: string }) {
   const [isLoading, setIsLoading] = useState(false);
 
+  const handleClick = () => {
+    setIsLoading(true);
+
+    // Extract tour details from URL (format: /tours/destination/tier/slug)
+    const pathParts = _href.split('/').filter(Boolean); // ["tours", "destination", "tier", "slug"]
+    const [, destination, tier, slug] = pathParts;
+
+    triggerGtmEvent({
+      event: 'view_tour_details',
+      tourDestination: destination,
+      tourTier: tier,
+      tourSlug: slug,
+      pagePath: window.location.pathname,
+      timestamp: Date.now(),
+    });
+  };
+
   return (
     <span
       role="presentation"
-      onClick={() => setIsLoading(true)}
+      onClick={handleClick}
       className={`px-6 py-2 bg-primary text-white text-sm font-semibold rounded-lg transition-all inline-flex items-center gap-2 ${
         isLoading
           ? 'opacity-75 cursor-wait pointer-events-none'

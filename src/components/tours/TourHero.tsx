@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { slugifyTourTag } from '@/lib/data/tours';
+import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
 
 interface TourHeroProps {
@@ -41,6 +42,27 @@ export default function TourHero({
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',
     stopover: 'bg-green-500'
+  };
+
+  const handleEnquireClick = () => {
+    // Extract tour title from the page or URL context
+    triggerGtmEvent({
+      event: 'click_enquire_now',
+      tourTitle: title,
+      tourTier: tier,
+      pagePath: window.location.pathname,
+      timestamp: Date.now(),
+    });
+  };
+
+  const handleItineraryClick = () => {
+    triggerGtmEvent({
+      event: 'click_view_itinerary',
+      tourTitle: title,
+      tourTier: tier,
+      pagePath: window.location.pathname,
+      timestamp: Date.now(),
+    });
   };
 
   return (
@@ -148,8 +170,9 @@ export default function TourHero({
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link 
+            <Link
               href="#enquiry"
+              onClick={handleEnquireClick}
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               {primaryCtaLabel}
@@ -157,8 +180,9 @@ export default function TourHero({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            <Link 
+            <Link
               href="#itinerary"
+              onClick={handleItineraryClick}
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
               {secondaryCtaLabel}
