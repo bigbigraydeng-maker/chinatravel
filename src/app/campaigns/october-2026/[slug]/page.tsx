@@ -15,7 +15,6 @@ import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
-import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
@@ -26,6 +25,7 @@ import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBl
 import SchemaMarkup from '@/components/SchemaMarkup';
 import OctoberDiscoveryCampaignContent from '@/components/campaigns/OctoberDiscoveryCampaignContent';
 import OctoberUrgencyBar from '@/components/campaigns/OctoberUrgencyBar';
+import { OctoberCampaignScrollTracker } from '@/components/campaigns/OctoberCampaignScrollTracker';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import {
   OCTOBER_2026_DISCOVERY_BY_SLUG,
@@ -134,6 +134,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
 
   return (
     <>
+      <OctoberCampaignScrollTracker />
       <SchemaMarkup data={schemas} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
@@ -187,8 +188,6 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
       <ChinaVisaNudge />
 
       <TrustBar />
-
-      <TourTrustSignals />
 
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">

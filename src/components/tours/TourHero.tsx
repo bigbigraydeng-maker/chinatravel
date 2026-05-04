@@ -187,10 +187,11 @@ export default function TourHero({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
+            {/* Hide secondary CTA on mobile for faster decision making */}
             <Link
               href="#itinerary"
               onClick={handleCtaClick('click_view_itinerary')}
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+              className="hidden sm:inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
               {secondaryCtaLabel}
             </Link>
