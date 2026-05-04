@@ -1,19 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
 
-export default function TourCardViewDetailsButton({ href }: { href: string }) {
+// Rendered as <span> (not <a>) because the parent TourCard is already an <a>;
+// nesting anchors is invalid HTML and triggers React hydration mismatch.
+// Click bubbles to the outer Link to perform navigation.
+export default function TourCardViewDetailsButton({ href: _href }: { href: string }) {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <Link
-      href={href}
+    <span
+      role="presentation"
       onClick={() => setIsLoading(true)}
-      className={`px-6 py-2 bg-primary text-white text-sm font-semibold rounded-lg transition-all flex items-center gap-2 ${
+      className={`px-6 py-2 bg-primary text-white text-sm font-semibold rounded-lg transition-all inline-flex items-center gap-2 ${
         isLoading
           ? 'opacity-75 cursor-wait pointer-events-none'
-          : 'hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20'
+          : 'group-hover:bg-primary/90 group-hover:shadow-lg group-hover:shadow-primary/20'
       }`}
     >
       {isLoading ? (
@@ -31,6 +33,6 @@ export default function TourCardViewDetailsButton({ href }: { href: string }) {
       ) : (
         'View Details'
       )}
-    </Link>
+    </span>
   );
 }
