@@ -11,6 +11,11 @@ export interface FAQItem {
   monthlySearches?: number;
 }
 
+export interface RelatedFAQ {
+  slug: string;
+  title: string;
+}
+
 export interface FAQPage {
   slug: string;
   title: string;
@@ -18,6 +23,7 @@ export interface FAQPage {
   introText: string;
   faqs: FAQItem[];
   relatedGuides?: string[]; // Links to destination guides
+  relatedFaqs?: RelatedFAQ[]; // Links to other FAQ pages
 }
 
 /**
@@ -167,6 +173,16 @@ Bottom line: Most New Zealand tourists have safe, enjoyable trips. Use common se
     'china-tours',
     'china-visa-guide-for-new-zealanders',
     'best-time-to-visit-china'
+  ],
+  relatedFaqs: [
+    {
+      slug: 'faq-beijing-travel',
+      title: 'Beijing Travel FAQ'
+    },
+    {
+      slug: 'faq-great-wall-of-china',
+      title: 'Great Wall of China FAQ'
+    }
   ]
 };
 
@@ -300,6 +316,16 @@ Closer/easier but less famous sections. Still impressive for photography.`
     'beijing-travel-guide',
     'great-wall-of-china-travel-guide',
     'best-time-to-visit-china'
+  ],
+  relatedFaqs: [
+    {
+      slug: 'faq-planning-your-china-trip',
+      title: 'Planning Your China Trip FAQ'
+    },
+    {
+      slug: 'faq-great-wall-of-china',
+      title: 'Great Wall of China FAQ'
+    }
   ]
 };
 
@@ -507,6 +533,16 @@ Absolutely! Hikers spend 4-6 hours on certain sections. If you're an avid hiker,
     'great-wall-of-china-travel-guide',
     'beijing-travel-guide',
     'best-time-to-visit-china'
+  ],
+  relatedFaqs: [
+    {
+      slug: 'faq-planning-your-china-trip',
+      title: 'Planning Your China Trip FAQ'
+    },
+    {
+      slug: 'faq-beijing-travel',
+      title: 'Beijing Travel FAQ'
+    }
   ]
 };
 

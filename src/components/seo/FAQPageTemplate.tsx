@@ -100,22 +100,47 @@ export default function FAQPageTemplate({ page, breadcrumbs }: FAQPageTemplatePr
                   </div>
                 </button>
 
-                {/* Answer - Expandable Content */}
-                {expandedIndex === index && (
-                  <div className="px-6 py-6 bg-warm-50 border-t border-warm-100">
+                {/* Answer - always in DOM for crawlers; overflow-hidden collapses height visually */}
+                <div
+                  className={`border-t border-warm-100 overflow-hidden transition-all duration-200 ${
+                    expandedIndex === index ? 'max-h-[9999px]' : 'max-h-0 border-t-0'
+                  }`}
+                  aria-hidden={expandedIndex !== index}
+                >
+                  <div className="px-6 py-6 bg-warm-50">
                     <div
                       className="prose prose-lg max-w-none prose-headings:font-serif prose-a:text-primary hover:prose-a:underline"
                       dangerouslySetInnerHTML={{ __html: faq.answer }}
                     />
                   </div>
-                )}
+                </div>
               </div>
             ))}
           </div>
 
+          {/* Related FAQ Questions */}
+          {page.relatedFaqs && page.relatedFaqs.length > 0 && (
+            <div className="mt-16 pt-12 border-t border-warm-100">
+              <h2 className="text-2xl font-serif font-bold text-accent mb-6">Related FAQ Questions</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {page.relatedFaqs.map((faq) => (
+                  <Link
+                    key={faq.slug}
+                    href={`/faq/${faq.slug}`}
+                    className="p-4 border border-warm-100 rounded-lg hover:border-primary/40 hover:shadow-md hover:bg-warm-50 transition-all group"
+                  >
+                    <div className="text-primary font-semibold group-hover:text-primary/80 transition-colors">
+                      → {faq.title}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Related Guides */}
           {page.relatedGuides && page.relatedGuides.length > 0 && (
-            <div className="mt-16 pt-12 border-t border-warm-100">
+            <div className="mt-12 pt-12 border-t border-warm-100">
               <h2 className="text-2xl font-serif font-bold text-accent mb-6">Related Guides</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {page.relatedGuides.map((slug) => (

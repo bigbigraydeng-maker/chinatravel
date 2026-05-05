@@ -31,7 +31,7 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   };
 
   return (
-    <Link href={detailHref} className="group block min-w-0">
+    <Link href={detailHref} className="group block min-w-0" aria-label={`View ${tour.name} – ${tier} tour details`}>
       <div className="h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
         {/* Image section — fixed height */}
         <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-warm-100">
