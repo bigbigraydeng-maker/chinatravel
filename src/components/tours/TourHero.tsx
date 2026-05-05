@@ -44,29 +44,48 @@ export default function TourHero({
     stopover: 'bg-green-500'
   };
 
-  // Extract tour destination and slug from URL path (format: /tours/destination/tier/slug)
+  // Extract tour destination and slug from URL path
+  // Handles both: /tours/destination/tier/slug and /campaigns/october-2026/[slug]
   const getTourRouteParams = () => {
-    if (typeof window === 'undefined') return { destination: '', slug: '' };
+    if (typeof window === 'undefined') return { destination: '', slug: '', campaignSlug: '', campaignVariant: '' };
 
     const pathParts = window.location.pathname.split('/').filter(Boolean);
-    // pathParts format: ["tours", "destination", "tier", "slug"]
-    if (pathParts.length >= 4) {
+
+    // Handle campaign routes: /campaigns/october-2026/[slug]
+    if (pathParts[0] === 'campaigns' && pathParts[1] === 'october-2026') {
+      return {
+        destination: 'china',
+        slug: pathParts[2] || '', // e.g., 'tale-of-two-cities' or 'shanghai-surroundings'
+        campaignSlug: pathParts[2] || '',
+        campaignVariant: pathParts[1], // 'october-2026'
+      };
+    }
+
+    // Handle standard routes: /tours/destination/tier/slug
+    if (pathParts[0] === 'tours' && pathParts.length >= 4) {
       return {
         destination: pathParts[1],
         slug: pathParts[3],
+        campaignSlug: '',
+        campaignVariant: '',
       };
     }
-    return { destination: '', slug: '' };
+
+    return { destination: '', slug: '', campaignSlug: '', campaignVariant: '' };
   };
 
   const handleCtaClick = (eventName: 'click_enquire_now' | 'click_view_itinerary') => () => {
-    const { destination, slug } = getTourRouteParams();
+    const { destination, slug, campaignSlug, campaignVariant } = getTourRouteParams();
     triggerGtmEvent({
       event: eventName,
       tourTitle: title,
       tourDestination: destination,
       tourTier: tier,
       tourSlug: slug,
+      // Campaign context
+      campaignSlug: campaignSlug || undefined,
+      campaignVariant: campaignVariant || undefined,
+      isCampaignPage: !!campaignSlug,
       pagePath: window.location.pathname,
       timestamp: Date.now(),
     });
