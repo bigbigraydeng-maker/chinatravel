@@ -152,6 +152,18 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 
 ## Current Status
 
+### 🎉 最近完成 (2026-05-06)
+
+#### Phase 9: 21 个指南 SEO 元描述优化 ✅
+- **任务:** 将 20 个指南的 `metaDescription` 从 79-127 字符扩展至 160-190 字符（Google SERP 最优区间）
+- **更新文件:** `src/lib/data/guides.ts`（16 处字段替换）
+- **方法:** "Discover [地名]'s... + 3-4 景点/特色 + Expert travel guide for New Zealand visitors to..." 公式
+- **跳过:** 4 个已达标（Great Wall ~183、Forbidden City ~228、Terracotta Warriors ~201、Chongqing ~228）
+- **验证:** `npm run build` 通过（165 页无错误），`git push` 已触发 Render 自动部署
+- **提交:** `cf6e563 - feat: optimize all 20 guides meta descriptions for SEO`
+
+---
+
 ### 🎉 最近完成 (2026-04-09 ~ 04-10)
 
 #### Phase 5.1: 图片加载问题永久修复 ✅
@@ -351,12 +363,13 @@ svg.querySelectorAll('circle[r="14"]').forEach(c => {
 5. ✅ Implement Phase 2 SEO pages (21 destination guides: COMPLETE)
 6. ✅ Phase 5.1: 图片加载永久修复 (694 images, 100% success)
 7. ✅ Phase 5.2: 导航和按钮加载状态改进 (tour card + navbar feedback)
-8. 🔄 User manual QA review of all 21 guide pages
-9. ⏳ Set up Google Analytics 4 tracking
-10. ⏳ Create Google Ads campaigns (high-intent keywords)
-11. ⏳ Configure Resend API key on Render
-12. ⏳ Test email itinerary end-to-end
-13. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
+8. ✅ Phase 8 QA: 21 个指南页面全面审核 (2026-04-24, 0 critical issues)
+9. ✅ Phase 9: 20 个指南 metaDescription SEO 优化至 160-190 字符 (2026-05-06)
+10. ⏳ Set up Google Analytics 4 tracking
+11. ⏳ Create Google Ads campaigns (high-intent keywords)
+12. ⏳ Configure Resend API key on Render
+13. ⏳ Test email itinerary end-to-end
+14. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
 
 ---
 

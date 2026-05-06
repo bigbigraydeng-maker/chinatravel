@@ -163,6 +163,15 @@ This roadmap outlines the development phases for ChinaTravel from now through la
 - ⏳ Average session duration > 2 min (pending traffic)
 - ⏳ Organic traffic increase > 50% (pending campaigns)
 
+### Phase 2 SEO 补充优化 ✅ Complete
+**Completed:** May 6, 2026
+
+- [x] Phase 8 QA 全面审核：21/21 页面通过，0 个严重问题 (Apr 24, 2026)
+- [x] Phase 9 metaDescription 优化：20 个指南从 79-127 字符扩展至 160-190 字符 (May 6, 2026)
+  - 公式：Discover [地名]'s + 3-4 景点 + "Expert travel guide for New Zealand visitors to..."
+  - 4 个已达标跳过（Great Wall, Forbidden City, Terracotta Warriors, Chongqing）
+  - 构建验证通过（165 页），已部署至 Render
+
 ---
 
 ## Phase 3: FAQ & Utility Pages 📅 May 5 – May 18, 2026
