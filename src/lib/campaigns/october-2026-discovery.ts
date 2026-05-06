@@ -27,7 +27,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
     otherCampaignSlug: 'tale-of-two-cities',
     metaTitleSuffix: 'October 2026 departure | Shanghai & Surroundings | CTS NZ',
     metaDescription:
-      'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $2,999. Featured departure 14 October 2026 — enquire with CTS Auckland.',
+      'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $3,399. Featured departure 14 October 2026 — enquire with CTS Auckland.',
   },
   'tale-of-two-cities': {
     tourSlug: 'beijing-xian',

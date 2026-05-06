@@ -136,7 +136,7 @@ export default function DiscoveryGuidePage() {
             Shanghai &amp; Surroundings Discovery
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
-            Explore the Bund, Suzhou&apos;s classical gardens, West Lake in Hangzhou, and the water towns of Jiangnan — on a curated multi-city route designed for NZ travellers. From <strong className="text-accent">NZD $2,999</strong>.
+            Explore the Bund, Suzhou&apos;s classical gardens, West Lake in Hangzhou, and the water towns of Jiangnan — on a curated multi-city route designed for NZ travellers. From <strong className="text-accent">NZD $3,399</strong>.
           </p>
           <a
             href="/tours/china/discovery/shanghai-surroundings"

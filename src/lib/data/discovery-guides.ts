@@ -748,7 +748,7 @@ This guide covers the Shanghai and surroundings route — the Jiangnan loop thro
 
 What follows is an honest section-by-section guide to the seven main draws on this route. Each one comes with trade-offs, timing advice, and the kind of specific detail that helps you decide whether it deserves your time. This is not a brochure. If an attraction is best skipped in the wrong conditions, I'll say so. If a crowd is inevitable, I'll tell you how to work around it.
 
-For reference: [China Discovery Tours from New Zealand](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) run a 10-day Jiangnan loop at NZD $2,999 per person twin-share, departing 14 October 2026. That context informs the timing advice throughout — October is one of the better months to be in this part of China.
+For reference: [China Discovery Tours from New Zealand](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) run a 10-day Jiangnan loop at NZD $3,399 per person twin-share, departing 14 October 2026. That context informs the timing advice throughout — October is one of the better months to be in this part of China.
 
 ---
 
@@ -1029,7 +1029,7 @@ The Jiangnan loop runs Suzhou → Wuxi → Xinshi → Hangzhou → Shanghai, wit
 
 This is also emphatically not the Beijing/Xi'an route. There is no Great Wall, no Forbidden City, no Terracotta Warriors. NZ travellers who want those should look at the northern China Discovery product. What this route offers instead is classical garden design, freshwater lakes, water-town canal architecture, China's most dynamic modern skyline, and a seasonal food calendar that October times perfectly. Different aims, different experience.
 
-### For NZ travellers on a 10-day itinerary (NZD $2,999pp twin-share, departing 14 October 2026)
+### For NZ travellers on a 10-day itinerary (NZD $3,399pp twin-share, departing 14 October 2026)
 
 The 10-day CTS Tours structure covers the full Jiangnan loop at a pace that allows real engagement rather than checkbox tourism. Key timing observations:
 
@@ -1081,7 +1081,7 @@ A day trip to Tongji or Wuzhen from Suzhou or Hangzhou adds a second water-town 
 - [PRNewsWire — Shanghai inbound tourism 2025](https://www.prnewswire.com/news-releases/): 9.36 million inbound visitors, +39.58% YoY
 - [Wikipedia — Shanghai Tower](https://en.wikipedia.org/wiki/Shanghai_Tower): world's third-tallest building at 632m
 
-If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,999 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
+If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $3,399 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
 
 The Yangtze Delta is not a second-tier version of northern China. It is a different argument about what China is, and for many NZ travellers, it turns out to be the more compelling one.`,
     faqs: [

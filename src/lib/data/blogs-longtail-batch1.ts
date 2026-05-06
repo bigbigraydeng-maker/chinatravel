@@ -414,7 +414,7 @@ October is the strongest month for this route. The summer heat and humidity have
 
 ## Visa and Pricing
 
-Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $2,999** per person (twin share), including international airfares from Auckland.
+Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $3,399** per person (twin share), including international airfares from Auckland.
 
 [View the Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -465,7 +465,7 @@ The atmosphere in the early morning is genuine religious activity rather than to
 
 Hangzhou is best experienced as part of the Jiangnan triangle: Suzhou for the classical gardens and canals, Hangzhou for West Lake and tea culture, Shanghai for the modern city and the Bund. The three are connected by comfortable inter-city distances, and the contrast between them — ancient, romantic, modern — is itself one of the pleasures of the route.
 
-CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,999 per person from Auckland, departing 14 October 2026.
+CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $3,399 per person from Auckland, departing 14 October 2026.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -514,7 +514,7 @@ Beyond the gardens, Suzhou has an ancient canal district that has been the city'
 
 Suzhou is approximately 1 hour by high-speed train from Shanghai and 1.5–2 hours from Hangzhou — perfectly positioned as the first stop on a Yangtze Delta tour. CTS Tours allocates 2 nights in Suzhou within the **Shanghai & Surroundings** itinerary, covering the Humble Administrator's Garden, Master of the Nets, and the canal district.
 
-The tour is priced from NZD $2,999 per person (twin share) from Auckland, departing 14 October 2026.
+The tour is priced from NZD $3,399 per person (twin share) from Auckland, departing 14 October 2026.
 
 [View the full Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -575,7 +575,7 @@ Return to Shanghai for the international connection. Depending on flight timing,
 
 **October weather:** Warm days (18–24°C), cooler evenings (10–15°C), generally clear skies. Light layers recommended. The autumn light on West Lake is worth the timing specifically.
 
-The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $2,999 per person (twin share) including international airfares from Auckland. Departs 14 October 2026.
+The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3,399 per person (twin share) including international airfares from Auckland. Departs 14 October 2026.
 
 [View full tour details →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -620,7 +620,7 @@ Hangzhou's West Lake hills produce Longjing (Dragon Well) tea — China's most p
 
 ## How to Experience It from New Zealand
 
-CTS Tours runs the **Shanghai & Surroundings** Discovery tour specifically for this region: 10 days covering Suzhou, Wuxi, Hangzhou, and Shanghai in a comfortable loop. From NZD $2,999 per person (twin share), including international airfares from Auckland. The October departure — 14 October 2026 — is timed for the best conditions in the region.
+CTS Tours runs the **Shanghai & Surroundings** Discovery tour specifically for this region: 10 days covering Suzhou, Wuxi, Hangzhou, and Shanghai in a comfortable loop. From NZD $3,399 per person (twin share), including international airfares from Auckland. The October departure — 14 October 2026 — is timed for the best conditions in the region.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings)
     `

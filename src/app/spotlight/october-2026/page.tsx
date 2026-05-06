@@ -173,7 +173,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 </p>
                 <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
                   <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                  <p className="text-4xl font-bold">$2,999pp</p>
+                  <p className="text-4xl font-bold">$3,399pp</p>
                 </div>
                 <div className="mt-5">
                   <Link

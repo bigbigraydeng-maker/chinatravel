@@ -109,7 +109,7 @@ export default function OctoberDiscoveryCampaignContent({
           <Link href={otherCampaignHref} className="text-primary font-semibold hover:underline">
             {otherTourTitle}
           </Link>{' '}
-          — <strong>10 days from NZD $2,999</strong> per person on the published page.
+          — <strong>10 days from NZD $3,399</strong> per person on the published page.
         </p>
         <p className="text-gray-700 leading-relaxed">
           This Beijing &amp; Xi&apos;an route is priced <strong>{tour.price}</strong> for {tour.duration.toLowerCase()}{' '}
