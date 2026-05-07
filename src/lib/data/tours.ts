@@ -236,7 +236,7 @@ export const tours: Tour[] = [
     title: 'China Signature — Silk Road Discovery',
     shortDescription: 'Journey along China\'s ancient Silk Road from Urumqi to Xi\'an across 17 days — exploring Heavenly Lake, the Flaming Mountains, Mogao Caves, colourful Danxia mountains, Bingling Temple grottoes, and the Terracotta Warriors.',
     duration: '17 Days',
-    price: 'From NZD $6,699',
+    price: 'NZD $7,299',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
@@ -303,7 +303,7 @@ export const tours: Tour[] = [
       'Mogao Caves',
       'high-speed train',
     ],
-    departureDates: ['25 August', '14 October'],
+    departureDates: ['13 May 2027', '21 October 2027'],
     singleSupplement: 'NZD $1,435',
     rating: 4.8,
     reviewCount: 127,
@@ -408,7 +408,7 @@ export const tours: Tour[] = [
     title: 'China Signature — China Panorama',
     shortDescription: 'The ultimate 27-day China experience — from the Great Wall and Forbidden City to a Yangtze River cruise, giant pandas in Chengdu, the Li River in Guilin, classical gardens of Suzhou, West Lake in Hangzhou, and vibrant Shanghai.',
     duration: '27 Days',
-    price: 'From NZD $10,899',
+    price: 'NZD $10,899',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
@@ -497,7 +497,7 @@ export const tours: Tour[] = [
       'West Lake',
       'Suzhou gardens',
     ],
-    departureDates: ['14 October'],
+    departureDates: ['8 May 2027', '16 October 2027'],
     singleSupplement: 'NZD $2,555',
     rating: 4.7,
     reviewCount: 94,
@@ -512,7 +512,7 @@ export const tours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
-    price: 'From NZD $7,670',
+    price: 'NZD $8,150',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
@@ -581,8 +581,8 @@ export const tours: Tour[] = [
       'The Bund',
       'Huangpu River cruise',
     ],
-    departureDates: ['20 August', '25 October'],
-    singleSupplement: 'NZD $1,215',
+    departureDates: ['15 March 2027', '3 September'],
+    singleSupplement: 'NZD $1,355',
     rating: 4.6,
     reviewCount: 156,
     reviewSummary: 'Excellent classical journey, superbly organized',
@@ -2078,7 +2078,7 @@ export const tours: Tour[] = [
     title: 'Vietnam Discovery — Highlights',
     shortDescription: 'Experience the essence of Vietnam in just 10 in-country days, traveling from Hanoi to Ho Chi Minh City, including Ha Long Bay, Hoi An\'s lantern-lit streets, Cu Chi Tunnels, and the lush Mekong Delta.',
     duration: '12 Days',
-    price: 'From NZD $4,299',
+    price: 'NZD $6,299',
     heroImage: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
       'https://images.unsplash.com/photo-1583417319070-4a69db38a482?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
@@ -2127,7 +2127,167 @@ export const tours: Tour[] = [
     metaDescription: 'Experience the essence of Vietnam in just 10 in-country days, traveling from Hanoi to Ho Chi Minh City, including Ha Long Bay, Hoi An\'s lant... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2027-01-01',
+    departureDates: ['12 May 2027', '15 October 2027'],
+    singleSupplement: 'NZD $895'
+  },
+
+  // Japan Tours
+  {
+    id: 'tour-jp-sig-1',
+    slug: 'cherry-blossoms',
+    destination: 'japan',
+    tier: 'signature',
+    name: 'Japan Signature — Cherry Blossoms',
+    title: 'Japan Signature — Cherry Blossoms',
+    shortDescription: 'A 13-day Japan sakura journey through Tokyo, Mt. Fuji, Hakone, Nagoya, Kyoto, Nara and Osaka — timed perfectly for cherry blossom season with iconic temples, traditional shrines, and unforgettable spring scenery.',
+    duration: '13 Days',
+    price: 'NZD $7,999',
+    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+    ],
+    highlights: [
+      'Cherry blossom viewing at Ueno Park in Tokyo',
+      'Mt. Fuji 5th Station and scenic Hakone cruise on Lake Ashi',
+      'Iconic Kinkaku-ji (Golden Pavilion) and Kiyomizu-dera Temple in Kyoto',
+      'Fushimi Inari Shrine and the famous Philosopher\'s Path in full bloom',
+      'Todai-ji Temple and wild deer at Nara Park',
+      'Lively Dotonbori district in Osaka',
+      'Optional cherry blossom viewing at Osaka Castle Park',
+      'Shinjuku Gyoen National Garden in Tokyo',
+      'High-speed Shinkansen travel across Japan',
+      'Nagoya Castle and Atsuta Shrine'
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: 'Auckland — Transit — Tokyo',
+        description: 'Depart Auckland, transit through Shanghai or Beijing, then connect to Tokyo. Upon arrival, transfer to hotel for rest.',
+        meals: [],
+        accommodation: 'Sunshine City Prince Hotel or similar'
+      },
+      {
+        day: 2,
+        title: 'Arrival in Tokyo',
+        description: 'Arrive in Tokyo. Transfer to hotel and rest after your journey.',
+        meals: [],
+        accommodation: 'Sunshine City Prince Hotel or similar'
+      },
+      {
+        day: 3,
+        title: 'Explore Tokyo',
+        description: 'Visit Sensoji Temple, the Imperial Palace Outer Gardens, and the Ginza shopping district. Enjoy cherry blossoms at Ueno Park.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Sunshine City Prince Hotel or similar'
+      },
+      {
+        day: 4,
+        title: 'Mt. Fuji & Hakone',
+        description: 'Travel to Mt. Fuji\'s 5th Station (weather permitting), explore the Hakone region, and enjoy a cruise on Lake Ashi.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Tenseien Hotel Hakone or similar'
+      },
+      {
+        day: 5,
+        title: 'Nagoya',
+        description: 'Head to Nagoya to visit Nagoya Castle and Atsuta Shrine.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Hotel JAL CITY Nagoya or similar'
+      },
+      {
+        day: 6,
+        title: 'Kyoto',
+        description: 'Visit Kinkaku-ji (Golden Pavilion), Kiyomizu-dera Temple, and Fushimi Inari Shrine. Enjoy cherry blossoms along the Philosopher\'s Path.',
+        meals: ['Breakfast', 'Dinner'],
+        accommodation: 'Miyako Hotel Kyoto Hachijo or similar'
+      },
+      {
+        day: 7,
+        title: 'Kyoto — Free Day',
+        description: 'Free day to explore Kyoto at your own pace.',
+        meals: ['Breakfast'],
+        accommodation: 'Miyako Hotel Kyoto Hachijo or similar'
+      },
+      {
+        day: 8,
+        title: 'Nara & Osaka',
+        description: 'Visit Todai-ji Temple and Nara Park with its famous friendly deer, then travel to the vibrant Dotonbori district in Osaka.',
+        meals: ['Breakfast', 'Lunch'],
+        accommodation: 'Holiday Inn Osaka Namba or similar'
+      },
+      {
+        day: 9,
+        title: 'Free Day in Osaka',
+        description: 'Enjoy a full day of leisure. Optional cherry blossom viewing at Osaka Castle Park.',
+        meals: ['Breakfast'],
+        accommodation: 'Holiday Inn Osaka Namba or similar'
+      },
+      {
+        day: 10,
+        title: 'Return to Tokyo',
+        description: 'Take the Shinkansen bullet train back to Tokyo. Enjoy the rest of the day at leisure.',
+        meals: ['Breakfast'],
+        accommodation: 'Sunshine City Prince Hotel or similar'
+      },
+      {
+        day: 11,
+        title: 'Free Day in Tokyo',
+        description: 'Full day free for personal exploration. Recommended: cherry blossom viewing at Shinjuku Gyoen National Garden.',
+        meals: ['Breakfast'],
+        accommodation: 'Sunshine City Prince Hotel or similar'
+      },
+      {
+        day: 12,
+        title: 'Tokyo — Departure',
+        description: 'Take your return flight to New Zealand.',
+        meals: []
+      },
+      {
+        day: 13,
+        title: 'Arrive Auckland',
+        description: 'Arrive back in Auckland. Tour concludes.',
+        meals: []
+      }
+    ],
+    inclusions: [
+      'Return international airfares from New Zealand',
+      'All flights and taxes as listed in the itinerary',
+      'Transportation by tour coach and second-class Shinkansen train',
+      'English-speaking tour guide',
+      'Entrance fees and meals as specified in the itinerary',
+      '4-star hotel accommodation throughout'
+    ],
+    exclusions: [
+      'Visa fees (if required)',
+      'Tips (recommended NZD $15 per person per day)',
+      'Travel insurance (strongly recommended)',
+      'Personal expenses',
+      'Any items not specifically mentioned as included'
+    ],
+    metaTitle: 'Japan Cherry Blossoms Tour | 13 Days | CTS Tours',
+    metaDescription: 'Experience Japan\'s magical cherry blossom season on a 13-day sakura journey through Tokyo, Mt. Fuji, Kyoto, Nara and Osaka. Departing 27 March 2027. Book with CTS Tours.',
+    isActive: true,
+    createdAt: '2027-01-01',
+    updatedAt: '2027-01-01',
+    tags: [
+      'cherry blossoms',
+      'sakura',
+      'Japan',
+      'Tokyo',
+      'Kyoto',
+      'Osaka',
+      'Mt. Fuji',
+      'spring travel',
+      'cultural experience',
+      'Shinkansen',
+      'UNESCO sites'
+    ],
+    departureDates: ['27 March 2027'],
+    singleSupplement: 'NZD $2,350',
+    rating: 4.9,
+    reviewCount: 0,
+    reviewSummary: 'Japan in cherry blossom season — a once-in-a-lifetime experience'
   }
 ];
 
