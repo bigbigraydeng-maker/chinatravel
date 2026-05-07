@@ -1,0 +1,117 @@
+'use client';
+
+import { trackToolClick } from '@/lib/analytics/track-tools';
+
+interface Tool {
+  step: number;
+  name: string;
+  title: string;
+  description: string;
+  emoji: string;
+  url: string;
+}
+
+const recommendedTools: Tool[] = [
+  {
+    step: 1,
+    name: 'best-time-to-visit',
+    title: 'Best Time to Visit China',
+    description: 'Discover the ideal season for your interests — cherry blossom, autumn colour, festivals, or avoiding the crowds.',
+    emoji: '🌞',
+    url: '/best-time-to-visit-china',
+  },
+  {
+    step: 2,
+    name: 'cost-calculator',
+    title: 'China Trip Cost Calculator',
+    description: 'Estimate your total trip budget based on duration, party size, and comfort level before you enquire.',
+    emoji: '💰',
+    url: '/travel-tools',
+  },
+  {
+    step: 3,
+    name: 'visa-checker',
+    title: 'Visa Requirement Checker',
+    description: 'Check visa requirements for New Zealand and Australian passport holders travelling to China.',
+    emoji: '🛂',
+    url: '/china-visa-guide-for-new-zealanders',
+  },
+];
+
+interface ToolsRecommendationBannerProps {
+  onToolClick?: (toolName: string) => void;
+}
+
+export default function ToolsRecommendationBanner({ onToolClick }: ToolsRecommendationBannerProps) {
+  return (
+    <section className="bg-warm-50 border-y border-warm-200 py-10 px-4">
+      <div className="container mx-auto max-w-6xl">
+
+        {/* Heading */}
+        <div className="text-center mb-8">
+          <p className="text-primary font-semibold uppercase tracking-wider text-sm mb-1">
+            Plan smarter
+          </p>
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">
+            Not sure where to start?
+          </h2>
+          <p className="text-gray-600 mt-2 text-sm max-w-xl mx-auto">
+            Use our free planning tools to nail down dates, budget and visa — then come back to tell us what you have in mind.
+          </p>
+        </div>
+
+        {/* Tool cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {recommendedTools.map((tool) => (
+            <a
+              key={tool.name}
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackToolClick(tool.name, 'tailor-made-banner');
+                onToolClick?.(tool.name);
+              }}
+              aria-label={`Open ${tool.title} in a new tab`}
+              className="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-primary hover:shadow-md transition-all group"
+            >
+              <span className="text-3xl flex-shrink-0 mt-0.5" aria-hidden="true">
+                {tool.emoji}
+              </span>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-bold flex-shrink-0">
+                    {tool.step}
+                  </span>
+                  <span className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight">
+                    {tool.title}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {tool.description}
+                </p>
+                <span className="inline-block mt-2 text-xs text-primary font-medium group-hover:underline">
+                  Open tool →
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Bottom prompt */}
+        <div className="text-center">
+          <p className="text-gray-500 text-sm">
+            ✨ Done researching?{' '}
+            <a
+              href="#enquiry-form"
+              className="text-primary font-semibold hover:underline"
+            >
+              Scroll down to start your enquiry
+            </a>{' '}
+            👇
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

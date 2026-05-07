@@ -7,6 +7,8 @@ import TailorMadeForm from '@/components/TailorMadeForm';
 import TailorMadeQuickPlan from '@/components/TailorMadeQuickPlan';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import ToolsRecommendationBanner from '@/components/tailor-made/ToolsRecommendationBanner';
+import MobileFloatingCTA from '@/components/tailor-made/MobileFloatingCTA';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbListSchema, generateWebPageSchema } from '@/lib/schema-seo';
 import { tourImage } from '@/lib/site-media';
@@ -209,6 +211,11 @@ export default function TailorMadePage() {
       </ImmersivePageHero>
 
       <TrustBar />
+
+      {/* Tools Recommendation Banner */}
+      <section id="tools-banner">
+        <ToolsRecommendationBanner />
+      </section>
 
       {/* Intro */}
       <section className="py-14 md:py-16 border-b border-warm-100 bg-white">
@@ -515,6 +522,9 @@ export default function TailorMadePage() {
           </div>
         </div>
       </section>
+
+      {/* Mobile floating CTA — visible only on small screens */}
+      <MobileFloatingCTA targetSectionId="tools-banner" />
     </div>
   );
 }

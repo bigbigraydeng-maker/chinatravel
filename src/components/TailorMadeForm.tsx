@@ -3,6 +3,8 @@
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { prefillFromSearchParams } from '@/lib/tailor-made-enquiry-params';
+import { FieldToolTip } from '@/components/tailor-made/FormToolTips';
+import { trackToolTipClick, trackEnquirySubmitted } from '@/lib/analytics/track-tools';
 
 const destinationOptions = ['China', 'Japan', 'Vietnam', 'Multiple Countries'];
 const interestOptions = [
@@ -131,6 +133,7 @@ function TailorMadeFormInner() {
         throw new Error(typeof data.error === 'string' ? data.error : 'Submission failed. Please try again.');
       }
 
+      trackEnquirySubmitted();
       setIsSubmitted(true);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
@@ -254,6 +257,10 @@ function TailorMadeFormInner() {
             <label htmlFor="tm-date" className="block text-sm font-medium text-gray-700 mb-1">Preferred travel date</label>
             <input type="date" id="tm-date" name="travelDate" value={formData.travelDate} onChange={handleChange}
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" />
+            <FieldToolTip
+              fieldName="travel-date"
+              onToolClick={(toolName) => trackToolTipClick(toolName, 'travel-date')}
+            />
           </div>
           <div>
             <label htmlFor="tm-duration" className="block text-sm font-medium text-gray-700 mb-1">Duration</label>
@@ -280,6 +287,10 @@ function TailorMadeFormInner() {
               <option value="">Select budget range</option>
               {budgetOptions.map(b => <option key={b} value={b}>{b}</option>)}
             </select>
+            <FieldToolTip
+              fieldName="budget"
+              onToolClick={(toolName) => trackToolTipClick(toolName, 'budget')}
+            />
           </div>
           <div>
             <label htmlFor="tm-accommodation" className="block text-sm font-medium text-gray-700 mb-1">Accommodation style</label>
