@@ -1,17 +1,14 @@
 import { getRemainingSeats } from '@/lib/campaigns/seat-availability';
+import DaysCountdown from './DaysCountdown';
 
 /**
  * OctoberUrgencyBar — soft scarcity strip rendered just below TourHero on
  * October 2026 / November 2026 campaign LPs.
  *
  * Shows two urgency cues:
- *   1. Countdown to departure (computed at build time / SSR — no client JS)
- *   2. "Only X seats remaining" (deterministic via getRemainingSeats)
- *
- * Why deterministic / SSR-only?
- *  - No hydration mismatches between server and client.
- *  - SEO-friendly — Google sees the same urgency on every crawl.
- *  - Numbers update naturally on each deploy (Render rebuilds nightly+).
+ *   1. Countdown to departure — rendered by <DaysCountdown> (client component)
+ *      so the value is always current, even on statically-prerendered pages.
+ *   2. "Only X seats remaining" (deterministic via getRemainingSeats, SSR-safe).
  */
 
 interface OctoberUrgencyBarProps {
@@ -25,15 +22,6 @@ export default function OctoberUrgencyBar({
   departureSortDate,
   tourSlug,
 }: OctoberUrgencyBarProps) {
-  // Compute days-to-departure at render time. On Next.js static build/ISR this
-  // is captured at build; on a fresh request the value updates automatically.
-  const today = new Date();
-  const departure = new Date(departureSortDate);
-  const msPerDay = 1000 * 60 * 60 * 24;
-  const daysUntil = Math.max(
-    0,
-    Math.ceil((departure.getTime() - today.getTime()) / msPerDay)
-  );
   const seats = getRemainingSeats(tourSlug);
 
   const cards = [
@@ -55,11 +43,8 @@ export default function OctoberUrgencyBar({
         </svg>
       ),
       label: 'Days to departure',
-      value: daysUntil > 0 ? `${daysUntil}` : 'Departing soon',
-      subline:
-        daysUntil > 0
-          ? `until your group flies from Auckland`
-          : `final seats may still be available`,
+      value: <DaysCountdown departureSortDate={departureSortDate} />,
+      subline: 'until your group flies from Auckland',
     },
     {
       icon: (

@@ -133,7 +133,7 @@ function TailorMadeFormInner() {
         throw new Error(typeof data.error === 'string' ? data.error : 'Submission failed. Please try again.');
       }
 
-      trackEnquirySubmitted('direct');
+      trackEnquirySubmitted();
       setIsSubmitted(true);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
