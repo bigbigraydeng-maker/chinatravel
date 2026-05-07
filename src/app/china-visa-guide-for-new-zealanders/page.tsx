@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
+import VisaCheckerWidget from '@/components/seo/VisaCheckerWidget';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
@@ -76,6 +77,9 @@ export default function ChinaVisaGuidePage() {
         title={chinaVisaGuideMeta.h1}
         subtitle={chinaVisaGuideMeta.heroSubtitle}
       />
+
+      {/* Interactive Visa Checker */}
+      <VisaCheckerWidget />
 
       {/* Main Content */}
       <article className="bg-white">

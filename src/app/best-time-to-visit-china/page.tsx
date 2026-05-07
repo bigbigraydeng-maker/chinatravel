@@ -7,6 +7,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
+import MonthPickerWidget from '@/components/seo/MonthPickerWidget';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { bestTimeToVisitChinaMeta } from '@/lib/data/seo-pages';
@@ -79,6 +80,9 @@ export default function BestTimeToVisitChinaPage() {
         title={bestTimeToVisitChinaMeta.h1}
         subtitle={bestTimeToVisitChinaMeta.heroSubtitle}
       />
+
+      {/* Interactive Month Picker */}
+      <MonthPickerWidget />
 
       {/* Main Content */}
       <article className="bg-white">

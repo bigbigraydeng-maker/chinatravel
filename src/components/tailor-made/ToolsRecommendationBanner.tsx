@@ -1,42 +1,7 @@
 'use client';
 
 import { trackToolClick } from '@/lib/analytics/track-tools';
-
-interface Tool {
-  step: number;
-  name: string;
-  title: string;
-  description: string;
-  emoji: string;
-  url: string;
-}
-
-const recommendedTools: Tool[] = [
-  {
-    step: 1,
-    name: 'best-time-to-visit',
-    title: 'Best Time to Visit China',
-    description: 'Discover the ideal season for your interests — cherry blossom, autumn colour, festivals, or avoiding the crowds.',
-    emoji: '🌞',
-    url: '/best-time-to-visit-china',
-  },
-  {
-    step: 2,
-    name: 'cost-calculator',
-    title: 'China Trip Cost Calculator',
-    description: 'Estimate your total trip budget based on duration, party size, and comfort level before you enquire.',
-    emoji: '💰',
-    url: '/travel-tools',
-  },
-  {
-    step: 3,
-    name: 'visa-checker',
-    title: 'Visa Requirement Checker',
-    description: 'Check visa requirements for New Zealand and Australian passport holders travelling to China.',
-    emoji: '🛂',
-    url: '/china-visa-guide-for-new-zealanders',
-  },
-];
+import { BANNER_TOOLS } from '@/lib/data/tools-data';
 
 interface ToolsRecommendationBannerProps {
   onToolClick?: (toolName: string) => void;
@@ -62,15 +27,15 @@ export default function ToolsRecommendationBanner({ onToolClick }: ToolsRecommen
 
         {/* Tool cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          {recommendedTools.map((tool) => (
+          {BANNER_TOOLS.map((tool, index) => (
             <a
-              key={tool.name}
+              key={tool.id}
               href={tool.url}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {
-                trackToolClick(tool.name, 'tailor-made-banner');
-                onToolClick?.(tool.name);
+                trackToolClick(tool.id, 'tailor-made-banner');
+                onToolClick?.(tool.id);
               }}
               aria-label={`Open ${tool.title} in a new tab`}
               className="flex items-start gap-4 p-5 bg-white rounded-xl border border-warm-200 hover:border-primary hover:shadow-md transition-all group"
@@ -81,7 +46,7 @@ export default function ToolsRecommendationBanner({ onToolClick }: ToolsRecommen
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary/10 text-primary text-xs font-bold flex-shrink-0">
-                    {tool.step}
+                    {index + 1}
                   </span>
                   <span className="text-sm font-bold text-gray-900 group-hover:text-primary transition-colors leading-tight">
                     {tool.title}
