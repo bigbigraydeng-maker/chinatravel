@@ -2143,9 +2143,9 @@ export const tours: Tour[] = [
     shortDescription: 'A 13-day Japan sakura journey through Tokyo, Mt. Fuji, Hakone, Nagoya, Kyoto, Nara and Osaka — timed perfectly for cherry blossom season with iconic temples, traditional shrines, and unforgettable spring scenery.',
     duration: '13 Days',
     price: 'NZD $7,999',
-    heroImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+    heroImage: 'https://images.unsplash.com/photo-1563021555-6460d86d7a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
-      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
+      'https://images.unsplash.com/photo-1563021555-6460d86d7a4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     ],
     highlights: [
       'Cherry blossom viewing at Ueno Park in Tokyo',
