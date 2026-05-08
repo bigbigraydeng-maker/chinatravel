@@ -7,6 +7,7 @@ import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedSite } from '@/lib/site-media';
 import { renderBlogPostHtml } from '@/lib/blog-html';
+import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
 
 interface BlogPostPageProps {
   params: {
@@ -208,6 +209,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter CTA */}
+      <section className="bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <NewsletterSubscribeForm variant="blog" />
           </div>
         </div>
       </section>
