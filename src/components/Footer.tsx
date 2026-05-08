@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
 
 const Footer = () => {
   return (
@@ -95,7 +96,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm md:text-left">
+        {/* Newsletter strip */}
+        <div className="border-t border-gray-800 mt-8 md:mt-10 pt-8">
+          <div className="max-w-sm">
+            <NewsletterSubscribeForm variant="footer" />
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-8 md:mt-10 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm md:text-left">
           <p className="mb-2 md:mb-0 md:inline">
             &copy; {new Date().getFullYear()} CTS Tours. All rights reserved.
           </p>
