@@ -4,6 +4,7 @@ import Script from 'next/script';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome';
 import CookieConsentManager from '@/components/CookieConsentManager';
+import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import GoogleTagManager from '@/components/GoogleTagManager';
 import { getSiteUrl } from '@/lib/site';
 
@@ -134,6 +135,7 @@ export default function RootLayout({
         </noscript>
         <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
+        <NewsletterPopup />
       </body>
     </html>
   );
