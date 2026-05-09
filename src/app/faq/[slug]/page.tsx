@@ -11,9 +11,9 @@ import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSch
 
 // Map slug to FAQ page data
 const faqPages: Record<string, typeof faqPlanningYourChinaTrip> = {
-  'planning-your-china-trip': faqPlanningYourChinaTrip,
-  'beijing-travel': faqBeijingTravel,
-  'great-wall-of-china': faqGreatWall
+  'faq-planning-your-china-trip': faqPlanningYourChinaTrip,
+  'faq-beijing-travel': faqBeijingTravel,
+  'faq-great-wall-of-china': faqGreatWall
 };
 
 // Generate static params for all FAQ pages

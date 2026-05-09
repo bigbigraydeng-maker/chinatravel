@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: hongyadongChongqingMeta.title,
     description: hongyadongChongqingMeta.description,
     path: '/hongyadong-chongqing',
-    ogImagePath: `/blog/chongqing-night-skyline-hongyadong.jpg`,
+    ogImagePath: `${TOUR_IMG}/chongqing-night-skyline-hongyadong.jpg`,
     ogImageAlt: 'Hongyadong Chongqing Night — CTS Tours NZ',
     keywords: ['Hongyadong Chongqing', 'Chongqing night market', 'Chongqing cliffside', 'Chongqing Spirited Away', 'Fire & Fuzz tour NZ'],
     ogType: 'website',

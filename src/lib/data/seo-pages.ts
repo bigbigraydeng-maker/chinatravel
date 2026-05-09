@@ -23,7 +23,7 @@ export interface CityHubMeta extends SeoPageMeta {
 
 export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
-  title: 'China Tours & Holiday Packages from New Zealand 2026 | Flights Included | NZD Pricing | CTS Tours',
+  title: 'China Tour Packages from New Zealand | CTS Tours',
   description:
     'China holiday packages from New Zealand — flights included, NZD pricing, visa-free for Kiwi passports. Signature luxury, Discovery value & Stopover city breaks. TAANZ-bonded, Auckland-based team since 1928. Get a free quote.',
   h1: 'China Tour Packages from New Zealand',
@@ -326,7 +326,7 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from New Zealand 2026 | Visa-Free · NZD Pricing · Flights Included | CTS Tours',
+  title: 'China Tours from New Zealand | Visa-Free | CTS Tours',
   description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, flights from Auckland included. Small groups, expert guides, 90+ years running China tours. Depart Auckland, Wellington & Christchurch. Get a free quote from our NZ team.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
@@ -541,7 +541,7 @@ export const hangzhouToursMeta: CityHubMeta = {
 export const suzhouToursMeta: CityHubMeta = {
   slug: 'suzhou-tours',
   cityName: 'Suzhou',
-  title: 'Suzhou Tours from New Zealand | Classical Gardens | CTS Tours',
+  title: 'Suzhou Tours NZ | Classical Gardens | CTS Tours',
   description: 'Explore Suzhou with CTS Tours. Wander UNESCO-listed classical gardens, cruise ancient canals, and experience China\'s silk capital. Day tours & multi-day packages from NZD $1,356.',
   h1: 'Suzhou Tours from New Zealand',
   heroSubtitle: 'Wander UNESCO-listed classical gardens. Cruise ancient canals. Experience China\'s silk capital.',
@@ -578,7 +578,7 @@ export const suzhouToursMeta: CityHubMeta = {
 
 export const chinaToursFromAustraliaMeta: SeoPageMeta = {
   slug: 'china-tours-from-australia',
-  title: 'China Tours from Australia 2026 | Expert-Led China Travel | CTS Tours',
+  title: 'China Tours from Australia | Expert-Led | CTS Tours',
   description: 'China tours from Australia designed by specialists with 90+ years of experience. Departing Sydney, Melbourne & Brisbane. Visa-free for Australian passports. Expert guides, small groups. Book with CTS Tours.',
   h1: 'China Tours from Australia',
   heroSubtitle: 'Departing Sydney · Melbourne · Brisbane. Visa-free for AU passports. Expert-guided small groups.',
@@ -617,7 +617,7 @@ export const chinaToursFromAustraliaMeta: SeoPageMeta = {
 
 export const chengduPandaSanctuaryMeta: SeoPageMeta = {
   slug: 'chengdu-panda-sanctuary',
-  title: 'Chengdu Giant Panda Sanctuary Tour 2026 | See Pandas Up Close | CTS Tours NZ',
+  title: 'Chengdu Panda Sanctuary: Giant Panda Guide | CTS NZ',
   description: 'Visit the Chengdu Research Base of Giant Panda Breeding — home to 200+ giant pandas. Morning feeding visits, bamboo forests, red pandas. Part of CTS Tours\' Fire & Fuzz 10-day Chongqing & Chengdu tour from New Zealand. Visa-free entry for NZ passports.',
   h1: 'Chengdu Giant Panda Sanctuary: A Complete Guide for New Zealand Visitors',
   heroSubtitle: 'Home to 200+ giant and red pandas · Morning feeding visits · Included in Fire & Fuzz 10-day tour from NZ',
@@ -653,7 +653,7 @@ export const chengduPandaSanctuaryMeta: SeoPageMeta = {
 
 export const lizibastationChongqingMeta: SeoPageMeta = {
   slug: 'liziba-station-chongqing',
-  title: 'Liziba Station Chongqing: The Train That Runs Through a Building | CTS Tours NZ',
+  title: 'Liziba Station Chongqing: Train Through a Building | CTS',
   description: 'Liziba Station in Chongqing is the world\'s only monorail station built inside a residential tower — trains pass through the 6th floor of a 19-storey building. How to visit, best viewing spots, and how to include it in a Chongqing tour from New Zealand.',
   h1: 'Liziba Station, Chongqing: A Complete Visitor Guide',
   heroSubtitle: 'The world\'s only monorail station inside a residential building · Chongqing Rail Transit Line 2 · Free to watch from street level',
@@ -689,7 +689,7 @@ export const lizibastationChongqingMeta: SeoPageMeta = {
 
 export const hongyadongChongqingMeta: SeoPageMeta = {
   slug: 'hongyadong-chongqing',
-  title: 'Hongyadong Chongqing: The Cliffside Night Market That Glows Like a Miyazaki Film | CTS Tours NZ',
+  title: 'Hongyadong Chongqing: Cliffside Night Market | CTS NZ',
   description: 'Hongyadong is Chongqing\'s most iconic landmark — an 11-storey stilted building complex glowing on the clifftop above the Jialing River. Best visited after dark. Complete visitor guide plus how to see it as part of a Chongqing tour from New Zealand.',
   h1: 'Hongyadong, Chongqing: Visitor Guide to the Clifftop Night Market',
   heroSubtitle: '11-storey cliffside complex · Best after dark · The defining image of Chongqing',

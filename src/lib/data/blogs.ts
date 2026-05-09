@@ -203,7 +203,7 @@ Experience the peaks on my [Zhangjiajie stopover](/tours/china/stopover/zhangjia
   {
     id: 'blog-5',
     slug: 'understanding-chinese-tea-culture',
-    title: 'Understanding Chinese Tea Culture: A Journey Through the Leaf',
+    title: 'Chinese Tea Culture: A Journey Through the Leaf',
     excerpt: 'I’m Baker Gu — tea is how I slow clients down in China; here’s how I read the six great teas and where I take you on tour.',
     content: `
 I’m **Baker Gu**. Tea is to China what wine is to France — not just a drink, but a way of life, and I use it to help travellers actually feel the country between temple visits.

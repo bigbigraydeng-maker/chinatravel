@@ -164,7 +164,7 @@ Most of my Kiwi clients use the **30-day visa-free** route for tourism; you stil
   {
     id: 'blog-seo-t039',
     slug: 'shanghai-surroundings-jiangnan-guide-nz',
-    title: 'Shanghai & Surroundings: Why Jiangnan Works for NZ Travellers',
+    title: 'Shanghai & Surroundings: Why Jiangnan Works for NZ',
     excerpt:
       'How I package the Yangtze Delta — Shanghai plus Suzhou, Hangzhou, and water towns — for first-time visitors from New Zealand.',
     content: `
@@ -210,7 +210,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
   {
     id: 'blog-seo-t040',
     slug: 'beijing-xian-first-visit-guide-nz',
-    title: 'Beijing & Xi’an: A First-Timer’s Guide for New Zealand Travellers',
+    title: "Beijing & Xi’an: A First-Timer’s Guide for NZ",
     excerpt:
       'The north-China arc I sell most often: Great Wall and Forbidden City, then west to the Terracotta Army — with visa-free notes and October departures.',
     content: `

@@ -68,7 +68,7 @@ My **Fire & Fuzz** 10-day tour allocates 4 nights in Chongqing specifically to a
   {
     id: 'lt-b2-2',
     slug: 'chongqing-hot-pot-guide',
-    title: 'Chongqing Hot Pot: What It Is, Where to Eat, and What to Order',
+    title: 'Chongqing Hot Pot: What It Is and Where to Eat',
     excerpt: 'I\'m Baker Gu — Chongqing hot pot is the original, and it\'s significantly different from what you\'ve eaten elsewhere. Here\'s what makes it different, what to order, and what to expect from the heat.',
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',
@@ -126,7 +126,7 @@ On the **Fire & Fuzz** tour, I include a guided hot pot dinner as a structured g
   {
     id: 'lt-b2-3',
     slug: 'leshan-giant-buddha-day-trip',
-    title: 'Leshan Giant Buddha Day Trip from Chengdu: Everything You Need to Know',
+    title: 'Leshan Giant Buddha Day Trip from Chengdu: Full Guide',
     excerpt: 'I\'m Baker Gu — the Leshan Giant Buddha is 71 metres of carved cliff face, built over 90 years, and it\'s one of the genuinely surprising experiences I include on Chengdu itineraries. Here\'s how I plan the day trip.',
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',
@@ -183,7 +183,7 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
   {
     id: 'lt-b2-4',
     slug: 'china-visa-free-nz-2026',
-    title: 'China Visa-Free for New Zealand in 2026: What You Actually Need to Know',
+    title: 'China Visa-Free for New Zealand 2026: What to Know',
     excerpt: 'I\'m Baker Gu — China\'s visa-free policy for NZ passport holders is real, but there are conditions people miss. Here\'s the honest breakdown of what qualifies, what doesn\'t, and what to carry.',
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',

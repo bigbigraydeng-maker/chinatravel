@@ -17,7 +17,7 @@ export const longtailBatch1Posts: BlogPost[] = [
   {
     id: 'lt-a1',
     slug: 'beijing-xian-itinerary-10-days',
-    title: 'The Perfect 10-Day Beijing & Xi\'an Itinerary (From New Zealand)',
+    title: '10-Day Beijing & Xi\'an Itinerary for NZ Travellers',
     excerpt: 'A practical day-by-day guide to 10 days in Beijing and Xi\'an — the Forbidden City, Great Wall, high-speed train, and Terracotta Warriors — designed for New Zealand travellers doing China for the first time.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -104,7 +104,7 @@ CTS Tours offers **A Tale of Two Cities** — a 10-day Discovery tour covering e
   {
     id: 'lt-a2',
     slug: 'first-time-china-beijing-xian',
-    title: 'First Time in China? Why Beijing + Xi\'an Is the Right Starting Point',
+    title: 'First China Trip: Why Beijing & Xi\'an Is the Right Start',
     excerpt: 'If you\'re planning your first trip to China from New Zealand, Beijing and Xi\'an is the most rewarding and logistically sensible combination. Here\'s why — and how to do it properly.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -177,7 +177,7 @@ CTS Tours offers **A Tale of Two Cities** — 10 days, Beijing + Xi'an, guided t
   {
     id: 'lt-a3',
     slug: 'beijing-to-xian-high-speed-train',
-    title: 'Beijing to Xi\'an by High-Speed Train: Everything NZ Travellers Need to Know',
+    title: 'Beijing to Xi\'an High-Speed Train: NZ Travel Guide',
     excerpt: 'The high-speed train between Beijing and Xi\'an is one of the best travel experiences in China. Here\'s how it works, what to expect, and why it\'s better than flying.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -240,7 +240,7 @@ CTS Tours includes the Beijing–Xi'an high-speed train (2nd class) as a standar
   {
     id: 'lt-a4',
     slug: 'terracotta-warriors-guide-nz',
-    title: 'Visiting the Terracotta Warriors: A Guide for New Zealand Travellers',
+    title: 'Visiting the Terracotta Warriors: NZ Traveller Guide',
     excerpt: 'The Terracotta Army is one of the greatest archaeological discoveries in history. Here\'s what to expect, how to make the most of your visit, and why it deserves a full day.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -299,7 +299,7 @@ The Terracotta Warriors are the anchor of any Xi'an visit, but they shouldn't be
   {
     id: 'lt-a5',
     slug: 'beijing-xian-tour-new-zealand',
-    title: 'Beijing & Xi\'an Tours from New Zealand: What to Expect (2026 Guide)',
+    title: 'Beijing & Xi\'an Tours from New Zealand (2026 Guide)',
     excerpt: 'Planning a Beijing and Xi\'an tour from New Zealand? Here\'s what\'s included, what to budget, when to go, and why booking with an Auckland-based operator makes a difference.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -523,7 +523,7 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
   {
     id: 'lt-b4',
     slug: 'shanghai-10-days-itinerary',
-    title: '10 Days in Shanghai & Surroundings: A First-Timer\'s Guide from NZ',
+    title: '10 Days in Shanghai & Surroundings: NZ First-Timer\'s Guide',
     excerpt: 'What to see, where to go, and how to pace 10 days across Shanghai and the Jiangnan water towns — a practical guide for New Zealand travellers visiting this region for the first time.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -584,7 +584,7 @@ The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3
   {
     id: 'lt-b5',
     slug: 'china-water-towns-jiangnan-guide',
-    title: 'China\'s Water Towns: Suzhou, Wuxi & the Jiangnan Region Explained',
+    title: 'China\'s Water Towns: The Jiangnan Region Guide',
     excerpt: 'The Jiangnan water towns — canal cities, classical gardens, silk culture, and West Lake — are a different China from Beijing and Xi\'an. Here\'s what makes them special and how to experience them from New Zealand.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -816,7 +816,7 @@ If you genuinely can only choose one: go to Chongqing if you've already been to 
   {
     id: 'lt-c4',
     slug: 'liziba-station-chongqing-guide',
-    title: 'Liziba Station Chongqing: The Complete Guide to the Monorail Through a Building',
+    title: 'Liziba Station Chongqing: Complete Visitor Guide',
     excerpt: 'Liziba Station is the most photographed railway station in China — and possibly the world. Here\'s everything you need to know: what it is, how to visit, and how to get the best shot.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',

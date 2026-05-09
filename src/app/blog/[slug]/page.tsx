@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const base = buildCtsPageMetadata({
-    title: `${post.title} | CTS Tours Blog`,
+    title: post.title,
     description: post.excerpt,
     path: `/blog/${post.slug}`,
     ogImagePath: post.heroImage,

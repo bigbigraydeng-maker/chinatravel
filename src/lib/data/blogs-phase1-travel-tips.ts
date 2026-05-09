@@ -86,7 +86,7 @@ Want me to match this list to a real route? [Browse China tours](/china-tours) o
   {
     id: 'blog-apps-china',
     slug: 'essential-travel-apps-china-navigation-communication-payment',
-    title: 'Essential Travel Apps for China: Navigation, Communication & Payment',
+    title: 'Essential Travel Apps for China: Navigation & Payment',
     excerpt:
       'I’m Baker Gu — the app stack I install for clients before AKL: VPN, maps, WeChat, payments, translation — so free evenings don’t turn into guesswork.',
     content: `
@@ -163,7 +163,7 @@ Want an itinerary where I handle the logistics? [Explore guided China tours](/to
   {
     id: 'blog-safety-china',
     slug: 'safety-guide-travelling-china-tips-scams-etiquette',
-    title: 'Safety Guide for Travelling in China: Tips, Scams & Cultural Etiquette',
+    title: 'China Travel Safety Guide: Tips, Scams & Etiquette',
     excerpt:
       'I’m Baker Gu — how I brief first-time Kiwis on safety: what’s genuinely low-risk, what annoys people, and the etiquette that keeps days smooth.',
     content: `
@@ -221,7 +221,7 @@ If you want a calm first China trip with hotels and guides I stand behind, [brow
   {
     id: 'blog-best-time-china',
     slug: 'best-time-visit-china-seasonal-weather-crowds-guide',
-    title: 'Best Time to Visit China: Complete Seasonal Weather & Crowds Guide',
+    title: 'Best Time to Visit China: Seasonal Weather & Crowds',
     excerpt:
       'I’m Baker Gu — how I pick months for Kiwis: north vs south weather, Golden Week reality, and when I’d pay more to avoid a bad week.',
     content: `

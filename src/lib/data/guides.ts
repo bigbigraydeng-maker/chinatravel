@@ -1740,7 +1740,7 @@ export const forbiddenCityGuide: DestinationGuide = {
   slug: 'forbidden-city-travel-guide',
   destinationName: 'Forbidden City',
   parentDestination: 'beijing',
-  metaTitle: 'Forbidden City Tour Guide 2026 | Visit Beijing\'s Imperial Palace | CTS Tours NZ',
+  metaTitle: 'Forbidden City Tour Guide: Beijing Imperial Palace | CTS',
   metaDescription: 'Plan your Forbidden City tour: skip the queues with a guided visit, explore 980 buildings across 72 hectares, and learn the stories of 24 emperors. Part of CTS Tours\' Beijing itineraries from NZ — visa-free entry, NZD pricing.',
   keywords: ['Forbidden City', 'imperial palace', 'UNESCO', 'Chinese architecture'],
   h1: 'Forbidden City: World\'s Largest Imperial Palace Complex',
@@ -2225,7 +2225,7 @@ export const chongqingGuide: DestinationGuide = {
   id: 'guide-chongqing',
   slug: 'chongqing-travel-guide',
   destinationName: 'Chongqing',
-  metaTitle: 'Chongqing City Tour & Travel Guide 2026 | Liziba, Hongyadong, Dazu | CTS Tours NZ',
+  metaTitle: 'Chongqing Travel Guide: Liziba, Hongyadong & Hot Pot | CTS',
   metaDescription: 'Plan your Chongqing city tour: Liziba monorail through a building, Hongyadong cliffside lights, Dazu UNESCO carvings, Sichuan hot pot, and the 8D cyberpunk skyline that took social media by storm. Guided tours from NZ with CTS.',
   keywords: [
     'Chongqing travel guide',
