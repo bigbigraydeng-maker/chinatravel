@@ -48,6 +48,7 @@ export default function ChongqingToursPage() {
           { label: 'Chongqing Travel Guide', href: '/chongqing-travel-guide', emoji: '🌉', description: 'Mountain city, gorges & hot pot' },
           { label: 'Liziba Station Guide', href: '/liziba-station-chongqing', emoji: '🚝', description: 'The train that runs through a building' },
           { label: 'Hongyadong Guide', href: '/hongyadong-chongqing', emoji: '🏮', description: 'Clifftop night market & river views' },
+          { label: 'Days in Chongqing', href: '/blog/how-many-days-in-chongqing', emoji: '📅', description: 'How long to spend in Chongqing' },
         ]}
       />
     </>

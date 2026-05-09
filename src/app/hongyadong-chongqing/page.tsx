@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: hongyadongChongqingMeta.title,
     description: hongyadongChongqingMeta.description,
     path: '/hongyadong-chongqing',
-    ogImagePath: `${TOUR_IMG}/chongqing-night-skyline-hongyadong.jpg`,
+    ogImagePath: '/blog/chongqing-night-skyline-hongyadong.jpg',
     ogImageAlt: 'Hongyadong Chongqing Night — CTS Tours NZ',
     keywords: ['Hongyadong Chongqing', 'Chongqing night market', 'Chongqing cliffside', 'Chongqing Spirited Away', 'Fire & Fuzz tour NZ'],
     ogType: 'website',
@@ -83,7 +83,7 @@ export default function HongyadongChongqingPage() {
       <HubHero
         title={hongyadongChongqingMeta.h1}
         subtitle={hongyadongChongqingMeta.heroSubtitle}
-        backgroundImage={`${TOUR_IMG}/chongqing-night-skyline-hongyadong.jpg`}
+        backgroundImage="/blog/chongqing-night-skyline-hongyadong.jpg"
         imageClassName="object-[center_50%]"
       />
 

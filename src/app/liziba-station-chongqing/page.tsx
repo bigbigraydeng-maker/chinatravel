@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: lizibastationChongqingMeta.title,
     description: lizibastationChongqingMeta.description,
     path: '/liziba-station-chongqing',
-    ogImagePath: `${TOUR_IMG}/chongqing-travel-guide.jpg`,
+    ogImagePath: `${TOUR_IMG}/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg`,
     ogImageAlt: 'Liziba Station Chongqing — Train Through a Building — CTS Tours NZ',
     keywords: ['Liziba Station Chongqing', 'train through building Chongqing', 'monorail building Chongqing', 'Chongqing things to do', 'Fire & Fuzz tour NZ'],
     ogType: 'website',
@@ -83,7 +83,7 @@ export default function LizibaStationChongqingPage() {
       <HubHero
         title={lizibastationChongqingMeta.h1}
         subtitle={lizibastationChongqingMeta.heroSubtitle}
-        backgroundImage={`${TOUR_IMG}/chongqing-travel-guide.jpg`}
+        backgroundImage={`${TOUR_IMG}/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg`}
         imageClassName="object-[center_50%]"
       />
 

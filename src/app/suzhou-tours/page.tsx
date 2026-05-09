@@ -46,6 +46,7 @@ export default function SuzhouToursPage() {
         faqs={suzhouToursMeta.faqs}
         guideLinks={[
           { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', emoji: '🌿', description: 'UNESCO gardens & canal visitor tips' },
+          { label: 'Suzhou Classical Gardens', href: '/blog/suzhou-gardens-guide-nz', emoji: '🪷', description: 'Planning your Suzhou garden visits' },
           { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', emoji: '🍵', description: 'West Lake & Longjing tea guide' },
         ]}
       />
