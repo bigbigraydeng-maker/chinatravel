@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import '../styles/globals.css';
-import ConditionalChrome from '@/components/ConditionalChrome';
+import ConditionalChrome from '@/components/ConditionalChrome'
+import GeoDirective from '@/components/GeoDirective';
 import CookieConsentManager from '@/components/CookieConsentManager';
 import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import GoogleTagManager from '@/components/GoogleTagManager';
@@ -136,6 +137,7 @@ export default function RootLayout({
         <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
         <NewsletterPopup />
+        <GeoDirective />
       </body>
     </html>
   );
