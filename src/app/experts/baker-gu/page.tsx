@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: 'Meet Baker Gu, our lead China travel specialist and the expert behind our premium China tours.',
     type: 'website',
   },
+  alternates: { canonical: '/experts/baker-gu' },
 };
 
 const BakerGuPage = () => {

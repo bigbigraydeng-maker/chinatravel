@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     description: '21 comprehensive China travel guides with attractions, practical info, FAQs, and insider tips.',
     type: 'website',
   },
+  alternates: { canonical: '/guide' },
 };
 
 // Guide card component

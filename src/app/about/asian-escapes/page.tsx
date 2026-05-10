@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     'China tours New Zealand',
     'airport meet and greet China',
   ],
+  alternates: { canonical: '/about/asian-escapes' },
 };
 
 function BulletList({ items }: { items: string[] }) {

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Terms & Conditions | CTS Tours',
     description: 'Booking terms and conditions for CTS Tours New Zealand.',
   },
+  alternates: { canonical: '/terms-and-conditions' },
 };
 
 export default function TermsAndConditionsPage() {

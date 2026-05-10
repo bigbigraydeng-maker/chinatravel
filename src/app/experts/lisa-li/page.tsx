@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: 'Meet Lisa Li, MNZM, Managing Director of CTS Tours and founder of the New Zealand branch of China Travel Service.',
     type: 'website',
   },
+  alternates: { canonical: '/experts/lisa-li' },
 };
 
 const LisaLiPage = () => {

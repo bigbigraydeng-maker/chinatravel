@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'About CTS Tours | China Travel Specialists since 1928',
   description:
     "Learn about CTS Tours — New Zealand's dedicated China travel specialist with nearly 100 years of heritage, TAANZ membership, and direct operations in China. Meet our expert team.",
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {

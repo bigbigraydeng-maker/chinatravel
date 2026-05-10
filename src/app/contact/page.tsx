@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Contact CTS Tours | New Zealand China Travel Specialists',
   description:
     'Get in touch with CTS Tours. Our New Zealand-based China travel experts are ready to help plan your perfect China trip. Request a personalised quote today.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

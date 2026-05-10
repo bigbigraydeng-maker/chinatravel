@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     description: 'CTS supports trade partners with specialist China expertise.',
     type: 'website',
   },
+  alternates: { canonical: '/agents' },
 };
 
 const CHINA_UNLOCKED_REGISTER_URL =
