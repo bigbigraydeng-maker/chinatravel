@@ -102,6 +102,24 @@ export default function RootLayout({
           </>
         )}
 
+        {/* Google Ads Conversion Tag */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17984232872"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-ads"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-17984232872');
+            `,
+          }}
+        />
+
         {/* Meta Pixel Code */}
         <Script
           id="meta-pixel"
