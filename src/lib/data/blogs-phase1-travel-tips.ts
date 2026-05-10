@@ -25,7 +25,7 @@ Spring temperatures swing widely: Beijing can still feel cool in March, while so
 
 ### Rain and the south
 
-Bring a **compact umbrella** or poncho; Yangtze-region drizzle is frequent. If you visit [Yangshuo or Guilin](/guide/yangshuo-travel-guide) karst country, mist and light rain can linger — **quick-dry trousers** beat denim.
+Bring a **compact umbrella** or poncho; Yangtze-region drizzle is frequent. If you visit [Yangshuo or Guilin](/yangshuo-travel-guide) karst country, mist and light rain can linger — **quick-dry trousers** beat denim.
 
 ## Summer (June–August): Heat, humidity, and sun protection
 

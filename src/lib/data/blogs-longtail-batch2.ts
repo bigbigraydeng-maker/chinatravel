@@ -289,7 +289,7 @@ The show includes fire-breathing, shadow puppetry, and clapper opera before the 
 
 ## Leshan Giant Buddha (Day Trip)
 
-The [Leshan Giant Buddha](/leshan-giant-buddha-day-trip) is 120km from Chengdu — 35 minutes by high-speed rail. If you have three nights in Chengdu, one of them anchors a Leshan day trip. The Buddha is 71 metres tall, carved into a cliff face at a river confluence, built over 90 years in the 8th century. The stair descent to foot level is the most memorable physical experience of the Chengdu segment of any itinerary I build.
+The [Leshan Giant Buddha](/blog/leshan-giant-buddha-day-trip) is 120km from Chengdu — 35 minutes by high-speed rail. If you have three nights in Chengdu, one of them anchors a Leshan day trip. The Buddha is 71 metres tall, carved into a cliff face at a river confluence, built over 90 years in the 8th century. The stair descent to foot level is the most memorable physical experience of the Chengdu segment of any itinerary I build.
 
 ## Three Days in Chengdu: How I Structure It
 

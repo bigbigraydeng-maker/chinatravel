@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Find Your Tour | CTS Tours',
   description:
     'Find your perfect tour by destination, interest, and travel style. Discover tours across China, Japan, and Vietnam.',
+  alternates: {
+    canonical: 'https://www.ctstours.co.nz/tours/find',
+  },
   openGraph: {
     title: 'Find Your Tour | CTS Tours',
     description:
@@ -20,7 +23,7 @@ export const metadata: Metadata = {
         url: tourImage('xian-terracotta.jpg'),
         width: 1200,
         height: 630,
-        alt: 'Terracotta Army, Xi’an — find your tour with CTS Tours',
+        alt: "Terracotta Army, Xi'an — find your tour with CTS Tours",
       },
     ],
   },
@@ -36,7 +39,7 @@ export default function FindTourPage() {
         title="Find Your Perfect Tour"
         subtitle="Search and filter tours across China, Japan, and Vietnam"
         imageSrc={tourImage('xian-terracotta.jpg')}
-        imageAlt="Terracotta Army, Xi’an — find tours across China, Japan, and Vietnam, CTS Tours"
+        imageAlt="Terracotta Army, Xi'an — find tours across China, Japan, and Vietnam, CTS Tours"
         priority
       />
 
