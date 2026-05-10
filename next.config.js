@@ -100,10 +100,51 @@ const nextConfig = {
       { source: '/feed/:path*', destination: '/', permanent: true },
       { source: '/comments/feed', destination: '/', permanent: true },
       { source: '/comments/feed/', destination: '/', permanent: true },
-      { source: '/category/:path*', destination: '/blog', permanent: true },
-      { source: '/tag/:path*', destination: '/blog', permanent: true },
+      { source: '/category/:path*', destination: '/china-tours', permanent: true },
+      { source: '/tag/:path*', destination: '/china-tours', permanent: true },
       { source: '/author/:path*', destination: '/about', permanent: true },
       { source: '/page/:path*', destination: '/', permanent: true },
+
+      /** WordPress query-string URLs — ?p=, ?page_id=, ?cat=, ?s= etc.
+       *  Next.js redirects don't strip query params by default, so use `has` to match.
+       *  All redirect to /china-tours (most relevant hub for former WP travel content).
+       */
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 'p' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 'page_id' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 'cat' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 'tag' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 'attachment_id' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
+      {
+        source: '/:path*',
+        has: [{ type: 'query', key: 's' }],
+        destination: '/china-tours',
+        permanent: true,
+      },
 
       /** Common legacy travel-site URL shapes → /china-tours hub */
       { source: '/destinations', destination: '/china-tours', permanent: true },
