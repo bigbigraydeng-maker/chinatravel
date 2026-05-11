@@ -77,31 +77,6 @@ export default function RootLayout({
         {/* Google Tag Manager */}
         <GoogleTagManager />
 
-        {/* Google Analytics 4 */}
-        {process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script
-              id="google-analytics"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){window.dataLayer.push(arguments);}
-                  window.gtag = gtag;
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}', {
-                    page_path: window.location.pathname,
-                  });
-                `,
-              }}
-            />
-          </>
-        )}
-
         {/* Google Ads Conversion Tag */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17984232872"
