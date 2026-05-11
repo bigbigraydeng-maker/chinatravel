@@ -10,7 +10,7 @@ interface AvailabilityBadgeProps {
 
 export default function AvailabilityBadge({
   departureDate,
-  seatsLeft = 5,
+  seatsLeft = 12,
   showCountdown = true,
 }: AvailabilityBadgeProps) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
@@ -40,7 +40,7 @@ export default function AvailabilityBadge({
     return () => clearInterval(timer);
   }, [departureDate, showCountdown]);
 
-  const isLowAvailability = seatsLeft <= 5;
+  const isLowAvailability = seatsLeft <= 15;
 
   const formatDeparture = (raw: string) => {
     const trimmed = raw.trim();

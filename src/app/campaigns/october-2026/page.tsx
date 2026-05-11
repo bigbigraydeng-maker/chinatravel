@@ -8,7 +8,7 @@ import Testimonials from '@/components/Testimonials';
 
 import { getTourBySlug } from '@/lib/data/tours';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
-import { getRemainingSeats } from '@/lib/campaigns/seat-availability';
+import { getRemainingSeatsForDate } from '@/lib/campaigns/seat-availability';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 
@@ -71,7 +71,7 @@ export default function October2026CampaignIndexPage() {
     return {
       spot,
       tour,
-      remainingSeats: getRemainingSeats(spot.slug),
+      remainingSeats: getRemainingSeatsForDate(spot.departureSortDate),
     };
   })
     .filter((x): x is NonNullable<typeof x> => x !== null)

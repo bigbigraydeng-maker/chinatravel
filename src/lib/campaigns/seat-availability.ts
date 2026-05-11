@@ -1,41 +1,71 @@
 /**
- * Deterministic "remaining seats" counter (5–10 inclusive) for a campaign tour slug.
+ * "Remaining seats" urgency cue — range 10–15, date-aware.
  *
- * Why deterministic?
- *  - Stable across SSR/CSR — no hydration mismatch.
- *  - SEO-friendly — Google sees the same content per URL on every crawl.
- *  - Editorial-controlled — change the slug or the formula to refresh the number.
+ * Rule: further departure = more seats available.
+ *   ≥180 days out → 15  (plenty of time, plenty of space)
+ *   ≤30  days out → 10  (imminent, nearly full)
+ *   Linear interpolation in between.
  *
- * The number is only intended as a soft urgency cue ("Only X seats remaining").
- * It is NOT inventory truth; the real availability is confirmed at booking.
- *
- * Mapping range: 5–10 (6 buckets) — feels scarce without being implausibly tiny.
+ * The number is a soft urgency cue only — NOT inventory truth.
+ * Real availability is confirmed at booking.
  */
 
-const MIN_SEATS = 5;
-const SEAT_BUCKETS = 6; // 5,6,7,8,9,10
+const MIN_SEATS = 10;
+const MAX_SEATS = 15;
+const NEAR_DAYS = 30;
+const FAR_DAYS = 180;
 
 /**
- * Compute a stable seat count in [5, 10] from a slug string.
- *
- * Uses a simple polynomial rolling hash (Java-style 31x + char). Pure, no I/O,
- * no Date.now(), no Math.random() — same input always returns the same output.
+ * Parse a departure date string that may or may not include a year.
+ * Handles:
+ *   "2026-10-14"        (ISO)
+ *   "14 October 2026"   (long-form with year)
+ *   "14 October"        (long-form, assumes 2026)
+ *   "25 August"         (short-form, assumes 2026)
  */
-export function getRemainingSeats(slug: string): number {
-  if (!slug) return MIN_SEATS;
-
-  let hash = 0;
-  for (let i = 0; i < slug.length; i++) {
-    // Force unsigned 32-bit on each step to avoid negative results.
-    hash = (Math.imul(hash, 31) + slug.charCodeAt(i)) >>> 0;
-  }
-  return MIN_SEATS + (hash % SEAT_BUCKETS);
+function parseDepartureDate(raw: string): Date | null {
+  if (!raw) return null;
+  const trimmed = raw.trim();
+  const withYear = /^\d{1,2}\s+[A-Za-z]+$/i.test(trimmed) ? `${trimmed} 2026` : trimmed;
+  const d = new Date(withYear);
+  return Number.isNaN(d.getTime()) ? null : d;
 }
 
 /**
- * Human-readable label for the urgency badge, e.g. "Only 7 seats remaining".
+ * Return a seat count in [10, 15] based on how far away the departure is.
+ * Further departure → higher number (more seats still available).
+ *
+ * @param departureDateStr  Any parseable date string (ISO or "DD Month [YYYY]").
+ * @param ref               Reference "today" — defaults to Date.now(). Pass a
+ *                          fixed date in tests or SSR snapshots.
  */
-export function getRemainingSeatsLabel(slug: string): string {
-  const seats = getRemainingSeats(slug);
+export function getRemainingSeatsForDate(departureDateStr: string, ref?: Date): number {
+  const departure = parseDepartureDate(departureDateStr);
+  if (!departure) return Math.round((MIN_SEATS + MAX_SEATS) / 2); // fallback: 12
+
+  const now = ref ?? new Date();
+  const daysUntil = Math.max(0, (departure.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+
+  if (daysUntil >= FAR_DAYS) return MAX_SEATS;
+  if (daysUntil <= NEAR_DAYS) return MIN_SEATS;
+
+  const ratio = (daysUntil - NEAR_DAYS) / (FAR_DAYS - NEAR_DAYS);
+  return Math.round(MIN_SEATS + ratio * (MAX_SEATS - MIN_SEATS));
+}
+
+/**
+ * Human-readable label, e.g. "Only 14 seats remaining".
+ */
+export function getRemainingSeatsLabel(departureDateStr: string): string {
+  const seats = getRemainingSeatsForDate(departureDateStr);
   return `Only ${seats} seats remaining`;
+}
+
+/**
+ * Legacy slug-based function kept for any callers not yet migrated.
+ * Returns the midpoint (12) — use getRemainingSeatsForDate() instead.
+ * @deprecated Use getRemainingSeatsForDate(departureDateStr) instead.
+ */
+export function getRemainingSeats(_slug: string): number {
+  return Math.round((MIN_SEATS + MAX_SEATS) / 2);
 }

@@ -1,4 +1,4 @@
-import { getRemainingSeats } from '@/lib/campaigns/seat-availability';
+import { getRemainingSeatsForDate } from '@/lib/campaigns/seat-availability';
 import DaysCountdown from './DaysCountdown';
 
 /**
@@ -22,7 +22,7 @@ export default function OctoberUrgencyBar({
   departureSortDate,
   tourSlug,
 }: OctoberUrgencyBarProps) {
-  const seats = getRemainingSeats(tourSlug);
+  const seats = getRemainingSeatsForDate(departureSortDate);
 
   const cards = [
     {
