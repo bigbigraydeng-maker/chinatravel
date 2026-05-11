@@ -282,7 +282,7 @@ See Xi'an on our [Beijing and Xi'an tour](/tours/china/discovery/beijing-xian) o
     authorRole: 'China Travel Specialist',
     category: 'culture',
     tags: ['Beijing', 'Hutong', 'Old Beijing', 'China Heritage', 'Culture'],
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?auto=format&fit=crop&w=1200&q=80',
     publishedAt: '2026-05-19',
     readTime: '6 min read',
     content: `
