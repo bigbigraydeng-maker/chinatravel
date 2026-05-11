@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateBreadcrumbListSchema } from '@/lib/schema-seo';
+import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -26,29 +27,11 @@ export default function FAQPage() {
     generateBreadcrumbListSchema(breadcrumbs)
   ];
 
-  // Tier 1 FAQ Pages
+  // Tier 1 FAQ Pages — derived from single source of truth in faq-pages.ts
   const tier1FAQs = [
-    {
-      slug: 'faq-planning-your-china-trip',
-      title: 'Planning Your China Trip',
-      description: 'How long should your trip be? What\'s the best time? How much does it cost? Get answers to the essentials.',
-      icon: '🗺️',
-      priority: 'Tier 1 - High Priority'
-    },
-    {
-      slug: 'faq-beijing-travel',
-      title: 'Beijing Travel Planning',
-      description: 'Everything about visiting Beijing - how many days, best season, budget, and day trips to the Great Wall.',
-      icon: '🏯',
-      priority: 'Tier 1 - High Priority'
-    },
-    {
-      slug: 'faq-great-wall-of-china',
-      title: 'Great Wall of China Guide',
-      description: 'Complete FAQ about the Great Wall - length, best time to hike, Badaling vs Mutianyu, and difficulty levels.',
-      icon: '🧗',
-      priority: 'Tier 1 - High Priority'
-    }
+    { page: faqPlanningYourChinaTrip, icon: '🗺️' },
+    { page: faqBeijingTravel,         icon: '🏯' },
+    { page: faqGreatWall,             icon: '🧗' },
   ];
 
   // Tier 2 FAQ Pages (Coming Soon)
@@ -123,15 +106,15 @@ export default function FAQPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {tier1FAQs.map((faq) => (
+              {tier1FAQs.map(({ page, icon }) => (
                 <Link
-                  key={faq.slug}
-                  href={`/faq/${faq.slug}`}
+                  key={page.slug}
+                  href={`/faq/${page.slug}`}
                   className="group flex flex-col border border-warm-100 rounded-xl hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden bg-white"
                 >
                   {/* Card Header */}
                   <div className="flex items-start justify-between p-6 pb-4">
-                    <span className="text-4xl">{faq.icon}</span>
+                    <span className="text-4xl">{icon}</span>
                     <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
                       High Priority
                     </span>
@@ -140,10 +123,10 @@ export default function FAQPage() {
                   {/* Card Body */}
                   <div className="flex-1 px-6 flex flex-col">
                     <h3 className="text-xl font-semibold text-accent mb-3 group-hover:text-primary transition-colors">
-                      {faq.title}
+                      {page.title}
                     </h3>
                     <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">
-                      {faq.description}
+                      {page.introText}
                     </p>
                   </div>
 
