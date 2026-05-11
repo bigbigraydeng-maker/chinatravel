@@ -547,6 +547,577 @@ Absolutely! Hikers spend 4-6 hours on certain sections. If you're an avid hiker,
 };
 
 /**
+ * Phase 3 FAQ Pages — Tour Planning, Visa Requirements, Best Time to Travel
+ * URL slugs: /faq/tour-planning | /faq/visa-requirements | /faq/best-time-travel
+ */
+
+export const faqTourPlanning: FAQPage = {
+  slug: 'tour-planning',
+  title: 'How to Plan a China Tour: FAQ for New Zealand Travellers',
+  metaDescription: 'Everything you need to plan your China tour from New Zealand — group vs tailor-made, how long, what to include, budgeting, and why using a specialist makes the difference.',
+  introText: 'Organising a China trip from New Zealand raises dozens of practical questions. Here are the ones we answer most often — with honest, specific answers from our team of China travel specialists.',
+  faqs: [
+    {
+      question: 'Should I book a group tour or a tailor-made private tour?',
+      searchIntent: 'group vs private tour China',
+      monthlySearches: 180,
+      answer: `Both work well — the right choice depends on your travel style and budget.
+
+<strong>Group tours</strong> are structured itineraries with fixed dates, set accommodation, and a group of typically 8–16 travellers sharing the same schedule. They cost 20–40% less than private equivalents, are fully organised so you do not need to handle logistics, and provide a social dimension that solo or couple travellers often appreciate. The trade-off is flexibility: the itinerary is set, and the pace must accommodate the whole group.
+
+<strong>Tailor-made private tours</strong> are planned specifically for you. Departure dates are flexible, the itinerary can be built around your interests (food, history, photography, hiking), accommodation can range from 3-star to 5-star at your choice, and the pace is yours. They cost more, but the experience is qualitatively different.
+
+<strong>CTS recommendation:</strong> For first-time visitors to China who prefer structure and certainty, our group Discovery tours are excellent value. For travellers with specific interests, repeat visitors, or families with children, our tailor-made Signature itineraries are worth the premium.`
+    },
+    {
+      question: 'How far in advance should I book my China tour?',
+      searchIntent: 'when to book China tour',
+      monthlySearches: 140,
+      answer: `<strong>Minimum recommended lead time: 3 months.</strong>
+
+For travel during peak periods — October Golden Week (Oct 1–7), Chinese New Year (late January or February), and New Zealand school holidays — book 5–6 months in advance. These periods have limited availability on group departures and significantly higher prices for accommodation.
+
+For travel during shoulder seasons (March–May, November), 3 months is generally sufficient for group tours. Tailor-made itineraries need slightly more time for careful planning — 4 months is ideal.
+
+Key items that require early booking:
+- Domestic flight tickets during peak periods
+- High-speed rail tickets on popular routes (Beijing–Xi'an)
+- Accommodation in major cities at quality properties
+- Specialist experiences (panda volunteer programme, private Great Wall access)`
+    },
+    {
+      question: 'What is typically included in a China tour package?',
+      searchIntent: 'what is included China tour',
+      monthlySearches: 160,
+      answer: `Standard CTS tour packages include:
+
+<strong>✅ Usually included:</strong>
+- Airport transfers (arrival and departure)
+- All domestic transport (private vehicle, domestic flights or high-speed rail between cities)
+- Accommodation (twin or double room as specified)
+- Breakfast daily; some dinners as noted
+- English-speaking local guide at each destination
+- Group entrance fees to major attractions
+- 24/7 emergency support contact
+
+<strong>❌ Usually not included:</strong>
+- International flights (Auckland to China and return)
+- Travel insurance (strongly recommended — mandatory for visa applications)
+- Visa fee (NZD 130–220 depending on application type)
+- Personal spending, souvenirs, optional activities
+- Lunches and most dinners
+- Tips for guides and drivers (NZD 5–10 per person per day is customary)
+
+<strong>Ask specifically about:</strong> Whether international flights are included. Some packages include them; most CTS packages price them separately so you can choose your own routing.`
+    },
+    {
+      question: 'Can I customise a standard tour itinerary?',
+      searchIntent: 'customise China tour itinerary',
+      monthlySearches: 120,
+      answer: `Yes — and we encourage it.
+
+Our Discovery group tours have fixed itineraries because they depart on set dates with multiple travellers. However, even within group tours, we can often accommodate small modifications: a different hotel tier, an additional excursion, or a day's extension at the end.
+
+Our Signature tailor-made tours are built entirely around your preferences. We start with a consultation about your interests, travel style, pace preference, and budget, and design the itinerary from there. Common customisations include:
+
+- Adding food-focused experiences (cooking classes, market tours, restaurant bookings)
+- Including natural areas alongside the classic cities (Guilin, Zhangjiajie, Yunnan)
+- Incorporating a Yangtze River cruise segment
+- Adjusting the city mix (spending more days in Xi'an, skipping cities that don't interest you)
+- Adding a Tibet or Silk Road extension
+
+<a href="/contact">Contact us</a> to start the conversation — we typically respond within one business day.`
+    },
+    {
+      question: 'Is China safe for New Zealand travellers?',
+      searchIntent: 'China safe travel New Zealand',
+      monthlySearches: 200,
+      answer: `China is consistently rated as one of the safer destinations in Asia for foreign travellers.
+
+<strong>Crime:</strong> Violent crime against tourists is extremely rare. Petty theft (pickpocketing in crowded areas) exists as it does in any major tourist destination — standard precautions apply.
+
+<strong>Health:</strong> Tap water is not drinkable in China; use bottled water. Food safety standards in established restaurants and hotels are good. Air quality varies by city and season; those with respiratory conditions should check pollution levels.
+
+<strong>Scams:</strong> The main risks for tourists are non-violent: "tea ceremony" scams in Beijing and Shanghai (a friendly local invites you for tea, the bill is enormous), art gallery scams, and overpriced taxis at tourist sites. Awareness prevents most of these.
+
+<strong>Language:</strong> Outside tourist areas and major hotels, English is limited. Our guides handle all communication; on tailor-made tours, we provide a 24/7 emergency contact number for situations where you need immediate translation support.
+
+<strong>SafeTravel NZ rating:</strong> Check the NZ government's SafeTravel website before departure for the current official advisory. China has consistently been rated as low-risk for New Zealand travellers.`
+    },
+    {
+      question: 'Do I need travel insurance for China?',
+      searchIntent: 'travel insurance China NZ',
+      monthlySearches: 130,
+      answer: `<strong>Yes — travel insurance is mandatory</strong>, both for your China visa application and as a practical necessity.
+
+<strong>For your visa:</strong> Chinese visa applications for New Zealanders now require proof of travel insurance as part of the application. Your policy must cover medical evacuation and have a minimum medical coverage of NZD 100,000.
+
+<strong>Practically:</strong> Chinese healthcare is high-quality in major cities, but hospital bills must be paid upfront by foreign nationals and then claimed back from your insurer. A serious medical event without insurance can cost NZD 50,000–200,000. Medical evacuation from China to New Zealand costs NZD 80,000–150,000 uninsured.
+
+<strong>What to look for in a policy:</strong>
+- Medical coverage: NZD 500,000 minimum
+- Medical evacuation: included
+- Trip cancellation/interruption: included
+- COVID-19 coverage: confirm specifically
+- Pre-existing conditions: declare and check coverage
+
+Recommended NZ providers: Southern Cross Travel Insurance, Cover-More, IAG/AMI. Compare at least three quotes. Do not travel to China without it.`
+    },
+    {
+      question: 'What is the approximate budget for a 10-day China tour?',
+      searchIntent: 'China tour budget New Zealand',
+      monthlySearches: 150,
+      answer: `Cost varies significantly by tour type and accommodation standard. Approximate per-person costs for a 10-day tour (not including international flights):
+
+<strong>Group Discovery tour (CTS standard):</strong>
+- Tour package: NZD 3,200–4,500 per person (twin share)
+- Visas: NZD 130–220
+- Travel insurance: NZD 200–350
+- Personal spending (lunches, souvenirs, tips): NZD 600–900
+- <strong>Total: NZD 4,130–5,970</strong>
+
+<strong>Signature tailor-made (4-star hotels):</strong>
+- Tour package: NZD 5,500–7,500 per person
+- Personal spending: NZD 800–1,200
+- <strong>Total: NZD 6,630–9,170</strong>
+
+<strong>International flights from Auckland:</strong> NZD 1,400–2,800 return depending on airline and season.
+
+<strong>Total trip cost estimate:</strong> NZD 5,500–12,000 per person depending on tour type, travel season, and flight class.
+
+Budget and shoulder-season travel is possible; luxury-class travel is also available. <a href="/contact">Contact us</a> for a specific quote based on your dates and preferences.`
+    },
+    {
+      question: 'How do I pay for things in China as a New Zealand traveller?',
+      searchIntent: 'payment methods China tourist',
+      monthlySearches: 110,
+      answer: `Payment in China has shifted dramatically to mobile payments (WeChat Pay and Alipay), which creates a challenge for foreign visitors whose bank accounts are not linked to Chinese mobile numbers.
+
+<strong>What works for international travellers:</strong>
+
+<strong>Cash (Chinese yuan / RMB):</strong> Still accepted everywhere, from street vendors to taxi drivers. Exchange NZD to CNY before departure at ANZ, BNZ, or Westpac; rates are generally better in New Zealand than at Chinese airports.
+
+<strong>Alipay International:</strong> Alipay has launched an international version allowing foreign credit cards (Visa, Mastercard) to be linked to an Alipay account. Works at most merchants. Set this up before departure.
+
+<strong>Credit cards:</strong> Accepted at international hotels, high-end restaurants, and some tourist sites. Not reliable at small restaurants, markets, or transport.
+
+<strong>Practical recommendation:</strong> Bring NZD 500–800 in cash (CNY equivalent) for daily expenses. Set up the Alipay international app before departure. Your hotel concierge can assist with local cash exchange if needed.
+
+Our guides handle payments for group activities; this is most relevant for personal purchases and meals on your own time.`
+    },
+    {
+      question: 'What China tours does CTS offer for New Zealand travellers?',
+      searchIntent: 'CTS Tours China packages NZ',
+      monthlySearches: 90,
+      answer: `CTS Tours offers two main types of China travel:
+
+<strong>Discovery Tours (group departures):</strong>
+- <a href="/tours/china/discovery/beijing-xian">A Tale of Two Cities — Beijing & Xi'an</a> (7 days)
+- <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Surroundings</a> (7 days)
+- Fixed departure dates throughout the year
+- Group size: 8–16 travellers
+- Includes accommodation, transport, guide, major entrance fees
+
+<strong>Signature Tours (tailor-made):</strong>
+- Custom itineraries designed for your group (2–12 people)
+- Flexible departure dates
+- Choice of hotels from 3-star to luxury
+- Available for all destinations: Beijing, Xi'an, Shanghai, Guilin, Chengdu, Yunnan, and more
+- Includes full private guide service throughout
+
+To discuss your options, <a href="/contact">contact our team</a> — we will respond within one business day with specific recommendations and a no-obligation quote.`
+    },
+    {
+      question: 'Do I need to speak Mandarin to travel in China?',
+      searchIntent: 'travel China without speaking Chinese',
+      monthlySearches: 170,
+      answer: `On a guided tour with CTS, no. Your local English-speaking guide handles all communication throughout.
+
+For independent movement within your tour (exploring on your own during free time), a few practical tools help:
+
+<strong>Translation apps:</strong> Google Translate's camera function reads Chinese text in real time — menu items, street signs, transport information. Works without a data connection if you download the Chinese language pack offline.
+
+<strong>Useful phrases:</strong> Even minimal Mandarin is appreciated. "Xièxie" (谢谢, thank you), "Nǐ hǎo" (你好, hello), and showing your hotel's name card (every hotel provides them at check-in) covers most situations.
+
+<strong>Ride-hailing:</strong> DiDi (China's Uber equivalent) works with an English-language interface and eliminates taxi language barriers. Your guide will help you set it up on day one.
+
+<strong>Navigation:</strong> Baidu Maps is more accurate than Google Maps in China. Download it before departure; it works with English searches for major landmarks.
+
+Major tourist attractions and 4–5 star hotels all have English-speaking staff. The language challenge is real but manageable with preparation.`
+    }
+  ],
+  relatedGuides: [
+    'beijing-travel-guide',
+    'shanghai-travel-guide',
+    'best-time-to-visit-china'
+  ],
+  relatedFaqs: [
+    { slug: 'visa-requirements', title: 'China Visa Requirements FAQ' },
+    { slug: 'best-time-travel', title: 'Best Time to Travel to China FAQ' }
+  ]
+};
+
+export const faqVisaRequirements: FAQPage = {
+  slug: 'visa-requirements',
+  title: 'China Visa Requirements: FAQ for New Zealand Travellers',
+  metaDescription: 'Complete China visa guide for New Zealanders — what type to apply for, documents needed, costs, processing times, and whether NZ travellers need a visa at all in 2025.',
+  introText: 'China visa requirements changed significantly in 2024–2025, with New Zealand now qualifying for visa-free entry under certain conditions. Here is the current picture — accurate as of May 2026.',
+  faqs: [
+    {
+      question: 'Do New Zealanders need a visa to visit China in 2025?',
+      searchIntent: 'China visa free New Zealand 2025',
+      monthlySearches: 320,
+      answer: `<strong>As of March 2025, New Zealand passport holders can enter mainland China visa-free for stays of up to 30 days</strong> for tourism, transit, business, and family visits.
+
+This is a significant change from the previous requirement for a tourist visa. New Zealand was added to China's visa-free list as part of an expanded mutual visa-exemption programme.
+
+<strong>Key conditions for visa-free entry:</strong>
+- Stay must not exceed 30 days (cumulative days in a single visit)
+- Purpose must be tourism, transit, business meeting, or visiting family/friends
+- You must hold a valid New Zealand passport
+- Your return or onward ticket must be confirmed
+
+<strong>If you need to stay longer than 30 days</strong>, or if your visit includes other purposes (study, employment, journalism), you will still need to apply for the appropriate visa type.
+
+<strong>Note:</strong> Visa-free arrangements can change. Confirm the current status on the MFAT SafeTravel website before booking.`
+    },
+    {
+      question: 'What documents do I need for visa-free entry to China?',
+      searchIntent: 'documents needed China visa free entry',
+      monthlySearches: 180,
+      answer: `For visa-free entry under the 30-day exemption, you will need:
+
+<strong>At the port of entry:</strong>
+- Valid New Zealand passport (minimum 6 months validity remaining)
+- Confirmed return or onward flight ticket
+- Hotel confirmation or confirmed accommodation address
+- Completed arrival card (provided on the flight or at the immigration hall)
+- Travel insurance documentation (not mandatory at the border, but required for any visa application and strongly recommended)
+
+<strong>Practical tip:</strong> Chinese immigration officers may ask to see your hotel booking or onward flight ticket. Have these accessible on your phone or printed. Airlines occasionally ask for these documents at check-in before allowing you to board.
+
+<strong>If you are entering with a group tour:</strong> Your tour operator should provide you with a welcome letter confirming your accommodation details. CTS provides this as a matter of course.`
+    },
+    {
+      question: 'What types of China visas are available if I need one?',
+      searchIntent: 'types of China visa NZ',
+      monthlySearches: 130,
+      answer: `If your situation falls outside the visa-free exemption (stay longer than 30 days, working, studying, or repeating visits that exceed the exemption limit), the main visa types are:
+
+<strong>L Visa (Tourist):</strong> For tourism purposes. Single or multiple entry. Most common for NZ travellers who exceed the 30-day exemption or prefer the certainty of a formal visa.
+
+<strong>M Visa (Business):</strong> For commercial and trade activities. Not required for tourist trips that include business meetings — the L visa covers this under visa-free entry.
+
+<strong>F Visa (Exchange/Cultural):</strong> For non-commercial activities, cultural exchanges, study visits.
+
+<strong>X Visa (Study):</strong> For students enrolled in Chinese educational institutions.
+
+<strong>Z Visa (Work):</strong> For those with a Chinese work permit. Complex; requires employer sponsorship.
+
+<strong>Q Visa (Family Visit):</strong> For visiting Chinese citizens who are family members.
+
+For most NZ travellers who need a formal visa (typically because they are staying more than 30 days), the L Tourist Visa is the appropriate type.`
+    },
+    {
+      question: 'How do I apply for a China tourist visa from New Zealand?',
+      searchIntent: 'apply China visa New Zealand',
+      monthlySearches: 200,
+      answer: `<strong>For a formal visa (if required beyond the 30-day exemption):</strong>
+
+Applications are made through the Chinese Visa Application Service Centre (CVASC) in Auckland:
+
+<strong>Address:</strong> 16–20 Arthur Street, Newmarket, Auckland 1023
+<strong>Hours:</strong> Monday–Friday, 9:00am–3:00pm (submission); 9:00am–4:00pm (collection)
+
+<strong>Required documents (standard tourist visa):</strong>
+1. Completed and signed application form (available on the CVASC website)
+2. Valid NZ passport (original + photocopy of data page)
+3. Passport-sized photo (white background, taken within the last 6 months)
+4. Confirmed return flight booking
+5. Confirmed hotel bookings for the entire stay
+6. Travel insurance (covering medical and evacuation)
+7. Visa fee (CNY equivalent or NZD cash/card)
+
+<strong>Processing times:</strong>
+- Standard: 4 working days
+- Express (3 days): additional NZD 30–40
+- Rush (2 days): additional NZD 50–70
+
+<strong>Fee (approximately):</strong> NZD 130–160 standard single-entry; NZD 180–220 multiple-entry. Fees change periodically.
+
+<strong>Important:</strong> Do not book non-refundable flights until your visa is approved.`
+    },
+    {
+      question: 'Can I extend my stay in China beyond 30 days on the visa-free exemption?',
+      searchIntent: 'extend China stay visa free',
+      monthlySearches: 110,
+      answer: `<strong>No — the visa-free exemption cannot be extended from within China.</strong>
+
+If you arrive on the 30-day visa-free exemption and wish to stay longer, you have two options:
+
+<strong>Option 1: Leave and re-enter.</strong> Travel to Hong Kong, Macau, or another country, and re-enter China on a new 30-day exemption. Note that China's immigration authorities monitor the pattern of entries and exits, and repeated border runs may attract scrutiny. This is not a sustainable long-term solution.
+
+<strong>Option 2: Apply for a visa before departure.</strong> If you know you will want to stay longer than 30 days, apply for an L Tourist Visa (available for 30 or 60-day stays, single or multiple entry) before leaving New Zealand. This gives you certainty and flexibility.
+
+For most NZ holiday travellers (10–21 days), the 30-day exemption is more than sufficient, and no visa is needed.`
+    },
+    {
+      question: 'Do I need a China visa for a layover / transit through a Chinese airport?',
+      searchIntent: 'China transit visa NZ',
+      monthlySearches: 120,
+      answer: `<strong>For transits through mainland China airports, New Zealand passport holders qualify for the Transit Without Visa (TWOV) policy</strong> at most major international airports.
+
+<strong>144-hour TWOV (6 days):</strong> Available at Beijing Capital, Beijing Daxing, Shanghai Pudong, Shanghai Hongqiao, Guangzhou Baiyun, Chengdu Tianfu, Chongqing, and several other airports. You can leave the airport and visit the city during your layover without a Chinese visa, as long as you have confirmed onward travel to a third country within 144 hours.
+
+<strong>72-hour TWOV (3 days):</strong> Available at Guilin, Harbin, Kunming, and several other cities.
+
+<strong>24-hour airside transit:</strong> Available at most other international airports. You remain in the international transit area; no visa needed.
+
+<strong>To qualify for TWOV, you must:</strong>
+- Hold a NZ passport
+- Have a confirmed onward flight to a third country (not China)
+- Arrive and depart through the same city (or as specified by that city's TWOV rules)
+
+This is excellent for travellers routing through China on the way to Europe or elsewhere who want to add a short China city visit.`
+    },
+    {
+      question: 'Is a visa required for Hong Kong and Macau?',
+      searchIntent: 'Hong Kong Macau visa NZ',
+      monthlySearches: 140,
+      answer: `<strong>Hong Kong:</strong> New Zealand passport holders can enter Hong Kong visa-free for up to 90 days. No application or documentation beyond your passport is required.
+
+<strong>Macau:</strong> New Zealand passport holders can enter Macau visa-free for up to 90 days.
+
+<strong>Important:</strong> Hong Kong and Macau are Special Administrative Regions (SARs) with separate immigration systems from mainland China. <strong>Entry to Hong Kong or Macau does not count as entry to mainland China</strong>, and travel between the mainland and the SARs requires crossing a border checkpoint.
+
+If you are including Hong Kong or Macau as part of a China trip (which many travellers do — the high-speed rail between Hong Kong and mainland China is excellent), you will need to go through Chinese immigration when entering the mainland, even if you are coming from Hong Kong.`
+    },
+    {
+      question: 'What is China\'s health entry requirements for New Zealand travellers?',
+      searchIntent: 'China health entry requirements NZ',
+      monthlySearches: 90,
+      answer: `As of May 2026, China has removed all COVID-19 related entry requirements. No health declaration, vaccination certificate, or pre-departure testing is required.
+
+<strong>Standard health entry requirements:</strong>
+- Yellow fever vaccination certificate: Required only if you are arriving from a yellow fever endemic country (Sub-Saharan Africa, South America). Not required for direct travel from New Zealand.
+- No other vaccinations are required for entry.
+
+<strong>Recommended vaccinations (not entry requirements):</strong>
+- Hepatitis A and B
+- Typhoid
+- Japanese Encephalitis (if visiting rural areas)
+- Tetanus/diphtheria update
+
+Consult your GP or a travel health clinic at least 6 weeks before departure. Some vaccinations require multiple doses over several weeks.`
+    }
+  ],
+  relatedGuides: [
+    'china-visa-guide-for-new-zealanders',
+    'beijing-travel-guide',
+    'best-time-to-visit-china'
+  ],
+  relatedFaqs: [
+    { slug: 'tour-planning', title: 'Tour Planning FAQ' },
+    { slug: 'best-time-travel', title: 'Best Time to Travel to China' }
+  ]
+};
+
+export const faqBestTimeTravel: FAQPage = {
+  slug: 'best-time-travel',
+  title: 'Best Time to Travel to China: Season-by-Season FAQ',
+  metaDescription: 'When is the best time to visit China from New Zealand? Month-by-month weather guide, peak seasons to avoid, regional differences, and Baker Gu\'s honest recommendations for NZ travellers.',
+  introText: 'China is a vast country with enormous climate variation between regions. The answer to "when should I go?" depends significantly on where you are going and what you want to do. Here is an honest, detailed guide.',
+  faqs: [
+    {
+      question: 'What is the best overall time to visit China from New Zealand?',
+      searchIntent: 'best time visit China NZ',
+      monthlySearches: 280,
+      answer: `<strong>Autumn (September–October) is the best overall time.</strong>
+
+This is consistently the most recommended window for first-time visitors from New Zealand, and for good reason:
+
+- Temperatures across most of China are comfortable: 15–28°C in Beijing, 20–30°C in Shanghai, 18–28°C in Xi'an, 18–25°C in Chengdu
+- Skies are clearer than summer (lower humidity, less haze)
+- Autumn colour arrives in October in Beijing and northern China
+- The light for photography is excellent
+- Tourism infrastructure is functioning at full capacity
+
+<strong>The one complication:</strong> October Golden Week (October 1–7) is China's largest national holiday. Domestic travel peaks dramatically, major attractions are significantly more crowded, accommodation prices increase 30–50%, and the overall experience can be stressful. Plan to be in China either before (mid-September) or after (mid-October) this window.`
+    },
+    {
+      question: 'What is spring like in China, and is it a good time to visit?',
+      searchIntent: 'spring China travel weather',
+      monthlySearches: 140,
+      answer: `<strong>Spring (March–May) is the second-best season for China travel.</strong>
+
+<strong>March:</strong> Still cool in northern China (Beijing: 5–15°C), mild in the south (Shanghai: 10–18°C, Chengdu: 12–20°C). Plum and cherry blossom appears in late March. Crowds are moderate.
+
+<strong>April:</strong> The most universally pleasant month. Temperatures rise across all regions; flowers are at their peak in parks and gardens. Guilin's karst landscape is brilliant in the spring light. Suzhou's gardens are at their most photogenic.
+
+<strong>May:</strong> Warm to hot in most of China (Beijing: 20–30°C, Shanghai: 22–28°C). The May Golden Week (May 1–7) creates the same crowd situation as October Golden Week — plan around it.
+
+<strong>For NZ travellers:</strong> Spring aligns with New Zealand's autumn school holidays (late April), which creates a natural booking window. Book 4–5 months ahead for this period.`
+    },
+    {
+      question: 'Should I avoid visiting China in summer?',
+      searchIntent: 'China summer travel avoid',
+      monthlySearches: 110,
+      answer: `Summer (June–August) is the most challenging season for China travel, though not impossible.
+
+<strong>The challenges:</strong>
+- High temperatures throughout most of China: Beijing averages 31°C in July, Shanghai 34°C, Chengdu 30°C, with humidity making it feel hotter
+- Peak domestic tourist season (Chinese school holidays), meaning significant crowds at all major attractions
+- Rainy season in central and southern China (the plum rains in June affect Shanghai and the Yangtze basin)
+- Air quality can be poor in northern cities during high-humidity periods
+
+<strong>Where summer works better:</strong>
+- Yunnan Province (Lijiang, Dali, Kunming) has a cooler, drier climate through summer — this is Yunnan's best season
+- High-altitude areas (Tibet, Qinghai) are accessible and pleasantly cool
+- Guilin's Li River is at its fullest and most impressive in summer
+
+<strong>If you must travel in summer:</strong> July is marginally better than August (fewer domestic tourists). Focus on early morning activities before the heat peaks. Stay in accommodation with good air conditioning.`
+    },
+    {
+      question: 'Is winter a good time to visit China?',
+      searchIntent: 'China winter travel',
+      monthlySearches: 130,
+      answer: `<strong>Winter (November–February) is underrated for certain types of travel.</strong>
+
+<strong>The advantages:</strong>
+- Significantly fewer tourists at every major attraction
+- Accommodation prices are 20–40% lower than peak season
+- The Great Wall, Forbidden City, and Terracotta Warriors in winter are uncrowded and often beautiful
+- Dry, clear skies in northern China produce excellent visibility
+
+<strong>The challenges:</strong>
+- Northern China (Beijing, Xi'an) is genuinely cold: Beijing averages -3°C in January, with wind chill making it feel colder. Pack accordingly.
+- The Yangtze River cruise is cold and foggy in January–February; not the best time for that experience
+- Chinese New Year (late January or February) is the worst possible time for tourism: enormous crowds, booked-out accommodation, very high prices, and service disruptions as many businesses close
+
+<strong>Southern China in winter:</strong> Guilin, Yunnan, and southern Sichuan are significantly warmer. Guilin in December is 10–18°C — cool but manageable, and the limestone peaks look magnificent against clear winter skies.
+
+<strong>Our recommendation for NZ travellers in winter:</strong> December is better than January or February. Combine Beijing (cold but uncrowded) with Guilin or Yunnan (mild weather) for a balanced trip.`
+    },
+    {
+      question: 'Which Chinese holidays should I avoid when travelling?',
+      searchIntent: 'China public holidays avoid travel',
+      monthlySearches: 160,
+      answer: `<strong>The three Golden Week periods cause the most significant disruption to tourist travel:</strong>
+
+<strong>Chinese New Year (Spring Festival)</strong>
+- Timing: Late January to mid-February (dates change annually based on the lunar calendar)
+- Duration: Officially 7 days public holiday; travel surge extends 2–3 weeks
+- Impact: WORST time to visit. 400+ million people travel simultaneously. Accommodation is fully booked and expensive. Many restaurants and services close. Domestic transport is extremely difficult to book.
+- Recommendation: Avoid the entire Spring Festival period (usually 2 weeks before and 1 week after the official holiday).
+
+<strong>May Golden Week (Labour Day)</strong>
+- Timing: May 1–7
+- Impact: Major crowds at all tourist sites; 20–30% price increase on accommodation. Less severe than Chinese New Year but still disruptive.
+- Recommendation: Arrive before May 1 or depart before May 1. Or plan around October instead.
+
+<strong>October Golden Week (National Day)</strong>
+- Timing: October 1–7
+- Impact: Similar to May Golden Week — severe crowds at major attractions, price increases, booked accommodation.
+- Recommendation: Aim for mid-September (ideal autumn weather, lower crowds) or mid-October (Golden Week finished, weather still good).
+
+<strong>For NZ school holiday alignment:</strong> The April school holidays in New Zealand (late April) align with the period just before May Golden Week. Book for late April departure and return before May 1.`
+    },
+    {
+      question: 'What is the best time to visit Beijing specifically?',
+      searchIntent: 'best time visit Beijing',
+      monthlySearches: 190,
+      answer: `<strong>Best months: September–October and April–May</strong>
+
+<strong>September–October:</strong> Autumn is Beijing's finest season. Temperatures are 15–25°C, skies are clear, and the colours in the parks and hutong trees are at their peak. October 8–31 is the sweet spot: Golden Week is over, the best weather persists, and crowds have dropped.
+
+<strong>April–May:</strong> Spring brings cherry blossoms and warm temperatures (15–25°C). The parks are beautiful. Avoid the May 1–7 Golden Week within this period.
+
+<strong>Avoid in Beijing:</strong>
+- July–August: Extremely hot (30–35°C) and humid. Air quality can be poor.
+- January–February: Bitter cold (-5 to 3°C), wind, and Chinese New Year chaos.
+- October 1–7: Golden Week — the Great Wall and Forbidden City are at their most crowded.`
+    },
+    {
+      question: 'When is the best time to visit Guilin and the Li River?',
+      searchIntent: 'best time visit Guilin Li River',
+      monthlySearches: 120,
+      answer: `<strong>Best months: April–May and September–November</strong>
+
+Guilin's karst landscape looks different in different seasons, and each has appeal.
+
+<strong>Spring (April–May):</strong> The Li River is full, the vegetation is intensely green, and mist frequently hangs in the karst peaks — creating the classic Chinese landscape painting atmosphere. Occasional rain enhances the mist effects. This is when Guilin looks most like the landscape paintings you have seen.
+
+<strong>Autumn (September–November):</strong> Clear skies, comfortable temperatures (18–26°C), good visibility. Less atmospheric mist than spring, but excellent photography light. October is particularly good if you avoid the Golden Week window.
+
+<strong>Summer (June–August):</strong> Hot and humid (30–35°C). The Li River is at its fullest — good for boat cruises. Occasional flooding can affect low-lying areas. Not the most comfortable weather for walking, but the landscape is dramatically green.
+
+<strong>Winter (December–February):</strong> Cool (7–15°C), clear, and very uncrowded. The limestone peaks look striking against winter skies. The Li River cruise is still beautiful but can be cold on the water.`
+    },
+    {
+      question: 'What is the weather like on a Yangtze River cruise?',
+      searchIntent: 'Yangtze River cruise weather',
+      monthlySearches: 80,
+      answer: `The Yangtze River cruise (Chongqing to Yichang through the Three Gorges) runs year-round, but weather conditions vary significantly.
+
+<strong>Best season: March–May and September–November</strong>
+
+<strong>Spring (March–May):</strong> Temperatures 15–25°C. The gorge walls are intensely green. Morning mist in the gorges creates atmospheric views. Some rain. Comfortable and scenic — our recommended season.
+
+<strong>Autumn (September–November):</strong> Clear, comfortable, 15–25°C. Excellent visibility in the gorges. The surrounding hills begin changing colour in late October. Second-best season.
+
+<strong>Summer (June–August):</strong> Hot and humid (28–35°C). The river is at its highest, which maximises the water volume visible in the gorges. Air conditioning is essential on the cruise ship.
+
+<strong>Winter (December–February):</strong> Cold (5–15°C) and frequently foggy. The mist can make gorge views beautiful but can also obscure them entirely for hours at a time. Not our first recommendation, but the uncrowded ships and lower prices attract some travellers.`
+    },
+    {
+      question: 'When is the best time to visit Yunnan Province?',
+      searchIntent: 'best time visit Yunnan',
+      monthlySearches: 100,
+      answer: `<strong>Yunnan is one of China's most year-round-friendly destinations.</strong>
+
+Yunnan's high altitude (Lijiang is at 2,400m, Shangri-La at 3,300m) moderates temperatures year-round, and its position on the Tropic of Cancer gives it a subtropical climate tempered by elevation.
+
+<strong>Best: October–April (dry season)</strong>
+Clear skies, comfortable temperatures in Lijiang (15–22°C in October), excellent visibility for mountain views. The dry season is definitively Yunnan's best travel period.
+
+<strong>Summer (June–August):</strong> Yunnan's monsoon season — afternoon rain is common in most of the province. The landscapes are intensely green and the flowers (rhododendrons at altitude, rice terraces lower down) are at their most dramatic. Not as good for photography as the dry season, but perfectly manageable with an early-morning activity schedule.
+
+<strong>Avoid in Yunnan:</strong> There is no truly bad time to visit Yunnan, which makes it an excellent supplement to a wider China trip at almost any time of year.`
+    },
+    {
+      question: 'How does the weather in China compare to New Zealand?',
+      searchIntent: 'China weather vs New Zealand',
+      monthlySearches: 70,
+      answer: `NZ travellers often underestimate how different China's climate can be from New Zealand's relatively mild, oceanic weather.
+
+<strong>Key differences:</strong>
+
+<strong>More extreme temperatures:</strong> Beijing's summer highs (35°C) and winter lows (-10°C) significantly exceed anything most New Zealanders experience. Chongqing and Wuhan are among the hottest cities in China in summer ("furnace cities" in Chinese). Even Shanghai gets properly cold in winter (3–5°C with wind).
+
+<strong>Humidity:</strong> China's east coast in summer is far more humid than New Zealand. A 30°C day in Shanghai with 80% humidity feels very different from a 30°C day in Auckland. Air conditioning is essential, not optional.
+
+<strong>Air quality:</strong> Northern China (Beijing, Xi'an) can experience poor air quality, particularly in winter (coal heating season) and during wind events that bring desert dust from Inner Mongolia. Download the AirVisual app to monitor before outdoor activities.
+
+<strong>Practical implications:</strong>
+- Bring more layers than you think you need in autumn/winter
+- Bring fewer layers and prioritise moisture-wicking fabrics in summer
+- Budget for air conditioning in accommodation — this is worth paying for in summer
+
+For Beijing in October: pack as you would for a Wellington September — layers, a light jacket, and the possibility of warm sunny afternoons.`
+    }
+  ],
+  relatedGuides: [
+    'best-time-to-visit-china',
+    'beijing-travel-guide',
+    'guilin-travel-guide'
+  ],
+  relatedFaqs: [
+    { slug: 'tour-planning', title: 'Tour Planning FAQ' },
+    { slug: 'visa-requirements', title: 'China Visa Requirements FAQ' }
+  ]
+};
+
+/**
  * Tier 2: Secondary FAQ Pages (implement June-July)
  * Target: 100+ monthly searches, <30 keyword difficulty
  */

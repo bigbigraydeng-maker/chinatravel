@@ -5,7 +5,10 @@ import FAQPageTemplate from '@/components/seo/FAQPageTemplate';
 import {
   faqPlanningYourChinaTrip,
   faqBeijingTravel,
-  faqGreatWall
+  faqGreatWall,
+  faqTourPlanning,
+  faqVisaRequirements,
+  faqBestTimeTravel
 } from '@/lib/data/faq-pages';
 import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 
@@ -13,7 +16,10 @@ import { generateArticleSchema, generateBreadcrumbListSchema, generateFAQPageSch
 const faqPages: Record<string, typeof faqPlanningYourChinaTrip> = {
   'faq-planning-your-china-trip': faqPlanningYourChinaTrip,
   'faq-beijing-travel': faqBeijingTravel,
-  'faq-great-wall-of-china': faqGreatWall
+  'faq-great-wall-of-china': faqGreatWall,
+  'tour-planning': faqTourPlanning,
+  'visa-requirements': faqVisaRequirements,
+  'best-time-travel': faqBestTimeTravel
 };
 
 // Generate static params for all FAQ pages
