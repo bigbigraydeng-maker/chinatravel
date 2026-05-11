@@ -54,6 +54,9 @@ export default function BeijingToursPage() {
           { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', emoji: '🏯', description: 'History, hikes & access tips' },
           { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', emoji: '🏛️', description: 'Imperial palace inside out' },
           { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', emoji: '🌆', description: 'Full city visitor guide' },
+          { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', emoji: '🥾', description: 'Which section, how steep, best time' },
+          { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', emoji: '🗺️', description: 'The route most visitors miss' },
+          { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', emoji: '🏘️', description: "Old Peking's hidden laneways" },
         ]}
       />
     </>
