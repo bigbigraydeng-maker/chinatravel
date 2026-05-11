@@ -29,21 +29,21 @@ export default function FAQPage() {
   // Tier 1 FAQ Pages
   const tier1FAQs = [
     {
-      slug: 'planning-your-china-trip',
+      slug: 'faq-planning-your-china-trip',
       title: 'Planning Your China Trip',
       description: 'How long should your trip be? What\'s the best time? How much does it cost? Get answers to the essentials.',
       icon: '🗺️',
       priority: 'Tier 1 - High Priority'
     },
     {
-      slug: 'beijing-travel',
+      slug: 'faq-beijing-travel',
       title: 'Beijing Travel Planning',
       description: 'Everything about visiting Beijing - how many days, best season, budget, and day trips to the Great Wall.',
       icon: '🏯',
       priority: 'Tier 1 - High Priority'
     },
     {
-      slug: 'great-wall-of-china',
+      slug: 'faq-great-wall-of-china',
       title: 'Great Wall of China Guide',
       description: 'Complete FAQ about the Great Wall - length, best time to hike, Badaling vs Mutianyu, and difficulty levels.',
       icon: '🧗',
