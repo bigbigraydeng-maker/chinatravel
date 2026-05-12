@@ -198,29 +198,31 @@ const Navbar = () => {
 
           {/* Travel Guide Dropdown */}
           <div className="relative group">
-            <Link href="/guide" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium">
+            <Link href="/guide" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium" onClick={handleNavClick}>
               Travel Guide
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transition-transform group-hover:rotate-180 duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link href="/guide" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+            <div className="absolute left-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <Link href="/guide" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium" onClick={handleNavClick}>
                 All Travel Guides
               </Link>
-              <Link href="/blog" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-semibold border-b border-warm-100">
+              <Link href="/blog" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
                 Travel Blog
               </Link>
-              <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
+              <div className="border-t border-gray-100 my-1.5 mx-3" />
+              <p className="px-4 pb-1 text-[10px] font-semibold uppercase tracking-widest text-gray-400">Resources</p>
+              <Link href="/best-time-to-visit-china" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
                 Best Time to Visit
               </Link>
-              <Link href="/faq" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-secondary">
+              <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
+                China Entry (NZ)
+              </Link>
+              <Link href="/faq" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
                 FAQ
               </Link>
-              <Link href="/china-visa-guide-for-new-zealanders" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors">
-                China entry (NZ)
-              </Link>
-              <Link href="/travel-tools" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors text-primary font-medium">
+              <Link href="/travel-tools" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
                 Travel Tools
               </Link>
             </div>
@@ -309,17 +311,19 @@ const Navbar = () => {
                 </svg>
               </button>
               {mobileExpandedDest === 'guides' && (
-                <div className="pl-4 mt-1 space-y-1 border-l-2 border-secondary/30 ml-2">
-                  <Link href="/guide" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                <div className="pl-4 mt-1 border-l-2 border-warm-200 ml-2">
+                  <Link href="/guide" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2.5 font-medium" onClick={closeMenu}>
                     All Travel Guides
                   </Link>
-                  <Link href="/blog" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2 font-semibold border-b border-warm-100" onClick={closeMenu}>
+                  <Link href="/blog" prefetch={false} className="block text-accent hover:text-primary transition-colors py-2.5" onClick={closeMenu}>
                     Travel Blog
                   </Link>
-                  <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>Best Time to Visit</Link>
-                  <Link href="/faq" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-secondary" onClick={closeMenu}>FAQ</Link>
-                  <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2" onClick={closeMenu}>China entry (NZ)</Link>
-                  <Link href="/travel-tools" className="block text-accent hover:text-primary transition-colors py-2 font-medium text-primary" onClick={closeMenu}>Travel Tools</Link>
+                  <div className="border-t border-gray-100 my-1.5 mr-3" />
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 pb-1 pt-0.5">Resources</p>
+                  <Link href="/best-time-to-visit-china" className="block text-accent hover:text-primary transition-colors py-2.5" onClick={closeMenu}>Best Time to Visit</Link>
+                  <Link href="/china-visa-guide-for-new-zealanders" className="block text-accent hover:text-primary transition-colors py-2.5" onClick={closeMenu}>China Entry (NZ)</Link>
+                  <Link href="/faq" className="block text-accent hover:text-primary transition-colors py-2.5" onClick={closeMenu}>FAQ</Link>
+                  <Link href="/travel-tools" className="block text-accent hover:text-primary transition-colors py-2.5" onClick={closeMenu}>Travel Tools</Link>
                 </div>
               )}
             </div>
