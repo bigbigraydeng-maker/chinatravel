@@ -43,7 +43,7 @@ export default function TourFinder({ tours }: TourFinderProps) {
 
   const filtered = tours.filter((tour) => {
     const tagBlob = (tour.tags ?? []).join(' ').toLowerCase();
-    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tagBlob} ${tour.destination} ${tour.tier}`.toLowerCase();
+    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tagBlob} ${tour.destination} ${tour.tier} ${(tour.tourCities ?? []).join(' ')}`.toLowerCase();
 
     if (query) {
       const q = query.toLowerCase().trim();

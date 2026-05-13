@@ -112,7 +112,7 @@ const Navbar = () => {
   };
 
   const handleQuickDest = (value: string) => {
-    router.push(`/tours/find?destination=${value}`);
+    router.push(`/tours/find?q=${encodeURIComponent(value)}`);
     setIsSearchOpen(false);
     setSearchQuery('');
   };
