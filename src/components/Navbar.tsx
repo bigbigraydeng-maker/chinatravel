@@ -3,15 +3,30 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+
+const QUICK_DESTINATIONS = [
+  { label: 'Beijing', value: 'beijing' },
+  { label: 'Shanghai', value: 'shanghai' },
+  { label: "Xi'an", value: 'xian' },
+  { label: 'Chengdu', value: 'chengdu' },
+  { label: 'Guilin', value: 'guilin' },
+  { label: 'Yunnan', value: 'yunnan' },
+  { label: 'Zhangjiajie', value: 'zhangjiajie' },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isToursDropdownOpen, setIsToursDropdownOpen] = useState(false);
   const [activeDestination, setActiveDestination] = useState<string | null>(null);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const destTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   const handleNavClick = () => {
     setIsNavigating(true);
@@ -25,6 +40,7 @@ const Navbar = () => {
     setIsMenuOpen(false);
     setIsToursDropdownOpen(false);
     setActiveDestination(null);
+    setIsSearchOpen(false);
   };
 
   const handleMouseEnter = () => {
@@ -62,6 +78,44 @@ const Navbar = () => {
       if (destTimeoutRef.current) clearTimeout(destTimeoutRef.current);
     };
   }, []);
+
+  // 打开搜索时自动聚焦输入框
+  useEffect(() => {
+    if (isSearchOpen) {
+      const t = setTimeout(() => searchInputRef.current?.focus(), 80);
+      return () => clearTimeout(t);
+    }
+  }, [isSearchOpen]);
+
+  // Escape 关闭搜索面板
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsSearchOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
+  const toggleSearch = () => {
+    setIsSearchOpen((prev) => !prev);
+    // 打开搜索时关闭汉堡菜单，避免两者同时展开
+    if (!isSearchOpen) setIsMenuOpen(false);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (!q) return;
+    router.push(`/tours/find?q=${encodeURIComponent(q)}`);
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
+
+  const handleQuickDest = (value: string) => {
+    router.push(`/tours/find?destination=${value}`);
+    setIsSearchOpen(false);
+    setSearchQuery('');
+  };
 
   const destinations = [
     {
@@ -235,14 +289,45 @@ const Navbar = () => {
           </Link>
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          {/* 桌面搜索图标 */}
+          <button
+            onClick={toggleSearch}
+            aria-label={isSearchOpen ? 'Close search' : 'Open search'}
+            className={`p-2 rounded-full transition-colors ${isSearchOpen ? 'bg-primary/10 text-primary' : 'text-accent hover:text-primary hover:bg-warm-100'}`}
+          >
+            {isSearchOpen ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            )}
+          </button>
           <Link href="/contact" className="bg-gradient-to-r from-primary to-red-500 text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-primary/20 transition-all font-medium hover:-translate-y-0.5 hover:scale-105 animate-pulse-glow">
             Plan Your Journey
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="lg:hidden">
+        {/* Mobile：搜索图标 + 汉堡按钮 */}
+        <div className="lg:hidden flex items-center gap-1">
+          <button
+            onClick={toggleSearch}
+            aria-label={isSearchOpen ? 'Close search' : 'Open search'}
+            className={`p-2 rounded-full transition-colors ${isSearchOpen ? 'text-primary' : 'text-accent hover:text-primary'}`}
+          >
+            {isSearchOpen ? (
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            )}
+          </button>
           <button onClick={toggleMenu} className="text-accent p-2" aria-label="Toggle menu">
             {isMenuOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -256,6 +341,62 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+
+      {/* ===== 搜索面板（桌面 + 移动端共用）===== */}
+      {isSearchOpen && (
+        <div className="border-t border-warm-200/60 bg-white animate-slide-down">
+          <div className="container mx-auto px-4 py-4">
+            {/* 搜索输入框 */}
+            <form onSubmit={handleSearchSubmit} className="max-w-2xl mx-auto">
+              <div className="flex items-center gap-2 bg-warm-50 rounded-xl px-4 py-3 border border-warm-200 focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-primary/10 transition-all">
+                <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search destinations, tours, experiences..."
+                  className="flex-1 bg-transparent outline-none text-accent placeholder-gray-400 text-base"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="text-gray-400 hover:text-gray-600 transition-colors flex-shrink-0"
+                    aria-label="Clear search"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  className="bg-primary text-white px-5 py-1.5 rounded-lg text-sm font-semibold hover:bg-primary/90 transition-colors flex-shrink-0"
+                >
+                  Search
+                </button>
+              </div>
+            </form>
+
+            {/* 快速目的地选择 */}
+            <div className="max-w-2xl mx-auto mt-3 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-gray-400 uppercase tracking-wider flex-shrink-0">Quick:</span>
+              {QUICK_DESTINATIONS.map((dest) => (
+                <button
+                  key={dest.value}
+                  onClick={() => handleQuickDest(dest.value)}
+                  className="text-sm px-3 py-1 rounded-full bg-warm-100 text-accent hover:bg-primary hover:text-white transition-colors border border-warm-200 hover:border-primary"
+                >
+                  {dest.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
