@@ -41,13 +41,16 @@ export default function TourFinder({ tours }: TourFinderProps) {
     photography: ['photography', 'photo', 'scenic', 'sunrise', 'landscape', 'view'],
   };
 
+  // Strip apostrophes and hyphens so "xian" matches "Xi'an" and vice-versa.
+  const normalize = (s: string) => s.toLowerCase().replace(/['\-]/g, '');
+
   const filtered = tours.filter((tour) => {
     const tagBlob = (tour.tags ?? []).join(' ').toLowerCase();
-    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tagBlob} ${tour.destination} ${tour.tier}`.toLowerCase();
+    const searchText = `${tour.name} ${tour.shortDescription} ${tour.highlights.join(' ')} ${tagBlob} ${tour.destination} ${tour.tier} ${(tour.tourCities ?? []).join(' ')}`.toLowerCase();
 
     if (query) {
       const q = query.toLowerCase().trim();
-      const matchesFreeText = searchText.includes(q);
+      const matchesFreeText = searchText.includes(q) || normalize(searchText).includes(normalize(q));
       const matchesTag = (tour.tags ?? []).some((label) => {
         const s = slugifyTourTag(label);
         return s.includes(q.replace(/\s+/g, '-')) || label.toLowerCase().includes(q);
