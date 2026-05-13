@@ -139,9 +139,24 @@ RESEND_API_KEY=re_... (will be configured later)
 ```
 
 ### 7. Git Workflow
-- **Push to:** `https://github.com/bigbigraydeng-maker/chinatravel.git` (main branch)
-- **Auto-deploy:** Render watches main branch; pushes auto-deploy
-- **Commit format:** Conventional commits (feat:, fix:, refactor:, docs:)
+
+**Branch strategy: feature branch → PR → merge to main**
+
+- **Never push directly to main.** Always work on a short-lived branch.
+- **Branch naming:**
+  - `feat/<short-description>` — new features
+  - `fix/<short-description>` — bug fixes
+  - `refactor/<short-description>` — refactoring / cleanup
+  - `chore/<short-description>` — non-code changes (docs, deps)
+- **Flow:**
+  1. `git checkout -b feat/my-feature` — create branch from latest main
+  2. Make commits (conventional format, see below)
+  3. `git push -u origin feat/my-feature`
+  4. `gh pr create` — open PR targeting main
+  5. Merge via GitHub PR (squash merge preferred for clean history)
+  6. Delete branch after merge
+- **Auto-deploy:** Render watches **main** branch; only merged PRs trigger deploy
+- **Commit format:** Conventional commits (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`)
 - **Commit message:** English, but user may request Chinese responses in chat
 
 ### 8. Feature Flags
@@ -174,11 +189,13 @@ npm run dev:alt          # Alternate port :3055 if 3010 is blocked or in use
 npm run build            # Build for production
 npm test                 # Run test suite
 
-# Git
-git status               # Check staged/unstaged files
-git diff HEAD            # See uncommitted changes
-git log --oneline -10    # Last 10 commits
-git push origin main     # Push to GitHub (auto-deploys)
+# Git (feature branch workflow)
+git checkout -b feat/my-feature   # Create feature branch
+git status                        # Check staged/unstaged files
+git diff HEAD                     # See uncommitted changes
+git log --oneline -10             # Last 10 commits
+git push -u origin feat/my-feature  # Push branch + set upstream
+gh pr create                      # Open PR targeting main (triggers deploy on merge)
 
 # Exploration
 find src -name "*itinerary*" -type f   # Find itinerary-related files
