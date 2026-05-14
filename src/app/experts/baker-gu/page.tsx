@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getRecentBlogPosts } from '@/lib/data/blogs';
-import { migratedSite, tourImage } from '@/lib/site-media';
+import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
   title: 'Baker Gu - China Travel Specialist | CTS Tours',
@@ -48,7 +48,7 @@ const BakerGuPage = () => {
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full border-2 border-secondary"></div>
                 <Image
-                  src={migratedSite('baker-gu-portrait.jpg')}
+                  src="/images/baker-gu-portrait.jpg"
                   alt="Baker Gu — China Travel Specialist at CTS Tours New Zealand"
                   width={640}
                   height={800}

@@ -110,7 +110,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="relative h-72 overflow-hidden bg-gray-200">
                   <Image
-                    src={migratedSite('baker-gu-portrait.jpg')}
+                    src="/images/baker-gu-portrait.jpg"
                     alt="Baker Gu, China Specialist"
                     fill
                     sizes="(max-width: 768px) 100vw, 432px"

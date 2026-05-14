@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { getBakerVoiceForTour, BAKER_RELATED_BLOG_LABELS } from '@/lib/data/baker-tour-intros';
-import { migratedSite } from '@/lib/site-media';
 
 interface BakerTourFirstPersonProps {
   tourSlug: string;
@@ -34,7 +33,7 @@ export default function BakerTourFirstPerson({ tourSlug, tourName, destination }
         <div className="mx-auto flex max-w-4xl flex-col gap-5 sm:flex-row sm:items-start sm:gap-8">
           <div className="relative mx-auto h-24 w-24 flex-shrink-0 overflow-hidden rounded-full border-2 border-white shadow-md sm:mx-0">
             <Image
-              src={migratedSite('baker-gu-portrait.jpg')}
+              src="/images/baker-gu-portrait.jpg"
               alt="Baker Gu, China Travel Specialist"
               fill
               className="object-cover object-center"
