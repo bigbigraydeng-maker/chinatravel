@@ -1165,10 +1165,10 @@ export const tours: Tour[] = [
     slug: 'beijing',
     destination: 'china',
     tier: 'stopover',
-    name: 'China Stopover — Beijing (4 Days)',
-    title: 'China Stopover — Beijing (4 Days)',
+    name: 'China Stopover — Beijing (5 Days)',
+    title: 'China Stopover — Beijing (5 Days)',
     shortDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully curated Beijing stopover.',
-    duration: '4 Days',
+    duration: '5 Days',
     price: 'From NZD $2,120',
     heroImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
     gallery: [
@@ -1203,7 +1203,7 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Tipping (recommended NZD $20/day/person)'
     ],
-    metaTitle: 'China Stopover — Beijing (4 Days) | 4 Days | CTS Tours',
+    metaTitle: 'China Stopover — Beijing (5 Days) | 5 Days | CTS Tours',
     metaDescription: 'Experience China\'s capital with visits to iconic landmarks including the Great Wall, Forbidden City, and imperial palaces in this carefully ... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
