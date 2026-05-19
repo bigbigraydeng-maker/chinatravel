@@ -55,7 +55,9 @@ const WHY_CARDS = [
   },
 ];
 
-const FAQS = [
+type FaqItem = { q: string; a: string; link?: { label: string; href: string } };
+
+const FAQS: FaqItem[] = [
   {
     q: 'Is all the food spicy? What if I can\'t eat spicy food?',
     a: 'No. Most hotpot restaurants offer a split pot (鸳鸯锅) — spicy on one side, mild chicken broth on the other. The mild side is genuinely mild. Noodles, dumplings, and plenty of non-spicy dishes are widely available.',
@@ -70,7 +72,8 @@ const FAQS = [
   },
   {
     q: 'Do New Zealanders need a visa for China?',
-    a: 'NZ passport holders currently enter China visa-free for up to 30 days (2024–2025 policy). Verify with the Chinese Embassy Wellington before booking.',
+    a: 'NZ passport holders currently enter China visa-free for up to 30 days (policy valid to 31 Dec 2026). Always verify the latest requirements before booking.',
+    link: { label: 'China visa guide for NZ travellers →', href: '/china-visa-guide-for-new-zealanders' },
   },
 ];
 
@@ -287,6 +290,11 @@ export default function ChongqingLandingPage() {
               <div key={faq.q} className="border-b border-gray-100 pb-6">
                 <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                {faq.link && (
+                  <Link href={faq.link.href} className="text-primary text-sm font-medium hover:underline mt-1 inline-block">
+                    {faq.link.label}
+                  </Link>
+                )}
               </div>
             ))}
           </div>
