@@ -2244,97 +2244,106 @@ export const chongqingGuide: DestinationGuide = {
     'Eling Park Chongqing',
     'Chongqing tour NZ',
   ],
-  h1: 'Chongqing Travel Guide: China\'s Most Electrifying City',
+  h1: 'Chongqing Travel Guide: China\'s Most Surprising City',
   heroSubtitle: 'Hongyadong · Liziba Monorail · Raffles Sky Bridge · Hot Pot Capital of the World',
   heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
   heroImageClassName: 'object-[center_42%]',
   introText: [
-    'Chongqing is the city everyone has seen on their phone — the monorail threading through the 6th floor of a residential building, the Ghibli-esque cliff complex glowing gold above the river, the neon-drenched skyline stacked across mountain ridges at the confluence of two great rivers. It went viral for good reason: nowhere else in China looks like this.',
-    'But social media tells only half the story. Chongqing is a city of 32 million people built vertically into river gorges. Its most photographed architecture is genuinely that dramatic. Its food scene — birthplace of Chinese hotpot — is genuinely that good. And its lesser-known temples, hidden creative neighbourhoods, and hilltop viewpoints offer experiences most international visitors never find because they stick to the viral checklist.',
-    'This guide covers the essential stops, the places worth seeking out, and the honest trade-offs. If you\'re wondering whether Chongqing deserves 3–4 days on a China itinerary, the short answer is yes — and this guide will show you how to spend them well.'
+    'Most New Zealanders who visit China put Chongqing on a list and then quietly remove it. Too hard to get to, they think. Too similar to other Chinese cities. Too spicy. They\'re wrong on all three counts.',
+    'Chongqing is built across a mountain ridge between two rivers — there are no flat blocks or logical grids. Buildings stack vertically up cliff faces. Highways thread through skyscrapers. A metro train passes through the sixth floor of a residential building as a matter of routine. At night, neon reflects off the rivers below and the fog rolling in off the Yangtze gives the city a diffused, cinematic glow. This is the "cyberpunk city" that has circulated on social media for several years, and it fully delivers in person.',
+    'For NZ travellers, Chongqing fits naturally into a Beijing and Chongqing pairing — 10 days is comfortable — or a Beijing, Chongqing and Shanghai itinerary at 14 days. The flight from Beijing takes about 2 hours 20 minutes. From there, Chongqing earns 3 to 4 days easily. This guide covers the essential stops, the honest trade-offs, and what to eat if you don\'t do chilli.',
   ],
   sections: [
     {
-      title: 'Hongyadong (洪崖洞) — The Cliffside City at Night',
+      title: 'Hongyadong (洪崖洞) — The Icon, Best Seen After Dark',
       id: 'hongyadong',
       content: [
-        'Hongyadong is the hero image of Chongqing: an 11-storey stilted complex (diaojiaolou style) built directly into the cliff face above the Jialing River, with roots in a building tradition over six centuries old. At night, it is lit with thousands of red and golden lanterns, creating a glowing, layered spectacle that rises from the riverbank like something out of Spirited Away.',
-        'Visit after dark — the full lighting effect begins around 7:30pm. Cross to the Qiansimen Bridge for the full panoramic view: this is the photograph most people are trying to take, and it is worth the 10-minute walk from the complex. The interior contains restaurants, bars, and tea houses across interconnected stairways; entrance is free.',
-        'One honest note: the interior commercial area is firmly in tourist-facing mode. Go for the architecture and the night atmosphere, and save your appetite for the city\'s actual hotpot restaurants rather than eating inside.'
+        'Every visitor to Chongqing ends up at Hongyadong. That\'s both its strength and its limitation. The complex is an 11-storey reconstruction of the traditional stilted diaojiaolou architecture that the Ba people built along Chongqing\'s cliffsides for centuries — at night, lit with thousands of red and golden lanterns, it creates a glowing, layered spectacle above the Jialing River that appears in every China travel reel.',
+        'The trade-off: daytime visits feel like a shopping mall with a view — crowds are thick, stalls repetitive, food average. Come after dark from around 7pm when the lights come on. Cross to the Qiansimen Bridge for the full panoramic view — that\'s the photograph everyone is trying to take, and it\'s worth the 10-minute walk. The interior is free to enter; eat elsewhere.',
+        'I\'d put Hongyadong on your first evening, not as a daytime destination. An evening river cruise departing from Chaotianmen that passes the cave from the water gives you the full spectacle without the crowds inside — worth considering if you prefer a slower pace.',
       ],
       link: { label: 'Hongyadong: complete visitor guide →', href: '/hongyadong-chongqing' },
     },
     {
-      title: 'Liziba Station — The Monorail Through a Building',
+      title: 'Liziba Station — The Metro Train Through a Building',
       id: 'liziba-station',
       content: [
-        'Liziba is the single most shareable moment in Chongqing — and possibly in all of China. Chongqing Rail Transit Line 2 passes directly through the 6th to 8th floors of a 19-storey residential building in Yuzhong District. The station and building were constructed simultaneously in 2004; the rubber-tyred trains run quietly enough that residents above and below are barely disturbed.',
-        'The best way to experience it: ride Line 2 through the building for the inside view, then watch from the street-level plaza below for the money shot. Trains run every few minutes. Most visitors spend 30–60 minutes, watching it pass multiple times. The surreal quality does not diminish with repetition.',
-        'Liziba pairs naturally with Hongyadong — both are in Yuzhong District and are a short metro ride or walk from each other. A morning at Liziba, lunch nearby, then Hongyadong after dark makes a satisfying first-day loop.'
+        'Chongqing Rail Transit Line 2 passes through the 6th to 8th floors of a 19-storey residential building at Liziba Station. The train enters, stops on the platform inside the building, and exits the other side. Locals use it as any other metro stop. Visitors gather on the street-level observation platform below to photograph the train emerging from the facade. The surreal quality does not diminish with repetition.',
+        'Ride Line 2 through the building for the inside view, then watch from the street below — both perspectives are worth having. Trains run every few minutes; most visitors spend 30 to 60 minutes. Walk up to the platform itself and look out the windows while waiting: the city view from inside a residential building at floor 7 is extraordinary and most visitors miss it.',
+        'Liziba is 15 minutes from central Chongqing by metro. It pairs naturally with Eling Park two stops away — a morning covering both, then Hongyadong after dark, makes a satisfying first-day loop.',
       ],
       link: { label: 'Liziba Station: complete visitor guide →', href: '/liziba-station-chongqing' },
     },
     {
-      title: 'Raffles City Sky Bridge — Modern Chongqing at Its Best',
-      id: 'raffles-city',
+      title: 'Luohan Temple (罗汉寺) — 500 Clay Faces in the City Centre',
+      id: 'luohan-temple',
       content: [
-        'Opened in 2019 and designed by Israeli-Canadian architect Moshe Safdie, Raffles City Chongqing is one of the most ambitious building complexes of recent decades. Eight towers rise from a shared podium at the confluence of the two rivers. The defining feature is The Crystal — a horizontal sky bridge connecting two of the residential towers at 250 metres, containing a garden, restaurants, and an observation deck.',
-        'The view from The Crystal is one of the best urban panoramas in China: you look down at the meeting point of the Jialing and Yangtze rivers, with mountain skyline visible in every direction and the city climbing every slope below. It is genuinely impressive. The trade-off is commercial — the observation deck charges entry (approximately ¥168), and the building is a premium mall with international luxury brands.',
-        'Go for the architecture and the altitude. A clear day is significantly better than a cloudy one — Chongqing\'s famous fog can close out the view entirely in winter and spring, so check the forecast before committing to the observation deck ticket.'
+        'Luohan Temple sits in the middle of Chongqing\'s commercial district, which initially seems like the wrong place for a working Buddhist monastery. Walk through the gate, past the incense smoke and chanting, and the city disappears faster than you\'d expect. The main hall houses 524 clay arhat statues — Buddhist saints each with a distinct face and posture, carved during the Qing Dynasty. The craftsmanship is extraordinary; the hall is dimly lit enough that the statues seem to emerge from the walls.',
+        'Founded in the Song Dynasty with the current incarnation dating from 1752, the temple is among the most significant Buddhist sites in Chongqing. Best visited before 10am when morning rituals are underway and the light in the main hall is good. The temple runs a vegetarian canteen popular with locals — an excellent option for travellers avoiding spice, and genuinely good food.',
+        'An hour is enough for most visitors. Luohan Temple is often more memorable than larger, more famous temples because it is working rather than monumental. It is a short walk from Chaotianmen Dock — combine both on a morning before the crowds build.',
       ],
     },
     {
-      title: 'Eling Park (鹅岭公园) — The Local\'s Panoramic Viewpoint',
+      title: 'Eling Park (鹅岭公园) — The View That Explains the City',
       id: 'eling-park',
       content: [
-        'Most panoramic viewpoints in Chinese cities involve a tower, an entry fee, and a crowd. Eling Park offers something different: a free, forested ridge park between the two rivers, with a viewpoint at the eastern end that shows you why Chongqing\'s geography is genuinely unusual — a narrow urban peninsula with rivers on both sides and mountain skyline visible in every direction.',
-        'The park is lightly visited by international travellers and heavily used by local residents for morning walks and tai chi. It contains garden terraces, old Republican-era civic buildings, and quiet walking paths. The confluence view at the far end requires a moderate uphill walk but is the payoff.',
-        'Eling Park pairs naturally with Xiahaoli just below it — together they make a good half-day neighbourhood circuit. Arrive early (before 9am) for the best light on the rivers and the least crowded paths.'
+        'If you want to understand Chongqing\'s geography — why there are no flat blocks, why the roads spiral rather than grid, why buildings appear to grow from cliff faces — go to Eling Park first. The park occupies a hilltop in the urban centre, and from the main viewing platform you can see both rivers, the peninsula between them, and the CBD towers. The altitude difference between the valley streets below and the park above is roughly 250 metres.',
+        'The park is free to enter, lightly visited by international travellers, and heavily used by locals for morning walks and tai chi. Arrive before 9am for the best light on the rivers and the most local atmosphere. A 20-minute walk connects it to Liziba Station — pair them on the same morning.',
+        'The main viewing platform is accessible; some garden areas involve steps. Eling Park pairs naturally with Xiahaoli in the same neighbourhood — together they make a good half-day circuit through one of Chongqing\'s quieter, more residential areas.',
+      ],
+    },
+    {
+      title: 'Raffles City Sky Bridge — Modern Chongqing at Its Most Ambitious',
+      id: 'raffles-city',
+      content: [
+        'Opened in 2019 and designed by Israeli-Canadian architect Moshe Safdie, Raffles City Chongqing is one of the most ambitious building complexes of recent decades. Eight towers rise from a shared podium at the confluence of the two rivers. The defining feature is The Crystal — a horizontal sky bridge connecting two towers at 250 metres — containing a garden, restaurants, and an observation deck with an unmatched view of the Jialing-Yangtze confluence.',
+        'The trade-off is commercial: the observation deck charges approximately ¥168 and the building is a premium mall with international luxury brands. Go for the architecture and the altitude. A clear day is significantly better than a cloudy one — Chongqing\'s famous fog can close out the view entirely in winter and spring, so check the forecast before committing to the ticket.',
+        'The building lobby is free to enter and the architecture alone is worth seeing. Combine with Chaotianmen Dock (walking distance) for a morning that covers both the old and new faces of Chongqing\'s waterfront.',
       ],
     },
     {
       title: 'Xiahaoli (下浩里) — Where Chongqing Gets Creative',
       id: 'xiahaoli',
       content: [
-        'Xiahaoli is a cluster of pre-war alleyway housing in the Nanbin Road area that has been gradually taken over by small cafés, independent bookshops, photography studios, and street art. It is a gathering point for Chongqing\'s creative community and has a very different register from the rest of the city — quieter, more personal, less curated for tourism.',
+        'Xiahaoli is a cluster of pre-war alleyway housing in the Nanbin Road area that has been gradually taken over by small cafés, independent bookshops, photography studios, and street art. It is where Chongqing\'s creative community gathers, and it has a very different register from the rest of the city — quieter, more personal, less curated for tourism.',
         'The area is compact enough to walk completely in 30 minutes, which means it rewards slow exploration rather than goal-directed visiting. The coffee is genuinely good. The architecture — narrow lanes, wooden overhangs, painted tile walls — gives you a texture of old Chongqing that is hard to find anywhere in the modern city.',
-        'Visit on a weekday afternoon when the neighbourhood is at its most relaxed. It pairs well with Eling Park — both sites are close enough to combine in a single morning-into-afternoon outing in the south-central part of the city.'
+        'Visit on a weekday afternoon when the neighbourhood is most relaxed. It pairs well with Eling Park — both sites are close enough to combine in a single morning-into-afternoon outing in the south-central part of the city.',
+      ],
+    },
+    {
+      title: 'Chongqing Hot Pot — And What to Eat If You Don\'t Do Spice',
+      id: 'chongqing-hot-pot',
+      content: [
+        'Chongqing is the birthplace of Chinese hot pot — significantly different from versions served elsewhere. The traditional base uses beef tallow, dried chillis, and Sichuan peppercorn that numbs more than it burns. The communal dining format — cooking ingredients at the table and dipping in sesame sauce — is as much a cultural ritual as a meal. This is one of the best things you can do in Chongqing regardless of spice tolerance, because almost every proper restaurant offers a split pot.',
+        'Ask for yuānyang guō (鸳鸯锅 — mandarin duck pot): one side carries the full red broth, the other a mild chicken or bone broth. The mild side is genuinely mild, not "mild for China." This is a standard menu option. At any restaurant, bù là (不辣, not spicy) gets you a manageable dish; wēi là (微辣, a tiny bit spicy) works for those who want a hint.',
+        'Hongjiuge Hot Pot is a well-known chain with views and English-friendly menus. Chongqing dry noodles (xiǎo miàn, 小面) are an excellent non-spicy alternative — a street-food breakfast staple available mild on request. The vegetarian canteen at Luohan Temple has no meat and no chilli, and is open for lunch.',
       ],
     },
     {
       title: 'Nanfeng Cliff Night Views (南山一棵树)',
       id: 'nanfeng-cliff',
       content: [
-        'South Mountain (Nanshan) rises steeply from the Yangtze\'s south bank and gives you a view back across the Chongqing peninsula that no street-level vantage point can match. The Nanfeng Cliff observation area — named for a lone tree that became a city landmark — is where you come after dark to see what Chongqing actually looks like from a distance: a tongue of land between two rivers, every slope covered in light.',
-        'The Nanfeng Cliff Restaurant & Bar (南山一棵树) is one of the city\'s most popular dinner reservations, positioned directly at the prime viewpoint. Arrive at dusk for the colour transition as the city lights come on progressively — this is better photographically than full darkness, and dinner at 7:30pm aligns well with that window. Book at least a day in advance.',
-        'Getting here requires a taxi or arranged transport (15–20 minutes from central Chongqing). Hong\'en Temple is in the same hills — a south-bank half-day that combines a temple visit in the afternoon with Nanfeng Cliff dinner in the evening makes efficient use of the journey.'
+        'South Mountain (Nanshan) rises steeply from the Yangtze\'s south bank and gives you a view back across the Chongqing peninsula that no street-level vantage point can match. The Nanfeng Cliff observation area is where you come after dark to see what Chongqing actually looks like from a distance: a tongue of land between two rivers, every slope covered in light.',
+        'The Nanfeng Cliff Restaurant & Bar is one of the city\'s most popular dinner reservations, positioned directly at the prime viewpoint. Arrive at dusk for the colour transition as the city lights come on progressively — dinner at 7:30pm aligns well with that window. Book at least a day in advance. Getting here requires a taxi or Didi (15 to 20 minutes from central Chongqing).',
+        'Hong\'en Temple is in the same hills on the south bank — a half-day that combines a temple visit in the afternoon with Nanfeng Cliff dinner in the evening makes efficient use of the journey. For NZ travellers wanting a more relaxed evening than Hongyadong\'s crowds, Nanfeng Cliff is the better option.',
       ],
     },
     {
       title: 'Dazu Rock Carvings — UNESCO Hidden Gem',
       id: 'dazu-rock-carvings',
       content: [
-        'The Dazu Rock Carvings are one of the great surprises of Chinese travel: a UNESCO World Heritage Site (inscribed 1999) that most Western visitors have never heard of. Located 100km from Chongqing city, the site contains approximately 50,000 stone statues and over 100,000 characters of inscriptions carved between the 9th and 13th centuries.',
+        'The Dazu Rock Carvings are one of the great surprises of Chinese travel: a UNESCO World Heritage Site (inscribed 1999) that most Western visitors have never heard of. Located 100km from Chongqing city, the site contains approximately 50,000 stone sculptures and over 100,000 characters of inscriptions carved between the 9th and 13th centuries.',
         'The Baodingshan site features large-scale narrative Buddhist scenes including a 31-metre reclining Nirvana Buddha. Beishan contains earlier, more densely packed sculptures of outstanding aesthetic quality. The carvings uniquely synthesise Buddhism, Taoism, and Confucianism — a reflection of Song Dynasty religious culture that has no parallel elsewhere in China.',
-        'Plan a full day: the drive takes approximately 1.5 hours each way, and the site rewards unhurried exploration. A guided visit adds significant context, because the iconographic programme is subtle and the inscriptions explain what you are looking at. Most travellers who visit Dazu rank it among the best things they did in China.'
-      ]
-    },
-    {
-      title: 'Chongqing Hot Pot — And the Spice Question',
-      id: 'chongqing-hot-pot',
-      content: [
-        'Chongqing is the birthplace of Chinese hotpot — significantly different from versions served elsewhere. The traditional Chongqing base uses beef tallow, dried chillies, and Sichuan peppercorn that numbs more than it burns. The communal dining format is as much a cultural ritual as a meal, and the city has more hotpot restaurants per capita than anywhere else in China.',
-        'If you cannot eat spicy food: almost every proper Chongqing hotpot restaurant offers a split pot (鸳鸯锅 — mandarin duck pot), with spicy broth on one side and mild chicken or bone broth on the other. The mild side is genuinely mild — not "mild for China." This is a standard menu option, not a special accommodation, and in any tourist-area restaurant staff will understand without translation.',
-        'What to order in the mild broth: thinly sliced beef (cook 20–30 seconds), tofu skin, lotus root, mushrooms, and spring onion all work well. The sesame oil dipping sauce can be ordered without chilli. Chongqing small noodles (干溜面) available as a side dish at most restaurants are not spicy and are excellent. A hotpot dinner here, with good company and the right restaurant, is one of the most memorable meals available in China.'
-      ]
+        'Plan a full day: the drive takes approximately 1.5 hours each way, and the site rewards unhurried exploration. A guided visit adds significant context — the iconographic programme is subtle. This is one of the stops where arranging transport in advance makes a real difference; the logistics between sites on a single day are non-trivial without local knowledge.',
+      ],
     },
     {
       title: 'Planning Your Chongqing Itinerary',
       id: 'planning-chongqing-city-tour',
       content: [
-        'Three to four days is the right amount of time for Chongqing. Two full days covers the core: Hongyadong after dark, Liziba Station, Raffles City sky bridge, and a hotpot dinner. A third day adds Eling Park and Xiahaoli in the morning, then Nanfeng Cliff for a south-bank evening. A fourth day is for Dazu Rock Carvings — plan a full day including travel.',
-        'Getting around: Chongqing Rail Transit covers the Yuzhong peninsula well — Line 2 connects Liziba Station to the city centre and riverside areas with bilingual signage. For south-bank destinations (Nanfeng Cliff, Hong\'en Temple), taxis or Didi (ride-hailing) are more practical than the metro.',
-        'Chongqing as part of a wider China trip: it pairs naturally with Beijing (10 days: culture + history then modern China) or with Beijing and Shanghai (14 days: full range of the country). If pandas are on your list, Chengdu is 90 minutes by high-speed train — the two cities together show you two very different sides of southwest China. CTS Tours offers this combination as a dedicated tour.'
+        'Three to four days is the right amount of time. Day 1: Eling Park for orientation, then Liziba Station, Luohan Temple with vegetarian lunch, Jiefangbei pedestrian area in the afternoon, Hongyadong from 7pm. Day 2: Chaotianmen Dock in the morning, Raffles City sky bridge, hot pot lunch with a split pot, Nanfeng Cliff for dinner at dusk. Day 3: Dazu Rock Carvings full day trip — leave early. Day 4 if available: Xiahaoli and Ciqikou in the morning, Yangtze River Cableway in the afternoon.',
+        'Getting around: Chongqing Rail Transit covers the Yuzhong peninsula well. Line 2 connects Liziba Station to the city centre with bilingual signage. For south-bank destinations — Nanfeng Cliff, Hong\'en Temple — taxis or Didi are more practical than the metro. Jiangbei Airport (CKG) connects to Auckland via Beijing or Shanghai; Beijing to Chongqing is approximately 2 hours 20 minutes by air.',
+        'Chongqing pairs naturally with Beijing for a 10-day trip or with Beijing and Shanghai for 14 days. If pandas are on your list, note that the Giant Panda Breeding Research Base is in Chengdu — 90 minutes by high-speed train. The two cities together make a compelling southwest China combination. Contact CTS Tours for a tailor-made itinerary that fits your timeframe and interests.',
       ],
     },
   ],
@@ -2449,7 +2458,7 @@ export const chongqingGuide: DestinationGuide = {
     },
     {
       question: 'Can I visit Chongqing as part of a tour from New Zealand?',
-      answer: 'Yes — CTS Tours offers a dedicated Chongqing and Chengdu tour: China Discovery — Fire & Fuzz (10 days, from NZD $2,999). The tour combines 4 nights in Chongqing with 3 nights in Chengdu, connected by high-speed train, with an English-speaking guide throughout. Custom itineraries pairing Chongqing with Beijing or Shanghai are also available on request.'
+      answer: 'Yes — CTS Tours specialises in tailor-made China itineraries for NZ travellers. Chongqing pairs naturally with Beijing (10 days) or Beijing and Shanghai (14 days). We can also combine Chongqing with Chengdu (for the panda base) on a southwest China itinerary. Contact us to discuss your timeframe and we\'ll build an itinerary around your interests.'
     }
   ],
   relatedTourSlugs: ['chongqing-chengdu'],
