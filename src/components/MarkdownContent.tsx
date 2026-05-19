@@ -1,5 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 interface MarkdownContentProps {
   content: string;
@@ -14,6 +15,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
       components={{
         // H1 in content is the article title — already rendered by the page header, so suppress it here.
         h1: () => null,
