@@ -445,7 +445,7 @@ The rubber-tyred trains are a deliberate design choice: they run significantly q
 
 I'd put this on your first full afternoon in Chongqing. It takes 30–60 minutes to see properly, it's free to watch from street level, and it sets the tone for everything that follows in the city. Chongqing solves problems that don't exist elsewhere in the world — extreme topography, extreme density — and Liziba is the most visible example of that.
 
-![A Chongqing Rail Transit Line 2 train passing through the residential building at Liziba Station — the world's first through-building monorail station](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/%E6%9D%8E%E5%AD%90%E5%9D%9D%E7%AB%99%E8%BD%BB%E8%BD%A8%E7%A9%BF%E6%A5%BC_0023.png/1200px-%E6%9D%8E%E5%AD%90%E5%9D%9D%E7%AB%99%E8%BD%BB%E8%BD%A8%E7%A9%BF%E6%A5%BC_0023.png)
+![A Chongqing Rail Transit Line 2 train passing through the residential building at Liziba Station — the world's first through-building monorail station](https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg)
 
 <!-- VIDEO EMBED: Liziba Station viral clip showing train passing through building floors 6-8, ideally filmed from street-level plaza looking up -->
 
