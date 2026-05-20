@@ -45,7 +45,7 @@ const SLUG_CATEGORY: Record<string, Category> = {
 
 const FEATURED_SLUGS = [
   'zhangjiajie-travel-guide',
-  'guilin-travel-guide',
+  'chongqing-travel-guide',
   'beijing-travel-guide',
 ];
 
