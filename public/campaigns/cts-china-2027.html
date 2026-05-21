@@ -14,7 +14,7 @@
       --light: #F7F7F7;
     }
 
-    body { font-family: Arial, Helvetica, sans-serif; color: #333; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #333; background: #fff; }
 
     /* ── Header ── */
     .header {
@@ -39,24 +39,33 @@
 
     /* ── Hero: Silk Road ── */
     .hero {
-      position: relative; min-height: 560px;
-      background: url('/campaigns/silk-road-hero.jpg') center 60% / cover no-repeat;
+      position: relative; min-height: 600px;
+      background: url('/campaigns/silk-road-hero.jpg') left center / cover no-repeat;
       display: flex; align-items: center;
     }
+    /* warm amber tint on the photo side */
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(130deg, rgba(20,8,0,.78) 0%, rgba(40,18,0,.55) 45%, rgba(10,5,0,.35) 100%);
+      background: linear-gradient(to right,
+        rgba(160,80,0,.22) 0%, rgba(120,55,0,.10) 32%, transparent 42%);
     }
+    /* dark content panel — diagonal fade from ~36% rightward */
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(0,0,0,.72) 0%, rgba(0,0,0,.28) 55%, transparent 100%);
+      background: linear-gradient(to right,
+        transparent 0%,
+        transparent 33%,
+        rgba(8,3,0,.52) 43%,
+        rgba(8,3,0,.93) 54%,
+        rgba(8,3,0,.98) 100%);
     }
     .hero-inner {
       position: relative; z-index: 1;
-      max-width: 1160px; margin: 0 auto; padding: 64px 40px;
-      display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; width: 100%;
+      max-width: 1280px; margin: 0 auto; padding: 64px 40px;
+      display: grid; grid-template-columns: 38% 1fr 400px; gap: 0 44px; align-items: center; width: 100%;
     }
+    .hero-spacer { /* intentionally empty — shows camel in photo */ }
 
     /* left */
     .hero-badge {
@@ -203,16 +212,26 @@
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
-      .hero-inner { grid-template-columns: 1fr; }
+      .hero { background-position: 25% center; }
+      .hero::before { background: none; }
+      .hero-overlay { background: rgba(8,3,0,.52); }
+      .hero-inner { grid-template-columns: 1fr; padding: 44px 24px; }
+      .hero-spacer { display: none; }
       .hero-title { font-size: 36px; }
-      .tours-grid { grid-template-columns: 1fr; padding: 0 24px 40px; }
+      .tours-grid { grid-template-columns: 1fr; padding: 0 20px 40px; }
+      .tcard { display: grid; grid-template-columns: 140px 1fr; }
+      .tcard-img { height: 100%; min-height: 160px; }
+      .tcard-body { padding: 16px; }
+      .tcard-title { font-size: 15px; }
       .frow       { grid-template-columns: 1fr; }
       .header     { padding: 12px 20px; }
-      .hero-inner { padding: 44px 24px; }
     }
     @media (max-width: 600px) {
       .hdr-phone  { font-size: 16px; }
-      .contact-strip { flex-direction: column; gap: 22px; }
+      .tcard { grid-template-columns: 1fr; }
+      .tcard-img { height: 200px; }
+      .contact-strip { flex-direction: column; gap: 18px; }
+      .cs-phone-item { display: none; }
       .footer     { flex-direction: column; text-align: center; }
       .footer-logo { text-align: center; }
     }
@@ -238,6 +257,9 @@
 <section class="hero" id="silk-road">
   <div class="hero-overlay"></div>
   <div class="hero-inner">
+
+    <!-- Left spacer — camel visible here -->
+    <div class="hero-spacer"></div>
 
     <!-- Left copy -->
     <div>
@@ -411,7 +433,7 @@
     <a class="btn-cta-outline" href="mailto:ctstours1@chinatravel.co.nz">Email Us</a>
   </div>
   <div class="contact-strip">
-    <div class="cs-item">
+    <div class="cs-item cs-phone-item">
       <div class="cs-label">Phone</div>
       <div class="cs-value"><a href="tel:0093751717">(09) 375 1717</a></div>
     </div>
