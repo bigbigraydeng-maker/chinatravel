@@ -57,7 +57,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
 
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
-      { name: 'Silk Road Discovery (17 Days)', duration: '17 Days', price: 'From NZD $6,699', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
+      { name: 'Silk Road Discovery (18 Days)', duration: '18 Days', price: 'From NZD $7,999', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
