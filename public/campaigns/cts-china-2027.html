@@ -40,15 +40,13 @@
     /* ── Hero: Silk Road ── */
     .hero {
       position: relative; min-height: 560px;
-      background: linear-gradient(130deg, #3d2200 0%, #7a4a00 35%, #2a1600 70%, #0d0800 100%);
+      background: url('/campaigns/silk-road-hero.jpg') center 60% / cover no-repeat;
       display: flex; align-items: center;
     }
     .hero::before {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse at 65% 45%, rgba(212,168,71,.25) 0%, transparent 55%),
-        repeating-linear-gradient(18deg, transparent, transparent 22px, rgba(255,255,255,.018) 22px, rgba(255,255,255,.018) 44px);
+      background: linear-gradient(130deg, rgba(20,8,0,.78) 0%, rgba(40,18,0,.55) 45%, rgba(10,5,0,.35) 100%);
     }
     .hero-overlay {
       position: absolute; inset: 0;
