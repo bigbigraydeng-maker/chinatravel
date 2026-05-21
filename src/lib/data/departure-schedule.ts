@@ -18,7 +18,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'silk-road',
     destination: 'china',
     tier: 'signature',
-    dates: ['25 August', '14 October'],
+    dates: ['13 May 2027', '21 October 2027'],
   },
   {
     label: 'Legacy of China',

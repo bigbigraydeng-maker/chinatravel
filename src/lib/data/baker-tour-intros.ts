@@ -11,7 +11,7 @@ export type BakerTourVoice = {
 const BAKER_VOICE_BY_SLUG: Record<string, BakerTourVoice> = {
   'silk-road': {
     intro:
-      "I built our Silk Road journey for travellers who want the history of the trade routes without sacrificing comfort — the pacing lets you absorb Kashgar's markets, Dunhuang's caves, and the landscapes in between. This is the China I keep going back to myself.",
+      "I built our Silk Road journey for travellers who want the history of the trade routes without sacrificing comfort — the pacing lets you absorb Xi'an's Terracotta Army, Dunhuang's caves, and the landscapes in between. This is the China I keep going back to myself.",
     relatedBlogSlug: 'why-silk-road-should-be-your-next-adventure',
   },
   'imperial-heritage': {
