@@ -161,6 +161,14 @@ const nextConfig = {
 
     return [...hostRedirects, ...pathRedirects];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/campaigns/cts-china-2027',
+        destination: '/campaigns/cts-china-2027.html',
+      },
+    ];
+  },
   async headers() {
     return [
       {
