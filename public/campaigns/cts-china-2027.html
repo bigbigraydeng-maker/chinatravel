@@ -38,34 +38,29 @@
     }
 
     /* ── Hero: Silk Road ── */
-    .hero {
-      position: relative; min-height: 600px;
-      background: url('/campaigns/silk-road-hero.jpg') left center / cover no-repeat;
-      display: flex; align-items: center;
+    .hero { display: flex; align-items: stretch; min-height: 580px; }
+
+    /* Left: photo panel */
+    .hero-img {
+      flex: 0 0 44%;
+      background: url('/campaigns/silk-road-hero.jpg') center center / cover no-repeat;
+      position: relative;
     }
-    /* warm amber tint on the photo side */
-    .hero::before {
+    /* Feather right edge into the dark panel */
+    .hero-img::after {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right,
-        rgba(160,80,0,.22) 0%, rgba(120,55,0,.10) 32%, transparent 42%);
+      position: absolute; right: 0; top: 0; bottom: 0; width: 80px;
+      background: linear-gradient(to right, transparent, var(--navy));
     }
-    /* dark content panel — diagonal fade from ~36% rightward */
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right,
-        transparent 0%,
-        transparent 33%,
-        rgba(8,3,0,.52) 43%,
-        rgba(8,3,0,.93) 54%,
-        rgba(8,3,0,.98) 100%);
-    }
+
+    /* Right: dark content panel */
+    .hero-overlay { display: none; }
+    .hero-spacer  { display: none; }
     .hero-inner {
-      position: relative; z-index: 1;
-      max-width: 1200px; margin: 0 auto; padding: 64px 40px;
-      display: grid; grid-template-columns: 32% 1fr min(400px, 36%); gap: 0 44px; align-items: center; width: 100%;
+      flex: 1; background: var(--navy);
+      display: grid; grid-template-columns: 1fr min(380px, 44%);
+      gap: 0 40px; align-items: center; padding: 60px 48px;
     }
-    .hero-spacer { /* intentionally empty — shows camel in photo */ }
 
     /* left */
     .hero-badge {
@@ -212,11 +207,22 @@
 
     /* ── Responsive ── */
     @media (max-width: 960px) {
-      .hero { background-position: 25% center; }
-      .hero::before { background: none; }
-      .hero-overlay { background: rgba(8,3,0,.52); }
-      .hero-inner { grid-template-columns: 1fr; padding: 36px 20px 40px; gap: 24px; }
-      .hero-spacer { display: none; }
+      .hero {
+        display: block; position: relative;
+        background: url('/campaigns/silk-road-hero.jpg') 25% center / cover no-repeat;
+        min-height: auto;
+      }
+      .hero-img { display: none; }
+      .hero-overlay {
+        display: block; position: absolute; inset: 0;
+        background: rgba(8,3,0,.52);
+      }
+      .hero-inner {
+        position: relative; z-index: 1;
+        background: transparent; flex: none;
+        grid-template-columns: 1fr; gap: 24px;
+        padding: 36px 20px 40px;
+      }
       .hero-desc { display: none; }
       .hero-hl  { display: none; }
       .hero-title { font-size: 32px; margin-bottom: 0; }
@@ -257,11 +263,9 @@
 
 <!-- ══ HERO: SILK ROAD ══ -->
 <section class="hero" id="silk-road">
+  <div class="hero-img"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-
-    <!-- Left spacer — camel visible here -->
-    <div class="hero-spacer"></div>
 
     <!-- Left copy -->
     <div>
