@@ -27,9 +27,9 @@ function getResult(
     return {
       type: 'check-required',
       heading: 'Check Your Eligibility',
-      summary: "China's visa-free policy covers specific countries.",
+      summary: "China's visa-free policy now covers 50 countries.",
       detail:
-        'New Zealand passport holders can enter visa-free for 30 days. For all other passports, eligibility varies. Check the Chinese Embassy or consulate in your country for current requirements.',
+        'China\'s unilateral visa-free policy (confirmed May 2026) covers 50 countries including Australia, UK, Canada, Japan, South Korea, and most of Europe — up to 30 days per stay. Check whether your passport country is on the list via the Chinese Embassy or consulate in your country.',
       ctaText: 'View China Embassy (NZ)',
       ctaHref: 'https://nz.china-embassy.gov.cn/eng/',
     };
@@ -66,7 +66,7 @@ function getResult(
     heading: 'You Can Enter Visa-Free!',
     summary: 'Great news — no visa application needed.',
     detail:
-      'As a New Zealand passport holder visiting for tourism, business, or family, you can enter China visa-free for up to 30 days (valid until 31 Dec 2026). Simply bring your NZ passport, return flight booking, and proof of accommodation.',
+      'As a New Zealand passport holder visiting for tourism, business, or family, you can enter China visa-free for up to 30 days per visit (valid until 31 Dec 2026). Multiple entries are allowed with no limit on the number of visits. Simply bring your NZ passport, return flight booking, and proof of accommodation. No embassy visit or pre-declaration required.',
     ctaText: 'Browse CTS China Tours',
     ctaHref: '/china-tours',
   };
@@ -264,7 +264,7 @@ export default function VisaCheckerWidget() {
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-4">
-          Based on China&apos;s visa-free policy for NZ passport holders, valid until 31 Dec 2026.{' '}
+          Based on China&apos;s visa-free policy for NZ passport holders, valid until 31 Dec 2026. Confirmed by China MFA, May 2026.{' '}
           <a
             href="https://nz.china-embassy.gov.cn/eng/"
             target="_blank"

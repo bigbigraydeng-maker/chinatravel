@@ -420,10 +420,10 @@ export const bestTimeToVisitChinaMeta: SeoPageMeta = {
 export const chinaVisaGuideMeta: SeoPageMeta = {
   slug: 'china-visa-guide-for-new-zealanders',
   title: 'China Visa-Free for New Zealand Citizens | CTS Tours',
-  description: 'Great news! New Zealand citizens can now visit China visa-free for 30 days (until 31 Dec 2026). Requirements, travel tips, and what to know before you go.',
+  description: 'New Zealand citizens can visit China visa-free for up to 30 days (valid until 31 Dec 2026). Multiple entries allowed, no entry limit. Official requirements, travel tips, and what to know.',
   h1: 'China Visa-Free for New Zealand Citizens',
-  heroSubtitle: '✅ No visa required for 30-day stays. Valid until 31 December 2026. Simple entry requirements.',
-  introText: 'Excellent news! As of 2024, New Zealand passport holders can enter mainland China visa-free for up to 30 days for tourism, business, family visits, or transit. This policy is valid until 31 December 2026. No visa application needed—just your passport and travel documents. This guide covers entry requirements, what to prepare, eligibility rules, and answers to common questions so you can travel with confidence.',
+  heroSubtitle: '✅ No visa required for 30-day stays. Multiple entries allowed. Valid until 31 December 2026.',
+  introText: 'Great news for New Zealand travellers! NZ passport holders can enter mainland China visa-free for up to 30 days — for tourism, business, family visits, exchange, and transit. The policy is officially confirmed valid until 31 December 2026, with no limit on the number of entries. China\'s unilateral visa-free policy now covers 50 countries, reconfirmed by China\'s Ministry of Foreign Affairs in May 2026. No visa application needed — just your valid NZ passport and travel documents. This guide covers entry requirements, eligible purposes, and answers to the most common questions.',
   faqs: [
     {
       question: 'Do I need a visa to visit China as a New Zealand citizen?',
@@ -431,7 +431,7 @@ export const chinaVisaGuideMeta: SeoPageMeta = {
     },
     {
       question: 'How long can I stay in China visa-free?',
-      answer: 'You can stay for up to 30 days per visit, starting from your date of entry. This is sufficient for most CTS Signature and Discovery tours (typically 5-17 days). If your planned trip exceeds 30 days, or if you\'re traveling for work or study, you\'ll need to apply for a traditional visa (L-Visa, Z-Visa, etc.). For multi-country Asia trips, the 30-day allowance works perfectly.'
+      answer: 'You can stay up to 30 consecutive calendar days per visit. The 30-day count starts from the day after your arrival date — so if you arrive on 1 June, your stay is valid until 1 July inclusive. There is currently no limit on the number of times you can enter China visa-free, as long as each individual stay does not exceed 30 days. Most CTS tours run 7–17 days, comfortably within the limit.'
     },
     {
       question: 'When does the visa-free policy end?',
@@ -442,20 +442,24 @@ export const chinaVisaGuideMeta: SeoPageMeta = {
       answer: 'You\'ll need: (1) Valid New Zealand passport (recommended 6+ months validity), (2) Return/onward flight ticket, (3) Proof of accommodation (hotel booking, CTS tour itinerary, etc.), (4) Sufficient funds for your stay. You don\'t need a visa form, tourist visa application, or invitation letter. CTS will provide all necessary itinerary and booking confirmations when you reserve your tour.'
     },
     {
-      question: 'Can I do a visa run or extend my stay beyond 30 days?',
-      answer: 'The visa-free policy allows 30 days per entry. You cannot extend this period without leaving and re-entering China (which resets the 30-day counter). However, most CTS tours are 5-17 days, comfortably within the limit. If you need a longer stay, you must apply for a traditional L-Visa (tourist visa) before your trip.'
+      question: 'Can I visit China multiple times visa-free?',
+      answer: 'Yes! There is currently no restriction on the number of times you can enter China under the visa-free policy, and no required interval between visits. Each stay simply must not exceed 30 days. If you need to stay longer than 30 consecutive days, you have two options: apply for an L-Visa before departure, or — if you\'re already in China — apply to the local Public Security Bureau exit-entry administration for a stay extension.'
     },
     {
       question: 'Does visa-free entry apply to all entry points?',
-      answer: 'Yes. Visa-free entry is available at all major entry ports: Beijing Capital, Shanghai Pudong/Hongqiao, Guangzhou, Chengdu, Xi\'an, Chongqing airports, and land borders. CTS will arrange your flights to these hubs, so immigration processing is seamless.'
+      answer: 'Yes. China\'s visa-free policy applies to all sea, land, and air ports open to foreign nationals. Whether you fly into Beijing, Shanghai, Guangzhou, Chengdu, Xi\'an or Chongqing, or arrive by sea or overland, the same 30-day visa-free entry applies. You can also travel to China from any third country — you do not need to fly directly from New Zealand.'
     },
     {
       question: 'I\'m a New Zealand citizen but hold dual nationality. Can I still use visa-free entry?',
       answer: 'You must enter China using your New Zealand passport to qualify for visa-free entry. If you hold a second passport (Australian, UK, etc.), using that passport requires a traditional visa. Always carry your NZ passport when visiting China to benefit from the visa-free policy.'
     },
     {
-      question: 'What if I\'m working or studying in China for more than 30 days?',
-      answer: 'The visa-free policy applies only to tourism, business, family visits, and transit. If you\'re staying for work, study, or residence longer than 30 days, you must apply for a Z-Visa (work), X-Visa (study), or other appropriate visa before travel. Contact the Chinese Embassy in Wellington for specific requirements.'
+      question: 'What activities are covered — and what still requires a visa?',
+      answer: 'Visa-free entry covers: tourism, business, family and friends visits, exchange activities, transit, sports competitions, conferences and exhibitions, and study tours (summer/winter camps) — as long as the stay is 30 days or fewer. It does NOT apply to paid employment, formal study enrolment, or journalism. If you\'re being employed in China, you need a Z-Visa (Work); if you\'re enrolling in a Chinese institution, you need an X-Visa (Study). Contact the Chinese Embassy in Wellington for the appropriate visa category.'
+    },
+    {
+      question: 'Do I need to notify the Chinese Embassy before travelling visa-free?',
+      answer: 'No pre-declaration or advance notification to the Chinese Embassy or consulate is required. Simply arrive at the port of entry with your valid New Zealand passport and supporting documents (return flight, accommodation booking). Chinese border inspection will verify your documents on arrival.'
     }
   ]
 };

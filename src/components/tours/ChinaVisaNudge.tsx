@@ -11,11 +11,11 @@ export default function ChinaVisaNudge() {
         <p className="text-center text-sm text-accent md:text-base">
           <span className="font-semibold text-primary">Visa-free China for NZ travellers</span>
           {' — '}
-          Many leisure trips qualify for up to 30 days without a tourist visa under current published policy. Always
-          confirm your exact dates and purpose before travel.
+          NZ passport holders can enter China visa-free for up to 30 days for tourism, business &amp; family visits.
+          Multiple entries allowed, no entry limit. Valid until 31 Dec 2026 (confirmed by China MFA, May 2026).
           {' '}
           <Link href="/china-visa-guide-for-new-zealanders" className="font-semibold text-primary underline-offset-2 hover:underline">
-            Read our China visa guide for New Zealanders
+            Full guide →
           </Link>
         </p>
       </div>
