@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
-import Script from 'next/script';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
 import GeoDirective from '@/components/GeoDirective';
 import CookieConsentManager from '@/components/CookieConsentManager';
 import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
-import GoogleTagManager from '@/components/GoogleTagManager';
+import TrackingScripts from '@/components/TrackingScripts';
 import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
@@ -72,65 +71,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        {/* Google Tag Manager */}
-        <GoogleTagManager />
-
-        {/* Google Ads Conversion Tag */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17984232872"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-ads"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){window.dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'AW-17984232872');
-            `,
-          }}
-        />
-
-        {/* Meta Pixel Code */}
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1441880990459874');
-              fbq('track', 'PageView');
-            `,
-          }}
-        />
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=1441880990459874&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-      </head>
-      <body className="font-sans antialiased">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MRW95G5Q"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
         <NewsletterPopup />
         <GeoDirective />
+        <TrackingScripts />
+        <noscript dangerouslySetInnerHTML={{ __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1441880990459874&ev=PageView&noscript=1" alt="" />` }} />
       </body>
     </html>
   );

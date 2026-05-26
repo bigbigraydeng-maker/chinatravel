@@ -84,6 +84,7 @@ const campaignNavItems: CampaignNavItem[] = [
   { kind: 'hash', href: '#okr', label: 'OKR' },
   { kind: 'hash', href: '#milestones', label: '里程碑' },
   { kind: 'route', href: '/campaign/social', label: '社媒发帖' },
+  { kind: 'route', href: '/marketing/campaign/data', label: '数据看板' },
   { kind: 'hash', href: '#tasks', label: '任务表' },
   { kind: 'hash', href: '#phases', label: '阶段' },
   { kind: 'hash', href: '#kpi', label: 'KPI' },
