@@ -48,6 +48,44 @@ export async function getTopKeywords(limit = 20) {
     .slice(0, limit);
 }
 
+/** Keywords ranked 11–50 with ≥5 impressions in last 7 days — SEO flag opportunities. */
+export async function getFlagOpportunities(limit = 30) {
+  const supabase = getSupabase();
+
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  const fromDate = sevenDaysAgo.toISOString().split('T')[0];
+
+  const { data, error } = await supabase
+    .from('gsc_search_analytics')
+    .select('query, clicks, impressions, position, date')
+    .gte('date', fromDate);
+
+  if (error) throw error;
+
+  const map = new Map<string, { clicks: number; impressions: number; positionSum: number }>();
+  for (const row of data ?? []) {
+    const key = (row.query ?? '').toLowerCase();
+    if (!map.has(key)) map.set(key, { clicks: 0, impressions: 0, positionSum: 0 });
+    const agg = map.get(key)!;
+    agg.clicks += row.clicks ?? 0;
+    agg.impressions += row.impressions ?? 0;
+    agg.positionSum += (row.position ?? 0) * (row.impressions ?? 1);
+  }
+
+  return Array.from(map.entries())
+    .map(([query, agg]) => ({
+      query,
+      clicks: agg.clicks,
+      impressions: agg.impressions,
+      ctr: agg.impressions > 0 ? agg.clicks / agg.impressions : 0,
+      position: agg.impressions > 0 ? agg.positionSum / agg.impressions : 0,
+    }))
+    .filter(r => r.position > 10 && r.position <= 50 && r.impressions >= 3)
+    .sort((a, b) => b.impressions - a.impressions || a.position - b.position)
+    .slice(0, limit);
+}
+
 export async function getKeywordTrend(query: string, days = 30) {
   const supabase = getSupabase();
 

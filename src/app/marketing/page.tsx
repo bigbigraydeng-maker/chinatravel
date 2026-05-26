@@ -28,6 +28,17 @@ export default function MarketingHubPage() {
           </li>
           <li>
             <Link
+              href="/marketing/campaign/data"
+              className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
+            >
+              数据看板（GSC + GA4 + 夺旗机会）→
+            </Link>
+            <p className="mt-2 text-sm text-gray-600">
+              近 7 天 GSC 搜索词、GA4 流量状态、排名 11–50 的夺旗机会清单。
+            </p>
+          </li>
+          <li>
+            <Link
               href="/marketing/preview"
               className="inline-flex rounded-xl border border-warm-200 bg-white px-4 py-3 font-medium text-accent hover:border-primary/30 hover:text-primary"
             >
