@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import type { Ga4Summary } from '@/lib/data/ga4-dashboard';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -18,6 +19,8 @@ type Props = {
   topQueries: GscRow[];
   flagOpportunities: GscRow[];
   ga4Id?: string;
+  ga4Summary?: Ga4Summary | null;
+  ga4Error?: string;
   fetchError?: string;
 };
 
@@ -108,79 +111,163 @@ function GscPanel({ rows, error }: { rows: GscRow[]; error?: string }) {
 
 // ── GA4 Tab ──────────────────────────────────────────────────────────────────
 
-const GA4_STUB_METRICS = [
-  { label: '总访问量（会话）', key: 'sessions',    note: '接入后可见' },
-  { label: '新用户',         key: 'newUsers',    note: '接入后可见' },
-  { label: '互动率',         key: 'engagement',  note: '接入后可见' },
-  { label: '询盘转化',       key: 'conversions', note: '接入后可见' },
-] as const;
+function fmtPct(n: number) { return (n * 100).toFixed(1) + '%'; }
+function fmtDuration(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds <= 0) return '—';
+  const m = Math.floor(seconds / 60);
+  const s = Math.round(seconds % 60);
+  return m > 0 ? `${m}分${s}秒` : `${s}秒`;
+}
 
-const GA4_TOP_PAGES_STUB = [
-  '/china-tours',
-  '/tours/beijing/signature/ancient-wonders',
-  '/china-visa-guide-for-new-zealanders',
-  '/campaigns/october-2026/tale-of-two-cities',
-  '/campaigns/october-2026/shanghai-surroundings',
-];
+function MetricCard({ label, value, sub }: { label: string; value: string; sub?: string }) {
+  return (
+    <div className="rounded-xl border border-warm-200 bg-white p-4 shadow-sm">
+      <p className="text-xs font-medium text-gray-500">{label}</p>
+      <p className="mt-2 text-2xl font-bold tabular-nums text-accent">{value}</p>
+      {sub && <p className="mt-1 text-xs text-gray-400">{sub}</p>}
+    </div>
+  );
+}
 
-function Ga4Panel({ ga4Id }: { ga4Id?: string }) {
-  const connected = Boolean(ga4Id);
-
+function Ga4NotConfigured({ ga4Id, error }: { ga4Id?: string; error?: string }) {
   return (
     <div className="space-y-6">
-      <div className={`rounded-xl border px-4 py-3 text-sm ${connected ? 'border-amber-200 bg-amber-50 text-amber-900' : 'border-warm-200 bg-warm-50 text-gray-700'}`}>
-        {connected ? (
+      <div className={`rounded-xl border px-4 py-3 text-sm ${error ? 'border-red-200 bg-red-50 text-red-900' : 'border-amber-200 bg-amber-50 text-amber-900'}`}>
+        {error ? (
           <>
-            <p className="font-semibold">GA4 Measurement ID 已配置（{ga4Id}）</p>
-            <p className="mt-1">前端 beacon 正在收集事件。如需在此展示历史报告数据，须另行接入 GA4 Data API（服务账号授权）。</p>
+            <p className="font-semibold">GA4 数据读取失败</p>
+            <p className="mt-1 break-all font-mono text-xs">{error}</p>
           </>
         ) : (
           <>
-            <p className="font-semibold">GA4 Data API 尚未接入</p>
-            <p className="mt-1">前端 Measurement beacon 已预留；报告型数据（会话数、转化率等）需服务账号授权后接入。</p>
+            <p className="font-semibold">GA4 Data API 尚未接入或暂无数据</p>
+            <p className="mt-1">
+              {ga4Id
+                ? `前端 beacon 已配置（${ga4Id}），但服务端报告 API 尚未同步任何数据。`
+                : '前端 beacon 与服务端 Data API 均未配置。'}
+            </p>
           </>
         )}
       </div>
 
-      {/* Stub metric cards */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {GA4_STUB_METRICS.map(m => (
-          <div key={m.key} className="rounded-xl border border-warm-200 bg-white p-4 shadow-sm">
-            <p className="text-xs font-medium text-gray-500">{m.label}</p>
-            <p className="mt-2 text-2xl font-bold text-gray-300">—</p>
-            <p className="mt-1 text-xs text-gray-400">{m.note}</p>
-          </div>
-        ))}
+      <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 text-sm">
+        <h3 className="font-semibold text-accent">接入 GA4 Data API（步骤）</h3>
+        <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-gray-700">
+          <li>在 Google Cloud Console 开启 <em>Google Analytics Data API</em></li>
+          <li>创建服务账号 → 下载 JSON 密钥</li>
+          <li>在 GA4「属性访问管理」添加服务账号（Viewer 权限）</li>
+          <li>
+            将下列环境变量配置到 Render：
+            <ul className="ml-4 mt-1 list-disc space-y-0.5 text-xs">
+              <li><code className="rounded bg-white/80 px-1">GA4_PROPERTY_ID</code>（9 位数字，非 G-XXX）</li>
+              <li><code className="rounded bg-white/80 px-1">GOOGLE_SERVICE_ACCOUNT_EMAIL</code></li>
+              <li><code className="rounded bg-white/80 px-1">GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY</code></li>
+            </ul>
+          </li>
+          <li>
+            首次同步：<code className="rounded bg-white/80 px-1 text-xs">POST /api/ga4/sync</code>
+            （后续每日 cron 自动跑）
+          </li>
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+function Ga4Panel({ summary, ga4Id, error }: { summary?: Ga4Summary | null; ga4Id?: string; error?: string }) {
+  if (!summary || summary.rowCount === 0) {
+    return <Ga4NotConfigured ga4Id={ga4Id} error={error} />;
+  }
+
+  const maxDaily = Math.max(...summary.daily.map(d => d.sessions), 1);
+
+  return (
+    <div className="space-y-6">
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900">
+        <p className="font-semibold">GA4 Data API 已连接 · 近 7 天数据</p>
+        <p className="mt-1 text-xs">
+          同步源：Supabase <code className="rounded bg-white/80 px-1 font-mono">ga4_traffic</code> · 共 {summary.rowCount.toLocaleString()} 行
+        </p>
       </div>
 
-      {/* Top pages stub */}
+      {/* Top-line metrics */}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <MetricCard
+          label="总会话数"
+          value={summary.sessions.toLocaleString()}
+          sub="近 7 天"
+        />
+        <MetricCard
+          label="互动率"
+          value={fmtPct(summary.engagementRate)}
+          sub={`${summary.engagedSessions.toLocaleString()} 互动会话`}
+        />
+        <MetricCard
+          label="平均会话时长"
+          value={fmtDuration(summary.avgSessionDurationSec)}
+          sub="加权平均"
+        />
+        <MetricCard
+          label="转化（key events）"
+          value={summary.conversions.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+          sub="近 7 天合计"
+        />
+      </div>
+
+      {/* Daily trend */}
       <div className="rounded-xl border border-warm-200 bg-white p-5 shadow-soft">
-        <h3 className="font-serif text-base font-semibold text-accent">预计高价值落地页（待验证）</h3>
-        <p className="mt-1 text-xs text-gray-500">接入后可按实际会话量排序；目前为推断排序。</p>
+        <h3 className="font-serif text-base font-semibold text-accent">每日会话趋势</h3>
+        <p className="mt-1 text-xs text-gray-500">{summary.daily.length} 天 · 按日期升序</p>
+        <div className="mt-4 space-y-1.5">
+          {summary.daily.map(d => (
+            <div key={d.date} className="flex items-center gap-3 text-sm">
+              <span className="w-20 shrink-0 font-mono text-xs text-gray-500">{d.date}</span>
+              <div className="flex-1 overflow-hidden rounded-full bg-warm-100">
+                <div
+                  className="h-2 rounded-full bg-primary/70"
+                  style={{ width: `${(d.sessions / maxDaily) * 100}%` }}
+                />
+              </div>
+              <span className="w-16 shrink-0 text-right tabular-nums text-gray-700">{d.sessions.toLocaleString()}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Top pages */}
+      <div className="rounded-xl border border-warm-200 bg-white p-5 shadow-soft">
+        <h3 className="font-serif text-base font-semibold text-accent">高价值落地页（Top 10）</h3>
+        <p className="mt-1 text-xs text-gray-500">按会话量排序</p>
         <ol className="mt-4 space-y-2">
-          {GA4_TOP_PAGES_STUB.map((path, i) => (
-            <li key={path} className="flex items-center gap-3 rounded-lg border border-warm-100 bg-warm-50/50 px-3 py-2 text-sm">
+          {summary.topPages.map((p, i) => (
+            <li key={p.key} className="flex items-center gap-3 rounded-lg border border-warm-100 bg-warm-50/50 px-3 py-2 text-sm">
               <span className="w-5 shrink-0 text-xs font-semibold text-gray-400">{i + 1}</span>
-              <a href={path} target="_blank" rel="noreferrer" className="truncate font-mono text-xs text-primary underline-offset-2 hover:underline">
-                {path}
+              <a
+                href={p.key}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 truncate font-mono text-xs text-primary underline-offset-2 hover:underline"
+              >
+                {p.key}
               </a>
-              <span className="ml-auto shrink-0 rounded-full bg-warm-100 px-2 py-0.5 text-xs text-gray-400">待接入</span>
+              <span className="shrink-0 tabular-nums text-gray-700">{p.sessions.toLocaleString()}</span>
             </li>
           ))}
         </ol>
       </div>
 
-      {/* How to connect */}
-      <div className="rounded-xl border border-primary/20 bg-primary/5 p-5 text-sm">
-        <h3 className="font-semibold text-accent">接入 GA4 Data API（步骤）</h3>
-        <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-gray-700">
-          <li>在 Google Cloud Console 开启 GA4 Data API</li>
-          <li>创建服务账号，下载 JSON 密钥</li>
-          <li>在 GA4「属性访问管理」添加服务账号（查看者权限）</li>
-          <li>将密钥 JSON 内容存入 Render 环境变量 <code className="rounded bg-white/80 px-1 text-xs">GA4_SERVICE_ACCOUNT_JSON</code></li>
-          <li>将 GA4 属性 ID 存入 <code className="rounded bg-white/80 px-1 text-xs">GA4_PROPERTY_ID</code></li>
-          <li>Claude Code 添加服务端数据获取函数，刷新此页即可显示真实数据</li>
-        </ol>
+      {/* Top sources */}
+      <div className="rounded-xl border border-warm-200 bg-white p-5 shadow-soft">
+        <h3 className="font-serif text-base font-semibold text-accent">流量来源（Top 8）</h3>
+        <p className="mt-1 text-xs text-gray-500">GA4 sessionSourceMedium</p>
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          {summary.topSources.map(s => (
+            <div key={s.key} className="flex items-center justify-between rounded-lg border border-warm-100 bg-warm-50/50 px-3 py-2 text-sm">
+              <span className="truncate font-mono text-xs text-gray-700">{s.key}</span>
+              <span className="ml-2 shrink-0 tabular-nums text-gray-600">{s.sessions.toLocaleString()}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -295,15 +382,21 @@ const TAB_META: { id: Tab; label: string; countKey?: keyof Pick<Props, 'topQueri
   { id: 'flag', label: '夺旗机会',      countKey: 'flagOpportunities' },
 ];
 
-export default function DataTabs({ topQueries, flagOpportunities, ga4Id, fetchError }: Props) {
+export default function DataTabs({ topQueries, flagOpportunities, ga4Id, ga4Summary, ga4Error, fetchError }: Props) {
   const [active, setActive] = useState<Tab>('gsc');
+  const ga4Connected = Boolean(ga4Summary && ga4Summary.rowCount > 0);
 
   return (
     <div>
       {/* Tab bar */}
       <div className="flex flex-wrap gap-1 rounded-xl border border-warm-200 bg-warm-100/60 p-1">
         {TAB_META.map(tab => {
-          const count = tab.countKey ? (tab.countKey === 'topQueries' ? topQueries : flagOpportunities).length : undefined;
+          const count =
+            tab.countKey
+              ? (tab.countKey === 'topQueries' ? topQueries : flagOpportunities).length
+              : tab.id === 'ga4' && ga4Connected
+                ? ga4Summary!.sessions
+                : undefined;
           const isActive = active === tab.id;
           return (
             <button
@@ -317,12 +410,12 @@ export default function DataTabs({ topQueries, flagOpportunities, ga4Id, fetchEr
               }`}
             >
               {tab.label}
-              {tab.id === 'ga4' && (
+              {tab.id === 'ga4' && !ga4Connected && (
                 <span className="ml-0.5 text-xs text-amber-600" title="尚未接入 GA4 Data API">⚠</span>
               )}
               {count !== undefined && (
                 <span className={`rounded-full px-1.5 py-0.5 text-xs font-semibold ${isActive ? 'bg-primary/10 text-primary' : 'bg-warm-200 text-gray-600'}`}>
-                  {count}
+                  {count.toLocaleString()}
                 </span>
               )}
             </button>
@@ -332,8 +425,8 @@ export default function DataTabs({ topQueries, flagOpportunities, ga4Id, fetchEr
 
       {/* Tab content */}
       <div className="mt-5">
-        {active === 'gsc'  && <GscPanel  rows={topQueries}        error={fetchError} />}
-        {active === 'ga4'  && <Ga4Panel  ga4Id={ga4Id} />}
+        {active === 'gsc'  && <GscPanel  rows={topQueries}         error={fetchError} />}
+        {active === 'ga4'  && <Ga4Panel  summary={ga4Summary}      ga4Id={ga4Id} error={ga4Error} />}
         {active === 'flag' && <FlagPanel rows={flagOpportunities}  error={fetchError} />}
       </div>
     </div>

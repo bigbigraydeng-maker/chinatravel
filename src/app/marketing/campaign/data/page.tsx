@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTopKeywords, getFlagOpportunities } from '@/lib/data/gsc-dashboard';
+import { getGa4Summary, type Ga4Summary } from '@/lib/data/ga4-dashboard';
 import DataTabs from './DataTabs';
 
 export const dynamic = 'force-dynamic';
@@ -25,7 +26,17 @@ export default async function DataDashboardPage() {
     fetchError = e instanceof Error ? e.message : String(e);
   }
 
+  // GA4 fetched independently — failure shouldn't blank out GSC.
+  let ga4Summary: Ga4Summary | null = null;
+  let ga4Error: string | undefined;
+  try {
+    ga4Summary = await getGa4Summary(7);
+  } catch (e) {
+    ga4Error = e instanceof Error ? e.message : String(e);
+  }
+
   const ga4Id = process.env.NEXT_PUBLIC_GA_ID;
+  const ga4Connected = Boolean(ga4Summary && ga4Summary.rowCount > 0);
   const today = new Date().toLocaleDateString('zh-CN', {
     year: 'numeric', month: 'long', day: 'numeric',
   });
@@ -81,10 +92,14 @@ export default async function DataDashboardPage() {
                 {fetchError ? '—' : flagOpportunities.length}
               </span>
             </div>
-            <div className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm shadow-sm ${ga4Id ? 'border-emerald-200 bg-emerald-50' : 'border-amber-200 bg-amber-50'}`}>
+            <div className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm shadow-sm ${ga4Connected ? 'border-emerald-200 bg-emerald-50' : ga4Id ? 'border-sky-200 bg-sky-50' : 'border-amber-200 bg-amber-50'}`}>
               <span className="font-medium text-gray-500">GA4</span>
-              <span className={`font-semibold ${ga4Id ? 'text-emerald-700' : 'text-amber-700'}`}>
-                {ga4Id ? `已配置 ${ga4Id}` : '待接入 Data API'}
+              <span className={`font-semibold ${ga4Connected ? 'text-emerald-700' : ga4Id ? 'text-sky-700' : 'text-amber-700'}`}>
+                {ga4Connected
+                  ? `${ga4Summary!.sessions.toLocaleString()} 会话 · 7d`
+                  : ga4Id
+                    ? `Beacon 已配置 ${ga4Id}`
+                    : '待接入 Data API'}
               </span>
             </div>
           </div>
@@ -97,12 +112,14 @@ export default async function DataDashboardPage() {
           topQueries={topQueries}
           flagOpportunities={flagOpportunities}
           ga4Id={ga4Id}
+          ga4Summary={ga4Summary}
+          ga4Error={ga4Error}
           fetchError={fetchError}
         />
       </div>
 
       <footer className="border-t border-warm-200 pb-8 pt-6 text-center text-xs text-gray-400">
-        数据来源：Google Search Console（Supabase 缓存）· GA4 Data API 待接入
+        数据来源：Google Search Console + Google Analytics 4 Data API（均经 Supabase 缓存）
         {' · '}
         <Link href="/marketing/campaign" className="text-primary underline-offset-2 hover:underline">
           返回战役看板
