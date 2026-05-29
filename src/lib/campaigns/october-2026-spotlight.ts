@@ -1,5 +1,4 @@
 import { getOctober2026CampaignPath } from './october-2026-discovery';
-import { FIRE_FUZZ_CAMPAIGN_PATH } from './fire-fuzz';
 
 /**
  * October 2026 Hub — three featured spotlight tours rendered on
@@ -10,7 +9,7 @@ import { FIRE_FUZZ_CAMPAIGN_PATH } from './fire-fuzz';
  * existing campaign LP (UTM-free path; canonical).
  */
 export type SpotlightTourCard = {
-  slug: 'shanghai-surroundings' | 'beijing-xian' | 'chongqing-chengdu';
+  slug: 'shanghai-surroundings' | 'beijing-xian' | 'essentials';
   destination: 'china';
   tier: 'discovery';
   href: string;
@@ -43,13 +42,13 @@ export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
     badgeText: 'Featured Departure',
   },
   {
-    slug: 'chongqing-chengdu',
+    slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    href: FIRE_FUZZ_CAMPAIGN_PATH,
-    departureLabel: '1 Nov 2026',
-    departureSortDate: '2026-11-01',
-    routeCities: ['Chongqing', 'Chengdu'],
+    href: '/tours/china/discovery/essentials',
+    departureLabel: '3 Nov 2026',
+    departureSortDate: '2026-11-03',
+    routeCities: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
     badgeText: 'November Departure',
   },
 ];

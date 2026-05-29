@@ -773,7 +773,7 @@ export const tours: Tour[] = [
     title: 'China Discovery — Best of China',
     shortDescription: 'Fifteen days from Beijing\'s Temple of Heaven, Forbidden City, Great Wall and hutongs, by high-speed train to Xi\'an\'s Terracotta Army, then by air to Hangzhou via Puyuan\'s fashion ancient town, West Lake and Longjing tea, finishing in Shanghai before your return via Beijing.',
     duration: '15 Days',
-    price: 'NZD $4,539 per person',
+    price: 'NZD $3,880 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
@@ -823,7 +823,7 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
-    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $4,539. Book with CTS Tours.',
+    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $3,880. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-04-02',
@@ -841,8 +841,8 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['3 September'],
-    singleSupplement: 'NZD $695',
+    departureDates: ['3 November'],
+    singleSupplement: 'NZD $720',
   },
   {
     id: 'tour-cn-dis-4',

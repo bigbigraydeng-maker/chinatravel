@@ -40,6 +40,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
     relatedTours: [
 
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'discovery' },      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: `${TI}/forbidden-city-lion.jpg`, tier: 'stopover' },
       { name: 'Beijing Express (3 Days)', duration: '3 Days', price: 'From NZD $1,450', url: '/tours/china/stopover/beijing-express', image: `${TI}/forbidden-city-lion-2.jpg`, tier: 'stopover' },
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
@@ -56,7 +57,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     relatedTours: [
 
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
       { name: 'Silk Road Discovery (18 Days)', duration: '18 Days', price: 'From NZD $7,999', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -69,6 +70,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'shanghai-travel-guide': {
     hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
     relatedTours: [
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
       { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: `${TI}/shanghai-night-red.jpg`, tier: 'stopover' },
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-gold-lion.jpg`, tier: 'discovery' },
       { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
@@ -216,7 +218,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     relatedTours: [
 
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/xian-terracotta.jpg`, tier: 'discovery' },      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
@@ -269,7 +271,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/hangzhou-tours', hubLabel: 'All Hangzhou Tours',
     relatedTours: [
       { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
-      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
@@ -322,7 +324,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
 const DEFAULT_CONFIG: GuideConfig = {
   hubUrl: '/china-tours', hubLabel: 'All China Tours',
   relatedTours: [
-    { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,539', url: '/tours/china/discovery/essentials', image: `${TI}/great-wall-mist.jpg`, tier: 'discovery' },
+    { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $3,880', url: '/tours/china/discovery/essentials', image: `${TI}/great-wall-mist.jpg`, tier: 'discovery' },
     { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
   ],
   relatedGuides: [
