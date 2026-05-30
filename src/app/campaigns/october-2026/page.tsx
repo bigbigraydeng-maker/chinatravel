@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'October 2026 China Tours from New Zealand | CTS Tours',
     description:
-      "Three featured October & November 2026 group tours from NZ: Shanghai & Surroundings, Beijing & Xi'an, Chongqing & Chengdu. Limited seats. From NZD $2,750. Book direct.",
+      "Three featured October & November 2026 group tours from NZ: Shanghai & Surroundings, Beijing & Xi'an, Best of China (15 Days). Limited seats. From NZD $2,750. Book direct.",
     path: '/campaigns/october-2026',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'CTS Tours October departures',
       'Shanghai tour October 2026',
       "Beijing Xi'an tour 2026",
-      'Chongqing Chengdu tour November 2026',
+      'Best of China tour November 2026',
     ],
   });
 }
@@ -57,7 +57,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these October departures sell out?',
     answer:
-      'October is peak season for visa-free China travel from NZ — the Yangtze Delta, Beijing/Xi\'an and Chongqing/Chengdu group tours typically fill 6–10 weeks before departure. We recommend securing your seat with a refundable deposit early and finalising flights once confirmed. Limited single-supplement rooms are first-come, first-served.',
+      'October is peak season for visa-free China travel from NZ — the Yangtze Delta, Beijing/Xi\'an and Best of China group tours typically fill 6–10 weeks before departure. We recommend securing your seat with a refundable deposit early and finalising flights once confirmed. Limited single-supplement rooms are first-come, first-served.',
   },
 ];
 
