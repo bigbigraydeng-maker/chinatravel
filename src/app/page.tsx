@@ -11,7 +11,6 @@ import SpotlightTours from '@/components/SpotlightTours';
 import StatsCounter from '@/components/StatsCounter';
 import Testimonials from '@/components/Testimonials';
 import FacebookFollowStrip from '@/components/FacebookFollowStrip';
-import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
 import { getTourBySlug } from '@/lib/data/tours';
 import { allGuides } from '@/lib/data/guides';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -123,7 +122,7 @@ const HomePage = () => {
     { name: 'Xi\'an', slug: 'xian', description: 'Home to the Terracotta Army and ancient city walls', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
     { name: 'Shanghai', slug: 'shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
     { name: 'Chengdu', slug: 'chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
-    { name: 'Guilin', slug: 'guilin', description: 'Famous for its karst mountains and Li River scenery', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg' },
+    { name: 'Chongqing', slug: 'chongqing', description: 'China\'s vertical megacity — hotpot, dramatic river gorges and cyberpunk night views', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
     { name: 'Zhangjiajie', slug: 'zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
   ];
 
@@ -369,36 +368,6 @@ const HomePage = () => {
             <Link href="/guide" prefetch={false} className="text-primary hover:underline font-medium">
               View all {allGuides.length} destination guides →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-accent via-slate-800 to-accent relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-56 h-56 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 text-primary px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-5">
-              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Free Weekly Newsletter
-            </div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
-              Plan your China trip smarter
-            </h2>
-            <p className="text-gray-300 text-lg mb-3">
-              Join thousands of New Zealand travellers getting expert China guides, visa updates, and exclusive tour offers every week.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm text-gray-400">
-              <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>Destination guides</span>
-              <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>Visa-free entry tips</span>
-              <span className="flex items-center gap-1.5"><svg className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/></svg>Exclusive tour offers</span>
-            </div>
-            <div className="max-w-md mx-auto">
-              <NewsletterSubscribeForm variant="footer" />
-            </div>
           </div>
         </div>
       </section>

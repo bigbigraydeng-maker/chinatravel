@@ -45,7 +45,12 @@
       "Bash(curl -I \"https://images.unsplash.com/photo-1508684175866-29ac7090006f?w=1200&q=80\")",
       "Bash(curl -I \"https://images.unsplash.com/photo-1513457656999-4c8bde1f38c8?w=1200&q=80\")",
       "Bash(curl -I \"https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80\")",
-      "Bash(/tmp/fix_guides.ts:*)"
+      "Bash(/tmp/fix_guides.ts:*)",
+      "Skill(tavily-research)",
+      "Skill(tavily-research:*)",
+      "mcp__mcp-registry__search_mcp_registry",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }

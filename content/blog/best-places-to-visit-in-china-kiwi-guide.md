@@ -129,6 +129,5 @@ Why recommend:
   "description": "Discover the best places to visit in China for NZ travellers — from Beijing's hutongs to Dunhuang's dunes. Expert picks from CTS Tours, NZ's China speciali",
   "url": "https://ctstours.co.nz/blog/best-places-to-visit-in-china-kiwi-guide",
   "datePublished": "2026-05-29T08:41:23.537679+00:00",
-  "dateModified": "2026-05-29T08:42:36.662291+00:00"
 }
 </script>
