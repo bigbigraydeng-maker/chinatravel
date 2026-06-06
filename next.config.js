@@ -108,39 +108,44 @@ const nextConfig = {
       /** WordPress query-string URLs — ?p=, ?page_id=, ?cat=, ?s= etc.
        *  Next.js redirects don't strip query params by default, so use `has` to match.
        *  All redirect to /china-tours (most relevant hub for former WP travel content).
+       *
+       *  ⚠️  source uses negative lookahead to exclude /china-tours and /tours/find,
+       *  otherwise the destination would re-match these rules and cause
+       *  ERR_TOO_MANY_REDIRECTS on real product chips like
+       *  /tours/find?tag=hangzhou. See PR #(redirect-loop-fix).
        */
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 'p' }],
         destination: '/china-tours',
         permanent: true,
       },
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 'page_id' }],
         destination: '/china-tours',
         permanent: true,
       },
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 'cat' }],
         destination: '/china-tours',
         permanent: true,
       },
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 'tag' }],
         destination: '/china-tours',
         permanent: true,
       },
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 'attachment_id' }],
         destination: '/china-tours',
         permanent: true,
       },
       {
-        source: '/:path*',
+        source: '/:path((?!china-tours$|tours/find$).*)',
         has: [{ type: 'query', key: 's' }],
         destination: '/china-tours',
         permanent: true,
