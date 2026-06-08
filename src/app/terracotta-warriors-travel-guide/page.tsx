@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import DestinationGuide from '@/components/seo/DestinationGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getGuideBySlug } from '@/lib/data/guides';
@@ -64,26 +65,93 @@ export default function GuidePage() {
         acceptedAnswer: { '@type': 'Answer', text: faq.answer },
       })),
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TouristTrip',
+      name: 'Terracotta Warriors Tour from New Zealand',
+      description: 'Xi\'an\'s Terracotta Warriors are the centrepiece of CTS Tours\' Tale of Two Cities itinerary — Beijing + Xi\'an by high-speed train, hand-crafted for Kiwi travellers since 1928.',
+      itinerary: {
+        '@type': 'ItemList',
+        itemListElement: [
+          { '@type': 'TouristAttraction', name: 'Terracotta Warriors Museum (Pits 1, 2, 3)' },
+          { '@type': 'TouristAttraction', name: 'Emperor Qin Shi Huang\'s Mausoleum' },
+          { '@type': 'TouristAttraction', name: 'Xi\'an City Wall' },
+          { '@type': 'TouristAttraction', name: 'Muslim Quarter' },
+        ],
+      },
+      touristType: ['Cultural travellers', 'Heritage tourism', 'History enthusiasts'],
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'NZD',
+        lowPrice: '3480',
+        availability: 'https://schema.org/InStock',
+        url: `${siteUrl}/campaigns/october-2026/tale-of-two-cities`,
+      },
+      provider: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
+    },
   ];
 
   return (
     <>
       <SchemaMarkup data={schema} />
+      {/* Trust signal strip */}
+      <section className="bg-warm-50 border-b border-warm-200 py-3">
+        <div className="container mx-auto px-4 text-center text-sm text-gray-600">
+          <span className="font-semibold text-accent">CTS Tours</span>
+          {' · '}Trusted by 1,200+ Kiwi travellers
+          {' · '}China specialists since 1928
+          {' · '}ATAS accredited
+          {' · '}Auckland-based experts
+        </div>
+      </section>
       <DestinationGuide guide={guide} />
+      {/* Specialist expertise section */}
+      <section className="bg-warm-50 py-10 border-t border-warm-200">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">CTS Tours Specialists</p>
+          <h3 className="font-serif text-xl font-semibold text-accent mb-4">
+            20+ years crafting China tours for Kiwis
+          </h3>
+          <p className="text-gray-700 leading-relaxed">
+            Our Tale of Two Cities itinerary is led by CTS specialists with 20+ years on the ground in
+            China, ensuring our Kiwi travellers experience the Terracotta Warriors with the depth and
+            access that mass-market operators simply cannot offer.
+          </p>
+        </div>
+      </section>
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-serif text-2xl font-semibold text-accent mb-3">
             Visit the Terracotta Warriors with CTS
           </h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Our Xi'an packages include guided visits to the Terracotta Army with licensed local guides. NZD pricing, Auckland-based team.
+            Our Xi&apos;an packages include guided visits to the Terracotta Army with licensed local guides. NZD pricing, Auckland-based team.
           </p>
           <a
             href="/xian-tours"
             className="inline-block bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition"
           >
-            Explore Xi'an Tours →
+            Explore Xi&apos;an Tours →
           </a>
+        </div>
+      </section>
+      {/* October 2026 urgency CTA */}
+      <section className="bg-accent text-white py-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-xs uppercase tracking-wider mb-2 opacity-80">Limited Departures</p>
+          <h2 className="font-serif text-3xl font-semibold mb-3">
+            October 2026 — Includes Terracotta Warriors
+          </h2>
+          <p className="mb-6 max-w-2xl mx-auto opacity-90">
+            A Tale of Two Cities: Beijing &amp; Xi&apos;an by high-speed train. 10 days from{' '}
+            <strong>NZD $3,480</strong>. Featured departure 15 October 2026.
+          </p>
+          <Link
+            href="/campaigns/october-2026/tale-of-two-cities"
+            className="inline-block bg-white text-accent px-8 py-3 rounded-full font-semibold hover:bg-warm-50 transition"
+          >
+            See Tale of Two Cities October Departure →
+          </Link>
         </div>
       </section>
     </>

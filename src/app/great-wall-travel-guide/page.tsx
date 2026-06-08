@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
 import DestinationGuide from '@/components/seo/DestinationGuide';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getGuideBySlug } from '@/lib/data/guides';
@@ -64,11 +65,44 @@ export default function GuidePage() {
         acceptedAnswer: { '@type': 'Answer', text: faq.answer },
       })),
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TouristTrip',
+      name: 'Great Wall of China Tours from New Zealand',
+      description: 'Hand-crafted Great Wall experiences featuring Mutianyu, Badaling, and Jinshanling sections, included in CTS Tours\' Beijing and Tale of Two Cities itineraries for Kiwi travellers.',
+      itinerary: {
+        '@type': 'ItemList',
+        itemListElement: [
+          { '@type': 'TouristAttraction', name: 'Mutianyu Great Wall' },
+          { '@type': 'TouristAttraction', name: 'Badaling Great Wall' },
+          { '@type': 'TouristAttraction', name: 'Jinshanling Great Wall' },
+        ],
+      },
+      touristType: ['Cultural travellers', 'Heritage tourism', 'Photography enthusiasts'],
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'NZD',
+        lowPrice: '3480',
+        availability: 'https://schema.org/InStock',
+        url: `${siteUrl}/campaigns/october-2026/tale-of-two-cities`,
+      },
+      provider: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
+    },
   ];
 
   return (
     <>
       <SchemaMarkup data={schema} />
+      {/* Trust signal strip */}
+      <section className="bg-warm-50 border-b border-warm-200 py-3">
+        <div className="container mx-auto px-4 text-center text-sm text-gray-600">
+          <span className="font-semibold text-accent">CTS Tours</span>
+          {' · '}Trusted by 1,200+ Kiwi travellers
+          {' · '}China specialists since 1928
+          {' · '}ATAS accredited
+          {' · '}Auckland-based experts
+        </div>
+      </section>
       <DestinationGuide guide={guide} />
       <section className="bg-warm-50 border-t border-warm-200 py-10">
         <div className="container mx-auto px-4 text-center">
@@ -84,6 +118,25 @@ export default function GuidePage() {
           >
             Explore Beijing Tours →
           </a>
+        </div>
+      </section>
+      {/* October 2026 urgency CTA */}
+      <section className="bg-accent text-white py-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-xs uppercase tracking-wider mb-2 opacity-80">Limited Departures</p>
+          <h2 className="font-serif text-3xl font-semibold mb-3">
+            October 2026 — Includes Mutianyu Great Wall
+          </h2>
+          <p className="mb-6 max-w-2xl mx-auto opacity-90">
+            A Tale of Two Cities: Beijing &amp; Xi&apos;an by high-speed train. 10 days from{' '}
+            <strong>NZD $3,480</strong>. Featured departure 15 October 2026.
+          </p>
+          <Link
+            href="/campaigns/october-2026/tale-of-two-cities"
+            className="inline-block bg-white text-accent px-8 py-3 rounded-full font-semibold hover:bg-warm-50 transition"
+          >
+            See Tale of Two Cities October Departure →
+          </Link>
         </div>
       </section>
     </>
