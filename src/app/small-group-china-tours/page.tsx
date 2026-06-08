@@ -235,16 +235,34 @@ export default function SmallGroupChinaToursPage() {
                       </Link>
                     </div>
                   </div>
-                </div>
 
-                <p className="mt-4 text-sm text-gray-600">
-                  Looking for a longer itinerary? Our{' '}
-                  <Link href="/tours/china/discovery/essentials" className="text-primary font-medium hover:underline">
-                    Best of China 15-day tour
-                  </Link>{' '}
-                  covers Beijing, Xi&apos;an, Puyuan, Hangzhou, and Shanghai — departing 3 November 2026
-                  from NZD $3,880.
-                </p>
+                  <div className="border-l-4 border-accent bg-warm-50 rounded-r-xl p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div>
+                        <h3 className="font-serif font-bold text-xl text-gray-900">
+                          Best of China — 15 Days
+                        </h3>
+                        <p className="text-gray-600 mt-1">
+                          15 days · Beijing, Xi&apos;an, Puyuan, Hangzhou, Shanghai
+                        </p>
+                        <p className="text-gray-700 text-sm mt-2">
+                          The full five-city loop — ancient capitals, water towns, tea plantations,
+                          and Shanghai. More breathing room than any 10-day tour.
+                        </p>
+                        <p className="mt-3">
+                          <span className="font-bold text-primary text-lg">From NZD $3,880</span>
+                          <span className="text-gray-500 text-sm ml-2">· Departs 3 November 2026</span>
+                        </p>
+                      </div>
+                      <Link
+                        href="/tours/china/discovery/essentials"
+                        className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
+                      >
+                        View &amp; Enquire →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </section>
 
               {/* Section 4: The guide difference */}
