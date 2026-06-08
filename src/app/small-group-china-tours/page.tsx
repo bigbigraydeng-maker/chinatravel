@@ -75,15 +75,6 @@ export default function SmallGroupChinaToursPage() {
     },
     {
       '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
-    },
-    {
-      '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
