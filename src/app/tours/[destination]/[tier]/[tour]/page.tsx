@@ -198,6 +198,23 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
+      {/* Essentials: featured departure urgency chip */}
+      {tour.slug === 'essentials' && (
+        <section className="bg-amber-50 border-y border-amber-200 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+              Featured Departure
+            </p>
+            <p className="text-lg font-serif font-bold text-gray-900">
+              3 November 2026 — Limited seats
+            </p>
+            <p className="text-sm text-gray-600 mt-1">
+              Enquire to confirm availability and hold your place.
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* Tour Content */}
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">
@@ -219,6 +236,29 @@ export default function TourPage({ params }: TourPageProps) {
                   </p>
                 )}
               </section>
+
+              {/* Essentials: Why 15 Days? value stack */}
+              {tour.slug === 'essentials' && (
+                <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
+                  <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
+                    Why 15 Days, Not 10?
+                  </h2>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Most operators send Kiwi travellers to China for 10 days — enough for the headliners
+                    (Beijing, Xi&apos;an, or Shanghai), but not enough to step beyond the well-trodden tourist trail.
+                  </p>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    The extra 5 days on our Best of China itinerary cover:
+                  </p>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>✓ <strong>Puyuan Fashion Ancient Town</strong> — Song-dynasty waterways most tour groups skip</li>
+                    <li>✓ <strong>Hangzhou&apos;s West Lake</strong> — UNESCO heritage with Su Causeway, Leifeng Pagoda</li>
+                    <li>✓ <strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</li>
+                    <li>✓ <strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</li>
+                    <li>✓ Time to <em>actually experience</em> each city instead of just transiting through</li>
+                  </ul>
+                </section>
+              )}
 
               {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
 
