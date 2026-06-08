@@ -1,7 +1,7 @@
 # Wave 2 — Best of China 主推 + Oct 两团 LP CRO + Tour 模板同步
 
 > **2026-06-08 PM 修正**：
-> - Wave 2 主推：**Best of China (Essentials) 9/3 出发** #1 优先级
+> - Wave 2 主推：**Best of China (Essentials) 11/3 出发** #1 优先级
 > - Oct 两团辅助：Tale of Two Cities + Shanghai & Surroundings
 > - **Fire & Fuzz 已从本轮推广移除**（PM 2026-06-08 决定）
 > - 共 **3 个落地页**
@@ -12,13 +12,15 @@
 
 ---
 
-## 🌟 2026 主力推广团（PM 2026-06-08 确认）
+## 🌟 2026 主力推广团（PM 2026-06-09 修正）
 
 **主力 (Primary)**：China Discovery — **Best of China (Essentials)**
 - URL: `/tours/china/discovery/essentials`
-- 出发: **2026-09-03**（距今最近，最热）
-- 价格: **NZD $4,539 / 15 天**
+- 出发: **2026-11-03**（距今 ~5 个月，Meta paid 预热黄金窗口）⚠️ 2026-06-09 修正：原 spec 写 9/3 是错的，FB Sprint grep tours.ts 校正
+- 价格: **NZD $3,880 per person / 15 天**（singleSupplement +$720）⚠️ 2026-06-09 修正：原 spec 写 $4,539 是错的
 - 行程: Beijing + Xi'an Terracotta + Puyuan 水乡 + Hangzhou 西湖 + Shanghai
+- 数据来源: `src/lib/data/tours.ts` line 767-846 (slug='essentials')
+- **Hero USP 三连**（master_brief 已列，竞品 hero 都用）：Small group · Fully inclusive · Award-winning since 1928
 
 **辅助 — Oct 2026 Spotlight 两团 (Focus campaign)**：
 1. **Tale of Two Cities** (Beijing + Xi'an) — 10/15 出发，NZD $3,480 / 10 天
@@ -35,8 +37,8 @@
 - **真实路径**：`src/app/tours/[destination]/[tier]/[tour]/page.tsx`（动态路由）
 - **Slug**：`essentials`（在 tier=`discovery`）
 - **Tour 数据**：`getTourBySlug('china', 'discovery', 'essentials')`
-- **出发日期**：2026-09-03
-- **价格**：NZD $4,539
+- **出发日期**：2026-11-03 (PM 2026-06-09 修正：原 9/3 是错的)
+- **价格**：NZD $3,880 (PM 2026-06-09 修正：原 $4,539 是错的，tours.ts 真值)
 - **持续**：15 天
 
 ### Read before write 必读
@@ -52,14 +54,19 @@ Read src/components/TourSupportingContentLinks.tsx (#planning-resources)
 
 ### 缺口（要改的）
 
-主推团 + 9/3 出发距今最近，应该有最强 CRO 信号：
+主推团 + 11/3 出发距今最近，应该有最强 CRO 信号：
 
-1. **Hero 上方 trust signal strip** — "1,200+ Kiwi travellers since 1928 · ATAS accredited · Auckland-based experts"
-2. **Above-the-fold 紧迫性 chip** — "Featured departure 3 September 2026 — limited seats"（**真实出发日期，不编"剩 X 座"**）
-3. **15 天行程深度 hero** — 强化 5 大节点（Beijing/Xi'an/Puyuan/Hangzhou/Shanghai）— 这是跟 10 天 Oct 两团的核心差异化
-4. **Middle CTA + footer CTA** — enquiry 按钮复用，不要只在底部 1 个
-5. **TouristTrip schema 强化** — AggregateOffer NZD $4,539, 15 天，覆盖 5 个城市
-6. **价值 stack 区** — 为什么 15 天值 NZD $4,539？vs 10 天 Oct 两团（$2,750-3,480），多出来 5 天 cover Puyuan 水乡 + West Lake 等 mass-market operator 不去的地方
+1. **Hero 上方 trust signal strip** — "Since 1928 · ATAS accredited · Auckland-based experts · thousands of Kiwi travellers"（**R1 红线 PM 2026-06-09**：不写 "1,200+" 具体客户数，用 "thousands of Kiwi travellers" 模糊表述）
+2. **Above-the-fold 紧迫性 chip** — "Featured departure 3 November 2026 — limited seats"（**真实出发日期，不编"剩 X 座"**）
+3. **🆕 Hero USP 三连**（PM 2026-06-09 加 — master_brief 已列 USP，竞品 hero 都用 CTS 没用是失分）：
+   - **"Small group"** — 跟 Wendy Wu/Trafalgar hero 词正面对齐
+   - **"Fully inclusive"** — CTS 真实是 fully inclusive，但 LP 没强调
+   - **"Award-winning since 1928"** — 把 since 1928 跟 award-winning 绑一起反 mass-market
+   - 第 4 USP "direct on-ground operations" 留给段落叙事
+4. **15 天行程深度 hero** — 强化 5 大节点（Beijing/Xi'an/Puyuan/Hangzhou/Shanghai）— 跟 10 天 Oct 两团差异化
+5. **Middle CTA + footer CTA** — enquiry 按钮复用
+6. **TouristTrip schema 强化** — AggregateOffer **NZD $3,880**（不是 $4,539）, 15 天，覆盖 5 个城市
+7. **价值 stack 区** — 为什么 15 天值 **NZD $3,880**？vs 10 天 Oct 两团（$3,399-$3,480 / 10 天），多 5 天 cover Puyuan 水乡 + West Lake 等 mass-market operator 不去的地方
 
 ### 改造步骤
 
@@ -96,7 +103,7 @@ Read src/components/TourSupportingContentLinks.tsx (#planning-resources)
   offers: {
     '@type': 'Offer',
     priceCurrency: 'NZD',
-    price: '4539',
+    price: '3880',
     availability: 'https://schema.org/InStock',
     validFrom: '2026-06-01',
     url: `${siteUrl}/tours/china/discovery/essentials`,
@@ -137,7 +144,7 @@ Read src/components/TourSupportingContentLinks.tsx (#planning-resources)
 
 - [ ] TouristTrip schema 包含 5 个 TouristAttraction
 - [ ] hero 上方 trust signal strip
-- [ ] above-the-fold 显示 9/3 出发日期 + NZD $4,539 价格
+- [ ] above-the-fold 显示 11/3 出发日期 + NZD $3,880 (PM 2026-06-09 修正：原 $4,539 是错的，tours.ts 真值) 价格
 - [ ] 价值 stack "Why 15 Days, Not 10?" 段落上线
 - [ ] middle CTA + footer CTA 复用 enquiry 按钮
 - [ ] `npm run build` 通过
@@ -246,7 +253,7 @@ npm run dev
 
 ## 数据来源声明（板桥铁律 R1）
 - Essentials 行程 5 节点 → tours.ts slug='essentials' itinerary ✅
-- Essentials NZD $4,539 / 15 天 → tours.ts ✅
+- Essentials NZD $3,880 (PM 2026-06-09 修正：原 $4,539 是错的，tours.ts 真值) / 15 天 → tours.ts ✅
 - Oct 两团出发日 → october-2026-discovery.ts ✅
 - 1,200+ Kiwi / 98 年 since 1928 / ATAS → master_brief ✅
 - "Limited departures" → 真实出发日期，没编"剩 X 座" ✅
