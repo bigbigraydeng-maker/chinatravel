@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: '/china-visa-guide-for-new-zealanders',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     ogImageAlt: 'China visa-free entry for New Zealand passport holders — requirements and documents',
-    keywords: ['China visa free New Zealand', 'NZ passport China entry', 'China visa requirements', '30 day visa free China', 'China travel documents'],
+    keywords: ['China visa free New Zealand', 'China visa free NZ', 'NZ passport China entry', 'China visa requirements', '30 day visa free China', 'China travel documents', 'china visa free entry nz', 'do NZ passport holders need a visa for China'],
     ogType: 'article',
   });
 }
