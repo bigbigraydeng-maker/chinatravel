@@ -57,6 +57,8 @@ export default function BeijingToursPage() {
           { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', emoji: '🥾', description: 'Which section, how steep, best time' },
           { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', emoji: '🗺️', description: 'The route most visitors miss' },
           { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', emoji: '🏘️', description: "Old Peking's hidden laneways" },
+          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', emoji: '🏺', description: "Xi'an day trip from Beijing by high-speed train" },
+          { label: 'October 2026 — Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities', emoji: '🍂', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
         ]}
       />
     </>

@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     `${SITE}/campaigns/october-2026`,
     `${SITE}/campaigns/october-2026/shanghai-surroundings`,
     `${SITE}/campaigns/october-2026/tale-of-two-cities`,
+    `${SITE}/campaigns/fire-fuzz`,
   ].map((url) => ({
     url,
     lastModified: now,
@@ -47,6 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'china-tours-from-australia',
     'best-time-to-visit-china',
     'china-visa-guide-for-new-zealanders',
+    'china-travel-specialists-nz',
+    'small-group-china-tours',
     'chengdu-panda-sanctuary',
     'liziba-station-chongqing',
     'hongyadong-chongqing',

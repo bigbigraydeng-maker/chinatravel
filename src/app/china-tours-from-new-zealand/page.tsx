@@ -139,6 +139,21 @@ export default function ChinaToursFromNZPage() {
                       October 2026 · Shanghai &amp; Surroundings spotlight
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/campaigns/fire-fuzz" className="text-primary font-medium hover:underline">
+                      November 2026 · Fire &amp; Fuzz — Chongqing × Chengdu spotlight
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/great-wall-travel-guide" className="text-primary font-medium hover:underline">
+                      Great Wall travel guide (Mutianyu, Badaling, Jinshanling)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terracotta-warriors-travel-guide" className="text-primary font-medium hover:underline">
+                      Terracotta Warriors travel guide — Xi&apos;an
+                    </Link>
+                  </li>
                 </ul>
               </section>
 
