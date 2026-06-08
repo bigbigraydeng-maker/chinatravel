@@ -266,14 +266,25 @@ export default function ChinaTravelSpecialistsNzPage() {
                       View Tour →
                     </Link>
                   </div>
+                  <div className="border border-warm-200 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                      <h3 className="font-bold text-lg text-gray-900">
+                        Best of China — 15 Days
+                      </h3>
+                      <p className="text-gray-600 text-sm mt-1">
+                        15 days · Beijing, Xi&apos;an, Puyuan, Hangzhou, Shanghai
+                      </p>
+                      <p className="text-primary font-semibold mt-1">From NZD $3,880</p>
+                      <p className="text-gray-500 text-xs mt-0.5">Departs 3 November 2026</p>
+                    </div>
+                    <Link
+                      href="/tours/china/discovery/essentials"
+                      className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
+                    >
+                      View Tour →
+                    </Link>
+                  </div>
                 </div>
-                <p className="mt-4 text-sm text-gray-600">
-                  Also: our{' '}
-                  <Link href="/tours/china/discovery/essentials" className="text-primary font-medium hover:underline">
-                    Best of China 15-day itinerary
-                  </Link>{' '}
-                  covers Beijing, Xi&apos;an, Hangzhou, Puyuan, and Shanghai in one seamless journey.
-                </p>
               </section>
 
               {/* Internal links */}
