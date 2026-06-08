@@ -39,3 +39,4 @@ out
 
 # Claude Code worktrees
 /.claude/worktrees/
+tsconfig.tsbuildinfo
