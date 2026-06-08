@@ -63,6 +63,8 @@ const Footer = () => {
               <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors font-medium">FAQ</Link></li>
               <li><Link href="/china-visa-guide-for-new-zealanders" className="text-gray-400 hover:text-white transition-colors">China entry (NZ)</Link></li>
               <li><Link href="/china-tours-from-new-zealand" className="text-gray-400 hover:text-white transition-colors">Tours from NZ</Link></li>
+              <li><Link href="/small-group-china-tours" className="text-gray-400 hover:text-white transition-colors">Small-Group Tours</Link></li>
+              <li><Link href="/china-travel-specialists-nz" className="text-gray-400 hover:text-white transition-colors">China Specialists NZ</Link></li>
               <li><Link href="/about" className="text-gray-400 hover:text-white transition-colors">About CTS</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
               <li><Link href="/terms-and-conditions" className="text-gray-300 hover:text-white transition-colors font-medium">Terms & Conditions</Link></li>

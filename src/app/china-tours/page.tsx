@@ -80,6 +80,16 @@ export default function ChinaToursPage() {
       description: 'Campaign landing for the Jiangnan loop Discovery tour'
     },
     {
+      title: 'Small-Group China Tours from NZ',
+      slug: 'small-group-china-tours',
+      description: 'Intimate groups of 6–16, expert guides, NZD pricing — October 2026 departures open'
+    },
+    {
+      title: 'China Travel Specialists Since 1928',
+      slug: 'china-travel-specialists-nz',
+      description: 'Why Kiwis book with CTS: direct China operations, Auckland-based team, 1,200+ travellers'
+    },
+    {
       title: 'First trip: Beijing or Shanghai?',
       slug: 'blog/first-trip-china-beijing-or-shanghai',
       description: 'How to choose a gateway when you are new to China'
