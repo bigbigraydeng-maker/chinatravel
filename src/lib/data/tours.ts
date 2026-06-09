@@ -773,7 +773,7 @@ export const tours: Tour[] = [
     title: 'China Discovery — Best of China',
     shortDescription: 'Fifteen days from Beijing\'s Temple of Heaven, Forbidden City, Great Wall and hutongs, by high-speed train to Xi\'an\'s Terracotta Army, then by air to Hangzhou via Puyuan\'s fashion ancient town, West Lake and Longjing tea, finishing in Shanghai before your return via Beijing.',
     duration: '15 Days',
-    price: 'NZD $3,880 per person',
+    price: 'From NZD $3,880 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
@@ -823,10 +823,10 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
-    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $3,880. Book with CTS Tours.',
+    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $3,880. Nov 2026 and Mar 2027 departures from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-02',
+    updatedAt: '2026-06-10',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -841,8 +841,20 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['3 November'],
+    departureDates: ['3 November', '25 March 2027'],
     singleSupplement: 'NZD $720',
+    faqs: [
+      {
+        question: 'When can I depart on Best of China?',
+        answer:
+          'Two scheduled group departures from Auckland: 3 November 2026 (priced from NZD $3,880 per person twin-share) and 25 March 2027 (priced from NZD $4,080 per person twin-share). Both are the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $720 if you want your own room. Contact CTS to confirm seat availability on your preferred date.',
+      },
+      {
+        question: 'Why is the March 2027 departure priced higher than November 2026?',
+        answer:
+          'The March 2027 departure falls inside China\'s spring shoulder season, when airfares from New Zealand and accommodation in Beijing and Hangzhou run slightly higher than the November shoulder. The itinerary, hotels, guiding standard and inclusions are identical — only the lead-in price moves with the season. Lock in the November departure for the lower price, or choose March if it suits your calendar.',
+      },
+    ],
   },
   {
     id: 'tour-cn-dis-4',
