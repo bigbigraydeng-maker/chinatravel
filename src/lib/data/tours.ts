@@ -852,7 +852,7 @@ export const tours: Tour[] = [
       {
         question: 'Why is the March 2027 departure priced higher than November 2026?',
         answer:
-          'The March 2027 departure falls inside China\'s spring shoulder season, when airfares from New Zealand and accommodation in Beijing and Hangzhou run slightly higher than the November shoulder. The itinerary, hotels, guiding standard and inclusions are identical — only the lead-in price moves with the season. Lock in the November departure for the lower price, or choose March if it suits your calendar.',
+          'The price difference comes from the international airfare. March falls inside a higher airfare window from Auckland into China, while November sits in a softer pricing period — so the same 15-day itinerary carries a higher lead-in fare in March. Everything else — hotels, guides, inclusions and the day-by-day programme — is identical. Lock in the November departure for the lower price, or choose March if it suits your calendar.',
       },
     ],
   },
