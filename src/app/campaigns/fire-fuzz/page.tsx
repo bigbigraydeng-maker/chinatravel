@@ -124,7 +124,7 @@ export default function FireFuzzCampaignPage() {
         singleSupplement={tour.singleSupplement}
       />
 
-      <OctoberUrgencyBar departureSortDate="2026-11-01" tourSlug="chongqing-chengdu" />
+      <OctoberUrgencyBar departureSortDate="2026-11-01" />
 
       <ChinaVisaNudge />
 

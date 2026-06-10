@@ -56,7 +56,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    dates: ['3 November'],
+    dates: ['3 November', '25 March 2027'],
   },
   {
     label: 'Shanghai & Surroundings',

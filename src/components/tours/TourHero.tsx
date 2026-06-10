@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { slugifyTourTag } from '@/lib/data/tours';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
-import { getRemainingSeatsForDate } from '@/lib/campaigns/seat-availability';
 
 interface TourHeroProps {
   title: string;
@@ -133,7 +132,6 @@ export default function TourHero({
               {showAvailability && (
                 <AvailabilityBadge
                   departureDate={departureDates[0]}
-                  seatsLeft={getRemainingSeatsForDate(departureDates[0])}
                   showCountdown={false}
                 />
               )}

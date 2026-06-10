@@ -4,13 +4,11 @@ import { useEffect, useState } from 'react';
 
 interface AvailabilityBadgeProps {
   departureDate?: string;
-  seatsLeft?: number;
   showCountdown?: boolean;
 }
 
 export default function AvailabilityBadge({
   departureDate,
-  seatsLeft = 12,
   showCountdown = true,
 }: AvailabilityBadgeProps) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
@@ -40,8 +38,6 @@ export default function AvailabilityBadge({
     return () => clearInterval(timer);
   }, [departureDate, showCountdown]);
 
-  const isLowAvailability = seatsLeft <= 15;
-
   const formatDeparture = (raw: string) => {
     const trimmed = raw.trim();
     const withYear = /^\d{1,2}\s+[A-Za-z]+$/i.test(trimmed) ? `${trimmed} 2026` : trimmed;
@@ -51,18 +47,11 @@ export default function AvailabilityBadge({
 
   return (
     <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 mb-6">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-          <span className="text-sm font-bold text-amber-800">
-            Limited Availability
-          </span>
-        </div>
-        {isLowAvailability && (
-          <span className="text-xs font-semibold bg-red-100 text-red-700 px-2 py-1 rounded-full">
-            Only {seatsLeft} seats left
-          </span>
-        )}
+      <div className="flex items-center gap-2 mb-3">
+        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+        <span className="text-sm font-bold text-amber-800">
+          Limited Availability
+        </span>
       </div>
 
       {departureDate && (

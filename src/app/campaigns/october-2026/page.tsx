@@ -8,7 +8,6 @@ import Testimonials from '@/components/Testimonials';
 
 import { getTourBySlug } from '@/lib/data/tours';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
-import { getRemainingSeatsForDate } from '@/lib/campaigns/seat-availability';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 
@@ -71,7 +70,6 @@ export default function October2026CampaignIndexPage() {
     return {
       spot,
       tour,
-      remainingSeats: getRemainingSeatsForDate(spot.departureSortDate),
     };
   })
     .filter((x): x is NonNullable<typeof x> => x !== null)
@@ -212,7 +210,7 @@ export default function October2026CampaignIndexPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {cards.map(({ spot, tour, remainingSeats }) => (
+            {cards.map(({ spot, tour }) => (
               <Link
                 key={spot.slug}
                 href={spot.href}
@@ -276,16 +274,6 @@ export default function October2026CampaignIndexPage() {
                       {tour.duration}
                     </span>
                     <span className="text-primary font-bold text-lg">{tour.price}</span>
-                  </div>
-
-                  {/* Seats remaining urgency */}
-                  <div className="flex items-center gap-2 px-3 py-2 mb-4 rounded-lg bg-orange-50 border border-orange-200/70">
-                    <svg className="w-4 h-4 text-orange-600 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                      <path d="M19 7h-3V5.5C16 4.12 14.88 3 13.5 3h-3C9.12 3 8 4.12 8 5.5V7H5c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 5.5c0-.28.22-.5.5-.5h3c.28 0 .5.22.5.5V7h-4V5.5zM19 20H5V9h14v11z" />
-                    </svg>
-                    <span className="text-xs font-semibold text-orange-800">
-                      Only {remainingSeats} seats remaining
-                    </span>
                   </div>
 
                   <div className="inline-block w-full text-center py-3 rounded-full font-medium border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
