@@ -7,6 +7,8 @@ import { phase3LineAPosts } from '@/lib/data/blogs-phase3-line-a';
 import { phase3LineBPosts } from '@/lib/data/blogs-phase3-line-b';
 import { phase3LineCPosts } from '@/lib/data/blogs-phase3-line-c';
 import { chinaHolidayPackagesBlogPost } from '@/lib/data/blogs-china-holiday-packages';
+import { holidaysToChinaFromNewZealandPost } from '@/lib/data/blogs-cts-blog-2026-06-11-holidays';
+import { chinaTourPackagesIncludingAirfareFromNzPost } from '@/lib/data/blogs-cts-blog-2026-06-11-airfare';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -249,6 +251,8 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
     readTime: '5 min read'
   },
   chinaHolidayPackagesBlogPost,
+  holidaysToChinaFromNewZealandPost,
+  chinaTourPackagesIncludingAirfareFromNzPost,
   ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
   ...longtailBatch1Posts,
