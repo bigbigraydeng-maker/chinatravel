@@ -183,7 +183,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         singleSupplement={tour.singleSupplement}
       />
 
-      <OctoberUrgencyBar departureSortDate={departureSortDate} tourSlug={tour.slug} />
+      <OctoberUrgencyBar departureSortDate={departureSortDate} />
 
       <ChinaVisaNudge />
 
