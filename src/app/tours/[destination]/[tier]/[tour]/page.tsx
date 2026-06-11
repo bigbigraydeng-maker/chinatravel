@@ -28,6 +28,7 @@ import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBl
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
   generateTourSchema,
+  generateEssentialsTouristTripSchema,
   generateProductSchema,
   generateBreadcrumbSchema,
   getTourPageFaqsForTour,
@@ -118,7 +119,9 @@ export default function TourPage({ params }: TourPageProps) {
   const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
 
   const schemas = [
-    generateTourSchema(tour, destination),
+    tour.slug === 'essentials'
+      ? generateEssentialsTouristTripSchema(tour, destination)
+      : generateTourSchema(tour, destination),
     generateProductSchema(tour),
     generateBreadcrumbSchema(
       [
