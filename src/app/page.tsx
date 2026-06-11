@@ -257,10 +257,10 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8">
               {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0] ? `${t.departureDates[0]} 2026` : undefined} route={['Beijing', "Xi'an", 'Hangzhou', 'Shanghai']} />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0]} route={['Beijing', "Xi'an", 'Hangzhou', 'Shanghai']} />
               ) : null; })()}
               {(() => { const t = getTourBySlug('china', 'discovery', 'yunnan-explorer'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0] ? `${t.departureDates[0]} 2026` : undefined} route={['Dali', 'Lijiang', 'Shangri-La']} />
+              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0]} route={['Dali', 'Lijiang', 'Shangri-La']} />
               ) : null; })()}
             </div>
             <p className="text-center text-gray-600 mt-10 text-sm">
