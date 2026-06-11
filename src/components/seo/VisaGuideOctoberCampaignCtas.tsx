@@ -13,8 +13,8 @@ export default function VisaGuideOctoberCampaignCtas() {
 
   const taleCfg = OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'];
   const shCfg = OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'];
-  const taleDep = taleCfg.heroDepartureOrder[0] ?? '15 October';
-  const shDep = shCfg.heroDepartureOrder[0] ?? '14 October';
+  const taleDep = taleCfg.heroDepartureOrder[0] ?? '15 October 2026';
+  const shDep = shCfg.heroDepartureOrder[0] ?? '14 October 2026';
 
   const cards = [
     {
