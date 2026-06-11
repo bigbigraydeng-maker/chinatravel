@@ -25,21 +25,21 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'imperial-heritage',
     destination: 'china',
     tier: 'signature',
-    dates: ['13 August', '15 October'],
+    dates: ['13 August 2026', '15 October 2026'],
   },
   {
     label: 'China Panorama',
     slug: 'grand-tour',
     destination: 'china',
     tier: 'signature',
-    dates: ['14 October'],
+    dates: ['14 October 2026'],
   },
   {
     label: 'Natural China',
     slug: 'landscapes',
     destination: 'china',
     tier: 'signature',
-    dates: ['20 August', '25 October'],
+    dates: ['20 August 2026', '25 October 2026'],
   },
 ];
 
@@ -56,7 +56,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    dates: ['3 November', '25 March 2027'],
+    dates: ['3 November 2026', '25 March 2027'],
   },
   {
     label: 'Shanghai & Surroundings',
@@ -70,7 +70,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'yunnan-explorer',
     destination: 'china',
     tier: 'discovery',
-    dates: ['10 September'],
+    dates: ['10 September 2026'],
   },
 ];
 

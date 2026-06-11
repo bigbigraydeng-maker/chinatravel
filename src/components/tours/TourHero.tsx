@@ -150,7 +150,7 @@ export default function TourHero({
                   ))}
                 </div>
                 <p className="text-xs text-white/60 mt-2">
-                  Dates refer to scheduled group departures; year 2026 where applicable — confirm at booking.
+                  Dates refer to scheduled group departures — confirm at booking.
                 </p>
               </div>
             </div>

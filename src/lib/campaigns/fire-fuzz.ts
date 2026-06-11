@@ -1,5 +1,5 @@
 /**
- * Fire & Fuzz campaign config — Chongqing × Chengdu Discovery, departs 1 November.
+ * Fire & Fuzz campaign config — Chongqing × Chengdu Discovery, departs 1 November 2026.
  * Campaign LP: /campaigns/fire-fuzz
  */
 
@@ -8,12 +8,12 @@ export const FIRE_FUZZ_CAMPAIGN_PATH = '/campaigns/fire-fuzz' as const;
 
 export const FIRE_FUZZ_CONFIG = {
   tourSlug: FIRE_FUZZ_TOUR_SLUG,
-  heroDepartureDate: '1 November',
+  heroDepartureDate: '1 November 2026',
   enquirySource: 'Campaign LP: Fire & Fuzz — Chongqing × Chengdu',
   campaignPath: FIRE_FUZZ_CAMPAIGN_PATH,
   metaTitle: 'Fire & Fuzz — Chongqing & Chengdu | 10 Days from NZ | CTS Tours',
   metaDescription:
-    "China's hottest cities in 10 days: Chongqing's neon skyline, Liziba monorail, UNESCO Dazu Rock Carvings & Hongyadong — then Chengdu's giant pandas and teahouse culture. From NZD $2,750. Departs 1 November.",
+    "China's hottest cities in 10 days: Chongqing's neon skyline, Liziba monorail, UNESCO Dazu Rock Carvings & Hongyadong — then Chengdu's giant pandas and teahouse culture. From NZD $2,750. Departs 1 November 2026.",
 } as const;
 
 /** Build a UTM-tagged URL for the Fire & Fuzz campaign LP. */
