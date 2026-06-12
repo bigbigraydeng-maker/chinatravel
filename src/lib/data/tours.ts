@@ -833,7 +833,7 @@ export const tours: Tour[] = [
     metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $3,880. Nov 2026 and Mar 2027 departures from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-06-10',
+    updatedAt: '2026-06-12',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -853,12 +853,12 @@ export const tours: Tour[] = [
       '3 November 2026': 'NZD $3,880',
       '11 March 2027': 'NZD $4,080',
     },
-    singleSupplement: 'NZD $720',
+    singleSupplement: 'NZD $800',
     faqs: [
       {
         question: 'When can I depart on Best of China?',
         answer:
-          'Two scheduled group departures from Auckland: 3 November 2026 (priced from NZD $3,880 per person twin-share) and 25 March 2027 (priced from NZD $4,080 per person twin-share). Both are the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $720 if you want your own room. Contact CTS to confirm seat availability on your preferred date.',
+          'Two scheduled group departures from Auckland: 3 November 2026 (priced from NZD $3,880 per person twin-share) and 11 March 2027 (priced from NZD $4,080 per person twin-share). Both are the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability on your preferred date.',
       },
       {
         question: 'Why is the March 2027 departure priced higher than November 2026?',
