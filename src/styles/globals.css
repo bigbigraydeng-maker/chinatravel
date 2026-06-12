@@ -17,6 +17,10 @@ body {
   font-family: var(--font-inter), 'Inter', sans-serif;
   color: var(--accent);
   background-color: var(--warm-bg);
+  /* Readable baseline for an older (40–65+) audience. Tailwind text-* utilities
+     override this where set; this lifts un-classed body copy from 16px to 18px. */
+  font-size: 1.125rem;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {

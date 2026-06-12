@@ -32,8 +32,15 @@ export default function TourEnquiry({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setSubmitError(null);
+
+    // Phone OR email — either is enough. Lowers the form burden for older travellers.
+    if (!formData.email.trim() && !formData.phone.trim()) {
+      setSubmitError('Please leave a phone number or an email so we can get back to you.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     const payload = {
       tourName,
@@ -102,7 +109,7 @@ export default function TourEnquiry({
         )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="eq-name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="eq-name" className="block text-base font-medium text-gray-700 mb-1">
               Full Name *
             </label>
             <input
@@ -112,45 +119,46 @@ export default function TourEnquiry({
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
               placeholder="John Smith"
             />
           </div>
 
           <div>
-            <label htmlFor="eq-email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email Address *
+            <label htmlFor="eq-email" className="block text-base font-medium text-gray-700 mb-1">
+              Email
             </label>
             <input
               type="email"
               id="eq-email"
               name="email"
-              required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
               placeholder="john@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="eq-phone" className="block text-sm font-medium text-gray-700 mb-1">
-              Phone *
+            <label htmlFor="eq-phone" className="block text-base font-medium text-gray-700 mb-1">
+              Phone
             </label>
             <input
               type="tel"
               id="eq-phone"
               name="phone"
-              required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
               placeholder="+64 / 0800 287 888"
             />
+            <p className="mt-1.5 text-sm text-gray-600">
+              Leave a phone or email—whichever suits you.
+            </p>
           </div>
 
           <div>
-            <label htmlFor="eq-message" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="eq-message" className="block text-base font-medium text-gray-700 mb-1">
               Message
             </label>
             <textarea
@@ -159,7 +167,7 @@ export default function TourEnquiry({
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none bg-warm-50/50"
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all resize-none bg-warm-50/50"
               placeholder="Tell us about your travel dates, group size, and any special requirements..."
             />
           </div>
@@ -186,7 +194,7 @@ export default function TourEnquiry({
             )}
           </button>
 
-          <p className="text-xs text-gray-400 text-center">
+          <p className="text-sm text-gray-600 text-center">
             We respect your privacy. Your information will not be shared.
           </p>
         </form>

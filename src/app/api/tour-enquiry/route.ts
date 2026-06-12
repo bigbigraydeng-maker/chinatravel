@@ -32,7 +32,8 @@ export async function POST(req: NextRequest) {
       source,
     } = body;
 
-    if (!name || !email || !phone || !tourName || !tourSlug || !destination || !tier) {
+    // Name is required; phone OR email is enough (older travellers prefer to be called).
+    if (!name || (!email && !phone) || !tourName || !tourSlug || !destination || !tier) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
@@ -48,8 +49,8 @@ export async function POST(req: NextRequest) {
   <h1 style="font-size:18px;">New tour enquiry — CTS website</h1>
   <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
     <tr><td style="font-weight:bold;">Name</td><td>${escapeHtml(String(name))}</td></tr>
-    <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(String(email))}</td></tr>
-    <tr><td style="font-weight:bold;">Phone</td><td>${escapeHtml(String(phone))}</td></tr>
+    <tr><td style="font-weight:bold;">Email</td><td>${email ? escapeHtml(String(email)) : '—'}</td></tr>
+    <tr><td style="font-weight:bold;">Phone</td><td>${phone ? escapeHtml(String(phone)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Tour</td><td>${escapeHtml(String(tourName))}</td></tr>
     <tr><td style="font-weight:bold;">URL</td><td><a href="${escapeHtml(absTourUrl)}">${escapeHtml(tourPath)}</a></td></tr>
     <tr><td style="font-weight:bold;">Source</td><td>${escapeHtml(String(source || 'Tour Page'))}</td></tr>
@@ -62,7 +63,7 @@ export async function POST(req: NextRequest) {
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
       to: notifyTo,
-      replyTo: email,
+      replyTo: email || undefined,
       subject: `Tour enquiry: ${tourName} — ${name}`,
       html,
     });

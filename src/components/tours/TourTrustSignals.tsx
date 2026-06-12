@@ -26,13 +26,13 @@ export default function TourTrustSignals() {
             <h2 id="trust-signals-heading" className="font-serif text-xl font-bold text-gray-900 md:text-2xl">
               Book with a licensed New Zealand travel specialist
             </h2>
-            <p className="mt-2 text-sm text-gray-600 md:text-base">
+            <p className="mt-2 text-base text-gray-700">
               CTS Tours is a TAANZ member and IATA-accredited agency with local support in Auckland and direct operations
               in China—so you deal with one trusted team from enquiry to return.
             </p>
             <Link
               href="/about#credentials"
-              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+              className="mt-3 inline-flex items-center gap-1 py-2 text-base font-semibold text-primary hover:underline"
             >
               View memberships &amp; credentials
               <span aria-hidden>→</span>
@@ -43,7 +43,7 @@ export default function TourTrustSignals() {
             {logos.map(({ src, alt, wide }) => (
               <div
                 key={src}
-                className={`relative h-12 shrink-0 opacity-90 grayscale transition hover:grayscale-0 ${wide ? 'w-28 md:w-32' : 'w-20 md:w-24'}`}
+                className={`relative h-12 shrink-0 ${wide ? 'w-28 md:w-32' : 'w-20 md:w-24'}`}
               >
                 <Image src={src} alt={alt} fill className="object-contain object-center" sizes="128px" />
               </div>

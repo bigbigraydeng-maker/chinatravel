@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import { CTS_PHONE_HREF } from '@/lib/site';
 
 interface FloatingCtaProps {
   tourName: string;
@@ -55,19 +56,37 @@ export default function FloatingCta({
     }
   };
 
+  const handleCallClick = () => {
+    triggerGtmEvent({
+      event: 'click',
+      action: 'floating_cta_call',
+      category: 'conversion',
+      label: tourName,
+      timestamp: Date.now(),
+    });
+  };
+
   if (!isVisible) return null;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg md:hidden">
-      <div className="container mx-auto px-4 py-3">
-        <button
-          onClick={handleClick}
-          className="w-full py-3.5 px-6 bg-gradient-to-r from-primary to-primary/90 text-white font-bold rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
+      <div className="container mx-auto px-4 py-3 flex items-stretch gap-3">
+        {/* Phone-first: older travellers prefer to call rather than fill a form */}
+        <a
+          href={CTS_PHONE_HREF}
+          onClick={handleCallClick}
+          className="flex-1 min-h-[52px] px-4 bg-primary text-white font-bold rounded-xl shadow-sm active:scale-[0.99] transition-transform flex items-center justify-center gap-2"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
           </svg>
-          Check Availability
+          Call us
+        </a>
+        <button
+          onClick={handleClick}
+          className="flex-1 min-h-[52px] px-4 bg-white text-primary border-2 border-primary font-bold rounded-xl active:scale-[0.99] transition-transform flex items-center justify-center gap-2"
+        >
+          Enquire
         </button>
       </div>
     </div>
