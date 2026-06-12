@@ -28,6 +28,7 @@ import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBl
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
   generateTourSchema,
+  generateEssentialsTouristTripSchema,
   generateProductSchema,
   generateBreadcrumbSchema,
   getTourPageFaqsForTour,
@@ -118,7 +119,9 @@ export default function TourPage({ params }: TourPageProps) {
   const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
 
   const schemas = [
-    generateTourSchema(tour, destination),
+    tour.slug === 'essentials'
+      ? generateEssentialsTouristTripSchema(tour, destination)
+      : generateTourSchema(tour, destination),
     generateProductSchema(tour),
     generateBreadcrumbSchema(
       [
@@ -198,18 +201,34 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
-      {/* Essentials: featured departure urgency chip */}
+      {/* Featured departure urgency chip — 2026/2027 主推 4 团 (Essentials / Silk Road; Tale + Shanghai 走 campaign LP) */}
       {tour.slug === 'essentials' && (
         <section className="bg-amber-50 border-y border-amber-200 py-4">
           <div className="container mx-auto px-4 text-center">
             <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              Featured Departure
+              Featured Departure · 2026 Flagship
             </p>
             <p className="text-lg font-serif font-bold text-gray-900">
-              3 November 2026 — Limited seats
+              3 November 2026 — book ahead while seats remain
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              Enquire to confirm availability and hold your place.
+              CTS&apos;s flagship 15-day Best of China runs once a year — enquire to confirm availability and hold your place.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {tour.slug === 'silk-road' && (
+        <section className="bg-amber-50 border-y border-amber-200 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+              Featured Departure · 2027 Silk Road
+            </p>
+            <p className="text-lg font-serif font-bold text-gray-900">
+              13 May 2027 — Silk Road&apos;s prime travel window
+            </p>
+            <p className="text-sm text-gray-600 mt-1">
+              May to October is the only viable Silk Road season (desert temperatures, Tianshan access). Second departure 21 October 2027 — enquire to hold a seat.
             </p>
           </div>
         </section>
@@ -256,6 +275,32 @@ export default function TourPage({ params }: TourPageProps) {
                     <li>✓ <strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</li>
                     <li>✓ <strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</li>
                     <li>✓ Time to <em>actually experience</em> each city instead of just transiting through</li>
+                  </ul>
+                </section>
+              )}
+
+              {/* Silk Road: Why 18 Days? value stack */}
+              {tour.slug === 'silk-road' && (
+                <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
+                  <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
+                    Why 18 Days on the Silk Road?
+                  </h2>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    Most China tours stop at the Terracotta Warriors in Xi&apos;an and turn back east. The Silk Road
+                    begins where they end — 4,000 kilometres of desert oases, Buddhist grottoes, and Tianshan
+                    snowmelt stretching west to Xinjiang.
+                  </p>
+                  <p className="text-gray-700 mb-4 leading-relaxed">
+                    The extra 8 days beyond a standard China tour give you:
+                  </p>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>✓ <strong>Mogao Caves at Dunhuang</strong> — 1,700 years of Buddhist murals carved into the cliffs</li>
+                    <li>✓ <strong>Zhangye Rainbow Danxia</strong> — layered rock formations no postcard does justice</li>
+                    <li>✓ <strong>Heavenly Lake in the Tianshan Mountains</strong> — alpine boat cruise beneath snow peaks</li>
+                    <li>✓ <strong>Bingling Temple Grottoes</strong> — accessible only by boat across Liujiaxia Reservoir</li>
+                    <li>✓ <strong>Flaming Mountains &amp; Bezeklik Thousand Buddha Caves</strong> — Turpan desert heritage</li>
+                    <li>✓ <strong>Jiayuguan Fortress &amp; Hanging Great Wall</strong> — the western end of the Ming Wall</li>
+                    <li>✓ Time to <em>cross a civilisation</em>, not just visit a country</li>
                   </ul>
                 </section>
               )}

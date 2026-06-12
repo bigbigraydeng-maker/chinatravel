@@ -63,6 +63,110 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
   };
 }
 
+/**
+ * Essentials-only TouristTrip schema (15-day Best of China, 5 city stops).
+ *
+ * Wave 2 spec 02-wave2 §2.0 Step 3 — generic generateTourSchema emits one
+ * TouristAttraction per day (15 list items). For Essentials (#1 主推团),
+ * we want 5 high-level city TouristAttractions for Google rich result
+ * eligibility (Beijing/Xi'an/Puyuan/Hangzhou/Shanghai).
+ *
+ * Data锚 (tours.ts slug='essentials'):
+ *  - Beijing: Forbidden City, Great Wall, hutongs, Temple of Heaven (Day 2-5)
+ *  - Xi'an: Terracotta Warriors, City Wall, Big Wild Goose Pagoda (Day 6-8)
+ *  - Puyuan: Fashion Ancient Town, Song-style waterways (Day 9-10)
+ *  - Hangzhou: West Lake, Longjing tea, Qinghefang Ancient Street (Day 10-11)
+ *  - Shanghai: Yuyuan Garden, Bund, Nanjing Road, Lujiazui (Day 11-13)
+ *
+ * Price: NZD $3,880 (per master_brief + tours.ts).
+ */
+export function generateEssentialsTouristTripSchema(tour: Tour, destination: Destination) {
+  const price = parsePriceAmount(tour.price);
+  const agency = getCtsTravelAgencySchema();
+  const siteUrl = getSiteUrl();
+
+  const cityStops = [
+    {
+      name: 'Beijing — Forbidden City, Great Wall, hutongs, Temple of Heaven',
+      description:
+        'Imperial Beijing: Temple of Heaven, Tian’anmen Square, Forbidden City, Beihai Park, the Great Wall, and a pedi-cab hutong tour with family visit.',
+    },
+    {
+      name: 'Xi’an — Terracotta Warriors, Ancient City Wall, Big Wild Goose Pagoda',
+      description:
+        'Ancient capital Xi’an by high-speed rail from Beijing: Terracotta Warriors with Circle Vision and Bronze Chariot, City Wall, Big Wild Goose Pagoda, and the Muslim Quarter.',
+    },
+    {
+      name: 'Puyuan — Fashion Ancient Town (Song-style waterways)',
+      description:
+        'Tongxiang’s Puyuan Fashion Ancient Town: Song-dynasty style architecture, waterways and “parallel water and land” Jiangnan lanes that most operators skip.',
+    },
+    {
+      name: 'Hangzhou — West Lake, Longjing tea, Qinghefang Ancient Street',
+      description:
+        'UNESCO West Lake boat tour, Hua Gang Guan Yu, Su Causeway, Leifeng Pagoda, the G20 Hangzhou International Expo Center, Meijiawu Longjing tea plantation tasting, and Qinghefang Ancient Street.',
+    },
+    {
+      name: 'Shanghai — Yuyuan Garden, Bund, Nanjing Road, Lujiazui',
+      description:
+        'Modern Shanghai: Yuyuan classical garden, the Bund waterfront, Nanjing Road shopping, Lujiazui skyline corridor, and the World Cultural Heritage Art Exhibition Centre.',
+    },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: tour.title,
+    description: tour.shortDescription,
+    image: tour.heroImage.startsWith('http')
+      ? tour.heroImage
+      : `${siteUrl}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
+    touristType: [
+      'Cultural travellers',
+      'Heritage tourism',
+      'First-time China travellers',
+      'Travelers from New Zealand',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '200',
+      bestRating: '5',
+    },
+    offers: {
+      '@type': 'Offer',
+      price,
+      priceCurrency: PRICE_CURRENCY,
+      availability: 'https://schema.org/InStock',
+      validFrom: '2026-06-01',
+      url: `${siteUrl}/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
+      seller: agency,
+    },
+    itinerary: {
+      '@type': 'ItemList',
+      itemListElement: cityStops.map((stop, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'TouristAttraction',
+          name: stop.name,
+          description: stop.description,
+        },
+      })),
+    },
+    provider: agency,
+    duration: tour.duration,
+    touristAttraction: {
+      '@type': 'TouristAttraction',
+      name: destination.name,
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: destination.name,
+      },
+    },
+  };
+}
+
 export function generateProductSchema(tour: Tour) {
   const price = parsePriceAmount(tour.price);
   const agency = getCtsTravelAgencySchema();
