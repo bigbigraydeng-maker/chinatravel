@@ -16,6 +16,7 @@ import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
+import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
 import BakerTourFirstPerson from '@/components/tours/BakerTourFirstPerson';
 import FloatingCta from '@/components/FloatingCta';
@@ -188,6 +189,8 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
       <ChinaVisaNudge />
 
       <TrustBar />
+
+      <TourTrustSignals />
 
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">

@@ -848,10 +848,10 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['3 November 2026', '25 March 2027'],
+    departureDates: ['3 November 2026', '11 March 2027'],
     departurePricing: {
       '3 November 2026': 'NZD $3,880',
-      '25 March 2027': 'NZD $4,080',
+      '11 March 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $720',
     faqs: [
@@ -1065,7 +1065,7 @@ export const tours: Tour[] = [
     duration: '10 Days',
     price: 'From NZD $2,999',
     heroImage:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-15812584837-95f73fd23574.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-pandas/chengdu-pandas.jpg',
