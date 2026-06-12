@@ -14,6 +14,7 @@ import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
+import RecommendedReading from '@/components/RecommendedReading';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
@@ -396,6 +397,11 @@ export default function TourPage({ params }: TourPageProps) {
       />
 
       <FAQSection faqs={faqs} />
+
+      {/* Recommended Reading — blog articles related to this tour */}
+      {tour.relatedBlogSlugs && tour.relatedBlogSlugs.length > 0 && (
+        <RecommendedReading slugs={tour.relatedBlogSlugs} />
+      )}
 
       {/* Facebook Follow CTA */}
       <FacebookFollowStrip />
