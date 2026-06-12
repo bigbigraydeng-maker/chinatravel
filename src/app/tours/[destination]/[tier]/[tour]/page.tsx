@@ -185,6 +185,7 @@ export default function TourPage({ params }: TourPageProps) {
         tier={tour.tier}
         tags={tour.tags}
         departureDates={tour.departureDates}
+        departurePricing={tour.departurePricing}
         primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
@@ -198,18 +199,18 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
-      {/* Essentials: featured departure urgency chip */}
+      {/* Essentials: two-season scheduled departures */}
       {tour.slug === 'essentials' && (
         <section className="bg-amber-50 border-y border-amber-200 py-4">
           <div className="container mx-auto px-4 text-center">
             <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              Featured Departure
+              Two Scheduled Departures
             </p>
             <p className="text-lg font-serif font-bold text-gray-900">
-              3 November 2026 — Limited seats
+              November 2026 · March 2027
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              Enquire to confirm availability and hold your place.
+              Lower lead-in fare in November (NZD $3,880); March 2027 from NZD $4,080 — see hero for per-date pricing.
             </p>
           </div>
         </section>
