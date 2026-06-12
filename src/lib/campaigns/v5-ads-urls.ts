@@ -88,6 +88,55 @@ export const ESSENTIALS_GOOGLE_PMAX_URL = buildUtmUrl(ESSENTIALS_PATH, {
 });
 
 // ---------------------------------------------------------------------------
+// A2. SILK ROAD — 18 天 Signature, NZD $7,999, 13 May 2027 (优先) + 21 Oct 2027
+// ---------------------------------------------------------------------------
+// PM 2026-06-12 拍板: Silk Road 是 4 团重点推广之一, Meta + Google 都投.
+// 优先推最近出发日 13 May 2027 (Silk Road 5-10 月是唯一可行季节, 沙漠 + Tianshan).
+// LP 复用 tour template (无独立 campaign LP) — 18 天细节走 tour 模板深度内容.
+
+const SILK_ROAD_PATH = '/tours/china/signature/silk-road';
+
+/** Meta cold paid social — Facebook Reels */
+export const SILK_ROAD_META_REELS_URL = buildUtmUrl(SILK_ROAD_PATH, {
+  source: 'facebook',
+  medium: 'paid_social',
+  campaign: 'tour_silk_road_2027',
+  content: 'silk_road_fb_reels',
+});
+
+/** Meta cold paid social — Facebook Post */
+export const SILK_ROAD_META_POST_URL = buildUtmUrl(SILK_ROAD_PATH, {
+  source: 'facebook',
+  medium: 'paid_social',
+  campaign: 'tour_silk_road_2027',
+  content: 'silk_road_fb_post',
+});
+
+/** Meta cold paid social — Instagram Reels */
+export const SILK_ROAD_META_IG_REELS_URL = buildUtmUrl(SILK_ROAD_PATH, {
+  source: 'instagram',
+  medium: 'paid_social',
+  campaign: 'tour_silk_road_2027',
+  content: 'silk_road_ig_reels',
+});
+
+/** Google Ads — Search RSA */
+export const SILK_ROAD_GOOGLE_RSA_URL = buildUtmUrl(SILK_ROAD_PATH, {
+  source: 'google',
+  medium: 'cpc',
+  campaign: 'tour_silk_road_2027',
+  content: 'google_rsa_silk_road',
+});
+
+/** Google Ads — Performance Max */
+export const SILK_ROAD_GOOGLE_PMAX_URL = buildUtmUrl(SILK_ROAD_PATH, {
+  source: 'google',
+  medium: 'cpc',
+  campaign: 'tour_silk_road_2027',
+  content: 'google_pmax_silk_road',
+});
+
+// ---------------------------------------------------------------------------
 // B. v5 Google Ads 5 Campaign — 全量 URL (Campaign A/B/D/E/C)
 // ---------------------------------------------------------------------------
 
@@ -345,6 +394,37 @@ export const V5_ADS_URL_MASTER_TABLE: V5AdsUrlRow[] = [
     campaignLabel: 'A0 Essentials',
     adGroup: 'IG Reels — Best of China',
     finalUrl: ESSENTIALS_META_IG_REELS_URL,
+  },
+  // A2 Silk Road 重点推广团 (Signature tier, NZD $7,999, 13 May 2027 优先)
+  {
+    platform: 'google',
+    campaignLabel: 'A2 Silk Road',
+    adGroup: 'Search RSA — Silk Road',
+    finalUrl: SILK_ROAD_GOOGLE_RSA_URL,
+  },
+  {
+    platform: 'google',
+    campaignLabel: 'A2 Silk Road',
+    adGroup: 'PMax — Silk Road',
+    finalUrl: SILK_ROAD_GOOGLE_PMAX_URL,
+  },
+  {
+    platform: 'facebook',
+    campaignLabel: 'A2 Silk Road',
+    adGroup: 'Meta Reels — Silk Road',
+    finalUrl: SILK_ROAD_META_REELS_URL,
+  },
+  {
+    platform: 'facebook',
+    campaignLabel: 'A2 Silk Road',
+    adGroup: 'Meta Post — Silk Road',
+    finalUrl: SILK_ROAD_META_POST_URL,
+  },
+  {
+    platform: 'instagram',
+    campaignLabel: 'A2 Silk Road',
+    adGroup: 'IG Reels — Silk Road',
+    finalUrl: SILK_ROAD_META_IG_REELS_URL,
   },
   // A Core Commercial
   {
