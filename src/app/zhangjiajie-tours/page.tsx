@@ -45,8 +45,8 @@ export default function ZhangjiajieToursPage() {
         tours={tours}
         faqs={zhangjiajieToursMetadata.faqs}
         guideLinks={[
-          { label: 'Zhangjiajie Travel Guide', href: '/zhangjiajie-travel-guide', emoji: '🏔️', description: 'Avatar peaks explorer guide' },
-          { label: 'Tianmen Mountain Guide', href: '/tianmen-mountain-travel-guide', emoji: '🪟', description: 'Glass walkway & cable car tips' },
+          { label: 'Zhangjiajie Travel Guide', href: '/zhangjiajie-travel-guide', icon: 'mountain', description: 'Avatar peaks explorer guide' },
+          { label: 'Tianmen Mountain Guide', href: '/tianmen-mountain-travel-guide', icon: 'building', description: 'Glass walkway & cable car tips' },
         ]}
       />
     </>

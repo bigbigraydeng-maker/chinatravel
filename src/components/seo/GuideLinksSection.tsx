@@ -1,10 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export interface GuideLinkCard {
   label: string;
   href: string;
   description?: string;
+  /** Preferred: inline-SVG icon name. */
+  icon?: IconName;
+  /** Deprecated fallback for legacy callers still passing an emoji glyph. */
   emoji?: string;
 }
 
@@ -31,9 +35,11 @@ const GuideLinksSection: React.FC<GuideLinksProps> = ({
               className="group block bg-white rounded-xl border border-warm-100 p-5 transition-shadow hover:shadow-md"
             >
               <div className="flex items-start gap-3">
-                {link.emoji && (
+                {link.icon ? (
+                  <Icon name={link.icon} className="w-6 h-6 text-primary mt-0.5 flex-shrink-0" aria-hidden />
+                ) : link.emoji ? (
                   <span className="text-2xl leading-none mt-0.5 flex-shrink-0">{link.emoji}</span>
-                )}
+                ) : null}
                 <div>
                   <p className="font-semibold text-gray-900 group-hover:text-primary transition-colors leading-snug">
                     {link.label}

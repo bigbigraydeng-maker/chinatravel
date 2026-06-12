@@ -8,6 +8,8 @@
  *  - GA4 event tracking (tool_name field)
  */
 
+import type { IconName } from '@/components/ui/Icon';
+
 export type ToolStatus = 'live' | 'coming-soon';
 
 export interface ToolData {
@@ -17,7 +19,7 @@ export interface ToolData {
   description: string;
   /** Longer description shown in the travel-tools hub */
   longDescription: string;
-  emoji: string;
+  icon: IconName;
   status: ToolStatus;
   /** Canonical URL for the tool (page or anchor) */
   url: string;
@@ -36,7 +38,7 @@ export const TOOLS: ToolData[] = [
     description: 'Find the ideal season for your interests — cherry blossom, autumn colour, festivals, or beating the crowds.',
     longDescription:
       'Compare weather, crowds, and highlights month by month across China\'s top destinations. Whether you\'re chasing cherry blossoms in spring, autumn foliage in October, or avoiding Golden Week chaos — this guide helps you pick the perfect travel window.',
-    emoji: '🌸',
+    icon: 'flower',
     status: 'live',
     url: '/best-time-to-visit-china',
     targetKeyword: 'best time to visit China',
@@ -49,7 +51,7 @@ export const TOOLS: ToolData[] = [
     description: 'Estimate your total China holiday budget — flights, tours, hotels, and daily expenses — before you enquire.',
     longDescription:
       'Get a personalised budget estimate for your China trip based on group size, travel duration, comfort level, and destinations. Understand where your money goes and arrive at the tailor-made form with realistic expectations.',
-    emoji: '💰',
+    icon: 'coins',
     status: 'coming-soon',
     url: '/travel-tools#cost-calculator',
     targetKeyword: 'China trip cost',
@@ -62,7 +64,7 @@ export const TOOLS: ToolData[] = [
     description: 'Check visa requirements for New Zealand passport holders travelling to China — including the 240-hour transit visa.',
     longDescription:
       'New Zealand citizens now benefit from China\'s visa-free policy for stays up to 30 days. Use this tool to confirm eligibility, check the 240-hour transit visa option, and understand what documents you\'ll need at the border.',
-    emoji: '🛂',
+    icon: 'passport',
     status: 'live',
     url: '/china-visa-guide-for-new-zealanders',
     targetKeyword: 'China visa NZ',
@@ -75,7 +77,7 @@ export const TOOLS: ToolData[] = [
     description: 'Deep-dive weather, festivals, and crowd levels for every month — with destination-specific breakdowns.',
     longDescription:
       'Our interactive seasonal guide breaks down every month across Beijing, Xi\'an, Shanghai, Guilin, and more. Compare temperature, rainfall, and major festivals side-by-side to plan the trip that suits your travel style.',
-    emoji: '🗓️',
+    icon: 'calendar',
     status: 'live',
     url: '/seasonal-guide',
     targetKeyword: 'China weather by month',
@@ -88,7 +90,7 @@ export const TOOLS: ToolData[] = [
     description: 'Match your travel duration, interests, and budget to the right destinations and CTS tour products.',
     longDescription:
       'Answer a few quick questions about your travel style, party size, and interests, and our planner will suggest the most suitable China itinerary, destinations, and tour tier for you.',
-    emoji: '🧭',
+    icon: 'compass',
     status: 'live',
     url: '/trip-planner',
     targetKeyword: 'China trip planner',
@@ -101,7 +103,7 @@ export const TOOLS: ToolData[] = [
     description: 'Explore regional dishes by destination — from Peking duck in Beijing to spicy hotpot in Chengdu.',
     longDescription:
       'China\'s cuisine varies dramatically by region. Our interactive food map helps you discover must-try dishes in each city so you can plan your culinary stops alongside your sightseeing itinerary.',
-    emoji: '🥟',
+    icon: 'utensils',
     status: 'live',
     url: '/local-food-guide',
     targetKeyword: 'China food guide',

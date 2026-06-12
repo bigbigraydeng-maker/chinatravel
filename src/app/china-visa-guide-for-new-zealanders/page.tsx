@@ -8,6 +8,7 @@ import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
 import VisaCheckerWidget from '@/components/seo/VisaCheckerWidget';
+import { Icon } from '@/components/ui/Icon';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
@@ -99,12 +100,14 @@ export default function ChinaVisaGuidePage() {
 
               {/* Visa-Free Entry Requirements */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-                  ✅ Visa-Free Entry: What You Need
+                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 flex items-center gap-2">
+                  <Icon name="check-circle" className="w-7 h-7 text-green-600" />
+                  <span>Visa-Free Entry: What You Need</span>
                 </h2>
                 <div className="bg-green-50 border-l-4 border-green-600 p-8 rounded-r-lg mb-8">
-                  <p className="text-lg text-green-900 font-semibold mb-3">
-                    🎉 Good news: You don't need a visa application!
+                  <p className="text-lg text-green-900 font-semibold mb-3 flex items-center gap-2">
+                    <Icon name="sparkles" className="w-5 h-5 text-green-700 flex-shrink-0" />
+                    <span>Good news: You don&apos;t need a visa application!</span>
                   </p>
                   <p className="text-green-900">
                     Simply show these documents at immigration when you arrive in China. No forms, no processing fees, no waiting time.
@@ -113,8 +116,9 @@ export default function ChinaVisaGuidePage() {
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      📋 Required at Immigration
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <Icon name="file-text" className="w-6 h-6 text-primary" />
+                      <span>Required at Immigration</span>
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[
@@ -166,8 +170,9 @@ export default function ChinaVisaGuidePage() {
 
               {/* Before You Travel */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-                  ✈️ Before You Travel
+                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 flex items-center gap-2">
+                  <Icon name="plane" className="w-7 h-7 text-primary" />
+                  <span>Before You Travel</span>
                 </h2>
                 <div className="space-y-4">
                   {[
@@ -208,8 +213,9 @@ export default function ChinaVisaGuidePage() {
 
               {/* Eligibility & Exceptions */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-                  ⚠️ When You Still Need a Visa
+                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8 flex items-center gap-2">
+                  <Icon name="alert-triangle" className="w-7 h-7 text-amber-500" />
+                  <span>When You Still Need a Visa</span>
                 </h2>
                 <div className="bg-amber-50 border-l-4 border-amber-600 p-6 rounded-r-lg mb-6">
                   <p className="text-amber-900 font-semibold">
@@ -257,7 +263,10 @@ export default function ChinaVisaGuidePage() {
               <div className="sticky top-24 space-y-6">
                 {/* Key Facts */}
                 <div className="bg-green-50 border-2 border-green-400 rounded-xl p-6">
-                  <h4 className="font-bold text-gray-900 mb-4 text-lg">✅ Visa-Free Facts</h4>
+                  <h4 className="font-bold text-gray-900 mb-4 text-lg flex items-center gap-2">
+                    <Icon name="check-circle" className="w-5 h-5 text-green-600" />
+                    <span>Visa-Free Facts</span>
+                  </h4>
                   <div className="space-y-3 text-sm text-gray-700">
                     <p><strong>Duration:</strong> Up to 30 days</p>
                     <p><strong>Valid Until:</strong> 31 Dec 2026</p>
@@ -271,22 +280,25 @@ export default function ChinaVisaGuidePage() {
 
                 {/* Simple Checklist */}
                 <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
-                  <h4 className="font-bold text-gray-900 mb-4">📋 What to Bring</h4>
+                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Icon name="file-text" className="w-5 h-5 text-primary" />
+                    <span>What to Bring</span>
+                  </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex gap-2">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>Passport (NZ)</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>Return flight booking</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>Hotel/CTS itinerary</span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-600">✓</span>
+                      <Icon name="check" className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
                       <span>Credit card or cash</span>
                     </li>
                   </ul>
@@ -297,7 +309,10 @@ export default function ChinaVisaGuidePage() {
 
                 {/* CTS Support Box */}
                 <div className="bg-primary/10 border border-primary/30 rounded-xl p-6">
-                  <h4 className="font-bold text-gray-900 mb-3">💬 Need Help?</h4>
+                  <h4 className="font-bold text-gray-900 mb-3 flex items-center gap-2">
+                    <Icon name="message" className="w-5 h-5 text-primary" />
+                    <span>Need Help?</span>
+                  </h4>
                   <p className="text-sm text-gray-700 mb-4">
                     Have questions about visa-free entry or need travel documents? Our team is here to help.
                   </p>
@@ -311,7 +326,10 @@ export default function ChinaVisaGuidePage() {
 
                 {/* Useful Links */}
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-                  <h4 className="font-bold text-gray-900 mb-4">📍 Resources</h4>
+                  <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Icon name="map-pin" className="w-5 h-5 text-primary" />
+                    <span>Resources</span>
+                  </h4>
                   <ul className="space-y-2 text-sm">
                     <li>
                       <a

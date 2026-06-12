@@ -85,7 +85,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
             <ul style={{ columns: 2, gap: '16px', listStyle: 'none', padding: 0, margin: 0 }}>
               {tour.highlights.map((h, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px', marginBottom: '6px', fontSize: '13px', color: '#374151', breakInside: 'avoid' }}>
-                  <span style={{ color: '#c0392b', fontWeight: 700, flexShrink: 0 }}>✓</span>
+                  <span style={{ color: '#c0392b', fontWeight: 700, flexShrink: 0 }}>-</span>
                   {h}
                 </li>
               ))}
@@ -128,7 +128,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {tour.inclusions.map((item, i) => (
                 <li key={i} style={{ display: 'flex', gap: '6px', marginBottom: '4px', fontSize: '12px', color: '#374151' }}>
-                  <span style={{ color: '#16a34a', flexShrink: 0 }}>✓</span>{item}
+                  <span style={{ color: '#16a34a', flexShrink: 0 }}>-</span>{item}
                 </li>
               ))}
             </ul>
@@ -138,7 +138,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {tour.exclusions.map((item, i) => (
                 <li key={i} style={{ display: 'flex', gap: '6px', marginBottom: '4px', fontSize: '12px', color: '#374151' }}>
-                  <span style={{ color: '#ef4444', flexShrink: 0 }}>✗</span>{item}
+                  <span style={{ color: '#ef4444', flexShrink: 0 }}>-</span>{item}
                 </li>
               ))}
             </ul>

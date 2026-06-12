@@ -6,6 +6,7 @@ import TourCard from '@/components/tours/TourCard';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedUnsplash } from '@/lib/site-media';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -140,23 +141,23 @@ export default function ToursPage() {
                 step: '01',
                 title: 'Choose Your Destination',
                 description: 'Browse our collections and find the perfect journey that matches your interests and travel style.',
-                icon: '🌏'
+                icon: 'globe' as IconName
               },
               {
                 step: '02',
                 title: 'Customize Your Tour',
                 description: 'Work with our specialists to personalize your itinerary, add extensions, or adjust the pace.',
-                icon: '✏️'
+                icon: 'pencil' as IconName
               },
               {
                 step: '03',
                 title: 'Embark on Your Journey',
                 description: 'Relax and enjoy as we handle all the details, from airport transfers to expert guides.',
-                icon: '🧳'
+                icon: 'luggage' as IconName
               }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="text-6xl mb-4">{item.icon}</div>
+                <div className="mb-4 flex justify-center"><Icon name={item.icon} className="w-12 h-12 text-primary" /></div>
                 <div className="text-5xl font-serif font-bold text-primary/20 mb-4">{item.step}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
                 <p className="text-gray-600">{item.description}</p>

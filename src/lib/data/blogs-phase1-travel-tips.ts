@@ -348,35 +348,35 @@ function socialFor(postId: string): StagingContent['socialVersions'] {
     'blog-packing-china': {
       linkedin: `What Kiwi travellers should pack for China — by season.\n\n• Layers beat bulky coats in spring/autumn\n• Voltage 220V + adapter essentials\n• Footwear for temples & wet stone\n• Cash + two cards backup\n\n${commonCta}\n#ChinaTravel #PackingList #NZ`,
       xiaohongshu:
-        'Packing for China from NZ ✈️\nLayers + rain shell beat one heavy coat. 👟 Comfortable shoes beat dress shoes.\nAdapter + power bank before you fly 🔌\nFull checklist in CTS ChinaTravel 👇\n#ChinaTravel #PackingList #NZ',
+        'Packing for China from NZ\nLayers + rain shell beat one heavy coat. Comfortable shoes beat dress shoes.\nAdapter + power bank before you fly\nFull checklist in CTS ChinaTravel\n#ChinaTravel #PackingList #NZ',
       weibo:
         'Pre-trip packing for China: layered clothing, 220V adapter, walking shoes. Kiwis: two cards + a little cash. Full article on CTS Tours. #ChinaTravel #PackingGuide',
     },
     'blog-apps-china': {
       linkedin: `China travel stack for 2026 trips: VPN tested pre-departure, Amap/Baidu for routing, WeChat ecosystem, Alipay/WeChat Pay setups, offline translation packs.\n\nPlan before AKL departure.\n\n${commonCta}\n#TravelTech #China`,
       xiaohongshu:
-        'Install these before you fly 📱 Maps, translation, payments — one read-through.\nTest VPN and apps in Auckland ✅\nSaves hassle on free days.\n#ChinaTravel #Apps',
+        'Install these before you fly. Maps, translation, payments — one read-through.\nTest VPN and apps in Auckland\nSaves hassle on free days.\n#ChinaTravel #Apps',
       weibo:
         'Before departure: maps (Gaode/Baidu), offline translation, WeChat/Alipay. Install and test before leaving Auckland. #ChinaTravel #TravelTips',
     },
     'blog-safety-china': {
       linkedin: `Safety realism for China first-timers: low violent crime in tourist cores, watch for tea-house scams, queue culture, hospital/insurance basics, 110/120/119 saves offline.\n\n${commonCta}\n#TravelSafety`,
       xiaohongshu:
-        'Is China safe for first-timers? Generally yes ⚠️ Watch tea-house scams, keep an eye on payments, save emergency numbers ❤️ #TravelSafety #China',
+        'Is China safe for first-timers? Generally yes. Watch tea-house scams, keep an eye on payments, save emergency numbers. #TravelSafety #China',
       weibo:
         'China travel safety: good public transport and low violent crime; beware overpriced tea-house invites; carry insurance and emergency contacts. #TravelSafety',
     },
     'blog-best-time-china': {
       linkedin: `Seasonality across China is not one curve: compare Apr–May vs Sep–Oct windows, Golden Week pricing, regional humidity & typhoon risk, winter north vs mild south.\n\n${commonCta}\n#TripPlanning`,
       xiaohongshu:
-        'When is the best time for China? Spring & autumn feel best 🍂 Book early for Golden Week! North vs south climate differs a lot — match dates to your route. #TripPlanning',
+        'When is the best time for China? Spring & autumn feel best. Book early for Golden Week! North vs south climate differs a lot — match dates to your route. #TripPlanning',
       weibo:
         'Seasons vary north to south; first trips often aim for Apr–May or Sep–Oct; Golden Week and CNY spike prices — plan early. #ChinaTravel #Seasons',
     },
     'blog-photo-china': {
       linkedin: `Photography field notes: dawn beats bus-loads at major sites; ND filters on rivers; drone permits strict—assume no-fly in many parks; cultural consent beats viral shots.\n\n${commonCta}\n#TravelPhotography`,
       xiaohongshu:
-        'Three photo tips in China: wake early, pack a light kit, respect no-fly zones 🚫 Misty Li River mornings 📸\n#TravelPhotography #Landscape',
+        'Three photo tips in China: wake early, pack a light kit, respect no-fly zones. Misty Li River mornings.\n#TravelPhotography #Landscape',
       weibo:
         'Photo tips: golden hour light; Li River/Zhangjiajie haze and rain; check drone rules every time. #Photography #ChinaTravel',
     },

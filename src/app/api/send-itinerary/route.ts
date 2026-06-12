@@ -52,11 +52,11 @@ export async function POST(req: NextRequest) {
       .join('');
 
     const inclusionsList = tour.inclusions
-      .map((item) => `<li style="margin-bottom:4px;font-size:13px;color:#374151;">✓ &nbsp;${item}</li>`)
+      .map((item) => `<li style="margin-bottom:4px;font-size:13px;color:#374151;">&nbsp;${item}</li>`)
       .join('');
 
     const exclusionsList = tour.exclusions
-      .map((item) => `<li style="margin-bottom:4px;font-size:13px;color:#374151;">✗ &nbsp;${item}</li>`)
+      .map((item) => `<li style="margin-bottom:4px;font-size:13px;color:#374151;">&nbsp;${item}</li>`)
       .join('');
 
     const logoUrl = `${getSiteUrl()}/logo.png`;

@@ -12,6 +12,7 @@ import MobileFloatingCTA from '@/components/tailor-made/MobileFloatingCTA';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbListSchema, generateWebPageSchema } from '@/lib/schema-seo';
 import { tourImage } from '@/lib/site-media';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 const PAGE_PATH = '/tailor-made';
 const PAGE_TITLE = 'Tailor Made Tours';
@@ -40,15 +41,15 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const interests = [
-  { icon: '🏛️', label: 'Culture & History', description: 'Ancient temples, museums, UNESCO sites' },
-  { icon: '🍜', label: 'Food & Culinary', description: 'Street food, cooking classes, fine dining' },
-  { icon: '🏔️', label: 'Nature & Adventure', description: 'Hiking, national parks, scenic landscapes' },
-  { icon: '👨‍👩‍👧‍👦', label: 'Family', description: 'Kid-friendly activities, educational tours' },
-  { icon: '💑', label: 'Honeymoon & Romance', description: 'Romantic getaways, luxury stays' },
-  { icon: '📸', label: 'Photography', description: 'Iconic viewpoints, hidden photo spots' },
-  { icon: '🧘', label: 'Wellness & Spa', description: 'Hot springs, meditation, traditional healing' },
-  { icon: '🎭', label: 'Arts & Performance', description: 'Opera, folk art, local performances' },
+const interests: { icon: IconName; label: string; description: string }[] = [
+  { icon: 'landmark', label: 'Culture & History', description: 'Ancient temples, museums, UNESCO sites' },
+  { icon: 'utensils', label: 'Food & Culinary', description: 'Street food, cooking classes, fine dining' },
+  { icon: 'mountain', label: 'Nature & Adventure', description: 'Hiking, national parks, scenic landscapes' },
+  { icon: 'users', label: 'Family', description: 'Kid-friendly activities, educational tours' },
+  { icon: 'heart', label: 'Honeymoon & Romance', description: 'Romantic getaways, luxury stays' },
+  { icon: 'camera', label: 'Photography', description: 'Iconic viewpoints, hidden photo spots' },
+  { icon: 'flower', label: 'Wellness & Spa', description: 'Hot springs, meditation, traditional healing' },
+  { icon: 'sparkles', label: 'Arts & Performance', description: 'Opera, folk art, local performances' },
 ];
 
 const steps = [
@@ -282,15 +283,15 @@ export default function TailorMadePage() {
           </div>
           <ul className="mt-12 max-w-2xl mx-auto space-y-2 text-left text-gray-700">
             <li className="flex gap-2">
-              <span className="text-secondary font-bold mt-0.5">✓</span>
+              <Icon name="check" className="w-4 h-4 text-secondary mt-1 flex-shrink-0" />
               <span>Complete flexibility on dates, duration, and routing</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-secondary font-bold mt-0.5">✓</span>
+              <Icon name="check" className="w-4 h-4 text-secondary mt-1 flex-shrink-0" />
               <span>Hotel grade and style matched to your budget</span>
             </li>
             <li className="flex gap-2">
-              <span className="text-secondary font-bold mt-0.5">✓</span>
+              <Icon name="check" className="w-4 h-4 text-secondary mt-1 flex-shrink-0" />
               <span>Dedicated specialist to refine the plan with you</span>
             </li>
           </ul>
@@ -397,7 +398,7 @@ export default function TailorMadePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {interests.map((interest, idx) => (
               <div key={idx} className="bg-white border border-gray-100 rounded-xl p-6 text-center hover:shadow-lg hover:border-primary/20 transition-all cursor-default group">
-                <div className="text-4xl mb-3">{interest.icon}</div>
+                <Icon name={interest.icon} className="w-10 h-10 mb-3 mx-auto text-primary" />
                 <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">{interest.label}</h3>
                 <p className="text-sm text-gray-500">{interest.description}</p>
               </div>

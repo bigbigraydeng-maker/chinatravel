@@ -237,7 +237,7 @@ function generateItineraryEmailHTML(itinerary: GeneratedItinerary): string {
 <body>
   <div class="container">
     <div class="header">
-      <h1>✨ 你的行程方案</h1>
+      <h1>你的行程方案</h1>
       <p>${getDestinationName(request.destination)} · ${request.days} 日之旅</p>
     </div>
 
@@ -266,7 +266,7 @@ function generateItineraryEmailHTML(itinerary: GeneratedItinerary): string {
         </div>
       </div>
 
-      <h3>💰 费用预算</h3>
+      <h3>费用预算</h3>
       <div class="cost-box">
         <div class="cost-item">
           <span>景点门票</span>
@@ -290,12 +290,12 @@ function generateItineraryEmailHTML(itinerary: GeneratedItinerary): string {
         </div>
       </div>
 
-      <h3>🎯 行程亮点</h3>
+      <h3>行程亮点</h3>
       ${days.slice(0, 3).map((day) => `
         <div class="day-summary">
           <h4>${day.title}</h4>
-          <p>📍 主题：${day.theme}</p>
-          <p>🎫 景点数：${day.attractions.length} 个</p>
+          <p>主题：${day.theme}</p>
+          <p>景点数：${day.attractions.length} 个</p>
           ${day.attractions.slice(0, 2).map((attr) => `
             <p style="margin-left: 15px;">• ${attr.name}</p>
           `).join('')}
@@ -304,7 +304,7 @@ function generateItineraryEmailHTML(itinerary: GeneratedItinerary): string {
       `).join('')}
 
       <p style="text-align: center; margin: 30px 0;">
-        <a href="https://www.ctstours.co.nz" class="cta-button">📥 查看完整行程</a>
+        <a href="https://www.ctstours.co.nz" class="cta-button">查看完整行程</a>
       </p>
 
       <p style="margin-top: 30px; padding: 15px; background: #f5f5f5; border-radius: 6px; font-size: 13px; color: #666;">
@@ -315,7 +315,7 @@ function generateItineraryEmailHTML(itinerary: GeneratedItinerary): string {
 
     <div class="footer">
       <p><strong>新西兰旅游服务 (NZ Tours)</strong></p>
-      <p>📧 support@ctstours.co.nz | 🌐 www.ctstours.co.nz</p>
+      <p>support@ctstours.co.nz | www.ctstours.co.nz</p>
       <p style="margin-top: 10px; color: #ccc;">让每一次旅行都成为最美的回忆</p>
     </div>
   </div>

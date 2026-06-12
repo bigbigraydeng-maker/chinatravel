@@ -45,9 +45,9 @@ export default function HangzhouToursPage() {
         tours={tours}
         faqs={hangzhouToursMeta.faqs}
         guideLinks={[
-          { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', emoji: '🍵', description: 'West Lake, tea & silk highlights' },
-          { label: 'West Lake Guide', href: '/blog/west-lake-hangzhou-travel-guide', emoji: '🏞️', description: 'Planning your West Lake visit' },
-          { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', emoji: '🌿', description: 'Classical gardens & canal towns' },
+          { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', icon: 'coffee', description: 'West Lake, tea & silk highlights' },
+          { label: 'West Lake Guide', href: '/blog/west-lake-hangzhou-travel-guide', icon: 'mountain', description: 'Planning your West Lake visit' },
+          { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', icon: 'leaf', description: 'Classical gardens & canal towns' },
         ]}
       />
     </>

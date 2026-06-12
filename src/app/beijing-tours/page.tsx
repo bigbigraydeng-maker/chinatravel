@@ -51,14 +51,14 @@ export default function BeijingToursPage() {
         tours={tours}
         faqs={beijingToursMeta.faqs}
         guideLinks={[
-          { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', emoji: '🏯', description: 'History, hikes & access tips' },
-          { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', emoji: '🏛️', description: 'Imperial palace inside out' },
-          { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', emoji: '🌆', description: 'Full city visitor guide' },
-          { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', emoji: '🥾', description: 'Which section, how steep, best time' },
-          { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', emoji: '🗺️', description: 'The route most visitors miss' },
-          { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', emoji: '🏘️', description: "Old Peking's hidden laneways" },
-          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', emoji: '🏺', description: "Xi'an day trip from Beijing by high-speed train" },
-          { label: 'October 2026 — Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities', emoji: '🍂', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
+          { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', icon: 'landmark', description: 'History, hikes & access tips' },
+          { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', icon: 'landmark', description: 'Imperial palace inside out' },
+          { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', icon: 'building', description: 'Full city visitor guide' },
+          { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', icon: 'footprints', description: 'Which section, how steep, best time' },
+          { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', icon: 'map', description: 'The route most visitors miss' },
+          { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', icon: 'building', description: "Old Peking's hidden laneways" },
+          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'landmark', description: "Xi'an day trip from Beijing by high-speed train" },
+          { label: 'October 2026 — Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities', icon: 'leaf', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
         ]}
       />
     </>

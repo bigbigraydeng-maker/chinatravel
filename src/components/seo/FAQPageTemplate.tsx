@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { FAQPage } from '@/lib/data/faq-pages';
+import { Icon } from '@/components/ui/Icon';
 
 interface FAQPageTemplateProps {
   page: FAQPage;
@@ -76,8 +77,8 @@ export default function FAQPageTemplate({ page, breadcrumbs }: FAQPageTemplatePr
                     </h3>
                     {faq.monthlySearches && (
                       <div className="flex gap-4 mt-2 text-sm text-gray-500">
-                        <span>📊 ~{faq.monthlySearches} searches/month</span>
-                        {faq.searchIntent && <span>🔍 {faq.searchIntent}</span>}
+                        <span className="flex items-center gap-1"><Icon name="file-text" className="w-4 h-4" /> ~{faq.monthlySearches} searches/month</span>
+                        {faq.searchIntent && <span className="flex items-center gap-1"><Icon name="search" className="w-4 h-4" /> {faq.searchIntent}</span>}
                       </div>
                     )}
                   </div>

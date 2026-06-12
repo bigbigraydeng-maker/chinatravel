@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export const metadata: Metadata = {
   title: 'Subscribe to CTS Tours Newsletter | China Travel Tips & Offers',
@@ -9,24 +10,24 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const benefits = [
+const benefits: { icon: IconName; title: string; desc: string }[] = [
   {
-    icon: '🗺️',
+    icon: 'map',
     title: 'Destination deep-dives',
     desc: 'Expert guides to Beijing, Xi\'an, Shanghai, Guilin, Chengdu, and beyond — written by our on-the-ground specialists.',
   },
   {
-    icon: '✈️',
+    icon: 'plane',
     title: 'Visa & entry tips',
     desc: 'Stay up to date on China\'s visa-free entry for NZ passport holders, transit rules, and how to make the most of them.',
   },
   {
-    icon: '💰',
+    icon: 'coins',
     title: 'Exclusive offers',
     desc: 'Subscriber-only tour discounts, early-bird departures, and last-minute availability — before they go public.',
   },
   {
-    icon: '📅',
+    icon: 'calendar',
     title: 'Best time to travel',
     desc: 'Monthly travel intelligence: festivals, weather, crowd levels, and the ideal windows for each destination.',
   },
@@ -85,7 +86,7 @@ export default function SubscribePage() {
                 key={b.title}
                 className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/8 transition-colors"
               >
-                <div className="text-3xl mb-3">{b.icon}</div>
+                <Icon name={b.icon} className="w-8 h-8 mb-3 text-primary" />
                 <h3 className="text-white font-semibold text-lg mb-2">{b.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed">{b.desc}</p>
               </div>

@@ -295,16 +295,16 @@ For NZ families with varied eaters, the Muslim Quarter offers enough visual vari
 <a id="comparison"></a>
 ## Top 8 Things to Do in Beijing & Xi'an — Comparison
 
-| Attraction | Complexity (🔄) | Resources / Cost (⚡) | Expected Experience (⭐) | Ideal Use Cases (📊) | Key Advantages & Quick Tip (💡) |
+| Attraction | Complexity | Resources / Cost | Expected Experience | Ideal Use Cases | Key Advantages & Quick Tip |
 |---|---:|---:|---|---|---|
-| Forbidden City | Medium–High 🔄 — large complex, multiple sections | Moderate ⚡ — entry fee + separate exhibition tickets | Imperial grandeur, architectural scale ⭐⭐⭐⭐⭐ | First-timers, history enthusiasts, all ages | Book timed entry before leaving NZ; go early and plan a route 💡 |
-| Great Wall (Mutianyu) | Medium 🔄 — organised, well-marked | Moderate ⚡ — entry + cable car/toboggan optional | Physical achievement, panoramic views ⭐⭐⭐⭐⭐ | Active travellers, families, couples | Combine cable car up with toboggan down for the best experience 💡 |
-| Beijing Hutongs | Low 🔄 — easy navigation on rickshaw tour | Low–Medium ⚡ — rickshaw tour cost | Living history, neighbourhood texture ⭐⭐⭐⭐ | All traveller types, especially first-timers | Morning visits are quieter; choose a rickshaw route over Nanluoguxiang main street 💡 |
-| Temple of Heaven | Low 🔄 — straightforward layout | Low ⚡ — park + inner complex tickets | Architectural elegance, daily Beijing life ⭐⭐⭐⭐ | Couples, retirees, those wanting cultural depth | Arrive at 6:30am for morning exercise culture in the park 💡 |
-| High-Speed Rail (G89) | Low 🔄 — handled by tour | Included in tour ⚡ | Practical + experiential — China at scale ⭐⭐⭐⭐ | All travellers as a transition moment | Take daytime departure for the landscape; sit on right side facing direction of travel 💡 |
-| Terracotta Warriors | Low–Medium 🔄 — three pits, audio guide sufficient | Moderate ⚡ — site entry + optional guide | Archaeological wonder, individual craftsmanship ⭐⭐⭐⭐⭐ | All traveller types; especially families with older children | Visit all three pits — Pits 2 and 3 are usually uncrowded and add context 💡 |
-| Xi'an City Walls | Low 🔄 — flat, well-maintained, rental on-site | Low ⚡ — entry + bike rental | Physical activity, historic urban panorama ⭐⭐⭐⭐ | Families, couples, active travellers | Rent bicycles at South Gate; late afternoon gives the best light 💡 |
-| Muslim Quarter | Low 🔄 — street food format, easy to navigate | Low ⚡ — food costs only | Culinary variety, atmospheric evening outing ⭐⭐⭐⭐ | All traveller types, evening activity | Arrive before 6:30pm; explore side alleys parallel to the main street 💡 |
+| Forbidden City | Medium–High — large complex, multiple sections | Moderate — entry fee + separate exhibition tickets | Imperial grandeur, architectural scale | First-timers, history enthusiasts, all ages | Book timed entry before leaving NZ; go early and plan a route |
+| Great Wall (Mutianyu) | Medium — organised, well-marked | Moderate — entry + cable car/toboggan optional | Physical achievement, panoramic views | Active travellers, families, couples | Combine cable car up with toboggan down for the best experience |
+| Beijing Hutongs | Low — easy navigation on rickshaw tour | Low–Medium — rickshaw tour cost | Living history, neighbourhood texture | All traveller types, especially first-timers | Morning visits are quieter; choose a rickshaw route over Nanluoguxiang main street |
+| Temple of Heaven | Low — straightforward layout | Low — park + inner complex tickets | Architectural elegance, daily Beijing life | Couples, retirees, those wanting cultural depth | Arrive at 6:30am for morning exercise culture in the park |
+| High-Speed Rail (G89) | Low — handled by tour | Included in tour | Practical + experiential — China at scale | All travellers as a transition moment | Take daytime departure for the landscape; sit on right side facing direction of travel |
+| Terracotta Warriors | Low–Medium — three pits, audio guide sufficient | Moderate — site entry + optional guide | Archaeological wonder, individual craftsmanship | All traveller types; especially families with older children | Visit all three pits — Pits 2 and 3 are usually uncrowded and add context |
+| Xi'an City Walls | Low — flat, well-maintained, rental on-site | Low — entry + bike rental | Physical activity, historic urban panorama | Families, couples, active travellers | Rent bicycles at South Gate; late afternoon gives the best light |
+| Muslim Quarter | Low — street food format, easy to navigate | Low — food costs only | Culinary variety, atmospheric evening outing | All traveller types, evening activity | Arrive before 6:30pm; explore side alleys parallel to the main street |
 
 ---
 
@@ -637,16 +637,16 @@ For NZ travellers who haven't used high-speed rail before, this is a useful orie
 <a id="comparison"></a>
 ## Top 8 Things to Do in Chongqing and Chengdu — Comparison
 
-| Attraction | Complexity (🔄) | Resources / Cost (⚡) | Expected Experience (⭐) | Ideal Use Cases (📊) | Key Advantages & Quick Tip (💡) |
+| Attraction | Complexity | Resources / Cost | Expected Experience | Ideal Use Cases | Key Advantages & Quick Tip |
 |---|---:|---:|---|---|---|
-| Liziba Station | Low 🔄, show up and watch | Minimal ⚡, free to view | ⭐⭐⭐⭐⭐ Visually unlike anything else | All travellers; photographers; social media | Ride Line 2 through the building as well as watching from street 💡 |
-| Hongyadong | Low 🔄, free entry | Low ⚡, drinks/food optional | ⭐⭐⭐⭐⭐ After dark only | Couples; photographers; evening itinerary | Walk to Qiansimen Bridge for the full facade view — don't just stay inside 💡 |
-| Dazu Rock Carvings | Medium 🔄, full-day trip | Low–Medium ⚡, entrance + transport | ⭐⭐⭐⭐⭐ UNESCO-quality, genuinely surprising | History and culture travellers; couples | Watch the 4K film at the Tourist Centre first to contextualise the carvings 💡 |
-| Huguang Guild Hall | Low–Medium 🔄, self-guided or guided | Low ⚡, modest entrance fee | ⭐⭐⭐⭐ Better with context | History enthusiasts; retirees; architecture interest | Read about the Huguang Migration beforehand — makes it significantly more interesting 💡 |
-| Chengdu Panda Base | Medium 🔄, timing-dependent | Moderate ⚡, entrance fee + transport | ⭐⭐⭐⭐⭐ Emotionally resonant, photography guaranteed | All travellers; couples; families | Arrive at 7:30am opening — pandas are asleep by 10:30am 💡 |
-| People's Park Matchmaking Corner | Low 🔄, walk in and observe | Minimal ⚡, tea optional | ⭐⭐⭐⭐ Unexpected cultural depth | Curious travellers; couples; solo travellers | Sit in a teahouse for 30 minutes after observing the matchmaking activity 💡 |
-| Sichuan Hot Pot | Low 🔄, local restaurants everywhere | Low ⚡, very affordable | ⭐⭐⭐⭐⭐ Regional food experience at source | Food-focused travellers; all groups | Order the split pot (鸳鸯锅) if spice tolerance varies within your group 💡 |
-| Bullet Train | Low 🔄, fully guided | Included in tour ⚡ | ⭐⭐⭐⭐ Infrastructure experience | All travellers; first-time China visitors | Watch the first 30 minutes out of Chongqing — the river crossings and tunnels are the scenic highlight 💡 |
+| Liziba Station | Low, show up and watch | Minimal, free to view | Visually unlike anything else | All travellers; photographers; social media | Ride Line 2 through the building as well as watching from street |
+| Hongyadong | Low, free entry | Low, drinks/food optional | After dark only | Couples; photographers; evening itinerary | Walk to Qiansimen Bridge for the full facade view — don't just stay inside |
+| Dazu Rock Carvings | Medium, full-day trip | Low–Medium, entrance + transport | UNESCO-quality, genuinely surprising | History and culture travellers; couples | Watch the 4K film at the Tourist Centre first to contextualise the carvings |
+| Huguang Guild Hall | Low–Medium, self-guided or guided | Low, modest entrance fee | Better with context | History enthusiasts; retirees; architecture interest | Read about the Huguang Migration beforehand — makes it significantly more interesting |
+| Chengdu Panda Base | Medium, timing-dependent | Moderate, entrance fee + transport | Emotionally resonant, photography guaranteed | All travellers; couples; families | Arrive at 7:30am opening — pandas are asleep by 10:30am |
+| People's Park Matchmaking Corner | Low, walk in and observe | Minimal, tea optional | Unexpected cultural depth | Curious travellers; couples; solo travellers | Sit in a teahouse for 30 minutes after observing the matchmaking activity |
+| Sichuan Hot Pot | Low, local restaurants everywhere | Low, very affordable | Regional food experience at source | Food-focused travellers; all groups | Order the split pot (鸳鸯锅) if spice tolerance varies within your group |
+| Bullet Train | Low, fully guided | Included in tour | Infrastructure experience | All travellers; first-time China visitors | Watch the first 30 minutes out of Chongqing — the river crossings and tunnels are the scenic highlight |
 
 ---
 
@@ -1007,15 +1007,15 @@ This is where a [CTS Tours Shanghai and surroundings itinerary](https://www.ctst
 
 ## Top 7 Things to Do in Shanghai & Surroundings — Comparison
 
-| Attraction | Complexity (🔄) | Resources / Cost (⚡) | Expected Experience (⭐) | Ideal Use Cases (📊) | Key Advantages & Quick Tip (💡) |
+| Attraction | Complexity | Resources / Cost | Expected Experience | Ideal Use Cases | Key Advantages & Quick Tip |
 |---|---:|---:|---|---|---|
-| The Bund | Low 🔄, easy to navigate on foot | Minimal ⚡, free entry | Iconic waterfront ⭐⭐⭐⭐ | All travellers, especially first visit | Go before 8am for crowds; return after dark for the Pudong light show 💡 |
-| Suzhou Gardens | Medium 🔄, requires slow engagement | Low ⚡, CNY 90–150 entry | Refined cultural depth ⭐⭐⭐⭐⭐ | Couples, retirees, garden & art enthusiasts | Two gardens done well beats four done quickly 💡 |
-| West Lake, Hangzhou | Low–Medium 🔄, multiple access options | Low ⚡, park mostly free; Leifeng Pagoda ~CNY 40 | Landscape revelation ⭐⭐⭐⭐⭐ | All travellers; especially active and couples | Cycle the full circuit; visit Longjing tea village the same morning 💡 |
-| Wuxi & Lake Taihu | Medium 🔄, requires transport between sites | Low–Moderate ⚡, Lingshan entry ~CNY 210 | Expansive and spiritual ⭐⭐⭐⭐ | First-time China visitors, active travellers | Turtle Head Isle for the lake view; Lingshan for scale 💡 |
-| Xinshi Water Town | Low 🔄, unstructured walking | Minimal ⚡, largely free entry | Quiet and authentic ⭐⭐⭐⭐ | Couples, retirees, photographers | Arrive mid-afternoon; the crowds thin as day-trippers leave 💡 |
-| Shanghai Food Scene | Low–Medium 🔄, some navigation needed | Low–Moderate ⚡, varies widely | Seasonal and irreplaceable (Oct) ⭐⭐⭐⭐⭐ | All travellers; especially food-focused | Book a hairy crab dinner in October specifically — don't leave it to chance 💡 |
-| Pudong & Shanghai Modern | Low 🔄, well-signed and accessible | Moderate ⚡, Shanghai Tower deck ~CNY 180; Maglev ~NZD $30 optional | Scale and spectacle ⭐⭐⭐⭐ | All travellers; best as trip finale | Clear October days make the observation deck worth the cost — check forecast first 💡 |
+| The Bund | Low, easy to navigate on foot | Minimal, free entry | Iconic waterfront | All travellers, especially first visit | Go before 8am for crowds; return after dark for the Pudong light show |
+| Suzhou Gardens | Medium, requires slow engagement | Low, CNY 90–150 entry | Refined cultural depth | Couples, retirees, garden & art enthusiasts | Two gardens done well beats four done quickly |
+| West Lake, Hangzhou | Low–Medium, multiple access options | Low, park mostly free; Leifeng Pagoda ~CNY 40 | Landscape revelation | All travellers; especially active and couples | Cycle the full circuit; visit Longjing tea village the same morning |
+| Wuxi & Lake Taihu | Medium, requires transport between sites | Low–Moderate, Lingshan entry ~CNY 210 | Expansive and spiritual | First-time China visitors, active travellers | Turtle Head Isle for the lake view; Lingshan for scale |
+| Xinshi Water Town | Low, unstructured walking | Minimal, largely free entry | Quiet and authentic | Couples, retirees, photographers | Arrive mid-afternoon; the crowds thin as day-trippers leave |
+| Shanghai Food Scene | Low–Medium, some navigation needed | Low–Moderate, varies widely | Seasonal and irreplaceable (Oct) | All travellers; especially food-focused | Book a hairy crab dinner in October specifically — don't leave it to chance |
+| Pudong & Shanghai Modern | Low, well-signed and accessible | Moderate, Shanghai Tower deck ~CNY 180; Maglev ~NZD $30 optional | Scale and spectacle | All travellers; best as trip finale | Clear October days make the observation deck worth the cost — check forecast first |
 
 ---
 

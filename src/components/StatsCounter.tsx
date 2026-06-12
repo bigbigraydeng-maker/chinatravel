@@ -1,20 +1,21 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 interface StatItem {
   value: number;
   suffix: string;
   label: string;
-  icon: string;
+  icon: IconName;
   color: string;
 }
 
 const stats: StatItem[] = [
-  { value: 98, suffix: '', label: 'Years in China', icon: '🏛️', color: 'from-amber-400 to-orange-500' },
-  { value: 10000, suffix: '+', label: 'Kiwis Shown China', icon: '😊', color: 'from-emerald-400 to-teal-500' },
-  { value: 50, suffix: '+', label: 'Handcrafted Journeys', icon: '🗺️', color: 'from-sky-400 to-blue-500' },
-  { value: 30, suffix: '+', label: 'Destinations Explored', icon: '📍', color: 'from-purple-400 to-pink-500' },
+  { value: 98, suffix: '', label: 'Years in China', icon: 'landmark', color: 'from-amber-400 to-orange-500' },
+  { value: 10000, suffix: '+', label: 'Kiwis Shown China', icon: 'smile', color: 'from-emerald-400 to-teal-500' },
+  { value: 50, suffix: '+', label: 'Handcrafted Journeys', icon: 'map', color: 'from-sky-400 to-blue-500' },
+  { value: 30, suffix: '+', label: 'Destinations Explored', icon: 'map-pin', color: 'from-purple-400 to-pink-500' },
 ];
 
 function AnimatedNumber({ target, suffix, isVisible }: { target: number; suffix: string; isVisible: boolean }) {
@@ -87,7 +88,7 @@ export default function StatsCounter() {
               className={`text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
               style={{ animationDelay: `${idx * 0.15}s` }}
             >
-              <div className="text-4xl mb-3">{stat.icon}</div>
+              <div className="flex justify-center mb-3"><Icon name={stat.icon} className="w-8 h-8 text-white" /></div>
               <div className={`text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}>
                 <AnimatedNumber target={stat.value} suffix={stat.suffix} isVisible={isVisible} />
               </div>

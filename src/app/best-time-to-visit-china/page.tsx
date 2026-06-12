@@ -8,6 +8,7 @@ import RelatedGuides from '@/components/seo/RelatedGuides';
 import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import MonthPickerWidget from '@/components/seo/MonthPickerWidget';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { bestTimeToVisitChinaMeta } from '@/lib/data/seo-pages';
@@ -22,6 +23,21 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: ['Best time to visit China', 'China weather seasons', 'China travel guide', 'China holidays'],
     ogType: 'article',
   });
+}
+
+function StarRating({ count }: { count: number }) {
+  return (
+    <span className="inline-flex items-center gap-0.5" aria-label={`${count} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Icon
+          key={i}
+          name="star"
+          filled={i < count}
+          className={`w-4 h-4 ${i < count ? 'text-amber-400' : 'text-warm-200'}`}
+        />
+      ))}
+    </span>
+  );
 }
 
 export default function BestTimeToVisitChinaPage() {
@@ -106,10 +122,11 @@ export default function BestTimeToVisitChinaPage() {
                   Month-by-Month Guide
                 </h2>
 
-                {[
+                {([
                   {
                     month: 'January',
-                    season: '❄️ Winter',
+                    seasonIcon: 'snowflake',
+                    season: 'Winter',
                     weather: 'Very cold in the north (Beijing: -5°C), mild in the south (Yunnan: 15-20°C)',
                     crowds: 'Low (except New Year holidays)',
                     highlights: 'Clear skies, crisp air, beautiful for photography',
@@ -117,7 +134,8 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'February',
-                    season: '🎆 Chinese New Year',
+                    seasonIcon: 'sparkles',
+                    season: 'Chinese New Year',
                     weather: 'Cold north, mild south. Lunar New Year period (usually late Jan-early Feb)',
                     crowds: 'VERY HIGH (holiday period)',
                     highlights: 'Festive celebrations, special events, unique cultural experiences',
@@ -125,7 +143,8 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'March-April',
-                    season: '🌸 Spring',
+                    seasonIcon: 'flower',
+                    season: 'Spring',
                     weather: 'Mild to warm (15-25°C), spring flowers blooming',
                     crowds: 'Moderate',
                     highlights: 'Cherry blossoms, ideal hiking weather, comfortable temperatures',
@@ -133,7 +152,8 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'May',
-                    season: '☀️ Late Spring',
+                    seasonIcon: 'sun',
+                    season: 'Late Spring',
                     weather: 'Warm (20-30°C), occasional rain starting',
                     crowds: 'Moderate-high (May Golden Week holidays)',
                     highlights: 'Perfect weather, lush greenery, before summer heat',
@@ -141,7 +161,8 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'June-August',
-                    season: '☁️ Summer',
+                    seasonIcon: 'cloud',
+                    season: 'Summer',
                     weather: 'Hot and humid (25-40°C), rainy season in some regions',
                     crowds: 'VERY HIGH (school holidays)',
                     highlights: 'Long daylight hours, some mountain areas still cool',
@@ -149,15 +170,17 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'September-October',
-                    season: '🍂 Autumn',
+                    seasonIcon: 'leaf',
+                    season: 'Autumn',
                     weather: 'Ideal conditions (15-30°C), clear skies, low humidity',
                     crowds: 'Moderate-high (October Golden Week)',
                     highlights: 'Best overall season, comfortable hiking, beautiful light',
-                    best_for: ['All activities', 'All regions', '⭐ RECOMMENDED']
+                    best_for: ['All activities', 'All regions', 'RECOMMENDED']
                   },
                   {
                     month: 'November',
-                    season: '🍁 Late Autumn',
+                    seasonIcon: 'leaf',
+                    season: 'Late Autumn',
                     weather: 'Cooling down (10-25°C), crystal clear skies',
                     crowds: 'Low-moderate',
                     highlights: 'Fall colors, fewer tourists, excellent for sightseeing',
@@ -165,16 +188,18 @@ export default function BestTimeToVisitChinaPage() {
                   },
                   {
                     month: 'December',
-                    season: '❄️ Early Winter',
+                    seasonIcon: 'snowflake',
+                    season: 'Early Winter',
                     weather: 'Cold in north (0-10°C), mild in south (10-20°C)',
                     crowds: 'Low (except end-of-year holidays)',
                     highlights: 'Few tourists, clear skies, festive atmosphere in some cities',
                     best_for: ['Southern regions', 'Photography', 'Quiet experiences']
                   }
-                ].map((item, idx) => (
+                ] as { month: string; seasonIcon: IconName; season: string; weather: string; crowds: string; highlights: string; best_for: string[] }[]).map((item, idx) => (
                   <div key={idx} className="border-l-4 border-primary pl-6 py-4">
-                    <h3 className="text-xl font-bold mb-2">
-                      {item.month} {item.season}
+                    <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
+                      <Icon name={item.seasonIcon} className="w-5 h-5 text-primary" />
+                      <span>{item.month} {item.season}</span>
                     </h3>
                     <div className="space-y-2 text-gray-700">
                       <p><strong>Weather:</strong> {item.weather}</p>
@@ -208,28 +233,32 @@ export default function BestTimeToVisitChinaPage() {
                         <td className="border p-4">Mild (15-25°C)</td>
                         <td className="border p-4">Moderate</td>
                         <td className="border p-4">Medium</td>
-                        <td className="border p-4">⭐⭐⭐⭐⭐</td>
+                        <td className="border p-4"><StarRating count={5} /></td>
                       </tr>
                       <tr>
                         <td className="border p-4">Summer (Jun-Aug)</td>
                         <td className="border p-4">Hot (25-40°C)</td>
                         <td className="border p-4">Very High</td>
                         <td className="border p-4">High</td>
-                        <td className="border p-4">⭐⭐⭐</td>
+                        <td className="border p-4"><StarRating count={3} /></td>
                       </tr>
                       <tr className="bg-green-50">
                         <td className="border p-4 font-bold">Autumn (Sept-Oct)</td>
                         <td className="border p-4 font-bold">Perfect (15-30°C)</td>
                         <td className="border p-4 font-bold">Moderate-High</td>
                         <td className="border p-4 font-bold">High</td>
-                        <td className="border p-4 font-bold">⭐⭐⭐⭐⭐ BEST</td>
+                        <td className="border p-4 font-bold">
+                          <span className="inline-flex items-center gap-2">
+                            <StarRating count={5} /> BEST
+                          </span>
+                        </td>
                       </tr>
                       <tr>
                         <td className="border p-4">Winter (Nov-Feb)</td>
                         <td className="border p-4">Cold (0-20°C)</td>
                         <td className="border p-4">Low</td>
                         <td className="border p-4">Low</td>
-                        <td className="border p-4">⭐⭐⭐⭐</td>
+                        <td className="border p-4"><StarRating count={4} /></td>
                       </tr>
                     </tbody>
                   </table>
@@ -308,11 +337,12 @@ export default function BestTimeToVisitChinaPage() {
                 <div className="bg-blue-50 border border-blue-200 rounded-xl p-6">
                   <h4 className="font-bold text-gray-900 mb-4">Key Takeaways</h4>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    <li>✓ Spring & Autumn ideal</li>
-                    <li>✓ Avoid peak holidays</li>
-                    <li>✓ Winter = cheap + clear</li>
-                    <li>✓ Summer = hot + crowded</li>
-                    <li>✓ Region matters</li>
+                    {['Spring & Autumn ideal', 'Avoid peak holidays', 'Winter = cheap + clear', 'Summer = hot + crowded', 'Region matters'].map((t) => (
+                      <li key={t} className="flex gap-2">
+                        <Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{t}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 

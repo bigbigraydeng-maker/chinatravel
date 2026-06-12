@@ -7,6 +7,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { hongyadongChongqingMeta } from '@/lib/data/seo-pages';
@@ -208,7 +209,7 @@ export default function HongyadongChongqingPage() {
                 </div>
 
                 <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-                  <div className="text-3xl mb-3">🏮</div>
+                  <Icon name="lantern" className="w-8 h-8 text-primary mb-3" />
                   <h4 className="font-bold text-gray-900 mb-2">Included in Fire &amp; Fuzz</h4>
                   <p className="text-sm text-gray-700">
                     Day 4 evening includes Hongyadong visit plus Jialing River night cruise — the best way to see the lit facade from the water.

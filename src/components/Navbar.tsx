@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Icon } from '@/components/ui/Icon';
 
 const QUICK_DESTINATIONS = [
   { label: 'Beijing', value: 'beijing' },
@@ -193,7 +194,7 @@ const Navbar = () => {
                   Find Your Tour
                 </Link>
                 <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
-                  💫 China Tours Hub
+                  <Icon name="sparkles" className="w-4 h-4 inline mr-1" />China Tours Hub
                 </Link>
                 <div className="border-t border-gray-100 my-1"></div>
                 <p className="px-4 py-1.5 text-xs text-gray-400 uppercase tracking-wider">Destinations</p>

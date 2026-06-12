@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 interface MonthData {
   label: string;
   short: string;
   season: string;
-  seasonEmoji: string;
+  seasonIcon: IconName;
   weather: string;
   crowds: 'Low' | 'Moderate' | 'High' | 'Very High';
   highlights: string;
@@ -16,73 +17,73 @@ interface MonthData {
 
 const MONTHS: MonthData[] = [
   {
-    label: 'January', short: 'Jan', season: 'Winter', seasonEmoji: '❄️',
+    label: 'January', short: 'Jan', season: 'Winter', seasonIcon: 'snowflake',
     weather: 'Cold north (Beijing –5°C), mild south (Yunnan 15–20°C)',
     crowds: 'Low', highlights: 'Clear skies, crisp air, great for photography',
     bestFor: ['Photography', 'Great Wall', 'Yunnan'], rating: 3,
   },
   {
-    label: 'February', short: 'Feb', season: 'Chinese New Year', seasonEmoji: '🎆',
+    label: 'February', short: 'Feb', season: 'Chinese New Year', seasonIcon: 'sparkles',
     weather: 'Cold north, mild south — Lunar New Year period',
     crowds: 'Very High', highlights: 'Festive celebrations, lantern festivals, unique atmosphere',
     bestFor: ['Cultural immersion', 'Festivals', 'Family trips'], rating: 3,
   },
   {
-    label: 'March', short: 'Mar', season: 'Early Spring', seasonEmoji: '🌱',
+    label: 'March', short: 'Mar', season: 'Early Spring', seasonIcon: 'sprout',
     weather: 'Warming up (10–20°C), spring flowers starting',
     crowds: 'Low', highlights: 'Plum blossoms, comfortable for hiking, fewer crowds',
     bestFor: ['Hiking', 'Photography', 'Guilin'], rating: 4,
   },
   {
-    label: 'April', short: 'Apr', season: 'Spring', seasonEmoji: '🌸',
+    label: 'April', short: 'Apr', season: 'Spring', seasonIcon: 'flower',
     weather: 'Mild and pleasant (15–25°C), cherry blossoms in full bloom',
     crowds: 'Moderate', highlights: 'Best for cherry blossoms, green landscapes, perfect temps',
     bestFor: ['All regions', 'Hiking', 'Photography'], rating: 5,
   },
   {
-    label: 'May', short: 'May', season: 'Late Spring', seasonEmoji: '☀️',
+    label: 'May', short: 'May', season: 'Late Spring', seasonIcon: 'sun',
     weather: 'Warm (20–30°C), occasional rain beginning in the south',
     crowds: 'Moderate', highlights: 'Lush greenery, perfect weather before summer heat',
     bestFor: ['General tourism', 'Outdoor activities', 'Xi\'an'], rating: 5,
   },
   {
-    label: 'June', short: 'Jun', season: 'Early Summer', seasonEmoji: '🌤️',
+    label: 'June', short: 'Jun', season: 'Early Summer', seasonIcon: 'cloud',
     weather: 'Hot in cities (28–35°C), rainy season south',
     crowds: 'Moderate', highlights: 'Shoulder season, good for mountains and Yunnan',
     bestFor: ['Yunnan', 'Zhangjiajie', 'Mountain areas'], rating: 3,
   },
   {
-    label: 'July', short: 'Jul', season: 'Summer', seasonEmoji: '🌞',
+    label: 'July', short: 'Jul', season: 'Summer', seasonIcon: 'sun',
     weather: 'Hot and humid (30–38°C), frequent rain',
     crowds: 'High', highlights: 'Summer school holidays, lush scenery post-rain',
     bestFor: ['Chengdu pandas', 'Northern grasslands', 'Cool highlands'], rating: 2,
   },
   {
-    label: 'August', short: 'Aug', season: 'Summer', seasonEmoji: '☀️',
+    label: 'August', short: 'Aug', season: 'Summer', seasonIcon: 'sun',
     weather: 'Very hot and humid (30–38°C), peak summer',
     crowds: 'High', highlights: 'Rice terraces at their greenest in Yunnan and Guilin',
     bestFor: ['Yunnan terraces', 'Guilin waterways'], rating: 2,
   },
   {
-    label: 'September', short: 'Sep', season: 'Early Autumn', seasonEmoji: '🍃',
+    label: 'September', short: 'Sep', season: 'Early Autumn', seasonIcon: 'leaf',
     weather: 'Cooling down (20–28°C), less rain, clearer skies',
     crowds: 'Moderate', highlights: 'Ideal conditions return, harvest season, crisp air',
     bestFor: ['Beijing', 'Xi\'an', 'Photography'], rating: 5,
   },
   {
-    label: 'October', short: 'Oct', season: 'Autumn', seasonEmoji: '🍁',
+    label: 'October', short: 'Oct', season: 'Autumn', seasonIcon: 'leaf',
     weather: 'Cool and clear (15–22°C), autumn foliage begins',
     crowds: 'Very High', highlights: 'Golden Week holiday (first week), then quieter with stunning colour',
     bestFor: ['Foliage viewing', 'All regions', 'Photography'], rating: 4,
   },
   {
-    label: 'November', short: 'Nov', season: 'Late Autumn', seasonEmoji: '🍂',
+    label: 'November', short: 'Nov', season: 'Late Autumn', seasonIcon: 'leaf',
     weather: 'Cool to cold (8–18°C), dry and clear',
     crowds: 'Low', highlights: 'Autumn foliage peak, minimal crowds, great value',
     bestFor: ['Guilin', 'Yunnan', 'Chengdu'], rating: 4,
   },
   {
-    label: 'December', short: 'Dec', season: 'Winter', seasonEmoji: '⛄',
+    label: 'December', short: 'Dec', season: 'Winter', seasonIcon: 'snowflake',
     weather: 'Cold north (Beijing –5 to 5°C), mild south',
     crowds: 'Low', highlights: 'Fewer tourists, good value, Christmas–New Year tours',
     bestFor: ['Yunnan warmth', 'Off-season exploration', 'Value travel'], rating: 3,
@@ -140,7 +141,7 @@ export default function MonthPickerWidget() {
                   : 'border-warm-200 bg-white text-gray-700 hover:border-primary/50 hover:bg-primary/5'
               }`}
             >
-              <span className="text-base">{m.seasonEmoji}</span>
+              <Icon name={m.seasonIcon} className={`w-5 h-5 ${i === selected ? 'text-white' : 'text-primary'}`} />
               <span>{m.short}</span>
               <div className="flex gap-0.5 mt-0.5">
                 {Array.from({ length: 5 }).map((_, s) => (
@@ -163,8 +164,9 @@ export default function MonthPickerWidget() {
           <div className="bg-white rounded-2xl border border-warm-200 shadow-sm p-6 animate-in fade-in duration-200">
             <div className="flex items-start justify-between gap-4 mb-4">
               <div>
-                <h3 className="font-serif text-xl font-bold text-gray-900">
-                  {month.seasonEmoji} {month.label} — {month.season}
+                <h3 className="font-serif text-xl font-bold text-gray-900 flex items-center gap-2">
+                  <Icon name={month.seasonIcon} className="w-6 h-6 text-primary" />
+                  {month.label} — {month.season}
                 </h3>
                 <p className="text-sm text-primary font-medium mt-0.5">
                   Overall: {RATING_LABEL[month.rating]}

@@ -45,10 +45,10 @@ export default function XianToursPage() {
         tours={tours}
         faqs={xianToursMeta.faqs}
         guideLinks={[
-          { label: "Xi'an Travel Guide", href: '/xian-travel-guide', emoji: '🏙️', description: 'Full city visitor guide' },
-          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', emoji: '⚔️', description: 'Everything to know before you go' },
-          { label: 'Terracotta Warriors: Full History', href: '/blog/terracotta-warriors-history', emoji: '🏺', description: 'Discovery story, 3 pits & what to expect' },
-          { label: "Xi'an Street Food Adventure", href: '/blog/xian-street-food-adventure', emoji: '🥙', description: 'Muslim Quarter guide & 6 must-eat dishes' },
+          { label: "Xi'an Travel Guide", href: '/xian-travel-guide', icon: 'building', description: 'Full city visitor guide' },
+          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'shield', description: 'Everything to know before you go' },
+          { label: 'Terracotta Warriors: Full History', href: '/blog/terracotta-warriors-history', icon: 'landmark', description: 'Discovery story, 3 pits & what to expect' },
+          { label: "Xi'an Street Food Adventure", href: '/blog/xian-street-food-adventure', icon: 'utensils', description: 'Muslim Quarter guide & 6 must-eat dishes' },
         ]}
       />
     </>

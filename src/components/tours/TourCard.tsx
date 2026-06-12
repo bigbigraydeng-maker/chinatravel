@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Tour } from '@/lib/data/tours';
+import { Icon } from '@/components/ui/Icon';
 import TourCardViewDetailsButton from './TourCardViewDetailsButton';
 
 interface TourCardProps {
@@ -86,9 +87,17 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
             <div className="mb-3 p-3 bg-warm-50 rounded-lg border border-warm-100">
               {tour.rating && (
                 <div className="flex items-center gap-1 mb-1">
-                  <span className="text-sm font-semibold text-gray-900">
-                    {'⭐'.repeat(Math.round(tour.rating))} {tour.rating}/5
+                  <span className="flex items-center gap-0.5" aria-label={`${tour.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Icon
+                        key={i}
+                        name="star"
+                        filled={i < Math.round(tour.rating!)}
+                        className={`w-4 h-4 ${i < Math.round(tour.rating!) ? 'text-amber-400' : 'text-warm-200'}`}
+                      />
+                    ))}
                   </span>
+                  <span className="text-sm font-semibold text-gray-900">{tour.rating}/5</span>
                   {tour.reviewCount && (
                     <span className="text-xs text-gray-500">({tour.reviewCount} reviews)</span>
                   )}

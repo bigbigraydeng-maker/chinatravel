@@ -8,6 +8,7 @@ import Testimonials from '@/components/Testimonials';
 import ChongqingCustomEnquiry from '@/components/campaigns/ChongqingCustomEnquiry';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { getSiteUrl } from '@/lib/site';
 
 const HERO_IMAGE =
@@ -32,24 +33,24 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const WHY_CARDS = [
+const WHY_CARDS: { icon: IconName; title: string; body: string }[] = [
   {
-    icon: '🏙️',
+    icon: 'building',
     title: 'Cyberpunk skyline',
     body: 'A city of 32 million people built vertically into river gorges — neon cliffs, metro through a building, sky bridges at 250m.',
   },
   {
-    icon: '🫕',
+    icon: 'utensils',
     title: 'Hotpot capital of China',
     body: 'Birthplace of Chinese hotpot. Beef tallow, Sichuan pepper, split pots for non-spicy — this is the original.',
   },
   {
-    icon: '🏯',
+    icon: 'landmark',
     title: 'Ancient temples in a modern city',
     body: 'Luohan Temple\'s 524 individual Buddhist statues sit minutes from glass skyscrapers. Nowhere else does contrast like this.',
   },
   {
-    icon: '🌉',
+    icon: 'bridge',
     title: 'Best night views in China',
     body: 'Hongyadong lit gold above the river. Nanfeng Cliff looking back at the peninsula. The skyline after dark is extraordinary.',
   },
@@ -148,7 +149,7 @@ export default function ChongqingLandingPage() {
                 key={card.title}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-warm-100 hover:shadow-md transition"
               >
-                <div className="text-3xl mb-3">{card.icon}</div>
+                <Icon name={card.icon} className="w-8 h-8 text-primary mb-3" />
                 <h3 className="font-serif font-bold text-lg text-accent mb-2">{card.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{card.body}</p>
               </div>
@@ -205,11 +206,11 @@ export default function ChongqingLandingPage() {
                   Chongqing&apos;s neon skyline, Liziba monorail, and UNESCO Dazu Rock Carvings — then Chengdu&apos;s giant pandas by bullet train. Expert English guide throughout. Departs 1 November 2026.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1 mb-5">
-                  <li className="flex items-start gap-2"><span className="text-primary mt-0.5">✓</span> Hongyadong, Liziba &amp; Raffles City</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-0.5">✓</span> Dazu Rock Carvings (UNESCO)</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-0.5">✓</span> Giant Panda Base, Chengdu</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-0.5">✓</span> Bullet train between cities</li>
-                  <li className="flex items-start gap-2"><span className="text-primary mt-0.5">✓</span> NZD pricing, NZ-based team</li>
+                  <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Hongyadong, Liziba &amp; Raffles City</li>
+                  <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Dazu Rock Carvings (UNESCO)</li>
+                  <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Giant Panda Base, Chengdu</li>
+                  <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Bullet train between cities</li>
+                  <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> NZD pricing, NZ-based team</li>
                 </ul>
                 <div className="space-y-2">
                   <Link

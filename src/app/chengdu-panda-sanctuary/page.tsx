@@ -7,6 +7,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chengduPandaSanctuaryMeta } from '@/lib/data/seo-pages';
@@ -170,7 +171,7 @@ export default function ChengduPandaSanctuaryPage() {
                 </div>
 
                 <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-                  <div className="text-3xl mb-3">🐼</div>
+                  <Icon name="paw" className="w-8 h-8 text-primary mb-3" />
                   <h4 className="font-bold text-gray-900 mb-2">Included in Fire &amp; Fuzz</h4>
                   <p className="text-sm text-gray-700">
                     Day 7 morning visit to the panda base is built into our Chongqing &amp; Chengdu Discovery tour. No separate booking needed.

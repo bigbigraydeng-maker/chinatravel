@@ -4,6 +4,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 
@@ -152,16 +153,16 @@ export default function SmallGroupChinaToursPage() {
                   What&apos;s Included
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {[
-                    { icon: '✈️', label: 'Return flights from NZ', desc: 'Return international airfares from Auckland included in tour price' },
-                    { icon: '🏨', label: 'Hand-picked hotels', desc: '4-star hotels selected for location and quality, not just price' },
-                    { icon: '🎫', label: 'All entrance fees', desc: 'Great Wall, Forbidden City, Terracotta Warriors — no surprise costs' },
-                    { icon: '🍜', label: 'Most meals included', desc: 'Breakfasts daily, select lunches and dinners at quality local restaurants' },
-                    { icon: '🚌', label: 'Private coach throughout', desc: 'Your own coach and driver for the group — no shared buses with strangers' },
-                    { icon: '🗣️', label: 'English-speaking guide', desc: '20+ years China expertise; the same guide stays with the group throughout' },
-                  ].map((item) => (
+                  {([
+                    { icon: 'plane', label: 'Return flights from NZ', desc: 'Return international airfares from Auckland included in tour price' },
+                    { icon: 'building', label: 'Hand-picked hotels', desc: '4-star hotels selected for location and quality, not just price' },
+                    { icon: 'ticket', label: 'All entrance fees', desc: 'Great Wall, Forbidden City, Terracotta Warriors — no surprise costs' },
+                    { icon: 'utensils', label: 'Most meals included', desc: 'Breakfasts daily, select lunches and dinners at quality local restaurants' },
+                    { icon: 'bus', label: 'Private coach throughout', desc: 'Your own coach and driver for the group — no shared buses with strangers' },
+                    { icon: 'message', label: 'English-speaking guide', desc: '20+ years China expertise; the same guide stays with the group throughout' },
+                  ] as { icon: IconName; label: string; desc: string }[]).map((item) => (
                     <div key={item.label} className="flex gap-4 p-4 bg-warm-50 rounded-lg border border-warm-100">
-                      <span className="text-2xl shrink-0">{item.icon}</span>
+                      <Icon name={item.icon} className="w-6 h-6 shrink-0 text-primary" />
                       <div>
                         <p className="font-semibold text-gray-900 text-sm">{item.label}</p>
                         <p className="text-gray-600 text-sm">{item.desc}</p>

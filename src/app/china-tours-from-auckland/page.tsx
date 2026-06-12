@@ -7,6 +7,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromAucklandMeta } from '@/lib/data/seo-pages';
@@ -95,40 +96,40 @@ export default function ChinaToursFromAucklandPage() {
                   Auckland Advantages
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[
+                  {([
                     {
-                      emoji: '✈️',
+                      icon: 'plane',
                       title: 'Non-Stop Flights',
                       desc: 'Direct AKL-Shanghai or AKL-Beijing departures. No connections, no delays.'
                     },
                     {
-                      emoji: '🏢',
+                      icon: 'building',
                       title: 'Auckland Office',
                       desc: 'Visit our local office in Auckland. Meet consultants face-to-face.'
                     },
                     {
-                      emoji: '🚗',
+                      icon: 'car',
                       title: 'Airport Transfers',
                       desc: 'We arrange door-to-door transport from your home to AKL Airport.'
                     },
                     {
-                      emoji: '📞',
+                      icon: 'phone',
                       title: 'Local Support',
                       desc: 'AKL-based team working your hours. Same timezone support & advice.'
                     },
                     {
-                      emoji: '💳',
+                      icon: 'credit-card',
                       title: 'NZD Pricing',
                       desc: 'All costs in NZ dollars. No currency conversion surprises.'
                     },
                     {
-                      emoji: '🎓',
+                      icon: 'graduation-cap',
                       title: 'Expert Consultants',
                       desc: 'CTS specialists with personal China experience based in Aotearoa.'
                     }
-                  ].map((item, idx) => (
+                  ] as { icon: IconName; title: string; desc: string }[]).map((item, idx) => (
                     <div key={idx} className="bg-warm-50 border border-warm-100 rounded-lg p-6">
-                      <div className="text-3xl mb-3">{item.emoji}</div>
+                      <Icon name={item.icon} className="w-8 h-8 text-primary mb-3" />
                       <h3 className="font-bold text-lg mb-2 text-gray-900">{item.title}</h3>
                       <p className="text-gray-700 text-sm">{item.desc}</p>
                     </div>

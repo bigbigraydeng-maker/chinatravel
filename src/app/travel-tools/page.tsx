@@ -6,6 +6,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 import { tourImage } from '@/lib/site-media';
 import { TOOLS, type ToolData } from '@/lib/data/tools-data';
+import { Icon } from '@/components/ui/Icon';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -57,9 +58,7 @@ function ToolCard({ tool }: { tool: ToolData }) {
       }`}
     >
       <div className="flex items-start justify-between gap-3 mb-3">
-        <span className="text-4xl" aria-hidden>
-          {tool.emoji}
-        </span>
+        <Icon name={tool.icon} className="w-8 h-8 text-primary" />
         <StatusBadge status={tool.status} />
       </div>
 
