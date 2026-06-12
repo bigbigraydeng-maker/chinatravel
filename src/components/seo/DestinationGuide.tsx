@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
 import { getBlogPostBySlug } from '@/lib/data/blogs';
 import HubHero from './HubHero';
+import Lightbox from '@/components/ui/Lightbox';
 
 const TI = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
 
@@ -519,27 +520,14 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
                   {guide.destinationName} Photo Gallery
                 </h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {guide.galleryImages.map((item, i) => {
-                    const src = typeof item === 'string' ? item : item.src;
-                    const extra = typeof item === 'string' ? '' : item.imgClass ?? '';
-                    return (
-                    <div
-                      key={`${src}-${i}`}
-                      className="relative overflow-hidden rounded-lg aspect-square bg-warm-100 group"
-                    >
-                      <Image
-                        src={src}
-                        alt={`${guide.destinationName} - ${i + 1}`}
-                        fill
-                        sizes="(max-width: 768px) 50vw, 33vw"
-                        className={['object-cover group-hover:scale-105 transition-transform duration-500', extra].filter(Boolean).join(' ')}
-                        loading="lazy"
-                      />
-                    </div>
-                    );
-                  })}
-                </div>
+                <Lightbox
+                  columns={3}
+                  images={guide.galleryImages.map((item, i) => ({
+                    src: typeof item === 'string' ? item : item.src,
+                    alt: `${guide.destinationName} — photo ${i + 1}`,
+                    imgClass: typeof item === 'string' ? undefined : item.imgClass,
+                  }))}
+                />
               </section>
             )}
 
