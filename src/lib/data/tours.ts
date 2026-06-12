@@ -47,6 +47,8 @@ export interface Tour {
   reviewCount?: number;
   /** Representative user review quote for card display */
   reviewSummary?: string;
+  /** Blog post slugs surfaced as a "Recommended Reading" section on the tour page */
+  relatedBlogSlugs?: string[];
 }
 
 export interface DayItinerary {
@@ -601,6 +603,7 @@ export const tours: Tour[] = [
     slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
+    relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'first-time-china-travel-tips', 'photography-guide-china-best-locations-hidden-gems'],
     name: 'China Discovery — A Tale of Two Cities',
     title: 'China Discovery — A Tale of Two Cities',
     shortDescription:
@@ -776,6 +779,7 @@ export const tours: Tour[] = [
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
+    relatedBlogSlugs: ['first-time-china-travel-tips', 'beijing-xian-itinerary-10-days', 'photography-guide-china-best-locations-hidden-gems'],
     name: 'China Discovery — Best of China',
     title: 'China Discovery — Best of China',
     shortDescription: 'Fifteen days from Beijing\'s Temple of Heaven, Forbidden City, Great Wall and hutongs, by high-speed train to Xi\'an\'s Terracotta Army, then by air to Hangzhou via Puyuan\'s fashion ancient town, West Lake and Longjing tea, finishing in Shanghai before your return via Beijing.',
