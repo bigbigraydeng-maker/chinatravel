@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
 
 export default function ContactFormClient() {
   const [formData, setFormData] = useState({
@@ -50,16 +51,9 @@ export default function ContactFormClient() {
         pagePath: typeof window !== 'undefined' ? window.location.pathname : '/contact',
       });
 
-      // Google Ads conversion: 预约服务 (Booking Service)
-      // Fires when contact form is successfully submitted.
-      if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
-        (window as any).gtag('event', 'conversion', {
-          send_to: 'AW-17984232872/y-kaCLSI9YAcEKi7xv9C',
-          value: 1.0,
-          currency: 'NZD',
-          transaction_id: `cts-contact-${Date.now()}`,
-        });
-      }
+      // Google Ads conversion (预约服务 / Booking Service) + Meta Pixel Lead.
+      // Fires when the contact form is successfully submitted.
+      fireLeadConversion('contact_page');
 
       setSuccess(true);
       setFormData({ name: '', email: '', phone: '', travel_interest: '', message: '' });
