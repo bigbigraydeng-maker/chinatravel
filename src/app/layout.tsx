@@ -6,6 +6,7 @@ import GeoDirective from '@/components/GeoDirective';
 import CookieConsentManager from '@/components/CookieConsentManager';
 import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import TrackingScripts from '@/components/TrackingScripts';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
 
 const inter = Inter({
@@ -78,6 +79,7 @@ export default function RootLayout({
         <NewsletterPopup />
         <GeoDirective />
         <TrackingScripts />
+        <GoogleAnalytics />
         <noscript dangerouslySetInnerHTML={{ __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1441880990459874&ev=PageView&noscript=1" alt="" />` }} />
       </body>
     </html>
