@@ -22,6 +22,12 @@ interface TourHeroProps {
   secondaryCtaLabel?: string;
   /** Single room supplement price, shown below the price row */
   singleSupplement?: string;
+  /**
+   * Per-departure lead-in pricing. When provided, the "All departure dates"
+   * section renders price cards (date + price + single supplement) instead of
+   * simple chips. Keys MUST match entries in `departureDates`.
+   */
+  departurePricing?: Record<string, string>;
 }
 
 export default function TourHero({
@@ -37,6 +43,7 @@ export default function TourHero({
   primaryCtaLabel = 'Enquire Now',
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
+  departurePricing,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -161,16 +168,45 @@ export default function TourHero({
                 <p className="text-sm font-semibold uppercase tracking-wide text-white/70 mb-2">
                   {showAvailability ? 'All departure dates' : 'Departure dates'}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {departureDates.map((d) => (
-                    <span
-                      key={d}
-                      className="text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
-                    >
-                      {d}
-                    </span>
-                  ))}
-                </div>
+                {departurePricing ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {departureDates.map((d) => {
+                      const datePrice = departurePricing[d];
+                      return (
+                        <div
+                          key={d}
+                          className="rounded-xl bg-white/10 border border-white/30 backdrop-blur-sm px-4 py-3"
+                        >
+                          <p className="text-base font-semibold text-white leading-tight">
+                            {d}
+                          </p>
+                          {datePrice && (
+                            <p className="text-lg font-bold text-white mt-1">
+                              {datePrice}
+                              <span className="text-xs font-normal text-white/70 ml-1">per person</span>
+                            </p>
+                          )}
+                          {singleSupplement && (
+                            <p className="text-xs text-white/70 mt-0.5">
+                              + {singleSupplement} single supplement
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="flex flex-wrap gap-2">
+                    {departureDates.map((d) => (
+                      <span
+                        key={d}
+                        className="text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
+                      >
+                        {d}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <p className="text-xs text-white/60 mt-2">
                   Dates refer to scheduled group departures — confirm at booking.
                 </p>

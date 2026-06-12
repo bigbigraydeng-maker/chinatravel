@@ -188,6 +188,7 @@ export default function TourPage({ params }: TourPageProps) {
         tier={tour.tier}
         tags={tour.tags}
         departureDates={tour.departureDates}
+        departurePricing={tour.departurePricing}
         primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
@@ -201,34 +202,18 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
-      {/* Featured departure urgency chip — 2026/2027 主推 4 团 (Essentials / Silk Road; Tale + Shanghai 走 campaign LP) */}
+      {/* Essentials: two-season scheduled departures */}
       {tour.slug === 'essentials' && (
         <section className="bg-amber-50 border-y border-amber-200 py-4">
           <div className="container mx-auto px-4 text-center">
             <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              Featured Departure · 2026 Flagship
+              Two Scheduled Departures
             </p>
             <p className="text-lg font-serif font-bold text-gray-900">
-              3 November 2026 — book ahead while seats remain
+              November 2026 · March 2027
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              CTS&apos;s flagship 15-day Best of China runs once a year — enquire to confirm availability and hold your place.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {tour.slug === 'silk-road' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              Featured Departure · 2027 Silk Road
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              13 May 2027 — Silk Road&apos;s prime travel window
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              May to October is the only viable Silk Road season (desert temperatures, Tianshan access). Second departure 21 October 2027 — enquire to hold a seat.
+              Lower lead-in fare in November (NZD $3,880); March 2027 from NZD $4,080 — see hero for per-date pricing.
             </p>
           </div>
         </section>

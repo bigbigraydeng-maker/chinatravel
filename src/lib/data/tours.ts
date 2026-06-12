@@ -28,6 +28,13 @@ export interface Tour {
   tags?: string[];
   /** Scheduled departures when provided, e.g. "25 August", "14 October 2026" */
   departureDates?: string[];
+  /**
+   * Per-departure lead-in price keyed by the entry in `departureDates`.
+   * Use when seasonal airfare/operator pricing differs between dates.
+   * Keys MUST exactly match a string in `departureDates`.
+   * Example: { '3 November 2026': 'NZD $3,880', '25 March 2027': 'NZD $4,080' }
+   */
+  departurePricing?: Record<string, string>;
   /** City IDs for itinerary route map, in order (e.g. ['beijing', 'xian']) */
   tourCities?: string[];
   /** When set, product and campaign pages use these FAQs instead of destination-generic defaults */
@@ -841,7 +848,11 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['3 November 2026', '25 March 2027'],
+    departureDates: ['3 November 2026', '11 March 2027'],
+    departurePricing: {
+      '3 November 2026': 'NZD $3,880',
+      '11 March 2027': 'NZD $4,080',
+    },
     singleSupplement: 'NZD $720',
     faqs: [
       {
@@ -1054,7 +1065,7 @@ export const tours: Tour[] = [
     duration: '10 Days',
     price: 'From NZD $2,999',
     heroImage:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-15812584837-95f73fd23574.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-pandas/chengdu-pandas.jpg',
