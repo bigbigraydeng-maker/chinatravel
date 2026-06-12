@@ -3,7 +3,6 @@ import {
   OCTOBER_2026_DISCOVERY_BY_SLUG,
   type October2026DiscoverySlug,
 } from '@/lib/campaigns/october-2026-discovery';
-import { FIRE_FUZZ_CAMPAIGN_PATH } from '@/lib/campaigns/fire-fuzz';
 
 /**
  * Homepage Spotlight — tours receiving primary ad + content focus for the current season.
@@ -43,10 +42,10 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
     destination: 'china',
     tier: 'discovery',
-    slug: 'chongqing-chengdu',
-    campaignHref: FIRE_FUZZ_CAMPAIGN_PATH,
-    departureLabel: '1 Nov 2026',
-    route: ['Chongqing', 'Chengdu'],
+    slug: 'essentials',
+    campaignHref: '/tours/china/discovery/essentials',
+    departureLabel: '3 Nov 2026',
+    route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
   },
 ];
 
