@@ -34,6 +34,7 @@ import {
   getTourPageFaqsForTour,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
+import { Icon } from '@/components/ui/Icon';
 
 interface TourPageProps {
   params: {
@@ -255,11 +256,11 @@ export default function TourPage({ params }: TourPageProps) {
                     The extra 5 days on our Best of China itinerary cover:
                   </p>
                   <ul className="space-y-2 text-gray-700">
-                    <li>✓ <strong>Puyuan Fashion Ancient Town</strong> — Song-dynasty waterways most tour groups skip</li>
-                    <li>✓ <strong>Hangzhou&apos;s West Lake</strong> — UNESCO heritage with Su Causeway, Leifeng Pagoda</li>
-                    <li>✓ <strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</li>
-                    <li>✓ <strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</li>
-                    <li>✓ Time to <em>actually experience</em> each city instead of just transiting through</li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Puyuan Fashion Ancient Town</strong> — Song-dynasty waterways most tour groups skip</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Hangzhou&apos;s West Lake</strong> — UNESCO heritage with Su Causeway, Leifeng Pagoda</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>actually experience</em> each city instead of just transiting through</span></li>
                   </ul>
                 </section>
               )}
@@ -279,13 +280,13 @@ export default function TourPage({ params }: TourPageProps) {
                     The extra 8 days beyond a standard China tour give you:
                   </p>
                   <ul className="space-y-2 text-gray-700">
-                    <li>✓ <strong>Mogao Caves at Dunhuang</strong> — 1,700 years of Buddhist murals carved into the cliffs</li>
-                    <li>✓ <strong>Zhangye Rainbow Danxia</strong> — layered rock formations no postcard does justice</li>
-                    <li>✓ <strong>Heavenly Lake in the Tianshan Mountains</strong> — alpine boat cruise beneath snow peaks</li>
-                    <li>✓ <strong>Bingling Temple Grottoes</strong> — accessible only by boat across Liujiaxia Reservoir</li>
-                    <li>✓ <strong>Flaming Mountains &amp; Bezeklik Thousand Buddha Caves</strong> — Turpan desert heritage</li>
-                    <li>✓ <strong>Jiayuguan Fortress &amp; Hanging Great Wall</strong> — the western end of the Ming Wall</li>
-                    <li>✓ Time to <em>cross a civilisation</em>, not just visit a country</li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Mogao Caves at Dunhuang</strong> — 1,700 years of Buddhist murals carved into the cliffs</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Zhangye Rainbow Danxia</strong> — layered rock formations no postcard does justice</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Heavenly Lake in the Tianshan Mountains</strong> — alpine boat cruise beneath snow peaks</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Bingling Temple Grottoes</strong> — accessible only by boat across Liujiaxia Reservoir</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Flaming Mountains &amp; Bezeklik Thousand Buddha Caves</strong> — Turpan desert heritage</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Jiayuguan Fortress &amp; Hanging Great Wall</strong> — the western end of the Ming Wall</span></li>
+                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>cross a civilisation</em>, not just visit a country</span></li>
                   </ul>
                 </section>
               )}

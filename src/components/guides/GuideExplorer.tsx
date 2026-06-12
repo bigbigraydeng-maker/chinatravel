@@ -4,16 +4,17 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { DestinationGuide } from '@/lib/data/guides';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 type Category = 'all' | 'cities' | 'yunnan' | 'landmarks' | 'regions' | 'discovery';
 
-const CATEGORIES: { id: Category; label: string; emoji: string }[] = [
-  { id: 'all',       label: 'All Guides',     emoji: '' },
-  { id: 'cities',    label: 'Major Cities',   emoji: '🏙️' },
-  { id: 'yunnan',    label: 'Yunnan',         emoji: '🌄' },
-  { id: 'landmarks', label: 'Landmarks',      emoji: '🏯' },
-  { id: 'regions',   label: 'Scenic Regions', emoji: '🛶' },
-  { id: 'discovery', label: 'Discovery Tours',emoji: '✈️' },
+const CATEGORIES: { id: Category; label: string; icon?: IconName }[] = [
+  { id: 'all',       label: 'All Guides' },
+  { id: 'cities',    label: 'Major Cities',   icon: 'building' },
+  { id: 'yunnan',    label: 'Yunnan',         icon: 'sunrise' },
+  { id: 'landmarks', label: 'Landmarks',      icon: 'landmark' },
+  { id: 'regions',   label: 'Scenic Regions', icon: 'ship' },
+  { id: 'discovery', label: 'Discovery Tours',icon: 'plane' },
 ];
 
 const SLUG_CATEGORY: Record<string, Category> = {
@@ -177,7 +178,14 @@ export default function GuideExplorer({ guides }: Props) {
                       : 'bg-warm-50 text-gray-600 hover:bg-warm-100'
                   }`}
                 >
-                  {cat.emoji && <span className="mr-1">{cat.emoji}</span>}
+                  {cat.icon && (
+                    <Icon
+                      name={cat.icon}
+                      className={`inline-block w-4 h-4 mr-1.5 -mt-0.5 ${
+                        activeCategory === cat.id ? 'text-white' : 'text-primary'
+                      }`}
+                    />
+                  )}
                   {cat.label}
                 </button>
               ))}
@@ -232,7 +240,7 @@ export default function GuideExplorer({ guides }: Props) {
           </div>
         ) : (
           <div className="text-center py-24">
-            <p className="text-4xl mb-4">🔍</p>
+            <Icon name="search" className="w-10 h-10 text-warm-300 mx-auto mb-4" />
             <p className="text-lg font-semibold text-accent mb-2">No guides found</p>
             <p className="text-gray-500 text-sm mb-4">
               Try a different search term or browse all categories.

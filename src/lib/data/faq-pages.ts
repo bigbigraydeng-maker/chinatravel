@@ -591,7 +591,7 @@ Key items that require early booking:
       monthlySearches: 160,
       answer: `Standard CTS tour packages include:
 
-<strong>✅ Usually included:</strong>
+<strong>Usually included:</strong>
 - Airport transfers (arrival and departure)
 - All domestic transport (private vehicle, domestic flights or high-speed rail between cities)
 - Accommodation (twin or double room as specified)
@@ -600,7 +600,7 @@ Key items that require early booking:
 - Group entrance fees to major attractions
 - 24/7 emergency support contact
 
-<strong>❌ Usually not included:</strong>
+<strong>Usually not included:</strong>
 - International flights (Auckland to China and return)
 - Travel insurance (strongly recommended — mandatory for visa applications)
 - Visa fee (NZD 130–220 depending on application type)

@@ -45,12 +45,12 @@ export default function ChongqingToursPage() {
         tours={tours}
         faqs={chongqingToursMeta.faqs}
         guideLinks={[
-          { label: 'Chongqing Travel Guide', href: '/chongqing-travel-guide', emoji: '🌉', description: 'Mountain city, gorges & hot pot' },
-          { label: 'Liziba Station Guide', href: '/liziba-station-chongqing', emoji: '🚝', description: 'The train that runs through a building' },
-          { label: 'Hongyadong Guide', href: '/hongyadong-chongqing', emoji: '🏮', description: 'Clifftop night market & river views' },
-          { label: 'Days in Chongqing', href: '/blog/how-many-days-in-chongqing', emoji: '📅', description: 'How long to spend in Chongqing' },
-          { label: 'Three Gorges Scenic Guide', href: '/blog/chongqing-three-gorges-scenic', emoji: '⛰️', description: 'Chongqing city + Yangtze + Dazu Rocks' },
-          { label: 'Chongqing Night City Lights', href: '/blog/chongqing-night-city-lights', emoji: '🌃', description: 'Best viewpoints & night food' },
+          { label: 'Chongqing Travel Guide', href: '/chongqing-travel-guide', icon: 'bridge', description: 'Mountain city, gorges & hot pot' },
+          { label: 'Liziba Station Guide', href: '/liziba-station-chongqing', icon: 'train', description: 'The train that runs through a building' },
+          { label: 'Hongyadong Guide', href: '/hongyadong-chongqing', icon: 'lantern', description: 'Clifftop night market & river views' },
+          { label: 'Days in Chongqing', href: '/blog/how-many-days-in-chongqing', icon: 'calendar', description: 'How long to spend in Chongqing' },
+          { label: 'Three Gorges Scenic Guide', href: '/blog/chongqing-three-gorges-scenic', icon: 'mountain', description: 'Chongqing city + Yangtze + Dazu Rocks' },
+          { label: 'Chongqing Night City Lights', href: '/blog/chongqing-night-city-lights', icon: 'building', description: 'Best viewpoints & night food' },
         ]}
       />
     </>

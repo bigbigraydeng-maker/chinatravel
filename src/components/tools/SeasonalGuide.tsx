@@ -3,6 +3,7 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { getSeasonalDataByMonth } from '@/lib/data/seasonal-data';
+import { Icon } from '@/components/ui/Icon';
 
 interface SeasonalGuideProps {
   defaultMonth?: number;
@@ -203,7 +204,7 @@ export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {seasonalData.highlights.map((highlight, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <span className="text-primary text-2xl mt-1">✨</span>
+                <Icon name="sparkles" className="w-6 h-6 text-primary mt-1 shrink-0" />
                 <p className="text-gray-700">{highlight}</p>
               </div>
             ))}
@@ -221,7 +222,7 @@ export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
             <div className="space-y-3">
               {seasonalData.festivals.map((festival, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 bg-warm-50 rounded-lg">
-                  <span className="text-primary text-xl">🎉</span>
+                  <Icon name="sparkles" className="w-5 h-5 text-primary shrink-0" />
                   <p className="text-gray-700">{festival}</p>
                 </div>
               ))}
@@ -240,7 +241,7 @@ export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
             <div className="space-y-3">
               {seasonalData.tips.map((tip, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
-                  <span className="text-blue-600 text-xl">💡</span>
+                  <Icon name="sparkles" className="w-5 h-5 text-blue-600 shrink-0" />
                   <p className="text-gray-700">{tip}</p>
                 </div>
               ))}
@@ -259,7 +260,7 @@ export default function SeasonalGuide({ defaultMonth }: SeasonalGuideProps) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {seasonalData.packing.map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3 p-3 bg-warm-50 rounded-lg">
-                  <span className="text-primary text-lg">✓</span>
+                  <Icon name="check" className="w-5 h-5 text-primary shrink-0" />
                   <p className="text-gray-700">{item}</p>
                 </div>
               ))}

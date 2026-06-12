@@ -9,6 +9,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromAustraliaMeta } from '@/lib/data/seo-pages';
@@ -328,7 +329,7 @@ export default function ChinaToursFromAustraliaPage() {
 
                 {/* AU Flag Feature */}
                 <div className="bg-gradient-to-br from-blue-50 to-yellow-50 border border-blue-200 rounded-xl p-6">
-                  <div className="text-4xl mb-3">🇦🇺</div>
+                  <Icon name="globe" className="w-10 h-10 text-primary mb-3" />
                   <h4 className="font-bold text-gray-900 mb-2">Australian Travellers Welcome</h4>
                   <p className="text-sm text-gray-700">
                     CTS proudly serves Australian travellers with expert China advice and seamless end-to-end tours.

@@ -45,12 +45,12 @@ export default function ShanghaiToursPage() {
         tours={tours}
         faqs={shanghaiToursMeta.faqs}
         guideLinks={[
-          { label: 'Shanghai Travel Guide', href: '/shanghai-travel-guide', emoji: '🌃', description: 'Bund, French Concession & more' },
-          { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', emoji: '🍵', description: 'West Lake day trip from Shanghai' },
-          { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', emoji: '🌿', description: 'Classical gardens & canal towns' },
-          { label: 'Shanghai Skyline & Modern China', href: '/blog/shanghai-skyline-modern-china', emoji: '🏙️', description: 'Bund, Pudong & French Concession explained' },
-          { label: 'Suzhou Classical Gardens', href: '/blog/suzhou-gardens-classical-beauty', emoji: '🌸', description: 'UNESCO gardens — which to visit & when' },
-          { label: 'Zhujiajiao Water Village', href: '/blog/zhujiajiao-water-village', emoji: '🛶', description: 'Day trip guide to Shanghai\'s ancient town' },
+          { label: 'Shanghai Travel Guide', href: '/shanghai-travel-guide', icon: 'building', description: 'Bund, French Concession & more' },
+          { label: 'Hangzhou Travel Guide', href: '/hangzhou-travel-guide', icon: 'coffee', description: 'West Lake day trip from Shanghai' },
+          { label: 'Suzhou Travel Guide', href: '/suzhou-travel-guide', icon: 'leaf', description: 'Classical gardens & canal towns' },
+          { label: 'Shanghai Skyline & Modern China', href: '/blog/shanghai-skyline-modern-china', icon: 'building', description: 'Bund, Pudong & French Concession explained' },
+          { label: 'Suzhou Classical Gardens', href: '/blog/suzhou-gardens-classical-beauty', icon: 'flower', description: 'UNESCO gardens — which to visit & when' },
+          { label: 'Zhujiajiao Water Village', href: '/blog/zhujiajiao-water-village', icon: 'ship', description: 'Day trip guide to Shanghai\'s ancient town' },
         ]}
       />
     </>

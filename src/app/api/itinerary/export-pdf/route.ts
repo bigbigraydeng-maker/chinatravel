@@ -176,8 +176,8 @@ async function generatePDF(doc: any, itinerary: GeneratedItinerary) {
 
   doc.fontSize(14)
     .fillColor('#333')
-    .text('✈️ 新西兰旅游服务 (NZ Tours)', { align: 'center' })
-    .text('🌍 让每一次旅行都成为最美的回忆', { align: 'center' })
+    .text('新西兰旅游服务 (NZ Tours)', { align: 'center' })
+    .text('让每一次旅行都成为最美的回忆', { align: 'center' })
     .moveDown(2)
 
   doc.fontSize(10)
@@ -268,7 +268,7 @@ async function generatePDF(doc: any, itinerary: GeneratedItinerary) {
       doc.fontSize(12)
         .font('Helvetica-Bold')
         .fillColor('#2C1810')
-        .text('🎯 主要景点')
+        .text('主要景点')
         .moveDown(0.3)
 
       day.attractions.forEach((attr: any) => {
@@ -292,7 +292,7 @@ async function generatePDF(doc: any, itinerary: GeneratedItinerary) {
       doc.fontSize(12)
         .font('Helvetica-Bold')
         .fillColor('#2C1810')
-        .text('🍽 餐食')
+        .text('餐食')
         .moveDown(0.3)
 
       if (day.meals.breakfast) {
@@ -322,7 +322,7 @@ async function generatePDF(doc: any, itinerary: GeneratedItinerary) {
       doc.fontSize(12)
         .font('Helvetica-Bold')
         .fillColor('#2C1810')
-        .text('🏨 住宿')
+        .text('住宿')
         .moveDown(0.3)
 
       doc.fontSize(10)

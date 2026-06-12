@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import Link from 'next/link';
 import MermaidDiagram from '@/components/MermaidDiagram';
+import { Icon } from '@/components/ui/Icon';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -16,13 +17,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const mermaidDiagram = `flowchart TD
-    NAV["🧭 Global Navigation<br/>(Navbar & Footer)"]
+    NAV["Global Navigation<br/>(Navbar & Footer)"]
 
-    HOME["🏠 / Homepage"]
-    TOURS["📋 /tours<br/>All Tours Hub"]
-    CHINA["🇨🇳 /china-tours<br/>Commercial Hub"]
-    TAILOR["✏️ /tailor-made<br/>Custom Inquiry"]
-    CONTACT["📞 /contact"]
+    HOME["/ Homepage"]
+    TOURS["/tours<br/>All Tours Hub"]
+    CHINA["/china-tours<br/>Commercial Hub"]
+    TAILOR["/tailor-made<br/>Custom Inquiry"]
+    CONTACT["/contact"]
 
     NAV -->|Links to main pages| HOME
     NAV -->|Links to main pages| TOURS
@@ -44,15 +45,15 @@ const mermaidDiagram = `flowchart TD
     CHINA -->|Related Content| SEO_HUB
     CHINA -->|CTA| TAILOR
 
-    CITY_HUBS["🏙️ 7 City Hubs<br/>/beijing-tours<br/>/xian-tours<br/>/shanghai-tours<br/>/chengdu-tours<br/>/guilin-tours<br/>/zhangjiajie-tours<br/>/yunnan-tours"]
+    CITY_HUBS["7 City Hubs<br/>/beijing-tours<br/>/xian-tours<br/>/shanghai-tours<br/>/chengdu-tours<br/>/guilin-tours<br/>/zhangjiajie-tours<br/>/yunnan-tours"]
 
     CITY_HUBS -->|Bidirectional ↔| GUIDES_CITY
     CITY_HUBS -->|Tour Cards| TOUR_DETAIL
     CITY_HUBS -->|Breadcrumb| CHINA
 
-    GUIDES_CITY["📖 7 Main Guides<br/>/beijing-travel-guide<br/>/xian-travel-guide<br/>/shanghai-travel-guide<br/>/chengdu-travel-guide<br/>/guilin-travel-guide<br/>/zhangjiajie-travel-guide<br/>/yunnan-travel-guide"]
+    GUIDES_CITY["7 Main Guides<br/>/beijing-travel-guide<br/>/xian-travel-guide<br/>/shanghai-travel-guide<br/>/chengdu-travel-guide<br/>/guilin-travel-guide<br/>/zhangjiajie-travel-guide<br/>/yunnan-travel-guide"]
 
-    GUIDES_SUB["📖 14 Sub-Guides<br/>Great Wall<br/>Forbidden City<br/>Terracotta<br/>Leshan Buddha<br/>Lijiang, Dali, Kunming<br/>Shangri-La<br/>Yangshuo, Li River<br/>Hangzhou, Suzhou<br/>Chongqing<br/>Tianmen Mountain"]
+    GUIDES_SUB["14 Sub-Guides<br/>Great Wall<br/>Forbidden City<br/>Terracotta<br/>Leshan Buddha<br/>Lijiang, Dali, Kunming<br/>Shangri-La<br/>Yangshuo, Li River<br/>Hangzhou, Suzhou<br/>Chongqing<br/>Tianmen Mountain"]
 
     GUIDES_CITY -->|Related Guides| GUIDES_CITY
     GUIDES_CITY -->|Related Guides| GUIDES_SUB
@@ -65,14 +66,14 @@ const mermaidDiagram = `flowchart TD
     GUIDES_CITY -->|CTA| TAILOR
     GUIDES_SUB -->|CTA| TAILOR
 
-    TOUR_DETAIL["🎫 Tour Details<br/>/tours/china/[tier]/[slug]<br/>(22 tour pages)"]
+    TOUR_DETAIL["Tour Details<br/>/tours/china/[tier]/[slug]<br/>(22 tour pages)"]
 
     TOUR_DETAIL -->|Related Tours| TOUR_DETAIL
     TOUR_DETAIL -->|Breadcrumb| CHINA
     TOUR_DETAIL -->|CTA| CONTACT
-    TOUR_DETAIL -->|Print| PRINT["🖨️ /print<br/>Printable Itinerary"]
+    TOUR_DETAIL -->|Print| PRINT["/print<br/>Printable Itinerary"]
 
-    SEO_HUB["🔍 SEO Hub Pages<br/>/best-time-to-visit-china<br/>/china-visa-guide-for-nzers<br/>/china-tours-from-new-zealand<br/>/china-tours-from-auckland"]
+    SEO_HUB["SEO Hub Pages<br/>/best-time-to-visit-china<br/>/china-visa-guide-for-nzers<br/>/china-tours-from-new-zealand<br/>/china-tours-from-auckland"]
 
     SEO_HUB -->|Internal Links| CITY_HUBS
     SEO_HUB -->|CTA| TAILOR
@@ -209,29 +210,29 @@ export default function SiteMapPage() {
           <div className="mt-12 p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl border border-primary/20">
             <h3 className="text-xl font-serif font-bold text-accent mb-6">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Link href="/" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                🏠 Homepage
+              <Link href="/" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="home" className="w-4 h-4 text-primary" /> Homepage
               </Link>
-              <Link href="/tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                📋 All Tours
+              <Link href="/tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="file-text" className="w-4 h-4 text-primary" /> All Tours
               </Link>
-              <Link href="/china-tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                🇨🇳 China Tours
+              <Link href="/china-tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="globe" className="w-4 h-4 text-primary" /> China Tours
               </Link>
-              <Link href="/beijing-tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                🏙️ Beijing Hub
+              <Link href="/beijing-tours" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="building" className="w-4 h-4 text-primary" /> Beijing Hub
               </Link>
-              <Link href="/beijing-travel-guide" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                📖 Beijing Guide
+              <Link href="/beijing-travel-guide" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="file-text" className="w-4 h-4 text-primary" /> Beijing Guide
               </Link>
-              <Link href="/best-time-to-visit-china" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                📅 Best Time
+              <Link href="/best-time-to-visit-china" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="calendar" className="w-4 h-4 text-primary" /> Best Time
               </Link>
-              <Link href="/tailor-made" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                ✏️ Custom Trip
+              <Link href="/tailor-made" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="pencil" className="w-4 h-4 text-primary" /> Custom Trip
               </Link>
-              <Link href="/contact" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent">
-                📞 Contact
+              <Link href="/contact" className="p-3 bg-white rounded border border-warm-100 hover:border-primary hover:shadow-md transition text-sm font-medium text-accent flex items-center gap-2">
+                <Icon name="phone" className="w-4 h-4 text-primary" /> Contact
               </Link>
             </div>
           </div>

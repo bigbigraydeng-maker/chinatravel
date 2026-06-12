@@ -8,6 +8,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedSite } from '@/lib/site-media';
 import { renderBlogPostHtml } from '@/lib/blog-html';
 import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
+import { Icon } from '@/components/ui/Icon';
 
 interface BlogPostPageProps {
   params: {
@@ -275,8 +276,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/beijing-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center text-5xl">
-                🏯
+              <div className="relative h-40 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
+                <Icon name="landmark" className="w-14 h-14 text-amber-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Beijing</h3>
@@ -287,8 +288,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/xian-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center text-5xl">
-                ⚔️
+              <div className="relative h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+                <Icon name="shield" className="w-14 h-14 text-orange-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Xi'an</h3>
@@ -299,8 +300,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/shanghai-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-5xl">
-                🌃
+              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                <Icon name="building" className="w-14 h-14 text-blue-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Shanghai</h3>
@@ -311,8 +312,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/chengdu-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center text-5xl">
-                🐼
+              <div className="relative h-40 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <Icon name="paw" className="w-14 h-14 text-green-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Chengdu</h3>
@@ -323,8 +324,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/guilin-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center text-5xl">
-                🏞️
+              <div className="relative h-40 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
+                <Icon name="mountain" className="w-14 h-14 text-emerald-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Guilin</h3>
@@ -335,8 +336,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/yunnan-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center text-5xl">
-                🌄
+              <div className="relative h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                <Icon name="sunrise" className="w-14 h-14 text-purple-700" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Yunnan</h3>

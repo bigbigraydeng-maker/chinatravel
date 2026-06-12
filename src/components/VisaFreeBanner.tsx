@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 /**
  * Sitewide Visa-Free banner — top-of-page, NZ passport hook.
@@ -82,9 +83,7 @@ export default function VisaFreeBanner() {
         style={hidden ? { display: 'none' } : undefined}
       >
         <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
-          <span aria-hidden="true" className="inline-flex items-center text-base">
-            🇳🇿
-          </span>
+          <Icon name="passport" className="w-4 h-4 text-white shrink-0" />
           <p className="text-sm md:text-[0.95rem] leading-snug">
             <span className="font-semibold">NZ passport holders:</span>{' '}
             visit China <span className="font-semibold underline decoration-secondary decoration-2 underline-offset-2">visa-free for 30 days</span>{' '}

@@ -45,10 +45,10 @@ export default function YunnanToursPage() {
         tours={tours}
         faqs={yunnanToursMeta.faqs}
         guideLinks={[
-          { label: 'Yunnan Travel Guide', href: '/yunnan-travel-guide', emoji: '🌸', description: 'Region overview & travel tips' },
-          { label: 'Lijiang Travel Guide', href: '/lijiang-travel-guide', emoji: '🏘️', description: 'Naxi Old Town & Jade Dragon Snow Mountain' },
-          { label: 'Dali Travel Guide', href: '/dali-travel-guide', emoji: '🏞️', description: 'Erhai Lake & Bai minority culture' },
-          { label: 'Shangri-La Travel Guide', href: '/shangri-la-travel-guide', emoji: '🏔️', description: 'Tibetan highland monasteries' },
+          { label: 'Yunnan Travel Guide', href: '/yunnan-travel-guide', icon: 'flower', description: 'Region overview & travel tips' },
+          { label: 'Lijiang Travel Guide', href: '/lijiang-travel-guide', icon: 'building', description: 'Naxi Old Town & Jade Dragon Snow Mountain' },
+          { label: 'Dali Travel Guide', href: '/dali-travel-guide', icon: 'mountain', description: 'Erhai Lake & Bai minority culture' },
+          { label: 'Shangri-La Travel Guide', href: '/shangri-la-travel-guide', icon: 'mountain', description: 'Tibetan highland monasteries' },
         ]}
       />
     </>

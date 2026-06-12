@@ -45,11 +45,11 @@ export default function ChengduToursPage() {
         tours={tours}
         faqs={chengduToursMeta.faqs}
         guideLinks={[
-          { label: 'Chengdu Travel Guide', href: '/chengdu-travel-guide', emoji: '🐼', description: 'Pandas, temples & hot pot' },
-          { label: 'Panda Sanctuary Guide', href: '/chengdu-panda-sanctuary', emoji: '🎋', description: '200+ pandas · morning feeding · visitor tips' },
-          { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', emoji: '🗿', description: 'Giant cliffside Buddha visitor tips' },
-          { label: 'Panda Sanctuary: Plan Your Visit', href: '/blog/chengdu-panda-sanctuary-experience', emoji: '🐾', description: 'Timing, exclusive access & what to book' },
-          { label: 'Chengdu Spicy Cuisine', href: '/blog/chengdu-spicy-cuisine-culture', emoji: '🌶️', description: 'Mala science & must-eat Sichuan dishes' },
+          { label: 'Chengdu Travel Guide', href: '/chengdu-travel-guide', icon: 'paw', description: 'Pandas, temples & hot pot' },
+          { label: 'Panda Sanctuary Guide', href: '/chengdu-panda-sanctuary', icon: 'paw', description: '200+ pandas · morning feeding · visitor tips' },
+          { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', icon: 'landmark', description: 'Giant cliffside Buddha visitor tips' },
+          { label: 'Panda Sanctuary: Plan Your Visit', href: '/blog/chengdu-panda-sanctuary-experience', icon: 'paw', description: 'Timing, exclusive access & what to book' },
+          { label: 'Chengdu Spicy Cuisine', href: '/blog/chengdu-spicy-cuisine-culture', icon: 'flame', description: 'Mala science & must-eat Sichuan dishes' },
         ]}
       />
     </>

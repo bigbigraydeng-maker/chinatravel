@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 const HomePageWendyWu = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -52,27 +53,27 @@ const HomePageWendyWu = () => {
     },
   ];
 
-  const highlights = [
+  const highlights: { icon: IconName; title: string; description: string; gradient: string }[] = [
     {
-      icon: '🌏',
+      icon: 'globe',
       title: 'Live in China',
       description: 'Our team lives and breathes China daily. We know the hidden gems, the best local experiences, and the real stories.',
       gradient: 'from-orange-50 to-amber-50'
     },
     {
-      icon: '🎯',
+      icon: 'target',
       title: '98 Years Heritage',
       description: 'Since 1928, we\'ve been crafting unforgettable journeys. That\'s nearly a century of trust and expertise.',
       gradient: 'from-rose-50 to-pink-50'
     },
     {
-      icon: '🚀',
+      icon: 'compass',
       title: 'Direct Access',
       description: 'Our own offices and guides across China mean no middlemen. Just seamless, authentic experiences from day one.',
       gradient: 'from-amber-50 to-orange-50'
     },
     {
-      icon: '✨',
+      icon: 'sparkles',
       title: 'Authentic Access',
       description: 'Small groups, local guides, off-the-beaten-path stops. The real China that most tourists never discover.',
       gradient: 'from-yellow-50 to-orange-50'
@@ -180,8 +181,8 @@ const HomePageWendyWu = () => {
                 key={i}
                 className={`group p-8 rounded-2xl bg-gradient-to-br ${item.gradient} border border-gray-100 hover:shadow-xl transition-all duration-500 cursor-pointer transform hover:-translate-y-2`}
               >
-                <div className="text-5xl mb-4 transition-transform duration-500 group-hover:scale-125">
-                  {item.icon}
+                <div className="mb-4 transition-transform duration-500 group-hover:scale-125">
+                  <Icon name={item.icon} className="w-12 h-12 text-primary" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{item.title}</h3>
                 <p className="text-gray-700 leading-relaxed">{item.description}</p>

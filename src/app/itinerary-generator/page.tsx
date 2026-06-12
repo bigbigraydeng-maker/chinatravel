@@ -5,6 +5,7 @@ import { ItineraryRequest, GeneratedItinerary } from '@/lib/itinerary/engine'
 import ItineraryForm from '@/components/admin/ItineraryForm'
 import ItineraryPreview from '@/components/admin/ItineraryPreview'
 import ItineraryActions from '@/components/admin/ItineraryActions'
+import { Icon } from '@/components/ui/Icon'
 
 /**
  * OP 行程生成器主页面
@@ -57,7 +58,7 @@ export default function ItineraryGeneratorPage() {
         {/* 错误提示 */}
         {error && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
-            <p className="font-medium">❌ 错误</p>
+            <p className="font-medium flex items-center gap-2"><Icon name="alert-triangle" className="w-4 h-4" /> 错误</p>
             <p className="text-sm mt-1">{error}</p>
           </div>
         )}

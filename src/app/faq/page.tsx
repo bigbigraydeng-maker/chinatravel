@@ -4,6 +4,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -28,33 +29,33 @@ export default function FAQPage() {
   ];
 
   // Tier 1 FAQ Pages — derived from single source of truth in faq-pages.ts
-  const tier1FAQs = [
-    { page: faqPlanningYourChinaTrip, icon: '🗺️' },
-    { page: faqBeijingTravel,         icon: '🏯' },
-    { page: faqGreatWall,             icon: '🧗' },
+  const tier1FAQs: { page: typeof faqPlanningYourChinaTrip; icon: IconName }[] = [
+    { page: faqPlanningYourChinaTrip, icon: 'map' },
+    { page: faqBeijingTravel,         icon: 'landmark' },
+    { page: faqGreatWall,             icon: 'mountain' },
   ];
 
   // Tier 2 FAQ Pages (Coming Soon)
-  const tier2FAQs = [
+  const tier2FAQs: { slug: string; title: string; description: string; icon: IconName; priority: string }[] = [
     {
       slug: 'shanghai-travel',
       title: 'Shanghai Travel Planning',
       description: 'Coming soon: Shanghai itineraries, water towns, and best experiences.',
-      icon: '🌆',
+      icon: 'building',
       priority: 'Tier 2 - Coming June 2026'
     },
     {
       slug: 'xi-an-terracotta-warriors',
       title: 'Xi\'an & Terracotta Warriors',
       description: 'Coming soon: Terracotta Army visits, ancient Chinese history, and Xi\'an exploration.',
-      icon: '⚔️',
+      icon: 'shield',
       priority: 'Tier 2 - Coming June 2026'
     },
     {
       slug: 'china-transportation',
       title: 'Transportation in China',
       description: 'Coming soon: Trains, flights, buses, and getting around between cities.',
-      icon: '🚄',
+      icon: 'train',
       priority: 'Tier 2 - Coming June 2026'
     }
   ];
@@ -97,8 +98,8 @@ export default function FAQPage() {
           {/* Tier 1 - High Priority */}
           <section className="mb-16">
             <div className="mb-8">
-              <h2 className="text-3xl font-serif font-bold text-accent mb-4">
-                🎯 Essential Questions (Tier 1)
+              <h2 className="text-3xl font-serif font-bold text-accent mb-4 flex items-center gap-2">
+                <Icon name="target" className="w-7 h-7 text-primary" /> Essential Questions (Tier 1)
               </h2>
               <p className="text-gray-700">
                 Start here for answers to the most common planning questions.
@@ -114,7 +115,7 @@ export default function FAQPage() {
                 >
                   {/* Card Header */}
                   <div className="flex items-start justify-between p-6 pb-4">
-                    <span className="text-4xl">{icon}</span>
+                    <Icon name={icon} className="w-10 h-10 text-primary" />
                     <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full whitespace-nowrap">
                       High Priority
                     </span>
@@ -142,8 +143,8 @@ export default function FAQPage() {
           {/* Tier 2 - Coming Soon */}
           <section className="mb-16 pt-12 border-t border-warm-100">
             <div className="mb-8">
-              <h2 className="text-3xl font-serif font-bold text-accent mb-4">
-                📋 Destination-Specific Guides (Tier 2)
+              <h2 className="text-3xl font-serif font-bold text-accent mb-4 flex items-center gap-2">
+                <Icon name="file-text" className="w-7 h-7 text-primary" /> Destination-Specific Guides (Tier 2)
               </h2>
               <p className="text-gray-700">
                 Coming in June 2026: In-depth guides for specific cities and topics.
@@ -158,7 +159,7 @@ export default function FAQPage() {
                 >
                   {/* Card Header */}
                   <div className="flex items-start justify-between p-6 pb-4">
-                    <span className="text-4xl">{faq.icon}</span>
+                    <Icon name={faq.icon} className="w-10 h-10 text-gray-500" />
                     <span className="inline-block text-xs font-bold uppercase tracking-widest text-gray-500 bg-gray-200 px-3 py-1 rounded-full whitespace-nowrap">
                       Coming June
                     </span>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
 import { getBlogPostBySlug } from '@/lib/data/blogs';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import HubHero from './HubHero';
 
 const TI = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
@@ -495,14 +496,14 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                         </p>
                         <div className="flex flex-wrap gap-3 text-xs text-gray-500">
                           <span className="flex items-center gap-1">
-                            <span>⏱</span> {attraction.visitDuration}
+                            <Icon name="clock" className="w-4 h-4 text-primary" /> {attraction.visitDuration}
                           </span>
                           <span className="flex items-center gap-1">
-                            <span>📅</span> {attraction.bestTime}
+                            <Icon name="calendar" className="w-4 h-4 text-primary" /> {attraction.bestTime}
                           </span>
                           {attraction.ticketInfo && (
                             <span className="flex items-center gap-1">
-                              <span>🎫</span> {attraction.ticketInfo}
+                              <Icon name="ticket" className="w-4 h-4 text-primary" /> {attraction.ticketInfo}
                             </span>
                           )}
                         </div>
@@ -549,15 +550,15 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 Practical Information
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: '🚌', label: 'Getting Around', text: guide.practicalInfo.transportation },
-                  { icon: '🌤', label: 'Climate & Best Time', text: `${guide.practicalInfo.climate} Best time: ${guide.practicalInfo.bestTime}` },
-                  { icon: '💰', label: 'Budget', text: guide.practicalInfo.budget },
-                  { icon: '🗣', label: 'Language & Safety', text: `${guide.practicalInfo.language} ${guide.practicalInfo.safety}` },
-                ].map(({ icon, label, text }) => (
+                {([
+                  { icon: 'bus', label: 'Getting Around', text: guide.practicalInfo.transportation },
+                  { icon: 'cloud', label: 'Climate & Best Time', text: `${guide.practicalInfo.climate} Best time: ${guide.practicalInfo.bestTime}` },
+                  { icon: 'coins', label: 'Budget', text: guide.practicalInfo.budget },
+                  { icon: 'message', label: 'Language & Safety', text: `${guide.practicalInfo.language} ${guide.practicalInfo.safety}` },
+                ] as { icon: IconName; label: string; text: string }[]).map(({ icon, label, text }) => (
                   <div key={label} className="bg-warm-50 rounded-xl p-5">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xl">{icon}</span>
+                      <Icon name={icon} className="w-5 h-5 text-primary" />
                       <h3 className="font-bold text-accent text-sm uppercase tracking-wide">{label}</h3>
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed">{text}</p>
@@ -569,13 +570,13 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   href="/best-time-to-visit-china"
                   className="text-sm text-primary font-medium hover:underline flex items-center gap-1"
                 >
-                  📅 Best Time to Visit China →
+                  <Icon name="calendar" className="w-4 h-4" /> Best Time to Visit China →
                 </Link>
                 <Link
                   href="/china-visa-guide-for-new-zealanders"
                   className="text-sm text-primary font-medium hover:underline flex items-center gap-1"
                 >
-                  📄 NZ entry & visa-free guide →
+                  <Icon name="file-text" className="w-4 h-4" /> NZ entry & visa-free guide →
                 </Link>
               </div>
             </section>
@@ -593,7 +594,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   >
                     <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer hover:bg-warm-50 transition-colors font-semibold text-accent">
                       <span>{faq.question}</span>
-                      <span className="flex-shrink-0 text-primary group-open:rotate-180 transition-transform">▾</span>
+                      <Icon name="chevron-down" className="w-4 h-4 flex-shrink-0 text-primary group-open:rotate-180 transition-transform" />
                     </summary>
                     <div className="px-5 pb-5 pt-1">
                       <p className="text-gray-700 text-[15px] leading-relaxed">{faq.answer}</p>
@@ -658,7 +659,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                     href={`/${g.slug}`}
                     className="flex flex-col items-center gap-2 p-4 rounded-xl border border-warm-100 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all text-center bg-white"
                   >
-                    <span className="text-2xl">{g.emoji}</span>
+                    <Icon name="map-pin" className="w-6 h-6 text-primary" />
                     <span className="text-sm font-semibold text-accent leading-snug">{g.name}</span>
                   </Link>
                 ))}
@@ -771,22 +772,22 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 <ul className="space-y-2 text-sm">
                   <li>
                     <Link href="/best-time-to-visit-china" className="text-primary hover:underline flex items-center gap-2">
-                      📅 Best time to visit China
+                      <Icon name="calendar" className="w-4 h-4 flex-shrink-0" /> Best time to visit China
                     </Link>
                   </li>
                   <li>
                     <Link href="/china-visa-guide-for-new-zealanders" className="text-primary hover:underline flex items-center gap-2">
-                      📄 China entry for NZ passport holders
+                      <Icon name="file-text" className="w-4 h-4 flex-shrink-0" /> China entry for NZ passport holders
                     </Link>
                   </li>
                   <li>
                     <Link href="/china-tours-from-new-zealand" className="text-primary hover:underline flex items-center gap-2">
-                      ✈️ China tours from New Zealand
+                      <Icon name="plane" className="w-4 h-4 flex-shrink-0" /> China tours from New Zealand
                     </Link>
                   </li>
                   <li>
                     <Link href="/tailor-made" className="text-primary hover:underline flex items-center gap-2">
-                      🎯 Tailor-made China tours
+                      <Icon name="target" className="w-4 h-4 flex-shrink-0" /> Tailor-made China tours
                     </Link>
                   </li>
                 </ul>

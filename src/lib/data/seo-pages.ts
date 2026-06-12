@@ -422,7 +422,7 @@ export const chinaVisaGuideMeta: SeoPageMeta = {
   title: 'China Visa-Free for New Zealand Citizens | CTS Tours',
   description: 'New Zealand citizens can visit China visa-free for up to 30 days (valid until 31 Dec 2026). Multiple entries allowed, no entry limit. Official requirements, travel tips, and what to know.',
   h1: 'China Visa-Free for New Zealand Citizens',
-  heroSubtitle: '✅ No visa required for 30-day stays. Multiple entries allowed. Valid until 31 December 2026.',
+  heroSubtitle: 'No visa required for 30-day stays. Multiple entries allowed. Valid until 31 December 2026.',
   introText: 'Great news for New Zealand travellers! NZ passport holders can enter mainland China visa-free for up to 30 days — for tourism, business, family visits, exchange, and transit. The policy is officially confirmed valid until 31 December 2026, with no limit on the number of entries. China\'s unilateral visa-free policy now covers 50 countries, reconfirmed by China\'s Ministry of Foreign Affairs in May 2026. No visa application needed — just your valid NZ passport and travel documents. This guide covers entry requirements, eligible purposes, and answers to the most common questions.',
   faqs: [
     {

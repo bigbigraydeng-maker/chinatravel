@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Icon } from '@/components/ui/Icon';
 import {
   CHINA_DISCOVERY_DEPARTURES,
   CHINA_SIGNATURE_DEPARTURES,
@@ -84,7 +85,7 @@ export default function CtsDepartureScheduleBlock({
       <div className="space-y-10">
         <div>
           <h3 className="text-lg font-serif font-bold text-amber-800 mb-4 flex items-center gap-2">
-            <span aria-hidden>⭐</span>
+            <Icon name="star" filled className="w-5 h-5 text-amber-400" />
             Signature series departures
           </h3>
           <RowGrid rows={CHINA_SIGNATURE_DEPARTURES} currentSlug={currentSlug} />
@@ -92,7 +93,7 @@ export default function CtsDepartureScheduleBlock({
 
         <div>
           <h3 className="text-lg font-serif font-bold text-blue-800 mb-4 flex items-center gap-2">
-            <span aria-hidden>⭐</span>
+            <Icon name="star" filled className="w-5 h-5 text-amber-400" />
             Discovery series departures
           </h3>
           <RowGrid rows={CHINA_DISCOVERY_DEPARTURES} currentSlug={currentSlug} />

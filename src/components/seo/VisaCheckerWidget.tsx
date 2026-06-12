@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 type Step = 'passport' | 'purpose' | 'duration' | 'result';
 type PassportType = 'nz' | 'other';
@@ -72,12 +73,12 @@ function getResult(
   };
 }
 
-const PURPOSES: { value: TravelPurpose; label: string; emoji: string }[] = [
-  { value: 'tourism', label: 'Holiday / Tourism', emoji: '🏯' },
-  { value: 'business', label: 'Business', emoji: '💼' },
-  { value: 'family', label: 'Visiting Family', emoji: '👨‍👩‍👧' },
-  { value: 'work', label: 'Work / Employment', emoji: '🔧' },
-  { value: 'study', label: 'Study / Internship', emoji: '🎓' },
+const PURPOSES: { value: TravelPurpose; label: string; icon: IconName }[] = [
+  { value: 'tourism', label: 'Holiday / Tourism', icon: 'landmark' },
+  { value: 'business', label: 'Business', icon: 'briefcase' },
+  { value: 'family', label: 'Visiting Family', icon: 'users' },
+  { value: 'work', label: 'Work / Employment', icon: 'briefcase' },
+  { value: 'study', label: 'Study / Internship', icon: 'graduation-cap' },
 ];
 
 export default function VisaCheckerWidget() {
@@ -104,10 +105,10 @@ export default function VisaCheckerWidget() {
     'check-required': 'border-blue-500 bg-blue-50',
   };
 
-  const resultIcon: Record<ResultType, string> = {
-    'visa-free': '✅',
-    'need-visa': '⚠️',
-    'check-required': '🔍',
+  const resultIcon: Record<ResultType, IconName> = {
+    'visa-free': 'check-circle',
+    'need-visa': 'alert-triangle',
+    'check-required': 'search',
   };
 
   return (
@@ -154,14 +155,14 @@ export default function VisaCheckerWidget() {
                   onClick={() => { setPassport('nz'); setStep('purpose'); }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-warm-200 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-gray-800"
                 >
-                  <span className="text-3xl">🇳🇿</span>
+                  <Icon name="passport" className="w-8 h-8 text-primary" />
                   New Zealand
                 </button>
                 <button
                   onClick={() => { setPassport('other'); setStep('purpose'); }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-warm-200 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-gray-800"
                 >
-                  <span className="text-3xl">🌐</span>
+                  <Icon name="globe" className="w-8 h-8 text-primary" />
                   Other country
                 </button>
               </div>
@@ -175,7 +176,7 @@ export default function VisaCheckerWidget() {
                 Why are you visiting China?
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {PURPOSES.map(({ value, label, emoji }) => (
+                {PURPOSES.map(({ value, label, icon }) => (
                   <button
                     key={value}
                     onClick={() => {
@@ -189,7 +190,7 @@ export default function VisaCheckerWidget() {
                     }}
                     className="flex items-center gap-3 p-4 rounded-xl border-2 border-warm-200 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-gray-800 text-left"
                   >
-                    <span className="text-xl flex-shrink-0">{emoji}</span>
+                    <Icon name={icon} className="w-5 h-5 text-primary flex-shrink-0" />
                     {label}
                   </button>
                 ))}
@@ -211,14 +212,14 @@ export default function VisaCheckerWidget() {
                   onClick={() => { setDuration('under30'); setStep('result'); }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-warm-200 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-gray-800"
                 >
-                  <span className="text-2xl">📅</span>
+                  <Icon name="calendar" className="w-6 h-6 text-primary" />
                   30 days or less
                 </button>
                 <button
                   onClick={() => { setDuration('over30'); setStep('result'); }}
                   className="flex flex-col items-center gap-2 p-4 rounded-xl border-2 border-warm-200 hover:border-primary hover:bg-primary/5 transition-all text-sm font-medium text-gray-800"
                 >
-                  <span className="text-2xl">🗓️</span>
+                  <Icon name="calendar" className="w-6 h-6 text-primary" />
                   More than 30 days
                 </button>
               </div>
@@ -233,7 +234,7 @@ export default function VisaCheckerWidget() {
             <div>
               <div className={`rounded-xl border-2 p-5 mb-5 ${resultColour[result.type]}`}>
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl flex-shrink-0">{resultIcon[result.type]}</span>
+                  <Icon name={resultIcon[result.type]} className="w-6 h-6 flex-shrink-0 text-primary" />
                   <div>
                     <p className="font-bold text-gray-900 text-lg leading-snug mb-1">
                       {result.heading}

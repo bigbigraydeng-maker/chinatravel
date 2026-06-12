@@ -63,14 +63,14 @@ This is not a criticism of operators that sell land-only — it’s a legitimate
 
 | What you’re paying for | Inclusive (with airfare from Auckland) | Land-only (no airfare) |
 |------------------------|---------------------------------------|------------------------|
-| Return international flight from Auckland | ✓ included | ✗ you book separately |
-| Domestic flights inside China | ✓ included | ✓ included |
-| High-speed rail sectors | ✓ included | ✓ included |
-| Airport transfers in China | ✓ included | ✓ included |
-| Hotel accommodation | ✓ included | ✓ included |
-| English-speaking local guides | ✓ included | ✓ included |
-| Entrance fees on the itinerary | ✓ included | ✓ included |
-| Meals as specified | ✓ included | ✓ included |
+| Return international flight from Auckland | included | you book separately |
+| Domestic flights inside China | included | included |
+| High-speed rail sectors | included | included |
+| Airport transfers in China | included | included |
+| Hotel accommodation | included | included |
+| English-speaking local guides | included | included |
+| Entrance fees on the itinerary | included | included |
+| Meals as specified | included | included |
 | **Real-world total, 15-day trip, 2026 – 27 pricing** | **From NZD $3,880** (CTS Best of China, Nov 2026) | Land-only headline **plus** NZD $1,800 – $3,500 airfare you book yourself |
 | Single point of contact if something changes | One operator, one number | Operator + airline, two relationships |
 | Fare risk between deposit and departure | Operator absorbs | You absorb |

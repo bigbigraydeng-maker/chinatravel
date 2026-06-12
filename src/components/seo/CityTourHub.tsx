@@ -11,6 +11,7 @@ import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
+import { Icon } from '@/components/ui/Icon';
 
 interface CityHubProps {
   // Metadata
@@ -90,7 +91,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                     >
                       <div className="flex-shrink-0">
                         <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                          <span className="text-primary font-bold text-sm">✓</span>
+                          <Icon name="check" className="w-4 h-4 text-primary" />
                         </div>
                       </div>
                       <div>

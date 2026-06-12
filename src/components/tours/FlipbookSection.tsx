@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface FlipbookSectionProps {
   flipbookId: string;
@@ -47,7 +48,7 @@ export default function FlipbookSection({
       {/* Help Text */}
       <div className="mt-4 px-6 text-sm text-gray-600">
         <p>
-          💡 <strong>Tip:</strong> Click anywhere on the page to expand, or use the navigation arrows to flip through chapters.
+          <Icon name="sparkles" className="w-4 h-4 inline mr-1 text-primary" /><strong>Tip:</strong> Click anywhere on the page to expand, or use the navigation arrows to flip through chapters.
         </p>
       </div>
     </section>

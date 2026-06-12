@@ -1,5 +1,7 @@
 'use client';
 
+import { Icon, type IconName } from '@/components/ui/Icon';
+
 type TransportType = 'flight' | 'high-speed-train' | 'train' | 'river-cruise' | 'coach' | 'private-car' | 'ferry';
 
 interface RouteStop {
@@ -26,14 +28,14 @@ interface ItineraryMapProps {
   tourName: string;
 }
 
-const transportIcons: Record<TransportType, string> = {
-  'flight': '✈️',
-  'high-speed-train': '🚄',
-  'train': '🚂',
-  'river-cruise': '🚢',
-  'coach': '🚌',
-  'private-car': '🚗',
-  'ferry': '⛴️'
+const transportIcons: Record<TransportType, IconName> = {
+  'flight': 'plane',
+  'high-speed-train': 'train',
+  'train': 'train',
+  'river-cruise': 'ship',
+  'coach': 'bus',
+  'private-car': 'car',
+  'ferry': 'ship'
 };
 
 const transportColors: Record<TransportType, string> = {
@@ -100,7 +102,7 @@ export default function ItineraryMap({ route, tourName }: ItineraryMapProps) {
                     className="flex items-center gap-3 p-3 rounded-lg"
                     style={{ backgroundColor: `${transportColors[segment.transport]}10` }}
                   >
-                    <span className="text-2xl">{transportIcons[segment.transport]}</span>
+                    <Icon name={transportIcons[segment.transport]} className="w-6 h-6 text-primary" />
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-gray-900">
@@ -135,7 +137,7 @@ export default function ItineraryMap({ route, tourName }: ItineraryMapProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {Object.entries(transportIcons).map(([type, icon]) => (
             <div key={type} className="flex items-center gap-2 text-sm">
-              <span>{icon}</span>
+              <Icon name={icon} className="w-5 h-5 text-primary" />
               <span className="capitalize text-gray-600">
                 {type.replace(/-/g, ' ')}
               </span>

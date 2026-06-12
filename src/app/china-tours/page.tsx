@@ -7,6 +7,7 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { Icon } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -155,8 +156,9 @@ export default function ChinaToursPage() {
               {/* Signature Tours Highlight */}
               {tours.filter(t => t.tier === 'signature').length > 0 && (
                 <section className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-100 rounded-xl p-8">
-                  <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-                    ⭐ CTS Signature Collection
+                  <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Icon name="star" filled className="w-6 h-6 text-amber-400" />
+                    <span>CTS Signature Collection</span>
                   </h3>
                   <p className="text-gray-700 mb-4">
                     Our premium collection features boutique 4-5 star accommodations, small group sizes (max 16 passengers), and locally-led experiences designed by our China specialists. Perfect for travellers seeking depth and immersion.
@@ -173,8 +175,9 @@ export default function ChinaToursPage() {
               {/* Discovery Tours Highlight */}
               {tours.filter(t => t.tier === 'discovery').length > 0 && (
                 <section className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl p-8">
-                  <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-                    💚 CTS Discovery Collection
+                  <h3 className="text-2xl font-serif font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    <Icon name="heart" filled className="w-6 h-6 text-emerald-500" />
+                    <span>CTS Discovery Collection</span>
                   </h3>
                   <p className="text-gray-700 mb-4">
                     Reliable, well-organized China experiences at excellent value. Our Discovery collection features 3-4 star hotels, must-see itineraries, and expert guides—ideal for first-time visitors and those seeking great value.
@@ -225,8 +228,9 @@ export default function ChinaToursPage() {
 
                 {/* Tip Box */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-sm text-blue-900">
-                    <span className="font-bold">💡 Tip:</span> Filter by destination to explore Beijing, Shanghai, Xi'an, and more.
+                  <p className="text-sm text-blue-900 flex items-start gap-2">
+                    <Icon name="sparkles" className="w-4 h-4 text-blue-900 mt-0.5 flex-shrink-0" />
+                    <span><span className="font-bold">Tip:</span> Filter by destination to explore Beijing, Shanghai, Xi&apos;an, and more.</span>
                   </p>
                 </div>
               </div>

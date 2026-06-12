@@ -340,8 +340,8 @@ async function generateItineraryHTML(itinerary: GeneratedItinerary): Promise<str
       <h1>${request.customer.name}</h1>
       <div class="subtitle">${destinationName} ${request.days} 日之旅</div>
       <div class="info">
-        <p>✈️ 新西兰旅游服务 (NZ Tours)</p>
-        <p>🌍 让每一次旅行都成为最美的回忆</p>
+        <p>新西兰旅游服务 (NZ Tours)</p>
+        <p>让每一次旅行都成为最美的回忆</p>
         <p style="margin-top: 30px; font-size: 12px; color: #999;">
           生成时间：${new Date(itinerary.createdAt).toLocaleString('zh-CN')}
         </p>
@@ -410,19 +410,19 @@ async function generateItineraryHTML(itinerary: GeneratedItinerary): Promise<str
         <div class="theme">主题：${day.theme}</div>
 
         <section>
-          <h4>🎯 主要景点</h4>
+          <h4>主要景点</h4>
           ${day.attractions.length > 0 ? day.attractions.map((attr) => `
             <div class="attraction-item">
               <div class="name">${attr.name}</div>
               <div class="desc">${attr.description}</div>
-              <div class="details">⏱ ${attr.duration}小时 · 💰 ¥${attr.price}/人</div>
+              <div class="details">${attr.duration}小时 · ¥${attr.price}/人</div>
             </div>
           `).join('') : '<p style="color: #999;">无具体安排</p>'}
         </section>
 
         ${day.meals ? `
           <section>
-            <h4>🍽 餐食</h4>
+            <h4>餐食</h4>
             ${day.meals.breakfast ? `<p>• 早餐：${day.meals.breakfast}</p>` : ''}
             ${day.meals.lunch ? `<p>• 午餐：${day.meals.lunch}</p>` : ''}
             ${day.meals.dinner ? `<p>• 晚餐：${day.meals.dinner}</p>` : ''}
@@ -431,15 +431,15 @@ async function generateItineraryHTML(itinerary: GeneratedItinerary): Promise<str
 
         ${day.accommodation ? `
           <section>
-            <h4>🏨 住宿</h4>
-            <p><strong>${day.accommodation.name}</strong> (⭐ ${day.accommodation.stars}星)</p>
+            <h4>住宿</h4>
+            <p><strong>${day.accommodation.name}</strong> (${day.accommodation.stars}星)</p>
             <p style="font-size: 13px; color: #666;">¥${day.accommodation.pricePerNight}/晚 · ${day.accommodation.city}</p>
           </section>
         ` : ''}
 
         ${day.notes ? `
           <section>
-            <h4>📝 备注</h4>
+            <h4>备注</h4>
             <p style="font-size: 13px; color: #666;">${day.notes}</p>
           </section>
         ` : ''}
