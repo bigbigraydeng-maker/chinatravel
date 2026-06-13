@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
       destination,
       tier,
       source,
+      utm,
     } = body;
 
     // Name is required; phone OR email is enough (older travellers prefer to be called).
@@ -40,6 +41,9 @@ export async function POST(req: NextRequest) {
     const submittedAt = new Date().toISOString();
     const tourPath = `/tours/${destination}/${tier}/${tourSlug}`;
     const absTourUrl = `${getSiteUrl()}${tourPath}`;
+    const utmObj = utm && typeof utm === 'object' ? (utm as Record<string, string>) : {};
+    const adSource =
+      [utmObj.utm_source, utmObj.utm_campaign, utmObj.utm_content].filter(Boolean).join(' / ') || '—';
 
     const html = `
 <!DOCTYPE html>
@@ -54,6 +58,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Tour</td><td>${escapeHtml(String(tourName))}</td></tr>
     <tr><td style="font-weight:bold;">URL</td><td><a href="${escapeHtml(absTourUrl)}">${escapeHtml(tourPath)}</a></td></tr>
     <tr><td style="font-weight:bold;">Source</td><td>${escapeHtml(String(source || 'Tour Page'))}</td></tr>
+    <tr><td style="font-weight:bold;">Ad source</td><td>${escapeHtml(adSource)}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
   </table>
   ${message ? `<p style="margin-top:16px;"><strong>Message</strong></p><p style="white-space:pre-wrap;">${escapeHtml(String(message))}</p>` : ''}

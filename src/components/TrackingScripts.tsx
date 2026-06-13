@@ -1,8 +1,16 @@
 'use client';
 
+import { useEffect } from 'react';
 import Script from 'next/script';
+import { persistUtmParams } from '@/lib/utils/utm-parser';
 
 export default function TrackingScripts() {
+  // Capture the ad's UTM / click-ids on first landing so an enquiry submitted
+  // later (even after navigating to /thank-you) can be attributed to its source.
+  useEffect(() => {
+    persistUtmParams();
+  }, []);
+
   return (
     <>
       <Script
