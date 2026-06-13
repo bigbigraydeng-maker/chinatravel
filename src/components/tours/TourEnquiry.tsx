@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 
 interface TourEnquiryProps {
   tourName: string;
@@ -42,6 +43,7 @@ export default function TourEnquiry({
 
     setIsSubmitting(true);
 
+    const utm = getStoredUtmParams();
     const payload = {
       tourName,
       tourSlug,
@@ -52,6 +54,7 @@ export default function TourEnquiry({
       phone: formData.phone.trim(),
       message: formData.message.trim() || undefined,
       source,
+      utm,
     };
 
     try {
@@ -72,6 +75,10 @@ export default function TourEnquiry({
         tour_name: tourName,
         tour_slug: tourSlug,
         pagePath: window.location.pathname,
+        utm_source: utm.utm_source,
+        utm_medium: utm.utm_medium,
+        utm_campaign: utm.utm_campaign,
+        utm_content: utm.utm_content,
         timestamp: Date.now(),
       });
       const q = new URLSearchParams({

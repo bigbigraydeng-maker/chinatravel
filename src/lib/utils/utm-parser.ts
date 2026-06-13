@@ -99,5 +99,39 @@ export function captureUtmParams() {
     }
   }
 
+  // Keep the first-touch attribution available for later form submits / conversions.
+  persistUtmParams(params);
+
   return params;
+}
+
+const UTM_STORAGE_KEY = 'cts_utm_first_touch';
+
+/**
+ * Persist UTM / click-ids to sessionStorage on first touch, so a later enquiry
+ * submit (or the /thank-you conversion) can attribute the lead to the ad that
+ * drove it. First touch wins — we never overwrite an existing campaign source.
+ */
+export function persistUtmParams(known?: UtmParams): void {
+  if (typeof window === 'undefined') return;
+  try {
+    if (sessionStorage.getItem(UTM_STORAGE_KEY)) return; // first-touch wins
+    const params = known ?? normalizeUtmParams(parseUtmParams());
+    if (Object.keys(params).length > 0) {
+      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(params));
+    }
+  } catch {
+    /* sessionStorage unavailable (private mode etc.) — non-fatal */
+  }
+}
+
+/** Read the first-touch UTM / click-ids saved for this session ({} if none). */
+export function getStoredUtmParams(): UtmParams {
+  if (typeof window === 'undefined') return {};
+  try {
+    const raw = sessionStorage.getItem(UTM_STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as UtmParams) : {};
+  } catch {
+    return {};
+  }
 }
