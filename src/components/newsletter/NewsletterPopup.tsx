@@ -5,7 +5,7 @@ import NewsletterSubscribeForm from './NewsletterSubscribeForm';
 
 const STORAGE_KEY = 'cts_newsletter_popup_dismissed';
 const SUPPRESS_DAYS = 7;
-const DELAY_SECONDS = 8;
+const DELAY_SECONDS = 15;
 
 export default function NewsletterPopup() {
   const [visible, setVisible] = useState(false);
