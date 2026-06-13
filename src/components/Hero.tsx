@@ -66,7 +66,7 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.65s' }}>
-          <Link href="/tours/find" onClick={handlePrimaryCTAClick} className="bg-gradient-to-r from-primary via-primary to-red-500 text-white text-lg py-4 px-10 rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all font-medium hover:-translate-y-1 hover:scale-105 animate-pulse-glow">
+          <Link href="/tours/find" onClick={handlePrimaryCTAClick} className="bg-gradient-to-r from-primary via-primary to-red-500 text-white text-lg py-4 px-10 rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all font-medium hover:-translate-y-1 hover:scale-105">
             Browse Our China Tours →
           </Link>
           <Link href="/contact" onClick={handleSecondaryCTAClick} className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 text-lg py-4 px-10 rounded-full hover:bg-white/25 hover:border-secondary/50 transition-all font-medium hover:-translate-y-1 inline-block text-center">

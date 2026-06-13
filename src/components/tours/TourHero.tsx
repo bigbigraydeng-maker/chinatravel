@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { slugifyTourTag } from '@/lib/data/tours';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
+import { CTS_PHONE_DISPLAY, CTS_PHONE_HREF, CTS_PHONE_HOURS } from '@/lib/site';
 
 interface TourHeroProps {
   title: string;
@@ -81,7 +82,7 @@ export default function TourHero({
     return { destination: '', slug: '', campaignSlug: '', campaignVariant: '' };
   };
 
-  const handleCtaClick = (eventName: 'click_enquire_now' | 'click_view_itinerary') => () => {
+  const handleCtaClick = (eventName: 'click_enquire_now' | 'click_view_itinerary' | 'click_call') => () => {
     const { destination, slug, campaignSlug, campaignVariant } = getTourRouteParams();
     triggerGtmEvent({
       event: eventName,
@@ -112,7 +113,7 @@ export default function TourHero({
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/55 to-black/20" />
       </div>
 
       {/* Content */}
@@ -151,7 +152,7 @@ export default function TourHero({
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
-              <span>NZ China specialist since 1928</span>
+              <span>TAANZ member · IATA-accredited · since 1928</span>
             </li>
           </ul>
 
@@ -200,7 +201,7 @@ export default function TourHero({
                     {departureDates.map((d) => (
                       <span
                         key={d}
-                        className="text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
+                        className="text-sm font-medium px-3 py-2 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
                       >
                         {d}
                       </span>
@@ -220,7 +221,7 @@ export default function TourHero({
                 <Link
                   key={label}
                   href={`/tours/find?tag=${encodeURIComponent(slugifyTourTag(label))}`}
-                  className="text-xs sm:text-sm font-medium px-3 py-1.5 rounded-full bg-white/15 text-white border border-white/25 backdrop-blur-sm hover:bg-white/25 transition-colors"
+                  className="text-xs sm:text-sm font-medium px-3 py-2 rounded-full bg-white/15 text-white border border-white/25 backdrop-blur-sm hover:bg-white/25 transition-colors"
                 >
                   {label}
                 </Link>
@@ -252,7 +253,7 @@ export default function TourHero({
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
             <Link
               href="#enquiry"
               onClick={handleCtaClick('click_enquire_now')}
@@ -263,15 +264,29 @@ export default function TourHero({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </Link>
-            {/* Hide secondary CTA on mobile for faster decision making */}
+            {/* Phone-first option for travellers who prefer to call */}
+            <a
+              href={CTS_PHONE_HREF}
+              onClick={handleCtaClick('click_call')}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L16 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" />
+              </svg>
+              Call {CTS_PHONE_DISPLAY}
+            </a>
+            {/* Hide tertiary itinerary CTA on mobile for faster decision making */}
             <Link
               href="#itinerary"
               onClick={handleCtaClick('click_view_itinerary')}
-              className="hidden sm:inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
+              className="hidden sm:inline-flex items-center justify-center px-8 py-4 border-2 border-white/70 text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-colors"
             >
               {secondaryCtaLabel}
             </Link>
           </div>
+          <p className="mt-3 text-sm text-white/90">
+            {CTS_PHONE_HOURS} · speak to a real person, no form needed
+          </p>
         </div>
       </div>
 
