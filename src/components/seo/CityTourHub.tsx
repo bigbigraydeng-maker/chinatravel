@@ -115,7 +115,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
               </section>
 
               {/* Tours section */}
-              <section>
+              <section id="tours-section" className="scroll-mt-20">
                 <SectionTitle
                   title={`${cityName} Tours`}
                   subtitle={`Discover our ${cityName} experiences`}
