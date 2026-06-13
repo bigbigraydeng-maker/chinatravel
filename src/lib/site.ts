@@ -20,6 +20,11 @@ export function getSiteUrl(): string {
   }
 }
 
+/** CTS public contact phone — single source of truth for tel: links and on-page display. */
+export const CTS_PHONE_DISPLAY = '0800 287 888';
+export const CTS_PHONE_HREF = 'tel:0800287888';
+export const CTS_PHONE_HOURS = 'Mon–Fri 9am–5pm';
+
 /** Schema.org TravelAgency — use in JSON-LD (URL resolved at call time). */
 export function getCtsTravelAgencySchema() {
   return {
