@@ -10,6 +10,11 @@
  * cookie-consent gated), so these fire regardless of the visitor's consent
  * choice. Each channel is guarded independently — a missing gtag/fbq simply
  * skips that channel without throwing.
+ *
+ * <TrackingScripts> loads gtag/fbq with strategy="afterInteractive", so on a
+ * FULL /thank-you load (refresh / bookmark / direct hit) the caller's effect can
+ * run before they exist. To avoid silently dropping those conversions we retry
+ * each channel for a few seconds until it is ready, firing each at most once.
  */
 
 type GtagFn = (...args: unknown[]) => void;
@@ -38,17 +43,40 @@ export type LeadSource = 'contact_page' | 'tour_enquiry';
  * The shared `eventID` lets a future server-side CAPI `Lead` event de-duplicate
  * against this browser event (see conversion-tracking audit, Phase-2 CAPI).
  */
+const MAX_ATTEMPTS = 20; // retry for ~3s (20 × 150ms) while gtag/fbq finish loading
+const RETRY_MS = 150;
+
 export function fireLeadConversion(source: LeadSource): void {
   if (typeof window === 'undefined') return;
 
   const eventId = `cts-${source}-${Date.now()}`;
+  let gtagDone = false;
+  let fbqDone = false;
+  let attempts = 0;
 
-  gtag()?.('event', 'conversion', {
-    send_to: GOOGLE_ADS_SEND_TO,
-    value: LEAD_VALUE,
-    currency: CURRENCY,
-    transaction_id: eventId,
-  });
+  const tick = () => {
+    if (!gtagDone) {
+      const g = gtag();
+      if (g) {
+        g('event', 'conversion', {
+          send_to: GOOGLE_ADS_SEND_TO,
+          value: LEAD_VALUE,
+          currency: CURRENCY,
+          transaction_id: eventId,
+        });
+        gtagDone = true;
+      }
+    }
+    if (!fbqDone) {
+      const f = fbq();
+      if (f) {
+        f('track', 'Lead', { value: LEAD_VALUE, currency: CURRENCY }, { eventID: eventId });
+        fbqDone = true;
+      }
+    }
+    if ((gtagDone && fbqDone) || ++attempts >= MAX_ATTEMPTS) return;
+    setTimeout(tick, RETRY_MS);
+  };
 
-  fbq()?.('track', 'Lead', { value: LEAD_VALUE, currency: CURRENCY }, { eventID: eventId });
+  tick();
 }

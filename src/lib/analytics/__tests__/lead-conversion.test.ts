@@ -7,6 +7,7 @@
  *  - gtag and fbq share the same transaction_id / eventID per call
  *  - each channel is guarded independently (missing gtag or fbq does not throw)
  *  - source is reflected in the eventID
+ *  - retries until gtag/fbq load (afterInteractive race), then gives up cleanly
  */
 
 import { fireLeadConversion } from '../lead-conversion';
@@ -15,10 +16,16 @@ const mockGtag = jest.fn();
 const mockFbq = jest.fn();
 
 beforeEach(() => {
+  jest.useFakeTimers();
   (window as any).gtag = mockGtag;
   (window as any).fbq = mockFbq;
   mockGtag.mockClear();
   mockFbq.mockClear();
+});
+
+afterEach(() => {
+  jest.clearAllTimers();
+  jest.useRealTimers();
 });
 
 afterAll(() => {
@@ -74,5 +81,43 @@ describe('fireLeadConversion', () => {
     delete (window as any).fbq;
     expect(() => fireLeadConversion('tour_enquiry')).not.toThrow();
     expect(mockGtag).toHaveBeenCalledTimes(1);
+  });
+
+  it('retries until gtag/fbq become available (afterInteractive race)', () => {
+    delete (window as any).gtag;
+    delete (window as any).fbq;
+    fireLeadConversion('tour_enquiry');
+    // Not ready on the synchronous first attempt → nothing fired yet.
+    expect(mockGtag).not.toHaveBeenCalled();
+    expect(mockFbq).not.toHaveBeenCalled();
+    // TrackingScripts finishes loading a moment later.
+    (window as any).gtag = mockGtag;
+    (window as any).fbq = mockFbq;
+    jest.advanceTimersByTime(200); // > one retry interval (150ms)
+    expect(mockGtag).toHaveBeenCalledTimes(1);
+    expect(mockFbq).toHaveBeenCalledTimes(1);
+    // Still shares one id across channels after the retry.
+    expect(mockGtag.mock.calls[0][2].transaction_id).toBe(mockFbq.mock.calls[0][3].eventID);
+  });
+
+  it('fires each channel exactly once even if one loads later than the other', () => {
+    delete (window as any).fbq; // gtag ready, fbq not
+    fireLeadConversion('tour_enquiry');
+    expect(mockGtag).toHaveBeenCalledTimes(1); // gtag fired immediately
+    expect(mockFbq).not.toHaveBeenCalled();
+    (window as any).fbq = mockFbq; // fbq shows up later
+    jest.advanceTimersByTime(200);
+    expect(mockGtag).toHaveBeenCalledTimes(1); // not re-fired
+    expect(mockFbq).toHaveBeenCalledTimes(1);
+  });
+
+  it('gives up after ~3s without looping forever when nothing loads', () => {
+    delete (window as any).gtag;
+    delete (window as any).fbq;
+    fireLeadConversion('contact_page');
+    jest.advanceTimersByTime(10_000); // far beyond the retry budget
+    expect(mockGtag).not.toHaveBeenCalled();
+    expect(mockFbq).not.toHaveBeenCalled();
+    expect(jest.getTimerCount()).toBe(0); // no dangling/looping timer
   });
 });
