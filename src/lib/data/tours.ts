@@ -264,7 +264,7 @@ export const tours: Tour[] = [
     ],
     itinerary: [
       { day: 1, title: 'Auckland — Shanghai', description: 'Depart Auckland on your flight to Shanghai.', meals: [] },
-      { day: 2, title: 'Shanghai — Xi\'an', description: 'Make your own connecting flight to Xi\'an, the ancient starting point of the Silk Road, and begin your journey in one of China\'s most historic cities.', meals: [], accommodation: 'Crowne Plaza Xi\'an Weiyang or similar 5-star' },
+      { day: 2, title: 'Shanghai — Xi\'an', description: 'Take a connecting flight to Xi\'an, the ancient starting point of the Silk Road, and begin your journey in one of China\'s most historic cities.', meals: [], accommodation: 'Crowne Plaza Xi\'an Weiyang or similar 5-star' },
       { day: 3, title: 'Xi\'an — Terracotta Warriors', description: 'Visit the world-famous Terracotta Warriors of Emperor Qin Shi Huang, then continue to the Giant Wild Goose Pagoda, an important Buddhist landmark rich in history and culture.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Crowne Plaza Xi\'an Weiyang or similar 5-star' },
       { day: 4, title: 'Xi\'an — Free Day', description: 'Enjoy a free day to explore Xi\'an at your own pace — taste local specialties, go shopping, or join optional sightseeing activities.', meals: ['Breakfast'], accommodation: 'Crowne Plaza Xi\'an Weiyang or similar 5-star' },
       { day: 5, title: 'Xi\'an — Lanzhou', description: 'Travel by high-speed train to Lanzhou. On arrival, enjoy a hands-on Lanzhou hand-pulled beef noodle making experience followed by dinner.', meals: ['Breakfast', 'Dinner'], accommodation: 'Wyndham Garden Lanzhou or similar 5-star' },
