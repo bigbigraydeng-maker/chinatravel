@@ -14,6 +14,8 @@ import { chinaToursMeta } from '@/lib/data/seo-pages';
 import ChinaToursHero from './_components/ChinaToursHero';
 import UtmAwareBanner from './_components/UtmAwareBanner';
 import FlagshipTourGrid from './_components/FlagshipTourGrid';
+import CustomerTripPhotos from './_components/CustomerTripPhotos';
+import ReviewsHighlights from './_components/ReviewsHighlights';
 
 const HERO_POSTER =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg';
@@ -133,6 +135,13 @@ export default function ChinaToursPage() {
       />
 
       <TrustBar />
+
+      {/* Social proof stack: traveller photos → 5-star reviews → flagship tour grid.
+          Order is deliberate — show real Kiwi travellers + their words before the
+          product grid, so the four flagship cards land with social proof already
+          established. */}
+      <CustomerTripPhotos />
+      <ReviewsHighlights />
 
       {/* Flagship 4 itineraries — top funnel entry for Meta / Google winner ads */}
       <FlagshipTourGrid />

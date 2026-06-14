@@ -19,11 +19,16 @@ interface ChinaToursHeroProps {
   videoSrc?: string;
 }
 
+// Match the four flagship URLs surfaced lower on the page so the dropdown
+// doubles as the visitor's first signal of which tour they want — ops then
+// has tour-name continuity from form submit through to follow-up call.
+// "Still deciding — show me all 4" keeps the door open for browse-first leads.
 const TRAVEL_INTEREST_OPTIONS = [
-  'Premium China Journeys',
-  'Value China Discovery',
-  'Custom Itinerary',
-  'General Inquiry',
+  'Best of China — 15 Days',
+  "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
+  'Shanghai & Surroundings — 10 Days',
+  'Silk Road Discovery — 18 Days',
+  'Still deciding — show me all 4',
 ];
 
 export default function ChinaToursHero({
