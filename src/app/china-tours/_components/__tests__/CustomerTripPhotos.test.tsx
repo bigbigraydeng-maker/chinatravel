@@ -29,10 +29,29 @@ describe('CustomerTripPhotos', () => {
     expect(tiles.length).toBe(6);
   });
 
-  it('each tile carries a reviewer name + NZ location attribution', () => {
+  it('each tile carries a reviewer attribution using "Quote from X · {city}, NZ" — the explicit phrasing keeps it clear the quote is from a verified reviewer, not necessarily the person in the photo', () => {
     render(<CustomerTripPhotos />);
-    expect(screen.getByText(/Claire & Tom Mackenzie · Wellington, NZ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Robert & Anne Murray · Hamilton, NZ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Fiona Hewitt · Auckland, NZ/i)).toBeInTheDocument();
+    expect(screen.getByText(/Quote from Claire & Tom Mackenzie · Wellington, NZ/i)).toBeInTheDocument();
+    expect(screen.getByText(/Quote from Fiona Hewitt · Auckland, NZ/i)).toBeInTheDocument();
+    expect(screen.getByText(/Quote from Liz & Peter Armstrong · Christchurch, NZ/i)).toBeInTheDocument();
+  });
+
+  it('every photo URL comes from ME visual-assets bucket (not chinatravel tour-images)', () => {
+    // Pinning the data source: switching back to the chinatravel tour-images
+    // bucket would silently regress the "ME-curated" promise — fail loudly.
+    render(<CustomerTripPhotos />);
+    const imgs = document.querySelectorAll('figure img');
+    expect(imgs.length).toBe(6);
+    imgs.forEach((img) => {
+      const src = img.getAttribute('src') || '';
+      expect(src).toMatch(/glbdnayojixmexgofbsd\.supabase\.co\/storage\/.*\/visual-assets\//);
+    });
+  });
+
+  it('section intro discloses the photo/quote pairing model (no false 1:1 claim)', () => {
+    render(<CustomerTripPhotos />);
+    expect(
+      screen.getByText(/photos shared by CTS travellers, paired with quotes from our verified NZ reviews/i)
+    ).toBeInTheDocument();
   });
 });
