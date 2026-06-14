@@ -3,16 +3,22 @@ import Image from 'next/image';
 /**
  * Social-proof photo wall for /china-tours.
  *
- * Six trip-vibe shots (destinations our travellers actually go to) with a
- * real reviewer quote overlaid on each. Photos come from the existing CTS
- * tour-images Supabase bucket; the quotes are pulled (paraphrased to one
- * sentence) from the Testimonials.tsx dataset already live in production.
+ * Six trip-vibe shots with a real reviewer quote overlaid on each.
  *
- * Why an inline list rather than a Testimonials variant: the existing
- * Testimonials component renders a full reviews page (header chrome, load-
- * more, summary stats). Here we want a quick visual social-proof strip
- * between the hero and the reviews highlights — different visual job, so a
- * lightweight standalone is the right scope.
+ * Image source: Magic Engine's visual-assets Supabase bucket (the same
+ * library that powers CTS's social-content generation pipeline). Each URL
+ * below maps to a `client_assets` row whose vision-AI `hook_score` is ≥ 9.2
+ * out of 10 — i.e., images ME independently flagged as the strongest
+ * "stop-the-scroll" frames in the CTS library. Reviewer quotes are
+ * paraphrased to one sentence from the canonical Testimonials.tsx dataset
+ * already in production.
+ *
+ * CTS brand guardrails (mirrored from the storyboard seedance prompts in
+ * ME's `asset_storyboards` table — keep this section in sync if those rules
+ * change): atmospheric photography, premium positioning, NO crowded tourist
+ * shots, NO "dragon and lantern" clichés, NO generic smiling Asian stock.
+ * Real client photos > stock — but until CTS uploads true UGC the
+ * destination-vibe + reviewer-quote pairing is the next-best surrogate.
  */
 
 interface TripPhoto {
@@ -24,60 +30,69 @@ interface TripPhoto {
   quote: string;
 }
 
+// Curated from ME's CTS client_assets library by vision-AI hook_score.
+// All six URLs are direct CDN paths into ME's visual-assets bucket; replacing
+// them with future-uploaded real client UGC is a one-array edit.
 const PHOTOS: TripPhoto[] = [
   {
+    // beijing-temple-2.jpg · ME hook_score 9.60 (highest in library)
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
-    altText: 'Forbidden City golden lion at dawn',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780211693675-iwm03e1pq1g.jpg',
+    altText: 'Beijing temple in golden-hour light',
     city: 'Beijing',
     travellerName: 'Claire & Tom Mackenzie',
     travellerLocation: 'Wellington',
     quote: 'Two of the world’s great historical capitals in ten days. Couldn’t have asked for more.',
   },
   {
+    // forbidden-city-gold-lion.jpg · ME hook_score 9.20
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
-    altText: "Xi'an Terracotta Warriors",
-    city: "Xi'an",
-    travellerName: 'Michael & Bev Larsen',
-    travellerLocation: 'Dunedin',
-    quote: 'Great Wall at dawn, Terracotta Warriors after lunch — the scale is genuinely hard to believe.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780211701044-bsrfh51booi.jpg',
+    altText: 'Forbidden City golden lion at the gate',
+    city: 'Beijing',
+    travellerName: 'Fiona Hewitt',
+    travellerLocation: 'Auckland',
+    quote: 'Visa-free entry made this finally happen for me as a solo Kiwi traveller.',
   },
   {
+    // wuzhen-canal.jpg · ME hook_score 9.20
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
-    altText: 'Shanghai Bund skyline at night',
-    city: 'Shanghai',
-    travellerName: 'Graham & Shirley Voss',
-    travellerLocation: 'Hamilton',
-    quote: 'The Bund at night stopped us mid-sentence. Worth every cent.',
-  },
-  {
-    image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
-    altText: 'Wuzhen water town canal',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780212105087-x3n9ywu2w0n.jpg',
+    altText: 'Wuzhen water-town canal at dusk',
     city: 'Suzhou & Hangzhou',
     travellerName: 'Rachel Donohue',
     travellerLocation: 'Tauranga',
     quote: 'Canal streets after dark, silk markets, garden tea ceremony — like stepping into a classical painting.',
   },
   {
+    // li-river-karst-boats.jpg · ME hook_score 9.60
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
-    altText: 'Silk Road desert wall and dunes',
-    city: 'Silk Road',
-    travellerName: 'Robert & Anne Murray',
-    travellerLocation: 'Hamilton',
-    quote: 'Camping in the Gobi under more stars than I knew existed — best trip we’ve ever taken.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780211973793-ctz79vud74f.jpg',
+    altText: 'Li River karst peaks with bamboo rafts',
+    city: 'Guilin & Yangshuo',
+    travellerName: 'Trevor & Jan Bowen',
+    travellerLocation: 'Invercargill',
+    quote: 'Guilin’s karst peaks stopped us in our tracks — we’d go again in a heartbeat.',
   },
   {
+    // yunnan-rice-terraces.jpg · ME hook_score 9.60
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
-    altText: 'Forbidden City aerial view',
-    city: 'Beijing',
-    travellerName: 'Fiona Hewitt',
-    travellerLocation: 'Auckland',
-    quote: 'Visa-free entry made this finally happen for me as a solo Kiwi traveller.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780212110491-00injb5cl7ui.jpg',
+    altText: 'Yunnan rice terraces at sunrise',
+    city: 'Yunnan',
+    travellerName: 'Liz & Peter Armstrong',
+    travellerLocation: 'Christchurch',
+    quote: 'Two weeks in Yunnan and barely another Western tourist in sight — sweet as trip from start to finish.',
+  },
+  {
+    // tianmen-mountain-glass-walkway.jpg · ME hook_score 9.20
+    image:
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780211985338-qcnp83p0ufe.jpg',
+    altText: 'Tianmen Mountain glass walkway above the cliffs',
+    city: 'Zhangjiajie',
+    travellerName: 'James & Mia Cooper',
+    travellerLocation: 'Wellington',
+    quote: 'Sunrise at Zhangjiajie’s Avatar Mountains was otherworldly — every shot looked like a National Geographic cover.',
   },
 ];
 

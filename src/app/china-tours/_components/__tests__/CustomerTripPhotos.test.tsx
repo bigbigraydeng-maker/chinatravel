@@ -32,7 +32,19 @@ describe('CustomerTripPhotos', () => {
   it('each tile carries a reviewer name + NZ location attribution', () => {
     render(<CustomerTripPhotos />);
     expect(screen.getByText(/Claire & Tom Mackenzie · Wellington, NZ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Robert & Anne Murray · Hamilton, NZ/i)).toBeInTheDocument();
     expect(screen.getByText(/Fiona Hewitt · Auckland, NZ/i)).toBeInTheDocument();
+    expect(screen.getByText(/Liz & Peter Armstrong · Christchurch, NZ/i)).toBeInTheDocument();
+  });
+
+  it('every photo URL comes from ME visual-assets bucket (not chinatravel tour-images)', () => {
+    // Pinning the data source: switching back to the chinatravel tour-images
+    // bucket would silently regress the "ME-curated" promise — fail loudly.
+    render(<CustomerTripPhotos />);
+    const imgs = document.querySelectorAll('figure img');
+    expect(imgs.length).toBe(6);
+    imgs.forEach((img) => {
+      const src = img.getAttribute('src') || '';
+      expect(src).toMatch(/glbdnayojixmexgofbsd\.supabase\.co\/storage\/.*\/visual-assets\//);
+    });
   });
 });
