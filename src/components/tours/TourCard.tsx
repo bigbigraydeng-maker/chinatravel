@@ -33,7 +33,7 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
 
   return (
     <Link href={detailHref} className="group block min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-lg" aria-label={`View ${tour.name} – ${tier} tour details`}>
-      <div className="h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
+      <div className="min-h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
         {/* Image section — fixed height */}
         <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-warm-100">
           <Image
@@ -46,6 +46,7 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
             loading="eager"
             decoding="async"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           <div className="absolute top-4 left-4 z-[1]">
             <span
               className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${tierClass}`}
@@ -56,14 +57,14 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
         </div>
 
         {/* Content section — flex grow to fill space */}
-        <div className="flex flex-col flex-1 p-5 overflow-hidden">
+        <div className="flex flex-col flex-1 p-5">
           {/* Title */}
           <h3 className="text-lg font-serif font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
             {tour.name}
           </h3>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2">{tour.shortDescription}</p>
+          <p className="text-gray-600 text-sm mb-3 line-clamp-3">{tour.shortDescription}</p>
 
           {/* Duration + Location */}
           <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
