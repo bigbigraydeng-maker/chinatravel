@@ -128,20 +128,34 @@ export default function ChinaToursHero({
       id="china-tours-hero"
       className="relative min-h-[640px] md:min-h-[680px] overflow-hidden text-white"
     >
-      {/* Video background with poster fallback. Only render the <source> when a
-          videoSrc is provided — a stale src would fire a 404 on every visit. */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover z-0"
-        poster={posterImage}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden
-      >
-        {videoSrc ? <source src={videoSrc} type="video/mp4" /> : null}
-      </video>
+      {/*
+        Mobile-only video background: the supplied winner-ad cut is 9:16 vertical,
+        so it tiles a portrait hero cleanly. On desktop (md+) we hide the <video>
+        and let the poster image carry the hero — a vertical clip stretched into
+        a horizontal viewport via object-cover would crop most of the frame, so a
+        still landscape poster looks better there. Swap in a 16:9 cut later and
+        drop `md:hidden` to enable video everywhere.
+      */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={posterImage}
+          alt=""
+          className="h-full w-full object-cover"
+          aria-hidden
+        />
+        <video
+          className="md:hidden absolute inset-0 h-full w-full object-cover"
+          poster={posterImage}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        >
+          {videoSrc ? <source src={videoSrc} type="video/mp4" /> : null}
+        </video>
+      </div>
       <div className="absolute inset-0 bg-black/55 z-[1]" aria-hidden />
 
       <div className="relative z-[2] container mx-auto px-4 py-16 md:py-20 grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
