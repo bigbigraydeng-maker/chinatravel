@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
@@ -9,12 +8,23 @@ import RelatedGuides from '@/components/seo/RelatedGuides';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Icon } from '@/components/ui/Icon';
 import { getAllChinaTours } from '@/lib/data/tours';
-import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateCollectionPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursMeta } from '@/lib/data/seo-pages';
+import ChinaToursHero from './_components/ChinaToursHero';
+import UtmAwareBanner from './_components/UtmAwareBanner';
+import FlagshipTourGrid from './_components/FlagshipTourGrid';
 
-const siteUrl = getSiteUrl();
+const HERO_POSTER =
+  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg';
+
+/**
+ * Hero background video — uncomment the path once the winner-ad cut is uploaded
+ * to `chinatravel/public/videos/`. Leaving it undefined renders the poster only
+ * (no 404 noise for Meta / Google Lighthouse audits).
+ */
+const HERO_VIDEO: string | undefined = undefined;
+// const HERO_VIDEO: string | undefined = '/videos/china-tours-hero.mp4';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -117,14 +127,21 @@ export default function ChinaToursPage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <HubHero
+      {/* UTM-aware welcome banner (only renders when arriving from meta/google ads) */}
+      <UtmAwareBanner />
+
+      {/* Hero — winner video background (poster fallback) + inline lead form */}
+      <ChinaToursHero
         title={chinaToursMeta.h1}
         subtitle={chinaToursMeta.heroSubtitle}
-        backgroundImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
+        posterImage={HERO_POSTER}
+        videoSrc={HERO_VIDEO}
       />
 
       <TrustBar />
+
+      {/* Flagship 4 itineraries — top funnel entry for Meta / Google winner ads */}
+      <FlagshipTourGrid />
 
       {/* Main Content */}
       <div className="bg-white">

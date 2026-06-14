@@ -48,6 +48,17 @@ describe('fireLeadConversion', () => {
     );
   });
 
+  it('accepts the china_tours_hub source and reflects it in the eventID', () => {
+    fireLeadConversion('china_tours_hub');
+    expect(mockGtag).toHaveBeenCalledTimes(1);
+    const gtagCall = mockGtag.mock.calls[0];
+    expect(gtagCall[2].transaction_id).toMatch(/^cts-china_tours_hub-\d+$/);
+    expect(mockFbq).toHaveBeenCalledTimes(1);
+    const fbqEventId = mockFbq.mock.calls[0][3].eventID;
+    expect(fbqEventId).toMatch(/^cts-china_tours_hub-\d+$/);
+    expect(fbqEventId).toBe(gtagCall[2].transaction_id);
+  });
+
   it('fires the Meta Pixel Lead event with value + currency', () => {
     fireLeadConversion('tour_enquiry');
     expect(mockFbq).toHaveBeenCalledTimes(1);

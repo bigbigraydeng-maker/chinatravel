@@ -22,7 +22,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, email, phone, travel_interest, message } = body;
 
-    if (!name || !email || !travel_interest || !message) {
+    // Name + interest + message are required. Email OR phone is enough so that
+    // landing-page hero forms (e.g. /china-tours) accept phone-only enquiries
+    // from older travellers who prefer to be called.
+    if (!name || !travel_interest || !message || (!email && !phone)) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
@@ -37,7 +40,7 @@ export async function POST(req: NextRequest) {
   <h1 style="font-size:18px;">New message — Contact form (CTS website)</h1>
   <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
     <tr><td style="font-weight:bold;">Name</td><td>${escapeHtml(String(name))}</td></tr>
-    <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(String(email))}</td></tr>
+    <tr><td style="font-weight:bold;">Email</td><td>${email ? escapeHtml(String(email)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Phone</td><td>${phone ? escapeHtml(String(phone)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Travel interest</td><td>${escapeHtml(String(travel_interest))}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
@@ -51,7 +54,7 @@ export async function POST(req: NextRequest) {
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
       to: notifyTo,
-      replyTo: email,
+      ...(email ? { replyTo: email } : {}),
       subject: `Contact form: ${travel_interest} — ${name}`,
       html,
     });
