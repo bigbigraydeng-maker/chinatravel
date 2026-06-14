@@ -18,13 +18,7 @@ import FlagshipTourGrid from './_components/FlagshipTourGrid';
 const HERO_POSTER =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg';
 
-/**
- * Hero background video — uncomment the path once the winner-ad cut is uploaded
- * to `chinatravel/public/videos/`. Leaving it undefined renders the poster only
- * (no 404 noise for Meta / Google Lighthouse audits).
- */
-const HERO_VIDEO: string | undefined = undefined;
-// const HERO_VIDEO: string | undefined = '/videos/china-tours-hero.mp4';
+const HERO_VIDEO: string | undefined = '/videos/china-tours-hero.mp4';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
