@@ -5,10 +5,18 @@ import { useEffect, useState } from 'react';
 /**
  * UTM-aware welcome banner for /china-tours.
  *
- * Triggers when the visitor arrives with `utm_source=meta` (incl. facebook /
- * instagram) or `utm_source=google` — i.e., paid social or Google Ads. Reads
- * the URL with vanilla `URLSearchParams` (not `useSearchParams`) so the
- * component never forces a Suspense boundary on the parent page.
+ * Triggers when the visitor arrives with `utm_source` from Meta family
+ * (meta / facebook / instagram) or `utm_source=google` — i.e., paid social
+ * or Google Ads. Reads the URL with vanilla `URLSearchParams` (not
+ * `useSearchParams`) so the component never forces a Suspense boundary on
+ * the parent page.
+ *
+ * Copy variant: when `utm_campaign` matches /visa/i (e.g.
+ * `visa-free-2026`, `nz-passport-visa`) the banner swaps to a visa-pain
+ * message. This lets Google/Meta ad sets that bid on visa-intent keywords
+ * land on the same /china-tours LP but get a campaign-relevant headline —
+ * recommended in the "unified LP + UTM personalisation" strategy instead
+ * of building a separate /china-visa-free-tours page.
  *
  * DESIGN: the banner intentionally reads ONLY the current URL — it does NOT
  * fall back to `getStoredUtmParams()`. This banner welcomes the *landing*
@@ -19,50 +27,89 @@ import { useEffect, useState } from 'react';
 const META_SOURCES = new Set(['meta', 'facebook', 'instagram', 'fb', 'ig']);
 const GOOGLE_SOURCES = new Set(['google', 'google_ads', 'adwords']);
 
-function readUtmSource(): string | null {
-  if (typeof window === 'undefined') return null;
+interface UtmReading {
+  source: string | null;
+  campaign: string | null;
+}
+
+function readUtm(): UtmReading {
+  if (typeof window === 'undefined') return { source: null, campaign: null };
   try {
     const url = new URL(window.location.href);
-    const raw =
-      url.searchParams.get('utm_source') ??
-      (window.location.hash
-        ? new URLSearchParams(window.location.hash.slice(1)).get('utm_source')
-        : null);
-    return raw ? raw.toLowerCase().trim() : null;
+    const hashParams = window.location.hash
+      ? new URLSearchParams(window.location.hash.slice(1))
+      : null;
+    const pick = (key: string) =>
+      url.searchParams.get(key) ?? hashParams?.get(key) ?? null;
+    const norm = (v: string | null) => (v ? v.toLowerCase().trim() : null);
+    return {
+      source: norm(pick('utm_source')),
+      campaign: norm(pick('utm_campaign')),
+    };
   } catch {
-    return null;
+    return { source: null, campaign: null };
   }
 }
 
+type Variant = 'visa' | 'default';
+
+interface BannerCopy {
+  message: React.ReactNode;
+  cta: string;
+}
+
+const COPY: Record<Variant, BannerCopy> = {
+  visa: {
+    message: (
+      <>
+        <span className="font-semibold">No embassy queues</span> · Visa-free
+        for NZ passport holders until 31 Dec 2026 · Talk to a specialist
+        before the window closes.
+      </>
+    ),
+    cta: 'Talk to a specialist →',
+  },
+  default: {
+    message: (
+      <>
+        <span className="font-semibold">Welcome from our China campaign</span>
+        {' '}— limited October 2026 departures from NZ. Talk to a specialist today.
+      </>
+    ),
+    cta: 'Request a callback →',
+  },
+};
+
 export default function UtmAwareBanner() {
-  const [show, setShow] = useState(false);
+  const [variant, setVariant] = useState<Variant | null>(null);
 
   useEffect(() => {
-    const source = readUtmSource();
+    const { source, campaign } = readUtm();
     if (!source) return;
-    if (META_SOURCES.has(source) || GOOGLE_SOURCES.has(source)) {
-      setShow(true);
-    }
+    const isPaidSource = META_SOURCES.has(source) || GOOGLE_SOURCES.has(source);
+    if (!isPaidSource) return;
+    // utm_campaign matches /visa/ (e.g. `visa-free-2026`, `nz-visa-pain`)
+    // → swap to visa-specific copy. Otherwise fall back to default welcome.
+    setVariant(campaign && /visa/.test(campaign) ? 'visa' : 'default');
   }, []);
 
-  if (!show) return null;
+  if (!variant) return null;
+  const copy = COPY[variant];
 
   return (
     <div
       role="region"
       aria-label="Campaign welcome message"
+      data-variant={variant}
       className="bg-amber-50 border-b border-amber-200"
     >
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p className="text-sm sm:text-base text-amber-900">
-          <span className="font-semibold">Welcome from our China campaign</span> — limited
-          October 2026 departures from NZ. Talk to a specialist today.
-        </p>
+        <p className="text-sm sm:text-base text-amber-900">{copy.message}</p>
         <a
           href="#china-tours-hero"
           className="inline-flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors whitespace-nowrap"
         >
-          Request a callback →
+          {copy.cta}
         </a>
       </div>
     </div>
