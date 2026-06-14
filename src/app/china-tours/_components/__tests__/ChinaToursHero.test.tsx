@@ -52,6 +52,22 @@ describe('ChinaToursHero', () => {
     expect(screen.getByRole('button', { name: /Request a callback/i })).toBeInTheDocument();
   });
 
+  it('dropdown surfaces the four flagship tours + a fallback option', () => {
+    render(<ChinaToursHero {...RENDER_PROPS} />);
+    const select = screen.getByRole('combobox') as HTMLSelectElement;
+    const labels = Array.from(select.options).map((o) => o.value);
+    expect(labels).toEqual(
+      expect.arrayContaining([
+        'Best of China — 15 Days',
+        "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
+        'Shanghai & Surroundings — 10 Days',
+        'Silk Road Discovery — 18 Days',
+        'Still deciding — show me all 4',
+      ])
+    );
+    expect(labels).toHaveLength(5);
+  });
+
   it('blocks submit and surfaces an error when both email and phone are empty', async () => {
     render(<ChinaToursHero {...RENDER_PROPS} />);
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada Lovelace' } });
