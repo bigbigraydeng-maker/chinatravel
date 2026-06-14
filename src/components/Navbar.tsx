@@ -136,7 +136,14 @@ const Navbar = () => {
   const [mobileExpandedDest, setMobileExpandedDest] = useState<string | null>(null);
 
   return (
-    <header className="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-warm-200/50">
+    // `top: var(--vfb-h, 0px)` lets the sticky VisaFreeBanner stack above
+    // the navbar without either obscuring the other. VisaFreeBanner sets the
+    // CSS var to its measured height on mount; when dismissed or absent the
+    // var falls back to 0 and the navbar sits flush against the viewport top.
+    <header
+      className="bg-white/95 backdrop-blur-md shadow-sm sticky z-50 border-b border-warm-200/50"
+      style={{ top: 'var(--vfb-h, 0px)' }}
+    >
       {/* Loading Indicator */}
       {isNavigating && (
         <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary via-red-500 to-primary animate-pulse w-full"></div>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Icon } from '@/components/ui/Icon';
 
 /**
@@ -47,6 +47,7 @@ const PRE_HYDRATION_SCRIPT = `
 
 export default function VisaFreeBanner() {
   const [hidden, setHidden] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   // Mirror pre-hydration script's read on mount, so React knows current state
   // (otherwise re-renders would un-hide the banner).
@@ -59,6 +60,33 @@ export default function VisaFreeBanner() {
       // localStorage blocked — banner stays visible (acceptable degradation)
     }
   }, []);
+
+  // Publish the banner's rendered height as the `--vfb-h` CSS variable so the
+  // sticky <Navbar> can offset itself (`top: var(--vfb-h, 0px)`). Banner is
+  // also sticky top-0 — with the right offset the two stack cleanly without
+  // overlap. Re-measure on resize since mobile may wrap to a 2nd row.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const root = document.documentElement;
+    if (hidden) {
+      root.style.setProperty('--vfb-h', '0px');
+      return;
+    }
+    const el = bannerRef.current;
+    if (!el) return;
+    const publish = () => {
+      root.style.setProperty('--vfb-h', `${el.offsetHeight}px`);
+    };
+    publish();
+    const ro = new ResizeObserver(publish);
+    ro.observe(el);
+    window.addEventListener('orientationchange', publish);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener('orientationchange', publish);
+      root.style.setProperty('--vfb-h', '0px');
+    };
+  }, [hidden]);
 
   const handleDismiss = () => {
     try {
@@ -77,7 +105,8 @@ export default function VisaFreeBanner() {
       />
       <div
         id={ELEMENT_ID}
-        className="bg-gradient-to-r from-primary via-primary to-secondary text-white"
+        ref={bannerRef}
+        className="sticky top-0 z-[60] bg-gradient-to-r from-primary via-primary to-secondary text-white"
         role="region"
         aria-label="China visa-free policy for New Zealand passport holders"
         style={hidden ? { display: 'none' } : undefined}

@@ -3,16 +3,23 @@ import Image from 'next/image';
 /**
  * Social-proof photo wall for /china-tours.
  *
- * Six trip-vibe shots (destinations our travellers actually go to) with a
- * real reviewer quote overlaid on each. Photos come from the existing CTS
- * tour-images Supabase bucket; the quotes are pulled (paraphrased to one
- * sentence) from the Testimonials.tsx dataset already live in production.
+ * Image source: 5 frames from ME's CTS visual-assets library that originated
+ * as WeChat photos saved by CTS / FDE from real traveller chats (filenames
+ * like `微信图片_20260421095738_*.jpg`). Each was vision-AI scored at
+ * hook ≥ 7.2 / 10 in the ME `client_assets` table. The 6th tile is a
+ * higher-scoring landscape from the same library for visual contrast.
  *
- * Why an inline list rather than a Testimonials variant: the existing
- * Testimonials component renders a full reviews page (header chrome, load-
- * more, summary stats). Here we want a quick visual social-proof strip
- * between the hero and the reviews highlights — different visual job, so a
- * lightweight standalone is the right scope.
+ * Reviewer attribution: each tile shows a paraphrased quote + named reviewer
+ * from the canonical Testimonials.tsx dataset. The photo and the quoted
+ * reviewer are NOT a verified 1:1 match — the section header makes this
+ * explicit ("photos shared by travellers · quotes from verified NZ
+ * reviews"), so the layout reads as a mosaic of social proof, not a
+ * mis-claim that a specific photo belongs to a specific reviewer.
+ *
+ * CTS brand guardrails (mirrored from ME `asset_storyboards` seedance
+ * prompts — keep in sync): atmospheric photography, premium positioning,
+ * NO crowded tourist shots, NO "dragon and lantern" clichés, NO generic
+ * smiling-Asian stock. Real client photos > stock.
  */
 
 interface TripPhoto {
@@ -24,60 +31,69 @@ interface TripPhoto {
   quote: string;
 }
 
+// 5 real WeChat-sourced traveller photos + 1 ME landscape; all from ME
+// visual-assets bucket (client_id c0000000…). Replace freely when CTS
+// uploads fresh UGC — same array shape.
 const PHOTOS: TripPhoto[] = [
   {
+    // 微信图片_20260421095738_571_792.jpg · ME hook 9.20
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
-    altText: 'Forbidden City golden lion at dawn',
-    city: 'Beijing',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780187356478-4kmuaykng7d.jpg',
+    altText: 'CTS traveller snapshot from the road',
+    city: 'On tour',
     travellerName: 'Claire & Tom Mackenzie',
     travellerLocation: 'Wellington',
     quote: 'Two of the world’s great historical capitals in ten days. Couldn’t have asked for more.',
   },
   {
+    // 微信图片_20260421095749_573_792.jpg · ME hook 9.20
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
-    altText: "Xi'an Terracotta Warriors",
-    city: "Xi'an",
-    travellerName: 'Michael & Bev Larsen',
-    travellerLocation: 'Dunedin',
-    quote: 'Great Wall at dawn, Terracotta Warriors after lunch — the scale is genuinely hard to believe.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780187359197-le0g0lz42c.jpg',
+    altText: 'CTS traveller photo · share from China',
+    city: 'On tour',
+    travellerName: 'Fiona Hewitt',
+    travellerLocation: 'Auckland',
+    quote: 'Visa-free entry made this finally happen for me as a solo Kiwi traveller.',
   },
   {
+    // 微信图片_20260421095817_577_792.jpg · ME hook 8.80
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
-    altText: 'Shanghai Bund skyline at night',
-    city: 'Shanghai',
-    travellerName: 'Graham & Shirley Voss',
-    travellerLocation: 'Hamilton',
-    quote: 'The Bund at night stopped us mid-sentence. Worth every cent.',
-  },
-  {
-    image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
-    altText: 'Wuzhen water town canal',
-    city: 'Suzhou & Hangzhou',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780187362253-iu81ezoko.jpg',
+    altText: 'CTS traveller snapshot · evening light in China',
+    city: 'On tour',
     travellerName: 'Rachel Donohue',
     travellerLocation: 'Tauranga',
     quote: 'Canal streets after dark, silk markets, garden tea ceremony — like stepping into a classical painting.',
   },
   {
+    // 微信图片_20260421095741_572_792.jpg · ME middle 7.90
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
-    altText: 'Silk Road desert wall and dunes',
-    city: 'Silk Road',
-    travellerName: 'Robert & Anne Murray',
-    travellerLocation: 'Hamilton',
-    quote: 'Camping in the Gobi under more stars than I knew existed — best trip we’ve ever taken.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780187357600-xos0kptxk2.jpg',
+    altText: 'CTS traveller candid · group moment in China',
+    city: 'On tour',
+    travellerName: 'Trevor & Jan Bowen',
+    travellerLocation: 'Invercargill',
+    quote: 'Guilin’s karst peaks stopped us in our tracks — we’d go again in a heartbeat.',
   },
   {
+    // 微信图片_20260421095751_574_792.jpg · ME hook 7.20
     image:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
-    altText: 'Forbidden City aerial view',
-    city: 'Beijing',
-    travellerName: 'Fiona Hewitt',
-    travellerLocation: 'Auckland',
-    quote: 'Visa-free entry made this finally happen for me as a solo Kiwi traveller.',
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780187360383-6ctn5cgku4q.jpg',
+    altText: 'CTS traveller photo · scene from the trip',
+    city: 'On tour',
+    travellerName: 'Liz & Peter Armstrong',
+    travellerLocation: 'Christchurch',
+    quote: 'Two weeks in Yunnan and barely another Western tourist in sight — sweet as trip from start to finish.',
+  },
+  {
+    // li-river-karst-boats.jpg · ME hook 9.60 (landscape contrast tile)
+    image:
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/c0000000-0000-0000-0000-000000000000/assets/1780211973793-ctz79vud74f.jpg',
+    altText: 'Li River karst peaks with bamboo rafts',
+    city: 'Guilin & Yangshuo',
+    travellerName: 'James & Mia Cooper',
+    travellerLocation: 'Wellington',
+    quote: 'Sunrise at Zhangjiajie’s Avatar Mountains was otherworldly — every shot looked like a National Geographic cover.',
   },
 ];
 
@@ -93,8 +109,8 @@ export default function CustomerTripPhotos() {
             Stories from the road
           </h2>
           <p className="text-lg text-gray-700">
-            A snapshot of where our New Zealand travellers have been this year — and what
-            they told us when they came back.
+            A snapshot from our recent New Zealand departures — photos shared by CTS
+            travellers, paired with quotes from our verified NZ reviews.
           </p>
         </div>
 
@@ -134,7 +150,7 @@ export default function CustomerTripPhotos() {
                   &ldquo;{p.quote}&rdquo;
                 </p>
                 <p className="text-[11px] text-white/80">
-                  {p.travellerName} · {p.travellerLocation}, NZ
+                  Quote from {p.travellerName} · {p.travellerLocation}, NZ
                 </p>
               </figcaption>
             </figure>
