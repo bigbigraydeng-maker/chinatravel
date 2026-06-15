@@ -523,8 +523,8 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
   {
     id: 'lt-b4',
     slug: 'shanghai-10-days-itinerary',
-    title: '10 Days in Shanghai & Surroundings: NZ First-Timer\'s Guide',
-    excerpt: 'What to see, where to go, and how to pace 10 days across Shanghai and the Jiangnan water towns — a practical guide for New Zealand travellers visiting this region for the first time.',
+    title: '10-Day Shanghai & Jiangnan Itinerary for NZ Travellers (2026)',
+    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $3,399. By CTS Tours, NZ\'s China specialists since 1928.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
@@ -533,6 +533,8 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
     publishedAt: '2026-04-25',
     readTime: '7 min read',
     content: `
+> **Quick answer:** A 10-day Shanghai & Jiangnan itinerary covers Shanghai (2 days), Suzhou (2 days), Wuxi & Lake Tai (1–2 days), Hangzhou (2 days), and a final Shanghai day before flying home. Best in October (warm days, clear skies). From NZD $3,399 per person twin share with CTS Tours, including international airfares from Auckland.
+
 Ten days in Shanghai and the surrounding Jiangnan region gives you enough time to do this part of China properly — not rushing, not skipping things, with room to follow your own interests on the free days built into the itinerary.
 
 Here's how CTS Tours structures 10 days across this region, and the reasoning behind the choices.
