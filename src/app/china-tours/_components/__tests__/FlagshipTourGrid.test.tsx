@@ -60,4 +60,31 @@ describe('FlagshipTourGrid', () => {
     expect(screen.getAllByText(/18 Days/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/NZD/i).length).toBeGreaterThanOrEqual(4);
   });
+
+  it('every price block shows an explicit "From" label so visitors read the price as a starting point, not a final cost', () => {
+    render(<FlagshipTourGrid />);
+    const labels = screen.getAllByText(/^From$/);
+    expect(labels.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('strips "From " prefix and " per person" suffix from tour.price so each card displays a clean "NZD $X,XXX"', () => {
+    render(<FlagshipTourGrid />);
+    const text = document.body.textContent ?? '';
+    // The raw tours.ts value for essentials is "From NZD $3,880 per person" —
+    // it must surface as "NZD $3,880" (no leading "From", no trailing suffix).
+    expect(text).toMatch(/NZD \$3,880/);
+    expect(text).not.toMatch(/From NZD \$3,880 per person/);
+    // The raw value for shanghai-surroundings is "NZD $3,399 per person" —
+    // also must drop the " per person" suffix.
+    expect(text).toMatch(/NZD \$3,399/);
+    expect(text).not.toMatch(/NZD \$3,399 per person/);
+  });
+
+  it('shows a "Next · {Mon YYYY}" chip on cards that have a scheduled departure', () => {
+    render(<FlagshipTourGrid />);
+    // At least one card must surface the chip (Oct / Nov / Mar etc. — depends
+    // on which flagship has departureDates populated at test time).
+    const chips = screen.getAllByText(/^Next · [A-Z][a-z]{2} \d{4}$/);
+    expect(chips.length).toBeGreaterThanOrEqual(1);
+  });
 });

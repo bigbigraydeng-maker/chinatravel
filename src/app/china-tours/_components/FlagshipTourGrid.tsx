@@ -33,6 +33,32 @@ const FLAGSHIP_TOURS: Array<{
   },
 ];
 
+/**
+ * Strip the "From " prefix and " per person" suffix so prices render with
+ * consistent visual weight across cards. Stays a no-op for clean strings.
+ *   "From NZD $3,480"           → "NZD $3,480"
+ *   "NZD $3,399 per person"     → "NZD $3,399"
+ *   "From NZD $3,880 per person"→ "NZD $3,880"
+ */
+function formatPrice(raw: string | undefined): string | null {
+  if (!raw) return null;
+  return raw.replace(/^From\s+/i, '').replace(/\s+per person$/i, '').trim();
+}
+
+/**
+ * Parse the first scheduled departure into a compact "Mon YYYY" chip.
+ *   "13 October 2026" → "Oct 2026"
+ *   "3 November 2026" → "Nov 2026"
+ * Returns null when no departure is scheduled so the chip simply hides.
+ */
+function nextDepartureChip(t?: Tour): string | null {
+  const first = t?.departureDates?.[0];
+  if (!first) return null;
+  const m = first.match(/([A-Za-z]+)\s+(\d{4})/);
+  if (!m) return null;
+  return `${m[1].slice(0, 3)} ${m[2]}`;
+}
+
 export default function FlagshipTourGrid() {
   const toursBySlug = new Map<string, Tour>(
     getAllChinaTours().map((t) => [t.slug, t])
@@ -102,11 +128,28 @@ export default function FlagshipTourGrid() {
                 <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                   {tour?.shortDescription ?? 'Talk to our specialists for the latest dates and pricing.'}
                 </p>
-                <div className="mt-auto flex items-center justify-between">
-                  <span className="text-sm font-semibold text-gray-900">{tour?.price ?? 'Talk to us'}</span>
-                  <span className="text-sm font-bold text-primary group-hover:translate-x-0.5 transition-transform">
-                    View tour →
-                  </span>
+                {/* Price block — explicit "From" label + large price + next-
+                    departure chip. Pricing transparency lifts hub-page CTR
+                    materially vs the previous one-line "$3,480" plus arrow. */}
+                <div className="mt-auto pt-3 border-t border-warm-100">
+                  <div className="flex items-baseline justify-between gap-2 mb-1.5">
+                    <span className="text-[11px] uppercase tracking-wider text-gray-500 font-semibold">
+                      From
+                    </span>
+                    {nextDepartureChip(tour) && (
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-100 rounded-full px-2 py-0.5">
+                        Next · {nextDepartureChip(tour)}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-end justify-between gap-2">
+                    <span className="text-2xl font-bold text-gray-900 leading-none">
+                      {formatPrice(tour?.price) ?? 'Talk to us'}
+                    </span>
+                    <span className="text-sm font-bold text-primary group-hover:translate-x-0.5 transition-transform">
+                      View tour →
+                    </span>
+                  </div>
                 </div>
               </div>
             </a>
