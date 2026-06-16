@@ -1,5 +1,5 @@
 /**
- * ChinaToursHero tests
+ * HeroWithLeadForm tests
  *
  * Covers the high-value lead funnel guarantees:
  *  - renders title / subtitle / form
@@ -9,7 +9,7 @@
  *  - on API error, surfaces the message and keeps the form mounted
  */
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import ChinaToursHero from '../ChinaToursHero';
+import HeroWithLeadForm from '../HeroWithLeadForm';
 
 function setQuery(qs: string) {
   window.history.replaceState({}, '', `/china-tours${qs}`);
@@ -41,7 +41,7 @@ const RENDER_PROPS = {
   posterImage: '/images/poster.jpg',
 };
 
-describe('ChinaToursHero', () => {
+describe('HeroWithLeadForm', () => {
   beforeEach(() => {
     mockFireLeadConversion.mockReset();
     mockTriggerGtm.mockReset();
@@ -54,7 +54,7 @@ describe('ChinaToursHero', () => {
   });
 
   it('renders title, subtitle, and the request-callback form', () => {
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
     expect(screen.getByRole('heading', { level: 1, name: /China Tours from New Zealand/i })).toBeInTheDocument();
     expect(screen.getByText(/Auckland-based China specialists/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Request a callback/i })).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe('ChinaToursHero', () => {
   it('mounts variant A by default and fires a single hero_variant_view GTM event', async () => {
     setQuery('');
     await act(async () => {
-      render(<ChinaToursHero {...RENDER_PROPS} />);
+      render(<HeroWithLeadForm {...RENDER_PROPS} />);
     });
     const section = document.getElementById('china-tours-hero');
     expect(section).toHaveAttribute('data-hero-variant', 'a');
@@ -77,7 +77,7 @@ describe('ChinaToursHero', () => {
   it('swaps to variant B copy when ?hero=b is on the URL', async () => {
     setQuery('?hero=b');
     await act(async () => {
-      render(<ChinaToursHero {...RENDER_PROPS} />);
+      render(<HeroWithLeadForm {...RENDER_PROPS} />);
     });
     expect(document.getElementById('china-tours-hero')).toHaveAttribute(
       'data-hero-variant',
@@ -95,7 +95,7 @@ describe('ChinaToursHero', () => {
     setQuery('?hero=b');
     (global as any).fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
     await act(async () => {
-      render(<ChinaToursHero {...RENDER_PROPS} />);
+      render(<HeroWithLeadForm {...RENDER_PROPS} />);
     });
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada' } });
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'ada@example.com' } });
@@ -109,7 +109,7 @@ describe('ChinaToursHero', () => {
 
   it('mobile phone-tap CTA renders, links to tel: and fires the phone_call_intent GTM event', async () => {
     await act(async () => {
-      render(<ChinaToursHero {...RENDER_PROPS} />);
+      render(<HeroWithLeadForm {...RENDER_PROPS} />);
     });
     const cta = screen.getByLabelText(/Call CTS Tours on 0800 CTS 888/i);
     expect(cta).toHaveAttribute('href', 'tel:0800287888');
@@ -127,7 +127,7 @@ describe('ChinaToursHero', () => {
   });
 
   it('dropdown surfaces the four flagship tours + a fallback option', () => {
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
     const select = screen.getByRole('combobox') as HTMLSelectElement;
     const labels = Array.from(select.options).map((o) => o.value);
     expect(labels).toEqual(
@@ -143,7 +143,7 @@ describe('ChinaToursHero', () => {
   });
 
   it('blocks submit and surfaces an error when both email and phone are empty', async () => {
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada Lovelace' } });
     fireEvent.click(screen.getByRole('button', { name: /Request a callback/i }));
 
@@ -158,7 +158,7 @@ describe('ChinaToursHero', () => {
       json: async () => ({ success: true }),
     });
 
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
 
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada Lovelace' } });
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'ada@example.com' } });
@@ -193,7 +193,7 @@ describe('ChinaToursHero', () => {
       json: async () => ({ error: 'Enquiry service is not configured.' }),
     });
 
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
 
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada' } });
     fireEvent.change(screen.getByPlaceholderText('Phone'), { target: { value: '+6421...' } });
@@ -212,7 +212,7 @@ describe('ChinaToursHero', () => {
     });
     (global as any).fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
 
-    render(<ChinaToursHero {...RENDER_PROPS} />);
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
     fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada' } });
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'ada@example.com' } });
     fireEvent.click(screen.getByRole('button', { name: /Request a callback/i }));
@@ -224,5 +224,43 @@ describe('ChinaToursHero', () => {
     expect(body.message).toContain('utm_source: meta');
     expect(body.message).toContain('utm_campaign: oct26-best-of-china');
     expect(body.message).toContain('gclid: GCLID-XYZ');
+  });
+
+  it('routes overrideable props (event name + lead source + message label + bullets + sectionId) through end-to-end on submit', async () => {
+    (global as any).fetch.mockResolvedValueOnce({ ok: true, json: async () => ({}) });
+    await act(async () => {
+      render(
+        <HeroWithLeadForm
+          {...RENDER_PROPS}
+          sectionId="visa-guide-hero"
+          bullets={['Visa-free for NZ passports', 'No embassy queues', 'Auckland-based specialists']}
+          gtmSubmitEventName="china_visa_guide_submit"
+          gtmFormType="china_visa_guide"
+          leadConversionSource="china_visa_guide"
+          messageSourceLabel="Form: /china-visa-guide-for-new-zealanders hero"
+        />
+      );
+    });
+    // sectionId override surfaces as DOM id
+    expect(document.getElementById('visa-guide-hero')).not.toBeNull();
+    // Bullets override renders the new copy (proves the bullets prop wired)
+    expect(screen.getByText(/Visa-free for NZ passports/i)).toBeInTheDocument();
+    expect(screen.getByText(/No embassy queues/i)).toBeInTheDocument();
+
+    fireEvent.change(screen.getByPlaceholderText(/Full name/i), { target: { value: 'Ada' } });
+    fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'ada@example.com' } });
+    fireEvent.click(screen.getByRole('button', { name: /Request a callback|Send me a quote/i }));
+
+    await waitFor(() => expect(mockFireLeadConversion).toHaveBeenCalledWith('china_visa_guide'));
+    const submitEvent = mockTriggerGtm.mock.calls.find(
+      ([p]) => (p as { event: string }).event === 'china_visa_guide_submit'
+    );
+    expect(submitEvent?.[0]).toMatchObject({
+      event: 'china_visa_guide_submit',
+      form_type: 'china_visa_guide',
+    });
+
+    const body = JSON.parse((global as any).fetch.mock.calls[0][1].body);
+    expect(body.message).toContain('Form: /china-visa-guide-for-new-zealanders hero');
   });
 });

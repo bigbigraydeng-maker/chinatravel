@@ -2,18 +2,27 @@
 
 import { useEffect, useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
-import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
+import { fireLeadConversion, type LeadSource } from '@/lib/analytics/lead-conversion';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 
 /**
- * A/B headline + form-copy variant for the /china-tours hero.
+ * Reusable LP hero with split-screen layout (headline + bullets on the
+ * left, inline lead form on the right) and a mobile-only phone-tap CTA.
  *
- *  - `a` = control. Uses the title/subtitle passed in as props (set from
- *    chinaToursMeta in page.tsx) and the existing form copy.
+ * Used on:
+ *   - /china-tours                    (defaults)
+ *   - /china-visa-guide-for-new-zealanders  (visa-pain copy + visa lead source)
+ *
+ * A/B headline + form-copy variant
+ *
+ *  - `a` = control. Uses the title/subtitle passed in as props plus the
+ *    `gtmFormType`/`leadConversionSource`/etc. callers configure.
  *  - `b` = challenger. Time-bound outcome promise ("quoted in 24 hours")
  *    + visa-free urgency. Hypothesis: explicit time commitment + concrete
  *    deliverable should raise hero form CTR vs the generic specialist
- *    invitation.
+ *    invitation. Variant B copy is currently china-tours-flavoured but
+ *    still reads sensibly on the visa-guide page; only opt-in via
+ *    ?hero=b URLs.
  *
  * Trigger: `?hero=a` or `?hero=b` query string. Default = `a` (control)
  * when the param is absent or any other value. Every render fires a
@@ -61,7 +70,7 @@ function readHeroVariant(): HeroVariant {
   }
 }
 
-interface ChinaToursHeroProps {
+interface HeroWithLeadFormProps {
   title: string;
   subtitle: string;
   posterImage: string;
@@ -73,13 +82,27 @@ interface ChinaToursHeroProps {
    * then pass the path from `page.tsx`.
    */
   videoSrc?: string;
+  /** Bullets under the subtitle. Defaults to the china-tours value props. */
+  bullets?: string[];
+  /** Override the dropdown options (default = 4 flagship tours + "Still deciding"). */
+  travelInterestOptions?: string[];
+  /** GTM event name fired on successful submit. Defaults to `china_tours_hero_submit`. */
+  gtmSubmitEventName?: string;
+  /** GTM `form_type` payload field. Defaults to `china_tours_hub`. */
+  gtmFormType?: string;
+  /** `fireLeadConversion(source)` argument. Defaults to `china_tours_hub`. */
+  leadConversionSource?: LeadSource;
+  /** Top line of the lead-email "Lead source" block. Defaults to /china-tours. */
+  messageSourceLabel?: string;
+  /** Override the section DOM `id` (anchor target). Default `china-tours-hero`. */
+  sectionId?: string;
 }
 
-// Match the four flagship URLs surfaced lower on the page so the dropdown
-// doubles as the visitor's first signal of which tour they want — ops then
-// has tour-name continuity from form submit through to follow-up call.
-// "Still deciding — show me all 4" keeps the door open for browse-first leads.
-const TRAVEL_INTEREST_OPTIONS = [
+// Match the four flagship URLs surfaced lower on /china-tours so the
+// dropdown doubles as the visitor's first signal of which tour they want.
+// Visa-guide page reuses the same list — visitors who land on visa info
+// still need to express tour interest for the FDE to route the lead.
+const DEFAULT_TRAVEL_INTEREST_OPTIONS = [
   'Best of China — 15 Days',
   "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
   'Shanghai & Surroundings — 10 Days',
@@ -87,15 +110,29 @@ const TRAVEL_INTEREST_OPTIONS = [
   'Still deciding — show me all 4',
 ];
 
+const DEFAULT_BULLETS = [
+  '98 years of China-direct operations · Auckland-based specialists',
+  'NZD pricing · small groups · visa-free options for many NZ travellers',
+  'October 2026 departures open — talk to us about availability',
+];
+
 const PHONE_DISPLAY = '0800 CTS 888';
 const PHONE_TEL = '0800287888';
 
-export default function ChinaToursHero({
+export default function HeroWithLeadForm({
   title,
   subtitle,
   posterImage,
   videoSrc,
-}: ChinaToursHeroProps) {
+  bullets = DEFAULT_BULLETS,
+  travelInterestOptions = DEFAULT_TRAVEL_INTEREST_OPTIONS,
+  gtmSubmitEventName = 'china_tours_hero_submit',
+  gtmFormType = 'china_tours_hub',
+  leadConversionSource = 'china_tours_hub',
+  messageSourceLabel = 'Form: /china-tours hero',
+  sectionId = 'china-tours-hero',
+}: HeroWithLeadFormProps) {
+  const TRAVEL_INTEREST_OPTIONS = travelInterestOptions;
   const [variant, setVariant] = useState<HeroVariant>('a');
   const [variantReady, setVariantReady] = useState(false);
 
@@ -162,7 +199,7 @@ export default function ChinaToursHero({
         formData.phone.trim() ? `Phone: ${formData.phone.trim()}` : '',
         '',
         '--- Lead source ---',
-        'Form: /china-tours hero',
+        messageSourceLabel,
         `Hero variant: ${variant}`,
         utm.utm_source ? `utm_source: ${utm.utm_source}` : '',
         utm.utm_campaign ? `utm_campaign: ${utm.utm_campaign}` : '',
@@ -192,8 +229,8 @@ export default function ChinaToursHero({
       }
 
       triggerGtmEvent({
-        event: 'china_tours_hero_submit',
-        form_type: 'china_tours_hub',
+        event: gtmSubmitEventName,
+        form_type: gtmFormType,
         hero_variant: variant,
         travel_interest: formData.travel_interest,
         pagePath: typeof window !== 'undefined' ? window.location.pathname : '/china-tours',
@@ -203,7 +240,7 @@ export default function ChinaToursHero({
         utm_content: utm.utm_content,
       });
 
-      fireLeadConversion('china_tours_hub');
+      fireLeadConversion(leadConversionSource);
 
       setSuccess(true);
       setFormData({
@@ -222,7 +259,7 @@ export default function ChinaToursHero({
 
   return (
     <section
-      id="china-tours-hero"
+      id={sectionId}
       data-hero-variant={variantReady ? variant : undefined}
       className="relative min-h-[640px] md:min-h-[680px] overflow-hidden text-white"
     >
@@ -264,18 +301,12 @@ export default function ChinaToursHero({
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">{renderedSubtitle}</p>
           <ul className="space-y-2 text-white/90 max-w-xl">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-              <span>98 years of China-direct operations · Auckland-based specialists</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-              <span>NZD pricing · small groups · visa-free options for many NZ travellers</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-              <span>October 2026 departures open — talk to us about availability</span>
-            </li>
+            {bullets.map((b) => (
+              <li key={b} className="flex items-start gap-3">
+                <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                <span>{b}</span>
+              </li>
+            ))}
           </ul>
         </div>
 

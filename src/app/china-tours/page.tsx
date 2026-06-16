@@ -11,7 +11,7 @@ import { getAllChinaTours } from '@/lib/data/tours';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateCollectionPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursMeta } from '@/lib/data/seo-pages';
-import ChinaToursHero from './_components/ChinaToursHero';
+import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import UtmAwareBanner from './_components/UtmAwareBanner';
 import FlagshipTourGrid from './_components/FlagshipTourGrid';
 import CustomerTripPhotos from './_components/CustomerTripPhotos';
@@ -126,8 +126,10 @@ export default function ChinaToursPage() {
       {/* UTM-aware welcome banner (only renders when arriving from meta/google ads) */}
       <UtmAwareBanner />
 
-      {/* Hero — winner video background (poster fallback) + inline lead form */}
-      <ChinaToursHero
+      {/* Hero — winner video background (poster fallback) + inline lead form.
+          Defaults of HeroWithLeadForm are configured for this page (bullets,
+          GTM event name, lead conversion source) so this call site stays minimal. */}
+      <HeroWithLeadForm
         title={chinaToursMeta.h1}
         subtitle={chinaToursMeta.heroSubtitle}
         posterImage={HERO_POSTER}
