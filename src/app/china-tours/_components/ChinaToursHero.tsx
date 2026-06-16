@@ -1,9 +1,65 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
+
+/**
+ * A/B headline + form-copy variant for the /china-tours hero.
+ *
+ *  - `a` = control. Uses the title/subtitle passed in as props (set from
+ *    chinaToursMeta in page.tsx) and the existing form copy.
+ *  - `b` = challenger. Time-bound outcome promise ("quoted in 24 hours")
+ *    + visa-free urgency. Hypothesis: explicit time commitment + concrete
+ *    deliverable should raise hero form CTR vs the generic specialist
+ *    invitation.
+ *
+ * Trigger: `?hero=a` or `?hero=b` query string. Default = `a` (control)
+ * when the param is absent or any other value. Every render fires a
+ * `hero_variant_view` GTM event and every form submit attaches the
+ * `hero_variant` field — wire those into GA / dashboards to read the
+ * actual lift.
+ *
+ * Drive 50/50 traffic by sending half the ad clicks to `?hero=b`; do NOT
+ * randomly assign visitors client-side (causes hydration mismatch + makes
+ * attribution noisy).
+ */
+type HeroVariant = 'a' | 'b';
+
+interface VariantCopy {
+  title?: string; // omit → fall back to the prop
+  subtitle?: string;
+  formHeading: string;
+  formSubheading: string;
+  submitLabel: string;
+}
+
+const VARIANT_COPY: Record<HeroVariant, VariantCopy> = {
+  a: {
+    formHeading: 'Talk to a China specialist',
+    formSubheading: 'Reply within 1 NZ business day · no obligation.',
+    submitLabel: 'Request a callback',
+  },
+  b: {
+    title: 'Your China Trip, Quoted in 24 Hours',
+    subtitle:
+      'Talk to an Auckland-based specialist — get a custom itinerary, NZD pricing, and visa-free guidance in one call.',
+    formHeading: 'Get my 24-hour quote',
+    formSubheading: 'Reply within 1 NZ business day · no obligation.',
+    submitLabel: 'Send me a quote',
+  },
+};
+
+function readHeroVariant(): HeroVariant {
+  if (typeof window === 'undefined') return 'a';
+  try {
+    const v = new URL(window.location.href).searchParams.get('hero');
+    return v === 'b' ? 'b' : 'a';
+  } catch {
+    return 'a';
+  }
+}
 
 interface ChinaToursHeroProps {
   title: string;
@@ -31,12 +87,18 @@ const TRAVEL_INTEREST_OPTIONS = [
   'Still deciding — show me all 4',
 ];
 
+const PHONE_DISPLAY = '0800 CTS 888';
+const PHONE_TEL = '0800287888';
+
 export default function ChinaToursHero({
   title,
   subtitle,
   posterImage,
   videoSrc,
 }: ChinaToursHeroProps) {
+  const [variant, setVariant] = useState<HeroVariant>('a');
+  const [variantReady, setVariantReady] = useState(false);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,6 +109,34 @@ export default function ChinaToursHero({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Read variant + emit a single view event after hydration so GA gets the
+  // baseline impression count for each arm. SSR always renders the `a`
+  // copy to avoid hydration mismatch; the `b` variant swaps in client-side
+  // for visitors landing with `?hero=b`.
+  useEffect(() => {
+    const v = readHeroVariant();
+    setVariant(v);
+    setVariantReady(true);
+    triggerGtmEvent({
+      event: 'hero_variant_view',
+      hero_variant: v,
+      pagePath: window.location.pathname,
+    });
+  }, []);
+
+  const copy = VARIANT_COPY[variant];
+  const renderedTitle = copy.title ?? title;
+  const renderedSubtitle = copy.subtitle ?? subtitle;
+
+  const handlePhoneTap = () => {
+    triggerGtmEvent({
+      event: 'phone_call_intent',
+      source: 'mobile_hero_cta',
+      hero_variant: variant,
+      pagePath: typeof window !== 'undefined' ? window.location.pathname : '/china-tours',
+    });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -73,6 +163,7 @@ export default function ChinaToursHero({
         '',
         '--- Lead source ---',
         'Form: /china-tours hero',
+        `Hero variant: ${variant}`,
         utm.utm_source ? `utm_source: ${utm.utm_source}` : '',
         utm.utm_campaign ? `utm_campaign: ${utm.utm_campaign}` : '',
         utm.utm_content ? `utm_content: ${utm.utm_content}` : '',
@@ -103,6 +194,7 @@ export default function ChinaToursHero({
       triggerGtmEvent({
         event: 'china_tours_hero_submit',
         form_type: 'china_tours_hub',
+        hero_variant: variant,
         travel_interest: formData.travel_interest,
         pagePath: typeof window !== 'undefined' ? window.location.pathname : '/china-tours',
         utm_source: utm.utm_source,
@@ -131,6 +223,7 @@ export default function ChinaToursHero({
   return (
     <section
       id="china-tours-hero"
+      data-hero-variant={variantReady ? variant : undefined}
       className="relative min-h-[640px] md:min-h-[680px] overflow-hidden text-white"
     >
       {/*
@@ -167,9 +260,9 @@ export default function ChinaToursHero({
         {/* Headline column */}
         <div className="lg:col-span-3">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-5 leading-tight">
-            {title}
+            {renderedTitle}
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">{subtitle}</p>
+          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">{renderedSubtitle}</p>
           <ul className="space-y-2 text-white/90 max-w-xl">
             <li className="flex items-start gap-3">
               <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
@@ -186,14 +279,29 @@ export default function ChinaToursHero({
           </ul>
         </div>
 
-        {/* Inline lead form */}
-        <div className="lg:col-span-2">
+        {/* Form column — on mobile this drops below the headline; the phone
+            CTA stays as a sibling above to keep the tap target above the fold. */}
+        <div className="lg:col-span-2 space-y-3">
+          {/* Mobile-only phone-tap CTA. 55+ NZ travellers convert 3–5x better
+              on a one-tap call than a multi-field form; desktop hides this so
+              the inline form gets the visual weight there. */}
+          <a
+            href={`tel:${PHONE_TEL}`}
+            onClick={handlePhoneTap}
+            className="md:hidden flex items-center justify-center gap-2 w-full bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white font-bold py-4 rounded-2xl shadow-lg text-base"
+            aria-label={`Call CTS Tours on ${PHONE_DISPLAY}`}
+            data-cta="hero-mobile-call"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24" aria-hidden>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call {PHONE_DISPLAY}
+          </a>
+
           <div className="bg-white text-gray-900 rounded-2xl shadow-2xl overflow-hidden">
             <div className="bg-primary text-white px-5 py-4">
-              <h2 className="text-lg font-bold">Talk to a China specialist</h2>
-              <p className="text-sm text-white/90 mt-0.5">
-                Reply within 1 NZ business day · no obligation.
-              </p>
+              <h2 className="text-lg font-bold">{copy.formHeading}</h2>
+              <p className="text-sm text-white/90 mt-0.5">{copy.formSubheading}</p>
             </div>
             <div className="p-5">
               {success ? (
@@ -204,7 +312,7 @@ export default function ChinaToursHero({
                   <p className="font-semibold mb-1">Thanks — we&apos;ve got it.</p>
                   <p className="text-sm">
                     Our specialists will be in touch within one business day. Prefer to talk now?
-                    Call <a href="tel:0800287888" className="underline font-medium">0800 CTS 888</a>.
+                    Call <a href={`tel:${PHONE_TEL}`} className="underline font-medium">{PHONE_DISPLAY}</a>.
                   </p>
                 </div>
               ) : (
@@ -302,7 +410,7 @@ export default function ChinaToursHero({
                     disabled={isSubmitting}
                     className="w-full bg-primary hover:bg-primary/90 disabled:opacity-60 text-white font-bold py-3 rounded-md transition-colors"
                   >
-                    {isSubmitting ? 'Sending…' : 'Request a callback'}
+                    {isSubmitting ? 'Sending…' : copy.submitLabel}
                   </button>
                   <p className="text-[11px] text-gray-500 text-center">
                     We respect your privacy. Your details are never shared.
