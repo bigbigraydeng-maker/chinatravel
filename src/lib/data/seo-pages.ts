@@ -37,7 +37,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
-      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland, Wellington, or Christchurch. Our Auckland-based consultants handle everything — flights, hotels, China guides, domestic transport, and visa-free entry advice for NZ passport holders.'
+      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland (AKL) — the only New Zealand airport with direct flights to mainland China. If you are based in Wellington, Christchurch, Dunedin or regional NZ, our Auckland-based consultants arrange a connecting domestic flight to Auckland; the domestic connecting leg is quoted separately and is not included in the headline tour price. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
     },
     {
       question: 'What is included in a CTS China travel package?',
@@ -343,11 +343,11 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from New Zealand | Visa-Free | CTS Tours',
-  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, flights from Auckland included. Small groups, expert guides, 90+ years running China tours. Depart Auckland, Wellington & Christchurch. Get a free quote from our NZ team.',
+  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, return international flights from Auckland (AKL) included. Small groups, expert guides, 90+ years running China tours. Connecting domestic flights from Wellington, Christchurch & regional NZ arranged at additional cost. Get a free quote from our NZ team.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
+  heroSubtitle: 'Direct from Auckland · Connecting flights from Wellington & Christchurch available (additional cost). Visa-free for NZ passports. NZD pricing. Expert NZ team.',
   introText:
-    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). Flights depart from Auckland (AKL), Wellington (WLG), and Christchurch (CHC), with connecting domestic legs arranged at no extra cost.\n\n' +
+    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct return international flights from Auckland (AKL) — the only NZ airport with direct service to mainland China — transparent NZD pricing, and help with China entry rules including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). If you are based in Wellington, Christchurch or regional New Zealand, our team arranges a connecting domestic flight to Auckland for the international departure; the connecting leg is quoted separately at additional cost on top of the headline tour price.\n\n' +
     'Whether you want a first-time highlights loop (Beijing, Xi\'an, Shanghai), a deeper regional journey (Yunnan, the Silk Road, or the Yangtze), or a short stopover bolted onto business travel, our Auckland-based consultants quote in NZD, explain what is included, and stay with you from enquiry to touchdown back home.',
   faqs: [
     {
@@ -360,7 +360,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What flights go from New Zealand to China?',
-      answer: 'Direct flights from Auckland (AKL) to Shanghai (PVG) take approximately 12–13 hours. Flights to Beijing (PEK) are also available, sometimes with a short connection. All CTS China tour packages include return international airfares from your nearest New Zealand airport — Auckland, Wellington, or Christchurch.'
+      answer: 'Direct flights from Auckland (AKL) to Shanghai (PVG) take approximately 12–13 hours. Flights to Beijing (PEK) are also available, sometimes with a short connection. Auckland is the only New Zealand airport with direct flights to mainland China — all CTS tour package prices include the return international airfares from AKL. If you are based in Wellington, Christchurch, Dunedin or regional NZ, our consultants arrange a connecting domestic flight to Auckland for an additional fee, quoted separately based on your departure city and travel dates.'
     },
     {
       question: 'How long is the flight from Auckland to Beijing or Shanghai?',
@@ -403,7 +403,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
   faqs: [
     {
       question: 'Do all CTS China tours depart from Auckland?',
-      answer: 'Our published tour prices include flights from New Zealand. Most departure flights are from Auckland (AKL), which offers direct flights to Shanghai and Beijing. If you\'re based elsewhere in New Zealand (Wellington, Christchurch, Dunedin), CTS can arrange connecting flights at no extra cost via Auckland. Contact us for provincial pricing.'
+      answer: 'Our published tour prices include the return international airfares from Auckland (AKL), the only New Zealand airport with direct flights to Shanghai and Beijing. If you are based elsewhere in New Zealand (Wellington, Christchurch, Dunedin, regional NZ), CTS arranges a connecting domestic flight to Auckland for the international departure; this connecting leg is quoted separately at additional cost based on your home city and travel dates, and is not included in the headline tour price.'
     },
     {
       question: 'How early should I arrive at Auckland Airport?',
@@ -419,7 +419,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
     },
     {
       question: 'What if I live outside Auckland?',
-      answer: 'CTS serves all New Zealand. If you\'re based in Wellington, Christchurch, Dunedin, or elsewhere, we can arrange connecting flights to Auckland to meet your outbound international flight. We also offer video consultations and phone support. You\'re never far from expert China travel advice!'
+      answer: 'CTS serves all New Zealand. If you are based in Wellington, Christchurch, Dunedin or elsewhere, our team arranges a connecting domestic flight to Auckland to meet your outbound international flight — the domestic connecting leg is quoted separately at additional cost and is not included in the headline tour price. We also offer video consultations and phone support. You are never far from expert China travel advice!'
     }
   ]
 };

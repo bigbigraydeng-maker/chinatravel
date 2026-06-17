@@ -97,13 +97,16 @@ export default function ChinaToursFromNZPage() {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours runs China tour packages from New Zealand with departures from Auckland,
-                  Wellington and Christchurch — flights to Shanghai or Beijing take 12–13 hours direct.
-                  All packages are priced in NZD (lead-in from NZD $3,399 for a 10-day Discovery tour) and
-                  include return international airfares, hotels, English-speaking guides, and most meals.
-                  NZ ordinary passport holders enjoy visa-free entry to China for up to 30 days, currently
-                  published through 31 December 2026. CTS is TAANZ-bonded, Auckland-based, and has been
-                  taking Kiwis to China since 1928.
+                  CTS Tours runs China tour packages from New Zealand with direct international departures
+                  from Auckland (AKL) — flights to Shanghai or Beijing take 12–13 hours, and AKL is the
+                  only NZ airport with direct service to mainland China. For travellers based in
+                  Wellington, Christchurch or regional NZ, we arrange connecting domestic flights to
+                  Auckland; the connecting leg is quoted separately at additional cost on top of the
+                  headline tour price. All packages are priced in NZD (lead-in from NZD $3,399 for a
+                  10-day Discovery tour) and include return international airfares from AKL, hotels,
+                  English-speaking guides, and most meals. NZ ordinary passport holders enjoy visa-free
+                  entry to China for up to 30 days, currently published through 31 December 2026. CTS is
+                  TAANZ-bonded, Auckland-based, and has been taking Kiwis to China since 1928.
                 </p>
               </aside>
 

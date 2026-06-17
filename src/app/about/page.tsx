@@ -31,7 +31,7 @@ const ABOUT_FAQS = [
   {
     question: 'Where is CTS Tours based?',
     answer:
-      'Our New Zealand office is in Auckland, with consultants on the ground for face-to-face meetings, phone, and video consultations. Customers anywhere in New Zealand — Wellington, Christchurch, Dunedin, regional towns — book with our Auckland team and receive the same NZD pricing and support.',
+      'Our New Zealand office is in Auckland, with consultants on the ground for face-to-face meetings, phone, and video consultations. Customers anywhere in New Zealand — Wellington, Christchurch, Dunedin, regional towns — book with our Auckland team and receive the same NZD pricing on the international tour package. Auckland (AKL) is the only NZ airport with direct flights to mainland China, so for clients based outside Auckland we arrange a connecting domestic flight to Auckland — the connecting leg is quoted separately at additional cost and is not included in the headline tour price.',
   },
   {
     question: 'Does CTS Tours operate its own China tours, or resell them?',
