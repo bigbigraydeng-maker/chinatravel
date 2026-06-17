@@ -59,6 +59,16 @@ describe('fireLeadConversion', () => {
     expect(fbqEventId).toBe(gtagCall[2].transaction_id);
   });
 
+  it('accepts the china_visa_guide source so visa-LP enquiries attribute separately in ME', () => {
+    fireLeadConversion('china_visa_guide');
+    expect(mockGtag).toHaveBeenCalledTimes(1);
+    expect(mockGtag.mock.calls[0][2].transaction_id).toMatch(
+      /^cts-china_visa_guide-\d+$/
+    );
+    expect(mockFbq).toHaveBeenCalledTimes(1);
+    expect(mockFbq.mock.calls[0][3].eventID).toMatch(/^cts-china_visa_guide-\d+$/);
+  });
+
   it('fires the Meta Pixel Lead event with value + currency', () => {
     fireLeadConversion('tour_enquiry');
     expect(mockFbq).toHaveBeenCalledTimes(1);
