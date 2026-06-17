@@ -50,6 +50,22 @@ export const chinaToursMeta: SeoPageMeta = {
     {
       question: 'When is the best time to book a China tour package?',
       answer: 'We recommend booking 2–3 months ahead for spring (March–May) and autumn (September–November) travel — China\'s peak seasons with ideal weather. For Chinese New Year or Golden Week (October) travel, book 4–6 months ahead as these periods fill quickly. Contact our Auckland team anytime for availability.'
+    },
+    {
+      question: 'How much does a China tour package from New Zealand cost?',
+      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road Discovery, 18 days). Best of China runs 15 days from NZD $3,880. All prices include return international airfares from Auckland, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+    },
+    {
+      question: 'Do New Zealand passport holders need a visa for China?',
+      answer: 'Most NZ ordinary passport holders do not need a visa. China currently allows visa-free entry of up to 30 days for tourism, business, family visits, exchange, and transit — policy published to 31 December 2026. Bring a valid passport, return or onward tickets, and accommodation or tour confirmation. Confirm the latest rules before booking; CTS can advise based on your itinerary.'
+    },
+    {
+      question: 'Which is the best China tour package for first-time visitors?',
+      answer: 'For first-time visitors from New Zealand, we recommend Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) — it covers the Forbidden City, Great Wall, hutongs, Terracotta Warriors and the City Wall at a comfortable pace. For travellers who want to add Shanghai and Yangtze River cities, Best of China (15 days, NZD $3,880) is the classic full-coverage option.'
+    },
+    {
+      question: 'What makes CTS Tours different from other China travel agencies in NZ?',
+      answer: 'CTS Tours New Zealand operates as the local arm of China Travel Service, a group founded in 1928 — making us one of the longest-running specialists in Aotearoa. We are TAANZ-bonded, IATA-accredited, Auckland-based, and design and operate every itinerary in-house with direct China operations (not resold from third parties). All quotes and payments are in NZD, and our consultants are on the ground in Auckland for support before, during, and after your trip.'
     }
   ]
 };
@@ -353,6 +369,26 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     {
       question: 'Can I pay for China tours in New Zealand dollars?',
       answer: 'Yes. All CTS tour prices are quoted and paid in NZD. There are no hidden exchange rate markups — what you see is what you pay. Our Auckland team handles all currency conversion for in-China costs including hotels, guides, and domestic transport.'
+    },
+    {
+      question: 'What are the most popular China tours for New Zealand travellers?',
+      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $3,399), and Silk Road Discovery (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
+    },
+    {
+      question: 'Is it safe to travel from New Zealand to China?',
+      answer: 'Yes — China is a well-developed and safe travel destination. Violent crime rates are very low, public transport is modern and reliable, and our tours include English-speaking local guides who handle all logistics. For New Zealand travellers, the main considerations are checking the latest visa-free entry conditions before booking and arranging comprehensive travel insurance (not included in tour price but strongly recommended).'
+    },
+    {
+      question: 'When is the best time to travel from New Zealand to China?',
+      answer: 'September to early November (autumn) and March to May (spring) are the most comfortable months for Kiwi travellers — mild temperatures, lower humidity, and clear skies. October is widely considered the single best month. Avoid Chinese Golden Week (1–7 October) and Chinese New Year (late January / early February) if you prefer fewer crowds. June to August is hot and humid in most regions.'
+    },
+    {
+      question: 'Why book a China tour through a New Zealand specialist instead of online?',
+      answer: 'CTS Tours has operated as China Travel Service\'s NZ arm since 1928 with direct China operations — meaning our team in Auckland talks to our team in China, not a reseller chain. You get NZD pricing with no hidden FX markups, TAANZ-bonded payment protection, an Auckland contact who understands NZ school holidays and departure preferences, and on-the-ground support throughout your trip. We are not a generic online travel agency.'
+    },
+    {
+      question: 'Can CTS arrange a private or tailor-made China tour from New Zealand?',
+      answer: 'Yes. While our published itineraries cover most travellers\' needs, we also design fully custom China tours for couples, families, multi-generational groups, and special interests (photography, history, food). Tailor-made trips use the same CTS network — direct China operations, English-speaking guides, NZD pricing — but with itinerary pace, hotels, and inclusions tuned to your preferences. Contact our Auckland team for a tailored quote.'
     }
   ]
 };

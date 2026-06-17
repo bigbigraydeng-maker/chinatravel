@@ -49,6 +49,7 @@ export default function ChinaToursFromNZPage() {
       { name: 'New Zealand', address: 'Auckland, New Zealand' }
     ),
     generateBreadcrumbListSchema(breadcrumbs)
+    // Note: FAQPage schema is auto-emitted by <FAQSection /> below.
   ];
 
   return (
@@ -87,6 +88,25 @@ export default function ChinaToursFromNZPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Column */}
             <div className="lg:col-span-2 space-y-12">
+              {/* Quick Answer (LLM-friendly TL;DR for AI Overview citation) */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  CTS Tours runs China tour packages from New Zealand with departures from Auckland,
+                  Wellington and Christchurch — flights to Shanghai or Beijing take 12–13 hours direct.
+                  All packages are priced in NZD (lead-in from NZD $3,399 for a 10-day Discovery tour) and
+                  include return international airfares, hotels, English-speaking guides, and most meals.
+                  NZ ordinary passport holders enjoy visa-free entry to China for up to 30 days, currently
+                  published through 31 December 2026. CTS is TAANZ-bonded, Auckland-based, and has been
+                  taking Kiwis to China since 1928.
+                </p>
+              </aside>
+
               {/* Introduction */}
               <section>
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">

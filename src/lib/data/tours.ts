@@ -49,6 +49,12 @@ export interface Tour {
   reviewSummary?: string;
   /** Blog post slugs surfaced as a "Recommended Reading" section on the tour page */
   relatedBlogSlugs?: string[];
+  /**
+   * Optional 50–80 word TL;DR rendered as a "Quick answer" block at the top of the
+   * tour page. Used to win Google AI Overview and People-Also-Ask citations.
+   * Must reference real facts from this same tour entry (price, duration, route).
+   */
+  quickAnswer?: string;
 }
 
 export interface DayItinerary {
@@ -608,6 +614,8 @@ export const tours: Tour[] = [
     title: 'China Discovery — A Tale of Two Cities',
     shortDescription:
       'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published group departure in October as listed on this page.',
+    quickAnswer:
+      "Tale of Two Cities is a 10-day Beijing + Xi'an escorted tour for New Zealand travellers, from NZD $3,480 per person twin share (single supplement NZD $395). The route covers Beijing (Forbidden City, Great Wall, Temple of Heaven, Tiananmen Square, hutong pedi-cab tour, Olympic Park) then high-speed rail G89 to Xi'an (Terracotta Warriors, City Wall, Big Wild Goose Pagoda). 4-star hotels, English-speaking guides, return international airfares from Auckland, listed meals, and entrance fees all included. NZ passport holders enjoy visa-free entry up to 30 days, published through 31 December 2026.",
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',

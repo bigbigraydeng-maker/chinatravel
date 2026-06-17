@@ -227,6 +227,20 @@ export default function TourPage({ params }: TourPageProps) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-16">
+              {/* Quick Answer — LLM-friendly TL;DR for Google AI Overview / PAA citation.
+                  Only rendered when the tour data provides one. */}
+              {tour.quickAnswer && (
+                <aside
+                  aria-label="Quick answer"
+                  className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+                >
+                  <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                    Quick answer
+                  </p>
+                  <p className="text-gray-800 leading-relaxed">{tour.quickAnswer}</p>
+                </aside>
+              )}
+
               {/* Overview */}
               <section id="overview">
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
