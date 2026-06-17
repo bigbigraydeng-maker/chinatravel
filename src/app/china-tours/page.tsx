@@ -63,6 +63,7 @@ export default function ChinaToursPage() {
       tours
     ),
     generateBreadcrumbListSchema(breadcrumbs)
+    // Note: FAQPage schema is auto-emitted by <FAQSection /> below.
   ];
 
   const relatedGuides = [
@@ -152,6 +153,24 @@ export default function ChinaToursPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Column */}
             <div className="lg:col-span-2 space-y-12">
+              {/* Quick Answer (LLM-friendly TL;DR for AI Overview citation) */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  CTS Tours offers three China holiday package collections from New Zealand: Signature
+                  (premium 4–5 star, small groups up to 16), Discovery (great value 3–4 star guided
+                  tours, from NZD $3,399), and Stopover (2–4 day city breaks). All packages include
+                  return international flights from Auckland, NZD pricing, and English-speaking guides.
+                  TAANZ-bonded, Auckland-based, since 1928. NZ ordinary passport holders currently enjoy
+                  visa-free entry of up to 30 days, published through 31 December 2026.
+                </p>
+              </aside>
+
               {/* Introduction */}
               <section>
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">

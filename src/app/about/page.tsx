@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
+import FAQSection from '@/components/FAQSection';
+import SchemaMarkup from '@/components/SchemaMarkup';
 import { migratedSite, tourImage } from '@/lib/site-media';
+import { generateBreadcrumbListSchema } from '@/lib/schema-seo';
 
 export const metadata: Metadata = {
   title: 'About CTS Tours | China Travel Specialists since 1928',
@@ -11,9 +14,62 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
 };
 
+// FAQs surfaced on the About page — also rendered into FAQPage schema for Google
+// AI Overview and People-Also-Ask. Every claim below is verifiable from page
+// content (1928 heritage / TAANZ / IATA / Auckland / Lisa Li MNZM / Asiascape Holidays).
+const ABOUT_FAQS = [
+  {
+    question: 'How long has CTS Tours been operating in New Zealand?',
+    answer:
+      "CTS Tours New Zealand was established in 2000 by Lisa Li, MNZM. We are the New Zealand arm of China Travel Service, a group founded in 1928 — making us one of Aotearoa's longest-running specialists for China travel. Our roots in China-outbound travel span nearly 100 years.",
+  },
+  {
+    question: 'Is CTS Tours a TAANZ-bonded travel agency?',
+    answer:
+      'Yes. CTS Tours is a member of the Travel Agents Association of New Zealand (TAANZ), which provides professional standards and financial protection for travellers. We are also IATA-accredited, a member of the Tourism Export Council of New Zealand, Tourism Industry Aotearoa (TIA), and the Auckland Business Chamber, and recognised by Qualmark.',
+  },
+  {
+    question: 'Where is CTS Tours based?',
+    answer:
+      'Our New Zealand office is in Auckland, with consultants on the ground for face-to-face meetings, phone, and video consultations. Customers anywhere in New Zealand — Wellington, Christchurch, Dunedin, regional towns — book with our Auckland team and receive the same NZD pricing on the international tour package. Auckland (AKL) is the only NZ airport with direct flights to mainland China, so for clients based outside Auckland we arrange a connecting domestic flight to Auckland — the connecting leg is quoted separately at additional cost and is not included in the headline tour price.',
+  },
+  {
+    question: 'Does CTS Tours operate its own China tours, or resell them?',
+    answer:
+      'We design and operate our own China tours in-house. As the New Zealand branch of China Travel Service, we have direct China operations — our Auckland consultants work with CTS ground teams in China, not a third-party reseller chain. This is also how our sister brand, Asiascape Holidays, runs ground operations across the wider Asia region.',
+  },
+  {
+    question: 'Who runs CTS Tours New Zealand?',
+    answer:
+      'CTS Tours New Zealand was founded by Lisa Li, MNZM (Member of the New Zealand Order of Merit), who serves as Managing Director and brings over 25 years of experience connecting New Zealand and Asia through travel. Our China Travel Specialist Baker Gu adds another 15+ years of expertise in Chinese destinations and cultures.',
+  },
+  {
+    question: 'What destinations does CTS Tours cover?',
+    answer:
+      'Our core specialty is China — Beijing, Xi\'an, Shanghai, Guilin, Chengdu, Chongqing, Yunnan, the Silk Road, and the Yangtze. Through our sister brand Asiascape Holidays, we also arrange travel across the wider Asia region. All itineraries are designed for New Zealand travellers with NZD pricing and Auckland-based support.',
+  },
+  {
+    question: 'What is the difference between CTS Tours and Asiascape Holidays?',
+    answer:
+      'Both brands are operated by the same Auckland team. CTS Tours focuses on China — escorted tours, tailor-made trips, and stopover packages — while Asiascape Holidays covers our specialised travel experiences across the wider Asia region. They share the same direct operations, the same TAANZ-bonded protection, and the same consultants.',
+  },
+];
+
 export default function AboutPage() {
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'About', url: '/about' },
+  ];
+
+  const schemas = [
+    generateBreadcrumbListSchema(breadcrumbs),
+    // Note: FAQPage schema is auto-emitted by <FAQSection /> below.
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      <SchemaMarkup data={schemas} />
+
       <ImmersivePageHero
         eyebrow="About"
         title="About CTS Tours"
@@ -22,6 +78,26 @@ export default function AboutPage() {
         imageAlt="Forbidden City Beijing — about CTS Tours, China travel specialists for New Zealand"
         priority
       />
+
+      {/* Quick Answer (LLM-friendly TL;DR for AI Overview citation) */}
+      <section className="bg-white">
+        <div className="container mx-auto px-4 py-10">
+          <aside
+            aria-label="Quick answer"
+            className="max-w-4xl mx-auto border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+          >
+            <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+              Quick answer
+            </p>
+            <p className="text-gray-800 leading-relaxed">
+              CTS Tours New Zealand is Aotearoa&apos;s dedicated China travel specialist — the local arm
+              of China Travel Service, a group founded in 1928. We are TAANZ-bonded, IATA-accredited,
+              Auckland-based, and design and operate every China holiday package in-house with direct
+              China operations (not resold from third parties). Founded in NZ in 2000 by Lisa Li, MNZM.
+            </p>
+          </aside>
+        </div>
+      </section>
 
       {/* Company Overview */}
       <section className="py-16 bg-light">
@@ -298,6 +374,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQs — also emits FAQPage schema for Google AI Overview / People-Also-Ask */}
+      <FAQSection faqs={ABOUT_FAQS} />
     </div>
   );
 }

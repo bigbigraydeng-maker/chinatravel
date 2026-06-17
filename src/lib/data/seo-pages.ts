@@ -37,7 +37,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
-      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland, Wellington, or Christchurch. Our Auckland-based consultants handle everything — flights, hotels, China guides, domestic transport, and visa-free entry advice for NZ passport holders.'
+      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland (AKL) — the only New Zealand airport with direct flights to mainland China. If you are based in Wellington, Christchurch, Dunedin or regional NZ, our Auckland-based consultants arrange a connecting domestic flight to Auckland; the domestic connecting leg is quoted separately and is not included in the headline tour price. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
     },
     {
       question: 'What is included in a CTS China travel package?',
@@ -50,6 +50,22 @@ export const chinaToursMeta: SeoPageMeta = {
     {
       question: 'When is the best time to book a China tour package?',
       answer: 'We recommend booking 2–3 months ahead for spring (March–May) and autumn (September–November) travel — China\'s peak seasons with ideal weather. For Chinese New Year or Golden Week (October) travel, book 4–6 months ahead as these periods fill quickly. Contact our Auckland team anytime for availability.'
+    },
+    {
+      question: 'How much does a China tour package from New Zealand cost?',
+      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road Discovery, 18 days). Best of China runs 15 days from NZD $3,880. All prices include return international airfares from Auckland, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+    },
+    {
+      question: 'Do New Zealand passport holders need a visa for China?',
+      answer: 'Most NZ ordinary passport holders do not need a visa. China currently allows visa-free entry of up to 30 days for tourism, business, family visits, exchange, and transit — policy published to 31 December 2026. Bring a valid passport, return or onward tickets, and accommodation or tour confirmation. Confirm the latest rules before booking; CTS can advise based on your itinerary.'
+    },
+    {
+      question: 'Which is the best China tour package for first-time visitors?',
+      answer: 'For first-time visitors from New Zealand, we recommend Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) — it covers the Forbidden City, Great Wall, hutongs, Terracotta Warriors and the City Wall at a comfortable pace. For travellers who want to add Shanghai and Yangtze River cities, Best of China (15 days, NZD $3,880) is the classic full-coverage option.'
+    },
+    {
+      question: 'What makes CTS Tours different from other China travel agencies in NZ?',
+      answer: 'CTS Tours New Zealand operates as the local arm of China Travel Service, a group founded in 1928 — making us one of the longest-running specialists in Aotearoa. We are TAANZ-bonded, IATA-accredited, Auckland-based, and design and operate every itinerary in-house with direct China operations (not resold from third parties). All quotes and payments are in NZD, and our consultants are on the ground in Auckland for support before, during, and after your trip.'
     }
   ]
 };
@@ -327,11 +343,11 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from New Zealand | Visa-Free | CTS Tours',
-  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, flights from Auckland included. Small groups, expert guides, 90+ years running China tours. Depart Auckland, Wellington & Christchurch. Get a free quote from our NZ team.',
+  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, return international flights from Auckland (AKL) included. Small groups, expert guides, 90+ years running China tours. Connecting domestic flights from Wellington, Christchurch & regional NZ arranged at additional cost. Get a free quote from our NZ team.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Departing Auckland · Wellington · Christchurch. Visa-free for NZ passports. NZD pricing. Expert NZ team.',
+  heroSubtitle: 'Direct from Auckland · Connecting flights from Wellington & Christchurch available (additional cost). Visa-free for NZ passports. NZD pricing. Expert NZ team.',
   introText:
-    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct flights from Auckland, transparent NZD pricing, and help with China entry rules — including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). Flights depart from Auckland (AKL), Wellington (WLG), and Christchurch (CHC), with connecting domestic legs arranged at no extra cost.\n\n' +
+    'CTS has been taking New Zealand travellers to China for nearly 98 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct return international flights from Auckland (AKL) — the only NZ airport with direct service to mainland China — transparent NZD pricing, and help with China entry rules including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). If you are based in Wellington, Christchurch or regional New Zealand, our team arranges a connecting domestic flight to Auckland for the international departure; the connecting leg is quoted separately at additional cost on top of the headline tour price.\n\n' +
     'Whether you want a first-time highlights loop (Beijing, Xi\'an, Shanghai), a deeper regional journey (Yunnan, the Silk Road, or the Yangtze), or a short stopover bolted onto business travel, our Auckland-based consultants quote in NZD, explain what is included, and stay with you from enquiry to touchdown back home.',
   faqs: [
     {
@@ -344,7 +360,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What flights go from New Zealand to China?',
-      answer: 'Direct flights from Auckland (AKL) to Shanghai (PVG) take approximately 12–13 hours. Flights to Beijing (PEK) are also available, sometimes with a short connection. All CTS China tour packages include return international airfares from your nearest New Zealand airport — Auckland, Wellington, or Christchurch.'
+      answer: 'Direct flights from Auckland (AKL) to Shanghai (PVG) take approximately 12–13 hours. Flights to Beijing (PEK) are also available, sometimes with a short connection. Auckland is the only New Zealand airport with direct flights to mainland China — all CTS tour package prices include the return international airfares from AKL. If you are based in Wellington, Christchurch, Dunedin or regional NZ, our consultants arrange a connecting domestic flight to Auckland for an additional fee, quoted separately based on your departure city and travel dates.'
     },
     {
       question: 'How long is the flight from Auckland to Beijing or Shanghai?',
@@ -353,6 +369,26 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     {
       question: 'Can I pay for China tours in New Zealand dollars?',
       answer: 'Yes. All CTS tour prices are quoted and paid in NZD. There are no hidden exchange rate markups — what you see is what you pay. Our Auckland team handles all currency conversion for in-China costs including hotels, guides, and domestic transport.'
+    },
+    {
+      question: 'What are the most popular China tours for New Zealand travellers?',
+      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $3,399), and Silk Road Discovery (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
+    },
+    {
+      question: 'Is it safe to travel from New Zealand to China?',
+      answer: 'Yes — China is a well-developed and safe travel destination. Violent crime rates are very low, public transport is modern and reliable, and our tours include English-speaking local guides who handle all logistics. For New Zealand travellers, the main considerations are checking the latest visa-free entry conditions before booking and arranging comprehensive travel insurance (not included in tour price but strongly recommended).'
+    },
+    {
+      question: 'When is the best time to travel from New Zealand to China?',
+      answer: 'September to early November (autumn) and March to May (spring) are the most comfortable months for Kiwi travellers — mild temperatures, lower humidity, and clear skies. October is widely considered the single best month. Avoid Chinese Golden Week (1–7 October) and Chinese New Year (late January / early February) if you prefer fewer crowds. June to August is hot and humid in most regions.'
+    },
+    {
+      question: 'Why book a China tour through a New Zealand specialist instead of online?',
+      answer: 'CTS Tours has operated as China Travel Service\'s NZ arm since 1928 with direct China operations — meaning our team in Auckland talks to our team in China, not a reseller chain. You get NZD pricing with no hidden FX markups, TAANZ-bonded payment protection, an Auckland contact who understands NZ school holidays and departure preferences, and on-the-ground support throughout your trip. We are not a generic online travel agency.'
+    },
+    {
+      question: 'Can CTS arrange a private or tailor-made China tour from New Zealand?',
+      answer: 'Yes. While our published itineraries cover most travellers\' needs, we also design fully custom China tours for couples, families, multi-generational groups, and special interests (photography, history, food). Tailor-made trips use the same CTS network — direct China operations, English-speaking guides, NZD pricing — but with itinerary pace, hotels, and inclusions tuned to your preferences. Contact our Auckland team for a tailored quote.'
     }
   ]
 };
@@ -367,7 +403,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
   faqs: [
     {
       question: 'Do all CTS China tours depart from Auckland?',
-      answer: 'Our published tour prices include flights from New Zealand. Most departure flights are from Auckland (AKL), which offers direct flights to Shanghai and Beijing. If you\'re based elsewhere in New Zealand (Wellington, Christchurch, Dunedin), CTS can arrange connecting flights at no extra cost via Auckland. Contact us for provincial pricing.'
+      answer: 'Our published tour prices include the return international airfares from Auckland (AKL), the only New Zealand airport with direct flights to Shanghai and Beijing. If you are based elsewhere in New Zealand (Wellington, Christchurch, Dunedin, regional NZ), CTS arranges a connecting domestic flight to Auckland for the international departure; this connecting leg is quoted separately at additional cost based on your home city and travel dates, and is not included in the headline tour price.'
     },
     {
       question: 'How early should I arrive at Auckland Airport?',
@@ -383,7 +419,7 @@ export const chinaToursFromAucklandMeta: SeoPageMeta = {
     },
     {
       question: 'What if I live outside Auckland?',
-      answer: 'CTS serves all New Zealand. If you\'re based in Wellington, Christchurch, Dunedin, or elsewhere, we can arrange connecting flights to Auckland to meet your outbound international flight. We also offer video consultations and phone support. You\'re never far from expert China travel advice!'
+      answer: 'CTS serves all New Zealand. If you are based in Wellington, Christchurch, Dunedin or elsewhere, our team arranges a connecting domestic flight to Auckland to meet your outbound international flight — the domestic connecting leg is quoted separately at additional cost and is not included in the headline tour price. We also offer video consultations and phone support. You are never far from expert China travel advice!'
     }
   ]
 };
