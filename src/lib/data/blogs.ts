@@ -9,6 +9,7 @@ import { phase3LineCPosts } from '@/lib/data/blogs-phase3-line-c';
 import { chinaHolidayPackagesBlogPost } from '@/lib/data/blogs-china-holiday-packages';
 import { holidaysToChinaFromNewZealandPost } from '@/lib/data/blogs-cts-blog-2026-06-11-holidays';
 import { chinaTourPackagesIncludingAirfareFromNzPost } from '@/lib/data/blogs-cts-blog-2026-06-11-airfare';
+import { longtailBatch3Posts } from '@/lib/data/blogs-longtail-batch3';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -257,6 +258,7 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
   ...phase1TravelTipPosts,
   ...longtailBatch1Posts,
   ...longtailBatch2Posts,
+  ...longtailBatch3Posts,
   ...phase3LineAPosts,
   ...phase3LineBPosts,
   ...phase3LineCPosts,

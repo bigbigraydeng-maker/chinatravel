@@ -82,7 +82,7 @@ I'm **Baker Gu**, CTS's China travel specialist. I've been eating hot pot in Cho
 
 ## What Makes Chongqing Hot Pot Different
 
-Hot pot exists across China — Shanghai has it, Beijing has it, Chengdu has its own version. But Chongqing is the origin city, and the original version uses a base broth that most versions outside of Chongqing have deliberately toned down.
+Hot pot exists across China — [Shanghai](/shanghai-tours) has it, [Beijing](/beijing-tours) has it, [Chengdu](/chengdu-tours) has its own version. But Chongqing is the origin city, and the original version uses a base broth that most versions outside of Chongqing have deliberately toned down.
 
 The Chongqing broth starts with **beef tallow** — rendered beef fat — as the base, with dried chillies and **Sichuan peppercorn** (花椒, huājiāo). The Sichuan peppercorn is key: it doesn't just add heat, it creates a numbing sensation called *máláng* (麻辣) — a combination of spice and tingling that affects your lips and tongue in a way that's genuinely novel if you've never experienced it. Most people find they like it. Some find it overwhelming. I recommend everyone try the original broth at least once.
 
@@ -258,7 +258,7 @@ The China visa-free policy for New Zealand has been extended and expanded since 
 
 ## Booking a Tour Under Visa-Free Policy
 
-All CTS Tours products are structured to sit comfortably within the 30-day visa-free window. Our October Discovery 10-day tours, Signature multi-destination routes, and custom itineraries all come with full documentation you need at the border. If you're self-booking and not travelling with us, make sure you have your own return ticket and accommodation confirmed before you fly.
+All [CTS Tours China packages](/china-tours-from-new-zealand) are structured to sit comfortably within the 30-day visa-free window. Our [October Discovery 10-day tours](/small-group-china-tours), Signature multi-destination routes, and custom itineraries all come with full documentation you need at the border. If you're self-booking and not travelling with us, make sure you have your own return ticket and accommodation confirmed before you fly.
 
 For any questions about current entry requirements, [contact the CTS team](/contact) — we keep current on this because our clients' trips depend on it.
     `
@@ -277,7 +277,7 @@ For any questions about current entry requirements, [contact the CTS team](/cont
     publishedAt: '2026-04-27',
     readTime: '7 min read',
     content: `
-I'm **Baker Gu**, CTS's China travel specialist. Every client who asks me about Chengdu starts the same way: "Is it just the pandas?" I always give the same answer: the pandas are one morning. The city is several days. Here is what I include when I have three or more nights in Chengdu.
+I'm **Baker Gu**, CTS's China travel specialist. Every client who asks me about [Chengdu](/chengdu-tours) starts the same way: "Is it just the pandas?" I always give the same answer: the pandas are one morning. The city is several days. Here is what I include when I have three or more nights in Chengdu.
 
 ## Morning 1: The Panda Base (Non-Negotiable)
 
