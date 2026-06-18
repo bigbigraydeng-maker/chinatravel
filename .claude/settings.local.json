@@ -50,7 +50,9 @@
       "Skill(tavily-research:*)",
       "mcp__mcp-registry__search_mcp_registry",
       "Bash(git pull *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "mcp__04378394-a4e0-42d5-a202-33280c7daabc__media_upload",
+      "mcp__04378394-a4e0-42d5-a202-33280c7daabc__media_upload_widget"
     ]
   }
 }
