@@ -343,7 +343,7 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from New Zealand | Visa-Free | CTS Tours',
-  description: 'China tours from New Zealand — visa-free for Kiwi passports, all prices in NZD, return international flights from Auckland (AKL) included. Small groups, expert guides, 90+ years running China tours. Connecting domestic flights from Wellington, Christchurch & regional NZ arranged at additional cost. Get a free quote from our NZ team.',
+  description: 'China tours from New Zealand — visa-free for Kiwi passports, NZD pricing, return flights from Auckland included. Small groups, expert guides, TAANZ-bonded since 1928. Get a free quote.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Direct from Auckland · Connecting flights from Wellington & Christchurch available (additional cost). Visa-free for NZ passports. NZD pricing. Expert NZ team.',
   introText:

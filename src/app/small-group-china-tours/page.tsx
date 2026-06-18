@@ -129,6 +129,19 @@ export default function SmallGroupChinaToursPage() {
             {/* Main column */}
             <div className="lg:col-span-2 space-y-12">
 
+              {/* Quick Answer — Featured Snippet / AI Overview target */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  CTS Tours runs small-group China tours from New Zealand with a maximum of <strong>16 travellers</strong>. Groups depart from Auckland (return flights included), priced in NZD. October 2026 departures are open for Beijing &amp; Xi&apos;an and Shanghai &amp; Surroundings. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
+                </p>
+              </aside>
+
               {/* Section 1: Why small-group */}
               <section>
                 <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">

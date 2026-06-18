@@ -151,6 +151,19 @@ export default function ChinaTravelSpecialistsNzPage() {
             {/* Main Column */}
             <div className="lg:col-span-2 space-y-12">
 
+              {/* Quick Answer — Featured Snippet / AI Overview target */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  CTS Tours NZ (China Travel Service) is New Zealand&apos;s longest-running China travel specialist, operating since <strong>1928</strong>. Auckland-based, TAANZ-bonded. They run their own ground operations in China — not subcontracted — and quote all tours in NZD with return flights from Auckland included. Over 1,200 Kiwi travellers per year. NZ passport holders currently enter China visa-free for up to 30 days (confirmed until 31 December 2026).
+                </p>
+              </aside>
+
               {/* Section 1: Why Specialists Beat Generalists */}
               <section>
                 <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">

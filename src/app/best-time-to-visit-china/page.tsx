@@ -106,6 +106,19 @@ export default function BestTimeToVisitChinaPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Column */}
             <div className="lg:col-span-2 space-y-12 prose prose-lg max-w-none">
+              {/* Quick Answer — Featured Snippet / AI Overview target */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6 not-prose"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  The best time to visit China is <strong>April–May (spring)</strong> or <strong>September–October (autumn)</strong> — mild temperatures, lower crowds, and clear skies across most regions. October is especially popular for New Zealand travellers: autumn foliage, comfortable walking weather, and a quieter Great Wall. Avoid Chinese public holidays (Golden Week: 1–7 October, Chinese New Year: Jan/Feb) when domestic crowds peak significantly.
+                </p>
+              </aside>
+
               {/* Introduction */}
               <section>
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">

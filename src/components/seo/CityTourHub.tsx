@@ -68,6 +68,19 @@ const CityTourHub: React.FC<CityHubProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main column */}
             <div className="lg:col-span-2 space-y-12">
+              {/* Quick Answer — AI Overview / Featured Snippet target */}
+              <aside
+                aria-label="Quick answer"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+              >
+                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                  Quick answer
+                </p>
+                <p className="text-gray-800 leading-relaxed">
+                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded, Auckland-based, since 1928. NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
+                </p>
+              </aside>
+
               {/* Introduction */}
               <section>
                 <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
