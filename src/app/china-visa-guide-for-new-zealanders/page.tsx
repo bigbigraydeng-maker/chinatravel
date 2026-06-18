@@ -5,7 +5,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import RelatedGuides from '@/components/seo/RelatedGuides';
-import HubHero from '@/components/seo/HubHero';
+import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
 import VisaCheckerWidget from '@/components/seo/VisaCheckerWidget';
 import { Icon } from '@/components/ui/Icon';
@@ -73,10 +73,24 @@ export default function ChinaVisaGuidePage() {
         </div>
       </nav>
 
-      {/* Hero */}
-      <HubHero
+      {/* Hero — LP-style with inline lead form. Matches /china-tours hero
+          visually so visa-intent ad clicks land on a familiar specialist
+          consultation surface (parity with competitor visa-LP path) instead
+          of a pure SEO content page. */}
+      <HeroWithLeadForm
         title={chinaVisaGuideMeta.h1}
         subtitle={chinaVisaGuideMeta.heroSubtitle}
+        posterImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg"
+        sectionId="visa-guide-hero"
+        bullets={[
+          'Visa-free for NZ passports · 30-day stays · until 31 Dec 2026',
+          'No embassy queues · no application forms · just your passport',
+          'Talk to an Auckland-based specialist before you fly',
+        ]}
+        gtmSubmitEventName="china_visa_guide_submit"
+        gtmFormType="china_visa_guide"
+        leadConversionSource="china_visa_guide"
+        messageSourceLabel="Form: /china-visa-guide-for-new-zealanders hero"
       />
 
       {/* Interactive Visa Checker */}

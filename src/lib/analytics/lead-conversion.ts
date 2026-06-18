@@ -35,7 +35,7 @@ const GOOGLE_ADS_SEND_TO = 'AW-17984232872/y-kaCLSI9YAcEKi7xv9C';
 const LEAD_VALUE = 1.0; // NZD — keep Google Ads + Meta Pixel values in sync
 const CURRENCY = 'NZD';
 
-export type LeadSource = 'contact_page' | 'tour_enquiry' | 'china_tours_hub';
+export type LeadSource = 'contact_page' | 'tour_enquiry' | 'china_tours_hub' | 'china_visa_guide';
 
 /**
  * Fire the Google Ads conversion + Meta Pixel `Lead` for a submitted enquiry.
