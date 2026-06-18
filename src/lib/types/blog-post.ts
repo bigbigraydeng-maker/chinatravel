@@ -11,4 +11,5 @@ export interface BlogPost {
   heroImage: string;
   publishedAt: string;
   readTime: string;
+  faqs?: { question: string; answer: string }[];
 }

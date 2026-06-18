@@ -9,6 +9,7 @@ import { migratedSite } from '@/lib/site-media';
 import { renderBlogPostHtml } from '@/lib/blog-html';
 import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
 import { Icon } from '@/components/ui/Icon';
+import SchemaMarkup from '@/components/SchemaMarkup';
 
 interface BlogPostPageProps {
   params: {
@@ -89,8 +90,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     .filter(p => p.slug !== post.slug && p.category === post.category)
     .slice(0, 2);
 
+  const faqSchema = post.faqs && post.faqs.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: post.faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer
+      }
+    }))
+  } : null;
+
   return (
     <div>
+      {faqSchema && <SchemaMarkup data={[faqSchema]} />}
       {/* Hero */}
       <section className="relative h-80 md:h-96">
         <div className="absolute inset-0">

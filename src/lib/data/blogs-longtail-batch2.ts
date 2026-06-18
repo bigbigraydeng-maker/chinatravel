@@ -184,7 +184,7 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
     id: 'lt-b2-4',
     slug: 'china-visa-free-nz-2026',
     title: 'China Visa-Free for New Zealand 2026: What to Know',
-    excerpt: 'I\'m Baker Gu — China\'s visa-free policy for NZ passport holders is real, but there are conditions people miss. Here\'s the honest breakdown of what qualifies, what doesn\'t, and what to carry.',
+    excerpt: 'NZ passport holders can visit China visa-free for 30 days (until 31 Dec 2026) — no visa application needed. What documents to carry, what qualifies, and what to watch out for. Expert guide by CTS Tours NZ.',
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'travel-tips',
@@ -192,7 +192,33 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
     heroImage: '/blog/group-great-wall-cts.jpg',
     publishedAt: '2026-04-27',
     readTime: '5 min read',
+    faqs: [
+      {
+        question: 'Do New Zealand citizens need a visa for China?',
+        answer: 'No. New Zealand ordinary (blue) passport holders can enter mainland China visa-free for up to 30 days per visit. The policy is published until 31 December 2026 and covers tourism, visiting family, transit, and short business visits.'
+      },
+      {
+        question: 'How long can NZ passport holders stay in China visa-free?',
+        answer: 'Up to 30 days per visit. Standard CTS Tours China holiday packages (10–15 days) are well within this limit.'
+      },
+      {
+        question: 'What documents do I need for China visa-free entry as a New Zealander?',
+        answer: 'You need: (1) a valid NZ ordinary passport with at least 6 months\' remaining validity, (2) a return or onward ticket showing you\'ll leave within 30 days, (3) accommodation confirmation or a tour itinerary. CTS Tours provides all necessary travel documents with your booking.'
+      },
+      {
+        question: 'Does the NZ visa-free policy apply to NZ permanent residents?',
+        answer: 'The 30-day visa-free policy applies to New Zealand ordinary (blue) passport holders only. New Zealand permanent residents travelling on non-NZ passports need to check the entry requirements for their own passport\'s country.'
+      },
+      {
+        question: 'Is the China visa-free policy for NZ permanent?',
+        answer: 'The policy is currently published until 31 December 2026. It has been extended repeatedly since 2024 and CTS Tours treats it as functionally stable, but we recommend confirming the policy status remains current before booking, as changes can occur without long advance notice.'
+      }
+    ],
     content: `
+NZ passport holders can enter mainland China **visa-free for up to 30 days** for tourism — no visa application required. The policy applies to ordinary (blue) New Zealand passports and is published until 31 December 2026. You need a return ticket, 6-month passport validity, and accommodation confirmation. All CTS Tours China packages include the documentation you need at the border.
+
+---
+
 I'm **Baker Gu**, CTS's China travel specialist. The visa-free policy for New Zealand passport holders visiting China is one of the most useful pieces of news I've shared with Kiwi clients in years. But it comes with conditions that a surprising number of people miss — and getting it wrong at the airport is not a position you want to be in. Here's the honest breakdown.
 
 ## What the Policy Says

@@ -1722,6 +1722,10 @@ export const greatWallGuide: DestinationGuide = {
     {
       question: 'What is the best time to visit the Great Wall of China?',
       answer: 'Spring (April–May) and autumn (September–October) offer mild weather, clear skies, and vivid colours. Summer is warm but can be hazy; winter is cold but crowd-free with dramatic snow-dusted scenery. Avoid Chinese public holidays (National Day in October, Labour Day in May) when crowds peak significantly.'
+    },
+    {
+      question: 'Do New Zealanders need a visa to visit the Great Wall?',
+      answer: 'No. New Zealand ordinary passport holders can enter China visa-free for up to 30 days (policy published until 31 December 2026). A visit to the Great Wall is included in most CTS Beijing packages, which are 10–14 days — well within the visa-free limit. You need a return ticket and valid NZ passport (6+ months remaining). See our China visa guide for NZ travellers for full details.'
     }
   ],
   relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'beijing-signature-imperial-heritage'],

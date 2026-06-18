@@ -375,6 +375,48 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* CTS vs Competitors */}
+      <section className="py-16 bg-warm-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-serif font-bold mb-4 text-center">How CTS Compares</h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            Kiwi travellers often compare us to other China tour operators. Here&apos;s how CTS stacks up on the factors that matter most.
+          </p>
+          <div className="overflow-x-auto max-w-4xl mx-auto">
+            <table className="w-full text-sm border-collapse bg-white rounded-xl overflow-hidden shadow-md">
+              <thead>
+                <tr className="bg-primary text-white">
+                  <th className="px-6 py-4 text-left font-semibold">Feature</th>
+                  <th className="px-6 py-4 text-center font-semibold">CTS Tours NZ</th>
+                  <th className="px-6 py-4 text-center font-semibold">Wendy Wu Tours</th>
+                  <th className="px-6 py-4 text-center font-semibold">Generic OTA</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['NZ-based team', '✅ Auckland office', '❌ AU/UK-based', '❌ No local team'],
+                  ['NZ dollar pricing', '✅ All prices in NZD', '❌ AUD pricing', '❌ USD/AUD'],
+                  ['NZ-only tour groups', '✅ Kiwis only', '❌ Mixed AU/NZ/UK groups', '❌ Global groups'],
+                  ['Flights from NZ included', '✅ Return flights from AKL', '✅ Flights included', '❌ Land-only'],
+                  ['Direct China operations', '✅ Own ground team in China', '✅ Own operations', '❌ Third-party agents'],
+                  ['TAANZ bonded', '✅ TAANZ member since 1928', '❌ Not TAANZ', '❌ Not TAANZ'],
+                  ['Small group size', '✅ Max 16 (Signature)', '⚠️ Up to 30+', '❌ Varies widely'],
+                  ['Years in NZ market', '✅ 98 years (est. 1928)', '⚠️ ~15 years', '❌ New entrant'],
+                ].map(([feature, cts, wendy, ota], i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td className="px-6 py-3 font-medium text-gray-800">{feature}</td>
+                    <td className="px-6 py-3 text-center text-green-700 font-medium">{cts}</td>
+                    <td className="px-6 py-3 text-center text-gray-600">{wendy}</td>
+                    <td className="px-6 py-3 text-center text-gray-600">{ota}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-center text-xs text-gray-400 mt-4">Comparison based on publicly available information as of 2026. Details subject to change.</p>
+        </div>
+      </section>
+
       {/* FAQs — also emits FAQPage schema for Google AI Overview / People-Also-Ask */}
       <FAQSection faqs={ABOUT_FAQS} />
     </div>
