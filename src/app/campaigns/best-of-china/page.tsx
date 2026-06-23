@@ -31,6 +31,9 @@ import {
   getTourPageFaqsForTour,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
+import CampaignWelcomeBanner from './_components/CampaignWelcomeBanner';
+import StickyPriceBar from './_components/StickyPriceBar';
+import WhyCtsBadgeRow from './_components/WhyCtsBadgeRow';
 
 /**
  * Paid-traffic landing page for the flagship "Best of China" (Essentials) tour.
@@ -94,6 +97,9 @@ export default function BestOfChinaLandingPage() {
     <>
       <SchemaMarkup data={schemas} />
 
+      <StickyPriceBar />
+      <CampaignWelcomeBanner />
+
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
@@ -138,6 +144,50 @@ export default function BestOfChinaLandingPage() {
         </div>
       )}
 
+      <WhyCtsBadgeRow />
+
+      {/* LLM-friendly TL;DR for AI Overview / ChatGPT / Perplexity citation
+          (mirror of the Quick Answer block PR #72 added to /china-tours).
+          Sourced from tour.* fields so updates to tours.ts propagate without
+          a separate copy edit. */}
+      <section className="bg-white">
+        <div className="container mx-auto px-4 pt-10 md:pt-12">
+          <aside
+            aria-label="Quick answer"
+            className="relative max-w-4xl rounded-2xl overflow-hidden shadow-sm border border-amber-100 bg-gradient-to-br from-warm-50 via-white to-amber-50/40"
+          >
+            <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-amber-500 via-amber-600 to-orange-500" />
+            <div className="px-6 md:px-8 py-6 md:py-7">
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-3">
+                <p className="text-xs font-bold uppercase tracking-widest text-amber-700">
+                  Quick answer
+                </p>
+                <span className="text-2xl md:text-3xl font-serif font-bold text-gray-900 leading-none">
+                  {tour.price}
+                </span>
+                <span className="text-sm md:text-base text-gray-600 font-medium">
+                  · {tour.duration} · Auckland departures
+                </span>
+              </div>
+              <p className="text-gray-800 leading-relaxed">
+                <span className="font-bold">{tour.name}</span> is a{' '}
+                {tour.duration.toLowerCase()}, Auckland-departing China tour covering Beijing,
+                Xi&apos;an, Hangzhou, a Jiangnan water-town stop, and Shanghai. Lead-in price{' '}
+                <span className="font-semibold">{tour.price}</span> including return
+                international airfares from Auckland, English-speaking guides, hotel
+                accommodation, and entrance fees per itinerary.
+                {tour.departureDates && tour.departureDates.length > 0 && (
+                  <> Scheduled small-group departures: {tour.departureDates.join(', ')}.</>
+                )}
+                {' '}Backed by CTS — global China travel brand since 1928, NZ team
+                25 years. NZ ordinary passport holders currently enjoy visa-free entry
+                of up to 30 days, published through 31 December 2026.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
       <ChinaVisaNudge />
 
       <TrustBar />
@@ -175,7 +225,7 @@ export default function BestOfChinaLandingPage() {
               <TourGallery images={tour.gallery} tourName={tour.name} />
             </div>
 
-            <div className="lg:col-span-1">
+            <div id="enquiry" className="lg:col-span-1 scroll-mt-24">
               <div className="sticky top-24 space-y-6">
                 <TourEnquiry
                   tourName={tour.name}

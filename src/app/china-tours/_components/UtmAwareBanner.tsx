@@ -51,11 +51,12 @@ function readUtm(): UtmReading {
   }
 }
 
-type Variant = 'visa' | 'default';
+type Variant = 'visa' | 'best_of_china' | 'default';
 
 interface BannerCopy {
   message: React.ReactNode;
   cta: string;
+  ctaHref?: string;
 }
 
 const COPY: Record<Variant, BannerCopy> = {
@@ -68,6 +69,19 @@ const COPY: Record<Variant, BannerCopy> = {
       </>
     ),
     cta: 'Talk to a specialist →',
+  },
+  best_of_china: {
+    message: (
+      <>
+        <span className="font-semibold">Best of China · 15 days</span>
+        {' '}· from NZD $3,880 · October 2026 from Auckland — talk to a
+        specialist about the next departure.
+      </>
+    ),
+    cta: 'See Best of China →',
+    // Best-of-China ad clicks land on /china-tours? Route them to the
+    // dedicated campaign LP so the ad/LP messaging match completes.
+    ctaHref: '/campaigns/best-of-china',
   },
   default: {
     message: (
@@ -88,9 +102,16 @@ export default function UtmAwareBanner() {
     if (!source) return;
     const isPaidSource = META_SOURCES.has(source) || GOOGLE_SOURCES.has(source);
     if (!isPaidSource) return;
-    // utm_campaign matches /visa/ (e.g. `visa-free-2026`, `nz-visa-pain`)
-    // → swap to visa-specific copy. Otherwise fall back to default welcome.
-    setVariant(campaign && /visa/.test(campaign) ? 'visa' : 'default');
+    // Campaign-aware copy selection. Order matters: /best.?of.?china/ is
+    // checked first because a campaign like `best-of-china-visa-2026` should
+    // surface the product-specific message, not the generic visa banner.
+    if (campaign && /best[-_]?of[-_]?china/.test(campaign)) {
+      setVariant('best_of_china');
+    } else if (campaign && /visa/.test(campaign)) {
+      setVariant('visa');
+    } else {
+      setVariant('default');
+    }
   }, []);
 
   if (!variant) return null;
@@ -106,7 +127,7 @@ export default function UtmAwareBanner() {
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <p className="text-sm sm:text-base text-amber-900">{copy.message}</p>
         <a
-          href="#china-tours-hero"
+          href={copy.ctaHref ?? '#china-tours-hero'}
           className="inline-flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors whitespace-nowrap"
         >
           {copy.cta}
