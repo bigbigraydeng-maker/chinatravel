@@ -36,6 +36,11 @@ import StickyPriceBar from './_components/StickyPriceBar';
 import WhyCtsBadgeRow from './_components/WhyCtsBadgeRow';
 import BigStatsBlock from './_components/BigStatsBlock';
 import CustomerTripPhotos from '@/app/china-tours/_components/CustomerTripPhotos';
+import HeroVideoOverlay from './_components/HeroVideoOverlay';
+import CityJourneyTimeline from './_components/CityJourneyTimeline';
+import ReviewMarquee from './_components/ReviewMarquee';
+import BehindThePrice from './_components/BehindThePrice';
+import FloatingPhoneCta from './_components/FloatingPhoneCta';
 
 /**
  * Paid-traffic landing page for the flagship "Best of China" (Essentials) tour.
@@ -116,19 +121,24 @@ export default function BestOfChinaLandingPage() {
         </div>
       </nav>
 
-      <TourHero
-        title={tour.title}
-        shortDescription={tour.shortDescription}
-        duration={tour.duration}
-        price={tour.price}
-        heroImage={tour.heroImage}
-        tier={tour.tier}
-        tags={tour.tags}
-        departureDates={tour.departureDates}
-        primaryCtaLabel="Reserve Your Place →"
-        secondaryCtaLabel="View itinerary"
-        singleSupplement={tour.singleSupplement}
-      />
+      <div className="relative">
+        <HeroVideoOverlay />
+        <div className="relative z-10">
+          <TourHero
+            title={tour.title}
+            shortDescription={tour.shortDescription}
+            duration={tour.duration}
+            price={tour.price}
+            heroImage={tour.heroImage}
+            tier={tour.tier}
+            tags={tour.tags}
+            departureDates={tour.departureDates}
+            primaryCtaLabel="Reserve Your Place →"
+            secondaryCtaLabel="View itinerary"
+            singleSupplement={tour.singleSupplement}
+          />
+        </div>
+      </div>
 
       {tour.departureDates && tour.departureDates.length > 0 && (
         <div className="bg-amber-50 border-y border-amber-200 py-4">
@@ -149,6 +159,8 @@ export default function BestOfChinaLandingPage() {
       <WhyCtsBadgeRow />
 
       <BigStatsBlock />
+
+      <CityJourneyTimeline />
 
       {/* LLM-friendly TL;DR for AI Overview / ChatGPT / Perplexity citation
           (mirror of the Quick Answer block PR #72 added to /china-tours).
@@ -192,7 +204,11 @@ export default function BestOfChinaLandingPage() {
         </div>
       </section>
 
+      <BehindThePrice />
+
       <CustomerTripPhotos />
+
+      <ReviewMarquee />
 
       <ChinaVisaNudge />
 
@@ -269,6 +285,7 @@ export default function BestOfChinaLandingPage() {
       <FAQSection faqs={faqs} />
 
       <FloatingCta tourName={tour.name} tourSlug={tour.slug} enquirySectionId="enquiry" />
+      <FloatingPhoneCta />
     </>
   );
 }
