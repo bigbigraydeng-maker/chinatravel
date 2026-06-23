@@ -19,7 +19,13 @@ const FLAGSHIP_TOURS: Array<{
   {
     slug: 'essentials',
     ribbon: 'Most popular',
-    href: '/tours/china/discovery/essentials',
+    // Conversion LP, not the generic tour detail. /campaigns/best-of-china is
+    // the campaign-focused surface with hero CTA + sticky enquiry + scarcity
+    // strip + (post-PR) FAQPage schema + Best-of-China UTM banner. Generic
+    // detail page (/tours/china/discovery/essentials) still ranks organically
+    // and is wired up via internal nav — flagship grid sends traffic to the
+    // LP so paid + flagship-hub traffic both convert in the same funnel.
+    href: '/campaigns/best-of-china',
   },
   {
     slug: 'shanghai-surroundings',

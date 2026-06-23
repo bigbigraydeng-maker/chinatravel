@@ -3,7 +3,7 @@
  *
  * The 4 URLs are PM-confirmed contracts:
  *   - A Tale of Two Cities    → /tours/china/discovery/beijing-xian
- *   - Best of China           → /tours/china/discovery/essentials
+ *   - Best of China           → /campaigns/best-of-china  (PM-confirmed campaign LP, NOT the generic tour detail page)
  *   - Shanghai & Surroundings → /campaigns/october-2026/shanghai-surroundings
  *   - Silk Road               → /tours/china/signature/silk-road
  *
@@ -30,7 +30,7 @@ describe('FlagshipTourGrid', () => {
     expect(links).toEqual(
       expect.arrayContaining([
         '/tours/china/discovery/beijing-xian',
-        '/tours/china/discovery/essentials',
+        '/campaigns/best-of-china',
         '/campaigns/october-2026/shanghai-surroundings',
         '/tours/china/signature/silk-road',
       ])

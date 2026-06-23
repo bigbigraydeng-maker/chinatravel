@@ -138,6 +138,37 @@ export default function BestOfChinaLandingPage() {
         </div>
       )}
 
+      {/* LLM-friendly TL;DR for AI Overview / ChatGPT / Perplexity citation
+          (mirror of the Quick Answer block PR #72 added to /china-tours).
+          Sourced from tour.* fields so updates to tours.ts propagate without
+          a separate copy edit. */}
+      <section className="bg-white">
+        <div className="container mx-auto px-4 pt-8 md:pt-10">
+          <aside
+            aria-label="Quick answer"
+            className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6 max-w-4xl"
+          >
+            <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+              Quick answer
+            </p>
+            <p className="text-gray-800 leading-relaxed">
+              <span className="font-bold">{tour.name}</span> is a {tour.duration.toLowerCase()},
+              Auckland-departing China tour covering Beijing, Xi&apos;an, Hangzhou, a
+              Jiangnan water-town stop, and Shanghai. Lead-in price{' '}
+              <span className="font-semibold">{tour.price}</span> including return international
+              airfares from Auckland, English-speaking guides, hotel accommodation, and
+              entrance fees per itinerary.
+              {tour.departureDates && tour.departureDates.length > 0 && (
+                <> Scheduled small-group departures: {tour.departureDates.join(', ')}.</>
+              )}
+              {' '}TAANZ-bonded, Auckland-based since 1928. NZ ordinary passport holders
+              currently enjoy visa-free entry of up to 30 days, published through
+              31 December 2026.
+            </p>
+          </aside>
+        </div>
+      </section>
+
       <ChinaVisaNudge />
 
       <TrustBar />
