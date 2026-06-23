@@ -34,6 +34,8 @@ import { getSiteUrl } from '@/lib/site';
 import CampaignWelcomeBanner from './_components/CampaignWelcomeBanner';
 import StickyPriceBar from './_components/StickyPriceBar';
 import WhyCtsBadgeRow from './_components/WhyCtsBadgeRow';
+import BigStatsBlock from './_components/BigStatsBlock';
+import CustomerTripPhotos from '@/app/china-tours/_components/CustomerTripPhotos';
 
 /**
  * Paid-traffic landing page for the flagship "Best of China" (Essentials) tour.
@@ -146,6 +148,8 @@ export default function BestOfChinaLandingPage() {
 
       <WhyCtsBadgeRow />
 
+      <BigStatsBlock />
+
       {/* LLM-friendly TL;DR for AI Overview / ChatGPT / Perplexity citation
           (mirror of the Quick Answer block PR #72 added to /china-tours).
           Sourced from tour.* fields so updates to tours.ts propagate without
@@ -187,6 +191,8 @@ export default function BestOfChinaLandingPage() {
           </aside>
         </div>
       </section>
+
+      <CustomerTripPhotos />
 
       <ChinaVisaNudge />
 
