@@ -31,16 +31,23 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
 
   return (
     <article className="bg-white">
-      {/* Hero — pre-reveal question */}
+      {/* Hero — mirrors the FB Reel collage exactly so visitors arriving from
+          the ad see a continuous visual: same headline shape, same subtitle,
+          same red accent on "1 LIE". The detailed prompt sits underneath. */}
       <section className="bg-gradient-to-br from-sky-900 via-sky-800 to-sky-900 text-white">
         <div className="container mx-auto px-4 py-12 md:py-16 text-center max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-3">
-            CTS · play · 5 truths &amp; 1 lie
+          <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-5">
+            CTS · play · spot the lie
           </p>
-          <h1 className="text-3xl md:text-5xl font-serif font-bold mb-4 leading-tight">
-            {quiz.hero.question}
+          <h1 className="font-serif font-black uppercase tracking-tight leading-[0.95] text-5xl md:text-7xl mb-3">
+            5 Truths &amp; <span className="text-red-400">1 Lie</span>
           </h1>
-          <p className="text-base md:text-lg text-sky-100/90">{quiz.hero.subtitle}</p>
+          <p className="text-lg md:text-2xl text-sky-100 font-medium mb-5">
+            Spot the lie about China 🇨🇳
+          </p>
+          <p className="text-sm md:text-base text-sky-100/80 max-w-2xl mx-auto leading-relaxed">
+            {quiz.hero.subtitle}
+          </p>
         </div>
       </section>
 
