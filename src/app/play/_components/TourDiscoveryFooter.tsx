@@ -77,8 +77,8 @@ const FLAGSHIP_TOURS: FlagshipTour[] = [
     duration: 'Signature · Discovery · Stopover',
     blurb:
       'See every CTS itinerary — NZD pricing, Auckland departures, NZ visa-free until 31 Dec 2026.',
-    image: `${TOUR_IMG_LIB}/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg`,
-    alt: 'Gold lion guarding a hall in the Forbidden City',
+    image: '/images/play/spot-the-lie-china-icons-1/panel-A.png',
+    alt: 'Mt. Huangshan at sunrise with the iconic Welcoming Guest Pine',
   },
 ]
 

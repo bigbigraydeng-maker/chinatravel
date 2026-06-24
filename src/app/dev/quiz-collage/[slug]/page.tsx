@@ -178,8 +178,9 @@ export default function QuizCollagePage({ params }: RouteParams) {
                   width: '56px',
                   height: '56px',
                   borderRadius: '10px',
-                  backgroundColor: 'white',
-                  color: '#0A0A0A',
+                  backgroundColor: '#0c4a6e', // sky-900 — matches LP letter chips for cross-surface consistency
+                  color: 'white',
+                  boxShadow: '0 0 0 2px rgba(255,255,255,0.22)', // soft ring lifts contrast on the black collage background
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
