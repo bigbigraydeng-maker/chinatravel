@@ -8,7 +8,7 @@ import { useGtmTracking } from '@/components/GoogleTagManager';
 
 export default function ConditionalChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideSiteChrome = pathname?.startsWith('/admin');
+  const hideSiteChrome = pathname?.startsWith('/admin') || pathname?.startsWith('/dev/');
   useGtmTracking();
 
   return (

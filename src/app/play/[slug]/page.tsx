@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import SpotTheOddOneOutReveal from '../_components/SpotTheOddOneOutReveal'
+import SpotTheLieReveal from '../_components/SpotTheLieReveal'
 import { getAllPlayQuizSlugs, getPlayQuizBySlug } from '@/lib/data/play-quizzes'
 import { buildCtsPageMetadata } from '@/lib/seo-metadata'
 
@@ -38,6 +39,8 @@ export default function PlayQuizPage({ params }: RouteParams) {
   switch (quiz.format) {
     case 'spot-the-odd-one-out':
       return <SpotTheOddOneOutReveal quiz={quiz} />
+    case 'spot-the-lie':
+      return <SpotTheLieReveal quiz={quiz} />
     default:
       notFound()
   }

@@ -16,7 +16,7 @@
  * (no rebuild needed beyond a normal deploy).
  */
 
-export type PlayQuizFormat = 'spot-the-odd-one-out'
+export type PlayQuizFormat = 'spot-the-odd-one-out' | 'spot-the-lie'
 
 export interface PlayQuizPanel {
   /** Label shown on the social card (A-F). Determines reveal order. */
@@ -27,14 +27,30 @@ export interface PlayQuizPanel {
   altText: string
   /** Surface name shown when the answer is revealed (e.g. "Suzhou, China"). */
   location: string
+
+  // ─── spot-the-odd-one-out specific ─────────────────────────────────────
   /** True for the deliberate "wrong" panel in spot-the-odd-one-out. */
-  isCorrectAnswer: boolean
-  /** 1-3 sentence background story unlocked on reveal. */
-  story: string
-  /** Optional CTS tour CTA tied to this location. */
-  tourLink?: { label: string; href: string }
+  isCorrectAnswer?: boolean
+  /** 1-3 sentence background story unlocked on reveal (spot-the-odd-one-out). */
+  story?: string
   /** Used on the odd-one panel to soft-pitch alternatives ("not in our lineup yet"). */
   crossSellNote?: string
+
+  // ─── spot-the-lie specific ─────────────────────────────────────────────
+  /** 15-20 word claim shown ON the collage panel. 5 true, 1 false. */
+  shortClaim?: string
+  /** ~60-word full claim shown on the LP for the visitor to read carefully. */
+  longClaim?: string
+  /** True for the one lie panel in spot-the-lie. */
+  isLie?: boolean
+  /** The actual truth — shown next to the lie panel on reveal. */
+  truth?: string
+  /** Bonus fact / surprise twist for truth panels, shown on LP reveal expansion. */
+  factExpansion?: string
+
+  // ─── shared ────────────────────────────────────────────────────────────
+  /** Optional CTS tour CTA tied to this location. */
+  tourLink?: { label: string; href: string }
 }
 
 export interface PlayQuiz {
@@ -182,6 +198,125 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
       title: 'Which one is NOT in China? Spot-the-odd China quiz | CTS Tours',
       description:
         'Five of six photos are real China spots — one is a clever Korea decoy. See the answer + the CTS tour that visits each real China location.',
+    },
+  },
+
+  // ─── Spot the Lie #1 — China Icons ──────────────────────────────────────
+  // 6 famous China landmarks, each with a claim. 5 truths + 1 lie (Panel D:
+  // "Great Wall visible from space" — classic NASA-debunked myth).
+  // Image source: ChatGPT (gpt-image) — see public/images/play/spot-the-lie-china-icons-1/
+  {
+    slug: 'spot-the-lie-china-icons-1',
+    format: 'spot-the-lie',
+    hero: {
+      question: '5 Truths & 1 Lie about China — can you spot the lie?',
+      subtitle:
+        "Five of these claims about China's most iconic places are true. One is a famous myth that Westerners have believed for decades. Read each, pick the lie, and we'll show you the truth — plus the CTS tour that takes you to every real spot.",
+      ogImage: '/images/play/spot-the-lie-china-icons-1/collage.png',
+    },
+    panels: [
+      {
+        label: 'A',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-A.png',
+        altText:
+          "Mt. Huangshan's twisted pines and granite peaks rising through a sea of clouds at sunrise",
+        location: 'Mt. Huangshan, Anhui — China',
+        shortClaim:
+          'Twisted pines inspired 1,500 years of Chinese landscape painting.',
+        longClaim:
+          "Mt. Huangshan's twisted pines and granite peaks inspired over 1,500 years of Chinese landscape painting — including the iconic Welcoming Guest Pine that's been alive for over 1,300 years.",
+        isLie: false,
+        factExpansion:
+          'The Welcoming Guest Pine (迎客松) is so famous it has its own personal guardian — a state-appointed ranger who lives in a hut nearby and files daily health reports on the tree to the Chinese government.',
+        tourLink: { label: 'Best of China · 15 days', href: '/campaigns/best-of-china' },
+      },
+      {
+        label: 'B',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-B.png',
+        altText:
+          "Ranks of life-sized terracotta warrior statues standing in their excavation pit in Xi'an",
+        location: "Terracotta Army, Xi'an — China",
+        shortClaim:
+          '8,000+ warriors, every face unique, modeled on real soldiers 2,200 years ago.',
+        longClaim:
+          "Of the 8,000+ terracotta warriors guarding Emperor Qin Shi Huang's tomb, no two faces are identical — each was modeled on a real soldier from his army 2,200 years ago.",
+        isLie: false,
+        factExpansion:
+          'The warriors were originally painted in vivid red, blue, purple and green. Most of the paint flaked off within minutes of being exposed to air after 2,200 years underground — a problem archaeologists are still trying to solve before excavating the rest of the tomb.',
+        tourLink: { label: 'Best of China · 15 days', href: '/campaigns/best-of-china' },
+      },
+      {
+        label: 'C',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-C.png',
+        altText:
+          "Songzanlin Monastery's gold rooftops and Tibetan architecture with snow mountains behind",
+        location: 'Shangri-La, Yunnan — China',
+        shortClaim:
+          'Renamed in 2001 after a fictional paradise in a 1933 British novel.',
+        longClaim:
+          "Shangri-La in Yunnan was renamed in 2001 — the town officially adopted the name of the fictional paradise from James Hilton's 1933 novel “Lost Horizon” to attract international tourists.",
+        isLie: false,
+        factExpansion:
+          'Before 2001 the town was called Zhongdian (中甸). Three other Chinese counties also competed for the official “Shangri-La” branding — Zhongdian won after a four-year campaign backed by the Yunnan provincial government.',
+        tourLink: {
+          label: 'Yunnan Explorer · 12 days',
+          href: '/tours/china/discovery/yunnan-explorer',
+        },
+      },
+      {
+        label: 'D',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-D.png',
+        altText: 'The Great Wall of China snaking through autumn-coloured forested mountains',
+        location: 'Mutianyu Great Wall, Beijing — China',
+        shortClaim:
+          'The only man-made structure visible from space with the naked eye.',
+        longClaim:
+          'The Great Wall of China is the only man-made structure visible from space with the naked eye, stretching over 21,000 kilometres across the country.',
+        isLie: true,
+        truth:
+          'The Wall is NOT visible from space with the naked eye. NASA has confirmed this multiple times — the Wall is only 5-9 metres wide, which from the International Space Station (400 km up) is the equivalent of trying to spot a single human hair from 4 km away. Chinese astronaut Yang Liwei was the first to publicly debunk it in 2003 after his 21-hour orbital flight. (The 21,000 km length is real, though — that half of the claim is true.)',
+        tourLink: { label: 'Best of China · 15 days', href: '/campaigns/best-of-china' },
+      },
+      {
+        label: 'E',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-E.png',
+        altText:
+          'Vertical sandstone pillars rising through morning mist in Zhangjiajie National Forest Park',
+        location: 'Zhangjiajie, Hunan — China',
+        shortClaim: 'Inspired the floating Hallelujah Mountains in Avatar (2009).',
+        longClaim:
+          "Zhangjiajie's sandstone pillars directly inspired the floating Hallelujah Mountains in James Cameron's Avatar (2009) — the producers visited, and one pillar was officially renamed “Avatar Hallelujah Mountain.”",
+        isLie: false,
+        factExpansion:
+          'The 2010 renaming sparked enough nationalist backlash inside China that the local government held a public ceremony to defend the decision. The pillar is still officially named after the Hollywood film.',
+        tourLink: { label: 'Zhangjiajie Stopover', href: '/tours/china/stopover/zhangjiajie' },
+      },
+      {
+        label: 'F',
+        image: '/images/play/spot-the-lie-china-icons-1/panel-F.png',
+        altText:
+          'Turquoise alpine lakes surrounded by autumn-coloured forest in Jiuzhaigou Valley',
+        location: 'Jiuzhaigou Valley, Sichuan — China',
+        shortClaim:
+          'Turquoise lakes from calcium carbonate — visibility 40 metres down.',
+        longClaim:
+          "Jiuzhaigou's brilliant turquoise lakes get their colour from calcium carbonate deposits left by ancient glaciers — the water is so clear you can see up to 40 metres down.",
+        isLie: false,
+        factExpansion:
+          "After the 2017 Sichuan earthquake, several of Jiuzhaigou's signature lakes drained and re-formed overnight. The valley reopened to visitors in 2019 after a massive ecological restoration project.",
+        tourLink: { label: 'Browse Discovery Tours', href: '/tours/china/discovery' },
+      },
+    ],
+    answer: {
+      correctLabel: 'D',
+      headline: "D is the lie — the Great Wall is NOT visible from space.",
+      detail:
+        "It's one of the most repeated “facts” in Western textbooks — and it's wrong. Both NASA astronauts and Chinese astronauts confirm the Wall is invisible from orbit with the naked eye. The other five claims? All true. Tap any panel below for the full story plus the CTS tour that takes you there.",
+    },
+    meta: {
+      title: '5 Truths & 1 Lie about China — Can you spot the myth? | CTS Tours',
+      description:
+        "Five facts about China's most iconic places are real. One is a 50-year-old myth Westerners still believe. See if you can spot it — and discover the CTS tours that visit every real spot.",
     },
   },
 ]
