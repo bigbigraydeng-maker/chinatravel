@@ -33,32 +33,36 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
     <article className="bg-white">
       {/* Hero — mirrors the FB Reel collage exactly so visitors arriving from
           the ad see a continuous visual: same headline shape, same subtitle,
-          same red accent on "1 LIE". The detailed prompt sits underneath. */}
-      <section className="bg-gradient-to-br from-sky-900 via-sky-800 to-sky-900 text-white">
+          same CTS-accent red on "1 LIE". Colours follow CTS master_brief
+          vi_colors: #1a1a1a primary / #d4af37 heritage gold / Tailwind `primary`
+          (#B61E2E ≈ master_brief #c41e3a) for the accent red — matches the
+          rest of the CTS site so quiz red and "Plan Your Journey" red agree. */}
+      <section className="bg-[#1a1a1a] text-white">
         <div className="container mx-auto px-4 py-12 md:py-16 text-center max-w-3xl">
-          <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-5">
+          <p className="text-xs uppercase tracking-widest text-[#d4af37] font-semibold mb-5">
             CTS · play · spot the lie
           </p>
           <h1 className="font-serif font-black uppercase tracking-tight leading-[0.95] text-5xl md:text-7xl mb-3">
-            5 Truths &amp; <span className="text-red-400">1 Lie</span>
+            5 Truths &amp; <span className="text-primary">1 Lie</span>
           </h1>
-          <p className="text-lg md:text-2xl text-sky-100 font-medium mb-5">
+          <p className="text-lg md:text-2xl text-white/90 font-medium mb-5">
             Spot the lie about China 🇨🇳
           </p>
-          <p className="text-sm md:text-base text-sky-100/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-white/70 max-w-2xl mx-auto leading-relaxed">
             {quiz.hero.subtitle}
           </p>
         </div>
       </section>
 
-      {/* Pre-reveal 6-panel collage (matches the FB ad creative) */}
-      <section className="bg-sky-50">
+      {/* Pre-reveal 6-panel collage (matches the FB ad creative — black bed,
+          gold chips for heritage palette continuity from the hero). */}
+      <section className="bg-[#1a1a1a]">
         <div className="container mx-auto px-4 py-8 md:py-10">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 max-w-5xl mx-auto">
             {quiz.panels.map((p) => (
               <div
                 key={p.label}
-                className="relative aspect-square overflow-hidden rounded-lg bg-warm-100"
+                className="relative aspect-square overflow-hidden rounded-lg bg-black/40"
               >
                 <Image
                   src={p.image}
@@ -67,7 +71,7 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
                   sizes="(min-width: 768px) 33vw, 50vw"
                   className="object-cover"
                 />
-                <span className="absolute top-2 left-2 inline-flex items-center justify-center w-8 h-8 rounded-md bg-sky-900 text-white font-black text-base shadow">
+                <span className="absolute top-2 left-2 inline-flex items-center justify-center w-8 h-8 rounded-md bg-[#d4af37] text-[#1a1a1a] font-black text-base shadow">
                   {p.label}
                 </span>
               </div>
@@ -76,14 +80,14 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
         </div>
       </section>
 
-      {/* Letter picker + reveal — gates the payoff */}
+      {/* Letter picker + reveal — gates the payoff. CTS gold rule, CTS red CTA. */}
       {!revealed && (
-        <section className="bg-white border-y-4 border-amber-400">
+        <section className="bg-white border-y-4 border-[#d4af37]">
           <div className="container mx-auto px-4 py-8 md:py-12 max-w-2xl text-center">
-            <p className="text-xs uppercase tracking-widest text-amber-700 font-bold mb-3">
+            <p className="text-xs uppercase tracking-widest text-[#1a1a1a]/70 font-bold mb-3">
               Step 1 · pick your guess
             </p>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#1a1a1a] mb-2">
               Which claim is the lie?
             </h2>
             <p className="text-sm md:text-base text-gray-600 mb-6">
@@ -98,8 +102,8 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
                   aria-pressed={guess === p.label}
                   className={`aspect-square rounded-lg font-black text-xl md:text-2xl border-2 transition ${
                     guess === p.label
-                      ? 'bg-sky-900 text-white border-sky-900 scale-105'
-                      : 'bg-white text-sky-900 border-sky-200 hover:border-sky-400'
+                      ? 'bg-[#1a1a1a] text-[#d4af37] border-[#1a1a1a] scale-105'
+                      : 'bg-white text-[#1a1a1a] border-warm-200 hover:border-[#d4af37]'
                   }`}
                 >
                   {p.label}
@@ -110,7 +114,7 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
               type="button"
               onClick={() => setRevealed(true)}
               disabled={!guess}
-              className="w-full md:w-auto bg-amber-500 hover:bg-amber-600 disabled:bg-warm-200 disabled:text-warm-400 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-md transition text-base md:text-lg"
+              className="w-full md:w-auto bg-primary hover:bg-primary/90 disabled:bg-warm-200 disabled:text-warm-400 disabled:cursor-not-allowed text-white font-bold px-8 py-4 rounded-md transition text-base md:text-lg"
             >
               {guess ? `Reveal — was ${guess} the lie? 🤯` : 'Pick a letter first'}
             </button>
@@ -118,25 +122,25 @@ export default function SpotTheLieReveal({ quiz }: { quiz: PlayQuiz }) {
         </section>
       )}
 
-      {/* Answer banner — only after reveal */}
+      {/* Answer banner — only after reveal. CTS accent red over soft warm bed. */}
       {revealed && (
-        <section className="bg-red-50 border-y-4 border-red-500">
+        <section className="bg-primary/5 border-y-4 border-primary">
           <div className="container mx-auto px-4 py-10 md:py-12 max-w-3xl text-center">
-            <div className="inline-flex items-center gap-2 bg-red-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
+            <div className="inline-flex items-center gap-2 bg-primary text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-3">
               🚨 The lie revealed
             </div>
-            <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-3 leading-tight">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#1a1a1a] mb-3 leading-tight">
               {quiz.answer.headline}
             </h2>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
               {quiz.answer.detail}
             </p>
             {guessedCorrectly ? (
-              <p className="mt-5 text-base md:text-lg font-bold text-emerald-700">
-                You spotted it. Most people don&apos;t. 🎯
+              <p className="mt-5 text-base md:text-lg font-bold text-[#1a1a1a]">
+                <span className="text-[#d4af37]">★</span> You spotted it. Most people don&apos;t.
               </p>
             ) : guess ? (
-              <p className="mt-5 text-base md:text-lg font-bold text-amber-700">
+              <p className="mt-5 text-base md:text-lg font-bold text-[#1a1a1a]/80">
                 You guessed {guess}. The lie was actually {liePanel?.label}. Don&apos;t feel
                 bad — it&apos;s in textbooks worldwide.
               </p>
@@ -211,12 +215,10 @@ function PanelClaimCard({
       data-revealed={revealed ? 'true' : 'false'}
       className={`bg-white rounded-2xl overflow-hidden border transition ${
         showLieReveal
-          ? 'border-red-400 ring-2 ring-red-300 shadow-lg'
-          : showTruthReveal
-            ? 'border-emerald-200 shadow-sm'
-            : isGuess
-              ? 'border-sky-400 ring-2 ring-sky-200'
-              : 'border-warm-100 shadow-sm'
+          ? 'border-primary ring-2 ring-primary/30 shadow-lg'
+          : isGuess && !revealed
+            ? 'border-[#d4af37] ring-2 ring-[#d4af37]/40'
+            : 'border-warm-100 shadow-sm'
       }`}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
@@ -229,24 +231,21 @@ function PanelClaimCard({
         />
         <span
           className={`absolute top-3 left-3 inline-flex items-center justify-center w-10 h-10 rounded-md font-black text-lg shadow ${
-            showLieReveal ? 'bg-red-500 text-white' : 'bg-sky-900 text-white'
+            showLieReveal ? 'bg-primary text-white' : 'bg-[#d4af37] text-[#1a1a1a]'
           }`}
         >
           {panel.label}
         </span>
         {showLieReveal && (
-          <span className="absolute top-3 right-3 inline-flex items-center bg-red-500 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full shadow">
+          <span className="absolute top-3 right-3 inline-flex items-center bg-primary text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full shadow">
             🚨 The lie
           </span>
         )}
-        {showTruthReveal && (
-          <span className="absolute top-3 right-3 inline-flex items-center bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full shadow">
-            ✓ True
-          </span>
-        )}
+        {/* No badge on truth panels — absence of red is the signal, keeps the
+            palette to two accents (gold/red) per CTS master_brief. */}
       </div>
       <div className="p-5">
-        <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-2">
+        <p className="text-xs uppercase tracking-wider text-[#1a1a1a]/65 font-semibold mb-2">
           {panel.location}
         </p>
         <p className="text-sm md:text-base text-gray-800 leading-relaxed mb-3 font-medium">
@@ -254,8 +253,8 @@ function PanelClaimCard({
         </p>
 
         {showLieReveal && panel.truth && (
-          <div className="mt-3 p-3 bg-red-50 border-l-4 border-red-400 rounded-r">
-            <p className="text-xs uppercase tracking-wider text-red-700 font-bold mb-1">
+          <div className="mt-3 p-3 bg-primary/5 border-l-4 border-primary rounded-r">
+            <p className="text-xs uppercase tracking-wider text-primary font-bold mb-1">
               The truth
             </p>
             <p className="text-sm text-gray-800 leading-relaxed">{panel.truth}</p>
@@ -263,8 +262,8 @@ function PanelClaimCard({
         )}
 
         {showTruthReveal && panel.factExpansion && (
-          <div className="mt-3 p-3 bg-emerald-50 border-l-4 border-emerald-400 rounded-r">
-            <p className="text-xs uppercase tracking-wider text-emerald-700 font-bold mb-1">
+          <div className="mt-3 p-3 bg-[#fdf8ec] border-l-4 border-[#d4af37] rounded-r">
+            <p className="text-xs uppercase tracking-wider text-[#1a1a1a] font-bold mb-1">
               Bonus fact
             </p>
             <p className="text-sm text-gray-800 leading-relaxed">{panel.factExpansion}</p>
