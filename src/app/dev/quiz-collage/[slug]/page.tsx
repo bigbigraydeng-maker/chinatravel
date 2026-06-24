@@ -58,7 +58,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
         left: 0,
         width: '1080px',
         height: '1920px',
-        backgroundColor: '#0A0A0A',
+        backgroundColor: '#1a1a1a',
         overflow: 'hidden',
         fontFamily: 'var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
@@ -73,7 +73,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
           __html: `
             body > div { display: none !important; }
             body { margin: 0 !important; padding: 0 !important; overflow: hidden !important; }
-            html { background: #0A0A0A; }
+            html { background: #1a1a1a; }
           `,
         }}
       />
@@ -103,7 +103,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
             margin: 0,
           }}
         >
-          5 TRUTHS &amp; <span style={{ color: '#E63946' }}>1 LIE</span>
+          5 TRUTHS &amp; <span style={{ color: '#B61E2E' }}>1 LIE</span>
         </h1>
         <p
           style={{
@@ -178,9 +178,9 @@ export default function QuizCollagePage({ params }: RouteParams) {
                   width: '56px',
                   height: '56px',
                   borderRadius: '10px',
-                  backgroundColor: '#0c4a6e', // sky-900 — matches LP letter chips for cross-surface consistency
-                  color: 'white',
-                  boxShadow: '0 0 0 2px rgba(255,255,255,0.22)', // soft ring lifts contrast on the black collage background
+                  backgroundColor: '#d4af37', // CTS heritage gold (master_brief vi_colors.secondary)
+                  color: '#1a1a1a', // CTS primary black on gold for premium heritage feel
+                  boxShadow: 'none',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
