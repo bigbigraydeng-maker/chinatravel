@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSiteUrl } from '@/lib/site';
+import { createContactFromForm } from '@/lib/crm';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
@@ -77,6 +78,15 @@ export async function POST(req: NextRequest) {
       console.error('Resend error (tour-enquiry):', error);
       return NextResponse.json({ error: 'Failed to send enquiry. Please try again.' }, { status: 500 });
     }
+
+    // Persist lead to CRM (non-blocking — don't fail the enquiry if CRM write fails)
+    createContactFromForm({
+      name: String(name),
+      email: email ? String(email) : undefined,
+      phone: phone ? String(phone) : undefined,
+      source: 'website',
+      tour_interest: String(tourName),
+    }).catch((err) => console.error('[CRM] Failed to save tour enquiry lead:', err));
 
     return NextResponse.json({ success: true });
   } catch (err) {
