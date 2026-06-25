@@ -84,15 +84,16 @@ export default function QuizCollagePage({ params }: RouteParams) {
         }}
       />
 
-      {/* Banner — y=270 to y=450 (inside the safe zone, just below the FB
-          status bar / back arrow dead zone). 180px tall. */}
+      {/* Banner — y=270 to y=470 (inside the safe zone, just below the FB
+          status bar / back arrow dead zone). 200px tall — sized for a 35-70
+          audience: title 92pt, subtitle 38pt. */}
       <header
         style={{
           position: 'absolute',
           top: '270px',
           left: 0,
           right: 0,
-          height: '180px',
+          height: '200px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -103,7 +104,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
       >
         <h1
           style={{
-            fontSize: '78px',
+            fontSize: '92px',
             fontWeight: 900,
             color: 'white',
             letterSpacing: '-0.02em',
@@ -115,10 +116,10 @@ export default function QuizCollagePage({ params }: RouteParams) {
         </h1>
         <p
           style={{
-            fontSize: '32px',
-            color: 'rgba(255,255,255,0.92)',
+            fontSize: '38px',
+            color: 'rgba(255,255,255,0.95)',
             fontWeight: 500,
-            marginTop: '14px',
+            marginTop: '16px',
             marginBottom: 0,
           }}
         >
@@ -126,17 +127,18 @@ export default function QuizCollagePage({ params }: RouteParams) {
         </p>
       </header>
 
-      {/* 6-panel grid — y=450 to y=1230 (780px tall). Inside the safe zone.
+      {/* 6-panel grid — y=470 to y=1230 (760px tall). Inside the safe zone.
           Each panel is image-full-bleed; the letter chip sits in the top-left
           corner of the image, and the short caption rides a bottom gradient
-          overlay so the image area is maximised. */}
+          overlay. Type is sized for a 35-70 audience reading at phone
+          distance: 60px chips, 28pt captions. */}
       <section
         style={{
           position: 'absolute',
-          top: '450px',
+          top: '470px',
           left: '24px',
           right: '24px',
-          height: '780px',
+          height: '760px',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gridTemplateRows: '1fr 1fr 1fr',
@@ -170,17 +172,18 @@ export default function QuizCollagePage({ params }: RouteParams) {
               }}
             />
 
-            {/* Bottom gradient + caption overlay */}
+            {/* Bottom gradient + caption overlay — sized for older eyes at
+                phone distance (28pt, 2-line capacity, deep gradient base). */}
             <div
               style={{
                 position: 'absolute',
                 bottom: 0,
                 left: 0,
                 right: 0,
-                height: '108px',
+                height: '130px',
                 background:
-                  'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.96) 100%)',
-                padding: '14px 14px 12px 14px',
+                  'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.97) 100%)',
+                padding: '16px 16px 14px 16px',
                 display: 'flex',
                 alignItems: 'flex-end',
               }}
@@ -188,9 +191,9 @@ export default function QuizCollagePage({ params }: RouteParams) {
               <p
                 style={{
                   color: 'white',
-                  fontSize: '18px',
-                  lineHeight: 1.25,
-                  fontWeight: 500,
+                  fontSize: '28px',
+                  lineHeight: 1.2,
+                  fontWeight: 600,
                   margin: 0,
                   width: '100%',
                 }}
@@ -199,25 +202,26 @@ export default function QuizCollagePage({ params }: RouteParams) {
               </p>
             </div>
 
-            {/* Letter chip — sits over the image top-left corner */}
+            {/* Letter chip — top-left corner. Bumped to 60×60 + 36pt for
+                readability on phone-sized Reel previews. */}
             <span
               aria-hidden="true"
               style={{
                 position: 'absolute',
-                top: '10px',
-                left: '10px',
-                width: '46px',
-                height: '46px',
-                borderRadius: '8px',
+                top: '12px',
+                left: '12px',
+                width: '60px',
+                height: '60px',
+                borderRadius: '10px',
                 backgroundColor: '#d4af37', // CTS heritage gold (master_brief vi_colors.secondary)
                 color: '#1a1a1a',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontWeight: 900,
-                fontSize: '26px',
+                fontSize: '36px',
                 lineHeight: 1,
-                boxShadow: '0 2px 10px rgba(0,0,0,0.55)',
+                boxShadow: '0 2px 12px rgba(0,0,0,0.6)',
               }}
             >
               {p.label}
