@@ -221,8 +221,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         altText:
           "Mt. Huangshan's twisted pines and granite peaks rising through a sea of clouds at sunrise",
         location: 'Mt. Huangshan, Anhui — China',
-        shortClaim:
-          'Twisted pines inspired 1,500 years of Chinese landscape painting.',
+        shortClaim: 'Inspired 1,500 years of Chinese painting.',
         longClaim:
           "Mt. Huangshan's twisted pines and granite peaks inspired over 1,500 years of Chinese landscape painting — including the iconic Welcoming Guest Pine that's been alive for over 1,300 years.",
         isLie: false,
@@ -236,8 +235,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         altText:
           "Ranks of life-sized terracotta warrior statues standing in their excavation pit in Xi'an",
         location: "Terracotta Army, Xi'an — China",
-        shortClaim:
-          '8,000+ warriors, every face unique, modeled on real soldiers 2,200 years ago.',
+        shortClaim: '8,000+ warriors. Every face is unique.',
         longClaim:
           "Of the 8,000+ terracotta warriors guarding Emperor Qin Shi Huang's tomb, no two faces are identical — each was modeled on a real soldier from his army 2,200 years ago.",
         isLie: false,
@@ -251,8 +249,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         altText:
           "Songzanlin Monastery's gold rooftops and Tibetan architecture with snow mountains behind",
         location: 'Shangri-La, Yunnan — China',
-        shortClaim:
-          'Renamed in 2001 after a fictional paradise in a 1933 British novel.',
+        shortClaim: 'Named after a 1933 British novel.',
         longClaim:
           "Shangri-La in Yunnan was renamed in 2001 — the town officially adopted the name of the fictional paradise from James Hilton's 1933 novel “Lost Horizon” to attract international tourists.",
         isLie: false,
@@ -268,8 +265,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         image: '/images/play/spot-the-lie-china-icons-1/panel-D.png',
         altText: 'The Great Wall of China snaking through autumn-coloured forested mountains',
         location: 'Mutianyu Great Wall, Beijing — China',
-        shortClaim:
-          'The only man-made structure visible from space with the naked eye.',
+        shortClaim: 'Visible from space with the naked eye.',
         longClaim:
           'The Great Wall of China is the only man-made structure visible from space with the naked eye, stretching over 21,000 kilometres across the country.',
         isLie: true,
@@ -283,7 +279,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         altText:
           'Vertical sandstone pillars rising through morning mist in Zhangjiajie National Forest Park',
         location: 'Zhangjiajie, Hunan — China',
-        shortClaim: 'Inspired the floating Hallelujah Mountains in Avatar (2009).',
+        shortClaim: "Inspired Avatar's floating mountains.",
         longClaim:
           "Zhangjiajie's sandstone pillars directly inspired the floating Hallelujah Mountains in James Cameron's Avatar (2009) — the producers visited, and one pillar was officially renamed “Avatar Hallelujah Mountain.”",
         isLie: false,
@@ -297,8 +293,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         altText:
           'Turquoise alpine lakes surrounded by autumn-coloured forest in Jiuzhaigou Valley',
         location: 'Jiuzhaigou Valley, Sichuan — China',
-        shortClaim:
-          'Turquoise lakes from calcium carbonate — visibility 40 metres down.',
+        shortClaim: 'Turquoise lakes — 40m visibility down.',
         longClaim:
           "Jiuzhaigou's brilliant turquoise lakes get their colour from calcium carbonate deposits left by ancient glaciers — the water is so clear you can see up to 40 metres down.",
         isLie: false,
