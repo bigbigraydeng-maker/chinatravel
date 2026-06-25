@@ -8,13 +8,23 @@ import { getPlayQuizBySlug, getAllPlayQuizSlugs } from '@/lib/data/play-quizzes'
  * Renders a fixed 1080×1920 collage of the quiz's 6 panels at /dev/quiz-collage/[slug].
  * The route is NOT linked from anywhere on the site and is set noindex below.
  *
+ * Layout follows the Meta Reel safe-zone discipline learned from the first
+ * shipped collage (whose banner + CTA fell inside the FB UI overlay):
+ *   - y=0   to y=270   : TOP DEAD ZONE   (phone status bar + back arrow + 3-dot)
+ *   - y=270 to y=450   : Banner          (180px — title + subtitle)
+ *   - y=450 to y=1230  : 6-panel grid    (780px — 3 rows × 252px + gaps)
+ *   - y=1248 to y=1920 : BOTTOM DEAD ZONE (~672px — caption + side rail + comment box)
+ *
+ * Critical content (title, panel labels, captions) MUST sit inside the
+ * y=270 to y=1248 band — that's the only area guaranteed visible after
+ * FB / IG Reel UI overlays cover the rest. The Reel's CTA ("Comment your
+ * guess") is handled by the post caption, NOT the collage — so we don't
+ * put a CTA on the image at all.
+ *
  * Workflow:
  *  1. PM provides 6 panel images + caption data via play-quizzes.ts.
- *  2. Claude Code starts dev server, navigates to this route at a 1080×1920 viewport.
- *  3. Claude Preview MCP captures a screenshot of the rendered collage.
- *  4. The screenshot is saved as public/images/play/[slug]/collage.png (the Reel ad asset).
- *
- * The same renderer feeds every future spot-the-lie quiz — change the quiz spec, re-shoot.
+ *  2. Run scripts/render-quiz-collage.sh <slug> against a running dev server.
+ *  3. Headless Chrome saves a 1080×1920 PNG to public/images/play/<slug>/collage.png.
  */
 
 export const dynamic = 'force-static'
@@ -37,8 +47,6 @@ export default function QuizCollagePage({ params }: RouteParams) {
   if (!quiz) notFound()
 
   // Only spot-the-lie quizzes use the collage with shortClaim captions.
-  // (spot-the-odd-one-out's collage is rendered inline on /play/[slug] and
-  // doesn't need this dedicated renderer.)
   if (quiz.format !== 'spot-the-lie') {
     return (
       <main style={{ padding: '40px', fontFamily: 'sans-serif' }}>
@@ -65,9 +73,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
       data-collage-slug={quiz.slug}
     >
       {/* Hide cookie banner / newsletter popup / any body-level overlay so the
-          screenshot captures only the collage. Root layout mounts those
-          components outside ConditionalChrome, so our /dev/ skip doesn't cover
-          them — we suppress them with CSS here instead. */}
+          screenshot captures only the collage. */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -77,14 +83,16 @@ export default function QuizCollagePage({ params }: RouteParams) {
           `,
         }}
       />
-      {/* Top banner — y=0 to y=220 */}
+
+      {/* Banner — y=270 to y=450 (inside the safe zone, just below the FB
+          status bar / back arrow dead zone). 180px tall. */}
       <header
         style={{
           position: 'absolute',
-          top: 0,
+          top: '270px',
           left: 0,
           right: 0,
-          height: '220px',
+          height: '180px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -95,7 +103,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
       >
         <h1
           style={{
-            fontSize: '76px',
+            fontSize: '78px',
             fontWeight: 900,
             color: 'white',
             letterSpacing: '-0.02em',
@@ -107,10 +115,10 @@ export default function QuizCollagePage({ params }: RouteParams) {
         </h1>
         <p
           style={{
-            fontSize: '30px',
-            color: 'rgba(255,255,255,0.85)',
+            fontSize: '32px',
+            color: 'rgba(255,255,255,0.92)',
             fontWeight: 500,
-            marginTop: '16px',
+            marginTop: '14px',
             marginBottom: 0,
           }}
         >
@@ -118,14 +126,17 @@ export default function QuizCollagePage({ params }: RouteParams) {
         </p>
       </header>
 
-      {/* 6-panel grid — y=220 to y=1720 (1500px tall) */}
+      {/* 6-panel grid — y=450 to y=1230 (780px tall). Inside the safe zone.
+          Each panel is image-full-bleed; the letter chip sits in the top-left
+          corner of the image, and the short caption rides a bottom gradient
+          overlay so the image area is maximised. */}
       <section
         style={{
           position: 'absolute',
-          top: '220px',
+          top: '450px',
           left: '24px',
           right: '24px',
-          height: '1500px',
+          height: '780px',
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
           gridTemplateRows: '1fr 1fr 1fr',
@@ -137,14 +148,12 @@ export default function QuizCollagePage({ params }: RouteParams) {
             key={p.label}
             style={{
               position: 'relative',
-              borderRadius: '14px',
+              borderRadius: '12px',
               overflow: 'hidden',
-              display: 'flex',
-              flexDirection: 'column',
               backgroundColor: '#000',
             }}
           >
-            {/* Image — fills top 320px of the panel */}
+            {/* Full-bleed image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={p.image}
@@ -152,100 +161,75 @@ export default function QuizCollagePage({ params }: RouteParams) {
               loading="eager"
               decoding="sync"
               style={{
+                position: 'absolute',
+                inset: 0,
                 width: '100%',
-                height: '320px',
+                height: '100%',
                 objectFit: 'cover',
                 display: 'block',
-                flexShrink: 0,
               }}
             />
-            {/* Caption block — bottom 172px */}
+
+            {/* Bottom gradient + caption overlay */}
             <div
               style={{
-                flex: 1,
-                backgroundColor: 'rgba(0,0,0,0.92)',
-                paddingInline: '16px',
-                paddingBlock: '16px',
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '108px',
+                background:
+                  'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 55%, rgba(0,0,0,0.96) 100%)',
+                padding: '14px 14px 12px 14px',
                 display: 'flex',
-                gap: '14px',
-                alignItems: 'flex-start',
+                alignItems: 'flex-end',
               }}
             >
-              <span
-                aria-hidden="true"
-                style={{
-                  flexShrink: 0,
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '10px',
-                  backgroundColor: '#d4af37', // CTS heritage gold (master_brief vi_colors.secondary)
-                  color: '#1a1a1a', // CTS primary black on gold for premium heritage feel
-                  boxShadow: 'none',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontWeight: 900,
-                  fontSize: '30px',
-                  lineHeight: 1,
-                }}
-              >
-                {p.label}
-              </span>
               <p
                 style={{
                   color: 'white',
-                  fontSize: '20px',
-                  lineHeight: 1.35,
+                  fontSize: '18px',
+                  lineHeight: 1.25,
                   fontWeight: 500,
                   margin: 0,
+                  width: '100%',
                 }}
               >
                 {p.shortClaim ?? ''}
               </p>
             </div>
+
+            {/* Letter chip — sits over the image top-left corner */}
+            <span
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                width: '46px',
+                height: '46px',
+                borderRadius: '8px',
+                backgroundColor: '#d4af37', // CTS heritage gold (master_brief vi_colors.secondary)
+                color: '#1a1a1a',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontWeight: 900,
+                fontSize: '26px',
+                lineHeight: 1,
+                boxShadow: '0 2px 10px rgba(0,0,0,0.55)',
+              }}
+            >
+              {p.label}
+            </span>
           </article>
         ))}
       </section>
 
-      {/* Bottom CTA — y=1720 to y=1920 (200px tall) */}
-      <footer
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '200px',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingInline: '24px',
-          textAlign: 'center',
-        }}
-      >
-        <p
-          style={{
-            color: 'white',
-            fontSize: '46px',
-            fontWeight: 900,
-            lineHeight: 1.1,
-            margin: 0,
-          }}
-        >
-          Comment the letter of the LIE 👇
-        </p>
-        <p
-          style={{
-            color: 'rgba(255,255,255,0.7)',
-            fontSize: '24px',
-            fontWeight: 500,
-            marginTop: '10px',
-            marginBottom: 0,
-          }}
-        >
-          Tap link to reveal the truth
-        </p>
-      </footer>
+      {/* y=1248 onwards is the FB Reel bottom dead zone — covered by the
+          post caption + side rail + comment box. We deliberately leave it
+          empty (the "Comment your guess" CTA lives in the post caption,
+          not on the creative). */}
     </main>
   )
 }
