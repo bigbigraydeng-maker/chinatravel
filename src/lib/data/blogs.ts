@@ -12,6 +12,8 @@ import { chinaTourPackagesIncludingAirfareFromNzPost } from '@/lib/data/blogs-ct
 import { longtailBatch3Posts } from '@/lib/data/blogs-longtail-batch3';
 import { chongqingVsChengduPost } from '@/lib/data/blogs-chongqing-vs-chengdu';
 import { howManyDaysInChongqingPost } from '@/lib/data/blogs-how-many-days-in-chongqing';
+import { yangtzeRiverCruiseFromChongqingPost } from '@/lib/data/blogs-yangtze-river-cruise-from-chongqing';
+import { lizibaMonorailGuidePost } from '@/lib/data/blogs-liziba-monorail-guide';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -258,6 +260,8 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
   chinaTourPackagesIncludingAirfareFromNzPost,
   chongqingVsChengduPost,
   howManyDaysInChongqingPost,
+  yangtzeRiverCruiseFromChongqingPost,
+  lizibaMonorailGuidePost,
   ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
   ...longtailBatch1Posts,
