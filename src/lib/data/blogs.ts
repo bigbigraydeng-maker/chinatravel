@@ -11,6 +11,7 @@ import { holidaysToChinaFromNewZealandPost } from '@/lib/data/blogs-cts-blog-202
 import { chinaTourPackagesIncludingAirfareFromNzPost } from '@/lib/data/blogs-cts-blog-2026-06-11-airfare';
 import { longtailBatch3Posts } from '@/lib/data/blogs-longtail-batch3';
 import { chongqingVsChengduPost } from '@/lib/data/blogs-chongqing-vs-chengdu';
+import { howManyDaysInChongqingPost } from '@/lib/data/blogs-how-many-days-in-chongqing';
 import { migratedUnsplash } from '@/lib/site-media';
 
 export type { BlogPost };
@@ -256,6 +257,7 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
   holidaysToChinaFromNewZealandPost,
   chinaTourPackagesIncludingAirfareFromNzPost,
   chongqingVsChengduPost,
+  howManyDaysInChongqingPost,
   ...seoT036ToT040BlogPosts,
   ...phase1TravelTipPosts,
   ...longtailBatch1Posts,
