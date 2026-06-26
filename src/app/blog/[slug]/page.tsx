@@ -103,9 +103,61 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     }))
   } : null;
 
+  // AI Overview / ChatGPT / Perplexity citation signals — Article, Person,
+  // BreadcrumbList schemas. Boosts AI assistant retrievability of Baker Gu
+  // bylined content. Magic Engine Phase 5 organic continuation.
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.heroImage.startsWith('http')
+      ? post.heroImage
+      : `${siteUrl}${post.heroImage.startsWith('/') ? '' : '/'}${post.heroImage}`,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      '@type': 'Person',
+      name: post.author,
+      jobTitle: post.authorRole,
+      worksFor: {
+        '@type': 'Organization',
+        name: 'CTS Tours NZ',
+        url: siteUrl,
+      },
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'CTS Tours',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/images/cts-logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': postUrl,
+    },
+    keywords: post.tags.join(', '),
+    articleSection: categoryLabels[post.category],
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+      { '@type': 'ListItem', position: 3, name: post.title, item: postUrl },
+    ],
+  };
+
+  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+
   return (
     <div>
-      {faqSchema && <SchemaMarkup data={[faqSchema]} />}
+      <SchemaMarkup data={schemas} />
       {/* Hero */}
       <section className="relative h-80 md:h-96">
         <div className="absolute inset-0">
