@@ -393,6 +393,26 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     {
       question: 'Can CTS arrange a private or tailor-made China tour from New Zealand?',
       answer: 'Yes. While our published itineraries cover most travellers\' needs, we also design fully custom China tours for couples, families, multi-generational groups, and special interests (photography, history, food). Tailor-made trips use the same CTS network — direct China operations, English-speaking guides, NZD pricing — but with itinerary pace, hotels, and inclusions tuned to your preferences. Contact our Auckland team for a tailored quote.'
+    },
+    {
+      question: 'Is it cheaper to book a China tour direct from New Zealand or through an Australian operator?',
+      answer: 'For most NZ travellers, booking direct from a New Zealand specialist like CTS Tours NZ ends up cheaper and simpler. Reasons: (1) NZD pricing with no AUD-NZD FX conversion markup (typically 3-5% savings), (2) no AU-NZ flight repositioning required because Auckland already has direct flights to Shanghai and Beijing, (3) TAANZ bonding gives NZ-specific payment protection, and (4) NZ school holidays and departure date preferences are understood without explanation. Australian operators can be excellent for AU travellers but rarely structure deals around the Auckland direct-flight advantage.'
+    },
+    {
+      question: 'What is included vs not included in a CTS China tour package?',
+      answer: 'Included in every CTS published tour price: return international flights from Auckland (AKL), all hotels (3-4 star Discovery / 4-5 star Signature), all in-China internal flights and high-speed rail transfers, English-speaking local guides in each city, daily breakfast and most lunches, all entrance fees per itinerary, and emergency support from the Auckland office during your trip. Not included (budget separately): travel insurance (strongly recommended), drinks beyond meals, optional shore excursions, tips for guides and drivers (typically NZD 10-20 per day per person), personal expenses, and connecting domestic flights from Wellington/Christchurch/regional NZ to Auckland (quoted separately).'
+    },
+    {
+      question: 'How does CTS Tours compare to Wendy Wu Tours or Intrepid for China from New Zealand?',
+      answer: 'All three are reputable, but they target different traveller types. CTS Tours NZ is Auckland-based with direct China operations (CTS group founded 1928, NZ team 25 years) — strongest for travellers wanting deep China specialisation, NZD pricing, and Auckland office contact. Wendy Wu Tours is a generalist Asia operator with broader portfolio but typically AUD-priced for NZ market. Intrepid is small-group adventure-focused, generally suited to younger or active travellers comfortable with shared dorm-style options. If you want a China-focused tour with Kiwi-led booking and direct China supplier relationships, CTS is purpose-built for that. For Asia-wide comparison shopping or backpacker-style group adventure, the other two are reasonable alternatives.'
+    },
+    {
+      question: 'What is the difference between Discovery and Signature tour collections?',
+      answer: 'Discovery (from NZD $3,399) uses 3-4 star city centre hotels, larger group sizes (up to 24), and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups (max 16), more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
+    },
+    {
+      question: 'What travel insurance do New Zealanders need for a China tour?',
+      answer: 'Travel insurance is not included in CTS tour packages but is strongly recommended. Look for a policy that covers: medical emergencies in mainland China (international hospitals in major cities accept Western insurance), trip cancellation and curtailment, lost luggage, and (optional but recommended for older travellers) pre-existing condition cover. Most NZ insurers (Southern Cross, AA Insurance, Cover-More) offer suitable China travel policies. Premiums for a 2-week China trip from NZ typically run NZD $80-200 per person depending on age and cover level. Our Auckland team can recommend brokers but does not sell insurance directly.'
     }
   ]
 };
