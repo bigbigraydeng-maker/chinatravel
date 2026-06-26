@@ -101,10 +101,14 @@ export default function TourEnquiry({
 
   return (
     <div id="enquiry" className="bg-white border border-warm-200 rounded-2xl overflow-hidden shadow-lg">
-      <div className="bg-gradient-to-r from-primary to-primary/90 px-6 py-5 text-white">
-        <h3 className="text-lg font-bold">Enquire About This Tour</h3>
-        <p className="text-sm text-white/80 mt-1">
-          Interested in {tourName}? We&apos;ll get back to you within 24 hours.
+      {/* P1 #3 — header brand-aligned with /china-tours HeroWithLeadForm:
+          white card + thin gold underline (no heavy red colour block) so it
+          doesn't compete visually with the sticky visa-free banner or the
+          StickyPriceBar above. Copy unified across the two surfaces. */}
+      <div className="px-6 pt-5 pb-4 border-b-2 border-secondary/70 bg-white">
+        <h3 className="text-lg font-bold text-accent">Talk to a China specialist</h3>
+        <p className="text-sm text-gray-600 mt-0.5">
+          Reply within 1 NZ business day · no obligation.
         </p>
       </div>
 
