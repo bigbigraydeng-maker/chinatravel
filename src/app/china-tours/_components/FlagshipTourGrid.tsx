@@ -1,6 +1,19 @@
 import Image from 'next/image';
 import { getAllChinaTours, type Tour } from '@/lib/data/tours';
 
+interface FlagshipTourGridProps {
+  /**
+   * How many flagship cards to render. Defaults to all 4. FB Leadform
+   * thankyou traffic (utm_medium=ab_test_leadform_thankyou) drops to 3
+   * — hot leads convert faster with fewer choices per Hick's Law.
+   */
+  limit?: number;
+  /** Override the section headline. Useful for post-lead thankyou-style copy. */
+  heading?: string;
+  /** Override the section body copy. */
+  intro?: string;
+}
+
 /**
  * 4 flagship tours surfaced on /china-tours. URLs are PM-confirmed and
  * hardcoded — Shanghai & Surroundings points to the October 2026 campaign
@@ -10,6 +23,12 @@ const FLAGSHIP_TOURS: Array<{
   slug: string;
   ribbon: string;
   href: string;
+  /**
+   * Override for the card thumbnail. Use when the tour's canonical
+   * heroImage doesn't render reliably (client-side CDN cache issues) or
+   * when a more recognisable landmark shot converts better on the hub.
+   */
+  imageOverride?: string;
 }> = [
   {
     slug: 'beijing-xian',
@@ -36,6 +55,13 @@ const FLAGSHIP_TOURS: Array<{
     slug: 'silk-road',
     ribbon: 'Signature · 18 days',
     href: '/tours/china/signature/silk-road',
+    // The silk-road-wall.jpg tour heroImage renders as blank/broken for
+    // some visitors (client CDN edge or ad-blocker heuristics — the URL
+    // itself returns 200 server-side). Terracotta Warriors is the tour's
+    // most recognisable start-of-Silk-Road landmark for the NZ market,
+    // and it's a proven-loading asset used elsewhere on the hub already.
+    imageOverride:
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
   },
 ];
 
@@ -65,7 +91,7 @@ function nextDepartureChip(t?: Tour): string | null {
   return `${m[1].slice(0, 3)} ${m[2]}`;
 }
 
-export default function FlagshipTourGrid() {
+export default function FlagshipTourGrid({ limit, heading, intro }: FlagshipTourGridProps = {}) {
   const toursBySlug = new Map<string, Tour>(
     getAllChinaTours().map((t) => [t.slug, t])
   );
@@ -82,23 +108,23 @@ export default function FlagshipTourGrid() {
       );
     }
     return { ...entry, tour };
-  });
+  }).slice(0, limit ?? FLAGSHIP_TOURS.length);
 
   return (
     <section className="bg-warm-50 border-y border-warm-100">
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-3xl mb-8">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-            Flagship China itineraries
+            {heading ?? 'Flagship China itineraries'}
           </h2>
           <p className="text-lg text-gray-700">
-            Four of our most-booked routes from New Zealand — pick a starting point and our
-            specialists will tailor dates, hotels, and add-ons around you.
+            {intro ??
+              'Four of our most-booked routes from New Zealand — pick a starting point and our specialists will tailor dates, hotels, and add-ons around you.'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map(({ slug, href, ribbon, tour }) => (
+        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${cards.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
+          {cards.map(({ slug, href, ribbon, tour, imageOverride }) => (
             <a
               key={slug}
               href={href}
@@ -107,7 +133,7 @@ export default function FlagshipTourGrid() {
               <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
                 {tour ? (
                   <Image
-                    src={tour.heroImage}
+                    src={imageOverride ?? tour.heroImage}
                     alt={tour.name}
                     fill
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
