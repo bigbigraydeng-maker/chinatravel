@@ -162,14 +162,23 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
         videoSrc={HERO_VIDEO}
       />
 
-      <TrustBar />
+      {/* TrustBar — hidden on mobile for thankyou traffic (redundant with the
+          hero's "specialist will be in touch" promise + Reviews below). */}
+      <div className={thankyou ? 'hidden md:block' : undefined}>
+        <TrustBar />
+      </div>
 
       {/* Social proof stack: traveller photos → 5-star reviews → flagship tour grid.
           Order is deliberate — show real Kiwi travellers + their words before the
           product grid, so the four flagship cards land with social proof already
-          established. */}
-      <CustomerTripPhotos />
-      <ReviewsHighlights />
+          established.
+
+          Mobile thankyou traffic: hide the 6-tile photo grid entirely (scroll
+          fatigue) and cap Reviews to 1. Desktop thankyou keeps the full stack. */}
+      <div className={thankyou ? 'hidden md:block' : undefined}>
+        <CustomerTripPhotos />
+      </div>
+      <ReviewsHighlights mobileLimit={thankyou ? 1 : undefined} />
 
       {/* Flagship itineraries — 4 by default; FB Leadform ThankYou traffic
           drops to 3 (Hick's Law — fewer choices convert hot leads faster).
@@ -177,6 +186,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
           framing for post-lead reassurance. */}
       <FlagshipTourGrid
         limit={thankyou ? 3 : undefined}
+        mobileLimit={thankyou ? 1 : undefined}
         heading={thankyou ? 'Our three most-requested China itineraries' : undefined}
         intro={
           thankyou

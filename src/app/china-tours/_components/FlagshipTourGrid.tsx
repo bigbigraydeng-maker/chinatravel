@@ -8,6 +8,13 @@ interface FlagshipTourGridProps {
    * — hot leads convert faster with fewer choices per Hick's Law.
    */
   limit?: number;
+  /**
+   * On viewports below md (~768px), cap card count to this many with the
+   * rest CSS-hidden. Desktop still sees `limit` cards. Used to keep FB
+   * Leadform thankyou mobile viewports to a 1-card, ~1-screen experience
+   * where scroll fatigue is highest.
+   */
+  mobileLimit?: number;
   /** Override the section headline. Useful for post-lead thankyou-style copy. */
   heading?: string;
   /** Override the section body copy. */
@@ -91,7 +98,7 @@ function nextDepartureChip(t?: Tour): string | null {
   return `${m[1].slice(0, 3)} ${m[2]}`;
 }
 
-export default function FlagshipTourGrid({ limit, heading, intro }: FlagshipTourGridProps = {}) {
+export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }: FlagshipTourGridProps = {}) {
   const toursBySlug = new Map<string, Tour>(
     getAllChinaTours().map((t) => [t.slug, t])
   );
@@ -124,11 +131,15 @@ export default function FlagshipTourGrid({ limit, heading, intro }: FlagshipTour
         </div>
 
         <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${cards.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
-          {cards.map(({ slug, href, ribbon, tour, imageOverride }) => (
+          {cards.map(({ slug, href, ribbon, tour, imageOverride }, index) => (
             <a
               key={slug}
               href={href}
-              className="group bg-white rounded-2xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg transition-shadow flex flex-col"
+              // mobileLimit hides overflow cards below md so FB Leadform
+              // thankyou mobile viewports stay ~1 screen. Desktop keeps all.
+              className={`group bg-white rounded-2xl overflow-hidden border border-warm-100 shadow-sm hover:shadow-lg transition-shadow flex flex-col${
+                mobileLimit != null && index >= mobileLimit ? ' hidden sm:flex' : ''
+              }`}
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
                 {tour ? (
