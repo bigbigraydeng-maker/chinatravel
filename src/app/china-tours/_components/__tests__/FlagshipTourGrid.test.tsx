@@ -87,4 +87,53 @@ describe('FlagshipTourGrid', () => {
     const chips = screen.getAllByText(/^Next · [A-Z][a-z]{2} \d{4}$/);
     expect(chips.length).toBeGreaterThanOrEqual(1);
   });
+
+  // ─── Silk Road image override (PM report: silk-road-wall.jpg not rendering on some clients)
+  it('silk-road card renders the Xi\'an terracotta image override (not the canonical silk-road-wall)', () => {
+    render(<FlagshipTourGrid />);
+    const silkLink = screen.getAllByRole('link').find(
+      (el) => el.getAttribute('href') === '/tours/china/signature/silk-road',
+    );
+    expect(silkLink).toBeTruthy();
+    const img = silkLink?.querySelector('img');
+    const src = img?.getAttribute('src') ?? '';
+    // Contract: the override must be applied; the canonical silk-road-wall
+    // URL must NOT appear as the src of the flagship silk-road card.
+    expect(src).toMatch(/xian-terracotta/);
+    expect(src).not.toMatch(/silk-road-wall/);
+  });
+
+  // ─── limit prop (FB Leadform ThankYou → 3 cards, Hick's Law)
+  it('respects the limit prop — renders 3 cards when limit=3', () => {
+    render(<FlagshipTourGrid limit={3} />);
+    // 4 flagship URLs total; 1 must be dropped (last one in FLAGSHIP_TOURS
+    // order, which is silk-road).
+    const links = screen.getAllByRole('link');
+    // Each card is one <a>; heading link count separate.
+    const cardLinks = links.filter((el) => {
+      const href = el.getAttribute('href') ?? '';
+      return (
+        href.startsWith('/tours/') ||
+        href.startsWith('/campaigns/')
+      );
+    });
+    expect(cardLinks).toHaveLength(3);
+  });
+
+  // ─── heading + intro overrides (thankyou-flavoured copy)
+  it('renders the overridden heading + intro when provided', () => {
+    render(
+      <FlagshipTourGrid
+        heading="Our three most-requested China itineraries"
+        intro="While you wait for our specialist to reach out…"
+      />,
+    );
+    expect(
+      screen.getByRole('heading', { name: /Our three most-requested China itineraries/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/While you wait for our specialist to reach out/i)).toBeInTheDocument();
+    // Default copy must not leak in.
+    expect(screen.queryByText(/Flagship China itineraries/i)).toBeNull();
+    expect(screen.queryByText(/Four of our most-booked routes/i)).toBeNull();
+  });
 });

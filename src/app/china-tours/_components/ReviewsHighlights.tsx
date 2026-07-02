@@ -85,7 +85,16 @@ function Stars() {
   );
 }
 
-export default function ReviewsHighlights() {
+interface ReviewsHighlightsProps {
+  /**
+   * On viewports below md (~768px), cap review count to this many with the
+   * rest CSS-hidden. Used by FB Leadform thankyou traffic where mobile
+   * scroll fatigue is worst; desktop still shows all three reviews.
+   */
+  mobileLimit?: number;
+}
+
+export default function ReviewsHighlights({ mobileLimit }: ReviewsHighlightsProps = {}) {
   return (
     <section className="bg-warm-50 border-y border-warm-100">
       <div className="container mx-auto px-4 py-14 md:py-16">
@@ -106,12 +115,15 @@ export default function ReviewsHighlights() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {REVIEWS.map((r) => {
+          {REVIEWS.map((r, index) => {
             const a = ACCENT[r.accent];
+            const hideOnMobile = mobileLimit != null && index >= mobileLimit;
             return (
               <article
                 key={r.travellerName}
-                className={`bg-gradient-to-br ${a.gradient} rounded-2xl p-5 border border-warm-100 ring-1 ${a.ring} flex flex-col`}
+                className={`bg-gradient-to-br ${a.gradient} rounded-2xl p-5 border border-warm-100 ring-1 ${a.ring} flex flex-col${
+                  hideOnMobile ? ' hidden md:flex' : ''
+                }`}
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center flex-shrink-0">

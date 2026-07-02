@@ -46,8 +46,27 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ChinaToursPage() {
+interface PageProps {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+/**
+ * FB Leadform ThankYou traffic (utm_medium=ab_test_leadform_thankyou) has
+ * already submitted contact info on Meta and is landing here as a *hot lead*.
+ * These visitors don't need the full hub — they need focused reassurance +
+ * 3 curated options + strong social proof. Everything else (long intro,
+ * all-tours grid, tier callouts, related guides, FAQs) is noise for them
+ * and hurts the trust-building moment. Toggle drives the simplified layout.
+ */
+function isFbLeadformThankyou(searchParams: PageProps['searchParams']): boolean {
+  const utmMedium = searchParams?.utm_medium;
+  const value = Array.isArray(utmMedium) ? utmMedium[0] : utmMedium;
+  return value === 'ab_test_leadform_thankyou';
+}
+
+export default function ChinaToursPage({ searchParams }: PageProps) {
   const tours = getAllChinaTours();
+  const thankyou = isFbLeadformThankyou(searchParams);
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
@@ -128,27 +147,60 @@ export default function ChinaToursPage() {
       <UtmAwareBanner />
 
       {/* Hero — winner video background (poster fallback) + inline lead form.
-          Defaults of HeroWithLeadForm are configured for this page (bullets,
-          GTM event name, lead conversion source) so this call site stays minimal. */}
+          FB Leadform ThankYou traffic gets a reassurance headline instead of
+          the generic hub H1: they've already handed over contact info, so the
+          hero's job flips from "capture the lead" to "confirm they're in
+          good hands + preview what happens next". Defaults preserved otherwise. */}
       <HeroWithLeadForm
-        title={chinaToursMeta.h1}
-        subtitle={chinaToursMeta.heroSubtitle}
+        title={thankyou ? 'Thanks — a China specialist will be in touch' : chinaToursMeta.h1}
+        subtitle={
+          thankyou
+            ? 'One of our Auckland-based specialists will call or email you within 1 NZ business day. In the meantime — here are the three routes New Zealand travellers most often ask about.'
+            : chinaToursMeta.heroSubtitle
+        }
         posterImage={HERO_POSTER}
         videoSrc={HERO_VIDEO}
       />
 
-      <TrustBar />
+      {/* TrustBar — hidden on mobile for thankyou traffic (redundant with the
+          hero's "specialist will be in touch" promise + Reviews below). */}
+      <div className={thankyou ? 'hidden md:block' : undefined}>
+        <TrustBar />
+      </div>
 
       {/* Social proof stack: traveller photos → 5-star reviews → flagship tour grid.
           Order is deliberate — show real Kiwi travellers + their words before the
           product grid, so the four flagship cards land with social proof already
-          established. */}
-      <CustomerTripPhotos />
-      <ReviewsHighlights />
+          established.
 
-      {/* Flagship 4 itineraries — top funnel entry for Meta / Google winner ads */}
-      <FlagshipTourGrid />
+          Mobile thankyou traffic: hide the 6-tile photo grid entirely (scroll
+          fatigue) and cap Reviews to 1. Desktop thankyou keeps the full stack. */}
+      <div className={thankyou ? 'hidden md:block' : undefined}>
+        <CustomerTripPhotos />
+      </div>
+      <ReviewsHighlights mobileLimit={thankyou ? 1 : undefined} />
 
+      {/* Flagship itineraries — 4 by default; FB Leadform ThankYou traffic
+          drops to 3 (Hick's Law — fewer choices convert hot leads faster).
+          The heading + intro also flip to "these are the three most popular"
+          framing for post-lead reassurance. */}
+      <FlagshipTourGrid
+        limit={thankyou ? 3 : undefined}
+        mobileLimit={thankyou ? 1 : undefined}
+        heading={thankyou ? 'Our three most-requested China itineraries' : undefined}
+        intro={
+          thankyou
+            ? 'While you wait for our specialist to reach out, take a look at the routes New Zealand travellers most often start with. Your call will be tailored around whichever feels closest.'
+            : undefined
+        }
+      />
+
+      {/* Main Content — hub-only. FB Leadform ThankYou traffic skips the
+          long intro / all-tours grid / tier callouts / related guides / FAQ
+          because their attention should stay on the 3 flagship + social
+          proof they've already scrolled. */}
+      {!thankyou && (
+        <>
       {/* Main Content */}
       <div className="bg-white">
         <div className="container mx-auto px-4 py-16">
@@ -289,6 +341,8 @@ export default function ChinaToursPage() {
 
       {/* FAQs */}
       <FAQSection faqs={chinaToursMeta.faqs} />
+        </>
+      )}
 
       {/* Final CTA */}
       <CTASection
