@@ -29,22 +29,26 @@ export default function StickyPriceBar() {
         visible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
-      <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 shadow-lg">
+      {/* Brand burgundy strip — replaces the amber/orange gradient so the
+          sticky bar lines up with the CTS primary palette instead of
+          competing with the visa-free banner and the form CTA. Gold
+          accent reserved for the price chip only (1 use, not a wash). */}
+      <div className="bg-primary text-white shadow-lg">
         <div className="container mx-auto px-4 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div className="flex items-center gap-3 text-white flex-wrap">
+          <div className="flex items-center gap-2.5 flex-wrap">
             <span className="text-base sm:text-lg font-serif font-bold">Best of China</span>
-            <span className="hidden sm:inline text-white/70">·</span>
-            <span className="text-sm sm:text-base font-medium">15 Days</span>
-            <span className="hidden sm:inline text-white/70">·</span>
-            <span className="text-sm sm:text-base font-bold tracking-wide">
+            <span className="hidden sm:inline text-white/50">·</span>
+            <span className="text-sm sm:text-base font-medium text-white/90">15 Days</span>
+            <span className="hidden sm:inline text-white/50">·</span>
+            <span className="inline-flex items-center bg-secondary/95 text-accent text-sm font-bold tracking-wide px-2 py-0.5 rounded">
               From NZD $3,880
             </span>
-            <span className="hidden md:inline text-white/70">·</span>
-            <span className="hidden md:inline text-sm">Oct 2026 from Auckland</span>
+            <span className="hidden md:inline text-white/50">·</span>
+            <span className="hidden md:inline text-sm text-white/85">Oct 2026 from Auckland</span>
           </div>
           <a
             href="#enquiry"
-            className="inline-flex items-center justify-center bg-white text-amber-700 hover:bg-amber-50 text-sm sm:text-base font-bold px-5 py-2 rounded-md transition-colors whitespace-nowrap shadow-sm"
+            className="inline-flex items-center justify-center bg-white text-primary hover:bg-warm-50 text-sm sm:text-base font-bold px-5 py-2 rounded-md transition-colors whitespace-nowrap shadow-sm"
           >
             Reserve Your Place →
           </a>
