@@ -8,6 +8,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedSite } from '@/lib/site-media';
 import { renderBlogPostHtml } from '@/lib/blog-html';
 import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
+import FAQSection from '@/components/FAQSection';
 import { Icon } from '@/components/ui/Icon';
 import SchemaMarkup from '@/components/SchemaMarkup';
 
@@ -90,18 +91,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     .filter(p => p.slug !== post.slug && p.category === post.category)
     .slice(0, 2);
 
-  const faqSchema = post.faqs && post.faqs.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: post.faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
-  } : null;
+  // Visible FAQ + FAQPage schema are both emitted by <FAQSection> below when
+  // post.faqs is present — no need to duplicate the schema here.
 
   // AI Overview / ChatGPT / Perplexity citation signals — Article, Person,
   // BreadcrumbList schemas. Boosts AI assistant retrievability of Baker Gu
@@ -153,7 +144,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     ],
   };
 
-  const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+  const schemas = [articleSchema, breadcrumbSchema];
+  const hasFaqs = Boolean(post.faqs && post.faqs.length > 0);
+  const quickAnswer = hasFaqs ? post.faqs![0].answer : null;
 
   return (
     <div>
@@ -222,6 +215,17 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-xl text-gray-600 leading-relaxed mb-8 font-medium">
                 {post.excerpt}
               </p>
+              {quickAnswer && (
+                <aside
+                  data-testid="blog-quick-answer"
+                  className="not-prose bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg mb-10"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-wide text-primary mb-2">
+                    Quick Answer
+                  </p>
+                  <p className="text-gray-900 leading-relaxed">{quickAnswer}</p>
+                </aside>
+              )}
               <div
                 className="text-gray-700 leading-relaxed blog-content"
                 dangerouslySetInnerHTML={{ __html: renderBlogPostHtml(post.content) }}
@@ -280,6 +284,18 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </section>
+
+      {/* FAQ — visible questions/answers + FAQPage schema.
+          Visible rendering is required for Google to grant FAQ rich results;
+          schema-only (as the earlier version did) was invisible to users and
+          under-credited by Search Console. */}
+      {hasFaqs && (
+        <FAQSection
+          faqs={post.faqs}
+          subtitle={`Frequently asked about "${post.title}"`}
+          contactHref="/contact"
+        />
+      )}
 
       {/* Newsletter CTA */}
       <section className="bg-white">

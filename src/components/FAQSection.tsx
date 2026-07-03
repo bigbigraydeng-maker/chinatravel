@@ -12,6 +12,8 @@ interface FAQ {
 interface FAQSectionProps {
   faqs?: FAQ[];
   variant?: 'default' | 'compact';
+  subtitle?: string;
+  contactHref?: string;
 }
 
 const defaultFaqs: FAQ[] = [
@@ -50,7 +52,12 @@ const defaultFaqs: FAQ[] = [
   },
 ];
 
-export default function FAQSection({ faqs = defaultFaqs, variant = 'default' }: FAQSectionProps) {
+export default function FAQSection({
+  faqs = defaultFaqs,
+  variant = 'default',
+  subtitle = 'Everything you need to know about traveling to China with CTS',
+  contactHref = '#enquiry',
+}: FAQSectionProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const toggleExpand = (index: number) => {
@@ -68,7 +75,7 @@ export default function FAQSection({ faqs = defaultFaqs, variant = 'default' }: 
               Frequently Asked Questions
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Everything you need to know about traveling to China with CTS
+              {subtitle}
             </p>
           </div>
 
@@ -119,7 +126,7 @@ export default function FAQSection({ faqs = defaultFaqs, variant = 'default' }: 
               Have more questions?
             </p>
             <a
-              href="#enquiry"
+              href={contactHref}
               className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
             >
               Contact Our Specialists
