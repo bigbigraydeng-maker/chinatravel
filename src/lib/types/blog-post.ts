@@ -10,6 +10,7 @@ export interface BlogPost {
   tags: string[];
   heroImage: string;
   publishedAt: string;
+  updatedAt?: string;
   readTime: string;
   faqs?: { question: string; answer: string }[];
 }

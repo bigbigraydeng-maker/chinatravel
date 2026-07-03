@@ -216,6 +216,35 @@ export const generateBreadcrumbListSchema = (
 };
 
 /**
+ * Generate HowTo schema — enables SERP step-carousel rich results.
+ *
+ * Google renders steps as a numbered visual list in the SERP when this
+ * schema is present alongside matching visible content. Steps must
+ * mirror something the user can actually see on the page.
+ */
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export const generateHowToSchema = (
+  name: string,
+  description: string,
+  steps: HowToStep[],
+) => ({
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name,
+  description,
+  step: steps.map((step, index) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.name,
+    text: step.text,
+  })),
+});
+
+/**
  * Combine multiple schemas into an array
  * Useful for pages with multiple schema types (e.g., Article + FAQPage + BreadcrumbList)
  */
