@@ -72,7 +72,7 @@ Flight time from Auckland to Beijing or Shanghai is approximately 12–14 hours 
 
 **[Shanghai](/shanghai-tours)** — China's most cosmopolitan city. The Bund, Yu Garden, the French Concession, and day trips to water towns like Zhujiajiao. Works as an entry or exit point (direct flights from Auckland are sometimes available via alliance partners).
 
-**[Chengdu](/chengdu-tours)** — giant pandas and Sichuan cuisine. The panda base is genuinely extraordinary and worth the detour. Add Leshan Giant Buddha as a day trip. Best combined with a broader Sichuan or Yunnan route.
+**[Chengdu](/chengdu-tours)** — giant pandas and Sichuan cuisine. The [panda base is genuinely extraordinary](/blog/chengdu-panda-tours-new-zealand) and worth the detour. Add Leshan Giant Buddha as a day trip. Best combined with a broader Sichuan or Yunnan route.
 
 **[Guilin](/guilin-tours)** — the karst landscape that defines most people's mental image of China. Li River cruise to Yangshuo, bamboo rafting, and hill cycling. Best experienced April–October. Not ideal as a standalone — combine with Shanghai or Beijing.
 
@@ -192,7 +192,7 @@ Because NZ ordinary passport holders enter China visa-free for up to 30 days, th
 
 ## How to Combine Chengdu with Other Destinations
 
-Most [China tours from New Zealand](/china-tours-from-new-zealand) combine Chengdu with other destinations rather than visiting it in isolation. The most effective combinations:
+Most [China tours from New Zealand](/china-tours-from-new-zealand) combine Chengdu with other destinations rather than visiting it in isolation — our [complete 2026 China planning guide](/blog/china-tours-from-new-zealand-complete-guide) covers itinerary length and city pairings in depth. The most effective combinations:
 
 **Chengdu + [Beijing](/beijing-tours) + [Xi'an](/xian-tours)** (14–15 days): Imperial history plus pandas. High-speed rail connects Beijing and Xi'an in 5 hours; a domestic flight links Xi'an and Chengdu in 1.5 hours. This is a natural circuit.
 
