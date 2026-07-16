@@ -1,8 +1,10 @@
-import { OCTOBER_2026_DISCOVERY_BY_SLUG } from '@/lib/campaigns/october-2026-discovery';
+import { getTourBySlug } from '@/lib/data/tours';
 
 /**
- * China Signature & Discovery group departures — single source for schedule UI.
- * October Discovery hero products: dates/order match `OCTOBER_2026_DISCOVERY_BY_SLUG` (same as tours.ts).
+ * China Signature & Discovery group departures — schedule UI.
+ * Discovery rows read their dates straight from each tour's `departureDates` in
+ * tours.ts (the same source the product-page/campaign hero uses), so the schedule
+ * block and the hero can never drift apart.
  */
 export type DepartureScheduleRow = {
   label: string;
@@ -11,6 +13,11 @@ export type DepartureScheduleRow = {
   tier: 'signature' | 'discovery';
   dates: string[];
 };
+
+/** Departure dates for a China tour, sourced from tours.ts (empty if none published). */
+function departuresForTour(tier: 'signature' | 'discovery', slug: string): string[] {
+  return getTourBySlug('china', tier, slug)?.departureDates ?? [];
+}
 
 export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
   {
@@ -49,28 +56,28 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
-    dates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder],
+    dates: departuresForTour('discovery', 'beijing-xian'),
   },
   {
     label: 'Best of China',
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    dates: ['3 November 2026', '25 March 2027'],
+    dates: departuresForTour('discovery', 'essentials'),
   },
   {
     label: 'Shanghai & Surroundings',
     slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
-    dates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder],
+    dates: departuresForTour('discovery', 'shanghai-surroundings'),
   },
   {
     label: 'Colourful Yunnan',
     slug: 'yunnan-explorer',
     destination: 'china',
     tier: 'discovery',
-    dates: ['10 September 2026'],
+    dates: departuresForTour('discovery', 'yunnan-explorer'),
   },
 ];
 
