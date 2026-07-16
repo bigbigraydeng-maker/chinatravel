@@ -178,7 +178,9 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         heroImage={tour.heroImage}
         tier={tour.tier}
         tags={tour.tags}
-        departureDates={cfg.heroDepartureOrder}
+        // Show all published departures (October campaign date stays first/featured
+        // via tours.ts ordering); keeps the hero in sync with the product page.
+        departureDates={tour.departureDates}
         primaryCtaLabel="Reserve My Seat →"
         secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
