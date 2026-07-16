@@ -2,7 +2,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 
 /**
  * China Signature & Discovery group departures — schedule UI.
- * Discovery rows read their dates straight from each tour's `departureDates` in
+ * Every row reads its dates straight from each tour's `departureDates` in
  * tours.ts (the same source the product-page/campaign hero uses), so the schedule
  * block and the hero can never drift apart.
  */
@@ -25,28 +25,28 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'silk-road',
     destination: 'china',
     tier: 'signature',
-    dates: ['13 May 2027', '21 October 2027'],
+    dates: departuresForTour('signature', 'silk-road'),
   },
   {
     label: 'Legacy of China',
     slug: 'imperial-heritage',
     destination: 'china',
     tier: 'signature',
-    dates: ['13 August 2026', '15 October 2026'],
+    dates: departuresForTour('signature', 'imperial-heritage'),
   },
   {
     label: 'China Panorama',
     slug: 'grand-tour',
     destination: 'china',
     tier: 'signature',
-    dates: ['14 October 2026'],
+    dates: departuresForTour('signature', 'grand-tour'),
   },
   {
     label: 'Natural China',
     slug: 'landscapes',
     destination: 'china',
     tier: 'signature',
-    dates: ['20 August 2026', '25 October 2026'],
+    dates: departuresForTour('signature', 'landscapes'),
   },
 ];
 
