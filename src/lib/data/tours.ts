@@ -724,7 +724,7 @@ export const tours: Tour[] = [
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — October departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-14',
+    updatedAt: '2026-07-16',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -733,8 +733,8 @@ export const tours: Tour[] = [
       'Terracotta Warriors',
       'high-speed train',
     ],
-    /** Same order as `/campaigns/october-2026/tale-of-two-cities` (hero “next departure” = first). */
-    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder],
+    /** Oct 2026 campaign departure (hero “next departure” = first), plus 2027 group departure. */
+    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder, '18 March 2027'],
     tourCities: ['beijing', 'xian'],
     faqs: [
       {
