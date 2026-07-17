@@ -22,6 +22,16 @@ export default {
           400: '#E8C9A0',
           500: '#D6A756',
         },
+        // Editorial redesign palette (Stitch-derived; used by /preview-home)
+        ink: {
+          DEFAULT: '#23201C',
+          muted: '#5A554F',
+        },
+        surface: {
+          DEFAULT: '#FBF7F0',
+          card: '#FFFFFF',
+          dark: '#1A1815',
+        },
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
@@ -36,6 +46,7 @@ export default {
         'warm-lg': '0 8px 40px rgba(214, 167, 86, 0.2)',
         'soft': '0 2px 15px rgba(0, 0, 0, 0.06)',
         'soft-lg': '0 4px 25px rgba(0, 0, 0, 0.08)',
+        'editorial': '20px 20px 60px rgba(0, 0, 0, 0.05)',
       },
     },
   },
