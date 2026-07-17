@@ -76,7 +76,7 @@ export default function ChinaToursFromNZPage() {
       bestFor: 'Comfort travel, lower flight fatigue, water-towns culture',
     },
     {
-      name: 'Silk Road Discovery',
+      name: 'Silk Road',
       slug: 'silk-road-discovery',
       url: '/tours/china/signature',
       duration: '18 days',
@@ -607,7 +607,7 @@ export default function ChinaToursFromNZPage() {
                     <h3 className="font-serif font-bold text-lg mb-2 text-gray-900">Deep Discovery</h3>
                     <p className="text-sm text-gray-700 mb-3">For repeat visitors or those wanting to go beyond imperial highlights — Silk Road, Yunnan, Tibet, or extended Yangtze cruise.</p>
                     <Link href="/tours/china/signature" className="text-primary text-sm font-medium hover:underline">
-                      Silk Road Discovery (18 days) →
+                      Silk Road (18 days) →
                     </Link>
                   </div>
                 </div>

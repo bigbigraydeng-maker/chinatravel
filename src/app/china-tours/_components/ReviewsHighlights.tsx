@@ -45,7 +45,7 @@ const REVIEWS: ReviewHighlight[] = [
   {
     travellerName: 'Robert & Anne Murray',
     travellerLocation: 'Hamilton',
-    tourLabel: 'Silk Road Discovery · 18 days',
+    tourLabel: 'Silk Road · 18 days',
     title: 'A three-week journey that belongs in a film',
     quote:
       'The Mogao Caves at Dunhuang, camping in the Gobi desert under more stars than I knew existed, the ancient Sunday market in Kashgar — we’ve been travelling for 30 years and this was the best trip we’ve ever taken.',

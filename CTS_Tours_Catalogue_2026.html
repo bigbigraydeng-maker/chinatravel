@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CTS Tours — China Tour Catalogue 2026</title>
+<style>
+  @font-face {
+    font-family: 'AlibabaSans';
+    src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Regular.otf') format('opentype');
+    font-weight: normal;
+  }
+  @font-face {
+    font-family: 'AlibabaSans';
+    src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Medium.otf') format('opentype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'AlibabaBold';
+    src: url('https://assets-persist.lovart.ai/agent-static-assets/Alibaba-PuHuiTi-Bold.otf') format('opentype');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'AlibabaSans', 'Helvetica Neue', Arial, sans-serif;
+    background: #e8e8e8;
+  }
+
+  /* A4 page */
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    margin: 32px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    page-break-after: always;
+  }
+
+  /* ─── COVER PAGE ─── */
+  .cover {
+    background: #1B2E40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 1123px;
+    position: relative;
+  }
+
+  .cover-hero {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    /* placeholder style when no image */
+    background: linear-gradient(160deg, #1B2E40 0%, #2d4a61 40%, #8B1A1A 100%);
+    position: relative;
+  }
+
+  .cover-hero-placeholder {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(160deg, #0f1e2b 0%, #1B2E40 50%, #2a1010 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgba(255,255,255,0.25);
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .cover-body {
+    padding: 56px 64px 40px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cover-logo-wrap {
+    margin-bottom: 40px;
+  }
+
+  .cover-logo-wrap img {
+    height: 80px;
+    filter: brightness(0) invert(1);
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: #D22A2E;
+    margin: 0 auto 32px;
+  }
+
+  .cover-title {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 42px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .cover-subtitle {
+    font-size: 20px;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 48px;
+  }
+
+  .cover-tags {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  .cover-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  .cover-footer-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #D22A2E;
+    padding: 18px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-bar span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* ─── TOUR PAGE ─── */
+  .tour-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 1123px;
+  }
+
+  /* top colour band */
+  .tour-header {
+    background: #1B2E40;
+    padding: 28px 48px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tour-header-logo img {
+    height: 44px;
+    filter: brightness(0) invert(1);
+  }
+
+  .tour-header-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* hero image */
+  .tour-hero {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .tour-hero-placeholder {
+    width: 100%;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 16px;
+    letter-spacing: 2px;
+    gap: 12px;
+  }
+
+  .tour-hero-placeholder .ph-icon {
+    font-size: 48px;
+    opacity: 0.5;
+  }
+
+  /* red title band */
+  .tour-title-band {
+    background: #D22A2E;
+    padding: 22px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tour-emoji {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .tour-name {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 26px;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .tour-name-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  /* info strips */
+  .tour-info-strip {
+    background: #f8f9fa;
+    padding: 20px 48px;
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .info-block {
+    flex: 1;
+    padding-right: 24px;
+    border-right: 1px solid #e0e0e0;
+    margin-right: 24px;
+  }
+
+  .info-block:last-child {
+    border-right: none;
+    margin-right: 0;
+    padding-right: 0;
+  }
+
+  .info-label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+
+  .info-value {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 20px;
+    color: #1B2E40;
+    line-height: 1.2;
+  }
+
+  .info-value.price {
+    color: #D22A2E;
+    font-size: 24px;
+  }
+
+  .info-value.seats {
+    color: #1B2E40;
+  }
+
+  /* highlights */
+  .tour-body {
+    padding: 32px 48px;
+    flex: 1;
+  }
+
+  .highlights-title {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: #1B2E40;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .highlight-dot {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background: #D22A2E;
+    border-radius: 50%;
+    margin-top: 8px;
+  }
+
+  .highlight-text {
+    font-size: 17px;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  /* visa badge */
+  .visa-badge {
+    background: #1B2E40;
+    border-radius: 10px;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .visa-icon {
+    font-size: 32px;
+    line-height: 1;
+  }
+
+  .visa-text-main {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .visa-text-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 3px;
+  }
+
+  /* CTA */
+  .tour-cta {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cta-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cta-line {
+    font-size: 15px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cta-line strong {
+    color: #1B2E40;
+    font-weight: 600;
+  }
+
+  .cta-btn {
+    background: #D22A2E;
+    color: #fff;
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* footer bar on tour pages */
+  .tour-footer {
+    background: #1B2E40;
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+
+  .tour-footer span {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+  }
+
+  .tour-footer strong {
+    color: #fff;
+    font-size: 14px;
+  }
+
+  /* ─── BACK / CONTACT PAGE ─── */
+  .contact-page {
+    background: #1B2E40;
+    min-height: 1123px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 64px;
+    position: relative;
+  }
+
+  .contact-logo img {
+    height: 90px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 48px;
+  }
+
+  .contact-divider {
+    width: 60px;
+    height: 3px;
+    background: #D22A2E;
+    margin: 0 auto 48px;
+  }
+
+  .contact-heading {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .contact-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 580px;
+    margin-bottom: 56px;
+  }
+
+  .contact-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .contact-card-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .contact-card-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .contact-card-value {
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .contact-card-value.highlight {
+    color: #ffb3b3;
+  }
+
+  /* tour summary table */
+  .summary-table {
+    width: 100%;
+    max-width: 640px;
+    border-collapse: collapse;
+    margin-bottom: 48px;
+  }
+
+  .summary-table thead tr {
+    background: rgba(210,42,46,0.8);
+  }
+
+  .summary-table thead th {
+    color: #fff;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .summary-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .summary-table tbody tr:nth-child(odd) {
+    background: rgba(255,255,255,0.04);
+  }
+
+  .summary-table td {
+    padding: 14px 16px;
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+  }
+
+  .summary-table td:first-child {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .summary-table td .price-tag {
+    color: #ff9999;
+    font-family: 'AlibabaBold', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .contact-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+    padding: 18px 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-bottom-bar span {
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: none; }
+    .page { margin: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+
+    <!-- Hero image placeholder — replace src with actual China hero photo -->
+    <div class="tour-hero-placeholder" style="background: linear-gradient(160deg, #0d1e2d 0%, #1B2E40 55%, #3a1212 100%);">
+      <span class="ph-icon">🏯</span>
+      <span>[ HERO PHOTO — Great Wall / Terracotta Warriors ]</span>
+      <span style="font-size:13px; opacity:0.6;">Replace with high-res China landscape image</span>
+    </div>
+
+    <div class="cover-body">
+      <div class="cover-logo-wrap">
+        <!-- Replace src with actual logo path or use inline SVG -->
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+      </div>
+
+      <div class="cover-divider"></div>
+
+      <h1 class="cover-title">China Tour Collection<br>2026 — 2027</h1>
+      <p class="cover-subtitle">Experience The Real Asia</p>
+
+      <div class="cover-tags">
+        <span class="cover-tag">✈ Departing from Auckland</span>
+        <span class="cover-tag">🇳🇿 NZ Passport — Visa Free</span>
+        <span class="cover-tag">⭐ Since 1928</span>
+        <span class="cover-tag">👥 Small Groups Only</span>
+      </div>
+    </div>
+
+    <div class="cover-footer-bar">
+      <span>📞 0800 CTS 888</span>
+      <span>✉ info@ctstours.co.nz</span>
+      <span>🌐 ctstours.co.nz</span>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE 2 — BEIJING & XI'AN
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="tour-page">
+
+    <div class="tour-header">
+      <div class="tour-header-logo">
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+      </div>
+      <span class="tour-header-label">Tour 01 of 04</span>
+    </div>
+
+    <!-- Hero image placeholder -->
+    <div class="tour-hero-placeholder" style="background: linear-gradient(135deg, #1a1208 0%, #3d2b00 50%, #1B2E40 100%);">
+      <span class="ph-icon">🏯</span>
+      <span>[ Great Wall at Sunrise / Terracotta Warriors ]</span>
+      <span style="font-size:13px; opacity:0.5;">Replace with high-res hero image</span>
+    </div>
+
+    <div class="tour-title-band">
+      <span class="tour-emoji">🏯</span>
+      <div>
+        <div class="tour-name">Beijing &amp; Xi'an — A Tale of Two Cities</div>
+        <div class="tour-name-sub">Forbidden City · Great Wall · Terracotta Warriors · Bullet Train</div>
+      </div>
+    </div>
+
+    <div class="tour-info-strip">
+      <div class="info-block">
+        <div class="info-label">Departure</div>
+        <div class="info-value">Oct 15, 2026</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Duration</div>
+        <div class="info-value">10 Days</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">From Auckland</div>
+        <div class="info-value price">NZD $3,480</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Group Size</div>
+        <div class="info-value seats">14 Seats Only</div>
+      </div>
+    </div>
+
+    <div class="tour-body">
+      <div class="highlights-title">Tour Highlights</div>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Great Wall at sunrise — before the crowds</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Forbidden City — the world's largest palace</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Terracotta Warriors — 2,000 soldiers, 2,000 years</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Bullet train between cities (4.5 hrs)</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Hutong evenings — old Beijing alleyways</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Xi'an Muslim Quarter — night market &amp; lamb skewers</div>
+        </div>
+      </div>
+
+      <div class="visa-badge">
+        <span class="visa-icon">🇳🇿</span>
+        <div>
+          <div class="visa-text-main">NZ Passport — No Visa Required</div>
+          <div class="visa-text-sub">China visa-free for NZ passport holders · Confirmed through 31 Dec 2026</div>
+        </div>
+      </div>
+
+      <div class="tour-cta">
+        <div class="cta-left">
+          <div class="cta-line">📞 <strong>0800 CTS 888</strong></div>
+          <div class="cta-line">✉ <strong>info@ctstours.co.nz</strong></div>
+          <div class="cta-line">🌐 <strong>ctstours.co.nz/tale-of-two-cities</strong></div>
+        </div>
+        <span class="cta-btn">Enquire Now</span>
+      </div>
+    </div>
+
+    <div class="tour-footer">
+      <span>CTS Tours NZ · China Specialists Since 1928</span>
+      <strong>ctstours.co.nz</strong>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE 3 — SHANGHAI & SURROUNDINGS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="tour-page">
+
+    <div class="tour-header">
+      <div class="tour-header-logo">
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+      </div>
+      <span class="tour-header-label">Tour 02 of 04</span>
+    </div>
+
+    <div class="tour-hero-placeholder" style="background: linear-gradient(135deg, #0a1520 0%, #1B2E40 40%, #0d2535 100%);">
+      <span class="ph-icon">🌊</span>
+      <span>[ Suzhou Gardens / Shanghai Bund at Night ]</span>
+      <span style="font-size:13px; opacity:0.5;">Replace with high-res hero image</span>
+    </div>
+
+    <div class="tour-title-band">
+      <span class="tour-emoji">🌊</span>
+      <div>
+        <div class="tour-name">Shanghai &amp; Surroundings</div>
+        <div class="tour-name-sub">Suzhou · Wuxi · Hangzhou West Lake · Shanghai Bund</div>
+      </div>
+    </div>
+
+    <div class="tour-info-strip">
+      <div class="info-block">
+        <div class="info-label">Departure</div>
+        <div class="info-value">Oct 14, 2026</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Duration</div>
+        <div class="info-value">10 Days · 5 Cities</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">From Auckland</div>
+        <div class="info-value price">NZD $3,399</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Group Size</div>
+        <div class="info-value seats">14 Seats Only</div>
+      </div>
+    </div>
+
+    <div class="tour-body">
+      <div class="highlights-title">Tour Highlights</div>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Suzhou classical gardens — 1,000 years of history</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Gondola through Shantang Street at dusk</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Hangzhou West Lake — described by Marco Polo as the most beautiful city in the world</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Longjing tea fields — pick your own leaves</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Shanghai Bund at night — iconic skyline</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Canal water towns unchanged for 400 years</div>
+        </div>
+      </div>
+
+      <div class="visa-badge">
+        <span class="visa-icon">🇳🇿</span>
+        <div>
+          <div class="visa-text-main">NZ Passport — No Visa Required</div>
+          <div class="visa-text-sub">China visa-free for NZ passport holders · Confirmed through 31 Dec 2026</div>
+        </div>
+      </div>
+
+      <div class="tour-cta">
+        <div class="cta-left">
+          <div class="cta-line">📞 <strong>0800 CTS 888</strong></div>
+          <div class="cta-line">✉ <strong>info@ctstours.co.nz</strong></div>
+          <div class="cta-line">🌐 <strong>ctstours.co.nz/shanghai-surroundings</strong></div>
+        </div>
+        <span class="cta-btn">Enquire Now</span>
+      </div>
+    </div>
+
+    <div class="tour-footer">
+      <span>CTS Tours NZ · China Specialists Since 1928</span>
+      <strong>ctstours.co.nz</strong>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE 4 — BEST OF CHINA
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="tour-page">
+
+    <div class="tour-header">
+      <div class="tour-header-logo">
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+      </div>
+      <span class="tour-header-label">Tour 03 of 04</span>
+    </div>
+
+    <div class="tour-hero-placeholder" style="background: linear-gradient(135deg, #0d1a10 0%, #1a3020 45%, #1B2E40 100%);">
+      <span class="ph-icon">🌟</span>
+      <span>[ Great Wall · Terracotta Warriors · West Lake · Shanghai Bund ]</span>
+      <span style="font-size:13px; opacity:0.5;">Replace with high-res hero image</span>
+    </div>
+
+    <div class="tour-title-band">
+      <span class="tour-emoji">🌟</span>
+      <div>
+        <div class="tour-name">Best of China</div>
+        <div class="tour-name-sub">Beijing · Xi'an · Hangzhou · Shanghai — 4 Cities · 15 Days</div>
+      </div>
+    </div>
+
+    <div class="tour-info-strip">
+      <div class="info-block">
+        <div class="info-label">Next Departure</div>
+        <div class="info-value">3 Nov 2026</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Duration</div>
+        <div class="info-value">15 Days</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">From Auckland</div>
+        <div class="info-value price">From NZD $3,880</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Group Size</div>
+        <div class="info-value seats">Max 18 People</div>
+      </div>
+    </div>
+
+    <div class="tour-body">
+      <div class="highlights-title">Tour Highlights</div>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text"><strong>Beijing</strong> — Temple of Heaven, Forbidden City, Great Wall &amp; hutong pedi-cab tour</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text"><strong>Xi'an</strong> — Terracotta Warriors, City Wall, Muslim Quarter</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text"><strong>Hangzhou</strong> — West Lake boat tour, Longjing tea plantation</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text"><strong>Shanghai</strong> — Yuyuan Garden, The Bund, Nanjing Road skyline</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">High-speed train Beijing → Xi'an (4.5 hrs, scenic route)</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Puyuan Fashion Ancient Town — Song-dynasty waterways</div>
+        </div>
+      </div>
+
+      <div class="visa-badge">
+        <span class="visa-icon">✅</span>
+        <div>
+          <div class="visa-text-main">Flights · Hotels · Guide · Meals · Transfers — All Included</div>
+          <div class="visa-text-sub">NZ Passport → No Visa Required · Also departing Mar 11, 2027 (NZD $4,080)</div>
+        </div>
+      </div>
+
+      <div class="tour-cta">
+        <div class="cta-left">
+          <div class="cta-line">📞 <strong>0800 CTS 888</strong></div>
+          <div class="cta-line">✉ <strong>info@ctstours.co.nz</strong></div>
+          <div class="cta-line">🌐 <strong>ctstours.co.nz/tours/china/discovery/essentials</strong></div>
+        </div>
+        <span class="cta-btn">Enquire Now</span>
+      </div>
+    </div>
+
+    <div class="tour-footer">
+      <span>CTS Tours NZ · China Specialists Since 1928</span>
+      <strong>ctstours.co.nz</strong>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE 5 — SILK ROAD 2027
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="tour-page">
+
+    <div class="tour-header">
+      <div class="tour-header-logo">
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+      </div>
+      <span class="tour-header-label">Tour 04 of 04</span>
+    </div>
+
+    <div class="tour-hero-placeholder" style="background: linear-gradient(135deg, #1a0d00 0%, #2e1c06 40%, #1B2E40 100%);">
+      <span class="ph-icon">🏜️</span>
+      <span>[ Zhangye Rainbow Mountains / Crescent Moon Lake ]</span>
+      <span style="font-size:13px; opacity:0.5;">Replace with high-res hero image</span>
+    </div>
+
+    <div class="tour-title-band" style="background: #1B2E40; border-bottom: 4px solid #D22A2E;">
+      <span class="tour-emoji">🏜️</span>
+      <div>
+        <div class="tour-name">Silk Road Discovery</div>
+        <div class="tour-name-sub">Xi'an · Zhangye · Dunhuang · Gobi Desert · Heavenly Lake — 2027</div>
+      </div>
+    </div>
+
+    <div class="tour-info-strip">
+      <div class="info-block">
+        <div class="info-label">Departures</div>
+        <div class="info-value">May 13 or Oct 21, 2027</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Duration</div>
+        <div class="info-value">18 Days</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Fully Inclusive</div>
+        <div class="info-value price">NZD $7,999</div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Group Size</div>
+        <div class="info-value seats">10 – 16 People</div>
+      </div>
+    </div>
+
+    <div class="tour-body">
+      <div class="highlights-title">18-Day Journey Highlights</div>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Terracotta Warriors, Xi'an — the starting point of the Silk Road</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Zhangye Rainbow Mountains — 24 million years of coloured minerals</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Dunhuang Mogao Caves — 1,000 years of Buddhist art (492 grottoes)</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Crescent Moon Lake — inside the Gobi Desert, 2,000 years old</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Jiayuguan Fortress — the last outpost of the Great Wall</div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <div class="highlight-text">Heavenly Lake — glacial lake at 1,900m, ringed by snow peaks</div>
+        </div>
+      </div>
+
+      <div class="visa-badge">
+        <span class="visa-icon">🏆</span>
+        <div>
+          <div class="visa-text-main">Our Most Epic Journey — Fully Inclusive</div>
+          <div class="visa-text-sub">Flights from Auckland · All meals · Licensed guides · Small group · 2027 planning enquiries now open</div>
+        </div>
+      </div>
+
+      <div class="tour-cta">
+        <div class="cta-left">
+          <div class="cta-line">📞 <strong>0800 CTS 888</strong></div>
+          <div class="cta-line">✉ <strong>info@ctstours.co.nz</strong></div>
+          <div class="cta-line">🌐 <strong>ctstours.co.nz/silk-road</strong></div>
+        </div>
+        <span class="cta-btn">Start Planning</span>
+      </div>
+    </div>
+
+    <div class="tour-footer">
+      <span>CTS Tours NZ · China Specialists Since 1928</span>
+      <strong>ctstours.co.nz</strong>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE 6 — CONTACT / BACK COVER
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="contact-page">
+
+    <div class="contact-logo">
+      <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours">
+    </div>
+
+    <div class="contact-divider"></div>
+
+    <h2 class="contact-heading">Ready to See China?</h2>
+    <p class="contact-sub">Our Auckland team is here to help — no commitment, just a conversation.</p>
+
+    <!-- Tour summary -->
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Tour</th>
+          <th>Date</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🏯 Beijing &amp; Xi'an</td>
+          <td>Oct 15, 2026 · 10 days</td>
+          <td><span class="price-tag">NZD $3,480</span></td>
+        </tr>
+        <tr>
+          <td>🌊 Shanghai &amp; Surroundings</td>
+          <td>Oct 14, 2026 · 10 days</td>
+          <td><span class="price-tag">NZD $3,399</span></td>
+        </tr>
+        <tr>
+          <td>🌟 Best of China</td>
+          <td>Nov 3, 2026 · 15 days · 4 cities</td>
+          <td><span class="price-tag">From $3,880</span></td>
+        </tr>
+        <tr>
+          <td>🏜️ Silk Road Discovery</td>
+          <td>May / Oct 2027 · 18 days</td>
+          <td><span class="price-tag">NZD $7,999</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="contact-cards">
+      <div class="contact-card">
+        <span class="contact-card-icon">📞</span>
+        <div class="contact-card-label">Call Us Free</div>
+        <div class="contact-card-value highlight">0800 CTS 888</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">🌐</span>
+        <div class="contact-card-label">Website</div>
+        <div class="contact-card-value highlight">ctstours.co.nz</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">✉</span>
+        <div class="contact-card-label">Email</div>
+        <div class="contact-card-value">info@ctstours.co.nz</div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-card-icon">📍</span>
+        <div class="contact-card-label">Auckland Office</div>
+        <div class="contact-card-value">Mon – Fri · 9am – 5:30pm</div>
+      </div>
+    </div>
+
+    <div class="contact-bottom-bar">
+      <span>🇳🇿 NZ Passport → Visa Free · All tours depart Auckland · Small groups · Since 1928</span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

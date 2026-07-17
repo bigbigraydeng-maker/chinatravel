@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>CTS Tours Facebook VI Design Guidelines</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :root {
+            --primary-blue: #1B2E40;
+            --primary-red: #D22A2E;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --bg-light: #F8F9FA;
+            --border-color: #E0E0E0;
+            --white: #FFFFFF;
+            --success-green: #28A745;
+            
+            --font-main: 'AlibabaSans-Regular', sans-serif;
+            --font-title: 'Alibaba-PuHuiTi-Bold', sans-serif;
+            --font-medium: 'AlibabaSans-Medium', sans-serif;
+        }
+
+        @font-face {
+            font-family: 'AlibabaSans-Regular';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Regular.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'Alibaba-PuHuiTi-Bold';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/Alibaba-PuHuiTi-Bold.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'AlibabaSans-Medium';
+            src: url('https://assets-persist.lovart.ai/agent-static-assets/AlibabaSans-Medium.otf') format('opentype');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1920px;
+            margin: 0 auto;
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        /* Cover Section */
+        .cover {
+            height: 1080px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--white);
+            position: relative;
+            padding: 100px;
+        }
+
+        .cover-logo {
+            width: 400px;
+            margin-bottom: 60px;
+        }
+
+        .cover-title {
+            font-family: var(--font-title);
+            font-size: 72px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .cover-subtitle {
+            font-family: var(--font-medium);
+            font-size: 32px;
+            color: var(--text-gray);
+            letter-spacing: 2px;
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 80px;
+            font-size: 18px;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            width: calc(100% - 200px);
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 60px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 24px;
+            display: flex;
+            align-items: baseline;
+            gap: 24px;
+        }
+
+        .section-number {
+            font-family: var(--font-title);
+            font-size: 48px;
+            color: var(--primary-red);
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 48px;
+            color: var(--primary-blue);
+        }
+
+        /* Section Container */
+        .section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 60px;
+            margin-bottom: 60px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+        }
+
+        /* 1. Brand Overview */
+        .brand-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .brand-text h3 {
+            font-family: var(--font-medium);
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+        }
+
+        .brand-text p {
+            font-size: 18px;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        .brand-logo-display {
+            background-color: var(--bg-light);
+            padding: 60px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. Color System */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .color-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+        }
+
+        .color-swatch {
+            height: 160px;
+        }
+
+        .color-info {
+            padding: 24px;
+            background-color: var(--white);
+        }
+
+        .color-name {
+            font-family: var(--font-title);
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            font-size: 16px;
+            color: var(--text-gray);
+            margin-bottom: 8px;
+        }
+
+        .color-desc {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* 3. Typography System */
+        .type-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .type-row {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .type-info h4 {
+            font-family: var(--font-medium);
+            font-size: 24px;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+
+        .type-info p {
+            color: var(--text-gray);
+            font-size: 16px;
+        }
+
+        .type-example {
+            color: var(--text-dark);
+        }
+
+        .type-example.h1 { font-family: var(--font-title); font-size: 48px; }
+        .type-example.h2 { font-family: var(--font-title); font-size: 32px; }
+        .type-example.body { font-family: var(--font-main); font-size: 16px; }
+
+        /* 4. Design Elements */
+        .elements-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .element-card {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .element-title {
+            font-family: var(--font-medium);
+            font-size: 20px;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+        }
+
+        .radius-box {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-blue);
+            margin: 0 auto 24px;
+        }
+
+        .shadow-box {
+            width: 120px;
+            height: 120px;
+            background: var(--white);
+            margin: 0 auto 24px;
+            border-radius: 8px;
+        }
+
+        .spacing-box {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .spacing-item {
+            background: rgba(210, 42, 46, 0.2);
+            height: 40px;
+        }
+
+        /* 5. Component Library */
+        .component-section {
+            margin-bottom: 40px;
+        }
+
+        .component-section h4 {
+            font-family: var(--font-medium);
+            font-size: 24px;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-family: var(--font-medium);
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary { background: var(--primary-red); color: var(--white); }
+        .btn-secondary { background: transparent; border: 2px solid var(--primary-blue); color: var(--primary-blue); }
+        .btn-disabled { background: #E0E0E0; color: #999999; cursor: not-allowed; }
+
+        /* 6. Layout System */
+        .layout-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .grid-col {
+            background: rgba(27, 46, 64, 0.1);
+            height: 120px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 14px;
+        }
+
+        /* 7. Application Examples */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .example-card {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .example-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .example-desc {
+            font-size: 16px;
+            color: var(--text-gray);
+            text-align: center;
+        }
+
+        /* 8. Guidelines */
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .guide-col {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .guide-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-title);
+            font-size: 24px;
+            margin-bottom: 32px;
+        }
+
+        .guide-title.dos { color: var(--success-green); }
+        .guide-title.donts { color: var(--primary-red); }
+
+        .guide-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .guide-item i {
+            font-size: 24px;
+            margin-top: -4px;
+        }
+
+        .dos .guide-item i { color: var(--success-green); }
+        .donts .guide-item i { color: var(--primary-red); }
+
+        .guide-text h5 {
+            font-family: var(--font-medium);
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+
+        .guide-text p {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cover Page -->
+    <div class="cover">
+        <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours Logo" class="cover-logo">
+        <h1 class="cover-title">Facebook VI设计规范</h1>
+        <h2 class="cover-subtitle">Visual Identity Guidelines</h2>
+        
+        <div class="cover-footer">
+            <span>Version 1.0</span>
+            <span>October 2023</span>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- 1. Brand Overview -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">品牌概述 Brand Overview</h2>
+            </div>
+            <div class="brand-grid">
+                <div class="brand-text">
+                    <h3>Experience The Real Asia</h3>
+                    <p>CTS Tours代表着专业、可靠和真实的亚洲旅行体验。我们在Facebook上的视觉传达必须始终保持这一品牌承诺。</p>
+                    <p>我们的视觉风格应该传达出：现代感、专业性、文化底蕴以及对高品质服务的追求。通过统一的视觉规范，我们在社交媒体上建立强大的品牌认知度。</p>
+                </div>
+                <div class="brand-logo-display">
+                    <img src="https://a.lovart.ai/artifacts/external/nJwqUIk3U9I2c51b.png" alt="CTS Tours Logo" style="width: 100%; max-width: 400px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Color System -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">色彩系统 Color System</h2>
+            </div>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--primary-blue);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--primary-blue);">品牌深蓝</div>
+                        <div class="color-hex">#1B2E40</div>
+                        <div class="color-desc">用于主要标题、重要背景、强调元素</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--primary-red);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--primary-red);">品牌红</div>
+                        <div class="color-hex">#D22A2E</div>
+                        <div class="color-desc">用于按钮、高亮文本、图标强调</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--text-dark);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--text-dark);">正文黑</div>
+                        <div class="color-hex">#333333</div>
+                        <div class="color-desc">用于正文内容、副标题</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-swatch" style="background-color: var(--bg-light); border: 1px solid var(--border-color);"></div>
+                    <div class="color-info">
+                        <div class="color-name" style="color: var(--text-gray);">背景灰</div>
+                        <div class="color-hex">#F8F9FA</div>
+                        <div class="color-desc">用于卡片背景、区块分割</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Typography System -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">字体系统 Typography</h2>
+            </div>
+            <div class="type-container">
+                <div class="type-row">
+                    <div class="type-info">
+                        <h4>大标题 Heading 1</h4>
+                        <p>Alibaba PuHuiTi Bold - 48px</p>
+                        <p>用于主海报标题、重要Banner</p>
+                    </div>
+                    <div class="type-example h1">探索真实亚洲之美</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-info">
+                        <h4>副标题 Heading 2</h4>
+                        <p>Alibaba PuHuiTi Bold - 32px</p>
+                        <p>用于卡片标题、区块划分</p>
+                    </div>
+                    <div class="type-example h2">精选热门旅游路线</div>
+                </div>
+                <div class="type-row" style="border-bottom: none;">
+                    <div class="type-info">
+                        <h4>正文内容 Body Text</h4>
+                        <p>Alibaba Sans Regular - 16px</p>
+                        <p>用于帖子文案、详细描述说明</p>
+                    </div>
+                    <div class="type-example body">在CTS Tours，我们致力于为您提供最纯正的亚洲文化体验。通过精心策划的路线和专业的导游服务，让您的每一次旅行都成为难忘的回忆。体验真实亚洲，从这里开始。</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Design Elements -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">设计元素 Design Elements</h2>
+            </div>
+            <div class="elements-grid">
+                <div class="element-card">
+                    <h3 class="element-title">圆角规范 Radius</h3>
+                    <div class="radius-box" style="border-radius: 8px;"></div>
+                    <p style="color: var(--text-gray);">基础圆角: 8px<br>应用于所有卡片、按钮、图片</p>
+                </div>
+                <div class="element-card">
+                    <h3 class="element-title">阴影规范 Shadows</h3>
+                    <div class="shadow-box" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);"></div>
+                    <p style="color: var(--text-gray);">基础阴影: 0 4px 16px 10%<br>应用于浮动卡片、悬停状态</p>
+                </div>
+                <div class="element-card">
+                    <h3 class="element-title">间距规范 Spacing</h3>
+                    <div class="spacing-box">
+                        <div class="spacing-item" style="width: 8px;"></div>
+                        <div class="spacing-item" style="width: 16px;"></div>
+                        <div class="spacing-item" style="width: 24px;"></div>
+                        <div class="spacing-item" style="width: 32px;"></div>
+                    </div>
+                    <p style="color: var(--text-gray);">8px网格系统<br>所有间距应为8的倍数</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Component Library -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">组件库 Components</h2>
+            </div>
+            <div class="component-section">
+                <h4>按钮规范 Buttons</h4>
+                <div class="button-group">
+                    <button class="btn btn-primary">Book Now</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                    <button class="btn btn-disabled">Sold Out</button>
+                </div>
+                <p style="color: var(--text-gray);">按钮高度统一为48px，圆角8px，内边距左右32px。</p>
+            </div>
+        </div>
+
+        <!-- 6. Application Examples -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">应用示例 Applications</h2>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <img src="https://a.lovart.ai/artifacts/agent/1KC6jC9hnd3LFPw5.png" alt="Cover Example" class="example-image">
+                    <p class="example-desc">Facebook 封面应用示例<br>展示品牌深蓝背景与红色元素的搭配</p>
+                </div>
+                <div class="example-card">
+                    <img src="https://a.lovart.ai/artifacts/agent/aZhjip2jnf8NMdrl.png" alt="Post Example" class="example-image">
+                    <p class="example-desc">Facebook 帖子应用示例<br>展示圆角卡片、CTA按钮和排版规范的综合应用</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Guidelines -->
+        <div class="section" style="margin-bottom: 0;">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">使用指南 Dos and Don'ts</h2>
+            </div>
+            <div class="guidelines-grid">
+                <div class="guide-col dos">
+                    <div class="guide-title dos">
+                        <i class="ri-checkbox-circle-fill"></i> 推荐做法 Dos
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-check-line"></i>
+                        <div class="guide-text">
+                            <h5>保持留白空间</h5>
+                            <p>在核心元素周围保留足够的呼吸空间，避免视觉拥挤。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-check-line"></i>
+                        <div class="guide-text">
+                            <h5>统一使用品牌色</h5>
+                            <p>严格按照色阶表使用深蓝和红色，确保品牌识别度。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-check-line"></i>
+                        <div class="guide-text">
+                            <h5>高质量图片素材</h5>
+                            <p>使用清晰、专业、色彩饱和度适中的风景及人文照片。</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="guide-col donts">
+                    <div class="guide-title donts">
+                        <i class="ri-close-circle-fill"></i> 避免做法 Don'ts
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-close-line"></i>
+                        <div class="guide-text">
+                            <h5>避免字体变形</h5>
+                            <p>不要拉伸或挤压字体，保持字体的原始比例。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-close-line"></i>
+                        <div class="guide-text">
+                            <h5>避免过多色彩</h5>
+                            <p>不要在单张海报中使用超过3种主色调，以免分散注意力。</p>
+                        </div>
+                    </div>
+                    <div class="guide-item">
+                        <i class="ri-close-line"></i>
+                        <div class="guide-text">
+                            <h5>避免对比度不足</h5>
+                            <p>确保文字与背景之间有足够的对比度，保证可读性。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

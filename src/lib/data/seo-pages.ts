@@ -33,7 +33,7 @@ export const chinaToursMeta: SeoPageMeta = {
   faqs: [
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
-      answer: 'CTS Tours\' four headline China itineraries for Kiwi travellers in 2026-27 are: Tale of Two Cities — Beijing + Xi\'an (10 days, NZD $3,480, Discovery tier); Shanghai & Surroundings — Jiangnan loop (10 days, NZD $3,399, Discovery tier); Best of China — 4 cities including Beijing, Xi\'an, Shanghai, Guilin (15 days, NZD $3,880, Discovery tier); and Silk Road Discovery (18 days, NZD $7,999, Signature tier). All four are Kiwi-led, Auckland-based, with NZD pricing and English-speaking guides on the ground in China.'
+      answer: 'CTS Tours\' four headline China itineraries for Kiwi travellers in 2026-27 are: Tale of Two Cities — Beijing + Xi\'an (10 days, NZD $3,480, Discovery tier); Shanghai & Surroundings — Jiangnan loop (10 days, NZD $3,399, Discovery tier); Best of China — 4 cities including Beijing, Xi\'an, Shanghai, Guilin (15 days, NZD $3,880, Discovery tier); and Silk Road (18 days, NZD $7,999, Signature tier). All four are Kiwi-led, Auckland-based, with NZD pricing and English-speaking guides on the ground in China.'
     },
     {
       question: 'What China tour packages does CTS offer?',
@@ -57,7 +57,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'How much does a China tour package from New Zealand cost?',
-      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road Discovery, 18 days). Best of China runs 15 days from NZD $3,880. All prices include return international airfares from Auckland, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Best of China runs 15 days from NZD $3,880. All prices include return international airfares from Auckland, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
     },
     {
       question: 'Do New Zealand passport holders need a visa for China?',
@@ -376,7 +376,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What are the most popular China tours for New Zealand travellers?',
-      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $3,399), and Silk Road Discovery (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
+      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $3,399), and Silk Road (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
     },
     {
       question: 'Is it safe to travel from New Zealand to China?',
