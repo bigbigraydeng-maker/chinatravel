@@ -1,352 +1,305 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroCinematic from '@/components/HeroCinematic';
-import TrustBar from '@/components/TrustBar';
-import SectionTitle from '@/components/SectionTitle';
-import FeatureCard from '@/components/FeatureCard';
-import ExpertHighlight from '@/components/ExpertHighlight';
-import DestinationCard from '@/components/DestinationCard';
-import TourTierCard from '@/components/TourTierCard';
-import SpotlightTours from '@/components/SpotlightTours';
-import StatsCounter from '@/components/StatsCounter';
-import UpcomingDepartures from '@/components/UpcomingDepartures';
-import Testimonials from '@/components/Testimonials';
-import FacebookFollowStrip from '@/components/FacebookFollowStrip';
-import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
-import { getTourBySlug } from '@/lib/data/tours';
-import { allGuides } from '@/lib/data/guides';
-import { getSiteUrl } from '@/lib/site';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import HeroSearchEditorial from '@/components/HeroSearchEditorial';
+import { Icon, type IconName } from '@/components/ui/Icon';
+import { getTourBySlug, type Tour } from '@/lib/data/tours';
 
 /**
- * Redesigned homepage — internal preview only (rendered on /preview-home,
- * noindex). Clone of the live homepage with the concept deltas layered in:
- *  - cinematic hero (<HeroCinematic /> + glass search) instead of <Hero />
- *  - TrustBar surfaced directly under the hero
- *  - <UpcomingDepartures /> table (derived from tours.ts)
- *  - newsletter capture section before the final CTA
- * Every other section reuses the live homepage's proven components/data.
+ * Redesigned homepage — internal preview only (/preview-home, noindex).
+ *
+ * Implements the approved Stitch "Editorial" direction (asymmetric hero,
+ * magazine-style curated journeys, editorial Why-CTS, dark CTA band) with the
+ * brand design system, wired to REAL tour data / images / routes. The global
+ * Navbar + Footer come from the root layout, so they are not re-rendered here.
  * The live homepage (src/app/page.tsx) is intentionally untouched.
+ *
+ * Additional sections (upcoming departures, specialist, testimonials,
+ * destinations) are a follow-up pass, restyled to this same aesthetic.
  */
 
-const buildHomePageSchemas = () => {
-  const siteUrl = getSiteUrl();
+const HERO_IMAGE =
+  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg';
+const PHONE_DISPLAY = '0800 287 888';
+const PHONE_HREF = 'tel:0800287888';
 
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'TravelAgency',
-    name: 'CTS Tours',
-    alternateName: 'China Travel Service',
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    foundingDate: '1928',
-    description:
-      "New Zealand's China travel specialists since 1928. Direct China operations, authentic experiences, expertly crafted tours.",
-  };
+const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
+    <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-  return [organizationSchema];
-};
+interface JourneyMeta {
+  slug: string;
+  tier: 'signature' | 'discovery';
+  badge: string;
+  ex: string;
+}
+
+const LARGE_JOURNEY: JourneyMeta = { slug: 'imperial-heritage', tier: 'signature', badge: 'Small Group', ex: 'Ex Auckland' };
+const SIDE_JOURNEYS: JourneyMeta[] = [
+  { slug: 'grand-tour', tier: 'signature', badge: 'Best Seller', ex: 'Ex Auckland' },
+  { slug: 'silk-road', tier: 'signature', badge: 'Cultural Focus', ex: 'Ex NZ Wide' },
+];
+
+const FEATURES: { icon: IconName; title: string; body: string }[] = [
+  { icon: 'landmark', title: 'Specialists Since 1928', body: 'Nearly a century of on-the-ground expertise in Chinese culture, logistics and hospitality.' },
+  { icon: 'pencil', title: 'Tailor-Made Design', body: 'Flexible itineraries customised down to the finest detail around your interests and pace.' },
+  { icon: 'shield', title: 'Fully Protected', body: 'TAANZ-bonded and IATA-accredited, so your investment is secure from the first deposit.' },
+  { icon: 'users', title: 'Local NZ Support', body: 'Talk directly with our Auckland-based team before, during and after your journey.' },
+];
+
+function tourHref(t: Tour) {
+  return `/tours/${t.destination}/${t.tier}/${t.slug}`;
+}
 
 const HomePageRedesign = () => {
-  const destinations = [
-    { name: 'Beijing', slug: 'beijing', description: 'Home to the Great Wall and Forbidden City', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg' },
-    { name: 'Xi\'an', slug: 'xian', description: 'Home to the Terracotta Army and ancient city walls', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
-    { name: 'Shanghai', slug: 'shanghai', description: 'A modern metropolis with skyscrapers and historical landmarks', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
-    { name: 'Chengdu', slug: 'chengdu', description: 'Famous for pandas and Sichuan cuisine', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
-    { name: 'Chongqing', slug: 'chongqing', description: 'China\'s vertical megacity — hotpot, dramatic river gorges and cyberpunk night views', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
-    { name: 'Zhangjiajie', slug: 'zhangjiajie', description: 'Inspiration for Avatar\'s floating mountains', image_url: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
-  ];
-
-  const featuredGuides = allGuides.slice(0, 3);
-  const discoveryGuides = allGuides.filter(g =>
-    ['beijing-xian-discovery-guide', 'chongqing-chengdu-discovery-guide', 'shanghai-surroundings-discovery-guide'].includes(g.slug)
-  );
-  const homePageSchemas = buildHomePageSchemas();
+  const large = getTourBySlug('china', LARGE_JOURNEY.tier, LARGE_JOURNEY.slug);
+  const sides = SIDE_JOURNEYS.map((j) => ({ meta: j, tour: getTourBySlug('china', j.tier, j.slug) }));
 
   return (
-    <div>
-      <SchemaMarkup data={homePageSchemas} />
-
-      {/* Cinematic hero + glass search */}
-      <HeroCinematic />
-
-      {/* Trust signals surfaced immediately under the hero */}
-      <TrustBar />
-
-      {/* Stats Counter */}
-      <StatsCounter />
-
-      {/* Why CTS */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50/30 relative overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-72 h-72 bg-secondary/8 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-0 left-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-        <div className="container mx-auto px-4">
-          <SectionTitle title="Why CTS" center />
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <FeatureCard
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              }
-              title="China Specialists"
-              description="We don't just know China — we live it. Our team has spent years on the ground so you don't miss a thing."
-            />
-            <FeatureCard
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              }
-              title="98 Years in China"
-              description="Founded in 1928, we've been taking travellers to China longer than most airlines have existed."
-            />
-            <FeatureCard
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              }
-              title="Direct Operations"
-              description="Our own offices and guides in China mean no middlemen, no surprises — just seamless travel from day one."
-            />
-            <FeatureCard
-              icon={
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              }
-              title="Authentic Access"
-              description="Small groups, local guides, off-the-beaten-track stops. The China that most tourists never get to see."
-            />
-          </div>
-        </div>
-      </section>
-
-      <SpotlightTours />
-
-      {/* Baker Gu Expert */}
-      <ExpertHighlight
-        name="Baker Gu"
-        title="China Travel Specialist"
-        description="With over 20 years of experience in the Chinese travel industry, Baker Gu is our lead specialist. His deep knowledge of China's culture, history, and hidden gems ensures that our clients receive authentic and unforgettable travel experiences."
-        fullDescription="Baker has traveled extensively throughout China, from the bustling cities to remote villages, building relationships with local communities and gaining insider access to unique experiences. As our lead specialist, Baker designs our most exclusive tours, ensuring that every detail is carefully crafted to provide the best possible experience for our clients."
-        image_url="/images/baker-gu-portrait.jpg"
-      />
-
-      {/* Explore China */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/30 to-white relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-60 h-60 bg-emerald-100/30 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute top-20 right-0 w-40 h-40 bg-sky-100/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="container mx-auto px-4">
-          <SectionTitle subtitle="Discover" title="Explore China" center />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {destinations.map((destination, index) => (
-              <DestinationCard
-                key={index}
-                name={destination.name}
-                slug={destination.slug}
-                description={destination.description}
-                image_url={destination.image_url}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Product Tiers */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-warm-100/30 to-warm-50 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-amber-100/20 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="container mx-auto px-4">
-          <SectionTitle subtitle="Our Tours" title="Choose Your Journey" center />
-
-          {/* China Signature */}
-          <div className="mb-20">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-sm font-bold px-5 py-2 rounded-full uppercase tracking-wider">
-                Signature
-              </div>
-              <div className="flex-1 h-[2px] bg-gradient-to-r from-amber-200 to-transparent rounded-full"></div>
-            </div>
-            <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8">
-              {(() => { const t = getTourBySlug('china', 'signature', 'imperial-heritage'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium route={['Beijing', "Xi'an", 'Guilin', 'Shanghai']} />
-              ) : null; })()}
-              {(() => { const t = getTourBySlug('china', 'signature', 'grand-tour'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="signature" isPremium route={['Beijing', "Xi'an", 'Chengdu', 'Guilin', 'Shanghai']} />
-              ) : null; })()}
-            </div>
-          </div>
-
-          {/* China Discovery */}
-          <div>
-            <div className="flex items-center gap-4 mb-8">
-              <div className="bg-gradient-to-r from-emerald-400 to-teal-500 text-white text-sm font-bold px-5 py-2 rounded-full uppercase tracking-wider">
-                Discovery
-              </div>
-              <div className="flex-1 h-[2px] bg-gradient-to-r from-emerald-200 to-transparent rounded-full"></div>
-            </div>
-            <div className="grid grid-cols-1 items-start md:grid-cols-2 gap-8">
-              {(() => { const t = getTourBySlug('china', 'discovery', 'essentials'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0]} route={['Beijing', "Xi'an", 'Hangzhou', 'Shanghai']} />
-              ) : null; })()}
-              {(() => { const t = getTourBySlug('china', 'discovery', 'yunnan-explorer'); return t ? (
-              <TourTierCard title={t.name} description={t.shortDescription} duration={t.duration} price={t.price} image_url={t.heroImage} slug={t.slug} tier="discovery" departure={t.departureDates?.[0]} route={['Dali', 'Lijiang', 'Shangri-La']} />
-              ) : null; })()}
-            </div>
-            <p className="text-center text-gray-600 mt-10 text-sm">
-              See our current{' '}
-              <Link href="/#spotlight" className="text-primary font-medium hover:underline">
-                Spotlight
-              </Link>{' '}
-              tours above, or browse{' '}
-              <Link href="/tours/china/discovery" className="text-primary font-medium hover:underline">
-                all China Discovery tours
-              </Link>
-              .
+    <div className="bg-surface font-sans text-ink">
+      {/* ===== Asymmetric hero ===== */}
+      <section className="relative overflow-hidden bg-surface">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
+          <div className="space-y-8 lg:col-span-5 lg:pr-6">
+            <h1 className="font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-7xl">
+              See all of China,
+              <br />
+              <span className="italic text-primary">the way it deserves.</span>
+            </h1>
+            <p className="max-w-md text-lg font-light leading-relaxed text-ink-muted">
+              Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
+              genuinely tailor-made.
             </p>
+            <HeroSearchEditorial />
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 text-xs font-bold uppercase tracking-wider text-ink-muted">
+              <span>98 years heritage</span>
+              <span className="text-ink/20">•</span>
+              <span>10,000+ Kiwi travellers</span>
+              <span className="text-ink/20">•</span>
+              <span>TAANZ &amp; IATA accredited</span>
+            </div>
+          </div>
+
+          <div className="relative h-[52vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[78vh] lg:rounded-l-3xl">
+            <Image
+              src={HERO_IMAGE}
+              alt="The Great Wall of China at dawn"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-cover object-right"
+            />
           </div>
         </div>
       </section>
 
-      {/* Upcoming departures — derived from tours.ts */}
-      <UpcomingDepartures />
+      {/* ===== Trust bar ===== */}
+      <section className="border-y border-warm-100 bg-white py-8">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 md:flex-row md:px-8">
+          <div className="flex items-center gap-3">
+            {['TAANZ', 'IATA', 'TIA'].map((b) => (
+              <span
+                key={b}
+                className="rounded-md border border-warm-200 bg-surface px-3 py-1.5 font-serif text-sm font-bold text-primary"
+              >
+                {b}
+              </span>
+            ))}
+            <span className="ml-1 hidden text-sm text-ink-muted sm:inline">Bonded &amp; accredited</span>
+          </div>
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
+            <div className="flex items-center gap-2">
+              <span className="flex text-secondary">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Icon key={i} name="star" className="h-5 w-5" />
+                ))}
+              </span>
+              <span className="text-sm font-medium text-ink-muted">4.8/5 from 400+ reviews</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm font-medium text-ink-muted">
+              <Icon name="shield" className="h-5 w-5 text-emerald-600" />
+              Your payment is 100% protected
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Testimonials */}
-      <Testimonials hideSpotlight />
+      {/* ===== Curated journeys (magazine layout) ===== */}
+      <section className="bg-surface py-24 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+                Signature Experiences
+              </span>
+              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
+              <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
+                Our most sought-after itineraries — iconic landmarks balanced with hidden cultural treasures,
+                fully escorted from New Zealand.
+              </p>
+            </div>
+            <Link
+              href="/tours"
+              className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
+            >
+              View all tours <ArrowRight />
+            </Link>
+          </div>
 
-      {/* Facebook Follow CTA */}
-      <FacebookFollowStrip />
-
-      {/* Discovery Tour Guides */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50/20 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-100/20 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="container mx-auto px-4">
-          <SectionTitle subtitle="In-Depth Guides" title="China Discovery Tour Guides" center />
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 -mt-4">
-            Three route-by-route guides for our most popular Discovery itineraries — what to see, when to go, and what to expect at each stop.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {discoveryGuides.map((guide) => (
-              <Link key={guide.id} href={`/${guide.slug}`} className="block group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
-                <div className="overflow-hidden h-52 bg-gray-100">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={guide.heroImage}
-                    alt={guide.destinationName}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+            {/* Large feature */}
+            {large && (
+              <article className="group relative flex h-[560px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={large.heroImage}
+                    alt={large.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
                 </div>
-                <div className="p-6">
-                  <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wide">Discovery Guide</span>
-                  <h3 className="text-xl font-semibold mb-2 mt-1 font-serif group-hover:text-primary transition-colors line-clamp-2">{guide.destinationName}</h3>
-                  <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">
-                    {(guide.introText[0]?.substring(0, 120) ?? '').trim()}
-                    {guide.introText[0] ? '...' : ''}
-                  </p>
-                  <div className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
-                    Read Guide
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                <span className="absolute left-8 top-8 z-10 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-ink shadow-sm">
+                  {LARGE_JOURNEY.badge}
+                </span>
+                <div className="relative z-10 mt-auto flex flex-col p-8 md:p-10">
+                  <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{large.name}</h3>
+                  <div className="mb-8 flex items-center gap-6 text-sm text-white/80">
+                    <span className="flex items-center gap-2"><Icon name="clock" className="h-5 w-5" /> {large.duration}</span>
+                    <span className="flex items-center gap-2"><Icon name="plane" className="h-5 w-5" /> {LARGE_JOURNEY.ex}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-white/60">From</span>
+                      <span className="font-serif text-3xl font-semibold text-white">
+                        {large.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
+                      </span>
+                    </div>
+                    <Link
+                      href={tourHref(large)}
+                      className="rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-lg transition-colors hover:bg-primary hover:text-white"
+                    >
+                      Discover More
+                    </Link>
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+              </article>
+            )}
 
-      {/* Destination Guides */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white via-warm-50/20 to-white relative overflow-hidden">
-        <div className="absolute top-10 right-10 w-48 h-48 bg-purple-100/20 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-10 left-10 w-36 h-36 bg-sky-100/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="container mx-auto px-4">
-          <SectionTitle subtitle="Resources" title="Destination Guides" center />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredGuides.map((guide) => (
-              <Link key={guide.id} href={`/${guide.slug}`} className="block group">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl border border-warm-100/30 transition-all duration-500 hover:-translate-y-2">
-                  <div className="overflow-hidden relative h-52">
-                    <Image
-                      src={guide.heroImage}
-                      alt={guide.destinationName}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                      Guide
+            {/* Side stack */}
+            <div className="flex flex-col gap-8 lg:col-span-4">
+              {sides.map(({ meta, tour }) =>
+                tour ? (
+                  <article
+                    key={meta.slug}
+                    className="group flex flex-1 flex-col overflow-hidden rounded-3xl bg-white shadow-editorial"
+                  >
+                    <div className="relative h-36 overflow-hidden">
+                      <Image
+                        src={tour.heroImage}
+                        alt={tour.name}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
+                        {meta.badge}
+                      </span>
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors">{guide.h1.replace(/Travel Guide:?\s*/i, '')}</h3>
-                    <p className="text-gray-500 mb-4 leading-relaxed text-sm line-clamp-3">
-                      {(guide.introText[0]?.substring(0, 120) ?? '').trim()}
-                      {guide.introText[0] ? '...' : ''}
-                    </p>
-                    <div className="text-primary font-medium inline-flex items-center gap-2 group-hover:gap-3 transition-all text-sm">
-                      Read Guide
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                    <div className="flex flex-grow flex-col justify-between p-6">
+                      <div>
+                        <h3 className="mb-2 font-serif text-xl text-ink">{tour.name}</h3>
+                        <div className="flex items-center gap-2 text-xs text-ink-muted">
+                          <span>{tour.duration}</span> • <span>{meta.ex}</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 flex items-center justify-between">
+                        <span className="font-serif text-lg font-semibold text-ink">
+                          {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
+                        </span>
+                        <Link
+                          href={tourHref(tour)}
+                          aria-label={`View ${tour.name}`}
+                          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-primary hover:bg-primary hover:text-white"
+                        >
+                          <ArrowRight />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+                  </article>
+                ) : null
+              )}
+            </div>
           </div>
-          <div className="text-center mt-10">
-            <Link href="/guide" prefetch={false} className="text-primary hover:underline font-medium">
-              View all {allGuides.length} destination guides →
+
+          <div className="mt-10 text-center md:hidden">
+            <Link
+              href="/tours"
+              className="inline-flex items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:text-primary"
+            >
+              View all tours <ArrowRight />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Newsletter capture */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-accent to-gray-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div>
-              <h2 className="text-2xl md:text-3xl font-serif font-bold mb-2">Travel inspiration, straight to your inbox</h2>
-              <p className="text-gray-300 max-w-md">
-                New itineraries, seasonal timing tips and occasional offers — no spam, unsubscribe anytime.
+      {/* ===== Why CTS (editorial) ===== */}
+      <section className="bg-white py-24 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
+            <div className="space-y-6 lg:w-1/3">
+              <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+                The CTS Difference
+              </span>
+              <h2 className="font-serif text-5xl leading-tight text-ink">
+                Expertise you
+                <br />
+                can trust.
+              </h2>
+              <p className="pt-4 text-lg leading-relaxed text-ink-muted">
+                For nearly a century we have crafted exceptional travel experiences, bridging New Zealand and the
+                wonders of China.
               </p>
             </div>
-            <div className="w-full md:w-auto md:min-w-[360px]">
-              <NewsletterSubscribeForm variant="footer" />
+            <div className="grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 lg:w-2/3">
+              {FEATURES.map((f) => (
+                <div key={f.title}>
+                  <div className="mb-6 flex h-12 w-12 items-end border-b-2 border-primary pb-3 text-primary">
+                    <Icon name={f.icon} className="h-8 w-8" />
+                  </div>
+                  <h4 className="mb-4 font-serif text-2xl text-ink">{f.title}</h4>
+                  <p className="text-base leading-relaxed text-ink-muted">{f.body}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Combined Heritage + CTA */}
-      <section className="py-12 md:py-16 bg-gradient-to-br from-primary via-red-600 to-primary text-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <p className="text-white/70 text-sm font-medium tracking-wide uppercase mb-3">Est. 1928 · China Travel Service Heritage</p>
-            <h2 className="text-2xl md:text-4xl font-bold mb-4 font-serif leading-tight">Plan Your China Journey</h2>
-            <p className="text-white/80 mb-8 max-w-xl mx-auto">
-              Let our specialists craft your perfect itinerary — backed by nearly a century of direct China operations.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href="/tailor-made" className="bg-white text-primary font-bold py-3 px-8 rounded-full hover:shadow-xl transition-all hover:-translate-y-0.5">
-                Tailor My Trip
-              </a>
-              <a href="/tours" className="border-2 border-white/40 text-white font-medium py-3 px-8 rounded-full hover:bg-white/10 hover:border-white transition-all">
-                Explore Tours
-              </a>
-              <a href="/about" className="text-white/70 font-medium py-3 px-6 hover:text-white transition-colors underline underline-offset-4 decoration-white/30 hover:decoration-white/70">
-                Our Story
-              </a>
-            </div>
+      {/* ===== CTA band ===== */}
+      <section className="relative overflow-hidden bg-ink py-24 text-white">
+        <div className="absolute inset-0 bg-primary/10" />
+        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-8">
+          <h2 className="mb-8 font-serif text-4xl text-white md:text-6xl">Let&apos;s design your China, together.</h2>
+          <p className="mx-auto mb-12 max-w-2xl text-xl font-light leading-relaxed text-white/70">
+            Speak with one of our New Zealand-based China specialists today to start planning your perfect
+            itinerary.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
+            <Link
+              href="/tailor-made"
+              className="w-full rounded-full bg-primary px-10 py-5 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-colors hover:bg-white hover:text-ink sm:w-auto"
+            >
+              Enquire Now
+            </Link>
+            <a
+              href={PHONE_HREF}
+              className="flex w-full items-center justify-center gap-3 rounded-full border border-white/20 px-10 py-5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/5 sm:w-auto"
+            >
+              <Icon name="phone" className="h-5 w-5" /> Call {PHONE_DISPLAY}
+            </a>
           </div>
         </div>
       </section>
