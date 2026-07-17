@@ -135,7 +135,7 @@ describe('HeroWithLeadForm', () => {
         'Best of China — 15 Days',
         "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
         'Shanghai & Surroundings — 10 Days',
-        'Silk Road Discovery — 18 Days',
+        'Silk Road — 18 Days',
         'Still deciding — show me all 4',
       ])
     );

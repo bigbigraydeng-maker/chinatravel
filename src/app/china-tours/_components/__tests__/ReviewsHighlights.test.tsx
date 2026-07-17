@@ -26,7 +26,7 @@ describe('ReviewsHighlights', () => {
     render(<ReviewsHighlights />);
     expect(screen.getByText(/Tale of Two Cities · Beijing \+ Xi'an/)).toBeInTheDocument();
     expect(screen.getByText(/Shanghai & Surroundings · 10 days/i)).toBeInTheDocument();
-    expect(screen.getByText(/Silk Road Discovery · 18 days/i)).toBeInTheDocument();
+    expect(screen.getByText(/Silk Road · 18 days/i)).toBeInTheDocument();
   });
 
   it('each card carries an aria-labelled 5-star rating', () => {
