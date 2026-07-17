@@ -1,19 +1,19 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import SearchBar from './SearchBar';
+import HeroSearchGlass from './HeroSearchGlass';
 
 /**
  * Cinematic hero — internal preview variant of the homepage hero.
  *
  * Rendered ONLY on /preview-hero (noindex). The live homepage keeps using
- * <Hero /> until the redesign is signed off. The "movie still" look comes from
- * four stacked treatments over the existing Great Wall asset:
+ * <Hero /> until the redesign is signed off. The "film" feel comes from framing
+ * and motion — NOT from darkening — so the Great Wall stays luminous:
  *  1. slow Ken Burns push-in on the photo (film motion)
- *  2. a strong cinematic colour grade + darkening for mood and text contrast
- *  3. a deep inset vignette + film grain
- *  4. true cinemascope letterbox bars (solid black, top & bottom)
+ *  2. a light colour grade + a localised scrim only behind the headline
+ *  3. a gentle vignette + subtle film grain
+ *  4. cinemascope letterbox bars (solid black, top & bottom)
+ *  5. glass segmented search (Destination / When / Style) matching the concept
  */
 const HeroCinematic = () => {
   const handleFilmClick = () => {
@@ -38,7 +38,9 @@ const HeroCinematic = () => {
         @media (prefers-reduced-motion: reduce) { .hero-kenburns { animation: none; transform: scale(1.08); } }
       `}</style>
 
-      {/* Background photo with slow push-in (existing Supabase asset) */}
+      {/* Background photo with slow push-in (existing Supabase asset).
+          Kept luminous on purpose — the Great Wall is the hero, not a dark
+          backdrop. Cinematic feel comes from letterbox + motion, NOT darkening. */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="hero-kenburns absolute inset-0">
           <Image
@@ -52,28 +54,35 @@ const HeroCinematic = () => {
         </div>
       </div>
 
-      {/* Cinematic colour grade: cool shadows, warm highlights, deep bottom */}
+      {/* Light mood grade: barely touch the top (keep the Wall bright), a little
+          more at the bottom so the search bar + authority row stay legible. */}
       <div
-        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-[#0E0A08]/70 via-transparent to-[#0E0A08]/95"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-b from-black/15 via-transparent to-black/60"
         aria-hidden
       />
+      {/* Subtle warm tint */}
       <div
-        className="pointer-events-none absolute inset-0 z-[2] mix-blend-multiply bg-gradient-to-tr from-primary/40 via-[#2a1c14]/30 to-secondary/20"
+        className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-tr from-primary/12 via-transparent to-secondary/10"
         aria-hidden
       />
-      {/* Overall darken so it reads moody, not bright */}
-      <div className="pointer-events-none absolute inset-0 z-[2] bg-black/25" aria-hidden />
+      {/* Localised scrim ONLY behind the headline block — keeps corners/Wall bright
+          while guaranteeing white-text contrast. */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[2]"
+        style={{ background: 'radial-gradient(ellipse 72% 52% at 50% 40%, rgba(8,5,4,0.52), transparent 70%)' }}
+        aria-hidden
+      />
 
-      {/* Deep cinematic vignette */}
+      {/* Gentle cinematic vignette (light — corners kept readable) */}
       <div
         className="pointer-events-none absolute inset-0 z-[3]"
-        style={{ boxShadow: 'inset 0 0 420px 120px rgba(6,4,3,0.9)' }}
+        style={{ boxShadow: 'inset 0 0 220px 60px rgba(6,4,3,0.45)' }}
         aria-hidden
       />
 
-      {/* Film grain */}
+      {/* Film grain (light) */}
       <svg
-        className="pointer-events-none absolute inset-0 z-[4] h-full w-full opacity-[0.16] mix-blend-overlay"
+        className="pointer-events-none absolute inset-0 z-[4] h-full w-full opacity-[0.08] mix-blend-overlay"
         aria-hidden
       >
         <filter id="heroGrain">
@@ -110,9 +119,9 @@ const HeroCinematic = () => {
           and led by China specialists — from the Great Wall to the Li River.
         </p>
 
-        {/* Search */}
+        {/* Search — glass segmented (concept-matching) */}
         <div className="mb-8 animate-fade-in-up" style={{ animationDelay: '0.55s' }}>
-          <SearchBar />
+          <HeroSearchGlass />
         </div>
 
         {/* Film affordance */}
