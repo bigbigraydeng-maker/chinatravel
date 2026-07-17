@@ -4,14 +4,17 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 /**
- * Glass, segmented hero search — matches the redesign concept
- * (Destination / When / Style + "Find your journey").
+ * Glass, segmented hero search — matches the redesign concept.
  *
- * Used ONLY inside <HeroCinematic /> on /preview-hero so the live homepage's
- * <SearchBar /> is untouched. Destination + Style map to the existing
- * /tours/find filters. "When" (month) is captured and passed through as a
- * `month` param; month-based filtering on the results page is a follow-up
- * (kept as a real intent field rather than a decorative dropdown).
+ * Two fields: Destination + Attraction (+ "Find your journey"). Used ONLY
+ * inside <HeroCinematic /> on /preview-hero, so the live homepage's
+ * <SearchBar /> is untouched.
+ *
+ * Design note: the earlier "When (month)" field was dropped on purpose — with
+ * a small tour catalogue, month filtering mostly returns nothing, which reads
+ * as a dead search. Attractions instead map to a keyword (`q`) that TourFinder
+ * matches against tour name / description / highlights / cities, so every listed
+ * attraction returns real results (verified against tours.ts term frequency).
  */
 
 const destinations = [
@@ -24,18 +27,16 @@ const destinations = [
   { value: 'yunnan', label: 'Yunnan' },
 ];
 
-const months = [
-  'January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December',
-];
-
-const styles = [
-  { value: 'culture', label: 'Culture & History' },
-  { value: 'food', label: 'Food & Culinary' },
-  { value: 'nature', label: 'Nature & Adventure' },
-  { value: 'family', label: 'Family' },
-  { value: 'luxury', label: 'Luxury' },
-  { value: 'photography', label: 'Photography' },
+// label = what the traveller recognises; query = the term TourFinder matches on.
+const attractions = [
+  { query: 'Great Wall', label: 'Great Wall' },
+  { query: 'Forbidden City', label: 'Forbidden City' },
+  { query: 'Terracotta', label: 'Terracotta Warriors' },
+  { query: 'Li River', label: 'Li River (Guilin)' },
+  { query: 'Panda', label: 'Giant Pandas' },
+  { query: 'Yangtze', label: 'Yangtze River Cruise' },
+  { query: 'Bund', label: 'The Bund (Shanghai)' },
+  { query: 'Zhangjiajie', label: 'Avatar Mountains' },
 ];
 
 const selectClass =
@@ -44,8 +45,7 @@ const optionClass = 'text-gray-800';
 
 export default function HeroSearchGlass() {
   const [destination, setDestination] = useState('');
-  const [month, setMonth] = useState('');
-  const [style, setStyle] = useState('');
+  const [attraction, setAttraction] = useState('');
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
@@ -54,8 +54,7 @@ export default function HeroSearchGlass() {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'hero_search_submit', {
         destination: destination || 'all',
-        month: month || 'any',
-        interest: style || 'all',
+        attraction: attraction || 'any',
         event_category: 'engagement',
         event_label: 'hero_glass_search',
       });
@@ -63,13 +62,12 @@ export default function HeroSearchGlass() {
 
     const params = new URLSearchParams();
     if (destination) params.set('destination', destination);
-    if (style) params.set('interest', style);
-    if (month) params.set('month', month.toLowerCase());
+    if (attraction) params.set('q', attraction);
     router.push(`/tours/find?${params.toString()}`);
   };
 
   return (
-    <form onSubmit={handleSearch} className="mx-auto w-full max-w-3xl">
+    <form onSubmit={handleSearch} className="mx-auto w-full max-w-2xl">
       <div className="flex flex-col gap-2 rounded-2xl border border-white/25 bg-white/10 p-2 shadow-2xl backdrop-blur-md sm:flex-row sm:items-stretch sm:gap-0">
         {/* Destination */}
         <div className="flex-1 px-4 py-2 text-left sm:border-r sm:border-white/20">
@@ -92,42 +90,21 @@ export default function HeroSearchGlass() {
           </div>
         </div>
 
-        {/* When */}
-        <div className="flex-1 px-4 py-2 text-left sm:border-r sm:border-white/20">
-          <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-white/70">
-            When
-          </label>
-          <div className="relative">
-            <select
-              aria-label="When"
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-              className={selectClass}
-            >
-              <option value="" className={optionClass}>Any month</option>
-              {months.map((m) => (
-                <option key={m} value={m} className={optionClass}>{m}</option>
-              ))}
-            </select>
-            <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[10px] text-secondary">▾</span>
-          </div>
-        </div>
-
-        {/* Style */}
+        {/* Attraction */}
         <div className="flex-1 px-4 py-2 text-left">
           <label className="block text-[10px] font-bold uppercase tracking-[0.12em] text-white/70">
-            Style
+            Must-see
           </label>
           <div className="relative">
             <select
-              aria-label="Style"
-              value={style}
-              onChange={(e) => setStyle(e.target.value)}
+              aria-label="Must-see attraction"
+              value={attraction}
+              onChange={(e) => setAttraction(e.target.value)}
               className={selectClass}
             >
-              <option value="" className={optionClass}>Any style</option>
-              {styles.map((s) => (
-                <option key={s.value} value={s.value} className={optionClass}>{s.label}</option>
+              <option value="" className={optionClass}>Any attraction</option>
+              {attractions.map((a) => (
+                <option key={a.query} value={a.query} className={optionClass}>{a.label}</option>
               ))}
             </select>
             <span className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 text-[10px] text-secondary">▾</span>
