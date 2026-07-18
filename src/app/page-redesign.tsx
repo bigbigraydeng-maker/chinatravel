@@ -1,45 +1,32 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import HeroSearchEditorial from '@/components/HeroSearchEditorial';
+import ContactChannels, { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/components/ContactChannels';
 import { Icon, type IconName } from '@/components/ui/Icon';
-import { getTourBySlug, type Tour } from '@/lib/data/tours';
+import { getTourBySlug } from '@/lib/data/tours';
+import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 
 /**
  * Redesigned homepage — internal preview only (/preview-home, noindex).
  *
- * Implements the approved Stitch "Editorial" direction (asymmetric hero,
- * magazine-style curated journeys, editorial Why-CTS, dark CTA band) with the
- * brand design system, wired to REAL tour data / images / routes. The global
- * Navbar + Footer come from the root layout, so they are not re-rendered here.
- * The live homepage (src/app/page.tsx) is intentionally untouched.
- *
- * Additional sections (upcoming departures, specialist, testimonials,
- * destinations) are a follow-up pass, restyled to this same aesthetic.
+ * Editorial direction (approved via Stitch), wired to real data. Decisions:
+ *  1. Enquiry-led — WhatsApp / Email / Phone, no online booking.
+ *  2. Primary push = the Spotlight tours (HOME_SPOTLIGHT_TOURS), which
+ *     marketing updates periodically; the "Curated Journeys" block reads
+ *     straight from that config.
+ *  3. "No forced shopping stops" is a confirmed, truthful trust signal.
+ * Global Navbar + Footer come from the root layout. Live homepage untouched.
  */
 
 const HERO_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg';
-const PHONE_DISPLAY = '0800 287 888';
-const PHONE_HREF = 'tel:0800287888';
+const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
-
-interface JourneyMeta {
-  slug: string;
-  tier: 'signature' | 'discovery';
-  badge: string;
-  ex: string;
-}
-
-const LARGE_JOURNEY: JourneyMeta = { slug: 'imperial-heritage', tier: 'signature', badge: 'Small Group', ex: 'Ex Auckland' };
-const SIDE_JOURNEYS: JourneyMeta[] = [
-  { slug: 'grand-tour', tier: 'signature', badge: 'Best Seller', ex: 'Ex Auckland' },
-  { slug: 'silk-road', tier: 'signature', badge: 'Cultural Focus', ex: 'Ex NZ Wide' },
-];
 
 const FEATURES: { icon: IconName; title: string; body: string }[] = [
   { icon: 'landmark', title: 'Specialists Since 1928', body: 'Nearly a century of on-the-ground expertise in Chinese culture, logistics and hospitality.' },
@@ -48,20 +35,19 @@ const FEATURES: { icon: IconName; title: string; body: string }[] = [
   { icon: 'users', title: 'Local NZ Support', body: 'Talk directly with our Auckland-based team before, during and after your journey.' },
 ];
 
-function tourHref(t: Tour) {
-  return `/tours/${t.destination}/${t.tier}/${t.slug}`;
-}
-
 const HomePageRedesign = () => {
-  const large = getTourBySlug('china', LARGE_JOURNEY.tier, LARGE_JOURNEY.slug);
-  const sides = SIDE_JOURNEYS.map((j) => ({ meta: j, tour: getTourBySlug('china', j.tier, j.slug) }));
+  const spotlight = HOME_SPOTLIGHT_TOURS
+    .map((ref) => ({ ref, tour: getTourBySlug(ref.destination, ref.tier, ref.slug) }))
+    .filter((x): x is { ref: (typeof HOME_SPOTLIGHT_TOURS)[number]; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour));
+  const featured = spotlight[0];
+  const sides = spotlight.slice(1, 3);
 
   return (
     <div className="bg-surface font-sans text-ink">
       {/* ===== Asymmetric hero ===== */}
       <section className="relative overflow-hidden bg-surface">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
-          <div className="space-y-8 lg:col-span-5 lg:pr-6">
+          <div className="space-y-7 lg:col-span-5 lg:pr-6">
             <h1 className="font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-7xl">
               See all of China,
               <br />
@@ -72,7 +58,16 @@ const HomePageRedesign = () => {
               genuinely tailor-made.
             </p>
             <HeroSearchEditorial />
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 text-xs font-bold uppercase tracking-wider text-ink-muted">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
+              <Link href="/tours" className="inline-flex items-center gap-1.5 text-ink hover:text-primary">
+                Browse all tours <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <span className="text-ink/20">·</span>
+              <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-primary hover:text-red-700">
+                Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs font-bold uppercase tracking-wider text-ink-muted">
               <span>98 years heritage</span>
               <span className="text-ink/20">•</span>
               <span>10,000+ Kiwi travellers</span>
@@ -95,66 +90,72 @@ const HomePageRedesign = () => {
       </section>
 
       {/* ===== Trust bar ===== */}
-      <section className="border-y border-warm-100 bg-white py-8">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-4 md:flex-row md:px-8">
+      <section className="border-y border-warm-100 bg-white py-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 md:flex-row md:px-8">
           <div className="flex items-center gap-3">
-            {['TAANZ', 'IATA', 'TIA'].map((b) => (
-              <span
-                key={b}
-                className="rounded-md border border-warm-200 bg-surface px-3 py-1.5 font-serif text-sm font-bold text-primary"
-              >
-                {b}
-              </span>
+            {[
+              { b: 'TAANZ', d: 'Bonded' },
+              { b: 'IATA', d: 'Accredited' },
+              { b: 'TIA', d: 'Member' },
+            ].map(({ b, d }) => (
+              <div key={b} className="flex items-center gap-2">
+                <span className="rounded-md border border-warm-200 bg-surface px-2.5 py-1 font-serif text-sm font-bold text-primary">{b}</span>
+                <span className="hidden text-xs text-ink-muted lg:inline">{d}</span>
+              </div>
             ))}
-            <span className="ml-1 hidden text-sm text-ink-muted sm:inline">Bonded &amp; accredited</span>
           </div>
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
-            <div className="flex items-center gap-2">
-              <span className="flex text-secondary">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Icon key={i} name="star" className="h-5 w-5" />
-                ))}
-              </span>
-              <span className="text-sm font-medium text-ink-muted">4.8/5 from 400+ reviews</span>
+
+          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-7">
+            <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-3.5 py-1.5">
+              <Icon name="check-circle" className="h-5 w-5 text-emerald-600" />
+              <span className="text-sm font-bold text-emerald-800">No forced shopping stops</span>
             </div>
             <div className="flex items-center gap-2 text-sm font-medium text-ink-muted">
-              <Icon name="shield" className="h-5 w-5 text-emerald-600" />
-              Your payment is 100% protected
+              <Icon name="shield" className="h-5 w-5 text-primary" />
+              Your payment is protected
+            </div>
+            <div className="hidden items-center gap-1.5 md:flex">
+              <span className="flex text-secondary">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Icon key={i} name="star" className="h-4 w-4" />
+                ))}
+              </span>
+              <span className="text-sm font-medium text-ink-muted">Loved by Kiwi travellers</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== Curated journeys (magazine layout) ===== */}
-      <section className="bg-surface py-24 md:py-28">
-        <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                Signature Experiences
-              </span>
-              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
-                Our most sought-after itineraries — iconic landmarks balanced with hidden cultural treasures,
-                fully escorted from New Zealand.
-              </p>
+      {/* ===== Curated journeys — driven by Spotlight config ===== */}
+      {featured && (
+        <section className="bg-surface py-24 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-8">
+            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div className="max-w-2xl">
+                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+                  This Season&apos;s Spotlight
+                </span>
+                <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
+                <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
+                  The journeys our specialists are recommending right now — fully escorted from New Zealand, with
+                  guaranteed departures.
+                </p>
+              </div>
+              <Link
+                href="/tours"
+                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
+              >
+                View all tours <ArrowRight />
+              </Link>
             </div>
-            <Link
-              href="/tours"
-              className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
-            >
-              View all tours <ArrowRight />
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-            {/* Large feature */}
-            {large && (
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+              {/* Large feature */}
               <article className="group relative flex h-[560px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
                 <div className="absolute inset-0 z-0">
                   <Image
-                    src={large.heroImage}
-                    alt={large.name}
+                    src={featured.tour.heroImage}
+                    alt={featured.tour.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 66vw"
                     className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
@@ -162,23 +163,20 @@ const HomePageRedesign = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
                 </div>
                 <span className="absolute left-8 top-8 z-10 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-ink shadow-sm">
-                  {LARGE_JOURNEY.badge}
+                  {featured.ref.departureLabel}
                 </span>
                 <div className="relative z-10 mt-auto flex flex-col p-8 md:p-10">
-                  <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{large.name}</h3>
-                  <div className="mb-8 flex items-center gap-6 text-sm text-white/80">
-                    <span className="flex items-center gap-2"><Icon name="clock" className="h-5 w-5" /> {large.duration}</span>
-                    <span className="flex items-center gap-2"><Icon name="plane" className="h-5 w-5" /> {LARGE_JOURNEY.ex}</span>
-                  </div>
+                  <p className="mb-2 text-sm font-medium text-white/80">{featured.ref.route.join('  ›  ')}</p>
+                  <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{featured.tour.name}</h3>
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-white/60">From</span>
                       <span className="font-serif text-3xl font-semibold text-white">
-                        {large.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
+                        {featured.tour.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
                       </span>
                     </div>
                     <Link
-                      href={tourHref(large)}
+                      href={featured.ref.campaignHref}
                       className="rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-lg transition-colors hover:bg-primary hover:text-white"
                     >
                       Discover More
@@ -186,16 +184,11 @@ const HomePageRedesign = () => {
                   </div>
                 </div>
               </article>
-            )}
 
-            {/* Side stack */}
-            <div className="flex flex-col gap-8 lg:col-span-4">
-              {sides.map(({ meta, tour }) =>
-                tour ? (
-                  <article
-                    key={meta.slug}
-                    className="group flex flex-1 flex-col overflow-hidden rounded-3xl bg-white shadow-editorial"
-                  >
+              {/* Side stack */}
+              <div className="flex flex-col gap-8 lg:col-span-4">
+                {sides.map(({ ref, tour }) => (
+                  <article key={ref.slug} className="group flex flex-1 flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
                     <div className="relative h-36 overflow-hidden">
                       <Image
                         src={tour.heroImage}
@@ -205,22 +198,20 @@ const HomePageRedesign = () => {
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
-                        {meta.badge}
+                        {ref.departureLabel}
                       </span>
                     </div>
                     <div className="flex flex-grow flex-col justify-between p-6">
                       <div>
-                        <h3 className="mb-2 font-serif text-xl text-ink">{tour.name}</h3>
-                        <div className="flex items-center gap-2 text-xs text-ink-muted">
-                          <span>{tour.duration}</span> • <span>{meta.ex}</span>
-                        </div>
+                        <h3 className="mb-1 font-serif text-xl text-ink">{tour.name}</h3>
+                        <p className="text-xs text-ink-muted">{ref.route.join(' · ')}</p>
                       </div>
                       <div className="mt-4 flex items-center justify-between">
                         <span className="font-serif text-lg font-semibold text-ink">
                           {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
                         </span>
                         <Link
-                          href={tourHref(tour)}
+                          href={ref.campaignHref}
                           aria-label={`View ${tour.name}`}
                           className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-primary hover:bg-primary hover:text-white"
                         >
@@ -229,30 +220,49 @@ const HomePageRedesign = () => {
                       </div>
                     </div>
                   </article>
-                ) : null
-              )}
+                ))}
+              </div>
             </div>
           </div>
+        </section>
+      )}
 
-          <div className="mt-10 text-center md:hidden">
-            <Link
-              href="/tours"
-              className="inline-flex items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:text-primary"
-            >
-              View all tours <ArrowRight />
-            </Link>
+      {/* ===== Meet your specialist (Baker Gu) ===== */}
+      <section className="bg-white py-24 md:py-28">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
+          <div className="relative mx-auto h-[420px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5">
+            <Image src={BAKER_IMAGE} alt="Baker Gu, CTS China specialist" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover object-top" />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-6">
+              <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
+              <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
+            </div>
+          </div>
+          <div className="lg:col-span-7">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Meet your specialist</span>
+            <blockquote className="mb-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
+              &ldquo;For 20 years I&apos;ve shown Kiwi travellers the China I grew up in — not the one in the brochures.&rdquo;
+            </blockquote>
+            <p className="mb-4 max-w-xl leading-relaxed text-ink-muted">
+              Baker personally designs and quality-checks every CTS journey. When you enquire, you&apos;re not talking to
+              a call centre — you&apos;re talking to the person who built the trip.
+            </p>
+            <div className="mb-8 flex flex-wrap gap-2">
+              {['Born in China', 'NZ-based', '20+ years in travel', 'Mandarin · English · Cantonese'].map((c) => (
+                <span key={c} className="rounded-full border border-warm-200 bg-surface px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
+              ))}
+            </div>
+            <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
+            <ContactChannels tone="light" />
           </div>
         </div>
       </section>
 
-      {/* ===== Why CTS (editorial) ===== */}
-      <section className="bg-white py-24 md:py-28">
+      {/* ===== Why CTS ===== */}
+      <section className="bg-surface py-24 md:py-28">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
             <div className="space-y-6 lg:w-1/3">
-              <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                The CTS Difference
-              </span>
+              <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
               <h2 className="font-serif text-5xl leading-tight text-ink">
                 Expertise you
                 <br />
@@ -278,29 +288,22 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      {/* ===== CTA band ===== */}
+      {/* ===== Design your China (enquiry CTA band) ===== */}
       <section className="relative overflow-hidden bg-ink py-24 text-white">
         <div className="absolute inset-0 bg-primary/10" />
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-8">
-          <h2 className="mb-8 font-serif text-4xl text-white md:text-6xl">Let&apos;s design your China, together.</h2>
-          <p className="mx-auto mb-12 max-w-2xl text-xl font-light leading-relaxed text-white/70">
-            Speak with one of our New Zealand-based China specialists today to start planning your perfect
-            itinerary.
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-secondary">Prefer to travel your way?</span>
+          <h2 className="mb-6 font-serif text-4xl text-white md:text-6xl">Let&apos;s design your China, together.</h2>
+          <p className="mx-auto mb-10 max-w-2xl text-xl font-light leading-relaxed text-white/70">
+            Tell a New Zealand-based China specialist what you dream of seeing. No obligation, no pressure — a reply
+            within one working day.
           </p>
-          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row">
-            <Link
-              href="/tailor-made"
-              className="w-full rounded-full bg-primary px-10 py-5 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-colors hover:bg-white hover:text-ink sm:w-auto"
-            >
-              Enquire Now
-            </Link>
-            <a
-              href={PHONE_HREF}
-              className="flex w-full items-center justify-center gap-3 rounded-full border border-white/20 px-10 py-5 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/5 sm:w-auto"
-            >
-              <Icon name="phone" className="h-5 w-5" /> Call {PHONE_DISPLAY}
-            </a>
+          <div className="flex justify-center">
+            <ContactChannels tone="dark" className="justify-center" />
           </div>
+          <p className="mt-6 text-sm text-white/50">
+            Prefer to talk now? Call <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">{CTS_PHONE_DISPLAY}</a>
+          </p>
         </div>
       </section>
     </div>
