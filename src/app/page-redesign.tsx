@@ -5,6 +5,8 @@ import ContactChannels, { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/components
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
+import { getAllBlogPosts } from '@/lib/data/blogs';
+import UpcomingDepartures from '@/components/UpcomingDepartures';
 
 /**
  * Redesigned homepage — internal preview only (/preview-home, noindex).
@@ -35,12 +37,22 @@ const FEATURES: { icon: IconName; title: string; body: string }[] = [
   { icon: 'users', title: 'Local NZ Support', body: 'Talk directly with our Auckland-based team before, during and after your journey.' },
 ];
 
+const CITIES = [
+  { name: 'Beijing', slug: 'beijing', tag: 'Great Wall · Forbidden City', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg' },
+  { name: "Xi'an", slug: 'xian', tag: 'Terracotta Warriors', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
+  { name: 'Shanghai', slug: 'shanghai', tag: 'The Bund · Water towns', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
+  { name: 'Chengdu', slug: 'chengdu', tag: 'Giant pandas · Sichuan food', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
+  { name: 'Chongqing', slug: 'chongqing', tag: 'Hotpot · Yangtze gorges', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
+  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: "Avatar's floating mountains", img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
+];
+
 const HomePageRedesign = () => {
   const spotlight = HOME_SPOTLIGHT_TOURS
     .map((ref) => ({ ref, tour: getTourBySlug(ref.destination, ref.tier, ref.slug) }))
     .filter((x): x is { ref: (typeof HOME_SPOTLIGHT_TOURS)[number]; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour));
   const featured = spotlight[0];
   const sides = spotlight.slice(1, 3);
+  const blogPosts = getAllBlogPosts().slice(0, 3);
 
   return (
     <div className="bg-surface font-sans text-ink">
@@ -227,6 +239,41 @@ const HomePageRedesign = () => {
         </section>
       )}
 
+      {/* ===== Upcoming departures (derived from tours.ts) ===== */}
+      <UpcomingDepartures />
+
+      {/* ===== Popular cities ===== */}
+      <section className="bg-white py-24 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="mb-12 text-center">
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Where to go</span>
+            <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Explore China by city</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+            {CITIES.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/${c.slug}-tours`}
+                className="group relative block h-56 overflow-hidden rounded-2xl md:h-64"
+              >
+                <Image
+                  src={c.img}
+                  alt={c.name}
+                  fill
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="font-serif text-2xl text-white transition-colors group-hover:text-secondary">{c.name}</h3>
+                  <p className="text-xs text-white/80">{c.tag}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== Meet your specialist (Baker Gu) ===== */}
       <section className="bg-white py-24 md:py-28">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
@@ -287,6 +334,48 @@ const HomePageRedesign = () => {
           </div>
         </div>
       </section>
+
+      {/* ===== From the blog ===== */}
+      {blogPosts.length > 0 && (
+        <section className="bg-surface py-24 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-8">
+            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div className="max-w-2xl">
+                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
+                <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">From the blog</h2>
+              </div>
+              <Link
+                href="/blog"
+                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
+              >
+                All articles <ArrowRight />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {blogPosts.map((p) => (
+                <Link key={p.slug} href={`/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-editorial">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={p.heroImage}
+                      alt={p.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white">{p.category}</span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="mb-2 text-xs text-ink-muted">{p.readTime}</p>
+                    <h3 className="mb-2 font-serif text-xl leading-snug text-ink transition-colors group-hover:text-primary">{p.title}</h3>
+                    <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-muted line-clamp-3">{p.excerpt}</p>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-primary">Read more <ArrowRight className="h-3.5 w-3.5" /></span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===== Design your China (enquiry CTA band) ===== */}
       <section className="relative overflow-hidden bg-ink py-24 text-white">
