@@ -23,6 +23,8 @@ import UpcomingDepartures from '@/components/UpcomingDepartures';
 const HERO_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
+const CTA_IMAGE =
+  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -377,22 +379,48 @@ const HomePageRedesign = () => {
         </section>
       )}
 
-      {/* ===== Design your China (enquiry CTA band) ===== */}
-      <section className="relative overflow-hidden bg-ink py-24 text-white">
-        <div className="absolute inset-0 bg-primary/10" />
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-8">
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-secondary">Prefer to travel your way?</span>
-          <h2 className="mb-6 font-serif text-4xl text-white md:text-6xl">Let&apos;s design your China, together.</h2>
-          <p className="mx-auto mb-10 max-w-2xl text-xl font-light leading-relaxed text-white/70">
-            Tell a New Zealand-based China specialist what you dream of seeing. No obligation, no pressure — a reply
-            within one working day.
-          </p>
-          <div className="flex justify-center">
-            <ContactChannels tone="dark" className="justify-center" />
+      {/* ===== Design your China (enquiry CTA card) ===== */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-4 md:px-8">
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl shadow-editorial lg:grid-cols-2">
+            {/* Left — heritage-red panel */}
+            <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#8E121F] via-primary to-[#A3172A] p-10 text-white md:p-14">
+              <div
+                className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full"
+                style={{ background: 'radial-gradient(circle, rgba(214,167,86,0.38), transparent 65%)' }}
+                aria-hidden
+              />
+              <div className="relative">
+                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+                  Prefer to travel your way?
+                </span>
+                <h2 className="mb-5 font-serif text-4xl leading-tight text-white md:text-5xl">
+                  Let&apos;s design your China, together.
+                </h2>
+                <p className="mb-8 max-w-md text-lg font-light leading-relaxed text-white/85">
+                  Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
+                  working day.
+                </p>
+                <ContactChannels tone="dark" />
+                <p className="mt-5 text-sm text-white/70">
+                  Prefer to talk now? Call{' '}
+                  <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">
+                    {CTS_PHONE_DISPLAY}
+                  </a>
+                </p>
+              </div>
+            </div>
+            {/* Right — cinematic photo */}
+            <div className="relative min-h-[300px] lg:min-h-full">
+              <Image
+                src={CTA_IMAGE}
+                alt="Dramatic mountain landscape in China"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
-          <p className="mt-6 text-sm text-white/50">
-            Prefer to talk now? Call <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">{CTS_PHONE_DISPLAY}</a>
-          </p>
         </div>
       </section>
     </div>
