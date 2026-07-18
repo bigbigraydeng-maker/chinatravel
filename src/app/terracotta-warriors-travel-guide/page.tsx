@@ -144,7 +144,7 @@ export default function GuidePage() {
           </h2>
           <p className="mb-6 max-w-2xl mx-auto opacity-90">
             A Tale of Two Cities: Beijing &amp; Xi&apos;an by high-speed train. 10 days from{' '}
-            <strong>NZD $3,480</strong>. Featured departure 15 October 2026. Includes guided Terracotta Warriors visit.{' '}
+            <strong>NZD $3,480</strong>. Departures 15 October 2026 &amp; 18 March 2027. Includes guided Terracotta Warriors visit.{' '}
             <Link href="/china-visa-guide-for-new-zealanders" className="underline opacity-90 hover:opacity-100">
               NZ passport holders enter China visa-free
             </Link>
