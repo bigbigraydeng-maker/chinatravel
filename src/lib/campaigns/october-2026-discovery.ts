@@ -36,7 +36,7 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
     otherCampaignSlug: 'shanghai-surroundings',
     metaTitleSuffix: 'October 2026 departure | Beijing & Xi’an | CTS NZ',
     metaDescription:
-      'Beijing & Xi’an by high-speed train: Forbidden City, Great Wall, hutongs, Terracotta Warriors & more. 10 days from NZD $3,480. Featured departure 15 October 2026 — CTS NZ.',
+      'Beijing & Xi’an by high-speed train: Forbidden City, Great Wall, hutongs, Terracotta Warriors & more. 10 days from NZD $3,480. Departures 15 October 2026 & 18 March 2027 — CTS NZ.',
   },
 };
 

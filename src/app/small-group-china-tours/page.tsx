@@ -211,7 +211,7 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $3,480</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 15 October 2026</span>
+                          <span className="text-gray-500 text-sm ml-2">· Departs 15 October 2026 &amp; 18 March 2027</span>
                         </p>
                       </div>
                       <Link

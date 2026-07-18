@@ -28,7 +28,7 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
     tier: 'discovery',
     slug: 'beijing-xian',
     campaignHref: getOctober2026CampaignPath('tale-of-two-cities'),
-    departureLabel: '15 Oct 2026',
+    departureLabel: '15 Oct 2026 · 18 Mar 2027',
     route: ['Beijing', "Xi'an"],
   },
   {
