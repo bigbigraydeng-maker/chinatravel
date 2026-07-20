@@ -7,6 +7,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
+import { homeTestimonials } from '@/lib/data/home-testimonials';
 
 /**
  * Redesigned homepage — internal preview only (/preview-home, noindex).
@@ -55,6 +56,7 @@ const HomePageRedesign = () => {
   const featured = spotlight[0];
   const sides = spotlight.slice(1, 3);
   const blogPosts = getAllBlogPosts().slice(0, 3);
+  const reviews = homeTestimonials;
 
   return (
     <div className="bg-surface font-sans text-ink">
@@ -336,6 +338,44 @@ const HomePageRedesign = () => {
           </div>
         </div>
       </section>
+
+      {/* ===== Testimonials wall (real reviews) ===== */}
+      {reviews.length > 0 && (
+        <section className="bg-white py-24 md:py-28">
+          <div className="mx-auto max-w-7xl px-4 md:px-8">
+            <div className="mb-14 max-w-2xl">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">What travellers say</span>
+              <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Loved by Kiwi travellers</h2>
+              <p className="mt-4 text-lg leading-relaxed text-ink-muted">
+                Real words from CTS travellers — every itinerary personally designed by our specialists.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {reviews.map((t) => (
+                <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-7 shadow-editorial">
+                  <div className="mb-4 flex text-secondary">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Icon key={i} name="star" className="h-4 w-4" />
+                    ))}
+                  </div>
+                  <blockquote className="mb-6 flex-1 text-[15px] leading-relaxed text-ink line-clamp-6">
+                    &ldquo;{t.text}&rdquo;
+                  </blockquote>
+                  <figcaption className="flex items-center gap-3 border-t border-warm-100 pt-4">
+                    <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary/10 font-serif text-sm font-bold text-primary">
+                      {t.avatarInitials}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block text-sm font-bold text-ink">{t.name}</span>
+                      <span className="block truncate text-xs text-ink-muted">{t.location} · {t.tour}</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===== From the blog ===== */}
       {blogPosts.length > 0 && (
