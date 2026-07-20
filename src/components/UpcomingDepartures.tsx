@@ -58,67 +58,66 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
   if (upcoming.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-b from-warm-50 via-white to-warm-50/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-secondary text-sm font-semibold uppercase tracking-widest mb-2">
+    <section className="bg-surface py-24 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mb-12">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
             Ready to book
-          </p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-            Upcoming departures
-          </h2>
-          <p className="text-gray-600">
-            Confirmed dates across our journeys — pulled live from each tour, never a stale page.
+          </span>
+          <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Upcoming departures</h2>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
+            Confirmed dates pulled live from each tour — never a stale page.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto rounded-2xl border border-warm-100 bg-white shadow-soft overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm" style={{ minWidth: '600px' }}>
-              <thead>
-                <tr className="bg-warm-50 text-left">
-                  <th className="px-6 py-4 font-bold text-gray-800 uppercase text-xs tracking-wide">Departs</th>
-                  <th className="px-6 py-4 font-bold text-gray-800 uppercase text-xs tracking-wide">Journey</th>
-                  <th className="px-6 py-4 font-bold text-gray-800 uppercase text-xs tracking-wide">Duration</th>
-                  <th className="px-6 py-4 font-bold text-gray-800 uppercase text-xs tracking-wide">From (pp)</th>
-                  <th className="px-6 py-4"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {upcoming.map(({ tour, date, price }, i) => {
-                  const label = `${date.getDate()} ${SHORT_MONTHS[date.getMonth()]} ${date.getFullYear()}`;
-                  const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
-                  return (
-                    <tr key={`${tour.slug}-${i}`} className="border-t border-warm-100 hover:bg-warm-50/60 transition-colors">
-                      <td className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                        {label}
-                      </td>
-                      <td className="px-6 py-4">
-                        <Link href={href} className="font-semibold text-gray-800 hover:text-primary transition-colors">
-                          {tour.name}
-                        </Link>
-                        <span className="block text-xs text-gray-500 capitalize">{tour.tier}</span>
-                      </td>
-                      <td className="px-6 py-4 text-gray-600 whitespace-nowrap">{tour.duration}</td>
-                      <td className="px-6 py-4 font-serif font-bold text-primary whitespace-nowrap">{price}</td>
-                      <td className="px-6 py-4 text-right">
-                        <Link
-                          href={href}
-                          className="inline-block rounded-full border border-gray-300 px-5 py-2 text-sm font-semibold text-gray-700 hover:border-primary hover:text-primary transition-colors"
-                        >
-                          View
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse" style={{ minWidth: '640px' }}>
+            <thead>
+              <tr className="border-b border-secondary/20 text-left">
+                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Departs</th>
+                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Journey</th>
+                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Duration</th>
+                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">From</th>
+                <th className="px-6 py-4"></th>
+              </tr>
+            </thead>
+            <tbody className="text-sm">
+              {upcoming.map(({ tour, date, price }, i) => {
+                const label = `${date.getDate()} ${SHORT_MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+                const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+                return (
+                  <tr key={`${tour.slug}-${i}`} className="border-b border-secondary/10 transition-colors hover:bg-white/60">
+                    <td className="whitespace-nowrap px-6 py-6 font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                      {label}
+                    </td>
+                    <td className="px-6 py-6">
+                      <Link href={href} className="font-semibold text-ink transition-colors hover:text-primary">
+                        {tour.name}
+                      </Link>{' '}
+                      <span className="capitalize text-ink-muted">({tour.tier})</span>
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-6 text-ink-muted">{tour.duration}</td>
+                    <td className="whitespace-nowrap px-6 py-6 font-serif font-bold text-ink">{price}</td>
+                    <td className="px-6 py-6">
+                      <Link
+                        href={href}
+                        className="text-xs font-bold uppercase tracking-wider text-primary hover:underline"
+                      >
+                        View
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
 
-        <div className="text-center mt-8">
-          <Link href="/tours/find" className="text-primary font-medium hover:underline">
+        <div className="mt-8">
+          <Link
+            href="/tours/find"
+            className="inline-flex items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary"
+          >
             See all tours &amp; departures →
           </Link>
         </div>
