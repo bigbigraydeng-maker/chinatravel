@@ -284,13 +284,25 @@ const HomePageRedesign = () => {
       {/* ===== Meet your specialist (Baker Gu) ===== */}
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
-          <div className="relative mx-auto h-[360px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5">
-            <Image src={BAKER_IMAGE} alt="Baker Gu, CTS China specialist" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover object-top" />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-6">
+          <Link
+            href="/experts/baker-gu"
+            className="group relative mx-auto block h-[380px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5"
+          >
+            <Image
+              src={BAKER_IMAGE}
+              alt="Baker Gu, CTS China specialist"
+              fill
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6">
               <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
               <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
+              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary">
+                Read his story <ArrowRight className="h-3.5 w-3.5" />
+              </span>
             </div>
-          </div>
+          </Link>
           <div className="lg:col-span-7">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Meet your specialist</span>
             <blockquote className="mb-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
@@ -305,6 +317,9 @@ const HomePageRedesign = () => {
                 <span key={c} className="rounded-full border border-warm-200 bg-surface px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
               ))}
             </div>
+            <Link href="/experts/baker-gu" className="mb-8 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
+              Read Baker&apos;s full story <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
             <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
             <ContactChannels tone="light" />
           </div>
