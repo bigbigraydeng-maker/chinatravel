@@ -11,7 +11,8 @@ import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { migratedSite } from '@/lib/site-media';
 
 /**
- * Redesigned homepage — internal preview only (/preview-home, noindex).
+ * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
+ * which supplies SEO metadata + JSON-LD). Also still served at /preview-home.
  *
  * Editorial direction (approved via Stitch), wired to real data. Decisions:
  *  1. Enquiry-led — WhatsApp / Email / Phone, no online booking.
