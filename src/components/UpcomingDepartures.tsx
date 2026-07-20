@@ -58,7 +58,7 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
   if (upcoming.length === 0) return null;
 
   return (
-    <section className="bg-surface py-24 md:py-28">
+    <section className="bg-surface py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="mb-12">
           <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
