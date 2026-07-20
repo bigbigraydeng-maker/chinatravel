@@ -95,13 +95,11 @@ const Footer = () => {
                 175 Queen St, Auckland
               </p>
             </div>
-          </div>
-        </div>
 
-        {/* Newsletter strip */}
-        <div className="border-t border-gray-800 mt-8 md:mt-10 pt-8">
-          <div className="max-w-sm">
-            <NewsletterSubscribeForm variant="footer" />
+            {/* Newsletter — relocated into the Contact column to remove the empty full-width strip */}
+            <div className="mt-6">
+              <NewsletterSubscribeForm variant="footer" />
+            </div>
           </div>
         </div>
 
