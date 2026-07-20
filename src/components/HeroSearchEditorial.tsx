@@ -51,9 +51,13 @@ export default function HeroSearchEditorial() {
         event_label: 'hero_editorial_search',
       });
     }
+    // Tours are country-level (destination = 'china'), so a city slug can't be
+    // sent as the `destination` filter — it would match no tours. Send the city
+    // (or attraction) as a keyword `q`, which TourFinder matches against tour
+    // cities / name / highlights. City takes priority when both are chosen.
     const params = new URLSearchParams();
-    if (destination) params.set('destination', destination);
-    if (attraction) params.set('q', attraction);
+    const q = destination || attraction;
+    if (q) params.set('q', q);
     router.push(`/tours/find?${params.toString()}`);
   };
 
