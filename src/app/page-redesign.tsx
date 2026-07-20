@@ -444,6 +444,13 @@ const HomePageRedesign = () => {
                   Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
                   working day.
                 </p>
+                <Link
+                  href="/tailor-made"
+                  className="mb-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-primary shadow-lg transition-colors hover:bg-secondary hover:text-ink"
+                >
+                  Start your tailor-made trip <ArrowRight />
+                </Link>
+                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/60">Or reach us directly</p>
                 <ContactChannels tone="dark" />
                 <p className="mt-5 text-sm text-white/70">
                   Prefer to talk now? Call{' '}
