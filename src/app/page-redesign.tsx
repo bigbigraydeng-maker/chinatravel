@@ -92,7 +92,7 @@ const HomePageRedesign = () => {
             </div>
           </div>
 
-          <div className="relative h-[52vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[78vh] lg:rounded-l-3xl">
+          <div className="relative h-[44vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[62vh] lg:rounded-l-3xl">
             <Image
               src={HERO_IMAGE}
               alt="The Great Wall of China at dawn"
@@ -144,9 +144,9 @@ const HomePageRedesign = () => {
 
       {/* ===== Curated journeys — driven by Spotlight config ===== */}
       {featured && (
-        <section className="bg-surface py-24 md:py-28">
+        <section className="bg-surface py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div className="max-w-2xl">
                 <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
                   This Season&apos;s Spotlight
@@ -167,7 +167,7 @@ const HomePageRedesign = () => {
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
               {/* Large feature */}
-              <article className="group relative flex h-[560px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
+              <article className="group relative flex h-[430px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
                 <div className="absolute inset-0 z-0">
                   <Image
                     src={featured.tour.heroImage}
@@ -247,7 +247,7 @@ const HomePageRedesign = () => {
       <UpcomingDepartures />
 
       {/* ===== Popular cities ===== */}
-      <section className="bg-white py-24 md:py-28">
+      <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="mb-12 text-center">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Where to go</span>
@@ -279,9 +279,9 @@ const HomePageRedesign = () => {
       </section>
 
       {/* ===== Meet your specialist (Baker Gu) ===== */}
-      <section className="bg-white py-24 md:py-28">
+      <section className="bg-white py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
-          <div className="relative mx-auto h-[420px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5">
+          <div className="relative mx-auto h-[360px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5">
             <Image src={BAKER_IMAGE} alt="Baker Gu, CTS China specialist" fill sizes="(max-width: 1024px) 100vw, 40vw" className="object-cover object-top" />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/85 to-transparent p-6">
               <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
@@ -309,12 +309,12 @@ const HomePageRedesign = () => {
       </section>
 
       {/* ===== Why CTS ===== */}
-      <section className="bg-surface py-24 md:py-28">
+      <section className="bg-surface py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
             <div className="space-y-6 lg:w-1/3">
               <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
-              <h2 className="font-serif text-5xl leading-tight text-ink">
+              <h2 className="font-serif text-4xl leading-tight text-ink">
                 Expertise you
                 <br />
                 can trust.
@@ -341,9 +341,9 @@ const HomePageRedesign = () => {
 
       {/* ===== Testimonials wall (real reviews) ===== */}
       {reviews.length > 0 && (
-        <section className="bg-white py-24 md:py-28">
+        <section className="bg-white py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-14 max-w-2xl">
+            <div className="mb-10 max-w-2xl">
               <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">What travellers say</span>
               <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Loved by Kiwi travellers</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink-muted">
@@ -352,13 +352,13 @@ const HomePageRedesign = () => {
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {reviews.map((t) => (
-                <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-7 shadow-editorial">
+                <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-6 shadow-editorial">
                   <div className="mb-4 flex text-secondary">
                     {Array.from({ length: t.rating }).map((_, i) => (
                       <Icon key={i} name="star" className="h-4 w-4" />
                     ))}
                   </div>
-                  <blockquote className="mb-6 flex-1 text-[15px] leading-relaxed text-ink line-clamp-6">
+                  <blockquote className="mb-6 flex-1 text-sm leading-relaxed text-ink line-clamp-4">
                     &ldquo;{t.text}&rdquo;
                   </blockquote>
                   <figcaption className="flex items-center gap-3 border-t border-warm-100 pt-4">
@@ -379,9 +379,9 @@ const HomePageRedesign = () => {
 
       {/* ===== From the blog ===== */}
       {blogPosts.length > 0 && (
-        <section className="bg-surface py-24 md:py-28">
+        <section className="bg-surface py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div className="max-w-2xl">
                 <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
                 <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">From the blog</h2>
@@ -420,7 +420,7 @@ const HomePageRedesign = () => {
       )}
 
       {/* ===== Design your China (enquiry CTA card) ===== */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <div className="grid grid-cols-1 overflow-hidden rounded-3xl shadow-editorial lg:grid-cols-2">
             {/* Left — heritage-red panel */}
