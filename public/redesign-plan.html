@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CTS 官网重设计方案 · 对标全球标杆</title>
+<style>
+  :root{
+    --red:#B61E2E; --red-deep:#8E121F; --red-ink:#5E0C15;
+    --gold:#D6A756; --gold-deep:#B98A3E; --gold-soft:#EFDCB4;
+    --ink:#23201C; --ink-soft:#5B554D; --line:#E4D9C8;
+    --paper:#FBF7F0; --paper-2:#F3EAD9; --card:#fff;
+    --good:#2E7D5B; --warn:#C9861E;
+    --serif:Georgia,"Times New Roman",serif;
+    --cjk:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  }
+  *{box-sizing:border-box;} body{margin:0;}
+  .wrap{font-family:var(--cjk);color:var(--ink);line-height:1.75;font-size:16px;
+    background:radial-gradient(1100px 520px at 100% -5%,rgba(214,167,86,.10),transparent 60%),var(--paper);-webkit-font-smoothing:antialiased;}
+  .container{max-width:1000px;margin:0 auto;padding:0 24px;}
+  .hero{padding:70px 0 40px;border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:var(--serif);font-style:italic;letter-spacing:.04em;color:var(--red);font-size:15px;margin:0 0 14px;}
+  h1{font-weight:800;font-size:clamp(29px,5vw,44px);line-height:1.18;letter-spacing:-.01em;margin:0 0 18px;text-wrap:balance;}
+  h1 .hl{color:var(--red);}
+  .lead{font-size:18px;color:var(--ink-soft);max-width:64ch;margin:0 0 24px;}
+  .pills{display:flex;flex-wrap:wrap;gap:9px;}
+  .pill{font-size:12.5px;padding:6px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink-soft);}
+  .pill b{color:var(--ink);}
+  section{padding:50px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:15px;margin-bottom:6px;}
+  .sec-num{font-family:var(--serif);font-size:14px;color:var(--gold-deep);font-weight:700;letter-spacing:.1em;flex:none;
+    border:1px solid var(--gold-soft);border-radius:999px;width:38px;height:38px;display:grid;place-items:center;background:#fff;}
+  h2{font-size:clamp(22px,3.3vw,29px);font-weight:800;margin:0;letter-spacing:-.01em;text-wrap:balance;}
+  .sec-sub{color:var(--ink-soft);margin:10px 0 26px;max-width:70ch;}
+  h3{font-size:17px;font-weight:750;margin:26px 0 10px;}
+  p{margin:0 0 14px;} strong{color:var(--ink);font-weight:700;}
+  .verdict{background:linear-gradient(180deg,#fff,#FFFDF9);border:1px solid var(--line);border-left:4px solid var(--red);
+    border-radius:14px;padding:22px 24px;margin:6px 0 6px;box-shadow:0 6px 24px rgba(142,18,31,.05);}
+  .verdict .t{font-family:var(--serif);font-style:italic;color:var(--red);font-size:14px;margin-bottom:6px;}
+  .verdict p{margin:0;font-size:16.5px;}
+  .table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;}
+  table{width:100%;border-collapse:collapse;font-size:14px;min-width:660px;}
+  th,td{text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{background:var(--paper-2);font-weight:700;font-size:12.5px;letter-spacing:.03em;}
+  tr:last-child td{border-bottom:none;} td b{font-weight:700;}
+  .chip{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+  .chip.have{background:#E4F1EA;color:var(--good);} .chip.gap{background:#FBE9EB;color:var(--red);} .chip.part{background:#FBF1DE;color:var(--warn);}
+  .chip.p0{background:var(--red);color:#fff;} .chip.p1{background:#FBE9EB;color:var(--red);} .chip.p2{background:#FBF1DE;color:var(--warn);} .chip.p3{background:var(--paper-2);color:var(--ink-soft);}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:var(--paper-2);padding:1px 6px;border-radius:5px;color:var(--red-deep);}
+  ol.rules{counter-reset:r;list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  ol.rules li{counter-increment:r;position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 52px;font-size:14.5px;}
+  ol.rules li::before{content:counter(r);position:absolute;left:14px;top:15px;width:26px;height:26px;border-radius:8px;background:var(--red);color:#fff;
+    font-family:var(--serif);font-weight:700;font-size:14px;display:grid;place-items:center;}
+  ol.rules li b{display:block;color:var(--ink);margin-bottom:2px;font-size:14.5px;}
+  ol.rules li span{color:var(--ink-soft);font-size:13.5px;}
+  .phase{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:14px;overflow:hidden;}
+  .phase-h{display:flex;align-items:center;gap:13px;padding:15px 20px;background:linear-gradient(90deg,#FFFDF9,#fff);border-bottom:1px solid var(--line);}
+  .badge{font-family:var(--serif);font-weight:700;font-size:14px;background:var(--red);color:#fff;width:44px;height:32px;border-radius:8px;display:grid;place-items:center;flex:none;}
+  .badge.g{background:var(--gold);color:var(--ink);} .badge.k{background:var(--ink);}
+  .phase-h h3{margin:0;font-size:16px;} .phase-h .when{margin-left:auto;font-size:12.5px;color:var(--ink-soft);font-family:var(--serif);font-style:italic;}
+  .phase-b{padding:6px 20px 16px;}
+  .task{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line);font-size:14px;}
+  .task:first-child{border-top:none;} .task .d{flex:none;width:22px;height:22px;border-radius:6px;background:var(--paper-2);display:grid;place-items:center;font-size:12px;margin-top:1px;}
+  .task b{font-weight:700;}
+  .callout{background:var(--ink);color:#F3EAD9;border-radius:14px;padding:24px 26px;margin-top:6px;}
+  .callout h3{color:#fff;margin:0 0 10px;} .callout p{color:#D8CDBB;margin:0 0 8px;} .callout .k{color:var(--gold);font-weight:700;}
+  footer{padding:30px 0 60px;color:var(--ink-soft);font-size:12.5px;}
+  footer a{color:var(--red-deep);word-break:break-all;}
+  @media(max-width:720px){ ol.rules{grid-template-columns:1fr;} }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="hero"><div class="container">
+    <p class="eyebrow">竞品与最佳实践研究 → 落地建议</p>
+    <h1>CTS 官网怎么重设计 —— <span class="hl">对标全球标杆</span></h1>
+    <p class="lead">扒了 Wendy Wu、China Highlights,以及一批获奖高端定制站(Scott Dunn / Kensington / Savoir / Fitzroy),对照通用最佳实践,给出一份可落地的重设计方案。已纳入你的定调:<strong>询价制、无强制购物、主推 Spotlight、首页要有即将出发团 + blog + 热门城市</strong>。</p>
+    <div class="pills">
+      <span class="pill">已建 · <b>Editorial /preview-home</b></span>
+      <span class="pill">模式 · <b>询价制(非在线下单)</b></span>
+      <span class="pill">重点 · <b>信任 + 转化 + 缺失板块</b></span>
+    </div>
+  </div></header>
+
+  <!-- 1 结论 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">01</span><h2>一句话结论:方向对了,补齐才是关键</h2></div>
+    <div class="verdict">
+      <div class="t">研究结论</div>
+      <p><strong>你的 Editorial 方向,正是全球高端定制站的共同语言。</strong> Scott Dunn、Kensington、Savoir、Blonde Atlas 这些获奖站,用的都是"quiet luxury 编辑风":衬线大标题 + 满幅摄影 + 大留白 + <em>卖感觉而非卖清单</em>。你已经站在对的赛道 —— 所以别再纠结"风格好不好看",真正拉开差距的是三件事:<strong>① 补齐缺失板块 ② 把信任显式化 ③ 把询价转化路径做顺</strong>。</p>
+    </div>
+    <p class="sec-sub" style="margin-top:20px">研究还印证了一个硬数据:用户 <strong>50 毫秒</strong>内就形成第一印象,其中 <strong>94% 由设计决定</strong> —— 所以首屏的高级感 + 信任信号,是转化的地基。</p>
+  </div></section>
+
+  <!-- 2 标杆扒了什么 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">02</span><h2>标杆都在做什么(逐个提炼)</h2></div>
+    <div class="table-scroll"><table>
+      <thead><tr><th style="width:20%">标杆</th><th style="width:44%">关键打法</th><th>CTS 可借鉴</th></tr></thead>
+      <tbody>
+        <tr><td><b>Wendy Wu</b><br><span style="color:var(--ink-soft);font-size:12.5px">NZ 中国专线 #1</span></td>
+          <td>多平台聚合星级(Feefo 4.9 / Google / TripAdvisor)并排;<b>last-minute 余位表</b>(原价划线→折后 + "仅剩X位");免费索取手册;订阅送 $50;tour 详情页有<b>日期&价格表 + 可下载 PDF 行程 + 页内跳转导航 + 粘性询价侧栏</b></td>
+          <td>信任聚合 + 出发日表 + PDF 行程 + 页内导航</td></tr>
+        <tr><td><b>China Highlights</b><br><span style="color:var(--ink-soft);font-size:12.5px">中国专线,内容强</span></td>
+          <td><b>多维度找团</b>(按城市/天数/主题/季节);"Start Your Journey" 定制入口;<b>4对1 团队</b>(设计师+当地向导+司机+24/7 支持);奖项(WTA、TripAdvisor Traveler's Choice);具名顾问头像;"每年 8 万旅客";大留白 + 摄影驱动</td>
+          <td>多维找团 IA + 具名专家 + 24/7/无强制购物承诺</td></tr>
+        <tr><td><b>Scott Dunn / Kensington</b><br><span style="color:var(--ink-soft);font-size:12.5px">获奖高端定制</span></td>
+          <td>衬线 + 无衬线搭配;暗调氛围 / 奶油+taupe 高级色;满幅摄影;<b>卖情绪不卖清单</b>;定制专家人格化;克制的色彩,几乎不用花哨徽章</td>
+          <td>印证 Editorial 方向;强化专家人格 + 摄影质感</td></tr>
+        <tr><td><b>通用最佳实践</b><br><span style="color:var(--ink-soft);font-size:12.5px">2026 CRO/UX</span></td>
+          <td>单页长滚动像"高端手册";导航里<b>常驻 CTA</b>(滚动跟随);press logo + 数据 + 证言三件套;可展开的行程页(深度但不拥挤);<b>70% 用户手机端预订</b> → 移动优先;交互地图 + 定制行程构建器</td>
+          <td>常驻询价 CTA;移动优先;press/数据/证言</td></tr>
+      </tbody>
+    </table></div>
+  </div></section>
+
+  <!-- 3 十条铁律 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">03</span><h2>CTS 重设计 · 10 条铁律</h2></div>
+    <p class="sec-sub">把研究浓缩成可执行的原则,后面每个板块都照这个来。</p>
+    <ol class="rules">
+      <li><b>Editorial 风统一到底</b><span>衬线大标题 + 满幅摄影 + 大留白 + 红金克制。全站一套系统,不再新旧混搭。</span></li>
+      <li><b>信任前置且显式</b><span>首屏下方即放信任栏;有真实评价前先用认证徽章 + 数据 + 具名专家,别放假星级。</span></li>
+      <li><b>询价制,不做在线下单</b><span>主 CTA = 询价/定制。WhatsApp + Email + 电话三通道(WhatsApp 稍后配),"1 个工作日回复"。</span></li>
+      <li><b>无强制购物 = 卖点</b><span>把"无强制购物 / 直营 / 无隐藏消费"做成显著信任承诺 —— 这是中国团市场的痛点。</span></li>
+      <li><b>主推 Spotlight</b><span>首页精选行程直接吃 Spotlight 数据源,可不定期更新,不必手改首页。</span></li>
+      <li><b>制造真实紧迫感</b><span>"即将出发的团"从真实出发日派生(出发/时长/起价),<em>不编造余位数</em>。</span></li>
+      <li><b>热门城市入口</b><span>首页给"按城市探索"网格(北京/西安/上海/桂林/成都/张家界),一眼找到目的地。</span></li>
+      <li><b>Blog 上首页</b><span>重点 blog/指南卡片进首页(签证、最佳时间、灵感)—— SEO + 建立专业权威。</span></li>
+      <li><b>移动优先</b><span>70% 手机端。竖屏裁图、折叠搜索、拇指区 CTA、横滑信任条。</span></li>
+      <li><b>专家人格化</b><span>Baker Gu 具名 + 第一人称 + "你联系的就是设计行程的人",对标 Scott Dunn/CH 的顾问模式。</span></li>
+    </ol>
+  </div></section>
+
+  <!-- 4 首页板块清单 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">04</span><h2>首页板块清单(含 CTS 现状)</h2></div>
+    <p class="sec-sub">推荐的首页顺序,标注当前 <code>/preview-home</code> 已建 / 缺失,直接对应你点的几个"首页缺什么"。</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th style="width:5%">#</th><th style="width:26%">板块</th><th>要点</th><th style="width:14%">CTS 现状</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>影视 / Editorial Hero</b></td><td>不对称构图 + 长城大图 + 衬线标题 + 搜索(目的地 + 景点)+ 权威条</td><td><span class="chip have">已建 ✓</span></td></tr>
+        <tr><td>2</td><td><b>信任栏</b></td><td>认证徽章(TAANZ/IATA/TIA)+ 支付保障 + <b>无强制购物承诺</b>(+ 有评价后加星级)</td><td><span class="chip part">部分</span></td></tr>
+        <tr><td>3</td><td><b>精选行程(Spotlight)</b></td><td>杂志式 1 大 + 2 小,吃 Spotlight 数据源,可不定期更新</td><td><span class="chip part">已建/接真数据</span></td></tr>
+        <tr><td>4</td><td><b>即将出发的团</b> ⭐</td><td>真实出发日派生:出发/时长/起价/查看(不编余位)</td><td><span class="chip gap">缺失</span></td></tr>
+        <tr><td>5</td><td><b>热门城市入口</b> ⭐</td><td>6 城网格(北京/西安/上海/桂林/成都/张家界)→ 各城 tours</td><td><span class="chip gap">缺失</span></td></tr>
+        <tr><td>6</td><td><b>Why CTS</b></td><td>Editorial 四点:98 年 / 定制 / 保障 / 本地 NZ 支持</td><td><span class="chip have">已建 ✓</span></td></tr>
+        <tr><td>7</td><td><b>专家 Baker Gu</b></td><td>肖像 + 第一人称 + 资质;"联系的就是设计行程的人"</td><td><span class="chip part">待接入</span></td></tr>
+        <tr><td>8</td><td><b>客户证言墙</b></td><td>真实姓名 + 行程 + 引言(先不放假聚合数字)</td><td><span class="chip gap">缺失(第二步)</span></td></tr>
+        <tr><td>9</td><td><b>重点 Blog / 指南</b> ⭐</td><td>3 张卡:签证 / 最佳时间 / 灵感 → SEO + 权威</td><td><span class="chip gap">缺失</span></td></tr>
+        <tr><td>10</td><td><b>询价 CTA(红金卡片)</b></td><td>WhatsApp/Email/电话 + "1 工作日回复"</td><td><span class="chip have">已建 ✓(刚重设计)</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="sec-sub" style="margin-top:18px;margin-bottom:0">⭐ = 你明确点名"首页缺"的三块:<strong>即将出发团、热门城市入口、重点 blog</strong> —— 已排进优先级。</p>
+  </div></section>
+
+  <!-- 5 首页之外 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">05</span><h2>首页之外:导航 / 卡片 / 详情页</h2></div>
+    <h3>导航与信息架构</h3>
+    <p>对标 China Highlights 的<strong>多维找团</strong> —— 除现有"目的地 → tier",补:<strong>Tour Styles</strong>(签名/探索/定制/单人/家庭)、<strong>Help & Visas</strong>(签证/最佳时间/FAQ,把已有 21 篇指南聚起来)。导航右侧<strong>常驻询价 CTA + 电话</strong>,滚动跟随。</p>
+    <h3>Tour 卡片(必备字段)</h3>
+    <p>photo + tier 标签 + <strong>路线条</strong>(北京›西安›上海)+ 时长 + <code>from $X pp</code> + 有评价后加星级。当前 Editorial 卡片已具备骨架,后续统一到全站列表页。</p>
+    <h3>Tour 详情页(对标 Wendy Wu 的"临门一脚")</h3>
+    <p>CTS 详情页骨架已不弱(面包屑/行程地图+逐日/打印+邮件/粘性询价)。补四处:<strong>① Hero 速览图标条(餐食/团 size/体力)② 一键下载 PDF 行程 ③ 出发日 & 价格表 ④ 页内粘性锚点导航</strong>。</p>
+    <h3>信任与转化</h3>
+    <p><strong>无强制购物 / 直营 / 无隐藏消费</strong> 做成显著徽章(市场痛点,直接差异化)。真实评价养起来后做多平台星级并排。转化统一走<strong>询价三通道 + 手册索取 + 激励订阅</strong>。</p>
+  </div></section>
+
+  <!-- 6 路线图 -->
+  <section><div class="container">
+    <div class="sec-head"><span class="sec-num">06</span><h2>优先级路线图</h2></div>
+    <p class="sec-sub">接着当前 Editorial <code>/preview-home</code> 往下补,每块可单独出 Stitch 图 → 我落地 → PR/CI/你验收。</p>
+
+    <div class="phase">
+      <div class="phase-h"><span class="badge">P0</span><h3>补齐首页你点名的三块 + 专家</h3><span class="when">下一步</span></div>
+      <div class="phase-b">
+        <div class="task"><span class="d">⏳</span><div><b>即将出发的团</b> —— 真实出发日派生表(已有 <code>UpcomingDepartures</code> 逻辑,套 Editorial 皮)</div></div>
+        <div class="task"><span class="d">🏙️</span><div><b>热门城市入口</b> —— 6 城网格,Editorial 图卡,链到各城 tours</div></div>
+        <div class="task"><span class="d">📝</span><div><b>重点 Blog</b> —— 3 张指南/blog 卡(签证/最佳时间/灵感)</div></div>
+        <div class="task"><span class="d">👤</span><div><b>Baker Gu 专家板块</b> —— Editorial 人格化,接现有 ExpertHighlight 数据</div></div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-h"><span class="badge g">P1</span><h3>信任 + 证言</h3><span class="when">紧接</span></div>
+      <div class="phase-b">
+        <div class="task"><span class="d">🛡️</span><div><b>无强制购物承诺</b> + 认证徽章强化进信任栏</div></div>
+        <div class="task"><span class="d">💬</span><div><b>客户证言墙</b>(你说的第二步)—— 真实证言,不带假聚合数字</div></div>
+        <div class="task"><span class="d">⭐</span><div>养起 Google 评价后 → 多平台星级并排</div></div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-h"><span class="badge k">P2</span><h3>导航 IA + Tour 详情页临门一脚</h3><span class="when">之后</span></div>
+      <div class="phase-b">
+        <div class="task"><span class="d">🧭</span><div>导航补 Tour Styles + Help & Visas;常驻询价 CTA</div></div>
+        <div class="task"><span class="d">⬇️</span><div>详情页:Hero 速览条 + 下载 PDF + 出发日价格表 + 页内锚点导航</div></div>
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-h"><span class="badge k">P3</span><h3>替换真首页 /</h3><span class="when">你点头才做</span></div>
+      <div class="phase-b">
+        <div class="task"><span class="d">🚀</span><div>整页补齐 + 你验收满意 → 单独 PR 把 <code>/preview-home</code> 换到 <code>/</code></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 结论 -->
+  <section style="border-bottom:none"><div class="container">
+    <div class="callout">
+      <h3>一句话收尾</h3>
+      <p><span class="k">别再纠结风格</span> —— Editorial 方向已被一票获奖高端站验证,你走对了。</p>
+      <p><span class="k">下一步的价值</span>在于:补齐 <strong>即将出发团 / 热门城市 / blog / 专家 / 证言</strong>,把 <strong>无强制购物 + 询价三通道</strong> 做成显式信任与转化 —— 这些才是把"好看的壳"变成"能转化的站"的关键。</p>
+      <p style="margin-top:12px"><span class="k">建议:</span>重连 Stitch,从 <strong>P0(即将出发团 + 热门城市 + blog + 专家)</strong>开始,每块 Stitch 出图 → 我落地。你说开始,我就干。</p>
+    </div>
+  </div></section>
+
+  <footer><div class="container">
+    <b>参考来源:</b><br>
+    · <a href="https://www.wendywutours.co.nz/">wendywutours.co.nz</a>(首页 + tour 详情实测)<br>
+    · <a href="https://www.chinahighlights.com/">chinahighlights.com</a>(IA + 4对1 团队 + 奖项)<br>
+    · <a href="https://mediaboom.com/news/luxury-travel-website-design/">Luxury Travel Website Design 50 Examples — Mediaboom</a><br>
+    · <a href="https://www.awwwards.com/websites/travel-tourism/">Awwwards Travel</a> · <a href="https://www.awwwards.com/sites/fitzroy-travel">Fitzroy Travel</a>(Scott Dunn / Kensington / Savoir / Blonde Atlas 引用)<br>
+    · CTS 现有实现审计 + 你的定调(询价制 / 无强制购物 / Spotlight / 即将出发团·blog·热门城市)
+  </div></footer>
+</div>
+
+</body>
+</html>
