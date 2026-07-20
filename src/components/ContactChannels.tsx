@@ -33,13 +33,26 @@ export default function ContactChannels({ tone = 'light', className = '' }: Prop
 
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <a
-        href={waHref}
-        {...(CTS_WHATSAPP ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-        className={`${btn} bg-[#25D366] text-white shadow-md hover:brightness-105`}
-      >
-        <Icon name="message" className="h-4 w-4" /> WhatsApp
-      </a>
+      {CTS_WHATSAPP ? (
+        <a
+          href={waHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${btn} bg-[#25D366] text-white shadow-md hover:brightness-105`}
+        >
+          <Icon name="message" className="h-4 w-4" /> WhatsApp
+        </a>
+      ) : (
+        <span
+          aria-disabled="true"
+          title="WhatsApp coming soon"
+          className={`${btn} cursor-not-allowed border border-dashed hover:translate-y-0 ${
+            tone === 'dark' ? 'border-white/30 text-white/55' : 'border-warm-200 text-ink-muted'
+          }`}
+        >
+          <Icon name="message" className="h-4 w-4" /> WhatsApp · Coming soon
+        </span>
+      )}
       <a href={`mailto:${CTS_EMAIL}`} className={`${btn} ${outline}`}>
         <Icon name="mail" className="h-4 w-4" /> Email us
       </a>
