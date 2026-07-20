@@ -8,6 +8,7 @@ import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
+import { migratedSite } from '@/lib/site-media';
 
 /**
  * Redesigned homepage — internal preview only (/preview-home, noindex).
@@ -47,6 +48,13 @@ const CITIES = [
   { name: 'Chengdu', slug: 'chengdu', tag: 'Giant pandas · Sichuan food', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
   { name: 'Chongqing', slug: 'chongqing', tag: 'Hotpot · Yangtze gorges', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
   { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: "Avatar's floating mountains", img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
+];
+
+const CREDENTIALS: { src: string; alt: string; wide?: boolean }[] = [
+  { src: migratedSite('credentials-taanz.png'), alt: 'TAANZ — Travel Agents Association of New Zealand' },
+  { src: migratedSite('credentials-iata.png'), alt: 'IATA accredited agent' },
+  { src: migratedSite('credentials-qualmark.png'), alt: 'Qualmark recognised' },
+  { src: migratedSite('credentials-tourism-export-council.png'), alt: 'Tourism Export Council New Zealand', wide: true },
 ];
 
 const HomePageRedesign = () => {
@@ -105,39 +113,34 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      {/* ===== Trust bar ===== */}
-      <section className="border-y border-warm-100 bg-white py-6">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 md:flex-row md:px-8">
-          <div className="flex items-center gap-3">
-            {[
-              { b: 'TAANZ', d: 'Bonded' },
-              { b: 'IATA', d: 'Accredited' },
-              { b: 'TIA', d: 'Member' },
-            ].map(({ b, d }) => (
-              <div key={b} className="flex items-center gap-2">
-                <span className="rounded-md border border-warm-200 bg-surface px-2.5 py-1 font-serif text-sm font-bold text-primary">{b}</span>
-                <span className="hidden text-xs text-ink-muted lg:inline">{d}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-7">
-            <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-3.5 py-1.5">
-              <Icon name="check-circle" className="h-5 w-5 text-emerald-600" />
-              <span className="text-sm font-bold text-emerald-800">No forced shopping stops</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-ink-muted">
-              <Icon name="shield" className="h-5 w-5 text-primary" />
-              Your payment is protected
-            </div>
-            <div className="hidden items-center gap-1.5 md:flex">
-              <span className="flex text-secondary">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <Icon key={i} name="star" className="h-4 w-4" />
-                ))}
+      {/* ===== Trust bar — real accreditation logos + who ===== */}
+      <section className="border-y border-warm-200 bg-white py-7">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 md:flex-row md:justify-between md:px-8">
+          <div className="text-center md:text-left">
+            <p className="font-serif text-lg font-bold text-ink md:text-xl">Trusted by 10,000+ Kiwi travellers</p>
+            <p className="mt-1.5 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-sm text-ink-muted md:justify-start">
+              <span>Licensed NZ specialists since 1928</span>
+              <span className="text-ink/20">·</span>
+              <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
+                <Icon name="check-circle" className="h-4 w-4" /> No forced shopping stops
               </span>
-              <span className="text-sm font-medium text-ink-muted">Loved by Kiwi travellers</span>
-            </div>
+              <span className="text-ink/20">·</span>
+              <span className="inline-flex items-center gap-1">
+                <Icon name="shield" className="h-4 w-4 text-primary" /> Payment protected
+              </span>
+            </p>
+          </div>
+          <div className="flex flex-none items-center gap-5 opacity-90 md:gap-7">
+            {CREDENTIALS.map((l) => (
+              <Image
+                key={l.src}
+                src={l.src}
+                alt={l.alt}
+                width={l.wide ? 150 : 84}
+                height={44}
+                className="h-9 w-auto object-contain md:h-11"
+              />
+            ))}
           </div>
         </div>
       </section>
