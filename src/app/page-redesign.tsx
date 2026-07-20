@@ -7,7 +7,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
-import { allTestimonials } from '@/components/Testimonials';
+import { homeTestimonials } from '@/lib/data/home-testimonials';
 
 /**
  * Redesigned homepage — internal preview only (/preview-home, noindex).
@@ -56,7 +56,7 @@ const HomePageRedesign = () => {
   const featured = spotlight[0];
   const sides = spotlight.slice(1, 3);
   const blogPosts = getAllBlogPosts().slice(0, 3);
-  const reviews = allTestimonials.filter((t) => t.rating === 5).slice(0, 6);
+  const reviews = homeTestimonials;
 
   return (
     <div className="bg-surface font-sans text-ink">

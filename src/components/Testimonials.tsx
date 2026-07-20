@@ -16,7 +16,7 @@ const AVATAR_COLORS = [
   'from-cyan-600 to-sky-400',
 ];
 
-export interface Testimonial {
+interface Testimonial {
   id: number;
   name: string;
   location: string;
@@ -553,7 +553,7 @@ const generalTestimonials: Testimonial[] = [
 ];
 
 // Spotlight reviews lead; general reviews follow
-export const allTestimonials: Testimonial[] = [...spotlightTestimonials, ...generalTestimonials];
+const allTestimonials: Testimonial[] = [...spotlightTestimonials, ...generalTestimonials];
 
 // ── Module-level UI helpers (stable identity — no re-creation on each render) ──
 
