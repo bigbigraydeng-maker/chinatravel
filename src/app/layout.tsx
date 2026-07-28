@@ -4,7 +4,6 @@ import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
 import GeoDirective from '@/components/GeoDirective';
 import CookieConsentManager from '@/components/CookieConsentManager';
-import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import TrackingScripts from '@/components/TrackingScripts';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
@@ -76,7 +75,6 @@ export default function RootLayout({
       <body className="font-sans antialiased" suppressHydrationWarning>
         <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
-        <NewsletterPopup />
         <GeoDirective />
         <TrackingScripts />
         <GoogleAnalytics />

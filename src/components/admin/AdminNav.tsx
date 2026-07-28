@@ -5,11 +5,19 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/admin', label: 'Dashboard' },
+  { href: '/admin/tailor-made', label: 'Tailor-made 行程单' },
   { href: '/admin/image-manager', label: '图片管家' },
   { href: '/admin/images', label: 'Images (table)' },
   { href: '/admin/images/upload', label: 'Upload' },
   { href: '/admin/images/analyze', label: 'Analyze' },
 ];
+
+/** 后台不再只有图片管理，标题跟着当前模块走 */
+function sectionTitle(pathname: string | null): string {
+  if (pathname?.startsWith('/admin/tailor-made')) return 'Tailor-made itineraries';
+  if (pathname?.startsWith('/admin/image')) return 'Image management';
+  return 'CTS operations';
+}
 
 export default function AdminNav() {
   const pathname = usePathname();
@@ -19,7 +27,7 @@ export default function AdminNav() {
       <div className="container mx-auto px-4 py-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-xs uppercase tracking-widest text-primary/90">CTS Admin</p>
-          <h1 className="font-serif text-xl font-semibold">Image management</h1>
+          <h1 className="font-serif text-xl font-semibold">{sectionTitle(pathname)}</h1>
         </div>
         <nav className="flex flex-wrap gap-2">
           {links.map((l) => {
