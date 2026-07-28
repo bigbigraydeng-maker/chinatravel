@@ -9,7 +9,7 @@ import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
 import VisaCheckerWidget from '@/components/seo/VisaCheckerWidget';
 import { Icon } from '@/components/ui/Icon';
-import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
+import { generateArticleSchema, generateBreadcrumbListSchema, generateHowToSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,13 +31,40 @@ export default function ChinaVisaGuidePage() {
     { name: 'NZ entry guide', url: '/china-visa-guide-for-new-zealanders' }
   ];
 
+  // HowTo schema mirrors the "Required at Immigration" 4-step section below.
+  // Steps must match visible content or Google flags as spammy — kept in sync
+  // with the `Required at Immigration` grid rendered in this same page.
+  const howToSchema = generateHowToSchema(
+    'How to enter China visa-free as a New Zealand passport holder',
+    'NZ passport holders can enter mainland China visa-free for 30 days per visit until 31 December 2026 — no application, no embassy visit. Here are the four checks to pass at the border.',
+    [
+      {
+        name: 'Confirm your NZ passport validity',
+        text: 'Carry a valid New Zealand ordinary (blue) passport with at least 6 months of remaining validity at the time of entry.',
+      },
+      {
+        name: 'Book a return or onward flight',
+        text: 'Have proof of a return or onward ticket showing you will depart China within 30 days of arrival. Chinese immigration commonly asks for this.',
+      },
+      {
+        name: 'Show proof of accommodation',
+        text: 'Present a hotel booking confirmation or a tour itinerary that lists accommodation for the duration of your stay.',
+      },
+      {
+        name: 'Present at any open port of entry',
+        text: 'Arrive at any sea, land, or air port open to foreign nationals. Show your documents at immigration — no visa form, no application fee, no interview.',
+      },
+    ],
+  );
+
   const schemas = [
     generateArticleSchema(
       chinaVisaGuideMeta.title,
       chinaVisaGuideMeta.description,
       '/china-visa-guide-for-new-zealanders'
     ),
-    generateBreadcrumbListSchema(breadcrumbs)
+    generateBreadcrumbListSchema(breadcrumbs),
+    howToSchema,
   ];
 
   const relatedGuides = [

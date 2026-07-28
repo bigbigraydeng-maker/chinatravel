@@ -106,7 +106,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       ? post.heroImage
       : `${siteUrl}${post.heroImage.startsWith('/') ? '' : '/'}${post.heroImage}`,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       '@type': 'Person',
       name: post.author,

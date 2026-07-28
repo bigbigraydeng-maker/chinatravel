@@ -191,6 +191,7 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
     tags: ['China Visa', 'Visa Free', 'New Zealand', 'China Travel', 'NZ Passport', '2026'],
     heroImage: '/blog/group-great-wall-cts.jpg',
     publishedAt: '2026-04-27',
+    updatedAt: '2026-07-03',
     readTime: '5 min read',
     faqs: [
       {
@@ -235,7 +236,14 @@ CTS Tours' October Discovery departures — [A Tale of Two Cities (Beijing & Xi'
 
 ## What to Carry at the Border
 
-The visa-free policy doesn't mean the immigration officer waves you through without questions. You need to be prepared to show:
+The visa-free policy doesn't mean the immigration officer waves you through without questions. Here's the four-item checklist — Google-friendly table so you can screenshot and carry it:
+
+| Document | Required? | Notes |
+| --- | --- | --- |
+| Valid NZ ordinary (blue) passport | Yes | 6+ months' remaining validity |
+| Return or onward ticket | Yes | Must show departure within 30 days |
+| Accommodation evidence | Usually | Hotel booking or tour itinerary |
+| Proof of travel purpose | Sometimes | CTS provides a travel confirmation letter |
 
 **1. A return or onward ticket.** This is the most commonly missed item. If you can't demonstrate that you're leaving China within 30 days, the officer can refuse entry. Our tour documentation handles this, but independent travellers must have this ready.
 
