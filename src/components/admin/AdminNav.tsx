@@ -5,16 +5,14 @@ import { usePathname } from 'next/navigation';
 
 const links = [
   { href: '/admin', label: 'Dashboard' },
-  { href: '/admin/tailor-made', label: 'Tailor-made 行程单' },
   { href: '/admin/image-manager', label: '图片管家' },
   { href: '/admin/images', label: 'Images (table)' },
   { href: '/admin/images/upload', label: 'Upload' },
   { href: '/admin/images/analyze', label: 'Analyze' },
 ];
 
-/** 后台不再只有图片管理，标题跟着当前模块走 */
+/** 标题跟着当前模块走 —— dashboard 根页面不该顶着 "Image management" */
 function sectionTitle(pathname: string | null): string {
-  if (pathname?.startsWith('/admin/tailor-made')) return 'Tailor-made itineraries';
   if (pathname?.startsWith('/admin/image')) return 'Image management';
   return 'CTS operations';
 }
