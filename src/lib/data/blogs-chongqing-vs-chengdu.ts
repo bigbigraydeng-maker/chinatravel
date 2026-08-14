@@ -41,7 +41,7 @@ export const chongqingVsChengduPost: BlogPost = {
   ],
   heroImage: '/blog/group-chongqing-costume-riverside-1.jpg',
   publishedAt: '2026-06-24',
-  readTime: '9 min read',
+  readTime: '10 min read',
   faqs: [
     {
       question: 'Chongqing vs Chengdu — which should I visit first?',
@@ -51,7 +51,7 @@ export const chongqingVsChengduPost: BlogPost = {
     {
       question: 'How many days should I spend in Chongqing?',
       answer:
-        '2 to 3 days is the sweet spot for Chongqing. Day 1 covers central highlights (Liziba monorail through-building, Hongyadong night view, Jiefangbei). Day 2 covers a Yangtze River day cruise to Wushan or Ciqikou ancient town. Day 3 is optional if you are joining a downstream Yangtze River cruise to Yichang (3 nights from Chongqing port). Less than 2 days feels rushed; more than 3 without a cruise becomes repetitive.',
+        '2 to 3 days is the sweet spot for Chongqing. Day 1 covers central highlights (Liziba monorail through-building, Hongyadong night view, Jiefangbei). Day 2 covers a Yangtze River day cruise to Wushan or Ciqikou ancient town. Day 3 is optional if you are joining a downstream Yangtze River cruise to Yichang (3 nights from Chongqing port). Add a fourth day if you want the UNESCO Dazu Rock Carvings, which take a full day out of the city. Less than 2 days feels rushed; beyond 4 days, only a cruise justifies staying longer.',
     },
     {
       question: 'How many days should I spend in Chengdu?',
@@ -97,7 +97,7 @@ Both cities sit in the Sichuan-Chongqing region of southwest China. Both are fam
 | **Food signature** | Sichuan cuisine, dan-dan noodles, mapo tofu | [Chongqing hotpot](/hongyadong-chongqing), mala beef tallow |
 | **Layout** | Flat, grid-like | Mountainous, multi-level streets |
 | **Best for** | First-timers, families, slow travel | Repeat visitors, photographers, foodies |
-| **Day trip options** | Mt Emei, Leshan Giant Buddha, Jiuzhaigou | Yangtze River cruise to Wushan / Three Gorges |
+| **Day trip options** | Mt Emei, Leshan Giant Buddha, Sanxingdui, Jiuzhaigou | Dazu Rock Carvings (UNESCO), Yangtze cruise to Wushan / Three Gorges |
 | **Recommended stay** | 3 days | 2-3 days (or longer with a cruise) |
 | **Weather caveat** | Cloudy most of the year (still comfortable) | Avoid July-August — extreme heat |
 
@@ -111,9 +111,13 @@ The [Chengdu Research Base of Giant Panda Breeding](/chengdu-panda-sanctuary) is
 
 But it is the rhythm of the city that surprises most NZ travellers. People play mahjong in the parks. Tea houses serve bottomless bamboo-leaf tea for the equivalent of NZD $3. Old quarters like [Kuanzhai Alley](/chengdu-travel-guide#kuanzhai-alley) and Jinli Street have been restored without becoming pure tourist traps. Walking is genuinely the best way to get around.
 
+The single most memorable thing I show clients in Chengdu is not on any highlights list: the **Matchmaking Corner in People\'s Park**. Parents gather along a shaded walkway with handwritten notices advertising their adult children — age, height, salary, apartment ownership — hoping to arrange an introduction. It runs most weekends, it is completely sincere, and it tells you more about contemporary Chinese family life in twenty minutes than any museum will.
+
 The food is iconic but accessible. **Chengdu Sichuan cuisine** uses less raw mala (numbing-spicy peppercorn) than Chongqing, so even Kiwi travellers who think they can\'t handle spicy food can usually manage a Chengdu-style meal with the chef adjusting the heat. Try dan-dan noodles, mapo tofu, twice-cooked pork, and yuxiang eggplant.
 
 And the **day trips** are unbeatable. Mt Emei (one of the Four Sacred Buddhist Mountains) is 2 hours away by high-speed train. Leshan Giant Buddha is on the same line. In autumn, Jiuzhaigou Valley\'s waterfalls and Tibetan villages are 4 hours away by long-distance bus.
+
+The one I push hardest is **Sanxingdui**, an hour north of the city. It is a Bronze Age site, roughly contemporary with the late Shang dynasty, and the bronze masks pulled out of its sacrificial pits — huge protruding eyes, blade-thin ears, gold foil faces — look like nothing else in Chinese art. Most visitors have never heard of it before they arrive and talk about it for the rest of the trip.
 
 For most first-time NZ travellers to southwest China, **Chengdu is the right answer**.
 
@@ -121,11 +125,15 @@ For most first-time NZ travellers to southwest China, **Chengdu is the right ans
 
 If you have already done Beijing, Shanghai or Xi\'an and you want something that feels completely different, Chongqing is the answer. It is genuinely unlike any other city in China.
 
-Chongqing is built on the meeting of two rivers — the Yangtze and the Jialing — and on extremely steep terrain. The result is a city where the "ground floor" of a shopping mall can be on level 8, where buses drive across the roofs of buildings, and where the Liziba monorail famously passes *through* a residential apartment block on its route. This is not a marketing gimmick. The monorail genuinely cuts through the building, and you can ride it for the equivalent of NZD $1 to see it from the inside.
+Chongqing is built on the meeting of two rivers — the Yangtze and the Jialing — and on extremely steep terrain. The result is a city where the "ground floor" of a shopping mall can be on level 8, where buses drive across the roofs of buildings, and where the Liziba monorail famously passes *through* a residential apartment block on its route (Line 2, floors 6–8 of a 19-storey block). This is not a marketing gimmick. The monorail genuinely cuts through the building, and you can ride it for the equivalent of NZD $1 to see it from the inside.
+
+Locals call this "8D Magic" — a city with so many stacked levels that a two-dimensional map is useless. The internet calls it cyberpunk. Both are fair. Your phone\'s GPS will regularly insist you are 40 metres from where you are standing, because it has no idea which of the five road levels you are on.
 
 The food is the second draw. **Chongqing hotpot** is the original — a roiling pot of mala broth, beef tallow, dried chillies, and Sichuan peppercorns, served bubbling at every table from breakfast to midnight. Even if you order the split yuan yang pot with a clear-broth half, the spicy half will be more intense than anything you\'ve had in Auckland. Hongyadong is the touristy place to go but the locals eat at the open-front shops in Jiefangbei and along the lanes near Liziba.
 
 The third draw is the **Yangtze River cruise**. Most premium cruises into the Three Gorges depart from Chongqing port, sailing downstream to Yichang over 3-4 nights. This is a slow-travel experience NZ retirees love — proper cabin accommodation, shore excursions to Wushan and Fengdu, and the historic Three Gorges Dam at the end.
+
+What gets lost in the viral clips is that Chongqing also has serious history. The **Dazu Rock Carvings** — a UNESCO World Heritage Site about 100km from the city — hold roughly 50,000 Buddhist, Taoist and Confucian sculptures carved between the 9th and 13th centuries, including a 31-metre reclining Nirvana Buddha. It is a full day out and it is the single most underrated thing in the region. Closer in, the **Huguang Guild Hall** (built 1759) is a beautifully preserved Qing dynasty merchant complex beside the Yangtze, from the era when migrants from Huguang were resettled into Sichuan in their millions. Our [Fire & Fuzz Chongqing & Chengdu tour](/tours/china/discovery/chongqing-chengdu) includes both.
 
 But Chongqing is **demanding**. The terrain is steep. Summer heat is extreme (35-42°C is normal in July-August). The city is enormous and feels disorienting if you don\'t have a guide. This is why we recommend a guided 2-3 day trip rather than a DIY weekend.
 
