@@ -14,7 +14,7 @@ import { chongqingVsChengduPost } from '@/lib/data/blogs-chongqing-vs-chengdu';
 import { howManyDaysInChongqingPost } from '@/lib/data/blogs-how-many-days-in-chongqing';
 import { yangtzeRiverCruiseFromChongqingPost } from '@/lib/data/blogs-yangtze-river-cruise-from-chongqing';
 import { lizibaMonorailGuidePost } from '@/lib/data/blogs-liziba-monorail-guide';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 export type { BlogPost };
 
@@ -54,7 +54,7 @@ Ready to walk it with me? [Contact our team](/contact) and ask for Baker’s Sil
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Silk Road', 'Adventure', 'Cultural', 'Signature'],
-    heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
+    heroImage: tourImage('silk-road-wall.jpg'),
     publishedAt: '2026-03-15',
     readTime: '5 min read'
   },
@@ -96,7 +96,8 @@ Planning your panda adventure? I slot Chengdu into routes like [Best of China �
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ['Pandas', 'Chengdu', 'Wildlife', 'Family-Friendly'],
-    heroImage: migratedUnsplash('photo-1564349683136-77e08dba1ef7'),
+    heroImage: '/blog/sourced/chengdu-panda-base-pandas-climbing.jpg',
+    heroImageCredit: 'Photo: Jimmyshjj, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-03-10',
     readTime: '4 min read'
   },
@@ -165,7 +166,7 @@ Ready to start? [Browse our tours](/tours) or [contact me and the team](/contact
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['First-Time', 'Tips', 'Practical', 'New Zealand'],
-    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
+    heroImage: tourImage('shangri-la-monastery-lake.jpg'),
     publishedAt: '2026-03-05',
     readTime: '6 min read'
   },
@@ -206,7 +207,7 @@ Experience the peaks on my [Zhangjiajie stopover](/tours/china/stopover/zhangjia
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Avatar Mountains', 'Zhangjiajie', 'Nature', 'Photography'],
-    heroImage: migratedUnsplash('photo-1513415756790-2ac1db1297d0'),
+    heroImage: '/images/tours/tianmen-mountain-glass-walkway.jpg',
     publishedAt: '2026-02-28',
     readTime: '4 min read'
   },
@@ -251,7 +252,7 @@ Walk it with me on [Imperial Heritage — Signature](/tours/china/signature/impe
     authorRole: 'China Travel Specialist',
     category: 'culture',
     tags: ['Tea', 'Culture', 'Hangzhou', 'Tradition'],
-    heroImage: migratedUnsplash('photo-1556679343-c7306c1976bc'),
+    heroImage: tourImage('shanghai-yuyuan-night.jpg'),
     publishedAt: '2026-02-20',
     readTime: '5 min read'
   },

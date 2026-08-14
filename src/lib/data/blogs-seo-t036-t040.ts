@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
  * SEO supporting articles (marketing plan T036–T040).
@@ -58,7 +58,7 @@ Prefer the standard pages without campaign copy? [Beijing–Xi’an Discovery](/
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['First trip', 'Beijing', 'Shanghai', 'New Zealand', 'Discovery'],
-    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
+    heroImage: tourImage('forbidden-city-lion.jpg'),
     publishedAt: '2026-04-14',
     readTime: '9 min read',
   },
@@ -104,7 +104,7 @@ I still send everyone through [my NZ entry checklist](/china-visa-guide-for-new-
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['October', 'Weather', 'Golden Week', 'New Zealand', 'Planning'],
-    heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
+    heroImage: tourImage('shangri-la-monastery.jpg'),
     publishedAt: '2026-04-13',
     readTime: '8 min read',
   },
@@ -157,7 +157,7 @@ Most of my Kiwi clients use the **30-day visa-free** route for tourism; you stil
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['Guided tour', 'Inclusions', 'Discovery', 'New Zealand', 'Planning'],
-    heroImage: migratedUnsplash('photo-1545569341-9eb8b30979d9'),
+    heroImage: tourImage('forbidden-city-lion-2.jpg'),
     publishedAt: '2026-04-12',
     readTime: '8 min read',
   },
@@ -203,7 +203,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Shanghai', 'Jiangnan', 'Suzhou', 'Hangzhou', 'Discovery'],
-    heroImage: migratedUnsplash('photo-1528360983277-13d401cdc186'),
+    heroImage: '/blog/group-walking-shanghai-lane.jpg',
     publishedAt: '2026-04-11',
     readTime: '8 min read',
   },
@@ -253,7 +253,7 @@ This is my **Discovery** line for this arc:
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Beijing', "Xi'an", 'Terracotta', 'Great Wall', 'First trip'],
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: tourImage('beijing-temple-2.jpg'),
     publishedAt: '2026-04-10',
     readTime: '9 min read',
   },

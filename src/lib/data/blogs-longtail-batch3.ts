@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 export const longtailBatch3Posts: BlogPost[] = [
   {
@@ -11,7 +11,7 @@ export const longtailBatch3Posts: BlogPost[] = [
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'travel-tips',
     tags: ['China Tours', 'New Zealand', 'China Holiday Packages', 'China Tour Packages', 'NZ Passport', '2026', 'China Travel'],
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+    heroImage: tourImage('forbidden-city-gold-lion.jpg'),
     publishedAt: '2026-06-19',
     readTime: '8 min read',
     faqs: [

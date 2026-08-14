@@ -21,7 +21,7 @@ export const phase3LineCPosts: BlogPost[] = [
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Chongqing', 'Three Gorges', 'Yangtze River', 'Mountain City', 'China Landscape'],
-    heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
+    heroImage: '/images/tours/yangshuo-karst-aerial.jpg',
     publishedAt: '2026-05-25',
     readTime: '6 min read',
     content: `
@@ -81,7 +81,8 @@ Our Yangtze cruises depart from Chongqing. [Contact us](/contact) to discuss add
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ['Chengdu', 'Giant Panda', 'Panda Base', 'Wildlife China', 'Sichuan'],
-    heroImage: migratedUnsplash('photo-1564349683136-77e08dba1ef7'),
+    heroImage: '/blog/sourced/chengdu-panda-base-pandas-resting.jpg',
+    heroImageCredit: 'Photo: Jimmyshjj, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-26',
     readTime: '6 min read',
     content: `
@@ -144,7 +145,7 @@ See our [Chengdu tours](/chengdu-tours) for full itineraries combining the Panda
     authorRole: 'China Travel Specialist',
     category: 'culture',
     tags: ['Chengdu', 'Sichuan Food', 'Spicy Cuisine', 'Food Culture', 'China Dining'],
-    heroImage: migratedUnsplash('photo-1607623814075-e51df1bdc82f'),
+    heroImage: '/blog/group-market-street-china.jpg',
     publishedAt: '2026-05-27',
     readTime: '6 min read',
     content: `
@@ -204,7 +205,8 @@ Explore Chengdu's food culture on our [Chengdu tours](/chengdu-tours) — every 
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Chongqing', 'Night View', 'City Lights', 'Mountain City', 'Urban China'],
-    heroImage: migratedUnsplash('photo-1556679343-c7306c1976bc'),
+    heroImage: '/blog/sourced/chongqing-hongyadong-stilt-complex.jpg',
+    heroImageCredit: 'Photo: xiquinhosilva, CC BY 2.0, via Wikimedia Commons',
     publishedAt: '2026-05-28',
     readTime: '5 min read',
     content: `
@@ -257,7 +259,8 @@ Chongqing is included in our longer western China itineraries combining Chengdu,
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'culture',
     tags: ['Sichuan', 'Hot Pot', 'Chengdu Food', 'Chongqing Food', 'Chinese Cuisine'],
-    heroImage: migratedUnsplash('photo-1544025162-d76694265947'),
+    heroImage: '/blog/sourced/chengdu-double-hotpot.jpg',
+    heroImageCredit: 'Photo: Jpatokal, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-29',
     readTime: '6 min read',
     content: `

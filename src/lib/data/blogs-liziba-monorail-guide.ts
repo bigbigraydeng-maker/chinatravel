@@ -46,8 +46,8 @@ export const lizibaMonorailGuidePost: BlogPost = {
     'Public Transport',
     '2026',
   ],
-  heroImage:
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+  heroImage: '/blog/sourced/liziba-monorail-through-building.jpg',
+  heroImageCredit: 'Photo: David290, CC BY-SA 4.0, via Wikimedia Commons',
   publishedAt: '2026-06-26',
   readTime: '7 min read',
   faqs: [

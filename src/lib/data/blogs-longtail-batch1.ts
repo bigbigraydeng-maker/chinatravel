@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
  * Long-tail SEO batch 1 — 15 articles across 3 tour lines
@@ -110,7 +110,7 @@ CTS Tours offers **A Tale of Two Cities** — a 10-day Discovery tour covering e
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'travel-tips',
     tags: ['First Time China', 'Beijing', 'Xi\'an', 'New Zealand', 'China Travel Tips'],
-    heroImage: '/blog/group-temple-of-heaven-beijing.jpg',
+    heroImage: '/images/great-wall-cts-1.jpg',
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `
@@ -246,7 +246,7 @@ CTS Tours includes the Beijing–Xi'an high-speed train (2nd class) as a standar
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Terracotta Warriors', 'Xi\'an', 'China History', 'UNESCO', 'New Zealand Travel'],
-    heroImage: 'https://images.unsplash.com/photo-1555921015-5532091f6026?auto=format&fit=crop&w=1200&q=80',
+    heroImage: tourImage('xian-terracotta.jpg'),
     publishedAt: '2026-04-25',
     readTime: '7 min read',
     content: `
@@ -429,7 +429,8 @@ Many NZ passport holders currently qualify for China's visa-free entry. Confirm 
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Hangzhou', 'West Lake', 'Jiangnan', 'China Gardens', 'China Travel'],
-    heroImage: 'https://images.unsplash.com/photo-1519098901909-b1553a1190af?auto=format&fit=crop&w=1200&q=80',
+    heroImage: '/blog/sourced/hangzhou-west-lake-broken-bridge.jpg',
+    heroImageCredit: 'Photo: Jakub Hałun, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `
@@ -480,7 +481,7 @@ CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, whic
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Suzhou', 'Classical Gardens', 'UNESCO', 'Jiangnan', 'China Travel'],
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: tourImage('suzhou-canal.jpg'),
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `
@@ -529,7 +530,7 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Shanghai', 'China Itinerary', '10 Days China', 'Jiangnan', 'New Zealand Travel'],
-    heroImage: '/blog/group-walking-shanghai-street.jpg',
+    heroImage: '/blog/group-shanghai-bund-selfie.jpg',
     publishedAt: '2026-04-25',
     readTime: '7 min read',
     content: `
@@ -592,7 +593,7 @@ The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'culture',
     tags: ['Jiangnan', 'Water Towns', 'Suzhou', 'Wuxi', 'China Culture', 'New Zealand Travel'],
-    heroImage: migratedUnsplash('photo-1564349683136-77e08dba1ef7'),
+    heroImage: tourImage('wuzhen-canal.jpg'),
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `
@@ -641,7 +642,7 @@ CTS Tours runs the **Shanghai & Surroundings** Discovery tour specifically for t
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Chongqing', 'Chengdu', 'Itinerary', 'China Tours', 'Giant Pandas', 'New Zealand'],
-    heroImage: '/blog/group-chongqing-costume-riverside-1.jpg',
+    heroImage: '/blog/group-chongqing-costume-riverside-4.jpg',
     publishedAt: '2026-04-25',
     readTime: '8 min read',
     content: `
@@ -730,7 +731,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'travel-tips',
     tags: ['Chongqing', 'China Travel Tips', 'Itinerary Planning', 'How Many Days'],
-    heroImage: '/blog/chongqing-night-skyline-hongyadong.jpg',
+    heroImage: '/blog/group-ancient-gate-night.jpg',
     publishedAt: '2026-04-25',
     readTime: '5 min read',
     content: `
@@ -779,7 +780,7 @@ CTS Tours' **Fire & Fuzz** tour allocates 4 nights in Chongqing and 3 nights in 
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Chongqing', 'Chengdu', 'China Travel', 'City Comparison', 'Sichuan'],
-    heroImage: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=80',
+    heroImage: tourImage('great-wall-mist.jpg'),
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `
@@ -824,7 +825,8 @@ If you genuinely can only choose one: go to Chongqing if you've already been to 
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Liziba Station', 'Chongqing', 'China Travel', 'Unique Attractions', 'Train Travel'],
-    heroImage: migratedUnsplash('photo-1581252584837-95f73fd23574'),
+    heroImage: '/blog/sourced/liziba-station-train-arriving.jpg',
+    heroImageCredit: 'Photo: Nissangeniss, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-04-25',
     readTime: '5 min read',
     content: `
@@ -877,7 +879,7 @@ CTS Tours' **Fire & Fuzz** itinerary (Chongqing × Chengdu, 10 days) includes Li
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'experience',
     tags: ['Giant Pandas', 'Chengdu', 'China Wildlife', 'Panda Base', 'New Zealand Travel'],
-    heroImage: migratedUnsplash('photo-1556679343-c7306c1976bc'),
+    heroImage: tourImage('chengdu-pandas.jpg'),
     publishedAt: '2026-04-25',
     readTime: '6 min read',
     content: `

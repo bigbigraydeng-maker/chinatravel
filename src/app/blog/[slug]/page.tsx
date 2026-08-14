@@ -163,6 +163,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+          {post.heroImageCredit && (
+            <span className="absolute bottom-1 right-2 text-[10px] leading-tight text-white/50">
+              {post.heroImageCredit}
+            </span>
+          )}
         </div>
         <div className="relative h-full container mx-auto px-4 flex flex-col justify-end pb-12">
           <div className="max-w-3xl">

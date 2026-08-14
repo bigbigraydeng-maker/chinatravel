@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
  * Phase 3 — Line A: Beijing & Xi'an Experience Blogs (5 posts)
@@ -21,7 +21,7 @@ export const phase3LineAPosts: BlogPost[] = [
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ['Great Wall', 'Beijing', 'Hiking', 'China Tours', 'New Zealand'],
-    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
+    heroImage: tourImage('great-wall-green.jpg'),
     publishedAt: '2026-05-15',
     readTime: '7 min read',
     content: `
@@ -90,7 +90,7 @@ Interested in adding the Great Wall to your China itinerary? [Browse our Beijing
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Forbidden City', 'Beijing', 'Palace Museum', 'China Heritage', 'Travel Tips'],
-    heroImage: migratedUnsplash('photo-1528360983277-13d401cdc186'),
+    heroImage: tourImage('forbidden-city-aerial.jpg'),
     publishedAt: '2026-05-16',
     readTime: '6 min read',
     content: `
@@ -158,7 +158,7 @@ Combining the Forbidden City with Tiananmen Square on the same morning, then the
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'culture',
     tags: ["Terracotta Warriors", "Xi'an", 'Ancient China', 'UNESCO', 'Archaeology'],
-    heroImage: migratedUnsplash('photo-1545569341-9eb8b30979d9'),
+    heroImage: tourImage('xian-terracotta-2.jpg'),
     publishedAt: '2026-05-17',
     readTime: '7 min read',
     content: `
@@ -219,7 +219,8 @@ See this extraordinary site on our [Xi'an tours](/xian-tours) or as part of our 
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ["Xi'an", 'Street Food', 'Muslim Quarter', 'Food Travel', 'Silk Road'],
-    heroImage: migratedUnsplash('photo-1559827260-dc66d52bef19'),
+    heroImage: '/blog/sourced/xian-muslim-quarter-night-market.jpg',
+    heroImageCredit: 'Photo: chensiyuan, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-18',
     readTime: '6 min read',
     content: `
@@ -282,7 +283,7 @@ See Xi'an on our [Beijing and Xi'an tour](/tours/china/discovery/beijing-xian) o
     authorRole: 'China Travel Specialist',
     category: 'culture',
     tags: ['Beijing', 'Hutong', 'Old Beijing', 'China Heritage', 'Culture'],
-    heroImage: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?auto=format&fit=crop&w=1200&q=80',
+    heroImage: tourImage('beijing-temple.jpg'),
     publishedAt: '2026-05-19',
     readTime: '6 min read',
     content: `

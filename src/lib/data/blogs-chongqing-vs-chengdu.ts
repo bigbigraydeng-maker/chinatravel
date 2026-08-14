@@ -39,8 +39,7 @@ export const chongqingVsChengduPost: BlogPost = {
     'Hotpot',
     '2026',
   ],
-  heroImage:
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+  heroImage: '/blog/group-chongqing-costume-riverside-1.jpg',
   publishedAt: '2026-06-24',
   readTime: '9 min read',
   faqs: [

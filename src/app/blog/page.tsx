@@ -15,10 +15,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: tourImage('chengdu-pandas.jpg'),
+        url: tourImage('guilin-mist.jpg'),
         width: 1200,
         height: 630,
-        alt: 'Giant pandas in Chengdu — CTS Tours travel blog',
+        alt: 'Misty hilltop pavilion in Guilin — CTS Tours travel blog',
       },
     ],
   },
@@ -39,8 +39,8 @@ export default function BlogPage() {
         eyebrow="Journal"
         title="Travel Blog"
         subtitle="Insights, guides, and stories from our China travel specialists"
-        imageSrc={tourImage('chengdu-pandas.jpg')}
-        imageAlt="Giant pandas in Chengdu — CTS Tours travel blog"
+        imageSrc={tourImage('guilin-mist.jpg')}
+        imageAlt="Misty hilltop pavilion in Guilin — CTS Tours travel blog"
         priority
       />
 

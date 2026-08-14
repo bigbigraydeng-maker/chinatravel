@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
  * Long-tail SEO batch 2 — 5 articles targeting Chongqing/Chengdu/visa searches
@@ -74,7 +74,8 @@ My **Fire & Fuzz** 10-day tour allocates 4 nights in Chongqing specifically to a
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'experience',
     tags: ['Chongqing', 'Hot Pot', 'Food', 'Sichuan Cuisine', 'China Travel'],
-    heroImage: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=1200&q=80',
+    heroImage: '/blog/sourced/chongqing-yuanyang-hotpot.jpg',
+    heroImageCredit: 'Photo: Akira CA, CC0, via Wikimedia Commons',
     publishedAt: '2026-04-27',
     readTime: '5 min read',
     content: `
@@ -189,7 +190,7 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'travel-tips',
     tags: ['China Visa', 'Visa Free', 'New Zealand', 'China Travel', 'NZ Passport', '2026'],
-    heroImage: '/blog/group-great-wall-cts.jpg',
+    heroImage: '/images/great-wall-cts-2.jpg',
     publishedAt: '2026-04-27',
     readTime: '5 min read',
     faqs: [
@@ -273,7 +274,7 @@ For any questions about current entry requirements, [contact the CTS team](/cont
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'destination',
     tags: ['Chengdu', 'Things to Do', 'China Travel', 'Sichuan', 'Chengdu Guide'],
-    heroImage: migratedUnsplash('photo-1564349683136-77e08dba1ef7'),
+    heroImage: tourImage('chengdu-old-town.jpg'),
     publishedAt: '2026-04-27',
     readTime: '7 min read',
     content: `
