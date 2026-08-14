@@ -63,34 +63,73 @@ Ready to walk it with me? [Contact our team](/contact) and ask for Baker’s Sil
     slug: 'giant-pandas-chengdu-complete-guide',
     title: 'Giant Pandas in Chengdu: A Complete Guide',
     excerpt: 'I’m Baker Gu — how I plan panda time in Chengdu, what I book for morning light, and the Signature experiences I add when clients ask for more than a quick look.',
+    faqs: [
+      {
+        question: 'Where is the best place to see giant pandas in China?',
+        answer: 'The Chengdu Research Base of Giant Panda Breeding, on the northern edge of Chengdu, is the world\'s leading panda facility and the most reliable place to see pandas of every age — including cubs in the nursery. It is a serious conservation and research centre that admits visitors, not a zoo.'
+      },
+      {
+        question: 'What time should I visit the Chengdu Panda Base?',
+        answer: 'Arrive when the gates open — 7:30am from March to October, 8:00am in winter. Pandas are most active during the morning bamboo feed between about 8:30 and 10:30am; by early afternoon most are asleep. The difference between a 8am visit and an 11am visit is enormous.'
+      },
+      {
+        question: 'How much do Chengdu Panda Base tickets cost?',
+        answer: 'The standard adult ticket is around 55 yuan — roughly NZD 13. Children under 6 enter free, ages 6 to 17 half price, and visitors over 60 free with a passport. Tickets are real-name (passport number) and can be reserved up to 14 days ahead on the official site; on CTS tours we arrange them for the group.'
+      },
+      {
+        question: 'How long do you need at the panda base?',
+        answer: 'Plan on half a day. The base is large and walking-oriented — allow three to four hours to see the adult enclosures, the sub-adult \'kindergarten\' and the nursery without rushing, plus time for the red pandas. Two hours is possible but feels like a sprint.'
+      },
+      {
+        question: 'Can you hold a panda in Chengdu?',
+        answer: 'No. Close-contact photo sessions were ended for animal welfare reasons and no reputable facility offers panda holding. Volunteer keeper-for-a-day programmes at facilities outside the city, such as Dujiangyan Panda Valley, are the closest ethical alternative — you help prepare food and clean enclosures, observing at close range without contact.'
+      },
+    ],
     content: `
-I’m **Baker Gu**. There are few wildlife moments I recommend as often as seeing giant pandas in Chengdu — the capital of Sichuan still offers the best opportunities to get close, if you time the day right.
+I'm **Baker Gu**. There are few wildlife moments I recommend as often as seeing giant pandas in Chengdu — the Sichuan capital remains the best place on earth to watch pandas at close range, if you time the day right. This is my complete guide: where to go, when to arrive, what it costs, and how to get more than the standard two-hour walk-through.
 
-**The Chengdu Research Base of Giant Panda Breeding**
+## Where Do You Actually See Pandas in Chengdu?
 
-This world-renowned facility is home to over 100 giant pandas and is the most popular destination for panda enthusiasts. The best time to visit is early morning (8-10am) when pandas are most active during their bamboo breakfast.
+The **Chengdu Research Base of Giant Panda Breeding** sits on a forested ridge about 10 km north of the city centre. It is the flagship of China's panda programme — home to more than one hundred giant pandas across large bamboo-planted enclosures, with a nursery, research buildings, and a resident population of red pandas. It is a working conservation institution that admits the public, and the difference from a zoo shows: the animals live in big semi-natural habitats, and the science is happening on site.
 
-**Exclusive experiences I add**
+Getting there is easy: 30 to 40 minutes by taxi or DiDi from central Chengdu, or Metro Line 3 to Panda Avenue then the shuttle. On tour, your coach delivers you to the gate at opening time — which matters more than any other detail in this guide.
 
-On my Signature tours I fight for access most visitors never get:
+## When Should I Go?
 
-- **Volunteer Programme**: Spend a day as a panda keeper, preparing bamboo and helping with daily care
-- **Red Panda Encounter**: Get up close with the adorable (and equally endangered) red pandas
-- **Behind-the-Scenes Tour**: Visit the nursery and learn about breeding programmes from researchers
+**At opening, always.** Gates open at 7:30am from March to October and 8:00am from November to February, with the park cleared at 6:00pm. Pandas eat their main bamboo meal between roughly 8:30 and 10:30am, and that feeding window is when they are genuinely active — climbing, tumbling, jockeying for the best stalks. By early afternoon nearly every adult is asleep in a tree fork, and an 11am arrival sees a park of black-and-white cushions.
 
-**Beyond the Pandas**
+Season matters less than time of day, but cooler months help: pandas are built for cold and dislike heat, so on warm days (over about 26 degrees) they retreat indoors to air conditioning by mid-morning. In July and August, treat 7:30 to 10am as the entire visit. September to May is more forgiving.
 
-Chengdu offers much more than just pandas. Don't miss:
+## What Does It Cost and How Do Tickets Work?
 
-- The spicy delights of authentic Sichuan hot pot
-- Traditional tea houses where locals have gathered for centuries
-- The ancient Jinli Street, perfect for evening strolls and souvenir shopping
+The standard adult ticket is around **55 yuan — roughly NZD 13** — with children under 6 free, ages 6 to 17 half price, and over-60s free on presentation of a passport. Entry is by **real-name reservation**: every ticket is linked to a passport number, bookable up to 14 days ahead on the [official ticketing site](https://m.panda.org.cn/en/service/ticket/), and you show the passport at the gate. On busy dates — Chinese public holidays especially — tickets sell out days ahead.
 
-**Baker\'s Insider Tip**
+On CTS tours the reservations are made for the whole group as soon as your booking is confirmed, which is one less thing to manage in Chinese.
 
-*"Most tourists rush through the panda base in two hours. I recommend spending at least half a day. The morning feeding is magical, but watching pandas nap in the afternoon bamboo groves is equally enchanting. And don't skip the red pandas—they're incredibly playful and often more active than their larger cousins."*
+## How Should I Plan the Morning?
 
-Planning your panda adventure? I slot Chengdu into routes like [Best of China — Discovery](/tours/china/discovery/essentials) or our [Chengdu stopover](/tours/china/stopover/chengdu) when you only have a few days.
+Walk uphill first, straight to the far enclosures while the crowds pool near the entrance, then work back down. Priorities in order:
+
+- **The adult and sub-adult enclosures** during the morning feed — the heart of the visit
+- **The nursery** — depending on season, cubs from incubator-size to tumbling toddlers
+- **The 'kindergarten'** — juveniles housed together, reliably the most entertaining animals on the site
+- **The red pandas** — quicker, closer and more active than their famous cousins; do not skip them
+
+Allow three to four hours on foot. Paths are well made but the site is genuinely hilly; a shuttle cart runs the main loop for a few yuan if anyone in your group needs it.
+
+## Can I Get Closer — Volunteering and Beyond?
+
+Holding a panda is no longer possible anywhere reputable; the photo sessions were ended on welfare grounds, and I consider that a good thing. The ethical alternative is a **keeper-for-a-day volunteer programme** at one of the bases outside the city — most commonly **Dujiangyan Panda Valley**, about 90 minutes from Chengdu — where you spend the day preparing bamboo and panda cakes, cleaning enclosures, and observing at close range. It books out well ahead; tell us early and we build it into your itinerary as a full-day extension.
+
+## What Else Fits Around the Pandas?
+
+Chengdu deserves more than a panda stopover. The classic pairing is pandas at dawn, then an afternoon in the old lanes and teahouses — see my guide to [things to do in Chengdu beyond the pandas](/blog/chengdu-things-to-do). Food is the city's other headline: Chengdu is a UNESCO City of Gastronomy, and my [Sichuan food guide](/blog/chengdu-spicy-cuisine-culture) covers what to eat and where. With an extra day, the [Leshan Giant Buddha](/blog/leshan-giant-buddha-day-trip) makes an outstanding day trip.
+
+**Baker's insider tip:** most visitors give the base two hours and sprint the main loop. Give it the half day. The morning feed is the spectacle, but the slow hour afterwards — pandas drowsing into nap position in the bamboo groves — is the part my clients talk about at dinner.
+
+## Seeing the Pandas With CTS
+
+Every CTS itinerary that touches Sichuan builds the panda base in at opening time with tickets pre-arranged — see our [Chengdu panda sanctuary page](/chengdu-panda-sanctuary) for how it works on tour. I slot Chengdu into routes like [Best of China — Discovery](/tours/china/discovery/essentials) or our [Chengdu stopover](/tours/china/stopover/chengdu) when you only have a few days, and our full [Chengdu tours](/chengdu-tours) page lists every departure.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -99,7 +138,7 @@ Planning your panda adventure? I slot Chengdu into routes like [Best of China �
     heroImage: '/blog/sourced/chengdu-panda-base-pandas-climbing.jpg',
     heroImageCredit: 'Photo: Jimmyshjj, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-03-10',
-    readTime: '4 min read'
+    readTime: '8 min read'
   },
   {
     id: 'blog-3',

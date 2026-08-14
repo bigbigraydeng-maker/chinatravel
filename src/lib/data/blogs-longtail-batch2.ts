@@ -77,50 +77,81 @@ My **Fire & Fuzz** 10-day tour allocates 4 nights in Chongqing specifically to a
     heroImage: '/blog/sourced/chongqing-yuanyang-hotpot.jpg',
     heroImageCredit: 'Photo: Akira CA, CC0, via Wikimedia Commons',
     publishedAt: '2026-04-27',
-    readTime: '5 min read',
+    readTime: '8 min read',
+    faqs: [
+      {
+        question: 'What is Chongqing hot pot?',
+        answer: 'Chongqing hot pot is the original Sichuan-region hot pot: a rolling broth of beef tallow, dried chillies and Sichuan peppercorn, kept at the boil in the centre of the table while diners cook thin-sliced meats, offal and vegetables in it. The signature sensation is mala — heat from the chillies plus a tingling numbness from the peppercorns.'
+      },
+      {
+        question: 'How spicy is Chongqing hot pot really?',
+        answer: 'The full-strength local broth is genuinely intense — most first-time visitors find it stronger than anything served in NZ. But every restaurant lets you choose your level (mild, medium, extra) and nearly all offer a split yuanyang pot with a mild broth on one side, so mixed groups are easy. The sesame-oil dipping sauce also takes the edge off every bite.'
+      },
+      {
+        question: 'What should I order at a Chongqing hot pot restaurant?',
+        answer: 'Safe essentials: thin-sliced beef, lotus root, potato, tofu skin and mushrooms. Local classics worth trying: tripe (maodu), duck intestine, and duck-blood curd. Order the split pot, go hungry, and expect the meal to run two hours or more — it is an evening, not a stop.'
+      },
+      {
+        question: 'How much does hot pot cost in Chongqing?',
+        answer: 'A generous hot pot dinner in a good local restaurant typically runs 80 to 150 yuan per person — roughly NZD 20 to 40 — including drinks. Famous-name restaurants in tourist areas charge more; the quality difference is usually small.'
+      },
+      {
+        question: 'Is hot pot suitable for vegetarians?',
+        answer: 'Yes, with planning. Order a mushroom or tomato broth on one side of a split pot, and cook from the large vegetable menu — lotus root, tofu in several forms, mushrooms, greens, konjac. In dedicated hot pot restaurants the broths are usually made in bulk with meat stock, so strict vegetarians should say so clearly; your guide or hotel can write the request in Chinese.'
+      },
+    ],
     content: `
-I'm **Baker Gu**, CTS's China travel specialist. I've been eating hot pot in Chongqing for longer than I've been running tours there, and the first thing I tell every New Zealand client before we sit down is this: Chongqing hot pot is not the hot pot you've had at a Chinese restaurant in Auckland. It's a completely different thing. Here's what to expect.
+I'm **Baker Gu**, CTS's China travel specialist. I've been eating hot pot in Chongqing far longer than I've been running tours there, and the first thing I tell every New Zealand client before we sit down is this: Chongqing hot pot is not the hot pot you've had in Auckland. It is louder, hotter, more social and more fun — and if you learn five or six menu items before you go, it might be the single best evening of your China trip. Here's the full picture.
 
-## What Makes Chongqing Hot Pot Different
+## Where Does Chongqing Hot Pot Come From?
 
-Hot pot exists across China — [Shanghai](/shanghai-tours) has it, [Beijing](/beijing-tours) has it, [Chengdu](/chengdu-tours) has its own version. But Chongqing is the origin city, and the original version uses a base broth that most versions outside of Chongqing have deliberately toned down.
+The dish started on the docks. In the late Qing era, boatmen and porters along the Jialing and Yangtze rivers cooked cheap offcuts — tripe, duck intestine, blood curd — in fierce, numbing broths that covered the ingredients' origins and kept out the river-valley damp. What began as workers' food moved indoors, went upmarket, and became the city's defining dish. Chongqing today has tens of thousands of hot pot restaurants — more per head than any other Chinese city — and locals treat the original beef-tallow broth as a point of civic pride.
 
-The Chongqing broth starts with **beef tallow** — rendered beef fat — as the base, with dried chillies and **Sichuan peppercorn** (花椒, huājiāo). The Sichuan peppercorn is key: it doesn't just add heat, it creates a numbing sensation called *máláng* (麻辣) — a combination of spice and tingling that affects your lips and tongue in a way that's genuinely novel if you've never experienced it. Most people find they like it. Some find it overwhelming. I recommend everyone try the original broth at least once.
+That history explains the menu: the classic items are still the dock-worker cuts, now eaten by choice rather than necessity.
 
-## The Split Pot
+## What Makes It Different From Other Hot Pot?
 
-Almost every Chongqing hot pot restaurant offers a **split pot** (鸳鸯锅, yuānyāng guō) — one half original broth, one half a milder alternative (often tomato, mushroom, or plain chicken stock). I order this for every group that has mixed spice tolerance. It also means you can taste-test both broths as the evening progresses, which is genuinely useful.
+Every region of China has hot pot — [Beijing](/beijing-tours) has its lamb and copper pots, [Shanghai](/shanghai-tours) its milder styles, and [Chengdu](/chengdu-tours) its own butter-broth variant. Chongqing's version is defined by two things:
 
-## What to Order
+- **Beef tallow.** The broth base is rendered beef fat, not oil or stock. It carries flavour into everything you cook and gives the surface its glossy red sheen.
+- **Mala.** Dried chillies bring the heat; Sichuan peppercorn (huajiao) brings a tingling, faintly citrus numbness on the lips and tongue. The combination — ma (numbing) plus la (hot) — is the whole point, and it is genuinely novel the first time.
 
-The components you cook in the broth are as important as the broth itself. Here's what I order at every hot pot dinner:
+You will also see the pot itself divided into a nine-square grid (jiugongge). The squares are not decorative: different zones of the pot hold different temperatures, so quick-cooking items go in the fast-boiling centre and slow items simmer at the edges.
 
-**Must-order:**
-- **Thinly sliced beef** (肥牛, féiníu) — cooks in 20 seconds, absorbs the broth beautifully
-- **Tripe** (毛肚, máodù) — chewy, flavour-absorbing, Chongqing essential
-- **Lotus root** (莲藕, liánǒu) — holds its texture, good balance to the meat
-- **Tofu skin** (豆皮, dòupí) — soaks up broth better than any other tofu form
+## How Do I Order Without Reading Chinese?
 
-**Worth trying:**
-- **Duck intestine** (鸭肠, yācháng) — cooks in seconds, crunchy texture
-- **Mao blood curd** (毛血旺, máoxuěwàng) — duck blood tofu, sounds alarming, tastes excellent
-- **Brain flower** (脑花, nǎohuā) — pork brain in broth, authentic Chongqing, not for everyone
+Nearly every restaurant offers a **split pot** (yuanyang guo) — original broth on one side, mild tomato, mushroom or chicken broth on the other. Order it. Even chilli-proof groups benefit from tasting both.
 
-**The dipping sauce:** You mix your own from a sauce station — sesame oil base, then you add garlic, spring onion, and chilli to taste. The dipping sauce moderates the broth heat; don't skip it.
+You will be asked for a spice level: **wei la** (mild), **zhong la** (medium), **te la** (extra). For a first visit, medium on the spicy side of a split pot is the honest sweet spot.
 
-## How the Evening Works
+Then tick boxes on the order sheet. My standing order for every group:
 
-Hot pot in Chongqing is not a quick meal. You arrive, order everything at once, wait for the broth to reach a rolling boil, and then cook in batches across the next 2–3 hours. It's communal — everyone reaches across the table, the conversation is loud because the kitchen noise is loud, and the evening develops its own rhythm.
+- **Thin-sliced beef** (feiniu) — 20 seconds in the pot, absorbs the broth beautifully
+- **Tripe** (maodu) — the Chongqing essential; count to fifteen and pull it out
+- **Lotus root** (lian'ou) — sweet, crunchy, the perfect counterweight
+- **Tofu skin** (doupi) — soaks up more flavour than any other tofu form
+- **Potato and mushrooms** — reliable crowd-pleasers for cautious eaters
+- **Duck intestine** (yachang) — for the adventurous; seconds only, wonderfully crunchy
 
-Go hungry. The amounts are large. Order more than you think you need and expect to leave full.
+At the sauce station, build the standard dip: sesame oil base, crushed garlic, spring onion, coriander if you like it. The oil coats and cools each bite — it is not optional, it is the brake pedal.
 
-## When and Where
+## What Is the Evening Actually Like?
 
-Most Chongqing hot pot restaurants open from 11am but the proper time to go is **7pm onwards**, when the restaurants fill up and the city's evening energy comes into full effect. For first-time visitors, I recommend choosing a restaurant in the Jiefangbei area or near Hongyadong — both are close to the night views, so dinner flows naturally into an evening walk.
+Hot pot is not a quick meal; it is the whole night's entertainment. You order everything at once, the broth comes to a rolling boil, and the table settles into a two-to-three-hour rhythm of cooking, talking, and reaching across one another. The room will be loud. Iced soy milk or a cold local beer are the traditional coolants. Go hungry, wear nothing precious — the broth spits — and expect to leave very full for roughly 80 to 150 yuan a head (about NZD 20 to 40).
 
-On the **Fire & Fuzz** tour, I include a guided hot pot dinner as a structured group experience with ordering guidance — important for first-timers who don't know what they're looking at on a menu in Mandarin. You can also explore independently on free evenings once you know what to do.
+Locals eat hot pot year-round, including in Chongqing's steaming summers, on the theory that sweating is part of the experience. Evening from 7pm is the proper sitting, when the restaurants fill and the city's energy arrives with them.
 
-[View the Fire & Fuzz tour →](/tours/china/discovery/chongqing-chengdu)
+## Where Should I Eat It?
+
+For a first visit, pick a busy restaurant in the Jiefangbei area or near [Hongyadong](/hongyadong-chongqing) — dinner then flows straight into the riverside lights and the best of [Chongqing after dark](/blog/chongqing-nightlife-guide). Skip anywhere with a tout outside and photos of celebrities in the window; follow the queues of locals instead.
+
+If your route runs on to Chengdu, taste the two cities' styles side by side — the differences are real, and the argument over which is better has run for a century. Our guide to [Sichuan food culture in Chengdu](/blog/chengdu-spicy-cuisine-culture) covers the other half of the story.
+
+## Eating Hot Pot on a CTS Tour
+
+On our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) I include a guided hot pot dinner early in the trip — ordering handled, dishes explained, spice levels negotiated — so that by your free evenings you can walk into any local restaurant and order with confidence. That first supervised dinner is the difference between eating hot pot and understanding it.
+
+[View the Fire and Fuzz tour →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
@@ -192,7 +223,7 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
     tags: ['China Visa', 'Visa Free', 'New Zealand', 'China Travel', 'NZ Passport', '2026'],
     heroImage: '/images/great-wall-cts-2.jpg',
     publishedAt: '2026-04-27',
-    readTime: '5 min read',
+    readTime: '7 min read',
     faqs: [
       {
         question: 'Do New Zealand citizens need a visa for China?',
@@ -200,68 +231,77 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
       },
       {
         question: 'How long can NZ passport holders stay in China visa-free?',
-        answer: 'Up to 30 days per visit. Standard CTS Tours China holiday packages (10–15 days) are well within this limit.'
+        answer: 'Up to 30 days per visit. There is currently no published limit on the number of visa-free entries — only on each individual stay. Standard CTS Tours China holiday packages of 10 to 15 days sit comfortably within the limit.'
       },
       {
-        question: 'What documents do I need for China visa-free entry as a New Zealander?',
-        answer: 'You need: (1) a valid NZ ordinary passport with at least 6 months\' remaining validity, (2) a return or onward ticket showing you\'ll leave within 30 days, (3) accommodation confirmation or a tour itinerary. CTS Tours provides all necessary travel documents with your booking.'
+        question: 'What documents do I need at the border as a New Zealander?',
+        answer: 'Three things: (1) an NZ ordinary passport with at least 6 months\' validity remaining, (2) a return or onward ticket showing you leave within 30 days, (3) accommodation confirmation or a tour itinerary. CTS Tours provides the necessary documentation with every booking.'
       },
       {
-        question: 'Does the NZ visa-free policy apply to NZ permanent residents?',
-        answer: 'The 30-day visa-free policy applies to New Zealand ordinary (blue) passport holders only. New Zealand permanent residents travelling on non-NZ passports need to check the entry requirements for their own passport\'s country.'
+        question: 'Does the visa-free policy apply to NZ permanent residents?',
+        answer: 'The 30-day visa-free policy applies to New Zealand ordinary (blue) passport holders only. NZ permanent residents travelling on another country\'s passport must check the rules for that passport — many nationalities have their own visa-free arrangements, but not all.'
+      },
+      {
+        question: 'Does Hong Kong count towards my 30 days in mainland China?',
+        answer: 'No. Hong Kong and Macau are separate immigration zones with their own entry rules for NZ passports. Crossing from the mainland into Hong Kong ends your mainland stay; entering the mainland again starts a fresh 30-day count.'
       },
       {
         question: 'Is the China visa-free policy for NZ permanent?',
-        answer: 'The policy is currently published until 31 December 2026. It has been extended repeatedly since 2024 and CTS Tours treats it as functionally stable, but we recommend confirming the policy status remains current before booking, as changes can occur without long advance notice.'
-      }
+        answer: 'It is currently published until 31 December 2026. It has been extended repeatedly since 2024 and we treat it as functionally stable, but confirm the status before booking — policy changes can arrive with little notice. Our China visa guide is kept current.'
+      },
     ],
     content: `
-NZ passport holders can enter mainland China **visa-free for up to 30 days** for tourism — no visa application required. The policy applies to ordinary (blue) New Zealand passports and is published until 31 December 2026. You need a return ticket, 6-month passport validity, and accommodation confirmation. All CTS Tours China packages include the documentation you need at the border.
+NZ passport holders can enter mainland China **visa-free for up to 30 days** per visit — no application, no embassy queue, no fee. The policy applies to ordinary (blue) New Zealand passports and is published until **31 December 2026**. At the border you need a return ticket, six months of passport validity, and accommodation confirmation. Every CTS Tours China package includes the documentation you need.
 
 ---
 
-I'm **Baker Gu**, CTS's China travel specialist. The visa-free policy for New Zealand passport holders visiting China is one of the most useful pieces of news I've shared with Kiwi clients in years. But it comes with conditions that a surprising number of people miss — and getting it wrong at the airport is not a position you want to be in. Here's the honest breakdown.
+I'm **Baker Gu**, CTS's China travel specialist. The visa-free policy for New Zealand passport holders is the single most useful piece of China travel news I've shared with Kiwi clients in years — it removes the cost, the courier envelopes, and the two-week wait that used to sit between you and a China holiday. But it comes with conditions that a surprising number of people miss, and getting them wrong at the airport is not a position you want to be in. Here's the honest breakdown.
 
-## What the Policy Says
+## What Does the Policy Actually Say?
 
-As of 2026, New Zealand ordinary passport holders can enter mainland China visa-free for **up to 30 days** per visit, for tourism and other short-stay purposes. The policy is published until **31 December 2026**, and has been extended repeatedly since it was introduced — I've been treating it as functionally stable while advising clients to confirm the status remains current before booking.
+New Zealand ordinary passport holders can enter mainland China visa-free for **up to 30 days per visit**, for tourism, family visits, exchange visits, transit, and short business trips. The policy is published until **31 December 2026** and has been extended repeatedly since it was introduced in 2024.
 
-This applies to **ordinary (blue) NZ passports**. Official/diplomatic passport holders have separate arrangements. New Zealand permanent residents holding non-NZ passports need to check their own passport's policy.
+Two details worth knowing:
 
-## What Qualifies
+- **Multiple entries are fine.** There is currently no published cap on how many visa-free visits you can make — only on the length of each stay.
+- **It applies to ordinary (blue) NZ passports.** Diplomatic and official passports have separate arrangements, and NZ permanent residents travelling on another passport must check that passport's rules.
 
-The visa-free entry applies to tourism, visiting family or friends, transit, and short business visits (meetings, negotiations — not working or earning income). If your trip is a standard holiday with a New Zealand-based tour operator, you qualify.
+## What Do I Show at the Border?
 
-CTS Tours' October Discovery departures — [A Tale of Two Cities (Beijing & Xi'an)](/campaigns/october-2026/tale-of-two-cities) and [Shanghai & Surroundings](/campaigns/october-2026/shanghai-surroundings) — are both 10-day tours, well within the 30-day limit.
+Visa-free does not mean question-free. Chinese immigration can ask for evidence on arrival, and the officers are entitled to refuse entry if you cannot show it. Carry these:
 
-## What to Carry at the Border
+- **A return or onward ticket** proving you leave within 30 days. This is the most commonly missed item.
+- **Accommodation evidence** — hotel confirmations, or a tour itinerary listing your hotels.
+- **A passport with 6 or more months of validity** remaining on the day you enter.
+- **Proof of purpose** if asked — a tour confirmation letter covers this; CTS issues one with every booking.
 
-The visa-free policy doesn't mean the immigration officer waves you through without questions. You need to be prepared to show:
+The arrival process itself is straightforward: fingerprints at a self-service kiosk, an arrival card (short form, English available), then the immigration counter. Allow 20 to 40 minutes at major airports.
 
-**1. A return or onward ticket.** This is the most commonly missed item. If you can't demonstrate that you're leaving China within 30 days, the officer can refuse entry. Our tour documentation handles this, but independent travellers must have this ready.
+## What Does Not Qualify?
 
-**2. Accommodation evidence.** Hotel booking confirmation, or a tour itinerary that lists accommodation. Airport immigration occasionally asks for this.
+- Working, journalism, or study — these still need the appropriate visa
+- Stays longer than 30 days
+- Travelling on a non-NZ passport, even as an NZ permanent resident
+- Airline crew and some special categories with their own rules
 
-**3. A valid passport with at least 6 months' remaining validity.** This is standard for most destinations but worth double-checking — Chinese immigration is strict about it.
+If your plans might stretch past 30 days, talk to us before you fly — extending inside China is possible in some cases but is not something to improvise.
 
-**4. Proof of tour or travel purpose.** Not always asked for, but CTS provides a travel confirmation document that covers this.
+## How Does Hong Kong Fit In?
 
-## What Doesn't Qualify
+Hong Kong and Macau are separate immigration zones. NZ passport holders get their own visa-free arrangements there, and time spent in Hong Kong or Macau does not count against your 30 mainland days. Crossing out of the mainland ends that stay; re-entering starts a fresh 30-day count. Many of our longer itineraries use this naturally.
 
-- Work, employment, journalism, or study exceeding the short-stay category
-- Stays over 30 days
-- Holding a non-NZ passport (even as a NZ permanent resident)
-- Transit through China with an onward connection of more than 144 hours (which uses a separate TWOV policy, not the 30-day tourism rule)
+Separately, China runs a **240-hour visa-free transit** scheme for passengers connecting through to a third country. For NZ passport holders the 30-day policy is more generous, so the transit scheme rarely matters for Kiwis — but you may see it mentioned online; do not confuse the two.
 
-## The 2026 Situation
+## What Should NZ Travellers Do With This?
 
-The China visa-free policy for New Zealand has been extended and expanded since 2024. As of April 2026, the 30-day leisure tourism entry is the most generous arrangement available without a visa application. My practical advice: check the [China Visa Guide for New Zealanders](/china-visa-guide-for-new-zealanders) I maintain on the CTS website for the most current status before you book — policy changes occasionally without long advance notice.
+The practical effect: a China holiday now books like a Fiji or Bali holiday — passport, flights, go. Our 10-day October Discovery departures — [A Tale of Two Cities (Beijing and Xi'an)](/campaigns/october-2026/tale-of-two-cities) and [Shanghai and Surroundings](/campaigns/october-2026/shanghai-surroundings) — both sit well inside the 30-day window, as does every package on our [China tours page](/china-tours).
 
-## Booking a Tour Under Visa-Free Policy
+Before you book, two sensible checks:
 
-All [CTS Tours China packages](/china-tours-from-new-zealand) are structured to sit comfortably within the 30-day visa-free window. Our [October Discovery 10-day tours](/small-group-china-tours), Signature multi-destination routes, and custom itineraries all come with full documentation you need at the border. If you're self-booking and not travelling with us, make sure you have your own return ticket and accommodation confirmed before you fly.
+- Read the current status on our [China Visa Guide for New Zealanders](/china-visa-guide-for-new-zealanders) — I keep it updated whenever the policy moves.
+- Check the New Zealand government's [SafeTravel advisory for China](https://www.safetravel.govt.nz/destinations/asia/china) for general travel advice.
 
-For any questions about current entry requirements, [contact the CTS team](/contact) — we keep current on this because our clients' trips depend on it.
+And if you are still deciding when to go, our guide to the [best time to visit China](/best-time-to-visit-china) covers the seasons month by month. The short version: April, May, September and October are the sweet spots — and with no visa to arrange, you can decide late.
     `
   },
 
