@@ -54,6 +54,8 @@ export interface DestinationGuide {
   heroImage: string;
   /** Optional Tailwind classes merged onto the guide hero background image (e.g. object-[center_20%]). */
   heroImageClassName?: string;
+  /** Attribution line required for CC-licensed hero images. See public/blog/sourced/CREDITS.json. */
+  heroImageCredit?: string;
   introText: string[];
   sections: Section[];
   attractions: Attraction[];
@@ -748,8 +750,8 @@ export const guilinGuide: DestinationGuide = {
   keywords: ['Guilin travel', 'Li River', 'karst mountains', 'Yangshuo', 'cormorant fishing'],
   h1: 'Guilin Travel Guide: Where Mountains Meet Water',
   heroSubtitle: 'China\'s Most Picturesque Landscape',
-  heroImage: `${TI}/guilin-river-valley.jpg`,
-  heroImageClassName: 'object-[center_35%]',
+  heroImage: '/images/tours/Li-River-1.jpeg',
+  heroImageClassName: 'object-[center_45%]',
   introText: [
     'Guilin lies in Guangxi in southern China. Limestone peaks rise straight from the Li River. The scenery has inspired Chinese art for centuries.',
     'The Li River cruise to Yangshuo is the classic experience. You pass peaks, villages, and bamboo for about eighty-three kilometres.',
@@ -2058,8 +2060,9 @@ export const hangzhouGuide: DestinationGuide = {
   keywords: ['Hangzhou', 'West Lake', 'silk', 'tea', 'gardens'],
   h1: 'Hangzhou: Silk Capital & West Lake Paradise',
   heroSubtitle: 'Where History & Natural Beauty Merge',
-  heroImage: `${TI}/hangzhou-west-lake.jpg`,
-  heroImageClassName: 'object-[center_50%]',
+  heroImage: '/blog/sourced/hangzhou-west-lake-broken-bridge.jpg',
+  heroImageClassName: 'object-[center_55%]',
+  heroImageCredit: 'Photo: Jakub Hałun, CC BY-SA 4.0, via Wikimedia Commons',
   introText: [
     'Hangzhou, located 180km south of Shanghai, served as capital of the Southern Song Dynasty (1127-1279). The city\'s reputation for beauty—particularly West Lake—inspired poets, painters, and scholars across centuries. The saying "Above there is paradise (heaven), below there is Hangzhou" reflects the city\'s legendary aesthetic charm. Modern Hangzhou combines heritage preservation with contemporary development, evident in its role as Chinese internet technology centre (Alibaba headquarters).',
     'West Lake (Hangzhou), a UNESCO World Heritage site, represents the primary attraction. The scenic lake—surrounded by temples, gardens, causeways, and misty mountains—creates one of China\'s most photographed landscapes. The "Ten Views of West Lake" define seasonal visiting patterns and classic beauty standards. Tea culture pervades Hangzhou; Longjing (Dragon Well) tea, grown on surrounding hillsides, represents premium Chinese tea.',

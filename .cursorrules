@@ -228,12 +228,10 @@ The `DestinationGuide.tsx` is used by all 21 guide pages. It has:
 
 ### Image Paths
 ```
-/images/tours/          # Tour product images (44 images)
-/images/guides/         # Guide page images
-  /beijing/             # 9 images: forbidden-city-*, great-wall-*, beijing-*
-  /shanghai/            # 5 images: shanghai-*
-  /chengdu/             # 2 images: chengdu-*
-  /guilin/              # 2 images: guilin-*
+/images/tours/          # Tour + guide images (local, served as-is — no image loader)
+                        # Guide heroes come from here, from Supabase tour-images,
+                        # or from /blog/sourced/ (CC images — must carry heroImageCredit).
+                        # There is NO /images/guides/ directory; do not create one.
   /[other-guides]/      # Each has hero.jpg + 1-2 supporting images
 ```
 
@@ -278,7 +276,7 @@ interface DestinationGuide {
   keywords: string[];
   h1: string;
   heroSubtitle: string;
-  heroImage: string;         // '/images/guides/[dest]/hero.jpg'
+  heroImage: string;         // Supabase tour-images URL, or '/images/tours/<name>.jpg'
   introText: string[];       // 3 paragraphs
   sections: Section[];       // 4-6 sections
   attractions: Attraction[]; // 4-8 attractions
@@ -301,7 +299,7 @@ interface DestinationGuide {
 2. Create `src/app/[slug]/page.tsx` using the standard template (copy any existing guide page)
 3. Add entry to `GUIDE_CONFIG` in `DestinationGuide.tsx`
 4. Add to `sitemap.ts` guide list
-5. Create image directory `public/images/guides/[dest]/` with `hero.jpg`
+5. Point `heroImage` at an existing, visually verified image (open it — do not trust the filename)
 6. Commit: `feat: add [destination] travel guide`
 
 ### Add a new tour

@@ -350,6 +350,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
         subtitle={guide.heroSubtitle}
         backgroundImage={guide.heroImage}
         imageClassName={guide.heroImageClassName}
+        imageCredit={guide.heroImageCredit}
       />
 
       {/* ── Breadcrumb ── */}
