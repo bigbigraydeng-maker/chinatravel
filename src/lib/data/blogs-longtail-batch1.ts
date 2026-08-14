@@ -185,55 +185,76 @@ CTS Tours offers **A Tale of Two Cities** — 10 days, Beijing + Xi'an, guided t
     tags: ['Beijing', 'Xi\'an', 'High Speed Train', 'China Rail', 'China Travel Tips'],
     heroImage: '/blog/group-bullet-train-large.jpg',
     publishedAt: '2026-04-25',
-    readTime: '5 min read',
+    readTime: '8 min read',
+    faqs: [
+      {
+        question: 'How long does the high-speed train from Beijing to Xi\'an take?',
+        answer: 'Most G-class services take between 4 and 5 hours; the fastest scheduled trains complete the 1,200 km run in about 4 hours 11 minutes. Around 30 high-speed departures run daily from early morning to evening, so there is almost always a time that fits your day.'
+      },
+      {
+        question: 'Which stations does the Beijing to Xi\'an train use?',
+        answer: 'High-speed services depart from Beijing West Railway Station and arrive at Xi\'an North Railway Station. Both are large, modern and metro-connected — allow 30 to 40 minutes to reach Beijing West from the city centre, and about the same from Xi\'an North into central Xi\'an on Metro Line 2.'
+      },
+      {
+        question: 'How much does the Beijing to Xi\'an train cost?',
+        answer: 'A second-class seat costs roughly 470 to 580 yuan — around NZD 110 to 140 — depending on the service. First class and business class cost more for wider seats and quieter carriages. On CTS guided tours the ticket is included and arranged in advance.'
+      },
+      {
+        question: 'Is the train better than flying between Beijing and Xi\'an?',
+        answer: 'For almost all travellers, yes. City centre to city centre, the total journey time is comparable once airport transfers, check-in and security are counted — and the train is more comfortable, more punctual, more scenic and produces far less carbon per passenger.'
+      },
+      {
+        question: 'Do I need my passport to board a train in China?',
+        answer: 'Yes. Chinese rail tickets are real-name tickets linked to your passport, and you present the physical passport at the station gates. Carry it on the day of travel — a photo of it is not accepted.'
+      },
+    ],
     content: `
-The high-speed train from Beijing to Xi'an is one of those travel experiences that changes how you think about transport. It's fast, comfortable, punctual, and the journey itself — 1,200km across the North China Plain and into Shaanxi Province — is genuinely interesting to watch unfold through the window.
+The high-speed train from Beijing to Xi'an is one of those travel experiences that changes how you think about transport. Around 30 G-class services a day cover the 1,200 km in as little as 4 hours 11 minutes, city centre to city centre, at up to 300 km/h — and the journey across the North China Plain into the loess hills of Shaanxi is genuinely worth watching. If you are visiting both cities, the train beats flying on almost every measure. Here is how it works.
 
-If you're visiting both cities on a China tour, this train is almost always the right choice over flying. Here's everything you need to know.
+## What Are the Basics?
 
-## The Basics
+- **Route:** Beijing West Railway Station → Xi'an North Railway Station
+- **Trains:** G-class (gaotie) high-speed services, roughly 30 per day from early morning to evening
+- **Journey time:** about 4 to 5 hours; the fastest services run about 4 hours 11 minutes
+- **Distance and speed:** roughly 1,200 km at up to 300 km/h
+- **Cost:** second class roughly 470 to 580 yuan (about NZD 110 to 140); first and business class higher
 
-**Route:** Beijing South Station → Xi'an North Station
-**Train class:** G-class (Gaotie) high-speed, 2nd class seating
-**Journey time:** Approximately 4–5 hours depending on service
-**Top speed:** Up to 300km/h
-**Distance:** Approximately 1,215km
+Seat classes are simple: **second class** is the standard booking — comfortable, clean, a 3+2 layout with decent legroom, entirely adequate for four hours. **First class** gives a 2+2 layout and more recline. **Business class** is an airline-style lie-flat seat at several times the price. A catering trolley passes regularly with drinks, snacks and instant noodles, and every carriage has hot-water dispensers — bring tea or pot noodles like the locals do. Full schedules and fares are published on sites like [Travel China Guide](https://www.travelchinaguide.com/china-trains/beijing-xian-highspeed.htm).
 
-The G-class trains are China's flagship high-speed services — wide seats, quiet carriages, smooth ride, and a catering trolley that passes regularly with drinks, snacks, and instant noodles. 2nd class is the standard booking for tour groups; it's comfortable and entirely adequate for a 4-hour journey.
+## How Does Boarding Work?
 
-## Beijing South Station
+Chinese rail runs on **real-name ticketing linked to your passport** — there is no paper ticket to lose. You show your physical passport at the entry gates, at the boarding gate, and occasionally on board. Two practical notes:
 
-Beijing South is one of China's largest railway stations — a vast, modern terminal with multiple levels for high-speed and conventional rail. It's not in central Beijing; allow at least 30–40 minutes from the city centre by metro or taxi, and arrive at least 30 minutes before departure.
+- **Arrive 40 to 45 minutes early.** Beijing West is one of the largest railway stations in Asia; security screening and finding your gate take time, and boarding gates close a few minutes before departure.
+- **Luggage is easy.** There are no airline-style weight checks. Racks above the seats take cabin bags; shelves at the carriage ends take large suitcases.
 
-On a guided tour, your guide handles the logistics: tickets are collected in advance, the group moves through the station together, and boarding is straightforward. For independent travellers, the station is well-signposted in English, and the process — showing your ticket at the gate, finding the platform, boarding the correct carriage — is manageable with basic preparation.
+Beijing West is about 30 to 40 minutes from central Beijing by metro or taxi. At the other end, Xi'an North connects to central Xi'an on Metro Line 2 in around 25 minutes, or 30 to 40 minutes by taxi.
 
-## Xi'an North Station
+On a guided tour none of this is your problem: tickets are issued in advance, and your guide walks the group from hotel to seat.
 
-Xi'an North is similarly large and modern, located about 15km from the city centre. Taxis and the metro (Line 2) connect it to the city. Again, on a guided tour, your guide meets the group at the station exit and transfers you to your hotel.
+## What Do I See Out the Window?
 
-## The Journey
+The first hour crosses the North China Plain — one of the most densely farmed and historically consequential landscapes on earth, scrolling past at 300 km/h in a way that gives you a physical sense of China's scale no statistic can. The line threads through Shijiazhuang and Zhengzhou, crosses the Yellow River, and then the land begins to fold: the flat plain gives way to the terraced loess hills of Shaanxi, the yellow-earth plateau where Chinese civilisation keeps its oldest records. By the time you slide into Xi'an North you have crossed something you can feel as well as see.
 
-The train departs Beijing and passes through southern Beijing's outer suburbs before entering the North China Plain — a vast, flat agricultural landscape that extends for hours. This is one of the most densely populated and historically significant agricultural regions in the world, and watching it scroll past at 300km/h gives you a visceral sense of China's scale that no map or statistic can replicate.
+Sit on the **left side heading to Xi'an** for the better river views, and keep your camera out around the Yellow River crossing.
 
-As the train approaches Xi'an, the landscape changes: the plains give way to the hills of Shaanxi Province, the loess plateau that has shaped Chinese civilisation since its earliest recorded history. By the time you arrive at Xi'an North, you have crossed something you can feel as well as see.
+## Why Not Just Fly?
 
-## Why Not Fly?
+We book the train for our groups deliberately, and clients thank us for it afterwards:
 
-Several reasons, in rough order of importance:
+- **The total time is a wash.** Add airport transfers at both ends, 90-minute check-in, security and taxiing, and the plane's advantage evaporates.
+- **The stations are central and metro-connected;** the airports are not.
+- **Punctuality.** Chinese high-speed rail runs to the minute; domestic flights are far more weather- and traffic-prone.
+- **Comfort.** You can stand, walk, and watch the country go by with a cup of tea.
+- **Carbon.** High-speed rail emits a fraction of the CO2 per passenger of a domestic flight.
 
-**The airport experience is worse.** Domestic air travel in China means getting to the airport 90 minutes before departure, check-in queues, security, gate waits, boarding, taxiing — add it up and the time saving over the train is often minimal, while the comfort deficit is significant.
+## How Does This Fit an NZ Itinerary?
 
-**The train stations are more central.** Beijing South and Xi'an North are both connected to the city metro. The airports are further out and less convenient.
+Beijing plus Xi'an is the classic first-time China route — capital, Great Wall, then the [Terracotta Warriors](/blog/terracotta-warriors-guide-nz) — and the train is the hinge between them. Our [10-day Beijing and Xi'an itinerary](/blog/beijing-xian-itinerary-10-days) shows how the days fit together, and with the current [30-day visa-free entry for NZ passports](/china-visa-guide-for-new-zealanders) the whole trip books as easily as a Pacific holiday.
 
-**The journey is part of the experience.** The train crossing northern China is genuinely interesting. The flight is not.
+On the CTS **A Tale of Two Cities** Discovery tour, the Beijing–Xi'an high-speed train (second class) is a standard inclusion — tickets arranged in advance, guide with you door to door.
 
-**Lower carbon footprint.** For travellers thinking about this: high-speed rail produces significantly less CO₂ per passenger-kilometre than domestic air travel.
-
-## On a CTS Tour
-
-CTS Tours includes the Beijing–Xi'an high-speed train (2nd class) as a standard inclusion in the **A Tale of Two Cities** Discovery tour. Tickets are arranged in advance, and your guide accompanies the group from Beijing South to Xi'an North. There's nothing you need to organise or worry about — you simply turn up at the station and board.
-
-[View the full Beijing & Xi'an tour →](/tours/china/discovery/beijing-xian)
+[View the full Beijing and Xi'an tour →](/tours/china/discovery/beijing-xian), or browse our [Beijing tours](/beijing-tours) and [Xi'an tours](/xian-tours).
     `
   },
 
@@ -595,37 +616,72 @@ The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3
     tags: ['Jiangnan', 'Water Towns', 'Suzhou', 'Wuxi', 'China Culture', 'New Zealand Travel'],
     heroImage: tourImage('wuzhen-canal.jpg'),
     publishedAt: '2026-04-25',
-    readTime: '6 min read',
+    readTime: '8 min read',
+    faqs: [
+      {
+        question: 'What is the Jiangnan region of China?',
+        answer: 'Jiangnan means south of the river — the land below the lower Yangtze, centred on Shanghai, Suzhou, Hangzhou and Wuxi. It has been China\'s wealthiest region for a thousand years, and its signature landscape is water: canal towns, stone bridges, classical gardens and West Lake. Culturally it is a gentler, more refined China than the imperial north.'
+      },
+      {
+        question: 'Which water town near Shanghai is best?',
+        answer: 'It depends what you want. Zhujiajiao is the closest to Shanghai (under an hour) and the easiest half-day trip. Wuzhen is the most beautifully restored, best experienced overnight when the day crowds leave. Xitang is famous for lantern-lit evenings along covered walkways. Tongli, near Suzhou, is the quiet local option. For most first-time visitors we recommend Zhujiajiao as a taster or Wuzhen for the full experience.'
+      },
+      {
+        question: 'How many days do you need for Shanghai, Suzhou and Hangzhou?',
+        answer: 'A comfortable loop is 7 to 10 days: three nights in Shanghai with a water-town day trip, two in Suzhou for the gardens and canals, and two or three in Hangzhou for West Lake and the tea hills. The cities are 30 to 90 minutes apart by high-speed rail, so the travelling itself is easy.'
+      },
+      {
+        question: 'When is the best time to visit the Jiangnan region?',
+        answer: 'Late March to May and September to early November. Spring brings mild temperatures and the Longjing tea harvest; autumn gives clear skies and osmanthus blossom in Hangzhou. Avoid the first week of October — China\'s National Day holiday fills every water town in the region.'
+      },
+      {
+        question: 'Are the water towns touristy?',
+        answer: 'The famous ones are popular, and on holiday weekends genuinely crowded — but mostly with Chinese domestic travellers, which is its own atmosphere. Go early morning or stay overnight and you will have the stone lanes and canals close to yourself. Western visitors remain rare enough that you will not feel you are in a tourist bubble.'
+      },
+    ],
     content: `
-Most Western travellers who think about China think about Beijing and the Great Wall. The Jiangnan region — the land south of the Yangtze River, centred on Suzhou, Wuxi, Hangzhou, and Shanghai — is a completely different China, and for many visitors the more lasting experience.
+Most travellers planning a first China trip think of Beijing and the Great Wall. The Jiangnan region — the watery lowlands south of the Yangtze, centred on Suzhou, Hangzhou, Wuxi and Shanghai — is a completely different China: canals instead of avenues, gardens instead of palaces, tea hills instead of steppe. For many of our NZ clients it ends up the most lasting memory of the whole trip. Here is what makes it special and how to do it well.
 
-## What "Jiangnan" Means
+## What Does Jiangnan Mean?
 
-Jiangnan literally means "south of the river" — the Yangtze River. The region has been the most prosperous in China since at least the Song Dynasty (960 AD), when the imperial capital moved south and the agricultural richness of the Yangtze Delta made it the economic heart of the empire.
+Jiangnan literally means south of the river — the Yangtze. Since the Song Dynasty (960 AD) this delta has been the richest region in China, and the culture that grew here is distinct: refined, literary, and aesthetically precise. The classical garden tradition, Suzhou silk and embroidery, Kunqu opera (older than Beijing opera), Hangzhou's tea culture, and the canal network that once linked every town — all of it belongs specifically to Jiangnan.
 
-The culture that developed here is distinct: refined, literary, aesthetically particular. The classical garden tradition, the Suzhou embroidery and silk weaving, the Kunqu opera (older than Beijing Opera), the tea culture of Hangzhou, the canal network that once connected every significant settlement — all of these belong specifically to Jiangnan.
+The practical consequence for travellers: the region rewards slowness. The distances are short, the trains fast, and the best moments — morning mist on a canal, an empty garden courtyard — come to people who are not rushing.
 
-## The Canal Cities
+## Which Water Town Should I Choose?
 
-Suzhou has more canals than Venice — an older canal network that has been the city's infrastructure for more than 2,000 years. The ancient quarter around Pingjiang Road survives in much its original form: whitewashed walls, arched stone bridges, boats moving through narrow waterways, willows trailing in the water. Walking it in the early morning, before the day's visitors arrive, is an experience without equivalent in China.
+The canal towns are the region's signature, and they are not interchangeable:
 
-Wuxi, on the shores of Lake Tai, operates on a larger water scale. The lake itself — 2,250 square kilometres — has been the economic and aesthetic heart of the region for millennia. The Taihu stones used in every classical garden come from its floor. The fishing villages along its shores have barely changed in appearance since the Song Dynasty paintings that documented them.
+- **Zhujiajiao** — under an hour from Shanghai, built around the great arc of Fangsheng Bridge. The easiest half-day water-town trip in China. Our [Zhujiajiao guide](/blog/zhujiajiao-water-village) covers it in detail.
+- **Wuzhen** — the most carefully restored, split into two scenic zones; the western zone at dusk, after the day-trippers leave, is the single best water-town experience in the region. Worth an overnight stay.
+- **Xitang** — famous for its kilometre of covered waterside walkways and lantern-lit evenings; livelier and more commercial.
+- **Tongli and Luzhi** — smaller towns near Suzhou where daily life continues between the visitors; the quiet choices.
 
-## The Gardens
+If you only have one slot, take Zhujiajiao as a Shanghai day trip or give Wuzhen a night. If water towns become your favourite thing — it happens — two or three fit easily into a ten-day loop.
 
-Suzhou's nine UNESCO Heritage classical gardens are the concentrated expression of Jiangnan culture. Each is a compressed landscape — rocks suggesting mountains, ponds suggesting lakes, pavilions positioned to frame specific views. They are spatial philosophy made physical: the scholar-officials who built them were using the garden to enact ideas about nature, retirement, and the proper life.
+## Why Do People Rave About Suzhou?
 
-The Humble Administrator's Garden (the largest), the Master of the Nets Garden (the most perfectly proportioned), and the Lingering Garden (the most eccentric, with its extraordinary rockery) are the three essential ones.
+Suzhou has run on water for 2,500 years, and the old quarter around Pingjiang Road still works the way the Song-dynasty maps drew it: whitewashed houses, stone bridges, boats sliding along narrow canals. Walk it before 9am and you will have it almost to yourself.
 
-## The Tea Culture
+The city's nine UNESCO-listed classical gardens are the concentrated expression of Jiangnan culture — compressed landscapes where rocks stand for mountains and ponds for lakes. See the **Humble Administrator's Garden** for scale, the **Master of the Nets Garden** for perfect proportion, and the **Lingering Garden** for its extraordinary rockery. Our [Suzhou gardens guide](/blog/suzhou-gardens-guide-nz) explains how to visit them well; the short version is: two gardens properly beat five gardens quickly.
 
-Hangzhou's West Lake hills produce Longjing (Dragon Well) tea — China's most prized green tea. The spring harvest (late March to early April) produces the most valuable grades, but the plantations are active through October. Visiting a tea village, watching the hand-pan firing process, and tasting the grades in sequence is a half-day that connects you to a production tradition going back to the Tang Dynasty.
+## What About Hangzhou and West Lake?
 
-## How to Experience It from New Zealand
+Hangzhou's **West Lake** is the most celebrated landscape in Chinese art — a thousand years of poets and painters have fixed its causeways, pagodas and misty islands in the national imagination. Walk or cycle the Su Causeway early, take the boat to the island of Three Pools Mirroring the Moon, and give the lakeshore an unhurried evening. Our full [West Lake travel guide](/blog/west-lake-hangzhou-travel-guide) has the details.
 
-CTS Tours runs the **Shanghai & Surroundings** Discovery tour specifically for this region: 10 days covering Suzhou, Wuxi, Hangzhou, and Shanghai in a comfortable loop. From NZD $3,399 per person (twin share), including international airfares from Auckland. The October departure — 14 October 2026 — is timed for the best conditions in the region.
+In the hills directly behind the lake grow the tea bushes of **Longjing (Dragon Well)** — China's most prized green tea. A half-day in the tea villages, watching the leaves hand-fired in hot woks and tasting the grades in sequence, connects you to a tradition running back to the Tang Dynasty. The spring harvest in late March and April is the most atmospheric time.
 
-[View the full tour →](/tours/china/discovery/shanghai-surroundings)
+## How Do the Logistics Work?
+
+This is the easiest region in China to travel independently or in a small group: Shanghai, Suzhou and Hangzhou form a triangle 30 to 90 minutes apart by high-speed rail, with trains every few minutes. A comfortable shape for the region is 7 to 10 days — three nights Shanghai (with a water-town day), two Suzhou, two or three Hangzhou. Our [10-day Shanghai and Jiangnan itinerary](/blog/shanghai-suzhou-hangzhou-itinerary) lays out the full route day by day.
+
+**When to go:** late March to May, or September to early November. Avoid the first week of October, when National Day holidays fill the entire region. And remember NZ passport holders currently enter China [visa-free for up to 30 days](/china-visa-guide-for-new-zealanders), so the trip books with nothing more than passport and flights.
+
+## Experiencing Jiangnan With CTS
+
+Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop, with the October departure timed for the region's best weather. From NZD 3,399 per person twin share including airfares from Auckland.
+
+[View the full tour →](/tours/china/discovery/shanghai-surroundings), or browse [Shanghai](/shanghai-tours), [Suzhou](/suzhou-tours) and [Hangzhou](/hangzhou-tours) tours.
     `
   },
 
@@ -828,45 +884,75 @@ If you genuinely can only choose one: go to Chongqing if you've already been to 
     heroImage: '/blog/sourced/liziba-station-train-arriving.jpg',
     heroImageCredit: 'Photo: Nissangeniss, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-04-25',
-    readTime: '5 min read',
+    readTime: '8 min read',
+    faqs: [
+      {
+        question: 'Is Liziba Station real, or built for tourists?',
+        answer: 'It is completely real. Liziba Station is a working stop on Chongqing Rail Transit Line 2, carrying commuters daily since 18 June 2005. The 19-storey building it passes through is full of ordinary apartments and offices — the station occupies floors 6 to 8. Nothing about it was built as a tourist attraction; the fame came later.'
+      },
+      {
+        question: 'How do I get to Liziba Station?',
+        answer: 'Take Chongqing Rail Transit Line 2 and get off at Liziba. From the Jiefangbei city-centre area, connect to Line 2 at Linjiangmen or Jiaochangkou — the ride takes roughly 10 minutes and costs just a few yuan. Ride through from the adjacent station (Fotuguan or Zengjiayan) at least once for the inside view before you photograph the outside.'
+      },
+      {
+        question: 'Where is the best place to photograph the train going through the building?',
+        answer: 'Use the purpose-built riverside viewing platform across the road from the station — it was added in 2019 precisely because so many visitors were standing in traffic. It gives the classic straight-on angle, and train arrival times are posted so you know how long until the next pass. Trains come every 5 to 10 minutes, so you never wait long.'
+      },
+      {
+        question: 'How long should I spend at Liziba?',
+        answer: 'Between 30 and 90 minutes. The photo itself takes minutes; most people stay to watch several trains pass, ride through the building once in each direction, and walk the riverside. It slots neatly into a morning or afternoon alongside Hongyadong or Eling Park rather than filling a day on its own.'
+      },
+      {
+        question: 'Is there an entry fee for Liziba Station?',
+        answer: 'No. The viewing platform is free and open all day, and riding through the building costs only a normal metro fare of a few yuan. It is one of the cheapest world-famous sights in China.'
+      },
+    ],
     content: `
-Liziba Station is real. This is the first thing most people need to confirm when they see photographs of it — a commuter train passing directly through the floors of a 19-storey residential building in central Chongqing. It is not a tourist installation. It is not a special attraction. It is a functioning metro station on Line 2 of the Chongqing Rail Transit system, and the building surrounding it is full of apartments and offices where people live and work.
+Liziba Station is real. This is the first thing most people need to confirm when they see photographs of it — a commuter train passing directly through the floors of a 19-storey residential building in central Chongqing. It is not a tourist installation and not a mock-up. It is a functioning metro station on Line 2 of the Chongqing Rail Transit system, the building around it is full of apartments and offices, and you can visit it for the price of a metro ticket. Here is everything you need to know before you go.
 
-Here is everything you need to know before visiting.
+## What Exactly Is Liziba Station?
 
-## What It Is
+Liziba Station (Chinese: 李子坝站) is a straddle-type monorail stop on Chongqing Rail Transit Line 2, in Yuzhong District on the north bank of the Jialing River. The station occupies floors 6 to 8 of a 19-storey mixed-use tower: floors 1 to 5 are commercial space, floors 9 to 19 are residential apartments.
 
-Liziba Station (李子坝站) is a straddle-type monorail station on Chongqing Rail Transit Line 2 (the "Light Rail" line). The station occupies floors 6 to 8 of a 19-storey mixed-use building in Yuzhong District: floors 1–5 are commercial space, floors 9–19 are residential apartments.
+Station and building were designed together and built simultaneously from 1998, with the structure of the platform separated from the building's load-bearing frame. The station opened for service on 18 June 2005 — the first of its kind in China.
 
-The station and the building were constructed simultaneously, beginning in 2004, using a structural method that separated the station platform from the building's residential load-bearing frame. Construction was completed in March 2004; the station opened for service on 18 June 2005. It was the first station of this type in China.
+The trains are rubber-tyred monorail rather than steel-wheel, which is the detail that makes the whole arrangement liveable: residents above the line describe the noise as barely perceptible, roughly the hum of a household appliance. Watch a train glide in and you will notice how quiet it is — often quieter than the traffic below.
 
-The trains are rubber-tyred monorail, which significantly reduces noise and vibration compared to steel-wheel systems. Residents above the station report the noise as barely perceptible — roughly equivalent to a domestic appliance. This is the engineering solution that made the co-construction possible.
+## Why Does a Train Run Through an Apartment Building?
 
-## Why It Exists
+Chongqing is a mountain city. It is built on steep limestone ridges above the confluence of the Yangtze and Jialing Rivers, and there is almost no flat ground for conventional rail corridors. Land in the city core was too tight to route the line around the building plot, so engineers routed it through — and the result became the most photographed railway station in China.
 
-Chongqing's topography made conventional metro construction extremely difficult. The city is built on steep limestone mountains above two rivers; the terrain leaves almost no flat ground for surface-level rail infrastructure. The urban density made underground-only solutions insufficient. The result is a transit system that integrates with buildings, bridges, and existing urban structures in ways that have no precedent in flat-terrain cities.
+Liziba is the most extreme example, but not an isolated one: Line 2 hugs cliff faces and skims rooftops along much of its riverside run. The ride between Liziba and Fotuguan is worth doing purely for the view of the Jialing River below.
 
-Liziba is the most extreme example of this integration, which is why it became famous — but it is one of several points along Line 2 where the train travels at building-height levels through or adjacent to the urban fabric.
+## How Do I Visit?
 
-## How to Visit
+**By metro.** Take Line 2 to Liziba. From the Jiefangbei area, change onto Line 2 at Linjiangmen or Jiaochangkou; the trip takes about 10 minutes and costs a few yuan. Trains run from roughly 6:30am to 10:30pm at 5 to 10 minute intervals.
 
-**By Metro:** Take Chongqing Rail Transit Line 2 to Liziba Station. Ride through the building from either adjacent station (Jiayuwan or Zengjiayan) to experience the inside view. Trains run every 5–10 minutes during peak hours.
+**Ride through it first.** Board one stop away (Fotuguan or Zengjiayan) and ride through the building. Daylight flashes into the carriage on both sides as you pass through the tower — a strange few seconds that the photographs cannot convey.
 
-**For the famous photograph:** Exit the station and walk to the street-level plaza below the building. The best viewing angle is from across the road, slightly to the west, looking up at the point where the track enters and exits the building. The framing you've seen in photographs is from approximately this position.
+**Then photograph it from the viewing platform.** In 2019 the city built a dedicated riverside viewing platform across the road from the station, complete with posted train times, because visitors kept standing in the road for the shot. The straight-on angle you have seen online is taken from here. It is free and open all day.
 
-**Timing:** The station is active from approximately 6:30am to 10:30pm. Trains run frequently enough that you won't wait more than 10 minutes for a pass-through view. Morning light comes from the east; afternoon light from the west — adjust depending on what you're photographing.
+**Light.** Morning light comes from the east and lights the river side of the tower; late afternoon gives warmer tones from the west. Midday in summer is flat and hazy — Chongqing's famous fog is real, and moody shots in light mist are their own genre.
 
-**Allow:** 30–60 minutes. Most visitors find themselves watching multiple trains pass before feeling satisfied they've understood what they're seeing.
+## How Long Do I Need, and What Should I Combine It With?
 
-## What to Do Nearby
+Allow 30 to 90 minutes. The classic pairing is Liziba plus [Hongyadong](/hongyadong-chongqing), the lantern-lit stilt-house complex a short taxi ride away — do Liziba in the late afternoon and walk into Hongyadong as the lights come on. Eling Park, one stop away, has one of the best free lookouts over the peninsula.
 
-Ciqikou Ancient Town is a 10-minute walk from Liziba — a Song Dynasty market street with flagstone lanes, teahouses, and Sichuan street food. The combination of ancient commercial architecture and the futuristic train overhead is one of Chongqing's best sensory contrasts, and the two together fill a comfortable afternoon.
+A note on Ciqikou: the Song-dynasty market town is well worth a visit, but it is across town in Shapingba District — pair it with Liziba in the same day by metro, not on foot.
 
-## On a CTS Tour
+For a fuller picture of how a Chongqing day fits together, see our [10-day Chongqing and Chengdu itinerary](/blog/chongqing-chengdu-itinerary-10-days) and our guide to [Chongqing after dark](/blog/chongqing-nightlife-guide).
 
-CTS Tours' **Fire & Fuzz** itinerary (Chongqing × Chengdu, 10 days) includes Liziba Station on Day 3, combined with the Huguang Guild Hall in the morning and Ciqikou in the late afternoon. The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin share).
+## Is It Worth It for NZ Travellers?
 
-[View the full itinerary →](/tours/china/discovery/chongqing-chengdu)
+Yes — with the right expectations. Liziba is a 45-minute wonder, not a half-day attraction, and it is the kind of sight that makes Chongqing feel unlike anywhere else you have travelled. Combined with Hongyadong, the river crossings by cable car, and the night skyline, it is a core part of why Kiwi travellers consistently rate Chongqing the surprise of their China trip.
+
+New Zealand passport holders can currently visit China [visa-free for up to 30 days](/china-visa-guide-for-new-zealanders), which makes a Chongqing stop easier than it has ever been.
+
+## Visiting With CTS Tours
+
+Our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) includes Liziba Station on the Chongqing days, timed for the viewing platform and combined with Hongyadong in the evening. Your guide handles the metro, the timing, and the photo spots.
+
+[View the full itinerary →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
