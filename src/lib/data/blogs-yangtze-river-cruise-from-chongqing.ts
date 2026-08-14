@@ -47,8 +47,7 @@ export const yangtzeRiverCruiseFromChongqingPost: BlogPost = {
     '2026',
     '2027',
   ],
-  heroImage:
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+  heroImage: '/blog/group-chongqing-costume-riverside-3.jpg',
   publishedAt: '2026-06-26',
   readTime: '10 min read',
   faqs: [

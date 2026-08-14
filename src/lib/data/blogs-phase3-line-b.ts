@@ -1,5 +1,5 @@
 import type { BlogPost } from '@/lib/types/blog-post';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
  * Phase 3 — Line B: Shanghai & Surroundings (5 posts)
@@ -21,7 +21,7 @@ export const phase3LineBPosts: BlogPost[] = [
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Shanghai', 'The Bund', 'Pudong', 'Modern China', 'China Tourism'],
-    heroImage: migratedUnsplash('photo-1512941937669-90a1b58e7e9c'),
+    heroImage: tourImage('shanghai-skyline.jpg'),
     publishedAt: '2026-05-20',
     readTime: '7 min read',
     content: `
@@ -82,7 +82,8 @@ Shanghai is the gateway for our [Shanghai & Surroundings Discovery tour](/tours/
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
     tags: ['Suzhou', 'Classical Gardens', 'UNESCO', 'Shanghai Day Trip', 'Jiangnan'],
-    heroImage: migratedUnsplash('photo-1469474968028-56623f02e42e'),
+    heroImage: '/blog/sourced/suzhou-humble-administrators-garden.jpg',
+    heroImageCredit: 'Photo: Jakub Hałun, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-21',
     readTime: '6 min read',
     content: `
@@ -134,7 +135,8 @@ We include Suzhou on our [Shanghai & Surroundings Discovery tour](/tours/china/d
     authorRole: 'China Travel Specialist',
     category: 'destination',
     tags: ['Hangzhou', 'West Lake', 'Jiangnan', 'UNESCO', 'Travel China'],
-    heroImage: migratedUnsplash('photo-1513415756790-2ac1db1297d0'),
+    heroImage: '/blog/sourced/hangzhou-west-lake-autumn.jpg',
+    heroImageCredit: 'Photo: 源義信, CC BY 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-22',
     readTime: '6 min read',
     content: `
@@ -188,7 +190,8 @@ We include Hangzhou on our [Shanghai & Surroundings Discovery tour](/tours/china
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'experience',
     tags: ['Zhujiajiao', 'Water Town', 'Shanghai Day Trip', 'Ancient China', 'Jiangnan'],
-    heroImage: migratedUnsplash('photo-1553531384-cc64ac80f931'),
+    heroImage: '/blog/sourced/zhujiajiao-water-town-canal.jpg',
+    heroImageCredit: 'Photo: Lloyd Tudor, CC BY-SA 4.0, via Wikimedia Commons',
     publishedAt: '2026-05-23',
     readTime: '5 min read',
     content: `
@@ -233,7 +236,7 @@ Zhujiajiao is included as an optional excursion on our [Shanghai & Surroundings 
     authorRole: 'China Travel Specialist',
     category: 'experience',
     tags: ['Yangtze River', 'Three Gorges', 'River Cruise', 'Chongqing', 'China Landscape'],
-    heroImage: migratedUnsplash('photo-1506905925346-21bda4d32df4'),
+    heroImage: '/images/tours/li-river-karst-boats.jpg',
     publishedAt: '2026-05-24',
     readTime: '7 min read',
     content: `

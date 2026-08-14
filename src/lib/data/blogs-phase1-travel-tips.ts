@@ -1,6 +1,6 @@
 import type { BlogPost } from '@/lib/types/blog-post';
 import type { StagingContent } from '@/lib/types/staging';
-import { migratedUnsplash } from '@/lib/site-media';
+import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /** Phase 1 travel-tips posts — `##` / `###` + lists (see blog-html.ts); seeded into /blog/staging */
 export const phase1TravelTipPosts: BlogPost[] = [
@@ -79,7 +79,7 @@ Want me to match this list to a real route? [Browse China tours](/china-tours) o
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['packing China', 'what to pack', 'China travel', 'luggage tips', 'seasonal packing'],
-    heroImage: migratedUnsplash('photo-1553531384-cc64ac80f931'),
+    heroImage: tourImage('yunnan-rice-terraces.jpg'),
     publishedAt: '2026-04-08',
     readTime: '15 min read',
   },
@@ -156,7 +156,7 @@ Want an itinerary where I handle the logistics? [Explore guided China tours](/to
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['China apps', 'travel apps', 'VPN', 'maps', 'translation'],
-    heroImage: migratedUnsplash('photo-1512941937669-90a1b58e7e9c'),
+    heroImage: '/blog/group-walking-shanghai-street.jpg',
     publishedAt: '2026-04-08',
     readTime: '13 min read',
   },
@@ -214,7 +214,7 @@ If you want a calm first China trip with hotels and guides I stand behind, [brow
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['safety China', 'travel safety', 'scams', 'etiquette', 'cultural tips'],
-    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
+    heroImage: '/blog/group-cultural-experience-room-2.jpg',
     publishedAt: '2026-04-08',
     readTime: '14 min read',
   },
@@ -273,7 +273,7 @@ Ready to pick dates with a human? [Read our month-by-month seasonal tool](/seaso
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['best time China', 'China weather', 'seasons', 'travel seasons', 'crowds'],
-    heroImage: migratedUnsplash('photo-1469474968028-56623f02e42e'),
+    heroImage: migratedUnsplash('photo-1508804185872-d7badad00f7d'),
     publishedAt: '2026-04-08',
     readTime: '15 min read',
   },
@@ -336,7 +336,7 @@ Send me your shot list — [tailor-made planning](/tailor-made) lets me allocate
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['photography China', 'hidden gems', 'photo locations', 'travel photography', 'landscape'],
-    heroImage: migratedUnsplash('photo-1493976040374-85c8e12f0c0e'),
+    heroImage: tourImage('great-wall-cloud-sea.jpg'),
     publishedAt: '2026-04-08',
     readTime: '14 min read',
   },

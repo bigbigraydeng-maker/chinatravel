@@ -43,8 +43,7 @@ export const howManyDaysInChongqingPost: BlogPost = {
     'Trip Planning',
     '2026',
   ],
-  heroImage:
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
+  heroImage: '/blog/group-chongqing-costume-riverside-2.jpg',
   publishedAt: '2026-06-26',
   readTime: '8 min read',
   faqs: [
