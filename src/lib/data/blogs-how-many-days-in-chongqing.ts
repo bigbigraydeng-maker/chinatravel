@@ -45,12 +45,12 @@ export const howManyDaysInChongqingPost: BlogPost = {
   ],
   heroImage: '/blog/group-chongqing-costume-riverside-2.jpg',
   publishedAt: '2026-06-26',
-  readTime: '8 min read',
+  readTime: '9 min read',
   faqs: [
     {
       question: 'How many days should I spend in Chongqing?',
       answer:
-        'For most NZ first-time visitors, 2–3 days is the sweet spot. Day 1 covers central highlights (Liziba monorail through-building, Hongyadong night view, Jiefangbei pedestrian district). Day 2 covers a Yangtze River day cruise to Wushan or Ciqikou ancient town. Day 3 is optional if you are embarking on a downstream Yangtze cruise to Yichang (3 nights from Chongqing port). Less than 2 days feels rushed; more than 3 days without a cruise becomes repetitive.',
+        'For most NZ first-time visitors, 2–3 days is the sweet spot. Day 1 covers central highlights (Liziba monorail through-building, Hongyadong night view, Jiefangbei pedestrian district). Day 2 covers a Yangtze River day cruise to Wushan or Ciqikou ancient town. Day 3 is optional if you are embarking on a downstream Yangtze cruise to Yichang (3 nights from Chongqing port). Add a fourth day if you want the Dazu Rock Carvings, which take a full day out of the city. Less than 2 days feels rushed; beyond 4 days, only a Yangtze cruise justifies staying longer.',
     },
     {
       question: 'Is 2 days enough for Chongqing?',
@@ -84,7 +84,7 @@ export const howManyDaysInChongqingPost: BlogPost = {
     },
   ],
   content: `
-**Quick answer:** Spend **2 days minimum** in Chongqing if it\'s a single stop on a wider China tour, **3 days** if you want to include Ciqikou and a day trip, or **5+ days** if you want to embark on a 3-night Yangtze River cruise to Yichang. Most NZ travellers find **3 days** is the comfortable sweet spot — enough time for the Liziba monorail-through-a-building, a proper Chongqing hotpot dinner, Hongyadong at night, and Ciqikou ancient town in a relaxed pace. Chongqing is a vertical, sprawling mountain megacity — fewer days means more miles per day, so factor in walking energy.
+**Quick answer:** Spend **2 days minimum** in Chongqing if it\'s a single stop on a wider China tour, **3 days** if you want to include Ciqikou and a day trip, **4 days** if you are committing to the UNESCO Dazu Rock Carvings (a full day out of the city), or **5+ days** if you want to embark on a 3-night Yangtze River cruise to Yichang. Most NZ travellers find **3 days** is the comfortable sweet spot — enough time for the Liziba monorail-through-a-building, a proper Chongqing hotpot dinner, Hongyadong at night, and Ciqikou ancient town in a relaxed pace. Chongqing is a vertical, sprawling mountain megacity — fewer days means more miles per day, so factor in walking energy.
 
 ---
 
@@ -98,6 +98,7 @@ If you\'ve already read my earlier post [Chongqing vs Chengdu: Which Should NZ T
 |---|---|---|---|
 | **2 days** | Liziba + Hongyadong + Jiefangbei + Ciqikou | Fast, rushed | Multi-city tour, one stop |
 | **3 days** | Above + Three Gorges Museum + Eling Park + day trip | Comfortable | First-time visitors |
+| **4 days** | Above + Dazu Rock Carvings as a fixed full day + a free morning | Unhurried | Anyone including Dazu |
 | **5 days** | Above + 1 free day + Yangtze cruise embarkation | Relaxed | Retirees, slow travel |
 | **7+ days** | Above + 3-night Yangtze cruise to Yichang | Premium | River cruise enthusiasts |
 
@@ -137,11 +138,21 @@ For most first-time NZ visitors, 3 days is the right answer. You get everything 
 
 **Day 1**: Same as 2-day Day 1 (Liziba + Three Gorges Museum + Jiefangbei + Hongyadong + hotpot dinner), but you don\'t have to rush — leave time for tea at a local teahouse in the afternoon.
 
-**Day 2 — Day trip**: Wulong Karst Geological Park (a 3-hour drive each way, but spectacular natural karst landscape — UNESCO World Heritage), or Dazu Rock Carvings (Tang and Song dynasty Buddhist rock-cut sculptures, also UNESCO), or Wushan / Lesser Three Gorges by day cruise.
+**Day 2 — Day trip**: Wulong Karst Geological Park (a 3-hour drive each way, but spectacular natural karst landscape — UNESCO World Heritage), or the **Dazu Rock Carvings**, or Wushan / Lesser Three Gorges by day cruise.
+
+Dazu deserves more than the one-line mention it usually gets. It is a UNESCO World Heritage Site (inscribed 1999) about 100km from central Chongqing, holding roughly **50,000 Buddhist, Taoist and Confucian stone sculptures** carved between the 9th and 13th centuries — including a 31-metre reclining Nirvana Buddha. Unlike most Chinese grotto sites, the carvings mix all three belief systems on the same cliff face, and much of the original pigment survives. Allow a full day: roughly 90 minutes each way plus three hours on site. If you are choosing between Dazu and Wulong and you have any interest in history, take Dazu.
 
 **Day 3 — Ciqikou + culture**: Morning at Ciqikou ancient town (slower than rushing it on a 2-day plan), then afternoon at the Sichuan Fine Arts Institute area in Huangjueping (alternative arts district, lots of small cafés and galleries). Sunset at Eling Park or Nanshan One Tree Park for a different city panorama.
 
-**Verdict on 3 days**: This is what I recommend for most CTS Tours NZ clients. Enough to actually enjoy Chongqing, not just photograph it.
+**Verdict on 3 days**: This is what I recommend for most independent travellers. Enough to actually enjoy Chongqing, not just photograph it.
+
+## Why our guided tour allocates four nights, not three
+
+Worth flagging, because clients notice the difference: our [Fire & Fuzz Chongqing & Chengdu tour](/tours/china/discovery/chongqing-chengdu) gives Chongqing **4 nights**, not 3. That is not a contradiction of the advice above — it is what happens when Dazu becomes a fixed full day rather than an optional one. Take a full day out for Dazu and a 3-day plan has effectively become a 2-day plan for the city itself, so we add the night back.
+
+The fourth night buys the thing no itinerary can schedule: an unstructured morning. That is when people finally ride the **Yangtze River Cableway** (the 1987 aerial tramway across the river to Nanshan — still a working commuter route, not a tourist ride) without watching the clock, sit down to a proper **morning hot pot** (yes, hot pot for breakfast is genuinely a Chongqing habit), and walk Jiefangbei at their own pace.
+
+And Chongqing rewards wandering more than almost any Chinese city. The vertically stacked streets, the staircases that connect roads three levels apart, the noodle stalls tucked into mid-level walkways — none of it appears on a highlights list, and it is what people describe when they get home. If your budget allows a fourth night, spend it here rather than adding one to Chengdu.
 
 ## 5+ Days in Chongqing — for the Yangtze River cruise
 
@@ -194,7 +205,7 @@ If you are travelling on a non-NZ passport, the [China visa guide for New Zealan
 
 If I had to pick one answer: **3 days in Chongqing**. That gives you the famous monorail-through-a-building moment, a properly slow hotpot dinner where the mala numbs your lips for an hour afterwards, the Hongyadong cliff-face night skyline that doesn\'t quite look real, and a day trip into the karst or rock carvings without feeling like you\'re running to catch trains.
 
-Two days is the rushed minimum. Five days only makes sense with a Yangtze cruise attached. Anything between 3 and 5 days, just pick 3 and add a day to Chengdu instead — they pair beautifully and the train between them is faster than NZ\'s flagship intercity service.
+Two days is the rushed minimum. Make it **4 days if you are committing to Dazu**, since that swallows a whole day and leaves the city itself short-changed otherwise. Five days only makes sense with a Yangtze cruise attached — without one, spend the extra day in Chengdu instead. The two cities pair beautifully and the train between them is faster than NZ\'s flagship intercity service.
 
 If you want to talk through your specific itinerary, the [CTS Tours team](/contact) is in Auckland and happy to take a call. China Travel Service has been running tours globally since 1928 — our NZ team has been running Kiwi-focused China trips for 25 years, and most of us have led tours through Chongqing multiple times across the seasons.
 
