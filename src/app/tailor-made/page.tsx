@@ -11,7 +11,6 @@ import ToolsRecommendationBanner from '@/components/tailor-made/ToolsRecommendat
 import MobileFloatingCTA from '@/components/tailor-made/MobileFloatingCTA';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateBreadcrumbListSchema, generateWebPageSchema } from '@/lib/schema-seo';
-import { tourImage } from '@/lib/site-media';
 import { Icon, type IconName } from '@/components/ui/Icon';
 
 const PAGE_PATH = '/tailor-made';
@@ -187,7 +186,7 @@ export default function TailorMadePage() {
         title="Tailor Made Journeys"
         subtitle="Your tour, your way"
         description="No two travellers are alike. If you want a flexible itinerary with none of the stress of organising it yourself, we combine your ideas with our China and Asia expertise—so you get the trip you imagined, not a generic package."
-        imageSrc={tourImage('guilin-river-valley.jpg')}
+        imageSrc={'/images/tours/yangshuo-karst-aerial.jpg'}
         imageAlt="Li River karst landscape — tailor-made China and Asia tours, CTS Tours"
         tall
         priority

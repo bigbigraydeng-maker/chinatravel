@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: guilinToursMeta.title,
     description: guilinToursMeta.description,
     path: '/guilin-tours',
-    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg',
+    ogImagePath: '/images/tours/yangshuo-karst-aerial.jpg',
     ogImageAlt: 'Guilin Tours - Li River Cruise, Karst Mountains, CTS Tours',
     keywords: ['Guilin tours New Zealand', 'Li River cruise', 'karst landscape tours', 'CTS Tours'],
     ogType: 'website',
@@ -38,7 +38,7 @@ export default function GuilinToursPage() {
         cityName={guilinToursMeta.cityName}
         heroTitle={guilinToursMeta.h1}
         heroSubtitle={guilinToursMeta.heroSubtitle}
-        heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-river-valley.jpg"
+        heroImage="/images/tours/yangshuo-karst-aerial.jpg"
         introText={guilinToursMeta.introText}
         highlights={guilinToursMeta.highlights}
         bestTimeToVisit={guilinToursMeta.bestTimeToVisit}

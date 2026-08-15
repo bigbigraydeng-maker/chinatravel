@@ -102,8 +102,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'guilin-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: '/images/tours/yangshuo-karst-aerial.jpg', tier: 'stopover' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/yangshuo-karst-aerial.jpg', tier: 'stopover' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -129,7 +129,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yunnan-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
       { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -142,7 +142,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'lijiang-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -154,7 +154,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'dali-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -166,7 +166,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'kunming-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -178,7 +178,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'shangri-la-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/yunnan-village.jpg`, tier: 'discovery' },
+      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -246,8 +246,8 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yangshuo-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
-      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/yangshuo-karst-aerial.jpg', tier: 'stopover' },
+      { name: 'Guilin Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,099', url: '/tours/china/stopover/guilin', image: '/images/tours/yangshuo-karst-aerial.jpg', tier: 'stopover' },
     ],
     relatedGuides: [
       { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
@@ -259,7 +259,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'li-river-travel-guide': {
     hubUrl: '/guilin-tours', hubLabel: 'All Guilin Tours',
     relatedTours: [
-      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: `${TI}/guilin-river-valley.jpg`, tier: 'stopover' },
+      { name: 'Guilin & Surrounds (4 Days)', duration: '4 Days', price: 'From NZD $1,310', url: '/tours/china/stopover/guilin-surrounds', image: '/images/tours/yangshuo-karst-aerial.jpg', tier: 'stopover' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [

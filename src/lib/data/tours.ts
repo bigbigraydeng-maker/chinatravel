@@ -529,9 +529,9 @@ export const tours: Tour[] = [
     shortDescription: 'Discover China\'s most breathtaking natural landscapes across 16 days — from Shanghai\'s urban charm to the karst peaks of Guilin, the pandas of Chengdu, the ancient riverside beauty of Fenghuang, and the dramatic "Avatar" mountains of Zhangjiajie.',
     duration: '16 Days',
     price: 'NZD $8,150',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+    heroImage: '/images/tours/yangshuo-karst-aerial.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+      '/images/tours/li-river-karst-boats.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/zhangjiajie/zhangjiajie.jpg',
     ],
     highlights: [
@@ -1003,9 +1003,9 @@ export const tours: Tour[] = [
     shortDescription: 'Yunnan by air via Beijing — Erhai and Bai culture around Dali (including Shuanglang and “Santorini” viewpoints), Lijiang\'s Lashi Lake and Shuhe, then overland to Shangri-La through Tiger Leaping Gorge, Songzanlin Monastery, and Napa Lake before returning to Auckland via Beijing.',
     duration: '11 Days',
     price: 'NZD $3,899 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-village/yunnan-village.jpg',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-village/yunnan-village.jpg',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery-lake.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-rice-terraces/yunnan-rice-terraces.jpg'
     ],
     highlights: [
@@ -1441,9 +1441,9 @@ export const tours: Tour[] = [
     shortDescription: 'Explore Guilin\'s scenic landscapes featuring a Li River cruise to Yangshuo, limestone cave exploration, and iconic mountain formations.',
     duration: '3 Days',
     price: 'From NZD $1,099',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+    heroImage: '/images/tours/yangshuo-karst-aerial.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg'
+      '/images/tours/li-river-karst-boats.jpg'
     ],
     highlights: [
       'Li River cruise',
@@ -1665,10 +1665,10 @@ export const tours: Tour[] = [
     shortDescription: 'Discover breathtaking landscapes and rich cultural heritage through visits to limestone caves, terraced mountains, ethnic villages, and a scenic Li River cruise.',
     duration: '4 Days',
     price: 'From NZD $1,310',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+    heroImage: '/images/tours/li-river-karst-boats.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg'
+      '/images/tours/yangshuo-karst-aerial.jpg',
+      '/images/tours/Li-River-1.jpeg'
     ],
     highlights: [
       'Reed Flute Cave',

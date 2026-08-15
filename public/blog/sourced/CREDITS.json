@@ -82,5 +82,19 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
     "source": "https://commons.wikimedia.org/wiki/File:31500-Chongqing_%2849023400566%29.jpg",
     "note": "resized to 2400px wide, re-encoded JPEG q84"
+  },
+  "dali-three-pagodas": {
+    "author": "CEphoto, Uwe Aranas",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dali_Yunnan_China_Chongsheng-Temple-03.jpg",
+    "note": "resized to 2400px wide, re-encoded JPEG q84"
+  },
+  "lijiang-old-town-canal": {
+    "author": "chensiyuan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:1_lijiang_old_town_2012a.jpg",
+    "note": "resized to 2400px wide, re-encoded JPEG q84"
   }
 }
