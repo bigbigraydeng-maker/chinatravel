@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: chongqingToursMeta.title,
     description: chongqingToursMeta.description,
     path: '/chongqing-tours',
-    ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chongqing-yangtze.jpg',
-    ogImageAlt: 'Chongqing Tours - Three Gorges, Yangtze River, CTS Tours',
+    ogImagePath: '/blog/chongqing-night-skyline-hongyadong.jpg',
+    ogImageAlt: 'Chongqing Tours - Hongyadong night skyline on the Yangtze, CTS Tours',
     keywords: ['Chongqing tours New Zealand', 'Three Gorges cruise', 'Yangtze River tours', 'CTS Tours'],
     ogType: 'website',
   });

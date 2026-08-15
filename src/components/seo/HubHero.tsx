@@ -9,6 +9,8 @@ interface HubHeroProps {
   backgroundImage?: string;
   /** Merged with default `object-cover` on the hero image (e.g. object-[center_30%]). */
   imageClassName?: string;
+  /** Attribution line for CC-licensed hero images (e.g. 'Photo: Name, CC BY-SA 4.0, via Wikimedia Commons'). */
+  imageCredit?: string;
 }
 
 const DEFAULT_HERO =
@@ -27,6 +29,7 @@ const HubHero: React.FC<HubHeroProps> = ({
   subtitle,
   backgroundImage = DEFAULT_HERO,
   imageClassName,
+  imageCredit,
 }) => {
   const raw = backgroundImage?.trim() || DEFAULT_HERO;
   const useNextImage = isOptimizableImageSrc(raw);
@@ -65,6 +68,12 @@ const HubHero: React.FC<HubHeroProps> = ({
           {subtitle}
         </p>
       </div>
+
+      {imageCredit && (
+        <span className="absolute bottom-1 right-2 z-[2] text-[10px] leading-tight text-white/50">
+          {imageCredit}
+        </span>
+      )}
     </section>
   );
 };

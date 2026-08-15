@@ -54,6 +54,8 @@ export interface DestinationGuide {
   heroImage: string;
   /** Optional Tailwind classes merged onto the guide hero background image (e.g. object-[center_20%]). */
   heroImageClassName?: string;
+  /** Attribution line required for CC-licensed hero images. See public/blog/sourced/CREDITS.json. */
+  heroImageCredit?: string;
   introText: string[];
   sections: Section[];
   attractions: Attraction[];
@@ -748,8 +750,8 @@ export const guilinGuide: DestinationGuide = {
   keywords: ['Guilin travel', 'Li River', 'karst mountains', 'Yangshuo', 'cormorant fishing'],
   h1: 'Guilin Travel Guide: Where Mountains Meet Water',
   heroSubtitle: 'China\'s Most Picturesque Landscape',
-  heroImage: `${TI}/guilin-river-valley.jpg`,
-  heroImageClassName: 'object-[center_35%]',
+  heroImage: '/images/tours/Li-River-1.jpeg',
+  heroImageClassName: 'object-[center_45%]',
   introText: [
     'Guilin lies in Guangxi in southern China. Limestone peaks rise straight from the Li River. The scenery has inspired Chinese art for centuries.',
     'The Li River cruise to Yangshuo is the classic experience. You pass peaks, villages, and bamboo for about eighty-three kilometres.',
@@ -887,7 +889,7 @@ export const guilinGuide: DestinationGuide = {
   relatedGuideSlugs: ['yangshuo-travel-guide', 'li-river-travel-guide'],
   relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'best-time-visit-china-seasonal-weather-crowds-guide', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
-    `${TI}/guilin-river-valley.jpg`,
+    '/images/tours/li-river-karst-boats.jpg',
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-21'
@@ -1211,7 +1213,7 @@ export const yunnanGuide: DestinationGuide = {
   relatedGuideSlugs: ['lijiang-travel-guide', 'dali-travel-guide', 'shangri-la-travel-guide'],
   relatedBlogSlugs: ['understanding-chinese-tea-culture', 'why-silk-road-should-be-your-next-adventure', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
-    `${TI}/yunnan-village.jpg`,
+    `${TI}/shangri-la-monastery-lake.jpg`,
     `${TI}/shangri-la-monastery.jpg`,
   ],
   createdAt: '2026-01-01',
@@ -1232,8 +1234,9 @@ export const lijangGuide: DestinationGuide = {
   keywords: ['Lijiang', 'Naxi culture', 'Old Town', 'Jade Dragon Mountain', 'ancient architecture'],
   h1: 'Lijiang: Gateway to Naxi Culture & Yunnan Mountains',
   heroSubtitle: 'Ancient Town of Water, Stone & Cultural Heritage',
-  heroImage: `${TI}/yunnan-village.jpg`,
-  heroImageClassName: 'object-[center_35%]',
+  heroImage: '/blog/sourced/lijiang-old-town-canal.jpg',
+  heroImageClassName: 'object-[center_55%]',
+  heroImageCredit: 'Photo: chensiyuan, CC BY-SA 4.0, via Wikimedia Commons',
   introText: [
     'Lijiang sits on the Jinsha River at about 2,400 metres above sea level. The Naxi people have lived here for generations.',
     'The Old Town is a UNESCO site. Narrow lanes, wooden houses, and small canals define the streetscape.',
@@ -1358,8 +1361,9 @@ export const daliGuide: DestinationGuide = {
   keywords: ['Dali', 'Bai culture', 'Three Pagodas', 'Erhai Lake', 'Silk Road'],
   h1: 'Dali: Where Silk Road Dreams Meet Mountain Beauty',
   heroSubtitle: 'Ancient Nanzhao Kingdom Capital',
-  heroImage: 'https://images.unsplash.com/photo-1587474260584-136574528ed5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=85',
-  heroImageClassName: 'object-[center_30%]',
+  heroImage: '/blog/sourced/dali-three-pagodas.jpg',
+  heroImageClassName: 'object-[center_45%]',
+  heroImageCredit: 'Photo: CEphoto, Uwe Aranas, CC BY-SA 3.0, via Wikimedia Commons',
   introText: [
     'Dali served as capital of the Nanzhao Kingdom (738-1095 AD), a powerful state controlling southwestern China, parts of Burma, and Tibet. The kingdom\'s merchants, diplomats, and monks traversed the South Silk Road, bringing goods, ideas, and religions to this mountain valley. The Three Pagodas, visible across the valley, stand as physical testament to centuries of religious, political, and commercial importance.',
     'The modern town preserves Ming and Qing architecture within the walled Old Town. Bai ethnic people, numbering approximately 1.9 million and concentrated in Yunnan\'s Dali area, maintain distinctive cultural practices: traditional clothing, handicrafts, and architectural conventions visible throughout the town. Whitewashed buildings with dark tile roofs, ornate wooden doors, and intricate carvings reflect Bai aesthetic preferences.',
@@ -1447,7 +1451,6 @@ export const daliGuide: DestinationGuide = {
   relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'understanding-chinese-tea-culture', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/yunnan-village.jpg`,
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1636,7 +1639,7 @@ export const shangrIlaGuide: DestinationGuide = {
   relatedBlogSlugs: ['why-silk-road-should-be-your-next-adventure', 'photography-guide-china-best-locations-hidden-gems', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
     `${TI}/yunnan-rice-terraces.jpg`,
-    `${TI}/yunnan-village.jpg`,
+    `${TI}/shangri-la-monastery-lake.jpg`,
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1967,7 +1970,7 @@ export const yangshuoGuide: DestinationGuide = {
   relatedGuideSlugs: ['guilin-travel-guide', 'li-river-travel-guide'],
   relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'photography-guide-china-best-locations-hidden-gems', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
-    `${TI}/guilin-river-valley.jpg`,
+    '/images/tours/li-river-karst-boats.jpg',
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -2041,7 +2044,7 @@ export const liRiverCruiseGuide: DestinationGuide = {
   relatedGuideSlugs: ['guilin-travel-guide', 'yangshuo-travel-guide'],
   relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'best-time-visit-china-seasonal-weather-crowds-guide', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
-    `${TI}/guilin-river-valley.jpg`,
+    '/images/tours/yangshuo-karst-aerial.jpg',
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -2058,8 +2061,9 @@ export const hangzhouGuide: DestinationGuide = {
   keywords: ['Hangzhou', 'West Lake', 'silk', 'tea', 'gardens'],
   h1: 'Hangzhou: Silk Capital & West Lake Paradise',
   heroSubtitle: 'Where History & Natural Beauty Merge',
-  heroImage: `${TI}/hangzhou-west-lake.jpg`,
-  heroImageClassName: 'object-[center_50%]',
+  heroImage: '/blog/sourced/hangzhou-west-lake-broken-bridge.jpg',
+  heroImageClassName: 'object-[center_55%]',
+  heroImageCredit: 'Photo: Jakub Hałun, CC BY-SA 4.0, via Wikimedia Commons',
   introText: [
     'Hangzhou, located 180km south of Shanghai, served as capital of the Southern Song Dynasty (1127-1279). The city\'s reputation for beauty—particularly West Lake—inspired poets, painters, and scholars across centuries. The saying "Above there is paradise (heaven), below there is Hangzhou" reflects the city\'s legendary aesthetic charm. Modern Hangzhou combines heritage preservation with contemporary development, evident in its role as Chinese internet technology centre (Alibaba headquarters).',
     'West Lake (Hangzhou), a UNESCO World Heritage site, represents the primary attraction. The scenic lake—surrounded by temples, gardens, causeways, and misty mountains—creates one of China\'s most photographed landscapes. The "Ten Views of West Lake" define seasonal visiting patterns and classic beauty standards. Tea culture pervades Hangzhou; Longjing (Dragon Well) tea, grown on surrounding hillsides, represents premium Chinese tea.',
