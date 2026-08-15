@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/site';
 import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
+import { getAllBlogPosts } from '@/lib/data/blogs';
 
 const SITE = getSiteUrl();
 
@@ -146,29 +147,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/faq/${faqGreatWall.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
   ];
 
-  // ── Long-tail blog posts (batch 1) ──────────────────────────────────────
-  const blogPages: MetadataRoute.Sitemap = [
-    // Line A: Beijing / Xi'an
-    'beijing-xian-itinerary-10-days',
-    'first-time-china-beijing-xian',
-    'beijing-to-xian-high-speed-train',
-    'terracotta-warriors-guide-nz',
-    'beijing-xian-tour-new-zealand',
-    // Line B: Shanghai & Surroundings
-    'shanghai-suzhou-hangzhou-itinerary',
-    'west-lake-hangzhou-travel-guide',
-    'suzhou-gardens-guide-nz',
-    'shanghai-10-days-itinerary',
-    'china-water-towns-jiangnan-guide',
-    // Line C: Chongqing / Chengdu
-    'chongqing-chengdu-itinerary-10-days',
-    'how-many-days-in-chongqing',
-    'chongqing-vs-chengdu',
-    'liziba-station-chongqing-guide',
-    'chengdu-panda-tour-new-zealand',
-  ].map((slug) => ({
-    url: `${SITE}/blog/${slug}`,
-    lastModified: now,
+  // ── Blog posts ──────────────────────────────────────────────────────────
+  // Derived from the corpus so newly published posts are listed automatically.
+  // `blogs.test.ts` guards slug uniqueness, so this cannot emit duplicate URLs.
+  const blogPages: MetadataRoute.Sitemap = getAllBlogPosts().map((post) => ({
+    url: `${SITE}/blog/${post.slug}`,
+    lastModified: post.publishedAt,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
