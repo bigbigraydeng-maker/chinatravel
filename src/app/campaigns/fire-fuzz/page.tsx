@@ -32,11 +32,13 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { FIRE_FUZZ_CONFIG } from '@/lib/campaigns/fire-fuzz';
 
 export async function generateMetadata(): Promise<Metadata> {
+  // Share the tour's own hero so the social card can't drift from the page again.
+  const ogTour = getTourBySlug('china', 'discovery', FIRE_FUZZ_CONFIG.tourSlug);
   return buildCtsPageMetadata({
     title: FIRE_FUZZ_CONFIG.metaTitle,
     description: FIRE_FUZZ_CONFIG.metaDescription,
     path: FIRE_FUZZ_CONFIG.campaignPath,
-    ogImagePath: 'https://images.unsplash.com/photo-PoFNeom7HC4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    ogImagePath: ogTour?.heroImage ?? `${getSiteUrl()}/blog/chongqing-night-skyline-hongyadong.jpg`,
     keywords: [
       'China Discovery Fire Fuzz',
       'Chongqing tour New Zealand',
