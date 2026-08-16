@@ -351,7 +351,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                     yum cha finale in Guangzhou complete the journey.
                   </p>
                   <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
-                    <p className="text-sm font-semibold uppercase tracking-wide">From</p>
+                    <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
                     <p className="text-4xl font-bold">$7,188pp</p>
                   </div>
                   <div className="mt-4 grid grid-cols-4 gap-1.5">

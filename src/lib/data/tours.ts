@@ -1378,6 +1378,7 @@ export const tours: Tour[] = [
       },
     ],
     inclusions: [
+      'International and domestic airfares',
       'Accommodation in 4-star hotels',
       'Meals as specified in the itinerary',
       'Private airport transfers',
