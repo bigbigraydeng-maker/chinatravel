@@ -13,20 +13,21 @@ import { getSiteUrl } from '@/lib/site';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
-    title: 'October 2026 China Tours from New Zealand | CTS Tours',
+    title: 'Spotlight China Tours from New Zealand | CTS Tours',
     description:
-      "Three featured October & November 2026 group tours from NZ: Shanghai & Surroundings, Beijing & Xi'an, Best of China (15 Days). Limited seats. From NZD $2,750. Book direct.",
+      'Three featured CTS group departures from NZ: Best of China (3 Nov 2026), the China Icons Collection Christmas & New Year journey (22 Dec 2026), and A Tale of Two Cities (18 Mar 2027). Limited seats. Book direct.',
     path: '/campaigns/october-2026',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
-    ogImageAlt: 'October 2026 China Spotlight Tours — featured group departures from New Zealand',
+    ogImageAlt: 'CTS Spotlight China Tours — featured group departures from New Zealand',
     keywords: [
-      'October 2026 China tours',
       'China group tours 2026',
+      'China group tours 2027',
       'New Zealand China tours',
-      'CTS Tours October departures',
-      'Shanghai tour October 2026',
-      "Beijing Xi'an tour 2026",
+      'CTS Tours spotlight departures',
+      'China Icons Collection',
+      'Christmas in China tour',
+      "Beijing Xi'an tour 2027",
       'Best of China tour November 2026',
     ],
   });
@@ -36,27 +37,27 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Why book a small group tour vs a private tour?',
     answer:
-      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Group sizes are capped at 16–20 to keep things personal. If you prefer your own pace, ask us about converting any October/November departure into a fully private booking — same itinerary, same guides, your own van and timings.',
+      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Group sizes are capped at 16–20 to keep things personal. If you prefer your own pace, ask us about converting any featured departure into a fully private booking — same itinerary, same guides, your own van and timings.',
   },
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Tour pricing covers all in-China services: hotels, daily breakfasts plus listed lunches/dinners, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. International flights from Auckland are arranged separately so you can choose airline, fare class, and stopovers — our team will quote and book flights for you on request.',
+      'Yes — each of these three departures is priced inclusive of return international airfares from Auckland, alongside hotels, daily breakfasts plus listed lunches/dinners, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
   },
   {
-    question: 'Do I need a visa to visit China in October 2026?',
+    question: 'Do I need a visa to visit China?',
     answer:
-      'Most New Zealand passport holders can enter China visa-free for up to 30 days for tourism under the policy currently published through 31 December 2026. You will need a valid passport, return/onward tickets, and your CTS booking confirmation. For business travel, longer stays, or non-NZ passports, a visa may still be required — confirm with us before booking.',
+      'Most New Zealand passport holders can enter China visa-free for up to 30 days for tourism under the policy currently published through 31 December 2026. You will need a valid passport, return/onward tickets, and your CTS booking confirmation. For business travel, longer stays, non-NZ passports, or a trip that runs past that date, a visa may still be required — confirm with us before booking.',
   },
   {
-    question: 'What is the cancellation policy on October 2026 departures?',
+    question: 'What is the cancellation policy on these departures?',
     answer:
       'Each tour has its own published cancellation schedule based on time-to-departure. Early bookings (>90 days out) typically forfeit only the deposit; closer cancellations move on a sliding scale. We strongly recommend comprehensive travel insurance from the date you pay the deposit. Email auckland@cts.co.nz for the exact terms on the departure you are interested in.',
   },
   {
-    question: 'How fast do these October departures sell out?',
+    question: 'How fast do these departures sell out?',
     answer:
-      'October is peak season for visa-free China travel from NZ — the Yangtze Delta, Beijing/Xi\'an and Best of China group tours typically fill 6–10 weeks before departure. We recommend securing your seat with a refundable deposit early and finalising flights once confirmed. Limited single-supplement rooms are first-come, first-served.',
+      'These are among CTS’s most-booked departures — the November, December and 2027 group tours typically fill 6–10 weeks before departure. We recommend securing your seat with a refundable deposit early and finalising flights once confirmed. Limited single-supplement rooms are first-come, first-served.',
   },
 ];
 
@@ -83,9 +84,9 @@ export default function October2026CampaignIndexPage() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'October 2026 China Spotlight Tours',
+    name: 'CTS Spotlight China Tours',
     description:
-      'Featured group tour departures for October and November 2026 with CTS Tours, New Zealand.',
+      'Featured group tour departures with CTS Tours, New Zealand: November 2026, December 2026, and March 2027.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -129,7 +130,7 @@ export default function October2026CampaignIndexPage() {
               Home
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-white font-medium">October 2026</span>
+            <span className="text-white font-medium">Spotlight Departures</span>
           </nav>
 
           <div className="max-w-3xl">
@@ -139,11 +140,11 @@ export default function October2026CampaignIndexPage() {
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6">
-              October 2026 — Spotlight Departures
+              Spotlight Departures
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Three featured group tours departing October & November 2026.
+              Three featured group tours — November, Christmas &amp; New Year, and 2027.
               Limited seats. Book direct with New Zealand&apos;s China specialists since 1928.
             </p>
 
@@ -153,7 +154,7 @@ export default function October2026CampaignIndexPage() {
                 { v: '3', l: 'Featured Tours' },
                 { v: '6+', l: 'Destinations' },
                 { v: '30+', l: 'Cities & Sites' },
-                { v: 'NZD $2,750', l: 'From' },
+                { v: 'NZD $3,480', l: 'From' },
               ].map((s) => (
                 <div
                   key={s.l}
@@ -198,7 +199,7 @@ export default function October2026CampaignIndexPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-14">
             <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
-              Featured October & November 2026 Departures
+              Featured Departures
             </p>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">
               Choose Your Journey
@@ -388,12 +389,12 @@ export default function October2026CampaignIndexPage() {
         />
         <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl">
           <h2 className="text-3xl md:text-5xl font-serif font-bold mb-6 leading-tight">
-            Ready to explore China this October?
+            Ready to book your China trip?
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
             Book a featured group departure above, or talk to our Auckland team about a
-            fully tailor-made private trip. Either way — limited seats, peak season pricing locks in
-            now.
+            fully tailor-made private trip. Either way — limited seats, and pricing locks in
+            once you confirm.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

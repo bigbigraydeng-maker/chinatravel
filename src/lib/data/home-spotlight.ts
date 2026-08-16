@@ -10,6 +10,12 @@ import {
  * not tied to any single campaign config type.
  *
  * Reorder or replace entries when marketing priorities change.
+ *
+ * Roster history: Shanghai & Surroundings (14 Oct 2026) sold out and was pulled —
+ * its own product/campaign pages are untouched. Tale of Two Cities stays but now
+ * points at its own product page and the 18 March 2027 departure rather than the
+ * October-themed campaign LP, since that LP's copy is built entirely around the
+ * October date.
  */
 export type HomeSpotlightTourRef = {
   destination: 'china';
@@ -26,26 +32,26 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
     destination: 'china',
     tier: 'discovery',
-    slug: 'beijing-xian',
-    campaignHref: getOctober2026CampaignPath('tale-of-two-cities'),
-    departureLabel: '15 Oct 2026 · 18 Mar 2027',
-    route: ['Beijing', "Xi'an"],
-  },
-  {
-    destination: 'china',
-    tier: 'discovery',
-    slug: 'shanghai-surroundings',
-    campaignHref: getOctober2026CampaignPath('shanghai-surroundings'),
-    departureLabel: '14 Oct 2026',
-    route: ['Shanghai', 'Suzhou', 'Wuxi', 'Hangzhou'],
-  },
-  {
-    destination: 'china',
-    tier: 'discovery',
     slug: 'essentials',
     campaignHref: '/tours/china/discovery/essentials',
     departureLabel: '3 Nov 2026',
     route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
+  },
+  {
+    destination: 'china',
+    tier: 'discovery',
+    slug: 'china-icons-collection',
+    campaignHref: '/tours/china/discovery/china-icons-collection',
+    departureLabel: '22 Dec 2026',
+    route: ['Shanghai', 'Beijing', "Xi'an", 'Chongqing', 'Guangzhou'],
+  },
+  {
+    destination: 'china',
+    tier: 'discovery',
+    slug: 'beijing-xian',
+    campaignHref: '/tours/china/discovery/beijing-xian',
+    departureLabel: '18 Mar 2027',
+    route: ['Beijing', "Xi'an"],
   },
 ];
 
