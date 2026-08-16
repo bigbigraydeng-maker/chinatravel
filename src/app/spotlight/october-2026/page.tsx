@@ -8,13 +8,12 @@ import {
   buildOctober2026CampaignAdUrl,
   buildSpotlightPosterAdUrl,
 } from '@/lib/campaigns/october-2026-discovery';
-import { buildFireFuzzCampaignAdUrl } from '@/lib/campaigns/fire-fuzz';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
-    title: 'Spotlight Poster | October & November 2026 China Tours',
+    title: 'Spotlight Poster | October–December 2026 China Tours',
     description:
-      "Newspaper-style Spotlight poster for CTS Tours' October & November 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities and Fire & Fuzz.",
+      "Newspaper-style Spotlight poster for CTS Tours' October and December 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities and the China Icons Collection Christmas and New Year journey.",
     path: '/spotlight/october-2026',
     /** Print / QR-only: not linked from site nav; keep out of organic results. */
     robots: { index: false, follow: true },
@@ -24,9 +23,11 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [
       'China spotlight tours',
       'October 2026 China departures',
+      'December 2026 China departures',
       'Shanghai and Surroundings',
       'Beijing and Xian tour',
-      'Chongqing Chengdu tour',
+      'China Icons Collection',
+      'Christmas in China tour',
       'CTS Tours',
     ],
     ogType: 'website',
@@ -42,7 +43,7 @@ type SpotlightPosterPageProps = {
 export default function October2026SpotlightPosterPage({ searchParams }: SpotlightPosterPageProps) {
   const shanghaiTour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
   const twoCitiesTour = getTourBySlug('china', 'discovery', 'beijing-xian');
-  const fireFuzzTour = getTourBySlug('china', 'discovery', 'chongqing-chengdu');
+  const iconsTour = getTourBySlug('china', 'discovery', 'china-icons-collection');
 
   if (!shanghaiTour || !twoCitiesTour) {
     return null;
@@ -67,24 +68,26 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
     campaign: 'oct2026_spotlight',
     content: 'tale_of_two_cities',
   });
-  const fireFuzzUtmUrl = buildFireFuzzCampaignAdUrl(siteUrl, {
-    source: 'nz_newspaper',
-    medium: 'print',
-    campaign: 'nov2026_spotlight',
-    content: 'fire_fuzz',
-  });
+  const iconsUtmUrl = `${siteUrl.replace(/\/$/, '')}/tours/china/discovery/china-icons-collection?${new URLSearchParams(
+    {
+      utm_source: 'nz_newspaper',
+      utm_medium: 'print',
+      utm_campaign: 'tour_spotlight_202612',
+      utm_content: 'discovery_china_icons_collection',
+    }
+  ).toString()}`;
   const posterHeroImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg';
   const posterShanghaiImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg';
   const posterBeijingXianImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg';
-  const posterFireFuzzImage = '/blog/chongqing-night-skyline-hongyadong.jpg';
+  const posterIconsImage = '/blog/group-shanghai-bund-skyline.jpg';
 
   const focus = searchParams?.focus;
   const highlightShanghai = focus === 'shanghai-surroundings';
   const highlightTwoCities = focus === 'tale-of-two-cities';
-  const highlightFireFuzz = focus === 'fire-fuzz';
+  const highlightIcons = focus === 'china-icons-collection';
 
   return (
     <main className="bg-[#f3f0eb]">
@@ -119,10 +122,10 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                   Better Time to Go
                 </p>
                 <p className="mt-1.5 text-[10px] leading-[1.2] text-gray-800 md:text-[11px]">
-                  Explore China&apos;s most iconic destinations this October and November &mdash; from the elegance of
-                  Shanghai and its surrounding water towns, to the history of Beijing and Xi&apos;an, and the electric
-                  energy of Chongqing and Chengdu. Designed for first-time travellers, these small-group journeys make
-                  it easy to experience the very best of China.
+                  Explore China&apos;s most iconic destinations this October &mdash; from the elegance of Shanghai
+                  and its surrounding water towns to the history of Beijing and Xi&apos;an &mdash; or spend Christmas
+                  and New Year there on our 16-day festive journey. Designed for first-time travellers, these
+                  small-group journeys make it easy to experience the very best of China.
                 </p>
               </div>
             </div>
@@ -231,22 +234,24 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
           </section>
 
           {/* November departure — Fire & Fuzz */}
-          {fireFuzzTour && (
+          {iconsTour && (
             <section className="bg-[#ece9e4] px-4 pb-6 md:px-6 md:pb-6">
               <div className="mb-3 flex items-center gap-3">
                 <div className="h-px flex-1 bg-[#d3203b]/30" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">November Departure</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">
+                  Christmas &amp; New Year Departure
+                </span>
                 <div className="h-px flex-1 bg-[#d3203b]/30" />
               </div>
               <article
                 className={`overflow-hidden bg-white shadow-sm transition md:grid md:grid-cols-2 ${
-                  highlightFireFuzz ? 'ring-4 ring-[#d3203b]/40 shadow-xl' : ''
+                  highlightIcons ? 'ring-4 ring-[#d3203b]/40 shadow-xl' : ''
                 }`}
               >
                 <div className="relative h-56 md:h-auto md:min-h-[280px]">
                   <Image
-                    src={posterFireFuzzImage}
-                    alt="Chongqing city lights reflected on the Yangtze River at night"
+                    src={posterIconsImage}
+                    alt="CTS travellers on the Shanghai Bund with the Pudong skyline behind them"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-center"
@@ -254,41 +259,42 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 </div>
                 <div className="p-4 md:p-5">
                   <h2 className="font-serif text-[42px] font-bold leading-[0.95] text-[#c72235]">
-                    Fire &amp; Fuzz &mdash; Chongqing &amp; Chengdu
+                    China Icons Collection
                   </h2>
                   <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
-                    10 Days | Depart 1 November 2026
+                    16 Days | Depart 22 December 2026
                   </p>
                   <p className="mt-2 text-[16px] leading-relaxed text-black">
-                    &bull; Hongyadong riverside stilt houses &bull; Liziba monorail station &bull; Dazu Rock Carvings (UNESCO) &bull; Giant Panda Base
+                    &bull; Christmas in Shanghai &bull; New Year&apos;s Eve in Xi&apos;an &bull; Great Wall at Mutianyu &bull; Terracotta Warriors
                   </p>
                   <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                    China&apos;s most talked-about cities back-to-back: Chongqing&apos;s neon-lit gorge skyline,
-                    then Chengdu&apos;s pandas and teahouse calm. Hot pot, high drama and fuzzy ears.
+                    Spend Christmas among Shanghai&apos;s markets and skyline, then count down to the New Year
+                    at Xi&apos;an&apos;s Tang Dynasty Ever-Bright City. Beijing, Chongqing and a Cantonese
+                    yum cha finale in Guangzhou complete the journey.
                   </p>
                   <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
-                    <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                    <p className="text-4xl font-bold">$2,750pp</p>
+                    <p className="text-sm font-semibold uppercase tracking-wide">From</p>
+                    <p className="text-4xl font-bold">$7,188pp</p>
                   </div>
                   <div className="mt-4 grid grid-cols-4 gap-1.5">
                     {[
-                      { src: '/blog/group-chongqing-costume-riverside-1.jpg', alt: 'Travellers in traditional Chinese robes at Chongqing riverside' },
-                      { src: '/blog/group-chongqing-costume-riverside-2.jpg', alt: 'Couple in Chinese costume at Chongqing night market' },
-                      { src: '/blog/group-chongqing-costume-riverside-3.jpg', alt: 'Group in golden Chinese robes at Chongqing waterfront' },
-                      { src: '/blog/group-chongqing-costume-riverside-4.jpg', alt: 'Travellers enjoying Chongqing riverside entertainment in costume' },
+                      { src: '/blog/group-shanghai-bund-selfie.jpg', alt: 'CTS travellers photographing themselves on the Shanghai Bund' },
+                      { src: '/blog/group-ancient-gate-night.jpg', alt: 'Travellers at a floodlit ancient city gate at night' },
+                      { src: '/blog/chongqing-night-skyline-hongyadong.jpg', alt: 'Hongyadong stilt houses lit up above the river in Chongqing' },
+                      { src: '/blog/group-walking-shanghai-lane.jpg', alt: 'Travellers walking a Shanghai lane with a local guide' },
                     ].map((img) => (
                       <div key={img.src} className="relative aspect-square rounded overflow-hidden">
                         <Image src={img.src} alt={img.alt} fill className="object-cover object-top" sizes="80px" />
                       </div>
                     ))}
                   </div>
-                  <p className="mt-1.5 text-[11px] text-gray-500 italic">Travellers enjoying Chongqing&apos;s riverside experience</p>
+                  <p className="mt-1.5 text-[11px] text-gray-500 italic">Shanghai, Xi&apos;an and Chongqing on recent CTS departures</p>
                   <div className="mt-4">
                     <Link
-                      href={fireFuzzUtmUrl}
+                      href={iconsUtmUrl}
                       className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"
                     >
-                      View Fire &amp; Fuzz tour
+                      View China Icons Collection
                     </Link>
                   </div>
                 </div>
@@ -327,11 +333,13 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 {twoCitiesUtmUrl}
               </a>
             </div>
-            {fireFuzzTour && (
+            {iconsTour && (
               <div>
-                <p className="font-semibold text-gray-900">Fire &amp; Fuzz &mdash; Chongqing &amp; Chengdu:</p>
-                <a href={fireFuzzUtmUrl} className="break-all text-primary underline underline-offset-2">
-                  {fireFuzzUtmUrl}
+                <p className="font-semibold text-gray-900">
+                  China Icons Collection &mdash; Christmas &amp; New Year:
+                </p>
+                <a href={iconsUtmUrl} className="break-all text-primary underline underline-offset-2">
+                  {iconsUtmUrl}
                 </a>
               </div>
             )}
