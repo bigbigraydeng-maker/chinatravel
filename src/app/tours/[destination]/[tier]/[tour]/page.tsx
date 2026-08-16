@@ -346,14 +346,11 @@ export default function TourPage({ params }: TourPageProps) {
                     label: "What's Included",
                     content: (
                       <>
-    {/* Inclusions & Exclusions */}
-                  <TourInclusions 
-                    inclusions={tour.inclusions} 
-                    exclusions={tour.exclusions} 
-                  />
-    {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
-                    <CtsDepartureScheduleBlock currentSlug={tour.slug} />
-                  )}
+                        {/* Inclusions & Exclusions */}
+                        <TourInclusions
+                          inclusions={tour.inclusions}
+                          exclusions={tour.exclusions}
+                        />
                       </>
                     ),
                   },
@@ -437,9 +434,17 @@ export default function TourPage({ params }: TourPageProps) {
         </div>
       </div>
 
+      {/* CTS departure schedule — the whole range, not this tour's own details, so it
+          sits with Related Tours at page level rather than inside a product tab. */}
+      {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
+        <div className="container mx-auto px-4 pb-16">
+          <CtsDepartureScheduleBlock currentSlug={tour.slug} />
+        </div>
+      )}
+
       {/* Related Tours */}
-      <RelatedTours 
-        tours={relatedTours} 
+      <RelatedTours
+        tours={relatedTours}
         destination={tour.destination}
         tier={tour.tier}
       />
