@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/site';
 import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
+import { getAllActiveTours } from '@/lib/data/tours';
 
 const SITE = getSiteUrl();
 
@@ -102,41 +103,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // ── Tour pages (destination/tier combos) ────────────────────────────────
-  const tourSlugs: MetadataRoute.Sitemap = [
-    // Signature
-    { slug: 'silk-road', tier: 'signature' },
-    { slug: 'imperial-heritage', tier: 'signature' },
-    { slug: 'grand-tour', tier: 'signature' },
-    { slug: 'landscapes', tier: 'signature' },
-    // Discovery
-    { slug: 'beijing-xian', tier: 'discovery' },
-    { slug: 'essentials', tier: 'discovery' },
-    { slug: 'shanghai-surroundings', tier: 'discovery' },
-    { slug: 'yunnan-explorer', tier: 'discovery' },
-    // Stopover
-    { slug: 'beijing', tier: 'stopover' },
-    { slug: 'beijing-express', tier: 'stopover' },
-    { slug: 'shanghai', tier: 'stopover' },
-    { slug: 'shanghai-express', tier: 'stopover' },
-    { slug: 'chengdu', tier: 'stopover' },
-    { slug: 'guilin', tier: 'stopover' },
-    { slug: 'xian', tier: 'stopover' },
-    { slug: 'guangzhou', tier: 'stopover' },
-    { slug: 'shanghai-suzhou', tier: 'stopover' },
-    { slug: 'shanghai-wuzhen', tier: 'stopover' },
-    { slug: 'guilin-surrounds', tier: 'stopover' },
-    { slug: 'zhangjiajie', tier: 'stopover' },
-    { slug: 'guangzhou-shenzhen', tier: 'stopover' },
-    { slug: 'huangshan', tier: 'stopover' },
-    // Discovery
-    { slug: 'chongqing-chengdu', tier: 'discovery' },
-  ].map(({ slug, tier }) => ({
-    url: `${SITE}/tours/china/${tier}/${slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.75,
-  }));
+  // ── Tour pages ──────────────────────────────────────────────────────────
+  // 从 tours.ts 派生,不再手写 slug 列表。手写列表会和数据漂移 ——
+  // 曾经出现过 isActive:false 的产品仍留在 sitemap 里,成为站内无入口的孤儿页。
+  const tourSlugs: MetadataRoute.Sitemap = getAllActiveTours()
+    .filter((tour) => tour.destination === 'china')
+    .map((tour) => ({
+      url: `${SITE}/tours/china/${tour.tier}/${tour.slug}`,
+      lastModified: tour.updatedAt || now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    }));
 
   // ── Phase 3: FAQ Pages ─────────────────────────────────────────────────────
   const faqPages: MetadataRoute.Sitemap = [
