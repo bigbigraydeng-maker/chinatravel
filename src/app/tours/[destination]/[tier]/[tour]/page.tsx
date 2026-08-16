@@ -9,6 +9,7 @@ import {
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
+import TourTabs from '@/components/tours/TourTabs';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
@@ -226,125 +227,157 @@ export default function TourPage({ params }: TourPageProps) {
         <div className="container mx-auto px-4 py-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
-            <div className="lg:col-span-2 space-y-16">
-              {/* Quick Answer — LLM-friendly TL;DR for Google AI Overview / PAA citation.
-                  Only rendered when the tour data provides one. */}
-              {tour.quickAnswer && (
-                <aside
-                  aria-label="Quick answer"
-                  className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
-                >
-                  <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
-                    Quick answer
-                  </p>
-                  <p className="text-gray-800 leading-relaxed">{tour.quickAnswer}</p>
-                </aside>
-              )}
-
-              {/* Overview */}
-              <section id="overview">
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
-                  Tour Overview
-                </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  {tour.shortDescription}
-                </p>
-                {tour.singleSupplement && (
-                  <p className="mt-4 text-sm text-gray-600">
-                    <span className="font-semibold text-gray-800">Single supplement:</span>{' '}
-                    {tour.singleSupplement}
-                  </p>
-                )}
-              </section>
-
-              {/* Essentials: Why 15 Days? value stack */}
-              {tour.slug === 'essentials' && (
-                <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
-                  <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
-                    Why 15 Days, Not 10?
-                  </h2>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    Most operators send Kiwi travellers to China for 10 days — enough for the headliners
-                    (Beijing, Xi&apos;an, or Shanghai), but not enough to step beyond the well-trodden tourist trail.
-                  </p>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    The extra 5 days on our Best of China itinerary cover:
-                  </p>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Puyuan Fashion Ancient Town</strong> — Song-dynasty waterways most tour groups skip</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Hangzhou&apos;s West Lake</strong> — UNESCO heritage with Su Causeway, Leifeng Pagoda</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>actually experience</em> each city instead of just transiting through</span></li>
-                  </ul>
-                </section>
-              )}
-
-              {/* Silk Road: Why 18 Days? value stack */}
-              {tour.slug === 'silk-road' && (
-                <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
-                  <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
-                    Why 18 Days on the Silk Road?
-                  </h2>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    Most China tours stop at the Terracotta Warriors in Xi&apos;an and turn back east. The Silk Road
-                    begins where they end — 4,000 kilometres of desert oases, Buddhist grottoes, and Tianshan
-                    snowmelt stretching west to Xinjiang.
-                  </p>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    The extra 8 days beyond a standard China tour give you:
-                  </p>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Mogao Caves at Dunhuang</strong> — 1,700 years of Buddhist murals carved into the cliffs</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Zhangye Rainbow Danxia</strong> — layered rock formations no postcard does justice</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Heavenly Lake in the Tianshan Mountains</strong> — alpine boat cruise beneath snow peaks</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Bingling Temple Grottoes</strong> — accessible only by boat across Liujiaxia Reservoir</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Flaming Mountains &amp; Bezeklik Thousand Buddha Caves</strong> — Turpan desert heritage</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Jiayuguan Fortress &amp; Hanging Great Wall</strong> — the western end of the Ming Wall</span></li>
-                    <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>cross a civilisation</em>, not just visit a country</span></li>
-                  </ul>
-                </section>
-              )}
-
-              {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
-
-              {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
-                <CtsDepartureScheduleBlock currentSlug={tour.slug} />
-              )}
-
-              {/* Highlights */}
-              <TourHighlights highlights={tour.highlights} />
-
-              {/* Facebook Follow — inline CTA between highlights and itinerary */}
-              <FacebookFollowStrip variant="inline" />
-
-              {/* Itinerary */}
-              <TourItinerary
-                itinerary={tour.itinerary}
-                tourCities={tour.tourCities}
-                tourName={tour.name}
-                tourSlug={tour.slug}
-                destination={tour.destination}
-                tier={tour.tier}
+            <div className="lg:col-span-2">
+              <TourTabs
+                defaultTabId="itinerary"
+                tabs={[
+                  {
+                    id: 'itinerary',
+                    label: 'Itinerary',
+                    content: (
+                      <>
+    {/* Itinerary */}
+                  <TourItinerary
+                    itinerary={tour.itinerary}
+                    tourCities={tour.tourCities}
+                    tourName={tour.name}
+                    tourSlug={tour.slug}
+                    destination={tour.destination}
+                    tier={tour.tier}
+                  />
+    {/* Flipbook Beta - Guilin Stopover */}
+                  {tour.destination === 'china' && tour.tier === 'stopover' && tour.slug === 'guilin' && (
+                    <FlipbookSection
+                      flipbookId="1862be1931f3495da91b4149f3456542"
+                      title="Explore Guilin - Interactive Guide"
+                      initialSearch="Guilin"
+                    />
+                  )}
+                      </>
+                    ),
+                  },
+                  {
+                    id: 'overview',
+                    label: 'Overview',
+                    content: (
+                      <>
+    {tour.quickAnswer && (
+                    <aside
+                      aria-label="Quick answer"
+                      className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+                    >
+                      <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                        Quick answer
+                      </p>
+                      <p className="text-gray-800 leading-relaxed">{tour.quickAnswer}</p>
+                    </aside>
+                  )}
+    {/* Overview */}
+                  <section id="overview">
+                    <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
+                      Tour Overview
+                    </h2>
+                    <p className="text-lg text-gray-700 leading-relaxed">
+                      {tour.shortDescription}
+                    </p>
+                    {tour.singleSupplement && (
+                      <p className="mt-4 text-sm text-gray-600">
+                        <span className="font-semibold text-gray-800">Single supplement:</span>{' '}
+                        {tour.singleSupplement}
+                      </p>
+                    )}
+                  </section>
+    {/* Essentials: Why 15 Days? value stack */}
+                  {tour.slug === 'essentials' && (
+                    <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
+                      <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
+                        Why 15 Days, Not 10?
+                      </h2>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Most operators send Kiwi travellers to China for 10 days — enough for the headliners
+                        (Beijing, Xi&apos;an, or Shanghai), but not enough to step beyond the well-trodden tourist trail.
+                      </p>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        The extra 5 days on our Best of China itinerary cover:
+                      </p>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Puyuan Fashion Ancient Town</strong> — Song-dynasty waterways most tour groups skip</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Hangzhou&apos;s West Lake</strong> — UNESCO heritage with Su Causeway, Leifeng Pagoda</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Meijiawu Longjing tea plantation</strong> — actual tea farms, not gift shops</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Qinghefang Ancient Street</strong> — Hangzhou&apos;s living heritage quarter</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>actually experience</em> each city instead of just transiting through</span></li>
+                      </ul>
+                    </section>
+                  )}
+    {/* Silk Road: Why 18 Days? value stack */}
+                  {tour.slug === 'silk-road' && (
+                    <section className="bg-warm-50 py-10 px-6 rounded-2xl border border-warm-200">
+                      <h2 className="font-serif text-2xl font-semibold text-accent mb-4">
+                        Why 18 Days on the Silk Road?
+                      </h2>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        Most China tours stop at the Terracotta Warriors in Xi&apos;an and turn back east. The Silk Road
+                        begins where they end — 4,000 kilometres of desert oases, Buddhist grottoes, and Tianshan
+                        snowmelt stretching west to Xinjiang.
+                      </p>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        The extra 8 days beyond a standard China tour give you:
+                      </p>
+                      <ul className="space-y-2 text-gray-700">
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Mogao Caves at Dunhuang</strong> — 1,700 years of Buddhist murals carved into the cliffs</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Zhangye Rainbow Danxia</strong> — layered rock formations no postcard does justice</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Heavenly Lake in the Tianshan Mountains</strong> — alpine boat cruise beneath snow peaks</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Bingling Temple Grottoes</strong> — accessible only by boat across Liujiaxia Reservoir</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Flaming Mountains &amp; Bezeklik Thousand Buddha Caves</strong> — Turpan desert heritage</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span><strong>Jiayuguan Fortress &amp; Hanging Great Wall</strong> — the western end of the Ming Wall</span></li>
+                        <li className="flex gap-2"><Icon name="check" className="w-4 h-4 text-primary flex-shrink-0 mt-1" /><span>Time to <em>cross a civilisation</em>, not just visit a country</span></li>
+                      </ul>
+                    </section>
+                  )}
+    {/* Highlights */}
+                  <TourHighlights highlights={tour.highlights} />
+    {/* Facebook Follow — inline CTA between highlights and itinerary */}
+                  <FacebookFollowStrip variant="inline" />
+                      </>
+                    ),
+                  },
+                  {
+                    id: 'inclusions',
+                    label: "What's Included",
+                    content: (
+                      <>
+    {/* Inclusions & Exclusions */}
+                  <TourInclusions 
+                    inclusions={tour.inclusions} 
+                    exclusions={tour.exclusions} 
+                  />
+    {tour.destination === 'china' && (tour.tier === 'signature' || tour.tier === 'discovery') && (
+                    <CtsDepartureScheduleBlock currentSlug={tour.slug} />
+                  )}
+                      </>
+                    ),
+                  },
+                  {
+                    id: 'gallery',
+                    label: 'Gallery',
+                    content: (
+                      <>
+                        {/* Gallery */}
+                        <TourGallery images={tour.gallery} tourName={tour.name} />
+                      </>
+                    ),
+                  },
+                  {
+                    id: 'planning',
+                    label: 'Plan Your Trip',
+                    content: (
+                      <>
+                        {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
+                      </>
+                    ),
+                  },
+                ]}
               />
-
-              {/* Flipbook Beta - Guilin Stopover */}
-              {tour.destination === 'china' && tour.tier === 'stopover' && tour.slug === 'guilin' && (
-                <FlipbookSection
-                  flipbookId="1862be1931f3495da91b4149f3456542"
-                  title="Explore Guilin - Interactive Guide"
-                  initialSearch="Guilin"
-                />
-              )}
-
-              {/* Inclusions & Exclusions */}
-              <TourInclusions 
-                inclusions={tour.inclusions} 
-                exclusions={tour.exclusions} 
-              />
-
-              {/* Gallery */}
-              <TourGallery images={tour.gallery} tourName={tour.name} />
             </div>
 
             {/* Sidebar */}
