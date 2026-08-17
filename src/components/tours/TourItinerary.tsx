@@ -56,11 +56,25 @@ export default function TourItinerary({
               className="flex w-full items-center justify-between bg-gray-50 p-4 text-left transition-colors hover:bg-gray-100"
             >
               <div className="flex items-center gap-4">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-white">
+                <span
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full font-bold text-white ${
+                    day.festiveLabel ? 'bg-gradient-to-br from-amber-400 to-red-600' : 'bg-primary'
+                  }`}
+                >
                   {day.day}
                 </span>
                 <div>
-                  <h3 className="font-bold text-gray-900">{day.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-bold text-gray-900">{day.title}</h3>
+                    {day.festiveLabel ? (
+                      <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-amber-400 to-red-600 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-white">
+                        <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                          <path d="M10 2l1.9 4.6L17 8l-4.3 3 1.4 5.4L10 13.5 5.9 16.4 7.3 11 3 8l5.1-1.4L10 2z" />
+                        </svg>
+                        {day.festiveLabel}
+                      </span>
+                    ) : null}
+                  </div>
                   {day.accommodation ? <p className="text-sm text-gray-500">{day.accommodation}</p> : null}
                 </div>
               </div>

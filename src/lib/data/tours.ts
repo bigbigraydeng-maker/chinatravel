@@ -63,6 +63,8 @@ export interface DayItinerary {
   description: string;
   meals: string[];
   accommodation?: string;
+  /** Optional occasion marker for a specific day, e.g. "Christmas Day", "New Year's Eve". Renders as a small badge next to the day title. */
+  festiveLabel?: string;
 }
 
 export interface Destination {
@@ -1241,6 +1243,7 @@ export const tours: Tour[] = [
       {
         day: 3,
         title: 'Shanghai',
+        festiveLabel: 'Christmas Eve',
         description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. In the evening, take a Huangpu River cruise. As the most modern metropolis in China, Shanghai has several Christmas markets that bring a taste of European tradition to the city, and you will celebrate the season with Shanghai people.',
         meals: [
           'Breakfast',
@@ -1316,6 +1319,7 @@ export const tours: Tour[] = [
       {
         day: 10,
         title: 'Xi\'an — Terracotta Warriors & New Year\'s Eve',
+        festiveLabel: 'New Year\'s Eve',
         description: 'Morning tour to the greatest archaeological discovery of the century, the more than 2,000-year-old Terracotta Warriors interred with the Emperor Qin Shi Huang; included are the Circle Vision Movie and Bronze Chariot. In the evening, go to the Tang Dynasty Ever-Bright City for a New Year\'s Eve steeped in history: this pedestrian street transforms into a grand New Year\'s stage with performances such as poetry duels with \'Li Bai\', float parades and music parties — a fantastic place to soak in the atmosphere of a \'prosperous Chang\'an\'. Other iconic celebration spots include Bell and Drum Tower Square, where you can join the crowd to watch the giant LED screen countdown to midnight, with the nearby Muslim Quarter open for late-night snacks; the Big Wild Goose Pagoda, where the traditional bell-ringing ceremony at Da Ci\'en Temple from 23:30 offers a more serene experience, the 108 bell rings symbolically welcoming the new year; and the Xi\'an City Wall at Yongning Gate, specially open for night visits on New Year\'s Eve.',
         meals: [
           'Breakfast',

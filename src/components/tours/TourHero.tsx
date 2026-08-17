@@ -126,9 +126,15 @@ export default function TourHero({
         <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/55 to-black/20" />
         {seasonalBadge && (
           <>
-            {/* Warm glow — reads as festive lights against the night photo without any literal decoration */}
-            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-amber-500/25 via-primary/10 to-transparent" />
-            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-amber-400/20 blur-3xl" />
+            {/*
+              Red-gold glow — the same pairing reads as Christmas lights and as Chinese New Year
+              (both traditions lean red + gold), which happens to fit this tour's two halves.
+              Two corner blooms plus a base wash, still photography-led per the Wendy Wu reference —
+              warmer and more present than the single-tone version, short of literal decoration.
+            */}
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-red-700/35 via-amber-500/20 to-transparent" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-amber-400/25 blur-3xl" />
+            <div className="absolute -top-16 -left-16 h-80 w-80 rounded-full bg-red-600/20 blur-3xl" />
           </>
         )}
       </div>
