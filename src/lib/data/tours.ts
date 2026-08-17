@@ -1236,7 +1236,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star',
+        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
       },
       {
         day: 3,
@@ -1247,7 +1247,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star',
+        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
       },
       {
         day: 4,
@@ -1258,7 +1258,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star',
+        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
       },
       {
         day: 5,
@@ -1268,7 +1268,7 @@ export const tours: Tour[] = [
           'Breakfast',
           'Dinner',
         ],
-        accommodation: 'New World Tongpai or similar 4-star',
+        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
       },
       {
         day: 6,
@@ -1279,7 +1279,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'New World Tongpai or similar 4-star',
+        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
       },
       {
         day: 7,
@@ -1290,7 +1290,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'New World Tongpai or similar 4-star',
+        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
       },
       {
         day: 8,
@@ -1301,7 +1301,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'New World Tongpai or similar 4-star',
+        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
       },
       {
         day: 9,
@@ -1311,7 +1311,7 @@ export const tours: Tour[] = [
           'Breakfast',
           'Dinner',
         ],
-        accommodation: 'Mercure Downtown or similar 4-star',
+        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
       },
       {
         day: 10,
@@ -1322,7 +1322,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Mercure Downtown or similar 4-star',
+        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
       },
       {
         day: 11,
@@ -1333,7 +1333,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Mercure Downtown or similar 4-star',
+        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
       },
       {
         day: 12,
@@ -1343,7 +1343,7 @@ export const tours: Tour[] = [
           'Breakfast',
           'Dinner',
         ],
-        accommodation: 'Fairfield by Marriott or similar 4-star',
+        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
       },
       {
         day: 13,
@@ -1354,7 +1354,7 @@ export const tours: Tour[] = [
           'Lunch',
           'Dinner',
         ],
-        accommodation: 'Fairfield by Marriott or similar 4-star',
+        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
       },
       {
         day: 14,
@@ -1363,6 +1363,7 @@ export const tours: Tour[] = [
         meals: [
           'Breakfast',
         ],
+        accommodation: 'Elong Hotel Guangzhou or similar 4-star (No 293, Guangzhou Road, Yuexiu District, Guangzhou)',
       },
       {
         day: 15,
