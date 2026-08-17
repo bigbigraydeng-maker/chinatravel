@@ -195,6 +195,11 @@ export default function TourPage({ params }: TourPageProps) {
         primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
+        seasonalBadge={
+          tour.slug === 'china-icons-collection'
+            ? { label: 'Christmas & New Year Departure' }
+            : undefined
+        }
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />

@@ -29,6 +29,15 @@ interface TourHeroProps {
    * simple chips. Keys MUST match entries in `departureDates`.
    */
   departurePricing?: Record<string, string>;
+  /**
+   * Seasonal framing for a specific departure (e.g. Christmas & New Year).
+   * Renders a warm badge above the title and a soft amber glow over the hero
+   * photo. Deliberately restrained — research on comparable festive tour
+   * pages (Wendy Wu's Christmas-in-China line) shows the mood is carried by
+   * warm night photography and a single badge, not holiday iconography, so
+   * there's no snowflakes/santa-hat treatment here, just warmth and light.
+   */
+  seasonalBadge?: { label: string };
 }
 
 export default function TourHero({
@@ -45,6 +54,7 @@ export default function TourHero({
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
   departurePricing,
+  seasonalBadge,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -114,11 +124,29 @@ export default function TourHero({
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-tr from-black/85 via-black/55 to-black/20" />
+        {seasonalBadge && (
+          <>
+            {/* Warm glow — reads as festive lights against the night photo without any literal decoration */}
+            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-amber-500/25 via-primary/10 to-transparent" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-amber-400/20 blur-3xl" />
+          </>
+        )}
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="max-w-3xl">
+          {seasonalBadge && (
+            <div className="mb-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-primary px-4 py-1 text-sm font-semibold uppercase tracking-wide text-white shadow-lg shadow-primary/20">
+                <svg className="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+                  <path d="M10 2l1.9 4.6L17 8l-4.3 3 1.4 5.4L10 13.5 5.9 16.4 7.3 11 3 8l5.1-1.4L10 2z" />
+                </svg>
+                {seasonalBadge.label}
+              </span>
+            </div>
+          )}
+
           {/* Tier Badge */}
           <span className={`inline-block px-4 py-1 rounded-full text-white text-sm font-semibold uppercase tracking-wide mb-6 ${tierColors[tier as keyof typeof tierColors]}`}>
             {tier} Collection
