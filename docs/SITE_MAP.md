@@ -9,7 +9,7 @@
 
 ### Campaign landing pages (October 2026 Discovery)
 
-- **`/campaigns/october-2026`** — index of two October spotlight departures  
+- **`/campaigns/spotlight` (moved from `/campaigns/october-2026`, which 301s)** — index of two October spotlight departures  
 - **`/campaigns/october-2026/shanghai-surroundings`** — Shanghai & Surroundings (hero date: 14 Oct)  
 - **`/campaigns/october-2026/tale-of-two-cities`** — Beijing & Xi’an (hero date: 15 Oct)  
 

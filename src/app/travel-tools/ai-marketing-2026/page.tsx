@@ -188,7 +188,7 @@ export default function AiMarketing2026Page() {
             <li>先贴<strong>事实约束</strong>（产品 URL、价格、禁词、预算），再让 AI 生成草稿。</li>
             <li>用节点里的 <strong>humanDoes</strong> 作为你的 checklist，避免 AI 越权替你做平台点击。</li>
             <li>与「October Discovery」等具体计划衔接：见{' '}
-              <Link href="/campaigns/october-2026" className="font-medium text-primary hover:underline">
+              <Link href="/campaigns/spotlight" className="font-medium text-primary hover:underline">
                 /campaigns/october-2026
               </Link>
               {' '}及仓库{' '}

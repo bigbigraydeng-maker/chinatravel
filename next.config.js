@@ -41,6 +41,13 @@ const nextConfig = {
       },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
+      /**
+       * Spotlight hub outgrew the "october-2026" name once the roster moved to
+       * Nov/Dec/2027 departures. The October campaign LPs at
+       * /campaigns/october-2026/[slug] (still genuinely October-themed) are
+       * untouched — this redirect matches only the exact hub path, not its children.
+       */
+      { source: '/campaigns/october-2026', destination: '/campaigns/spotlight', permanent: true },
       /** Short URL for organic social grid (same as /marketing/campaign/social; cookie applies after redirect). */
       { source: '/campaign/social', destination: '/marketing/campaign/social', permanent: true },
       {

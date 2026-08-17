@@ -161,7 +161,7 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href="/campaigns/october-2026"
+            href="/campaigns/spotlight"
             className="text-accent hover:text-primary transition-colors font-medium inline-flex items-center gap-2 rounded-lg py-1 -my-1"
             onClick={handleNavClick}
           >
@@ -482,7 +482,7 @@ const Navbar = () => {
             </Link>
             <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
             <Link
-              href="/campaigns/october-2026"
+              href="/campaigns/spotlight"
               className="text-accent hover:text-primary transition-colors font-medium py-2 inline-flex items-center justify-between gap-2"
               onClick={() => {
                 closeMenu();

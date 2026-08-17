@@ -49,7 +49,7 @@
 2. **活动 LP**  
    - 已有加长块与 canonical；检查 **Open Graph** 在分享时是否正常（主域 + HTTPS）。  
 3. **内链**  
-   - 从 `/china-tours`、`/china-tours-from-new-zealand`、`/shanghai-tours`、`/xian-tours`（若存在）各加 **1 条上下文链接** 指向对应主 tour 或活动索引 `/campaigns/october-2026`。  
+   - 从 `/china-tours`、`/china-tours-from-new-zealand`、`/shanghai-tours`、`/xian-tours`（若存在）各加 **1 条上下文链接** 指向对应主 tour 或活动索引 `/campaigns/spotlight`（原 `/campaigns/october-2026` 已 301 跳转）。  
 4. **FAQ / 结构化数据**  
    - 两条线各补 2–3 个 FAQ：签证、是否含国际段、小费、**「两城」是否含上海**（仅 Tale 线）。  
    - 确认主 tour 页 **Product / FAQ JSON-LD** 仍合法（Search Console 富媒体结果）。  

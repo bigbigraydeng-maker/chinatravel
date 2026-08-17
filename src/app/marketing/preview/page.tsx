@@ -78,7 +78,7 @@ export default function MarketingPreviewPage() {
       label: '十月战役 · Shanghai & Surroundings LP',
       path: '/campaigns/october-2026/shanghai-surroundings',
     },
-    { label: '十月战役索引', path: '/campaigns/october-2026' },
+    { label: 'Spotlight 索引（原十月战役索引）', path: '/campaigns/spotlight' },
   ];
 
   const conversion: Row[] = [

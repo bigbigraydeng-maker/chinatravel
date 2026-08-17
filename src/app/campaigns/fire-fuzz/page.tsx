@@ -104,7 +104,7 @@ export default function FireFuzzCampaignPage() {
             <li className="text-gray-900 font-medium">{tour.name}</li>
           </ol>
           <Link
-            href="/campaigns/october-2026"
+            href="/campaigns/spotlight"
             className="text-xs md:text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
           >
             ← Back to October 2026 hub

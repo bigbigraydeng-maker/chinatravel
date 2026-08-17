@@ -1,6 +1,8 @@
 /**
- * October 2026 Hub — three featured spotlight tours rendered on
- * `/campaigns/october-2026`.
+ * Spotlight Hub — three featured tours rendered on `/campaigns/spotlight`
+ * (moved from `/campaigns/october-2026` once the roster outgrew that name;
+ * old path 301s in next.config.js). File name kept for now — only the route
+ * moved.
  *
  * `slug` matches the entry in `tours.ts` so we can pull title, image, price
  * via `getTourBySlug('china', 'discovery', slug)`. `href` points at the

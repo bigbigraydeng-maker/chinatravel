@@ -62,7 +62,7 @@ export default function SpotlightTours() {
         {/* View all spotlight departures */}
         <div className="mt-12 text-center">
           <Link
-            href="/campaigns/october-2026"
+            href="/campaigns/spotlight"
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary via-primary to-red-500 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-primary/30 transition-all hover:-translate-y-1 hover:scale-105"
           >
             View all spotlight departures

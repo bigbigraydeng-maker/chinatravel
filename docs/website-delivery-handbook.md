@@ -34,7 +34,7 @@
 - **Phase 1 枢纽页**（示例）：`/china-tours`、各目的地 `*-tours` 枢纽、`/china-tours-from-new-zealand`、`/china-tours-from-auckland`、`/best-time-to-visit-china`、`/china-visa-guide-for-new-zealanders` 等（完整列表见 `SITE_MAP.md`）  
 - **Phase 2 目的地与景点指南**（21+ 深度内容页），与行程、枢纽页互链  
 - 站内站点图页面：`/site-map`（若已启用）及 `SITE_MAP.md` 中的链接架构说明  
-- 十月战役等**活动落地页**：`/campaigns/october-2026` 及子路径；与 Discovery 产品 URL 的规范跳转（见 `SITE_MAP.md` 与 `next.config.js` 中的 308 规则）
+- 十月战役等**活动落地页**：`/campaigns/spotlight`（索引，原 `/campaigns/october-2026` 已 301）及 `/campaigns/october-2026/[slug]` 子路径；与 Discovery 产品 URL 的规范跳转（见 `SITE_MAP.md` 与 `next.config.js` 中的 308 规则）
 
 ### 2.3 体验与性能相关
 
@@ -128,7 +128,7 @@
 |------|-----|
 | 生产首页 | https://www.ctstours.co.nz/ |
 | 中国行程枢纽 | https://www.ctstours.co.nz/china-tours |
-| 十月战役索引 | https://www.ctstours.co.nz/campaigns/october-2026 |
+| Spotlight 索引（原十月战役索引） | https://www.ctstours.co.nz/campaigns/spotlight |
 | 社媒计划（内部） | https://www.ctstours.co.nz/marketing/campaign/social |
 | 联系 | https://www.ctstours.co.nz/contact |
 
