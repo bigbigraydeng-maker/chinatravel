@@ -24,6 +24,7 @@ import FAQSection from '@/components/FAQSection';
 import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { computeReturnDate } from '@/lib/data/tour-dates';
 import OctoberDiscoveryCampaignContent from '@/components/campaigns/OctoberDiscoveryCampaignContent';
 import OctoberUrgencyBar from '@/components/campaigns/OctoberUrgencyBar';
 import { OctoberCampaignScrollTracker } from '@/components/campaigns/OctoberCampaignScrollTracker';
@@ -112,6 +113,8 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
     (s) => s.slug === tour.slug || s.href.endsWith(`/${campaignSlug}`)
   );
   const departureSortDate = spotlight?.departureSortDate ?? '2026-10-14';
+  const nextDeparture = tour.departureDates?.[0];
+  const nextReturnDate = nextDeparture ? computeReturnDate(nextDeparture, tour.duration) : null;
 
   const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
     .filter((t) => t.slug !== tour.slug)
@@ -262,6 +265,18 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                       <dt className="text-sm text-gray-600">Duration</dt>
                       <dd className="font-medium">{tour.duration}</dd>
                     </div>
+                    {nextDeparture && (
+                      <div>
+                        <dt className="text-sm text-gray-600">Next departure</dt>
+                        <dd className="font-medium">{nextDeparture}</dd>
+                      </div>
+                    )}
+                    {nextReturnDate && (
+                      <div>
+                        <dt className="text-sm text-gray-600">Returns</dt>
+                        <dd className="font-medium">{nextReturnDate}</dd>
+                      </div>
+                    )}
                     <div>
                       <dt className="text-sm text-gray-600">Price</dt>
                       <dd className="font-medium text-primary">{tour.price}</dd>

@@ -37,6 +37,7 @@ import {
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
 import { Icon } from '@/components/ui/Icon';
+import { computeReturnDate } from '@/lib/data/tour-dates';
 
 interface TourPageProps {
   params: {
@@ -120,6 +121,8 @@ export default function TourPage({ params }: TourPageProps) {
   const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
   const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
+  const nextDeparture = tour.departureDates?.[0];
+  const nextReturnDate = nextDeparture ? computeReturnDate(nextDeparture, tour.duration) : null;
 
   const schemas = [
     tour.slug === 'essentials'
@@ -411,6 +414,18 @@ export default function TourPage({ params }: TourPageProps) {
                       <dt className="text-sm text-gray-600">Duration</dt>
                       <dd className="font-medium">{tour.duration}</dd>
                     </div>
+                    {nextDeparture && (
+                      <div>
+                        <dt className="text-sm text-gray-600">Next departure</dt>
+                        <dd className="font-medium">{nextDeparture}</dd>
+                      </div>
+                    )}
+                    {nextReturnDate && (
+                      <div>
+                        <dt className="text-sm text-gray-600">Returns</dt>
+                        <dd className="font-medium">{nextReturnDate}</dd>
+                      </div>
+                    )}
                     <div>
                       <dt className="text-sm text-gray-600">Price</dt>
                       <dd className="font-medium text-primary">{tour.price}</dd>

@@ -12,11 +12,18 @@ export type DepartureScheduleRow = {
   destination: 'china';
   tier: 'signature' | 'discovery';
   dates: string[];
+  /** This tour's own duration (e.g. "10 Days") — used to compute each date's return date. */
+  duration: string;
 };
 
 /** Departure dates for a China tour, sourced from tours.ts (empty if none published). */
 function departuresForTour(tier: 'signature' | 'discovery', slug: string): string[] {
   return getTourBySlug('china', tier, slug)?.departureDates ?? [];
+}
+
+/** This tour's duration, sourced from tours.ts (empty string if the tour isn't found). */
+function durationForTour(tier: 'signature' | 'discovery', slug: string): string {
+  return getTourBySlug('china', tier, slug)?.duration ?? '';
 }
 
 export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
@@ -26,6 +33,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'signature',
     dates: departuresForTour('signature', 'silk-road'),
+    duration: durationForTour('signature', 'silk-road'),
   },
   {
     label: 'Legacy of China',
@@ -33,6 +41,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'signature',
     dates: departuresForTour('signature', 'imperial-heritage'),
+    duration: durationForTour('signature', 'imperial-heritage'),
   },
   {
     label: 'China Panorama',
@@ -40,6 +49,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'signature',
     dates: departuresForTour('signature', 'grand-tour'),
+    duration: durationForTour('signature', 'grand-tour'),
   },
   {
     label: 'Natural China',
@@ -47,6 +57,7 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'signature',
     dates: departuresForTour('signature', 'landscapes'),
+    duration: durationForTour('signature', 'landscapes'),
   },
 ];
 
@@ -57,6 +68,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'discovery',
     dates: departuresForTour('discovery', 'beijing-xian'),
+    duration: durationForTour('discovery', 'beijing-xian'),
   },
   {
     label: 'Best of China',
@@ -64,6 +76,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'discovery',
     dates: departuresForTour('discovery', 'essentials'),
+    duration: durationForTour('discovery', 'essentials'),
   },
   {
     label: 'Shanghai & Surroundings',
@@ -71,6 +84,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'discovery',
     dates: departuresForTour('discovery', 'shanghai-surroundings'),
+    duration: durationForTour('discovery', 'shanghai-surroundings'),
   },
   {
     label: 'Colourful Yunnan',
@@ -78,6 +92,7 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     destination: 'china',
     tier: 'discovery',
     dates: departuresForTour('discovery', 'yunnan-explorer'),
+    duration: durationForTour('discovery', 'yunnan-explorer'),
   },
 ];
 
