@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Script from 'next/script';
 import { persistUtmParams } from '@/lib/utils/utm-parser';
+import { META_PIXEL_ADS, META_PIXEL_OWNED } from '@/lib/analytics/meta-pixels';
 
 export default function TrackingScripts() {
   // Capture the ad's UTM / click-ids on first landing so an enquiry submitted
@@ -35,7 +36,8 @@ export default function TrackingScripts() {
         dangerouslySetInnerHTML={{
           __html: `
             !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1441880990459874');
+            fbq('init', '${META_PIXEL_OWNED}');
+            fbq('init', '${META_PIXEL_ADS}');
             fbq('track', 'PageView');
           `,
         }}

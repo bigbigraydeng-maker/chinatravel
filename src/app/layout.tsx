@@ -5,6 +5,7 @@ import ConditionalChrome from '@/components/ConditionalChrome'
 import GeoDirective from '@/components/GeoDirective';
 import CookieConsentManager from '@/components/CookieConsentManager';
 import TrackingScripts from '@/components/TrackingScripts';
+import { META_PIXEL_IDS } from '@/lib/analytics/meta-pixels';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
 
@@ -78,7 +79,13 @@ export default function RootLayout({
         <GeoDirective />
         <TrackingScripts />
         <GoogleAnalytics />
-        <noscript dangerouslySetInnerHTML={{ __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1441880990459874&ev=PageView&noscript=1" alt="" />` }} />
+        {/* No-JS PageView fallback — mirrors both datasets initialised in <TrackingScripts>. */}
+        {META_PIXEL_IDS.map((pixelId) => (
+          <noscript
+            key={pixelId}
+            dangerouslySetInnerHTML={{ __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1" alt="" />` }}
+          />
+        ))}
       </body>
     </html>
   );
