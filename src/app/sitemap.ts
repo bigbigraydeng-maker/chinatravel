@@ -48,6 +48,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/experts/baker-gu`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/experts/lisa-li`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/campaigns/best-of-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.65 },
+    { url: `${SITE}/campaigns/chongqing`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
+    { url: `${SITE}/best-china-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/china-tours-for-seniors`, lastModified: now, changeFrequency: 'monthly', priority: 0.65 },
+    { url: `${SITE}/chongqing-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE}/privacy-policy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${SITE}/destination-matcher`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/local-food-guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/seasonal-guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/trip-planner`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
   // ── Phase 1 SEO Hub pages ────────────────────────────────────────────────

@@ -120,6 +120,16 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       title: 'First trip: Beijing or Shanghai?',
       slug: 'blog/first-trip-china-beijing-or-shanghai',
       description: 'How to choose a gateway when you are new to China'
+    },
+    {
+      title: 'Best China Tours, Compared',
+      slug: 'best-china-tours',
+      description: 'Side-by-side comparison of our flagship tours — price, days, cities and who each one suits'
+    },
+    {
+      title: 'China Tours for Seniors',
+      slug: 'china-tours-for-seniors',
+      description: 'Mobility notes, pacing and insurance guidance for older travellers'
     }
   ];
 

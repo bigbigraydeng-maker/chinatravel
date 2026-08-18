@@ -98,6 +98,19 @@ export const TOOLS: ToolData[] = [
     kd: 0,
   },
   {
+    id: 'destination-matcher',
+    title: 'China Destination Matcher',
+    description: 'Answer a few questions about interests, pace, travel party, and style — get ranked destination guides tailored to how you like to travel.',
+    longDescription:
+      'Not sure where in China to start? This tool ranks our destination guides against your primary interest, preferred daily pace, who you\'re travelling with, and whether you prefer immersive, classic, or off-the-beaten-path experiences — up to four guides, with a simple star fit indicator.',
+    icon: 'target',
+    status: 'live',
+    url: '/destination-matcher',
+    targetKeyword: 'China destination matcher',
+    searchVolume: 10,
+    kd: 0,
+  },
+  {
     id: 'local-food-guide',
     title: 'China Local Food Map',
     description: 'Explore regional dishes by destination — from Peking duck in Beijing to spicy hotpot in Chengdu.',
