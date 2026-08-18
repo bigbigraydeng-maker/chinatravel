@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
     description:
-      'Three featured CTS group departures from NZ: Best of China (3 Nov 2026), the China Icons Collection Christmas & New Year journey (22 Dec 2026), and A Tale of Two Cities (18 Mar 2027). Limited seats. Book direct.',
+      'Three featured CTS group departures from NZ: Best of China (3 Nov 2026), Christmas & New Year in China (22 Dec 2026), and A Tale of Two Cities (18 Mar 2027). Limited seats. Book direct.',
     path: '/campaigns/spotlight',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/wuzhen-canal.jpg',
@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'China group tours 2027',
       'New Zealand China tours',
       'CTS Tours spotlight departures',
-      'China Icons Collection',
+      'Christmas & New Year in China',
       'Christmas in China tour',
       "Beijing Xi'an tour 2027",
       'Best of China tour November 2026',
