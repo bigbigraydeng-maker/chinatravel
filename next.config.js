@@ -39,6 +39,14 @@ const nextConfig = {
         destination: '/china-visa-guide-for-new-zealanders',
         permanent: true,
       },
+      /**
+       * CTS serves travellers based in New Zealand only — the Australian market
+       * is out of scope (Product Owner, 2026-08-19). The AU geo-targeted landing
+       * page is retired; keep a 301 so indexed URLs land on the NZ equivalent
+       * instead of 404ing.
+       */
+      { source: '/china-tours-from-australia', destination: '/china-tours-from-new-zealand', permanent: true },
+      { source: '/china-tours-from-australia/', destination: '/china-tours-from-new-zealand', permanent: true },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
       /**

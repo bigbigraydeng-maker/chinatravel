@@ -22,7 +22,7 @@ const FIELD_TIPS: Record<FieldName, TipConfig> = {
   visa: {
     tool: '/china-visa-guide-for-new-zealanders',
     toolName: 'visa-checker',
-    text: "Check our China Visa Guide for NZ & Australian travellers",
+    text: "Check our China Visa Guide for NZ travellers",
   },
 };
 
