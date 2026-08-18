@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight Poster | October–December 2026 China Tours',
     description:
-      "Newspaper-style Spotlight poster for CTS Tours' October to December 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities, Best of China and the China Icons Collection Christmas and New Year journey.",
+      "Newspaper-style Spotlight poster for CTS Tours' October to December 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities, Best of China and the Christmas & New Year in China journey.",
     path: '/spotlight/october-2026',
     /** Print / QR-only: not linked from site nav; keep out of organic results. */
     robots: { index: false, follow: true },
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Shanghai and Surroundings',
       'Beijing and Xian tour',
       'Best of China 15 day tour',
-      'China Icons Collection',
+      'Christmas & New Year in China',
       'Christmas in China tour',
       'CTS Tours',
     ],
@@ -337,7 +337,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 </div>
                 <div className="p-4 md:p-5">
                   <h2 className="font-serif text-[42px] font-bold leading-[0.95] text-[#c72235]">
-                    China Icons Collection
+                    Christmas &amp; New Year in China
                   </h2>
                   <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
                     16 Days | Depart 22 December 2026
@@ -372,7 +372,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                       href={iconsUtmUrl}
                       className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"
                     >
-                      View China Icons Collection
+                      View Christmas &amp; New Year in China
                     </Link>
                   </div>
                 </div>
@@ -422,7 +422,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
             {iconsTour && (
               <div>
                 <p className="font-semibold text-gray-900">
-                  China Icons Collection &mdash; Christmas &amp; New Year:
+                  Christmas &amp; New Year in China:
                 </p>
                 <a href={iconsUtmUrl} className="break-all text-primary underline underline-offset-2">
                   {iconsUtmUrl}
