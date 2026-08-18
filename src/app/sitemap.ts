@@ -1,7 +1,16 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/lib/site';
-import { faqPlanningYourChinaTrip, faqBeijingTravel, faqGreatWall } from '@/lib/data/faq-pages';
+import {
+  faqPlanningYourChinaTrip,
+  faqBeijingTravel,
+  faqGreatWall,
+  faqTourPlanning,
+  faqVisaRequirements,
+  faqBestTimeTravel,
+} from '@/lib/data/faq-pages';
 import { getAllActiveTours } from '@/lib/data/tours';
+import { getAllCities } from '@/lib/data/cities';
+import { getAllPlayQuizSlugs } from '@/lib/data/play-quizzes';
 
 const SITE = getSiteUrl();
 
@@ -31,8 +40,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/contact`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/terms-and-conditions`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
     { url: `${SITE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/about/asian-escapes`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/agents`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/site-map`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${SITE}/guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/experts/baker-gu`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/experts/lisa-li`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE}/campaigns/best-of-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.65 },
   ];
 
   // ── Phase 1 SEO Hub pages ────────────────────────────────────────────────
@@ -118,9 +133,41 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Phase 3: FAQ Pages ─────────────────────────────────────────────────────
   const faqPages: MetadataRoute.Sitemap = [
     { url: `${SITE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE}/faq/${faqPlanningYourChinaTrip.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${SITE}/faq/${faqBeijingTravel.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
-    { url: `${SITE}/faq/${faqGreatWall.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
+    ...[
+      faqPlanningYourChinaTrip,
+      faqBeijingTravel,
+      faqGreatWall,
+      faqTourPlanning,
+      faqVisaRequirements,
+      faqBestTimeTravel,
+    ].map((faq) => ({
+      url: `${SITE}/faq/${faq.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.75,
+    })),
+  ];
+
+  // ── Explore city guides ──────────────────────────────────────────────────
+  const explorePages: MetadataRoute.Sitemap = [
+    { url: `${SITE}/explore`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    ...getAllCities().map((city) => ({
+      url: `${SITE}/explore/${city.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.55,
+    })),
+  ];
+
+  // ── Play quizzes ─────────────────────────────────────────────────────────
+  const playPages: MetadataRoute.Sitemap = [
+    { url: `${SITE}/play`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    ...getAllPlayQuizSlugs().map((slug) => ({
+      url: `${SITE}/play/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.45,
+    })),
   ];
 
   // ── Long-tail blog posts (batch 1) ──────────────────────────────────────
@@ -150,5 +197,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...tourSlugs, ...blogPages];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tourSlugs, ...blogPages];
 }
