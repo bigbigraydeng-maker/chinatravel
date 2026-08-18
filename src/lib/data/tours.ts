@@ -1593,7 +1593,7 @@ export const tours: Tour[] = [
       {
         day: 14,
         title: 'Chongqing — Guangzhou — Departure',
-        description: 'Transfer to the airport to take flight CZ3426 1715/1915 to Guangzhou. On arrival, continue directly to the airport for the late-night return flight CZ617, departing 0050.',
+        description: 'Transfer to the airport to take flight CZ3426 1715/1915 to Guangzhou. On arrival, wait at Guangzhou airport for the late-night return flight CZ617, departing 0050 — no hotel is booked for this connection.',
         meals: [
           'Breakfast',
         ],
