@@ -6,6 +6,7 @@ import {
   tourPath,
   type DepartureScheduleRow,
 } from '@/lib/data/departure-schedule';
+import { computeReturnDate } from '@/lib/data/tour-dates';
 
 interface CtsDepartureScheduleBlockProps {
   /** Highlight the current tour row on detail pages */
@@ -47,14 +48,18 @@ function RowGrid({
               </p>
             </div>
             <div className="flex flex-wrap gap-2 sm:justify-end sm:items-center">
-              {row.dates.map((d) => (
-                <span
-                  key={d}
-                  className="inline-flex items-center text-sm font-medium px-3 py-1 rounded-full bg-warm-50 text-gray-800 border border-warm-100"
-                >
-                  {d}
-                </span>
-              ))}
+              {row.dates.map((d) => {
+                const returnDate = computeReturnDate(d, row.duration);
+                return (
+                  <span
+                    key={d}
+                    className="inline-flex items-center text-sm font-medium px-3 py-1 rounded-full bg-warm-50 text-gray-800 border border-warm-100"
+                  >
+                    {d}
+                    {returnDate && <span className="text-gray-500"> – {returnDate}</span>}
+                  </span>
+                );
+              })}
             </div>
           </div>
         );

@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react';
 
 interface AvailabilityBadgeProps {
   departureDate?: string;
+  /** Pre-computed return date for `departureDate` (see `computeReturnDate` in `lib/data/tour-dates`). */
+  returnDate?: string;
   showCountdown?: boolean;
 }
 
 export default function AvailabilityBadge({
   departureDate,
+  returnDate,
   showCountdown = true,
 }: AvailabilityBadgeProps) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
@@ -59,6 +62,11 @@ export default function AvailabilityBadge({
           <div className="flex-1">
             <p className="text-xs text-amber-700 mb-1">Next Departure</p>
             <p className="font-bold text-amber-900">{formatDeparture(departureDate)}</p>
+            {returnDate && (
+              <p className="text-xs text-amber-700 mt-1">
+                Returns <span className="font-semibold text-amber-900">{returnDate}</span>
+              </p>
+            )}
           </div>
 
           {showCountdown && (

@@ -6,6 +6,7 @@ import { slugifyTourTag } from '@/lib/data/tours';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import AvailabilityBadge from '@/components/AvailabilityBadge';
 import { CTS_PHONE_DISPLAY, CTS_PHONE_HREF, CTS_PHONE_HOURS } from '@/lib/site';
+import { computeReturnDate } from '@/lib/data/tour-dates';
 
 interface TourHeroProps {
   title: string;
@@ -196,6 +197,7 @@ export default function TourHero({
               {showAvailability && (
                 <AvailabilityBadge
                   departureDate={departureDates[0]}
+                  returnDate={computeReturnDate(departureDates[0], duration) ?? undefined}
                   showCountdown={false}
                 />
               )}
@@ -207,14 +209,20 @@ export default function TourHero({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {departureDates.map((d) => {
                       const datePrice = departurePricing[d];
+                      const returnDate = computeReturnDate(d, duration);
                       return (
                         <div
                           key={d}
                           className="rounded-xl bg-white/10 border border-white/30 backdrop-blur-sm px-4 py-3"
                         >
                           <p className="text-base font-semibold text-white leading-tight">
-                            {d}
+                            Departs {d}
                           </p>
+                          {returnDate && (
+                            <p className="text-sm text-white/80 leading-tight mt-0.5">
+                              Returns {returnDate}
+                            </p>
+                          )}
                           {datePrice && (
                             <p className="text-lg font-bold text-white mt-1">
                               {datePrice}
@@ -232,14 +240,18 @@ export default function TourHero({
                   </div>
                 ) : (
                   <div className="flex flex-wrap gap-2">
-                    {departureDates.map((d) => (
-                      <span
-                        key={d}
-                        className="text-sm font-medium px-3 py-2 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
-                      >
-                        {d}
-                      </span>
-                    ))}
+                    {departureDates.map((d) => {
+                      const returnDate = computeReturnDate(d, duration);
+                      return (
+                        <span
+                          key={d}
+                          className="text-sm font-medium px-3 py-2 rounded-full bg-white/15 text-white border border-white/30 backdrop-blur-sm"
+                        >
+                          {d}
+                          {returnDate && <span className="text-white/70"> – {returnDate}</span>}
+                        </span>
+                      );
+                    })}
                   </div>
                 )}
                 <p className="text-xs text-white/60 mt-2">
