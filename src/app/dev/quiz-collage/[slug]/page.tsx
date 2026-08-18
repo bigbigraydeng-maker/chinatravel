@@ -85,7 +85,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
       />
 
       {/* Banner — y=270 to y=470 (inside the safe zone, just below the FB
-          status bar / back arrow dead zone). 200px tall — sized for a 35-70
+          status bar / back arrow dead zone). 200px tall — sized for a 35-75
           audience: title 92pt, subtitle 38pt. */}
       <header
         style={{
@@ -130,7 +130,7 @@ export default function QuizCollagePage({ params }: RouteParams) {
       {/* 6-panel grid — y=470 to y=1230 (760px tall). Inside the safe zone.
           Each panel is image-full-bleed; the letter chip sits in the top-left
           corner of the image, and the short caption rides a bottom gradient
-          overlay. Type is sized for a 35-70 audience reading at phone
+          overlay. Type is sized for a 35-75 audience reading at phone
           distance: 60px chips, 28pt captions. */}
       <section
         style={{
