@@ -71,7 +71,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'yunnan-tours',
     'china-tours-from-new-zealand',
     'china-tours-from-auckland',
-    'china-tours-from-australia',
     'best-time-to-visit-china',
     'china-visa-guide-for-new-zealanders',
     'china-travel-specialists-nz',
