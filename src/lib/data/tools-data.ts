@@ -52,8 +52,8 @@ export const TOOLS: ToolData[] = [
     longDescription:
       'Get a personalised budget estimate for your China trip based on group size, travel duration, comfort level, and destinations. Understand where your money goes and arrive at the tailor-made form with realistic expectations.',
     icon: 'coins',
-    status: 'coming-soon',
-    url: '/travel-tools#cost-calculator',
+    status: 'live',
+    url: '/tools/cost-calculator',
     targetKeyword: 'China trip cost',
     searchVolume: 20,
     kd: 0,
@@ -95,6 +95,19 @@ export const TOOLS: ToolData[] = [
     url: '/trip-planner',
     targetKeyword: 'China trip planner',
     searchVolume: 20,
+    kd: 0,
+  },
+  {
+    id: 'destination-matcher',
+    title: 'China Destination Matcher',
+    description: 'Answer a few questions about interests, pace, travel party, and style — get ranked destination guides tailored to how you like to travel.',
+    longDescription:
+      'Not sure where in China to start? This tool ranks our destination guides against your primary interest, preferred daily pace, who you\'re travelling with, and whether you prefer immersive, classic, or off-the-beaten-path experiences — up to four guides, with a simple star fit indicator.',
+    icon: 'target',
+    status: 'live',
+    url: '/destination-matcher',
+    targetKeyword: 'China destination matcher',
+    searchVolume: 10,
     kd: 0,
   },
   {
