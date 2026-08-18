@@ -87,6 +87,19 @@ const nextConfig = {
       { source: '/tour/yunnan-delights/', destination: '/tours/china/discovery/yunnan-explorer', permanent: true },
       { source: '/tour/:path*', destination: '/china-tours', permanent: true },
 
+      /**
+       * /tools was a one-off "Phase 4" commit (2026-05-12) duplicating the
+       * /travel-tools hub (live since 2026-04-08). /tools/trip-planner
+       * renders the exact same TripPlanner component as /trip-planner, just
+       * without SchemaMarkup — redirect both into the real, maintained hub.
+       * /tools/cost-calculator is NOT a duplicate — it's the only working
+       * budget calculator on the site (/travel-tools's card pointed at
+       * '/travel-tools#cost-calculator', an anchor that doesn't exist, and
+       * was marked "coming soon"); see tools-data.ts fix in the same commit.
+       */
+      { source: '/tools', destination: '/travel-tools', permanent: true },
+      { source: '/tools/trip-planner', destination: '/trip-planner', permanent: true },
+
       /** GSC top page: /www/ — 154 clicks, 2757 impressions (legacy WP host-prefix leak) → home */
       { source: '/www', destination: '/', permanent: true },
       { source: '/www/', destination: '/', permanent: true },

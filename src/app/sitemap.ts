@@ -57,6 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/local-food-guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/seasonal-guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/trip-planner`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/tools/cost-calculator`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // ── Phase 1 SEO Hub pages ────────────────────────────────────────────────

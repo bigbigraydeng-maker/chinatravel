@@ -52,8 +52,8 @@ export const TOOLS: ToolData[] = [
     longDescription:
       'Get a personalised budget estimate for your China trip based on group size, travel duration, comfort level, and destinations. Understand where your money goes and arrive at the tailor-made form with realistic expectations.',
     icon: 'coins',
-    status: 'coming-soon',
-    url: '/travel-tools#cost-calculator',
+    status: 'live',
+    url: '/tools/cost-calculator',
     targetKeyword: 'China trip cost',
     searchVolume: 20,
     kd: 0,

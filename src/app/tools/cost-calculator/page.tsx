@@ -32,7 +32,7 @@ export default function CostCalculatorPage() {
             /
           </li>
           <li>
-            <Link href="/tools" className="hover:text-primary hover:underline">
+            <Link href="/travel-tools" className="hover:text-primary hover:underline">
               Planning tools
             </Link>
           </li>
