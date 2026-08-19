@@ -1435,7 +1435,7 @@ export const tours: Tour[] = [
     title: 'China Discovery — Christmas & New Year in China (Christchurch Departure)',
     shortDescription: 'A 15-day festive journey departing direct from Christchurch through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors and futuristic Chongqing.',
     duration: '15 Days',
-    price: 'From NZD $7,188 per person',
+    price: 'From NZD $6,188 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
@@ -1644,7 +1644,7 @@ export const tours: Tour[] = [
     ],
     departureDates: ['22 December 2026'],
     departurePricing: {
-      '22 December 2026': 'NZD $7,188',
+      '22 December 2026': 'NZD $6,188',
     },
     singleSupplement: 'NZD $968',
     tourCities: ['shanghai', 'beijing', 'xian', 'chongqing', 'guangzhou'],
