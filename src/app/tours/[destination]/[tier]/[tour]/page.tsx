@@ -7,6 +7,7 @@ import {
   getDestinationBySlug,
 } from '@/lib/data/tours';
 import TourHero from '@/components/tours/TourHero';
+import TourQuickInfoStrip from '@/components/tours/TourQuickInfoStrip';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
 import TourTabs from '@/components/tours/TourTabs';
@@ -203,6 +204,13 @@ export default function TourPage({ params }: TourPageProps) {
             ? { label: 'Christmas & New Year Departure' }
             : undefined
         }
+      />
+
+      {/* Quick-facts strip — 6 anchors that jump into the tour tabs */}
+      <TourQuickInfoStrip
+        duration={tour.duration}
+        price={tour.price}
+        itinerary={tour.itinerary}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
