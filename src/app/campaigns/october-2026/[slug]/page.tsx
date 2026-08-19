@@ -233,7 +233,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 tier={tour.tier}
               />
 
-              <TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} />
+              <TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} itinerary={tour.itinerary} />
 
               <TourGallery images={tour.gallery} tourName={tour.name} />
             </div>

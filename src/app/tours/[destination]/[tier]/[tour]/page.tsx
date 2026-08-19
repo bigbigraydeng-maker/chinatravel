@@ -393,6 +393,7 @@ export default function TourPage({ params }: TourPageProps) {
                         <TourInclusions
                           inclusions={tour.inclusions}
                           exclusions={tour.exclusions}
+                          itinerary={tour.itinerary}
                         />
                       </>
                     ),
