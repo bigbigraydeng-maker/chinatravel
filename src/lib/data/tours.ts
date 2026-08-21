@@ -1450,7 +1450,7 @@ export const tours: Tour[] = [
       {
         question: 'Why is the Christchurch departure cheaper?',
         answer:
-          "The Christchurch departure is a South Island-only fare: China Southern Airlines' Christchurch–Guangzhou route resumed post-pandemic, and CTS passes that route's better fare straight through to South Island travellers — NZD $1,000 less than this Auckland departure.",
+          "The Christchurch departure is a South Island-only fare: China Southern Airlines — celebrating its 70th anniversary in 2026 — resumed its Christchurch–Guangzhou route post-pandemic, and CTS passes that route's better fare straight through to South Island travellers — NZD $1,000 less than this Auckland departure.",
         link: {
           href: '/tours/china/discovery/china-icons-collection-christchurch',
           label: 'View the 15-day Christchurch departure →',
@@ -1495,7 +1495,7 @@ export const tours: Tour[] = [
       {
         day: 1,
         title: 'Christchurch — Guangzhou',
-        description: 'Depart Christchurch for Guangzhou on flight CZ618, 2230/0520+1. Overnight on board. This direct Christchurch–Guangzhou service resumed post-pandemic, operated by China Southern Airlines.',
+        description: 'Depart Christchurch for Guangzhou on flight CZ618, 2230/0520+1. Overnight on board. This direct Christchurch–Guangzhou service resumed post-pandemic, operated by China Southern Airlines — celebrating its 70th anniversary in 2026.',
         meals: [],
         operatorLogo: { src: '/images/airlines/china-southern-horizontal.png', alt: 'China Southern Airlines' },
       },
@@ -1711,7 +1711,7 @@ export const tours: Tour[] = [
       {
         question: 'Why is the Christchurch departure priced differently to Auckland?',
         answer:
-          "China Southern Airlines' Christchurch–Guangzhou route resumed post-pandemic, and CTS passes that route's better fare straight through to travellers departing the South Island — NZD $1,000 less than the equivalent Auckland departure.",
+          "China Southern Airlines — celebrating its 70th anniversary in 2026 — resumed its Christchurch–Guangzhou route post-pandemic, and CTS passes that route's better fare straight through to travellers departing the South Island — NZD $1,000 less than the equivalent Auckland departure.",
       },
       {
         question: 'How do I book and what payment options are available?',
