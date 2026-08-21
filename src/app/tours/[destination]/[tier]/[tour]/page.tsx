@@ -204,6 +204,15 @@ export default function TourPage({ params }: TourPageProps) {
             ? { label: 'Christmas & New Year Departure' }
             : undefined
         }
+        fareSavingsBadge={
+          tour.slug === 'china-icons-collection-christchurch'
+            ? {
+                logoSrc: '/images/airlines/china-southern-tail-badge.png',
+                logoAlt: 'China Southern Airlines',
+                text: "South Island fare saving — NZD $1,000 lower than the Auckland departure, thanks to China Southern's resumed Christchurch–Guangzhou route.",
+              }
+            : undefined
+        }
       />
 
       {/* Quick-facts strip — 6 anchors that jump into the tour tabs */}

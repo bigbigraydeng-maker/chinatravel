@@ -39,6 +39,12 @@ interface TourHeroProps {
    * there's no snowflakes/santa-hat treatment here, just warmth and light.
    */
   seasonalBadge?: { label: string };
+  /**
+   * Fare-difference callout shown directly under the price / single supplement
+   * line — e.g. explaining why a sibling departure is priced lower. Renders a
+   * small partner logo (airline, etc.) next to a one-line explanation.
+   */
+  fareSavingsBadge?: { logoSrc: string; logoAlt: string; text: string };
 }
 
 export default function TourHero({
@@ -56,6 +62,7 @@ export default function TourHero({
   singleSupplement,
   departurePricing,
   seasonalBadge,
+  fareSavingsBadge,
 }: TourHeroProps) {
   const tierColors = {
     signature: 'bg-amber-500',
@@ -293,6 +300,18 @@ export default function TourHero({
                   <span className="block text-sm text-white/80 mt-0.5">
                     + {singleSupplement} single supplement
                   </span>
+                )}
+                {fareSavingsBadge && (
+                  <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/25 backdrop-blur-sm px-3 py-1.5">
+                    <Image
+                      src={fareSavingsBadge.logoSrc}
+                      alt={fareSavingsBadge.logoAlt}
+                      width={20}
+                      height={20}
+                      className="h-5 w-5 shrink-0 object-contain"
+                    />
+                    <span className="text-xs text-white/90 leading-snug">{fareSavingsBadge.text}</span>
+                  </div>
                 )}
               </div>
             </div>
