@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { DayItinerary } from '@/lib/data/tours';
 import ItineraryActions from '@/components/tours/ItineraryActions';
 
@@ -91,6 +92,15 @@ export default function TourItinerary({
 
             {expandedDays.has(day.day) ? (
               <div className="bg-white p-4">
+                {day.operatorLogo ? (
+                  <Image
+                    src={day.operatorLogo.src}
+                    alt={day.operatorLogo.alt}
+                    width={100}
+                    height={20}
+                    className="mb-3 h-5 w-auto object-contain"
+                  />
+                ) : null}
                 <p className="mb-4 leading-relaxed text-gray-700">{day.description}</p>
 
                 <div className="flex flex-wrap gap-4 text-sm text-gray-600">

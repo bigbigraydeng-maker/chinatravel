@@ -253,7 +253,7 @@ export function generateBreadcrumbSchema(
 export function getTourPageFaqsForTour(
   tour: Tour,
   destinationLabel: string
-): Array<{ question: string; answer: string }> {
+): Array<{ question: string; answer: string; link?: { href: string; label: string } }> {
   if (tour.faqs && tour.faqs.length > 0) {
     return tour.faqs;
   }
@@ -261,7 +261,7 @@ export function getTourPageFaqsForTour(
 }
 
 /** Default FAQs for tour detail pages (NZ audience, GEO-friendly). */
-export function getTourPageFaqs(destinationLabel: string): Array<{ question: string; answer: string }> {
+export function getTourPageFaqs(destinationLabel: string): Array<{ question: string; answer: string; link?: { href: string; label: string } }> {
   return [
     {
       question: 'Do New Zealand passport holders need a visa for China?',

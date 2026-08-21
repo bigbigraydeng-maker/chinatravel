@@ -7,6 +7,8 @@ import { generateFAQSchema } from '@/lib/schema-tour';
 interface FAQ {
   question: string;
   answer: string;
+  /** Optional inline link rendered below the answer, e.g. to a sibling tour page. */
+  link?: { href: string; label: string };
 }
 
 interface FAQSectionProps {
@@ -115,6 +117,14 @@ export default function FAQSection({
                     <p className="text-gray-700 leading-relaxed">
                       {faq.answer}
                     </p>
+                    {faq.link && (
+                      <a
+                        href={faq.link.href}
+                        className="mt-2 inline-block text-primary underline hover:no-underline"
+                      >
+                        {faq.link.label}
+                      </a>
+                    )}
                   </div>
                 )}
               </div>

@@ -38,7 +38,7 @@ export interface Tour {
   /** City IDs for itinerary route map, in order (e.g. ['beijing', 'xian']) */
   tourCities?: string[];
   /** When set, product and campaign pages use these FAQs instead of destination-generic defaults */
-  faqs?: Array<{ question: string; answer: string }>;
+  faqs?: Array<{ question: string; answer: string; link?: { href: string; label: string } }>;
   /** Single room supplement price, e.g. 'NZD $400' */
   singleSupplement?: string;
   /** Customer rating (0-5), e.g. 4.9 */
@@ -65,6 +65,8 @@ export interface DayItinerary {
   accommodation?: string;
   /** Optional occasion marker for a specific day, e.g. "Christmas Day", "New Year's Eve". Renders as a small badge next to the day title. */
   festiveLabel?: string;
+  /** Optional operator logo (e.g. airline) shown next to the day's description — for a direct/partner flight sector. */
+  operatorLogo?: { src: string; alt: string };
 }
 
 export interface Destination {
@@ -1424,6 +1426,42 @@ export const tours: Tour[] = [
     },
     singleSupplement: 'NZD $968',
     tourCities: ['shanghai', 'beijing', 'xian', 'chongqing', 'guangzhou'],
+    faqs: [
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'Most leisure trips qualify for visa-free entry: NZ ordinary passport holders can usually stay up to 30 days without a tourist visa under current policy (published to 31 December 2026). Bring a valid passport, return or onward travel, and hotel or tour documentation. If your trip exceeds 30 days or is for work, study, or other restricted purposes, you may need a traditional visa — CTS can point you to current requirements and our NZ entry guide.',
+      },
+      {
+        question: 'What is typically included in the tour price?',
+        answer:
+          'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
+      },
+      {
+        question: 'When is the best time to visit China?',
+        answer:
+          'It depends on the regions on your itinerary and whether you prefer mild weather, festivals, or fewer crowds. Our consultants can recommend seasons based on this exact route and your travel style.',
+      },
+      {
+        question: 'Are international flights from New Zealand included?',
+        answer:
+          'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
+      },
+      {
+        question: 'Why is the Christchurch departure cheaper?',
+        answer:
+          "The Christchurch departure is a South Island-only fare: China Southern Airlines' Christchurch–Guangzhou route resumed post-pandemic, and CTS passes that route's better fare straight through to South Island travellers — NZD $1,000 less than this Auckland departure.",
+        link: {
+          href: '/tours/china/discovery/china-icons-collection-christchurch',
+          label: 'View the 15-day Christchurch departure →',
+        },
+      },
+      {
+        question: 'How do I book and what payment options are available?',
+        answer:
+          'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, finalise details, and outline deposit and balance payment steps.',
+      },
+    ],
   },
 
   {
@@ -1457,8 +1495,9 @@ export const tours: Tour[] = [
       {
         day: 1,
         title: 'Christchurch — Guangzhou',
-        description: 'Depart Christchurch for Guangzhou on flight CZ618, 2230/0520+1. Overnight on board.',
+        description: 'Depart Christchurch for Guangzhou on flight CZ618, 2230/0520+1. Overnight on board. This direct Christchurch–Guangzhou service resumed post-pandemic, operated by China Southern Airlines.',
         meals: [],
+        operatorLogo: { src: '/images/airlines/china-southern-horizontal.png', alt: 'China Southern Airlines' },
       },
       {
         day: 2,
@@ -1648,6 +1687,38 @@ export const tours: Tour[] = [
     },
     singleSupplement: 'NZD $968',
     tourCities: ['shanghai', 'beijing', 'xian', 'chongqing', 'guangzhou'],
+    faqs: [
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'Most leisure trips qualify for visa-free entry: NZ ordinary passport holders can usually stay up to 30 days without a tourist visa under current policy (published to 31 December 2026). Bring a valid passport, return or onward travel, and hotel or tour documentation. If your trip exceeds 30 days or is for work, study, or other restricted purposes, you may need a traditional visa — CTS can point you to current requirements and our NZ entry guide.',
+      },
+      {
+        question: 'What is typically included in the tour price?',
+        answer:
+          'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
+      },
+      {
+        question: 'When is the best time to visit China?',
+        answer:
+          'It depends on the regions on your itinerary and whether you prefer mild weather, festivals, or fewer crowds. Our consultants can recommend seasons based on this exact route and your travel style.',
+      },
+      {
+        question: 'Are international flights from New Zealand included?',
+        answer:
+          'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
+      },
+      {
+        question: 'Why is the Christchurch departure priced differently to Auckland?',
+        answer:
+          "China Southern Airlines' Christchurch–Guangzhou route resumed post-pandemic, and CTS passes that route's better fare straight through to travellers departing the South Island — NZD $1,000 less than the equivalent Auckland departure.",
+      },
+      {
+        question: 'How do I book and what payment options are available?',
+        answer:
+          'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, finalise details, and outline deposit and balance payment steps.',
+      },
+    ],
   },
 
   // China Stopover Tours
