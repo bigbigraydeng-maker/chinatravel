@@ -147,7 +147,7 @@ Two ways most Kiwi travellers begin:
 
 2. **Tailor-made** — if you want to combine elements (say Beijing and Xi’an from Best of China, then Yunnan from Yunnan Explorer, then a Shanghai stopover), our [tailor-made service](/tailor-made) builds it as a private trip on your dates. This is how most Signature clients book.
 
-If you’re still deciding shape, my [first-trip planning piece](/blog/plan-your-first-trip-to-china-from-new-zealand) covers the practical logistics in more detail, and our [China holiday packages guide](/blog/china-holiday-packages-guide) walks through the tier choices.
+If you’re still deciding shape, our [China holiday packages guide](/blog/china-holiday-packages-guide) walks through the tier choices.
 
 <section class="faq">
 <h2>FAQs: Holidays to China from New Zealand</h2>
