@@ -1189,7 +1189,7 @@ export const tours: Tour[] = [
     ],
     metaTitle: 'Fire & Fuzz — Chongqing & Chengdu Discovery | 10 Days | CTS NZ',
     metaDescription:
-      "Chongqing's neon cliffside skyline and Chengdu's giant pandas in one 10-day tour from New Zealand. UNESCO Dazu Rock Carvings, Liziba monorail, Hongyadong, bullet train. From NZD $2,750. Departs 1 November.",
+      "Chongqing's neon cliffside skyline and Chengdu's giant pandas in one 10-day tour from New Zealand. UNESCO Dazu Rock Carvings, Liziba monorail, Hongyadong, bullet train. From NZD $2,999. Departs 1 November.",
     isActive: false,
     createdAt: '2026-04-23',
     updatedAt: '2026-06-12',
