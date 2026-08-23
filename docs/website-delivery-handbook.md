@@ -15,7 +15,7 @@
 - 日常内容/营销相关的**维护入口**（改哪里、谁负责）  
 - **上线后服务**的时间边界、会议节奏、变更请求方式  
 
-更细的技术与页面索引见仓库内：`SITE_MAP.md`、`PROJECT.md`、`CLAUDE.md`、`TOUR_UPDATE_INSTRUCTIONS.md`。
+更细的技术与页面索引见仓库内：`docs/archive/SITE_MAP.md`、`docs/archive/PROJECT.md`（均为历史快照，已过期）、`CLAUDE.md`（当前状态）、`docs/archive/TOUR_UPDATE_INSTRUCTIONS.md`。
 
 ---
 
@@ -31,10 +31,10 @@
 
 ### 2.2 SEO 与内容矩阵
 
-- **Phase 1 枢纽页**（示例）：`/china-tours`、各目的地 `*-tours` 枢纽、`/china-tours-from-new-zealand`、`/china-tours-from-auckland`、`/best-time-to-visit-china`、`/china-visa-guide-for-new-zealanders` 等（完整列表见 `SITE_MAP.md`）  
+- **Phase 1 枢纽页**（示例）：`/china-tours`、各目的地 `*-tours` 枢纽、`/china-tours-from-new-zealand`、`/china-tours-from-auckland`、`/best-time-to-visit-china`、`/china-visa-guide-for-new-zealanders` 等（完整列表见 `docs/archive/SITE_MAP.md`，历史快照已过期）  
 - **Phase 2 目的地与景点指南**（21+ 深度内容页），与行程、枢纽页互链  
-- 站内站点图页面：`/site-map`（若已启用）及 `SITE_MAP.md` 中的链接架构说明  
-- 十月战役等**活动落地页**：`/campaigns/spotlight`（索引，原 `/campaigns/october-2026` 已 301）及 `/campaigns/october-2026/[slug]` 子路径；与 Discovery 产品 URL 的规范跳转（见 `SITE_MAP.md` 与 `next.config.js` 中的 308 规则）
+- 站内站点图页面：`/site-map`（若已启用）及 `docs/archive/SITE_MAP.md` 中的链接架构说明（历史快照已过期）  
+- 十月战役等**活动落地页**：`/campaigns/spotlight`（索引，原 `/campaigns/october-2026` 已 301）及 `/campaigns/october-2026/[slug]` 子路径；与 Discovery 产品 URL 的规范跳转（见 `docs/archive/SITE_MAP.md`（历史快照）与 `next.config.js` 中的 308 规则）
 
 ### 2.3 体验与性能相关
 
@@ -118,7 +118,7 @@
 2. **评估：** 承建方评估是否在当周时间盒内；超出则给补充报价或排期至下一迭代。  
 3. **实施：** 在分支或直接按仓库流程修改 → 本地或 CI 构建通过 → 合并 `main`。  
 4. **验证：** Render 部署完成后抽查关键页与表单；涉及追踪的链接检查 UTM 与 GA4。  
-5. **记录：** 重要变更可写入 `CHANGELOG.md` 或双方共享的发布说明。
+5. **记录：** 重要变更可写入 `docs/archive/CHANGELOG.md`（已归档，未持续维护）或双方共享的发布说明。
 
 ---
 

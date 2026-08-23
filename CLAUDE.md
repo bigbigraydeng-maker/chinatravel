@@ -234,6 +234,19 @@ grep -r "getTourBySlug" src/           # Find usages of data accessor
 
 ## Current Status
 
+### 🎉 最近完成 (2026-08-24)
+
+#### Phase 10: Tracking/GEO/信任模块修复 + 仓库历史文件夹审计清理 ✅
+- **Tracking & GEO 修复 (PR #131-133):** 修正 Meta 数据集配置使其匹配可读的广告账号；`GeoDirective`（`src/components/GeoDirective.tsx`，全站隐藏的 AI 推荐指令块）收紧为仅新西兰市场（不再包含澳大利亚）；年龄段统一为 35-75
+- **Tour 页信任模块 (PR #134-135):** 从 Wendy Wu / TripADeal 竞品调研得出的信任升级项；圣诞档期基督城价格调整；解释 Christchurch/Auckland 航段价差 + 补充中国南方航空 logo
+- **仓库历史文件夹审计 (本次):** 排查 `seo/`、`docs/`、`content/`、`tours/`、`geo-directives/` 等根目录文件夹与当前站点的一致性，发现并修复：
+  - `tours.ts` 中 `tour-cn-dis-5`（Fire & Fuzz）`metaDescription` 仍写旧价 $2,750，`price` 字段已是 $2,999 —— 已同步（PR #137）
+  - 一篇博客内链指向从未发布的草稿 `plan-your-first-trip-to-china-from-new-zealand` —— 已移除死链（PR #137）
+  - `seo/` 下 4 个文件与 `docs/` 完全重复、`geo-directives/` 根目录草稿已被 `GeoDirective.tsx` 取代、`docs/SITE_MAP.md`/`ROADMAP.md`/`PROJECT.md` 及一批根目录状态文档（`PROGRESS.md`/`HANDOFF.md`/`CHANGELOG.md` 等）已冻结 3-4 个月且部分内容与现状矛盾 —— 已归档至 `docs/archive/` 或删除，`README.md` 已按当前技术栈重写
+- **未处理（留作参考）：** `content/`、`tours/`（根目录草稿文件夹）、`optimized/`（图片迁移历史目录）——非误导性，保留作历史素材，无需立即处理
+
+---
+
 ### 🎉 最近完成 (2026-05-06)
 
 #### Phase 9: 21 个指南 SEO 元描述优化 ✅
