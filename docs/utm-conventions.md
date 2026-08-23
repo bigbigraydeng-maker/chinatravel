@@ -2,7 +2,7 @@
 
 面向 **Google Ads、Meta、EDM、Newsletter、合作外链** 等「可控链接」。自然搜索、直接打开、无参数引荐流量在 GA4 的 *Session manual campaign name* 中会是 `(not set)`，属正常现象。
 
-**Canonical：** 页面 `<link rel="canonical">` 与站内分享使用 **无 `?utm_*` 的干净 URL**；UTM **只加在对外投放/邮件/广告最终点击 URL** 上（与 `GA4_SETUP.md`、SITE_MAP.md 一致）。
+**Canonical：** 页面 `<link rel="canonical">` 与站内分享使用 **无 `?utm_*` 的干净 URL**；UTM **只加在对外投放/邮件/广告最终点击 URL** 上（与 `GA4_SETUP.md`、`docs/archive/SITE_MAP.md` 一致）。
 
 ---
 

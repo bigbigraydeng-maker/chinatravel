@@ -154,7 +154,7 @@ https://www.ctstours.co.nz/campaigns/october-2026/tale-of-two-cities?utm_source=
 - 活动页面：`src/app/campaigns/october-2026/[slug]/page.tsx`  
 - 加长英文参考：`docs/october-discovery-extended-copy.en.md`  
 - GA4 / UTM 说明：`GA4_SETUP.md`  
-- 站点结构：`SITE_MAP.md`（含 `/campaigns` 段）
+- 站点结构：`docs/archive/SITE_MAP.md`（历史快照，已过期，含 `/campaigns` 段）
 
 ---
 

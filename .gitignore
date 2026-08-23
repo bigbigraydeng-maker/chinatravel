@@ -32,10 +32,14 @@ out
 .env.local
 .env.development.local
 .env.test.local
-.env.production.localcoverage/
+.env.production.local
+coverage/
 
 # SEO research output (含 Semrush API key 的脚本、CSV、报告等本地产物，不进 git)
 /seo/
+
+# Office lock files (Word/Excel leave these behind when a doc is open)
+~$*
 
 # Claude Code worktrees
 /.claude/worktrees/
