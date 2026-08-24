@@ -2861,7 +2861,7 @@ export const tours: Tour[] = [
     shortDescription: 'Trace the golden thread of China\'s imperial history on this 11-day journey through Beijing\'s Forbidden City and Great Wall, Xi\'an\'s Terracotta Warriors, and Shanghai\'s vibrant waterfront.',
     duration: '11 Days',
     price: 'From NZD $4,999 per person',
-    heroImage: 'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/golden-china/hero.png',
+    heroImage: 'https://images.unsplash.com/photo-1693721783596-afebf1d4354f?ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&q=85',
     gallery: [],
     highlights: [
       'Walk the Great Wall at Juyongguan section',
@@ -3004,8 +3004,8 @@ export const tours: Tour[] = [
     metaTitle: 'China Discovery — Golden China | 11 Days | CTS Tours',
     metaDescription: 'Golden China — Beijing, Xi\'an & Shanghai in 11 days. Great Wall, Forbidden City, Terracotta Warriors, Huangpu River cruise. From NZD $4,999. Book with CTS Tours.',
     isActive: true,
-    createdAt: '2026-08-24T14:03:01.913Z',
-    updatedAt: '2026-08-24T14:03:01.913Z',
+    createdAt: '2026-08-24T14:34:07.884Z',
+    updatedAt: '2026-08-24T14:34:07.884Z',
     tourCities: [
       'beijing',
       'xian',
