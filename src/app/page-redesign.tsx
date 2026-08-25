@@ -7,6 +7,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
+import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { migratedSite } from '@/lib/site-media';
 
@@ -246,6 +247,9 @@ const HomePageRedesign = () => {
           </div>
         </section>
       )}
+
+      {/* ===== South Island departure (Christchurch direct) ===== */}
+      <SouthIslandDeparture />
 
       {/* ===== Upcoming departures (derived from tours.ts) ===== */}
       <UpcomingDepartures />

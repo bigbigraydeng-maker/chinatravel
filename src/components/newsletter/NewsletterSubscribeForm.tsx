@@ -1,12 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import { trackNewsletterSubmit } from '@/lib/analytics/newsletter-tracking';
 
 interface Props {
   variant?: 'footer' | 'blog';
+  /**
+   * Where this form instance lives — decides which GTM/Meta event name to fire
+   * on successful submit. 'footer' by default (footer, blog inline, etc.);
+   * 'popup' only when the form is rendered inside NewsletterPopup.
+   */
+  trackingLocation?: 'popup' | 'footer';
 }
 
-export default function NewsletterSubscribeForm({ variant = 'footer' }: Props) {
+export default function NewsletterSubscribeForm({ variant = 'footer', trackingLocation = 'footer' }: Props) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -28,6 +35,7 @@ export default function NewsletterSubscribeForm({ variant = 'footer' }: Props) {
       if (res.ok) {
         setStatus('success');
         setMessage(data.message);
+        trackNewsletterSubmit(trackingLocation, email);
         setEmail('');
         setName('');
       } else {

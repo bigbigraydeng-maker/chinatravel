@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import NewsletterSubscribeForm from './NewsletterSubscribeForm';
+import {
+  trackNewsletterPopupView,
+  trackNewsletterPopupDismiss,
+} from '@/lib/analytics/newsletter-tracking';
 
 const STORAGE_KEY = 'cts_newsletter_popup_dismissed';
 const SUPPRESS_DAYS = 7;
@@ -21,6 +25,7 @@ export default function NewsletterPopup() {
 
     const timer = setTimeout(() => {
       setVisible(true);
+      trackNewsletterPopupView();
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setAnimateIn(true));
       });
@@ -29,7 +34,8 @@ export default function NewsletterPopup() {
     return () => clearTimeout(timer);
   }, []);
 
-  const dismiss = () => {
+  const dismiss = (reason: 'close_button' | 'backdrop' | 'no_thanks') => {
+    trackNewsletterPopupDismiss(reason);
     setAnimateIn(false);
     setTimeout(() => setVisible(false), 300);
     localStorage.setItem(STORAGE_KEY, String(Date.now()));
@@ -43,7 +49,7 @@ export default function NewsletterPopup() {
         animateIn ? 'bg-black/50 backdrop-blur-sm' : 'bg-transparent'
       }`}
       onClick={(e) => {
-        if (e.target === e.currentTarget) dismiss();
+        if (e.target === e.currentTarget) dismiss('backdrop');
       }}
       role="dialog"
       aria-modal="true"
@@ -63,7 +69,7 @@ export default function NewsletterPopup() {
         {/* Close button */}
         <button
           type="button"
-          onClick={dismiss}
+          onClick={() => dismiss('close_button')}
           className="absolute top-4 right-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
           aria-label="Close newsletter popup"
         >
@@ -88,10 +94,10 @@ export default function NewsletterPopup() {
             Get expert guides, visa tips, and exclusive offers from New Zealand&apos;s China specialists — straight to your inbox.
           </p>
 
-          <NewsletterSubscribeForm variant="footer" />
+          <NewsletterSubscribeForm variant="footer" trackingLocation="popup" />
 
           <button
-            onClick={dismiss}
+            onClick={() => dismiss('no_thanks')}
             className="mt-4 w-full text-gray-500 hover:text-gray-300 text-xs text-center transition-colors"
           >
             No thanks, I&apos;ll browse without help
