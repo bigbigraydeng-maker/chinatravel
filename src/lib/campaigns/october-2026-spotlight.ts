@@ -17,7 +17,7 @@
  * links straight to the product page instead, same as Best of China.
  */
 export type SpotlightTourCard = {
-  slug: 'beijing-xian' | 'essentials' | 'china-icons-collection';
+  slug: 'golden-china' | 'essentials' | 'china-icons-collection';
   destination: 'china';
   tier: 'discovery';
   href: string;
@@ -50,13 +50,13 @@ export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
     badgeText: 'Christmas & New Year',
   },
   {
-    slug: 'beijing-xian',
+    slug: 'golden-china',
     destination: 'china',
     tier: 'discovery',
-    href: '/tours/china/discovery/beijing-xian',
-    departureLabel: '18 Mar 2027',
-    departureSortDate: '2027-03-18',
-    routeCities: ['Beijing', "Xi'an"],
-    badgeText: '2027 Departure',
+    href: '/tours/china/discovery/golden-china',
+    departureLabel: '16 Nov 2026',
+    departureSortDate: '2026-11-16',
+    routeCities: ['Beijing', "Xi'an", 'Shanghai'],
+    badgeText: 'New for 2026',
   },
 ];

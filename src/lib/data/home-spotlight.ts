@@ -48,10 +48,10 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
     destination: 'china',
     tier: 'discovery',
-    slug: 'beijing-xian',
-    campaignHref: '/tours/china/discovery/beijing-xian',
-    departureLabel: '18 Mar 2027',
-    route: ['Beijing', "Xi'an"],
+    slug: 'golden-china',
+    campaignHref: '/tours/china/discovery/golden-china',
+    departureLabel: '16 Nov 2026',
+    route: ['Beijing', "Xi'an", 'Shanghai'],
   },
 ];
 
