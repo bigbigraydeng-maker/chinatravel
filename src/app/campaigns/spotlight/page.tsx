@@ -5,6 +5,7 @@ import Image from 'next/image';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import FAQSection from '@/components/FAQSection';
 import Testimonials from '@/components/Testimonials';
+import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
 
 import { getTourBySlug } from '@/lib/data/tours';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
@@ -287,6 +288,9 @@ export default function October2026CampaignIndexPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── SOUTH ISLAND DIRECT (Christchurch Christmas departure) ────────── */}
+      <SouthIslandDeparture />
 
       {/* ─── WHY BOOK DIRECT ──────────────────────────────────────────────── */}
       <section className="py-20 md:py-24 bg-white">

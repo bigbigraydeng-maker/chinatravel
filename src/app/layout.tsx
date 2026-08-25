@@ -3,7 +3,6 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
 import GeoDirective from '@/components/GeoDirective';
-import CookieConsentManager from '@/components/CookieConsentManager';
 import TrackingScripts from '@/components/TrackingScripts';
 import { META_PIXEL_IDS } from '@/lib/analytics/meta-pixels';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -74,7 +73,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
-        <CookieConsentManager />
         <ConditionalChrome>{children}</ConditionalChrome>
         <GeoDirective />
         <TrackingScripts />

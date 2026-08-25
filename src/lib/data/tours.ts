@@ -1208,8 +1208,9 @@ export const tours: Tour[] = [
     shortDescription: 'A 16-day festive journey through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors, futuristic Chongqing and a Cantonese Yum Cha finale in Guangzhou.',
     duration: '16 Days',
     price: 'From NZD $7,188 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
+    heroImage: 'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
     gallery: [
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
@@ -1217,7 +1218,7 @@ export const tours: Tour[] = [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
     ],
     highlights: [
-      'Christmas season in Shanghai, with the city\'s Christmas markets, the Oriental Pearl Tower and an evening Huangpu River cruise',
+      'Christmas Eve in Shanghai: the Xintiandi Shikumen Christmas lighting ceremony, and the Bund Source German Christmas Market with European wooden stalls, mulled wine, gingerbread and a double-decker carousel',
       'New Year\'s Eve in Xi\'an at the Tang Dynasty Ever-Bright City, with performances, float parades and festive crowds',
       'The Great Wall at Mutianyu and the Forbidden City, Tian\'anmen Square and the Summer Palace in Beijing',
       'The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot',
@@ -1245,7 +1246,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Shanghai',
         festiveLabel: 'Christmas Eve',
-        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. In the evening, take a Huangpu River cruise. As the most modern metropolis in China, Shanghai has several Christmas markets that bring a taste of European tradition to the city, and you will celebrate the season with Shanghai people.',
+        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. During the Christmas season the Xintiandi Shikumen complex hosts a grand lighting ceremony and themed decorations, letting you experience a strong Christmas atmosphere in the heart of Shanghai. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. We will also visit Bund Source — home to one of Shanghai\'s most popular German Christmas markets, where you can stroll European-style wooden stalls, taste mulled wine and gingerbread, and take photos beside the giant Christmas tree and the double-decker carousel. In the evening, take a Huangpu River cruise and celebrate Christmas Eve with Shanghai\'s locals.',
         meals: [
           'Breakfast',
           'Lunch',
@@ -1473,8 +1474,9 @@ export const tours: Tour[] = [
     shortDescription: 'A 15-day festive journey departing direct from Christchurch through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors and futuristic Chongqing.',
     duration: '15 Days',
     price: 'From NZD $6,188 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
+    heroImage: 'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
     gallery: [
+      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
@@ -1483,7 +1485,7 @@ export const tours: Tour[] = [
     ],
     highlights: [
       'A direct South Island departure — fly ex-Christchurch via Guangzhou, no Auckland transfer required',
-      'Christmas season in Shanghai, with the city\'s Christmas markets, the Oriental Pearl Tower and an evening Huangpu River cruise',
+      'Christmas Eve in Shanghai: the Xintiandi Shikumen Christmas lighting ceremony, and the Bund Source German Christmas Market with European wooden stalls, mulled wine, gingerbread and a double-decker carousel',
       'New Year\'s Eve in Xi\'an at the Tang Dynasty Ever-Bright City, with performances, float parades and festive crowds',
       'The Great Wall at Mutianyu and the Forbidden City, Tian\'anmen Square and the Summer Palace in Beijing',
       'The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot',
@@ -1512,7 +1514,7 @@ export const tours: Tour[] = [
         day: 3,
         title: 'Shanghai',
         festiveLabel: 'Christmas Eve',
-        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. In the evening, take a Huangpu River cruise. As the most modern metropolis in China, Shanghai has several Christmas markets that bring a taste of European tradition to the city, and you will celebrate the season with Shanghai people.',
+        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. During the Christmas season the Xintiandi Shikumen complex hosts a grand lighting ceremony and themed decorations, letting you experience a strong Christmas atmosphere in the heart of Shanghai. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. We will also visit Bund Source — home to one of Shanghai\'s most popular German Christmas markets, where you can stroll European-style wooden stalls, taste mulled wine and gingerbread, and take photos beside the giant Christmas tree and the double-decker carousel. In the evening, take a Huangpu River cruise and celebrate Christmas Eve with Shanghai\'s locals.',
         meals: [
           'Breakfast',
           'Lunch',
