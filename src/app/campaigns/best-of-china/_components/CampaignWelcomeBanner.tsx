@@ -55,7 +55,7 @@ export default function CampaignWelcomeBanner() {
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <p className="text-sm sm:text-base text-amber-900">
           <span className="font-semibold">Best of China · 15 days</span> · from
-          NZD $3,880 · October 2026 from Auckland — talk to a specialist about
+          NZD $4,080 · 11 March 2027 from Auckland — talk to a specialist about
           the next departure.
         </p>
         <a

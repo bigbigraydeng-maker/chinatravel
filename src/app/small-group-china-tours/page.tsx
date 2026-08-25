@@ -115,7 +115,7 @@ export default function SmallGroupChinaToursPage() {
             Small-Group China Tours from New Zealand
           </h1>
           <p className="text-xl opacity-90">
-            Intimate groups. Expert guides. October 2026 departures open.
+            Intimate groups. Expert guides. 2026-27 departures open.
           </p>
         </div>
       </section>
@@ -264,8 +264,8 @@ export default function SmallGroupChinaToursPage() {
                           and Shanghai. More breathing room than any 10-day tour.
                         </p>
                         <p className="mt-3">
-                          <span className="font-bold text-primary text-lg">From NZD $3,880</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 3 November 2026</span>
+                          <span className="font-bold text-primary text-lg">From NZD $4,080</span>
+                          <span className="text-gray-500 text-sm ml-2">· Departs 11 March 2027</span>
                         </p>
                       </div>
                       <Link

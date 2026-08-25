@@ -34,10 +34,10 @@ export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
     destination: 'china',
     tier: 'discovery',
     href: '/tours/china/discovery/essentials',
-    departureLabel: '3 Nov 2026',
-    departureSortDate: '2026-11-03',
+    departureLabel: '11 Mar 2027',
+    departureSortDate: '2027-03-11',
     routeCities: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
-    badgeText: 'November Departure',
+    badgeText: '2027 Departure',
   },
   {
     slug: 'china-icons-collection',

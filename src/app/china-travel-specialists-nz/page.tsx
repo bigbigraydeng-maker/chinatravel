@@ -287,8 +287,8 @@ export default function ChinaTravelSpecialistsNzPage() {
                       <p className="text-gray-600 text-sm mt-1">
                         15 days · Beijing, Xi&apos;an, Puyuan, Hangzhou, Shanghai
                       </p>
-                      <p className="text-primary font-semibold mt-1">From NZD $3,880</p>
-                      <p className="text-gray-500 text-xs mt-0.5">Departs 3 November 2026</p>
+                      <p className="text-primary font-semibold mt-1">From NZD $4,080</p>
+                      <p className="text-gray-500 text-xs mt-0.5">Departs 11 March 2027</p>
                     </div>
                     <Link
                       href="/tours/china/discovery/essentials"

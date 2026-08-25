@@ -250,7 +250,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
             <section className="bg-[#ece9e4] px-4 pb-6 md:px-6 md:pb-6">
               <div className="mb-3 flex items-center gap-3">
                 <div className="h-px flex-1 bg-[#d3203b]/30" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">November Departure</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">November Departure Sold Out — Book March 2027</span>
                 <div className="h-px flex-1 bg-[#d3203b]/30" />
               </div>
               <article
@@ -272,7 +272,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                     Best of China
                   </h2>
                   <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
-                    15 Days | Depart 3 November 2026
+                    15 Days | Depart 11 March 2027
                   </p>
                   <p className="mt-2 text-[16px] leading-relaxed text-black">
                     &bull; Great Wall &amp; Forbidden City &bull; Terracotta Warriors &bull; West Lake, Hangzhou &bull; Shanghai Bund
@@ -284,7 +284,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                   </p>
                   <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
                     <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                    <p className="text-4xl font-bold">$3,880pp</p>
+                    <p className="text-4xl font-bold">$4,080pp</p>
                   </div>
                   <div className="mt-4 grid grid-cols-4 gap-1.5">
                     {[

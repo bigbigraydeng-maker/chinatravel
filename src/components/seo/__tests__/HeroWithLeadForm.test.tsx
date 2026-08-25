@@ -126,20 +126,27 @@ describe('HeroWithLeadForm', () => {
     });
   });
 
-  it('dropdown surfaces the four flagship tours + a fallback option', () => {
+  it('dropdown surfaces the currently-promoted tours + a fallback option', () => {
     render(<HeroWithLeadForm {...RENDER_PROPS} />);
     const select = screen.getByRole('combobox') as HTMLSelectElement;
     const labels = Array.from(select.options).map((o) => o.value);
     expect(labels).toEqual(
       expect.arrayContaining([
-        'Best of China — 15 Days',
-        "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
-        'Shanghai & Surroundings — 10 Days',
-        'Silk Road — 18 Days',
-        'Still deciding — show me all 4',
+        'Golden China — 12 Days (16 Nov 2026)',
+        'Christmas & New Year in China — 16 Days (22 Dec 2026)',
+        'Christmas & New Year — 15 Days ex-Christchurch (22 Dec 2026)',
+        'Best of China — 15 Days (11 Mar 2027)',
+        'Still deciding — show me all tours',
       ])
     );
     expect(labels).toHaveLength(5);
+  });
+
+  it('does not offer the sold-out November 2026 Best of China departure', () => {
+    render(<HeroWithLeadForm {...RENDER_PROPS} />);
+    const select = screen.getByRole('combobox') as HTMLSelectElement;
+    const labels = Array.from(select.options).map((o) => o.value).join(' | ');
+    expect(labels).not.toMatch(/Best of China[^|]*Nov 2026/);
   });
 
   it('blocks submit and surfaces an error when both email and phone are empty', async () => {

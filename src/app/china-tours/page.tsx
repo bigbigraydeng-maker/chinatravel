@@ -14,6 +14,7 @@ import { chinaToursMeta } from '@/lib/data/seo-pages';
 import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import UtmAwareBanner from './_components/UtmAwareBanner';
 import FlagshipTourGrid from './_components/FlagshipTourGrid';
+import SouthIslandDeparture from './_components/SouthIslandDeparture';
 import CustomerTripPhotos from './_components/CustomerTripPhotos';
 import ReviewsHighlights from './_components/ReviewsHighlights';
 
@@ -109,7 +110,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
     {
       title: 'Small-Group China Tours from NZ',
       slug: 'small-group-china-tours',
-      description: 'Intimate groups of 6–16, expert guides, NZD pricing — October 2026 departures open'
+      description: 'Intimate groups of 6–16, expert guides, NZD pricing — 2026-27 departures open'
     },
     {
       title: 'China Travel Specialists Since 1928',
@@ -190,20 +191,27 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       </div>
       <ReviewsHighlights mobileLimit={thankyou ? 1 : undefined} />
 
-      {/* Flagship itineraries — 4 by default; FB Leadform ThankYou traffic
-          drops to 3 (Hick's Law — fewer choices convert hot leads faster).
-          The heading + intro also flip to "these are the three most popular"
-          framing for post-lead reassurance. */}
+      {/* Flagship itineraries — full roster by default; FB Leadform ThankYou
+          traffic drops to 2 (Hick's Law — fewer choices convert hot leads
+          faster). The heading + intro also flip to "these are the most
+          popular" framing for post-lead reassurance. */}
       <FlagshipTourGrid
-        limit={thankyou ? 3 : undefined}
+        limit={thankyou ? 2 : undefined}
         mobileLimit={thankyou ? 1 : undefined}
-        heading={thankyou ? 'Our three most-requested China itineraries' : undefined}
+        heading={thankyou ? 'Our most-requested China itineraries' : undefined}
         intro={
           thankyou
             ? 'While you wait for our specialist to reach out, take a look at the routes New Zealand travellers most often start with. Your call will be tailored around whichever feels closest.'
             : undefined
         }
       />
+
+      {/* South Island departure — its own band, not a flagship card. Every
+          other tour here departs Auckland, so "flies direct from Christchurch"
+          is a distinct offer that gets lost when mixed into the grid. Hidden
+          from FB Leadform thankyou traffic for the same focus reason as the
+          sections below. */}
+      {!thankyou && <SouthIslandDeparture />}
 
       {/* Main Content — hub-only. FB Leadform ThankYou traffic skips the
           long intro / all-tours grid / tier callouts / related guides / FAQ

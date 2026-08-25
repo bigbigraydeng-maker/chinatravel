@@ -34,7 +34,7 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
     tier: 'discovery',
     slug: 'essentials',
     campaignHref: '/tours/china/discovery/essentials',
-    departureLabel: '3 Nov 2026',
+    departureLabel: '11 Mar 2027',
     route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
   },
   {

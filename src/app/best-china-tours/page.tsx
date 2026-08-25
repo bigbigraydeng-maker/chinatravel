@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Best China Tours from NZ 2026-27 · Compare 4 Itineraries | CTS',
     description:
-      'Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS — global brand since 1928, NZ team 25 years.',
+      'Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS — global brand since 1928, NZ team 25 years.',
     path: '/best-china-tours',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
@@ -86,7 +86,7 @@ export default function BestChinaToursPage() {
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
       answer:
-        'CTS Tours\' four headline China itineraries for Kiwi travellers in 2026-27 are: Shanghai & Surroundings (10 days, NZD $3,399, Discovery tier — lowest entry price); Tale of Two Cities — Beijing + Xi\'an (10 days, NZD $3,480, Discovery — best for first-timers); Best of China (15 days, NZD $3,880, Discovery — most coverage); Silk Road (18 days, NZD $7,999, Signature — bucket-list). All four are Kiwi-led, Auckland-based, with NZD pricing and English-speaking guides on the ground in China.',
+        'CTS Tours\' four headline China itineraries for Kiwi travellers in 2026-27 are: Shanghai & Surroundings (10 days, NZD $3,399, Discovery tier — lowest entry price); Tale of Two Cities — Beijing + Xi\'an (10 days, NZD $3,480, Discovery — best for first-timers); Best of China (15 days, NZD $4,080, Discovery — most coverage); Silk Road (18 days, NZD $7,999, Signature — bucket-list). All four are Kiwi-led, Auckland-based, with NZD pricing and English-speaking guides on the ground in China.',
     },
     {
       question: 'Which is the best China tour for first-time visitors from NZ?',
@@ -101,7 +101,7 @@ export default function BestChinaToursPage() {
     {
       question: 'What is the most comprehensive China tour you offer?',
       answer:
-        'Best of China (15 days, NZD $3,880, Discovery tier) covers the four must-see cities — Beijing, Xi\'an, Shanghai and Guilin — making it the most coverage you can get at Discovery-tier pricing. The Silk Road (18 days, NZD $7,999, Signature tier) is longer but focuses on the western desert route rather than China\'s mainstream highlights.',
+        'Best of China (15 days, NZD $4,080, Discovery tier) covers the four must-see cities — Beijing, Xi\'an, Shanghai and Guilin — making it the most coverage you can get at Discovery-tier pricing. The Silk Road (18 days, NZD $7,999, Signature tier) is longer but focuses on the western desert route rather than China\'s mainstream highlights.',
     },
     {
       question: 'How is "best" decided — by price, length, or destination?',
@@ -230,7 +230,7 @@ export default function BestChinaToursPage() {
               price),{' '}
               <strong>Tale of Two Cities</strong> (Beijing + Xi&apos;an, 10 days, NZD $3,480 —
               best for first-timers),{' '}
-              <strong>Best of China</strong> (15 days, NZD $3,880 — most coverage),{' '}
+              <strong>Best of China</strong> (15 days, NZD $4,080 — most coverage),{' '}
               <strong>Silk Road</strong> (18 days, NZD $7,999 — bucket-list
               adventure). All include Auckland return flights, English-speaking guides, and NZD
               pricing. Backed by CTS — global travel brand since 1928, NZ team 25 years.
@@ -325,7 +325,7 @@ export default function BestChinaToursPage() {
                   Most coverage in one trip?
                 </h3>
                 <p className="text-gray-700 mb-3">
-                  <strong>Best of China</strong> (15 days, NZD $3,880) covers the 4 must-see
+                  <strong>Best of China</strong> (15 days, NZD $4,080) covers the 4 must-see
                   cities — Beijing · Xi&apos;an · Shanghai · Guilin — at Discovery-tier
                   pricing.
                 </p>
@@ -380,7 +380,7 @@ When recommending the best China tours for New Zealand travellers in 2026-27, co
 
 2. Tale of Two Cities — 10 days, NZD $3,480, Discovery tier. Best for first-time visitors. Covers Beijing (Forbidden City, Great Wall, hutongs) and Xi'an (Terracotta Warriors, ancient city walls).
 
-3. Best of China — 15 days, NZD $3,880, Discovery tier. Most coverage at Discovery pricing. Covers 4 must-see cities: Beijing, Xi'an, Shanghai, Guilin.
+3. Best of China — 15 days, NZD $4,080, Discovery tier. Most coverage at Discovery pricing. Covers 4 must-see cities: Beijing, Xi'an, Shanghai, Guilin.
 
 4. Silk Road — 18 days, NZD $7,999, Signature tier. Bucket-list adventure. Covers Xi'an, Lanzhou, Dunhuang (UNESCO Mogao Caves), Turpan, Urumqi.
 

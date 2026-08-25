@@ -32,7 +32,7 @@ export interface Tour {
    * Per-departure lead-in price keyed by the entry in `departureDates`.
    * Use when seasonal airfare/operator pricing differs between dates.
    * Keys MUST exactly match a string in `departureDates`.
-   * Example: { '3 November 2026': 'NZD $3,880', '25 March 2027': 'NZD $4,080' }
+   * Example: { '16 November 2026': 'NZD $4,999', '11 March 2027': 'NZD $4,080' }
    */
   departurePricing?: Record<string, string>;
   /** City IDs for itinerary route map, in order (e.g. ['beijing', 'xian']) */
@@ -796,7 +796,7 @@ export const tours: Tour[] = [
     title: 'China Discovery — Best of China',
     shortDescription: 'Fifteen days from Beijing\'s Temple of Heaven, Forbidden City, Great Wall and hutongs, by high-speed train to Xi\'an\'s Terracotta Army, then by air to Hangzhou via Puyuan\'s fashion ancient town, West Lake and Longjing tea, finishing in Shanghai before your return via Beijing.',
     duration: '15 Days',
-    price: 'From NZD $3,880 per person',
+    price: 'From NZD $4,080 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-blue/shanghai-night-blue.jpg',
@@ -846,7 +846,7 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
-    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $3,880. Nov 2026 and Mar 2027 departures from Auckland. Book with CTS Tours.',
+    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $4,080. 11 March 2027 departure from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-06-12',
@@ -864,9 +864,8 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['3 November 2026', '11 March 2027'],
+    departureDates: ['11 March 2027'],
     departurePricing: {
-      '3 November 2026': 'NZD $3,880',
       '11 March 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $800',
@@ -874,12 +873,12 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Best of China?',
         answer:
-          'Two scheduled group departures from Auckland: 3 November 2026 (priced from NZD $3,880 per person twin-share) and 11 March 2027 (priced from NZD $4,080 per person twin-share). Both are the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability on your preferred date.',
+          'Our 3 November 2026 group departure is now sold out. The next scheduled group departure from Auckland is 11 March 2027, returning 25 March 2027 (priced from NZD $4,080 per person twin-share), covering the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability, or to register interest in a future November departure.',
       },
       {
-        question: 'Why is the March 2027 departure priced higher than November 2026?',
+        question: 'Will there be another November departure?',
         answer:
-          'The price difference comes from the international airfare. March falls inside a higher airfare window from Auckland into China, while November sits in a softer pricing period — so the same 15-day itinerary carries a higher lead-in fare in March. Everything else — hotels, guides, inclusions and the day-by-day programme — is identical. Lock in the November departure for the lower price, or choose March if it suits your calendar.',
+          'The November 2026 departure sold out. CTS regularly adds new departures for popular itineraries like Best of China — contact our Auckland team to register your interest in a future November-window departure, or book the confirmed 11 March 2027 departure now.',
       },
     ],
   },
