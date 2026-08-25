@@ -98,22 +98,23 @@ interface HeroWithLeadFormProps {
   sectionId?: string;
 }
 
-// Match the four flagship URLs surfaced lower on /china-tours so the
-// dropdown doubles as the visitor's first signal of which tour they want.
+// Match the flagship tours surfaced lower on /china-tours so the dropdown
+// doubles as the visitor's first signal of which tour they want, plus the
+// Christchurch departure that gets its own section there.
 // Visa-guide page reuses the same list — visitors who land on visa info
 // still need to express tour interest for the FDE to route the lead.
 const DEFAULT_TRAVEL_INTEREST_OPTIONS = [
-  'Best of China — 15 Days',
-  "Tale of Two Cities — 10 Days (Beijing + Xi'an)",
-  'Shanghai & Surroundings — 10 Days',
-  'Silk Road — 18 Days',
-  'Still deciding — show me all 4',
+  "Golden China — 12 Days (16 Nov 2026)",
+  'Christmas & New Year in China — 16 Days (22 Dec 2026)',
+  'Christmas & New Year — 15 Days ex-Christchurch (22 Dec 2026)',
+  'Best of China — 15 Days (11 Mar 2027)',
+  'Still deciding — show me all tours',
 ];
 
 const DEFAULT_BULLETS = [
-  '98 years of China-direct operations · Auckland-based specialists',
+  '98 years of China-direct operations · Auckland & Christchurch departures',
   'NZD pricing · small groups · visa-free options for many NZ travellers',
-  'October 2026 departures open — talk to us about availability',
+  'November 2026 & March 2027 departures open — talk to us about availability',
 ];
 
 const PHONE_DISPLAY = '0800 CTS 888';

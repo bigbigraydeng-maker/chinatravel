@@ -78,7 +78,7 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
  *  - Hangzhou: West Lake, Longjing tea, Qinghefang Ancient Street (Day 10-11)
  *  - Shanghai: Yuyuan Garden, Bund, Nanjing Road, Lujiazui (Day 11-13)
  *
- * Price: NZD $3,880 (per master_brief + tours.ts).
+ * Price: read from tour.price at render time (currently NZD $4,080 per tours.ts).
  */
 export function generateEssentialsTouristTripSchema(tour: Tour, destination: Destination) {
   const price = parsePriceAmount(tour.price);

@@ -26,7 +26,7 @@ const STATS: Stat[] = [
     sub: 'Comfortable, immersive pace',
   },
   {
-    number: '$3,880',
+    number: '$4,080',
     label: 'NZD lead-in',
     sub: 'Auckland return flights included',
   },

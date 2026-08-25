@@ -3,9 +3,9 @@ import { getAllChinaTours, type Tour } from '@/lib/data/tours';
 
 interface FlagshipTourGridProps {
   /**
-   * How many flagship cards to render. Defaults to all 4. FB Leadform
-   * thankyou traffic (utm_medium=ab_test_leadform_thankyou) drops to 3
-   * — hot leads convert faster with fewer choices per Hick's Law.
+   * How many flagship cards to render. Defaults to the full roster. FB
+   * Leadform thankyou traffic (utm_medium=ab_test_leadform_thankyou) passes a
+   * lower limit — hot leads convert faster with fewer choices per Hick's Law.
    */
   limit?: number;
   /**
@@ -22,9 +22,16 @@ interface FlagshipTourGridProps {
 }
 
 /**
- * 4 flagship tours surfaced on /china-tours. URLs are PM-confirmed and
- * hardcoded — Shanghai & Surroundings points to the October 2026 campaign
- * landing, not the canonical tour detail page.
+ * Flagship tours surfaced on /china-tours. URLs are PM-confirmed and
+ * hardcoded — Best of China points to its conversion LP, not the canonical
+ * tour detail page.
+ *
+ * Roster (PM 2026-08-25): Best of China (now selling its 11 Mar 2027
+ * departure — the 3 Nov 2026 one sold out), Golden China, and the Auckland
+ * Christmas & New Year departure. The Christchurch/South Island Christmas
+ * departure is deliberately NOT in this grid — it gets its own dedicated
+ * section below so the South Island origin reads as a distinct offer rather
+ * than getting lost among Auckland departures.
  */
 const FLAGSHIP_TOURS: Array<{
   slug: string;
@@ -38,11 +45,6 @@ const FLAGSHIP_TOURS: Array<{
   imageOverride?: string;
 }> = [
   {
-    slug: 'beijing-xian',
-    ribbon: 'Beijing + Xi’an',
-    href: '/tours/china/discovery/beijing-xian',
-  },
-  {
     slug: 'essentials',
     ribbon: 'Most popular',
     // Conversion LP, not the generic tour detail. /campaigns/best-of-china is
@@ -54,21 +56,14 @@ const FLAGSHIP_TOURS: Array<{
     href: '/campaigns/best-of-china',
   },
   {
-    slug: 'shanghai-surroundings',
-    ribbon: 'October 2026',
-    href: '/campaigns/october-2026/shanghai-surroundings',
+    slug: 'golden-china',
+    ribbon: 'November 2026',
+    href: '/tours/china/discovery/golden-china',
   },
   {
-    slug: 'silk-road',
-    ribbon: 'Signature · 18 days',
-    href: '/tours/china/signature/silk-road',
-    // The silk-road-wall.jpg tour heroImage renders as blank/broken for
-    // some visitors (client CDN edge or ad-blocker heuristics — the URL
-    // itself returns 200 server-side). Terracotta Warriors is the tour's
-    // most recognisable start-of-Silk-Road landmark for the NZ market,
-    // and it's a proven-loading asset used elsewhere on the hub already.
-    imageOverride:
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
+    slug: 'china-icons-collection',
+    ribbon: 'Christmas & New Year',
+    href: '/tours/china/discovery/china-icons-collection',
   },
 ];
 
@@ -126,7 +121,7 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
           </h2>
           <p className="text-lg text-gray-700">
             {intro ??
-              'Four of our most-booked routes from New Zealand — pick a starting point and our specialists will tailor dates, hotels, and add-ons around you.'}
+              'Our most-booked routes from New Zealand — pick a starting point and our specialists will tailor dates, hotels, and add-ons around you.'}
           </p>
         </div>
 

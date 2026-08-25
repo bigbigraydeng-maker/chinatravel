@@ -265,18 +265,18 @@ export default function TourPage({ params }: TourPageProps) {
         </section>
       )}
 
-      {/* Essentials: two-season scheduled departures */}
+      {/* Essentials: November 2026 departure sold out, now selling March 2027 */}
       {tour.slug === 'essentials' && (
         <section className="bg-amber-50 border-y border-amber-200 py-4">
           <div className="container mx-auto px-4 text-center">
             <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              Two Scheduled Departures
+              November 2026 Departure Sold Out
             </p>
             <p className="text-lg font-serif font-bold text-gray-900">
-              November 2026 · March 2027
+              Next Departure: 11 March 2027
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              Lower lead-in fare in November (NZD $3,880); March 2027 from NZD $4,080 — see hero for per-date pricing.
+              From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
             </p>
           </div>
         </section>

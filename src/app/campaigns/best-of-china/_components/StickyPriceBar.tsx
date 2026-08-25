@@ -37,10 +37,10 @@ export default function StickyPriceBar() {
             <span className="text-sm sm:text-base font-medium">15 Days</span>
             <span className="hidden sm:inline text-white/70">·</span>
             <span className="text-sm sm:text-base font-bold tracking-wide">
-              From NZD $3,880
+              From NZD $4,080
             </span>
             <span className="hidden md:inline text-white/70">·</span>
-            <span className="hidden md:inline text-sm">Oct 2026 from Auckland</span>
+            <span className="hidden md:inline text-sm">Mar 2027 from Auckland</span>
           </div>
           <a
             href="#enquiry"
