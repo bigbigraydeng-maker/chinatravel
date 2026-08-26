@@ -55,6 +55,14 @@ export interface Tour {
    * Must reference real facts from this same tour entry (price, duration, route).
    */
   quickAnswer?: string;
+  /**
+   * Maximum group size for this specific tour. Overrides the site-wide default
+   * (18) shown in the tour hero. Use when a departure is deliberately capped
+   * smaller (e.g. Golden China at 12) so the hero copy matches the sales
+   * promise. Any positive integer is allowed; leave undefined to inherit the
+   * default.
+   */
+  maxGroupSize?: number;
 }
 
 export interface DayItinerary {
@@ -3019,6 +3027,7 @@ export const tours: Tour[] = [
       'shanghai',
     ],
     singleSupplement: 'NZD $690',
+    maxGroupSize: 12,
     departureDates: [
       '16 November 2026',
     ],

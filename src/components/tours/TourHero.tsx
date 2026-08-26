@@ -25,6 +25,12 @@ interface TourHeroProps {
   /** Single room supplement price, shown below the price row */
   singleSupplement?: string;
   /**
+   * Maximum group size for this specific tour. Overrides the site-wide
+   * default (18) shown in the USP triplet. Only pass when the tour data
+   * carries `maxGroupSize` — otherwise leave undefined and the default wins.
+   */
+  maxGroupSize?: number;
+  /**
    * Per-departure lead-in pricing. When provided, the "All departure dates"
    * section renders price cards (date + price + single supplement) instead of
    * simple chips. Keys MUST match entries in `departureDates`.
@@ -60,10 +66,12 @@ export default function TourHero({
   primaryCtaLabel = 'Enquire Now',
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
+  maxGroupSize,
   departurePricing,
   seasonalBadge,
   fareSavingsBadge,
 }: TourHeroProps) {
+  const groupSizeLabel = `Small group · max ${maxGroupSize ?? 18} travellers`;
   const tierColors = {
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',
@@ -182,7 +190,7 @@ export default function TourHero({
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
-              <span>Small group · max 18 travellers</span>
+              <span>{groupSizeLabel}</span>
             </li>
             <li className="flex items-center gap-2">
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
