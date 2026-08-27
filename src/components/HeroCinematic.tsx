@@ -147,7 +147,7 @@ const HeroCinematic = () => {
         >
           <span>
             <span className="text-secondary">●</span>{' '}
-            <b className="font-semibold text-white">98 years</b> of China expertise
+            <b className="font-semibold text-white">25 years in NZ (parent CTS since 1928)</b> of China expertise
           </span>
           <span>
             <span className="text-secondary">●</span>{' '}

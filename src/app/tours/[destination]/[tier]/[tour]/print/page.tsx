@@ -39,7 +39,7 @@ export default function TourPrintPage({ params }: PrintPageProps) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="CTS Tours" style={{ height: '48px' }} />
             <p style={{ fontSize: '11px', color: '#6b7280', marginTop: '4px' }}>
-              China Travel Specialists — Since 1928
+              CTS Tours NZ — Auckland since 2000 · Backed by CTS (founded 1928)
             </p>
           </div>
           <div style={{ textAlign: 'right', fontSize: '12px', color: '#374151' }}>

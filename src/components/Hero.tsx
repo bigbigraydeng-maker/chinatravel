@@ -45,7 +45,7 @@ const Hero = () => {
       <div className="relative z-10 text-center text-white w-full max-w-5xl mx-auto px-4 py-20">
         <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-8 animate-fade-in-up border border-white/20">
           <p className="text-white/90 font-medium tracking-widest text-sm uppercase">
-            New Zealand's China Specialists &nbsp;·&nbsp; Since 1928
+            Kiwi-Led China Specialists &nbsp;·&nbsp; Auckland Since 2000 &nbsp;·&nbsp; Backed by CTS (Founded 1928)
           </p>
         </div>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 font-serif tracking-tight leading-[1.05] animate-fade-in-up" style={{ animationDelay: '0.2s' }}>

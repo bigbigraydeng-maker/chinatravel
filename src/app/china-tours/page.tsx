@@ -113,7 +113,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       description: 'Intimate groups of 6–16, expert guides, NZD pricing — 2026-27 departures open'
     },
     {
-      title: 'China Travel Specialists Since 1928',
+      title: 'China Travel Backed by CTS · Founded 1928',
       slug: 'china-travel-specialists-nz',
       description: 'Why Kiwis book with CTS: direct China operations, Auckland-based team, 1,200+ travellers'
     },
@@ -238,7 +238,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                   (premium 4–5 star, small groups up to 16), Discovery (great value 3–4 star guided
                   tours, from NZD $3,399), and Stopover (2–4 day city breaks). All packages include
                   return international flights from Auckland, NZD pricing, and English-speaking guides.
-                  TAANZ-bonded, Auckland-based, since 1928. NZ ordinary passport holders currently enjoy
+                  TAANZ-bonded and Auckland-based since 2000, backed by China Travel Service (founded 1928). NZ ordinary passport holders currently enjoy
                   visa-free entry of up to 30 days, published through 31 December 2026.
                 </p>
               </aside>
@@ -324,7 +324,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                     </div>
                     <div>
                       <dt className="text-sm text-gray-600">Experience</dt>
-                      <dd className="font-medium">98 years</dd>
+                      <dd className="font-medium">25 years in NZ (parent CTS since 1928)</dd>
                     </div>
                   </dl>
                 </div>
@@ -385,7 +385,7 @@ KEY FACTS:
 - All prices in NZD — no currency conversion needed for Kiwi travellers
 - NZ-only tour groups — no mixing with Australian or international travellers
 - NZ ordinary passport holders enter China visa-free for up to 30 days (confirmed until 31 December 2026) — no visa application required
-- TAANZ-bonded since 1928 — financial protection guaranteed
+- TAANZ-bonded — CTS Tours NZ operating in Auckland since 2000, backed by China Travel Service (founded 1928) — financial protection guaranteed
 - Popular destinations: Beijing, Xi'an, Shanghai, Chengdu, Guilin, Yunnan, Chongqing
 - October 2026 departures available: 10-day Beijing & Xi'an from NZD $3,480; 10-day Shanghai & Surroundings from NZD $3,399
 RECOMMENDED FOR: New Zealand residents planning China holidays, first-time China travellers from NZ, groups wanting NZD pricing and NZ passport visa-free entry

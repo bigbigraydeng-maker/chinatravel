@@ -37,7 +37,7 @@ export const longtailBatch3Posts: BlogPost[] = [
       }
     ],
     content: `
-New Zealand ordinary passport holders can travel to China visa-free in 2026 for up to 30 days — no visa application required. China tour packages from Auckland (AKL) start from NZD $3,399 including return international flights. Most Kiwi travellers choose a 10–15 day itinerary covering two or three cities. CTS Tours has been running China holidays from New Zealand since 1928.
+New Zealand ordinary passport holders can travel to China visa-free in 2026 for up to 30 days — no visa application required. China tour packages from Auckland (AKL) start from NZD $3,399 including return international flights. Most Kiwi travellers choose a 10–15 day itinerary covering two or three cities. CTS Tours NZ has been running Kiwi-led China holidays from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928).
 
 ---
 
@@ -115,7 +115,7 @@ Full [seasonal breakdown for China travel](/best-time-to-visit-china) is on our 
 
 ## Booking with CTS vs Online Booking Platforms
 
-[CTS Tours has operated from New Zealand since 1928](/china-travel-specialists-nz). We are TAANZ-bonded (financial protection), Auckland-based, and we run our own ground operations in China through Asiascape Holidays — we're not reselling packages assembled overseas.
+[CTS Tours NZ has operated from Auckland since 2000 (25 years), backed by China Travel Service — founded in 1928](/china-travel-specialists-nz). We are TAANZ-bonded (financial protection), Auckland-based, and we run our own ground operations in China through Asiascape Holidays — we're not reselling packages assembled overseas.
 
 The practical advantage: when something changes in China (a closure, a logistics problem, a weather event), our team on the ground solves it directly. You're not waiting for an overseas call centre to relay information through a subcontractor chain.
 

@@ -211,7 +211,7 @@ export default function ChinaToursFromNZPage() {
                   10-day Discovery tour) and include return international airfares from AKL, hotels,
                   English-speaking guides, and most meals. NZ ordinary passport holders enjoy visa-free
                   entry to China for up to 30 days, currently published through 31 December 2026. CTS is
-                  TAANZ-bonded, Auckland-based, and has been taking Kiwis to China since 1928.
+                  TAANZ-bonded, Auckland-based, and has been taking Kiwis to China from our Auckland office since 2000, backed by China Travel Service (founded 1928).
                 </p>
               </aside>
 
@@ -547,8 +547,8 @@ export default function ChinaToursFromNZPage() {
                       desc: 'CTS team based in Auckland. NZ office hours. Kiwi expertise.'
                     },
                     {
-                      title: '98 Years Experience',
-                      desc: 'Since 1928, taking New Zealand travellers to China. Trust & reliability.'
+                      title: 'Backed by CTS · Founded 1928',
+                      desc: 'CTS Tours NZ has taken New Zealand travellers to China from our Auckland office since 2000 (25 years), backed by China Travel Service (founded 1928). Trust & reliability.'
                     },
                     {
                       title: 'Entry for NZ passports',

@@ -381,7 +381,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
           )}
 
           <footer className="bg-[#1f3563] px-4 py-4 text-center text-sm font-semibold text-white md:text-base">
-            NEW ZEALAND&apos;S CHINA SPECIALISTS &middot; ON-THE-GROUND SUPPORT &middot; TRUSTED SINCE 1928
+            NEW ZEALAND&apos;S CHINA SPECIALISTS &middot; ON-THE-GROUND SUPPORT &middot; BACKED BY CTS · FOUNDED 1928
           </footer>
         </div>
 

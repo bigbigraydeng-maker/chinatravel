@@ -43,7 +43,7 @@ export function getCtsTravelAgencySchema() {
       'https://www.facebook.com/CTSTOURS/',
       'https://www.instagram.com/chinatravelservices/',
     ],
-    description: 'China Travel Specialists for New Zealand | Heritage since 1928',
+    description: 'CTS Tours NZ — Kiwi-Led China Travel Specialists (Auckland since 2000, backed by CTS founded 1928)',
     areaServed: {
       '@type': 'Country' as const,
       name: 'New Zealand',

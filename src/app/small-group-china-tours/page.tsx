@@ -318,7 +318,7 @@ export default function SmallGroupChinaToursPage() {
                   </li>
                   <li>
                     <Link href="/china-travel-specialists-nz" className="text-primary font-medium hover:underline">
-                      About CTS — China travel specialists since 1928
+                      About CTS — China travel specialists — Auckland since 2000, backed by CTS (founded 1928)
                     </Link>
                   </li>
                   <li>

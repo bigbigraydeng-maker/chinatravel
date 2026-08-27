@@ -77,7 +77,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded, Auckland-based, since 1928. NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
+                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded and Auckland-based since 2000, backed by China Travel Service (founded 1928). NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
                 </p>
               </aside>
 
