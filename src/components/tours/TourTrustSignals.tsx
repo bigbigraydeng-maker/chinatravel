@@ -34,8 +34,8 @@ export default function TourTrustSignals() {
       ),
     },
     {
-      title: '98 years China expertise',
-      body: 'Direct China operations since 1928 — hotels, guides, transport we run ourselves.',
+      title: 'Backed by CTS · Founded 1928',
+      body: 'CTS Tours NZ has run Kiwi-led tours from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928) — hotels, guides, transport we run ourselves.',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 00.95.69h4.169c.969 0 1.371 1.24.588 1.81l-3.37 2.449a1 1 0 00-.363 1.118l1.287 3.966c.3.921-.755 1.688-1.539 1.118l-3.37-2.449a1 1 0 00-1.175 0l-3.37 2.449c-.784.57-1.838-.197-1.539-1.118l1.287-3.966a1 1 0 00-.363-1.118L2.06 9.393c-.784-.57-.381-1.81.587-1.81h4.17a1 1 0 00.95-.69l1.286-3.966z" />

@@ -505,7 +505,7 @@ export default function YangtzeRiverCruisePage() {
                 </h2>
                 <p className="text-gray-700 mb-5 max-w-2xl mx-auto">
                   Our Auckland-based team will match the ship to your dates, integrate the cruise with your wider
-                  China itinerary, and quote everything in NZD. China Travel Service since 1928, NZ team 25 years.
+                  China itinerary, and quote everything in NZD. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.
                 </p>
                 <Link
                   href="/contact"

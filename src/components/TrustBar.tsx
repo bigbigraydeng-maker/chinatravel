@@ -14,7 +14,7 @@ const trustBadges: TrustBadge[] = [
       </svg>
     ),
     title: '100+ Years Heritage',
-    description: 'Century of Excellence Since 1928',
+    description: 'Backed by CTS · Founded 1928',
   },
   {
     icon: (

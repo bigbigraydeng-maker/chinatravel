@@ -546,7 +546,7 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
     id: 'lt-b4',
     slug: 'shanghai-10-days-itinerary',
     title: '10-Day Shanghai & Jiangnan Itinerary for NZ Travellers (2026)',
-    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $3,399. By CTS Tours, NZ\'s China specialists since 1928.',
+    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $3,399. By CTS Tours, NZ\'s China specialists — Auckland since 2000, backed by CTS (founded 1928).',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',

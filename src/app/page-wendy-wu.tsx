@@ -62,8 +62,8 @@ const HomePageWendyWu = () => {
     },
     {
       icon: 'target',
-      title: '98 Years Heritage',
-      description: 'Since 1928, we\'ve been crafting unforgettable journeys. That\'s nearly a century of trust and expertise.',
+      title: 'Backed by CTS · Founded 1928',
+      description: 'CTS Tours NZ has been crafting Kiwi-led journeys from Auckland since 2000 (25 years), backed by China Travel Service — founded in 1928.',
       gradient: 'from-rose-50 to-pink-50'
     },
     {
@@ -105,7 +105,7 @@ const HomePageWendyWu = () => {
                   Journey into Real China
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
-                  Discover authentic experiences beyond the guidebook. With 98 years of expertise and local ground presence, we craft journeys that transform how you see Asia.
+                  Discover authentic experiences beyond the guidebook. With 25 years of Kiwi-led NZ operations, backed by CTS Group (founded 1928) and local ground presence, we craft journeys that transform how you see Asia.
                 </p>
               </div>
 
@@ -127,8 +127,8 @@ const HomePageWendyWu = () => {
               {/* Trust indicators */}
               <div className="flex gap-8 pt-8 border-t border-orange-100">
                 <div>
-                  <div className="text-3xl font-bold text-orange-600">98+</div>
-                  <div className="text-sm text-gray-600">Years of Excellence</div>
+                  <div className="text-3xl font-bold text-orange-600">25</div>
+                  <div className="text-sm text-gray-600">Years in New Zealand</div>
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-orange-600">5000+</div>
@@ -171,7 +171,7 @@ const HomePageWendyWu = () => {
               Why Choose CTS
             </h2>
             <p className="text-xl text-gray-600">
-              Nearly a century of connecting New Zealanders with authentic Asia
+              CTS Tours NZ: 25 years connecting New Zealanders with authentic Asia — backed by CTS (founded 1928)
             </p>
           </div>
 

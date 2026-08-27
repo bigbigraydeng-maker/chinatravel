@@ -495,7 +495,7 @@ export default function ChinaToursForSeniorsPage() {
                 <p className="text-gray-700 mb-5 max-w-2xl mx-auto">
                   Tell us your mobility level, preferred pace, and trip length. Our Auckland-based consultants will
                   match the right itinerary, ship, and hotel category to your specific needs. China Travel Service
-                  since 1928, NZ team 25 years.
+                  founded in 1928; CTS Tours NZ team in Auckland for 25 years.
                 </p>
                 <Link
                   href="/contact"

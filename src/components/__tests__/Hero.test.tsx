@@ -51,7 +51,7 @@ describe('Hero component', () => {
   it('renders the eyebrow tagline and primary headline', () => {
     render(<Hero />);
     expect(
-      screen.getByText(/New Zealand's China Specialists/i)
+      screen.getByText(/Kiwi-Led China Specialists/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/All of it\./i)).toBeInTheDocument();
   });

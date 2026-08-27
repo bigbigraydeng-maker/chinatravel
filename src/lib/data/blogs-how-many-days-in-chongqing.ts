@@ -207,7 +207,7 @@ If I had to pick one answer: **3 days in Chongqing**. That gives you the famous 
 
 Two days is the rushed minimum. Make it **4 days if you are committing to Dazu**, since that swallows a whole day and leaves the city itself short-changed otherwise. Five days only makes sense with a Yangtze cruise attached — without one, spend the extra day in Chengdu instead. The two cities pair beautifully and the train between them is faster than NZ\'s flagship intercity service.
 
-If you want to talk through your specific itinerary, the [CTS Tours team](/contact) is in Auckland and happy to take a call. China Travel Service has been running tours globally since 1928 — our NZ team has been running Kiwi-focused China trips for 25 years, and most of us have led tours through Chongqing multiple times across the seasons.
+If you want to talk through your specific itinerary, the [CTS Tours team](/contact) is in Auckland and happy to take a call. China Travel Service (our parent group) has been running tours globally since 1928. CTS Tours NZ has been running Kiwi-focused China trips from Auckland for 25 years, and most of us have led tours through Chongqing multiple times across the seasons.
 
 Whatever number of days you choose, Chongqing is genuinely unlike any other Chinese city you\'ve seen. Plan with enough breathing room and you\'ll come home with stories that don\'t involve queues or photo crowds.
 `,

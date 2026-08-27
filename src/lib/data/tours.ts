@@ -117,7 +117,7 @@ export const destinations: Destination[] = [
       'Experience Shanghai\'s skyline'
     ],
     metaTitle: 'China Tours | Signature & Discovery | CTS Tours',
-    metaDescription: 'Explore China with CTS Tours. Signature luxury tours and discovery packages to Beijing, Shanghai, Xi\'an and beyond. 98 years of expertise.',
+    metaDescription: 'Explore China with CTS Tours. Signature luxury tours and discovery packages to Beijing, Shanghai, Xi\'an and beyond. 25 years of Kiwi-led NZ operations (Auckland since 2000), backed by China Travel Service (founded 1928).',
     tiers: [
       {
         id: 'tier-signature',

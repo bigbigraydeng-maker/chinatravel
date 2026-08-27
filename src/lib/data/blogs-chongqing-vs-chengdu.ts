@@ -176,7 +176,7 @@ If you genuinely can\'t pick between Chongqing and Chengdu and you have 5+ days 
 
 If you have only 2-3 days and have to choose, choose **Chengdu** for your first China trip, **Chongqing** if you have been to China before and want something dramatically different.
 
-If you want to talk through your specific trip, the [CTS Tours team](/contact) is in Auckland and happy to walk through options on the phone. China Travel Service has been running tours globally since 1928 — the New Zealand team has been running Kiwi-focused trips for 25 years, and most of us have personally led tours through Chongqing and Chengdu multiple times.
+If you want to talk through your specific trip, the [CTS Tours team](/contact) is in Auckland and happy to walk through options on the phone. China Travel Service (our parent group) has been running tours globally since 1928. The New Zealand team has been running Kiwi-focused trips from Auckland for 25 years, and most of us have personally led tours through Chongqing and Chengdu multiple times.
 
 Either city you choose, you will eat well, see something genuinely unforgettable, and come home with stories.
 `,

@@ -25,11 +25,11 @@ export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
   title: 'China Tours from New Zealand 2026-27 | CTS Tours',
   description:
-    'Featured China tours from NZ 2026-27: Golden China NZD $4,999 (16 Nov 2026) · Christmas & New Year in China $7,188 (22 Dec 2026) · Best of China $4,080 (11 Mar 2027). Plus a direct Christchurch departure. Backed by CTS — global travel brand since 1928, NZ team 25 years. TAANZ-bonded. Free quote.',
+    'Featured China tours from NZ 2026-27: Golden China NZD $4,999 (16 Nov 2026) · Christmas & New Year in China $7,188 (22 Dec 2026) · Best of China $4,080 (11 Mar 2027). Plus a direct Christchurch departure. Backed by CTS — global travel brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. TAANZ-bonded. Free quote.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland & Christchurch departures',
   introText:
-    'CTS Tours is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency with direct China operations since 1928. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
+    'CTS Tours NZ is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928) which runs direct China operations. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
   faqs: [
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
@@ -347,7 +347,7 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from NZ 2026-27 · 4 Tours from NZD $3,399 | CTS',
-  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand since 1928, NZ team 25 years. Visa-free for Kiwi passports.',
+  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. Visa-free for Kiwi passports.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: '4 Kiwi-Led China itineraries 2026-27 · NZD $3,399-7,999 · Auckland-based · Visa-free for NZ passports',
   introText:

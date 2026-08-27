@@ -35,7 +35,7 @@ The knowledge behind those choices is where CTS earns its place. Which hotel in 
 
 I build every CTS itinerary around one of three tiers.
 
-**Signature** — boutique 4 to 5 star hotels, small groups capped at 16 travellers, and the kind of access that comes from 98 years of direct China relationships. For travellers who want to do China properly, with room to breathe between sights. [Browse Signature →](/tours/china/signature)
+**Signature** — boutique 4 to 5 star hotels, small groups capped at 16 travellers, and the kind of access that comes from 25 years in NZ (parent CTS since 1928) of direct China relationships. For travellers who want to do China properly, with room to breathe between sights. [Browse Signature →](/tours/china/signature)
 
 **Discovery** — my best-value escorted packages. Comfortable 3 to 4 star hotels, vetted guides, itineraries that hit the essential sights at a pace that doesn't exhaust you. Perfect for first-time visitors or anyone who wants excellent value without sacrificing quality. [Browse Discovery →](/tours/china/discovery)
 

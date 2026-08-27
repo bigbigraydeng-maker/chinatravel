@@ -56,7 +56,7 @@ export default function SubscribePage() {
             </h1>
 
             <p className="text-gray-300 text-xl mb-10 max-w-xl mx-auto leading-relaxed">
-              Weekly guides, visa updates, and exclusive tour offers — from New Zealand&apos;s China specialists since 1928.
+              Weekly guides, visa updates, and exclusive tour offers — from New Zealand&apos;s China specialists — Auckland since 2000, backed by CTS (founded 1928).
             </p>
 
             {/* Form */}

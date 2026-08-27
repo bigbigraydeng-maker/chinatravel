@@ -184,7 +184,7 @@ export default function TourHero({
             {shortDescription}
           </p>
 
-          {/* USP triplet — small group · fully inclusive · award-winning since 1928 */}
+          {/* USP triplet — small group · fully inclusive · TAANZ member · backed by CTS (founded 1928) */}
           <ul className="mb-6 flex flex-wrap gap-x-5 gap-y-2 max-w-2xl text-sm md:text-base text-white/90">
             <li className="flex items-center gap-2">
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,7 +202,7 @@ export default function TourHero({
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
-              <span>TAANZ member · IATA-accredited · since 1928</span>
+              <span>TAANZ member · IATA-accredited · Backed by CTS (founded 1928)</span>
             </li>
           </ul>
 

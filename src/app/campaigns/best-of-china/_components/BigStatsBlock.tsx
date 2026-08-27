@@ -33,7 +33,7 @@ const STATS: Stat[] = [
   {
     number: '25',
     label: 'Years in NZ',
-    sub: 'Backed by CTS — global since 1928',
+    sub: 'Backed by CTS Group — founded 1928',
   },
 ];
 
