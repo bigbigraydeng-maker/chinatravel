@@ -1,6 +1,6 @@
 # Ceepii 翻新评估文档（Phase 0 · PR #146）
 
-> 状态：草案 **v3** · 子牙 GO · 待 Ray 合 PR
+> 状态：**v3.1** · v3 已合 PR #146（`a19dad5`）· v3.1 = PR #147 discovery 发现无 lead DB · 简化 §4.3 / §10.2
 > 分支：`claude/cts-ceepii-redesign-96cbba`
 > 上游 main HEAD：`8d53aba feat(brochure): replace 2026-27 brochure with 14-page catalogue v2 (#145)`
 > 编写者：Claude Code FDE · 2026-08-29
@@ -71,6 +71,30 @@ Ray edict："技术问题不要问我"· §9 的 9 个技术决策由 子牙 拍
 - Ray 审 PR SLA 承诺
 
 **子牙裁决**：v3 patch 完 → **GO for PR #146 merge + PR #147 Phase 0 code patch**。
+
+---
+
+## v3.1 修订说明（2026-08-29 · PR #147 discovery）
+
+**开工 PR #147 第一步 discovery 发现 CTS 实际生产状态与 v3 §4.3 假设不符**：
+
+- 生产 Supabase 里**只有 1 张业务表** `gsc_search_analytics`（GSC 数据同步分析用 · 内部）
+- **NO** `leads` · `newsletter_subscribers` · `form_submissions` · `itinerary_requests` · `tailor_made_submissions` 表 · 全部不存在
+- Lead flow **100% 走 Resend 邮件** · 6 个 API（`/api/contact` `/api/tour-enquiry` `/api/tailor-made-enquiry` `/api/campaign-enquiry` `/api/send-itinerary` `/api/itinerary/send-email`）全部只调 `resend.emails.send` · 无数据库存储
+- `fireLeadConversion` 是纯 client-side · 只 fire Google Ads conversion + Meta Pixel Lead · 不涉存储
+- Supabase Realtime **未使用**
+- Supabase Storage **只 admin 用**（image manager）· 用户提交路径不涉
+
+**影响：整个 v3 §4.3 `is_staging` 隔离方案作废**。子牙 决策 #5（staging 空 `RESEND_API_KEY`）**天然覆盖所有 lead 污染场景** · 邮件 no-op = 无客户误发 = 无数据污染。
+
+**§4.3 简化为**：
+- staging Supabase 与生产共享 · 无 is_staging 字段 · 无 view · 无 Storage namespace · 无 Realtime channel
+- staging Resend 空 KEY = lead 邮件 no-op（现有代码已有 `if (!apiKey) return { ok: false }` 保护）
+- cookie domain 严格隔离（`staging.chinatravel.co.nz` vs `www.chinatravel.co.nz`）保留
+
+**§10.2 Phase 0 patch 从 16 项 → 10 项 · 3pd → 2pd**：
+- ❌ 删：Supabase migration · lead 写入/读取点微改 · Storage helper · Realtime channel · `_prod` view
+- ✅ 保留：URL 基线 · middleware basic auth · GA/GTM env-toggle · `isStaging()` helper · Tailwind v3 港 · shared-blocks CI · 4 锚点 e2e · verify-react-peers · `.env.example` · CLAUDE.md 更新
 
 ---
 
