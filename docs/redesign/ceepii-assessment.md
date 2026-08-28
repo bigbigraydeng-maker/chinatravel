@@ -1,6 +1,6 @@
 # Ceepii 翻新评估文档（Phase 0 · PR #146）
 
-> 状态：草案 **v2** · 待 Ray 审
+> 状态：草案 **v3** · 子牙 GO · 待 Ray 合 PR
 > 分支：`claude/cts-ceepii-redesign-96cbba`
 > 上游 main HEAD：`8d53aba feat(brochure): replace 2026-27 brochure with 14-page catalogue v2 (#145)`
 > 编写者：Claude Code FDE · 2026-08-29
@@ -41,6 +41,36 @@ v1 由 4 agent 并行审出 **5 blocker + 11 major + 6 minor**（见 PR #146 rev
 22. `SchemaMarkup` 无 CI 校验 → §10 可选加 CI grep 断言
 
 **总工期影响**：Phase 0 patch 1pd → **3pd** · Phase A W1 header 基座 0.5pd → 2pd · Button 系列 +1.5pd · HugeIcons +1pd · **合计 +6 人日**。**6 周 → 6.5-7 周**（吃 §5.6 缓冲 · 或压后 Phase B 某个 section 到 Phase C）。
+
+---
+
+## v3 修订说明（2026-08-29 · 子牙带队审后）
+
+Ray edict："技术问题不要问我"· §9 的 9 个技术决策由 子牙 拍板。v3 = v2 + 3 处 doc 补丁 + §9 从 13 条缩到 4 条（只留业务）。
+
+**9 项技术决策（子牙拍板 · 8 与 FDE 建议一致 · 1 处升级）**
+1. 品牌色 → **保留 CTS `#B61E2E`+`#D6A756`** · Ceepii 只吸 typography/spacing/motion/structure
+2. dark mode → **不引** · CTS 客群 55+ NZ · light-only 无 ROI
+3. staging → **basic auth** · IP allowlist 遇 Ray 移动 4G 就废
+4. staging Supabase → **共享生产库 + §4.3 全隔离** · 新 project 的数据 drift 才是最大污染源
+5. staging Resend → **空 `RESEND_API_KEY`**（走 no-op 分支）· sandbox 需注册测试域 · 空 KEY 最简 · 不误发客户邮件
+6. 视觉回归工具 → **必上 Percy 免费额度**（从"建议"升级为"必上"）· 79 页人肉抽只能覆盖 15-20 · 剩余盲区 A 级不接受
+7. 图标库 → **保留 lucide + 手工换 132 图标** · 双库 +150kb 违反简单性 · 一次性成本换长期干净
+8. 字体栈 → **采纳 Ceepii `Google_Sans_Flex` + Playfair italic span** · 不采纳则 Phase B 视觉感染力减半
+9. Tailwind 港 → **Phase 0（PR #147）· 2-3pd 独立子任务** · 拖 W1 会让 PR #148 混杂难审
+
+**3 处 v2 doc 补丁（子牙 GO 前必修 · v3 完成）**
+- **§4.1 middleware fix**：staging basic auth 通过后 **fall through** 走现有 marketing/admin gate（v2 sample 里 `return NextResponse.next()` 会 short-circuit 掉 admin gate）· 401 响应加 `Cache-Control: no-store` · noindex header 统一在末尾 append
+- **§4.3 加 5 个 `_prod` view**：defense-in-depth 防 Ray 手拉 SQL / Supabase Studio 查询漏 `.eq('is_staging', false)` filter
+- **§6 Ray 审 PR Plan B 补一条**：待审 PR 累积 ≥ 3 强制 pause · 避免分支树炸开 · Ray 一次要 review 5 个连锁 PR 比周末赶不上更糟
+
+**§9 从 13 条缩到 4 条**（全非技术 · Ray 拍板）
+- Baker/Lisa bio 内容（W6 前需要 · 从 CTS 老板拿）
+- Phase C 何时启动
+- 上线时间窗
+- Ray 审 PR SLA 承诺
+
+**子牙裁决**：v3 patch 完 → **GO for PR #146 merge + PR #147 Phase 0 code patch**。
 
 ---
 
@@ -449,14 +479,15 @@ staging.chinatravel.co.nz
 ⚠️ **v2 blocker #3 · Basic Auth 顺序 + `/api/*` 豁免**：现 middleware matcher 覆盖除 `_next/static|_next/image|favicon.ico` 外**所有路径**含 `/api/*`。加 basic auth **必须先 `/api/*` 豁免**：
 
 ```ts
-// src/middleware.ts 顶部加（Phase 0 patch）
+// src/middleware.ts 顶部加（Phase 0 patch · v3 · 子牙修）
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ⚠️ v2 blocker #3：staging basic auth 必须先豁免 /api/* + 静态资源
   //    否则 staging 的 lead 提交 API 全 401 · lead 通道死
+  // ⚠️ v3 子牙修：basic auth 通过后必须 fall through 走现有 marketing/admin gate
+  //              （v2 的 return NextResponse.next() 会 short-circuit 掉 admin gate · staging 变成无 admin auth）
   if (process.env.NEXT_PUBLIC_ENV === 'staging') {
-    // /api/* 与 next 内部路径豁免 basic auth（但仍 noindex）
     const bypassAuth = pathname.startsWith('/api/') ||
                        pathname.startsWith('/_next/') ||
                        pathname === '/robots.txt' ||  // 避免 crawler 拿 401
@@ -472,22 +503,53 @@ export function middleware(request: NextRequest) {
           status: 401,
           headers: {
             'WWW-Authenticate': 'Basic realm="staging"',
-            'X-Robots-Tag': 'noindex, nofollow'
+            'X-Robots-Tag': 'noindex, nofollow',
+            // v3 子牙修：防 Render/CDN 缓存 401 污染带 auth 请求
+            'Cache-Control': 'no-store, must-revalidate',
           }
         });
       }
     }
-    // 所有 staging 响应（含 /api/*）都要 noindex
-    const res = NextResponse.next();
-    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
-    return res;
+    // basic auth 通过 · fall through 走现有 marketing/admin gate 逻辑
+    // 不 short-circuit · 让 admin/marketing plan cookie 检查继续跑
+    // 所有 staging 响应最后统一 append X-Robots-Tag（在函数末尾做，或包装 NextResponse）
   }
-  // 生产：继续现有 admin gate / marketing gate 逻辑
-  // ...
+
+  // === 现有 admin gate ===
+  const adminRes = handleAdmin(request);
+  if (adminRes) {
+    // v3 子牙修：staging 环境下 admin gate 的响应也加 noindex
+    if (process.env.NEXT_PUBLIC_ENV === 'staging') {
+      adminRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
+    return adminRes;
+  }
+
+  // === 现有 marketing gate ===
+  const marketingRes = handleMarketingGate(request);
+  if (marketingRes) {
+    if (process.env.NEXT_PUBLIC_ENV === 'staging') {
+      marketingRes.headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
+    return marketingRes;
+  }
+
+  // === 现有 marketing SEO header 逻辑保留 ===
+  const res = NextResponse.next();
+  applyMarketingSeoHeaders(pathname, res);
+
+  // v3 子牙修：staging 兜底 noindex（覆盖所有未 short-circuit 的响应）
+  if (process.env.NEXT_PUBLIC_ENV === 'staging') {
+    res.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+  return res;
 }
 ```
 
-⚠️ **CDN 缓存 401 风险**：Render/CDN 前置层若缓存 401 会污染带 auth 请求。Phase 0 patch 要么加 `Cache-Control: no-store` 到 401 响应，要么在 Render 配置层禁用 401 缓存。
+**关键点**：
+- basic auth 通过后 **fall through** · 不 short-circuit（v2 sample 会跳过现有 admin gate）
+- 401 响应带 `Cache-Control: no-store, must-revalidate`（防 Render/CDN 缓存 401）
+- staging noindex 兜底：所有响应（含 admin/marketing gate 短路的响应）末尾统一 append `X-Robots-Tag`
 
 ### 4.2 GA4 test property + Ads test conversion ID + Meta Pixel test ID
 | 环境 | GA4 property | Ads conversion ID | Meta Pixel |
@@ -535,6 +597,20 @@ await supabase.from('leads').insert({ ...data, is_staging: isStaging() });
 ```ts
 await supabase.from('leads').select('*').eq('is_staging', false);
 ```
+
+**v3 子牙加 · defense-in-depth 5 个 `_prod` view**：代码层 `.eq('is_staging', false)` 只对代码里的 query 生效。**Ray/CTS 运营从 Supabase Studio SQL editor 手拉 leads 时 · 代码 filter 全无用 · 完全靠人手写 `WHERE is_staging = false`**。为防漏 · 建 5 个 `_prod` view · 培训 Ray 手查一律用 view：
+
+```sql
+-- supabase/migrations/20260829_add_is_staging.sql（同一 migration 里）
+CREATE OR REPLACE VIEW leads_prod                     AS SELECT * FROM leads               WHERE is_staging = false;
+CREATE OR REPLACE VIEW form_submissions_prod          AS SELECT * FROM form_submissions    WHERE is_staging = false;
+CREATE OR REPLACE VIEW newsletter_subscribers_prod    AS SELECT * FROM newsletter_subscribers WHERE is_staging = false;
+CREATE OR REPLACE VIEW itinerary_requests_prod        AS SELECT * FROM itinerary_requests  WHERE is_staging = false;
+CREATE OR REPLACE VIEW tailor_made_submissions_prod   AS SELECT * FROM tailor_made_submissions WHERE is_staging = false;
+
+COMMENT ON VIEW leads_prod IS '生产 CRM / marketing dashboard / 运营手拉数据请一律用 *_prod view · 而非直接查 leads 表 · 避免漏 is_staging filter';
+```
+Ray 侧培训要点（v3 子牙加）：Supabase Studio 手查一律用 `leads_prod` `form_submissions_prod` 等 view · **不查裸表**。
 
 **Supabase Storage namespace 隔离**
 - 生产上传路径：`tour-images/...` `guide-images/...`
@@ -773,11 +849,12 @@ test('tour detail renders all 4 anchors', () => {
 - **W3.5 + W6.5 各半周缓冲** = 1 周 · 主要吸收 main merge 冲突（预估 3-6pd）+ Ray 审 PR 排队
 - 若任何周 slip：向后顺延 · 不压缩后续周 · 缓冲不够则找 Ray 减范围
 
-### Ray 审 PR 节奏 · Plan B（**v2 minor #17**）
+### Ray 审 PR 节奏 · Plan B（**v2 minor #17 + v3 子牙加累积上限**）
 - 默认：周五 PR 提交 · Ray 周末审 · 周一开新 sprint
 - Ray 周末未审：FDE 周日 20:00 NZT 主动短信/邮件提醒
 - Ray 周一 12:00 仍未审：FDE 继续下一 sprint（不 block）· 提交 PR 时附"待 Ray 审 PR 累积列表"链接
 - Ray 一次批量审多 PR 的成本高 · Plan B 是 FDE 主动帮 Ray 摘要每个 PR 的核心 3 处变更
+- **v3 子牙加 · 待审 PR 累积 ≥ 3 强制 pause**：若 Ray 连续 3 个 PR 未审 · FDE 停止开新分支 · 只在旧分支上做增补 commit · 等 Ray 清库存再继续。理由：分支树炸开时 Ray 一次要 review 5 个连锁 PR · 比周末赶不上更糟 · 且每个 PR 都基于前一个未审 PR · 若 Ray 对早期 PR 要重大改动 · 后续 PR 全部要 rebase / 重做 · 工作量指数级放大。
 
 ---
 
@@ -844,38 +921,32 @@ git push origin main
 
 ---
 
-## 9. Ray 待拍板决策清单（**v2 · 13 条 · 6 条加反向拍板成本**）
+## 9. Ray 待拍板决策清单（**v3 · 4 条 · 全非技术**）
 
-1. **Ceepii 品牌色**是否覆盖现有 `#B61E2E` + `#D6A756`？
-   - 建议：**保留现有色板** · Ceepii 只吸 typography / spacing / motion / structure
-   - **反向拍板成本**：若覆盖 → 全站视觉再设计 + 品牌 asset（logo / 邮件模板 / 名片）联动 = **+5-7 pd**（超 Phase A 缓冲 · 需 Phase C 单独立项）
-2. **dark mode** 是否引入？
-   - 建议：**不引入**
-   - **反向拍板成本**：装 next-themes + 全站 `dark:` 类验收 + 主题切换 UX = **+3-5 pd** · 影响 W5 首页完成时间
-3. **staging** basic auth vs IP allowlist？
-   - basic auth 快 · IP allowlist 更安全但要维护 IP 表
-   - **反向拍板成本**：若 IP allowlist → 需 Ray/团队 IP 表 + Render 前置 firewall 配置 · 且 Ray 出门用 4G 就登不进 staging
-4. **staging 环境**共享生产 Supabase 库（is_staging 隔离）vs 新建 staging project？
-   - 建议：**共享生产库**（v2 §4.3 隔离已大扩展 · 覆盖 5 表 + Storage + Realtime + cookie）
-   - **反向拍板成本**：若新建 staging project → 数据结构双维护 + tour/blog 数据同步脚本 + Supabase 费用 = **+2-3 pd** + 每月运维成本
-5. **staging Resend 邮件行为**：sandbox / 空 KEY / 转发 Ray 邮箱？
-   - 建议 sandbox 或空 KEY
-6. **视觉回归工具** Percy / Chromatic？
-   - 建议 Percy 免费额度覆盖 Phase A
-7. **Baker Gu / Lisa Li specialist bio** Phase B 新写 vs 保留现状？
-   - 建议 Ray 从 CTS 老板拿新 bio + 头像
-8. **Phase C 30+ SEO LP 深度重构** 何时启动 · 谁提优先级？
-9. **6 周排期节点**（现 v2 是 6.5-7 周）与 Ray 审 PR 节奏是否一致？Plan B 见 §6
-10. **上线切换时间窗**：NZT 平日凌晨 or 周末？
-11. **图标库** lucide 保留 + 迁移（v2 校正 4-5pd）vs 双库共存？
-    - 建议：**保留 lucide**
-    - **反向拍板成本**：若双库 → 装 hugeicons + lucide · bundle +~150kb（对 mobile LCP 有 100-200ms 影响）· 长期双库维护
-12. **字体栈**：采纳 Ceepii `Google_Sans_Flex` + Playfair italic span vs 保留 CTS Inter？
-    - 建议：**采纳 Ceepii 字体栈**
-    - **反向拍板成本**：若保留 Inter → Ceepii 组件里所有 `<span data-slot="italic">` 手工去掉 · 全站排版视觉签名弱化 = **+1 pd** + Ceepii 视觉感染力打折
-13. **Tailwind v4→v3 港工作** Phase 0（建议）vs Phase A W1？
-    - 建议：**Phase 0**（组件才能正确渲染）
-    - **反向拍板成本**：若拆到 W1 → W1 头 2-3 天全在港 Tailwind · Header/Footer/Button 起步推迟 · W1 sprint 尾巴挤压
+> Ray edict "技术问题不要问我"· 原 v2 §9 的 9 项技术决策由 子牙 拍板（见文档顶部 v3 修订说明）· 只余 4 条业务项。以下 4 条**均不 block PR #147 Phase 0 code patch 起步** · 可在 Phase A/B 推进过程中拍板。
+
+1. **Baker Gu / Lisa Li specialist bio 内容**
+   - 阻塞点：Phase B **W6**（About + baker-gu + lisa-li 页深度重构）
+   - Ray 侧动作：从 CTS 老板拿新 bio 文案（150-300 词 · en-NZ 语气）+ 高清头像照（3:4 · 800px+）+ 一句话 headline
+   - 截止：W6 sprint 开始前 · 即 T-2 周
+   - 若 Ray 无法拿到 · Fallback：保留现状（不新写 · 只按新壳视觉重排）· FDE 侧无阻塞
+
+2. **Phase C（30+ SEO LP 深度重构）启动时机**
+   - 与本次 6.5-7 周翻新独立 · 不 block 本项目
+   - Ray 侧动作：拍板 Phase C 何时立项 · 谁提优先级（SEO agency / GSC / Ahrefs 数据驱动 / CTS 老板 · 由 Ray 定）
+   - 截止：本次上线后 · 不 block
+
+3. **上线切换时间窗**
+   - NZT 平日凌晨（03:00-06:00）vs 周末？影响 Ray 那晚是否在线 monitoring
+   - Ray 侧动作：与 CTS 老板对齐一个具体日期时段
+   - 截止：**T-1 周**（上线前一周告知）
+   - FDE 建议：**周二/周三凌晨 04:00 NZT**（一）流量最低（二）后续 24h monitoring 落在工作日、GSC 报表能次日看
+
+4. **Ray 审 PR SLA 承诺**
+   - 6.5-7 周排期依赖 Ray 每周五 EOD 审 PR
+   - Plan B（§6）已给：周日 20:00 提醒 · 周一 12:00 未审 FDE 继续 · 待审 PR ≥ 3 强制 pause
+   - Ray 侧动作：承诺（或反对）此 SLA · 若 Ray 明知本项目 6.5 周内会有 > 3 天不能审 · FDE 需提前调排期
+   - 截止：Phase A W1 起步前 · 但**不 block Phase 0 patch**
 
 ---
 
@@ -893,7 +964,7 @@ docs/redesign/ceepii-assessment.md    ← 本文件 v2
 2. `src/middleware.ts` — 加 staging basic auth 分支（**必须 `/api/*` 豁免** · v2 §4.1）· 401 响应加 `Cache-Control: no-store`
 3. `src/components/GoogleAnalytics.tsx` `GoogleTagManager.tsx` — 三元 `?? _STAGING` env-toggle
 4. `src/lib/env.ts` — 新增 `isStaging()` helper
-5. `supabase/migrations/20260829_add_is_staging.sql` — **5 张表**加字段（v2 §4.3 · 表名以 grep 实际为准）
+5. `supabase/migrations/20260829_add_is_staging.sql` — **5 张表**加 `is_staging` 字段 + 索引 + **5 个 `_prod` view**（v3 子牙加 · §4.3 defense-in-depth · 防手拉 SQL 漏 filter）· 表名以 grep 实际为准
 6. **grep 出真实数字**（v2 minor #20）：
    - `grep -rn '.from(' src/ | grep -E '\.insert|\.upsert'` 找 write-path 数量
    - `grep -rn '.from(' src/ | grep -E '\.select' | grep -v 'is_staging'` 找 read-path 数量
@@ -966,4 +1037,4 @@ docs/redesign/ceepii-assessment.md    ← 本文件 v2
 
 ---
 
-**v2 文档结束 · 等 Ray 审 · 别 merge**
+**v3 文档结束 · 子牙 GO · 等 Ray 合 PR · 别自己 merge**
