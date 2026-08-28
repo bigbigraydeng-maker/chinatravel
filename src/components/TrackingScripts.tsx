@@ -4,13 +4,27 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 import { persistUtmParams } from '@/lib/utils/utm-parser';
 import { META_PIXEL_ADS, META_PIXEL_OWNED } from '@/lib/analytics/meta-pixels';
+import { isStaging } from '@/lib/env';
 
 export default function TrackingScripts() {
   // Capture the ad's UTM / click-ids on first landing so an enquiry submitted
   // later (even after navigating to /thank-you) can be attributed to its source.
+  // Kept on staging too, so the UTM capture path stays testable there.
   useEffect(() => {
     persistUtmParams();
   }, []);
+
+  // The Google Ads tag and both Meta Pixels below are hardcoded production
+  // properties — unlike GA4/GTM they are not env-driven, so the staging build
+  // would otherwise load the live ad pixels. That means a test enquiry on
+  // staging would fire the real Google Ads conversion (via fireLeadConversion's
+  // gtag call) and a real Meta Pixel Lead, corrupting campaign data.
+  //
+  // Render nothing on staging. fireLeadConversion degrades safely: it polls for
+  // window.gtag / window.fbq and gives up after MAX_ATTEMPTS, so enquiry
+  // submission still works end-to-end, it just reports to nothing.
+  // See ceepii-assessment.md §4.2.
+  if (isStaging()) return null;
 
   return (
     <>

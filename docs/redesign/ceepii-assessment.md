@@ -575,13 +575,34 @@ export function middleware(request: NextRequest) {
 - 401 响应带 `Cache-Control: no-store, must-revalidate`（防 Render/CDN 缓存 401）
 - staging noindex 兜底：所有响应（含 admin/marketing gate 短路的响应）末尾统一 append `X-Robots-Tag`
 
-### 4.2 GA4 test property + Ads test conversion ID + Meta Pixel test ID
-| 环境 | GA4 property | Ads conversion ID | Meta Pixel |
-|---|---|---|---|
-| production | `NEXT_PUBLIC_GA_ID`（现值） | `NEXT_PUBLIC_ADS_ID`（现值） | 可选 |
-| staging | `NEXT_PUBLIC_GA_ID_STAGING`（新建 GA4 property） | `NEXT_PUBLIC_ADS_ID_STAGING`（新建 Ads test conversion） | `NEXT_PUBLIC_PIXEL_ID_STAGING` |
+### 4.2 埋点隔离（**v3.2 · 首次 staging 部署后重写**）
 
-`GoogleAnalytics.tsx` / `GoogleTagManager.tsx` env-toggle 改造：SEO 保真 agent 确认加 `?? process.env.NEXT_PUBLIC_GA_ID_STAGING` 三元即可 · 无需结构化改造。
+埋点分两类，隔离机制**不同** —— v3 只处理了第一类，第二类是首次 staging 部署时发现的漏洞。
+
+**(a) env-driven —— GA4 / GTM**
+| 环境 | GA4 | GTM |
+|---|---|---|
+| production | `NEXT_PUBLIC_GA_ID` | `NEXT_PUBLIC_GTM_ID` |
+| staging | `NEXT_PUBLIC_GA_ID_STAGING` | `NEXT_PUBLIC_GTM_ID_STAGING` |
+
+`GoogleAnalytics.tsx` / `GoogleTagManager.tsx` 通过 `src/lib/env.ts` 的 `getGaId()` / `getGtmId()` 取值。staging 未配 `_STAGING` 变量时返回 `undefined` → 组件 render null → 零脚本、零污染。**已在 staging 上验证**：HTML 中 `GTM-` / `G-` 出现 0 次。
+
+**(b) 硬编码 —— Google Ads + Meta Pixel** ⚠️ **v3 遗漏**
+
+`src/components/TrackingScripts.tsx` 里的 Google Ads tag（`AW-17984232872`，出现 2 次）和两个 Meta Pixel（`META_PIXEL_OWNED` / `META_PIXEL_ADS`，来自 `src/lib/analytics/meta-pixels.ts`）是**写死的生产资产，不读环境变量**。v3 的 §4.2 假设它们和 GA4 一样 env-driven —— 错误。
+
+**首次 staging 部署实测**：服务返回的 HTML 中含
+```html
+<link rel="preload" href="https://www.googletagmanager.com/gtag/js?id=AW-17984232872" as="script"/>
+```
+
+**后果**（若不修）：staging 上任何 lead 提交都会经 `fireLeadConversion()` 触发**生产的 Google Ads conversion**（`AW-17984232872/y-kaCLSI9YAcEKi7xv9C`）和**生产的 Meta Pixel Lead**；每次页面浏览也会打生产 Meta Pixel 的 PageView。翻新期间 6 周的 staging 测试会持续污染 Ray 的广告转化数据与受众。
+
+**修法**：`TrackingScripts` 在 staging 下整体 `return null`（`if (isStaging()) return null`，置于 `useEffect` 之后以符合 hooks 规则）。`persistUtmParams()` 保留 —— UTM 捕获链路在 staging 仍需可测。`fireLeadConversion()` 无需改动：它轮询 `window.gtag` / `window.fbq`，达到 `MAX_ATTEMPTS` 后静默放弃，因此 lead 表单在 staging 仍能完整走通，只是不上报。
+
+**回归保护**：`src/__tests__/tracking-isolation.test.tsx` 三向断言 —— staging 下零 pixel、production 下有 pixel、`NEXT_PUBLIC_ENV` 未设时**也有** pixel（未设不得静默关闭埋点，否则会掩盖生产配置错误）。
+
+**Ray 后续可选**：建 staging GA4 property / Ads test conversion / test Pixel 后，可把 (b) 改成 env-driven 而非整体关闭。当前"整体关闭"是更安全的默认。
 
 ### 4.3 Supabase 数据隔离（**v2 blocker #5 · 大扩展**）
 
@@ -1013,18 +1034,75 @@ docs/redesign/ceepii-assessment.md    ← 本文件 v2
 - Resend · 决策 staging 邮件行为（§9 #5）
 - Supabase · apply migration（dashboard 或授权我用 CLI）
 
-**Phase A 起步验收 gate**
-- [ ] `curl -I https://staging.chinatravel.co.nz` 返回 401（未带 basic auth）· **不返回 308 到生产**
+**Phase A 起步验收 gate**（v3.1 修订 · 反映实际部署配置）
+- [ ] `curl -I https://chinatravel-staging.onrender.com` 返回 **401**（未带 basic auth）· **不返回 308 到生产**
 - [ ] 带 basic auth 打开 staging 主页 · 返回 200 · 响应头含 `X-Robots-Tag: noindex, nofollow`
-- [ ] `curl https://staging.chinatravel.co.nz/api/health`（或任一 `/api/*`）**不返回 401** · basic auth 已豁免
-- [ ] staging 提交测试 lead · 5 张表都出现 `is_staging=true` 记录（写入侧全覆盖验证）
-- [ ] staging 提交 tour images upload · 落 `staging-*` bucket · 生产 CDN 不出现新图
-- [ ] 生产 marketing dashboard / CRM export 跑一次 · 结果**不含** `is_staging=true`（读取侧全覆盖验证）
-- [ ] staging GA4 property Realtime 见 page_view
+- [ ] `curl -I https://chinatravel-staging.onrender.com/robots.txt` 返回 **200 且无需 auth**（bypass 生效 · 同时是 Render health check path）
+- [ ] `curl -I https://chinatravel-staging.onrender.com/api/tour-enquiry` **不返回 401**（`/api/*` bypass 生效 · 返回 405/400 都算通过 · 只要不是 401）
+- [ ] staging 提交测试 lead · **不发出任何邮件**（`RESEND_API_KEY` 未设 → 六个 lead API 的 `if (!apiKey)` guard 走 no-op 分支）
+- [ ] staging 页面 HTML 中**无 GA/GTM script**（`NEXT_PUBLIC_GA_ID_STAGING` / `NEXT_PUBLIC_GTM_ID_STAGING` 未设 → `getGaId()`/`getGtmId()` 返回 undefined → 组件 render null）
 - [ ] 生产 GA4 Realtime 完全无 staging 流量污染
 - [ ] shared-blocks 快照 CI 绿 · 4 锚点 e2e 绿 · verify-react-peers 绿
 
+> **已作废**（v3.1）：原 gate 中的 `is_staging` 五表校验、`staging-*` Storage bucket 校验、CRM 读取侧过滤校验 —— CTS 没有 lead 存储表，lead 流程全走 Resend 邮件，staging 空 `RESEND_API_KEY` 即完全隔离。详见文档顶部 v3.1 修订说明。
+>
+> **已作废**：`/api/health` —— 该路由在 CTS 不存在（Phase 0 实施时发现）。Render health check 改用 `/robots.txt`（由 `src/app/robots.ts` 提供，且在 middleware bypass 列表内）。
+
 **不进 Phase 0 PR 的**：Ceepii 组件本体、任何 UI 换壳代码。这些进 Phase A（PR #148 起）。
+
+### 10.3 staging service 实际部署配置（2026-08-29 建成）
+
+| 项 | 值 |
+|---|---|
+| Service 名 | `chinatravel-staging` |
+| Service ID | `srv-da8qvsu7bikc73d2cng0` |
+| 默认 URL | `https://chinatravel-staging.onrender.com` |
+| Render 环境 | China Travel → **Staging**（新建，与 Production 并列） |
+| Repo / 分支 | `bigbigraydeng-maker/chinatravel` · **main** |
+| Region / Plan | Oregon (US West) · Standard `1c-2g` $25/月（与生产同规格） |
+| Build / Start | `npm install; npm run build` · `npm run start` |
+| Health Check Path | `/robots.txt`（bypass basic auth · 见 §4.1） |
+| Auto-Deploy | On Commit |
+
+**basic auth 凭据**：用户名 `ctspreview` · 密码为 Render 生成的 32 位随机 hex，存在 Render env `STAGING_PASS`，Ray 侧另存密码管理器。
+
+**staging env 与生产的差异**（其余变量与生产同值）：
+
+| 变量 | staging | 理由 |
+|---|---|---|
+| `NEXT_PUBLIC_ENV` | `staging` | 开启 middleware basic auth + noindex + env-toggled tracking |
+| `STAGING_USER` / `STAGING_PASS` | 已设 | basic auth |
+| `NEXT_PUBLIC_SITE_URL` | `https://staging.chinatravel.co.nz` | 待 DNS 接入；在此之前 canonical/OG 会指向该域，属预期 |
+| `RESEND_API_KEY` | **未设** | 子牙决策 #5 · lead 邮件 no-op |
+| `NEXT_PUBLIC_GA_ID` / `GTM_ID` | **未设** | 生产 property 零污染 |
+| `NEXT_PUBLIC_GA_ID_STAGING` / `GTM_ID_STAGING` | **未设** | 待 Ray 建 staging property 后补 |
+| `NEXT_PUBLIC_GOOGLE_ADS_*` | **未设** | 不触发 Ads conversion |
+| `REDIRECT_ONRENDER_HOST` | **未设** | v2 blocker #2 · 设了会 308 到生产 |
+
+**DNS 待办**：`staging.chinatravel.co.nz` CNAME → `chinatravel-staging.onrender.com`，并在 Render → Settings → Custom Domains 添加该域。在此之前用 `.onrender.com` 默认域访问。
+
+---
+
+## 11. 生产环境遗留隐患（Phase 0 实施中发现 · 与翻新无关）
+
+⚠️ **生产 Render service 的三个 Supabase 环境变量名拼写错误** —— 少一个 `A`：
+
+| 生产上的（错） | 代码实际读取的（对） |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
+| `SUPABASE_SERVICE_ROLE_KEY` | `SUPABASE_SERVICE_ROLE_KEY` |
+
+`git grep SUPBASE` 在 `src/` 下**零命中** —— 说明这三个变量从未被任何代码读到过。
+
+**为什么生产站看起来正常**：全站图片走的是硬编码完整 URL（`https://qbturrydultenhlfmdcm.supabase.co/storage/v1/...`，`src/` 下 149 处），不经过 Supabase client。
+
+**实际受影响的功能**（这些应当是坏的，需 Ray 验证）：
+- `/admin/images/*` 图片管理（上传 / 删除 / 移动 / 分析）—— `src/app/api/admin/images/*` 全部 `return 500 Missing NEXT_PUBLIC_SUPABASE_URL`
+- `/marketing/campaign/data` GSC dashboard —— `src/lib/data/gsc-dashboard.ts` 用 `createClient(undefined!, undefined!)`
+- GSC 每日同步 —— `src/lib/gsc/sync.ts` 同上
+
+**建议**：单独开一个 fix PR / 运维任务处理，不要混进 Ceepii 翻新。修法是在生产 Render env 里把三个变量名改对（值不动），然后触发一次 redeploy。**staging service 已按正确拼写配置**，可作为对照验证。
 
 ---
 
