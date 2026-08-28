@@ -7,6 +7,7 @@ import { IMAGE_BUCKETS, categoryToBucket, bucketToCategory, type ImageBucket } f
 import { listAllImageFiles } from '@/lib/admin/storage-list';
 import { loadImageMetadata } from '@/lib/admin/image-metadata';
 import { encodeImageId } from '@/lib/admin/image-ids';
+import { sanitizeFilename } from '@/lib/admin/sanitize-filename';
 
 const MAX_BYTES = 50 * 1024 * 1024;
 const ALLOWED_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
@@ -88,11 +89,6 @@ export async function GET(request: Request) {
     const message = e instanceof Error ? e.message : 'List failed';
     return NextResponse.json({ error: message }, { status: 500 });
   }
-}
-
-function sanitizeFilename(name: string): string {
-  const base = name.replace(/[/\\]/g, '').replace(/\.\./g, '');
-  return base.slice(0, 200) || 'upload.bin';
 }
 
 function validateSubPath(subPath: string): { valid: boolean; error?: string } {
