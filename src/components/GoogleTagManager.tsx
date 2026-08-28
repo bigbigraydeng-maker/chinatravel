@@ -3,8 +3,12 @@
 import { useEffect } from 'react';
 import Script from 'next/script';
 import { captureUtmParams } from '@/lib/utils/utm-parser';
+import { getGtmId } from '@/lib/env';
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// Env-driven: production uses NEXT_PUBLIC_GTM_ID, staging uses
+// NEXT_PUBLIC_GTM_ID_STAGING (see src/lib/env.ts + ceepii-assessment.md §4.4).
+// Missing ID renders nothing — safe no-op.
+const GTM_ID = getGtmId();
 
 interface GtmEvent {
   event: string;
