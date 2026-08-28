@@ -1083,26 +1083,42 @@ docs/redesign/ceepii-assessment.md    ← 本文件 v2
 
 ---
 
-## 11. 生产环境遗留隐患（Phase 0 实施中发现 · 与翻新无关）
+## 11. 生产环境实测记录（Phase 0 实施中发现 · 与翻新无关）
 
-⚠️ **生产 Render service 的三个 Supabase 环境变量名拼写错误** —— 少一个 `A`：
+### 11.1 ~~Supabase 变量名拼写~~ —— **误报，已撤回**
 
-| 生产上的（错） | 代码实际读取的（对） |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | `NEXT_PUBLIC_SUPABASE_URL` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `NEXT_PUBLIC_SUPABASE_ANON_KEY` |
-| `SUPABASE_SERVICE_ROLE_KEY` | `SUPABASE_SERVICE_ROLE_KEY` |
+> **本节前一版本指控生产 Render 的三个 Supabase 变量名少写了一个 `A`（`SUPBASE`），并断言 admin 图片管理 / GSC dashboard / GSC 同步在生产上是坏的。该结论错误，现予撤回。**
 
-`git grep SUPBASE` 在 `src/` 下**零命中** —— 说明这三个变量从未被任何代码读到过。
+**误报是怎么产生的**：Ray 把生产 env 复制到 staging 表单时（经 Render 的 "Add from .env" 粘贴），三个变量名在**复制过程中**丢了一个 `A`。我只看到了 staging 表单里的结果，就反推生产也是如此 —— 把复制误差当成了生产事实，且当时没有办法直接读生产 env 页面来交叉验证，属于**在证据不足时下了确定性结论**。
 
-**为什么生产站看起来正常**：全站图片走的是硬编码完整 URL（`https://qbturrydultenhlfmdcm.supabase.co/storage/v1/...`，`src/` 下 149 处），不经过 Supabase client。
+**证伪它的证据**：Ray 在生产 `/admin/images/upload` 实测上传，返回的是
 
-**实际受影响的功能**（这些应当是坏的，需 Ray 验证）：
-- `/admin/images/*` 图片管理（上传 / 删除 / 移动 / 分析）—— `src/app/api/admin/images/*` 全部 `return 500 Missing NEXT_PUBLIC_SUPABASE_URL`
-- `/marketing/campaign/data` GSC dashboard —— `src/lib/data/gsc-dashboard.ts` 用 `createClient(undefined!, undefined!)`
-- GSC 每日同步 —— `src/lib/gsc/sync.ts` 同上
+```
+Failed
+Invalid key: uploads/1787933710191-Screenshot 2026-08-28 at 2.49.05 AM.png
+```
 
-**建议**：单独开一个 fix PR / 运维任务处理，不要混进 Ceepii 翻新。修法是在生产 Render env 里把三个变量名改对（值不动），然后触发一次 redeploy。**staging service 已按正确拼写配置**，可作为对照验证。
+`Invalid key` 是 **Supabase Storage 服务端返回的**错误。要走到这一步，请求必须已经成功构造了 Supabase client 并抵达 Supabase。若变量名真的拼错，`getSupabaseAdmin()` 会先抛
+`NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set for admin APIs`，返回 500，Ray 看到的会是那条消息。
+
+**结论**：**生产的三个 Supabase 变量名拼写正确，Supabase 连接正常。** 无需任何运维修复。staging 侧的拼写已在建服务时改正，两边现在一致。
+
+### 11.2 admin 图片上传 —— 真实 bug，已修复
+
+上面那次实测暴露了一个真实缺陷（与翻新和 staging 都无关，生产存量问题）：
+
+**现象**：从 macOS 直接拖截图到 `/admin/images/upload` 必定失败，报 `Invalid key`。
+
+**根因**：`src/app/api/admin/images/route.ts` 的 `sanitizeFilename()` 只移除了 `/`、`\` 和 `..`（够防目录穿越），其余字符原样进入 Supabase object key。而 macOS 截图文件名形如
+`Screenshot 2026-08-28 at 2.49.05 AM.png`，其中 AM/PM 前是 **U+202F NARROW NO-BREAK SPACE**，落在 Supabase 允许的 key 字符集之外。
+
+错误信息 `Invalid key` 读起来像权限/配置问题，是它把排查方向引偏、进而促成 §11.1 那次误判的直接原因。
+
+**修法**：把 `sanitizeFilename` 抽到 `src/lib/admin/sanitize-filename.ts`，改成**保守白名单**（只保留 `A-Za-z0-9._-`，其余折叠成 `-`），而不是逐个枚举 Supabase 的字符集（后者会随版本漂移）。目录穿越防护不变 —— `/`、`\`、`..` 同样无法幸存。
+
+**回归保护**：`src/lib/admin/__tests__/sanitize-filename.test.ts` 7 项断言，含那个真实的 macOS 截图文件名、中文/引号/百分号等混合输入、目录穿越、空结果兜底、长度上限。
+
+**影响面**：修复后，所有此前因文件名含空格 / 非 ASCII 字符而上传失败的图片都能正常上传。此前 CTS 团队若遇到过"某些图传不上去"，多半就是这个。
 
 ---
 
