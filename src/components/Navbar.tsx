@@ -148,13 +148,29 @@ const Navbar = () => {
       {isNavigating && (
         <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary via-red-500 to-primary animate-pulse w-full"></div>
       )}
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      {/* py-4 gives the ~80px nav row Ceepii uses (48px logo + 16px above/below). */}
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7">
+        {/*
+          gap-6 rather than the wider spacing Ceepii uses, measured in a browser
+          rather than guessed:
+
+          At 1280px the previous gap-7 wrapped "Tailor Made" and "Travel Guide"
+          onto a second line, pushing the nav row from 84px to 114px. That is a
+          pre-existing defect — gap-7 already had it — and gap-6 fixes it.
+
+          Below roughly 1200px the items still wrap, and no amount of spacing
+          helps: gap-3 wraps at 1024px too. The nav simply carries more items
+          than fit beside a 182px logo and the CTA at that width. Fixing it
+          means trimming nav items or moving the desktop breakpoint from lg to
+          xl — both information-architecture calls, out of scope for a
+          shell-only reskin. Logged for Phase B.
+        */}
+        <nav className="hidden lg:flex items-center gap-6">
           {/* About - First Item */}
           <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium">
             About
@@ -302,7 +318,7 @@ const Navbar = () => {
           <button
             onClick={toggleSearch}
             aria-label={isSearchOpen ? 'Close search' : 'Open search'}
-            className={`p-2 rounded-full transition-colors ${isSearchOpen ? 'bg-primary/10 text-primary' : 'text-accent hover:text-primary hover:bg-warm-100'}`}
+            className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors ${isSearchOpen ? 'bg-primary/10 text-primary' : 'text-accent hover:text-primary hover:bg-warm-100'}`}
           >
             {isSearchOpen ? (
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -324,7 +340,7 @@ const Navbar = () => {
           <button
             onClick={toggleSearch}
             aria-label={isSearchOpen ? 'Close search' : 'Open search'}
-            className={`p-2 rounded-full transition-colors ${isSearchOpen ? 'text-primary' : 'text-accent hover:text-primary'}`}
+            className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors ${isSearchOpen ? 'bg-primary/10 text-primary' : 'text-accent hover:text-primary hover:bg-warm-100'}`}
           >
             {isSearchOpen ? (
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,7 +352,11 @@ const Navbar = () => {
               </svg>
             )}
           </button>
-          <button onClick={toggleMenu} className="text-accent p-2" aria-label="Toggle menu">
+          <button
+            onClick={toggleMenu}
+            className="flex h-11 w-11 items-center justify-center rounded-full text-accent transition-colors hover:bg-warm-100 hover:text-primary"
+            aria-label="Toggle menu"
+          >
             {isMenuOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
