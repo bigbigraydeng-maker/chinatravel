@@ -1,8 +1,12 @@
 'use client';
 
 import Script from 'next/script';
+import { getGaId } from '@/lib/env';
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+// Env-driven: production uses NEXT_PUBLIC_GA_ID, staging uses
+// NEXT_PUBLIC_GA_ID_STAGING (see src/lib/env.ts + ceepii-assessment.md §4.4).
+// Missing ID renders nothing — safe no-op.
+const GA_ID = getGaId();
 
 export function GoogleAnalytics() {
   if (!GA_ID) return null;
