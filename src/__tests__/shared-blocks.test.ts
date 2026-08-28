@@ -102,10 +102,15 @@ describe('shared-blocks contract (CLAUDE.md)', () => {
       tourImports,
       ...CAMPAIGN_PATHS.map(extractImportedIdentifiers),
     ];
+    // Indexed loop instead of `pageImports.entries()` to keep tsc happy on
+    // the project's default target (子牙 nit · shared-blocks was surfacing
+    // one new tsc error otherwise).
     for (const block of SHARED_BLOCKS) {
-      for (const [i, imports] of pageImports.entries()) {
-        expect({ block, page: i === 0 ? TOUR_DETAIL_PATH : CAMPAIGN_PATHS[i - 1], hasIt: imports.has(block) })
-          .toEqual({ block, page: i === 0 ? TOUR_DETAIL_PATH : CAMPAIGN_PATHS[i - 1], hasIt: true });
+      for (let i = 0; i < pageImports.length; i++) {
+        const imports = pageImports[i];
+        const page = i === 0 ? TOUR_DETAIL_PATH : CAMPAIGN_PATHS[i - 1];
+        expect({ block, page, hasIt: imports.has(block) })
+          .toEqual({ block, page, hasIt: true });
       }
     }
   });
