@@ -54,6 +54,26 @@ h1, h2, h3, h4, h5, h6 {
   @apply py-16 md:py-24;
 }
 
+/*
+ * Ceepii section rhythm (Phase A W2).
+ *
+ * Ceepii declares these as Tailwind 4 `@utility` rules, which Tailwind 3 does
+ * not understand — expanded here instead. Kept alongside `.section` rather
+ * than replacing it: `.section` is used across pages outside week 2's scope,
+ * and silently changing its height would move content on pages nobody
+ * reviewed this week.
+ *
+ * `.section-space` is the standard content rhythm; `.section-space-xl` is for
+ * full-bleed closing bands.
+ */
+.section-space {
+  @apply py-12 sm:py-16 lg:py-20;
+}
+
+.section-space-xl {
+  @apply py-14 sm:py-20 lg:py-28;
+}
+
 .container {
   @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
 }

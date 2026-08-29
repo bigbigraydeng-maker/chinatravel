@@ -18,12 +18,14 @@ const CTASection = ({
   secondaryButtonLink,
 }: CTASectionProps) => {
   return (
-    <section className="py-20 md:py-28 bg-gradient-to-br from-primary via-red-600 to-primary relative overflow-hidden">
-      {/* Animated decorative elements */}
-      <div className="absolute top-0 left-1/4 w-80 h-80 bg-secondary/15 rounded-full blur-3xl animate-float-slow"></div>
-      <div className="absolute bottom-0 right-1/4 w-60 h-60 bg-white/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-      <div className="absolute top-10 right-10 w-20 h-20 border border-white/10 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-      <div className="absolute bottom-10 left-10 w-14 h-14 border border-secondary/20 rounded-full animate-float-slow"></div>
+    <section className="section-space-xl bg-gradient-to-br from-primary via-red-600 to-primary relative overflow-hidden">
+      {/*
+        Phase A W2: dropped four animated blur blobs that floated over this
+        band. Ceepii's closing sections are flat colour — the type carries
+        them. They were also four always-running CSS animations on a section
+        that appears on 13 pages. The dot pattern below stays: it is static and
+        reads as texture rather than motion.
+      */}
 
       {/* Dot pattern */}
       <div className="absolute inset-0 opacity-5" style={{

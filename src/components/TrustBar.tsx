@@ -47,7 +47,7 @@ const trustBadges: TrustBadge[] = [
 
 export default function TrustBar() {
   return (
-    <div className="bg-gradient-to-r from-warm-50 to-warm-100/50 border-y border-warm-200">
+    <div className="bg-gradient-to-r from-warm-50 to-warm-100/50 border-y border-border">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {trustBadges.map((badge, index) => (
@@ -55,13 +55,13 @@ export default function TrustBar() {
               key={index}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:shadow-md transition-all text-primary">
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-3 border border-border transition-colors group-hover:bg-wash text-primary">
                 {badge.icon}
               </div>
-              <p className="font-bold text-gray-900 text-sm md:text-base mb-1">
+              <p className="font-semibold text-foreground text-sm md:text-base mb-1">
                 {badge.title}
               </p>
-              <p className="text-xs text-gray-600">
+              <p className="text-xs text-muted-foreground">
                 {badge.description}
               </p>
             </div>
