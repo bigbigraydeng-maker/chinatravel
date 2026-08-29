@@ -4,6 +4,12 @@ export default {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    // src/lib holds shared class strings (src/lib/ui/typography.ts). Without
+    // this, Tailwind never sees them and silently emits no CSS for classes
+    // that appear nowhere else — the page renders with the class attribute
+    // present and no rule behind it. Caught when the italic accent stayed
+    // upright in the browser despite compiling correctly in isolation.
+    './src/lib/**/*.{js,ts,jsx,tsx}',
   ],
   // CTS is a light-only site. Without this, Tailwind 3 defaults to `media`,
   // which would activate `dark:` styling from any OS-level dark preference.

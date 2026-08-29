@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { H2_BAND } from '@/lib/ui/typography';
 import { generateFAQSchema } from '@/lib/schema-tour';
 
 interface FAQ {
@@ -70,13 +71,13 @@ export default function FAQSection({
     <>
       <SchemaMarkup data={generateFAQSchema(faqs)} />
       
-      <section id="faq" className="scroll-mt-24 py-16 bg-gray-50">
+      <section id="faq" className="scroll-mt-24 section-space bg-subtle">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
+            <h2 className={`${H2_BAND} text-3xl text-accent mb-4`}>
+              Frequently <span data-slot="italic">Asked</span> Questions
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               {subtitle}
             </p>
           </div>
@@ -85,18 +86,18 @@ export default function FAQSection({
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden"
+                className="bg-card border border-border rounded-2xl overflow-hidden"
               >
                 <button
                   onClick={() => toggleExpand(index)}
-                  className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-between p-6 text-left transition-colors hover:bg-wash"
                   aria-expanded={expandedIndex === index}
                 >
-                  <span className="font-semibold text-gray-900 pr-8">
+                  <span className="font-semibold text-foreground pr-8">
                     {faq.question}
                   </span>
                   <svg
-                    className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform ${
+                    className={`w-5 h-5 text-muted-foreground flex-shrink-0 transition-transform ${
                       expandedIndex === index ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -114,7 +115,7 @@ export default function FAQSection({
 
                 {expandedIndex === index && (
                   <div className="px-6 pb-6">
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {faq.answer}
                     </p>
                     {faq.link && (
@@ -132,12 +133,12 @@ export default function FAQSection({
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-4">
+            <p className="text-muted-foreground mb-4">
               Have more questions?
             </p>
             <a
               href={contactHref}
-              className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+              className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-full hover:bg-primary/90 transition-colors"
             >
               Contact Our Specialists
             </a>
