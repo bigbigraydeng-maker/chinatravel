@@ -6,10 +6,15 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-accent to-dark text-white py-10 md:py-16">
       <div className="container mx-auto px-4">
-        {/* Desktop: 4 columns / Mobile: brand full-width, then 2+1 columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {/* Brand — spans full width on mobile */}
-          <div className="col-span-2 md:col-span-1 mb-2 md:mb-0">
+        {/*
+          Ceepii footer geometry (Phase A W1): brand gets a third of the width,
+          the link columns share the remaining two thirds, instead of four equal
+          columns. Content, link order and information architecture are
+          unchanged — this is a shell-only reskin.
+        */}
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* Brand — one third on xl, full width below */}
+          <div className="mb-8 xl:mb-0">
             <div className="mb-3">
               <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-10 md:h-12 w-auto bg-white rounded px-2 py-1" />
             </div>
@@ -42,10 +47,12 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Link columns — two thirds on xl */}
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 xl:col-span-2">
           {/* Tours column */}
           <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Tours</h3>
-            <ul className="space-y-1.5 md:space-y-2 text-sm md:text-base">
+            <h3 className="text-sm/6 font-medium text-white mb-6">Tours</h3>
+            <ul className="space-y-4 text-sm/6">
               <li><Link href="/tours" className="text-gray-400 hover:text-white transition-colors">All Tours</Link></li>
               <li><Link href="/china-tours" className="text-gray-400 hover:text-white transition-colors font-medium">China Tours Hub</Link></li>
               <li><Link href="/tours/china/signature" className="text-gray-400 hover:text-white transition-colors">China Signature</Link></li>
@@ -57,8 +64,8 @@ const Footer = () => {
 
           {/* Guides column */}
           <div>
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Guides</h3>
-            <ul className="space-y-1.5 md:space-y-2 text-sm md:text-base">
+            <h3 className="text-sm/6 font-medium text-white mb-6">Guides</h3>
+            <ul className="space-y-4 text-sm/6">
               <li><Link href="/best-time-to-visit-china" className="text-gray-400 hover:text-white transition-colors">Best Time to Visit</Link></li>
               <li><Link href="/faq" className="text-gray-400 hover:text-white transition-colors font-medium">FAQ</Link></li>
               <li><Link href="/china-visa-guide-for-new-zealanders" className="text-gray-400 hover:text-white transition-colors">China entry (NZ)</Link></li>
@@ -74,8 +81,8 @@ const Footer = () => {
 
           {/* Contact column */}
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-base md:text-lg font-semibold mb-3 md:mb-4">Contact</h3>
-            <div className="space-y-2 md:space-y-3 text-gray-400 text-sm md:text-base">
+            <h3 className="text-sm/6 font-medium text-white mb-6">Contact</h3>
+            <div className="space-y-4 text-gray-400 text-sm/6">
               <a href="mailto:info@ctstours.co.nz" className="flex items-center gap-2 hover:text-white transition-colors">
                 <svg className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -101,6 +108,7 @@ const Footer = () => {
             <div className="mt-6">
               <NewsletterSubscribeForm variant="footer" />
             </div>
+          </div>
           </div>
         </div>
 
@@ -172,24 +180,29 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-6 text-center text-gray-400 text-xs md:text-sm md:text-left">
-          <p className="mb-2 md:mb-0 md:inline">
+        {/*
+          Ceepii bottom bar: legal links float right, attribution sits left, and
+          they stack in reverse on mobile via order utilities. border-white/10
+          rather than the token `border-border` — that token is a near-white
+          hairline designed for light surfaces and would glare on this gradient.
+        */}
+        <div className="mt-8 border-t border-white/10 pt-8 text-gray-400 text-xs md:flex md:items-center md:justify-between md:text-sm">
+          <div className="flex items-center justify-center gap-2 md:order-2 md:justify-end">
+            <Link
+              href="/terms-and-conditions"
+              className="font-medium text-gray-300 hover:text-white transition-colors"
+            >
+              Terms &amp; Conditions
+            </Link>
+            <span className="text-gray-600" aria-hidden>
+              ·
+            </span>
+            <span className="text-gray-500">
+              Part of China Travel Service Group, est. 1928
+            </span>
+          </div>
+          <p className="mt-6 text-center md:order-1 md:mt-0 md:text-left">
             &copy; {new Date().getFullYear()} CTS Tours. All rights reserved.
-          </p>
-          <span className="mx-2 hidden text-gray-600 md:inline" aria-hidden>
-            ·
-          </span>
-          <Link
-            href="/terms-and-conditions"
-            className="font-medium text-gray-300 hover:text-white transition-colors md:inline"
-          >
-            Terms & Conditions
-          </Link>
-          <span className="mx-2 hidden text-gray-600 md:inline" aria-hidden>
-            ·
-          </span>
-          <p className="mt-1 text-gray-500 md:mt-0 md:inline">
-            Part of China Travel Service Group, est. 1928
           </p>
         </div>
       </div>
