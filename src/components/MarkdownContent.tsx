@@ -20,22 +20,22 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         // H1 in content is the article title — already rendered by the page header, so suppress it here.
         h1: () => null,
         h2: ({ children }) => (
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4 border-b border-gray-100 pb-3">
+          <h2 className="font-serif text-2xl md:text-3xl font-medium tracking-[-0.01em] text-accent mt-12 mb-4 border-b border-border pb-3">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="font-serif text-xl md:text-2xl font-semibold text-gray-800 mt-8 mb-3">
+          <h3 className="font-serif text-xl md:text-2xl font-medium tracking-[-0.01em] text-accent mt-8 mb-3">
             {children}
           </h3>
         ),
         h4: ({ children }) => (
-          <h4 className="font-serif text-lg font-semibold text-gray-800 mt-6 mb-2">
+          <h4 className="font-serif text-lg font-medium text-accent mt-6 mb-2">
             {children}
           </h4>
         ),
         p: ({ children }) => (
-          <p className="text-gray-700 text-lg leading-relaxed mb-5">
+          <p className="text-muted-foreground text-lg leading-relaxed mb-5">
             {children}
           </p>
         ),
@@ -50,49 +50,33 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
           </ol>
         ),
         li: ({ children }) => (
-          <li className="text-gray-700 text-base leading-relaxed">
+          <li className="text-muted-foreground text-base leading-relaxed">
             {children}
           </li>
         ),
         strong: ({ children }) => (
-          <strong className="font-semibold text-gray-900">
+          <strong className="font-semibold text-foreground">
             {children}
           </strong>
         ),
         em: ({ children }) => (
-          <em className="italic text-gray-700">
+          <em className="italic text-muted-foreground">
             {children}
           </em>
         ),
-        // Editorial callout box — used for "Practical rule:" highlights
+        // Editorial callout box — used for "Practical rule:" highlights.
+        // Dropped the decorative quote-mark SVG: Ceepii's callouts are a rule
+        // and a tint, and the glyph was competing with the copy it framed.
         blockquote: ({ children }) => (
-          <blockquote className="my-8 bg-warm-50 rounded-xl px-6 py-5 border-l-4 border-primary not-italic relative overflow-hidden">
-            {/* decorative quote mark */}
-            <svg
-              className="absolute top-3 right-4 text-primary/10 w-10 h-10 shrink-0"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden
-            >
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <div className="text-gray-700 text-base leading-relaxed font-medium pr-10">
+          <blockquote className="my-8 bg-warm-50 rounded-2xl px-6 py-5 border-l-4 border-primary not-italic">
+            <div className="text-muted-foreground text-base leading-relaxed font-medium">
               {children}
             </div>
           </blockquote>
         ),
-        // Decorative section break
-        hr: () => (
-          <div className="my-12 flex items-center gap-5" aria-hidden>
-            <div className="flex-1 h-px bg-gray-200" />
-            <div className="flex gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
-              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
-              <span className="w-1.5 h-1.5 rounded-full bg-gray-300 inline-block" />
-            </div>
-            <div className="flex-1 h-px bg-gray-200" />
-          </div>
-        ),
+        // Section break. Was a rule-dots-rule flourish; Ceepii uses a plain
+        // hairline and lets the spacing do the separating.
+        hr: () => <hr className="my-12 border-t border-border" aria-hidden />,
         a: ({ children, href }) => (
           <a
             href={href}
@@ -106,33 +90,33 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
         // Comparison tables
         table: ({ children }) => (
           <div className="overflow-x-auto my-8">
-            <table className="w-full text-sm border-collapse border border-gray-200 rounded-lg">
+            <table className="w-full text-sm border-collapse border border-border rounded-2xl">
               {children}
             </table>
           </div>
         ),
         thead: ({ children }) => (
-          <thead className="bg-gray-50 text-gray-700 font-semibold">
+          <thead className="bg-subtle text-foreground font-semibold">
             {children}
           </thead>
         ),
         tbody: ({ children }) => (
-          <tbody className="divide-y divide-gray-100">
+          <tbody className="divide-y divide-border">
             {children}
           </tbody>
         ),
         tr: ({ children }) => (
-          <tr className="hover:bg-gray-50 transition-colors">
+          <tr className="transition-colors hover:bg-wash">
             {children}
           </tr>
         ),
         th: ({ children }) => (
-          <th className="px-4 py-3 text-left border-b border-gray-200 whitespace-nowrap">
+          <th className="px-4 py-3 text-left border-b border-border whitespace-nowrap">
             {children}
           </th>
         ),
         td: ({ children }) => (
-          <td className="px-4 py-3 text-gray-600 align-top">
+          <td className="px-4 py-3 text-muted-foreground align-top">
             {children}
           </td>
         ),
@@ -150,7 +134,7 @@ export default function MarkdownContent({ content }: MarkdownContentProps) {
                 loading="lazy"
               />
               {alt && (
-                <figcaption className="text-center text-sm text-gray-400 mt-3 italic leading-snug">
+                <figcaption className="text-center text-sm text-muted-foreground mt-3 italic leading-snug">
                   {alt}
                 </figcaption>
               )}

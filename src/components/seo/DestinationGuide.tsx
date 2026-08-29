@@ -7,6 +7,7 @@ import { getBlogPostBySlug } from '@/lib/data/blogs';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import HubHero from './HubHero';
 import Lightbox from '@/components/ui/Lightbox';
+import { EYEBROW, H2_BAND, H2_SECTION, H3_CARD } from '@/lib/ui/typography';
 
 const TI = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
 
@@ -367,15 +368,15 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
       </nav>
 
       {/* ── Body: two-column layout ── */}
-      <div className="container mx-auto px-4 py-10">
+      <div className="container mx-auto px-4 section-space">
         <div className="flex flex-col lg:flex-row gap-10">
 
           {/* ════════ LEFT: Main Content ════════ */}
           <main className="flex-1 min-w-0">
 
             {/* Table of Contents */}
-            <nav className="mb-8 p-5 bg-warm-50 rounded-xl border border-warm-100">
-              <h2 className="text-sm font-bold text-accent uppercase tracking-widest mb-3">
+            <nav className="mb-8 p-5 bg-warm-50 rounded-2xl border border-border">
+              <h2 className={`${EYEBROW} mb-3`}>
                 In This Guide
               </h2>
               <ol className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
@@ -453,7 +454,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
             {/* Editorial Sections */}
             {guide.sections.map((section) => (
               <section key={section.id} id={section.id} className="mb-12 scroll-mt-20">
-                <h2 className="text-2xl font-serif font-bold text-accent mb-5 pb-3 border-b border-warm-100">
+                <h2 className={H2_SECTION}>
                   {section.title}
                 </h2>
                 <div className="space-y-4">
@@ -476,21 +477,21 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* Attractions */}
             <section id="attractions" className="mb-12 scroll-mt-20">
-              <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
+              <h2 className={H2_SECTION}>
                 Top Attractions in {guide.destinationName}
               </h2>
               <div className="grid sm:grid-cols-2 gap-5">
                 {guide.attractions.map((attraction, i) => (
                   <div
                     key={i}
-                    className="rounded-xl border border-warm-100 p-5 hover:shadow-md hover:border-primary/30 transition-all bg-white"
+                    className="rounded-2xl border border-border p-5 hover:shadow-md hover:border-primary/30 transition-all bg-white"
                   >
                     <div className="flex items-start gap-3">
                       <span className="w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center flex-shrink-0">
                         {i + 1}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-accent text-[15px] mb-1.5 leading-snug">
+                        <h3 className={`${H3_CARD} mb-1.5`}>
                           {attraction.name}
                         </h3>
                         <p className="text-gray-600 text-sm leading-relaxed mb-3">
@@ -519,7 +520,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
             {/* Gallery */}
             {guide.galleryImages.length > 0 && (
               <section className="mb-12">
-                <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
+                <h2 className={H2_SECTION}>
                   {guide.destinationName} Photo Gallery
                 </h2>
                 <Lightbox
@@ -535,8 +536,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* Practical Info */}
             <section id="practical" className="mb-12 scroll-mt-20">
-              <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
-                Practical Information
+              <h2 className={H2_SECTION}>
+                Practical <span data-slot="italic">Information</span>
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {([
@@ -548,7 +549,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   <div key={label} className="bg-warm-50 rounded-xl p-5">
                     <div className="flex items-center gap-2 mb-2">
                       <Icon name={icon} className="w-5 h-5 text-primary" />
-                      <h3 className="font-bold text-accent text-sm uppercase tracking-wide">{label}</h3>
+                      <h3 className={EYEBROW}>{label}</h3>
                     </div>
                     <p className="text-gray-700 text-sm leading-relaxed">{text}</p>
                   </div>
@@ -572,14 +573,14 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* FAQs */}
             <section id="faqs" className="mb-12 scroll-mt-20">
-              <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
-                Frequently Asked Questions
+              <h2 className={H2_SECTION}>
+                Frequently <span data-slot="italic">Asked</span> Questions
               </h2>
               <div className="space-y-3">
                 {guide.faqs.map((faq, i) => (
                   <details
                     key={i}
-                    className="group border border-warm-100 rounded-xl overflow-hidden"
+                    className="group border border-border rounded-xl overflow-hidden"
                   >
                     <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer hover:bg-warm-50 transition-colors font-semibold text-accent">
                       <span>{faq.question}</span>
@@ -596,8 +597,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
             {/* Related Blog Articles */}
             {guide.relatedBlogSlugs && guide.relatedBlogSlugs.length > 0 && (
               <section className="mb-12">
-                <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
-                  Recommended Reading
+                <h2 className={H2_SECTION}>
+                  Recommended <span data-slot="italic">Reading</span>
                 </h2>
                 <div className="grid sm:grid-cols-3 gap-5">
                   {guide.relatedBlogSlugs.map((slug) => {
@@ -607,7 +608,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                       <Link
                         key={slug}
                         href={`/blog/${slug}`}
-                        className="flex flex-col rounded-xl border border-warm-100 hover:border-primary/40 hover:shadow-md hover:-translate-y-1 transition-all overflow-hidden bg-white group"
+                        className="flex flex-col rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-1 transition-all overflow-hidden bg-white group"
                       >
                         <div className="flex-1 p-5 flex flex-col">
                           <div className="mb-3">
@@ -626,7 +627,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                             {post.readTime && <span>{post.readTime} min read</span>}
                           </div>
                         </div>
-                        <div className="px-5 py-3 bg-warm-50 border-t border-warm-100 text-sm text-primary font-semibold group-hover:text-primary/80 transition-colors">
+                        <div className="px-5 py-3 bg-warm-50 border-t border-border text-sm text-primary font-semibold group-hover:text-primary/80 transition-colors">
                           Read Article →
                         </div>
                       </Link>
@@ -638,7 +639,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* Related Guides */}
             <section className="mb-12">
-              <h2 className="text-2xl font-serif font-bold text-accent mb-6 pb-3 border-b border-warm-100">
+              <h2 className={H2_SECTION}>
                 Explore More Destinations
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -646,7 +647,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   <Link
                     key={g.slug}
                     href={`/${g.slug}`}
-                    className="flex flex-col items-center gap-2 p-4 rounded-xl border border-warm-100 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all text-center bg-white"
+                    className="flex flex-col items-center gap-2 p-4 rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all text-center bg-white"
                   >
                     <Icon name="map-pin" className="w-6 h-6 text-primary" />
                     <span className="text-sm font-semibold text-accent leading-snug">{g.name}</span>
@@ -663,7 +664,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
               {/* Primary CTA Card */}
               <div className="rounded-2xl bg-gradient-to-br from-primary to-red-500 text-white p-6 shadow-lg">
-                <h3 className="font-serif text-xl font-bold mb-2">
+                <h3 className="font-serif text-xl font-medium mb-2">
                   Plan Your {guide.destinationName} Trip
                 </h3>
                 <p className="text-white/85 text-sm mb-5 leading-relaxed">
@@ -684,8 +685,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               </div>
 
               {/* Quick Facts */}
-              <div className="rounded-2xl border border-warm-100 bg-white p-5">
-                <h3 className="font-bold text-accent text-sm mb-4">Quick Facts</h3>
+              <div className="rounded-2xl border border-border bg-white p-5">
+                <h3 className={`${EYEBROW} mb-4`}>Quick Facts</h3>
                 <dl className="space-y-4 text-sm">
                   <div>
                     <dt className="text-gray-500 mb-1.5">Best Time</dt>
@@ -700,7 +701,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                     </dd>
                   </div>
                 </dl>
-                <div className="mt-4 pt-4 border-t border-warm-100">
+                <div className="mt-4 pt-4 border-t border-border">
                   <Link
                     href="/china-visa-guide-for-new-zealanders"
                     className="text-primary text-sm font-medium hover:underline"
@@ -712,8 +713,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
               {/* Related Tours */}
               {config.relatedTours.length > 0 && (
-                <div className="rounded-2xl border border-warm-100 bg-white p-5">
-                  <h3 className="font-bold text-accent text-sm uppercase tracking-widest mb-4">
+                <div className="rounded-2xl border border-border bg-white p-5">
+                  <h3 className={`${EYEBROW} mb-4`}>
                     Featured Tours
                   </h3>
                   <div className="space-y-4">
@@ -744,7 +745,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                       </Link>
                     ))}
                   </div>
-                  <div className="mt-4 pt-4 border-t border-warm-100">
+                  <div className="mt-4 pt-4 border-t border-border">
                     <Link
                       href={config.hubUrl}
                       className="block text-center text-sm text-primary font-semibold hover:underline"
@@ -756,8 +757,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               )}
 
               {/* Useful Links */}
-              <div className="rounded-2xl border border-warm-100 bg-white p-5">
-                <h3 className="font-bold text-accent text-sm uppercase tracking-widest mb-4">Useful Links</h3>
+              <div className="rounded-2xl border border-border bg-white p-5">
+                <h3 className={`${EYEBROW} mb-4`}>Useful Links</h3>
                 <ul className="space-y-2 text-sm">
                   <li>
                     <Link href="/best-time-to-visit-china" className="text-primary hover:underline flex items-center gap-2">
@@ -790,9 +791,9 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
       </div>
 
       {/* ── Bottom CTA Banner ── */}
-      <section className="bg-gradient-to-r from-primary to-red-500 text-white py-16">
+      <section className="bg-gradient-to-r from-primary to-red-500 text-white section-space-xl">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-serif font-bold mb-3">
+          <h2 className={`${H2_BAND} text-3xl mb-3`}>
             Ready to Experience {guide.destinationName}?
           </h2>
           <p className="text-white/85 text-lg mb-8 max-w-xl mx-auto">

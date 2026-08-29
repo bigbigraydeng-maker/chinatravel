@@ -12,6 +12,7 @@ import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import { Icon } from '@/components/ui/Icon';
+import { EYEBROW, H2_SECTION, H3_CARD, PANEL } from '@/lib/ui/typography';
 
 interface CityHubProps {
   // Metadata
@@ -64,51 +65,46 @@ const CityTourHub: React.FC<CityHubProps> = ({
 
       {/* Main content */}
       <div className="bg-white">
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 section-space">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main column */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-14">
               {/* Quick Answer — AI Overview / Featured Snippet target */}
               <aside
                 aria-label="Quick answer"
-                className="border-l-4 border-primary bg-warm-50/60 rounded-r-lg p-5 md:p-6"
+                className="border-l-4 border-primary bg-warm-50/60 rounded-r-2xl p-5 md:p-6"
               >
-                <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
+                <p className={`${EYEBROW} text-primary mb-2`}>
                   Quick answer
                 </p>
-                <p className="text-gray-800 leading-relaxed">
+                <p className="text-foreground leading-relaxed">
                   {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded and Auckland-based since 2000, backed by China Travel Service (founded 1928). NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
                 </p>
               </aside>
 
               {/* Introduction */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
-                  About {cityName}
+                <h2 className={H2_SECTION}>
+                  About <span data-slot="italic">{cityName}</span>
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   {introText}
                 </p>
               </section>
 
               {/* Highlights */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
-                  Highlights
-                </h2>
+                <h2 className={H2_SECTION}>Highlights</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {highlights.map((highlight, idx) => (
-                    <div
-                      key={idx}
-                      className="flex gap-4 p-4 bg-warm-50 rounded-lg border border-warm-100"
-                    >
+                    <div key={idx} className={`${PANEL} flex gap-4 p-4`}>
                       <div className="flex-shrink-0">
                         <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
                           <Icon name="check" className="w-4 h-4 text-primary" />
                         </div>
                       </div>
                       <div>
-                        <p className="text-gray-700">{highlight}</p>
+                        <p className="text-muted-foreground">{highlight}</p>
                       </div>
                     </div>
                   ))}
@@ -117,18 +113,18 @@ const CityTourHub: React.FC<CityHubProps> = ({
 
               {/* Best time to visit */}
               <section>
-                <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
-                  Best Time to Visit
+                <h2 className={H2_SECTION}>
+                  Best Time to <span data-slot="italic">Visit</span>
                 </h2>
-                <div className="bg-gradient-to-r from-primary/5 to-secondary/5 border border-primary/20 rounded-xl p-8">
-                  <p className="text-lg text-gray-700 leading-relaxed">
+                <div className={`${PANEL} p-8`}>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
                     {bestTimeToVisit}
                   </p>
                 </div>
               </section>
 
               {/* Tours section */}
-              <section id="tours-section" className="scroll-mt-20">
+              <section id="tours-section" className="scroll-mt-24">
                 <SectionTitle
                   title={`${cityName} Tours`}
                   subtitle={`Discover our ${cityName} experiences`}
@@ -141,28 +137,28 @@ const CityTourHub: React.FC<CityHubProps> = ({
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 {/* Quick info card */}
-                <div className="bg-warm-50 rounded-2xl p-6 border border-warm-100">
-                  <h3 className="font-serif font-bold text-lg mb-4">Quick Facts</h3>
+                <div className={`${PANEL} p-6`}>
+                  <h3 className={`${EYEBROW} mb-4`}>Quick Facts</h3>
                   <dl className="space-y-3">
                     <div>
-                      <dt className="text-sm text-gray-600">Destination</dt>
-                      <dd className="font-medium capitalize">{cityName}</dd>
+                      <dt className="text-sm text-muted-foreground">Destination</dt>
+                      <dd className={`${H3_CARD} capitalize`}>{cityName}</dd>
                     </div>
                     <div>
-                      <dt className="text-sm text-gray-600">Tours Available</dt>
-                      <dd className="font-medium">{tours.length}</dd>
+                      <dt className="text-sm text-muted-foreground">Tours Available</dt>
+                      <dd className={H3_CARD}>{tours.length}</dd>
                     </div>
                     {tours.length > 0 && (
                       <>
                         <div>
-                          <dt className="text-sm text-gray-600">Starting From</dt>
-                          <dd className="font-medium text-primary">
+                          <dt className="text-sm text-muted-foreground">Starting From</dt>
+                          <dd className="text-base font-semibold leading-snug text-primary">
                             {tours[tours.length - 1].price}
                           </dd>
                         </div>
                         <div>
-                          <dt className="text-sm text-gray-600">Best Season</dt>
-                          <dd className="font-medium">Spring & Autumn</dd>
+                          <dt className="text-sm text-muted-foreground">Best Season</dt>
+                          <dd className={H3_CARD}>Spring &amp; Autumn</dd>
                         </div>
                       </>
                     )}
@@ -172,15 +168,15 @@ const CityTourHub: React.FC<CityHubProps> = ({
                 {/* CTA Button */}
                 <a
                   href="#tours-section"
-                  className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
+                  className="block w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-6 rounded-full transition-colors text-center"
                 >
                   View Tours
                 </a>
 
                 {/* Info box */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-sm text-blue-900">
-                    <span className="font-bold">Planning tip:</span> Book 3+ months in advance for the best availability and pricing.
+                <div className={`${PANEL} bg-subtle p-4`}>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">Planning tip:</span> Book 3+ months in advance for the best availability and pricing.
                   </p>
                 </div>
               </div>
