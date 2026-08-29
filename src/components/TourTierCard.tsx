@@ -19,10 +19,17 @@ interface TourTierCardProps {
   spotlightFeatured?: boolean;
 }
 
+/*
+ * Tier badges keep three distinguishable hues — the colour carries meaning
+ * (Signature / Discovery / Stopover) and flattening it to one neutral would
+ * lose information. What changes is the treatment: a saturated gradient chip
+ * with a coloured drop-shadow becomes a tinted chip with a hairline, which is
+ * how Ceepii marks categories. Still three colours, a quarter of the volume.
+ */
 const tierColors = {
-  signature: { tag: 'from-amber-400 to-orange-500', glow: 'group-hover:shadow-amber-200/30' },
-  discovery: { tag: 'from-emerald-400 to-teal-500', glow: 'group-hover:shadow-emerald-200/30' },
-  stopover: { tag: 'from-sky-400 to-blue-500', glow: 'group-hover:shadow-sky-200/30' },
+  signature: { tag: 'bg-amber-50 text-amber-900 ring-1 ring-amber-200/80' },
+  discovery: { tag: 'bg-emerald-50 text-emerald-900 ring-1 ring-emerald-200/80' },
+  stopover: { tag: 'bg-sky-50 text-sky-900 ring-1 ring-sky-200/80' },
 };
 
 const tierCTA = {
@@ -52,10 +59,16 @@ const TourTierCard = ({
   return (
     <Link href={tourHref} className="block min-w-0 group">
       <div
-        className={`bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl ${colors.glow} transition-all duration-500 border hover:-translate-y-2 flex flex-col h-full ${
+        /*
+          Ceepii card: hairline border, no resting shadow, and the hover reads
+          as the border firming up rather than the card leaping off the page.
+          Dropped shadow-md -> shadow-2xl, the tier-coloured glow, and
+          hover:-translate-y-2 — three effects stacking on one hover.
+        */
+        className={`flex h-full flex-col overflow-hidden rounded-2xl bg-card transition-colors duration-300 ${
           spotlightFeatured
-            ? 'border-primary/35 ring-2 ring-primary/25 ring-offset-2 ring-offset-amber-50/30 shadow-xl shadow-primary/10 hover:shadow-2xl hover:shadow-primary/15'
-            : 'border-warm-100/50'
+            ? 'border-2 border-primary/40 hover:border-primary/70'
+            : 'border border-border hover:border-foreground/25'
         }`}
       >
         <div className="relative aspect-[16/10] w-full min-h-[10rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[12rem]">
@@ -65,7 +78,7 @@ const TourTierCard = ({
             fill
             priority
             sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
           />
           {/* Gradient overlay — always visible at bottom for route strip */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
@@ -92,7 +105,7 @@ const TourTierCard = ({
 
           {/* Tier badge */}
           <div className="absolute top-4 left-4 flex items-center gap-2">
-            <div className={`bg-gradient-to-r ${colors.tag} text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg`}>
+            <div className={`${colors.tag} text-[11px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider`}>
               {tier}
             </div>
             {departure && (
@@ -131,9 +144,9 @@ const TourTierCard = ({
             </p>
           )}
           <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors line-clamp-2">{title}</h3>
-          <p className="text-gray-500 mb-5 leading-relaxed text-sm flex-1 line-clamp-3">{description}</p>
+          <p className="text-muted-foreground mb-5 leading-relaxed text-sm flex-1 line-clamp-3">{description}</p>
           <div className="flex justify-between items-center mb-5">
-            <span className="text-gray-600 flex items-center gap-2 text-sm">
+            <span className="text-muted-foreground flex items-center gap-2 text-sm">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
@@ -141,11 +154,18 @@ const TourTierCard = ({
             </span>
             <span className="text-primary font-bold text-lg">{price}</span>
           </div>
+          {/*
+            The premium CTA used to be filled with `bg-gradient-to-r ${colors.tag}`.
+            Now that colors.tag is a tinted chip rather than a saturated
+            gradient, reusing it here would paint white text on a pale
+            background — unreadable. Premium fills with brand primary instead,
+            which is also the stronger call to action.
+          */}
           <div
-            className={`inline-block w-full text-center py-3 rounded-full font-medium transition-all duration-300 ${
+            className={`inline-block w-full text-center py-3 rounded-full font-medium transition-colors duration-300 ${
               isPremium
-                ? `bg-gradient-to-r ${colors.tag} text-white group-hover:shadow-lg group-hover:scale-[1.02]`
-                : 'border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white group-hover:scale-[1.02]'
+                ? 'bg-primary text-white group-hover:bg-primary/90'
+                : 'border-2 border-primary text-primary group-hover:bg-primary group-hover:text-white'
             }`}
           >
             {tierCTA[tier]}

@@ -35,36 +35,54 @@ const HubHero: React.FC<HubHeroProps> = ({
   const useNextImage = isOptimizableImageSrc(raw);
 
   return (
-    <section className="relative h-96 md:h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
+    /*
+      Ceepii hero language, adapted for a content page.
+      - Taller and bottom-aligned rather than a short centred band, so the
+        image reads as a photograph rather than a header strip.
+      - Ceepii runs its hero at lg:min-h-dvh. Full height is wrong here: these
+        are SEO pages whose value is the copy below, and a full viewport of
+        image pushes it entirely below the fold. 70vh clamped to 520-680px is
+        the compromise — noticeably immersive, still shows content starting.
+
+        Sized with `h` plus min/max rather than `min-h` alone. min-height wins
+        over max-height in CSS, so `min-h-[70vh] max-h-[680px]` would let the
+        hero grow unbounded on a tall viewport with the max silently ignored.
+        Caught on a 3200px-tall screenshot where the hero ran past 2000px.
+      - Left-aligned. Centred display type is the single most "template" thing
+        about the old hero.
+      - A gradient scrim instead of a flat 40% wash: darkest where the text
+        sits, nearly clear at the top, so more of the photograph survives while
+        contrast under the copy actually improves.
+    */
+    <section className="relative flex min-h-[440px] items-end overflow-hidden text-white md:h-[70vh] md:min-h-[520px] md:max-h-[680px]">
       {useNextImage ? (
-        <>
-          <Image
-            src={raw}
-            alt={title}
-            fill
-            priority
-            sizes="100vw"
-            className={['object-cover z-0', imageClassName].filter(Boolean).join(' ')}
-          />
-          <div className="absolute inset-0 bg-black/40 z-[1]" aria-hidden />
-        </>
+        <Image
+          src={raw}
+          alt={title}
+          fill
+          priority
+          sizes="100vw"
+          className={['object-cover z-0', imageClassName].filter(Boolean).join(' ')}
+        />
       ) : (
-        <>
-          <div
-            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: raw }}
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-black/40 z-[1]" aria-hidden />
-        </>
+        <div
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: raw }}
+          aria-hidden
+        />
       )}
 
+      <div
+        className="absolute inset-0 z-[1] bg-gradient-to-t from-black/75 via-black/40 to-black/10"
+        aria-hidden
+      />
+
       {/* Content */}
-      <div className="relative z-[2] container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 leading-tight">
+      <div className="relative z-[2] container mx-auto px-4 pb-12 md:pb-16 lg:pb-20">
+        <h1 className="max-w-3xl font-serif text-4xl font-normal leading-[1.05] tracking-[-0.02em] sm:text-5xl lg:text-6xl">
           {title}
         </h1>
-        <p className="text-xl md:text-2xl font-light text-white/90">
+        <p className="mt-5 max-w-xl text-lg text-white/85 md:text-xl">
           {subtitle}
         </p>
       </div>
