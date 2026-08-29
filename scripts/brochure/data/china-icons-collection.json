@@ -1,0 +1,426 @@
+{
+  "slug": "china-icons-collection",
+  "ref": "CTS-2026-0010",
+  "docTitle": "CHINA ICONS COLLECTION",
+  "preparedFor": "JAZZ & FAMILY",
+  "logo": "public/logo.png",
+  "contactLine": "CTS Tours · 0800 287 888 · info@ctstours.co.nz · www.ctstours.co.nz",
+  "cover": {
+    "image": "cover",
+    "eyebrow": "TAILOR-MADE JOURNEY",
+    "title": "Four Cities, Fifteen Days",
+    "cities": [
+      "BEIJING",
+      "XI'AN",
+      "CHONGQING",
+      "SHANGHAI"
+    ],
+    "meta": [
+      {
+        "label": "ITINERARY",
+        "value": "China Icons Collection"
+      },
+      {
+        "label": "DEPARTS",
+        "value": "1 November"
+      },
+      {
+        "label": "TRAVELLING",
+        "value": "5 passengers"
+      }
+    ],
+    "footNote": "A companion to your itinerary"
+  },
+  "overview": {
+    "eyebrow": "Your journey",
+    "title": "China Icons Collection",
+    "intro": "This is a picture book of the journey ahead. Each city opens with the one sight it is remembered for, followed by the places you will see alongside it, with a short note on each — what it is, when it was built, and why it earns its place in the fifteen days. The full day-by-day, hotels, flights and inclusions live in your itinerary document; this is the view from above.",
+    "note": {
+      "title": "Every detail can still change",
+      "body": "If one of these cities pulls at you more than the others, say so and we will give it more time. Entry to the Forbidden City can only be confirmed within seven days of the visit date, and rail seats within fifteen days of departure, so the running order of a day may shift slightly once bookings are made."
+    }
+  },
+  "cities": [
+    {
+      "name": "Beijing",
+      "days": "DAYS 02 – 05",
+      "hero": {
+        "image": "great-wall",
+        "title": "The Great Wall at Mutianyu",
+        "caption": "The Great Wall at Mutianyu · Day 04",
+        "body": "Roughly 70 kilometres north of the city, Mutianyu is widely regarded as the finest restored stretch of the Great Wall near Beijing. Some 5.4 kilometres of Ming-dynasty wall follow the crest of a steep, densely forested ridge, punctuated by more than twenty watchtowers set unusually close together — this was a heavily defended approach to the capital. Wooded valleys fall away on both sides, and the wall is visible snaking along the skyline in either direction. A cable car and chairlift carry you up, and visitor numbers are markedly lower here than at Badaling."
+      },
+      "glance": [
+        {
+          "label": "Nights",
+          "value": "4 · Wanda Moment Hotel or similar 4★"
+        },
+        {
+          "label": "Getting there",
+          "value": "Overnight flight, arriving early on Day 02"
+        },
+        {
+          "label": "Onward",
+          "value": "High-speed train to Xi'an on Day 06"
+        }
+      ],
+      "pages": [
+        [
+          {
+            "image": "temple-of-heaven",
+            "day": "Day 02",
+            "title": "Temple of Heaven",
+            "body": "Completed in 1420 under the Ming emperor Yongle, this was where emperors came each winter solstice to pray for a good harvest — the most important ritual site in imperial China. The Hall of Prayer for Good Harvests is a circular triple-eaved hall of deep blue tile on three tiers of white marble, built entirely of timber joinery without a single nail. Mornings in the surrounding 270-hectare park belong to Beijingers: tai chi, cards, singing and dancing under the old cypresses. UNESCO listed, 1998."
+          },
+          {
+            "image": "tiananmen-square",
+            "day": "Day 03",
+            "title": "Tian'anmen Square",
+            "body": "At around 44 hectares, one of the largest public squares in the world and the ceremonial heart of modern China. The Monument to the People's Heroes stands at its centre, the Great Hall of the People to the west, the National Museum to the east, and to the north the vermilion Gate of Heavenly Peace — the threshold into the Forbidden City. Please carry your passport: security screening is required to enter, and your guide will walk you through it."
+          },
+          {
+            "image": "forbidden-city",
+            "day": "Day 03",
+            "title": "The Forbidden City",
+            "body": "Built between 1406 and 1420 and home to twenty-four Ming and Qing emperors, this is the largest surviving timber palace complex in the world — some 980 buildings across 72 hectares behind a moat and a 10-metre wall. You follow the imperial axis: the Meridian Gate, the marble bridges of the Golden Stream, the vast courtyard of the Hall of Supreme Harmony, then the smaller residential courts within. Now the Palace Museum, holding over a million imperial artefacts."
+          },
+          {
+            "image": "beihai-park",
+            "day": "Day 03",
+            "title": "Beihai Park",
+            "body": "One of the oldest and best-preserved imperial gardens in China, a royal retreat since the 11th century — older than the Forbidden City next door. More than half of its 69 hectares is lake, and the view across the water is held by the White Dagoba, a Tibetan-style stupa raised on Jade Flower Island in 1651. Willows, rowing boats, and the Nine-Dragon Screen of glazed tile. An unhurried, local counterpoint to the scale of the morning."
+          }
+        ],
+        [
+          {
+            "image": "olympic-green",
+            "day": "Day 04",
+            "title": "Olympic Green — Bird's Nest & Water Cube",
+            "body": "The two landmarks of the 2008 Olympics face one another across the Olympic Green. The National Stadium — the Bird's Nest — was designed by Herzog & de Meuron with Ai Weiwei as consultant, its 80,000 seats wrapped in a lattice of exposed steel. Opposite, the National Aquatics Centre wears a translucent skin of ETFE bubbles that glows blue after dark. Beijing is the only city to have hosted both a Summer and a Winter Games."
+          },
+          {
+            "image": "beijing-hutong",
+            "day": "Day 05",
+            "title": "Beijing's Hutongs",
+            "body": "The narrow lanes between siheyuan — the grey-brick courtyard houses that were the standard Beijing home for centuries. The layout dates to the Yuan dynasty, and the name is thought to come from a Mongolian word for water well. Districts such as Nanluoguxiang and lakeside Shichahai remain intact and lived-in: carved gateposts, courtyard doors left ajar, tea houses, barbers and bicycle repair stands — daily life at a scale the boulevards outside no longer keep."
+          },
+          {
+            "image": "summer-palace",
+            "day": "Day 05",
+            "title": "The Summer Palace",
+            "body": "The Qing court's warm-weather retreat: 290 hectares, three-quarters of it water. Kunming Lake was dug by hand and the spoil raised into Longevity Hill, on whose slope the Tower of Buddhist Incense stands. The Long Corridor runs 728 metres along the shore, its beams carrying some 14,000 painted scenes — no two alike. Rebuilt in 1888 by the Empress Dowager Cixi, it is the most complete surviving example of Chinese imperial garden design."
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Xi'an",
+      "days": "DAYS 06 – 08",
+      "hero": {
+        "image": "terracotta-warriors",
+        "title": "The Terracotta Warriors and Horses",
+        "caption": "The Terracotta Warriors and Horses · Day 07",
+        "body": "In 1974, farmers sinking a well east of Xi'an struck fragments of fired clay. What they had found was the buried guard of Qin Shi Huang, the first emperor of a unified China, who died in 210 BC — an estimated 8,000 life-size soldiers, horses and chariots arrayed in battle formation to protect his tomb. Pit 1 is the largest, a vaulted hall some 230 metres long with rank upon rank of infantry still standing where they were placed. Each figure carries individual features, armour and rank insignia, and all were originally painted in bright mineral pigments, traces of which survive."
+      },
+      "glance": [
+        {
+          "label": "Nights",
+          "value": "3 · Mercure Downtown or similar 4★"
+        },
+        {
+          "label": "Getting there",
+          "value": "High-speed train from Beijing, Day 06"
+        },
+        {
+          "label": "Onward",
+          "value": "High-speed train to Chongqing on Day 09"
+        }
+      ],
+      "pages": [
+        [
+          {
+            "image": "tang-everbright-city",
+            "day": "Day 07",
+            "title": "Grand Tang Dynasty Ever Bright City",
+            "body": "A 1.5-kilometre pedestrian boulevard between the Giant Wild Goose Pagoda and Tang Paradise, built in the architectural language of the Tang dynasty and designed to be seen after dark. Once the lanterns come on the avenue is lit end to end: bronze groups of Tang poets and musicians, costumed performers in flowing silk, street theatre, calligraphers and tea houses. Xi'an was Chang'an — the largest city on earth in the Tang era — and this is its own tribute to that period."
+          },
+          {
+            "image": "xian-city-wall",
+            "day": "Day 08",
+            "title": "The Ancient City Walls",
+            "body": "One of the most complete city walls anywhere in the world: 13.7 kilometres of Ming rampart, raised in 1370 on Tang foundations, ringing the old centre in an unbroken rectangle. Twelve metres high and wide enough at the top for four horses abreast, it is now a promenade — you can walk a stretch or hire a bicycle and ride the full circuit in around two hours, looking down into old courtyards on one side and the modern city on the other."
+          },
+          {
+            "image": "wild-goose-pagoda",
+            "day": "Day 08",
+            "title": "Giant Wild Goose Pagoda",
+            "body": "Built in 652 AD at the heart of the Da Ci'en Temple to house the sutras the monk Xuanzang carried back from India — the seventeen-year pilgrimage that later inspired the novel Journey to the West. Xuanzang translated the texts here and supervised the pagoda's design himself. Seven storeys and 64 metres of tapering brick, still leaning very slightly, and still the symbol of the city. UNESCO listed in 2014 as part of the Silk Road."
+          },
+          {
+            "image": "muslim-quarter",
+            "day": "Day 08",
+            "title": "The Muslim Quarter",
+            "body": "Home to Xi'an's Hui community, whose ancestors settled here as Silk Road traders more than 1,200 years ago. Beihuajue Lane and the streets around it are a dense grid of food stalls and small shops: roujiamo, hand-pulled biang biang noodles, yangrou paomo, persimmon cakes and cured beef. Tucked behind them is the Great Mosque, founded in 742 AD and built entirely in Chinese style — pavilions and courtyard gardens rather than domes."
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Chongqing",
+      "days": "DAYS 09 – 11",
+      "hero": {
+        "image": "hongyadong",
+        "title": "Hongyadong",
+        "caption": "Hongyadong, above the Jialing River · Day 10",
+        "body": "Eleven storeys of stilted timber galleries built into the cliff face above the Jialing River, in the diaojiaolou style that once lined both banks. The complex opens onto solid ground at street level on two different floors — a fair summary of how Chongqing works. It is at its best after dark, when several thousand lanterns come on at once and the whole cliff reflects on the water below. Street-food floors sit at the bottom, teahouses and viewing terraces at the top."
+      },
+      "glance": [
+        {
+          "label": "Nights",
+          "value": "3 · Fairfield by Marriott or similar 4★"
+        },
+        {
+          "label": "Getting there",
+          "value": "High-speed train from Xi'an, Day 09"
+        },
+        {
+          "label": "Onward",
+          "value": "Domestic flight to Shanghai on Day 12"
+        }
+      ],
+      "pages": [
+        [
+          {
+            "image": "ciqikou",
+            "day": "Day 10",
+            "title": "Ciqikou Ancient Town",
+            "body": "A porcelain port on the Jialing River that has kept its Ming and Qing street plan: stone-paved lanes, timber shopfronts, tea houses and temple courtyards on the slope above the water. It shipped ceramics downriver for six centuries, which is where the name — 'porcelain port' — comes from. Come for the atmosphere and the snacks: chili-fried maweishi, hand-pulled malt candy, and Chongqing's famously fiery street food, at a gentler pace than the city centre."
+          },
+          {
+            "image": "liziba",
+            "day": "Day 10",
+            "title": "Liziba Station",
+            "body": "Chongqing is built on cliffs above two rivers, and land is scarce enough that the Line 2 monorail was routed straight through floors six to eight of a nineteen-storey residential block. The station occupies the middle of the building; residents live above and below it, and noise-damping engineering keeps the trains to roughly the sound of a dishwasher. A short stop, and one of the most photographed pieces of urban engineering in China."
+          },
+          {
+            "image": "jiefangbei",
+            "day": "Day 10",
+            "title": "Jiefangbei",
+            "body": "The commercial heart of the Yuzhong Peninsula, named for the Liberation Monument at its centre — raised in 1947 and once the tallest structure in the city, now standing barely shoulder-high to the towers around it. The pedestrian streets radiating from it are Chongqing at full volume: department stores, neon, hotpot restaurants stacked several floors up, and a good place to simply watch the pace of the city after dark."
+          },
+          {
+            "image": "dazu-rock-carvings",
+            "day": "Day 11",
+            "title": "The Dazu Rock Carvings",
+            "body": "About two hours from the city, some 50,000 figures are carved into the hillsides here, cut between the 9th and 13th centuries. What makes Dazu unusual is that Buddhist, Taoist and Confucian subjects appear side by side — rare anywhere in China. The finest grouping is at Baodingshan, where a continuous narrative frieze runs along a U-shaped cliff, some figures several metres tall, with original pigment still visible. UNESCO listed, 1999."
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Shanghai",
+      "days": "DAYS 12 – 15",
+      "hero": {
+        "image": "huangpu-cruise",
+        "title": "The Huangpu River by Night",
+        "caption": "The Bund and Pudong from the Huangpu River · Day 13",
+        "body": "The journey closes where China looks forward. Two centuries face each other across the Huangpu — fifty-two heritage buildings along the Bund, raised when Shanghai was the busiest port in Asia, and opposite them the towers of Lujiazui, none of which existed before 1990. The evening cruise puts you on the water between the two, roughly an hour from the Yangpu Bridge down to the Nanpu Bridge, with the whole waterfront lit. It is the single clearest way to read the city."
+      },
+      "glance": [
+        {
+          "label": "Nights",
+          "value": "3 · Metropark Jichen or similar 4★"
+        },
+        {
+          "label": "Getting there",
+          "value": "Domestic flight from Chongqing, Day 12"
+        },
+        {
+          "label": "Onward",
+          "value": "Evening flight home to Auckland, Day 15"
+        }
+      ],
+      "pages": [
+        [
+          {
+            "image": "yu-garden",
+            "day": "Day 13",
+            "title": "Yu Garden",
+            "body": "Laid out from 1559 by a Ming official as a retreat for his parents, and a masterclass in Jiangnan garden design: two hectares divided by dragon-crested walls into six scenes, so the whole is never visible at once. Rockeries, carp ponds, pavilions and the Exquisite Jade Rock, a porous boulder said to have been destined for an emperor's garden. The bazaar outside has traded on this spot for centuries."
+          },
+          {
+            "image": "the-bund",
+            "day": "Day 13",
+            "title": "The Bund",
+            "body": "Fifty-two heritage buildings run for a mile and a half along the west bank of the Huangpu — neoclassical banks, art deco hotels and trading houses raised between the 1880s and the 1930s, when Shanghai was the busiest port in Asia. The promenade in front of them is the city's front room, busiest in the evening when the facades are floodlit and Pudong lights up across the water. A short walk, and the best place to feel the two Shanghais at once."
+          },
+          {
+            "image": "oriental-pearl-tower",
+            "day": "Day 13",
+            "title": "The Oriental Pearl Tower",
+            "body": "The tower that announced Pudong: finished in 1994, when the far bank of the Huangpu was still largely farmland and warehouses. Eleven linked spheres rise 468 metres, and the observation decks — including a glass floor 259 metres up — give the clearest read of how the city is put together, the Bund's stone frontage on one bank and Lujiazui's towers on the other."
+          },
+          {
+            "eyebrow": "DAY 14 · A DAY OF YOUR OWN",
+            "title": "A day of your own",
+            "body": "The final full day is left entirely unplanned, and deliberately so. The Former French Concession is the obvious choice — plane-tree streets, art deco villas, independent shops and coffee along Anfu Road and Wukang Road — or you might return to the Bund at a different hour, browse the galleries at the Power Station of Art, or take the half-hour train out to Zhujiajiao water town. Equally, it can simply be a day to rest before the flight home."
+          }
+        ]
+      ]
+    }
+  ],
+  "closing": {
+    "eyebrow": "Next",
+    "title": "Ready when you are",
+    "body": "Reply to your itinerary with anything you would like changed — pace, hotels, cities, or the time of year. Revisions are part of the service. Once you are happy, we confirm hotels and rail seats and issue your invoice and booking conditions. Final documents, guide details and local contact numbers are issued before you depart.",
+    "contact": {
+      "title": "Talk to us",
+      "lines": [
+        "CTS Tours · 2F CTS House, 175 Queen Street, Auckland",
+        "0800 287 888 · info@ctstours.co.nz · www.ctstours.co.nz"
+      ]
+    },
+    "signOff": "EXPERIENCE THE REAL ASIA"
+  },
+  "images": {
+    "cover": {
+      "src": "public/images/tours/great-wall-cloud-sea.jpg"
+    },
+    "great-wall": {
+      "src": "public/images/tours/great-wall-green.jpg"
+    },
+    "temple-of-heaven": {
+      "src": "public/images/tours/beijing-temple.jpg"
+    },
+    "tiananmen-square": {
+      "src": "scripts/brochure/assets/tiananmen-square.jpg",
+      "credit": {
+        "author": "Francesco Bini",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Citt%C3%A0_proibita,_porta_della_pace_celestiale_(Tiananmen)_01.jpg"
+      }
+    },
+    "forbidden-city": {
+      "src": "public/images/tours/forbidden-city-aerial.jpg"
+    },
+    "beihai-park": {
+      "src": "scripts/brochure/assets/beihai-park.jpg",
+      "credit": {
+        "author": "Bjoertvedt",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Beihai_Park_IMG_4408_Beihai_Lake_-_Jade_Island_-_white_dagoba.jpg"
+      }
+    },
+    "olympic-green": {
+      "src": "scripts/brochure/assets/olympic-green.jpg",
+      "credit": {
+        "author": "Uwe Aranas",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Beijing_China_Beijing-National-Stadium-02.jpg"
+      }
+    },
+    "beijing-hutong": {
+      "src": "scripts/brochure/assets/beijing-hutong.jpg",
+      "credit": {
+        "author": "Andrzej Otrębski",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Beijing_hutong_Shuaifu_yuan.jpg"
+      }
+    },
+    "summer-palace": {
+      "src": "scripts/brochure/assets/summer-palace.jpg",
+      "credit": {
+        "author": "xiquinhosilva",
+        "license": "CC BY 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Longevity_Hill_of_the_Summer_Palace.jpg"
+      }
+    },
+    "terracotta-warriors": {
+      "src": "public/images/tours/xian-terracotta.jpg"
+    },
+    "tang-everbright-city": {
+      "src": "scripts/brochure/assets/tang-everbright-city.jpg",
+      "credit": {
+        "author": "源義信",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2023-10-10_Great_Tang_All_Day_Mall_(%E5%A4%A7%E5%94%90%E4%B8%8D%E5%A4%9C%E5%9F%8E%E6%AD%A5%E8%A1%8C%E8%A1%97),_Hsi-an_(%E8%A5%BF%E5%AE%89)_01.jpg"
+      }
+    },
+    "xian-city-wall": {
+      "src": "scripts/brochure/assets/xian-city-wall.jpg",
+      "credit": {
+        "author": "源義信",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2023-10-07_Kuei-hsing_Tower_(%E9%AD%81%E6%98%9F%E6%A8%93),_Hsi-an_City_Wall_(%E8%A5%BF%E5%AE%89%E5%9F%8E%E7%89%86)_01.jpg"
+      }
+    },
+    "wild-goose-pagoda": {
+      "src": "scripts/brochure/assets/wild-goose-pagoda.jpg",
+      "credit": {
+        "author": "源義信",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2023-10-10_Giant_Wild_Goose_Pagoda_%E5%A4%A7%E9%9B%81%E5%A1%94_02.jpg"
+      }
+    },
+    "muslim-quarter": {
+      "src": "public/blog/sourced/xian-muslim-quarter-night-market.jpg",
+      "credit": {
+        "author": "chensiyuan",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:1_xian_muslim_quarter_china_2011.JPG"
+      }
+    },
+    "hongyadong": {
+      "src": "public/blog/chongqing-night-skyline-hongyadong.jpg"
+    },
+    "ciqikou": {
+      "src": "scripts/brochure/assets/ciqikou.jpg",
+      "credit": {
+        "author": "Nyx Ning",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:%E7%A3%81%E5%99%A8%E5%8F%A3-%E4%B8%AD%E5%9B%BD%E5%B9%B4_-_panoramio.jpg"
+      }
+    },
+    "liziba": {
+      "src": "public/blog/sourced/liziba-monorail-through-building.jpg",
+      "credit": {
+        "author": "David290",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:A_train_of_Chongqing_Rail_Transit_Line_2_coming_through_a_residential_building_at_Liziba_2255.jpg"
+      }
+    },
+    "jiefangbei": {
+      "src": "scripts/brochure/assets/jiefangbei.jpg",
+      "credit": {
+        "author": "Nyx Ning",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:2015%E8%A7%A3%E6%94%BE%E7%A2%91-%E9%99%A4%E5%A4%95%E4%B9%8B%E5%A4%9C2_-_panoramio.jpg"
+      }
+    },
+    "dazu-rock-carvings": {
+      "src": "scripts/brochure/assets/dazu-rock-carvings.jpg",
+      "credit": {
+        "author": "JL Cogburn",
+        "license": "CC BY-SA 2.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Dazu_rock_carvings_-_Baodingshan,_%E5%A4%A7%E8%B6%B3%E7%9F%B3%E5%88%BB-%E5%AE%9D%E9%A1%B6%E5%B1%B1%E6%91%A9%E5%B4%96%E9%80%A0%E5%83%8F,_Chongqing,_2023_(53562729117).jpg"
+      }
+    },
+    "huangpu-cruise": {
+      "src": "public/images/tours/shanghai-night-blue.jpg"
+    },
+    "yu-garden": {
+      "src": "public/images/tours/shanghai-yuyuan-night.jpg"
+    },
+    "the-bund": {
+      "src": "public/blog/group-shanghai-bund-skyline.jpg"
+    },
+    "oriental-pearl-tower": {
+      "src": "scripts/brochure/assets/oriental-pearl-tower.jpg",
+      "credit": {
+        "author": "Hermann Luyken",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:2014.11.15.191338_Shanghai_International_Conference_Center_ship_night_Shanghai.jpg"
+      }
+    }
+  }
+}

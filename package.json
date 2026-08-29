@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "seo:check-sitemap": "node scripts/seo/check-sitemap-urls.mjs",
-    "verify:peers": "node scripts/verify-react-peers.mjs"
+    "verify:peers": "node scripts/verify-react-peers.mjs",
+    "brochure": "node scripts/brochure/render.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.117.1",
