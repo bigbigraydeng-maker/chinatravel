@@ -85,7 +85,15 @@ const HomePageRedesign = () => {
         The search card keeps its white surface and floats on the image, which
         is how Ceepii places its own search — no restyling needed there.
       */}
-      <section className="relative flex min-h-[600px] flex-col justify-end overflow-hidden text-white md:h-[88vh] md:min-h-[640px] md:max-h-[860px]">
+      {/*
+        min-h, not a fixed h. With `h-[88vh]` the content stack (96px headline,
+        lede, search card, link row) was taller than 88vh minus the sticky
+        header on shorter windows, so the top of the headline slid up behind the
+        nav and got clipped. min-h lets the section grow when the content needs
+        it; the pt-* below reserves room for the banner + nav so the headline
+        can never start underneath them.
+      */}
+      <section className="relative flex min-h-[600px] flex-col justify-end overflow-hidden text-white md:min-h-[88vh]">
         <Image
           src={HERO_IMAGE}
           alt="The Great Wall of China at dawn"
@@ -99,27 +107,34 @@ const HomePageRedesign = () => {
           aria-hidden
         />
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 md:px-8 md:pb-14 lg:pb-16">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 pt-28 md:px-8 md:pb-12 md:pt-32 lg:pb-14">
           <h1 className="max-w-4xl font-serif text-[2.75rem] font-normal leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-7xl xl:text-8xl">
             See all of China,
             <br />
             <span className="italic text-white/90">the way it deserves.</span>
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg font-light leading-relaxed text-white/80">
+          <p className="mt-5 max-w-lg text-lg font-light leading-relaxed text-white/80">
             Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
             genuinely tailor-made.
           </p>
 
-          <div className="mt-9 grid gap-7 lg:grid-cols-[minmax(0,25rem)_1fr] lg:items-end lg:gap-12">
+          {/*
+            The search bar spans its own row now that it lays out horizontally —
+            two fields plus the submit need the width, and stacking the meta
+            below it keeps the whole hero inside a 780px-tall window.
+          */}
+          <div className="mt-7 max-w-4xl">
             <HeroSearchEditorial />
+          </div>
 
+          <div className="mt-6">
             {/*
-              max-w keeps this column from running under the fixed "Need help?"
+              max-w keeps this row from running under the fixed "Need help?"
               bubble in the bottom-right corner — at full width the
               accreditation line was being clipped by it on desktop.
             */}
-            <div className="space-y-5 lg:max-w-xl lg:pb-1">
+            <div className="space-y-3 lg:max-w-3xl">
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
                 <Link href="/tours" className="inline-flex items-center gap-1.5 text-white hover:text-white/70">
                   Browse all tours <ArrowRight className="h-3.5 w-3.5" />

@@ -62,13 +62,21 @@ export default function HeroSearchEditorial() {
   };
 
   return (
+    /*
+      Horizontal on desktop, stacked on mobile.
+      Was a tall stacked card. On the rebuilt full-bleed hero that card is ~280px
+      of vertical space, which pushed the submit button below the fold on a
+      780px-tall window — the primary conversion control was not visible without
+      scrolling. Laid out in a row it costs ~100px and the whole hero fits.
+      This is also how Ceepii places its own hero search: a bar, not a panel.
+    */
     <form
       onSubmit={handleSubmit}
-      className="rounded-2xl border border-warm-100 bg-white p-6 shadow-editorial"
+      className="rounded-2xl border border-warm-100 bg-white p-4 shadow-editorial sm:p-5"
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:gap-5">
         {/* Destination */}
-        <div className="space-y-2">
+        <div className="space-y-2 lg:flex-1 lg:min-w-0">
           <label className="ml-1 text-xs font-bold uppercase tracking-wider text-ink">Destination</label>
           <div className="relative border-b border-ink/20 pb-1">
             <Icon name="search" className="pointer-events-none absolute left-0 top-1/2 h-5 w-5 -translate-y-1/2 text-primary" />
@@ -83,7 +91,7 @@ export default function HeroSearchEditorial() {
         </div>
 
         {/* Must-see */}
-        <div className="space-y-2">
+        <div className="space-y-2 lg:flex-1 lg:min-w-0">
           <label className="ml-1 text-xs font-bold uppercase tracking-wider text-ink">Must-see</label>
           <div className="relative border-b border-ink/20 pb-1">
             <Icon name="compass" className="pointer-events-none absolute left-0 top-1/2 h-5 w-5 -translate-y-1/2 text-primary" />
@@ -99,7 +107,7 @@ export default function HeroSearchEditorial() {
 
         <button
           type="submit"
-          className="mt-2 flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-4 font-semibold uppercase tracking-wide text-white shadow-md transition-colors hover:bg-primary"
+          className="mt-1 flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-ink px-7 py-3.5 font-semibold uppercase tracking-wide text-white shadow-md transition-colors hover:bg-primary lg:mt-0"
         >
           Find your journey
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
