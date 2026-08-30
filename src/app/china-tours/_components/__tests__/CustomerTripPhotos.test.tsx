@@ -1,10 +1,12 @@
 /**
  * CustomerTripPhotos tests
  *
- * Social-proof photo strip — guarantees:
- *  - 6 reviewer-quote tiles rendered (so a missing entry drops a card, not the section)
- *  - each tile has a quote + reviewer name + NZ location
- *  - section heading + supporting copy present
+ * 照片墙 —— 照片是真的，但我们不知道每张是谁拍的，所以这里**不许出现评价**。
+ * 用例锁的就是这条：
+ *  - 6 张图都渲染出来（少一条数据是掉一张图，不是塌掉整个区块）
+ *  - 每张图都有来源标注（谁给的），不是人名 + 引语
+ *  - 版面上不出现任何评价人姓名 / 引号包起来的引语
+ *  - 图片仍来自 ME visual-assets bucket
  */
 import { render, screen } from '@testing-library/react';
 import CustomerTripPhotos from '../CustomerTripPhotos';
@@ -15,11 +17,28 @@ jest.mock('next/image', () => ({
   default: (props: any) => <img {...props} />,
 }));
 
+/** 本站曾经编造过的评价人姓名 —— 一个都不许再出现在版面上 */
+const FABRICATED_NAMES = [
+  'Mackenzie',
+  'Larsen',
+  'Patterson',
+  'Hewitt',
+  'Brennan',
+  'Donohue',
+  'Voss',
+  'Tanner',
+  'Orton',
+  'Connelly',
+  'Armstrong',
+  'Bowen',
+  'Cooper',
+];
+
 describe('CustomerTripPhotos', () => {
   it('renders the section heading + intro', () => {
     render(<CustomerTripPhotos />);
-    expect(screen.getByRole('heading', { name: /Stories from the road/i })).toBeInTheDocument();
-    expect(screen.getByText(/Real Kiwi travellers/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Scenes from the road/i })).toBeInTheDocument();
+    expect(screen.getByText(/Photos from the road/i)).toBeInTheDocument();
   });
 
   it('renders exactly 6 trip-photo tiles', () => {
@@ -29,11 +48,28 @@ describe('CustomerTripPhotos', () => {
     expect(tiles.length).toBe(6);
   });
 
-  it('each tile carries a reviewer attribution using "Quote from X · {city}, NZ" — the explicit phrasing keeps it clear the quote is from a verified reviewer, not necessarily the person in the photo', () => {
+  it('every tile carries a source credit instead of a named reviewer + quote', () => {
     render(<CustomerTripPhotos />);
-    expect(screen.getByText(/Quote from Claire & Tom Mackenzie · Wellington, NZ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Quote from Fiona Hewitt · Auckland, NZ/i)).toBeInTheDocument();
-    expect(screen.getByText(/Quote from Liz & Peter Armstrong · Christchurch, NZ/i)).toBeInTheDocument();
+    const credits = screen.getAllByText(/Shared by a CTS traveller/i);
+    expect(credits.length).toBe(5);
+    expect(screen.getByText(/CTS photo library/i)).toBeInTheDocument();
+  });
+
+  it('shows a location only where we actually know it', () => {
+    render(<CustomerTripPhotos />);
+    expect(screen.getByText('Guilin & Yangshuo')).toBeInTheDocument();
+  });
+
+  it('carries no fabricated reviewer names and no quotes at all', () => {
+    const { container } = render(<CustomerTripPhotos />);
+    const text = container.textContent || '';
+    FABRICATED_NAMES.forEach((name) => {
+      expect(text).not.toContain(name);
+    });
+    // 引号 = 有人在说话。这个区块里不该有任何人在说话。
+    expect(text).not.toContain('“');
+    expect(text).not.toContain('”');
+    expect(text).not.toMatch(/Quote from/i);
   });
 
   it('every photo URL comes from ME visual-assets bucket (not chinatravel tour-images)', () => {
@@ -46,12 +82,5 @@ describe('CustomerTripPhotos', () => {
       const src = img.getAttribute('src') || '';
       expect(src).toMatch(/glbdnayojixmexgofbsd\.supabase\.co\/storage\/.*\/visual-assets\//);
     });
-  });
-
-  it('section intro discloses the photo/quote pairing model (no false 1:1 claim)', () => {
-    render(<CustomerTripPhotos />);
-    expect(
-      screen.getByText(/photos shared by CTS travellers, paired with quotes from our verified NZ reviews/i)
-    ).toBeInTheDocument();
   });
 });

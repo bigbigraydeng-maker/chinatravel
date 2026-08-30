@@ -1,59 +1,82 @@
+import { GOOGLE_RATING } from '@/lib/data/google-rating';
+
 /**
- * Three featured 5-star reviews surfaced on /china-tours between the trip
- * photos and the flagship tour grid.
+ * /china-tours 页上的三条评价 —— **只放真实存在的 Google 评价**。
  *
- * Quotes are paraphrased to ~1 sentence from the canonical Testimonials.tsx
- * dataset (already in production). One review per spotlight cluster
- * (Beijing & Xi'an / Shanghai & Surroundings / Silk Road signature) so the
- * three flagship surfaces below all carry social proof above them.
+ * ## 改这个文件前必读
+ *
+ * 每一条都必须能在 CTS 的 Google 商家页上逐字找到（`GOOGLE_RATING.profileUrl`，
+ * 2026-08-30 人工核实）。Google 只给四样东西：**评价人姓名 / 星级 / 正文 /
+ * 日期**。正文**逐字照抄**，不许改写、不许润色、不许截断成"更好听"的版本。
+ *
+ * 评价人的**城市 / 标题 / 参加的团 / 点赞数** Google 都不提供，**一律不许编**，
+ * 所以下面的 interface 里根本没有这些字段。`tour` 是唯一例外：只有客人正文
+ * 自己写出了团名才填，且照抄他的写法（所以会出现小写的 "tale of two cities"）。
+ *
+ * 版面需要几条而真实评价不够时，**减少展示数量**，不许补一条假的。
+ * 聚合评分（几分 / 几条）统一读 `src/lib/data/google-rating.ts`。
+ *
+ * ## 这里原来是什么样
+ *
+ * 原本三条是编造评价的改写版（假人名 Claire & Tom Mackenzie / Simon & Kate
+ * Brennan / Robert & Anne Murray，编造的城市、编造的标题、编造的团期），
+ * 页头还写着「5.0 from 24 verified NZ reviews」—— 真实是 4.4 分 12 条。
+ * 文件顶上原注释直白写着 "Quotes are paraphrased"，却仍然挂在真人姓名下面
+ * 对外展示，这在新西兰属《公平交易法》层面的问题，不是文案尺度问题。
  */
 
 interface ReviewHighlight {
-  travellerName: string;
-  travellerLocation: string;
-  tourLabel: string;
-  title: string;
-  quote: string;
-  initials: string;
-  accent: 'amber' | 'blue' | 'red';
+  /** 评价人姓名 —— 照抄 Google */
+  name: string;
+  /** 正文 —— 逐字照抄 Google，一个字都不许改 */
+  text: string;
+  /** 评价发表日期（ISO）—— 注意不是出行日期 */
   date: string;
+  /** 姓名首字母，机械推导 */
+  initials: string;
+  /** 纯样式 */
+  accent: 'amber' | 'blue' | 'red';
+  /** 客人正文里自己提到的团名，照抄他的写法；没提就留空 */
+  tour?: string;
 }
 
 const REVIEWS: ReviewHighlight[] = [
   {
-    travellerName: 'Claire & Tom Mackenzie',
-    travellerLocation: 'Wellington',
-    tourLabel: "Tale of Two Cities · Beijing + Xi'an",
-    title: 'Beijing to Xi’an on the bullet train — the perfect 10 days',
-    quote:
-      'Visa-free entry made booking so much easier than we expected. Baker’s itinerary was brilliantly paced — three days in Beijing, then a bullet train to Xi’an for the Terracotta Warriors. Couldn’t have asked for more.',
-    initials: 'CM',
-    accent: 'amber',
-    date: 'January 2026',
+    name: "Maryam Absh",
+    text: "The china journey was well‑organized, I actually enjoyed all the moments without worrying about anything. Highly recommend the tour of tale of two cities china",
+    date: "2026-07-06",
+    initials: "MA",
+    accent: "amber",
+    tour: "tale of two cities",
   },
   {
-    travellerName: 'Simon & Kate Brennan',
-    travellerLocation: 'Christchurch',
-    tourLabel: 'Shanghai & Surroundings · 10 days',
-    title: 'Shanghai, Suzhou, Hangzhou — three cities, one perfect trip',
-    quote:
-      'The contrast between the futuristic Bund skyline and the classical gardens of Suzhou made us feel like we’d moved through 1,000 years of history in two days. A new benchmark for a well-designed tour.',
-    initials: 'SB',
-    accent: 'blue',
-    date: 'December 2025',
+    name: "Murray Middendorf",
+    text: "Just came back from a tour of Xinjiang and a stopover in Xian. We had a fantastic time, the culture and scenery in Xinjiang is stunning and the tour was led by an experienced guide with excellent English. Highly recommended.",
+    date: "2026-06-16",
+    initials: "MM",
+    accent: "blue",
+    tour: "Xinjiang",
   },
   {
-    travellerName: 'Robert & Anne Murray',
-    travellerLocation: 'Hamilton',
-    tourLabel: 'Silk Road · 18 days',
-    title: 'A three-week journey that belongs in a film',
-    quote:
-      'The Mogao Caves at Dunhuang, camping in the Gobi desert under more stars than I knew existed, the ancient Sunday market in Kashgar — we’ve been travelling for 30 years and this was the best trip we’ve ever taken.',
-    initials: 'RM',
-    accent: 'red',
-    date: 'February 2026',
+    name: "Tessa A",
+    text: "We had our China holiday planned by CTS tours. Communication was great and the tour itself was amazing. Everything was so well run and the tour guides in each city were great. The accommodation they chose and the preplanned meals organized were stand outs. Would definitely use again to organise future trips",
+    date: "2026-06-11",
+    initials: "TA",
+    accent: "red",
   },
 ];
+
+const MONTHS = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+/** '2026-06-16' → 'June 2026'。日期是 Google 给的，其余一概不编。 */
+function formatReviewDate(iso: string): string {
+  const [year, month] = iso.split('-');
+  const name = MONTHS[Number(month) - 1];
+  return year && name ? `${name} ${year}` : iso;
+}
 
 const ACCENT: Record<ReviewHighlight['accent'], { ring: string; badge: string; gradient: string }> = {
   amber: {
@@ -73,6 +96,7 @@ const ACCENT: Record<ReviewHighlight['accent'], { ring: string; badge: string; g
   },
 };
 
+/** 单条评价的星级 —— 下面三条在 Google 上确实都是 5 星。 */
 function Stars() {
   return (
     <div className="flex gap-0.5" aria-label="5 out of 5 stars">
@@ -99,18 +123,23 @@ export default function ReviewsHighlights({ mobileLimit }: ReviewsHighlightsProp
     <section className="bg-warm-50 border-y border-warm-100">
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-3xl mb-8">
-          <div className="flex items-center gap-2 mb-2">
-            <Stars />
-            <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold">
-              5.0 from 24 verified NZ reviews
-            </span>
-          </div>
+          {/*
+            页头故意不画五颗满星：商家总评分不是 5.0，画满星等于用图形谎报
+            聚合评分。数字统一读 google-rating.ts，不在这里写死。
+          */}
+          <a
+            href={GOOGLE_RATING.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mb-2 text-xs uppercase tracking-wider text-amber-700 font-semibold underline underline-offset-2 hover:text-amber-900"
+          >
+            {GOOGLE_RATING.value} from {GOOGLE_RATING.count} Google reviews
+          </a>
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
             What Kiwi travellers say
           </h2>
           <p className="text-lg text-gray-700">
-            Three reviews — one per flagship route below — straight from our most
-            recent New Zealand departures.
+            Three reviews from our Google Business profile, quoted word for word.
           </p>
         </div>
 
@@ -120,7 +149,7 @@ export default function ReviewsHighlights({ mobileLimit }: ReviewsHighlightsProp
             const hideOnMobile = mobileLimit != null && index >= mobileLimit;
             return (
               <article
-                key={r.travellerName}
+                key={r.name}
                 className={`bg-gradient-to-br ${a.gradient} rounded-2xl p-5 border border-warm-100 ring-1 ${a.ring} flex flex-col${
                   hideOnMobile ? ' hidden md:flex' : ''
                 }`}
@@ -131,25 +160,24 @@ export default function ReviewsHighlights({ mobileLimit }: ReviewsHighlightsProp
                   </div>
                   <div className="min-w-0">
                     <p className="font-semibold text-sm text-gray-900 truncate">
-                      {r.travellerName}
+                      {r.name}
                     </p>
                     <p className="text-xs text-gray-500">
-                      {r.travellerLocation}, NZ · {r.date}
+                      Reviewed on Google · {formatReviewDate(r.date)}
                     </p>
                   </div>
                 </div>
                 <Stars />
-                <h3 className="mt-3 font-bold text-gray-900 text-base leading-snug">
-                  {r.title}
-                </h3>
-                <blockquote className="mt-2 text-sm text-gray-700 leading-relaxed flex-1">
-                  &ldquo;{r.quote}&rdquo;
+                <blockquote className="mt-3 text-sm text-gray-700 leading-relaxed flex-1">
+                  &ldquo;{r.text}&rdquo;
                 </blockquote>
-                <span
-                  className={`mt-4 inline-flex self-start items-center text-[11px] font-semibold px-2.5 py-1 rounded-full border ${a.badge}`}
-                >
-                  {r.tourLabel}
-                </span>
+                {r.tour && (
+                  <span
+                    className={`mt-4 inline-flex self-start items-center text-[11px] font-semibold px-2.5 py-1 rounded-full border ${a.badge}`}
+                  >
+                    Tour mentioned: {r.tour}
+                  </span>
+                )}
               </article>
             );
           })}

@@ -9,6 +9,7 @@ import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
 import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
+import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
 
 /**
@@ -51,6 +52,21 @@ const CITIES = [
   { name: 'Chongqing', slug: 'chongqing', tag: 'Hotpot · Yangtze gorges', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
   { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: "Avatar's floating mountains", img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
 ];
+
+const REVIEW_MONTHS = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+/**
+ * '2026-06-21' → 'June 2026'。Google 评价只给到日期，评价人城市 / 参加的团
+ * 一概不提供，所以副标题里除了日期就只可能有客人正文里自己写出来的团名。
+ */
+function formatReviewDate(iso: string): string {
+  const [year, month] = iso.split('-');
+  const name = REVIEW_MONTHS[Number(month) - 1];
+  return year && name ? `${name} ${year}` : iso;
+}
 
 const CREDENTIALS: { src: string; alt: string; wide?: boolean }[] = [
   { src: migratedSite('credentials-taanz.png'), alt: 'TAANZ — Travel Agents Association of New Zealand' },
@@ -370,7 +386,16 @@ const HomePageRedesign = () => {
               <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">What travellers say</span>
               <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Loved by Kiwi travellers</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink-muted">
-                Real words from CTS travellers — every itinerary personally designed by our specialists.
+                Real words from CTS travellers. Every review below is public on our{' '}
+                <a
+                  href={GOOGLE_RATING.profileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-primary"
+                >
+                  Google Business profile
+                </a>
+                , quoted word for word.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -390,7 +415,9 @@ const HomePageRedesign = () => {
                     </span>
                     <span className="min-w-0">
                       <span className="block text-sm font-bold text-ink">{t.name}</span>
-                      <span className="block truncate text-xs text-ink-muted">{t.location} · {t.tour}</span>
+                      <span className="block truncate text-xs text-ink-muted">
+                        {[t.tour, formatReviewDate(t.date)].filter(Boolean).join(' · ')}
+                      </span>
                     </span>
                   </figcaption>
                 </figure>

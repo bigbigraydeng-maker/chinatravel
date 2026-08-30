@@ -4,6 +4,7 @@
 import { Tour } from './data/tours';
 import { getSiteUrl } from './site';
 import { migratedUnsplash } from './site-media';
+import { GOOGLE_RATING_SCHEMA } from '@/lib/data/google-rating'
 
 /**
  * Generate CollectionPage schema for tour hub pages
@@ -42,8 +43,7 @@ export const generateCollectionPageSchema = (
           },
           aggregateRating: {
             '@type': 'AggregateRating',
-            ratingValue: '4.9',
-            reviewCount: '200'
+            ...GOOGLE_RATING_SCHEMA
           }
         }
       }))
