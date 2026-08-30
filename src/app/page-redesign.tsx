@@ -414,8 +414,15 @@ const HomePageRedesign = () => {
       {/* ===== Why CTS ===== */}
       <section className="bg-surface py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
-            <div className="space-y-6 lg:w-1/3">
+          {/* items-start so the sticky child can move within the row rather
+              than being stretched to its full height. */}
+          <div className="flex flex-col gap-16 lg:flex-row lg:items-start lg:gap-24">
+            {/* The heading holds while the four reasons scroll past it. It costs
+                nothing but changes how the section behaves rather than how it
+                looks, which is the one kind of change a static screenshot can't
+                show. top-28 clears the sticky navbar and the notice banner.
+                Copy here is a frozen compliance string — position only. */}
+            <div className="space-y-6 lg:sticky lg:top-28 lg:w-1/3">
               <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
               <h2 className="font-serif text-4xl leading-tight text-ink">
                 Expertise you
