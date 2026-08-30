@@ -1,5 +1,6 @@
 import type { Destination, Tour } from '@/lib/data/tours';
 import { getCtsTravelAgencySchema, getSiteUrl } from '@/lib/site';
+import { GOOGLE_RATING_SCHEMA } from '@/lib/data/google-rating'
 
 const PRICE_CURRENCY = 'NZD';
 
@@ -26,9 +27,7 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
     },
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '200',
-      bestRating: '5',
+      ...GOOGLE_RATING_SCHEMA,
     },
     offers: {
       '@type': 'Offer',
@@ -129,9 +128,7 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
     ],
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '200',
-      bestRating: '5',
+      ...GOOGLE_RATING_SCHEMA,
     },
     offers: {
       '@type': 'Offer',
@@ -181,9 +178,7 @@ export function generateProductSchema(tour: Tour) {
       : `${getSiteUrl()}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '200',
-      bestRating: '5',
+      ...GOOGLE_RATING_SCHEMA,
     },
     brand: {
       '@type': 'Brand',

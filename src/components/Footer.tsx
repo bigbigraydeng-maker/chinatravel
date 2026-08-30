@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribeForm';
+import { GOOGLE_RATING } from '@/lib/data/google-rating';
 
 const Footer = () => {
   return (
@@ -132,27 +133,37 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Third-party ratings (placeholder — replace with verified scores when available) */}
+            {/*
+              Third-party ratings — 只登**核实过**的分数。
+              这里原本写死 Google 4.9 / TripAdvisor 4.8 / Facebook 4.9，并自带
+              注释 "placeholder — replace with verified scores when available"，
+              但三个数字从未被替换过。实查 Google 商家页是 4.4（见
+              lib/data/google-rating.ts）。TripAdvisor 与 Facebook 目前拿不到
+              可核实的数据，**宁可不显示，也不留一个编出来的分数** ——
+              拿到真实数据后照 Google 这块的写法加回来即可。
+            */}
             <div>
               <p className="text-gray-300 text-xs md:text-sm font-semibold uppercase tracking-wide mb-2">
                 Rated by real travellers
               </p>
               <div className="flex items-center gap-4 text-xs md:text-sm">
                 <div>
-                  <div className="text-yellow-400" aria-hidden>★★★★★</div>
-                  <div className="text-gray-400">Google 4.9</div>
-                </div>
-                <div>
-                  <div className="text-yellow-400" aria-hidden>★★★★★</div>
-                  <div className="text-gray-400">TripAdvisor 4.8</div>
-                </div>
-                <div>
-                  <div className="text-yellow-400" aria-hidden>★★★★★</div>
-                  <div className="text-gray-400">Facebook 4.9</div>
+                  <div className="text-yellow-400" aria-hidden>
+                    {'★'.repeat(Math.round(GOOGLE_RATING.value))}
+                    <span className="text-gray-600">{'★'.repeat(5 - Math.round(GOOGLE_RATING.value))}</span>
+                  </div>
+                  <a
+                    href={GOOGLE_RATING.profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-gray-200 underline-offset-2 hover:underline"
+                  >
+                    Google {GOOGLE_RATING.value} · {GOOGLE_RATING.count} reviews
+                  </a>
                 </div>
               </div>
               <p className="text-gray-500 text-xs mt-2 leading-relaxed">
-                Based on verified reviews from CTS travellers across NZ.
+                Verified Google reviews from CTS travellers. Tap the score to read them on Google.
               </p>
             </div>
 

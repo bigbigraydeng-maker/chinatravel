@@ -2,6 +2,24 @@ import Link from 'next/link';
 
 const FB_URL = 'https://www.facebook.com/CTSTOURS/';
 
+/**
+ * CTS Facebook 主页粉丝数 —— **必须是核实过的真数字**。
+ *
+ * 这里原本写死「1,200+」，配 4-5 张 i.pravatar.cc 的随机假人脸当"粉丝头像"。
+ * 那个数字在 ME 库、客户连接器、Meta 接口里都查不到来源，是编的；假头像更是
+ * 直接把随机生成的人脸当成真实粉丝展示。两样都已撤除。
+ *
+ * 现在这个数字由 PM 于 2026-08-30 在 CTS 自己的 Facebook 主页上核实。
+ *
+ * ⚠️ 改这个数字之前先去 FB_URL 看一眼实际值，**不许估、不许沿用旧值、不许
+ * 加"+"往上凑**，并同步更新 verifiedOn。拿不到真数字就把整块删掉，不要留
+ * 一个编的——留假数字比不显示更糟。
+ */
+const FB_FOLLOWERS = {
+  count: 1700,
+  verifiedOn: '2026-08-30',
+} as const;
+
 const FB_ICON = (
   <svg className="fill-white" viewBox="0 0 24 24">
     <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.268h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
@@ -25,26 +43,15 @@ export default function FacebookFollowStrip({ variant = 'full' }: FacebookFollow
           <span className="w-6 h-6">{FB_ICON}</span>
         </div>
 
-        {/* Text + social proof */}
+        {/* 假头像已撤（见 FB_FOLLOWERS 注释）；数字是核实过的真实粉丝数 */}
         <div className="flex-1 min-w-0">
           <p className="font-bold text-gray-900 text-sm leading-tight">Follow us on Facebook</p>
-          <div className="flex items-center gap-2 mt-1">
-            <div className="flex -space-x-1">
-              {[54, 31, 8, 22].map((img) => (
-                <img
-                  key={img}
-                  src={`https://i.pravatar.cc/32?img=${img}`}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 rounded-full border-2 border-white object-cover"
-                />
-              ))}
-            </div>
-            <span className="text-xs text-gray-500">
-              <span className="font-semibold text-gray-700">1,200+</span> Kiwis following
-            </span>
-          </div>
+          <p className="text-xs text-gray-500 mt-1">
+            <span className="font-semibold text-gray-700">
+              {FB_FOLLOWERS.count.toLocaleString('en-NZ')}
+            </span>{' '}
+            Kiwis following
+          </p>
         </div>
 
         {/* CTA */}
@@ -80,24 +87,13 @@ export default function FacebookFollowStrip({ variant = 'full' }: FacebookFollow
               <p className="text-gray-500 text-sm mt-0.5">
                 Travel inspiration, China tips &amp; exclusive offers for Kiwi travellers
               </p>
-              {/* Social proof row */}
-              <div className="flex items-center gap-3 mt-2">
-                <div className="flex -space-x-1.5">
-                  {[54, 31, 8, 22, 47].map((img) => (
-                    <img
-                      key={img}
-                      src={`https://i.pravatar.cc/32?img=${img}`}
-                      alt=""
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 rounded-full border-2 border-white object-cover"
-                    />
-                  ))}
-                </div>
-                <span className="text-xs text-gray-500">
-                  <span className="font-semibold text-gray-700">1,200+</span> Kiwis following
-                </span>
-              </div>
+              {/* 假头像已撤（见 FB_FOLLOWERS 注释）；数字是核实过的真实粉丝数 */}
+              <p className="text-gray-500 text-xs mt-2">
+                <span className="font-semibold text-gray-700">
+                  {FB_FOLLOWERS.count.toLocaleString('en-NZ')}
+                </span>{' '}
+                Kiwis following
+              </p>
             </div>
           </div>
 
