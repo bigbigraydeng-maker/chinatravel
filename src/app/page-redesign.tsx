@@ -384,11 +384,11 @@ const HomePageRedesign = () => {
           edge so the two overlap. The overlap is what reads as "designed":
           nothing else on the page crosses a boundary.
 
-          Photo: the real office portrait against the CTS New Zealand sign.
-          public/images/ also holds baker-gu-guilin / -zhangjiajie / -great-wall,
-          which are AI composites of Baker's face into scenery — better framed
-          for this slot, but they depict a real, named person doing something he
-          did not do. Not usable. They are currently referenced nowhere in src/.
+          Photo: the real office portrait against the CTS New Zealand sign. Three
+          better-framed alternatives used to sit alongside it and were deleted —
+          they were AI composites of a real, named person. Copies still exist in
+          the Supabase tour-images bucket, so the ban is enforced by name in
+          src/__tests__/no-ai-portraits.test.ts rather than by their absence.
 
           The portrait is 768x1376, so it is soft above ~800px of column width;
           the column is capped at 42vw for that reason. A real 2x portrait would
