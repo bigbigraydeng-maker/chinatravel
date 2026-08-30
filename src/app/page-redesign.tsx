@@ -10,6 +10,7 @@ import UpcomingDepartures from '@/components/UpcomingDepartures';
 import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { migratedSite } from '@/lib/site-media';
+import { parsePrice } from '@/lib/ui/price';
 
 /**
  * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
@@ -132,15 +133,28 @@ const HomePageRedesign = () => {
             {/*
               max-w keeps this row from running under the fixed "Need help?"
               bubble in the bottom-right corner — at full width the
-              accreditation line was being clipped by it on desktop.
+              accreditation line was being clipped by it.
+
+              The guard has to start at md, not lg: FloatingHelpBubble is
+              `hidden md:block`, so from 768px up the bubble was live while this
+              row was still full width, and it covered about a third of "TAANZ &
+              IATA accredited" — in the hero, on an iPad in portrait.
+
+              Padding, not a max-width, for the md..lg band. The bubble is
+              position:fixed at a constant 140px wide with a 24px right margin,
+              so its left edge is (viewport - 164) and it marches left as the
+              viewport narrows. A fixed max-width cannot track that: max-w-2xl
+              (672px) still overlapped by 33px at 800px wide. pr-44 keeps a
+              constant ~12px gap at every width in the band. From lg the
+              max-width alone is clear of it again.
             */}
-            <div className="space-y-3 lg:max-w-3xl">
+            <div className="space-y-3 md:pr-44 lg:max-w-3xl lg:pr-0">
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
-                <Link href="/tours" className="inline-flex items-center gap-1.5 text-white hover:text-white/70">
+                <Link href="/tours" className="inline-flex items-center gap-1.5 text-white hover:text-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Browse all tours <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
                 <span className="text-white/30">·</span>
-                <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-white hover:text-white/70">
+                <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-white hover:text-white/70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
@@ -232,9 +246,19 @@ const HomePageRedesign = () => {
                   <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{featured.tour.name}</h3>
                   <div className="flex items-center justify-between">
                     <div>
+                      {/* The card supplies its own "From" and "pp", but
+                          tour.price is free text that often already carries
+                          both — 'From NZD $4,080 per person'. Printed raw, this
+                          card reads "From / From NZD $4,080 per person pp",
+                          which is what production shows today on the largest
+                          card on the homepage. parsePrice strips the qualifiers
+                          out of the string so each is rendered exactly once.
+                          What is displayed is unchanged; only the duplication
+                          goes. */}
                       <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-white/60">From</span>
                       <span className="font-serif text-3xl font-semibold text-white">
-                        {featured.tour.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
+                        {parsePrice(featured.tour.price).amount}{' '}
+                        <span className="font-sans text-sm font-normal text-white/60">pp</span>
                       </span>
                     </div>
                     <Link
@@ -269,8 +293,17 @@ const HomePageRedesign = () => {
                         <p className="text-xs text-ink-muted">{ref.route.join(' · ')}</p>
                       </div>
                       <div className="mt-4 flex items-center justify-between">
+                        {/* Same de-duplication as the featured card. These
+                            cards have no separate "From" label, so a leading
+                            "From" in the source string is re-rendered inline
+                            rather than dropped — losing it would turn a
+                            starting price into an apparent fixed one. */}
                         <span className="font-serif text-lg font-semibold text-ink">
-                          {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
+                          {(() => {
+                            const p = parsePrice(tour.price);
+                            return p.from ? `From ${p.amount}` : p.amount;
+                          })()}{' '}
+                          <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
                         </span>
                         <Link
                           href={ref.campaignHref}
@@ -420,9 +453,18 @@ const HomePageRedesign = () => {
             {/* The heading holds while the four reasons scroll past it. It costs
                 nothing but changes how the section behaves rather than how it
                 looks, which is the one kind of change a static screenshot can't
-                show. top-28 clears the sticky navbar and the notice banner.
+                show.
+
+                The offset is computed, not guessed. VisaFreeBanner publishes its
+                own height as --vfb-h and Navbar sits at top:var(--vfb-h), so the
+                stack is banner + ~84px of navbar. A flat top-28 (112px) was
+                shorter than that whenever the banner was showing — i.e. for
+                every first-time visitor, i.e. all paid traffic — and the navbar
+                covered all but 0.4px of the eyebrow for the whole 136px of
+                sticky travel.
+
                 Copy here is a frozen compliance string — position only. */}
-            <div className="space-y-6 lg:sticky lg:top-28 lg:w-1/3">
+            <div className="space-y-6 lg:sticky lg:top-[calc(var(--vfb-h,0px)+5.5rem)] lg:w-1/3">
               <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
               <h2 className="font-serif text-4xl leading-tight text-ink">
                 Expertise you
@@ -580,14 +622,21 @@ const HomePageRedesign = () => {
             paragraph, a button and three contact controls — the copy occupies
             most of the height, so the gradient cannot stay light until near the
             top. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 to-black/35" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 to-black/45" aria-hidden />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 md:px-8 md:py-20">
-          {/* White, not the gold accent. This eyebrow used to sit on a flat red
-              panel where gold read cleanly; over a photograph of pale rock it is
-              12px uppercase gold on mid-grey and does not hold up. The "Or reach
-              us directly" line below already uses this treatment. */}
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-white/75">
+          {/* Third attempt at this line, so the reasoning is worth recording.
+              It began as the gold accent, which worked on the flat red panel
+              this block used to be and failed completely over a photograph.
+              White at 75% was the second try and still measured 2.6-3.5:1
+              against the sky in the upper part of the frame — 12px text needs
+              4.5:1, so it failed at every viewport.
+
+              Full white plus a shadow, and the scrim's top stop lifted from /35
+              to /45. The shadow is what actually carries it: the sky behind is
+              the lightest region of the photo and no reasonable scrim fixes
+              that without flattening the image. */}
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.85)]">
             Prefer to travel your way?
           </span>
           <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.02em] text-white md:text-6xl">

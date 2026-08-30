@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllActiveTours, type Tour } from '@/lib/data/tours';
+import { parsePrice } from '@/lib/ui/price';
 
 /**
  * Upcoming departures table — the nearest scheduled departures across all
@@ -33,6 +34,14 @@ interface DepartureRow {
   dateStr: string;
   date: Date;
   price: string;
+  /**
+   * True when `price` came from `departurePricing[dateStr]` — a quote for this
+   * exact departure — rather than falling back to the tour's headline price.
+   * The distinction drives whether the card says "From": labelling an exact
+   * departure quote as a starting price understates what CTS has committed to,
+   * and showing a headline price bare next to a fixed date overstates it.
+   */
+  exactForDate: boolean;
 }
 
 interface Props {
@@ -49,7 +58,8 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
     for (const dateStr of tour.departureDates) {
       const date = parseDepartureDate(dateStr, now);
       if (!date || date < now) continue;
-      rows.push({ tour, dateStr, date, price: tour.departurePricing?.[dateStr] ?? tour.price });
+      const exact = tour.departurePricing?.[dateStr];
+      rows.push({ tour, dateStr, date, price: exact ?? tour.price, exactForDate: Boolean(exact) });
     }
   }
   rows.sort((a, b) => a.date.getTime() - b.date.getTime());
@@ -81,9 +91,26 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
           derived above and untouched. Plain CSS scroll-snap, no carousel
           dependency.
         */}
-        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 md:-mx-8 md:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {upcoming.map(({ tour, date, price }, i) => {
+        {/*
+          scroll-pl matches the container gutter. A snapport is the padding box
+          and is not reduced by padding on its own, so without this the rail
+          snapped to scrollLeft 16 (mobile) / 32 (desktop) on load and card one
+          sat flush against the viewport edge, 32px left of this section's own
+          h2 — it read as broken rather than deliberate.
+
+          The scrollbar is deliberately NOT hidden. Six cards do not fit at any
+          desktop width (1822px of content in a 1280px viewport), and on
+          Windows and Linux the scrollbar is the only pointer affordance there
+          is — no arrows, no dots, no edge fade. Hiding it left mouse users with
+          a rail they could not tell was scrollable.
+
+          pt-1 keeps the focus ring off the top edge: overflow-x:auto promotes
+          overflow-y to auto, which clipped the ring by ~4px.
+        */}
+        <div className="-mx-4 flex snap-x snap-mandatory scroll-pl-4 gap-4 overflow-x-auto px-4 pb-3 pt-1 md:-mx-8 md:scroll-pl-8 md:px-8">
+          {upcoming.map(({ tour, date, price, exactForDate }, i) => {
             const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+            const parsed = parsePrice(price);
             return (
               <Link
                 key={`${tour.slug}-${i}`}
@@ -110,9 +137,27 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
                 {/* items-end + shrink-0, because prices are free text from
                     tours.ts and some read "NZD $3,899 per person" — long enough
                     to wrap. With justify-between alone the wrap squeezed the
-                    View link onto two lines and the card feet stopped lining up. */}
+                    View link onto two lines and the card feet stopped lining up.
+
+                    The table this replaced carried a "From" column header. The
+                    first pass at the card dropped it, which left four of the six
+                    live cards showing a bare amount directly under a specific
+                    date — reading as a fixed total for that departure. "From"
+                    comes back, but only where it is true: a departurePricing
+                    entry IS the quote for that date and must not be hedged.
+                    "pp" is shown only when the source string said so; the
+                    catalogue has bare prices and inventing the qualifier is not
+                    ours to do. */}
                 <div className="mt-5 flex items-end justify-between gap-3 border-t border-warm-100 pt-4">
-                  <span className="min-w-0 flex-1 font-serif text-lg font-bold leading-tight text-ink">{price}</span>
+                  <span className="min-w-0 flex-1 leading-tight">
+                    {!exactForDate && (
+                      <span className="mr-1.5 text-xs font-bold uppercase tracking-wider text-ink-muted">From</span>
+                    )}
+                    <span className="font-serif text-lg font-bold text-ink">{parsed.amount}</span>
+                    {parsed.perPerson && (
+                      <span className="ml-1 text-xs text-ink-muted">pp</span>
+                    )}
+                  </span>
                   <span className="shrink-0 whitespace-nowrap text-xs font-bold uppercase tracking-wider text-primary">View →</span>
                 </div>
               </Link>
