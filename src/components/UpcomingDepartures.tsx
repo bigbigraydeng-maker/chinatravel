@@ -107,9 +107,13 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
                   {tour.tier} · {tour.duration}
                 </p>
 
-                <div className="mt-5 flex items-center justify-between border-t border-warm-100 pt-4">
-                  <span className="font-serif text-lg font-bold text-ink">{price}</span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-primary">View →</span>
+                {/* items-end + shrink-0, because prices are free text from
+                    tours.ts and some read "NZD $3,899 per person" — long enough
+                    to wrap. With justify-between alone the wrap squeezed the
+                    View link onto two lines and the card feet stopped lining up. */}
+                <div className="mt-5 flex items-end justify-between gap-3 border-t border-warm-100 pt-4">
+                  <span className="min-w-0 flex-1 font-serif text-lg font-bold leading-tight text-ink">{price}</span>
+                  <span className="shrink-0 whitespace-nowrap text-xs font-bold uppercase tracking-wider text-primary">View →</span>
                 </div>
               </Link>
             );

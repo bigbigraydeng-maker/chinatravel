@@ -575,12 +575,19 @@ const HomePageRedesign = () => {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {/* Darker than the hero's scrim: this band carries a paragraph, a
-            button and three contact controls, not just a headline. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20" aria-hidden />
+        {/* Darker than the hero's scrim, and darker through the middle than a
+            hero scrim would be. This band carries an eyebrow, a headline, a
+            paragraph, a button and three contact controls — the copy occupies
+            most of the height, so the gradient cannot stay light until near the
+            top. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 to-black/35" aria-hidden />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 md:px-8 md:py-20">
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+          {/* White, not the gold accent. This eyebrow used to sit on a flat red
+              panel where gold read cleanly; over a photograph of pale rock it is
+              12px uppercase gold on mid-grey and does not hold up. The "Or reach
+              us directly" line below already uses this treatment. */}
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-white/75">
             Prefer to travel your way?
           </span>
           <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.02em] text-white md:text-6xl">
