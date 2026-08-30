@@ -442,36 +442,62 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      {/* ===== Testimonials wall (real reviews) ===== */}
+      {/* ===== Testimonials wall (real reviews) =====
+          Was three bordered cards with line-clamp-4. These reviews run ~65
+          words and are specific — they name Mutianyu at sunrise, the bullet
+          train, the hutong walk. The clamp was cutting them mid-sentence, so
+          the most persuasive detail was the part being thrown away, and the
+          card frames made real words look like ad copy.
+
+          Now one lead quote set in display serif, then the rest as
+          hairline-separated quotes in CSS columns. No clamp anywhere: every
+          review is shown in full. break-inside-avoid keeps a quote from
+          splitting across a column.
+
+          Note this is presentational only — src/app/page.tsx carries
+          TravelAgency + WebSite JSON-LD and no Review/aggregateRating, so
+          there is no rich-result surface to break here.
+      */}
       {reviews.length > 0 && (
         <section className="bg-white py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 max-w-2xl">
+            <div className="mb-12 max-w-2xl">
               <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">What travellers say</span>
               <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Loved by Kiwi travellers</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink-muted">
                 Real words from CTS travellers — every itinerary personally designed by our specialists.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((t) => (
-                <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-6 shadow-editorial">
-                  <div className="mb-4 flex text-secondary">
+
+            <figure className="mb-14 max-w-4xl border-l-2 border-primary pl-6 md:pl-10">
+              <blockquote className="font-serif text-xl italic leading-[1.35] text-ink md:text-[1.75rem]">
+                &ldquo;{reviews[0].text}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3">
+                <span className="flex h-11 w-11 flex-none items-center justify-center rounded-full bg-primary/10 font-serif text-sm font-bold text-primary">
+                  {reviews[0].avatarInitials}
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-sm font-bold text-ink">{reviews[0].name}</span>
+                  <span className="block text-xs text-ink-muted">{reviews[0].location} · {reviews[0].tour}</span>
+                </span>
+              </figcaption>
+            </figure>
+
+            <div className="columns-1 gap-10 md:columns-2 lg:columns-3">
+              {reviews.slice(1).map((t) => (
+                <figure key={t.id} className="mb-9 break-inside-avoid border-t border-warm-200 pt-5">
+                  <div className="mb-3 flex text-secondary">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Icon key={i} name="star" className="h-4 w-4" />
+                      <Icon key={i} name="star" className="h-3.5 w-3.5" />
                     ))}
                   </div>
-                  <blockquote className="mb-6 flex-1 text-sm leading-relaxed text-ink line-clamp-4">
+                  <blockquote className="text-sm leading-relaxed text-ink-muted">
                     &ldquo;{t.text}&rdquo;
                   </blockquote>
-                  <figcaption className="flex items-center gap-3 border-t border-warm-100 pt-4">
-                    <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary/10 font-serif text-sm font-bold text-primary">
-                      {t.avatarInitials}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-sm font-bold text-ink">{t.name}</span>
-                      <span className="block truncate text-xs text-ink-muted">{t.location} · {t.tour}</span>
-                    </span>
+                  <figcaption className="mt-3 text-xs">
+                    <span className="font-bold text-ink">{t.name}</span>
+                    <span className="text-ink-muted"> · {t.location} · {t.tour}</span>
                   </figcaption>
                 </figure>
               ))}
