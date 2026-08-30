@@ -31,6 +31,50 @@ const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
 const CTA_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg';
 
+/*
+  CTS's own photographs of CTS departures. Everything else pictured on this page
+  is a stock or AI landscape — the same Unsplash China set the competition uses —
+  so these are the only images here that a competitor could not also buy.
+  Lanyards and the CTS Tours sign are visible in three of the four.
+
+  Served from /blog/web/, which holds 1000px (1800px for the wide one)
+  re-encodes of the originals in /blog/. The originals stay put because other
+  pages reference them. The derivatives exist because image-loader.ts passes
+  local paths straight through — every srcset candidate resolves to the same
+  URL — so a page using the originals ships the full file. The Great Wall
+  original alone is 1.3MB; the set is 2.7MB as shot and 1.3MB here.
+
+  Captions state only what is visible in the frame. Nothing about dates,
+  itineraries or which tour these were shot on is asserted, because that is not
+  recorded anywhere.
+*/
+const TRAVELLER_PHOTOS = [
+  {
+    src: '/blog/web/group-great-wall-cts.jpg',
+    alt: 'CTS group on the Great Wall of China, holding a CTS Tours sign',
+    caption: 'On the Great Wall',
+    portrait: true,
+  },
+  {
+    src: '/blog/web/group-temple-of-heaven-beijing.jpg',
+    alt: 'CTS travellers at the Temple of Heaven in Beijing',
+    caption: 'Temple of Heaven, Beijing',
+    portrait: true,
+  },
+  {
+    src: '/blog/web/group-shanghai-bund-selfie.jpg',
+    alt: 'CTS travellers photographing themselves on the Shanghai Bund',
+    caption: 'The Bund, Shanghai',
+    portrait: true,
+  },
+  {
+    src: '/blog/web/group-bullet-train-cts-sign.jpg',
+    alt: 'A CTS group seated in a Chinese high-speed train carriage',
+    caption: 'Between cities by high-speed rail',
+    portrait: false,
+  },
+];
+
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
     <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
@@ -488,6 +532,67 @@ const HomePageRedesign = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===== On tour with CTS — our own photographs =====
+          Placed immediately before the reviews on purpose: faces first, then
+          the words those people wrote. Text-only social proof asks to be
+          believed; a photograph of the same customers does not.
+
+          Treated deliberately unlike every other image block on this page.
+          Everything else here is rounded, gradient-scrimmed, with copy set over
+          the picture. These are square-cornered, edge to edge, separated by
+          hairlines, captioned underneath — the arrangement of a contact sheet
+          rather than an advertisement. Dressing up a snapshot is what makes it
+          look like stock.
+
+          The block also escapes the max-w-7xl container that the heading sits
+          in, so the photographs run the full width of the viewport.
+      */}
+      <section className="bg-white pt-16 md:pt-20">
+        <div className="mx-auto mb-10 max-w-7xl px-4 md:mb-12 md:px-8">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+            On tour with CTS
+          </span>
+          <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Real travellers, real departures.</h2>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
+            Every photograph here is from a CTS departure. The people in them are our guests.
+          </p>
+        </div>
+
+        {/* gap-px over a warm background draws the hairlines between frames. */}
+        <div className="grid grid-cols-2 gap-px bg-warm-200 sm:grid-cols-3">
+          {TRAVELLER_PHOTOS.map((photo, i) => (
+            <figure
+              key={photo.src}
+              /* The lead portrait takes the full width on a phone — three
+                 portraits across a 390px screen is 125px each, too small to
+                 read a face. Index rather than a first: variant: stacking
+                 first: with sm: relies on variant ordering that is easy to get
+                 backwards and produces no CSS when you do. */
+              className={`bg-white ${
+                !photo.portrait
+                  ? 'col-span-2 sm:col-span-3'
+                  : i === 0
+                    ? 'col-span-2 sm:col-span-1'
+                    : 'col-span-1'
+              }`}
+            >
+              <div className={`relative bg-warm-100 ${photo.portrait ? 'aspect-[3/4]' : 'aspect-[16/9]'}`}>
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes={photo.portrait ? '(max-width: 640px) 100vw, 33vw' : '100vw'}
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-4 py-4 text-xs font-semibold uppercase tracking-wider text-ink-muted md:px-6">
+                {photo.caption}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
