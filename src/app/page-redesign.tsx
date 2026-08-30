@@ -298,16 +298,29 @@ const HomePageRedesign = () => {
       {/* ===== Popular cities ===== */}
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="mb-12 text-center">
+          {/* Left-aligned. A centred heading over a regular grid is the most
+              template-looking arrangement on the page, and it is the one thing
+              every section here was doing. */}
+          <div className="mb-12">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Where to go</span>
             <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Explore China by city</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
-            {CITIES.map((c) => (
+          {/*
+            Six equal tiles on a shared baseline read as a contact sheet. The
+            tiles are still a grid — the links, order and crops are unchanged —
+            but every third one drops, so the eye travels instead of scanning
+            rows. Offsets are desktop-only; on a phone a stagger just wastes
+            vertical space. items-start stops the pushed tiles from stretching
+            their row.
+          */}
+          <div className="grid grid-cols-2 items-start gap-4 md:grid-cols-3 md:gap-6">
+            {CITIES.map((c, i) => (
               <Link
                 key={c.slug}
                 href={`/${c.slug}-tours`}
-                className="group relative block h-56 overflow-hidden rounded-2xl md:h-64"
+                className={`group relative block h-56 overflow-hidden rounded-2xl md:h-64 ${
+                  ['', 'lg:mt-10', 'lg:mt-20'][i % 3]
+                }`}
               >
                 <Image
                   src={c.img}
@@ -327,47 +340,73 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      {/* ===== Meet your specialist (Baker Gu) ===== */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
+      {/* ===== Meet your specialist (Baker Gu) =====
+          Was a 380px rounded photo card sitting in a 12-column grid, i.e. one
+          more box next to another box. CTS's single strongest differentiator —
+          you talk to a named person, not a call centre — was rendered at the
+          same visual weight as a tour thumbnail.
+
+          Now the portrait bleeds off the left edge of the viewport and runs
+          full height, and the contact card is pulled back over the photo's
+          edge so the two overlap. The overlap is what reads as "designed":
+          nothing else on the page crosses a boundary.
+
+          Photo: the real office portrait against the CTS New Zealand sign.
+          public/images/ also holds baker-gu-guilin / -zhangjiajie / -great-wall,
+          which are AI composites of Baker's face into scenery — better framed
+          for this slot, but they depict a real, named person doing something he
+          did not do. Not usable. They are currently referenced nowhere in src/.
+
+          The portrait is 768x1376, so it is soft above ~800px of column width;
+          the column is capped at 42vw for that reason. A real 2x portrait would
+          let this run wider.
+      */}
+      <section className="bg-warm-50">
+        <div className="flex flex-col lg:flex-row lg:items-stretch">
           <Link
             href="/experts/baker-gu"
-            className="group relative mx-auto block h-[380px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5"
+            className="group relative min-h-[440px] w-full shrink-0 overflow-hidden sm:min-h-[540px] lg:min-h-[660px] lg:w-[42%]"
           >
             <Image
               src={BAKER_IMAGE}
-              alt="Baker Gu, CTS China specialist"
+              alt="Baker Gu at the CTS New Zealand office"
               fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover object-[center_22%] transition-transform duration-700 group-hover:scale-[1.03]"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6">
-              <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent p-6 pt-16">
+              <p className="font-serif text-2xl text-white">Baker Gu</p>
               <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
-              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary">
+              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/90">
                 Read his story <ArrowRight className="h-3.5 w-3.5" />
               </span>
             </div>
           </Link>
-          <div className="lg:col-span-7">
+
+          <div className="w-full self-center px-4 py-14 md:px-8 md:py-16 lg:flex-1 lg:py-20 lg:pl-24 lg:pr-10 xl:pl-32 xl:pr-16">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Meet your specialist</span>
-            <blockquote className="mb-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
+            <blockquote className="mb-6 max-w-xl font-serif text-[1.75rem] italic leading-[1.15] text-ink md:text-4xl">
               &ldquo;For 20 years I&apos;ve shown Kiwi travellers the China I grew up in — not the one in the brochures.&rdquo;
             </blockquote>
-            <p className="mb-4 max-w-xl leading-relaxed text-ink-muted">
+            <p className="mb-5 max-w-lg leading-relaxed text-ink-muted">
               Baker personally designs and quality-checks every CTS journey. When you enquire, you&apos;re not talking to
               a call centre — you&apos;re talking to the person who built the trip.
             </p>
-            <div className="mb-8 flex flex-wrap gap-2">
+            <div className="mb-6 flex flex-wrap gap-2">
               {['Born in China', 'NZ-based', '20+ years in travel', 'Mandarin · English · Cantonese'].map((c) => (
-                <span key={c} className="rounded-full border border-warm-200 bg-surface px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
+                <span key={c} className="rounded-full border border-warm-200 bg-white px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
               ))}
             </div>
-            <Link href="/experts/baker-gu" className="mb-8 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
+            <Link href="/experts/baker-gu" className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
               Read Baker&apos;s full story <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-            <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
-            <ContactChannels tone="light" />
+
+            {/* Pulled back over the photo edge on desktop. Keeps its own
+                background so it stays readable where it crosses the image. */}
+            <div className="relative z-10 mt-8 rounded-2xl bg-white p-6 shadow-editorial lg:-ml-36 lg:max-w-lg xl:-ml-48">
+              <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
+              <ContactChannels tone="light" />
+            </div>
           </div>
         </div>
       </section>
@@ -483,55 +522,55 @@ const HomePageRedesign = () => {
         </section>
       )}
 
-      {/* ===== Design your China (enquiry CTA card) ===== */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl shadow-editorial lg:grid-cols-2">
-            {/* Left — heritage-red panel */}
-            <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#8E121F] via-primary to-[#A3172A] p-10 text-white md:p-14">
-              <div
-                className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(214,167,86,0.38), transparent 65%)' }}
-                aria-hidden
-              />
-              <div className="relative">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
-                  Prefer to travel your way?
-                </span>
-                <h2 className="mb-5 font-serif text-4xl leading-tight text-white md:text-5xl">
-                  Let&apos;s design your China, together.
-                </h2>
-                <p className="mb-8 max-w-md text-lg font-light leading-relaxed text-white/85">
-                  Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
-                  working day.
-                </p>
-                <Link
-                  href="/tailor-made"
-                  className="mb-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-primary shadow-lg transition-colors hover:bg-secondary hover:text-ink"
-                >
-                  Start your tailor-made trip <ArrowRight />
-                </Link>
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/60">Or reach us directly</p>
-                <ContactChannels tone="dark" />
-                <p className="mt-5 text-sm text-white/70">
-                  Prefer to talk now? Call{' '}
-                  <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">
-                    {CTS_PHONE_DISPLAY}
-                  </a>
-                </p>
-              </div>
-            </div>
-            {/* Right — cinematic photo */}
-            <div className="relative min-h-[300px] lg:min-h-full">
-              <Image
-                src={CTA_IMAGE}
-                alt="Dramatic mountain landscape in China"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+      {/* ===== Design your China (enquiry CTA) =====
+          Was a rounded card inside max-w-6xl: the page ended on a box, the same
+          shape as every other box above it.
+
+          Now a full-bleed closing band using the hero's own language — one
+          photograph, the same dark gradient, copy anchored bottom-left. The
+          page opens and closes the same way, which is what makes the middle
+          read as one designed thing rather than a stack of sections.
+
+          Every lead channel is carried over unchanged: the /tailor-made CTA,
+          ContactChannels tone="dark", and the tel: link.
+      */}
+      <section className="relative flex min-h-[560px] items-end overflow-hidden text-white md:min-h-[70vh]">
+        <Image
+          src={CTA_IMAGE}
+          alt="Dramatic mountain landscape in China"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* Darker than the hero's scrim: this band carries a paragraph, a
+            button and three contact controls, not just a headline. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/20" aria-hidden />
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-16 md:px-8 md:py-20">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
+            Prefer to travel your way?
+          </span>
+          <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-[1.05] tracking-[-0.02em] text-white md:text-6xl">
+            Let&apos;s design your China, together.
+          </h2>
+          <p className="mb-8 max-w-lg text-lg font-light leading-relaxed text-white/85">
+            Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
+            working day.
+          </p>
+          <Link
+            href="/tailor-made"
+            className="mb-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-primary shadow-lg transition-colors hover:bg-secondary hover:text-ink"
+          >
+            Start your tailor-made trip <ArrowRight />
+          </Link>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/60">Or reach us directly</p>
+          <ContactChannels tone="dark" />
+          <p className="mt-5 text-sm text-white/70">
+            Prefer to talk now? Call{' '}
+            <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">
+              {CTS_PHONE_DISPLAY}
+            </a>
+          </p>
         </div>
       </section>
     </div>

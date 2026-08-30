@@ -70,47 +70,50 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
           </p>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse" style={{ minWidth: '640px' }}>
-            <thead>
-              <tr className="border-b border-secondary/20 text-left">
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Departs</th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Journey</th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">Duration</th>
-                <th className="px-6 py-4 text-xs font-bold uppercase tracking-wider text-ink-muted">From</th>
-                <th className="px-6 py-4"></th>
-              </tr>
-            </thead>
-            <tbody className="text-sm">
-              {upcoming.map(({ tour, date, price }, i) => {
-                const label = `${date.getDate()} ${SHORT_MONTHS[date.getMonth()]} ${date.getFullYear()}`;
-                const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
-                return (
-                  <tr key={`${tour.slug}-${i}`} className="border-b border-secondary/10 transition-colors hover:bg-white/60">
-                    <td className="whitespace-nowrap px-6 py-6 font-medium text-ink" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                      {label}
-                    </td>
-                    <td className="px-6 py-6">
-                      <Link href={href} className="font-semibold text-ink transition-colors hover:text-primary">
-                        {tour.name}
-                      </Link>{' '}
-                      <span className="capitalize text-ink-muted">({tour.tier})</span>
-                    </td>
-                    <td className="whitespace-nowrap px-6 py-6 text-ink-muted">{tour.duration}</td>
-                    <td className="whitespace-nowrap px-6 py-6 font-serif font-bold text-ink">{price}</td>
-                    <td className="px-6 py-6">
-                      <Link
-                        href={href}
-                        className="text-xs font-bold uppercase tracking-wider text-primary hover:underline"
-                      >
-                        View
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        {/*
+          Was a five-column <table> with a hard minWidth:640px, wrapped in
+          overflow-x-auto. On the homepage it read as a spreadsheet, and on a
+          phone it forced a sideways drag to see the price or the link.
+
+          Now a scroll-snap rail of date cards: the day is the largest thing on
+          each card, which is what someone scanning departures is actually
+          looking for. Same six fields, same order, same links — the data is
+          derived above and untouched. Plain CSS scroll-snap, no carousel
+          dependency.
+        */}
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3 md:-mx-8 md:px-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {upcoming.map(({ tour, date, price }, i) => {
+            const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+            return (
+              <Link
+                key={`${tour.slug}-${i}`}
+                href={href}
+                className="group flex shrink-0 snap-start basis-[78%] flex-col rounded-2xl border border-warm-200 bg-white p-6 transition-colors hover:border-primary/50 sm:basis-[44%] lg:basis-[30%] xl:basis-[23%]"
+              >
+                <span
+                  className="font-serif text-5xl leading-none text-ink"
+                  style={{ fontVariantNumeric: 'tabular-nums' }}
+                >
+                  {date.getDate()}
+                </span>
+                <span className="mt-1 text-sm font-semibold uppercase tracking-wider text-ink-muted">
+                  {SHORT_MONTHS[date.getMonth()]} {date.getFullYear()}
+                </span>
+
+                <p className="mt-6 flex-1 font-semibold leading-snug text-ink transition-colors group-hover:text-primary">
+                  {tour.name}
+                </p>
+                <p className="mt-1 text-xs capitalize text-ink-muted">
+                  {tour.tier} · {tour.duration}
+                </p>
+
+                <div className="mt-5 flex items-center justify-between border-t border-warm-100 pt-4">
+                  <span className="font-serif text-lg font-bold text-ink">{price}</span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-primary">View →</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="mt-8">
