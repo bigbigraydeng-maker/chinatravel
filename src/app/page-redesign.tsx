@@ -70,47 +70,73 @@ const HomePageRedesign = () => {
 
   return (
     <div className="bg-surface font-sans text-ink">
-      {/* ===== Asymmetric hero ===== */}
-      <section className="relative overflow-hidden bg-surface">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
-          <div className="space-y-7 lg:col-span-5 lg:pr-6">
-            <h1 className="font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-7xl">
-              See all of China,
-              <br />
-              <span className="italic text-primary">the way it deserves.</span>
-            </h1>
-            <p className="max-w-md text-lg font-light leading-relaxed text-ink-muted">
-              Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
-              genuinely tailor-made.
-            </p>
-            <HeroSearchEditorial />
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
-              <Link href="/tours" className="inline-flex items-center gap-1.5 text-ink hover:text-primary">
-                Browse all tours <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <span className="text-ink/20">·</span>
-              <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-primary hover:text-red-700">
-                Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs font-bold uppercase tracking-wider text-ink-muted">
-              <span>Backed by CTS · Founded 1928</span>
-              <span className="text-ink/20">•</span>
-              <span>10,000+ Kiwi travellers</span>
-              <span className="text-ink/20">•</span>
-              <span>TAANZ &amp; IATA accredited</span>
-            </div>
-          </div>
+      {/*
+        ===== Immersive hero =====
 
-          <div className="relative h-[44vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[62vh] lg:rounded-l-3xl">
-            <Image
-              src={HERO_IMAGE}
-              alt="The Great Wall of China at dawn"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-right"
-            />
+        Was a 5/7 split: copy in a column on the left, a rounded photo card on
+        the right. Legible, but structurally the same layout as every other
+        page — which is why three weeks of restyling never read as a redesign.
+
+        This is Ceepii's hero language properly: the photograph is the page,
+        the type sits on it, and everything anchors to the bottom edge. Ceepii
+        runs it at min-h-dvh; 88vh clamped to 640-860px keeps a sliver of the
+        next section visible so the page still reads as scrollable.
+
+        The search card keeps its white surface and floats on the image, which
+        is how Ceepii places its own search — no restyling needed there.
+      */}
+      <section className="relative flex min-h-[600px] flex-col justify-end overflow-hidden text-white md:h-[88vh] md:min-h-[640px] md:max-h-[860px]">
+        <Image
+          src={HERO_IMAGE}
+          alt="The Great Wall of China at dawn"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/15"
+          aria-hidden
+        />
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-10 md:px-8 md:pb-14 lg:pb-16">
+          <h1 className="max-w-4xl font-serif text-[2.75rem] font-normal leading-[0.98] tracking-[-0.02em] sm:text-6xl lg:text-7xl xl:text-8xl">
+            See all of China,
+            <br />
+            <span className="italic text-white/90">the way it deserves.</span>
+          </h1>
+
+          <p className="mt-6 max-w-lg text-lg font-light leading-relaxed text-white/80">
+            Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
+            genuinely tailor-made.
+          </p>
+
+          <div className="mt-9 grid gap-7 lg:grid-cols-[minmax(0,25rem)_1fr] lg:items-end lg:gap-12">
+            <HeroSearchEditorial />
+
+            {/*
+              max-w keeps this column from running under the fixed "Need help?"
+              bubble in the bottom-right corner — at full width the
+              accreditation line was being clipped by it on desktop.
+            */}
+            <div className="space-y-5 lg:max-w-xl lg:pb-1">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
+                <Link href="/tours" className="inline-flex items-center gap-1.5 text-white hover:text-white/70">
+                  Browse all tours <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <span className="text-white/30">·</span>
+                <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-white hover:text-white/70">
+                  Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-semibold uppercase tracking-wider text-white/70">
+                <span>Backed by CTS · Founded 1928</span>
+                <span className="text-white/30">•</span>
+                <span>10,000+ Kiwi travellers</span>
+                <span className="text-white/30">•</span>
+                <span>TAANZ &amp; IATA accredited</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
