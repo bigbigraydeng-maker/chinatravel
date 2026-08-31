@@ -32,10 +32,10 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
     destination: 'china',
     tier: 'discovery',
-    slug: 'essentials',
-    campaignHref: '/tours/china/discovery/essentials',
-    departureLabel: '11 Mar 2027',
-    route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
+    slug: 'golden-china',
+    campaignHref: '/tours/china/discovery/golden-china',
+    departureLabel: '16 Nov 2026',
+    route: ['Beijing', "Xi'an", 'Shanghai'],
   },
   {
     destination: 'china',
@@ -48,10 +48,10 @@ export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
     destination: 'china',
     tier: 'discovery',
-    slug: 'golden-china',
-    campaignHref: '/tours/china/discovery/golden-china',
-    departureLabel: '16 Nov 2026',
-    route: ['Beijing', "Xi'an", 'Shanghai'],
+    slug: 'essentials',
+    campaignHref: '/tours/china/discovery/essentials',
+    departureLabel: '11 Mar 2027',
+    route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
   },
 ];
 
