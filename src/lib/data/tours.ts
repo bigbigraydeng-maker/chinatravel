@@ -1265,7 +1265,7 @@ export const tours: Tour[] = [
       {
         day: 4,
         title: 'Shanghai — Zhujiajiao Watertown',
-        description: 'Visit Zhujiajiao Watertown.',
+        description: 'Christmas morning is spent in Zhujiajiao, an ancient water town on Shanghai\'s outskirts often called the \'Venice of Shanghai\', with a history stretching back over a thousand years. Cross its arched stone bridges as the canal runs beneath, wander streets lined with Ming and Qing dynasty buildings, and sample local snacks sold straight from the doorways — a quiet, unhurried Christmas Day on the water.',
         meals: [
           'Breakfast',
           'Lunch',
@@ -1465,6 +1465,16 @@ export const tours: Tour[] = [
         },
       },
       {
+        question: 'Why does China celebrate on Christmas Eve rather than Christmas Day?',
+        answer:
+          'In China the big night is Christmas Eve, known as Ping\'an Ye ("peaceful night"). It\'s tradition to give apples wrapped in gold foil, because the Mandarin word for apple (píngguǒ) sounds close to the word for peace (píng\'ān) — a custom that took off in the early 2000s and has stuck ever since. In a city like Shanghai this makes for a lively, lit-up Christmas Eve, which is exactly why this itinerary puts you in Shanghai on the 24th rather than the 25th.',
+      },
+      {
+        question: 'What\'s the weather like in China in December?',
+        answer:
+          'Cold and dry rather than wet — pack proper winter layers, not a raincoat. Beijing sits around freezing during the day and well below overnight, with darkness falling before 5pm; Xi\'an is cold and dry and Shanghai cold and damp, before Chongqing and Guangzhou turn milder toward the end of the trip. The upside: December is China\'s quiet season, so the Forbidden City and the Great Wall at Mutianyu (open year-round, with its cable car running and good footing on the restored steps) are far less crowded than in autumn, and Kunming Lake at the Summer Palace freezes solid — a sight summer visitors never see.',
+      },
+      {
         question: 'How do I book and what payment options are available?',
         answer:
           'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, finalise details, and outline deposit and balance payment steps.',
@@ -1533,7 +1543,7 @@ export const tours: Tour[] = [
       {
         day: 4,
         title: 'Shanghai — Zhujiajiao Watertown',
-        description: 'Visit Zhujiajiao Watertown.',
+        description: 'Christmas morning is spent in Zhujiajiao, an ancient water town on Shanghai\'s outskirts often called the \'Venice of Shanghai\', with a history stretching back over a thousand years. Cross its arched stone bridges as the canal runs beneath, wander streets lined with Ming and Qing dynasty buildings, and sample local snacks sold straight from the doorways — a quiet, unhurried Christmas Day on the water.',
         meals: [
           'Breakfast',
           'Lunch',
@@ -1721,6 +1731,16 @@ export const tours: Tour[] = [
         question: 'Why is the Christchurch departure priced differently to Auckland?',
         answer:
           "China Southern Airlines — celebrating its 70th anniversary in 2026 — resumed its Christchurch–Guangzhou route post-pandemic, and CTS passes that route's better fare straight through to travellers departing the South Island — NZD $1,000 less than the equivalent Auckland departure.",
+      },
+      {
+        question: 'Why does China celebrate on Christmas Eve rather than Christmas Day?',
+        answer:
+          'In China the big night is Christmas Eve, known as Ping\'an Ye ("peaceful night"). It\'s tradition to give apples wrapped in gold foil, because the Mandarin word for apple (píngguǒ) sounds close to the word for peace (píng\'ān) — a custom that took off in the early 2000s and has stuck ever since. In a city like Shanghai this makes for a lively, lit-up Christmas Eve, which is exactly why this itinerary puts you in Shanghai on the 24th rather than the 25th.',
+      },
+      {
+        question: 'What\'s the weather like in China in December?',
+        answer:
+          'Cold and dry rather than wet — pack proper winter layers, not a raincoat. Beijing sits around freezing during the day and well below overnight, with darkness falling before 5pm; Xi\'an is cold and dry and Shanghai cold and damp, before Chongqing and Guangzhou turn milder toward the end of the trip. The upside: December is China\'s quiet season, so the Forbidden City and the Great Wall at Mutianyu (open year-round, with its cable car running and good footing on the restored steps) are far less crowded than in autumn, and Kunming Lake at the Summer Palace freezes solid — a sight summer visitors never see.',
       },
       {
         question: 'How do I book and what payment options are available?',
