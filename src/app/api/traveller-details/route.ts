@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
-const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
+// Traveller registration forms always go to the CTS main inbox — fixed by request.
+const NOTIFY_ADDRESS = 'info@ctstours.co.nz';
 
 interface TravellerInput {
   fullName?: string;
@@ -22,7 +23,6 @@ export async function POST(req: NextRequest) {
   }
 
   const resend = new Resend(apiKey);
-  const notifyTo = process.env.ENQUIRY_NOTIFY_EMAIL?.trim() || DEFAULT_NOTIFY;
 
   try {
     const body = await req.json();
@@ -137,9 +137,9 @@ export async function POST(req: NextRequest) {
 
     const { error } = await resend.emails.send({
       from: FROM_ADDRESS,
-      to: notifyTo,
+      to: NOTIFY_ADDRESS,
       replyTo: String(leadEmail),
-      subject: `Traveller details: ${leadName}${bookingRef ? ` (${bookingRef})` : ''}`,
+      subject: `出行登记表 — ${leadName}${bookingRef ? ` (${bookingRef})` : ''}`,
       html,
     });
 
