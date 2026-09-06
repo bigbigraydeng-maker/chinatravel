@@ -170,6 +170,8 @@ Many New Zealand passport holders currently qualify for China's visa-free entry 
 
 CTS Tours offers **A Tale of Two Cities** — 10 days, Beijing + Xi'an, guided throughout, from NZD $3,480 per person (twin share). Includes international airfares from Auckland, 4-star hotels, high-speed train, entrance fees, and English-speaking guide.
 
+Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027), in addition to the October 2026 departure.
+
 [View tour details and departure dates →](/tours/china/discovery/beijing-xian)
     `
   },
@@ -435,7 +437,7 @@ October is the strongest month for this route. The summer heat and humidity have
 
 ## Visa and Pricing
 
-Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $3,399** per person (twin share), including international airfares from Auckland.
+Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $3,399** per person (twin share), including international airfares from Auckland. A confirmed 2027 group departure leaves Auckland on 25 March 2027 (returns 3 April 2027).
 
 [View the Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
