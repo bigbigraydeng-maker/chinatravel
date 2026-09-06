@@ -1,4 +1,5 @@
 import type { Destination, Tour } from '@/lib/data/tours';
+import { parseDepartureDate } from '@/lib/data/tour-dates';
 import { getCtsTravelAgencySchema, getSiteUrl } from '@/lib/site';
 import { GOOGLE_RATING_SCHEMA } from '@/lib/data/google-rating'
 
@@ -9,9 +10,51 @@ function parsePriceAmount(price: string): number {
   return Number.isFinite(n) ? n : 0;
 }
 
+function toISODate(raw: string): string | null {
+  const d = parseDepartureDate(raw);
+  if (!d) return null;
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+/**
+ * Build one schema.org Offer per scheduled departure (with availabilityStarts
+ * as an ISO date and per-date price where declared). Falls back to a single
+ * generic Offer with the tour's base price if no departureDates are set.
+ */
+function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
+  const url = `${siteUrl}/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+  const basePrice = parsePriceAmount(tour.price);
+  if (!tour.departureDates || tour.departureDates.length === 0) {
+    return {
+      '@type': 'Offer',
+      price: basePrice,
+      priceCurrency: PRICE_CURRENCY,
+      availability: 'https://schema.org/InStock',
+      url,
+      seller,
+    };
+  }
+  return tour.departureDates.map((d) => {
+    const iso = toISODate(d);
+    const perDatePrice = tour.departurePricing?.[d];
+    return {
+      '@type': 'Offer',
+      price: perDatePrice ? parsePriceAmount(perDatePrice) : basePrice,
+      priceCurrency: PRICE_CURRENCY,
+      availability: 'https://schema.org/InStock',
+      ...(iso ? { availabilityStarts: iso, validFrom: iso } : {}),
+      url,
+      seller,
+    };
+  });
+}
+
 export function generateTourSchema(tour: Tour, destination: Destination) {
-  const price = parsePriceAmount(tour.price);
   const agency = getCtsTravelAgencySchema();
+  const siteUrl = getSiteUrl();
 
   return {
     '@context': 'https://schema.org',
@@ -20,7 +63,7 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
     description: tour.shortDescription,
     image: tour.heroImage.startsWith('http')
       ? tour.heroImage
-      : `${getSiteUrl()}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
+      : `${siteUrl}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
     touristType: {
       '@type': 'Audience',
       audienceType: 'Travelers from New Zealand',
@@ -29,14 +72,7 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
       '@type': 'AggregateRating',
       ...GOOGLE_RATING_SCHEMA,
     },
-    offers: {
-      '@type': 'Offer',
-      price,
-      priceCurrency: PRICE_CURRENCY,
-      availability: 'https://schema.org/InStock',
-      url: `${getSiteUrl()}/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
-      seller: agency,
-    },
+    offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
       itemListElement: tour.itinerary.map((day, index) => ({
@@ -80,7 +116,6 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
  * Price: read from tour.price at render time (currently NZD $4,080 per tours.ts).
  */
 export function generateEssentialsTouristTripSchema(tour: Tour, destination: Destination) {
-  const price = parsePriceAmount(tour.price);
   const agency = getCtsTravelAgencySchema();
   const siteUrl = getSiteUrl();
 
@@ -130,15 +165,7 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
       '@type': 'AggregateRating',
       ...GOOGLE_RATING_SCHEMA,
     },
-    offers: {
-      '@type': 'Offer',
-      price,
-      priceCurrency: PRICE_CURRENCY,
-      availability: 'https://schema.org/InStock',
-      validFrom: '2026-06-01',
-      url: `${siteUrl}/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
-      seller: agency,
-    },
+    offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
       itemListElement: cityStops.map((stop, index) => ({
