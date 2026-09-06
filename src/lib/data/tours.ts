@@ -421,7 +421,7 @@ export const tours: Tour[] = [
       'history',
       'ancient culture',
     ],
-    departureDates: ['13 August 2026', '15 October 2026'],
+    departureDates: ['13 August 2026', '15 October 2026', '28 May 2027'],
     singleSupplement: 'NZD $2,410',
     rating: 4.9,
     reviewCount: 283,
