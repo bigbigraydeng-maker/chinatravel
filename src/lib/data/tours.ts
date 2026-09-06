@@ -331,7 +331,7 @@ export const tours: Tour[] = [
       'Mogao Caves',
       'high-speed train',
     ],
-    departureDates: ['13 May 2027', '21 October 2027'],
+    departureDates: ['13 May 2027', '28 May 2027', '21 October 2027'],
     singleSupplement: 'NZD $1,488',
     rating: 4.8,
     reviewCount: 127,
@@ -746,7 +746,7 @@ export const tours: Tour[] = [
       'high-speed train',
     ],
     /** Oct 2026 campaign departure (hero “next departure” = first), plus 2027 group departure. */
-    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder, '18 March 2027'],
+    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder, '18 March 2027', '10 June 2027'],
     tourCities: ['beijing', 'xian'],
     faqs: [
       {
@@ -872,9 +872,10 @@ export const tours: Tour[] = [
       'water towns',
       'Puyuan',
     ],
-    departureDates: ['11 March 2027'],
+    departureDates: ['11 March 2027', '13 May 2027'],
     departurePricing: {
       '11 March 2027': 'NZD $4,080',
+      '13 May 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $800',
     faqs: [
@@ -958,7 +959,7 @@ export const tours: Tour[] = [
       'West Lake',
     ],
     /** Same order as `/campaigns/october-2026/shanghai-surroundings` (hero “next departure” = first). */
-    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder],
+    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder, '25 March 2027'],
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
     faqs: [
