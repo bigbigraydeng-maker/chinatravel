@@ -331,7 +331,7 @@ export const tours: Tour[] = [
       'Mogao Caves',
       'high-speed train',
     ],
-    departureDates: ['13 May 2027', '28 May 2027', '21 October 2027'],
+    departureDates: ['13 May 2027', '21 October 2027'],
     singleSupplement: 'NZD $1,488',
     rating: 4.8,
     reviewCount: 127,
