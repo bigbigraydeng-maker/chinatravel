@@ -224,7 +224,7 @@ export default function TourPage({ params }: TourPageProps) {
         }
       />
 
-      {/* Quick-facts strip — 6 anchors that jump into the tour tabs */}
+      {/* Quick-facts strip — anchors that jump into the tour tabs */}
       <TourQuickInfoStrip
         duration={tour.duration}
         price={tour.price}
