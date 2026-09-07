@@ -97,6 +97,8 @@ The itinerary returns to Beijing for the international connection home. Dependin
 
 CTS Tours offers **A Tale of Two Cities** — a 10-day Discovery tour covering exactly this itinerary, from NZD $3,480 per person (twin share). Departs October 2026 from Auckland.
 
+Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027), in addition to the October 2026 departure.
+
 [View the full tour details →](/tours/china/discovery/beijing-xian)
     `
   },
