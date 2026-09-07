@@ -204,7 +204,11 @@ export default function TourPage({ params }: TourPageProps) {
         tags={tour.tags}
         departureDates={tour.departureDates}
         departurePricing={tour.departurePricing}
-        primaryCtaLabel={isOctoberCampaignTour ? 'Enquire for October departures' : undefined}
+        // October 2026 departures for both `beijing-xian` and `shanghai-surroundings`
+        // have sold out — soften the hero CTA so it doesn't promise a departure
+        // window CTS can no longer fulfil, while still capturing enquiries for
+        // the confirmed 2027 departures.
+        primaryCtaLabel={isOctoberCampaignTour ? 'Enquire about a future departure' : undefined}
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
         maxGroupSize={tour.maxGroupSize}
@@ -286,6 +290,40 @@ export default function TourPage({ params }: TourPageProps) {
             </p>
             <p className="text-sm text-gray-600 mt-1">
               From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* Tale of Two Cities: 15 October 2026 departure sold out, now selling March 2027 */}
+      {tour.slug === 'beijing-xian' && (
+        <section className="bg-amber-50 border-y border-amber-200 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+              October 2026 Departure Sold Out
+            </p>
+            <p className="text-lg font-serif font-bold text-gray-900">
+              Next Departure: 18 March 2027
+            </p>
+            <p className="text-sm text-gray-600 mt-1">
+              From NZD $3,480 per person twin-share. Contact us to register interest in a future October departure.
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* Shanghai & Surroundings: 14 October 2026 departure sold out, now selling March 2027 */}
+      {tour.slug === 'shanghai-surroundings' && (
+        <section className="bg-amber-50 border-y border-amber-200 py-4">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+              October 2026 Departure Sold Out
+            </p>
+            <p className="text-lg font-serif font-bold text-gray-900">
+              Next Departure: 25 March 2027
+            </p>
+            <p className="text-sm text-gray-600 mt-1">
+              From NZD $3,399 per person twin-share. Contact us to register interest in a future October departure.
             </p>
           </div>
         </section>

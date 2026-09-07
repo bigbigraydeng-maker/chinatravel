@@ -22,21 +22,23 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
 > = {
   'shanghai-surroundings': {
     tourSlug: 'shanghai-surroundings',
+    // Retained for downstream code (spotlight lookups, canonical UTM structure)
+    // even though the 14 Oct 2026 seat is now sold out.
     heroDepartureOrder: ['14 October 2026'],
     enquirySource: 'Campaign LP: Oct 2026 — Shanghai & Surroundings',
     otherCampaignSlug: 'tale-of-two-cities',
-    metaTitleSuffix: 'October 2026 departure | Shanghai & Surroundings | CTS NZ',
+    metaTitleSuffix: 'Shanghai & Surroundings — 2027 departure | CTS NZ',
     metaDescription:
-      'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $3,399. Featured departure 14 October 2026 — enquire with CTS Auckland.',
+      'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $3,399. The 14 October 2026 departure has sold out — next departure 25 March 2027, enquire with CTS Auckland.',
   },
   'tale-of-two-cities': {
     tourSlug: 'beijing-xian',
     heroDepartureOrder: ['15 October 2026'],
     enquirySource: 'Campaign LP: Oct 2026 — A Tale of Two Cities',
     otherCampaignSlug: 'shanghai-surroundings',
-    metaTitleSuffix: 'October 2026 departure | Beijing & Xi’an | CTS NZ',
+    metaTitleSuffix: 'Beijing & Xi’an — 2027 departure | CTS NZ',
     metaDescription:
-      'Beijing & Xi’an by high-speed train: Forbidden City, Great Wall, hutongs, Terracotta Warriors & more. 10 days from NZD $3,480. Departures 15 October 2026 & 18 March 2027 — CTS NZ.',
+      'Beijing & Xi’an by high-speed train: Forbidden City, Great Wall, hutongs, Terracotta Warriors & more. 10 days from NZD $3,480. The 15 October 2026 departure has sold out — next departures 18 March 2027 & 10 June 2027 with CTS NZ.',
   },
 };
 

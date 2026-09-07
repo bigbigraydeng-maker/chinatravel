@@ -9,12 +9,13 @@
  * existing campaign LP (UTM-free path; canonical).
  *
  * Roster history: originally Shanghai & Surroundings (14 Oct 2026) + Tale of
- * Two Cities (15 Oct 2026) + Best of China (3 Nov 2026). Shanghai &
- * Surroundings sold out — pulled from the roster; its own product/campaign
- * pages are intentionally untouched (CTS may run another October departure).
- * Tale of Two Cities stays but is reframed to its 18 March 2027 departure —
- * its October LP is themed entirely around the October date, so a 2027 push
- * links straight to the product page instead, same as Best of China.
+ * Two Cities (15 Oct 2026) + Best of China (3 Nov 2026). All three original
+ * departures have since sold out: Shanghai & Surroundings and Tale of Two
+ * Cities were pulled from this spotlight roster; Best of China stays but
+ * chips its 11 Mar 2027 departure. The product pages and October campaign
+ * LPs for both Discovery routes remain live with an explicit "Sold Out"
+ * banner + "next departure" CTA so paid traffic already booked against the
+ * old URLs still lands somewhere useful.
  */
 export type SpotlightTourCard = {
   slug: 'golden-china' | 'essentials' | 'china-icons-collection';
