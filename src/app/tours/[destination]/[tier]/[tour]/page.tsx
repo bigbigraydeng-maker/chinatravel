@@ -48,6 +48,14 @@ interface TourPageProps {
   };
 }
 
+/**
+ * See src/app/blog/[slug]/page.tsx for why this is here: without an
+ * explicit revalidate window, Next.js's Full Route Cache treats this
+ * SSG page as immutable across production deploys — a departureDates
+ * edit in tours.ts silently would not show up on the live page.
+ */
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const tour = getTourBySlug(params.destination, params.tier, params.tour);
   
