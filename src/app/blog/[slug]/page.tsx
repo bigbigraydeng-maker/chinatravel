@@ -18,6 +18,15 @@ interface BlogPostPageProps {
   };
 }
 
+/**
+ * Without this, Next.js's Full Route Cache treats this SSG page as
+ * immutable across deploys (observed: same etag / x-nextjs-cache: HIT
+ * survived 3 separate production deploys after a content-only data
+ * change). Hourly revalidation bounds staleness without needing a
+ * manual /api/revalidate call after every blog data edit.
+ */
+export const revalidate = 3600;
+
 const categoryLabels: Record<BlogPost['category'], string> = {
   'destination': 'Destinations',
   'experience': 'Experiences',
