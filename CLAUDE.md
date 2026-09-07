@@ -473,6 +473,8 @@ svg.querySelectorAll('circle[r="14"]').forEach(c => {
 12. ✅ Configure Resend API key on Render (2026-05-12)
 13. ✅ Test email itinerary end-to-end (2026-05-12 — Sent + Delivered 验证通过)
 14. ⏳ Implement Phase 3 & 4 SEO pages (20 pages: FAQ + tools)
+15. ⏳ 确认三个已标 Sold Out 的团（Tale of Two Cities 10月团、Shanghai & Surroundings 10月团、Best of China 11月团）对应的广告投放（Google/Meta）是否已在广告后台停投或换落地页 —— 代码侧已在 PR #172 补齐了 Sold Out 横条，但广告花钱与否只能人工在广告后台操作，代码改不了
+16. ⏳ 同步全站旁支页面里仍提到「10 月有团出发」的文案（`small-group-china-tours`、`great-wall-travel-guide`、`terracotta-warriors-travel-guide`、`china-tours-from-new-zealand` 等）—— PR #172 只改了主产品页 + 广告落地页 + 海报页，这些旁支页面的文字还没跟上；客户点进团详情页会看到 Sold Out 不会被误导下单，但文字本身还没同步
 
 ---
 
