@@ -5,16 +5,12 @@ interface TourQuickInfoStripProps {
   duration: string;
   price: string;
   itinerary: DayItinerary[];
-  /** Best time to travel — short label (e.g. "Apr–Oct", "Year-round"). Falls back to sensible default. */
-  bestTime?: string;
-  /** Optional aggregate review rating (e.g. "4.9 · 428 reviews"). Omit when no data. */
-  reviewSummary?: string;
 }
 
 /**
  * Horizontal quick-facts strip rendered directly under the hero.
- * Inspired by Wendy Wu's "6 quick-info anchors" — each cell jumps to the
- * corresponding tour-detail section so long pages become navigable at a glance.
+ * Each cell jumps to the corresponding tour-detail section so long pages become
+ * navigable at a glance.
  *
  * All numbers are derived from the itinerary so no schema change is required.
  * Meal & hotel-night counts stay in sync with the source of truth (itinerary),
@@ -24,8 +20,6 @@ export default function TourQuickInfoStrip({
   duration,
   price,
   itinerary,
-  bestTime = 'Apr–Oct',
-  reviewSummary,
 }: TourQuickInfoStripProps) {
   // Hotel nights = number of days with an accommodation entry
   const hotelNights = itinerary.filter((d) => Boolean(d.accommodation?.trim())).length;
@@ -75,12 +69,6 @@ export default function TourQuickInfoStrip({
       sub: 'Per person twin share',
       href: '#enquiry',
     },
-    {
-      label: reviewSummary ? 'Rated by travellers' : 'Best time to go',
-      value: reviewSummary?.split('·')[0]?.trim() ?? bestTime,
-      sub: reviewSummary?.split('·').slice(1).join('·').trim() || 'Ideal touring season',
-      href: reviewSummary ? '#trust-signals' : '#itinerary',
-    },
   ];
 
   return (
@@ -89,8 +77,8 @@ export default function TourQuickInfoStrip({
       className="border-b border-warm-200 bg-white"
     >
       <div className="container mx-auto px-4">
-        {/* Horizontal scroll on mobile, 6-column grid from md+ */}
-        <ul className="flex md:grid md:grid-cols-6 overflow-x-auto md:overflow-visible -mx-4 md:mx-0 md:divide-x divide-warm-200">
+        {/* Horizontal scroll on mobile, 5-column grid from md+ */}
+        <ul className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible -mx-4 md:mx-0 md:divide-x divide-warm-200">
           {items.map((item, idx) => (
             <li
               key={item.label}
