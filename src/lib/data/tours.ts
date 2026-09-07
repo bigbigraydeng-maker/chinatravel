@@ -1,5 +1,3 @@
-import { OCTOBER_2026_DISCOVERY_BY_SLUG } from '@/lib/campaigns/october-2026-discovery';
-
 // CMS Data Model for Tours
 // This can be replaced with Supabase integration later
 
@@ -625,7 +623,7 @@ export const tours: Tour[] = [
     name: 'China Discovery — A Tale of Two Cities',
     title: 'China Discovery — A Tale of Two Cities',
     shortDescription:
-      'October-ready from Auckland — Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); published group departure in October as listed on this page.',
+      'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
       "Tale of Two Cities is a 10-day Beijing + Xi'an escorted tour for New Zealand travellers, from NZD $3,480 per person twin share (single supplement NZD $395). The route covers Beijing (Forbidden City, Great Wall, Temple of Heaven, Tiananmen Square, hutong pedi-cab tour, Olympic Park) then high-speed rail G89 to Xi'an (Terracotta Warriors, City Wall, Big Wild Goose Pagoda). 4-star hotels, English-speaking guides, return international airfares from Auckland, listed meals, and entrance fees all included. NZ passport holders enjoy visa-free entry up to 30 days, published through 31 December 2026.",
     duration: '10 Days',
@@ -731,9 +729,9 @@ export const tours: Tour[] = [
       'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary'
     ],
-    metaTitle: 'Beijing & Xi\'an Discovery Tour | October 2026 | CTS NZ',
+    metaTitle: 'Beijing & Xi\'an Discovery Tour | March 2027 | CTS NZ',
     metaDescription:
-      'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 15 October 2026 & 18 March 2027 departures, Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
+      'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-07-16',
@@ -745,8 +743,14 @@ export const tours: Tour[] = [
       'Terracotta Warriors',
       'high-speed train',
     ],
-    /** Oct 2026 campaign departure (hero “next departure” = first), plus 2027 group departure. */
-    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['tale-of-two-cities'].heroDepartureOrder, '18 March 2027', '10 June 2027'],
+    /**
+     * 15 October 2026 departure has sold out — pulled from the visible list to
+     * stop new enquiries hitting the wrong date. Product page + October LP
+     * carry an explicit "Sold Out" banner instead; the tour data below drives
+     * the hero, sticky bar, and Offers schema, so hiding it here removes the
+     * date from every surface that reads `departureDates`.
+     */
+    departureDates: ['18 March 2027', '10 June 2027'],
     tourCities: ['beijing', 'xian'],
     faqs: [
       {
@@ -782,7 +786,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart, and is a single room available?',
         answer:
-          'Published departure for this programme is 15 October (year as on site — subject to change; confirm at booking). If you prefer your own room, a single supplement applies — ask CTS for the current amount. Twin-share pricing is shown as the lead-in rate.',
+          'The 15 October 2026 departure has sold out. Confirmed 2027 group departures are 18 March 2027 and 10 June 2027 from Auckland, priced from NZD $3,480 per person twin-share. If you prefer your own room, a single supplement of NZD $395 applies. Contact CTS to register interest in another Beijing & Xi\'an window.',
       },
       {
         question: 'How do I book or ask a specific question about this route?',
@@ -899,7 +903,7 @@ export const tours: Tour[] = [
     name: 'China Discovery — Shanghai & Surroundings',
     title: 'China Discovery — Shanghai & Surroundings',
     shortDescription:
-      'October-ready from Auckland — Yangtze Delta loop: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); mid-October departure published.',
+      'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     duration: '10 Days',
     price: 'NZD $3,399 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
@@ -945,9 +949,9 @@ export const tours: Tour[] = [
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
-    metaTitle: 'Shanghai & Surroundings Discovery | October 2026 | CTS NZ',
+    metaTitle: 'Shanghai & Surroundings Discovery | March 2027 | CTS NZ',
     metaDescription:
-      'China specialist–led Shanghai & Jiangnan loop from NZ — October departure, Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $3,399. Visa-free options for many NZ travellers — CTS China visa guide.',
+      'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $3,399. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-05-07',
@@ -958,8 +962,14 @@ export const tours: Tour[] = [
       'real life experience in China',
       'West Lake',
     ],
-    /** Same order as `/campaigns/october-2026/shanghai-surroundings` (hero “next departure” = first). */
-    departureDates: [...OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder, '25 March 2027'],
+    /**
+     * 14 October 2026 departure has sold out — pulled from the visible list to
+     * stop new enquiries hitting the wrong date. Product page + October LP
+     * carry an explicit "Sold Out" banner instead; the tour data below drives
+     * the hero, sticky bar, and Offers schema, so hiding it here removes the
+     * date from every surface that reads `departureDates`.
+     */
+    departureDates: ['25 March 2027'],
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
     faqs: [

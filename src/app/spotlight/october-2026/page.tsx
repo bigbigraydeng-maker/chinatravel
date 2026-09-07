@@ -176,8 +176,11 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 <h2 className="font-serif text-[46px] font-bold leading-[0.95] text-[#c72235]">
                   Shanghai &amp; Surroundings
                 </h2>
-                <p className="mt-2 text-[32px] leading-tight font-semibold text-black">
-                  10 Days | Depart 14 October 2026
+                <p className="mt-2 inline-block bg-black px-3 py-1 text-[14px] font-bold uppercase tracking-widest text-white">
+                  14 October 2026 · Sold Out
+                </p>
+                <p className="mt-2 text-[24px] leading-tight font-semibold text-black">
+                  10 Days | Next Departure 25 March 2027
                 </p>
                 <p className="mt-2 text-[18px] leading-relaxed text-black">
                   &bull; Suzhou gardens &bull; Wuxi lakeside sights &bull; Xinshi water town &bull; Hangzhou&apos;s West Lake
@@ -219,8 +222,11 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 <h2 className="font-serif text-[44px] font-bold leading-[0.95] text-[#c72235]">
                   A Tale of Two Cities &mdash; Beijing &amp; Xi&apos;an
                 </h2>
-                <p className="mt-2 text-[32px] leading-tight font-semibold text-black">
-                  10 Days | Depart 15 October 2026
+                <p className="mt-2 inline-block bg-black px-3 py-1 text-[14px] font-bold uppercase tracking-widest text-white">
+                  15 October 2026 · Sold Out
+                </p>
+                <p className="mt-2 text-[24px] leading-tight font-semibold text-black">
+                  10 Days | Next Departure 18 March 2027
                 </p>
                 <p className="mt-2 text-[18px] leading-relaxed text-black">
                   &bull; Forbidden City &bull; Great Wall &bull; Hutong experience &bull; Terracotta Warriors

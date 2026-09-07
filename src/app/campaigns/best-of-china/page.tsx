@@ -107,6 +107,23 @@ export default function BestOfChinaLandingPage() {
       <StickyPriceBar />
       <CampaignWelcomeBanner />
 
+      {/* November 2026 departure has sold out — mirror the product page banner
+          so paid-traffic visitors landing here see the same signal instead of
+          filling out an enquiry for the wrong date. */}
+      <section className="bg-amber-50 border-y border-amber-200 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+            November 2026 Departure Sold Out
+          </p>
+          <p className="text-lg font-serif font-bold text-gray-900">
+            Next Departure: 11 March 2027
+          </p>
+          <p className="text-sm text-gray-600 mt-1">
+            From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
+          </p>
+        </div>
+      </section>
+
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3">
           <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600">

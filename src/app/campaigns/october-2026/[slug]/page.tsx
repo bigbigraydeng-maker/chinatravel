@@ -26,9 +26,7 @@ import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBl
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { computeReturnDate } from '@/lib/data/tour-dates';
 import OctoberDiscoveryCampaignContent from '@/components/campaigns/OctoberDiscoveryCampaignContent';
-import OctoberUrgencyBar from '@/components/campaigns/OctoberUrgencyBar';
 import { OctoberCampaignScrollTracker } from '@/components/campaigns/OctoberCampaignScrollTracker';
-import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import {
   OCTOBER_2026_DISCOVERY_BY_SLUG,
   OCTOBER_2026_DISCOVERY_SLUGS,
@@ -107,12 +105,13 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
   const otherCfg = OCTOBER_2026_DISCOVERY_BY_SLUG[cfg.otherCampaignSlug];
   const otherTour = getTourBySlug('china', 'discovery', otherCfg.tourSlug);
 
-  // Look up the matching spotlight entry to drive the urgency bar's countdown.
-  // Match either by `tourSlug` (Tour data slug) or by campaign LP URL suffix.
-  const spotlight = OCTOBER_2026_SPOTLIGHT_TOURS.find(
-    (s) => s.slug === tour.slug || s.href.endsWith(`/${campaignSlug}`)
-  );
-  const departureSortDate = spotlight?.departureSortDate ?? '2026-10-14';
+  // The 14 & 15 October 2026 departures have both sold out. The LPs stay live
+  // so paid traffic already booked against them lands on a real page (and CTS
+  // still wants to capture enquiries for future departures), but the countdown
+  // urgency bar and October-specific hero copy are replaced by an explicit
+  // "Sold Out — book the next departure" banner below.
+  const soldOutOctoberDate =
+    campaignSlug === 'shanghai-surroundings' ? '14 October 2026' : '15 October 2026';
   const nextDeparture = tour.departureDates?.[0];
   const nextReturnDate = nextDeparture ? computeReturnDate(nextDeparture, tour.duration) : null;
 
@@ -181,15 +180,32 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         heroImage={tour.heroImage}
         tier={tour.tier}
         tags={tour.tags}
-        // Show all published departures (October campaign date stays first/featured
-        // via tours.ts ordering); keeps the hero in sync with the product page.
+        // October departure is sold out; hero now shows only the confirmed
+        // upcoming departures pulled from tours.ts.
         departureDates={tour.departureDates}
-        primaryCtaLabel="Reserve My Seat →"
+        primaryCtaLabel="Enquire about a future departure →"
         secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
       />
 
-      <OctoberUrgencyBar departureSortDate={departureSortDate} />
+      {/* Replaces OctoberUrgencyBar — the countdown was pointed at a departure
+          that has since sold out, which was still funnelling enquiries. */}
+      <section className="bg-amber-50 border-y border-amber-200 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
+            {soldOutOctoberDate} Departure Sold Out
+          </p>
+          {nextDeparture && (
+            <p className="text-lg font-serif font-bold text-gray-900">
+              Next Departure: {nextDeparture}
+            </p>
+          )}
+          <p className="text-sm text-gray-600 mt-1">
+            {tour.price} per person twin-share. Contact us to register interest in another October window
+            or reserve the next confirmed departure.
+          </p>
+        </div>
+      </section>
 
       <ChinaVisaNudge />
 
