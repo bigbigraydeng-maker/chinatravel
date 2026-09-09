@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroSearchEditorial from '@/components/HeroSearchEditorial';
 import ContactChannels, { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/components/ContactChannels';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { getTourBySlug } from '@/lib/data/tours';
@@ -86,48 +85,44 @@ const HomePageRedesign = () => {
 
   return (
     <div className="bg-surface font-sans text-ink">
-      {/* ===== Asymmetric hero ===== */}
-      <section className="relative overflow-hidden bg-surface">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
-          <div className="space-y-7 lg:col-span-5 lg:pr-6">
-            <h1 className="font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-7xl">
-              See all of China,
-              <br />
-              <span className="italic text-primary">the way it deserves.</span>
-            </h1>
-            <p className="max-w-md text-lg font-light leading-relaxed text-ink-muted">
-              Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
-              genuinely tailor-made.
-            </p>
-            <HeroSearchEditorial />
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
-              <Link href="/tours" className="inline-flex items-center gap-1.5 text-ink hover:text-primary">
-                Browse all tours <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <span className="text-ink/20">·</span>
-              <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-primary hover:text-red-700">
-                Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs font-bold uppercase tracking-wider text-ink-muted">
-              <span>Backed by CTS · Founded 1928</span>
-              <span className="text-ink/20">•</span>
-              <span>10,000+ Kiwi travellers</span>
-              <span className="text-ink/20">•</span>
-              <span>TAANZ &amp; IATA accredited</span>
-            </div>
-          </div>
-
-          <div className="relative h-[44vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[62vh] lg:rounded-l-3xl">
-            <Image
-              src={HERO_IMAGE}
-              alt="The Great Wall of China at dawn"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-right"
-            />
-          </div>
+      {/* ===== Full-bleed editorial hero ===== */}
+      <section className="relative isolate overflow-hidden bg-ink">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={HERO_IMAGE}
+            alt="The Great Wall of China at dawn"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Readability overlay — a flat wash on mobile (copy spans the full
+              width, so a left-to-right fade would just look like a black
+              screen), a left-heavy fade on desktop where the copy sits in a
+              narrower column against the untouched right side of the photo. */}
+          <div className="absolute inset-0 bg-ink/55 md:bg-gradient-to-r md:from-ink/85 md:via-ink/45 md:to-ink/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent md:from-ink/70" />
+        </div>
+        <div className="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[680px] md:px-8 md:py-28">
+          <span className="mb-4 block text-sm font-semibold uppercase tracking-[0.14em] text-secondary">
+            China, curated for New Zealand travellers
+          </span>
+          <div className="mb-6 h-0.5 w-16 bg-secondary" />
+          <h1 className="max-w-3xl font-serif text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl">
+            See all of China,
+            <br />
+            the way it deserves.
+          </h1>
+          <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-white/90 md:text-xl">
+            Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
+            genuinely tailor-made.
+          </p>
+          <Link
+            href="/tours"
+            className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-lg transition-colors hover:bg-red-700"
+          >
+            Explore our journeys <ArrowRight />
+          </Link>
         </div>
       </section>
 
