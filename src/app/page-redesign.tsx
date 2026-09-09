@@ -87,7 +87,7 @@ const HomePageRedesign = () => {
     <div className="bg-surface font-sans text-ink">
       {/* ===== Full-bleed editorial hero ===== */}
       <section className="relative isolate overflow-hidden bg-ink">
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 z-0">
           <Image
             src={HERO_IMAGE}
             alt="The Great Wall of China at dawn"
@@ -103,7 +103,7 @@ const HomePageRedesign = () => {
           <div className="absolute inset-0 bg-ink/55 md:bg-gradient-to-r md:from-ink/85 md:via-ink/45 md:to-ink/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent md:from-ink/70" />
         </div>
-        <div className="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[680px] md:px-8 md:py-28">
+        <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[680px] md:px-8 md:py-28">
           <span className="mb-4 block text-sm font-semibold uppercase tracking-[0.14em] text-secondary">
             China, curated for New Zealand travellers
           </span>
