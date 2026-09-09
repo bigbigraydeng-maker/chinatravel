@@ -29,6 +29,9 @@ const HERO_IMAGE =
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
 const CTA_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg';
+// Existing CTS group photo (already used on /spotlight/october-2026 and /tailor-made) —
+// reused here rather than sourcing a new image, per the no-new-assets constraint.
+const DIFFERENCE_IMAGE = '/blog/group-temple-of-heaven-beijing.jpg';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -162,98 +165,56 @@ const HomePageRedesign = () => {
       {featured && (
         <section className="bg-surface py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                  This Season&apos;s Spotlight
-                </span>
-                <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
-                <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
-                  The journeys our specialists are recommending right now — fully escorted from New Zealand, with
-                  guaranteed departures.
-                </p>
-              </div>
+            <div className="mb-10 max-w-2xl">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+                This Season&apos;s Spotlight
+              </span>
+              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
+              <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
+                The journeys our specialists are recommending right now — fully escorted from New Zealand, with
+                guaranteed departures.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => (
+                <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={tour.heroImage}
+                      alt={tour.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
+                      {ref.departureLabel}
+                    </span>
+                  </div>
+                  <div className="flex flex-grow flex-col p-6">
+                    <p className="mb-1 text-xs text-ink-muted">{ref.route.join(' · ')}</p>
+                    <h3 className="mb-3 font-serif text-xl leading-snug text-ink">{tour.name}</h3>
+                    <span className="mb-4 font-serif text-lg font-semibold text-ink">
+                      {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
+                    </span>
+                    <Link
+                      href={ref.campaignHref}
+                      className="mt-auto inline-flex items-center gap-1.5 self-start border-b-2 border-primary pb-1 text-xs font-bold uppercase tracking-wider text-primary transition-colors hover:text-ink"
+                    >
+                      Discover More <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 flex justify-center">
               <Link
                 href="/tours"
-                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
               >
                 View all tours <ArrowRight />
               </Link>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-              {/* Large feature */}
-              <article className="group relative flex h-[430px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
-                <div className="absolute inset-0 z-0">
-                  <Image
-                    src={featured.tour.heroImage}
-                    alt={featured.tour.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                </div>
-                <span className="absolute left-8 top-8 z-10 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-ink shadow-sm">
-                  {featured.ref.departureLabel}
-                </span>
-                <div className="relative z-10 mt-auto flex flex-col p-8 md:p-10">
-                  <p className="mb-2 text-sm font-medium text-white/80">{featured.ref.route.join('  ›  ')}</p>
-                  <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{featured.tour.name}</h3>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-white/60">From</span>
-                      <span className="font-serif text-3xl font-semibold text-white">
-                        {featured.tour.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
-                      </span>
-                    </div>
-                    <Link
-                      href={featured.ref.campaignHref}
-                      className="rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-lg transition-colors hover:bg-primary hover:text-white"
-                    >
-                      Discover More
-                    </Link>
-                  </div>
-                </div>
-              </article>
-
-              {/* Side stack */}
-              <div className="flex flex-col gap-8 lg:col-span-4">
-                {sides.map(({ ref, tour }) => (
-                  <article key={ref.slug} className="group flex flex-1 flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
-                    <div className="relative h-36 overflow-hidden">
-                      <Image
-                        src={tour.heroImage}
-                        alt={tour.name}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
-                        {ref.departureLabel}
-                      </span>
-                    </div>
-                    <div className="flex flex-grow flex-col justify-between p-6">
-                      <div>
-                        <h3 className="mb-1 font-serif text-xl text-ink">{tour.name}</h3>
-                        <p className="text-xs text-ink-muted">{ref.route.join(' · ')}</p>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="font-serif text-lg font-semibold text-ink">
-                          {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
-                        </span>
-                        <Link
-                          href={ref.campaignHref}
-                          aria-label={`View ${tour.name}`}
-                          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-primary hover:bg-primary hover:text-white"
-                        >
-                          <ArrowRight />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -272,27 +233,41 @@ const HomePageRedesign = () => {
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Where to go</span>
             <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Explore China by city</h2>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6 md:gap-5">
             {CITIES.map((c) => (
               <Link
                 key={c.slug}
                 href={`/${c.slug}-tours`}
-                className="group relative block h-56 overflow-hidden rounded-2xl md:h-64"
+                className="group relative block h-64 overflow-hidden rounded-2xl lg:h-[420px]"
               >
                 <Image
                   src={c.img}
                   alt={c.name}
                   fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-serif text-2xl text-white transition-colors group-hover:text-secondary">{c.name}</h3>
-                  <p className="text-xs text-white/80">{c.tag}</p>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-5">
+                  <div>
+                    <h3 className="mb-1 inline-block border-b-2 border-secondary pb-1 font-serif text-xl text-white transition-colors group-hover:text-secondary">{c.name}</h3>
+                    <p className="text-xs text-white/80">{c.tag}</p>
+                  </div>
+                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-white transition-colors group-hover:bg-secondary group-hover:text-ink">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/tours"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+            >
+              Explore all destinations <ArrowRight />
+            </Link>
           </div>
         </div>
       </section>
@@ -300,26 +275,28 @@ const HomePageRedesign = () => {
       {/* ===== Meet your specialist (Baker Gu) ===== */}
       <section className="bg-white py-16 md:py-20">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
-          <Link
-            href="/experts/baker-gu"
-            className="group relative mx-auto block h-[380px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5"
-          >
-            <Image
-              src={BAKER_IMAGE}
-              alt="Baker Gu, CTS China specialist"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6">
-              <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
-              <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
-              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary">
-                Read his story <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </div>
-          </Link>
-          <div className="lg:col-span-7">
+          <div className="lg:order-2 lg:col-span-5">
+            <Link
+              href="/experts/baker-gu"
+              className="group relative mx-auto block h-[380px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:max-w-none"
+            >
+              <Image
+                src={BAKER_IMAGE}
+                alt="Baker Gu, CTS China specialist"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6">
+                <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
+                <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
+                <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary">
+                  Read his story <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+              </div>
+            </Link>
+          </div>
+          <div className="lg:order-1 lg:col-span-7">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Meet your specialist</span>
             <blockquote className="mb-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
               &ldquo;For 20 years I&apos;ve shown Kiwi travellers the China I grew up in — not the one in the brochures.&rdquo;
@@ -328,9 +305,19 @@ const HomePageRedesign = () => {
               Baker personally designs and quality-checks every CTS journey. When you enquire, you&apos;re not talking to
               a call centre — you&apos;re talking to the person who built the trip.
             </p>
-            <div className="mb-8 flex flex-wrap gap-2">
-              {['Born in China', 'NZ-based', '20+ years in travel', 'Mandarin · English · Cantonese'].map((c) => (
-                <span key={c} className="rounded-full border border-warm-200 bg-surface px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
+            <div className="mb-8 flex flex-wrap gap-x-6 gap-y-4">
+              {([
+                { icon: 'landmark', label: 'Born in China' },
+                { icon: 'map-pin', label: 'NZ-based' },
+                { icon: 'briefcase', label: '20+ years in travel' },
+                { icon: 'message', label: 'Mandarin · English · Cantonese' },
+              ] as { icon: IconName; label: string }[]).map((c) => (
+                <div key={c.label} className="flex w-20 flex-col items-center text-center">
+                  <span className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-surface text-primary">
+                    <Icon name={c.icon} className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold text-ink-muted">{c.label}</span>
+                </div>
               ))}
             </div>
             <Link href="/experts/baker-gu" className="mb-8 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
@@ -345,29 +332,44 @@ const HomePageRedesign = () => {
       {/* ===== Why CTS ===== */}
       <section className="bg-surface py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
-            <div className="space-y-6 lg:w-1/3">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="relative hidden overflow-hidden rounded-3xl shadow-editorial lg:col-span-5 lg:block">
+              <Image
+                src={DIFFERENCE_IMAGE}
+                alt="The Temple of Heaven in Beijing, a CTS Tours group destination"
+                fill
+                sizes="40vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="lg:col-span-7">
               <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
-              <h2 className="font-serif text-4xl leading-tight text-ink">
+              <h2 className="mt-3 font-serif text-4xl leading-tight text-ink">
                 Expertise you
                 <br />
                 can trust.
               </h2>
-              <p className="pt-4 text-lg leading-relaxed text-ink-muted">
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
                 For 25 years CTS Tours NZ has crafted (parent CTS Group in the industry since 1928) exceptional travel experiences, bridging New Zealand and the
                 wonders of China.
               </p>
-            </div>
-            <div className="grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 lg:w-2/3">
-              {FEATURES.map((f) => (
-                <div key={f.title}>
-                  <div className="mb-6 flex h-12 w-12 items-end border-b-2 border-primary pb-3 text-primary">
-                    <Icon name={f.icon} className="h-8 w-8" />
+              <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {FEATURES.map((f) => (
+                  <div key={f.title} className="rounded-2xl border border-warm-200 bg-white p-6">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Icon name={f.icon} className="h-7 w-7" />
+                    </div>
+                    <h4 className="mb-2 font-serif text-xl text-ink">{f.title}</h4>
+                    <p className="text-sm leading-relaxed text-ink-muted">{f.body}</p>
                   </div>
-                  <h4 className="mb-4 font-serif text-2xl text-ink">{f.title}</h4>
-                  <p className="text-base leading-relaxed text-ink-muted">{f.body}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+              <Link
+                href="/tours"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                Explore Our Journeys <ArrowRight />
+              </Link>
             </div>
           </div>
         </div>
@@ -398,7 +400,7 @@ const HomePageRedesign = () => {
                 <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-6 shadow-editorial">
                   <div className="mb-4 flex text-secondary">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Icon key={i} name="star" className="h-4 w-4" />
+                      <Icon key={i} name="star" filled className="h-4 w-4" />
                     ))}
                   </div>
                   <blockquote className="mb-6 flex-1 text-sm leading-relaxed text-ink line-clamp-4">
@@ -418,6 +420,16 @@ const HomePageRedesign = () => {
                 </figure>
               ))}
             </div>
+            <div className="mt-12 flex justify-center">
+              <a
+                href={GOOGLE_RATING.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                Read more reviews on Google <ArrowRight />
+              </a>
+            </div>
           </div>
         </section>
       )}
@@ -426,17 +438,9 @@ const HomePageRedesign = () => {
       {blogPosts.length > 0 && (
         <section className="bg-surface py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
-                <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">From the blog</h2>
-              </div>
-              <Link
-                href="/blog"
-                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
-              >
-                All articles <ArrowRight />
-              </Link>
+            <div className="mb-10 max-w-2xl">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
+              <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">From the blog</h2>
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {blogPosts.map((p) => (
@@ -460,16 +464,23 @@ const HomePageRedesign = () => {
                 </Link>
               ))}
             </div>
+            <div className="mt-12 flex justify-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                All articles <ArrowRight />
+              </Link>
+            </div>
           </div>
         </section>
       )}
 
-      {/* ===== Design your China (enquiry CTA card) ===== */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl shadow-editorial lg:grid-cols-2">
-            {/* Left — heritage-red panel */}
-            <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#8E121F] via-primary to-[#A3172A] p-10 text-white md:p-14">
+      {/* ===== Design your China (enquiry CTA banner) ===== */}
+      <section className="bg-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Left — heritage-red panel */}
+          <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#8E121F] via-primary to-[#A3172A] px-6 py-16 text-white md:px-14 md:py-20 lg:py-24">
               <div
                 className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full"
                 style={{ background: 'radial-gradient(circle, rgba(214,167,86,0.38), transparent 65%)' }}
@@ -502,16 +513,15 @@ const HomePageRedesign = () => {
                 </p>
               </div>
             </div>
-            {/* Right — cinematic photo */}
-            <div className="relative min-h-[300px] lg:min-h-full">
-              <Image
-                src={CTA_IMAGE}
-                alt="Dramatic mountain landscape in China"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
+          {/* Right — cinematic photo */}
+          <div className="relative min-h-[300px] lg:min-h-full">
+            <Image
+              src={CTA_IMAGE}
+              alt="Dramatic mountain landscape in China"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </section>
