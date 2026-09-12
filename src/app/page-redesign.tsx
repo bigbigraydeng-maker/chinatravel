@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import HeroSearchEditorial from '@/components/HeroSearchEditorial';
-import ContactChannels, { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/components/ContactChannels';
+import ContactChannels from '@/components/ContactChannels';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
 import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
+import ChinaStopovers from '@/components/ChinaStopovers';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
@@ -25,11 +25,10 @@ import { migratedSite } from '@/lib/site-media';
  * Global Navbar + Footer come from the root layout. Live homepage untouched.
  */
 
-const HERO_IMAGE =
-  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg';
+const HERO_IMAGE = '/images/figma-exact/hero-river-sunset.png';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
-const CTA_IMAGE =
-  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg';
+const CTA_IMAGE = '/images/figma-exact/cta-banner.png';
+const DIFFERENCE_IMAGE = '/images/figma-exact/temple-difference.png';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -45,13 +44,32 @@ const FEATURES: { icon: IconName; title: string; body: string }[] = [
 ];
 
 const CITIES = [
-  { name: 'Beijing', slug: 'beijing', tag: 'Great Wall · Forbidden City', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg' },
-  { name: "Xi'an", slug: 'xian', tag: 'Terracotta Warriors', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg' },
-  { name: 'Shanghai', slug: 'shanghai', tag: 'The Bund · Water towns', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-skyline.jpg' },
-  { name: 'Chengdu', slug: 'chengdu', tag: 'Giant pandas · Sichuan food', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/chengdu-pandas.jpg' },
-  { name: 'Chongqing', slug: 'chongqing', tag: 'Hotpot · Yangtze gorges', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg' },
-  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: "Avatar's floating mountains", img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/zhangjiajie.jpg' },
+  { name: 'Beijing', slug: 'beijing', tag: 'A timeless blend of history and culture', img: '/images/figma-exact/city-beijing.png' },
+  { name: "Xi'an", slug: 'xian', tag: 'Step into a legendary past', img: '/images/figma-exact/city-xian.png' },
+  { name: 'Shanghai', slug: 'shanghai', tag: 'Where tradition meets modernity', img: '/images/figma-exact/city-shanghai.png' },
+  { name: 'Chengdu', slug: 'chengdu', tag: 'Home to pandas and a laid-back lifestyle', img: '/images/figma-exact/city-chengdu.png' },
+  { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: '/images/figma-exact/city-chongqing.png' },
+  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: '/images/figma-exact/city-zhangjiajie.png' },
 ];
+
+// Figma-exact card photos for the Spotlight tours — homepage-only override, kept
+// separate from tour.heroImage (which also renders on the tour's own detail page
+// and must stay the tour's real photo, not the homepage mockup's stand-in).
+const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
+  'golden-china': '/images/figma-exact/spotlight-card1.png',
+  'china-icons-collection': '/images/figma-exact/spotlight-card2.png',
+  essentials: '/images/figma-exact/spotlight-card3.png',
+};
+
+// Figma-exact card photos for the blog posts currently in the "latest 3" slot —
+// homepage-only, kept separate from post.heroImage (which also renders on the
+// blog list and post detail pages). As the list rotates with new posts, a post
+// without an entry here just falls back to its own post.heroImage.
+const BLOG_IMAGE_OVERRIDE: Record<string, string> = {
+  'how-many-days-in-chongqing': '/images/figma-exact/blog-article1.png',
+  'yangtze-river-cruise-from-chongqing': '/images/figma-exact/blog-article2.png',
+  'liziba-monorail-chongqing-guide': '/images/figma-exact/blog-article3.png',
+};
 
 const REVIEW_MONTHS = [
   'January', 'February', 'March', 'April', 'May', 'June',
@@ -86,48 +104,44 @@ const HomePageRedesign = () => {
 
   return (
     <div className="bg-surface font-sans text-ink">
-      {/* ===== Asymmetric hero ===== */}
-      <section className="relative overflow-hidden bg-surface">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
-          <div className="space-y-7 lg:col-span-5 lg:pr-6">
-            <h1 className="font-serif text-5xl leading-[1.08] tracking-tight text-ink md:text-7xl">
-              See all of China,
-              <br />
-              <span className="italic text-primary">the way it deserves.</span>
-            </h1>
-            <p className="max-w-md text-lg font-light leading-relaxed text-ink-muted">
-              Curated, luxury journeys designed in New Zealand for discerning travellers — small groups and
-              genuinely tailor-made.
-            </p>
-            <HeroSearchEditorial />
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
-              <Link href="/tours" className="inline-flex items-center gap-1.5 text-ink hover:text-primary">
-                Browse all tours <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-              <span className="text-ink/20">·</span>
-              <Link href="/tailor-made" className="inline-flex items-center gap-1.5 text-primary hover:text-red-700">
-                Design a tailor-made trip <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1 text-xs font-bold uppercase tracking-wider text-ink-muted">
-              <span>Backed by CTS · Founded 1928</span>
-              <span className="text-ink/20">•</span>
-              <span>10,000+ Kiwi travellers</span>
-              <span className="text-ink/20">•</span>
-              <span>TAANZ &amp; IATA accredited</span>
-            </div>
-          </div>
-
-          <div className="relative h-[44vh] w-full overflow-hidden rounded-3xl shadow-2xl lg:col-span-7 lg:h-[62vh] lg:rounded-l-3xl">
-            <Image
-              src={HERO_IMAGE}
-              alt="The Great Wall of China at dawn"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-cover object-right"
-            />
-          </div>
+      {/* ===== Full-bleed editorial hero ===== */}
+      <section className="relative isolate overflow-hidden bg-ink">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={HERO_IMAGE}
+            alt="A traditional boat cruising the Li River among karst mountains at sunset"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Readability overlay — matches the Figma comp: a light wash, not a
+              dark wash. The photo itself (Li River at sunset) is already dark
+              in the lower-left where the copy sits, so only a subtle fade is
+              needed to keep white text readable. */}
+          <div className="absolute inset-0 bg-ink/25 md:bg-gradient-to-r md:from-ink/40 md:via-ink/15 md:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent md:from-ink/35" />
+        </div>
+        <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[680px] md:px-8 md:py-28">
+          <span className="mb-4 block text-sm font-semibold uppercase tracking-[0.14em] text-secondary">
+            China, curated for New Zealand travellers
+          </span>
+          <div className="mb-6 h-0.5 w-16 bg-secondary" />
+          <h1 className="max-w-3xl font-serif text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl">
+            See all of China,
+            <br />
+            the way it deserves.
+          </h1>
+          <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-white/90 md:text-xl">
+            Curated journeys from New Zealand for travellers who want China experienced with depth, comfort and
+            confidence.
+          </p>
+          <Link
+            href="/tours"
+            className="mt-9 inline-flex w-fit items-center gap-3 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-lg transition-colors hover:bg-red-700"
+          >
+            Explore our journeys <ArrowRight />
+          </Link>
         </div>
       </section>
 
@@ -165,100 +179,57 @@ const HomePageRedesign = () => {
 
       {/* ===== Curated journeys — driven by Spotlight config ===== */}
       {featured && (
-        <section className="bg-surface py-16 md:py-20">
+        <section className="bg-surface py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                  This Season&apos;s Spotlight
-                </span>
-                <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Curated Journeys</h2>
-                <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
-                  The journeys our specialists are recommending right now — fully escorted from New Zealand, with
-                  guaranteed departures.
-                </p>
-              </div>
+            <div className="mb-10 max-w-2xl">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
+                Journeys for every season
+              </span>
+              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">This Season&apos;s Spotlight</h2>
+              <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
+                Handpicked experiences that showcase the very best of China, from iconic landmarks to hidden gems.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+              {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => (
+                <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
+                  <div className="relative h-52 overflow-hidden">
+                    <Image
+                      src={SPOTLIGHT_IMAGE_OVERRIDE[ref.slug] ?? tour.heroImage}
+                      alt={tour.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
+                      {ref.departureLabel}
+                    </span>
+                  </div>
+                  <div className="flex flex-grow flex-col p-6">
+                    <p className="mb-1 text-xs text-ink-muted">{ref.route.join(' · ')}</p>
+                    <h3 className="mb-3 font-serif text-xl leading-snug text-ink">{tour.name}</h3>
+                    <span className="mb-4 font-serif text-lg font-semibold text-ink">
+                      {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
+                    </span>
+                    <Link
+                      href={ref.campaignHref}
+                      className="mt-auto inline-flex items-center gap-1.5 self-start border-b-2 border-primary pb-1 text-xs font-bold uppercase tracking-wider text-primary transition-colors hover:text-ink"
+                    >
+                      Explore Tour <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-12 flex justify-center">
               <Link
                 href="/tours"
-                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
               >
                 View all tours <ArrowRight />
               </Link>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-              {/* Large feature */}
-              <article className="group relative flex h-[430px] flex-col overflow-hidden rounded-3xl shadow-editorial lg:col-span-8">
-                <div className="absolute inset-0 z-0">
-                  <Image
-                    src={featured.tour.heroImage}
-                    alt={featured.tour.name}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent" />
-                </div>
-                <span className="absolute left-8 top-8 z-10 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-ink shadow-sm">
-                  {featured.ref.departureLabel}
-                </span>
-                <div className="relative z-10 mt-auto flex flex-col p-8 md:p-10">
-                  <p className="mb-2 text-sm font-medium text-white/80">{featured.ref.route.join('  ›  ')}</p>
-                  <h3 className="mb-4 font-serif text-4xl text-white md:text-5xl">{featured.tour.name}</h3>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-white/60">From</span>
-                      <span className="font-serif text-3xl font-semibold text-white">
-                        {featured.tour.price} <span className="font-sans text-sm font-normal text-white/60">pp</span>
-                      </span>
-                    </div>
-                    <Link
-                      href={featured.ref.campaignHref}
-                      className="rounded-full bg-white px-8 py-4 text-sm font-bold text-ink shadow-lg transition-colors hover:bg-primary hover:text-white"
-                    >
-                      Discover More
-                    </Link>
-                  </div>
-                </div>
-              </article>
-
-              {/* Side stack */}
-              <div className="flex flex-col gap-8 lg:col-span-4">
-                {sides.map(({ ref, tour }) => (
-                  <article key={ref.slug} className="group flex flex-1 flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
-                    <div className="relative h-36 overflow-hidden">
-                      <Image
-                        src={tour.heroImage}
-                        alt={tour.name}
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                      />
-                      <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
-                        {ref.departureLabel}
-                      </span>
-                    </div>
-                    <div className="flex flex-grow flex-col justify-between p-6">
-                      <div>
-                        <h3 className="mb-1 font-serif text-xl text-ink">{tour.name}</h3>
-                        <p className="text-xs text-ink-muted">{ref.route.join(' · ')}</p>
-                      </div>
-                      <div className="mt-4 flex items-center justify-between">
-                        <span className="font-serif text-lg font-semibold text-ink">
-                          {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
-                        </span>
-                        <Link
-                          href={ref.campaignHref}
-                          aria-label={`View ${tour.name}`}
-                          className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink transition-colors hover:border-primary hover:bg-primary hover:text-white"
-                        >
-                          <ArrowRight />
-                        </Link>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -267,64 +238,106 @@ const HomePageRedesign = () => {
       {/* ===== South Island departure (Christchurch direct) ===== */}
       <SouthIslandDeparture />
 
+      {/* ===== China Stopovers (stopover-tier tours) ===== */}
+      <ChinaStopovers />
+
       {/* ===== Upcoming departures (derived from tours.ts) ===== */}
       <UpcomingDepartures />
 
       {/* ===== Popular cities ===== */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-white py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="mb-12 text-center">
-            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Where to go</span>
-            <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Explore China by city</h2>
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Explore China</span>
+            <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Where to Go</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-ink-muted">
+              From ancient wonders to modern skylines, explore China&apos;s most captivating cities and create memories that last a lifetime.
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+          {/* Mobile: one-card-at-a-time carousel — pure CSS scroll-snap + anchor
+              links, no client JS. Swipe to browse; the arrow button on each
+              card is an anchor to the next slide's id, so "next" works
+              without any script. */}
+          <div className="md:hidden">
+            <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-1">
+              {CITIES.map((c, i) => (
+                <div
+                  key={c.slug}
+                  id={`city-slide-${i}`}
+                  className="relative h-[530px] w-full flex-none scroll-ml-4 snap-center overflow-hidden rounded-[20px]"
+                >
+                  <Link href={`/${c.slug}-tours`} className="absolute inset-0" aria-label={`Explore ${c.name} tours`}>
+                    <Image src={c.img} alt={c.name} fill sizes="100vw" className="object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-6">
+                      <h3 className="mb-1 inline-block border-b-2 border-secondary pb-1 font-serif text-3xl text-white">{c.name}</h3>
+                      <p className="max-w-[220px] text-base text-white/90">{c.tag}</p>
+                    </div>
+                  </Link>
+                  <a
+                    href={`#city-slide-${(i + 1) % CITIES.length}`}
+                    aria-label="Next destination"
+                    className="absolute bottom-6 right-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg"
+                  >
+                    <ArrowRight className="h-5 w-5" />
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-2">
+              {CITIES.map((c, i) => (
+                <a
+                  key={c.slug}
+                  href={`#city-slide-${i}`}
+                  aria-label={`Go to ${c.name}`}
+                  className="h-2 w-2 rounded-full bg-warm-200"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="hidden md:grid md:grid-cols-3 md:gap-5 lg:grid-cols-6">
             {CITIES.map((c) => (
               <Link
                 key={c.slug}
                 href={`/${c.slug}-tours`}
-                className="group relative block h-56 overflow-hidden rounded-2xl md:h-64"
+                className="group relative block h-64 overflow-hidden rounded-2xl lg:h-[420px]"
               >
                 <Image
                   src={c.img}
                   alt={c.name}
                   fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5">
-                  <h3 className="font-serif text-2xl text-white transition-colors group-hover:text-secondary">{c.name}</h3>
-                  <p className="text-xs text-white/80">{c.tag}</p>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-5">
+                  <div>
+                    <h3 className="mb-1 inline-block border-b-2 border-secondary pb-1 font-serif text-xl text-white transition-colors group-hover:text-secondary">{c.name}</h3>
+                    <p className="text-xs text-white/80">{c.tag}</p>
+                  </div>
+                  <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-primary text-white transition-colors group-hover:bg-secondary group-hover:text-ink">
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/tours"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+            >
+              Explore all destinations <ArrowRight />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ===== Meet your specialist (Baker Gu) ===== */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 md:px-8 lg:grid-cols-12 lg:gap-16">
-          <Link
-            href="/experts/baker-gu"
-            className="group relative mx-auto block h-[380px] w-full max-w-sm overflow-hidden rounded-3xl shadow-editorial lg:col-span-5"
-          >
-            <Image
-              src={BAKER_IMAGE}
-              alt="Baker Gu, CTS China specialist"
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-6">
-              <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
-              <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
-              <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-secondary">
-                Read his story <ArrowRight className="h-3.5 w-3.5" />
-              </span>
-            </div>
-          </Link>
-          <div className="lg:col-span-7">
+      <section className="bg-white py-12 md:py-16">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-4 md:px-8 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <div className="order-1 lg:order-1 lg:col-span-7">
             <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Meet your specialist</span>
             <blockquote className="mb-6 font-serif text-2xl italic leading-snug text-ink md:text-3xl">
               &ldquo;For 20 years I&apos;ve shown Kiwi travellers the China I grew up in — not the one in the brochures.&rdquo;
@@ -333,46 +346,98 @@ const HomePageRedesign = () => {
               Baker personally designs and quality-checks every CTS journey. When you enquire, you&apos;re not talking to
               a call centre — you&apos;re talking to the person who built the trip.
             </p>
-            <div className="mb-8 flex flex-wrap gap-2">
-              {['Born in China', 'NZ-based', '20+ years in travel', 'Mandarin · English · Cantonese'].map((c) => (
-                <span key={c} className="rounded-full border border-warm-200 bg-surface px-3 py-1.5 text-xs font-semibold text-primary">{c}</span>
+            <div className="mb-8 flex flex-wrap gap-x-6 gap-y-4">
+              {([
+                { icon: 'landmark', label: 'Born in China', width: 'w-20' },
+                { icon: 'map-pin', label: 'NZ-based', width: 'w-20' },
+                { icon: 'briefcase', label: '20+ Years in Travel', width: 'w-20' },
+                { icon: 'message', label: 'Speaks Mandarin, English and Cantonese', width: 'w-32' },
+              ] as { icon: IconName; label: string; width: string }[]).map((c) => (
+                <div key={c.label} className={`flex ${c.width} flex-col items-center text-center`}>
+                  <span className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-surface text-primary">
+                    <Icon name={c.icon} className="h-5 w-5" />
+                  </span>
+                  <span className="text-xs font-semibold text-ink-muted">{c.label}</span>
+                </div>
               ))}
             </div>
-            <Link href="/experts/baker-gu" className="mb-8 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
-              Read Baker&apos;s full story <ArrowRight className="h-3.5 w-3.5" />
+            {/* Desktop position (right after the badges) — hidden on mobile,
+                where the Figma comp moves this button to the very end. */}
+            <Link href="/experts/baker-gu" className="hidden items-center gap-1.5 text-sm font-bold text-primary hover:underline lg:inline-flex">
+              Read Baker&apos;s Full Story <ArrowRight className="h-3.5 w-3.5" />
             </Link>
-            <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
-            <ContactChannels tone="light" />
           </div>
+          <div className="relative order-2 mx-auto w-full max-w-sm pb-16 lg:order-2 lg:col-span-5 lg:max-w-none lg:pb-0">
+            <Link
+              href="/experts/baker-gu"
+              className="group relative block aspect-[514/752] w-full overflow-hidden rounded-3xl shadow-editorial"
+            >
+              <Image
+                src={BAKER_IMAGE}
+                alt="Baker Gu, CTS China specialist"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-x-0 top-0 bg-gradient-to-b from-ink/80 to-transparent p-6">
+                <p className="font-serif text-xl font-bold text-white">Baker Gu</p>
+                <p className="text-sm text-white/80">Founder &amp; Lead China Specialist</p>
+              </div>
+            </Link>
+            {/* Floating "speak to Baker" card overlapping the photo, per the Figma comp. */}
+            <div className="absolute -bottom-10 right-0 w-[85%] max-w-xs rounded-2xl border border-warm-200 bg-white p-5 shadow-lg lg:-right-6 lg:bottom-10">
+              <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink">Speak to Baker &mdash; no obligation</p>
+              <ContactChannels tone="light" />
+            </div>
+          </div>
+          {/* Mobile position (after the photo) — hidden on desktop. */}
+          <Link href="/experts/baker-gu" className="order-3 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline lg:hidden">
+            Read Baker&apos;s Full Story <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
         </div>
       </section>
 
       {/* ===== Why CTS ===== */}
-      <section className="bg-surface py-16 md:py-20">
+      <section className="bg-surface py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="flex flex-col gap-16 lg:flex-row lg:gap-24">
-            <div className="space-y-6 lg:w-1/3">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-editorial lg:col-span-5 lg:aspect-auto lg:h-full">
+              <Image
+                src={DIFFERENCE_IMAGE}
+                alt="The Temple of Heaven in Beijing at golden hour"
+                fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="lg:col-span-7">
               <span className="block text-xs font-semibold uppercase tracking-[0.1em] text-primary">The CTS Difference</span>
-              <h2 className="font-serif text-4xl leading-tight text-ink">
+              <h2 className="mt-3 font-serif text-4xl leading-tight text-ink">
                 Expertise you
                 <br />
                 can trust.
               </h2>
-              <p className="pt-4 text-lg leading-relaxed text-ink-muted">
+              <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
                 For 25 years CTS Tours NZ has crafted (parent CTS Group in the industry since 1928) exceptional travel experiences, bridging New Zealand and the
                 wonders of China.
               </p>
-            </div>
-            <div className="grid grid-cols-1 gap-x-12 gap-y-14 md:grid-cols-2 lg:w-2/3">
-              {FEATURES.map((f) => (
-                <div key={f.title}>
-                  <div className="mb-6 flex h-12 w-12 items-end border-b-2 border-primary pb-3 text-primary">
-                    <Icon name={f.icon} className="h-8 w-8" />
+              <div className="mt-10 grid grid-cols-2 gap-4">
+                {FEATURES.map((f) => (
+                  <div key={f.title} className="rounded-2xl border border-warm-200 bg-white p-6">
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Icon name={f.icon} className="h-7 w-7" />
+                    </div>
+                    <h4 className="mb-2 font-serif text-xl text-ink">{f.title}</h4>
+                    <p className="text-sm leading-relaxed text-ink-muted">{f.body}</p>
                   </div>
-                  <h4 className="mb-4 font-serif text-2xl text-ink">{f.title}</h4>
-                  <p className="text-base leading-relaxed text-ink-muted">{f.body}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+              <Link
+                href="/tours"
+                className="mt-10 inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                Explore Our Journeys <ArrowRight />
+              </Link>
             </div>
           </div>
         </div>
@@ -380,9 +445,9 @@ const HomePageRedesign = () => {
 
       {/* ===== Testimonials wall (real reviews) ===== */}
       {reviews.length > 0 && (
-        <section className="bg-white py-16 md:py-20">
+        <section className="bg-white py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 max-w-2xl">
+            <div className="mb-10 mx-auto max-w-2xl text-center">
               <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">What travellers say</span>
               <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Loved by Kiwi travellers</h2>
               <p className="mt-4 text-lg leading-relaxed text-ink-muted">
@@ -398,18 +463,10 @@ const HomePageRedesign = () => {
                 , quoted word for word.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((t) => (
-                <figure key={t.id} className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-6 shadow-editorial">
-                  <div className="mb-4 flex text-secondary">
-                    {Array.from({ length: t.rating }).map((_, i) => (
-                      <Icon key={i} name="star" className="h-4 w-4" />
-                    ))}
-                  </div>
-                  <blockquote className="mb-6 flex-1 text-sm leading-relaxed text-ink line-clamp-4">
-                    &ldquo;{t.text}&rdquo;
-                  </blockquote>
-                  <figcaption className="flex items-center gap-3 border-t border-warm-100 pt-4">
+            {(() => {
+              const card = (t: (typeof reviews)[number]) => (
+                <figure className="flex flex-col rounded-2xl border border-warm-100 bg-surface p-6 shadow-editorial">
+                  <figcaption className="mb-4 flex items-center gap-3">
                     <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-primary/10 font-serif text-sm font-bold text-primary">
                       {t.avatarInitials}
                     </span>
@@ -420,8 +477,60 @@ const HomePageRedesign = () => {
                       </span>
                     </span>
                   </figcaption>
+                  <div className="mb-4 flex text-secondary">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Icon key={i} name="star" filled className="h-4 w-4" />
+                    ))}
+                  </div>
+                  <blockquote className="text-sm leading-relaxed text-ink">
+                    &ldquo;{t.text}&rdquo;
+                  </blockquote>
                 </figure>
-              ))}
+              );
+
+              return (
+                <>
+                  {/* Mobile: one card at a time with pagination dots, per the
+                      Figma comp. */}
+                  <div className="md:hidden">
+                    <div className="-mx-4 flex snap-x snap-mandatory overflow-x-auto px-4">
+                      {reviews.map((t) => (
+                        <div key={t.id} id={`review-slide-${t.id}`} className="w-full flex-none snap-center pr-4">
+                          {card(t)}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 flex items-center justify-center gap-2">
+                      {reviews.map((t) => (
+                        <a
+                          key={t.id}
+                          href={`#review-slide-${t.id}`}
+                          aria-label={`Go to ${t.name}'s review`}
+                          className="h-2 w-2 rounded-full bg-warm-200"
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  {/* Desktop: 3-column masonry with full-length reviews, per the
+                      Figma comp — cards flow into columns and keep their natural
+                      height rather than a uniform grid. */}
+                  <div className="hidden gap-6 md:block md:columns-2 lg:columns-3">
+                    {reviews.map((t) => (
+                      <div key={t.id} className="mb-6 break-inside-avoid">{card(t)}</div>
+                    ))}
+                  </div>
+                </>
+              );
+            })()}
+            <div className="mt-12 flex justify-center">
+              <a
+                href={GOOGLE_RATING.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                Read more reviews on Google <ArrowRight />
+              </a>
             </div>
           </div>
         </section>
@@ -429,26 +538,21 @@ const HomePageRedesign = () => {
 
       {/* ===== From the blog ===== */}
       {blogPosts.length > 0 && (
-        <section className="bg-surface py-16 md:py-20">
+        <section className="bg-surface py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div className="max-w-2xl">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
-                <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">From the blog</h2>
-              </div>
-              <Link
-                href="/blog"
-                className="hidden items-center gap-2 border-b-2 border-ink pb-1 text-sm font-bold uppercase tracking-wider text-ink transition-colors hover:border-primary hover:text-primary md:inline-flex"
-              >
-                All articles <ArrowRight />
-              </Link>
+            <div className="mb-10 text-center">
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">Stories &amp; guides</span>
+              <h2 className="font-serif text-4xl leading-tight text-ink md:text-5xl">Travel inspiration for your next adventure</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-ink-muted">
+                Practical tips, in-depth guides and real travel experiences to help you explore China with confidence.
+              </p>
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {blogPosts.map((p) => (
                 <Link key={p.slug} href={`/blog/${p.slug}`} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-editorial">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src={p.heroImage}
+                      src={BLOG_IMAGE_OVERRIDE[p.slug] ?? p.heroImage}
                       alt={p.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
@@ -460,64 +564,52 @@ const HomePageRedesign = () => {
                     <p className="mb-2 text-xs text-ink-muted">{p.readTime}</p>
                     <h3 className="mb-2 font-serif text-xl leading-snug text-ink transition-colors group-hover:text-primary">{p.title}</h3>
                     <p className="mb-4 flex-1 text-sm leading-relaxed text-ink-muted line-clamp-3">{p.excerpt}</p>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-primary">Read more <ArrowRight className="h-3.5 w-3.5" /></span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-primary">Read More <ArrowRight className="h-3.5 w-3.5" /></span>
                   </div>
                 </Link>
               ))}
+            </div>
+            <div className="mt-12 flex justify-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
+              >
+                View All Stories &amp; Guides <ArrowRight />
+              </Link>
             </div>
           </div>
         </section>
       )}
 
-      {/* ===== Design your China (enquiry CTA card) ===== */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-6xl px-4 md:px-8">
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl shadow-editorial lg:grid-cols-2">
-            {/* Left — heritage-red panel */}
-            <div className="relative flex flex-col justify-center overflow-hidden bg-gradient-to-br from-[#8E121F] via-primary to-[#A3172A] p-10 text-white md:p-14">
-              <div
-                className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full"
-                style={{ background: 'radial-gradient(circle, rgba(214,167,86,0.38), transparent 65%)' }}
-                aria-hidden
-              />
-              <div className="relative">
-                <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
-                  Prefer to travel your way?
-                </span>
-                <h2 className="mb-5 font-serif text-4xl leading-tight text-white md:text-5xl">
-                  Let&apos;s design your China, together.
-                </h2>
-                <p className="mb-8 max-w-md text-lg font-light leading-relaxed text-white/85">
-                  Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
-                  working day.
-                </p>
-                <Link
-                  href="/tailor-made"
-                  className="mb-7 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-primary shadow-lg transition-colors hover:bg-secondary hover:text-ink"
-                >
-                  Start your tailor-made trip <ArrowRight />
-                </Link>
-                <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-white/60">Or reach us directly</p>
-                <ContactChannels tone="dark" />
-                <p className="mt-5 text-sm text-white/70">
-                  Prefer to talk now? Call{' '}
-                  <a href={CTS_PHONE_HREF} className="font-semibold text-white underline-offset-4 hover:underline">
-                    {CTS_PHONE_DISPLAY}
-                  </a>
-                </p>
-              </div>
-            </div>
-            {/* Right — cinematic photo */}
-            <div className="relative min-h-[300px] lg:min-h-full">
-              <Image
-                src={CTA_IMAGE}
-                alt="Dramatic mountain landscape in China"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
+      {/* ===== Design your China (enquiry CTA banner) ===== */}
+      <section className="relative isolate overflow-hidden bg-surface">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={CTA_IMAGE}
+            alt="A river cruise ship passing through the Three Gorges at sunset"
+            fill
+            sizes="100vw"
+            className="object-cover object-right"
+          />
+        </div>
+        <div className="relative mx-auto flex min-h-[420px] max-w-7xl flex-col justify-center px-6 py-16 md:min-h-[480px] md:px-14 md:py-20 lg:py-24">
+          <div className="mb-4 h-0.5 w-14 bg-secondary" />
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            Prefer to travel your way?
+          </span>
+          <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-tight text-ink md:text-5xl">
+            Let&apos;s design your China, together.
+          </h2>
+          <p className="mb-8 max-w-md text-lg leading-relaxed text-ink-muted">
+            Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
+            working day.
+          </p>
+          <Link
+            href="/tailor-made"
+            className="inline-flex w-fit items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-bold text-white shadow-lg transition-colors hover:bg-red-700"
+          >
+            Start your tailor-made trip <ArrowRight />
+          </Link>
         </div>
       </section>
     </div>

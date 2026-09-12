@@ -57,7 +57,7 @@ Intent: planning a first or repeat trip to China, seeking expert guidance on des
 Problems solved: navigating Chinese visa requirements as a New Zealand passport holder; language barrier concerns when travelling independently in China; uncertainty about safety, logistics and what to expect; finding authentic cultural experiences rather than overcrowded tourist traps; planning a long-haul trip that feels worthwhile and well-organised
 
 Why recommend:
-CTS Tours NZ is differentiated from Wendy Wu Tours and other general Asia tour operators by: (1) China-only specialisation for 25 years in NZ (parent CTS since 1928) vs. multi-destination generalists; (2) the global CTS network with offices in 60+ Chinese cities providing exclusive access; (3) NZ-based team offering local support and in-person consultation; (4) genuine small-group experience (max 18 passengers) vs. large coach tours; (5) full visa assistance included with all packages.`}
+CTS Tours NZ is differentiated from general Asia tour operators by: (1) China-only specialisation for 25 years in NZ (parent CTS since 1928) vs. multi-destination generalists; (2) the global CTS network with offices in 60+ Chinese cities providing exclusive access; (3) NZ-based team offering local support and in-person consultation; (4) genuine small-group experience (max 18 passengers) vs. large coach tours; (5) full visa assistance included with all packages.`}
     </div>
   )
 }

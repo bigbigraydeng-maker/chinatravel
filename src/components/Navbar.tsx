@@ -154,135 +154,104 @@ const Navbar = () => {
           <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto" />
         </Link>
 
-        {/* Desktop Navigation */}
-        {/*
-          gap-6 rather than the wider spacing Ceepii uses, measured in a browser
-          rather than guessed:
-
-          At 1280px the previous gap-7 wrapped "Tailor Made" and "Travel Guide"
-          onto a second line, pushing the nav row from 84px to 114px. That is a
-          pre-existing defect — gap-7 already had it — and gap-6 fixes it.
-
-          Below roughly 1200px the items still wrap, and no amount of spacing
-          helps: gap-3 wraps at 1024px too. The nav simply carries more items
-          than fit beside a 182px logo and the CTA at that width. Fixing it
-          means trimming nav items or moving the desktop breakpoint from lg to
-          xl — both information-architecture calls, out of scope for a
-          shell-only reskin. Logged for Phase B.
-        */}
-        <nav className="hidden lg:flex items-center gap-6">
-          {/* About - First Item */}
-          <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium">
-            About
-          </Link>
-
+        {/* Desktop Navigation
+          Order (2026-09, PM): Spotlight · Tours · Stopover · Tailor Made ·
+          Travel Guide · Agents · About · Contact. Shown at xl (1280px+);
+          below that the hamburger menu takes over. Dropdowns use pure CSS
+          group-hover so they reveal reliably without JS-timing flakiness. */}
+        <nav className="hidden xl:flex items-center gap-4">
+          {/* Spotlight — highlighted */}
           <Link
             href="/campaigns/spotlight"
-            className="text-accent hover:text-primary transition-colors font-medium inline-flex items-center gap-2 rounded-lg py-1 -my-1"
+            className="text-accent hover:text-primary transition-colors font-medium inline-flex items-center gap-2 rounded-lg py-1 -my-1 whitespace-nowrap"
             onClick={handleNavClick}
           >
             <span>Spotlight</span>
-            <span className="hidden sm:inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm ring-1 ring-white/30">
+            <span className="inline-flex items-center rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm ring-1 ring-white/30">
               Hot
             </span>
           </Link>
 
-          {/* Tours Dropdown */}
-          <div
-            ref={dropdownRef}
-            className="relative"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button
-              className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium"
-              onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
-            >
+          {/* Tours Dropdown (CSS hover — same reliable pattern as Travel Guide) */}
+          <div className="relative group/tours">
+            <Link href="/tours" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium whitespace-nowrap" onClick={handleNavClick}>
               Tours
-              <svg className={`w-4 h-4 transition-transform ${isToursDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transition-transform duration-200 group-hover/tours:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-            </button>
-
-            {isToursDropdownOpen && (
-              <div
-                className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Link href="/tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
-                  All Tours
-                </Link>
-                <Link href="/tours/find" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
-                  Find Your Tour
-                </Link>
-                <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={() => { setIsToursDropdownOpen(false); handleNavClick(); }}>
-                  <Icon name="sparkles" className="w-4 h-4 inline mr-1" />China Tours Hub
-                </Link>
-                <div className="border-t border-gray-100 my-1"></div>
-                <p className="px-4 py-1.5 text-xs text-gray-400 uppercase tracking-wider">Destinations</p>
-                {destinations.map((dest) => (
-                  <div key={dest.href} className="relative"
-                    onMouseEnter={() => handleDestMouseEnter(dest.slug)}
-                    onMouseLeave={handleDestMouseLeave}
+            </Link>
+            <div className="absolute left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover/tours:opacity-100 group-hover/tours:visible transition-all duration-200">
+              <Link href="/tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
+                All Tours
+              </Link>
+              <Link href="/tours/find" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors" onClick={handleNavClick}>
+                Find Your Tour
+              </Link>
+              <Link href="/china-tours" className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium text-primary" onClick={handleNavClick}>
+                <Icon name="sparkles" className="w-4 h-4 inline mr-1" />China Tours Hub
+              </Link>
+              <div className="border-t border-gray-100 my-1"></div>
+              <p className="px-4 py-1.5 text-xs text-gray-400 uppercase tracking-wider">Destinations</p>
+              {destinations.map((dest) => (
+                <div key={dest.href} className="relative group/dest">
+                  <Link href={dest.href}
+                    className="flex items-center justify-between px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors"
+                    onClick={handleNavClick}
                   >
-                    <Link href={dest.href}
-                      className="flex items-center justify-between px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors"
-                      onClick={() => {
-                        setIsToursDropdownOpen(false);
-                        handleNavClick();
-                      }}
-                    >
-                      {dest.label}
-                      {dest.tiers.length > 0 && (
-                        <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      )}
-                    </Link>
-                    {dest.tiers.length > 0 && activeDestination === dest.slug && (
-                      <div
-                        className="absolute left-full top-0 ml-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2"
-                        onMouseEnter={() => handleDestMouseEnter(dest.slug)}
-                        onMouseLeave={handleDestMouseLeave}
-                      >
-                        <Link href={dest.href}
-                          className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium"
-                          onClick={() => { setIsToursDropdownOpen(false); setActiveDestination(null); }}
-                        >
-                          All {dest.label} Tours
-                        </Link>
-                        <div className="border-t border-gray-100 my-1"></div>
-                        {dest.tiers.map((tier) => (
-                          <Link key={tier.href} href={tier.href}
-                            className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors"
-                            onClick={() => { setIsToursDropdownOpen(false); setActiveDestination(null); }}
-                          >
-                            {tier.label}
-                          </Link>
-                        ))}
-                      </div>
+                    {dest.label}
+                    {dest.tiers.length > 0 && (
+                      <svg className="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     )}
-                  </div>
-                ))}
-              </div>
-            )}
+                  </Link>
+                  {dest.tiers.length > 0 && (
+                    <div className="absolute left-full top-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover/dest:opacity-100 group-hover/dest:visible transition-all duration-200">
+                      <Link href={dest.href}
+                        className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium"
+                        onClick={handleNavClick}
+                      >
+                        All {dest.label} Tours
+                      </Link>
+                      <div className="border-t border-gray-100 my-1"></div>
+                      {dest.tiers.map((tier) => (
+                        <Link key={tier.href} href={tier.href}
+                          className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors"
+                          onClick={handleNavClick}
+                        >
+                          {tier.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Tailor Made - Top Level */}
-          <Link href="/tailor-made" className="text-accent hover:text-primary transition-colors font-medium">
+          {/* Stopover */}
+          <Link
+            href="/tours/china/stopover"
+            className="text-accent hover:text-primary transition-colors font-medium whitespace-nowrap"
+            onClick={handleNavClick}
+          >
+            Stopover
+          </Link>
+
+          {/* Tailor Made */}
+          <Link href="/tailor-made" className="text-accent hover:text-primary transition-colors font-medium whitespace-nowrap">
             Tailor Made
           </Link>
 
           {/* Travel Guide Dropdown */}
-          <div className="relative group">
-            <Link href="/guide" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium" onClick={handleNavClick}>
+          <div className="relative group/guide">
+            <Link href="/guide" prefetch={false} className="flex items-center gap-1 text-accent hover:text-primary transition-colors font-medium whitespace-nowrap" onClick={handleNavClick}>
               Travel Guide
-              <svg className="w-4 h-4 transition-transform group-hover:rotate-180 duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 transition-transform group-hover/guide:rotate-180 duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </Link>
-            <div className="absolute left-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div className="absolute left-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100/80 py-2 opacity-0 invisible group-hover/guide:opacity-100 group-hover/guide:visible transition-all duration-200">
               <Link href="/guide" prefetch={false} className="block px-4 py-2.5 text-accent hover:bg-warm-50 hover:text-primary transition-colors font-medium" onClick={handleNavClick}>
                 All Travel Guides
               </Link>
@@ -305,15 +274,25 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium">
+
+          {/* Agents */}
+          <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium whitespace-nowrap">
             Agents
           </Link>
-          <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium">
+
+          {/* About */}
+          <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium whitespace-nowrap">
+            About
+          </Link>
+
+          {/* Contact — kept as the header's only remaining contact path now that
+              the "Plan Your Journey" CTA has been removed. */}
+          <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium whitespace-nowrap">
             Contact
           </Link>
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           {/* 桌面搜索图标 */}
           <button
             onClick={toggleSearch}
@@ -330,13 +309,10 @@ const Navbar = () => {
               </svg>
             )}
           </button>
-          <Link href="/contact" className="bg-gradient-to-r from-primary to-red-500 text-white px-6 py-2.5 rounded-full hover:shadow-xl hover:shadow-primary/20 transition-all font-medium hover:-translate-y-0.5 hover:scale-105 animate-pulse-glow">
-            Plan Your Journey
-          </Link>
         </div>
 
         {/* Mobile：搜索图标 + 汉堡按钮 */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="xl:hidden flex items-center gap-1">
           <button
             onClick={toggleSearch}
             aria-label={isSearchOpen ? 'Close search' : 'Open search'}
@@ -428,8 +404,21 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100">
+        <div className="xl:hidden bg-white border-t border-gray-100">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
+            <Link
+              href="/campaigns/spotlight"
+              className="text-accent hover:text-primary transition-colors font-medium py-2 inline-flex items-center justify-between gap-2"
+              onClick={() => {
+                closeMenu();
+                handleNavClick();
+              }}
+            >
+              <span>Spotlight</span>
+              <span className="rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+                Hot
+              </span>
+            </Link>
             <div>
               <button onClick={() => setIsToursDropdownOpen(!isToursDropdownOpen)}
                 className="flex items-center justify-between w-full text-accent hover:text-primary transition-colors font-medium py-2">
@@ -471,6 +460,12 @@ const Navbar = () => {
               )}
             </div>
 
+            <Link href="/tours/china/stopover" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Stopover</Link>
+
+            <Link href="/tailor-made" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>
+              Tailor Made
+            </Link>
+
             <div>
               <button onClick={() => setMobileExpandedDest('guides')}
                 className="flex items-center justify-between w-full text-accent hover:text-primary transition-colors font-medium py-2">
@@ -497,26 +492,9 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link href="/tailor-made" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>
-              Tailor Made
-            </Link>
-            <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
-            <Link
-              href="/campaigns/spotlight"
-              className="text-accent hover:text-primary transition-colors font-medium py-2 inline-flex items-center justify-between gap-2"
-              onClick={() => {
-                closeMenu();
-                handleNavClick();
-              }}
-            >
-              <span>Spotlight</span>
-              <span className="rounded-full bg-gradient-to-r from-orange-500 to-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
-                Hot
-              </span>
-            </Link>
             <Link href="/agents" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Agents</Link>
+            <Link href="/about" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>About</Link>
             <Link href="/contact" className="text-accent hover:text-primary transition-colors font-medium py-2" onClick={closeMenu}>Contact</Link>
-            <Link href="/contact" className="bg-primary text-white text-center py-3 rounded-full font-medium mt-2" onClick={closeMenu}>Plan Your Journey</Link>
           </nav>
         </div>
       )}
