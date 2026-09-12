@@ -588,25 +588,29 @@ const HomePageRedesign = () => {
       )}
 
       {/* ===== Design your China (enquiry CTA banner) ===== */}
-      <section className="relative isolate overflow-hidden bg-surface">
+      <section className="relative isolate overflow-hidden bg-ink">
         <div className="absolute inset-0 z-0">
           <Image
             src={CTA_IMAGE}
-            alt="A river cruise ship passing through the Three Gorges at sunset"
+            alt="A cruise ship on the Yangtze River among misty gorges at sunset"
             fill
             sizes="100vw"
             className="object-cover object-right"
           />
+          {/* Readability overlay — the photo's brightness varies by crop/viewport,
+              so don't rely on the image having a light or dark patch under the
+              copy; always guarantee contrast for the white text with a scrim. */}
+          <div className="absolute inset-0 bg-ink/35 md:bg-gradient-to-r md:from-ink/65 md:via-ink/30 md:to-transparent" />
         </div>
         <div className="relative mx-auto flex min-h-[420px] max-w-7xl flex-col justify-center px-6 py-16 md:min-h-[480px] md:px-14 md:py-20 lg:py-24">
           <div className="mb-4 h-0.5 w-14 bg-secondary" />
-          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+          <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.14em] text-secondary">
             Prefer to travel your way?
           </span>
-          <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-tight text-ink md:text-5xl">
+          <h2 className="mb-5 max-w-2xl font-serif text-4xl leading-tight text-white md:text-5xl">
             Let&apos;s design your China, together.
           </h2>
-          <p className="mb-8 max-w-md text-lg leading-relaxed text-ink-muted">
+          <p className="mb-8 max-w-md text-lg leading-relaxed text-white/90">
             Tell a New Zealand-based China specialist what you dream of seeing. No obligation — a reply within one
             working day.
           </p>
