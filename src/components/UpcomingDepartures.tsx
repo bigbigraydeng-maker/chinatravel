@@ -17,12 +17,12 @@ import { getAllActiveTours, type Tour } from '@/lib/data/tours';
 // list rotates over time, a tour without an entry here just falls back to its
 // own tour.heroImage — never a missing or mismatched image.
 const DEPARTURE_IMAGE_OVERRIDE: Record<string, string> = {
-  'yunnan-explorer': '/images/figma-exact/upcoming-yunnan.webp',
-  'shanghai-surroundings': '/images/figma-exact/upcoming-shanghai-surroundings.webp',
-  'imperial-heritage': '/images/figma-exact/upcoming-legacy-of-china.webp',
-  'beijing-xian': '/images/figma-exact/upcoming-tale-of-two-cities.webp',
-  'golden-china': '/images/figma-exact/upcoming-golden-china.webp',
-  'china-icons-collection': '/images/figma-exact/upcoming-christmas-new-year.webp',
+  'yunnan-explorer': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-yunnan.webp',
+  'shanghai-surroundings': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-shanghai-surroundings.webp',
+  'imperial-heritage': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-legacy-of-china.webp',
+  'beijing-xian': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-tale-of-two-cities.webp',
+  'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-golden-china.webp',
+  'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-christmas-new-year.webp',
 };
 
 const MONTHS: Record<string, number> = {
