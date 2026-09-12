@@ -12,9 +12,9 @@ import { HOME_STOPOVER_TOURS, type HomeStopoverRef } from '@/lib/data/home-stopo
  * stand-in).
  */
 const STOPOVER_IMAGE_OVERRIDE: Record<string, string> = {
-  beijing: '/images/figma-exact/stopover-beijing.webp',
-  shanghai: '/images/figma-exact/stopover-shanghai.webp',
-  'shanghai-suzhou': '/images/figma-exact/stopover-shanghai-suzhou.webp',
+  beijing: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-beijing.webp',
+  shanghai: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-shanghai.webp',
+  'shanghai-suzhou': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-shanghai-suzhou.webp',
 };
 
 export default function ChinaStopovers() {

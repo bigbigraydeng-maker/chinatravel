@@ -19,7 +19,7 @@ const SOUTH_ISLAND_SLUG = 'china-icons-collection-christchurch';
 // Figma-exact photo — homepage-only override, kept separate from tour.heroImage
 // (which also renders on the tour's own detail page and must stay that tour's
 // real photo, not the homepage mockup's stand-in).
-const FIGMA_IMAGE_OVERRIDE = '/images/figma-exact/christchurch-departure.webp';
+const FIGMA_IMAGE_OVERRIDE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure.webp';
 
 function formatPrice(raw: string | undefined): string | null {
   if (!raw) return null;
