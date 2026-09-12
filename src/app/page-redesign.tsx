@@ -26,12 +26,14 @@ import { migratedSite } from '@/lib/site-media';
  */
 
 /**
- * Source: Unsplash, photographer Joshua Earle ("Bamboo raft",
- * https://unsplash.com/photos/bamboo-raft-EqztQX9btrE), Unsplash License
- * (free, commercial use permitted). Cropped to remove the foreground tourist
- * and colour-graded warmer to match the site's sunset palette.
+ * Source: iStock, photographer IoanaCatalinaE ("View of the Karst mountains
+ * in Guilin region of South China, close to Xingping village, Li River",
+ * https://www.istockphoto.com/photo/view-of-the-karst-mountains-in-guilin-region-of-south-china-close-to-xingping-gm1200092739-343618936),
+ * Standard License via PM's iStock subscription. Colour-graded warmer to
+ * match the site's sunset palette (previous version was an Unsplash bamboo
+ * raft photo, replaced for a more premium/cinematic drone-shot look).
  */
-const HERO_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/hero-river-sunset-v2.webp';
+const HERO_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/hero-river-sunset-v3.webp';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
 const CTA_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/cta-banner-v2.webp';
 const DIFFERENCE_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/temple-difference-v2.webp';
