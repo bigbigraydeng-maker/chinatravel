@@ -25,7 +25,13 @@ import { migratedSite } from '@/lib/site-media';
  * Global Navbar + Footer come from the root layout. Live homepage untouched.
  */
 
-const HERO_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/hero-river-sunset.webp';
+/**
+ * Source: Unsplash, photographer Joshua Earle ("Bamboo raft",
+ * https://unsplash.com/photos/bamboo-raft-EqztQX9btrE), Unsplash License
+ * (free, commercial use permitted). Cropped to remove the foreground tourist
+ * and colour-graded warmer to match the site's sunset palette.
+ */
+const HERO_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/hero-river-sunset-v2.webp';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
 const CTA_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/cta-banner.webp';
 const DIFFERENCE_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/temple-difference.webp';
