@@ -33,8 +33,8 @@ import { migratedSite } from '@/lib/site-media';
  */
 const HERO_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/hero-river-sunset-v2.webp';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
-const CTA_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/cta-banner.webp';
-const DIFFERENCE_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/temple-difference.webp';
+const CTA_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/cta-banner-v2.webp';
+const DIFFERENCE_IMAGE = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/temple-difference-v2.webp';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -50,21 +50,21 @@ const FEATURES: { icon: IconName; title: string; body: string }[] = [
 ];
 
 const CITIES = [
-  { name: 'Beijing', slug: 'beijing', tag: 'A timeless blend of history and culture', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-beijing.webp' },
-  { name: "Xi'an", slug: 'xian', tag: 'Step into a legendary past', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-xian.webp' },
-  { name: 'Shanghai', slug: 'shanghai', tag: 'Where tradition meets modernity', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-shanghai.webp' },
-  { name: 'Chengdu', slug: 'chengdu', tag: 'Home to pandas and a laid-back lifestyle', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chengdu.webp' },
-  { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chongqing.webp' },
-  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-zhangjiajie.webp' },
+  { name: 'Beijing', slug: 'beijing', tag: 'A timeless blend of history and culture', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-beijing-v2.webp' },
+  { name: "Xi'an", slug: 'xian', tag: 'Step into a legendary past', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-xian-v2.webp' },
+  { name: 'Shanghai', slug: 'shanghai', tag: 'Where tradition meets modernity', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-shanghai-v2.webp' },
+  { name: 'Chengdu', slug: 'chengdu', tag: 'Home to pandas and a laid-back lifestyle', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chengdu-v2.webp' },
+  { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chongqing-v2.webp' },
+  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-zhangjiajie-v2.webp' },
 ];
 
 // Figma-exact card photos for the Spotlight tours — homepage-only override, kept
 // separate from tour.heroImage (which also renders on the tour's own detail page
 // and must stay the tour's real photo, not the homepage mockup's stand-in).
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
-  'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1.webp',
-  'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2.webp',
-  essentials: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card3.webp',
+  'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
+  'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
+  essentials: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card3-v2.webp',
 };
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
@@ -72,9 +72,9 @@ const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
 // blog list and post detail pages). As the list rotates with new posts, a post
 // without an entry here just falls back to its own post.heroImage.
 const BLOG_IMAGE_OVERRIDE: Record<string, string> = {
-  'how-many-days-in-chongqing': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article1.webp',
-  'yangtze-river-cruise-from-chongqing': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article2.webp',
-  'liziba-monorail-chongqing-guide': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article3.webp',
+  'how-many-days-in-chongqing': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article1-v2.webp',
+  'yangtze-river-cruise-from-chongqing': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article2-v2.webp',
+  'liziba-monorail-chongqing-guide': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/blog-article3-v2.webp',
 };
 
 const REVIEW_MONTHS = [
