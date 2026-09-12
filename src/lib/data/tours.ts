@@ -54,10 +54,11 @@ export interface Tour {
    */
   quickAnswer?: string;
   /**
-   * Maximum group size for this specific tour. Overrides the site-wide default
-   * (18) shown in the tour hero. Use when a departure is deliberately capped
-   * smaller (e.g. Golden China at 12) so the hero copy matches the sales
-   * promise. Any positive integer is allowed; leave undefined to inherit the
+   * Maximum group size for this specific tour. Overrides the tier default
+   * (signature 16 / discovery 20 / stopover 18, see TourHero.tsx) shown in
+   * the tour hero. Use when a departure is deliberately capped smaller
+   * (e.g. Golden China at 12) so the hero copy matches the sales promise.
+   * Any positive integer is allowed; leave undefined to inherit the tier
    * default.
    */
   maxGroupSize?: number;
@@ -1457,11 +1458,6 @@ export const tours: Tour[] = [
           'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
       },
       {
-        question: 'When is the best time to visit China?',
-        answer:
-          'It depends on the regions on your itinerary and whether you prefer mild weather, festivals, or fewer crowds. Our consultants can recommend seasons based on this exact route and your travel style.',
-      },
-      {
         question: 'Are international flights from New Zealand included?',
         answer:
           'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
@@ -1727,11 +1723,6 @@ export const tours: Tour[] = [
         question: 'What is typically included in the tour price?',
         answer:
           'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
-      },
-      {
-        question: 'When is the best time to visit China?',
-        answer:
-          'It depends on the regions on your itinerary and whether you prefer mild weather, festivals, or fewer crowds. Our consultants can recommend seasons based on this exact route and your travel style.',
       },
       {
         question: 'Are international flights from New Zealand included?',

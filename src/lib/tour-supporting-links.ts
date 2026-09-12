@@ -8,7 +8,6 @@ export interface SupportingContentLink {
 
 const PLANNING_LINKS: SupportingContentLink[] = [
   { label: 'China visa guide for New Zealanders', href: '/china-visa-guide-for-new-zealanders' },
-  { label: 'Best time to visit China', href: '/best-time-to-visit-china' },
   { label: 'China tours from New Zealand', href: '/china-tours-from-new-zealand' },
 ];
 
