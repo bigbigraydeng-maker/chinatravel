@@ -19,10 +19,14 @@ jest.mock('next/image', () => ({
 describe('SouthIslandDeparture', () => {
   it('links to the Christchurch departure tour page', () => {
     render(<SouthIslandDeparture />);
-    const link = screen.getByRole('link');
-    expect(link.getAttribute('href')).toBe(
-      '/tours/china/discovery/china-icons-collection-christchurch'
-    );
+    // Figma layout has two clickable areas (photo + offer card), both to the same tour.
+    const links = screen.getAllByRole('link');
+    expect(links.length).toBeGreaterThan(0);
+    for (const link of links) {
+      expect(link.getAttribute('href')).toBe(
+        '/tours/china/discovery/china-icons-collection-christchurch'
+      );
+    }
   });
 
   it('makes the South Island / Christchurch origin explicit — this is the reason the section exists', () => {
@@ -31,7 +35,6 @@ describe('SouthIslandDeparture', () => {
     expect(
       screen.getByRole('heading', { name: /Fly direct from Christchurch/i })
     ).toBeInTheDocument();
-    expect(screen.getByText(/Christchurch direct/i)).toBeInTheDocument();
   });
 
   it('pulls duration and price from tours.ts rather than hardcoding them', () => {

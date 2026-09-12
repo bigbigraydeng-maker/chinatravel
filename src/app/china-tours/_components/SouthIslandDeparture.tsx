@@ -16,6 +16,11 @@ import { getAllChinaTours } from '@/lib/data/tours';
  */
 const SOUTH_ISLAND_SLUG = 'china-icons-collection-christchurch';
 
+// Figma-exact photo — homepage-only override, kept separate from tour.heroImage
+// (which also renders on the tour's own detail page and must stay that tour's
+// real photo, not the homepage mockup's stand-in).
+const FIGMA_IMAGE_OVERRIDE = '/images/figma-exact/christchurch-departure.png';
+
 function formatPrice(raw: string | undefined): string | null {
   if (!raw) return null;
   return raw.replace(/^From\s+/i, '').replace(/\s+per person$/i, '').trim();
@@ -37,63 +42,59 @@ export default function SouthIslandDeparture() {
   const firstDeparture = tour.departureDates?.[0];
 
   return (
-    <section className="bg-white border-b border-warm-100">
-      <div className="container mx-auto px-4 py-14 md:py-20">
-        {/* Editorial layout: full-width photo first, then heading block, then a
-            standalone quote card — mirrors the "Curated Journeys" spread above
-            rather than the boxed image+text card this section used to be. */}
-        <a href={href} className="group block">
-          <div className="relative aspect-[16/8] w-full overflow-hidden rounded-3xl shadow-editorial md:aspect-[21/8]">
+    <section className="bg-surface">
+      <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16">
+        {/* Side-by-side per the Figma comp: full-height photo left, copy +
+            offer card right — not a stacked editorial layout. */}
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          <a href={href} className="group relative block aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-editorial lg:aspect-auto lg:h-[620px]">
             <Image
-              src={tour.heroImage}
+              src={FIGMA_IMAGE_OVERRIDE}
               alt={tour.name}
               fill
-              sizes="100vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
-            <span className="absolute top-4 left-4 md:top-6 md:left-6 inline-flex items-center bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow">
-              Christchurch direct
-            </span>
-          </div>
+          </a>
 
-          <div className="max-w-3xl mt-10 md:mt-12">
-            <p className="text-xs uppercase tracking-wider text-secondary font-bold mb-3">
+          <div>
+            <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.14em] text-primary">
               Departing from the South Island
-            </p>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">
+            </span>
+            <h2 className="mb-5 font-serif text-4xl leading-tight text-ink md:text-5xl">
               Fly direct from Christchurch
             </h2>
-            <p className="text-lg leading-relaxed text-ink-muted">
+            <p className="mb-8 max-w-xl text-lg leading-relaxed text-ink-muted">
               No need to connect through Auckland. This festive departure leaves
               direct from Christchurch, so South Island travellers start the trip
               at their own airport.
             </p>
-          </div>
 
-          <div className="max-w-xl mt-10 rounded-2xl border border-warm-200 bg-surface p-6 md:p-8 shadow-sm transition-shadow group-hover:shadow-lg">
-            <p className="text-xs uppercase tracking-wide text-amber-700 font-semibold mb-2">
-              {tour.duration} · Discovery
-              {firstDeparture ? ` · Departs ${firstDeparture}` : ''}
-            </p>
-            <h3 className="font-serif font-bold text-2xl text-ink mb-3 leading-snug">
-              {tour.name}
-            </h3>
-            <p className="text-ink-muted mb-6">{tour.shortDescription}</p>
-            <div className="pt-6 border-t border-warm-200 flex items-end justify-between gap-3">
-              <div>
-                <span className="block text-[11px] uppercase tracking-wider text-ink-muted font-semibold mb-1">
-                  From
-                </span>
-                <span className="text-3xl font-bold text-ink leading-none">
-                  {formatPrice(tour.price) ?? 'Talk to us'}
+            <a href={href} className="group block max-w-xl rounded-2xl border border-warm-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-lg md:p-8">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-primary">
+                {tour.duration} · Discovery
+                {firstDeparture ? ` · Departs ${firstDeparture}` : ''}
+              </p>
+              <h3 className="mb-3 font-serif text-2xl font-bold leading-snug text-ink">
+                {tour.name}
+              </h3>
+              <p className="mb-6 text-ink-muted">{tour.shortDescription}</p>
+              <div className="flex items-end justify-between gap-3 border-t border-warm-200 pt-6">
+                <div>
+                  <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-ink-muted">
+                    From
+                  </span>
+                  <span className="text-3xl font-bold leading-none text-ink">
+                    {formatPrice(tour.price) ?? 'Talk to us'}
+                  </span>
+                </div>
+                <span className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg transition-colors group-hover:bg-red-700">
+                  View tour →
                 </span>
               </div>
-              <span className="text-sm font-bold text-primary group-hover:translate-x-0.5 transition-transform">
-                View tour →
-              </span>
-            </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
     </section>
   );
