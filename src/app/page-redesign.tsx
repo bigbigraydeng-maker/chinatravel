@@ -25,10 +25,10 @@ import { migratedSite } from '@/lib/site-media';
  * Global Navbar + Footer come from the root layout. Live homepage untouched.
  */
 
-const HERO_IMAGE = '/images/figma-exact/hero-river-sunset.png';
+const HERO_IMAGE = '/images/figma-exact/hero-river-sunset.webp';
 const BAKER_IMAGE = '/images/baker-gu-portrait.jpg';
-const CTA_IMAGE = '/images/figma-exact/cta-banner.png';
-const DIFFERENCE_IMAGE = '/images/figma-exact/temple-difference.png';
+const CTA_IMAGE = '/images/figma-exact/cta-banner.webp';
+const DIFFERENCE_IMAGE = '/images/figma-exact/temple-difference.webp';
 
 const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
@@ -44,21 +44,21 @@ const FEATURES: { icon: IconName; title: string; body: string }[] = [
 ];
 
 const CITIES = [
-  { name: 'Beijing', slug: 'beijing', tag: 'A timeless blend of history and culture', img: '/images/figma-exact/city-beijing.png' },
-  { name: "Xi'an", slug: 'xian', tag: 'Step into a legendary past', img: '/images/figma-exact/city-xian.png' },
-  { name: 'Shanghai', slug: 'shanghai', tag: 'Where tradition meets modernity', img: '/images/figma-exact/city-shanghai.png' },
-  { name: 'Chengdu', slug: 'chengdu', tag: 'Home to pandas and a laid-back lifestyle', img: '/images/figma-exact/city-chengdu.png' },
-  { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: '/images/figma-exact/city-chongqing.png' },
-  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: '/images/figma-exact/city-zhangjiajie.png' },
+  { name: 'Beijing', slug: 'beijing', tag: 'A timeless blend of history and culture', img: '/images/figma-exact/city-beijing.webp' },
+  { name: "Xi'an", slug: 'xian', tag: 'Step into a legendary past', img: '/images/figma-exact/city-xian.webp' },
+  { name: 'Shanghai', slug: 'shanghai', tag: 'Where tradition meets modernity', img: '/images/figma-exact/city-shanghai.webp' },
+  { name: 'Chengdu', slug: 'chengdu', tag: 'Home to pandas and a laid-back lifestyle', img: '/images/figma-exact/city-chengdu.webp' },
+  { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: '/images/figma-exact/city-chongqing.webp' },
+  { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: '/images/figma-exact/city-zhangjiajie.webp' },
 ];
 
 // Figma-exact card photos for the Spotlight tours — homepage-only override, kept
 // separate from tour.heroImage (which also renders on the tour's own detail page
 // and must stay the tour's real photo, not the homepage mockup's stand-in).
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
-  'golden-china': '/images/figma-exact/spotlight-card1.png',
-  'china-icons-collection': '/images/figma-exact/spotlight-card2.png',
-  essentials: '/images/figma-exact/spotlight-card3.png',
+  'golden-china': '/images/figma-exact/spotlight-card1.webp',
+  'china-icons-collection': '/images/figma-exact/spotlight-card2.webp',
+  essentials: '/images/figma-exact/spotlight-card3.webp',
 };
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
@@ -66,9 +66,9 @@ const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
 // blog list and post detail pages). As the list rotates with new posts, a post
 // without an entry here just falls back to its own post.heroImage.
 const BLOG_IMAGE_OVERRIDE: Record<string, string> = {
-  'how-many-days-in-chongqing': '/images/figma-exact/blog-article1.png',
-  'yangtze-river-cruise-from-chongqing': '/images/figma-exact/blog-article2.png',
-  'liziba-monorail-chongqing-guide': '/images/figma-exact/blog-article3.png',
+  'how-many-days-in-chongqing': '/images/figma-exact/blog-article1.webp',
+  'yangtze-river-cruise-from-chongqing': '/images/figma-exact/blog-article2.webp',
+  'liziba-monorail-chongqing-guide': '/images/figma-exact/blog-article3.webp',
 };
 
 const REVIEW_MONTHS = [
