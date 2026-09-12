@@ -25,9 +25,10 @@ interface TourHeroProps {
   /** Single room supplement price, shown below the price row */
   singleSupplement?: string;
   /**
-   * Maximum group size for this specific tour. Overrides the site-wide
-   * default (18) shown in the USP triplet. Only pass when the tour data
-   * carries `maxGroupSize` — otherwise leave undefined and the default wins.
+   * Maximum group size for this specific tour. Overrides the tier default
+   * (signature 16 / discovery 20 / stopover 18) shown in the USP triplet.
+   * Only pass when the tour data carries `maxGroupSize` — otherwise leave
+   * undefined and the tier default wins.
    */
   maxGroupSize?: number;
   /**
@@ -71,7 +72,15 @@ export default function TourHero({
   seasonalBadge,
   fareSavingsBadge,
 }: TourHeroProps) {
-  const groupSizeLabel = `Small group · max ${maxGroupSize ?? 18} travellers`;
+  // Tier default group size (PM 2026-09-12): Signature capped smaller than
+  // Discovery. A tour's own `maxGroupSize` (e.g. Golden China's 12) always
+  // wins over this default.
+  const TIER_DEFAULT_GROUP_SIZE: Record<string, number> = {
+    signature: 16,
+    discovery: 20,
+    stopover: 18,
+  };
+  const groupSizeLabel = `Small group · max ${maxGroupSize ?? TIER_DEFAULT_GROUP_SIZE[tier] ?? 18} travellers`;
   const tierColors = {
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',

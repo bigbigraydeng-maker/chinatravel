@@ -296,11 +296,6 @@ export function getTourPageFaqs(destinationLabel: string): Array<{ question: str
         'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
     },
     {
-      question: `When is the best time to visit ${destinationLabel}?`,
-      answer:
-        'It depends on the regions on your itinerary and whether you prefer mild weather, festivals, or fewer crowds. Our consultants can recommend seasons based on this exact route and your travel style.',
-    },
-    {
       question: 'Are international flights from New Zealand included?',
       answer:
         'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
