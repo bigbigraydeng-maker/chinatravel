@@ -15,65 +15,57 @@
 <defs><clipPath id="mapClipM"><rect x="30" y="178" width="740" height="512" rx="10"/></clipPath></defs>
 <rect x="30" y="178" width="740" height="512" rx="10" fill="#DCEBF3" stroke="#C7D6DF" stroke-width="1.5"/>
 <g clip-path="url(#mapClipM)">
-<path d="M 937.7,238.6 L 969.5,244.5 L 991.2,257.5 L 998.6,274.7 L 1026.4,274.7 L 1042.3,267.5 L 1072.5,262.1 L 1062.9,278.5 L 1055.8,285.2 L 1049.5,305.3 L 1037.2,323.1 L 1015.0,319.8 L 999.3,326.3 L 1004.1,342.0 L 1001.5,363.6 L 992.1,364.1 L 992.3,373.4 L 980.4,362.6 L 973.2,372.8 L 944.9,380.7 L 947.8,390.4 L 931.9,389.7 L 923.2,384.0 L 910.7,397.0 L 890.5,406.8 L 875.6,418.5 L 850.0,423.9 L 836.5,432.4 L 816.8,437.4 L 826.6,428.9 L 822.7,421.8 L 837.2,409.5 L 827.6,399.9 L 811.6,406.4 L 790.9,419.1 L 779.7,430.9 L 761.7,431.8 L 752.4,440.3 L 762.0,452.7 L 777.0,455.7 L 777.6,463.9 L 792.1,469.3 L 812.6,456.2 L 828.9,463.3 L 840.7,463.8 L 843.7,473.4 L 817.7,478.5 L 809.2,488.4 L 791.4,497.6 L 782.0,510.4 L 801.7,520.4 L 808.9,538.4 L 820.0,555.2 L 832.5,569.3 L 832.2,582.9 L 820.7,587.9 L 825.1,597.6 L 835.8,603.3 L 833.0,618.2 L 828.4,632.7 L 818.1,634.4 L 804.8,654.2 L 789.9,678.2 L 773.0,700.0 L 747.8,716.9 L 722.3,732.3 L 701.7,734.4 L 690.5,742.6 L 684.2,736.6 L 673.8,745.7 L 648.3,754.9 L 628.9,757.7 L 622.6,777.0 L 612.5,778.1 L 607.7,764.8 L 612.0,757.7 L 587.5,751.9 L 578.8,754.8 L 560.4,750.1 L 551.7,742.7 L 554.6,732.1 L 537.9,728.8 L 529.0,721.9 L 513.4,731.7 L 495.6,733.8 L 481.1,733.7 L 471.2,738.1 L 461.7,740.8 L 464.5,761.8 L 454.8,761.3 L 453.1,757.0 L 452.6,749.4 L 439.1,754.7 L 431.2,751.4 L 417.6,744.5 L 422.9,729.3 L 411.4,725.7 L 407.0,708.9 L 387.7,711.9 L 389.9,690.2 L 407.2,674.9 L 407.9,659.8 L 407.4,645.8 L 399.4,641.5 L 393.3,630.7 L 382.6,632.1 L 362.9,629.3 L 369.0,621.6 L 360.5,610.3 L 347.4,618.0 L 332.1,613.5 L 311.0,625.1 L 294.3,638.7 L 279.5,641.0 L 271.5,636.1 L 261.9,635.7 L 248.8,631.4 L 238.9,636.1 L 226.8,649.7 L 225.3,635.3 L 214.1,639.1 L 192.8,637.3 L 172.1,633.1 L 157.2,625.1 L 143.0,621.5 L 136.8,612.7 L 126.6,610.1 L 108.1,598.1 L 93.4,592.5 L 85.8,596.9 L 60.4,584.1 L 42.4,572.5 L 37.3,552.3 L 50.4,554.8 L 51.0,545.4 L 43.7,536.1 L 45.6,521.1 L 25.9,499.7 L -4.2,492.3 L -9.6,478.2 L -23.1,469.7 L -26.4,464.4 L -29.1,454.0 L -28.5,446.9 L -39.6,442.7 L -45.6,444.6 L -50.3,427.6 L -45.1,423.5 L -47.6,419.2 L -30.1,410.5 L -17.5,406.9 L 1.9,409.4 L 8.8,397.7 L 32.3,395.5 L 38.8,388.3 L 67.7,378.4 L 70.2,374.2 L 68.8,363.8 L 81.3,359.0 L 64.9,327.2 L 101.1,319.9 L 110.5,315.8 L 123.7,283.1 L 160.0,289.1 L 170.2,280.8 L 171.0,262.5 L 186.2,260.8 L 200.2,248.6 L 207.3,247.1 L 212.1,259.8 L 227.5,269.6 L 253.6,276.4 L 266.3,291.2 L 259.2,312.6 L 265.8,320.5 L 287.5,323.6 L 312.2,326.2 L 334.3,337.6 L 345.6,339.6 L 354.0,356.5 L 364.7,367.3 L 384.9,366.9 L 422.6,371.0 L 447.0,368.5 L 465.1,371.2 L 492.1,382.3 L 514.3,382.3 L 522.4,388.0 L 543.7,378.2 L 573.2,371.8 L 600.7,371.1 L 622.1,364.7 L 635.2,354.9 L 648.0,348.7 L 645.0,342.7 L 639.2,335.7 L 648.8,323.9 L 659.1,325.5 L 677.9,329.2 L 696.2,319.5 L 724.1,312.4 L 737.5,300.3 L 750.3,295.1 L 776.9,292.7 L 791.4,294.7 L 793.4,288.2 L 776.8,275.4 L 762.1,269.6 L 748.0,276.4 L 730.0,273.5 L 719.6,275.8 L 714.9,268.3 L 727.8,250.1 L 736.8,236.3 L 758.7,243.2 L 784.5,231.6 L 784.3,223.5 L 800.9,204.1 L 811.0,198.3 L 810.8,188.2 L 800.8,183.8 L 815.9,174.7 L 838.6,171.4 L 862.9,170.9 L 890.3,176.4 L 906.4,183.1 L 917.7,201.6 L 924.5,209.4 L 930.9,220.7 L 937.7,238.6 Z" fill="#EEF1F0" stroke="#B9C4CB" stroke-width="1.5" stroke-linejoin="round"/>
-<path d="M 595.1,520.8 Q 558.0,476.6 501.7,489.3" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 501.7,489.3 Q 470.5,485.2 479.8,455.1" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 479.8,455.1 Q 468.9,426.0 439.7,436.9" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 439.7,436.9 Q 412.7,447.8 400.2,421.4" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 400.2,421.4 Q 369.2,396.1 333.8,414.6" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 333.8,414.6 Q 272.7,410.3 233.6,363.3" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<path d="M 233.6,363.3 Q 230.0,336.1 204.9,347.2" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-<g transform="translate(541.7,487.9) rotate(-169.7)"><use href="#arrow"/></g>
-<g transform="translate(478.6,474.2) rotate(-106.8)"><use href="#arrow"/></g>
-<g transform="translate(459.3,434.4) rotate(-169.0)"><use href="#arrow"/></g>
-<g transform="translate(411.8,436.1) rotate(-145.9)"><use href="#arrow"/></g>
-<g transform="translate(360.1,406.9) rotate(176.8)"><use href="#arrow"/></g>
-<g transform="translate(266.5,392.9) rotate(-147.0)"><use href="#arrow"/></g>
-<g transform="translate(220.8,344.3) rotate(-168.5)"><use href="#arrow"/></g>
-<circle cx="553.2" cy="490.8" r="15" fill="#FFFFFF"/><use href="#train" x="553.2" y="490.8"/>
-<circle cx="480.6" cy="478.7" r="15" fill="#FFFFFF"/><use href="#bus" x="480.6" y="478.7"/>
-<circle cx="464.3" cy="436.0" r="15" fill="#FFFFFF"/><use href="#bus" x="464.3" y="436.0"/>
-<circle cx="416.3" cy="438.5" r="15" fill="#FFFFFF"/><use href="#bus" x="416.3" y="438.5"/>
-<circle cx="368.1" cy="407.1" r="15" fill="#FFFFFF"/><use href="#bus" x="368.1" y="407.1"/>
-<circle cx="278.2" cy="399.6" r="15" fill="#FFFFFF"/><use href="#train" x="278.2" y="399.6"/>
-<circle cx="224.6" cy="345.7" r="15" fill="#FFFFFF"/><use href="#bus" x="224.6" y="345.7"/>
-<circle cx="595.1" cy="520.8" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/><circle cx="595.1" cy="520.8" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
-<circle cx="501.7" cy="489.3" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="501.7" cy="489.3" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="479.8" cy="455.1" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="479.8" cy="455.1" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="439.7" cy="436.9" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="439.7" cy="436.9" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="400.2" cy="421.4" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="400.2" cy="421.4" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="333.8" cy="414.6" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="333.8" cy="414.6" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="233.6" cy="363.3" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="233.6" cy="363.3" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-<circle cx="204.9" cy="347.2" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/><circle cx="204.9" cy="347.2" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
+<path d="M 1090.1,183.2 L 1130.9,190.7 L 1158.8,207.4 L 1168.3,229.5 L 1204.0,229.5 L 1224.3,220.3 L 1263.1,213.3 L 1250.8,234.5 L 1241.7,243.1 L 1233.6,268.8 L 1217.8,291.7 L 1189.3,287.5 L 1169.2,295.8 L 1175.4,315.9 L 1172.0,343.7 L 1160.0,344.3 L 1160.1,356.2 L 1145.0,342.4 L 1135.6,355.5 L 1099.3,365.6 L 1103.0,378.0 L 1082.7,377.2 L 1071.5,369.8 L 1055.4,386.5 L 1029.5,399.1 L 1010.4,414.2 L 977.6,421.0 L 960.3,432.0 L 935.0,438.4 L 947.5,427.5 L 942.5,418.3 L 961.1,402.6 L 948.7,390.2 L 928.3,398.5 L 901.7,414.9 L 887.3,430.0 L 864.2,431.2 L 852.3,442.1 L 864.6,458.0 L 883.9,461.9 L 884.6,472.4 L 903.2,479.3 L 929.5,462.5 L 950.4,471.6 L 965.6,472.3 L 969.4,484.6 L 936.1,491.1 L 925.2,503.8 L 902.3,515.6 L 890.3,532.0 L 915.5,544.9 L 924.8,568.0 L 939.1,589.6 L 955.0,607.6 L 954.6,625.1 L 939.9,631.5 L 945.5,644.0 L 959.3,651.3 L 955.7,670.4 L 949.8,689.0 L 936.6,691.1 L 919.5,716.6 L 900.5,747.4 L 878.7,775.4 L 846.4,797.1 L 813.7,816.9 L 787.2,819.6 L 772.9,830.0 L 764.7,822.4 L 751.4,834.1 L 718.6,845.8 L 693.8,849.4 L 685.8,874.2 L 672.7,875.6 L 666.6,858.6 L 672.1,849.5 L 640.6,842.0 L 629.5,845.8 L 605.9,839.7 L 594.7,830.1 L 598.4,816.6 L 576.9,812.3 L 565.6,803.5 L 545.6,816.0 L 522.8,818.7 L 504.0,818.6 L 491.4,824.3 L 479.2,827.8 L 482.8,854.7 L 470.3,854.0 L 468.2,848.5 L 467.5,838.8 L 450.2,845.6 L 440.1,841.3 L 422.6,832.5 L 429.4,813.0 L 414.6,808.4 L 409.0,786.8 L 384.2,790.7 L 387.0,762.8 L 409.2,743.2 L 410.2,723.8 L 409.5,705.9 L 399.2,700.3 L 391.4,686.4 L 377.7,688.2 L 352.3,684.7 L 360.3,674.8 L 349.3,660.2 L 332.5,670.1 L 312.8,664.3 L 285.7,679.3 L 264.4,696.8 L 245.4,699.7 L 235.1,693.4 L 222.7,692.8 L 205.9,687.4 L 193.2,693.3 L 177.7,710.8 L 175.7,692.3 L 161.4,697.2 L 134.0,694.9 L 107.5,689.6 L 88.4,679.2 L 70.1,674.6 L 62.3,663.3 L 49.1,660.0 L 25.3,644.7 L 6.5,637.4 L -3.2,643.0 L -35.9,626.6 L -58.9,611.8 L -65.5,585.9 L -48.7,589.0 L -47.9,577.0 L -57.3,565.0 L -54.9,545.8 L -80.1,518.3 L -118.7,508.8 L -125.7,490.8 L -143.1,479.8 L -147.2,473.1 L -150.8,459.7 L -149.9,450.6 L -164.2,445.2 L -171.9,447.6 L -177.9,425.8 L -171.2,420.5 L -174.4,415.0 L -152.0,403.9 L -135.8,399.3 L -110.9,402.4 L -102.0,387.4 L -71.9,384.6 L -63.5,375.3 L -26.5,362.6 L -23.2,357.3 L -25.1,343.9 L -9.0,337.8 L -30.1,297.0 L 16.4,287.6 L 28.4,282.4 L 45.4,240.3 L 92.0,248.0 L 105.0,237.4 L 106.2,213.9 L 125.7,211.7 L 143.5,196.0 L 152.7,194.1 L 158.9,210.5 L 178.6,222.9 L 212.2,231.8 L 228.4,250.7 L 219.3,278.1 L 227.8,288.3 L 255.7,292.3 L 287.3,295.6 L 315.7,310.2 L 330.2,312.9 L 340.9,334.5 L 354.7,348.5 L 380.6,347.9 L 429.1,353.2 L 460.3,349.9 L 483.5,353.4 L 518.2,367.7 L 546.7,367.7 L 557.1,375.0 L 584.4,362.3 L 622.4,354.2 L 657.6,353.3 L 685.0,345.0 L 701.9,332.5 L 718.3,324.6 L 714.5,316.8 L 707.0,307.8 L 719.3,292.6 L 732.5,294.8 L 756.7,299.5 L 780.1,287.1 L 815.9,278.0 L 833.1,262.4 L 849.6,255.7 L 883.8,252.6 L 902.3,255.3 L 904.9,246.9 L 883.6,230.5 L 864.7,223.0 L 846.7,231.7 L 823.5,228.0 L 810.2,231.0 L 804.2,221.4 L 820.8,197.9 L 832.2,180.2 L 860.4,189.1 L 893.5,174.2 L 893.3,163.9 L 914.5,139.0 L 927.5,131.5 L 927.3,118.5 L 914.4,112.9 L 933.8,101.2 L 963.0,97.0 L 994.1,96.4 L 1029.2,103.3 L 1049.9,112.0 L 1064.4,135.7 L 1073.2,145.8 L 1081.4,160.2 L 1090.1,183.2 Z" fill="#EEF1F0" stroke="#B9C4CB" stroke-width="1.5" stroke-linejoin="round"/>
+<path d="M 650.4,545.4 Q 600.0,496.8 530.5,505.0" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 530.5,505.0 Q 496.2,496.0 502.4,461.1" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 502.4,461.1 Q 485.8,429.4 451.0,437.7" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 451.0,437.7 Q 418.3,446.4 400.3,417.8" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 400.3,417.8 Q 359.9,391.6 315.1,409.1" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 315.1,409.1 Q 239.8,397.6 186.4,343.2" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<path d="M 186.4,343.2 Q 178.7,313.7 149.6,322.6" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+<g transform="translate(580.6,506.9) rotate(-167.9)"><use href="#arrow"/></g>
+<g transform="translate(503.6,483.9) rotate(-110.2)"><use href="#arrow"/></g>
+<g transform="translate(474.8,437.2) rotate(-166.1)"><use href="#arrow"/></g>
+<g transform="translate(416.1,434.2) rotate(-148.6)"><use href="#arrow"/></g>
+<g transform="translate(348.5,402.1) rotate(178.8)"><use href="#arrow"/></g>
+<g transform="translate(230.1,378.3) rotate(-148.3)"><use href="#arrow"/></g>
+<g transform="translate(168.6,321.4) rotate(-164.8)"><use href="#arrow"/></g>
+<circle cx="595.2" cy="511.0" r="15" fill="#FFFFFF"/><use href="#train" x="595.2" y="511.0"/>
+<circle cx="506.3" cy="489.5" r="15" fill="#FFFFFF"/><use href="#bus" x="506.3" y="489.5"/>
+<circle cx="481.3" cy="439.4" r="15" fill="#FFFFFF"/><use href="#bus" x="481.3" y="439.4"/>
+<circle cx="422.0" cy="437.1" r="15" fill="#FFFFFF"/><use href="#bus" x="422.0" y="437.1"/>
+<circle cx="358.8" cy="402.5" r="15" fill="#FFFFFF"/><use href="#bus" x="358.8" y="402.5"/>
+<circle cx="245.3" cy="386.9" r="15" fill="#FFFFFF"/><use href="#train" x="245.3" y="386.9"/>
+<circle cx="173.4" cy="323.3" r="15" fill="#FFFFFF"/><use href="#bus" x="173.4" y="323.3"/>
+<circle cx="650.4" cy="545.4" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/><circle cx="650.4" cy="545.4" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="530.5" cy="505.0" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="530.5" cy="505.0" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="502.4" cy="461.1" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="502.4" cy="461.1" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="451.0" cy="437.7" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="451.0" cy="437.7" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="400.3" cy="417.8" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="400.3" cy="417.8" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="315.1" cy="409.1" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="315.1" cy="409.1" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="186.4" cy="343.2" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/><circle cx="186.4" cy="343.2" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+<circle cx="149.6" cy="322.6" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/><circle cx="149.6" cy="322.6" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
 </g>
-<line x1="595" y1="521" x2="595" y2="359" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="595" y="343" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Xi&#x27;an</text>
-<text x="595" y="360" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">3 nights</text>
-<text x="595" y="377" fill="#D22A2E" font-size="13" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">START</text>
-<text x="595" y="392" fill="#5E6B76" font-size="12" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">&#9992; fly from Auckland (via Shanghai)</text>
-<line x1="502" y1="489" x2="502" y2="549" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="502" y="550" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Lanzhou</text>
-<text x="502" y="566" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">2 nights</text>
-<line x1="480" y1="455" x2="432" y2="503" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="432" y="504" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Wuwei</text>
-<text x="432" y="520" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">1 night</text>
-<line x1="440" y1="437" x2="380" y2="377" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="380" y="377" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Zhangye</text>
-<text x="380" y="394" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">1 night</text>
-<line x1="400" y1="421" x2="328" y2="493" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="328" y="494" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Jiayuguan</text>
-<text x="328" y="511" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">1 night</text>
-<line x1="334" y1="415" x2="268" y2="415" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="268" y="415" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Dunhuang</text>
-<text x="268" y="432" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">2 nights</text>
-<line x1="234" y1="363" x2="234" y2="309" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="234" y="310" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Turpan</text>
-<text x="234" y="326" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">2 nights</text>
-<line x1="205" y1="347" x2="205" y2="595" stroke="#AEB9C4" stroke-width="1.2"/>
-<text x="205" y="579" fill="#1B2E40" font-size="20" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">Urumqi</text>
-<text x="205" y="596" fill="#5E6B76" font-size="13" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">3 nights</text>
-<text x="205" y="613" fill="#D22A2E" font-size="13" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">FINISH</text>
-<text x="205" y="628" fill="#5E6B76" font-size="12" font-weight="600" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4">&#9992; fly to Auckland (via Shanghai)</text>
+<text x="632" y="575" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Xi&#x27;an</text>
+<text x="632" y="593" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">3 nights</text>
+<text x="632" y="611" fill="#D22A2E" font-size="14" font-weight="800" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">START</text>
+<text x="632" y="628" fill="#5E6B76" font-size="13" font-weight="600" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">&#9992; fly from Auckland (via Shanghai)</text>
+<text x="549" y="505" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Lanzhou</text>
+<text x="549" y="523" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">2 nights</text>
+<text x="520" y="432" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Wuwei</text>
+<text x="520" y="450" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">1 night</text>
+<text x="433" y="467" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Zhangye</text>
+<text x="433" y="486" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">1 night</text>
+<text x="400" y="375" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Jiayuguan</text>
+<text x="400" y="393" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="middle" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">1 night</text>
+<text x="297" y="409" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Dunhuang</text>
+<text x="297" y="428" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="end" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">2 nights</text>
+<text x="204" y="343" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Turpan</text>
+<text x="204" y="362" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">2 nights</text>
+<text x="168" y="258" fill="#1B2E40" font-size="22" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">Urumqi</text>
+<text x="168" y="277" fill="#5E6B76" font-size="14" font-weight="700" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">3 nights</text>
+<text x="168" y="295" fill="#D22A2E" font-size="14" font-weight="800" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">FINISH</text>
+<text x="168" y="312" fill="#5E6B76" font-size="13" font-weight="600" text-anchor="start" paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">&#9992; fly to Auckland (via Shanghai)</text>
 <g transform="translate(60,714) scale(0.68)"><use href="#train"/></g>
 <text x="75" y="719" fill="#5E6B76" font-size="15" font-weight="600">High-speed train</text>
 <g transform="translate(232,714) scale(0.68)"><use href="#bus"/></g>
