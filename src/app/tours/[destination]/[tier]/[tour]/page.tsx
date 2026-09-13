@@ -10,6 +10,7 @@ import TourHero from '@/components/tours/TourHero';
 import TourQuickInfoStrip from '@/components/tours/TourQuickInfoStrip';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
+import TourRouteMap from '@/components/tours/TourRouteMap';
 import TourTabs from '@/components/tours/TourTabs';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
@@ -297,6 +298,8 @@ export default function TourPage({ params }: TourPageProps) {
                     label: 'Itinerary',
                     content: (
                       <>
+    {/* Route Map */}
+                  <TourRouteMap slug={tour.slug} tourName={tour.name} />
     {/* Itinerary */}
                   <TourItinerary
                     itinerary={tour.itinerary}
