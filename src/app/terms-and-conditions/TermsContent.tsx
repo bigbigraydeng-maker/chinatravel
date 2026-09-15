@@ -88,6 +88,10 @@ export function TermsArticle() {
           to confirm your booking. Pay the deposit within 3 working days of reservation.
         </p>
         <p className={pClass}>
+          For Land Only bookings (excluding international airfare), a non-refundable deposit of $400 per person is
+          required to confirm your booking.
+        </p>
+        <p className={pClass}>
           Your booking is not confirmed until CTS Tours has received the deposit. If the deposit is late, we may cancel
           the booking. Late fees in this document may apply.
         </p>
