@@ -16,6 +16,11 @@ import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
 // Editorial headings for the pilot; complete source itinerary text remains below each heading.
 const dayHeadings: Record<number,string> = {1:'Your journey begins',2:'A welcome to Beijing',3:'The heart of imperial Beijing',4:'Walk the Great Wall',5:'Hutong life & palace gardens',6:'By rail to ancient Xi’an',7:'Meet the Terracotta Warriors',8:'City walls to Shanghai skylines',9:'A water town & an evening river cruise',10:'Gardens, museums & the Bund',11:'Shanghai at your own pace',12:'Welcome home'};
+// Landscape compositions reviewed at the actual recommendation-card ratio.
+const relatedImages: Record<string, {src:string;alt:string}> = {
+ 'beijing-xian': {src:'/images/cts-upgrade/tour-terracotta.webp',alt:'Terracotta Warriors in Xi’an'},
+ 'essentials': {src:'/images/cts-upgrade/spotlight-temple-landscape.webp',alt:'The complete Temple of Heaven seen through an arch in Beijing'},
+};
 const photos = [
  {src:'/images/cts-upgrade/experience-wall.webp',alt:'The Great Wall, China'},
  {src:'/images/cts-upgrade/tour-terracotta.webp',alt:'The Terracotta Warriors in Xi’an'},
@@ -39,7 +44,7 @@ export default function GoldenTourPage({tour}:{tour:Tour}) {
    <section id="inclusions" className="scroll-mt-24"><TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} itinerary={tour.itinerary}/>{tour.singleSupplement && <p className="mt-4 text-sm">Single supplement: {tour.singleSupplement}</p>}</section>
    <TourSupportingContentLinks tour={tour}/>
   </div><Suspense fallback={<a href="/contact">Contact CTS to enquire about this journey</a>}><GoldenBooking tour={tour}/></Suspense></div>
-  <section className="mx-auto max-w-7xl px-4 py-12"><h2 className="font-serif text-3xl">You may also like.</h2><div className="mt-8 grid gap-6 md:grid-cols-3">{related.map(t=>{const offer=matchingOffer(t,{})!;return <Link href={tourUrl(t)+(offer.date?'?date='+offer.date:'')} key={t.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white"><div className="relative aspect-[16/10]"><Image src={t.heroImage} alt={t.name} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover"/></div><div className="p-6"><p className="text-xs uppercase tracking-widest text-primary">{t.duration} · {t.tier}</p><h3 className="mt-3 font-serif text-2xl">{t.name}</h3><p className="mt-3 line-clamp-2 text-sm text-ink-muted">{t.shortDescription}</p><p className="mt-5 text-sm">{offer.label}</p><p className="mt-2 font-semibold text-primary">{offer.price} <span className="text-xs font-normal">per person</span> →</p></div></Link>})}</div></section>
+  <section className="mx-auto max-w-7xl px-4 py-12"><h2 className="font-serif text-3xl">You may also like.</h2><div className="mt-8 grid gap-6 md:grid-cols-3">{related.map(t=>{const offer=matchingOffer(t,{})!;const photo=relatedImages[t.slug] ?? {src:t.heroImage,alt:t.name};return <Link href={tourUrl(t)+(offer.date?'?date='+offer.date:'')} key={t.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white"><div className="relative aspect-[16/10]"><Image src={photo.src} alt={photo.alt} unoptimized={photo.src.startsWith('/')} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover"/></div><div className="p-6"><p className="text-xs uppercase tracking-widest text-primary">{t.duration} · {t.tier}</p><h3 className="mt-3 font-serif text-2xl">{t.name}</h3><p className="mt-3 line-clamp-2 text-sm text-ink-muted">{t.shortDescription}</p><p className="mt-5 text-sm">{offer.label}</p><p className="mt-2 font-semibold text-primary">{offer.price.replace(/\s*(?:per\s+person|pp)\s*$/i, '')} <span className="text-xs font-normal">per person</span> →</p></div></Link>})}</div></section>
   <ExperienceDiscovery/><FAQSection faqs={getTourPageFaqsForTour(tour,getDestinationBySlug(tour.destination)!.name)} />
  </div>;
 }
