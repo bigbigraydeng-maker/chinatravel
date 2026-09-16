@@ -68,7 +68,7 @@ const CITIES = [
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
   'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
   'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
-  essentials: DIFFERENCE_IMAGE,
+  essentials: '/images/cts-upgrade/spotlight-temple-landscape.webp',
 };
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
@@ -208,13 +208,13 @@ const HomePageRedesign = () => {
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => (
                 <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden">
                     <Image
                       src={SPOTLIGHT_IMAGE_OVERRIDE[ref.slug] ?? tour.heroImage}
                       alt={tour.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover"
                     />
                     <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
                       {ref.departureLabel}
