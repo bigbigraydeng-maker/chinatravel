@@ -22,6 +22,8 @@ import TourSupportingContentLinks from '@/components/tours/TourSupportingContent
 // TourSupportingContentLinks returns null when the supporting-links helper
 // yields an empty list — mock it to always return the anchor block so we can
 // assert against the id, independent of real tour-data fixtures.
+jest.mock('@/lib/tour-guide-cards', () => ({ getTourGuideCards: () => [] }));
+
 jest.mock('@/lib/tour-supporting-links', () => ({
   getTourSupportingLinks: () => [
     { label: 'Test link', href: '/test' },

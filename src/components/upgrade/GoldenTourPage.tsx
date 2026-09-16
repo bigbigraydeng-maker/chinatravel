@@ -6,7 +6,6 @@ import { getTourPageFaqsForTour } from '@/lib/schema-tour';
 import { experiences, includesExperience, matchingOffer, tourUrl } from '@/lib/tour-discovery';
 import JourneyGallery from './JourneyGallery';
 import GoldenBooking from './GoldenBooking';
-import ExperienceDiscovery from './ExperienceDiscovery';
 import TourRouteMap from '@/components/tours/TourRouteMap';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
@@ -42,9 +41,9 @@ export default function GoldenTourPage({tour}:{tour:Tour}) {
     <div className="ml-3 border-l border-secondary/50 pl-7 md:pl-10">{tour.itinerary.map(day=><details key={day.day} open={day.day===1} className="relative border-b border-warm-200 py-6 first:pt-0"><span className="absolute -left-[35px] top-7 h-3 w-3 rounded-full border-2 border-surface bg-primary md:-left-[47px]" aria-hidden/><summary className="cursor-pointer list-none"><span className="text-xs font-semibold uppercase tracking-[.15em] text-primary">Day {String(day.day).padStart(2,'0')}</span><h3 className="mt-2 flex justify-between gap-4 font-serif text-xl md:text-2xl">{dayHeadings[day.day] || day.title}<span className="text-lg text-primary" aria-hidden>＋</span></h3><p className="mt-2 text-sm text-ink-muted">{day.title} · View details</p></summary><div className="mt-5 text-ink-muted"><p className="whitespace-pre-line leading-relaxed">{day.description}</p><p className="mt-4 text-sm"><strong>Meals:</strong> {day.meals.length ? day.meals.join(', ') : 'See day description'}</p>{day.accommodation && <p className="mt-2 text-sm"><strong>Stay:</strong> {day.accommodation}</p>}</div></details>)}</div>
    </section>
    <section id="inclusions" className="scroll-mt-24"><TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} itinerary={tour.itinerary}/>{tour.singleSupplement && <p className="mt-4 text-sm">Single supplement: {tour.singleSupplement}</p>}</section>
-   <TourSupportingContentLinks tour={tour}/>
   </div><Suspense fallback={<a href="/contact">Contact CTS to enquire about this journey</a>}><GoldenBooking tour={tour}/></Suspense></div>
+  <div className="mx-auto max-w-7xl px-4 py-12"><TourSupportingContentLinks tour={tour} wide/></div>
   <section className="mx-auto max-w-7xl px-4 py-12"><h2 className="font-serif text-3xl">You may also like.</h2><div className="mt-8 grid gap-6 md:grid-cols-3">{related.map(t=>{const offer=matchingOffer(t,{})!;const photo=relatedImages[t.slug] ?? {src:t.heroImage,alt:t.name};return <Link href={tourUrl(t)+(offer.date?'?date='+offer.date:'')} key={t.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white"><div className="relative aspect-[16/10]"><Image src={photo.src} alt={photo.alt} unoptimized={photo.src.startsWith('/')} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover"/></div><div className="p-6"><p className="text-xs uppercase tracking-widest text-primary">{t.duration} · {t.tier}</p><h3 className="mt-3 font-serif text-2xl">{t.name}</h3><p className="mt-3 line-clamp-2 text-sm text-ink-muted">{t.shortDescription}</p><p className="mt-5 text-sm">{offer.label}</p><p className="mt-2 font-semibold text-primary">{offer.price.replace(/\s*(?:per\s+person|pp)\s*$/i, '')} <span className="text-xs font-normal">per person</span> →</p></div></Link>})}</div></section>
-  <ExperienceDiscovery/><FAQSection faqs={getTourPageFaqsForTour(tour,getDestinationBySlug(tour.destination)!.name)} />
+  <FAQSection faqs={getTourPageFaqsForTour(tour,getDestinationBySlug(tour.destination)!.name)} />
  </div>;
 }

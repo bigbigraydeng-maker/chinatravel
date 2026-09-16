@@ -484,7 +484,7 @@ export default function TourPage({ params }: TourPageProps) {
                     label: 'Plan Your Trip',
                     content: (
                       <>
-                        {tour.destination === 'china' ? <TourSupportingContentLinks tour={tour} /> : null}
+                        {tour.destination === 'china' ? <a href="#planning-resources" className="font-semibold text-primary">Explore this journey’s destination guides ↓</a> : null}
                       </>
                     ),
                   },
@@ -560,6 +560,8 @@ export default function TourPage({ params }: TourPageProps) {
           </div>
         </div>
       </div>
+
+      {tour.destination === 'china' && <div className="container mx-auto px-4 pb-16"><TourSupportingContentLinks tour={tour} wide /></div>}
 
       {/* CTS departure schedule — the whole range, not this tour's own details, so it
           sits with Related Tours at page level rather than inside a product tab. */}
