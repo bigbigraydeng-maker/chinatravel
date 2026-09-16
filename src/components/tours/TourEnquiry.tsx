@@ -12,6 +12,8 @@ interface TourEnquiryProps {
   tier: string;
   /** Shown in enquiry notification email (e.g. campaign landing page name) */
   source?: string;
+  enquiryContext?: string;
+  compact?: boolean;
 }
 
 export default function TourEnquiry({
@@ -20,6 +22,8 @@ export default function TourEnquiry({
   destination,
   tier,
   source = 'Tour Page Enquiry',
+  enquiryContext,
+  compact = false,
 }: TourEnquiryProps) {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -52,7 +56,7 @@ export default function TourEnquiry({
       name: formData.name.trim(),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
-      message: formData.message.trim() || undefined,
+      message: [enquiryContext, formData.message.trim()].filter(Boolean).join('\n\n') || undefined,
       source,
       utm,
     };
@@ -100,15 +104,15 @@ export default function TourEnquiry({
   };
 
   return (
-    <div id="enquiry" className="bg-white border border-warm-200 rounded-2xl overflow-hidden shadow-lg">
-      <div className="bg-gradient-to-r from-primary to-primary/90 px-6 py-5 text-white">
+    <div id={compact ? undefined : "enquiry"} className={compact ? "bg-white" : "bg-white border border-warm-200 rounded-2xl overflow-hidden shadow-lg"}>
+      {!compact && <div className="bg-gradient-to-r from-primary to-primary/90 px-6 py-5 text-white">
         <h3 className="text-lg font-bold">Enquire About This Tour</h3>
         <p className="text-sm text-white/80 mt-1">
           Interested in {tourName}? We&apos;ll get back to you within 24 hours.
         </p>
-      </div>
+      </div>}
 
-      <div className="p-6">
+      <div className={compact ? "" : "p-6"}>
         {submitError && (
           <p className="mb-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
             {submitError}

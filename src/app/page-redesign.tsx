@@ -1,3 +1,5 @@
+import TourSearch from '@/components/upgrade/TourSearch';
+import ExperienceDiscovery from '@/components/upgrade/ExperienceDiscovery';
 import Link from 'next/link';
 import Image from 'next/image';
 import ContactChannels from '@/components/ContactChannels';
@@ -66,7 +68,7 @@ const CITIES = [
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
   'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
   'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
-  essentials: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card3-v2.webp',
+  essentials: '/images/cts-upgrade/tour-temple.webp',
 };
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
@@ -130,7 +132,7 @@ const HomePageRedesign = () => {
           <div className="absolute inset-0 bg-ink/25 md:bg-gradient-to-r md:from-ink/40 md:via-ink/15 md:to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/30 via-transparent to-transparent md:from-ink/35" />
         </div>
-        <div className="relative mx-auto flex min-h-[560px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[680px] md:px-8 md:py-28">
+        <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-center px-4 py-20 md:min-h-[520px] md:px-8 md:py-28">
           <span className="mb-4 block text-sm font-semibold uppercase tracking-[0.14em] text-secondary">
             China, curated for New Zealand travellers
           </span>
@@ -152,6 +154,8 @@ const HomePageRedesign = () => {
           </Link>
         </div>
       </section>
+
+      <TourSearch />
 
       {/* ===== Trust bar — real accreditation logos + who ===== */}
       <section className="border-y border-warm-200 bg-white py-7">
@@ -184,6 +188,8 @@ const HomePageRedesign = () => {
           </div>
         </div>
       </section>
+
+      <ExperienceDiscovery />
 
       {/* ===== Curated journeys — driven by Spotlight config ===== */}
       {featured && (
