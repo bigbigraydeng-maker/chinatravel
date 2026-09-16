@@ -1,5 +1,6 @@
 'use client';
 
+import TravelMonthPicker from '@/components/tailor-made/TravelMonthPicker';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
 import { experiences, aucklandToday } from '@/lib/tour-discovery';
@@ -121,7 +122,14 @@ function TailorMadeFormInner() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(step === 1) { changeStep(2); return; }
+    if(step === 1) {
+      if (dateMode === 'Month' && (!formData.travelDate || formData.travelDate < aucklandToday().slice(0,7))) {
+        setSubmitError('Please choose a travel month and year, or select Flexible.');
+        document.getElementById('tm-date')?.focus();
+        return;
+      }
+      setSubmitError(null); changeStep(2); return;
+    }
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -249,7 +257,8 @@ function TailorMadeFormInner() {
           <div>
             <label htmlFor="tm-date" className="block text-sm font-medium text-gray-700 mb-1">Preferred travel date</label>
             <select aria-label="Date flexibility" value={dateMode} onChange={e=>{setDateMode(e.target.value);setFormData(p=>({...p,travelDate:''}));}} className="mb-2 w-full rounded-lg border border-gray-300 p-3"><option>Flexible</option><option>Month</option><option>Exact date</option></select>
-            {dateMode !== 'Flexible' && <input type={dateMode === 'Month' ? 'month' : 'date'} min={dateMode === 'Month' ? aucklandToday().slice(0,7) : aucklandToday()} id="tm-date" required name="travelDate" value={formData.travelDate} onChange={handleChange}
+            {dateMode === 'Month' && <TravelMonthPicker value={formData.travelDate} min={aucklandToday().slice(0,7)} onChange={travelDate=>{setFormData(p=>({...p,travelDate}));setSubmitError(null);}} />}
+            {dateMode === 'Exact date' && <input type="date" min={aucklandToday()} id="tm-date" required name="travelDate" value={formData.travelDate} onChange={handleChange}
               className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors" />}
             <FieldToolTip
               fieldName="travel-date"
