@@ -1,3 +1,4 @@
+import GoldenTourPage from '@/components/upgrade/GoldenTourPage';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -150,6 +151,9 @@ export default function TourPage({ params }: TourPageProps) {
       siteUrl
     ),
   ];
+
+  // Deliberate pilot: Golden China only. Other products and campaign layouts retain the shared template.
+  if (tour.slug === 'golden-china') return <><SchemaMarkup data={schemas} /><GoldenTourPage tour={tour} /></>;
 
   return (
     <>

@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import ImmersivePageHero from '@/components/ImmersivePageHero';
 import TourFinder from '@/components/TourFinder';
-import { getAllActiveTours, destinations } from '@/lib/data/tours';
+import { getAllActiveTours } from '@/lib/data/tours';
 import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
@@ -34,34 +33,7 @@ export default function FindTourPage() {
 
   return (
     <>
-      <ImmersivePageHero
-        eyebrow="Tour search"
-        title="Find Your Perfect Tour"
-        subtitle="Search and filter tours across China, Japan, and Vietnam"
-        imageSrc={tourImage('xian-terracotta.jpg')}
-        imageAlt="Terracotta Army, Xi'an — find tours across China, Japan, and Vietnam, CTS Tours"
-        priority
-      />
-
-      {/* Destination Quick Links */}
-      <section className="py-10 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {destinations.map((dest) => (
-              <Link
-                key={dest.id}
-                href={`/tours/${dest.slug}`}
-                className="px-6 py-3 rounded-full border-2 border-gray-200 text-center transition-all hover:shadow-md hover:border-primary/50 hover:text-primary"
-              >
-                <span className="font-bold">{dest.name}</span>
-                <span className="text-xs text-gray-500 ml-2">
-                  {allTours.filter((t) => t.destination === dest.slug).length} tours
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="mx-auto max-w-7xl px-4 pb-2 pt-12"><p className="text-xs font-semibold uppercase tracking-widest text-primary">Find your journey</p><h1 className="mt-4 font-serif text-4xl">A tour that fits your plans.</h1><p className="mt-4 text-ink-muted">Choose your city, travel month, budget or a must-see experience.</p></section>
 
       {/* Tour Finder with Filters */}
       <section className="py-12 bg-light">

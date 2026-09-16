@@ -1,0 +1,302 @@
+[
+  {
+    "id": "great-wall",
+    "title": "Walk the Great Wall",
+    "category": "Landmarks",
+    "subtitle": "China’s great fortifications",
+    "image": "/images/cts-upgrade/experience-wall.webp",
+    "mappings": [
+      {
+        "tourSlug": "silk-road",
+        "status": "included",
+        "evidence": "Walk along the Hanging Great Wall and Jiayuguan Fortress",
+        "source": "src/lib/data/tours.ts#silk-road",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "imperial-heritage",
+        "status": "included",
+        "evidence": "Walk the Mutianyu Great Wall; jade craft workshop; Summer Palace gardens",
+        "source": "src/lib/data/tours.ts#imperial-heritage",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "grand-tour",
+        "status": "included",
+        "evidence": "Walk the Juyongguan Great Wall and explore the Forbidden City",
+        "source": "src/lib/data/tours.ts#grand-tour",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "beijing-xian",
+        "status": "included",
+        "evidence": "Walk the Great Wall, one of the ten wonders of the world",
+        "source": "src/lib/data/tours.ts#beijing-xian",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "essentials",
+        "status": "included",
+        "evidence": "Temple of Heaven, Tian'anmen Square, Forbidden City (or substitute Jingshan Park & Prince Gong's Mansion if tickets unavailable), Beihai Park, and the Great Wall",
+        "source": "src/lib/data/tours.ts#essentials",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection",
+        "status": "included",
+        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
+        "source": "src/lib/data/tours.ts#china-icons-collection",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection-christchurch",
+        "status": "included",
+        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
+        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "golden-china",
+        "status": "included",
+        "evidence": "Walk the Great Wall at Juyongguan section",
+        "source": "src/lib/data/tours.ts#golden-china",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  },
+  {
+    "id": "terracotta",
+    "title": "Meet the Terracotta Warriors",
+    "category": "History",
+    "subtitle": "Xi’an · An imperial discovery",
+    "image": "/images/cts-upgrade/tour-terracotta.webp",
+    "mappings": [
+      {
+        "tourSlug": "silk-road",
+        "status": "included",
+        "evidence": "Visit the Terracotta Warriors in Xi'an",
+        "source": "src/lib/data/tours.ts#silk-road",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "imperial-heritage",
+        "status": "included",
+        "evidence": "Terracotta Warriors, ceramics and lacquerware workshop, Xi'an Ancient City Wall",
+        "source": "src/lib/data/tours.ts#imperial-heritage",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "grand-tour",
+        "status": "included",
+        "evidence": "Discover the Terracotta Warriors in Xi'an",
+        "source": "src/lib/data/tours.ts#grand-tour",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "beijing-xian",
+        "status": "included",
+        "evidence": "Discover the Terracotta Warriors — the greatest archaeological find of the century",
+        "source": "src/lib/data/tours.ts#beijing-xian",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "essentials",
+        "status": "included",
+        "evidence": "Terracotta Warriors with Circle Vision and Bronze Chariot; optional Tang Palace banquet show",
+        "source": "src/lib/data/tours.ts#essentials",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection",
+        "status": "included",
+        "evidence": "The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot",
+        "source": "src/lib/data/tours.ts#china-icons-collection",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection-christchurch",
+        "status": "included",
+        "evidence": "The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot",
+        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "golden-china",
+        "status": "included",
+        "evidence": "Discover the 2,000-year-old Terracotta Warriors of Xi'an",
+        "source": "src/lib/data/tours.ts#golden-china",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  },
+  {
+    "id": "pandas",
+    "title": "See giant pandas",
+    "category": "Wildlife",
+    "subtitle": "Chengdu · A memorable encounter",
+    "image": "https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chengdu-v2.webp",
+    "mappings": [
+      {
+        "tourSlug": "imperial-heritage",
+        "status": "included",
+        "evidence": "Chengdu pandas; first-class rail to Chongqing; Victoria Cruises Yangtze Three Gorges (Shennü or Shennong Stream excursions)",
+        "source": "src/lib/data/tours.ts#imperial-heritage",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "grand-tour",
+        "status": "included",
+        "evidence": "Visit giant pandas at the Chengdu breeding base",
+        "source": "src/lib/data/tours.ts#grand-tour",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "landscapes",
+        "status": "included",
+        "evidence": "Visit the Chengdu Giant Panda Breeding Research Base",
+        "source": "src/lib/data/tours.ts#landscapes",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  },
+  {
+    "id": "avatar-mountains",
+    "title": "Explore the “Avatar” mountains",
+    "category": "Nature",
+    "subtitle": "Zhangjiajie · Sandstone peaks",
+    "image": "https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-zhangjiajie-v2.webp",
+    "mappings": [
+      {
+        "tourSlug": "landscapes",
+        "status": "included",
+        "evidence": "See the \"Hallelujah Mountains\" in Zhangjiajie National Forest Park",
+        "source": "src/lib/data/tours.ts#landscapes",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  },
+  {
+    "id": "river-cruise",
+    "title": "See China from the water",
+    "category": "On the water",
+    "subtitle": "River views & changing skylines",
+    "image": "/images/cts-upgrade/search-bund.webp",
+    "mappings": [
+      {
+        "tourSlug": "imperial-heritage",
+        "status": "included",
+        "evidence": "Chengdu pandas; first-class rail to Chongqing; Victoria Cruises Yangtze Three Gorges (Shennü or Shennong Stream excursions)",
+        "source": "src/lib/data/tours.ts#imperial-heritage",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "grand-tour",
+        "status": "included",
+        "evidence": "Cruise through the Yangtze River Three Gorges on a 5-star ship",
+        "source": "src/lib/data/tours.ts#grand-tour",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "landscapes",
+        "status": "included",
+        "evidence": "Cruise the Li River through stunning karst landscapes",
+        "source": "src/lib/data/tours.ts#landscapes",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "golden-china",
+        "status": "included",
+        "evidence": "Evening cruise along Shanghai's Huangpu River",
+        "source": "src/lib/data/tours.ts#golden-china",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  },
+  {
+    "id": "universal-beijing",
+    "title": "Universal Beijing Resort",
+    "category": "Theme parks",
+    "subtitle": "Beijing · Ask about a custom visit",
+    "image": null,
+    "mappings": [],
+    "customRequest": true
+  },
+  {
+    "id": "imperial-beijing",
+    "title": "Discover imperial Beijing",
+    "category": "Palaces & heritage",
+    "subtitle": "Forbidden City · Entry subject to ticket availability",
+    "image": "/images/cts-upgrade/planner-palace.webp",
+    "mappings": [
+      {
+        "tourSlug": "imperial-heritage",
+        "status": "included",
+        "evidence": "Temple of Heaven with optional Tai Chi among locals; Tian'anmen Square and Forbidden City (see itinerary for Monday closure & ticket substitution)",
+        "source": "src/lib/data/tours.ts#imperial-heritage",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "grand-tour",
+        "status": "included",
+        "evidence": "Walk the Juyongguan Great Wall and explore the Forbidden City",
+        "source": "src/lib/data/tours.ts#grand-tour",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "beijing-xian",
+        "status": "included",
+        "evidence": "Explore the Forbidden City, home to emperors for over 500 years",
+        "source": "src/lib/data/tours.ts#beijing-xian",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "essentials",
+        "status": "included",
+        "evidence": "Temple of Heaven, Tian'anmen Square, Forbidden City (or substitute Jingshan Park & Prince Gong's Mansion if tickets unavailable), Beihai Park, and the Great Wall",
+        "source": "src/lib/data/tours.ts#essentials",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection",
+        "status": "included",
+        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
+        "source": "src/lib/data/tours.ts#china-icons-collection",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "china-icons-collection-christchurch",
+        "status": "included",
+        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
+        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "beijing",
+        "status": "included",
+        "evidence": "Tiananmen Square and Forbidden City",
+        "source": "src/lib/data/tours.ts#beijing",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "beijing-express",
+        "status": "included",
+        "evidence": "Tiananmen Square and the Forbidden City",
+        "source": "src/lib/data/tours.ts#beijing-express",
+        "reviewedAt": "2026-09-17"
+      },
+      {
+        "tourSlug": "golden-china",
+        "status": "included",
+        "evidence": "Explore the vast Forbidden City and Tiananmen Square",
+        "source": "src/lib/data/tours.ts#golden-china",
+        "reviewedAt": "2026-09-17"
+      }
+    ],
+    "customRequest": false
+  }
+]
