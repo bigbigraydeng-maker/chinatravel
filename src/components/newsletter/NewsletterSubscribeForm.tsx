@@ -5,6 +5,7 @@ import { trackNewsletterSubmit } from '@/lib/analytics/newsletter-tracking';
 
 interface Props {
   variant?: 'footer' | 'blog';
+  theme?: 'dark' | 'light';
   /**
    * Where this form instance lives — decides which GTM/Meta event name to fire
    * on successful submit. 'footer' by default (footer, blog inline, etc.);
@@ -13,7 +14,7 @@ interface Props {
   trackingLocation?: 'popup' | 'footer';
 }
 
-export default function NewsletterSubscribeForm({ variant = 'footer', trackingLocation = 'footer' }: Props) {
+export default function NewsletterSubscribeForm({ variant = 'footer', theme = 'dark', trackingLocation = 'footer' }: Props) {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -111,35 +112,37 @@ export default function NewsletterSubscribeForm({ variant = 'footer', trackingLo
     );
   }
 
-  // Footer variant (dark background)
+  // Footer supports the warm site shell; standalone subscribe and popup stay dark.
   return (
     <div>
-      <h3 className="text-base font-semibold mb-1 text-white">Travel Newsletter</h3>
-      <p className="text-gray-400 text-sm mb-4">
+      <h3 className={`text-base font-semibold mb-1 ${theme === 'light' ? 'text-ink' : 'text-white'}`}>Travel Newsletter</h3>
+      <p className={`text-sm mb-4 ${theme === 'light' ? 'text-ink-muted' : 'text-gray-400'}`}>
         Guides, offers & insider tips for NZ travellers.
       </p>
 
       {status === 'success' ? (
-        <div className="flex items-start gap-2 p-3 bg-green-900/30 border border-green-700 rounded-lg">
-          <svg className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div role="status" className={`flex items-start gap-2 p-3 border rounded-lg ${theme === 'light' ? 'bg-green-50 border-green-200' : 'bg-green-900/30 border-green-700'}`}>
+          <svg className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <p className="text-green-300 text-sm">{message}</p>
+          <p className={`text-sm ${theme === 'light' ? 'text-green-800' : 'text-green-300'}`}>{message}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-2">
           <input
             type="email"
             placeholder="Your email address"
+            aria-label="Email address for travel newsletter"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2.5 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm"
+            className={`w-full min-h-11 px-3 py-2.5 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary/60 focus:border-primary text-sm ${theme === 'light' ? 'bg-white border-[#D9CFC0] text-ink placeholder:text-ink-muted' : 'bg-white/10 border-white/20 text-white placeholder-gray-400'}`}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full px-4 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-sm"
+            className="w-full min-h-11 px-4 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed text-sm"
           >
             {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
           </button>
@@ -147,10 +150,10 @@ export default function NewsletterSubscribeForm({ variant = 'footer', trackingLo
       )}
 
       {status === 'error' && (
-        <p className="mt-2 text-red-400 text-xs">{message}</p>
+        <p role="alert" className={`mt-2 text-xs ${theme === 'light' ? 'text-red-700' : 'text-red-400'}`}>{message}</p>
       )}
 
-      <p className="mt-2 text-gray-500 text-xs">No spam. Unsubscribe anytime.</p>
+      <p className={`mt-2 text-xs ${theme === 'light' ? 'text-ink-muted' : 'text-gray-500'}`}>No spam. Unsubscribe anytime.</p>
     </div>
   );
 }
