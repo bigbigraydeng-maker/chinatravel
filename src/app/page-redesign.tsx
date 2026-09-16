@@ -68,7 +68,7 @@ const CITIES = [
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
   'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
   'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
-  essentials: '/images/cts-upgrade/tour-temple.webp',
+  essentials: DIFFERENCE_IMAGE,
 };
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
