@@ -56,12 +56,37 @@ const FEATURED_SLUGS = [
   'beijing-travel-guide',
 ];
 
-function GuideCard({ guide, featured = false }: { guide: DestinationGuide; featured?: boolean }) {
+function trackGuideHub(eventName: string, params: Record<string, string | number>) {
+  if (typeof window === 'undefined' || !window.gtag) return;
+  window.gtag('event', eventName, params);
+}
+
+function GuideCard({
+  guide,
+  featured = false,
+  category,
+  searchTerm,
+}: {
+  guide: DestinationGuide;
+  featured?: boolean;
+  category: Category;
+  searchTerm: string;
+}) {
   const categoryLabel = CATEGORIES.find(c => c.id === SLUG_CATEGORY[guide.slug])?.label ?? 'Guide';
 
   return (
     <Link
       href={`/${guide.slug}`}
+      onClick={() =>
+        trackGuideHub('guide_hub_guide_open', {
+          guide_slug: guide.slug,
+          guide_name: guide.destinationName,
+          guide_category: SLUG_CATEGORY[guide.slug] ?? 'other',
+          selected_filter: category,
+          search_term: searchTerm.trim().toLowerCase(),
+          placement: featured ? 'featured' : 'library',
+        })
+      }
       className="block group relative overflow-hidden rounded-2xl shadow-md bg-gray-900"
     >
       <div className={`relative w-full overflow-hidden ${featured ? 'aspect-[4/3]' : 'aspect-[3/2]'}`}>
@@ -177,7 +202,13 @@ export default function GuideExplorer({ guides }: Props) {
               {CATEGORIES.map(cat => (
                 <button
                   key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
+                  onClick={() => {
+                    setActiveCategory(cat.id);
+                    trackGuideHub('guide_hub_filter_select', {
+                      filter_name: cat.id,
+                    });
+                  }}
+                  aria-pressed={activeCategory === cat.id}
                   className={`flex-shrink-0 px-4 py-1.5 rounded-full text-sm font-medium transition-colors duration-150 ${
                     activeCategory === cat.id
                       ? 'bg-primary text-white shadow-sm'
@@ -211,7 +242,13 @@ export default function GuideExplorer({ guides }: Props) {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {featured.map(g => (
-                <GuideCard key={g.id} guide={g} featured />
+                <GuideCard
+                  key={g.id}
+                  guide={g}
+                  featured
+                  category={activeCategory}
+                  searchTerm={search}
+                />
               ))}
             </div>
           </div>
@@ -232,7 +269,7 @@ export default function GuideExplorer({ guides }: Props) {
         {/* Section heading for default view */}
         {isDefault && (
           <div className="flex items-baseline gap-3 mb-5">
-            <h2 className="text-2xl font-bold font-serif text-accent">Browse All 24 Guides</h2>
+            <h2 className="text-2xl font-bold font-serif text-accent">Browse All {guides.length} Guides</h2>
             <span className="text-sm text-gray-400">Complete library</span>
           </div>
         )}
@@ -241,7 +278,12 @@ export default function GuideExplorer({ guides }: Props) {
         {gridGuides.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {gridGuides.map(g => (
-              <GuideCard key={g.id} guide={g} />
+              <GuideCard
+                key={g.id}
+                guide={g}
+                category={activeCategory}
+                searchTerm={search}
+              />
             ))}
           </div>
         ) : (
