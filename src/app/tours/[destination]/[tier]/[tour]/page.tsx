@@ -1,4 +1,4 @@
-import GoldenTourPage from '@/components/upgrade/GoldenTourPage';
+import UpgradedTourPage from '@/components/upgrade/UpgradedTourPage';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -152,8 +152,11 @@ export default function TourPage({ params }: TourPageProps) {
     ),
   ];
 
-  // Deliberate pilot: Golden China only. Other products and campaign layouts retain the shared template.
-  if (tour.slug === 'golden-china') return <><SchemaMarkup data={schemas} /><GoldenTourPage tour={tour} /></>;
+  // Roll the approved Golden China detail design out one product at a time.
+  const upgradedTourSlugs = new Set(['golden-china', 'china-icons-collection']);
+  if (upgradedTourSlugs.has(tour.slug)) {
+    return <><SchemaMarkup data={schemas} /><UpgradedTourPage tour={tour} /></>;
+  }
 
   return (
     <>
