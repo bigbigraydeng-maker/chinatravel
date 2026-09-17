@@ -11,11 +11,7 @@ import {
  *
  * Reorder or replace entries when marketing priorities change.
  *
- * Roster history: Shanghai & Surroundings (14 Oct 2026) sold out and was pulled —
- * its own product/campaign pages are untouched. Tale of Two Cities stays but now
- * points at its own product page and the 18 March 2027 departure rather than the
- * October-themed campaign LP, since that LP's copy is built entirely around the
- * October date.
+ * Current focus: December 2026 departures from Auckland and Christchurch.
  */
 export type HomeSpotlightTourRef = {
   destination: 'china';
@@ -28,30 +24,19 @@ export type HomeSpotlightTourRef = {
   route: string[];
 };
 
+// September 2026: all primary promotion moves to the December departures.
 export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
   {
-    destination: 'china',
-    tier: 'discovery',
-    slug: 'golden-china',
-    campaignHref: '/tours/china/discovery/golden-china',
-    departureLabel: '16 Nov 2026',
-    route: ['Beijing', "Xi'an", 'Shanghai'],
-  },
-  {
-    destination: 'china',
-    tier: 'discovery',
-    slug: 'china-icons-collection',
+    destination: 'china', tier: 'discovery', slug: 'china-icons-collection',
     campaignHref: '/tours/china/discovery/china-icons-collection',
-    departureLabel: '22 Dec 2026',
+    departureLabel: '22 Dec 2026 · Auckland',
     route: ['Shanghai', 'Beijing', "Xi'an", 'Chongqing', 'Guangzhou'],
   },
   {
-    destination: 'china',
-    tier: 'discovery',
-    slug: 'essentials',
-    campaignHref: '/tours/china/discovery/essentials',
-    departureLabel: '11 Mar 2027',
-    route: ['Beijing', "Xi'an", 'Hangzhou', 'Shanghai'],
+    destination: 'china', tier: 'discovery', slug: 'china-icons-collection-christchurch',
+    campaignHref: '/tours/china/discovery/china-icons-collection-christchurch',
+    departureLabel: '22 Dec 2026 · Christchurch',
+    route: ['Shanghai', 'Beijing', "Xi'an", 'Chongqing', 'Guangzhou'],
   },
 ];
 

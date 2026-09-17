@@ -23,6 +23,7 @@ const DEPARTURE_IMAGE_OVERRIDE: Record<string, string> = {
   'beijing-xian': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-tale-of-two-cities-v2.webp',
   'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-golden-china-v2.webp',
   'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-christmas-new-year-v2.webp',
+  'china-icons-collection-christchurch': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
 };
 
 const MONTHS: Record<string, number> = {

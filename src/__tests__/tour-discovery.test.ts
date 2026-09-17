@@ -1,7 +1,7 @@
 import { aucklandToday, departures, includesExperience, matchingOffer, priceNumber } from '@/lib/tour-discovery';
-import { getAllActiveTours } from '@/lib/data/tours';
-const golden = getAllActiveTours().find(t=>t.slug==='golden-china')!;
-const tour = {...golden, tourCities:['Beijing'], departureDates:['1 October 2026','1 November 2026'], price:'NZD $4,000', departurePricing:{'1 October 2026':'NZD $5,200','1 November 2026':'NZD $3,800'}};
+import { getAllActiveTours, getTourBySlug } from '@/lib/data/tours';
+const golden = getTourBySlug('china','discovery','golden-china')!;
+const tour = {...golden, isActive:true, soldOut:false, tourCities:['Beijing'], departureDates:['1 October 2026','1 November 2026'], price:'NZD $4,000', departurePricing:{'1 October 2026':'NZD $5,200','1 November 2026':'NZD $3,800'}};
 const today = '2026-09-17';
 describe('Production tour discovery',()=>{
  test('combines date and budget using the same departure',()=>{
@@ -50,5 +50,22 @@ describe('Close alternatives for a small catalogue',()=>{
   expect(url.searchParams.get('city')).toBe('Beijing');
   expect(url.searchParams.get('month')).toBe('2026-11');
   expect(url.hash).toBe('#enquiry-form');
+ });
+});
+
+describe('Golden China sold-out withdrawal',()=>{
+ test('keeps the original URL data but removes all sales offers',()=>{
+  expect(golden.soldOut).toBe(true);
+  expect(getAllActiveTours().some(t=>t.slug==='golden-china')).toBe(false);
+  expect(departures(golden,today)).toEqual([]);
+  expect(matchingOffer(golden,{},today)).toBeNull();
+  expect(matchingOffer({...golden,isActive:true,departureDates:[]},{},today)).toBeNull();
+ });
+ test('marks machine-readable offers SoldOut',()=>{
+  const {generateTourSchema,generateProductSchema}=require('@/lib/schema-tour');
+  const {getDestinationBySlug}=require('@/lib/data/tours');
+  expect(JSON.stringify(generateTourSchema(golden,getDestinationBySlug('china')))).toContain('https://schema.org/SoldOut');
+  expect(JSON.stringify(generateProductSchema(golden))).toContain('https://schema.org/SoldOut');
+  expect(JSON.stringify(generateProductSchema(golden))).not.toContain('https://schema.org/InStock');
  });
 });
