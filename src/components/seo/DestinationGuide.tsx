@@ -715,6 +715,25 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               </section>
             )}
 
+            {guide.sources && guide.sources.length > 0 && (
+              <aside className="mb-12 rounded-2xl border border-warm-200 bg-warm-50 p-5 text-sm text-gray-600">
+                <p className={`${EYEBROW} mb-2`}>Sources & editorial review</p>
+                <p className="mb-3 leading-relaxed">
+                  Core destination facts were checked against the following primary source. Prices, opening hours and entry rules can change, so confirm them before travel.
+                </p>
+                <ul className="space-y-1.5">
+                  {guide.sources.map((source) => (
+                    <li key={source.href}>
+                      <a className="font-medium text-primary hover:underline" href={source.href} target="_blank" rel="noopener noreferrer">
+                        {source.label} ↗
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-xs text-gray-500">Last reviewed: {guide.updatedAt}</p>
+              </aside>
+            )}
+
             {/* Related Guides */}
             <section className="mb-12">
               <h2 className={H2_SECTION}>

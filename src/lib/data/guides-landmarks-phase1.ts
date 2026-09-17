@@ -7,7 +7,7 @@ export const templeOfHeavenGuide: DestinationGuide = {
   slug: 'temple-of-heaven-travel-guide',
   destinationName: 'Temple of Heaven',
   parentDestination: 'Beijing',
-  metaTitle: 'Temple of Heaven Beijing Guide | What to See & Visit Tips | CTS Tours',
+  metaTitle: 'Temple of Heaven Beijing Guide',
   metaDescription: 'Plan a visit to Beijing\'s Temple of Heaven: key halls, morning park life, photography tips and how to combine it with a wider Beijing itinerary.',
   keywords: ['Temple of Heaven Beijing', 'Temple of Heaven guide', 'things to do in Beijing', 'Temple of Heaven visit tips'],
   h1: 'Temple of Heaven Travel Guide',
@@ -24,7 +24,7 @@ export const templeOfHeavenGuide: DestinationGuide = {
       id: 'why-it-matters',
       content: [
         'Ming and Qing emperors came here to perform rites for good harvests. The layout expresses traditional Chinese cosmology: round forms represent heaven, while square walls and courtyards represent earth. The scale and symmetry were intended to show that imperial authority depended on harmony between the human and celestial worlds.',
-        'The Hall of Prayer for Good Harvests is the visual centrepiece. Its timber structure was assembled without nails, and its colours, columns and tiers carry symbolic meaning. Walking south reveals how the site progresses from enclosed halls to the open Circular Mound Altar, where sound and space become part of the experience.'
+        'The Hall of Prayer for Good Harvests is the visual centrepiece. Its colours, columns and tiers carry symbolic meaning. Walking south reveals how the site progresses from enclosed halls to the open Circular Mound Altar, where sound and space become part of the experience.'
       ]
     },
     {
@@ -71,6 +71,7 @@ export const templeOfHeavenGuide: DestinationGuide = {
     { src: '/images/guides/temple-of-heaven/detail.webp', imgClass: 'object-[center_58%]' },
     { src: '/images/guides/temple-of-heaven/gallery.webp', imgClass: 'object-[center_55%]' }
   ],
+  sources: [{ label: 'UNESCO World Heritage Centre — Temple of Heaven', href: 'https://whc.unesco.org/en/list/881' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };
@@ -80,7 +81,7 @@ export const xianCityWallGuide: DestinationGuide = {
   slug: 'xian-city-wall-travel-guide',
   destinationName: "Xi'an City Wall",
   parentDestination: "Xi'an",
-  metaTitle: "Xi'an City Wall Guide | Cycling, Gates & Visit Tips | CTS Tours",
+  metaTitle: "Xi'an City Wall Guide | Cycling & Visit Tips",
   metaDescription: "Plan your Xi'an City Wall visit: the best gates, cycling route, sunset timing and how to combine the wall with Xi'an's historic centre.",
   keywords: ["Xi'an City Wall", "Xi'an City Wall cycling", "things to do in Xi'an", "Xi'an attractions"],
   h1: "Xi'an City Wall Travel Guide",
@@ -120,6 +121,7 @@ export const xianCityWallGuide: DestinationGuide = {
   relatedGuideSlugs: ['xian-travel-guide', 'terracotta-warriors-travel-guide', 'big-wild-goose-pagoda-travel-guide'],
   relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'terracotta-warriors-guide-nz', 'xian-street-food-adventure'],
   galleryImages: [],
+  sources: [{ label: "Xi'an City Wall Scenic Area — official website", href: 'https://www.chinaxiancitywall.com/' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };
@@ -129,7 +131,7 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
   slug: 'big-wild-goose-pagoda-travel-guide',
   destinationName: 'Big Wild Goose Pagoda',
   parentDestination: "Xi'an",
-  metaTitle: "Big Wild Goose Pagoda Guide | Xi'an History & Visit Tips | CTS Tours",
+  metaTitle: "Big Wild Goose Pagoda Guide | Xi'an",
   metaDescription: "Visit Xi'an's Big Wild Goose Pagoda: Tang dynasty history, Da Ci'en Temple, evening atmosphere and practical planning advice.",
   keywords: ['Big Wild Goose Pagoda', "Xi'an pagoda", "Xi'an attractions", 'Da Cien Temple'],
   h1: 'Big Wild Goose Pagoda Travel Guide',
@@ -138,7 +140,7 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
   heroImageClassName: 'object-[center_48%]',
   introText: [
     "The Big Wild Goose Pagoda is one of Xi'an's clearest links to the cosmopolitan Tang dynasty. Built to preserve Buddhist scriptures brought from India by the monk Xuanzang, the brick tower became a landmark of religious learning and Silk Road exchange.",
-    'Today the historic pagoda and Da Ci’en Temple sit within a lively cultural district. Visit by day for temple detail and historical context, then stay into the evening when surrounding squares, promenades and illuminated architecture bring local families into the area.'
+    'Today the historic pagoda and Da Ci’en Temple sit within a lively cultural district. Visit by day for temple detail and historical context, then stay into the evening when surrounding squares, promenades and illuminated architecture bring local families into the area. This day-to-night contrast makes the precinct useful even when the rest of your Xi’an itinerary is already full of archaeological sites.'
   ],
   sections: [
     { title: 'Xuanzang and the Silk Road Story', id: 'xuanzang', content: ['Xuanzang travelled across Central Asia to India and returned with Buddhist texts that influenced religious thought across East Asia. The pagoda was built as a secure place to store and translate those manuscripts.', 'Understanding this story turns the monument from a simple tower into evidence of the movement of ideas along the Silk Road. It also connects naturally with Xi’an’s wider history as the eastern terminus of long-distance trade routes.'] },
@@ -169,6 +171,7 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
   relatedGuideSlugs: ['xian-travel-guide', 'xian-city-wall-travel-guide', 'terracotta-warriors-travel-guide'],
   relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'terracotta-warriors-guide-nz', 'xian-street-food-adventure'],
   galleryImages: [],
+  sources: [{ label: 'UNESCO World Heritage Centre — Silk Roads: Chang’an-Tianshan Corridor', href: 'https://whc.unesco.org/en/list/1442' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };
@@ -178,7 +181,7 @@ export const westLakeGuide: DestinationGuide = {
   slug: 'west-lake-travel-guide',
   destinationName: 'West Lake',
   parentDestination: 'Hangzhou',
-  metaTitle: 'West Lake Hangzhou Guide | Walks, Boats & Visit Tips | CTS Tours',
+  metaTitle: 'West Lake Hangzhou Guide | Walks & Boats',
   metaDescription: 'Plan a West Lake visit in Hangzhou with scenic walks, boat ideas, key viewpoints, seasonal advice and links to nearby tea country.',
   keywords: ['West Lake Hangzhou', 'West Lake guide', 'things to do in Hangzhou', 'Hangzhou boat ride'],
   h1: 'West Lake Travel Guide',
@@ -221,6 +224,7 @@ export const westLakeGuide: DestinationGuide = {
     { src: '/images/guides/west-lake/causeway.webp', imgClass: 'object-[center_52%]' },
     { src: '/images/guides/west-lake/gallery.webp', imgClass: 'object-[center_48%]' }
   ],
+  sources: [{ label: 'UNESCO World Heritage Centre — West Lake Cultural Landscape of Hangzhou', href: 'https://whc.unesco.org/en/list/1334' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };
@@ -230,7 +234,7 @@ export const yuGardenGuide: DestinationGuide = {
   slug: 'yu-garden-travel-guide',
   destinationName: 'Yu Garden',
   parentDestination: 'Shanghai',
-  metaTitle: 'Yu Garden Shanghai Guide | Highlights & Visit Tips | CTS Tours',
+  metaTitle: 'Yu Garden Shanghai Guide | Highlights',
   metaDescription: 'Explore Shanghai’s Yu Garden: classical garden design, pavilions, rockeries, nearby Old City streets and practical advice for a rewarding visit.',
   keywords: ['Yu Garden Shanghai', 'Yuyuan Garden guide', 'Shanghai Old City', 'things to do in Shanghai'],
   h1: 'Yu Garden Travel Guide',
@@ -239,7 +243,7 @@ export const yuGardenGuide: DestinationGuide = {
   heroImageClassName: 'object-[center_58%]',
   introText: [
     'Yu Garden is a compact world of pavilions, ponds, rockeries and framed views hidden within central Shanghai. Its design turns a relatively small site into a sequence of changing scenes, using zigzag paths, moon gates and carefully placed windows to slow the visitor down.',
-    'The garden is often confused with the busy bazaar surrounding it. Both are worth seeing, but they offer different experiences: enter the formal garden for architecture and landscape design, then explore the neighbouring Old City lanes, food stalls and teahouses.'
+    'The garden is often confused with the busy bazaar surrounding it. Both are worth seeing, but they offer different experiences: enter the formal garden for architecture and landscape design, then explore the neighbouring Old City lanes, food stalls and teahouses. Keeping those two areas distinct makes the visit easier to pace and gives the quieter garden enough time before the commercial streets.'
   ],
   sections: [
     { title: 'How to Read a Classical Chinese Garden', id: 'garden-design', content: ['Yu Garden is designed as a journey rather than a single panorama. Walls divide the site into rooms, while openings reveal partial views that encourage you to keep moving.', 'Rocks suggest mountains, ponds suggest larger bodies of water, and pavilions create places to pause. Looking through doors and lattice windows often produces a more interesting view than standing in the middle of a courtyard.'] },
@@ -273,6 +277,7 @@ export const yuGardenGuide: DestinationGuide = {
     { src: '/images/guides/yu-garden/pavilion.webp', imgClass: 'object-[center_58%]' },
     { src: '/images/guides/yu-garden/gallery.webp', imgClass: 'object-[center_55%]' }
   ],
+  sources: [{ label: 'Official Shanghai China Travel Website — Yuyuan Garden', href: 'https://www.meet-in-shanghai.net/en/tourist-attraction/yuyuan-garden-998246/' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };
@@ -282,7 +287,7 @@ export const theBundGuide: DestinationGuide = {
   slug: 'the-bund-travel-guide',
   destinationName: 'The Bund',
   parentDestination: 'Shanghai',
-  metaTitle: 'The Bund Shanghai Guide | Skyline Views & Visit Tips | CTS Tours',
+  metaTitle: 'The Bund Shanghai Guide | Skyline & Visit Tips',
   metaDescription: 'Plan a visit to Shanghai’s Bund: the best skyline viewpoints, historic buildings, morning and night experiences, and nearby places to explore.',
   keywords: ['The Bund Shanghai', 'Shanghai skyline view', 'Bund travel guide', 'things to do in Shanghai'],
   h1: 'The Bund Travel Guide',
@@ -325,6 +330,7 @@ export const theBundGuide: DestinationGuide = {
     { src: '/images/guides/the-bund/skyline.webp', imgClass: 'object-[center_48%]' },
     { src: '/images/guides/the-bund/night.webp', imgClass: 'object-[center_50%]' }
   ],
+  sources: [{ label: 'Official Shanghai China Travel Website — The Bund', href: 'https://www.meet-in-shanghai.net/en/huangpu-district/the-bund-648313/' }],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };

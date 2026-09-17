@@ -67,6 +67,8 @@ export interface DestinationGuide {
   relatedGuideSlugs: string[];
   relatedBlogSlugs?: string[]; // Related blog articles (2-3 per guide for SEO + UX)
   galleryImages: GuideGalleryImage[];
+  /** Primary sources used to verify stable historical and destination facts. */
+  sources?: { label: string; href: string }[];
   createdAt: string;
   updatedAt: string;
 }
