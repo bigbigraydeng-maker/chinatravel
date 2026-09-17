@@ -48,6 +48,15 @@ test('Big Wild Goose Pagoda is a substantive destination guide, not a thin landi
   const relatedArticleImages = guide!.relatedBlogSlugs!.map((slug) => getBlogPostBySlug(slug)?.heroImage);
   expect(relatedArticleImages.every(Boolean)).toBe(true);
   expect(new Set(relatedArticleImages).size).toBe(relatedArticleImages.length);
+
+  const inlineImages = guide!.sections.flatMap((section) => section.image ? [section.image] : []);
+  expect(inlineImages).toHaveLength(3);
+  expect(new Set(inlineImages.map((image) => image.src)).size).toBe(inlineImages.length);
+  for (const image of inlineImages) {
+    expect(image.alt.length).toBeGreaterThanOrEqual(35);
+    expect(image.caption.length).toBeGreaterThanOrEqual(60);
+    expect(existsSync(path.join(process.cwd(), 'public', image.src))).toBe(true);
+  }
 });
 
 test('guide images are unique, local and present', () => {

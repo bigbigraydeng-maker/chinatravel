@@ -184,7 +184,13 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
         'The Big Wild Goose Pagoda is one component of the transnational Silk Roads: the Routes Network of Chang’an–Tianshan Corridor, inscribed on the UNESCO World Heritage List in 2014. The corridor links sites across China, Kazakhstan and Kyrgyzstan that document movement, trade, belief and cultural exchange over long distances.',
         'At this site, the Silk Road story is expressed through ideas rather than a marketplace. Texts travelled from India to Chang’an; scholars translated them; Buddhist teachings then circulated in new languages and forms. The pagoda therefore gives visitors a way to understand the Silk Roads as a network for knowledge as well as silk, horses and luxury goods.',
         'This broader view also connects the pagoda with other Xi’an sights. The city wall reflects the later Ming city, the Terracotta Warriors belong to the Qin empire, and the pagoda represents Tang-era internationalism. Visiting all three helps separate distinct periods that are often compressed into a single idea of “ancient Xi’an”.'
-      ]
+      ],
+      image: {
+        src: '/images/guides/big-wild-goose-pagoda/terracotta-context.webp',
+        alt: 'Terracotta Warriors standing in the excavated pits outside Xi’an',
+        caption: 'The Terracotta Warriors represent Qin imperial history; the Big Wild Goose Pagoda belongs to Xi’an’s later Tang and Silk Road story.',
+        imageClassName: 'object-[center_48%]'
+      }
     },
     {
       title: 'Daylight, Blue Hour and the Evening District',
@@ -193,7 +199,13 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
         'Daylight is essential if you want to understand the temple and see the brickwork, painted halls and courtyard details clearly. Morning can be quieter, while late afternoon gives warmer light and creates the easiest transition into the evening. Check the temple’s current last-entry time before planning a late arrival.',
         'After the temple visit, walk through the public squares and continue toward the Tang-themed cultural promenade. The atmosphere becomes more theatrical after dark, with illuminated buildings, performances on some evenings and large numbers of local visitors. It is a contemporary interpretation of Tang identity rather than an untouched historical quarter, but that distinction is part of what makes the area interesting.',
         'Photographers should keep both wide and compressed views in mind. The tower works well as a distant anchor above the square, while gates, trees and temple roofs create stronger foregrounds from inside the complex. Blue hour often balances the remaining colour in the sky with the district’s architectural lighting.'
-      ]
+      ],
+      image: {
+        src: '/images/guides/big-wild-goose-pagoda/muslim-quarter-night.webp',
+        alt: 'Lantern-lit evening streets in Xi’an’s Muslim Quarter',
+        caption: 'For a different Xi’an evening, the Muslim Quarter combines lantern-lit streets, Hui heritage and local food inside the city walls.',
+        imageClassName: 'object-[center_42%]'
+      }
     },
     {
       title: 'How to Fit It into an Xi’an Itinerary',
@@ -202,7 +214,13 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
         'The pagoda pairs naturally with the Shaanxi History Museum because both sit south of the city centre and build a strong Tang-dynasty narrative. Museum reservations and opening arrangements can be restrictive, so confirm those first and let the fixed booking determine the order of your day.',
         'For a broader contrast, visit Xi’an City Wall earlier and come to the pagoda district in late afternoon. The wall presents the defensive structure of the later city, while Da Ci’en Temple opens a window onto religion, travel and scholarship. The Muslim Quarter can follow on another evening if you want food and street life rather than another major monument.',
         'Travellers returning from the Terracotta Warriors may also use the pagoda as an evening stop, provided the day has not become too long. This combination spans Qin and Tang history, but it involves substantial travel and walking. A slower itinerary gives the pagoda its own half-day with the museum or nearby cultural district.'
-      ]
+      ],
+      image: {
+        src: '/images/guides/big-wild-goose-pagoda/beijing-xian-train.webp',
+        alt: 'High-speed train travelling on railway tracks in China',
+        caption: 'High-speed rail makes Xi’an an easy second chapter after Beijing, with the journey forming part of the experience.',
+        imageClassName: 'object-[center_58%]'
+      }
     }
   ],
   attractions: [

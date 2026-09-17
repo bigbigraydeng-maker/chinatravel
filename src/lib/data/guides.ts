@@ -41,6 +41,13 @@ export interface Section {
   id: string;
   content: string[];
   link?: { label: string; href: string };
+  /** Optional editorial image placed between the first and remaining paragraphs. */
+  image?: {
+    src: string;
+    alt: string;
+    caption: string;
+    imageClassName?: string;
+  };
 }
 
 export interface DestinationGuide {

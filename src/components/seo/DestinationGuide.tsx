@@ -559,8 +559,27 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   {section.title}
                 </h2>
                 <div className="space-y-4">
-                  {section.content.map((para, j) => (
-                    <p key={j} className="text-gray-700 leading-relaxed text-[16px]">
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
+                    {section.content[0]}
+                  </p>
+                  {section.image && (
+                    <figure className="my-6 overflow-hidden rounded-2xl border border-border bg-warm-50">
+                      <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
+                        <Image
+                          src={section.image.src}
+                          alt={section.image.alt}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 850px"
+                          className={`object-cover ${section.image.imageClassName ?? ''}`}
+                        />
+                      </div>
+                      <figcaption className="border-t border-border px-4 py-3 text-sm leading-relaxed text-gray-600">
+                        {section.image.caption}
+                      </figcaption>
+                    </figure>
+                  )}
+                  {section.content.slice(1).map((para, j) => (
+                    <p key={j + 1} className="text-gray-700 leading-relaxed text-[16px]">
                       {para}
                     </p>
                   ))}
