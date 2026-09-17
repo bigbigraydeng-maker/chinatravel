@@ -8,7 +8,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
-import SouthIslandDeparture from '@/app/china-tours/_components/SouthIslandDeparture';
+import FestiveChinaPreview from '@/components/FestiveChinaPreview';
 import ChinaStopovers from '@/components/ChinaStopovers';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
@@ -250,8 +250,8 @@ const HomePageRedesign = () => {
         </section>
       )}
 
-      {/* ===== South Island departure (Christchurch direct) ===== */}
-      <SouthIslandDeparture />
+      {/* ===== Festive-season guide — answers winter concerns without repeating a tour card ===== */}
+      <FestiveChinaPreview />
 
       {/* ===== China Stopovers (stopover-tier tours) ===== */}
       <ChinaStopovers />
