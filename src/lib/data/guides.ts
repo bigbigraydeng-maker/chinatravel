@@ -7,8 +7,8 @@ const SB = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public';
 const TI = `${SB}/tour-images`;
 export const migratedUnsplash = (photoId: string) => `${TI}/migrated/unsplash/${photoId}.jpg`;
 
-/** Curated gallery slot: plain URL or URL + Tailwind for square thumbnail framing. */
-export type GuideGalleryImage = string | { src: string; imgClass?: string };
+/** Curated gallery slot: plain URL or URL with framing and descriptive image copy. */
+export type GuideGalleryImage = string | { src: string; imgClass?: string; alt?: string; caption?: string };
 
 export function galleryItem(src: string, imgClass?: string): GuideGalleryImage {
   return imgClass ? { src, imgClass } : src;
@@ -59,6 +59,13 @@ export interface DestinationGuide {
   /** Attribution line required for CC-licensed hero images. See public/blog/sourced/CREDITS.json. */
   heroImageCredit?: string;
   introText: string[];
+  /** Concise answer block designed for travellers and answer engines. */
+  quickAnswer?: string;
+  visitPlanning?: {
+    recommendedVisitLength: string;
+    bestFor: string;
+    combineWith: string;
+  };
   sections: Section[];
   attractions: Attraction[];
   practicalInfo: PracticalInfo;

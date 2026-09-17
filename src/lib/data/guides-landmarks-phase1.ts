@@ -18,6 +18,8 @@ export const templeOfHeavenGuide: DestinationGuide = {
     'The Temple of Heaven is one of Beijing\'s most recognisable landmarks, but the experience is larger than its famous blue-roofed hall. The complex was designed for imperial ceremonies that connected the emperor, the harvest and the order of the cosmos. Its axial paths, circular terraces and cypress groves make the ideas behind the architecture easy to feel even before you know the history.',
     'For travellers, the best visit combines the ceremonial buildings with the surrounding park. Arrive in the morning to see local residents practising tai chi, dancing, playing music and gathering beneath the trees, then continue through the Hall of Prayer for Good Harvests, Imperial Vault of Heaven and Circular Mound Altar. Allow at least two hours, and longer if you enjoy architecture or photography.'
   ],
+  quickAnswer: 'Allow two to three hours for a first Temple of Heaven visit. Arrive on a weekday morning, walk north to south through the ceremonial complex, and leave time for the surrounding park where Beijing residents gather before the main crowds arrive.',
+  visitPlanning: { recommendedVisitLength: '2–3 hours', bestFor: 'Imperial history, architecture and morning park life', combineWith: 'Forbidden City, Tiananmen Square or Qianmen' },
   sections: [
     {
       title: 'Why the Temple of Heaven Matters',
@@ -68,8 +70,8 @@ export const templeOfHeavenGuide: DestinationGuide = {
   relatedGuideSlugs: ['beijing-travel-guide', 'forbidden-city-travel-guide', 'great-wall-travel-guide'],
   relatedBlogSlugs: ['first-time-china-travel-tips', 'beijing-xian-itinerary-10-days', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
-    { src: '/images/guides/temple-of-heaven/detail.webp', imgClass: 'object-[center_58%]' },
-    { src: '/images/guides/temple-of-heaven/gallery.webp', imgClass: 'object-[center_55%]' }
+    { src: '/images/guides/temple-of-heaven/detail.webp', imgClass: 'object-[center_58%]', alt: 'Hall of Prayer for Good Harvests at the Temple of Heaven in Beijing', caption: 'The Hall of Prayer for Good Harvests anchors the northern end of the ceremonial route.' },
+    { src: '/images/guides/temple-of-heaven/gallery.webp', imgClass: 'object-[center_55%]', alt: 'Architectural detail at Beijing’s Temple of Heaven complex', caption: 'Colour, symmetry and layered roofs express the ceremonial design of the complex.' }
   ],
   sources: [{ label: 'UNESCO World Heritage Centre — Temple of Heaven', href: 'https://whc.unesco.org/en/list/881' }],
   createdAt: UPDATED,
@@ -92,6 +94,8 @@ export const xianCityWallGuide: DestinationGuide = {
     "Xi'an City Wall forms a complete rectangle around the historic centre and offers a rare chance to experience an old Chinese capital from above. Watchtowers, gatehouses and broad ramparts frame views of temple roofs on one side and the modern city on the other.",
     'The wall works equally well as a relaxed walk, a cycling circuit or a sunset stop. Most first-time visitors begin at the South Gate, where the architecture is most ceremonial and access is straightforward. Even a short section gives a strong sense of scale; completing the full circuit requires more time and energy.'
   ],
+  quickAnswer: "Allow about 90 minutes to two and a half hours for Xi'an City Wall. Start at South Gate, walk a short section or cycle the complete circuit, and visit in late afternoon if you want daylight, sunset and illuminated gate towers in one experience.",
+  visitPlanning: { recommendedVisitLength: '1.5–2.5 hours', bestFor: 'Cycling, city views and sunset photography', combineWith: 'Muslim Quarter or Big Wild Goose Pagoda' },
   sections: [
     { title: 'Walk, Cycle or Ride', id: 'ways-to-explore', content: ['The broad top of the wall is easy to follow. Walking lets you study the brickwork and towers slowly, while cycling is the most practical way to experience the full circuit. Surface conditions can be uneven, so choose a comfortable pace.', 'A partial route from the South Gate toward the East or West Gate suits travellers with limited time. The full loop is better treated as a dedicated activity rather than squeezed between museums.'] },
     { title: 'Choosing the Right Gate', id: 'best-gates', content: ['The South Gate is the most popular starting point because of its restored ceremonial buildings, evening lighting and convenient position near the central city. Other gates can be quieter and useful if they fit your hotel or itinerary.', 'Check the current access points before setting out, as bicycle rental and opening arrangements may vary by gate and season.'] },
@@ -142,6 +146,8 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
     "The Big Wild Goose Pagoda is one of Xi'an's clearest links to the cosmopolitan Tang dynasty. Built to preserve Buddhist scriptures brought from India by the monk Xuanzang, the brick tower became a landmark of religious learning and Silk Road exchange.",
     'Today the historic pagoda and Da Ci’en Temple sit within a lively cultural district. Visit by day for temple detail and historical context, then stay into the evening when surrounding squares, promenades and illuminated architecture bring local families into the area. This day-to-night contrast makes the precinct useful even when the rest of your Xi’an itinerary is already full of archaeological sites.'
   ],
+  quickAnswer: 'Plan 90 minutes for the pagoda and Da Ci’en Temple, or two to three hours if you also want the surrounding cultural district after dark. Late afternoon offers the best transition from Tang dynasty history to the evening atmosphere.',
+  visitPlanning: { recommendedVisitLength: '1.5–3 hours', bestFor: 'Tang history, Buddhist heritage and evening atmosphere', combineWith: "Xi'an City Wall or the Muslim Quarter" },
   sections: [
     { title: 'Xuanzang and the Silk Road Story', id: 'xuanzang', content: ['Xuanzang travelled across Central Asia to India and returned with Buddhist texts that influenced religious thought across East Asia. The pagoda was built as a secure place to store and translate those manuscripts.', 'Understanding this story turns the monument from a simple tower into evidence of the movement of ideas along the Silk Road. It also connects naturally with Xi’an’s wider history as the eastern terminus of long-distance trade routes.'] },
     { title: 'What to See Around the Pagoda', id: 'what-to-see', content: ['The temple courtyards offer carved stone, incense halls and views of the layered brick pagoda. The surrounding district includes landscaped squares and cultural spaces that are easy to explore on foot.', 'Climbing or interior access can vary, so treat any elevated view as a bonus rather than the sole reason to visit. The strongest experience comes from combining the monument, temple and surrounding public life.'] },
@@ -192,6 +198,8 @@ export const westLakeGuide: DestinationGuide = {
     'West Lake is not a single viewpoint but a landscape designed to unfold slowly. Causeways divide the water into changing scenes, while pagodas, gardens, bridges and wooded hills appear and disappear as you move around the shore.',
     'A good visit combines a lakeside walk with a boat crossing or short cruise. Rather than attempting the entire perimeter, choose one or two sections that suit the season and your pace, then connect the lake with Longjing tea country or Hangzhou’s historic streets.'
   ],
+  quickAnswer: 'Give West Lake at least half a day. Choose one causeway, take a short boat crossing and add one temple, pagoda or garden rather than trying to walk the entire shoreline. A full day works well when combined with Longjing tea country.',
+  visitPlanning: { recommendedVisitLength: 'Half day to full day', bestFor: 'Scenic walks, boats, gardens and photography', combineWith: 'Longjing tea fields or central Hangzhou' },
   sections: [
     { title: 'How to Experience the Lake', id: 'how-to-explore', content: ['Walking gives the best sense of detail, especially along the Bai and Su causeways. Boats reveal the wider composition and make it easier to connect opposite shores without retracing your steps.', 'A balanced half-day might combine a causeway walk, a short boat ride and one temple or garden. A full day allows slower photography, tea and time away from the busiest waterfront sections.'] },
     { title: 'Classic Views and Quieter Corners', id: 'classic-views', content: ['The lake’s celebrated scenic views are linked to seasons, weather and time of day. Broken Bridge, Leifeng Pagoda, Three Pools Mirroring the Moon and the Su Causeway are useful anchors, but smaller pavilions and wooded paths often create the most memorable moments.', 'Move a little beyond the main arrival points to find calmer stretches of shore. Mist and light rain can enhance the atmosphere rather than spoil it.'] },
@@ -221,8 +229,8 @@ export const westLakeGuide: DestinationGuide = {
   relatedGuideSlugs: ['hangzhou-travel-guide', 'shanghai-travel-guide', 'suzhou-travel-guide'],
   relatedBlogSlugs: ['west-lake-hangzhou-travel-guide', 'shanghai-suzhou-hangzhou-itinerary', 'china-water-towns-jiangnan-guide'],
   galleryImages: [
-    { src: '/images/guides/west-lake/causeway.webp', imgClass: 'object-[center_52%]' },
-    { src: '/images/guides/west-lake/gallery.webp', imgClass: 'object-[center_48%]' }
+    { src: '/images/guides/west-lake/causeway.webp', imgClass: 'object-[center_52%]', alt: 'Tree-lined causeway and reflective water at West Lake in Hangzhou', caption: 'Causeways divide West Lake into a sequence of changing views.' },
+    { src: '/images/guides/west-lake/gallery.webp', imgClass: 'object-[center_48%]', alt: 'Traditional pavilion surrounded by water and trees at West Lake', caption: 'Pavilions, gardens and wooded shorelines reward a slower route around the lake.' }
   ],
   sources: [{ label: 'UNESCO World Heritage Centre — West Lake Cultural Landscape of Hangzhou', href: 'https://whc.unesco.org/en/list/1334' }],
   createdAt: UPDATED,
@@ -245,6 +253,8 @@ export const yuGardenGuide: DestinationGuide = {
     'Yu Garden is a compact world of pavilions, ponds, rockeries and framed views hidden within central Shanghai. Its design turns a relatively small site into a sequence of changing scenes, using zigzag paths, moon gates and carefully placed windows to slow the visitor down.',
     'The garden is often confused with the busy bazaar surrounding it. Both are worth seeing, but they offer different experiences: enter the formal garden for architecture and landscape design, then explore the neighbouring Old City lanes, food stalls and teahouses. Keeping those two areas distinct makes the visit easier to pace and gives the quieter garden enough time before the commercial streets.'
   ],
+  quickAnswer: 'Allow about 90 minutes inside Yu Garden and another hour for the surrounding Old City and bazaar. Visit the ticketed garden near opening, then continue to the busier lanes outside; the Bund is close enough to form a strong half-day route.',
+  visitPlanning: { recommendedVisitLength: '1.5–2.5 hours', bestFor: 'Classical gardens, architecture and Old City atmosphere', combineWith: 'The Bund or Shanghai Old City' },
   sections: [
     { title: 'How to Read a Classical Chinese Garden', id: 'garden-design', content: ['Yu Garden is designed as a journey rather than a single panorama. Walls divide the site into rooms, while openings reveal partial views that encourage you to keep moving.', 'Rocks suggest mountains, ponds suggest larger bodies of water, and pavilions create places to pause. Looking through doors and lattice windows often produces a more interesting view than standing in the middle of a courtyard.'] },
     { title: 'Garden First, Bazaar Second', id: 'garden-and-bazaar', content: ['Visit the ticketed garden before the surrounding bazaar becomes crowded. Inside, move slowly through the rockeries and pavilions; outside, expect a much livelier commercial atmosphere.', 'The nearby zigzag bridge and teahouse are iconic photographs, but peak periods can be congested. An early start keeps the contrast enjoyable rather than overwhelming.'] },
@@ -274,8 +284,8 @@ export const yuGardenGuide: DestinationGuide = {
   relatedGuideSlugs: ['shanghai-travel-guide', 'the-bund-travel-guide', 'suzhou-travel-guide'],
   relatedBlogSlugs: ['shanghai-10-days-itinerary', 'shanghai-suzhou-hangzhou-itinerary', 'china-water-towns-jiangnan-guide'],
   galleryImages: [
-    { src: '/images/guides/yu-garden/pavilion.webp', imgClass: 'object-[center_58%]' },
-    { src: '/images/guides/yu-garden/gallery.webp', imgClass: 'object-[center_55%]' }
+    { src: '/images/guides/yu-garden/pavilion.webp', imgClass: 'object-[center_58%]', alt: 'Classical pavilion, pond and rockery inside Yu Garden in Shanghai', caption: 'Pavilions, ponds and rockeries turn the compact garden into a sequence of scenes.' },
+    { src: '/images/guides/yu-garden/gallery.webp', imgClass: 'object-[center_55%]', alt: 'Traditional covered walkway and garden architecture at Yu Garden', caption: 'Covered corridors frame views and guide visitors through the garden.' }
   ],
   sources: [{ label: 'Official Shanghai China Travel Website — Yuyuan Garden', href: 'https://www.meet-in-shanghai.net/en/tourist-attraction/yuyuan-garden-998246/' }],
   createdAt: UPDATED,
@@ -298,6 +308,8 @@ export const theBundGuide: DestinationGuide = {
     'The Bund is Shanghai’s defining city view: a line of early twentieth-century commercial buildings on one bank of the Huangpu River and the futuristic towers of Pudong on the other. The contrast explains Shanghai’s modern identity in a single panorama.',
     'The waterfront changes through the day. Mornings belong to walkers and local exercise groups, late afternoon brings softer light, and evening turns both banks into an illuminated cityscape. A strong visit includes the promenade, selected historic façades and at least one view from the Pudong side or the river.'
   ],
+  quickAnswer: 'Allow 90 minutes to three hours for the Bund, depending on whether you add historic architecture, a river crossing or a cruise. Arrive before sunset to see the waterfront in daylight, blue hour and evening illumination during one visit.',
+  visitPlanning: { recommendedVisitLength: '1.5–3 hours', bestFor: 'Skyline views, architecture and evening photography', combineWith: 'Yu Garden, Nanjing Road or Pudong' },
   sections: [
     { title: 'Two Skylines, One River', id: 'two-skylines', content: ['The western bank presents stone façades built during Shanghai’s era as an international trading port. Across the river, Lujiazui’s towers represent the city’s rapid transformation since the 1990s.', 'Stand back from the railings to appreciate both the river traffic and the full Pudong skyline. Then cross the road to study the historic buildings individually rather than treating them as a backdrop.'] },
     { title: 'Morning, Sunset or Night', id: 'best-time', content: ['Early morning is calm and local, with clearer walking space and softer haze. Sunset can produce dramatic colour behind the historic bank, while night delivers the famous illuminated panorama.', 'If you only visit once, arrive before dusk and stay through the lighting transition. Weather and seasonal lighting schedules vary, so allow flexibility.'] },
@@ -327,8 +339,8 @@ export const theBundGuide: DestinationGuide = {
   relatedGuideSlugs: ['shanghai-travel-guide', 'yu-garden-travel-guide', 'hangzhou-travel-guide'],
   relatedBlogSlugs: ['shanghai-10-days-itinerary', 'shanghai-suzhou-hangzhou-itinerary', 'china-water-towns-jiangnan-guide'],
   galleryImages: [
-    { src: '/images/guides/the-bund/skyline.webp', imgClass: 'object-[center_48%]' },
-    { src: '/images/guides/the-bund/night.webp', imgClass: 'object-[center_50%]' }
+    { src: '/images/guides/the-bund/skyline.webp', imgClass: 'object-[center_48%]', alt: 'Pudong skyline viewed across the Huangpu River from central Shanghai', caption: 'The eastern bank presents Shanghai’s modern skyline across the Huangpu River.' },
+    { src: '/images/guides/the-bund/night.webp', imgClass: 'object-[center_50%]', alt: 'Historic Bund buildings illuminated beside the Huangpu River at night', caption: 'Evening lighting reveals the architectural character of the historic western bank.' }
   ],
   sources: [{ label: 'Official Shanghai China Travel Website — The Bund', href: 'https://www.meet-in-shanghai.net/en/huangpu-district/the-bund-648313/' }],
   createdAt: UPDATED,

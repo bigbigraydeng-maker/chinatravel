@@ -29,17 +29,26 @@ export default function GuidePageShell({ slug }: { slug: string }) {
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/${slug}`;
   const parentName = guide.parentDestination ?? 'China';
+  const attractionId = `${pageUrl}#tourist-attraction`;
+  const imageUrl = guide.heroImage.startsWith('http') ? guide.heroImage : `${siteUrl}${guide.heroImage}`;
 
   const schema = [
     {
       '@context': 'https://schema.org',
       '@type': 'Article',
+      '@id': pageUrl,
       headline: guide.h1,
       description: guide.metaDescription,
-      image: guide.heroImage.startsWith('http') ? guide.heroImage : `${siteUrl}${guide.heroImage}`,
+      image: imageUrl,
+      abstract: guide.quickAnswer ?? guide.metaDescription,
       datePublished: guide.createdAt,
       dateModified: guide.updatedAt,
       author: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
+      reviewedBy: {
+        '@type': 'Organization',
+        name: 'CTS Tours China Travel Specialists',
+        url: `${siteUrl}/about`,
+      },
       publisher: {
         '@type': 'Organization',
         name: 'CTS Tours',
@@ -47,7 +56,22 @@ export default function GuidePageShell({ slug }: { slug: string }) {
         logo: { '@type': 'ImageObject', url: `${siteUrl}/images/cts-logo.png` },
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-      about: { '@type': 'TouristAttraction', name: guide.destinationName },
+      about: { '@id': attractionId },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TouristAttraction',
+      '@id': attractionId,
+      name: guide.destinationName,
+      description: guide.metaDescription,
+      image: imageUrl,
+      url: pageUrl,
+      touristType: guide.visitPlanning?.bestFor,
+      containedInPlace: {
+        '@type': 'City',
+        name: parentName,
+      },
+      subjectOf: { '@id': pageUrl },
     },
     {
       '@context': 'https://schema.org',

@@ -25,6 +25,10 @@ test('phase-one landmark guides meet the editorial SEO baseline', () => {
     expect(editorialWordCount(guide)).toBeGreaterThanOrEqual(500);
     expect(guide.sections.length).toBeGreaterThanOrEqual(3);
     expect(guide.faqs.length).toBeGreaterThanOrEqual(4);
+    expect(guide.quickAnswer?.length).toBeGreaterThanOrEqual(160);
+    expect(guide.visitPlanning?.recommendedVisitLength).toBeTruthy();
+    expect(guide.visitPlanning?.bestFor).toBeTruthy();
+    expect(guide.visitPlanning?.combineWith).toBeTruthy();
     expect(guide.relatedBlogSlugs?.length).toBeGreaterThanOrEqual(3);
     expect(guide.sources?.length).toBeGreaterThanOrEqual(1);
     expect(guide.sources?.every((source) => source.href.startsWith('https://'))).toBe(true);
@@ -41,6 +45,14 @@ test('guide images are unique, local and present', () => {
   for (const src of sources) {
     expect(src.startsWith('/')).toBe(true);
     expect(existsSync(path.join(process.cwd(), 'public', src))).toBe(true);
+  }
+
+  for (const guide of phase1LandmarkGuides) {
+    for (const image of guide.galleryImages) {
+      if (typeof image === 'string') continue;
+      expect(image.alt?.length).toBeGreaterThanOrEqual(25);
+      expect(image.caption?.length).toBeGreaterThanOrEqual(30);
+    }
   }
 });
 

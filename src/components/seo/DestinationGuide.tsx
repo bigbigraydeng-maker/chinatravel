@@ -507,6 +507,27 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               ))}
             </div>
 
+            {guide.quickAnswer && guide.visitPlanning && (
+              <aside data-geo-summary className="mb-10 rounded-2xl border border-primary/20 bg-primary/5 p-6">
+                <p className={`${EYEBROW} mb-2`}>Quick answer</p>
+                <p className="text-[17px] leading-relaxed text-accent">{guide.quickAnswer}</p>
+                <dl className="mt-5 grid gap-4 border-t border-primary/15 pt-5 sm:grid-cols-3">
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Recommended time</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.recommendedVisitLength}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Best for</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.bestFor}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Combine with</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.combineWith}</dd>
+                  </div>
+                </dl>
+              </aside>
+            )}
+
             {/* Inline mid-page CTA */}
             <div className="mb-10 rounded-xl bg-gradient-to-r from-accent to-accent/90 text-white p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
@@ -605,7 +626,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   columns={3}
                   images={guide.galleryImages.map((item, i) => ({
                     src: typeof item === 'string' ? item : item.src,
-                    alt: `${guide.destinationName} — photo ${i + 1}`,
+                    alt: typeof item === 'string' ? `${guide.destinationName} — photo ${i + 1}` : item.alt ?? `${guide.destinationName} — photo ${i + 1}`,
+                    caption: typeof item === 'string' ? undefined : item.caption,
                     imgClass: typeof item === 'string' ? undefined : item.imgClass,
                   }))}
                 />
