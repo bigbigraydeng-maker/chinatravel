@@ -229,7 +229,14 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
   ],
   relatedTourSlugs: ['beijing-xian', 'essentials'],
   relatedGuideSlugs: ['xian-travel-guide', 'xian-city-wall-travel-guide', 'terracotta-warriors-travel-guide'],
-  relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'terracotta-warriors-guide-nz', 'xian-street-food-adventure'],
+  relatedBlogSlugs: [
+    'why-silk-road-should-be-your-next-adventure',
+    'beijing-xian-itinerary-10-days',
+    'beijing-to-xian-high-speed-train',
+    'terracotta-warriors-guide-nz',
+    'xian-street-food-adventure',
+    'first-time-china-beijing-xian'
+  ],
   galleryImages: [],
   sources: [
     { label: 'UNESCO World Heritage Centre — Silk Roads: Chang’an-Tianshan Corridor', href: 'https://whc.unesco.org/en/list/1442' },

@@ -24,6 +24,8 @@ interface GuideLink {
   name: string;
   slug: string;
   emoji: string;
+  image?: string;
+  imageClassName?: string;
 }
 interface GuideConfig {
   hubUrl: string;
@@ -355,10 +357,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
     ],
     relatedGuides: [
-      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
-      { name: "Xi'an City Wall", slug: 'xian-city-wall-travel-guide', emoji: '🏰' },
-      { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
-      { name: 'Silk Road Inspiration', slug: 'beijing-xian-discovery-guide', emoji: '🐫' },
+      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺', image: '/images/blog/first-time-destinations/xian.webp' },
+      { name: "Xi'an City Wall", slug: 'xian-city-wall-travel-guide', emoji: '🏰', image: '/images/guides/xian-city-wall/hero.webp', imageClassName: 'object-[center_55%]' },
+      { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️', image: `${TI}/xian-terracotta-2.jpg` },
+      { name: 'Beijing & Xi’an Journey', slug: 'beijing-xian-discovery-guide', emoji: '🐫', image: `${TI}/forbidden-city-aerial.jpg` },
     ],
   },
   'west-lake-travel-guide': {
@@ -618,7 +620,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* Gallery */}
             {guide.galleryImages.length > 0 && (
-              <section className="mb-12">
+              <section id="photo-gallery" className="mb-12 scroll-mt-20">
                 <h2 className={H2_SECTION}>
                   {guide.destinationName} Photo Gallery
                 </h2>
@@ -696,10 +698,13 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
 
             {/* Related Blog Articles */}
             {guide.relatedBlogSlugs && guide.relatedBlogSlugs.length > 0 && (
-              <section className="mb-12">
+              <section id="recommended-reading" className="mb-12 scroll-mt-20">
                 <h2 className={H2_SECTION}>
                   Recommended <span data-slot="italic">Reading</span>
                 </h2>
+                <p className="-mt-4 mb-6 max-w-3xl text-gray-600 leading-relaxed">
+                  Continue the story with practical routes, local food, transport and the wider history of {guide.parentDestination ?? guide.destinationName}.
+                </p>
                 <div className="grid sm:grid-cols-3 gap-5">
                   {guide.relatedBlogSlugs.map((slug) => {
                     const post = getBlogPostBySlug(slug);
@@ -710,6 +715,15 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                         href={`/blog/${slug}`}
                         className="flex flex-col rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-1 transition-all overflow-hidden bg-white group"
                       >
+                        <div className="relative aspect-[16/10] overflow-hidden bg-warm-100">
+                          <Image
+                            src={post.heroImage}
+                            alt={`${post.title} — CTS Tours travel article`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 260px"
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
                         <div className="flex-1 p-5 flex flex-col">
                           <div className="mb-3">
                             <span className="inline-block text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1.5 rounded-full">
@@ -757,21 +771,39 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
             )}
 
             {/* Related Guides */}
-            <section className="mb-12">
+            <section id="explore-more" className="mb-12 scroll-mt-20">
               <h2 className={H2_SECTION}>
                 Explore More Destinations
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {config.relatedGuides.map((g) => (
-                  <Link
-                    key={g.slug}
-                    href={`/${g.slug}`}
-                    className="flex flex-col items-center gap-2 p-4 rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all text-center bg-white"
-                  >
-                    <Icon name="map-pin" className="w-6 h-6 text-primary" />
-                    <span className="text-sm font-semibold text-accent leading-snug">{g.name}</span>
-                  </Link>
-                ))}
+                {config.relatedGuides.map((g) => {
+                  return (
+                    <Link
+                      key={g.slug}
+                      href={`/${g.slug}`}
+                      className="group overflow-hidden rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all bg-white"
+                    >
+                      {g.image ? (
+                        <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
+                          <Image
+                            src={g.image}
+                            alt={`${g.name} travel guide`}
+                            fill
+                            sizes="(max-width: 640px) 50vw, 180px"
+                            className={`object-cover transition-transform duration-500 group-hover:scale-105 ${g.imageClassName ?? ''}`}
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex aspect-[4/3] items-center justify-center bg-warm-50">
+                          <Icon name="map-pin" className="w-7 h-7 text-primary" />
+                        </div>
+                      )}
+                      <div className="p-3 text-center">
+                        <span className="text-sm font-semibold text-accent leading-snug group-hover:text-primary transition-colors">{g.name}</span>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </section>
 
