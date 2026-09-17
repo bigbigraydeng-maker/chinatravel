@@ -22,3 +22,24 @@ test('a city visit alone does not imply its landmarks are included', () => {
  const tour = getTourBySlug('china','discovery','golden-china')!;
  expect(getTourGuideCards({...tour,tourCities:['beijing'],highlights:[],itinerary:[]}).map(c=>c.href)).toEqual(['/beijing-travel-guide']);
 });
+
+test('itinerary landmarks link to their dedicated guide pages', () => {
+ const tour = getTourBySlug('china','discovery','golden-china')!;
+ const cases = [
+  ['beijing', 'Temple of Heaven', '/temple-of-heaven-travel-guide'],
+  ['xian', "Xi'an City Wall", '/xian-city-wall-travel-guide'],
+  ['xian', 'Big Wild Goose Pagoda', '/big-wild-goose-pagoda-travel-guide'],
+  ['hangzhou', 'West Lake', '/west-lake-travel-guide'],
+  ['shanghai', 'Yu Garden', '/yu-garden-travel-guide'],
+  ['shanghai', 'The Bund', '/the-bund-travel-guide'],
+ ] as const;
+ for (const [city, highlight, expectedHref] of cases) {
+  const hrefs = getTourGuideCards({
+   ...tour,
+   tourCities: [city],
+   highlights: [highlight],
+   itinerary: [],
+  }).map(card => card.href);
+  expect(hrefs).toContain(expectedHref);
+ }
+});

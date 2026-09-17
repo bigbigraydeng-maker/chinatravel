@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { localFoodImageCredits } from '@/lib/data/local-food-image-credits';
 import {
   localFoods,
   getLocalFoodsByDestination,
@@ -28,6 +29,10 @@ const DIFFICULTY_OPTIONS = [
 ];
 
 const ITEMS_PER_PAGE = 12;
+
+const FOOD_IMAGE_POSITIONS: Record<string, string> = {
+  'beijing-001': 'object-bottom',
+};
 
 interface LocalFoodGuideProps {
   defaultDestination?: string;
@@ -341,14 +346,35 @@ export default function LocalFoodGuide({
                   <li key={food.id} data-testid={`food-item-${food.id}`}>
                     <article className="bg-white border border-warm-100 rounded-lg overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 h-full flex flex-col">
                       {/* Image */}
-                      <div className="relative w-full h-48 bg-gray-200">
-                        <Image
-                          src={food.imageUrl}
-                          alt={`${food.name} - ${food.romanizedName}`}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
+                      <div className="relative w-full h-48 overflow-hidden bg-warm-100">
+                        {food.imageUrl ? (
+                          <>
+                            <Image
+                              src={food.imageUrl}
+                              alt={`${food.name} - ${food.romanizedName}`}
+                              fill
+                              unoptimized
+                              className={`object-cover ${FOOD_IMAGE_POSITIONS[food.id] ?? 'object-center'}`}
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                            {localFoodImageCredits[food.id] && (
+                              <a
+                                href={localFoodImageCredits[food.id].href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="absolute bottom-2 right-2 rounded bg-black/65 px-2 py-1 text-[10px] text-white hover:bg-black/80"
+                                aria-label={`Photo credit: ${localFoodImageCredits[food.id].label}`}
+                              >
+                                Photo: {localFoodImageCredits[food.id].label}
+                              </a>
+                            )}
+                          </>
+                        ) : (
+                          <div className="flex h-full flex-col items-center justify-center bg-gradient-to-br from-warm-100 to-warm-200 px-6 text-center">
+                            <span className="font-serif text-xl text-ink">{food.name}</span>
+                            <span className="mt-2 text-xs uppercase tracking-widest text-ink-muted">Photo being curated</span>
+                          </div>
+                        )}
                       </div>
 
                       {/* Content */}

@@ -6,6 +6,7 @@ import Image from 'next/image';
 export interface LightboxImage {
   src: string;
   alt?: string;
+  caption?: string;
   /** Extra Tailwind classes for object-position tuning on the thumbnail. */
   imgClass?: string;
 }
@@ -65,24 +66,26 @@ export default function Lightbox({ images, columns = 3, thumbnailAspect = 'aspec
     <>
       <div className={`grid grid-cols-2 ${COLS[columns]} gap-3`}>
         {images.map((img, i) => (
-          <button
-            key={`${img.src}-${i}`}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            aria-label={`View photo ${i + 1} of ${images.length}`}
-            className={`relative overflow-hidden rounded-lg ${thumbnailAspect} bg-warm-100 group cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt ?? `Photo ${i + 1}`}
-              fill
-              sizes="(max-width: 768px) 50vw, 33vw"
-              className={['object-cover group-hover:scale-105 transition-transform duration-500', img.imgClass]
-                .filter(Boolean)
-                .join(' ')}
-              loading="lazy"
-            />
-          </button>
+          <figure key={`${img.src}-${i}`}>
+            <button
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              aria-label={`View photo ${i + 1} of ${images.length}`}
+              className={`relative block w-full overflow-hidden rounded-lg ${thumbnailAspect} bg-warm-100 group cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt ?? `Photo ${i + 1}`}
+                fill
+                sizes="(max-width: 768px) 50vw, 33vw"
+                className={['object-cover group-hover:scale-105 transition-transform duration-500', img.imgClass]
+                  .filter(Boolean)
+                  .join(' ')}
+                loading="lazy"
+              />
+            </button>
+            {img.caption && <figcaption className="mt-2 text-sm leading-relaxed text-gray-600">{img.caption}</figcaption>}
+          </figure>
         ))}
       </div>
 
@@ -150,7 +153,7 @@ export default function Lightbox({ images, columns = 3, thumbnailAspect = 'aspec
 
           {/* Caption + counter */}
           <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-1 px-4 text-center text-white">
-            {current.alt && <p className="text-sm sm:text-base">{current.alt}</p>}
+            {(current.caption || current.alt) && <p className="text-sm sm:text-base">{current.caption ?? current.alt}</p>}
             <span className="text-xs text-white/70">{openIndex! + 1} / {images.length}</span>
           </div>
         </div>

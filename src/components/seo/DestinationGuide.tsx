@@ -49,10 +49,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
+      { name: 'Temple of Heaven', slug: 'temple-of-heaven-travel-guide', emoji: '🛕' },
       { name: 'Great Wall Guide', slug: 'great-wall-travel-guide', emoji: '🏯' },
       { name: 'Forbidden City', slug: 'forbidden-city-travel-guide', emoji: '🏛️' },
       { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
-      { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
     ],
   },
   'xian-travel-guide': {
@@ -64,10 +64,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Silk Road (18 Days)', duration: '18 Days', price: 'From NZD $7,999', url: '/tours/china/signature/silk-road', image: `${TI}/silk-road-wall.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
+      { name: "Xi'an City Wall", slug: 'xian-city-wall-travel-guide', emoji: '🏰' },
+      { name: 'Big Wild Goose Pagoda', slug: 'big-wild-goose-pagoda-travel-guide', emoji: '🛕' },
       { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
       { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
-      { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
-      { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
     ],
   },
   'shanghai-travel-guide': {
@@ -79,10 +79,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
+      { name: 'The Bund', slug: 'the-bund-travel-guide', emoji: '🌉' },
+      { name: 'Yu Garden', slug: 'yu-garden-travel-guide', emoji: '🪷' },
       { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
       { name: 'Hangzhou Travel Guide', slug: 'hangzhou-travel-guide', emoji: '🍵' },
-      { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
-      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
     ],
   },
   'chengdu-travel-guide': {
@@ -277,10 +277,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,080', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
+      { name: 'West Lake', slug: 'west-lake-travel-guide', emoji: '🪷' },
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
       { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
-      { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
-      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
+      { name: 'Yu Garden', slug: 'yu-garden-travel-guide', emoji: '🪷' },
     ],
   },
   'suzhou-travel-guide': {
@@ -320,6 +320,84 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Guilin Travel Guide', slug: 'guilin-travel-guide', emoji: '🌊' },
       { name: 'Yangshuo Travel Guide', slug: 'yangshuo-travel-guide', emoji: '🚵' },
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
+    ],
+  },
+  'temple-of-heaven-travel-guide': {
+    hubUrl: '/beijing-tours', hubLabel: 'All Beijing Tours',
+    relatedTours: [
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: '/images/guides/temple-of-heaven/detail.webp', tier: 'discovery' },
+      { name: 'Beijing Stopover (4 Days)', duration: '4 Days', price: 'From NZD $2,120', url: '/tours/china/stopover/beijing', image: '/images/guides/temple-of-heaven/gallery.webp', tier: 'stopover' },
+    ],
+    relatedGuides: [
+      { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
+      { name: 'Forbidden City', slug: 'forbidden-city-travel-guide', emoji: '🏛️' },
+      { name: 'Great Wall Guide', slug: 'great-wall-travel-guide', emoji: '⛰️' },
+      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
+    ],
+  },
+  'xian-city-wall-travel-guide': {
+    hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
+    relatedTours: [
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: '/images/guides/xian-city-wall/hero.webp', tier: 'discovery' },
+      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta-2.jpg`, tier: 'stopover' },
+    ],
+    relatedGuides: [
+      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
+      { name: 'Big Wild Goose Pagoda', slug: 'big-wild-goose-pagoda-travel-guide', emoji: '🛕' },
+      { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
+      { name: 'Beijing Travel Guide', slug: 'beijing-travel-guide', emoji: '🏯' },
+    ],
+  },
+  'big-wild-goose-pagoda-travel-guide': {
+    hubUrl: '/xian-tours', hubLabel: "All Xi'an Tours",
+    relatedTours: [
+      { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: '/images/guides/big-wild-goose-pagoda/hero.webp', tier: 'discovery' },
+      { name: "Xi'an Stopover (3 Days)", duration: '3 Days', price: 'From NZD $945', url: '/tours/china/stopover/xian', image: `${TI}/xian-terracotta.jpg`, tier: 'stopover' },
+    ],
+    relatedGuides: [
+      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
+      { name: "Xi'an City Wall", slug: 'xian-city-wall-travel-guide', emoji: '🏰' },
+      { name: 'Terracotta Warriors', slug: 'terracotta-warriors-travel-guide', emoji: '⚔️' },
+      { name: 'Silk Road Inspiration', slug: 'beijing-xian-discovery-guide', emoji: '🐫' },
+    ],
+  },
+  'west-lake-travel-guide': {
+    hubUrl: '/hangzhou-tours', hubLabel: 'All Hangzhou Tours',
+    relatedTours: [
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/west-lake/causeway.webp', tier: 'discovery' },
+      { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,080', url: '/tours/china/discovery/essentials', image: '/images/guides/west-lake/gallery.webp', tier: 'discovery' },
+    ],
+    relatedGuides: [
+      { name: 'Hangzhou Travel Guide', slug: 'hangzhou-travel-guide', emoji: '🍵' },
+      { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
+      { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
+      { name: 'Yu Garden', slug: 'yu-garden-travel-guide', emoji: '🪷' },
+    ],
+  },
+  'yu-garden-travel-guide': {
+    hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
+    relatedTours: [
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/yu-garden/pavilion.webp', tier: 'discovery' },
+      { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: '/images/guides/yu-garden/gallery.webp', tier: 'stopover' },
+    ],
+    relatedGuides: [
+      { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
+      { name: 'The Bund', slug: 'the-bund-travel-guide', emoji: '🌉' },
+      { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
+      { name: 'West Lake', slug: 'west-lake-travel-guide', emoji: '🪷' },
+    ],
+  },
+  'the-bund-travel-guide': {
+    hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
+    relatedTours: [
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/the-bund/skyline.webp', tier: 'discovery' },
+      { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: '/images/guides/the-bund/night.webp', tier: 'stopover' },
+    ],
+    relatedGuides: [
+      { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
+      { name: 'Yu Garden', slug: 'yu-garden-travel-guide', emoji: '🪷' },
+      { name: 'Hangzhou Travel Guide', slug: 'hangzhou-travel-guide', emoji: '🍵' },
+      { name: 'Suzhou Travel Guide', slug: 'suzhou-travel-guide', emoji: '🌿' },
     ],
   },
 };
@@ -429,6 +507,27 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               ))}
             </div>
 
+            {guide.quickAnswer && guide.visitPlanning && (
+              <aside data-geo-summary className="mb-10 rounded-2xl border border-primary/20 bg-primary/5 p-6">
+                <p className={`${EYEBROW} mb-2`}>Quick answer</p>
+                <p className="text-[17px] leading-relaxed text-accent">{guide.quickAnswer}</p>
+                <dl className="mt-5 grid gap-4 border-t border-primary/15 pt-5 sm:grid-cols-3">
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Recommended time</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.recommendedVisitLength}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Best for</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.bestFor}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-xs font-bold uppercase tracking-wider text-primary">Combine with</dt>
+                    <dd className="mt-1 text-sm leading-relaxed text-gray-700">{guide.visitPlanning.combineWith}</dd>
+                  </div>
+                </dl>
+              </aside>
+            )}
+
             {/* Inline mid-page CTA */}
             <div className="mb-10 rounded-xl bg-gradient-to-r from-accent to-accent/90 text-white p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
@@ -527,7 +626,8 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   columns={3}
                   images={guide.galleryImages.map((item, i) => ({
                     src: typeof item === 'string' ? item : item.src,
-                    alt: `${guide.destinationName} — photo ${i + 1}`,
+                    alt: typeof item === 'string' ? `${guide.destinationName} — photo ${i + 1}` : item.alt ?? `${guide.destinationName} — photo ${i + 1}`,
+                    caption: typeof item === 'string' ? undefined : item.caption,
                     imgClass: typeof item === 'string' ? undefined : item.imgClass,
                   }))}
                 />
@@ -635,6 +735,25 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   })}
                 </div>
               </section>
+            )}
+
+            {guide.sources && guide.sources.length > 0 && (
+              <aside className="mb-12 rounded-2xl border border-warm-200 bg-warm-50 p-5 text-sm text-gray-600">
+                <p className={`${EYEBROW} mb-2`}>Sources & editorial review</p>
+                <p className="mb-3 leading-relaxed">
+                  Core destination facts were checked against the following primary source. Prices, opening hours and entry rules can change, so confirm them before travel.
+                </p>
+                <ul className="space-y-1.5">
+                  {guide.sources.map((source) => (
+                    <li key={source.href}>
+                      <a className="font-medium text-primary hover:underline" href={source.href} target="_blank" rel="noopener noreferrer">
+                        {source.label} ↗
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-xs text-gray-500">Last reviewed: {guide.updatedAt}</p>
+              </aside>
             )}
 
             {/* Related Guides */}

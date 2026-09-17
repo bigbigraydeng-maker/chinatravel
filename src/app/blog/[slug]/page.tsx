@@ -11,6 +11,7 @@ import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribe
 import FAQSection from '@/components/FAQSection';
 import { Icon } from '@/components/ui/Icon';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { getBlogInlineImages } from '@/lib/data/blog-inline-images';
 
 interface BlogPostPageProps {
   params: {
@@ -156,6 +157,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const schemas = [articleSchema, breadcrumbSchema];
   const hasFaqs = Boolean(post.faqs && post.faqs.length > 0);
   const quickAnswer = hasFaqs ? post.faqs![0].answer : null;
+  const inlineImages = getBlogInlineImages(post.slug);
 
   return (
     <div>
@@ -240,6 +242,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <p className="text-gray-900 leading-relaxed">{quickAnswer}</p>
                 </aside>
               )}
+              {inlineImages.map((photo) => (
+                <figure key={photo.src} className="not-prose mb-10 overflow-hidden rounded-2xl border border-warm-200 bg-warm-50 shadow-sm">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      className={`object-cover ${photo.imageClassName ?? 'object-center'}`}
+                    />
+                  </div>
+                  <figcaption className="px-5 py-3 text-sm leading-relaxed text-gray-600">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
               <div
                 className="text-gray-700 leading-relaxed blog-content"
                 dangerouslySetInnerHTML={{ __html: renderBlogPostHtml(post.content) }}
@@ -373,8 +391,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/beijing-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center">
-                <Icon name="landmark" className="w-14 h-14 text-amber-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image unoptimized src="/images/blog/first-time-destinations/beijing.webp" alt="The Forbidden City in Beijing" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Beijing</h3>
@@ -385,8 +403,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/xian-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
-                <Icon name="shield" className="w-14 h-14 text-orange-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image unoptimized src="/images/blog/first-time-destinations/xian.webp" alt="Terracotta Warriors in Xi’an" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Xi'an</h3>
@@ -397,8 +415,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/shanghai-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                <Icon name="building" className="w-14 h-14 text-blue-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image unoptimized src="/images/blog/first-time-destinations/shanghai.webp" alt="Shanghai skyline reflected across the Huangpu River" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Shanghai</h3>
@@ -409,8 +427,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/chengdu-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                <Icon name="paw" className="w-14 h-14 text-green-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image src="/blog/sourced/chengdu-panda-base-pandas-climbing.jpg" alt="Giant pandas climbing at Chengdu Panda Base" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Chengdu</h3>
@@ -421,8 +439,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/guilin-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-emerald-100 to-emerald-200 flex items-center justify-center">
-                <Icon name="mountain" className="w-14 h-14 text-emerald-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image src="/images/baker-gu-guilin.jpg" alt="Baker Gu beside the Li River and karst mountains in Guilin" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-[center_38%] transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Guilin</h3>
@@ -433,8 +451,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/yunnan-tours"
               className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="relative h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
-                <Icon name="sunrise" className="w-14 h-14 text-purple-700" />
+              <div className="relative h-40 overflow-hidden">
+                <Image src="/blog/sourced/dali-three-pagodas.jpg" alt="The Three Pagodas in Dali, Yunnan" fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover object-center transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">Yunnan</h3>

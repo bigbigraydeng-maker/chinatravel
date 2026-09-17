@@ -1,12 +1,14 @@
 // Complete Travel Guides Database for 21 Chinese Destinations
 // Structured for SEO pages and tour integration
 
+import { phase1LandmarkGuides } from '@/lib/data/guides-landmarks-phase1';
+
 const SB = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public';
 const TI = `${SB}/tour-images`;
 export const migratedUnsplash = (photoId: string) => `${TI}/migrated/unsplash/${photoId}.jpg`;
 
-/** Curated gallery slot: plain URL or URL + Tailwind for square thumbnail framing. */
-export type GuideGalleryImage = string | { src: string; imgClass?: string };
+/** Curated gallery slot: plain URL or URL with framing and descriptive image copy. */
+export type GuideGalleryImage = string | { src: string; imgClass?: string; alt?: string; caption?: string };
 
 export function galleryItem(src: string, imgClass?: string): GuideGalleryImage {
   return imgClass ? { src, imgClass } : src;
@@ -57,6 +59,13 @@ export interface DestinationGuide {
   /** Attribution line required for CC-licensed hero images. See public/blog/sourced/CREDITS.json. */
   heroImageCredit?: string;
   introText: string[];
+  /** Concise answer block designed for travellers and answer engines. */
+  quickAnswer?: string;
+  visitPlanning?: {
+    recommendedVisitLength: string;
+    bestFor: string;
+    combineWith: string;
+  };
   sections: Section[];
   attractions: Attraction[];
   practicalInfo: PracticalInfo;
@@ -65,6 +74,8 @@ export interface DestinationGuide {
   relatedGuideSlugs: string[];
   relatedBlogSlugs?: string[]; // Related blog articles (2-3 per guide for SEO + UX)
   galleryImages: GuideGalleryImage[];
+  /** Primary sources used to verify stable historical and destination facts. */
+  sources?: { label: string; href: string }[];
   createdAt: string;
   updatedAt: string;
 }
@@ -3069,7 +3080,8 @@ export const allGuides: DestinationGuide[] = [
   suzhouGuide,
   chongqingGuide,
   leshanBuddhaGuide,
-  tianmenMountainGuide
+  tianmenMountainGuide,
+  ...phase1LandmarkGuides
 ];
 
 export function getAllGuides(): DestinationGuide[] {

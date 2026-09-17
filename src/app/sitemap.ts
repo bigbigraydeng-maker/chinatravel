@@ -11,6 +11,8 @@ import {
 import { getAllActiveTours } from '@/lib/data/tours';
 import { getAllCities } from '@/lib/data/cities';
 import { getAllPlayQuizSlugs } from '@/lib/data/play-quizzes';
+import { getAllGuides } from '@/lib/data/guides';
+import { getAllBlogPosts } from '@/lib/data/blogs';
 
 const SITE = getSiteUrl();
 
@@ -97,32 +99,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // ── Phase 2: 21 Destination Travel Guides ───────────────────────────────
-  const guidePages: MetadataRoute.Sitemap = [
-    'beijing-travel-guide',
-    'xian-travel-guide',
-    'shanghai-travel-guide',
-    'chengdu-travel-guide',
-    'guilin-travel-guide',
-    'zhangjiajie-travel-guide',
-    'yunnan-travel-guide',
-    'lijiang-travel-guide',
-    'dali-travel-guide',
-    'kunming-travel-guide',
-    'shangri-la-travel-guide',
-    'great-wall-travel-guide',
-    'forbidden-city-travel-guide',
-    'terracotta-warriors-travel-guide',
-    'leshan-buddha-travel-guide',
-    'yangshuo-travel-guide',
-    'li-river-travel-guide',
-    'hangzhou-travel-guide',
-    'suzhou-travel-guide',
-    'chongqing-travel-guide',
-    'tianmen-mountain-travel-guide',
-  ].map((slug) => ({
-    url: `${SITE}/${slug}`,
-    lastModified: now,
+  // ── Destination and landmark guides ─────────────────────────────────────
+  // Derived from the guide database so newly published guides cannot become
+  // orphan pages. Discovery guides are already listed above at higher priority.
+  const guidePages: MetadataRoute.Sitemap = getAllGuides()
+    .filter((guide) => !guide.slug.endsWith('-discovery-guide'))
+    .map((guide) => ({
+    url: `${SITE}/${guide.slug}`,
+    lastModified: guide.updatedAt,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
@@ -179,29 +163,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  // ── Long-tail blog posts (batch 1) ──────────────────────────────────────
-  const blogPages: MetadataRoute.Sitemap = [
-    // Line A: Beijing / Xi'an
-    'beijing-xian-itinerary-10-days',
-    'first-time-china-beijing-xian',
-    'beijing-to-xian-high-speed-train',
-    'terracotta-warriors-guide-nz',
-    'beijing-xian-tour-new-zealand',
-    // Line B: Shanghai & Surroundings
-    'shanghai-suzhou-hangzhou-itinerary',
-    'west-lake-hangzhou-travel-guide',
-    'suzhou-gardens-guide-nz',
-    'shanghai-10-days-itinerary',
-    'china-water-towns-jiangnan-guide',
-    // Line C: Chongqing / Chengdu
-    'chongqing-chengdu-itinerary-10-days',
-    'how-many-days-in-chongqing',
-    'chongqing-vs-chengdu',
-    'liziba-station-chongqing-guide',
-    'chengdu-panda-tour-new-zealand',
-  ].map((slug) => ({
-    url: `${SITE}/blog/${slug}`,
-    lastModified: now,
+  // ── Blog posts ──────────────────────────────────────────────────────────
+  const blogPages: MetadataRoute.Sitemap = getAllBlogPosts().map((post) => ({
+    url: `${SITE}/blog/${post.slug}`,
+    lastModified: post.publishedAt,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
