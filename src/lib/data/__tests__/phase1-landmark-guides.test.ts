@@ -35,6 +35,30 @@ test('phase-one landmark guides meet the editorial SEO baseline', () => {
   }
 });
 
+test('Big Wild Goose Pagoda is a substantive destination guide, not a thin landing page', () => {
+  const guide = phase1LandmarkGuides.find((item) => item.slug === 'big-wild-goose-pagoda-travel-guide');
+
+  expect(guide).toBeDefined();
+  expect(editorialWordCount(guide!)).toBeGreaterThanOrEqual(1200);
+  expect(guide!.sections.length).toBeGreaterThanOrEqual(6);
+  expect(guide!.faqs.length).toBeGreaterThanOrEqual(6);
+  expect(guide!.sources?.length).toBeGreaterThanOrEqual(3);
+  expect(guide!.relatedBlogSlugs?.length).toBeGreaterThanOrEqual(6);
+
+  const relatedArticleImages = guide!.relatedBlogSlugs!.map((slug) => getBlogPostBySlug(slug)?.heroImage);
+  expect(relatedArticleImages.every(Boolean)).toBe(true);
+  expect(new Set(relatedArticleImages).size).toBe(relatedArticleImages.length);
+
+  const inlineImages = guide!.sections.flatMap((section) => section.image ? [section.image] : []);
+  expect(inlineImages).toHaveLength(3);
+  expect(new Set(inlineImages.map((image) => image.src)).size).toBe(inlineImages.length);
+  for (const image of inlineImages) {
+    expect(image.alt.length).toBeGreaterThanOrEqual(35);
+    expect(image.caption.length).toBeGreaterThanOrEqual(60);
+    expect(existsSync(path.join(process.cwd(), 'public', image.src))).toBe(true);
+  }
+});
+
 test('guide images are unique, local and present', () => {
   const sources = phase1LandmarkGuides.flatMap((guide) => [
     guide.heroImage,
