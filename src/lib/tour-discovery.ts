@@ -16,6 +16,7 @@ export function aucklandToday(now = new Date()): string {
   return `${part('year')}-${part('month')}-${part('day')}`;
 }
 export function departures(tour: Tour, today = aucklandToday()) {
+  if (tour.soldOut || !tour.isActive) return [];
   return (tour.departureDates ?? []).flatMap(label => {
     const parsed = parseDepartureDate(label);
     if (!parsed) return [];
@@ -32,6 +33,7 @@ export function includesExperience(tour: Tour, id: string): boolean {
   return !!experience?.mappings.some(m => m.tourSlug === tour.slug && m.status === 'included' && tour.highlights.includes(m.evidence));
 }
 export function matchingOffer(tour: Tour, filters: {city?:string; month?:string; budget?:string; experience?:string}, today = aucklandToday()) {
+  if (tour.soldOut || !tour.isActive) return null;
   if (filters.city && !tourCities(tour).some(c => normalizeCity(c) === normalizeCity(filters.city!))) return null;
   if (filters.experience && !includesExperience(tour, filters.experience)) return null;
   const dates = departures(tour, today);

@@ -25,7 +25,7 @@ export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
   title: 'China Tours from New Zealand 2026-27 | CTS Tours',
   description:
-    'Featured China tours from NZ 2026-27: Golden China NZD $4,999 (16 Nov 2026) · Christmas & New Year in China $7,188 (22 Dec 2026) · Best of China $4,080 (11 Mar 2027). Plus a direct Christchurch departure. Backed by CTS — global travel brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. TAANZ-bonded. Free quote.',
+    'Featured China tours from NZ 2026-27: Christmas & New Year in China $7,188 (22 Dec 2026) · Christchurch departure $6,188 (22 Dec 2026). Backed by CTS — global travel brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. TAANZ-bonded. Free quote.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland & Christchurch departures',
   introText:
@@ -33,7 +33,7 @@ export const chinaToursMeta: SeoPageMeta = {
   faqs: [
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
-      answer: 'CTS Tours\' featured China itineraries for Kiwi travellers in 2026-27 are: Golden China — Beijing, Xi\'an and Shanghai (12 days, NZD $4,999, departing 16 November 2026); Christmas & New Year in China (16 days, NZD $7,188, departing 22 December 2026); and Best of China — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai (15 days, NZD $4,080, departing 11 March 2027 — the November 2026 departure sold out). South Island travellers can also fly direct from Christchurch on the 15-day Christmas & New Year departure (NZD $6,188). All are Kiwi-led with NZD pricing and English-speaking guides on the ground in China.'
+      answer: 'CTS Tours\' featured China itineraries for Kiwi travellers in 2026-27 are: Christmas & New Year in China (16 days, NZD $7,188, departing 22 December 2026); and Best of China — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai (15 days, NZD $4,080, departing 11 March 2027 — the November 2026 departure sold out). South Island travellers can also fly direct from Christchurch on the 15-day Christmas & New Year departure (NZD $6,188). All are Kiwi-led with NZD pricing and English-speaking guides on the ground in China.'
     },
     {
       question: 'What China tour packages does CTS offer?',
@@ -41,7 +41,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
-      answer: 'Yes. All our China holiday packages are priced in NZD and include return international airfares from Auckland (AKL) — the only New Zealand airport with direct flights to mainland China. If you are based in Wellington, Christchurch, Dunedin or regional NZ, our Auckland-based consultants arrange a connecting domestic flight to Auckland; the domestic connecting leg is quoted separately and is not included in the headline tour price. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
+      answer: 'Yes. Our December Christmas and New Year tours are priced in NZD and include return international airfares from the specified departure city: Auckland or Christchurch. Travellers based elsewhere can ask about domestic connections, quoted separately. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
     },
     {
       question: 'What is included in a CTS China travel package?',
@@ -57,7 +57,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'How much does a China tour package from New Zealand cost?',
-      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Golden China runs 12 days from NZD $4,999, Best of China 15 days from NZD $4,080, and Christmas & New Year in China 16 days from NZD $7,188. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Best of China 15 days from NZD $4,080, and Christmas & New Year in China 16 days from NZD $7,188. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
     },
     {
       question: 'Do New Zealand passport holders need a visa for China?',
@@ -65,7 +65,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Which is the best China tour package for first-time visitors?',
-      answer: 'For first-time visitors from New Zealand, we recommend Golden China (12 days, Beijing + Xi\'an + Shanghai, NZD $4,999, departing 16 November 2026) — it covers the Forbidden City, Great Wall, Terracotta Warriors and Shanghai\'s Bund at a comfortable pace. Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) is the shorter, lower-priced alternative. For the fullest coverage, Best of China (15 days, NZD $4,080, departing 11 March 2027) adds Puyuan water town and Hangzhou\'s West Lake.'
+      answer: 'For first-time visitors travelling in December 2026, explore Christmas & New Year in China, departing 22 December from Auckland (16 days, from NZD $7,188) or Christchurch (15 days, from NZD $6,188). These routes include Shanghai, Beijing and Xi\'an. Golden China on 16 November 2026 is sold out. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
     },
     {
       question: 'What makes CTS Tours different from other China travel agencies in NZ?',

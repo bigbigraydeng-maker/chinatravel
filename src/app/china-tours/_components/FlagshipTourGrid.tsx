@@ -21,50 +21,10 @@ interface FlagshipTourGridProps {
   intro?: string;
 }
 
-/**
- * Flagship tours surfaced on /china-tours. URLs are PM-confirmed and
- * hardcoded — Best of China points to its conversion LP, not the canonical
- * tour detail page.
- *
- * Roster (PM 2026-08-25): Best of China (now selling its 11 Mar 2027
- * departure — the 3 Nov 2026 one sold out), Golden China, and the Auckland
- * Christmas & New Year departure. The Christchurch/South Island Christmas
- * departure is deliberately NOT in this grid — it gets its own dedicated
- * section below so the South Island origin reads as a distinct offer rather
- * than getting lost among Auckland departures.
- */
-const FLAGSHIP_TOURS: Array<{
-  slug: string;
-  ribbon: string;
-  href: string;
-  /**
-   * Override for the card thumbnail. Use when the tour's canonical
-   * heroImage doesn't render reliably (client-side CDN cache issues) or
-   * when a more recognisable landmark shot converts better on the hub.
-   */
-  imageOverride?: string;
-}> = [
-  {
-    slug: 'essentials',
-    ribbon: 'Most popular',
-    // Conversion LP, not the generic tour detail. /campaigns/best-of-china is
-    // the campaign-focused surface with hero CTA + sticky enquiry + scarcity
-    // strip + (post-PR) FAQPage schema + Best-of-China UTM banner. Generic
-    // detail page (/tours/china/discovery/essentials) still ranks organically
-    // and is wired up via internal nav — flagship grid sends traffic to the
-    // LP so paid + flagship-hub traffic both convert in the same funnel.
-    href: '/campaigns/best-of-china',
-  },
-  {
-    slug: 'golden-china',
-    ribbon: 'November 2026',
-    href: '/tours/china/discovery/golden-china',
-  },
-  {
-    slug: 'china-icons-collection',
-    ribbon: 'Christmas & New Year',
-    href: '/tours/china/discovery/china-icons-collection',
-  },
+// December departures are the primary promotion, approved 17 September 2026.
+const FLAGSHIP_TOURS = [
+  { slug: 'china-icons-collection', ribbon: '22 December · Auckland', href: '/tours/china/discovery/china-icons-collection', imageOverride: undefined },
+  { slug: 'china-icons-collection-christchurch', ribbon: '22 December · Christchurch', href: '/tours/china/discovery/china-icons-collection-christchurch', imageOverride: undefined },
 ];
 
 /**
@@ -117,15 +77,15 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-3xl mb-8">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-            {heading ?? 'Flagship China itineraries'}
+            {heading ?? 'Christmas & New Year in China'}
           </h2>
           <p className="text-lg text-gray-700">
             {intro ??
-              'Our most-booked routes from New Zealand — pick a starting point and our specialists will tailor dates, hotels, and add-ons around you.'}
+              'Depart on 22 December 2026 from Auckland or Christchurch. Choose your festive journey and ask our specialists about availability.'}
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${cards.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${cards.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-2'}`}>
           {cards.map(({ slug, href, ribbon, tour, imageOverride }, index) => (
             <a
               key={slug}

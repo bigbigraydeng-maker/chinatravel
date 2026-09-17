@@ -20,6 +20,8 @@ export interface Tour {
   metaTitle: string;
   metaDescription: string;
   isActive: boolean;
+  /** Sold-out pages remain accessible, but are excluded from sales listings. */
+  soldOut?: boolean;
   createdAt: string;
   updatedAt: string;
   /** Interest / SEO labels from the operator (display verbatim) */
@@ -1499,9 +1501,9 @@ export const tours: Tour[] = [
     shortDescription: 'A 15-day festive journey departing direct from Christchurch through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors and futuristic Chongqing.',
     duration: '15 Days',
     price: 'From NZD $6,188 per person',
-    heroImage: 'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
+    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
     gallery: [
-      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
@@ -2883,6 +2885,7 @@ export const tours: Tour[] = [
     reviewSummary: 'Japan in cherry blossom season — a once-in-a-lifetime experience'
   },
   {
+    soldOut: true,
     id: 'golden-china',
     slug: 'golden-china',
     destination: 'china',
@@ -3039,8 +3042,8 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Golden China | 12 Days | CTS Tours',
-    metaDescription: 'Golden China — Beijing, Xi\'an & Shanghai in 12 days. Great Wall, Forbidden City, Terracotta Warriors, Huangpu River cruise. From NZD $4,999. Book with CTS Tours.',
-    isActive: true,
+    metaDescription: 'Golden China — Beijing, Xi\'an & Shanghai in 12 days. Great Wall, Forbidden City, Terracotta Warriors, Huangpu River cruise. From NZD $4,999. The 16 November 2026 departure is sold out. Explore December tours.',
+    isActive: false,
     createdAt: '2026-08-24T14:34:07.884Z',
     updatedAt: '2026-08-24T14:34:07.884Z',
     tourCities: [

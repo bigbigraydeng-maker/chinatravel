@@ -68,6 +68,7 @@ const CITIES = [
 const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
   'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
   'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
+  'china-icons-collection-christchurch': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
   essentials: '/images/cts-upgrade/spotlight-temple-landscape.webp',
 };
 
@@ -106,7 +107,7 @@ const CREDENTIALS: { src: string; alt: string; wide?: boolean }[] = [
 const HomePageRedesign = () => {
   const spotlight = HOME_SPOTLIGHT_TOURS
     .map((ref) => ({ ref, tour: getTourBySlug(ref.destination, ref.tier, ref.slug) }))
-    .filter((x): x is { ref: (typeof HOME_SPOTLIGHT_TOURS)[number]; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour));
+    .filter((x): x is { ref: (typeof HOME_SPOTLIGHT_TOURS)[number]; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour?.isActive && !x.tour.soldOut));
   const featured = spotlight[0];
   const sides = spotlight.slice(1, 3);
   const blogPosts = getAllBlogPosts().slice(0, 3);
@@ -197,15 +198,15 @@ const HomePageRedesign = () => {
           <div className="mx-auto max-w-7xl px-4 md:px-8">
             <div className="mb-10 max-w-2xl">
               <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                Journeys for every season
+                December 2026 · Auckland & Christchurch
               </span>
-              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">This Season&apos;s Spotlight</h2>
+              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Christmas &amp; New Year in China</h2>
               <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
-                Handpicked experiences that showcase the very best of China, from iconic landmarks to hidden gems.
+                Choose your departure city and spend Christmas and New Year exploring China. Both journeys depart on 22 December 2026.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => (
                 <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
                   <div className="relative aspect-[16/10] overflow-hidden">
