@@ -45,13 +45,32 @@ export default function GuidePage() {
         logo: { '@type': 'ImageObject', url: `${siteUrl}/images/cts-logo.png` },
       },
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/${SLUG}` },
+      about: {
+        '@type': 'TouristDestination',
+        name: 'Zhangjiajie',
+        description: guide.quickAnswer,
+        url: `${siteUrl}/${SLUG}`,
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TouristDestination',
+      name: 'Zhangjiajie',
+      description: guide.quickAnswer,
+      url: `${siteUrl}/${SLUG}`,
+      touristType: ['Nature travellers', 'Photographers', 'Hikers', 'New Zealand travellers'],
+      includesAttraction: [
+        { '@type': 'TouristAttraction', name: 'Wulingyuan Scenic and Historic Interest Area' },
+        { '@type': 'TouristAttraction', name: 'Tianmen Mountain' },
+        { '@type': 'TouristAttraction', name: 'Zhangjiajie Grand Canyon Glass Bridge' },
+      ],
     },
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-        { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${siteUrl}/china-tours` },
+        { '@type': 'ListItem', position: 2, name: 'Travel Guides', item: `${siteUrl}/guide` },
         { '@type': 'ListItem', position: 3, name: guide.destinationName, item: `${siteUrl}/${SLUG}` },
       ],
     },

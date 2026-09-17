@@ -757,7 +757,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                           </p>
                           <div className="flex items-center justify-between text-xs text-gray-500">
                             <span>{post.author}</span>
-                            {post.readTime && <span>{post.readTime} min read</span>}
+                            {post.readTime && <span>{post.readTime}</span>}
                           </div>
                         </div>
                         <div className="px-5 py-3 bg-warm-50 border-t border-border text-sm text-primary font-semibold group-hover:text-primary/80 transition-colors">
@@ -774,7 +774,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               <aside className="mb-12 rounded-2xl border border-warm-200 bg-warm-50 p-5 text-sm text-gray-600">
                 <p className={`${EYEBROW} mb-2`}>Sources & editorial review</p>
                 <p className="mb-3 leading-relaxed">
-                  Core destination facts were checked against the following primary source. Prices, opening hours and entry rules can change, so confirm them before travel.
+                  Core destination facts were checked against the primary sources below. Prices, opening hours and entry rules can change, so confirm them before travel.
                 </p>
                 <ul className="space-y-1.5">
                   {guide.sources.map((source) => (

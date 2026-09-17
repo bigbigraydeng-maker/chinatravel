@@ -96,5 +96,26 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:1_lijiang_old_town_2012a.jpg",
     "note": "resized to 2400px wide, re-encoded JPEG q84"
+  },
+  "zhangjiajie-sandstone-spires": {
+    "author": "Lianguanlun",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Sandstone_spire_forest_Zhangjiajie_Hunan.jpg",
+    "note": "Wikimedia Commons 1920px derivative; used in Zhangjiajie guide"
+  },
+  "zhangjiajie-huangshizhai-panorama": {
+    "author": "Chensiyuan",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:1_zhangjiajie_huangshizhai_wulingyuan_panorama_2012.jpg",
+    "note": "Wikimedia Commons 3840px derivative; used in Zhangjiajie guide"
+  },
+  "zhangjiajie-railway-station": {
+    "author": "xiquinhosilva",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:38141-Zhangjiajie_(49047297736).jpg",
+    "note": "Wikimedia Commons 1920px derivative; used in Zhangjiajie guide"
   }
 }
