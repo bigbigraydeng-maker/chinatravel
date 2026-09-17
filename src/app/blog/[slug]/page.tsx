@@ -11,6 +11,7 @@ import NewsletterSubscribeForm from '@/components/newsletter/NewsletterSubscribe
 import FAQSection from '@/components/FAQSection';
 import { Icon } from '@/components/ui/Icon';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import { getBlogInlineImages } from '@/lib/data/blog-inline-images';
 
 interface BlogPostPageProps {
   params: {
@@ -156,6 +157,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const schemas = [articleSchema, breadcrumbSchema];
   const hasFaqs = Boolean(post.faqs && post.faqs.length > 0);
   const quickAnswer = hasFaqs ? post.faqs![0].answer : null;
+  const inlineImages = getBlogInlineImages(post.slug);
 
   return (
     <div>
@@ -240,6 +242,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   <p className="text-gray-900 leading-relaxed">{quickAnswer}</p>
                 </aside>
               )}
+              {inlineImages.map((photo) => (
+                <figure key={photo.src} className="not-prose mb-10 overflow-hidden rounded-2xl border border-warm-200 bg-warm-50 shadow-sm">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      className={`object-cover ${photo.imageClassName ?? 'object-center'}`}
+                    />
+                  </div>
+                  <figcaption className="px-5 py-3 text-sm leading-relaxed text-gray-600">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
               <div
                 className="text-gray-700 leading-relaxed blog-content"
                 dangerouslySetInnerHTML={{ __html: renderBlogPostHtml(post.content) }}

@@ -1,6 +1,8 @@
 // Complete Travel Guides Database for 21 Chinese Destinations
 // Structured for SEO pages and tour integration
 
+import { phase1LandmarkGuides } from '@/lib/data/guides-landmarks-phase1';
+
 const SB = 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public';
 const TI = `${SB}/tour-images`;
 export const migratedUnsplash = (photoId: string) => `${TI}/migrated/unsplash/${photoId}.jpg`;
@@ -3069,7 +3071,8 @@ export const allGuides: DestinationGuide[] = [
   suzhouGuide,
   chongqingGuide,
   leshanBuddhaGuide,
-  tianmenMountainGuide
+  tianmenMountainGuide,
+  ...phase1LandmarkGuides
 ];
 
 export function getAllGuides(): DestinationGuide[] {
