@@ -117,5 +117,12 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
     "source": "https://commons.wikimedia.org/wiki/File:38141-Zhangjiajie_(49047297736).jpg",
     "note": "Wikimedia Commons 1920px derivative; used in Zhangjiajie guide"
+  },
+  "zhangjiajie-grand-canyon-glass-bridge": {
+    "author": "Codas",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Zhangjiajie_Glass_Bridge_01.jpg",
+    "note": "Wikimedia Commons 1920px derivative; used in Zhangjiajie guide stopover feature"
   }
 }

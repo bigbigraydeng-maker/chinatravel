@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
@@ -421,6 +422,16 @@ const DEFAULT_CONFIG: GuideConfig = {
 // ─── Main Component ────────────────────────────────────────────────────────
 export default function DestinationGuide({ guide }: { guide: DestinationGuideType }) {
   const config = GUIDE_CONFIG[guide.slug] ?? DEFAULT_CONFIG;
+  const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const guideTocItems = [
+    ...(guide.inspirationVideos?.length ? [{ id: 'watch-zhangjiajie', title: 'Watch Zhangjiajie' }] : []),
+    ...(guide.mapGuide ? [{ id: 'map-guide', title: 'Map & route planner' }] : []),
+    ...(guide.featuredTour ? [{ id: 'featured-stopover', title: guide.featuredTour.title }] : []),
+    ...guide.sections.map((section) => ({ id: section.id, title: section.title })),
+    { id: 'attractions', title: 'Top Attractions' },
+    { id: 'practical', title: 'Practical Info' },
+    { id: 'faqs', title: 'FAQs' },
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -460,43 +471,19 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 In This Guide
               </h2>
               <ol className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm">
-                {guide.sections.map((s, i) => (
-                  <li key={s.id}>
+                {guideTocItems.map((item, i) => (
+                  <li key={item.id}>
                     <a
-                      href={`#${s.id}`}
+                      href={`#${item.id}`}
                       className="text-primary hover:underline flex items-center gap-2"
                     >
                       <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold flex-shrink-0">
                         {i + 1}
                       </span>
-                      {s.title}
+                      {item.title}
                     </a>
                   </li>
                 ))}
-                <li>
-                  <a href="#attractions" className="text-primary hover:underline flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold flex-shrink-0">
-                      {guide.sections.length + 1}
-                    </span>
-                    Top Attractions
-                  </a>
-                </li>
-                <li>
-                  <a href="#practical" className="text-primary hover:underline flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold flex-shrink-0">
-                      {guide.sections.length + 2}
-                    </span>
-                    Practical Info
-                  </a>
-                </li>
-                <li>
-                  <a href="#faqs" className="text-primary hover:underline flex items-center gap-2">
-                    <span className="w-5 h-5 rounded-full bg-primary/10 text-primary text-xs flex items-center justify-center font-bold flex-shrink-0">
-                      {guide.sections.length + 3}
-                    </span>
-                    FAQs
-                  </a>
-                </li>
               </ol>
             </nav>
 
@@ -528,6 +515,167 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                   </div>
                 </dl>
               </aside>
+            )}
+
+            {guide.inspirationVideos && guide.inspirationVideos.length > 0 && (
+              <section id="watch-zhangjiajie" className="mb-12 scroll-mt-20">
+                <p className={`${EYEBROW} mb-2`}>See it before you plan it</p>
+                <h2 className={H2_SECTION}>Why younger travellers put Zhangjiajie on the list</h2>
+                <p className="-mt-4 mb-6 max-w-3xl text-gray-600 leading-relaxed">
+                  The scale is difficult to understand from a single photograph. These two films show the difference between the Avatar-style pillar landscape and Tianmen Mountain&apos;s high-altitude adventure route.
+                </p>
+                <div className="grid gap-5 md:grid-cols-2">
+                  {guide.inspirationVideos.map((video) => {
+                    const isActive = activeVideo === video.youtubeId;
+                    return (
+                      <article key={video.youtubeId} className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+                        <div className="relative aspect-video overflow-hidden bg-accent">
+                          {isActive ? (
+                            <iframe
+                              className="absolute inset-0 h-full w-full"
+                              src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+                              title={video.title}
+                              loading="lazy"
+                              referrerPolicy="strict-origin-when-cross-origin"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                            />
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => setActiveVideo(video.youtubeId)}
+                              className="group absolute inset-0 w-full bg-cover bg-center text-left"
+                              style={{ backgroundImage: `linear-gradient(180deg, rgba(14,23,38,0.06), rgba(14,23,38,0.54)), url(https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg)` }}
+                              aria-label={`Play ${video.title}`}
+                            >
+                              <span className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/20" />
+                              <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary text-white shadow-xl transition-transform group-hover:scale-110">
+                                <span className="ml-1 text-2xl" aria-hidden="true">▶</span>
+                              </span>
+                              <span className="absolute bottom-3 right-3 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold text-white">{video.duration}</span>
+                            </button>
+                          )}
+                        </div>
+                        <div className="p-5">
+                          <p className="mb-2 text-xs font-bold uppercase tracking-widest text-primary">YouTube · {video.creator}</p>
+                          <h3 className={`${H3_CARD} mb-2`}>{video.title}</h3>
+                          <p className="text-sm leading-relaxed text-gray-600">{video.description}</p>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-gray-500">
+                  Videos are hosted by their creators on YouTube. Playback loads only after you press play; routes and operating arrangements may have changed since filming.
+                </p>
+              </section>
+            )}
+
+            {guide.mapGuide && (
+              <section id="map-guide" className="mb-12 scroll-mt-20">
+                <p className={`${EYEBROW} mb-2`}>Map first, itinerary second</p>
+                <h2 className={H2_SECTION}>{guide.mapGuide.title}</h2>
+                <p className="-mt-4 mb-6 max-w-3xl text-gray-600 leading-relaxed">{guide.mapGuide.summary}</p>
+                <div className="overflow-hidden rounded-3xl border border-border bg-[#f3efe5]">
+                  <div className="grid lg:grid-cols-[1.05fr_1fr]">
+                    <div className="relative min-h-[430px] overflow-hidden border-b border-border bg-[radial-gradient(circle_at_70%_25%,rgba(88,132,91,0.26),transparent_28%),radial-gradient(circle_at_22%_78%,rgba(69,111,137,0.18),transparent_25%),linear-gradient(145deg,#e9e4d5,#f8f5ed)] lg:min-h-[570px] lg:border-b-0 lg:border-r">
+                      <svg aria-hidden="true" className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <path d="M22 75 C36 66 48 51 62 33 C71 26 79 27 88 28" fill="none" stroke="#c32232" strokeWidth="1.2" strokeDasharray="2.5 2.5" vectorEffect="non-scaling-stroke" />
+                        <path d="M22 75 C21 82 19 87 18 91" fill="none" stroke="#c32232" strokeWidth="1.2" strokeDasharray="2.5 2.5" vectorEffect="non-scaling-stroke" />
+                        <path d="M2 63 C18 57 30 58 45 66 C60 74 74 73 98 61" fill="none" stroke="#9ab2b9" strokeWidth="0.8" opacity="0.7" vectorEffect="non-scaling-stroke" />
+                        <path d="M2 46 C20 40 34 43 51 38 C69 32 81 14 98 12" fill="none" stroke="#b9ae92" strokeWidth="0.6" opacity="0.75" vectorEffect="non-scaling-stroke" />
+                      </svg>
+                      <div className="absolute left-5 top-5 max-w-[230px] rounded-2xl bg-white/90 p-4 shadow-sm backdrop-blur">
+                        <p className="text-xs font-bold uppercase tracking-widest text-primary">Orientation map</p>
+                        <p className="mt-1 text-sm leading-relaxed text-gray-600">A planning diagram, not a road-navigation map. Tap any place in the list for its live map location.</p>
+                      </div>
+                      {guide.mapGuide.stops.map((stop) => (
+                        <div
+                          key={stop.number}
+                          className="absolute -translate-x-1/2 -translate-y-1/2"
+                          style={{ left: `${stop.position.x}%`, top: `${stop.position.y}%` }}
+                        >
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full border-4 border-white bg-primary text-sm font-bold text-white shadow-lg">
+                            {stop.number}
+                          </div>
+                          <span className="absolute left-1/2 top-11 w-28 -translate-x-1/2 text-center text-[11px] font-bold leading-tight text-accent">
+                            {stop.name.split(' & ')[0]}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="bg-white p-5 sm:p-7">
+                      <div className="space-y-5">
+                        {guide.mapGuide.stops.map((stop) => (
+                          <article key={stop.number} className="flex gap-4 border-b border-warm-100 pb-5 last:border-0 last:pb-0">
+                            <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">{stop.number}</span>
+                            <div>
+                              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                                <h3 className="font-semibold text-accent">{stop.name}</h3>
+                                <a href={stop.mapUrl} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-primary hover:underline">Open map ↗</a>
+                              </div>
+                              <p className="mt-1 text-xs font-bold uppercase tracking-wider text-primary">{stop.base}</p>
+                              <p className="mt-2 text-sm leading-relaxed text-gray-600">{stop.description}</p>
+                              <p className="mt-2 text-xs leading-relaxed text-gray-500">{stop.travelNote}</p>
+                            </div>
+                          </article>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid gap-3 border-t border-border bg-warm-50 p-5 sm:grid-cols-3 sm:p-6">
+                    {guide.mapGuide.planningNotes.map((note, index) => (
+                      <div key={note} className="flex gap-3 rounded-xl bg-white p-4 text-sm leading-relaxed text-gray-700">
+                        <span className="font-bold text-primary">0{index + 1}</span>
+                        <span>{note}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {guide.featuredTour && (
+              <section id="featured-stopover" className="mb-12 scroll-mt-20 overflow-hidden rounded-3xl bg-accent text-white shadow-xl">
+                <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+                  <div className="relative min-h-[280px] lg:min-h-full">
+                    <Image
+                      src={guide.featuredTour.image}
+                      alt={guide.featuredTour.imageAlt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-accent/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-accent/30" />
+                    {guide.featuredTour.imageCredit && (
+                      <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-[10px] text-white/80 backdrop-blur">
+                        {guide.featuredTour.imageCredit}
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-6 sm:p-9">
+                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-red-300">{guide.featuredTour.eyebrow}</p>
+                    <h2 className={`${H2_BAND} mb-3 text-3xl`}>{guide.featuredTour.title}</h2>
+                    <div className="mb-5 flex flex-wrap gap-2 text-sm">
+                      <span className="rounded-full bg-white/10 px-3 py-1.5">{guide.featuredTour.duration}</span>
+                      <span className="rounded-full bg-white/10 px-3 py-1.5">{guide.featuredTour.price}</span>
+                    </div>
+                    <p className="mb-6 leading-relaxed text-white/80">{guide.featuredTour.summary}</p>
+                    <ul className="mb-7 grid gap-3 text-sm sm:grid-cols-2">
+                      {guide.featuredTour.highlights.map((highlight) => (
+                        <li key={highlight} className="flex gap-2 leading-relaxed text-white/90">
+                          <span className="text-red-300" aria-hidden="true">✓</span>
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-col gap-3 sm:flex-row">
+                      <Link href={guide.featuredTour.href} className="rounded-full bg-primary px-6 py-3 text-center font-bold text-white transition-colors hover:bg-red-500">View the 3-day stopover →</Link>
+                      <Link href="/tailor-made" className="rounded-full border border-white/30 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-white/10">Add it to my China trip</Link>
+                    </div>
+                  </div>
+                </div>
+              </section>
             )}
 
             {/* Inline mid-page CTA */}

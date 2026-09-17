@@ -203,13 +203,19 @@ const nextConfig = {
     ];
   },
   async headers() {
+    const staticAssetCacheHeaders = process.env.NODE_ENV === 'production'
+      ? [
+          {
+            source: '/_next/static/:path*',
+            headers: [
+              { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+            ],
+          },
+        ]
+      : [];
+
     return [
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
+      ...staticAssetCacheHeaders,
       {
         source: '/(.*)',
         headers: [

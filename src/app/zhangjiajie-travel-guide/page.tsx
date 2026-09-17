@@ -65,6 +65,18 @@ export default function GuidePage() {
         { '@type': 'TouristAttraction', name: 'Zhangjiajie Grand Canyon Glass Bridge' },
       ],
     },
+    ...(guide.inspirationVideos ?? []).map((video) => ({
+      '@context': 'https://schema.org',
+      '@type': 'VideoObject',
+      name: video.title,
+      description: video.description,
+      thumbnailUrl: `https://i.ytimg.com/vi/${video.youtubeId}/hqdefault.jpg`,
+      embedUrl: `https://www.youtube-nocookie.com/embed/${video.youtubeId}`,
+      contentUrl: `https://www.youtube.com/watch?v=${video.youtubeId}`,
+      uploadDate: video.publishedAt,
+      duration: video.schemaDuration,
+      publisher: { '@type': 'Organization', name: video.creator },
+    })),
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',

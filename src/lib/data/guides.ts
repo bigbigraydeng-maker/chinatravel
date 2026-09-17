@@ -50,6 +50,46 @@ export interface Section {
   };
 }
 
+export interface GuideVideo {
+  youtubeId: string;
+  title: string;
+  description: string;
+  creator: string;
+  duration: string;
+  schemaDuration: string;
+  publishedAt: string;
+}
+
+export interface GuideMapStop {
+  number: number;
+  name: string;
+  base: string;
+  description: string;
+  travelNote: string;
+  mapUrl: string;
+  position: { x: number; y: number };
+}
+
+export interface GuideMap {
+  title: string;
+  summary: string;
+  stops: GuideMapStop[];
+  planningNotes: string[];
+}
+
+export interface GuideFeaturedTour {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  duration: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+  imageCredit?: string;
+  href: string;
+  highlights: string[];
+}
+
 export interface DestinationGuide {
   id: string;
   slug: string;
@@ -73,6 +113,12 @@ export interface DestinationGuide {
     bestFor: string;
     combineWith: string;
   };
+  /** Optional video inspiration, loaded only after the visitor chooses to play. */
+  inspirationVideos?: GuideVideo[];
+  /** A destination-specific orientation map and route-planning notes. */
+  mapGuide?: GuideMap;
+  /** Strong in-context commercial pathway for a directly relevant tour. */
+  featuredTour?: GuideFeaturedTour;
   sections: Section[];
   attractions: Attraction[];
   practicalInfo: PracticalInfo;
@@ -938,6 +984,90 @@ export const zhangjiajieGuide: DestinationGuide = {
     recommendedVisitLength: '3 full days; 4 days for slower walks or a weather buffer',
     bestFor: 'Scenery, photography, cableways and moderate walking',
     combineWith: 'Changsha, Chongqing, Guilin or a wider natural-China itinerary',
+  },
+  inspirationVideos: [
+    {
+      youtubeId: 'sGbtojzJliQ',
+      title: 'Zhangjiajie: see the whole destination before you plan',
+      description: 'A practical English-language overview of Yuanjiajie, Tianzi Mountain, Golden Whip Stream, the Grand Canyon Glass Bridge and Tianmen Mountain.',
+      creator: 'Vince Travel',
+      duration: '25 minutes',
+      schemaDuration: 'PT25M',
+      publishedAt: '2025-04-12',
+    },
+    {
+      youtubeId: 'ZFlWKKoPbd4',
+      title: 'Tianmen Mountain in 4K',
+      description: 'A cinematic route from the city cableway through the cliff paths, glass skywalk, Tianmen Cave and the 99-bend mountain road.',
+      creator: 'Amazing Places on Our Planet',
+      duration: '13 minutes',
+      schemaDuration: 'PT13M',
+      publishedAt: '2018-05-11',
+    },
+  ],
+  mapGuide: {
+    title: 'Zhangjiajie map: where the famous sights actually are',
+    summary: 'The name Zhangjiajie covers several separate areas. Use the map as a planning diagram: sleep near Wulingyuan for the pillar landscape, then finish in Zhangjiajie city for Tianmen Mountain and your onward connection.',
+    stops: [
+      {
+        number: 1,
+        name: 'Zhangjiajie city & West railway station',
+        base: 'Arrival and final-night base',
+        description: 'The transport hub for high-speed rail, the airport and the lower Tianmen Mountain cableway station.',
+        travelNote: 'Start or finish here; allow transfer time between the station, airport and city hotel.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Zhangjiajie+West+Railway+Station',
+        position: { x: 22, y: 75 },
+      },
+      {
+        number: 2,
+        name: 'Tianmen Mountain',
+        base: 'One full sightseeing day',
+        description: 'Cableway, cliff paths, glass skywalks and Heaven\'s Gate; separate from the Avatar Mountains.',
+        travelNote: 'Access from Zhangjiajie city and choose the clearest available day.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Tianmen+Mountain+Zhangjiajie',
+        position: { x: 18, y: 91 },
+      },
+      {
+        number: 3,
+        name: 'Wulingyuan & National Forest Park',
+        base: 'Two-night sightseeing base',
+        description: 'The core pillar landscape: Yuanjiajie, Tianzi Mountain, Yangjiajie and Golden Whip Stream.',
+        travelNote: 'About 30 km from central Zhangjiajie; stay near the park entrances for early starts.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Wulingyuan+Scenic+Area',
+        position: { x: 62, y: 33 },
+      },
+      {
+        number: 4,
+        name: 'Grand Canyon Glass Bridge',
+        base: 'Optional half or full day',
+        description: 'The canyon-spanning glass bridge east of Wulingyuan; it is not inside the national forest park.',
+        travelNote: 'Add it after protecting two days for Wulingyuan, or include it in the CTS stopover route.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Zhangjiajie+Grand+Canyon+Glass+Bridge',
+        position: { x: 88, y: 28 },
+      },
+    ],
+    planningNotes: [
+      'Best hotel split: two nights in Wulingyuan, then one night in Zhangjiajie city.',
+      'Do not schedule Tianmen Mountain and Wulingyuan as if they share one entrance.',
+      'Keep the clearest morning for the upper Wulingyuan viewpoints.',
+    ],
+  },
+  featuredTour: {
+    eyebrow: 'The easy way to add Zhangjiajie',
+    title: 'China Stopover — Zhangjiajie (3 Days)',
+    summary: 'A compact guided route from Guangzhou that joins Tianmen Mountain, Yuanjiajie and the Grand Canyon Glass Bridge without asking first-time visitors to solve the transfers and timed entries themselves.',
+    duration: '3 days / 2 nights',
+    price: 'From NZD $1,899 per person',
+    image: '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
+    imageAlt: 'Zhangjiajie Grand Canyon Glass Bridge included in the three-day stopover',
+    imageCredit: 'Photo: Codas / Wikimedia Commons, CC BY-SA 4.0.',
+    href: '/tours/china/stopover/zhangjiajie',
+    highlights: [
+      'Tianmen Mountain cableway, skywalk and Heaven\'s Gate',
+      'Bailong Elevator, Yuanjiajie and Tianzi Mountain',
+      'Grand Canyon Glass Bridge and guided transfers',
+      'Return second-class rail from Guangzhou and 4-star hotels',
+    ],
   },
   sections: [
     {
