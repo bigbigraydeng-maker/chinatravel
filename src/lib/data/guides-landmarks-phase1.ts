@@ -136,22 +136,74 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
   destinationName: 'Big Wild Goose Pagoda',
   parentDestination: "Xi'an",
   metaTitle: "Big Wild Goose Pagoda Guide | Xi'an",
-  metaDescription: "Visit Xi'an's Big Wild Goose Pagoda: Tang dynasty history, Da Ci'en Temple, evening atmosphere and practical planning advice.",
-  keywords: ['Big Wild Goose Pagoda', "Xi'an pagoda", "Xi'an attractions", 'Da Cien Temple'],
+  metaDescription: "Plan a meaningful Big Wild Goose Pagoda visit in Xi'an with Tang history, Xuanzang's story, Da Ci'en Temple, walking routes and evening ideas.",
+  keywords: ['Big Wild Goose Pagoda', "Xi'an pagoda", "Xi'an attractions", 'Da Cien Temple', 'Xuanzang', 'Tang dynasty Xi’an'],
   h1: 'Big Wild Goose Pagoda Travel Guide',
   heroSubtitle: 'Tang dynasty Buddhist heritage at the heart of modern Xi’an',
   heroImage: '/images/guides/big-wild-goose-pagoda/hero.webp',
   heroImageClassName: 'object-[center_48%]',
   introText: [
-    "The Big Wild Goose Pagoda is one of Xi'an's clearest links to the cosmopolitan Tang dynasty. Built to preserve Buddhist scriptures brought from India by the monk Xuanzang, the brick tower became a landmark of religious learning and Silk Road exchange.",
-    'Today the historic pagoda and Da Ci’en Temple sit within a lively cultural district. Visit by day for temple detail and historical context, then stay into the evening when surrounding squares, promenades and illuminated architecture bring local families into the area. This day-to-night contrast makes the precinct useful even when the rest of your Xi’an itinerary is already full of archaeological sites.'
+    "The Big Wild Goose Pagoda is one of Xi'an's clearest links to the cosmopolitan Tang dynasty. It was first built in 652 under the guidance of the monk, traveller and translator Xuanzang to preserve Buddhist scriptures, images and relics brought back from his journey to India. More than a city landmark, the tower represents a period when Chang'an stood at the eastern end of the Silk Roads and ideas travelled alongside merchants and diplomats.",
+    'The pagoda rises inside Da Ci’en Temple, an active religious complex with halls, courtyards, incense and a history that extends beyond the tower itself. Outside the temple walls, large public squares and a cultural promenade show how modern Xi’an has built a new evening district around its Tang heritage. Experiencing both sides gives the visit more meaning: the temple explains why the monument exists, while the surrounding neighbourhood shows how that history continues to shape the city.',
+    'For a first visit, arrive in mid or late afternoon. Explore the temple while its buildings are open, study the pagoda from several courtyards, and then remain in the district as the light changes. Travellers who only photograph the tower from the square miss the strongest part of the story: Xuanzang’s work, the translation of Buddhist texts and the role of Chang’an in connecting China with Central and South Asia.'
   ],
-  quickAnswer: 'Plan 90 minutes for the pagoda and Da Ci’en Temple, or two to three hours if you also want the surrounding cultural district after dark. Late afternoon offers the best transition from Tang dynasty history to the evening atmosphere.',
+  quickAnswer: 'Plan at least 90 minutes for Da Ci’en Temple and the Big Wild Goose Pagoda, or three hours if you want the surrounding Tang-themed district after dark. Arrive in late afternoon, visit the temple first, then stay for the illuminated squares and cultural promenade.',
   visitPlanning: { recommendedVisitLength: '1.5–3 hours', bestFor: 'Tang history, Buddhist heritage and evening atmosphere', combineWith: "Xi'an City Wall or the Muslim Quarter" },
   sections: [
-    { title: 'Xuanzang and the Silk Road Story', id: 'xuanzang', content: ['Xuanzang travelled across Central Asia to India and returned with Buddhist texts that influenced religious thought across East Asia. The pagoda was built as a secure place to store and translate those manuscripts.', 'Understanding this story turns the monument from a simple tower into evidence of the movement of ideas along the Silk Road. It also connects naturally with Xi’an’s wider history as the eastern terminus of long-distance trade routes.'] },
-    { title: 'What to See Around the Pagoda', id: 'what-to-see', content: ['The temple courtyards offer carved stone, incense halls and views of the layered brick pagoda. The surrounding district includes landscaped squares and cultural spaces that are easy to explore on foot.', 'Climbing or interior access can vary, so treat any elevated view as a bonus rather than the sole reason to visit. The strongest experience comes from combining the monument, temple and surrounding public life.'] },
-    { title: 'Daylight or Evening?', id: 'day-or-night', content: ['Daylight is best for architectural detail and temple context. Evening brings decorative lighting and a more social atmosphere across the surrounding plazas.', 'Travellers with enough time can arrive in late afternoon, visit the temple before closing and remain in the district for dinner and evening photographs.'] }
+    {
+      title: 'Why Xuanzang’s Story Matters',
+      id: 'xuanzang',
+      content: [
+        'Xuanzang left Chang’an in the seventh century and travelled through Central Asia to India in search of Buddhist teachings and reliable Sanskrit texts. His journey took many years and later inspired one of East Asia’s best-known literary traditions. When he returned, he brought manuscripts, sacred images and knowledge gathered across a vast network of cultures.',
+        'Da Ci’en Temple became an important centre for the work that followed. Xuanzang and other scholars translated Sanskrit texts into Chinese, a task that required religious learning as well as extraordinary care with language and meaning. The pagoda provided a place to preserve material connected with that work, so its significance comes from scholarship and cultural exchange as much as from architecture.',
+        'This context changes how the building reads. Its brick mass is deliberately restrained compared with the richly painted halls around it. Rather than functioning as a palace or watchtower, it marked a centre of learning whose influence extended far beyond Tang China. That is why the site forms part of UNESCO’s Silk Roads: Chang’an–Tianshan Corridor World Heritage property.'
+      ]
+    },
+    {
+      title: 'From Tang Chang’an to the Seven-Storey Pagoda',
+      id: 'history-and-architecture',
+      content: [
+        'The first pagoda was constructed in 652 during the Tang dynasty under Xuanzang’s supervision. The monument changed through later rebuilding, earthquake damage and repair before reaching the seven-storey form seen today. Its survival makes it one of the most visible structures connecting modern Xi’an with the ancient capital of Chang’an.',
+        'Look closely at the strong square plan, narrowing levels and rhythmic brick openings. The design feels solid and vertical rather than highly decorated. From a distance, the slight taper gives the tower its calm profile; from the temple courtyards, the scale becomes clearer as the pagoda rises behind roofs, incense burners and old trees.',
+        'The surrounding city has changed almost completely, which makes the tower’s continued presence especially powerful. It is useful to imagine the much larger Tang-period temple precinct and the scholars who worked there rather than judging the site only by the boundaries of the present complex.'
+      ]
+    },
+    {
+      title: 'A Meaningful Route Through Da Ci’en Temple',
+      id: 'walking-route',
+      content: [
+        'Begin at the southern approach and pause by the Xuanzang statue before entering the temple. It establishes the human story behind the monument and creates a direct sightline toward the pagoda. Inside, move through the main halls and courtyards rather than heading immediately to the tower. The sequence helps explain that the pagoda belongs to a living temple complex.',
+        'Allow time for architectural details, devotional spaces and the changing views created by gates and rooflines. The strongest photographs often come from within the courtyards, where the brick tower appears behind painted timber buildings. Respect worshippers, avoid blocking entrances and follow any photography restrictions displayed inside individual halls.',
+        'Access to the pagoda interior or upper levels can change because of conservation, capacity or operating arrangements. Treat a climb as an optional addition. The essential experience remains available from ground level: the tower’s form, the temple setting and the historical relationship between Xuanzang, the scriptures and Chang’an.'
+      ]
+    },
+    {
+      title: 'What the World Heritage Listing Means',
+      id: 'world-heritage',
+      content: [
+        'The Big Wild Goose Pagoda is one component of the transnational Silk Roads: the Routes Network of Chang’an–Tianshan Corridor, inscribed on the UNESCO World Heritage List in 2014. The corridor links sites across China, Kazakhstan and Kyrgyzstan that document movement, trade, belief and cultural exchange over long distances.',
+        'At this site, the Silk Road story is expressed through ideas rather than a marketplace. Texts travelled from India to Chang’an; scholars translated them; Buddhist teachings then circulated in new languages and forms. The pagoda therefore gives visitors a way to understand the Silk Roads as a network for knowledge as well as silk, horses and luxury goods.',
+        'This broader view also connects the pagoda with other Xi’an sights. The city wall reflects the later Ming city, the Terracotta Warriors belong to the Qin empire, and the pagoda represents Tang-era internationalism. Visiting all three helps separate distinct periods that are often compressed into a single idea of “ancient Xi’an”.'
+      ]
+    },
+    {
+      title: 'Daylight, Blue Hour and the Evening District',
+      id: 'day-or-night',
+      content: [
+        'Daylight is essential if you want to understand the temple and see the brickwork, painted halls and courtyard details clearly. Morning can be quieter, while late afternoon gives warmer light and creates the easiest transition into the evening. Check the temple’s current last-entry time before planning a late arrival.',
+        'After the temple visit, walk through the public squares and continue toward the Tang-themed cultural promenade. The atmosphere becomes more theatrical after dark, with illuminated buildings, performances on some evenings and large numbers of local visitors. It is a contemporary interpretation of Tang identity rather than an untouched historical quarter, but that distinction is part of what makes the area interesting.',
+        'Photographers should keep both wide and compressed views in mind. The tower works well as a distant anchor above the square, while gates, trees and temple roofs create stronger foregrounds from inside the complex. Blue hour often balances the remaining colour in the sky with the district’s architectural lighting.'
+      ]
+    },
+    {
+      title: 'How to Fit It into an Xi’an Itinerary',
+      id: 'xian-itinerary',
+      content: [
+        'The pagoda pairs naturally with the Shaanxi History Museum because both sit south of the city centre and build a strong Tang-dynasty narrative. Museum reservations and opening arrangements can be restrictive, so confirm those first and let the fixed booking determine the order of your day.',
+        'For a broader contrast, visit Xi’an City Wall earlier and come to the pagoda district in late afternoon. The wall presents the defensive structure of the later city, while Da Ci’en Temple opens a window onto religion, travel and scholarship. The Muslim Quarter can follow on another evening if you want food and street life rather than another major monument.',
+        'Travellers returning from the Terracotta Warriors may also use the pagoda as an evening stop, provided the day has not become too long. This combination spans Qin and Tang history, but it involves substantial travel and walking. A slower itinerary gives the pagoda its own half-day with the museum or nearby cultural district.'
+      ]
+    }
   ],
   attractions: [
     { name: 'Big Wild Goose Pagoda', description: 'The seven-storey brick tower associated with monk and translator Xuanzang.', visitDuration: '30-45 minutes', bestTime: 'Late afternoon' },
@@ -160,24 +212,30 @@ export const bigWildGoosePagodaGuide: DestinationGuide = {
     { name: 'Cultural District and Squares', description: 'Pedestrian areas, landscaped plazas and evening activity around the temple precinct.', visitDuration: '1-2 hours', bestTime: 'After sunset' }
   ],
   practicalInfo: {
-    transportation: 'Metro and taxi connections make the pagoda easy to combine with central Xi’an attractions.',
-    climate: 'The temple has some shade, but the surrounding squares are exposed in summer and cold in winter.',
-    bestTime: 'Late afternoon for temple detail followed by the evening atmosphere.',
-    budget: 'The public squares are open to explore; temple and pagoda access may require separate tickets. Confirm current arrangements.',
-    language: 'English interpretation is available in parts of the precinct; a guide helps connect the site to Tang history.',
-    safety: 'The district is busy in the evening. Keep your group together around fountains, crossings and crowded promenades.'
+    transportation: 'Dayanta metro station serves the wider precinct, and taxis can drop visitors near the main approaches. Confirm your chosen entrance because the temple, northern square and southern cultural promenade cover a sizeable area.',
+    climate: 'Temple courtyards provide some shade, but the public squares are exposed. Carry water and sun protection in summer; winter evenings can feel much colder once the sun drops.',
+    bestTime: 'Late afternoon offers the best all-round visit: temple detail in daylight, softer photography and the surrounding district after dark. A weekday morning is better if your priority is quiet contemplation.',
+    budget: 'The surrounding public squares can be explored freely. Da Ci’en Temple and any pagoda access may use separate tickets, and arrangements can change, so confirm current official information shortly before visiting.',
+    language: 'Key areas have some English interpretation, but the importance of translation, Buddhist history and Silk Road exchange is easier to understand with a knowledgeable guide.',
+    safety: 'The area is well visited but can become crowded after dark. Agree on a meeting point, watch for bicycles and service vehicles in pedestrian areas, and allow extra time when leaving after performances.'
   },
   faqs: [
-    { question: 'Why is the Big Wild Goose Pagoda famous?', answer: 'It is closely associated with Xuanzang and the Buddhist texts he brought from India, making it a symbol of Tang dynasty scholarship and Silk Road exchange.' },
-    { question: 'How much time should I allow?', answer: 'Allow 90 minutes for the pagoda and temple, or two to three hours if you also want to explore the surrounding district and stay for evening lights.' },
-    { question: 'Is it better by day or at night?', answer: 'Daytime is better for the temple and history; evening is better for atmosphere. Late afternoon lets you experience both.' },
-    { question: 'Can it be combined with Xi’an City Wall?', answer: 'Yes. The two sites are commonly paired, with the wall earlier in the day and the pagoda district toward evening.' }
+    { question: 'Why is the Big Wild Goose Pagoda famous?', answer: 'It was first built in 652 under Xuanzang’s guidance to preserve Buddhist scriptures, images and relics associated with his journey to India. The site represents Tang-dynasty scholarship and the movement of ideas along the Silk Roads.' },
+    { question: 'How much time should I allow?', answer: 'Allow at least 90 minutes for Da Ci’en Temple and the pagoda precinct. Two and a half to three hours is more comfortable if you want to read the interpretation, take photographs and continue into the surrounding district after dark.' },
+    { question: 'Is it better by day or at night?', answer: 'The temple should be experienced in daylight, while the public squares and cultural promenade are livelier after dark. Arriving in late afternoon lets you see both without making two separate visits.' },
+    { question: 'Can visitors climb the Big Wild Goose Pagoda?', answer: 'Interior and upper-level access can change because of conservation and operating arrangements. Check the current official rules before visiting and plan the trip so it remains worthwhile even if climbing is unavailable.' },
+    { question: 'Is the Big Wild Goose Pagoda the same as the Small Wild Goose Pagoda?', answer: 'No. They are separate Tang-dynasty monuments in different parts of Xi’an. The Big Wild Goose Pagoda stands inside Da Ci’en Temple and is closely associated with Xuanzang; the Small Wild Goose Pagoda forms part of the Xi’an Museum precinct.' },
+    { question: 'Can it be combined with Xi’an City Wall?', answer: 'Yes. Visit the City Wall earlier in the day, then move to Da Ci’en Temple in late afternoon and remain near the pagoda for the evening atmosphere. This also shows two different periods of Xi’an’s history.' }
   ],
   relatedTourSlugs: ['beijing-xian', 'essentials'],
   relatedGuideSlugs: ['xian-travel-guide', 'xian-city-wall-travel-guide', 'terracotta-warriors-travel-guide'],
   relatedBlogSlugs: ['beijing-xian-itinerary-10-days', 'terracotta-warriors-guide-nz', 'xian-street-food-adventure'],
   galleryImages: [],
-  sources: [{ label: 'UNESCO World Heritage Centre — Silk Roads: Chang’an-Tianshan Corridor', href: 'https://whc.unesco.org/en/list/1442' }],
+  sources: [
+    { label: 'UNESCO World Heritage Centre — Silk Roads: Chang’an-Tianshan Corridor', href: 'https://whc.unesco.org/en/list/1442' },
+    { label: "Xi'an Municipal Government — Giant Wild Goose Pagoda", href: 'https://en.xa.gov.cn/CultureTravel/Attractions/1691691504798126082.html' },
+    { label: "Xi'an Local Chronicles Office — Big Wild Goose Pagoda", href: 'https://xadfz.xa.gov.cn/xadq/rwxa/1802954373708996609.html' }
+  ],
   createdAt: UPDATED,
   updatedAt: UPDATED
 };

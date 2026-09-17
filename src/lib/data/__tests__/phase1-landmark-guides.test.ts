@@ -35,6 +35,16 @@ test('phase-one landmark guides meet the editorial SEO baseline', () => {
   }
 });
 
+test('Big Wild Goose Pagoda is a substantive destination guide, not a thin landing page', () => {
+  const guide = phase1LandmarkGuides.find((item) => item.slug === 'big-wild-goose-pagoda-travel-guide');
+
+  expect(guide).toBeDefined();
+  expect(editorialWordCount(guide!)).toBeGreaterThanOrEqual(1200);
+  expect(guide!.sections.length).toBeGreaterThanOrEqual(6);
+  expect(guide!.faqs.length).toBeGreaterThanOrEqual(6);
+  expect(guide!.sources?.length).toBeGreaterThanOrEqual(3);
+});
+
 test('guide images are unique, local and present', () => {
   const sources = phase1LandmarkGuides.flatMap((guide) => [
     guide.heroImage,
