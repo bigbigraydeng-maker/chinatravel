@@ -153,7 +153,14 @@ export default function TourPage({ params }: TourPageProps) {
   ];
 
   // Roll the approved Golden China detail design out one product at a time.
-  const upgradedTourSlugs = new Set(['golden-china', 'china-icons-collection']);
+  const upgradedTourSlugs = new Set([
+    'golden-china',
+    'china-icons-collection',
+    'china-icons-collection-christchurch',
+    'essentials',
+    'beijing-xian',
+    'shanghai-surroundings',
+  ]);
   if (upgradedTourSlugs.has(tour.slug)) {
     return <><SchemaMarkup data={schemas} /><UpgradedTourPage tour={tour} /></>;
   }

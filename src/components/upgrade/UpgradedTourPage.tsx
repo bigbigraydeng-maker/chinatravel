@@ -50,11 +50,84 @@ const galleryAlts: Record<string, string[]> = {
     'The Terracotta Warriors in Xi’an',
     'An illuminated Chinese pagoda at night',
   ],
+  'china-icons-collection-christchurch': [
+    'Shanghai’s illuminated Nanjing Road during the festive season',
+    'Shanghai illuminated at night during the festive season',
+    'The Great Wall in winter mist',
+    'Aerial view across Beijing’s Forbidden City',
+    'The Terracotta Warriors in Xi’an',
+    'An illuminated Chinese pagoda at night',
+  ],
+  'beijing-xian': [
+    'Golden guardian lion at Beijing’s Forbidden City',
+    'The Terracotta Warriors in Xi’an',
+  ],
+  essentials: [
+    'Shanghai’s illuminated skyline at night',
+    'Canals and traditional buildings in a Jiangnan water town',
+  ],
+  'shanghai-surroundings': [
+    'A traditional canal town in the Yangtze Delta',
+    'Shanghai’s illuminated waterfront at night',
+  ],
+};
+
+const additionalGalleryImages: Record<string, { src: string; alt: string }[]> = {
+  'beijing-xian': [
+    { src: '/images/tours/great-wall-green.jpg', alt: 'The Great Wall crossing green mountain ridges near Beijing' },
+    { src: '/images/tours/beijing-temple-2.jpg', alt: 'Imperial architecture at the Temple of Heaven in Beijing' },
+    { src: '/images/tours/xian-terracotta-2.jpg', alt: 'Rows of Terracotta Warriors in Xi’an' },
+  ],
+  essentials: [
+    { src: '/images/tours/great-wall-cloud-sea.jpg', alt: 'The Great Wall rising above a sea of clouds' },
+    { src: '/images/tours/beijing-temple.jpg', alt: 'The Temple of Heaven in Beijing' },
+    { src: '/images/tours/xian-terracotta.jpg', alt: 'Terracotta Warriors archaeological site in Xi’an' },
+  ],
+  'shanghai-surroundings': [
+    { src: '/images/blog/inline/jiangnan-water-town.webp', alt: 'Red lanterns beside a canal in a Jiangnan water town' },
+    { src: '/images/cts-upgrade/planner-westlake.webp', alt: 'West Lake and traditional gardens in Hangzhou' },
+    { src: '/images/tours/shanghai-yuyuan-night.jpg', alt: 'Traditional architecture near Yu Garden illuminated at night' },
+  ],
+};
+
+const localGallerySources: Record<string, string[]> = {
+  'china-icons-collection': [
+    'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
+    '/images/tours/shanghai-night-red.jpg',
+    '/images/tours/great-wall-mist.jpg',
+    '/images/tours/forbidden-city-aerial.jpg',
+    '/images/tours/xian-terracotta.jpg',
+    '/images/tours/china-pagoda-night.jpg',
+  ],
+  'china-icons-collection-christchurch': [
+    '/images/campaigns/christmas-new-year/festive-china-og.webp',
+    '/images/tours/shanghai-night-red.jpg',
+    '/images/tours/great-wall-mist.jpg',
+    '/images/tours/forbidden-city-aerial.jpg',
+    '/images/tours/xian-terracotta.jpg',
+    '/images/tours/china-pagoda-night.jpg',
+  ],
+  'beijing-xian': [
+    '/images/tours/forbidden-city-gold-lion.jpg',
+    '/images/tours/xian-terracotta.jpg',
+  ],
+  essentials: [
+    '/images/tours/shanghai-night-blue.jpg',
+    '/images/tours/wuzhen-canal.jpg',
+  ],
+  'shanghai-surroundings': [
+    '/images/tours/wuzhen-canal.jpg',
+    '/images/tours/shanghai-night-red.jpg',
+  ],
 };
 
 const overviewHeadings: Record<string, string> = {
   'golden-china': 'A journey through China’s icons.',
   'china-icons-collection': 'Celebrate the season across China’s great cities.',
+  'china-icons-collection-christchurch': 'A direct South Island departure for China’s festive season.',
+  'beijing-xian': 'Two capitals, one clear introduction to China.',
+  essentials: 'China’s essential cities, paced for discovery.',
+  'shanghai-surroundings': 'Water towns, gardens and the Shanghai skyline.',
 };
 
 function shortTourName(tour: Tour) {
@@ -63,12 +136,13 @@ function shortTourName(tour: Tour) {
 
 function galleryForTour(tour: Tour) {
   if (tour.slug === 'golden-china') return goldenPhotos;
-  const sources = tour.gallery?.length ? tour.gallery : [tour.heroImage];
+  const sources = localGallerySources[tour.slug] ?? (tour.gallery?.length ? tour.gallery : [tour.heroImage]);
   const alts = galleryAlts[tour.slug] ?? [];
-  return sources.map((src, index) => ({
+  const primary = sources.map((src, index) => ({
     src,
     alt: alts[index] ?? `${shortTourName(tour)} journey photograph ${index + 1}`,
   }));
+  return [...primary, ...(additionalGalleryImages[tour.slug] ?? [])];
 }
 
 function dayHeading(tour: Tour, day: Tour['itinerary'][number]) {
