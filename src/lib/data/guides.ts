@@ -50,6 +50,46 @@ export interface Section {
   };
 }
 
+export interface GuideVideo {
+  youtubeId: string;
+  title: string;
+  description: string;
+  creator: string;
+  duration: string;
+  schemaDuration: string;
+  publishedAt: string;
+}
+
+export interface GuideMapStop {
+  number: number;
+  name: string;
+  base: string;
+  description: string;
+  travelNote: string;
+  mapUrl: string;
+  position: { x: number; y: number };
+}
+
+export interface GuideMap {
+  title: string;
+  summary: string;
+  stops: GuideMapStop[];
+  planningNotes: string[];
+}
+
+export interface GuideFeaturedTour {
+  eyebrow: string;
+  title: string;
+  summary: string;
+  duration: string;
+  price: string;
+  image: string;
+  imageAlt: string;
+  imageCredit?: string;
+  href: string;
+  highlights: string[];
+}
+
 export interface DestinationGuide {
   id: string;
   slug: string;
@@ -73,6 +113,12 @@ export interface DestinationGuide {
     bestFor: string;
     combineWith: string;
   };
+  /** Optional video inspiration, loaded only after the visitor chooses to play. */
+  inspirationVideos?: GuideVideo[];
+  /** A destination-specific orientation map and route-planning notes. */
+  mapGuide?: GuideMap;
+  /** Strong in-context commercial pathway for a directly relevant tour. */
+  featuredTour?: GuideFeaturedTour;
   sections: Section[];
   attractions: Attraction[];
   practicalInfo: PracticalInfo;
@@ -921,152 +967,287 @@ export const zhangjiajieGuide: DestinationGuide = {
   id: 'guide-zhangjiajie',
   slug: 'zhangjiajie-travel-guide',
   destinationName: 'Zhangjiajie',
-  metaTitle: 'Zhangjiajie Travel Guide | Avatar Mountains | Glass Walkway | CTS Tours',
-  metaDescription: 'Discover Zhangjiajie\'s dramatic landscapes: Avatar Mountains, glass bridge, Tianmen Mountain & ancient forest parks. Expert travel guide for New Zealand visitors to Hunan\'s natural wonder.',
-  keywords: ['Zhangjiajie travel', 'Avatar Mountains', 'glass walkway', 'Tianmen Mountain', 'national park'],
-  h1: 'Zhangjiajie Travel Guide: Mountains That Touch the Sky',
-  heroSubtitle: 'Home of Avatar\'s Pandora Landscape',
+  metaTitle: 'Zhangjiajie Travel Guide for New Zealanders | CTS Tours',
+  metaDescription: 'Plan Zhangjiajie from New Zealand: compare the Avatar Mountains at Wulingyuan, Tianmen Mountain and the Grand Canyon Glass Bridge, with a practical three-day route.',
+  keywords: ['Zhangjiajie travel guide', 'Avatar Mountains China', 'Wulingyuan', 'Tianmen Mountain', 'Zhangjiajie glass bridge', 'Zhangjiajie from New Zealand'],
+  h1: 'Zhangjiajie Travel Guide: The Avatar Mountains Explained',
+  heroSubtitle: 'Wulingyuan peaks, Tianmen Mountain and the glass bridge — three distinct experiences',
   heroImage: `${TI}/zhangjiajie.jpg`,
   heroImageClassName: 'object-[center_30%]',
   introText: [
-    'Zhangjiajie is in Hunan Province in central China. Sandstone pillars rise more than a thousand metres in places. Mist often fills the valleys.',
-    'James Cameron used the national park as a visual reference for Avatar. Expect crowds at famous viewpoints and on the glass skywalk.',
-    'Wulingyuan is a UNESCO World Heritage site. Cable cars, elevators, and trails help you move between peaks.',
-    'Allow at least two or three full days for the forest park and Tianmen Mountain. Trains link the city to Beijing, Shanghai, and Chengdu.',
-    'For New Zealand visitors who love heights and hiking, Zhangjiajie is a standout nature stop.'
+    'Zhangjiajie is the gateway to the quartz-sandstone pillar landscape of Wulingyuan in north-west Hunan. UNESCO records more than 3,000 narrow pillars and peaks across the protected area, many rising over 200 metres. Mist, forest and deep ravines give the landscape the floating quality travellers associate with Avatar.',
+    'The name “Zhangjiajie” is used for several attractions that are not in one park. Wulingyuan and Zhangjiajie National Forest Park contain the famous pillar viewpoints. Tianmen Mountain rises beside Zhangjiajie city and has the long cableway, cliff paths and Heaven\'s Gate arch. The Grand Canyon Glass Bridge is a separate attraction again. Treating them as three different days produces a far smoother itinerary.',
+    'For New Zealand travellers, three full sightseeing days is the practical minimum. Stay near Wulingyuan for the forest park, then move to Zhangjiajie city for Tianmen Mountain and onward rail or air connections. Weather can hide the peaks, so a well-paced plan keeps some flexibility rather than assigning every viewpoint to a fixed hour.'
   ],
+  quickAnswer: 'Allow three full days: two for the Wulingyuan pillar landscape and one for Tianmen Mountain. Add the Grand Canyon Glass Bridge only if heights are a genuine priority. Wulingyuan, Tianmen Mountain and the glass bridge use separate entrances and tickets, so plan them as distinct areas.',
+  visitPlanning: {
+    recommendedVisitLength: '3 full days; 4 days for slower walks or a weather buffer',
+    bestFor: 'Scenery, photography, cableways and moderate walking',
+    combineWith: 'Changsha, Chongqing, Guilin or a wider natural-China itinerary',
+  },
+  inspirationVideos: [
+    {
+      youtubeId: 'sGbtojzJliQ',
+      title: 'Zhangjiajie: see the whole destination before you plan',
+      description: 'A practical English-language overview of Yuanjiajie, Tianzi Mountain, Golden Whip Stream, the Grand Canyon Glass Bridge and Tianmen Mountain.',
+      creator: 'Vince Travel',
+      duration: '25 minutes',
+      schemaDuration: 'PT25M',
+      publishedAt: '2025-04-12',
+    },
+    {
+      youtubeId: 'ZFlWKKoPbd4',
+      title: 'Tianmen Mountain in 4K',
+      description: 'A cinematic route from the city cableway through the cliff paths, glass skywalk, Tianmen Cave and the 99-bend mountain road.',
+      creator: 'Amazing Places on Our Planet',
+      duration: '13 minutes',
+      schemaDuration: 'PT13M',
+      publishedAt: '2018-05-11',
+    },
+  ],
+  mapGuide: {
+    title: 'Zhangjiajie map: where the famous sights actually are',
+    summary: 'The name Zhangjiajie covers several separate areas. Use the map as a planning diagram: sleep near Wulingyuan for the pillar landscape, then finish in Zhangjiajie city for Tianmen Mountain and your onward connection.',
+    stops: [
+      {
+        number: 1,
+        name: 'Zhangjiajie city & West railway station',
+        base: 'Arrival and final-night base',
+        description: 'The transport hub for high-speed rail, the airport and the lower Tianmen Mountain cableway station.',
+        travelNote: 'Start or finish here; allow transfer time between the station, airport and city hotel.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Zhangjiajie+West+Railway+Station',
+        position: { x: 22, y: 75 },
+      },
+      {
+        number: 2,
+        name: 'Tianmen Mountain',
+        base: 'One full sightseeing day',
+        description: 'Cableway, cliff paths, glass skywalks and Heaven\'s Gate; separate from the Avatar Mountains.',
+        travelNote: 'Access from Zhangjiajie city and choose the clearest available day.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Tianmen+Mountain+Zhangjiajie',
+        position: { x: 18, y: 91 },
+      },
+      {
+        number: 3,
+        name: 'Wulingyuan & National Forest Park',
+        base: 'Two-night sightseeing base',
+        description: 'The core pillar landscape: Yuanjiajie, Tianzi Mountain, Yangjiajie and Golden Whip Stream.',
+        travelNote: 'About 30 km from central Zhangjiajie; stay near the park entrances for early starts.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Wulingyuan+Scenic+Area',
+        position: { x: 62, y: 33 },
+      },
+      {
+        number: 4,
+        name: 'Grand Canyon Glass Bridge',
+        base: 'Optional half or full day',
+        description: 'The canyon-spanning glass bridge east of Wulingyuan; it is not inside the national forest park.',
+        travelNote: 'Add it after protecting two days for Wulingyuan, or include it in the CTS stopover route.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Zhangjiajie+Grand+Canyon+Glass+Bridge',
+        position: { x: 88, y: 28 },
+      },
+    ],
+    planningNotes: [
+      'Best hotel split: two nights in Wulingyuan, then one night in Zhangjiajie city.',
+      'Do not schedule Tianmen Mountain and Wulingyuan as if they share one entrance.',
+      'Keep the clearest morning for the upper Wulingyuan viewpoints.',
+    ],
+  },
+  featuredTour: {
+    eyebrow: 'The easy way to add Zhangjiajie',
+    title: 'China Stopover — Zhangjiajie (3 Days)',
+    summary: 'A compact guided route from Guangzhou that joins Tianmen Mountain, Yuanjiajie and the Grand Canyon Glass Bridge without asking first-time visitors to solve the transfers and timed entries themselves.',
+    duration: '3 days / 2 nights',
+    price: 'From NZD $1,899 per person',
+    image: '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
+    imageAlt: 'Zhangjiajie Grand Canyon Glass Bridge included in the three-day stopover',
+    imageCredit: 'Photo: Codas / Wikimedia Commons, CC BY-SA 4.0.',
+    href: '/tours/china/stopover/zhangjiajie',
+    highlights: [
+      'Tianmen Mountain cableway, skywalk and Heaven\'s Gate',
+      'Bailong Elevator, Yuanjiajie and Tianzi Mountain',
+      'Grand Canyon Glass Bridge and guided transfers',
+      'Return second-class rail from Guangzhou and 4-star hotels',
+    ],
+  },
   sections: [
     {
-      title: 'Zhangjiajie National Forest Park',
-      id: 'national-forest-park',
+      title: 'First, separate the three Zhangjiajie experiences',
+      id: 'three-distinct-areas',
       content: [
-        'The national park encompasses three primary scenic areas: Zhangjiajie Mountain (Mount Zhangjiajie), Tianzi Mountain (Emperor Mountain), and Suoxi Valley, plus numerous lesser-known sections. The sandstone pillar formations—resulted from 300 million years of geological processes—rise dramatically from the park floor. These distinctive peaked mountains create visual drama distinct from elsewhere in China.',
-        'A comprehensive park experience requires 2-3 days. Day one might explore Zhangjiajie Mountain scenic area via cable car ascent, glass walkway experience, and forest trails. Day two permits Tianzi Mountain exploration, featuring panoramic vistas and fewer crowds than Zhangjiajie Mountain. Day three allows Suoxi Valley hikes through quiet forest sections, past ancient temples, to remote viewpoints.',
-        'The famous Bailong Elevator—a high-speed lift ascending 326 metres vertically through mountain face—offers thrilling alternative to hiking steep sections. The Ten-Mile Gallery scenic section features peaceful cableway journey through dramatic valleys. Morning hikes offer misty atmospheric conditions; afternoon light cuts through clouds creating dramatic photography opportunities.'
-      ]
+        'Most planning mistakes begin by treating every famous photograph as part of one attraction. Wulingyuan Scenic Area, around 30 kilometres from central Zhangjiajie, includes Zhangjiajie National Forest Park, Yuanjiajie, Tianzi Mountain, Yangjiajie and Suoxiyu. This is where you find the dense pillar forest and the viewpoints commonly marketed as the “Avatar Mountains.”',
+        'Tianmen Mountain is beside Zhangjiajie city. Its signature experiences are the cableway, cliff-edge paths, glass skywalks and the natural Heaven\'s Gate arch. Zhangjiajie Grand Canyon and its glass bridge lie east of Wulingyuan and require a separate booking. They cannot sensibly be squeezed into the same half-day without turning the visit into a transfer exercise.',
+        'A useful base strategy is two nights near Wulingyuan for the pillar landscape, followed by one night in Zhangjiajie city for Tianmen Mountain and the next rail or flight connection. This reduces backtracking and leaves room to adapt when cloud or queues change the day.'
+      ],
+      image: {
+        src: '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
+        alt: 'Quartz sandstone pillars at Huangshizhai in Wulingyuan, Zhangjiajie',
+        caption: 'The Wulingyuan pillar landscape is the “Avatar Mountains” experience most travellers have in mind. Photo: Chensiyuan / Wikimedia Commons, CC BY-SA 4.0.',
+        imageClassName: 'object-[center_48%]',
+      },
+      link: { label: 'Read the UNESCO description of Wulingyuan →', href: 'https://whc.unesco.org/en/list/640' },
     },
     {
-      title: 'The Glass Walkway & Extreme Experiences',
-      id: 'glass-walkway',
+      title: 'Two days among the Wulingyuan “Avatar” peaks',
+      id: 'wulingyuan-avatar-peaks',
       content: [
-        'The Zhangjiajie Glass Skywalk, constructed on cliff at 1,430 metres elevation, extends 430 metres offering unobstructed valley views through transparent glass beneath visitors\' feet. The walkway accommodates simultaneous passage of 800 people. The experience creates exhilarating (or terrifying) sensation of walking above the landscape, with only glass separating visitors from 300-metre voids.',
-        'The walkway represents human engineering ambition applied to natural landscape. Construction required innovative techniques drilling into cliff faces, installing cable systems, and creating transparent structure withstanding extreme weather and seismic activity. Access requires valid ID; rental shoe covers protect the glass. The wait-time fluctuates by season; early morning visits (8-9am) minimise queues.',
-        'Beyond the walkway, other extreme experiences include cliff-face bungee jumping (470 metres), cableway with glass sections, and hiking across narrow cliff passages. These attractions appeal to adventure-seekers; traditional tourists may find standard trail experiences equally rewarding. The landscape\'s inherent drama transcends artificial adrenaline-enhancement.'
-      ]
+        'On the first day, concentrate on Yuanjiajie and the upper viewpoints. The Bailong Elevator provides a fast vertical link to the plateau, while shuttle routes connect the main overlooks. The landscape is more rewarding when you stop at fewer viewpoints for longer instead of racing through every named platform.',
+        'Use the second day for Tianzi Mountain, Yangjiajie or a lower-valley walk such as Golden Whip Stream, depending on weather and mobility. Upper routes deliver the wide pillar panoramas; valley trails add forest, water and a better sense of the height of the formations. Cableways and lifts reduce climbing, but the day still involves queues, slopes and repeated steps.',
+        'Mist is part of the landscape rather than automatically a bad forecast. Low cloud can create the floating-mountain effect, while heavy cloud may remove the view completely. Keep the clearest-looking morning for the highest viewpoints and avoid building onward transport around a tight park exit time.'
+      ],
+      image: {
+        src: '/images/guides/zhangjiajie/sandstone-spires.jpg',
+        alt: 'Layered sandstone spires in Zhangjiajie National Forest Park',
+        caption: 'More than 3,000 pillars and peaks define the UNESCO-listed Wulingyuan landscape. Photo: Lianguanlun / Wikimedia Commons, CC BY 4.0.',
+        imageClassName: 'object-[center_44%]',
+      },
     },
     {
-      title: 'Tianmen Mountain & Cable Car Experiences',
+      title: 'Tianmen Mountain: cableway, cliff paths and Heaven\'s Gate',
       id: 'tianmen-mountain',
       content: [
-        'Tianmen Mountain (Tianmen Shan, Heaven\'s Gate Mountain), located near Zhangjiajie city (30km), features the world\'s longest non-stop cable car (7,455 metres) ascending 1,279 metres. The cable car journey requires 8 minutes and passes several peaks; some passengers experience altitude-induced anxiety. The summit features observation platforms, Buddhist temple, and dramatic cliff views.',
-        'The Heaven\'s Gate natural arch—a natural rock passage at mountain summit—represents a geomantic auspicious symbol. Ancient emperors performed ceremonies here believing cosmic forces concentrated at this location. The modern cable car experience, whilst removing the pilgrimage hardship, preserves the spiritual geography.',
-        'Descent options include cable car return (retracing ascent), or the famous 999-step staircase descending cliff face (approximately 30-45 minutes). Alternative hiking paths offer quieter alternatives to cable car crowds. The scenic area warrants 4-5 hours including cable car rides, temple visits, and plateau exploration.'
-      ]
+        'Tianmen Mountain is a separate full-day outing from the forest park. The lower cableway station is in Zhangjiajie city, making this the logical final day before departure. Hunan\'s tourism authority lists the cableway at 7,455 metres with a vertical rise of 1,279 metres; the ride itself is part of the attraction, crossing the city edge, fields and the steep mountain road.',
+        'At the summit, visitors follow cliff paths around the plateau. Some sections have glass underfoot, but these are cliff-edge skywalks rather than the canyon-spanning Glass Bridge. The natural arch known as Tianmen Cave or Heaven\'s Gate sits below the summit and is approached by 999 steps or, depending on the operating route, escalators and shuttle transport.',
+        'Timed routes can change with weather, maintenance and crowd control. Book the correct route rather than relying on an old map, carry your passport, and allow most of the day. Travellers uncomfortable with exposed heights can still enjoy the cableway and conventional paths without making the glass sections the centre of the visit.'
+      ],
+      image: {
+        src: '/images/tours/tianmen-mountain-glass-walkway.jpg',
+        alt: 'Visitors on a glass cliff walkway at Tianmen Mountain above Zhangjiajie city',
+        caption: 'Tianmen Mountain\'s glass skywalk follows the cliff edge; it is a different attraction from the Grand Canyon Glass Bridge.',
+        imageClassName: 'object-[center_42%]',
+      },
+      link: { label: 'Explore the dedicated Tianmen Mountain guide →', href: '/tianmen-mountain-travel-guide' },
     },
     {
-      title: 'The Avatar Connection & Cultural Impact',
-      id: 'avatar-connection',
+      title: 'The Grand Canyon Glass Bridge: add it deliberately',
+      id: 'grand-canyon-glass-bridge',
       content: [
-        'James Cameron\'s scouting expedition (2008) identified Zhangjiajie National Forest Park as visual inspiration for Avatar\'s Pandora landscape. The floating mountain islands in Avatar\'s fictional world directly paralleled the sandstone pillars of Zhangjiajie. The 2009 Avatar release triggered massive tourism surge; the park was renamed "Avatar Hallelujah Mountain" for several years.',
-        'Avatar tourism remains powerful draw; many visitors explicitly desire experiencing "Pandora landscape." Tour operators capitalise on Avatar references; hotels feature Avatar imagery; guides provide Avatar context. Whilst the comparison is somewhat superficial—Avatar\'s fictional ecosystems contrast sharply with Zhangjiajie\'s real biodiversity—the cultural connection heightens appreciation for the landscape\'s otherworldly qualities.',
-        'The park itself benefits from Avatar tourism through increased infrastructure investment and international profile. However, overcrowding during peak seasons challenges park preservation. Environmental concerns regarding cable cars, walking paths, and human impact on sensitive ecosystems require ongoing management.'
-      ]
-    }
+        'The 430-metre Grand Canyon Glass Bridge spans a canyon rather than following a cliff. It is the attraction seen in photographs of visitors standing over a broad transparent deck with the gorge below. That distinction matters because the bridge is not inside Zhangjiajie National Forest Park and is not on Tianmen Mountain.',
+        'Include the bridge when the experience itself is a priority, when younger travellers want an adrenaline element, or when you have a fourth day. Travellers with limited time often gain more from a second Wulingyuan morning, especially if the first day was cloudy. Entry is normally timed and may involve restrictions on bags and items carried onto the bridge, so current rules should be checked when tickets are arranged.',
+        'The bridge can be paired with the Grand Canyon walk, but it should not replace the pillar landscape. If the “Avatar Mountains” brought you to Zhangjiajie, protect two days for Wulingyuan first.'
+      ],
+    },
+    {
+      title: 'A practical three-day plan from New Zealand',
+      id: 'three-day-plan',
+      content: [
+        'Day 1: enter Wulingyuan early and prioritise Yuanjiajie, the Bailong Elevator and a small number of upper viewpoints. Day 2: return for Tianzi Mountain, Yangjiajie or a valley walk chosen around visibility and fitness. Keep both evenings near Wulingyuan so the park gates are close the next morning.',
+        'Day 3: move to Zhangjiajie city and visit Tianmen Mountain. Stay in the city if your train or flight leaves the following morning. Add a fourth day for the Grand Canyon Glass Bridge, a slower forest walk or a weather buffer.',
+        'From New Zealand, Zhangjiajie usually works best inside a broader China itinerary rather than as a stand-alone long-haul trip. Changsha is the natural Hunan gateway; Chongqing and Guilin create strong onward combinations. A CTS specialist can sequence the rail, domestic flight, hotels and timed attraction entries so the landscape remains the focus.'
+      ],
+      image: {
+        src: '/images/baker-gu-zhangjiajie.jpg',
+        alt: 'CTS China specialist Baker Gu at a Zhangjiajie sandstone pillar viewpoint',
+        caption: 'CTS China specialist Baker Gu in Zhangjiajie — first-hand route planning helps balance viewpoints, queues and walking levels.',
+        imageClassName: 'object-[center_35%]',
+      },
+      link: { label: 'Ask CTS to build Zhangjiajie into your China itinerary →', href: '/tailor-made' },
+    },
+    {
+      title: 'Getting there and choosing where to stay',
+      id: 'getting-there-and-staying',
+      content: [
+        'Zhangjiajie Hehua International Airport serves the city, while Zhangjiajie West railway station handles high-speed rail services. Schedules change, so compare the whole door-to-door journey rather than choosing a connection only by headline travel time.',
+        'Wulingyuan town is the practical base for the main forest park entrances. Central Zhangjiajie is better for Tianmen Mountain, the airport and onward rail. Splitting the stay between the two areas prevents long daily transfers and gives the itinerary a natural finish in the city.',
+        'Independent travellers should use the official Railway 12306 platform or a reputable booking provider and keep passport names identical across transport and attraction reservations. Guided arrangements are especially useful here because park entrances, internal shuttles and cableway routes are easy to confuse before arrival.'
+      ],
+      image: {
+        src: '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
+        alt: 'Railway platforms at Zhangjiajie station with mountains in the distance',
+        caption: 'Rail links make Zhangjiajie easier to combine with other Chinese cities. Photo: xiquinhosilva / Wikimedia Commons, CC BY 2.0.',
+        imageClassName: 'object-[center_55%]',
+      },
+      link: { label: 'Open the official Railway 12306 booking website →', href: 'https://www.12306.cn/en/index.html' },
+    },
   ],
   attractions: [
     {
-      name: 'Zhangjiajie National Forest Park',
-      description: 'UNESCO World Heritage sandstone pillar landscape; primary destination featuring cable cars, glass walkway, temples.',
-      visitDuration: '2-3 days for comprehensive exploration',
-      bestTime: 'April-May and September-October for weather; misty mornings atmospheric',
-      ticketInfo: '¥248 (3-day pass); ¥298 with cable car; scenic vehicles included'
+      name: 'Wulingyuan Scenic Area',
+      description: 'UNESCO-listed landscape containing more than 3,000 quartz-sandstone pillars and peaks, ravines, streams, caves and natural bridges.',
+      visitDuration: '2 full days recommended',
+      bestTime: 'Use the clearest mornings for high viewpoints; spring and autumn are generally comfortable',
+      ticketInfo: 'Multi-day admission; cableways and lifts may be charged separately. Passport and advance reservation commonly required.'
     },
     {
-      name: 'Glass Skywalk',
-      description: 'Transparent cliff-mounted walkway at 1,430m offering vertigo-inducing valley perspectives.',
-      visitDuration: '1-1.5 hours',
-      bestTime: 'Early morning (8-9am) for minimal queues; clear weather for views',
-      ticketInfo: 'Included in park pass; shoe covers ¥30; ID required'
+      name: 'Yuanjiajie & the Bailong Elevator',
+      description: 'Upper-plateau viewpoints associated with the Avatar landscape, reached by shuttle, hiking routes and the cliff-mounted elevator.',
+      visitDuration: 'Half to full day within Wulingyuan',
+      bestTime: 'Early entry or later afternoon to reduce peak queue pressure',
+      ticketInfo: 'Inside Wulingyuan; confirm the current elevator supplement when booking.'
     },
     {
-      name: 'Bailong Elevator',
-      description: 'High-speed lift ascending 326m through mountain face; alternative to hiking steep terrain.',
-      visitDuration: '20-30 minutes (including ascent/descent)',
-      bestTime: 'Any time; reduces physical exertion on steep trail',
-      ticketInfo: 'Included in park pass; operates weather permitting'
+      name: 'Tianzi Mountain',
+      description: 'Broad views across the pillar forest with cableway access and walking links to upper scenic routes.',
+      visitDuration: 'Half to full day within Wulingyuan',
+      bestTime: 'Clear mornings for distance views; mist for more atmospheric photography',
+      ticketInfo: 'Inside Wulingyuan; cableway arrangements vary by route.'
+    },
+    {
+      name: 'Golden Whip Stream',
+      description: 'A lower-valley forest walk beneath the pillars, useful when cloud hides the upper viewpoints or travellers prefer gentler terrain.',
+      visitDuration: '2–4 hours depending on the chosen section',
+      bestTime: 'Morning or a cloudy day when upper viewpoints have poor visibility',
+      ticketInfo: 'Inside Wulingyuan; use official shuttles to connect with park entrances.'
     },
     {
       name: 'Tianmen Mountain',
-      description: 'Heaven\'s Gate mountain with world\'s longest cable car, temple, and 999-step descent option.',
-      visitDuration: '4-5 hours',
-      bestTime: 'Morning for clear light; cable car ride dramatic at any time',
-      ticketInfo: '¥258 adults; ¥129 students; cable car, descent stairs, scenic area included'
-    },
-    {
-      name: 'Ten-Li Gallery (Ten-Mile Gallery)',
-      description: 'Scenic cableway through dramatic valleys; peaceful alternative to peak areas.',
-      visitDuration: '1.5-2 hours',
-      bestTime: 'Any season; less crowded than famous viewpoints',
-      ticketInfo: 'Included in park pass; gentle alternative to hiking'
-    },
-    {
-      name: 'Suoxi Valley',
-      description: 'Quiet valley section with forest trails, streams, ancient temples, fewer crowds.',
-      visitDuration: '3-4 hours',
-      bestTime: 'Any season; morning hiking most pleasant',
-      ticketInfo: 'Included in park pass; hiking distance 6-8km'
-    },
-    {
-      name: 'Tianzi Mountain Scenic Area',
-      description: 'Panoramic mountain vistas; photo hot spots and less crowded than Zhangjiajie Mountain.',
-      visitDuration: '3-4 hours',
-      bestTime: 'Late afternoon for sunset light; spring for flowers',
-      ticketInfo: 'Included in park pass; hiking trails moderate difficulty'
+      description: 'Separate mountain beside Zhangjiajie city with a 7,455-metre cableway, cliff paths, glass skywalks and the Heaven’s Gate arch.',
+      visitDuration: 'Most of one day',
+      bestTime: 'Choose the clearest available day and allow for timed route controls',
+      ticketInfo: 'Separate timed ticket from Wulingyuan; operating routes can change.'
     },
     {
       name: 'Zhangjiajie Grand Canyon Glass Bridge',
-      description: 'Transparent bridge suspended 300m above canyon; engineering feat and photography location.',
-      visitDuration: '1-1.5 hours',
-      bestTime: 'Early morning or late afternoon for light; clear weather essential',
-      ticketInfo: '¥128 adults; ¥64 students; separate from national park pass'
+      description: 'A separate canyon-spanning glass bridge east of Wulingyuan, best added for travellers who specifically want the height experience.',
+      visitDuration: 'Half day; longer if combining it with the canyon walk',
+      bestTime: 'Clear weather and a pre-booked timed entry',
+      ticketInfo: 'Separate ticket; current bag, passport and entry rules should be confirmed before travel.'
     }
   ],
   practicalInfo: {
-    transportation: 'Zhangjiajie Hehuang Airport (45km) connects to major cities (Beijing 2.5 hours, Shanghai 2 hours, Chengdu 1.5 hours). City has metro development; taxis/Didi prevalent. High-speed trains to Beijing (11 hours), Shanghai (12 hours), Chengdu (6 hours), Chongqing (4 hours). Park accessed by cable car, scenic vehicles, and hiking; internal transport passes included in park admission.',
-    climate: 'Subtropical; mild year-round. Winters (December-February) cool (5-15°C), rarely cold. Summers (June-August) warm (20-28°C) with occasional rain. Spring and autumn mild (15-25°C). Cloud cover frequent; misty atmospheric conditions common.',
-    bestTime: 'April to May (spring, mild weather, flowers) and September to November (autumn, clear skies, ideal hiking). December-February cool and foggy; July-August warm and humid. Rainy season (May-June) can affect visibility.',
-    budget: 'Street food and casual meals ¥20-50; mid-range ¥60-150; upscale ¥150-400. Accommodation: budget ¥100-250, mid-range ¥400-900, luxury ¥1200+. Park entry ¥248-298; activities ¥100-258 additional. Multi-day park passes recommended.',
-    language: 'Mandarin Chinese; Hunan dialect spoken locally. English present in tourist-heavy city areas; scarce in national park. Translation apps recommended for independent exploration.',
-    safety: 'Zhangjiajie safe for tourists; well-developed tourism infrastructure. National park hiking requires reasonable fitness levels; steep sections and exposed cliff edges demand attention. Heights and exposure create psychological challenges for some visitors. Follow guide safety instructions carefully.'
+    transportation: 'Zhangjiajie Hehua International Airport and Zhangjiajie West railway station serve the city. Stay near Wulingyuan for the main forest park, then use central Zhangjiajie for Tianmen Mountain and onward transport. Official park shuttles, cableways, lifts and walking routes connect scenic areas, but not every transfer is covered by one ticket.',
+    climate: 'The humid mountain climate creates fast changes in visibility. Summers are warm and wet; winter can bring cold paths, fog and occasional ice at elevation. Temperatures at viewpoints can feel noticeably cooler than in the city.',
+    bestTime: 'April-May and September-November generally balance comfortable walking with good scenery. Avoid major Chinese public holidays where possible. Mist can be beautiful, but retain a weather buffer if clear panoramic views are essential.',
+    budget: 'Budget separately for Wulingyuan admission, optional lifts or cableways, Tianmen Mountain and the Grand Canyon Glass Bridge. Current prices and inclusions change; confirm them when timed tickets are booked. Splitting hotels between Wulingyuan and the city can reduce transfer costs and lost time.',
+    language: 'Mandarin is standard and English is limited outside major hotels and organised tours. Save Chinese place names, hotel addresses and ticket confirmations offline; translation and payment apps are useful.',
+    safety: 'Paths are managed but can be wet, steep and crowded. Wear shoes with grip, use handrails, carry water, and choose cableways or shorter valley routes when mobility or balance is limited. Follow weather closures and official queue controls.'
   },
   faqs: [
     {
       question: 'How many days should I spend in Zhangjiajie?',
-      answer: 'Minimum 2 days: one day Zhangjiajie National Forest Park (glass walkway, main scenic areas), one day Tianmen Mountain. Three days permits Zhangjiajie mountain comprehensive exploration plus day trip to Tianmen. Four+ days allows multiple park areas, quieter trails, and neighbouring attractions.'
+      answer: 'Three full days is the practical minimum: two days for Wulingyuan and one for Tianmen Mountain. Add a fourth day for the Grand Canyon Glass Bridge, slower valley walks or protection against poor visibility.'
     },
     {
-      question: 'Is the glass walkway actually scary?',
-      answer: 'Psychological response varies. Some visitors find it thrilling; others experience significant vertigo. The structure is engineered safely; fear is psychological. If afraid of heights, consider skipping this attraction. Alternative park experiences (cable cars, hiking) offer drama without glass-floor exposure.'
+      question: 'Are the Zhangjiajie Glass Bridge and Tianmen glass skywalk the same place?',
+      answer: 'No. The Grand Canyon Glass Bridge spans a canyon east of Wulingyuan. Tianmen Mountain has shorter glass-floor paths attached to the cliff. Wulingyuan, Tianmen Mountain and the Grand Canyon are separate scenic areas with separate tickets.'
     },
     {
-      question: 'Can I do Zhangjiajie and Guilin in one trip?',
-      answer: 'Yes; both in southern/central China. High-speed rail connects Zhangjiajie to Guilin (5-6 hours). Most itineraries allocate 2-3 days Zhangjiajie, 2-3 days Guilin. Combined trips require 5-6 days minimum; ideal itinerary uses 7-8 days.'
+      question: 'Where should I stay for Zhangjiajie National Forest Park?',
+      answer: 'Stay in Wulingyuan for the two forest-park days so you can reach the entrances early. Move to central Zhangjiajie for Tianmen Mountain and an easier rail or airport departure. One hotel for the whole visit usually creates unnecessary transfers.'
     },
     {
       question: 'When is the best time to visit Zhangjiajie?',
-      answer: 'April-May (spring, mild, flowers) and September-November (autumn, clear skies) ideal. Cloud cover frequent any time; misty mornings atmospheric but reduce visibility. December-February cold and foggy; July-August warm and humid. Avoid Chinese New Year and summer holidays for crowds.'
+      answer: 'April-May and September-November generally offer comfortable walking conditions. Visibility can change in any season: light mist creates atmosphere, while heavy cloud can hide entire viewpoints. Avoid major Chinese public holidays if your dates are flexible.'
     },
     {
-      question: 'Do I need good fitness for Zhangjiajie hiking?',
-      answer: 'Park offers varied difficulty: cable cars permit low-fitness access; moderate trails suit average fitness; steep sections challenge experienced hikers. Main attractions (glass walkway, Bailong elevator, Tianmen cable car) avoid strenuous hiking. Independent hikers should assess personal fitness and select trails accordingly.'
+      question: 'Do I need strong fitness for Zhangjiajie?',
+      answer: 'You can reduce climbing with park shuttles, the Bailong Elevator and cableways, but most routes still involve slopes, steps and long periods on your feet. Travellers with limited mobility should plan fewer viewpoints, allow more time and choose valley walks or assisted routes.'
+    },
+    {
+      question: 'Can Zhangjiajie be combined with Guilin or Chongqing?',
+      answer: 'Yes. Both combinations work well in a broader natural-China itinerary, but connection times and timetables change. Allow at least three sightseeing days in Zhangjiajie before continuing and compare rail and domestic-flight options for your exact dates.'
     }
   ],
-  relatedTourSlugs: ['best-of-china-beijing-xian-hangzhou-puyuan', 'zhangjiajie-signature-mountains'],
-  relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'zhangjiajie-avatar-mountains-guide'],
+  relatedTourSlugs: ['zhangjiajie', 'landscapes'],
+  relatedGuideSlugs: ['tianmen-mountain-travel-guide', 'guilin-travel-guide', 'yangshuo-travel-guide'],
   relatedBlogSlugs: ['avatar-mountains-zhangjiajie-guide', 'photography-guide-china-best-locations-hidden-gems', 'best-time-visit-china-seasonal-weather-crowds-guide'],
   galleryImages: [],
+  sources: [
+    { label: 'UNESCO World Heritage Centre — Wulingyuan Scenic and Historic Interest Area', href: 'https://whc.unesco.org/en/list/640' },
+    { label: 'Hunan Provincial Department of Culture and Tourism — Tianmen Mountain National Forest Park', href: 'https://whhlyt.hunan.gov.cn/whhlyt/english/Tourism/5AScenicAreas/202206/t20220608_25435436.html' },
+    { label: 'China Railway 12306 — official railway booking platform', href: 'https://www.12306.cn/en/index.html' },
+  ],
   createdAt: '2026-01-01',
-  updatedAt: '2026-04-21'
+  updatedAt: '2026-09-17'
 };
 
 // ============================================================================

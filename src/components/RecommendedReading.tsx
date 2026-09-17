@@ -51,7 +51,7 @@ export default function RecommendedReading({
               </p>
               <div className="flex items-center justify-between text-xs text-gray-500">
                 <span>{post.author}</span>
-                {post.readTime && <span>{post.readTime} min read</span>}
+                {post.readTime && <span>{post.readTime}</span>}
               </div>
             </div>
             <div className="px-5 py-3 bg-warm-50 border-t border-warm-100 text-sm text-primary font-semibold group-hover:text-primary/80 transition-colors">
