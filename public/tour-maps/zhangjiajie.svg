@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1200 650" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Zhangjiajie stopover route</title>
+  <desc id="description">Three-day route from Guangzhou to Tianmen Mountain, Zhangjiajie National Forest Park and the Grand Canyon Glass Bridge.</desc>
+  <rect width="1200" height="650" fill="#F8F3EB"/>
+  <rect width="1200" height="116" fill="#1B2E40"/><rect y="116" width="1200" height="6" fill="#C92333"/>
+  <text x="58" y="56" fill="#FFFFFF" font-family="Georgia, serif" font-size="38" font-weight="700">Zhangjiajie Stopover</text>
+  <text x="60" y="88" fill="#D9E0E6" font-family="Arial, sans-serif" font-size="18">3 days · Tianmen Mountain · Avatar peaks · Glass Bridge</text>
+  <path d="M100 320 H280 H500 H720 H930 H1100" fill="none" stroke="#C92333" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#C92333"><path d="M266 311 l18 9 -18 9z"/><path d="M486 311 l18 9 -18 9z"/><path d="M706 311 l18 9 -18 9z"/><path d="M916 311 l18 9 -18 9z"/><path d="M1086 311 l18 9 -18 9z"/></g>
+  <g fill="#FFFFFF" stroke="#C92333" stroke-width="5">
+    <circle cx="100" cy="320" r="16"/><circle cx="280" cy="320" r="16"/><circle cx="500" cy="320" r="16"/>
+    <circle cx="720" cy="320" r="16"/><circle cx="930" cy="320" r="16"/><circle cx="1100" cy="320" r="16"/>
+  </g>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g fill="#1B2E40" font-size="21" font-weight="700">
+      <text x="100" y="270">Guangzhou</text><text x="280" y="270">Zhangjiajie</text><text x="500" y="270">Tianmen Mountain</text>
+      <text x="720" y="270">Yuanjiajie</text><text x="930" y="270">Tianzi Mountain</text><text x="1100" y="270">Glass Bridge</text>
+    </g>
+    <g fill="#68737D" font-size="15">
+      <text x="100" y="362">Day 1 · Train</text><text x="280" y="362">Arrival</text><text x="500" y="362">Day 1 · Cable car &amp; skywalk</text>
+      <text x="720" y="362">Day 2 · Bailong Elevator</text><text x="930" y="362">Day 2 · Mountain cable car</text><text x="1100" y="362">Day 3 · Return by train</text>
+    </g>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="58" y="450" width="1084" height="130" rx="20" fill="#FFFFFF" stroke="#E4D9CB"/>
+    <text x="92" y="492" fill="#C92333" font-size="16" font-weight="700" letter-spacing="1">THREE DISTINCT LANDSCAPES</text>
+    <text x="92" y="530" fill="#1B2E40" font-size="20" font-weight="700">Tianmen’s cliff paths</text><text x="365" y="530" fill="#1B2E40" font-size="20" font-weight="700">Wulingyuan’s sandstone pillars</text><text x="775" y="530" fill="#1B2E40" font-size="20" font-weight="700">Grand Canyon’s glass bridge</text>
+    <text x="92" y="558" fill="#68737D" font-size="16">Urban cable car to Heaven’s Gate</text><text x="365" y="558" fill="#68737D" font-size="16">The scenery associated with Avatar</text><text x="775" y="558" fill="#68737D" font-size="16">A final high-altitude thrill</text>
+  </g>
+</svg>

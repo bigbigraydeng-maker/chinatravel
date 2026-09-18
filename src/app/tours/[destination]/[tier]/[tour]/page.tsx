@@ -160,6 +160,8 @@ export default function TourPage({ params }: TourPageProps) {
     'essentials',
     'beijing-xian',
     'shanghai-surroundings',
+    'yunnan-explorer',
+    'zhangjiajie',
   ]);
   if (upgradedTourSlugs.has(tour.slug)) {
     return <><SchemaMarkup data={schemas} /><UpgradedTourPage tour={tour} /></>;

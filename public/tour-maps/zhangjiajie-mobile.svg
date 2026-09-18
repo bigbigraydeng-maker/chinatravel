@@ -1,0 +1,28 @@
+<svg viewBox="0 0 720 1040" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Zhangjiajie stopover route</title>
+  <desc id="description">Vertical three-day route from Guangzhou to Tianmen Mountain, Zhangjiajie National Forest Park and the Grand Canyon Glass Bridge.</desc>
+  <rect width="720" height="1040" fill="#F8F3EB"/>
+  <rect width="720" height="145" fill="#1B2E40"/><rect y="145" width="720" height="6" fill="#C92333"/>
+  <text x="40" y="65" fill="#FFFFFF" font-family="Georgia, serif" font-size="39" font-weight="700">Zhangjiajie Stopover</text>
+  <text x="42" y="106" fill="#D9E0E6" font-family="Arial, sans-serif" font-size="19">3 days · Avatar peaks · Glass Bridge</text>
+  <path d="M105 220 V790" fill="none" stroke="#C92333" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#FFFFFF" stroke="#C92333" stroke-width="5">
+    <circle cx="105" cy="220" r="16"/><circle cx="105" cy="330" r="16"/><circle cx="105" cy="440" r="16"/>
+    <circle cx="105" cy="560" r="16"/><circle cx="105" cy="680" r="16"/><circle cx="105" cy="790" r="16"/>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <g fill="#1B2E40" font-size="25" font-weight="700">
+      <text x="155" y="214">Guangzhou → Zhangjiajie</text><text x="155" y="324">Tianmen Mountain</text>
+      <text x="155" y="434">Yuanjiajie</text><text x="155" y="554">Tianzi Mountain</text>
+      <text x="155" y="674">Grand Canyon Glass Bridge</text><text x="155" y="784">Return to Guangzhou</text>
+    </g>
+    <g fill="#68737D" font-size="18">
+      <text x="155" y="244">Day 1 · Train journey</text><text x="155" y="354">Day 1 · Cable car and glass skywalk</text>
+      <text x="155" y="464">Day 2 · Bailong Elevator and Avatar peaks</text><text x="155" y="584">Day 2 · Mountain cable car descent</text>
+      <text x="155" y="704">Day 3 · Canyon visit</text><text x="155" y="814">Day 3 · Railway transfer</text>
+    </g>
+  </g>
+  <rect x="40" y="875" width="640" height="115" rx="18" fill="#FFFFFF" stroke="#E4D9CB"/>
+  <text x="70" y="918" fill="#C92333" font-family="Arial, sans-serif" font-size="17" font-weight="700">WHY THIS ROUTE WORKS</text>
+  <text x="70" y="953" fill="#68737D" font-family="Arial, sans-serif" font-size="18">Three different mountain experiences in one short stopover.</text>
+</svg>

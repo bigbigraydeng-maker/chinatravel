@@ -10,6 +10,10 @@ function shortTourName(tour: Tour) {
   return tour.name.replace(/^[^—]+—\s*/, '');
 }
 
+function displayPrice(price: string) {
+  return price.replace(/\s*(?:per\s+person|pp)\s*$/i, '');
+}
+
 export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
   const params = useSearchParams();
   const options = departures(tour);
@@ -42,7 +46,7 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
   return (
     <aside id="enquiry" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
       <p className="text-xs uppercase tracking-widest text-primary">Your {shortTourName(tour)} journey</p>
-      <p className="mt-3 font-serif text-3xl">{offer?.price || tour.price}</p>
+      <p className="mt-3 font-serif text-3xl">{displayPrice(offer?.price || tour.price)}</p>
       <p className="mt-2 text-sm text-ink-muted">Per person · NZD · See inclusions below</p>
       <label className="mt-6 block text-sm font-medium">
         Departure
@@ -67,7 +71,7 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
         tourSlug={tour.slug}
         destination={tour.destination}
         tier={tour.tier}
-        enquiryContext={`Preferred departure: ${offer?.label || 'Future dates requested'}\nTravellers: ${pax}\nDisplayed price per person: ${offer?.price || tour.price}`}
+        enquiryContext={`Preferred departure: ${offer?.label || 'Future dates requested'}\nTravellers: ${pax}\nDisplayed price per person: ${displayPrice(offer?.price || tour.price)}`}
       />
     </aside>
   );

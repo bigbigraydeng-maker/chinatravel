@@ -21,6 +21,8 @@ const MAP_SLUGS = [
   'grand-tour',
   'china-icons-collection',
   'china-icons-collection-christchurch',
+  'yunnan-explorer',
+  'zhangjiajie',
 ] as const;
 
 const TOUR_MAPS: Record<string, TourMapAssets> = Object.fromEntries(

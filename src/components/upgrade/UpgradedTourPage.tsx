@@ -70,6 +70,20 @@ const galleryAlts: Record<string, string[]> = {
     'A traditional canal town in the Yangtze Delta',
     'Shanghai’s illuminated waterfront at night',
   ],
+  'yunnan-explorer': [
+    'Songzanlin Monastery reflected in Lamuyangcuo Lake, Shangri-La',
+    'The Three Pagodas beneath the Cangshan Mountains near Dali',
+    'A canal running through Lijiang Old Town',
+    'A traditional village in Yunnan’s highland landscape',
+    'Songzanlin Monastery in Shangri-La',
+  ],
+  zhangjiajie: [
+    'Sandstone peaks across Zhangjiajie National Forest Park',
+    'The Avatar-like sandstone spires of Zhangjiajie',
+    'Zhangjiajie Grand Canyon Glass Bridge',
+    'The cliff-edge glass walkway on Tianmen Mountain',
+    'Zhangjiajie railway station, the starting point for this stopover',
+  ],
 };
 
 const additionalGalleryImages: Record<string, { src: string; alt: string }[]> = {
@@ -119,6 +133,20 @@ const localGallerySources: Record<string, string[]> = {
     '/images/tours/wuzhen-canal.jpg',
     '/images/tours/shanghai-night-red.jpg',
   ],
+  'yunnan-explorer': [
+    '/images/tours/shangri-la-monastery-lake.jpg',
+    '/blog/sourced/dali-three-pagodas.jpg',
+    '/blog/sourced/lijiang-old-town-canal.jpg',
+    '/images/tours/yunnan-village.jpg',
+    '/images/tours/shangri-la-monastery.jpg',
+  ],
+  zhangjiajie: [
+    '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
+    '/images/guides/zhangjiajie/sandstone-spires.jpg',
+    '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
+    '/images/tours/tianmen-mountain-glass-walkway.jpg',
+    '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
+  ],
 };
 
 const overviewHeadings: Record<string, string> = {
@@ -128,6 +156,8 @@ const overviewHeadings: Record<string, string> = {
   'beijing-xian': 'Two capitals, one clear introduction to China.',
   essentials: 'China’s essential cities, paced for discovery.',
   'shanghai-surroundings': 'Water towns, gardens and the Shanghai skyline.',
+  'yunnan-explorer': 'Ancient towns, highland cultures and the road to Shangri-La.',
+  zhangjiajie: 'Three days among China’s most cinematic mountain landscapes.',
 };
 
 function shortTourName(tour: Tour) {
@@ -209,6 +239,12 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
       <div className="mx-auto grid max-w-7xl items-start gap-10 px-4 py-12 lg:grid-cols-[minmax(0,2fr)_minmax(300px,1fr)]">
         <div className="min-w-0 space-y-14">
           <section id="overview" className="scroll-mt-24">
+            {tour.quickAnswer && (
+              <aside className="mb-8 rounded-2xl border border-primary/20 bg-white p-6">
+                <p className="text-xs font-semibold uppercase tracking-[.2em] text-primary">Quick answer</p>
+                <p className="mt-3 leading-relaxed text-ink">{tour.quickAnswer}</p>
+              </aside>
+            )}
             <h2 className="font-serif text-3xl">{overviewHeadings[tour.slug] ?? 'The experiences that shape this journey.'}</h2>
             <ul className="mt-6 grid gap-4 sm:grid-cols-2">
               {tour.highlights.map((highlight) => (

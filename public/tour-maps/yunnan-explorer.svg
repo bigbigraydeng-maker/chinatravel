@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Colorful Yunnan tour route</title>
+  <desc id="description">Route from Auckland through Beijing to Dali, Lijiang, Tiger Leaping Gorge and Shangri-La, returning through Beijing.</desc>
+  <rect width="1200" height="700" fill="#F8F3EB"/>
+  <rect width="1200" height="116" fill="#1B2E40"/>
+  <rect y="116" width="1200" height="6" fill="#C92333"/>
+  <text x="58" y="56" fill="#FFFFFF" font-family="Georgia, serif" font-size="38" font-weight="700">Colorful Yunnan</text>
+  <text x="60" y="88" fill="#D9E0E6" font-family="Arial, sans-serif" font-size="18">11 days · Dali · Lijiang · Shangri-La</text>
+
+  <g fill="none" stroke="#C92333" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M105 285 H280 H455 H650 H850 H1035"/>
+    <path d="M1035 430 H850 H455 H280" stroke-dasharray="10 12" opacity=".8"/>
+    <path d="M1035 285 C1090 320 1090 395 1035 430"/>
+  </g>
+  <g fill="#C92333">
+    <path d="M266 276 l18 9 -18 9z"/><path d="M441 276 l18 9 -18 9z"/><path d="M636 276 l18 9 -18 9z"/><path d="M836 276 l18 9 -18 9z"/>
+    <path d="M864 421 l-18 9 18 9z"/><path d="M469 421 l-18 9 18 9z"/><path d="M294 421 l-18 9 18 9z"/>
+  </g>
+  <g fill="#FFFFFF" stroke="#C92333" stroke-width="5">
+    <circle cx="105" cy="285" r="15"/><circle cx="280" cy="285" r="15"/><circle cx="455" cy="285" r="15"/>
+    <circle cx="650" cy="285" r="15"/><circle cx="850" cy="285" r="15"/><circle cx="1035" cy="285" r="15"/>
+    <circle cx="1035" cy="430" r="15"/><circle cx="850" cy="430" r="15"/><circle cx="455" cy="430" r="15"/>
+    <circle cx="280" cy="430" r="15"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <g fill="#1B2E40" font-size="22" font-weight="700">
+      <text x="105" y="240">Auckland</text><text x="280" y="240">Beijing</text><text x="455" y="240">Dali</text>
+      <text x="650" y="240">Lijiang</text><text x="850" y="240">Tiger Leaping Gorge</text><text x="1035" y="240">Shangri-La</text>
+      <text x="1035" y="486">Shangri-La</text><text x="850" y="486">Lijiang</text><text x="455" y="486">Beijing</text>
+      <text x="280" y="486">Auckland</text>
+    </g>
+    <g fill="#68737D" font-size="15">
+      <text x="105" y="325">Day 1 · Fly</text><text x="280" y="325">Day 2 · Connect</text><text x="455" y="325">Days 2–4 · Erhai &amp; Bai culture</text>
+      <text x="650" y="325">Days 5–6 · Naxi heritage</text><text x="850" y="325">Day 7 · Scenic road journey</text><text x="1035" y="325">Days 7–8 · Tibetan highlands</text>
+      <text x="1035" y="520">Coach return</text><text x="850" y="520">Day 9 · Free day</text><text x="455" y="520">Day 10 · Connect</text><text x="280" y="520">Day 11 · Arrive home</text>
+    </g>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="58" y="590" width="1084" height="70" rx="16" fill="#FFFFFF" stroke="#E4D9CB"/>
+    <circle cx="100" cy="625" r="8" fill="#C92333"/><text x="120" y="631" fill="#1B2E40" font-size="16">Flight</text>
+    <line x1="224" y1="625" x2="272" y2="625" stroke="#C92333" stroke-width="4" stroke-dasharray="8 8"/><text x="292" y="631" fill="#1B2E40" font-size="16">Return journey</text>
+    <text x="560" y="631" fill="#68737D" font-size="16">High-altitude stay: Shangri-La 3,276 m · allow time to acclimatise</text>
+  </g>
+</svg>

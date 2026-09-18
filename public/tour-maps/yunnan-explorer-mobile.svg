@@ -1,0 +1,30 @@
+<svg viewBox="0 0 720 1180" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Colorful Yunnan tour route</title>
+  <desc id="description">Vertical route from Auckland through Beijing to Dali, Lijiang, Tiger Leaping Gorge and Shangri-La, returning through Beijing.</desc>
+  <rect width="720" height="1180" fill="#F8F3EB"/>
+  <rect width="720" height="145" fill="#1B2E40"/><rect y="145" width="720" height="6" fill="#C92333"/>
+  <text x="40" y="67" fill="#FFFFFF" font-family="Georgia, serif" font-size="40" font-weight="700">Colorful Yunnan</text>
+  <text x="42" y="108" fill="#D9E0E6" font-family="Arial, sans-serif" font-size="20">11 days · Dali · Lijiang · Shangri-La</text>
+  <path d="M105 220 V950" fill="none" stroke="#C92333" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#FFFFFF" stroke="#C92333" stroke-width="5">
+    <circle cx="105" cy="220" r="16"/><circle cx="105" cy="315" r="16"/><circle cx="105" cy="410" r="16"/>
+    <circle cx="105" cy="520" r="16"/><circle cx="105" cy="630" r="16"/><circle cx="105" cy="740" r="16"/>
+    <circle cx="105" cy="845" r="16"/><circle cx="105" cy="950" r="16"/>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <g fill="#1B2E40" font-size="25" font-weight="700">
+      <text x="155" y="214">Auckland → Beijing</text><text x="155" y="309">Beijing → Dali</text><text x="155" y="404">Dali</text>
+      <text x="155" y="514">Lijiang</text><text x="155" y="624">Tiger Leaping Gorge</text><text x="155" y="734">Shangri-La</text>
+      <text x="155" y="839">Lijiang → Beijing</text><text x="155" y="944">Beijing → Auckland</text>
+    </g>
+    <g fill="#68737D" font-size="18">
+      <text x="155" y="244">Day 1 · International flight</text><text x="155" y="339">Day 2 · Domestic connection</text>
+      <text x="155" y="434">Days 2–4 · Erhai and Bai culture</text><text x="155" y="544">Days 5–6 · Naxi heritage</text>
+      <text x="155" y="654">Day 7 · Scenic road journey</text><text x="155" y="764">Days 7–8 · Tibetan highlands</text>
+      <text x="155" y="869">Days 9–10 · Free day and flight</text><text x="155" y="974">Day 11 · Arrive home</text>
+    </g>
+  </g>
+  <rect x="40" y="1030" width="640" height="105" rx="18" fill="#FFFFFF" stroke="#E4D9CB"/>
+  <text x="70" y="1071" fill="#C92333" font-family="Arial, sans-serif" font-size="17" font-weight="700">HIGH-ALTITUDE NOTE</text>
+  <text x="70" y="1105" fill="#68737D" font-family="Arial, sans-serif" font-size="18">Shangri-La is 3,276 m · allow time to acclimatise.</text>
+</svg>

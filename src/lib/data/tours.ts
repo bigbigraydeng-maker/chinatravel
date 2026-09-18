@@ -1086,6 +1086,32 @@ export const tours: Tour[] = [
       'Dali',
       'Lijiang',
     ],
+    tourCities: ['beijing', 'dali', 'lijiang', 'shangri-la', 'yunnan'],
+    quickAnswer:
+      'Colorful Yunnan is an 11-day CTS journey from Auckland via Beijing, combining Dali and Erhai Lake, Lijiang and the Tea Horse Road, Tiger Leaping Gorge, and Shangri-La. International and domestic flights, four-star hotels, specified meals, guides, transfers, and listed admissions are included. The published September 2026 departure has passed, so enquire for the next available date.',
+    faqs: [
+      {
+        question: 'What places are included in the Colorful Yunnan itinerary?',
+        answer:
+          'The itinerary travels from Beijing to Dali, then continues to Lijiang, Tiger Leaping Gorge, and Shangri-La before returning to Auckland via Beijing. Highlights include Erhai Lake, Shuanglang Ancient Town, Lashi Lake, Shuhe Ancient Town, Dukezong Old Town, Songzanlin Monastery, and Napa Lake.',
+      },
+      {
+        question: 'Are flights included in the Colorful Yunnan price?',
+        answer:
+          'Yes. The published inclusions cover international and domestic airfares, four-star hotel accommodation, English-speaking guides, land transfers, listed admissions, and the meals specified in the day-by-day itinerary.',
+      },
+      {
+        question: 'Which Yunnan activities cost extra?',
+        answer:
+          'The Haixi-line day from Dali and the Naxi village and Yuzhu Qingtian day from Lijiang are optional activities. The itinerary lists each at approximately CNY 550 per person and notes that minimum participant numbers and local confirmation apply.',
+      },
+      {
+        question: 'Can I book Colorful Yunnan for a future date?',
+        answer:
+          'The listed 10 September 2026 departure has passed. Send CTS an enquiry with your preferred month and traveller count so the Auckland team can confirm the next group date or discuss a tailor-made Yunnan journey.',
+        link: { href: '/tailor-made', label: 'Plan a tailor-made Yunnan journey' },
+      },
+    ],
     departureDates: ['10 September 2026'],
     singleSupplement: 'NZD $340',
   },
@@ -2303,7 +2329,33 @@ export const tours: Tour[] = [
     metaDescription: 'Experience Zhangjiajie\'s stunning natural landscapes, including Tianmen Mountain, the Bailong Elevator, and the famous Glass Bridge — the in... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2026-09-18',
+    tourCities: ['zhangjiajie', 'guangzhou'],
+    quickAnswer:
+      'This three-day Zhangjiajie stopover travels by second-class train from Guangzhou and includes Tianmen Mountain, the glass skywalk, Bailong Elevator, Yuanjiajie, Tianzi Mountain, and Zhangjiajie Grand Canyon Glass Bridge. Four-star accommodation, listed meals, an English-speaking guide, transfers, admissions, and return train tickets are included; international airfare is not.',
+    faqs: [
+      {
+        question: 'Which Zhangjiajie attractions are included in this three-day stopover?',
+        answer:
+          'The itinerary includes Tianmen Mountain National Forest Park, its cable car and glass skywalk, Bailong Elevator, Yuanjiajie, First Bridge Under Heaven, Tianzi Mountain, and Zhangjiajie Grand Canyon Glass Bridge.',
+      },
+      {
+        question: 'Does the Zhangjiajie stopover include transport from Guangzhou?',
+        answer:
+          'Yes. Second-class train tickets between Guangzhou and Zhangjiajie are included, together with local land transfers. International airfare is not included.',
+      },
+      {
+        question: 'Is this the area associated with the Avatar mountains?',
+        answer:
+          'Yes. Yuanjiajie and the sandstone pillar scenery in Zhangjiajie National Forest Park are widely associated with the floating-mountain landscapes seen in Avatar. This itinerary visits Yuanjiajie on day two.',
+        link: { href: '/blog/avatar-mountains-zhangjiajie-guide', label: 'Read the Avatar Mountains guide' },
+      },
+      {
+        question: 'Can Zhangjiajie be added to a longer China holiday?',
+        answer:
+          'Yes. This product is designed as a short stopover from Guangzhou and can be discussed alongside a longer CTS itinerary. Send an enquiry with your international flight dates so the team can check rail connections and the best place to add the three-day programme.',
+      },
+    ]
   },
   {
     id: 'tour-cn-stp-13',
