@@ -75,12 +75,13 @@
 
 ---
 
-## 📋 2026 推广团池 (PM 已拍板)
+## 📋 2026 推广团池 (PM 已拍板，2026-06-09 校准)
 
 **主推**:
-- **Best of China (Essentials)** — 9/3 出发 NZD $4,539 / 15 天
+- **Best of China (Essentials)** — **11/3 出发 NZD $3,880 per person / 15 天**
 - URL: `/tours/china/discovery/essentials`
 - 行程: Beijing + Xi'an Terracotta + Puyuan 水乡 + Hangzhou 西湖 + Shanghai
+- ⚠️ **2026-06-09 修正**：原 R1 baseline 写 9/3 出发 + $4,539 是错的，FB Sprint grep tours.ts 校正
 
 **辅助 Oct 两团**:
 - **Tale of Two Cities** (Beijing+Xi'an) — 10/15 出发 NZD $3,480 / 10 天
