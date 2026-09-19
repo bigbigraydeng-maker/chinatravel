@@ -785,8 +785,8 @@ Transfer to airport, connecting flight via Beijing to Auckland.
   {
     id: 'lt-c4',
     slug: 'liziba-station-chongqing-guide',
-    title: 'How Many Days in Chongqing | CTS',
-    excerpt: 'Discover how many days you need in Chongqing. We\'ll help you plan the perfect trip from New Zealand with flexible itineraries. Get started today.',
+    title: 'Liziba Station Chongqing: Complete Visitor Guide',
+    excerpt: 'Liziba Station is the most photographed railway station in China — and possibly the world. Here\'s everything you need to know: what it is, how to visit, and how to get the best shot.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
