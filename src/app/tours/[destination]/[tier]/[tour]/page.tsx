@@ -250,6 +250,7 @@ export default function TourPage({ params }: TourPageProps) {
         duration={tour.duration}
         price={tour.price}
         itinerary={tour.itinerary}
+        singleSupplement={tour.singleSupplement}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />

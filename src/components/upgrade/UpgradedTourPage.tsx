@@ -13,6 +13,7 @@ import ItineraryActions from '@/components/tours/ItineraryActions';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
+import { getSoloTourPrice } from '@/lib/tour-price';
 
 const goldenDayHeadings: Record<number, string> = {
   1: 'Your journey begins',
@@ -164,6 +165,10 @@ function shortTourName(tour: Tour) {
   return tour.name.replace(/^[^—]+—\s*/, '');
 }
 
+function displayPrice(price: string) {
+  return price.replace(/\s*(?:per\s+person|pp)\s*$/i, '');
+}
+
 function galleryForTour(tour: Tour) {
   if (tour.slug === 'golden-china') return goldenPhotos;
   const sources = localGallerySources[tour.slug] ?? (tour.gallery?.length ? tour.gallery : [tour.heroImage]);
@@ -190,6 +195,9 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
     .filter((candidate) => candidate.slug !== tour.slug && candidate.destination === tour.destination && matchingOffer(candidate, {}))
     .sort((a, b) => Number(b.departureDates?.some((date) => date.includes('December 2026'))) - Number(a.departureDates?.some((date) => date.includes('December 2026'))))
     .slice(0, 3);
+  const leadDeparture = tour.departureDates?.[0];
+  const leadPrice = (leadDeparture && tour.departurePricing?.[leadDeparture]) || tour.price;
+  const soloTourPrice = tour.singleSupplement ? getSoloTourPrice(leadPrice, tour.singleSupplement) : null;
 
   return (
     <div className="bg-surface text-ink">
@@ -218,6 +226,42 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
           </section>
         )}
         <JourneyGallery images={photos} />
+        {!tour.soldOut && (
+          <section aria-label="Tour price and departure summary" className="mt-6 overflow-hidden rounded-2xl bg-accent text-white shadow-lg">
+            <div className="grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-[1.15fr_1fr_1.2fr_auto]">
+              <div className="bg-accent px-5 py-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/65">Next confirmed departure</p>
+                <p className="mt-2 text-lg font-semibold">{leadDeparture ?? 'Ask about future dates'}</p>
+                <p className="mt-1 text-xs text-white/65">Scheduled group departure</p>
+              </div>
+              <div className="bg-accent px-5 py-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/65">Twin-share price</p>
+                <p className="mt-2 text-xl font-semibold">{displayPrice(leadPrice)}</p>
+                <p className="mt-1 text-xs text-white/65">Per person · NZD</p>
+              </div>
+              {tour.singleSupplement ? (
+                <div className="bg-accent px-5 py-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-secondary">Travelling solo?</p>
+                  <p className="mt-2 text-lg font-semibold">Own room + {tour.singleSupplement}</p>
+                  <p className="mt-1 text-xs text-white/70">
+                    {soloTourPrice ? `${soloTourPrice} total per person` : 'Private room for the full tour'}
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-accent px-5 py-5">
+                  <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/65">Room basis</p>
+                  <p className="mt-2 text-lg font-semibold">Twin share</p>
+                  <p className="mt-1 text-xs text-white/65">Ask us about private rooms</p>
+                </div>
+              )}
+              <div className="flex items-center bg-accent px-5 py-5">
+                <a href="#enquiry" className="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90 lg:w-auto">
+                  Check availability →
+                </a>
+              </div>
+            </div>
+          </section>
+        )}
       </div>
 
       <TrustBar />
@@ -300,7 +344,11 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
 
           <section id="inclusions" className="scroll-mt-24">
             <TourInclusions inclusions={tour.inclusions} exclusions={tour.exclusions} itinerary={tour.itinerary} />
-            {tour.singleSupplement && <p className="mt-4 text-sm">Single supplement: {tour.singleSupplement}</p>}
+            {tour.singleSupplement && (
+              <p className="mt-4 rounded-lg bg-warm-50 px-4 py-3 text-sm text-ink-muted">
+                <strong className="text-ink">Room basis:</strong> Prices are per person, twin share. A private room for a solo traveller is an additional <strong className="text-primary">{tour.singleSupplement}</strong> for the full tour.
+              </p>
+            )}
           </section>
         </div>
         <Suspense fallback={<a href="/contact">Contact CTS to enquire about this journey</a>}>

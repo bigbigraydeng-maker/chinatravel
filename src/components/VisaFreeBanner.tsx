@@ -111,24 +111,24 @@ export default function VisaFreeBanner() {
         aria-label="China visa-free policy for New Zealand passport holders"
         style={hidden ? { display: 'none' } : undefined}
       >
-        <div className="container mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+        <div className="container mx-auto grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-3 px-4 py-2.5">
           <Icon name="passport" className="w-4 h-4 text-white shrink-0" />
-          <p className="text-sm md:text-[0.95rem] leading-snug">
+          <p className="min-w-0 text-left text-sm leading-snug sm:text-center md:text-[0.95rem]">
             <span className="font-semibold">NZ passport holders:</span>{' '}
             visit China <span className="font-semibold underline decoration-secondary decoration-2 underline-offset-2">visa-free for 30 days</span>{' '}
-            (until 31 Dec 2026).
+            (until 31 Dec 2026).{' '}
+            <Link
+              href="/china-visa-guide-for-new-zealanders"
+              className="whitespace-nowrap font-semibold underline-offset-2 hover:underline"
+            >
+              Read our visa guide →
+            </Link>
           </p>
-          <Link
-            href="/china-visa-guide-for-new-zealanders"
-            className="text-sm md:text-[0.95rem] font-semibold underline-offset-2 hover:underline shrink-0"
-          >
-            Read our visa guide →
-          </Link>
           <button
             type="button"
             onClick={handleDismiss}
             aria-label="Dismiss visa-free banner"
-            className="ml-2 inline-flex items-center justify-center w-6 h-6 rounded-full bg-white/10 hover:bg-white/20 transition-colors shrink-0"
+            className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 transition-colors shrink-0"
           >
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />

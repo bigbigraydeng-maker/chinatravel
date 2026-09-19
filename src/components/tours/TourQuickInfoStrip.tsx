@@ -5,6 +5,7 @@ interface TourQuickInfoStripProps {
   duration: string;
   price: string;
   itinerary: DayItinerary[];
+  singleSupplement?: string;
 }
 
 /**
@@ -20,6 +21,7 @@ export default function TourQuickInfoStrip({
   duration,
   price,
   itinerary,
+  singleSupplement,
 }: TourQuickInfoStripProps) {
   // Hotel nights = number of days with an accommodation entry
   const hotelNights = itinerary.filter((d) => Boolean(d.accommodation?.trim())).length;
@@ -69,6 +71,14 @@ export default function TourQuickInfoStrip({
       sub: 'Per person twin share',
       href: '#enquiry',
     },
+    ...(singleSupplement
+      ? [{
+          label: 'Solo room',
+          value: `+ ${singleSupplement}`,
+          sub: 'Private room · full tour',
+          href: '#overview',
+        }]
+      : []),
   ];
 
   return (
@@ -78,7 +88,7 @@ export default function TourQuickInfoStrip({
     >
       <div className="container mx-auto px-4">
         {/* Horizontal scroll on mobile, 5-column grid from md+ */}
-        <ul className="flex md:grid md:grid-cols-5 overflow-x-auto md:overflow-visible -mx-4 md:mx-0 md:divide-x divide-warm-200">
+        <ul className={`flex md:grid ${singleSupplement ? 'md:grid-cols-6' : 'md:grid-cols-5'} overflow-x-auto md:overflow-visible -mx-4 md:mx-0 md:divide-x divide-warm-200`}>
           {items.map((item, idx) => (
             <li
               key={item.label}

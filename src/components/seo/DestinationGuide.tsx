@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { DestinationGuide as DestinationGuideType } from '@/lib/data/guides';
+import { DestinationGuide as DestinationGuideType, getGuideBySlug } from '@/lib/data/guides';
 import { getBlogPostBySlug } from '@/lib/data/blogs';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import HubHero from './HubHero';
@@ -52,10 +52,10 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Legacy of China (17 Days)', duration: '17 Days', price: 'NZD $9,999', url: '/tours/china/signature/imperial-heritage', image: `${TI}/forbidden-city-aerial.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
-      { name: 'Temple of Heaven', slug: 'temple-of-heaven-travel-guide', emoji: '🛕' },
-      { name: 'Great Wall Guide', slug: 'great-wall-travel-guide', emoji: '🏯' },
-      { name: 'Forbidden City', slug: 'forbidden-city-travel-guide', emoji: '🏛️' },
-      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺' },
+      { name: 'Temple of Heaven', slug: 'temple-of-heaven-travel-guide', emoji: '🛕', image: '/images/guides/temple-of-heaven/hero.webp', imageClassName: 'object-[center_58%]' },
+      { name: 'Great Wall Guide', slug: 'great-wall-travel-guide', emoji: '🏯', image: '/images/cts-upgrade/experience-wall.webp', imageClassName: 'object-[center_45%]' },
+      { name: 'Forbidden City', slug: 'forbidden-city-travel-guide', emoji: '🏛️', image: '/images/tours/forbidden-city-aerial.jpg', imageClassName: 'object-[center_48%]' },
+      { name: "Xi'an Travel Guide", slug: 'xian-travel-guide', emoji: '🏺', image: '/images/tours/xian-terracotta.jpg', imageClassName: 'object-[center_68%]' },
     ],
   },
   'xian-travel-guide': {
@@ -872,7 +872,7 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
                 <p className="-mt-4 mb-6 max-w-3xl text-gray-600 leading-relaxed">
                   Continue the story with practical routes, local food, transport and the wider history of {guide.parentDestination ?? guide.destinationName}.
                 </p>
-                <div className="grid sm:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 min-[560px]:grid-cols-2 xl:grid-cols-3 gap-5">
                   {guide.relatedBlogSlugs.map((slug) => {
                     const post = getBlogPostBySlug(slug);
                     if (!post) return null;
@@ -942,31 +942,34 @@ export default function DestinationGuide({ guide }: { guide: DestinationGuideTyp
               <h2 className={H2_SECTION}>
                 Explore More Destinations
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="grid grid-cols-1 min-[440px]:grid-cols-2 xl:grid-cols-4 gap-4">
                 {config.relatedGuides.map((g) => {
+                  const relatedGuide = getGuideBySlug(g.slug);
+                  const image = g.image ?? relatedGuide?.heroImage;
+                  const imageClassName = g.imageClassName ?? relatedGuide?.heroImageClassName;
                   return (
                     <Link
                       key={g.slug}
                       href={`/${g.slug}`}
                       className="group overflow-hidden rounded-2xl border border-border hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5 transition-all bg-white"
                     >
-                      {g.image ? (
-                        <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
+                      {image ? (
+                        <div className="relative aspect-[16/10] overflow-hidden bg-warm-100">
                           <Image
-                            src={g.image}
+                            src={image}
                             alt={`${g.name} travel guide`}
                             fill
-                            sizes="(max-width: 640px) 50vw, 180px"
-                            className={`object-cover transition-transform duration-500 group-hover:scale-105 ${g.imageClassName ?? ''}`}
+                            sizes="(max-width: 439px) 100vw, (max-width: 1279px) 50vw, 180px"
+                            className={`object-cover transition-transform duration-500 group-hover:scale-105 ${imageClassName ?? ''}`}
                           />
                         </div>
                       ) : (
-                        <div className="flex aspect-[4/3] items-center justify-center bg-warm-50">
+                        <div className="flex aspect-[16/10] items-center justify-center bg-warm-50">
                           <Icon name="map-pin" className="w-7 h-7 text-primary" />
                         </div>
                       )}
-                      <div className="p-3 text-center">
-                        <span className="text-sm font-semibold text-accent leading-snug group-hover:text-primary transition-colors">{g.name}</span>
+                      <div className="p-4 text-left">
+                        <span className="text-base font-semibold text-accent leading-snug group-hover:text-primary transition-colors">{g.name}</span>
                       </div>
                     </Link>
                   );
