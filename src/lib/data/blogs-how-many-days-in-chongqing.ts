@@ -26,9 +26,9 @@ import type { BlogPost } from '@/lib/types/blog-post';
 export const howManyDaysInChongqingPost: BlogPost = {
   id: 'lt-hmdic-1',
   slug: 'how-many-days-in-chongqing',
-  title: 'How Many Days in Chongqing? A 3, 5 & 7-Day Itinerary Guide for NZ Travellers',
+  title: 'How Many Days in Chongqing | CTS Tours NZ',
   excerpt:
-    'How long should you spend in Chongqing — 2 days, 5 days, or longer? A practical day-by-day planning guide for Kiwi travellers covering Liziba monorail, Hongyadong, hotpot, day trips, and Yangtze River cruise embarkation, by CTS Tours NZ.',
+    'Discover the ideal length of stay in Chongqing for Kiwi travellers. Expert guide to planning your China trip. Contact CTS Tours today.',
   author: 'Baker Gu',
   authorRole: 'China Travel Specialist, CTS Tours NZ',
   category: 'travel-tips',
