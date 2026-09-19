@@ -13,6 +13,7 @@ import ChinaStopovers from '@/components/ChinaStopovers';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
+import { getTourCardMedia } from '@/lib/tour-card-media';
 
 /**
  * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
@@ -61,16 +62,6 @@ const CITIES = [
   { name: 'Chongqing', slug: 'chongqing', tag: 'A city of mountains, rivers and dazzling views', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-chongqing-v2.webp' },
   { name: 'Zhangjiajie', slug: 'zhangjiajie', tag: 'Otherworldly landscapes await', img: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/city-zhangjiajie-v2.webp' },
 ];
-
-// Figma-exact card photos for the Spotlight tours — homepage-only override, kept
-// separate from tour.heroImage (which also renders on the tour's own detail page
-// and must stay the tour's real photo, not the homepage mockup's stand-in).
-const SPOTLIGHT_IMAGE_OVERRIDE: Record<string, string> = {
-  'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card1-v2.webp',
-  'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/spotlight-card2-v2.webp',
-  'china-icons-collection-christchurch': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
-  essentials: '/images/cts-upgrade/spotlight-temple-landscape.webp',
-};
 
 // Figma-exact card photos for the blog posts currently in the "latest 3" slot —
 // homepage-only, kept separate from post.heroImage (which also renders on the
@@ -207,15 +198,19 @@ const HomePageRedesign = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => (
+              {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => {
+                const media = getTourCardMedia(tour);
+                return (
                 <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden">
                     <Image
-                      src={SPOTLIGHT_IMAGE_OVERRIDE[ref.slug] ?? tour.heroImage}
+                      src={media.src}
                       alt={tour.name}
                       fill
+                      unoptimized={media.src.startsWith('/')}
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
+                      style={{ objectPosition: media.objectPosition }}
                     />
                     <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
                       {ref.departureLabel}
@@ -235,7 +230,8 @@ const HomePageRedesign = () => {
                     </Link>
                   </div>
                 </article>
-              ))}
+                );
+              })}
             </div>
 
             <div className="mt-12 flex justify-center">

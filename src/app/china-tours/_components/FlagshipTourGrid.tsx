@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { getAllChinaTours, type Tour } from '@/lib/data/tours';
+import { getTourCardMedia } from '@/lib/tour-card-media';
 
 interface FlagshipTourGridProps {
   /**
@@ -86,7 +87,9 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
         </div>
 
         <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${cards.length >= 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-2'}`}>
-          {cards.map(({ slug, href, ribbon, tour, imageOverride }, index) => (
+          {cards.map(({ slug, href, ribbon, tour, imageOverride }, index) => {
+            const media = tour ? getTourCardMedia(tour) : null;
+            return (
             <a
               key={slug}
               href={href}
@@ -96,14 +99,16 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
                 mobileLimit != null && index >= mobileLimit ? ' hidden sm:flex' : ''
               }`}
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-warm-100">
+              <div className="relative aspect-video overflow-hidden bg-warm-100">
                 {tour ? (
                   <Image
-                    src={imageOverride ?? tour.heroImage}
+                    src={imageOverride ?? media!.src}
                     alt={tour.name}
                     fill
+                    unoptimized={(imageOverride ?? media!.src).startsWith('/')}
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    style={{ objectPosition: media!.objectPosition }}
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-warm-400 text-sm">
@@ -151,7 +156,8 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
                 </div>
               </div>
             </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { Tour } from '@/lib/data/tours';
 import { Icon } from '@/components/ui/Icon';
 import TourCardViewDetailsButton from './TourCardViewDetailsButton';
+import { getTourCardMedia } from '@/lib/tour-card-media';
 
 interface TourCardProps {
   tour: Tour;
@@ -23,6 +24,7 @@ const tierColors: Record<string, string> = {
 export default function TourCard({ tour, destination, tier }: TourCardProps) {
   const tierClass = tierColors[tier] ?? tierColors.discovery;
   const detailHref = `/tours/${destination}/${tier}/${tour.slug}`;
+  const media = getTourCardMedia(tour);
 
   // Format price consistently: remove "NZD $" prefix if it exists, show as "From NZD $..."
   const formatPrice = (price: string) => {
@@ -34,15 +36,17 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   return (
     <Link href={detailHref} className="group block min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-lg" aria-label={`View ${tour.name} – ${tier} tour details`}>
       <div className="min-h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
-        {/* Image section — fixed height */}
-        <div className="relative w-full h-[220px] shrink-0 overflow-hidden bg-warm-100">
+        {/* Image section — one stable ratio across every tour card */}
+        <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-warm-100">
           <Image
-            src={tour.heroImage}
+            src={media.src}
             alt={tour.name}
             width={1200}
             height={800}
+            unoptimized={media.src.startsWith('/')}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="absolute inset-0 h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+            style={{ objectPosition: media.objectPosition }}
             loading="eager"
             decoding="async"
           />

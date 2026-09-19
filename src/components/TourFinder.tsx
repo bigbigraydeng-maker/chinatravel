@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
+import { getTourCardMedia } from '@/lib/tour-card-media';
 import { matchingOffer, tourCities, departures, experiences, nearbyOffers, tourUrl, tailorSearchHref } from '@/lib/tour-discovery';
 import Link from 'next/link';
 import {
@@ -181,20 +182,24 @@ export default function TourFinder({ tours }: TourFinderProps) {
             <div className="mt-6 flex flex-wrap gap-4"><Link href={tailorHref} className="rounded-lg bg-primary px-5 py-3 font-semibold text-white">Plan around my preferences →</Link><button type="button" onClick={clearAll} className="rounded-lg border border-warm-200 px-5 py-3 font-semibold text-primary">Browse all available tours</button></div>
             <p className="mt-3 text-sm text-ink-muted">Your selections will be carried into the tailor-made enquiry.</p>
           </div>
-          {nearby.length > 0 && <><h3 className="mb-5 mt-10 font-serif text-2xl">A few close alternatives</h3><div className="grid gap-6 md:grid-cols-3">{nearby.map(({tour,offer,differences})=><article key={tour.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white"><Link href={tourUrl(tour)+(offer.date?'?date='+offer.date:'')}><div className="relative aspect-[16/10]"><Image src={tour.heroImage} alt={tour.name} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover"/></div><div className="p-5"><p className="text-xs uppercase tracking-widest text-primary">{tour.duration} · {tour.tier}</p><h4 className="mt-3 font-serif text-xl">{tour.name}</h4><div className="mt-4 rounded-lg bg-surface p-3"><p className="mb-2 text-xs font-semibold uppercase text-primary">What’s different</p><ul className="space-y-2 text-sm text-ink-muted">{differences.map(d=><li key={d}>{d}</li>)}</ul></div><p className="mt-4 text-sm">{offer.label}</p><p className="mt-2 font-semibold text-primary">{offer.price}</p><p className="mt-4 text-sm font-semibold text-primary">Explore this alternative →</p></div></Link></article>)}</div></>}
+          {nearby.length > 0 && <><h3 className="mb-5 mt-10 font-serif text-2xl">A few close alternatives</h3><div className="grid gap-6 md:grid-cols-3">{nearby.map(({tour,offer,differences}) => { const media = getTourCardMedia(tour); return <article key={tour.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white"><Link href={tourUrl(tour)+(offer.date?'?date='+offer.date:'')}><div className="relative aspect-video"><Image src={media.src} alt={tour.name} fill unoptimized={media.src.startsWith('/')} sizes="(max-width:768px) 100vw, 33vw" className="object-cover" style={{ objectPosition: media.objectPosition }}/></div><div className="p-5"><p className="text-xs uppercase tracking-widest text-primary">{tour.duration} · {tour.tier}</p><h4 className="mt-3 font-serif text-xl">{tour.name}</h4><div className="mt-4 rounded-lg bg-surface p-3"><p className="mb-2 text-xs font-semibold uppercase text-primary">What’s different</p><ul className="space-y-2 text-sm text-ink-muted">{differences.map(d=><li key={d}>{d}</li>)}</ul></div><p className="mt-4 text-sm">{offer.label}</p><p className="mt-2 font-semibold text-primary">{offer.price}</p><p className="mt-4 text-sm font-semibold text-primary">Explore this alternative →</p></div></Link></article>; })}</div></>}
         </section>
       ) : (
         <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filtered.map((tour) => (
+          {filtered.map((tour) => {
+            const media = getTourCardMedia(tour);
+            return (
             <Link key={tour.id} href={`/tours/${tour.destination}/${tour.tier}/${tour.slug}${offers.get(tour.id)?.date ? "?date=" + offers.get(tour.id)!.date : ""}`}
               className="min-w-0 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all group">
-              <div className="relative aspect-[16/10] w-full min-h-[10rem] shrink-0 overflow-hidden bg-warm-100 sm:min-h-[12rem]">
+              <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-warm-100">
                 <Image
-                  src={tour.heroImage}
+                  src={media.src}
                   alt={tour.name}
                   fill
+                  unoptimized={media.src.startsWith('/')}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  style={{ objectPosition: media.objectPosition }}
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-white/90 backdrop-blur-sm text-xs font-semibold px-3 py-1 rounded-full capitalize">
@@ -237,7 +242,8 @@ export default function TourFinder({ tours }: TourFinderProps) {
                 </div>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>
