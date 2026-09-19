@@ -23,7 +23,9 @@ export default function TourItinerary({
   tier,
 }: TourItineraryProps) {
   const showSaveActions = Boolean(tourSlug && tourName && destination && tier);
-  const [expandedDays, setExpandedDays] = useState<Set<number>>(new Set([1]));
+  const [expandedDays, setExpandedDays] = useState<Set<number>>(
+    () => new Set(tier === 'stopover' ? itinerary.map((day) => day.day) : [1])
+  );
 
   return (
     <section id="itinerary" className="scroll-mt-24">

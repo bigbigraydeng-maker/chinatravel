@@ -1806,11 +1806,11 @@ export const tours: Tour[] = [
       'Peking Duck Banquet'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival Beijing', description: 'Airport transfer to hotel.', meals: [], accommodation: '4-star hotel' },
-      { day: 2, title: 'Tiananmen Square', description: 'Visit Tiananmen Square, Forbidden City (nearly 10,000 rooms), and Beihai Park. Evening Peking Duck Banquet.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel' },
-      { day: 3, title: 'Great Wall', description: 'Great Wall at Juyongguan section. Jade carving factory. Ming Tombs (Chang Tomb).', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 4, title: 'Summer Palace', description: 'Summer Palace and gardens, Marble Boat and Long Corridor. Olympic venues photo stop. Pearl Factory. Temple of Heaven.', meals: ['Breakfast', 'Lunch'], accommodation: '4-star hotel' },
-      { day: 5, title: 'Departure', description: 'Free time until airport transfer.', meals: ['Breakfast'] }
+      { day: 1, title: 'Arrival in Beijing', description: 'Meet the local representative at the airport and transfer directly to the hotel for check-in and rest.', meals: [], accommodation: '4-star hotel accommodation' },
+      { day: 2, title: 'Tiananmen Square & Forbidden City', description: 'Visit Tiananmen Square and the Forbidden City. The published stopover highlights also include a Peking Duck dinner during the Beijing stay.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel accommodation' },
+      { day: 3, title: 'Juyongguan Great Wall & Ming Tombs', description: 'Travel to the Juyongguan section of the Great Wall, then continue to the Ming Tombs, including Changling, before returning to Beijing.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel accommodation' },
+      { day: 4, title: 'Summer Palace & Temple of Heaven', description: 'Visit the Summer Palace, including the Marble Boat and Long Corridor, followed by the Temple of Heaven. The published highlights also include the Bird\'s Nest and Water Cube Olympic venues.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel accommodation' },
+      { day: 5, title: 'Beijing Departure', description: 'Check out after breakfast and transfer to the airport for the onward flight.', meals: ['Breakfast'] }
     ],
     inclusions: [
       '4-star hotel accommodation (twin share)',
@@ -1829,6 +1829,7 @@ export const tours: Tour[] = [
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2025-01-01',
+    singleSupplement: 'NZD $585',
     rating: 4.5,
     reviewCount: 89,
     reviewSummary: 'Perfect Beijing stopover',
@@ -1906,9 +1907,9 @@ export const tours: Tour[] = [
       'Huangpu River cruise'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival Shanghai', description: 'Airport pickup and hotel transfer.', meals: [], accommodation: '4-star hotel' },
-      { day: 2, title: 'Shanghai', description: 'Old Town exploration. Yu Garden visit. Silk Spinning Mill tour. Shanghai Museum. Bund walk. Huangpu River cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel' },
-      { day: 3, title: 'Shanghai Departure', description: 'Free time until airport transfer.', meals: ['Breakfast', 'Lunch'] }
+      { day: 1, title: 'Arrival in Shanghai', description: 'Meet the local representative at the airport and transfer to the hotel for check-in and rest.', meals: [], accommodation: '4-star hotel accommodation' },
+      { day: 2, title: 'Shanghai Old & New', description: 'Explore Shanghai Old Town and Yu Garden, visit the Silk Spinning Mill and Shanghai Museum, walk along the Bund promenade and finish with a Huangpu River cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel accommodation' },
+      { day: 3, title: 'Shanghai Departure', description: 'Check out of the hotel and transfer to the airport for the onward flight.', meals: [] }
     ],
     inclusions: [
       '4-star hotel accommodation',
@@ -1926,7 +1927,8 @@ export const tours: Tour[] = [
     metaDescription: 'Explore dynamic and beautiful Shanghai on China\'s east coast, experiencing the city\'s transformation from a sleepy fishing town to a modern ... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2025-01-01',
+    singleSupplement: 'NZD $240',
   },
   {
     id: 'tour-cn-stp-4',
@@ -2080,9 +2082,9 @@ export const tours: Tour[] = [
       'Shaanxi History Museum'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival in Xi\'an', description: 'Airport pickup and hotel transfer.', meals: [], accommodation: '4-star Xian Grand New World Hotel' },
-      { day: 2, title: 'Xi\'an Sightseeing', description: 'Terracotta Warriors Museum. Ceramic and lacquer ware factory. Muslim Quarter walking tour, Great Mosque. Evening dumpling banquet with cultural performance.', meals: ['Breakfast', 'Dinner'], accommodation: '4-star Xian Grand New World Hotel' },
-      { day: 3, title: 'Departure', description: 'Shaanxi History Museum (closed Mondays). Airport transfer.', meals: ['Breakfast', 'Lunch'] }
+      { day: 1, title: 'Arrival in Xi\'an', description: 'Meet the local representative at the airport and transfer to the Xi\'an Grand New World Hotel for check-in and rest.', meals: [], accommodation: 'Xi\'an Grand New World Hotel (4-star)' },
+      { day: 2, title: 'Xi\'an Sightseeing', description: 'Visit the Terracotta Warriors and Circle Vision movie, walk through the Muslim Quarter and visit the Great Mosque, then continue to the Shaanxi History Museum. In the evening, enjoy a traditional dumpling banquet with a cultural show.', meals: ['Breakfast', 'Dinner'], accommodation: 'Xi\'an Grand New World Hotel (4-star)' },
+      { day: 3, title: 'Xi\'an Departure', description: 'Check out and transfer to the airport or railway station for the onward journey.', meals: [] }
     ],
     inclusions: [
       '4-star hotel accommodation',
@@ -2100,7 +2102,8 @@ export const tours: Tour[] = [
     metaDescription: 'Immerse yourself in the rich history of Xi\'an, China\'s ancient capital, with experiences centred on archaeological treasures and cultural la... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2025-01-01',
+    singleSupplement: 'NZD $195',
   },
   {
     id: 'tour-cn-stp-8',
@@ -2125,9 +2128,9 @@ export const tours: Tour[] = [
       'Shamian Island cultural experiences'
     ],
     itinerary: [
-      { day: 1, title: 'Arrival Guangzhou', description: 'Guide meets travellers. Transfer to hotel.', meals: [], accommodation: '4-star hotel' },
-      { day: 2, title: 'Guangzhou — Foshan', description: 'Nanfeng Kiln in Shiwan. Zu Miao temple. Liang\'s Gardens. Lingnan Xintiandi. Return to Guangzhou.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel' },
-      { day: 3, title: 'Guangzhou Departure', description: 'Chen Family Academy. Six Banyan Temple and Hua Ta Pagoda. Qingping market. Shamian Island. Yuexiu Park and Canton Tower. Airport transfer.', meals: ['Breakfast', 'Lunch'] }
+      { day: 1, title: 'Arrival in Guangzhou', description: 'Meet the local guide on arrival and transfer to the hotel for check-in and rest.', meals: [], accommodation: '4-star hotel accommodation' },
+      { day: 2, title: 'Guangzhou & Foshan Sightseeing', description: 'Visit Chen Family Academy, Six Banyan Temple and Hua Ta Pagoda, Canton Tower, Shamian Island and the Ancestral Temple, then continue to Nanfeng Kiln and the Shiwan pottery centre in Foshan.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: '4-star hotel accommodation' },
+      { day: 3, title: 'Guangzhou Departure', description: 'Check out of the hotel and transfer for the onward flight or rail journey.', meals: [] }
     ],
     inclusions: [
       '4-star hotel accommodation (twin room)',
@@ -2145,7 +2148,8 @@ export const tours: Tour[] = [
     metaDescription: 'Transform a lengthy journey into a rejuvenating escape. Explore vibrant streets, sample traditional Cantonese cuisine, and experience the ci... Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2025-01-01'
+    updatedAt: '2025-01-01',
+    singleSupplement: 'NZD $260',
   },
   {
     id: 'tour-cn-stp-9',
