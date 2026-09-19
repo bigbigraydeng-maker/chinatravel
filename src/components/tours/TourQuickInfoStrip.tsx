@@ -5,6 +5,7 @@ interface TourQuickInfoStripProps {
   duration: string;
   price: string;
   itinerary: DayItinerary[];
+  tier: 'signature' | 'discovery' | 'stopover';
   singleSupplement?: string;
 }
 
@@ -21,6 +22,7 @@ export default function TourQuickInfoStrip({
   duration,
   price,
   itinerary,
+  tier,
   singleSupplement,
 }: TourQuickInfoStripProps) {
   // Hotel nights = number of days with an accommodation entry
@@ -42,21 +44,21 @@ export default function TourQuickInfoStrip({
 
   const items: { label: string; value: string; sub: string; href: string }[] = [
     {
-      label: 'Fully Inclusive',
-      value: 'All-in NZD',
-      sub: 'Flights · hotels · guides',
+      label: tier === 'stopover' ? 'Land Package' : 'Fully Inclusive',
+      value: tier === 'stopover' ? 'Clear inclusions' : 'All-in NZD',
+      sub: tier === 'stopover' ? 'Hotels · guide · transfers' : 'Flights · hotels · guides',
       href: '#inclusions',
     },
     {
       label: 'Duration',
       value: duration,
-      sub: 'Group tour',
+      sub: tier === 'stopover' ? 'Stopover package' : 'Group tour',
       href: '#itinerary',
     },
     {
       label: 'Accommodation',
       value: `${hotelNights} nights`,
-      sub: '4–5 star hotels',
+      sub: tier === 'stopover' ? 'See listed hotel standard' : '4–5 star hotels',
       href: '#inclusions',
     },
     {

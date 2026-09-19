@@ -8,6 +8,7 @@ import {
   destinations
 } from '@/lib/data/tours';
 import TourCard from '@/components/tours/TourCard';
+import ChinaStopoverLandingPage from '@/components/tours/ChinaStopoverLandingPage';
 
 interface TierPageProps {
   params: {
@@ -54,6 +55,31 @@ export async function generateMetadata({ params }: TierPageProps): Promise<Metad
   const title = `${destination.name} ${tier.name} Tours | CTS Tours`;
   const description = `Explore ${destination.name} with our ${tier.name} collection. ${tier.description}`;
 
+  if (params.destination === 'china' && params.tier === 'stopover') {
+    const stopoverTitle = 'China Stopover Tours from New Zealand | 2–5 Day City Stays | CTS Tours';
+    const stopoverDescription =
+      'Compare guided 2–5 day China stopovers for New Zealand travellers. Explore Beijing, Shanghai, Chengdu, Xi’an and more; CTS checks the published package against your flights and entry requirements before booking.';
+
+    return {
+      title: stopoverTitle,
+      description: stopoverDescription,
+      keywords: [
+        'China stopover tours from New Zealand',
+        'China stopover package',
+        'Shanghai stopover',
+        'Beijing stopover',
+        'China transit tour',
+      ],
+      openGraph: {
+        title: stopoverTitle,
+        description: stopoverDescription,
+        type: 'website',
+        images: [{ url: '/images/tours/shanghai-skyline.jpg', width: 1200, height: 630, alt: 'Shanghai skyline and China stopover tours' }],
+      },
+      alternates: { canonical: '/tours/china/stopover' },
+    };
+  }
+
   return {
     title,
     description,
@@ -97,6 +123,10 @@ export default function TierPage({ params }: TierPageProps) {
   }
 
   const tours = getToursByDestinationAndTier(params.destination, params.tier);
+
+  if (params.destination === 'china' && params.tier === 'stopover') {
+    return <ChinaStopoverLandingPage tours={tours} />;
+  }
 
   return (
     <>

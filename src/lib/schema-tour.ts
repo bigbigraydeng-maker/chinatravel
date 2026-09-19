@@ -279,6 +279,30 @@ export function getTourPageFaqsForTour(
   if (tour.faqs && tour.faqs.length > 0) {
     return tour.faqs;
   }
+  if (tour.tier === 'stopover') {
+    return [
+      {
+        question: `What is included in this ${destinationLabel} stopover?`,
+        answer:
+          'This is a land package. It includes only the accommodation, transfers, guide services, admissions and meals listed in the Inclusions section on this page. The day-by-day itinerary shows where meals and accommodation are specified.',
+      },
+      {
+        question: 'Are international flights from New Zealand included?',
+        answer:
+          'No. International airfare is excluded from this stopover price. CTS can help coordinate the stopover with your wider journey and quote suitable flights separately.',
+      },
+      {
+        question: 'Can I add this stopover to a trip to Europe, Japan or Korea?',
+        answer:
+          'Ask CTS to check routing, dates and connection times for your wider journey. Availability and any flight changes must be confirmed before the stopover is booked.',
+      },
+      {
+        question: 'How do I book and what payment options are available?',
+        answer:
+          'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, the exact inclusions, and deposit and balance payment steps.',
+      },
+    ];
+  }
   return getTourPageFaqs(destinationLabel);
 }
 

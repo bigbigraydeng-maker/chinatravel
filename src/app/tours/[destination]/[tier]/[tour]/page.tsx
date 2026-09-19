@@ -250,6 +250,7 @@ export default function TourPage({ params }: TourPageProps) {
         duration={tour.duration}
         price={tour.price}
         itinerary={tour.itinerary}
+        tier={tour.tier}
         singleSupplement={tour.singleSupplement}
       />
 
