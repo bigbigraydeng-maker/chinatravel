@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
     description:
-      'Christmas & New Year in China: depart Auckland or Christchurch on 22 December 2026. Compare festive itineraries and enquire with CTS Tours.',
+      'Compare Golden China departing Auckland on 16 November 2026 with Christmas & New Year tours departing Auckland or Christchurch on 22 December 2026.',
     path: '/campaigns/spotlight',
     ogImagePath: '/images/tours/shanghai-yuyuan-night.jpg',
     ogImageAlt: 'Shanghai Yu Garden illuminated at night for the CTS Christmas and New Year China tours',
@@ -29,6 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "Beijing Xi'an tour 2027",
       'Best of China tour March 2027',
       'China tours December 2026',
+      'Golden China November 2026',
     ],
   });
 }
@@ -42,7 +43,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Yes — both December departures include return international airfares from their respective departure city, Auckland or Christchurch, alongside hotels, daily breakfasts plus listed lunches/dinners, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
+      'Yes — Golden China and both December departures include return international airfares from their respective New Zealand departure city, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
   },
   {
     question: 'Do I need a visa to visit China?',
@@ -57,7 +58,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these departures sell out?',
     answer:
-      'Availability can change. Contact CTS to confirm seats and room options for 22 December 2026, along with the deposit and cancellation terms before booking.',
+      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026 or either 22 December 2026 departure, along with the deposit and cancellation terms before booking.',
   },
 ];
 
@@ -86,7 +87,7 @@ export default function October2026CampaignIndexPage() {
     '@type': 'ItemList',
     name: 'CTS Spotlight China Tours',
     description:
-      'Christmas and New Year group tours departing Auckland and Christchurch on 22 December 2026.',
+      'Golden China departing Auckland on 16 November 2026, plus Christmas and New Year group tours departing Auckland and Christchurch on 22 December 2026.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -145,17 +146,17 @@ export default function October2026CampaignIndexPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Christmas &amp; New Year in China — depart Auckland or Christchurch on 22 December 2026.
+              Golden China departs Auckland on 16 November, followed by Christmas &amp; New Year journeys from Auckland or Christchurch on 22 December 2026.
               Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland since 2000, backed by CTS Group (founded 1928).
             </p>
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 max-w-2xl">
               {[
-                { v: '2', l: 'December Tours' },
+                { v: '3', l: 'Featured Tours' },
                 { v: '2', l: 'NZ Departure Cities' },
-                { v: '22 Dec', l: 'Departure Date' },
-                { v: 'NZD $6,188', l: 'From' },
+                { v: 'Nov–Dec', l: '2026 Departures' },
+                { v: 'NZD $4,999', l: 'From' },
               ].map((s) => (
                 <div
                   key={s.l}
@@ -192,7 +193,7 @@ export default function October2026CampaignIndexPage() {
         </div>
       </section>
 
-      {/* ─── 3 SPOTLIGHT TOUR CARDS ───────────────────────────────────────── */}
+      {/* ─── SPOTLIGHT TOUR CARDS ─────────────────────────────────────────── */}
       <section
         id="spotlight-tours"
         className="scroll-mt-24 py-20 md:py-28 bg-gradient-to-b from-amber-50/40 via-white to-warm-50"
@@ -211,7 +212,7 @@ export default function October2026CampaignIndexPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {cards.map(({ spot, tour }) => (
               <Link
                 key={spot.slug}
