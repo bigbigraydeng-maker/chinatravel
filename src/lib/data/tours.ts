@@ -2941,7 +2941,7 @@ export const tours: Tour[] = [
     reviewSummary: 'Japan in cherry blossom season — a once-in-a-lifetime experience'
   },
   {
-    soldOut: true,
+    soldOut: false,
     id: 'golden-china',
     slug: 'golden-china',
     destination: 'china',
@@ -3098,10 +3098,10 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Golden China | 12 Days | CTS Tours',
-    metaDescription: 'Golden China — Beijing, Xi\'an & Shanghai in 12 days. Great Wall, Forbidden City, Terracotta Warriors, Huangpu River cruise. From NZD $4,999. The 16 November 2026 departure is sold out. Explore December tours.',
-    isActive: false,
+    metaDescription: 'Golden China — Beijing, Xi\'an & Shanghai in 12 days. Great Wall, Forbidden City, Terracotta Warriors and a Huangpu River cruise. Departing Auckland 16 November 2026 from NZD $4,999.',
+    isActive: true,
     createdAt: '2026-08-24T14:34:07.884Z',
-    updatedAt: '2026-08-24T14:34:07.884Z',
+    updatedAt: '2026-09-20T00:00:00.000Z',
     tourCities: [
       'beijing',
       'xian',

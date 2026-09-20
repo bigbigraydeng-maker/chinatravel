@@ -65,7 +65,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Which is the best China tour package for first-time visitors?',
-      answer: 'For first-time visitors travelling in December 2026, explore Christmas & New Year in China, departing 22 December from Auckland (16 days, from NZD $7,188) or Christchurch (15 days, from NZD $6,188). These routes include Shanghai, Beijing and Xi\'an. Golden China on 16 November 2026 is sold out. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
+      answer: 'For first-time visitors, Golden China is a focused 12-day journey through Beijing, Xi\'an and Shanghai, departing Auckland on 16 November 2026 from NZD $4,999. Christmas & New Year in China also departs 22 December 2026 from Auckland or Christchurch. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
     },
     {
       question: 'What makes CTS Tours different from other China travel agencies in NZ?',

@@ -53,19 +53,19 @@ describe('Close alternatives for a small catalogue',()=>{
  });
 });
 
-describe('Golden China sold-out withdrawal',()=>{
- test('keeps the original URL data but removes all sales offers',()=>{
-  expect(golden.soldOut).toBe(true);
-  expect(getAllActiveTours().some(t=>t.slug==='golden-china')).toBe(false);
-  expect(departures(golden,today)).toEqual([]);
-  expect(matchingOffer(golden,{},today)).toBeNull();
-  expect(matchingOffer({...golden,isActive:true,departureDates:[]},{},today)).toBeNull();
+describe('Golden China reopened availability',()=>{
+ test('restores the original URL and its November sales offer',()=>{
+  expect(golden.soldOut).toBe(false);
+  expect(golden.isActive).toBe(true);
+  expect(getAllActiveTours().some(t=>t.slug==='golden-china')).toBe(true);
+  expect(departures(golden,today).map(d=>d.date)).toEqual(['2026-11-16']);
+  expect(matchingOffer(golden,{},today)?.price).toBe('From NZD $4,999 per person');
  });
- test('marks machine-readable offers SoldOut',()=>{
+ test('marks machine-readable offers InStock',()=>{
   const {generateTourSchema,generateProductSchema}=require('@/lib/schema-tour');
   const {getDestinationBySlug}=require('@/lib/data/tours');
-  expect(JSON.stringify(generateTourSchema(golden,getDestinationBySlug('china')))).toContain('https://schema.org/SoldOut');
-  expect(JSON.stringify(generateProductSchema(golden))).toContain('https://schema.org/SoldOut');
-  expect(JSON.stringify(generateProductSchema(golden))).not.toContain('https://schema.org/InStock');
+  expect(JSON.stringify(generateTourSchema(golden,getDestinationBySlug('china')))).toContain('https://schema.org/InStock');
+  expect(JSON.stringify(generateProductSchema(golden))).toContain('https://schema.org/InStock');
+  expect(JSON.stringify(generateProductSchema(golden))).not.toContain('https://schema.org/SoldOut');
  });
 });
