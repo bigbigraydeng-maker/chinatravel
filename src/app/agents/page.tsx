@@ -3,12 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
+  Bot,
   BookOpenCheck,
   CheckCircle2,
+  GraduationCap,
   Handshake,
   Headphones,
+  Laptop,
+  LogIn,
   Mail,
   MapPinned,
+  Megaphone,
   Phone,
   ShieldCheck,
   Sparkles,
@@ -21,23 +26,25 @@ import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotl
 export const metadata: Metadata = {
   title: 'Travel Agent Partnerships | CTS Tours New Zealand',
   description:
-    'Partner with CTS Tours for China travel expertise, an Auckland-based trade team, direct China operations, agent training and end-to-end client support.',
+    'Partner with CTS Tours for China travel expertise, digital marketing content, online and in-person agent training, a dedicated agent portal and intelligent itinerary support.',
   keywords: [
     'CTS Tours travel agent partnership',
     'China tours for New Zealand travel agents',
     'China travel trade support',
     'China Unlocked agent training',
+    'CTS Tours agent portal',
+    'travel agent marketing content',
     'New Zealand travel agent China specialist',
   ],
   openGraph: {
     title: 'Let’s Grow China Travel Together | CTS Tours',
     description:
-      'A China specialist partner for New Zealand travel advisors — local support, direct operations, training and client-ready touring products.',
+      'A digitally enabled China specialist partner for New Zealand travel advisors — local support, marketing content, training, agent portal access and intelligent itinerary support.',
     type: 'website',
     images: [
       {
-        url: '/blog/group-great-wall-cts.jpg',
-        alt: 'CTS Tours guests and tour leaders together at the Great Wall of China',
+        url: '/images/tours/great-wall-cloud-sea.jpg',
+        alt: 'The Great Wall near Beijing rising above a sea of clouds',
       },
     ],
   },
@@ -92,6 +99,33 @@ const partnershipSteps = [
   },
 ];
 
+const digitalAgentTools = [
+  {
+    icon: Megaphone,
+    eyebrow: 'Promote',
+    title: 'Digital content ready to share',
+    body: 'Use destination stories, social content, campaign copy, brochures and landing-page links created to help your channels turn China interest into enquiries.',
+  },
+  {
+    icon: GraduationCap,
+    eyebrow: 'Learn',
+    title: 'Online and face-to-face training',
+    body: 'Build product confidence through China Unlocked online learning, live briefings and practical in-person training with the CTS team.',
+  },
+  {
+    icon: LogIn,
+    eyebrow: 'Book',
+    title: 'A dedicated Agent Portal',
+    body: 'Sign in to reach agent resources, product information and a simpler path for submitting and progressing client booking requests.',
+  },
+  {
+    icon: Bot,
+    eyebrow: 'Plan smarter',
+    title: 'Intelligent itinerary support',
+    body: 'Turn a client brief into a stronger starting point with AI-assisted planning, then rely on CTS specialists to review the detail before it reaches your client.',
+  },
+];
+
 const AgentsPage = () => {
   const christmasAkl = getTourBySlug('china', 'discovery', 'china-icons-collection');
   const christmasChc = getTourBySlug(
@@ -135,12 +169,12 @@ const AgentsPage = () => {
                   <ArrowRight className="h-5 w-5" aria-hidden />
                 </a>
                 <a
-                  href={CHINA_UNLOCKED_REGISTER_URL}
+                  href={CHINA_UNLOCKED_PORTAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
                 >
-                  Train with China Unlocked
+                  Open Agent Portal
                 </a>
               </div>
               <p className="mt-6 flex items-center gap-2 text-sm text-white/60">
@@ -152,12 +186,12 @@ const AgentsPage = () => {
 
           <div className="relative min-h-[520px] lg:min-h-[680px]">
             <Image
-              src="/blog/group-great-wall-cts.jpg"
-              alt="CTS Tours guests and tour leaders together at the Great Wall of China"
+              src="/images/tours/great-wall-cloud-sea.jpg"
+              alt="The Great Wall near Beijing rising above a sea of clouds"
               fill
               priority
               sizes="(min-width: 1024px) 48vw, 100vw"
-              className="object-cover [object-position:center_62%]"
+              className="object-cover [object-position:54%_center]"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#171923] via-[#171923]/20 to-transparent" />
             <div className="absolute inset-x-6 bottom-7 rounded-2xl border border-white/15 bg-black/45 p-5 backdrop-blur-md md:inset-x-10">
@@ -165,7 +199,7 @@ const AgentsPage = () => {
                 One accountable partner
               </p>
               <p className="mt-2 font-serif text-xl text-white">
-                Auckland support. Direct China operations. Shared commitment to the traveller.
+                Beijing inspires the client. Our tools help you turn that interest into a journey.
               </p>
             </div>
           </div>
@@ -175,10 +209,10 @@ const AgentsPage = () => {
       <section className="border-b border-warm-100 bg-warm-50/70">
         <div className="container grid grid-cols-2 gap-px py-8 md:grid-cols-4">
           {[
-            ['Auckland-based', 'Trade support'],
-            ['Since 2000', 'New Zealand team'],
-            ['Direct', 'China operations'],
-            ['Dedicated', 'Agent training'],
+            ['Campaign-ready', 'Digital content'],
+            ['Online + in person', 'Agent training'],
+            ['One secure', 'Agent portal'],
+            ['Human-reviewed', 'Smart planning'],
           ].map(([value, label]) => (
             <div key={label} className="px-4 py-3 text-center md:border-r md:last:border-r-0 md:border-warm-100">
               <div className="font-serif text-2xl font-bold text-gray-900">{value}</div>
@@ -218,6 +252,67 @@ const AgentsPage = () => {
                 <p className="mt-3 leading-relaxed text-gray-600">{body}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="digital-agent-tools" className="section overflow-hidden bg-[#171923] text-white">
+        <div className="container">
+          <div className="grid items-end gap-8 lg:grid-cols-[1fr_0.7fr]">
+            <div className="max-w-3xl">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+                Smarter agent support
+              </span>
+              <h2 className="mt-4 font-serif text-4xl font-semibold md:text-5xl">
+                Digital tools that help you sell, learn and book.
+              </h2>
+            </div>
+            <p className="text-lg leading-relaxed text-white/65">
+              CTS combines destination specialists with practical digital support. You get useful
+              content, clearer training and faster ways to move from client interest to a reviewed
+              booking request.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {digitalAgentTools.map(({ icon: Icon, eyebrow, title, body }) => (
+              <article
+                key={title}
+                className="group rounded-3xl border border-white/10 bg-white/[0.045] p-7 transition hover:-translate-y-1 hover:border-secondary/45 hover:bg-white/[0.075]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary/12 text-secondary">
+                  <Icon className="h-6 w-6" aria-hidden />
+                </div>
+                <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-secondary">
+                  {eyebrow}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl font-semibold text-white">{title}</h3>
+                <p className="mt-4 leading-relaxed text-white/62">{body}</p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-8 flex flex-col items-start justify-between gap-5 rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:flex-row md:items-center md:p-8">
+            <div className="flex max-w-2xl items-start gap-4">
+              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+                <Laptop className="h-5 w-5" aria-hidden />
+              </div>
+              <div>
+                <h3 className="font-serif text-2xl font-semibold">One login. More useful support.</h3>
+                <p className="mt-2 text-white/62">
+                  Use the Agent Portal for training and sales resources, then connect with the CTS
+                  trade team when a client is ready to move forward.
+                </p>
+              </div>
+            </div>
+            <a
+              href={CHINA_UNLOCKED_PORTAL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-[#171923] transition hover:bg-secondary"
+            >
+              Agent Portal login <ArrowRight className="h-4 w-4" aria-hidden />
+            </a>
           </div>
         </div>
       </section>
@@ -286,15 +381,16 @@ const AgentsPage = () => {
               </h2>
               <p className="mt-5 leading-relaxed text-gray-600">
                 Our China Travel Specialist programme is designed for New Zealand agents. Learn
-                the product tiers, entry essentials, destination stories and answers that help
-                clients feel ready to book.
+                online at your own pace, join live briefings or arrange face-to-face training with
+                CTS. Build the product knowledge and destination stories that help clients feel
+                ready to book.
               </p>
               <ul className="mt-6 grid gap-3 text-sm text-gray-700 sm:grid-cols-2">
                 {[
                   'Practical China product knowledge',
                   'Client objection handling',
-                  'Visa and entry updates',
-                  'Sales-ready destination stories',
+                  'Online learning and live updates',
+                  'Face-to-face team training',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
@@ -317,7 +413,7 @@ const AgentsPage = () => {
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
                 >
-                  Agent login
+                  Agent Portal login
                 </a>
               </div>
             </div>
