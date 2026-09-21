@@ -3234,7 +3234,7 @@ export const tours: Tour[] = [
       {
         day: 14,
         title: 'Shanghai — Auckland',
-        description: 'At the designated time, transfer to Shanghai Pudong Airport for your international flight to Auckland. Arrive in Auckland and conclude the tour.',
+        description: 'At the designated time, transfer to Shanghai Pudong Airport for your international flight to Auckland. Because the flight crosses the International Date Line, arrival in Auckland typically falls on the following calendar date. Arrive in Auckland and conclude the tour.',
         meals: ['Breakfast'],
       },
     ],
