@@ -3113,9 +3113,9 @@ export const tours: Tour[] = [
       '16 November 2026',
     ],
   },
-  // DRAFT — pending customer confirmation before publish. See PR description for the open items:
-  // 1) source itinerary is titled "15-Day" but only 14 numbered days are provided (Day 1–Day 14);
-  // 2) price and departure date(s) were not supplied; 3) isActive is false until both are confirmed.
+  // DRAFT — pending customer confirmation before publish. Duration confirmed as 14 Days
+  // (PM, 2026-09-21) despite the source document's "15-Day" title. Still pending: price
+  // and departure date(s) — isActive stays false until both are supplied.
   {
     id: 'tour-cn-dis-10',
     slug: 'natural-china',
@@ -3234,7 +3234,7 @@ export const tours: Tour[] = [
       {
         day: 14,
         title: 'Shanghai — Auckland',
-        description: 'At the designated time, transfer to Shanghai Pudong Airport for your international flight to Auckland. Because the flight crosses the International Date Line, arrival in Auckland typically falls on the following calendar date. Arrive in Auckland and conclude the tour.',
+        description: 'At the designated time, transfer to Shanghai Pudong Airport for your international flight to Auckland. Arrive in Auckland and conclude the tour.',
         meals: ['Breakfast'],
       },
     ],
