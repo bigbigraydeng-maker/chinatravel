@@ -3129,6 +3129,9 @@ export const tours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-yuyuan-night/shanghai-yuyuan-night.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-yuyuan-night/shanghai-yuyuan-night.jpg',
+      '/images/tours/three-gorges-yangtze-yichang.jpg',
+      '/images/tours/liziba-monorail-chongqing.jpg',
+      '/images/tours/hongyadong-chongqing-night.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-pandas/chengdu-pandas.jpg',
       '/images/tours/tianmen-mountain-glass-walkway.jpg',
     ],
