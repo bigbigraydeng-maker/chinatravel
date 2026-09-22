@@ -1,6 +1,6 @@
 {
   "timestamp": "2026-04-08T01:53:34.505Z",
-  "totalImages": 96,
+  "totalImages": 94,
   "totalOriginalSize": 210916272,
   "totalOptimizedSize": 73520482,
   "images": [
@@ -301,16 +301,8 @@
       "compressed": 50.5
     },
     {
-      "filename": "guilin-mist.jpg",
-      "category": "guides/guilin/guilin-mist",
-      "originalSize": 2361068,
-      "webpSize": 480426,
-      "jpegSize": 490353,
-      "compressed": 43
-    },
-    {
-      "filename": "guilin-mist.jpg",
-      "category": "tours/guilin-mist",
+      "filename": "yunnan-terraced-fields-pavilion.jpg",
+      "category": "tours/yunnan-terraced-fields-pavilion",
       "originalSize": 2361068,
       "webpSize": 480426,
       "jpegSize": 490353,
@@ -333,16 +325,8 @@
       "compressed": 49.6
     },
     {
-      "filename": "guilin-river-valley.jpg",
-      "category": "guides/guilin/guilin-river-valley",
-      "originalSize": 2126006,
-      "webpSize": 465706,
-      "jpegSize": 465777,
-      "compressed": 41.2
-    },
-    {
-      "filename": "guilin-river-valley.jpg",
-      "category": "tours/guilin-river-valley",
+      "filename": "dujiangyan-irrigation-system.jpg",
+      "category": "tours/dujiangyan-irrigation-system",
       "originalSize": 2126006,
       "webpSize": 465706,
       "jpegSize": 465777,

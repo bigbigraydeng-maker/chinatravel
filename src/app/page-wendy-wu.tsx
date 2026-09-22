@@ -42,7 +42,7 @@ const HomePageWendyWu = () => {
       slug: 'guilin',
       description: 'Karst mountains & misty rivers',
       color: 'from-sky-400 to-cyan-500',
-      image: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/guilin-mist.jpg'
+      image: '/images/tours/li-river-karst-boats.jpg'
     },
     {
       name: 'Zhangjiajie',
