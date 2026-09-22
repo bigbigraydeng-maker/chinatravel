@@ -1,0 +1,341 @@
+{
+  "_README": "Every image here is Creative Commons from Wikimedia Commons and MUST be credited on the back cover. Copied from the CTS Spotlight stock library on 2026-09-22 after checking each contact sheet.",
+  "_excluded": {
+    "beijing/olympicpark_1.jpg": "photographer watermark burned into the frame",
+    "shanghai/zhujiajiao_0.jpg": "photographer watermark burned into the frame",
+    "beijing/templeofheaven_1.jpg": "portrait of an identifiable private individual, not a site photo",
+    "xian/tangcity_0.jpg": "scraped as \"Tang Paradise\" (Daming Furong Garden) but labelled Tang Dynasty Ever-Bright City; two different Xi'an sites and the itinerary names the latter",
+    "xian/tangcity_1.jpg": "same as tangcity_0",
+    "xian/tangcity_2.jpg": "same as tangcity_0",
+    "hangzhou/longjing_0.jpg": "a stone teapot ornament, not the tea plantation the label claims",
+    "chongqing/liziba_0.jpg": "labelled \"monorail through the building\" but no building is in frame",
+    "xian/foodstreet_1.jpg": "close-up of toy birds, reads as nothing",
+    "beijing/forbiddencity_2.jpg": "close-up of a bronze cauldron, reads as nothing",
+    "beijing/summerpalace_1.jpg": "a wall and a pine, reads as nothing",
+    "beijing/forbiddencitysnow_2.jpg": "thin panorama strip, unusable in a grid",
+    "shanghai/bund_0.jpg": "thin panorama strip",
+    "hangzhou/westlake_2.jpg": "thin panorama strip",
+    "hangzhou/wuzhen_0.jpg": "thin panorama strip",
+    "chongqing/skyline_2.jpg": "thin panorama strip",
+    "chongqing/gorges_2.jpg": "muddy water and a boat railing, reads as nothing",
+    "shanghai/bund_2.jpg": "on Commons as CC0, but the only author credited there is a pxfuel.com link — a stock aggregator whose licence claims are not reliable enough to print in a customer brochure. Use bund_1, which has a named photographer."
+  },
+  "images": {
+    "beijing-forbiddencity_0": {
+      "author": "Reinhold Möller Ermell",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Hall_of_Central_Harmony_terraces-20071018-RM-143613.jpg",
+      "label_zh": "北京·故宫",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Forbidden City Beijing"
+    },
+    "beijing-forbiddencity_1": {
+      "author": "Reinhold Möller Ermell",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beijing_Forbidden_City_Hall_of_Central_Harmony_terraces-20071018-RM-143736.jpg",
+      "label_zh": "北京·故宫",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Forbidden City Beijing"
+    },
+    "beijing-forbiddencitysnow_0": {
+      "author": "N509FZ",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Forbidden_City_after_snow_(20200106114559).jpg",
+      "label_zh": "北京·故宫(雪景)",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Forbidden City Beijing snow"
+    },
+    "beijing-greatwall_1": {
+      "author": "xiquinhosilva",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:67052-The-Great-Wall,_Mutianyu.jpg",
+      "label_zh": "北京·长城",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Great Wall of China Mutianyu"
+    },
+    "beijing-greatwall_2": {
+      "author": "Velatrix",
+      "license": "CC0",
+      "source": "https://commons.wikimedia.org/wiki/File:Great_Wall_of_China_July_2006.JPG",
+      "label_zh": "北京·长城",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Great Wall of China Mutianyu"
+    },
+    "beijing-templeofheaven_2": {
+      "author": "Maros M r a z (Maros)",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Temple_of_Heaven,_Beijing,_China_-_002.jpg",
+      "label_zh": "北京·天坛",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Temple of Heaven Beijing"
+    },
+    "beijing-summerpalace_0": {
+      "author": "Jakub Hałun",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:20090530_Beijing_Summer_Palace_8467.jpg",
+      "label_zh": "北京·颐和园",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Summer Palace Beijing"
+    },
+    "beijing-summerpalace_2": {
+      "author": "xiquinhosilva",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Longevity_Hill_of_the_Summer_Palace.jpg",
+      "label_zh": "北京·颐和园",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Summer Palace Beijing"
+    },
+    "beijing-hutong_0": {
+      "author": "Caitriana Nicholson from 北京 ~ Beijing, 中国 ~ China",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hutong,_BJ_(2917153763).jpg",
+      "label_zh": "北京·胡同",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beijing hutong alley"
+    },
+    "beijing-hutong_1": {
+      "author": "Caitriana Nicholson from 北京 ~ Beijing, 中国 ~ China",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hutong,_BJ_(2917983960).jpg",
+      "label_zh": "北京·胡同",
+      "orientation": "portrait",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beijing hutong alley"
+    },
+    "beijing-olympicpark_0": {
+      "author": "Scorewith German",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beijing,_Birds_Nest_-_National_Stadium_-_panoramio_(1).jpg",
+      "label_zh": "北京·奥林匹克公园(鸟巢)",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beijing National Stadium Bird's Nest night"
+    },
+    "beijing-olympicpark_2": {
+      "author": "Peter23",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beijing_national_stadium.jpg",
+      "label_zh": "北京·奥林匹克公园(鸟巢)",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beijing National Stadium Bird's Nest night"
+    },
+    "xian-terracotta_1": {
+      "author": "Ideophagous",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Terracotta_army_(33475).jpg",
+      "label_zh": "西安·兵马俑",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Terracotta Army Xi'an"
+    },
+    "xian-terracotta_2": {
+      "author": "Ideophagous",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Terracotta_army_(44439).jpg",
+      "label_zh": "西安·兵马俑",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Terracotta Army Xi'an"
+    },
+    "xian-citywall_0": {
+      "author": "xiquinhosilva",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:City_wall_of_Xi%27an_51550-Xian_(27959363326).jpg",
+      "label_zh": "西安·西安古城墙",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Xi'an City Wall"
+    },
+    "xian-citywall_2": {
+      "author": "Ideophagous",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Xi%27an_city_walls_(46511).jpg",
+      "label_zh": "西安·西安古城墙",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Xi'an City Wall"
+    },
+    "xian-goosepagoda_0": {
+      "author": "Alexey Komarov",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Giant_Wild_Goose_Pagoda,_Xi%27an,_May,_2018-1.jpg",
+      "label_zh": "西安·大雁塔",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Giant Wild Goose Pagoda"
+    },
+    "xian-goosepagoda_1": {
+      "author": "Alex Kwok",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Giant_Wild_Goose_Pagoda.jpg",
+      "label_zh": "西安·大雁塔",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Giant Wild Goose Pagoda"
+    },
+    "xian-belltower_0": {
+      "author": "TarnishedPath",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bell_Tower_of_Xi%27an_at_night.jpg",
+      "label_zh": "西安·钟楼(夜)",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Bell Tower of Xi'an night"
+    },
+    "xian-foodstreet_0": {
+      "author": "chensiyuan",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:1_xian_muslim_quarter_china_2011.JPG",
+      "label_zh": "西安·回民街小吃夜市",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beiyuanmen Muslim street Xi'an"
+    },
+    "xian-foodstreet_2": {
+      "author": "Николай Максимович",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Muslim_quarter._Xi%27an,_China._-_panoramio.jpg",
+      "label_zh": "西安·回民街小吃夜市",
+      "orientation": "portrait",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Beiyuanmen Muslim street Xi'an"
+    },
+    "shanghai-bund_1": {
+      "author": "King of Hearts",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Pudong_Shanghai_November_2017_panorama.jpg",
+      "label_zh": "上海·外滩天际线",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "The Bund Shanghai skyline"
+    },
+    "shanghai-yugarden_0": {
+      "author": "Chainwit.",
+      "license": "CC BY 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:2024-Apr_Shanghai_Yu_Yuan_Garden_%E8%B1%AB%E5%9B%AD_-_img_20.jpg",
+      "label_zh": "上海·豫园",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Yu Garden Shanghai"
+    },
+    "shanghai-yugarden_1": {
+      "author": "Stefan Fussan",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shanghai_-_Yu_Garden_-_0034.jpg",
+      "label_zh": "上海·豫园",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Yu Garden Shanghai"
+    },
+    "shanghai-pearl_1": {
+      "author": "Ermell",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shanghai_Oriental_Pearl_Tower-20150516-RM-123453.jpg",
+      "label_zh": "上海·东方明珠",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Oriental Pearl Tower Shanghai"
+    },
+    "shanghai-xintiandi_1": {
+      "author": "Leynadmar",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Fountain_with_Sculptures_in_Xintiandi_Shanghai_20210329.jpg",
+      "label_zh": "上海·新天地",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Xintiandi Shanghai"
+    },
+    "shanghai-zhujiajiao_1": {
+      "author": "Lloyd Tudor",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Zhujiajiao_ancient_water_town,_Nr._Shanghai,_China_-_1.jpg",
+      "label_zh": "上海·朱家角水乡",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Zhujiajiao water town Shanghai"
+    },
+    "shanghai-zhujiajiao_2": {
+      "author": "Lloyd Tudor",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Zhujiajiao_ancient_water_town,_Nr._Shanghai,_China_-_2.jpg",
+      "label_zh": "上海·朱家角水乡",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Zhujiajiao water town Shanghai"
+    },
+    "hangzhou-westlake_0": {
+      "author": "Jakub Hałun",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:20090524_Hangzhou_West_Lake_7531.jpg",
+      "label_zh": "杭州·西湖",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "West Lake Hangzhou"
+    },
+    "hangzhou-westlake_1": {
+      "author": "Windmemories",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:20260424_West_Lake_and_Hangzhou_Skyline.jpg",
+      "label_zh": "杭州·西湖",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "West Lake Hangzhou"
+    },
+    "hangzhou-leifeng_1": {
+      "author": "TheTokl",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Leifeng_Pagoda,_Hangzhou_by_TheTokl_-_32.jpg",
+      "label_zh": "杭州·雷峰塔",
+      "orientation": "portrait",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Leifeng Pagoda Hangzhou"
+    },
+    "hangzhou-longjing_1": {
+      "author": "Peter K Burian",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Longjing_Tea_field,_Dragon_Well_area,_Meijiawu_China.jpg",
+      "label_zh": "杭州·龙井茶园",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Longjing tea plantation Hangzhou"
+    },
+    "chongqing-ciqikou_0": {
+      "author": "Franco Pecchio from Milano, Italy",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:028_Sichuan-160811_28_(29868006911).jpg",
+      "label_zh": "重庆·磁器口",
+      "orientation": "portrait",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Ciqikou ancient town Chongqing"
+    },
+    "chongqing-gorges_1": {
+      "author": "Tan Wei Liang Byorn",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Qutang_Gorge_on_Changjiang.jpg",
+      "label_zh": "重庆·长江三峡/夔门",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Qutang Gorge Yangtze"
+    },
+    "guangzhou-yumcha_2": {
+      "author": "Pauloleong2002",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Yum_cha_in.jpg",
+      "label_zh": "广州·广式早茶",
+      "orientation": "landscape",
+      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
+      "label_en": "Cantonese dim sum yum cha"
+    }
+  },
+  "_superseded": "Files the paid iStock set replaced on 2026-09-22 were removed rather than left orphaned: beijing-templeofheaven_0, chongqing-cruise_1, chongqing-cruise_2, chongqing-gorges_0, chongqing-hongyadong_0, chongqing-raffles_1, chongqing-skyline_1, chongqing-yangtze_1, hangzhou-leifeng_2, hangzhou-longjing_2, shanghai-nanjingroad_0, shanghai-nanjingroad_1, shanghai-pudong_0, shanghai-pudong_1, xian-terracotta_0"
+}

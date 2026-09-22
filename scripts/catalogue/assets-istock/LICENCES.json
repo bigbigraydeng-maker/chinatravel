@@ -1,0 +1,209 @@
+{
+  "_README": "Paid iStock Standard Licence images. Unlike the Creative Commons set in ../assets, these need NO attribution on the back cover — that is the point of paying for them. This file exists so the provenance is still in the repo. The licence ledger of record is Dropbox/MagicLab_Studio/CTS/website/CREDITS.md and the invoice is under by-client/01_CTS_Tours/bundles/INV-020_Website/supporting/.",
+  "_checked": "Every frame was checked against its iStock title on 2026-09-22 before use.",
+  "_not_used": {
+    "upcoming-yunnan (Songzanlin Monastery, Shangri-la)": "Shangri-la is on no itinerary in this brochure — China Panorama goes to Dali and Kunming, not Shangri-la",
+    "upcoming-golden-china (Panlongshan Great Wall)": "an aerial in which the wall is a thread across a green ridge; it does not read as the Great Wall at tile size",
+    "upcoming-christmas-new-year (Fireworks in Shanghai at Night)": "the New Year's Eve on both Christmas itineraries is in XI'AN, not Shanghai; fireworks over Pudong would imply an event these tours do not attend there"
+  },
+  "images": {
+    "great-wall": {
+      "photographer": "zhaojiankang",
+      "title": "The Great Wall Of China",
+      "istock_id": "2151863095",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2151863095",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/spotlight-card1_istock-original_2151863095.jpg"
+    },
+    "great-wall-pano": {
+      "photographer": "superjoseph",
+      "title": "Panoramic view of Great Wall of China",
+      "istock_id": "598959570",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm598959570",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/stopover-beijing_istock-original_598959570.jpg"
+    },
+    "forbidden-city": {
+      "photographer": "onlyyouqj",
+      "title": "Beijing, China Forbidden City",
+      "istock_id": "1069605494",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1069605494",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/upcoming-legacy-of-china_istock-original_1069605494.jpg"
+    },
+    "beijing-imperial": {
+      "photographer": "SeanPavonePhoto",
+      "title": "Beijing Imperial City",
+      "istock_id": "504781659",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm504781659",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-beijing_istock-original_504781659.jpg"
+    },
+    "imperial-lion": {
+      "photographer": "SCM Jeans",
+      "title": "Imperial City Guarding Lion",
+      "istock_id": "1323462334",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1323462334",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/upcoming-tale-of-two-cities_istock-original_1323462334.jpg"
+    },
+    "temple-of-heaven": {
+      "photographer": "ChengYang",
+      "title": "The temple of heaven, Beijing, China",
+      "istock_id": "1201872301",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1201872301",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/temple-difference_istock-original_1201872301.jpg"
+    },
+    "terracotta": {
+      "photographer": "Vadim_Nefedov",
+      "title": "Excavated Sculptures Statues Of The Terracota Army Soldiers Of Qin Shi Huang Emperor",
+      "istock_id": "1186902663",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1186902663",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-xian_istock-original_1186902663.jpg"
+    },
+    "shanghai-christmas": {
+      "photographer": "Oleh_Slobodeniuk",
+      "title": "Christmas Market In Shanghai, China",
+      "istock_id": "2184686440",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2184686440",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/christchurch-departure_istock-original_2184686440.jpg"
+    },
+    "shanghai-shopping": {
+      "photographer": "Nikada",
+      "title": "Busy Shoppping Street In Shanghai, China",
+      "istock_id": "510777832",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm510777832",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/spotlight-card2_istock-original_510777832.jpg"
+    },
+    "shanghai-skyline": {
+      "photographer": "zorazhuang",
+      "title": "Shanghai Skyline Panoramic at Sunset",
+      "istock_id": "599494684",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm599494684",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/stopover-shanghai_istock-original_599494684.jpg"
+    },
+    "shanghai-night": {
+      "photographer": "zhaojiankang",
+      "title": "Beautiful Modern City At Night In Shanghai China",
+      "istock_id": "526540092",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm526540092",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-shanghai_istock-original_526540092.jpg"
+    },
+    "zhujiajiao": {
+      "photographer": "atosan",
+      "title": "Fangsheng Bridge in Zhujiajiao old watertown, China",
+      "istock_id": "2190246157",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2190246157",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/upcoming-shanghai-surroundings_istock-original_2190246157.jpg"
+    },
+    "suzhou": {
+      "photographer": "Rawf8",
+      "title": "Ancient Chinese water town. Suzhou, China",
+      "istock_id": "2236551963",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2236551963",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/stopover-shanghai-suzhou_istock-original_2236551963.jpg"
+    },
+    "hongyadong": {
+      "photographer": "li dekun",
+      "title": "Night View Of Hongyadong In Chongqing",
+      "istock_id": "2188352516",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2188352516",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/blog-article1_istock-original_2188352516.jpg"
+    },
+    "liziba": {
+      "photographer": "li dekun",
+      "title": "Chongqing Liziba Monorail Station",
+      "istock_id": "2190200138",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2190200138",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/blog-article3_istock-original_2190200138.jpg"
+    },
+    "chongqing-night": {
+      "photographer": "Peng Wang",
+      "title": "Chongqing Dongshuimen Yangtze River Bridge Night View",
+      "istock_id": "2177679963",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm2177679963",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-chongqing_istock-original_2177679963.jpg"
+    },
+    "yangtze-cruise": {
+      "photographer": "gladassfanny",
+      "title": "Yangtze River Cruise",
+      "istock_id": "183801808",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm183801808",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/blog-article2_istock-original_183801808.jpg"
+    },
+    "yangtze-sunset": {
+      "photographer": "ARUBA48",
+      "title": "Sunset On Yangtze River With Cruise Boat",
+      "istock_id": "1126036178",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1126036178",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/cta-banner_istock-original_1126036178.jpg"
+    },
+    "qutang": {
+      "photographer": "jejim",
+      "title": "Qutang Gorge, Most Beautiful Gorge In China",
+      "istock_id": "506401730",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm506401730",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/spotlight-card3_istock-original_506401730.jpg"
+    },
+    "panda": {
+      "photographer": "PhotoTalk",
+      "title": "Giant Panda",
+      "istock_id": "176125199",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm176125199",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-chengdu_istock-original_176125199.jpg"
+    },
+    "zhangjiajie": {
+      "photographer": "aphotostory",
+      "title": "Landscape Of Zhangjiajie",
+      "istock_id": "899536390",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm899536390",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/city-zhangjiajie_istock-original_899536390.jpg"
+    },
+    "li-river": {
+      "photographer": "IoanaCatalinaE",
+      "title": "View of the Karst mountains in Guilin region of South China, close to Xingping village, Li River",
+      "istock_id": "1200092739",
+      "licence": "iStock Standard License (paid, Getty Images)",
+      "url": "https://www.istockphoto.com/photo/gm1200092739",
+      "attribution_required": false,
+      "source_file": "MagicLab_Studio/CTS/website/sources/hero-river-sunset-v3_istock-original_1200092739.jpg"
+    }
+  }
+}
