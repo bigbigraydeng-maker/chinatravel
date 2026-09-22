@@ -1263,7 +1263,7 @@ export const yunnanGuide: DestinationGuide = {
   keywords: ['Yunnan travel', 'Stone Forest', 'Dali', 'ethnic minorities', 'natural beauty'],
   h1: 'Yunnan Travel Guide: Province of Colour and Culture',
   heroSubtitle: 'Where Mountains, Minorities & Mystique Meet',
-  heroImage: `${TI}/yunnan-rice-terraces.jpg`,
+  heroImage: '/images/tours/yuanyang-rice-terraces.jpg',
   heroImageClassName: 'object-[center_35%]',
   introText: [
     'Yunnan is in southwest China. Twenty-five ethnic groups are officially recognised here. Landscapes range from steamy valleys to snowy peaks.',
@@ -1538,7 +1538,7 @@ export const lijangGuide: DestinationGuide = {
   relatedGuideSlugs: ['yunnan-travel-guide', 'dali-travel-guide'],
   relatedBlogSlugs: ['understanding-chinese-tea-culture', 'best-time-visit-china-seasonal-weather-crowds-guide', 'photography-guide-china-best-locations-hidden-gems'],
   galleryImages: [
-    `${TI}/yunnan-rice-terraces.jpg`,
+    '/images/tours/yuanyang-rice-terraces.jpg',
     `${TI}/shangri-la-monastery.jpg`,
   ],
   createdAt: '2026-01-01',
@@ -1649,7 +1649,7 @@ export const daliGuide: DestinationGuide = {
   relatedGuideSlugs: ['yunnan-travel-guide', 'lijiang-travel-guide'],
   relatedBlogSlugs: ['china-water-towns-jiangnan-guide', 'understanding-chinese-tea-culture', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
-    `${TI}/yunnan-rice-terraces.jpg`,
+    '/images/tours/yuanyang-rice-terraces.jpg',
   ],
   createdAt: '2026-01-01',
   updatedAt: '2026-04-11'
@@ -1752,7 +1752,7 @@ export const kunmingGuide: DestinationGuide = {
   relatedGuideSlugs: ['yunnan-travel-guide', 'stone-forest-travel-guide'],
   relatedBlogSlugs: ['chengdu-things-to-do', 'best-time-visit-china-seasonal-weather-crowds-guide', 'first-time-china-travel-tips'],
   galleryImages: [
-    `${TI}/yunnan-rice-terraces.jpg`,
+    '/images/tours/yuanyang-rice-terraces.jpg',
     `${TI}/china-pagoda-night.jpg`,
   ],
   createdAt: '2026-01-01',
@@ -1837,7 +1837,7 @@ export const shangrIlaGuide: DestinationGuide = {
   relatedGuideSlugs: ['yunnan-travel-guide', 'meili-mountain-trek-guide'],
   relatedBlogSlugs: ['why-silk-road-should-be-your-next-adventure', 'photography-guide-china-best-locations-hidden-gems', 'what-to-pack-china-complete-packing-list-by-season'],
   galleryImages: [
-    `${TI}/yunnan-rice-terraces.jpg`,
+    '/images/tours/yuanyang-rice-terraces.jpg',
     `${TI}/shangri-la-monastery-lake.jpg`,
   ],
   createdAt: '2026-01-01',

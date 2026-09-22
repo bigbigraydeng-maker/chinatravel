@@ -79,7 +79,7 @@ Want me to match this list to a real route? [Browse China tours](/china-tours) o
     authorRole: 'China Travel Specialist',
     category: 'travel-tips',
     tags: ['packing China', 'what to pack', 'China travel', 'luggage tips', 'seasonal packing'],
-    heroImage: tourImage('yunnan-rice-terraces.jpg'),
+    heroImage: '/images/tours/yuanyang-rice-terraces.jpg',
     publishedAt: '2026-04-08',
     readTime: '15 min read',
   },
