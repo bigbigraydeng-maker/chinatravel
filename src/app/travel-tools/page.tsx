@@ -4,7 +4,6 @@ import ImmersivePageHero from '@/components/ImmersivePageHero';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
-import { tourImage } from '@/lib/site-media';
 import { TOOLS, type ToolData } from '@/lib/data/tools-data';
 import { Icon } from '@/components/ui/Icon';
 
@@ -14,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Free interactive planning tools for New Zealand travellers heading to China. Check visa requirements, find the best time to visit, estimate your trip cost, and plan your itinerary — all in one place.',
     path: '/travel-tools',
-    ogImagePath: tourImage('yunnan-rice-terraces.jpg'),
+    ogImagePath: '/images/tours/yuanyang-rice-terraces.jpg',
     ogImageAlt: 'China travel planning tools — CTS Tours New Zealand',
     keywords: [
       'China travel planning tools',
@@ -155,8 +154,8 @@ export default function TravelToolsPage() {
           eyebrow="Plan smarter"
           title="Free China Travel Planning Tools"
           subtitle="Everything a New Zealand traveller needs before booking — visa checks, seasonal guides, cost estimates, and more."
-          imageSrc={tourImage('yunnan-rice-terraces.jpg')}
-          imageAlt="Yunnan rice terraces — China travel planning tools for NZ travellers, CTS Tours"
+          imageSrc="/images/tours/yuanyang-rice-terraces.jpg"
+          imageAlt="Flooded Hani rice terraces at Yuanyang, Yunnan — China travel planning tools for NZ travellers, CTS Tours"
           priority
         />
 

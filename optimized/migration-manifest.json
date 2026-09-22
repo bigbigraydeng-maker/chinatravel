@@ -1,8 +1,8 @@
 {
   "timestamp": "2026-04-08T01:53:34.505Z",
-  "totalImages": 94,
-  "totalOriginalSize": 210916272,
-  "totalOptimizedSize": 73520482,
+  "totalImages": 95,
+  "totalOriginalSize": 211994445,
+  "totalOptimizedSize": 75200315,
   "images": [
     {
       "filename": "chengdu-pandas.jpg",
@@ -61,8 +61,8 @@
       "compressed": 39.3
     },
     {
-      "filename": "yunnan-rice-terraces.jpg",
-      "category": "tours/yunnan-rice-terraces",
+      "filename": "mu-cang-chai-vietnam-terraces.jpg",
+      "category": "tours/mu-cang-chai-vietnam-terraces",
       "originalSize": 3453538,
       "webpSize": 731214,
       "jpegSize": 677274,
@@ -627,6 +627,14 @@
       "webpSize": 139340,
       "jpegSize": 202381,
       "compressed": 54.5
+    },
+    {
+      "filename": "yuanyang-rice-terraces.jpg",
+      "category": "tours/yuanyang-rice-terraces",
+      "originalSize": 1078173,
+      "webpSize": 807468,
+      "jpegSize": 872365,
+      "compressed": -99.6
     },
     {
       "filename": "baker-gu-zhangjiajie.jpg",

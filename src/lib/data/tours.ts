@@ -1030,8 +1030,7 @@ export const tours: Tour[] = [
     price: 'NZD $3,899 per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery.jpg',
     gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery-lake.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/yunnan-rice-terraces/yunnan-rice-terraces.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery-lake.jpg'
     ],
     highlights: [
       'International flights routed Auckland — Beijing — Dali, returning Lijiang — Beijing — Auckland',
