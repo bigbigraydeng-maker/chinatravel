@@ -3113,9 +3113,9 @@ export const tours: Tour[] = [
       '16 November 2026',
     ],
   },
-  // DRAFT — pending customer confirmation before publish. Duration confirmed as 14 Days
-  // (PM, 2026-09-21) despite the source document's "15-Day" title. Still pending: price
-  // and departure date(s) — isActive stays false until both are supplied.
+  // Duration confirmed as 14 Days (PM, 2026-09-21) despite the source document's "15-Day"
+  // title. Published live 2026-09-22 with price and departure date(s) still pending —
+  // both fields read "to be confirmed" until the customer supplies them.
   {
     id: 'tour-cn-dis-10',
     slug: 'natural-china',
@@ -3125,7 +3125,7 @@ export const tours: Tour[] = [
     title: 'China Discovery — Natural China',
     shortDescription: 'From Shanghai through the Yangtze\'s Three Gorges to Chongqing, Chengdu and Zhangjiajie — a 14-day journey combining a 3-night river cruise, giant pandas, high-speed rail and Tianmen Mountain\'s Glass Skywalk.',
     duration: '14 Days',
-    price: 'Price to be confirmed',
+    price: 'From NZD $TBC per person',
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-yuyuan-night/shanghai-yuyuan-night.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-yuyuan-night/shanghai-yuyuan-night.jpg',
@@ -3262,9 +3262,9 @@ export const tours: Tour[] = [
     ],
     metaTitle: 'China Discovery — Natural China | 14 Days | CTS Tours',
     metaDescription: 'Natural China — 14 days from Shanghai through the Yangtze\'s Three Gorges to Chongqing, Chengdu and Zhangjiajie. Cruise, giant pandas, high-speed rail and Tianmen Mountain\'s glass skywalk.',
-    isActive: false,
+    isActive: true,
     createdAt: '2026-09-21',
-    updatedAt: '2026-09-21',
+    updatedAt: '2026-09-22',
     tourCities: [
       'shanghai',
       'chongqing',
