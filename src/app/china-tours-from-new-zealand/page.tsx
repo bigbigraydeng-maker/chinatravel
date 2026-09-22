@@ -488,8 +488,8 @@ export default function ChinaToursFromNZPage() {
               <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden border border-warm-100 shadow-sm">
                   <Image
-                    src={`${TOUR_IMG}/guilin-mist.jpg`}
-                    alt="Karst peaks and mist along the Li River near Guilin"
+                    src="/images/tours/li-river-karst-boats.jpg"
+                    alt="Karst peaks and bamboo rafts on the Li River near Guilin"
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"

@@ -1135,7 +1135,7 @@ export const tours: Tour[] = [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/chengdu-old-town/chengdu-old-town.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/guilin-river-valley/guilin-river-valley.jpg',
+      '/images/tours/dujiangyan-irrigation-system.jpg',
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
     ],
     highlights: [

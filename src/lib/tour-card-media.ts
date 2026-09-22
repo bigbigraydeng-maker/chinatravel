@@ -27,7 +27,7 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     objectPosition: '50% 50%',
   },
   landscapes: {
-    src: '/images/tours/guilin-mist.jpg',
+    src: '/images/tours/yunnan-terraced-fields-pavilion.jpg',
     objectPosition: '65% 50%',
   },
   'shanghai-surroundings': {

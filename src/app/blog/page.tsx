@@ -4,7 +4,11 @@ import Image from 'next/image';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
 import BlogGrid from '@/components/blog/BlogGrid';
 import { getAllBlogPosts } from '@/lib/data/blogs';
-import { tourImage } from '@/lib/site-media';
+import { getSiteUrl } from '@/lib/site';
+
+/** Verified Guilin frame: Li River karst with bamboo rafts. */
+const BLOG_HERO = '/images/tours/li-river-karst-boats.jpg';
+const BLOG_HERO_ALT = 'Karst peaks on the Li River near Guilin — CTS Tours travel blog';
 
 export const metadata: Metadata = {
   title: 'Travel Blog | CTS Tours',
@@ -15,10 +19,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: tourImage('guilin-mist.jpg'),
+        url: `${getSiteUrl()}${BLOG_HERO}`,
         width: 1200,
         height: 630,
-        alt: 'Misty hilltop pavilion in Guilin — CTS Tours travel blog',
+        alt: BLOG_HERO_ALT,
       },
     ],
   },
@@ -39,8 +43,8 @@ export default function BlogPage() {
         eyebrow="Journal"
         title="Travel Blog"
         subtitle="Insights, guides, and stories from our China travel specialists"
-        imageSrc={tourImage('guilin-mist.jpg')}
-        imageAlt="Misty hilltop pavilion in Guilin — CTS Tours travel blog"
+        imageSrc={BLOG_HERO}
+        imageAlt={BLOG_HERO_ALT}
         priority
       />
 
