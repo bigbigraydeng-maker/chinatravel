@@ -18,6 +18,7 @@ import base64
 import io
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -37,8 +38,8 @@ CHROME_CANDIDATES = [
     "/Applications/Chromium.app/Contents/MacOS/Chromium",
 ]
 
-MAX_WIDTH = 1240
-JPEG_QUALITY = 70
+MAX_WIDTH = 1150
+JPEG_QUALITY = 68
 
 # key -> (repo-relative path, credit or None)
 # Credit is required for every Creative Commons image; the licence demands
@@ -47,6 +48,7 @@ JPEG_QUALITY = 70
 IMAGES = {
     "great-wall-cloud-sea":  ("public/images/tours/great-wall-cloud-sea.jpg", None),
     "great-wall-green":      ("public/images/tours/great-wall-green.jpg", None),
+    "great-wall-mist":       ("public/images/tours/great-wall-mist.jpg", None),
     "group-great-wall-cts":  ("public/blog/group-great-wall-cts.jpg", None),
     "baker":                 ("public/images/baker-gu-portrait-optimized.jpg", None),
     "forbidden-city-aerial": ("public/images/tours/forbidden-city-aerial.jpg", None),
@@ -71,6 +73,11 @@ IMAGES = {
     "group-walking-lane":    ("public/blog/group-walking-shanghai-lane.jpg", None),
     "group-ancient-gate":    ("public/blog/group-ancient-gate-night.jpg", None),
     "wuzhen-canal":          ("public/images/tours/wuzhen-canal.jpg", None),
+    "leshan-buddha":         ("public/images/tours/leshan-buddha-statue.jpg", None),
+    "dali-three-pagodas": (
+        "public/blog/sourced/dali-three-pagodas.jpg",
+        ("Three Pagodas, Dali", "CEphoto, Uwe Aranas", "CC BY-SA 3.0"),
+    ),
     "logo":                  ("public/logo.png", None),
 
     "tang-everbright-city": (
@@ -99,7 +106,23 @@ IMAGES = {
     ),
 }
 
+# The photo pages draw on scripts/catalogue/assets — Creative Commons stock,
+# copied in with its provenance. Registering it from CREDITS.json rather than by
+# hand means an image can never reach the page without its credit: the back
+# cover prints a line for every CC image the build actually used.
+_ASSET_CREDITS = json.loads(
+    (Path(__file__).resolve().parent / "assets" / "CREDITS.json").read_text(encoding="utf8")
+)
+for _k, _v in _ASSET_CREDITS["images"].items():
+    IMAGES[f"s:{_k}"] = (
+        f"scripts/catalogue/assets/{_k}.jpg",
+        (_v["label_en"], _v["author"], _v["license"]),
+    )
+
 _used = set()
+# filled in by _prepare(): key -> "landscape" | "portrait", read off the actual
+# pixels rather than trusted from a filename
+_SHAPE: dict = {}
 
 
 def img(key: str) -> str:
@@ -126,6 +149,7 @@ def _prepare() -> dict:
             mime = "image/png"
         else:
             im = im.convert("RGB")
+            _SHAPE[key] = "portrait" if im.height > im.width * 1.1 else "landscape"
             if im.width > MAX_WIDTH:
                 h = round(im.height * MAX_WIDTH / im.width)
                 im = im.resize((MAX_WIDTH, h), Image.LANCZOS)
@@ -329,6 +353,27 @@ table.so td.p { width: 24mm; text-align: right; font-family: Georgia, serif; fon
 
 .big-num { font-family: Georgia, serif; font-size: 34pt; color: var(--crimson); line-height: 1; }
 
+/* --- photo page ------------------------------------------------------ */
+.photo-head { padding: 13mm 16mm 6mm; flex: 0 0 auto; }
+.photo-head h2 { font-size: 20pt; line-height: 1.12; margin: 2mm 0 2mm; }
+.photo-head .meta { font-size: 8.4pt; color: var(--muted); line-height: 1.45; }
+/* Explicit rows, each 1fr, so the grid fills exactly the space left on the
+   page — implicit auto rows sized to their content and ran past the footer.
+   Column and row counts are worked out from the tile count, in p_mosaic. */
+.mosaic {
+  flex: 1; min-height: 0; overflow: hidden;
+  display: grid; gap: 2.4mm; margin: 0 16mm 16mm 16mm;
+}
+.tile { position: relative; overflow: hidden; background: #efe9df; min-height: 0; }
+.tile img { width: 100%%; height: 100%%; object-fit: cover; display: block; }
+.tile.hero { grid-column: span 2; }
+.tile .cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 7mm 3mm 2.4mm;
+  background: linear-gradient(180deg, rgba(20,18,16,0) 0%%, rgba(20,18,16,.78) 70%%);
+  color: #fff; font-size: 6.8pt; letter-spacing: .06em; line-height: 1.3;
+}
+
 /* --- back cover ------------------------------------------------------ */
 .back { background: #1a1815; color: #fff; }
 .back img.bg { position: absolute; inset: 0; width: 100%%; height: 100%%; object-fit: cover; opacity: .6; }
@@ -342,7 +387,7 @@ table.so td.p { width: 24mm; text-align: right; font-family: Georgia, serif; fon
 .contact .v { font-family: Georgia, serif; font-size: 12.5pt; margin-top: 1.5mm; }
 .contact .s { font-size: 7.6pt; color: rgba(255,255,255,.65); margin-top: 1mm; }
 .credits { margin-top: auto; padding-top: 5mm; border-top: .5pt solid rgba(255,255,255,.22);
-  font-size: 7pt; color: rgba(255,255,255,.62); line-height: 1.65; }
+  font-size: 6.2pt; color: rgba(255,255,255,.58); line-height: 1.5; }
 """
 
 
@@ -352,9 +397,47 @@ def page(inner: str, cls: str = "") -> str:
     return f'<section class="page {cls}">{inner}</section>'
 
 
-def foot(left: str, num) -> str:
-    n = f"{num:02d}" if isinstance(num, int) else num
-    return f'<div class="foot"><span>{left}</span><span>{n}</span></div>'
+# Page numbers are stamped after the pages are assembled. They used to be
+# hand-written into every foot() call, which meant inserting a page silently
+# renumbered nothing and the printed numbers drifted from reality.
+PAGENO = "\u0000PAGENO\u0000"
+
+
+def foot(left: str, _num=None) -> str:
+    return f'<div class="foot"><span>{left}</span><span>{PAGENO}</span></div>'
+
+
+def p_mosaic(t) -> str:
+    """A full-page photo mosaic for one departure.
+
+    Every tile is a place that tour's own itinerary visits; the caption says no
+    more than the itinerary does. Tiles are sized from the image's real pixel
+    shape, so a portrait never gets letterboxed into a landscape slot.
+    """
+    entries = D.MOSAICS[t["key"]]
+    n = len(entries)
+    # Three columns only once two would make every tile a letterbox sliver;
+    # two columns keeps landscape photographs from being cropped to a strip.
+    cols = 3 if n >= 11 else 2
+    rows = -(-n // cols)
+    spare = cols * rows - n
+    # A leftover cell becomes a full-width lead image rather than a hole.
+    tiles = []
+    for i, (key, caption) in enumerate(entries):
+        cls = "tile hero" if (spare and i == 0) else "tile"
+        tiles.append(
+            f'<figure class="{cls}"><img src="{img(key)}" alt="">'
+            f'<figcaption class="cap">{caption}</figcaption></figure>'
+        )
+    return page(f'''
+      <div class="photo-head">
+        <div class="eyebrow">{t['collection']} &middot; in pictures</div>
+        <h2>{t['name']}</h2>
+        <div class="meta">{t['cities']}</div>
+      </div>
+      <div class="mosaic" style="grid-template-columns: repeat({cols}, 1fr);
+           grid-template-rows: repeat({rows}, 1fr)">{''.join(tiles)}</div>
+      {foot(t['name'].replace('&amp;', '&') + " &middot; in pictures")}''')
 
 
 def stat(k, v, d="") -> str:
@@ -425,9 +508,9 @@ def p_about() -> str:
           <div class="col-side">
             <div class="sect">Group size</div>
             <ul class="tick">
-              <li><b>Discovery Collection &mdash; max 18 travellers.</b> A genuine small group,
+              <li><b>China Discovery &mdash; max 18 travellers.</b> A genuine small group,
                   not a 30-plus coach tour.</li>
-              <li><b>Signature Collection &mdash; max 16 travellers.</b></li>
+              <li><b>China Signature &mdash; max 16 travellers.</b></li>
             </ul>
             <div class="sect mt">Accredited &amp; bonded</div>
             <ul class="tick grey">
@@ -619,7 +702,7 @@ def p_cities_b() -> str:
       {foot("CTS Tours &middot; China 2026-27", 6)}''')
 
 
-def p_how_to_choose(disc, sig) -> str:
+def p_how_to_choose(disc, sig, pg) -> str:
     dmin = min(int(t["price"].replace(",", "")) for t in disc)
     smin = min(int(t["price"].replace(",", "")) for t in sig)
     return page(f'''
@@ -630,25 +713,25 @@ def p_how_to_choose(disc, sig) -> str:
           desk if none of them is quite your trip. Here is the quickest way to narrow it down.</p>
         <div class="grid2" style="margin-top:9mm">
           <div class="card">
-            <div class="k">Pages 8&ndash;13 &middot; {len(disc)} departures</div>
-            <h3 style="margin-top:2mm">Discovery Collection</h3>
+            <div class="k">Pages {pg["disc"]} &middot; {len(disc)} departures</div>
+            <h3 style="margin-top:2mm">China Discovery</h3>
             <p>The classic routes, 10 to 16 days, four-star hotels, maximum 18 travellers.
               This is where most first trips to China start. From <b>NZ${dmin:,}pp</b>.</p>
           </div>
           <div class="card">
-            <div class="k">Pages 14&ndash;17 &middot; {len(sig)} departures</div>
-            <h3 style="margin-top:2mm">Signature Collection</h3>
+            <div class="k">Pages {pg["sig"]} &middot; {len(sig)} departures</div>
+            <h3 style="margin-top:2mm">China Signature</h3>
             <p>Longer and further &mdash; 16 to 27 days, four and five-star hotels, river cruises,
               first-class rail, maximum 16 travellers. From <b>NZ${smin:,}pp</b>.</p>
           </div>
           <div class="card">
-            <div class="k">Page 20 &middot; 14 routes</div>
-            <h3 style="margin-top:2mm">Stopovers</h3>
+            <div class="k">Page {pg["stopover"]} &middot; 14 routes</div>
+            <h3 style="margin-top:2mm">China Stopover</h3>
             <p>Two to five days in one Chinese city, built to slot into a flight you are already
               taking to Europe, Japan or Korea. From <b>NZ$875pp</b>, land package.</p>
           </div>
           <div class="card">
-            <div class="k">Page 21</div>
+            <div class="k">Page {pg["tailor"]}</div>
             <h3 style="margin-top:2mm">Tailor-made</h3>
             <p>Your dates, your pace, your interests. A specialist shapes the route with you
               before anything is booked. No obligation.</p>
@@ -659,14 +742,14 @@ def p_how_to_choose(disc, sig) -> str:
           <p>If you want to go this year, there are three departures left &mdash; Golden China in
             November and the two Christmas groups in December. If you are planning ahead, March 2027
             is spring in the north and has four departures; May 2027 is the long-journey window,
-            when the Silk Road, Tibet and Yunnan open up. Turn to pages 18&ndash;19 to compare
+            when the Silk Road, Tibet and Yunnan open up. Turn to pages {pg["compare"]} to compare
             them side by side.</p>
         </div>
       </div>
       {foot("CTS Tours &middot; China 2026-27", 7)}''')
 
 
-def p_tour(t, num) -> str:
+def p_tour(t, dep_no: int) -> str:
     hl = "".join(f"<li>{h}</li>" for h in t["highlights"])
     inc = "".join(f"<li>{x}</li>" for x in t["included"])
     exc = "".join(f"<li>{x}</li>" for x in t["excluded"])
@@ -676,7 +759,7 @@ def p_tour(t, num) -> str:
         <div class="scrim"></div>
         <div class="flag">{t['flag']}</div>
         <div class="cap">
-          <div class="eyebrow">Departure {num - 7:02d} &middot; {t['collection']}</div>
+          <div class="eyebrow">Departure {dep_no:02d} &middot; {t['collection']}</div>
           <h2>{t['name']}</h2>
           <div class="meta">{t['days']} days &middot; Departs <b>{t['depart']}</b>
             &middot; Returns <b>{t['returns']}</b><br>{t['cities']}</div>
@@ -704,7 +787,7 @@ def p_tour(t, num) -> str:
         <div class="t">{t['footnote']}</div>
         <div class="pill">ctstours.co.nz{t['url']}</div>
       </div>
-      {foot(f"Departure {num - 7:02d} &middot; {t['name'].replace('&amp;', '&')}", num)}''')
+      {foot(f"Departure {dep_no:02d} &middot; {t['name'].replace('&amp;', '&')}")}''')
 
 
 def _cmp_table(tours, rows) -> str:
@@ -734,7 +817,7 @@ CMP_ROWS = [
 def p_compare_discovery(disc) -> str:
     return page(f'''
       <div class="pad">
-        <div class="eyebrow">The choice &middot; Discovery Collection</div>
+        <div class="eyebrow">The choice &middot; China Discovery</div>
         <h2 class="title">Six departures,<br>side by <span class="accent">side.</span></h2>
         <p class="lede">One decision helps most: are you going for late 2026, or the spring window
           in March 2027? Compare in one glance.</p>
@@ -757,9 +840,9 @@ def p_compare_discovery(disc) -> str:
 def p_compare_signature(sig) -> str:
     return page(f'''
       <div class="pad">
-        <div class="eyebrow">The choice &middot; Signature Collection</div>
+        <div class="eyebrow">The choice &middot; China Signature</div>
         <h2 class="title">Longer journeys,<br>side by <span class="accent">side.</span></h2>
-        <p class="lede">Four Signature departures in 2027, all capped at 16 travellers, all with
+        <p class="lede">Four China Signature departures in 2027, all capped at 16 travellers, all with
           first-class rail between regions.</p>
         <div style="margin-top:8mm">{_cmp_table(sig, CMP_ROWS)}</div>
         <div class="callout tail">
@@ -1054,13 +1137,33 @@ def p_back() -> str:
 # ---------------------------------------------------------------- main ---
 
 def build_html() -> str:
-    disc = [t for t in D.TOURS if t["collection"].startswith("Discovery")]
-    sig = [t for t in D.TOURS if t["collection"].startswith("Signature")]
+    disc = [t for t in D.TOURS if t["collection"] == "China Discovery"]
+    sig = [t for t in D.TOURS if t["collection"] == "China Signature"]
+    assert disc and sig, "product-line names in data.py no longer match"
 
     # 11 departures: Best of China runs twice (11 Mar and 13 May 2027).
     n_dep = len(D.TOURS) + 1
     from_price = min(D.TOURS, key=lambda t: int(t["price"].replace(",", "")))["price"]
     from_stop = min(D.STOPOVERS, key=lambda s: int(s[2].replace(",", "")))[2]
+
+    # Cross-references are computed, not typed: the photo pages shift every
+    # number after page 7, and a wrong "turn to page" is the kind of thing
+    # nobody notices until a customer does.
+    def _span(tours):
+        return sum(1 + (1 if t["key"] in D.MOSAICS else 0) for t in tours)
+
+    disc_from = 8
+    disc_to = disc_from + _span(disc) - 1
+    sig_from = disc_to + 1
+    sig_to = sig_from + _span(sig) - 1
+    cmp_from = sig_to + 1
+    pg = {
+        "disc": f"{disc_from}&ndash;{disc_to}",
+        "sig": f"{sig_from}&ndash;{sig_to}",
+        "compare": f"{cmp_from}&ndash;{cmp_from + 1}",
+        "stopover": cmp_from + 2,
+        "tailor": cmp_from + 3,
+    }
 
     pages = [
         p_cover(n_dep, from_price, from_stop),
@@ -1069,10 +1172,14 @@ def build_html() -> str:
         p_visa_window(),
         p_cities_a(),
         p_cities_b(),
-        p_how_to_choose(disc, sig),
+        p_how_to_choose(disc, sig, pg),
     ]
+    # Each departure is followed by its own photo page, except Silk Road —
+    # see MOSAIC_MISSING in data.py for why it does not have one.
     for i, t in enumerate(D.TOURS):
-        pages.append(p_tour(t, 8 + i))
+        pages.append(p_tour(t, i + 1))
+        if t["key"] in D.MOSAICS:
+            pages.append(p_mosaic(t))
     pages += [
         p_compare_discovery(disc),
         p_compare_signature(sig),
@@ -1084,9 +1191,28 @@ def build_html() -> str:
         p_back(),          # must stay last — it prints the credits for images used
     ]
     css = CSS % D.BRAND
+    body = "".join(pages)
+
+    # Stamp the page numbers last, in document order, so inserting or removing a
+    # page can never leave a stale number behind.
+    # The cover carries no footer, so the first stamped page is page 2 — count
+    # document position, not the number of footers, or every number is one low.
+    n = 1
+
+    def _stamp(_m):
+        nonlocal n
+        n += 1
+        return f"{n:02d}"
+
+    body, stamped = re.subn(re.escape(PAGENO), _stamp, body)
+    assert stamped == body.count('<section class="page') - 2, (
+        f"stamped {stamped} page numbers across "
+        f"{body.count(chr(60) + 'section class=' + chr(34) + 'page')} pages "
+        "— the cover and back cover carry no number, every other page must"
+    )
     return ("<!doctype html><html lang=\"en-NZ\"><head><meta charset=\"utf-8\">"
             "<title>CTS Tours · Kiwi journeys to China 2026–2027</title>"
-            f"<style>{css}</style></head><body>{''.join(pages)}</body></html>")
+            f"<style>{css}</style></head><body>{body}</body></html>")
 
 
 def find_chrome() -> str:

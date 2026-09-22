@@ -80,12 +80,17 @@ REVIEWS = [
 # --- Tours ---------------------------------------------------------------
 # Each tour's every field is quoted or arithmetically derived from its own
 # page on ctstours.co.nz, fetched 2026-09-22.
+#
+# `collection` must be one of the three product-line names the site actually
+# uses — China Discovery / China Signature / China Stopover (src/lib/data/tours.ts,
+# where tour names read "China Signature — Silk Road"). Do not reintroduce
+# "…Collection"; that was a brochure invention and matched nothing on the site.
 
 TOURS = [
     {
         "key": "golden-china",
         "short": "Nov 2026",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "Golden China",
         "flag": "LAST-MINUTE · NOV 2026 · FILLING FAST",
         "days": 12,
@@ -135,7 +140,7 @@ TOURS = [
     {
         "key": "christmas-akl",
         "short": "Dec 2026",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "Christmas &amp; New Year in China",
         "flag": "PEAK SEASON · BOOKS OUT EARLY",
         "days": 16,
@@ -183,7 +188,7 @@ TOURS = [
     {
         "key": "christmas-chc",
         "short": "Dec 2026",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "Christmas &amp; New Year — Christchurch",
         "flag": "SOUTH ISLAND DEPARTURE · NZ$1,000 LESS",
         "days": 15,
@@ -228,7 +233,7 @@ TOURS = [
     {
         "key": "best-of-china",
         "short": "Mar &amp; May 2027",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "Best of China",
         "flag": "TWO 2027 DEPARTURES · BEST VALUE 15-DAY",
         "days": 15,
@@ -276,7 +281,7 @@ TOURS = [
     {
         "key": "two-cities",
         "short": "Mar 2027",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "A Tale of Two Cities",
         "flag": "LOWEST ENTRY PRICE · FIRST TRIP TO CHINA",
         "days": 10,
@@ -325,7 +330,7 @@ TOURS = [
     {
         "key": "shanghai-surroundings",
         "short": "Mar 2027",
-        "collection": "Discovery Collection",
+        "collection": "China Discovery",
         "name": "Shanghai &amp; Surroundings",
         "flag": "GARDENS, CANALS AND WEST LAKE",
         "days": 10,
@@ -374,7 +379,7 @@ TOURS = [
     {
         "key": "natural-china",
         "short": "Mar 2027",
-        "collection": "Signature Collection",
+        "collection": "China Signature",
         "name": "Natural China",
         "flag": "SIGNATURE · LANDSCAPES AND KARST COUNTRY",
         "days": 16,
@@ -420,7 +425,7 @@ TOURS = [
     {
         "key": "panorama",
         "short": "May 2027",
-        "collection": "Signature Collection",
+        "collection": "China Signature",
         "name": "China Panorama",
         "flag": "27 DAYS · THE LONGEST JOURNEY WE RUN",
         "days": 27,
@@ -469,7 +474,7 @@ TOURS = [
     {
         "key": "silk-road",
         "short": "May 2027",
-        "collection": "Signature Collection",
+        "collection": "China Signature",
         "name": "Silk Road",
         "flag": "XI'AN TO URUMQI · 18 DAYS OVERLAND",
         "days": 18,
@@ -516,7 +521,7 @@ TOURS = [
     {
         "key": "legacy",
         "short": "May 2027",
-        "collection": "Signature Collection",
+        "collection": "China Signature",
         "name": "Legacy of China",
         "flag": "5-STAR · INCLUDES LHASA AND THE THREE GORGES",
         "days": 17,
@@ -614,3 +619,141 @@ CC_CREDITS = [
     ("Humble Administrator's Garden, Suzhou", "Jakub Hałun", "CC BY-SA 4.0"),
     ("Chengdu Research Base of Giant Panda Breeding", "Jimmyshjj", "CC BY-SA 4.0"),
 ]
+
+# --- Photo pages ---------------------------------------------------------
+# One mosaic page per departure. A tile may ONLY show a place that tour's own
+# itinerary visits, and the caption may only say what the itinerary says.
+#
+# Two traps this list is built around, both the same shape as the "sunrise at
+# the Great Wall" error:
+#   * Golden China walks the Great Wall at JUYONGGUAN; the Christmas departures
+#     and Legacy of China go to MUTIANYU. The stock library's wall photos are
+#     Mutianyu, so Golden China gets a CTS group photo captioned without a
+#     section instead.
+#   * public/images/great-wall-cts-1.jpg and -2.jpg are NOT used here. They are
+#     phone snaps of one customer holding a CTS sign with the wall barely
+#     visible behind foliage — as a tile captioned "The Great Wall" they show a
+#     stranger's face at full size and almost no wall.
+#   * Shanghai & Surroundings goes to XINSHI, not Wuzhen. The Wuzhen photos
+#     belong to the "Shanghai & Wuzhen" stopover route and nowhere else.
+#
+# Keys starting "s:" come from scripts/catalogue/assets (Creative Commons,
+# credited on the back cover); the rest are repo images.
+MOSAICS = {
+    "golden-china": [
+        ("s:beijing-forbiddencity_0", "Forbidden City, Beijing"),
+        ("s:beijing-templeofheaven_0", "Temple of Heaven, Beijing"),
+        ("group-great-wall-cts", "CTS travellers on the Great Wall"),
+        ("s:beijing-summerpalace_2", "Summer Palace, Beijing"),
+        ("s:xian-terracotta_0", "Terracotta Warriors, Xi'an"),
+        ("s:xian-citywall_0", "Xi'an City Wall"),
+        ("s:shanghai-zhujiajiao_1", "Zhujiajiao water town"),
+        ("s:shanghai-bund_1", "The Bund, Shanghai"),
+        ("s:shanghai-nanjingroad_1", "Nanjing Road, Shanghai"),
+    ],
+    "christmas-akl": [
+        ("s:shanghai-xintiandi_1", "Xintiandi, Shanghai"),
+        ("s:shanghai-pearl_1", "Oriental Pearl Tower, Shanghai"),
+        ("s:shanghai-zhujiajiao_2", "Zhujiajiao, Christmas morning"),
+        ("s:beijing-greatwall_1", "The Great Wall at Mutianyu"),
+        ("s:beijing-forbiddencitysnow_0", "Forbidden City in winter"),
+        ("s:xian-terracotta_1", "Terracotta Warriors, Xi'an"),
+        ("s:chongqing-hongyadong_0", "Hongyadong, Chongqing"),
+        ("s:chongqing-raffles_1", "Eye in the Clouds, Chongqing"),
+        ("s:guangzhou-yumcha_2", "Yum cha, Guangzhou"),
+    ],
+    "christmas-chc": [
+        ("s:shanghai-yugarden_1", "Yu Garden, Shanghai"),
+        ("s:shanghai-bund_1", "The Bund, Shanghai"),
+        ("s:beijing-greatwall_2", "The Great Wall at Mutianyu"),
+        ("s:beijing-summerpalace_0", "Summer Palace, Beijing"),
+        ("s:beijing-hutong_1", "Hutong lanes, Beijing"),
+        ("s:xian-citywall_2", "Xi'an City Wall"),
+        ("s:xian-belltower_0", "Bell Tower, Xi'an"),
+        ("s:chongqing-ciqikou_0", "Ciqikou old town, Chongqing"),
+        ("s:chongqing-skyline_1", "Chongqing by night"),
+    ],
+    "best-of-china": [
+        ("s:beijing-templeofheaven_2", "Temple of Heaven, Beijing"),
+        ("s:beijing-forbiddencity_1", "Forbidden City, Beijing"),
+        ("great-wall-mist", "The Great Wall"),
+        ("s:beijing-olympicpark_2", "Olympic Park, Beijing"),
+        ("s:xian-terracotta_2", "Terracotta Warriors, Xi'an"),
+        ("s:xian-goosepagoda_0", "Big Wild Goose Pagoda, Xi'an"),
+        ("s:hangzhou-westlake_0", "West Lake, Hangzhou"),
+        ("s:hangzhou-leifeng_2", "Leifeng Pagoda, Hangzhou"),
+        ("s:hangzhou-longjing_1", "Longjing tea village, Hangzhou"),
+        ("s:shanghai-pearl_1", "Lujiazui and the Oriental Pearl Tower, Shanghai"),
+    ],
+    "two-cities": [
+        ("s:beijing-templeofheaven_0", "Temple of Heaven, Beijing"),
+        ("s:beijing-forbiddencity_1", "Forbidden City, Beijing"),
+        ("great-wall-green", "The Great Wall"),
+        ("s:beijing-olympicpark_0", "Olympic Park, Beijing"),
+        ("s:beijing-hutong_1", "Hutong lanes, Beijing"),
+        ("s:xian-terracotta_0", "Terracotta Warriors, Xi'an"),
+        ("s:xian-citywall_0", "Xi'an City Wall"),
+        ("s:xian-goosepagoda_1", "Big Wild Goose Pagoda, Xi'an"),
+        ("s:xian-foodstreet_0", "Huimin Street night market, Xi'an"),
+    ],
+    "shanghai-surroundings": [
+        ("s:shanghai-bund_1", "The Bund, Shanghai"),
+        ("s:shanghai-nanjingroad_0", "Nanjing Road, Shanghai"),
+        ("s:shanghai-yugarden_0", "City God Temple and Yu Garden, Shanghai"),
+        ("suzhou-canal", "Suzhou"),
+        ("s:hangzhou-westlake_1", "West Lake and the Su Causeway, Hangzhou"),
+        ("s:hangzhou-leifeng_1", "Leifeng Pagoda, Hangzhou"),
+        ("s:hangzhou-longjing_2", "Longjing tea, Hangzhou"),
+    ],
+    "natural-china": [
+        ("guilin-mist", "Guilin"),
+        ("li-river-karst-boats", "Li River"),
+        ("yangshuo-karst-aerial", "Yangshuo"),
+        ("chengdu-pandas", "Giant pandas, Chengdu"),
+        ("leshan-buddha", "Leshan Giant Buddha"),
+        ("s:shanghai-zhujiajiao_1", "Zhujiajiao water town"),
+    ],
+    "panorama": [
+        ("s:beijing-greatwall_2", "The Great Wall"),
+        ("s:beijing-forbiddencity_0", "Forbidden City, Beijing"),
+        ("s:xian-terracotta_1", "Terracotta Warriors, Xi'an"),
+        ("s:chongqing-gorges_1", "Qutang Gorge, the Yangtze"),
+        ("s:chongqing-cruise_2", "Aboard the Yangtze cruise"),
+        ("s:chongqing-yangtze_1", "Three Gorges Dam"),
+        ("chengdu-pandas", "Giant pandas, Chengdu"),
+        ("dali-three-pagodas", "Three Pagodas, Dali"),
+        ("li-river-karst-boats", "Li River cruise to Yangshuo"),
+        ("s:hangzhou-westlake_0", "West Lake, Hangzhou"),
+        ("suzhou-canal", "Suzhou"),
+        ("s:shanghai-pudong_0", "Shanghai by night"),
+    ],
+    "legacy": [
+        ("s:beijing-forbiddencity_1", "Forbidden City, Beijing"),
+        ("s:beijing-greatwall_1", "The Great Wall at Mutianyu"),
+        ("s:beijing-templeofheaven_2", "Temple of Heaven, Beijing"),
+        ("s:beijing-summerpalace_2", "Summer Palace, Beijing"),
+        ("s:xian-terracotta_2", "Terracotta Warriors, Xi'an"),
+        ("s:xian-foodstreet_2", "Muslim Quarter, Xi'an"),
+        ("chengdu-pandas", "Giant pandas, Chengdu"),
+        ("s:chongqing-cruise_1", "Yangtze River cruise"),
+        ("s:chongqing-gorges_0", "The Three Gorges"),
+        ("s:shanghai-pudong_1", "The Huangpu River by night, Shanghai"),
+    ],
+}
+
+# Silk Road has no photo page. Of the nine places its itinerary names, only
+# Xi'an has a usable image: Bingling Temple, the Zhangye Danxia landforms,
+# Jiayuguan, the Mogao Caves, the Flaming Mountains and Heavenly Lake are all
+# missing from every library we hold, and the two files named silk-road-*.jpg
+# show unidentifiable desert wall. A page built from those would either repeat
+# Xi'an six times or caption a picture as somewhere it is not.
+MOSAIC_MISSING = {
+    "silk-road": [
+        "Bingling Temple, Lanzhou", "Zhangye Danxia landforms", "Jiayuguan fort",
+        "Mogao Caves, Dunhuang", "Flaming Mountains, Turpan",
+        "Heavenly Lake, Urumqi",
+    ],
+    "natural-china": ["Zhangjiajie / Wulingyuan", "Fenghuang Ancient Town"],
+    "legacy": ["Potala Palace and Lhasa"],
+    "panorama": ["Stone Forest, Kunming"],
+}

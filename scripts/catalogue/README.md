@@ -1,6 +1,6 @@
 # The public catalogue generator
 
-Builds `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` — the 25-page A4
+Builds `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` — the 34-page A4
 catalogue the website serves and the welcome email links to.
 
 ```bash
@@ -8,14 +8,16 @@ python3 scripts/catalogue/build.py
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/ebook \
    -dNOPAUSE -dQUIET -dBATCH -dDetectDuplicateImages=true \
    -sOutputFile=public/brochures/CTS-Tours-2026-2027-Brochure.pdf \
-   CTS-Tours-2026-2027-Brochure-v4.pdf
+   CTS-Tours-2026-2027-Brochure-v4.pdf   # whatever build.py just wrote
 ```
 
 Needs Python with Pillow, and Google Chrome (set `CHROME_PATH` if it is
 somewhere unusual). Chrome does the page layout and the PDF export, same
 reason `scripts/brochure/render.js` does — the browser is the most reliable
-renderer we have and the HTML stays editable. Ghostscript brings 5.5 MB down
-to 3.7 MB, which is what actually sends by email.
+renderer we have and the HTML stays editable. Ghostscript brings 11 MB down to
+6.6 MB. Do not push it further with an explicit `-dColorImageResolution`: at
+130 dpi it saves about 1 MB and corrupts the colour profiles, which then throw
+`read ICCBased color space profile error` in every reader that checks.
 
 **Not the same thing as `scripts/brochure/`.** That one makes a bespoke
 picture book for a single tailor-made client, from a per-client JSON file.
@@ -69,10 +71,46 @@ The Google rating is not hardcoded prose — it reads the same numbers as
 they were last verified against the Google Business profile. Re-verify before
 publishing; do not carry the old value forward.
 
+## Photo pages
+
+Each departure is followed by a full-page mosaic, defined in `MOSAICS` in
+`data.py`. Two rules, and they are the whole point of the page:
+
+1. **A tile may only show a place that tour's own itinerary visits**, and the
+   caption may say no more than the itinerary says.
+2. **Where two tours differ, the photo must differ.** Golden China walks the
+   wall at Juyongguan; the Christmas departures and Legacy of China go to
+   Mutianyu. The stock library's wall photos are Mutianyu, so Golden China gets
+   a CTS group photo captioned without a section. Shanghai & Surroundings goes
+   to Xinshi, not Wuzhen — the Wuzhen photos belong to the "Shanghai & Wuzhen"
+   stopover route and nowhere else.
+
+Silk Road has no photo page. Of the nine places its itinerary names, only Xi'an
+has a usable image. `MOSAIC_MISSING` in `data.py` lists what is missing for it
+and for three other tours; fill those gaps and the pages can grow.
+
+Tile geometry is computed from the tile count (`p_mosaic`), and the grid uses
+explicit `1fr` rows plus `min-height: 0` so it fills the page exactly. Without
+the `min-height: 0` the tiles' own content props the grid open and the bottom
+row prints over the footer.
+
 ## Images
 
 `IMAGES` in `build.py` maps a key to a repo-relative path and, where the
-licence demands it, a credit. Anything from `public/blog/sourced/` or
+licence demands it, a credit. Keys beginning `s:` are registered automatically
+from `assets/CREDITS.json`, so a stock image physically cannot reach a page
+without its attribution travelling with it.
+
+`assets/` holds the Creative Commons stock the photo pages use, copied in from
+the CTS Spotlight library at 1000px. **Its `_excluded` block records every file
+that was looked at and rejected, with the reason** — two carried a
+photographer's watermark burned into the frame, one was a portrait of an
+identifiable private individual rather than a place, three were scraped as Tang
+Paradise but labelled Tang Dynasty Ever-Bright City (different Xi'an sites, and
+the itinerary names the second), and one was on Commons as CC0 with a
+pxfuel.com link as its only credited author. Read that block before adding
+anything back: the library's own label table does not show any of this, and
+neither does a filename. Anything from `public/blog/sourced/` or
 `scripts/brochure/assets/` is Creative Commons and **must** carry its credit
 from the matching `CREDITS.json` — the back cover prints the credit for every
 CC image the build actually used, and only those. `public/images/tours/` and
