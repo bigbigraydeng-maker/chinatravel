@@ -117,6 +117,30 @@ CC image the build actually used, and only those. `public/images/tours/` and
 `public/blog/group-*.jpg` are CTS's own; the `group-*` ones are real customers
 on real departures and beat stock photography wherever a page can take one.
 
+## Two image sets
+
+`assets-istock/` is the paid set — iStock Standard Licence, bought for the
+website and reused here. **These need no attribution**, which is most of what
+paying for them buys, so they are registered with no credit and never reach the
+back cover. `LICENCES.json` records photographer, official iStock title, asset
+id and licence anyway, so provenance stays in the repo; the ledger of record is
+`Dropbox/MagicLab_Studio/CTS/website/CREDITS.md` and the invoice sits under
+`by-client/01_CTS_Tours/bundles/INV-020_Website/supporting/`.
+
+Three of the 25 were deliberately left out, with the reason in `_not_used`: a
+Shangri-la monastery that no itinerary here visits, a Great Wall aerial in which
+the wall is a thread across a ridge, and Shanghai fireworks — both Christmas
+itineraries spend New Year's Eve in **Xi'an**, so fireworks over Pudong would
+imply an event these tours do not attend there.
+
+`assets/` is the Creative Commons set, which still covers what the paid set does
+not: the Summer Palace, hutongs, the Xi'an city wall and Bell Tower, West Lake,
+Leifeng Pagoda, the tea terraces, Ciqikou, yum cha. Every one of those **is**
+credited on the back cover.
+
+Prefer the paid set where both have a frame. It is sharper, it carries no
+attribution, and it shortened the back-cover credit block by more than half.
+
 ## Sourcing record
 
 `SOURCES-2026-09-22.md` is the line-by-line record for the 2026-09-22 revision:

@@ -62,6 +62,15 @@ IMAGES = {
     "suzhou-canal":          ("public/images/tours/suzhou-canal.jpg", None),
     "yangshuo-karst-aerial": ("public/images/tours/yangshuo-karst-aerial.jpg", None),
     "li-river-karst-boats":  ("public/images/tours/li-river-karst-boats.jpg", None),
+    "li-river-rafts":        ("public/images/tours/Li-River-1.jpeg", None),
+    # NOT public/images/tours/guilin-river-valley.jpg — despite the name it shows
+    # no karst at all (a hazy river town, a cliffside pavilion and a weir; it
+    # looks like Dujiangyan). It is live on the site under guides/guilin/, which
+    # is worth someone's attention, but it is not Guilin and not usable here.
+    "panda-base-climbing": (
+        "public/blog/sourced/chengdu-panda-base-pandas-climbing.jpg",
+        ("Chengdu Research Base of Giant Panda Breeding", "Jimmyshjj", "CC BY-SA 4.0"),
+    ),
     "silk-road-hero":        ("public/campaigns/silk-road-hero.jpg", None),
     "chengdu-pandas":        ("public/images/tours/chengdu-pandas.jpg", None),
     "group-lake-deck":       ("public/blog/group-lake-deck-beijing.jpg", None),
@@ -74,6 +83,14 @@ IMAGES = {
     "group-ancient-gate":    ("public/blog/group-ancient-gate-night.jpg", None),
     "wuzhen-canal":          ("public/images/tours/wuzhen-canal.jpg", None),
     "leshan-buddha":         ("public/images/tours/leshan-buddha-statue.jpg", None),
+    "beihai-park": (
+        "scripts/brochure/assets/beihai-park.jpg",
+        ("Beihai Park Beijing", "Bjoertvedt", "CC BY-SA 4.0"),
+    ),
+    "tiananmen-square": (
+        "scripts/brochure/assets/tiananmen-square.jpg",
+        ("Tian'anmen, Beijing", "Francesco Bini", "CC BY-SA 4.0"),
+    ),
     "dali-three-pagodas": (
         "public/blog/sourced/dali-three-pagodas.jpg",
         ("Three Pagodas, Dali", "CEphoto, Uwe Aranas", "CC BY-SA 3.0"),
@@ -119,10 +136,22 @@ for _k, _v in _ASSET_CREDITS["images"].items():
         (_v["label_en"], _v["author"], _v["license"]),
     )
 
+# The paid iStock set. Registered with no credit on purpose: a Standard Licence
+# does not require attribution, which is most of what paying for them buys. Their
+# provenance lives in assets-istock/LICENCES.json and in the ledger at
+# Dropbox/MagicLab_Studio/CTS/website/CREDITS.md, not on the back cover.
+_ISTOCK = json.loads(
+    (Path(__file__).resolve().parent / "assets-istock" / "LICENCES.json").read_text(encoding="utf8")
+)
+for _k in _ISTOCK["images"]:
+    IMAGES[f"i:{_k}"] = (f"scripts/catalogue/assets-istock/{_k}.jpg", None)
+
 _used = set()
-# filled in by _prepare(): key -> "landscape" | "portrait", read off the actual
-# pixels rather than trusted from a filename
+# filled in by _prepare(), read off the actual pixels rather than trusted from a
+# filename: the coarse shape, and the true width/height ratio the photo pages
+# lay themselves out from
 _SHAPE: dict = {}
+_ASPECT: dict = {}
 
 
 def img(key: str) -> str:
@@ -150,6 +179,7 @@ def _prepare() -> dict:
         else:
             im = im.convert("RGB")
             _SHAPE[key] = "portrait" if im.height > im.width * 1.1 else "landscape"
+            _ASPECT[key] = im.width / im.height
             if im.width > MAX_WIDTH:
                 h = round(im.height * MAX_WIDTH / im.width)
                 im = im.resize((MAX_WIDTH, h), Image.LANCZOS)
@@ -357,16 +387,20 @@ table.so td.p { width: 24mm; text-align: right; font-family: Georgia, serif; fon
 .photo-head { padding: 13mm 16mm 6mm; flex: 0 0 auto; }
 .photo-head h2 { font-size: 20pt; line-height: 1.12; margin: 2mm 0 2mm; }
 .photo-head .meta { font-size: 8.4pt; color: var(--muted); line-height: 1.45; }
-/* Explicit rows, each 1fr, so the grid fills exactly the space left on the
-   page — implicit auto rows sized to their content and ran past the footer.
-   Column and row counts are worked out from the tile count, in p_mosaic. */
+/* A staggered wall, not a uniform grid. Row heights differ and each tile's
+   width is proportional to that photograph's own aspect ratio, so portraits
+   stay tall and landscapes stay wide and almost nothing is cropped — a fixed
+   grid had to crop every frame to one shape, which hit the portraits hardest.
+   `fr` rows mean the wall still fills exactly the space left on the page, and
+   p_mosaic picks the row breaks so the natural heights already nearly match it,
+   leaving a scale factor close to 1. object-fit: cover absorbs that remainder. */
 .mosaic {
   flex: 1; min-height: 0; overflow: hidden;
   display: grid; gap: 2.4mm; margin: 0 16mm 16mm 16mm;
 }
-.tile { position: relative; overflow: hidden; background: #efe9df; min-height: 0; }
+.mrow { display: flex; gap: 2.4mm; min-height: 0; }
+.tile { position: relative; overflow: hidden; background: #efe9df; min-width: 0; }
 .tile img { width: 100%%; height: 100%%; object-fit: cover; display: block; }
-.tile.hero { grid-column: span 2; }
 .tile .cap {
   position: absolute; left: 0; right: 0; bottom: 0;
   padding: 7mm 3mm 2.4mm;
@@ -407,6 +441,98 @@ def foot(left: str, _num=None) -> str:
     return f'<div class="foot"><span>{left}</span><span>{PAGENO}</span></div>'
 
 
+# The wall is 178mm wide inside the margins and has roughly this much height
+# left once the heading and the footer have taken theirs. Only the ratio of
+# natural to available height matters — the `fr` rows fill whatever is actually
+# there — so an estimate a few mm out just shifts the scale factor slightly.
+MOSAIC_W_MM = 178.0
+MOSAIC_H_MM = 232.0
+MOSAIC_GAP_MM = 2.4
+
+
+def _row_height(aspects: list[float]) -> float:
+    """Height at which a row of these photographs fills the width uncropped."""
+    return (MOSAIC_W_MM - MOSAIC_GAP_MM * (len(aspects) - 1)) / sum(aspects)
+
+
+# How far the wall's natural height may miss the page before we refuse to ship
+# it. Rows always span the full width, so nothing is ever cropped horizontally;
+# this is the uniform vertical trim, and at 6% it is not visible. The previous
+# layout cropped every frame to one fixed shape, which mangled the portraits.
+MOSAIC_MAX_TRIM = 0.06
+# A row may be a wide band or a tall single frame, but not a sliver; and no tile
+# may get so narrow that its caption cannot sit under it. Without the width
+# floor the search happily produced a 20mm-wide tile to make the arithmetic work.
+MOSAIC_MIN_ROW_MM = 28.0
+MOSAIC_MAX_ROW_MM = 135.0
+MOSAIC_MIN_TILE_MM = 30.0
+
+
+def _mosaic_rows(aspects: list[float], label: str) -> list[list[float]]:
+    """Break the tiles into rows of differing height, keeping them in order.
+
+    Each row spans the full width with every tile's width proportional to its
+    own aspect ratio, so a portrait stays tall and a landscape stays wide. The
+    row heights that follow from that rarely add up to the page exactly, so the
+    partition is chosen to make them add up as closely as possible; what is left
+    is a uniform vertical scale.
+
+    Raises when no partition gets inside MOSAIC_MAX_TRIM. That is deliberate:
+    the fix is to add or drop one photograph on that page, which changes the
+    search space completely, and a build that quietly shipped a 12% crop instead
+    is exactly what this layout exists to stop.
+    """
+    n = len(aspects)
+    best, best_cost = None, float("inf")
+
+    def walk(start: int, rows: list[list[float]]) -> None:
+        nonlocal best, best_cost
+        if start == n:
+            if not 2 <= len(rows) <= 6:
+                return
+            heights = [_row_height(r) for r in rows]
+            total = sum(heights) + MOSAIC_GAP_MM * (len(rows) - 1)
+            scale = MOSAIC_H_MM / total
+            if not all(MOSAIC_MIN_ROW_MM <= h * scale <= MOSAIC_MAX_ROW_MM for h in heights):
+                return
+            if min(_row_height(r) * a * scale for r in rows for a in r) < MOSAIC_MIN_TILE_MM:
+                return
+            # fit first, then a mild preference for rows of similar height
+            cost = abs(total - MOSAIC_H_MM) * 4 + 0.5 * (max(heights) - min(heights))
+            if cost < best_cost:
+                best, best_cost = [list(r) for r in rows], cost
+            return
+        for take in range(1, 6):   # at most five tiles abreast
+            if start + take > n:
+                break
+            rows.append(aspects[start:start + take])
+            walk(start + take, rows)
+            rows.pop()
+
+    walk(0, [])
+    if best is None:
+        raise SystemExit(
+            f'No workable photo-wall layout for "{label}" ({n} tiles). '
+            "Add or drop one photograph on that page — its itinerary will have "
+            "another place worth showing — rather than letting the wall crop to fit."
+        )
+    total = sum(_row_height(r) for r in best) + MOSAIC_GAP_MM * (len(best) - 1)
+    trim = abs(1 - MOSAIC_H_MM / total)
+    if trim > MOSAIC_MAX_TRIM:
+        raise SystemExit(
+            f'"{label}" ({n} tiles) cannot fill the page within '
+            f"{MOSAIC_MAX_TRIM:.0%} — closest is {trim:.1%}. Add or drop one "
+            "photograph on that page; the partitions available change entirely "
+            "with the count."
+        )
+    return best
+
+
+def _mosaic_fr(plan: list[list[float]]) -> str:
+    """Row track sizes as `fr`, in proportion to each row's uncropped height."""
+    return " ".join(f"{_row_height(r):.3f}fr" for r in plan)
+
+
 def p_mosaic(t) -> str:
     """A full-page photo mosaic for one departure.
 
@@ -415,28 +541,28 @@ def p_mosaic(t) -> str:
     shape, so a portrait never gets letterboxed into a landscape slot.
     """
     entries = D.MOSAICS[t["key"]]
-    n = len(entries)
-    # Three columns only once two would make every tile a letterbox sliver;
-    # two columns keeps landscape photographs from being cropped to a strip.
-    cols = 3 if n >= 11 else 2
-    rows = -(-n // cols)
-    spare = cols * rows - n
-    # A leftover cell becomes a full-width lead image rather than a hole.
-    tiles = []
-    for i, (key, caption) in enumerate(entries):
-        cls = "tile hero" if (spare and i == 0) else "tile"
-        tiles.append(
-            f'<figure class="{cls}"><img src="{img(key)}" alt="">'
-            f'<figcaption class="cap">{caption}</figcaption></figure>'
-        )
+    aspects = [_ASPECT[k] for k, _ in entries]
+    plan = _mosaic_rows(aspects, t["name"].replace("&amp;", "&"))
+
+    tiles, i = [], 0
+    for row in plan:
+        cells = []
+        for _ in row:
+            key, caption = entries[i]
+            cells.append(
+                f'<figure class="tile" style="flex: {_ASPECT[key]:.4f}">'
+                f'<img src="{img(key)}" alt="">'
+                f'<figcaption class="cap">{caption}</figcaption></figure>'
+            )
+            i += 1
+        tiles.append(f'<div class="mrow">{"".join(cells)}</div>')
     return page(f'''
       <div class="photo-head">
         <div class="eyebrow">{t['collection']} &middot; in pictures</div>
         <h2>{t['name']}</h2>
         <div class="meta">{t['cities']}</div>
       </div>
-      <div class="mosaic" style="grid-template-columns: repeat({cols}, 1fr);
-           grid-template-rows: repeat({rows}, 1fr)">{''.join(tiles)}</div>
+      <div class="mosaic" style="grid-template-rows: {_mosaic_fr(plan)}">{''.join(tiles)}</div>
       {foot(t['name'].replace('&amp;', '&') + " &middot; in pictures")}''')
 
 
@@ -964,8 +1090,9 @@ def p_shopping() -> str:
               <li><b>Shanghai</b> &mdash; Nanjing Road and the Yu Garden bazaar sit in the
                 itinerary on Golden China and Best of China, and the following day on Golden China
                 is Shanghai at your own pace.</li>
-              <li><b>Xi&rsquo;an</b> &mdash; Huimin Street and the Muslim Quarter night market,
-                on both Christmas departures, Best of China and A Tale of Two Cities.</li>
+              <li><b>Xi&rsquo;an</b> &mdash; Huimin Street in the Muslim Quarter,
+                lined with street food stalls and artisan shops, on both Christmas
+                departures, Best of China and A Tale of Two Cities.</li>
               <li><b>Beijing</b> &mdash; the Silk Market, after the hutong pedi-cab tour on
                 Best of China and A Tale of Two Cities.</li>
               <li><b>Chongqing</b> &mdash; Ciqikou old town, on both Christmas departures.</li>

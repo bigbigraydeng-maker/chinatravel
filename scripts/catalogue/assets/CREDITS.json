@@ -66,15 +66,6 @@
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Great Wall of China Mutianyu"
     },
-    "beijing-templeofheaven_0": {
-      "author": "Balon Greyjoy",
-      "license": "CC0",
-      "source": "https://commons.wikimedia.org/wiki/File:20200110_Temple_of_Heaven-1.jpg",
-      "label_zh": "北京·天坛",
-      "orientation": "portrait",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Temple of Heaven Beijing"
-    },
     "beijing-templeofheaven_2": {
       "author": "Maros M r a z (Maros)",
       "license": "CC BY-SA 3.0",
@@ -137,15 +128,6 @@
       "orientation": "landscape",
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Beijing National Stadium Bird's Nest night"
-    },
-    "xian-terracotta_0": {
-      "author": "Ideophagous",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Terracotta_army_(19251).jpg",
-      "label_zh": "西安·兵马俑",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Terracotta Army Xi'an"
     },
     "xian-terracotta_1": {
       "author": "Ideophagous",
@@ -237,24 +219,6 @@
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "The Bund Shanghai skyline"
     },
-    "shanghai-nanjingroad_0": {
-      "author": "Chainwit.",
-      "license": "CC BY 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:2024-Apr_Shanghai_East_Nanjing_Road_at_night_01.jpg",
-      "label_zh": "上海·南京路",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Nanjing Road Shanghai night"
-    },
-    "shanghai-nanjingroad_1": {
-      "author": "Chainwit.",
-      "license": "CC BY 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:2024-Apr_Shanghai_East_Nanjing_Road_at_night_02.jpg",
-      "label_zh": "上海·南京路",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Nanjing Road Shanghai night"
-    },
     "shanghai-yugarden_0": {
       "author": "Chainwit.",
       "license": "CC BY 4.0",
@@ -281,24 +245,6 @@
       "orientation": "landscape",
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Oriental Pearl Tower Shanghai"
-    },
-    "shanghai-pudong_0": {
-      "author": "Phlizz",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Lujiazui_Skyline_(Night).jpg",
-      "label_zh": "上海·陆家嘴夜景",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Lujiazui Shanghai night"
-    },
-    "shanghai-pudong_1": {
-      "author": "Suicasmo",
-      "license": "CC0",
-      "source": "https://commons.wikimedia.org/wiki/File:Lujiazui_from_the_Bund_in_night_20250503.jpg",
-      "label_zh": "上海·陆家嘴夜景",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Lujiazui Shanghai night"
     },
     "shanghai-xintiandi_1": {
       "author": "Leynadmar",
@@ -354,15 +300,6 @@
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Leifeng Pagoda Hangzhou"
     },
-    "hangzhou-leifeng_2": {
-      "author": "HoweyYuan",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Leifeng_Pagoda_(20240729).jpg",
-      "label_zh": "杭州·雷峰塔",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Leifeng Pagoda Hangzhou"
-    },
     "hangzhou-longjing_1": {
       "author": "Peter K Burian",
       "license": "CC BY-SA 4.0",
@@ -371,33 +308,6 @@
       "orientation": "landscape",
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Longjing tea plantation Hangzhou"
-    },
-    "hangzhou-longjing_2": {
-      "author": "Jessie csz",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Longjing_villiage.jpg",
-      "label_zh": "杭州·龙井茶园",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Longjing tea plantation Hangzhou"
-    },
-    "chongqing-hongyadong_0": {
-      "author": "Jonashtand",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:202308_Hongya_Cave_at_night_from_Qiansimen_Bridge.jpg",
-      "label_zh": "重庆·洪崖洞(夜)",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Hongya Cave Chongqing night"
-    },
-    "chongqing-raffles_1": {
-      "author": "Junyi Lou",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Raffles_City_Chongqing_2019-9.jpg",
-      "label_zh": "重庆·来福士/朝天门",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Raffles City Chongqing"
     },
     "chongqing-ciqikou_0": {
       "author": "Franco Pecchio from Milano, Italy",
@@ -408,24 +318,6 @@
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Ciqikou ancient town Chongqing"
     },
-    "chongqing-skyline_1": {
-      "author": "Maple Doctor",
-      "license": "CC BY-SA 4.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Chongqing_Skyline_At_Night.png",
-      "label_zh": "重庆·重庆夜景天际线",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Chongqing skyline night"
-    },
-    "chongqing-gorges_0": {
-      "author": "Hugh Llewelyn from Keynsham, UK",
-      "license": "CC BY-SA 2.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Qutang_Gorge_(43588474294).jpg",
-      "label_zh": "重庆·长江三峡/夔门",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Qutang Gorge Yangtze"
-    },
     "chongqing-gorges_1": {
       "author": "Tan Wei Liang Byorn",
       "license": "CC BY 3.0",
@@ -434,33 +326,6 @@
       "orientation": "landscape",
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Qutang Gorge Yangtze"
-    },
-    "chongqing-cruise_1": {
-      "author": "davidd from Waialua, Oahu, Hawaii, USA",
-      "license": "CC BY 2.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Princess_Jeannie_(ship,_1993)_001.jpg",
-      "label_zh": "重庆·长江游船",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Three Gorges cruise ship Yangtze"
-    },
-    "chongqing-cruise_2": {
-      "author": "John Roberts from Hong Kong, Hong Kong SAR",
-      "license": "CC BY 2.0",
-      "source": "https://commons.wikimedia.org/wiki/File:The_Observation_Deck_in_the_Xiling_Gorge.jpg",
-      "label_zh": "重庆·长江游船",
-      "orientation": "portrait",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Three Gorges cruise ship Yangtze"
-    },
-    "chongqing-yangtze_1": {
-      "author": "Le Grand Portage",
-      "license": "CC BY 2.0",
-      "source": "https://commons.wikimedia.org/wiki/File:Three_Gorges_Dam,_Yangtze_River,_China.jpg",
-      "label_zh": "重庆·三峡大坝",
-      "orientation": "landscape",
-      "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
-      "label_en": "Yangtze River Three Gorges"
     },
     "guangzhou-yumcha_2": {
       "author": "Pauloleong2002",
@@ -471,5 +336,6 @@
       "note": "from CTS Spotlight stock library (Wikimedia Commons), content checked against the contact sheet 2026-09-22",
       "label_en": "Cantonese dim sum yum cha"
     }
-  }
+  },
+  "_superseded": "Files the paid iStock set replaced on 2026-09-22 were removed rather than left orphaned: beijing-templeofheaven_0, chongqing-cruise_1, chongqing-cruise_2, chongqing-gorges_0, chongqing-hongyadong_0, chongqing-raffles_1, chongqing-skyline_1, chongqing-yangtze_1, hangzhou-leifeng_2, hangzhou-longjing_2, shanghai-nanjingroad_0, shanghai-nanjingroad_1, shanghai-pudong_0, shanghai-pudong_1, xian-terracotta_0"
 }
