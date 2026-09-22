@@ -634,6 +634,8 @@ CC_CREDITS = [
 #     phone snaps of one customer holding a CTS sign with the wall barely
 #     visible behind foliage — as a tile captioned "The Great Wall" they show a
 #     stranger's face at full size and almost no wall.
+#   * China Panorama ALSO walks the wall at Juyongguan, not Mutianyu — caught by
+#     the Jev caption audit after it had already been missed here once.
 #   * Shanghai & Surroundings goes to XINSHI, not Wuzhen. The Wuzhen photos
 #     belong to the "Shanghai & Wuzhen" stopover route and nowhere else.
 #
@@ -682,8 +684,8 @@ MOSAICS = {
         ("s:xian-goosepagoda_0", "Big Wild Goose Pagoda, Xi'an"),
         ("s:hangzhou-westlake_0", "West Lake, Hangzhou"),
         ("s:hangzhou-leifeng_2", "Leifeng Pagoda, Hangzhou"),
-        ("s:hangzhou-longjing_1", "Longjing tea village, Hangzhou"),
-        ("s:shanghai-pearl_1", "Lujiazui and the Oriental Pearl Tower, Shanghai"),
+        ("s:hangzhou-longjing_1", "Meijiawu Longjing tea plantation, Hangzhou"),
+        ("s:shanghai-pudong_0", "Lujiazui skyline, Shanghai"),
     ],
     "two-cities": [
         ("s:beijing-templeofheaven_0", "Temple of Heaven, Beijing"),
@@ -694,12 +696,12 @@ MOSAICS = {
         ("s:xian-terracotta_0", "Terracotta Warriors, Xi'an"),
         ("s:xian-citywall_0", "Xi'an City Wall"),
         ("s:xian-goosepagoda_1", "Big Wild Goose Pagoda, Xi'an"),
-        ("s:xian-foodstreet_0", "Huimin Street night market, Xi'an"),
+        ("s:xian-foodstreet_0", "Huimin Street, Xi'an"),
     ],
     "shanghai-surroundings": [
         ("s:shanghai-bund_1", "The Bund, Shanghai"),
         ("s:shanghai-nanjingroad_0", "Nanjing Road, Shanghai"),
-        ("s:shanghai-yugarden_0", "City God Temple and Yu Garden, Shanghai"),
+        ("s:shanghai-yugarden_0", "City God Temple quarter, Shanghai"),
         ("suzhou-canal", "Suzhou"),
         ("s:hangzhou-westlake_1", "West Lake and the Su Causeway, Hangzhou"),
         ("s:hangzhou-leifeng_1", "Leifeng Pagoda, Hangzhou"),
@@ -714,18 +716,18 @@ MOSAICS = {
         ("s:shanghai-zhujiajiao_1", "Zhujiajiao water town"),
     ],
     "panorama": [
-        ("s:beijing-greatwall_2", "The Great Wall"),
+        ("great-wall-mist", "The Great Wall"),
         ("s:beijing-forbiddencity_0", "Forbidden City, Beijing"),
         ("s:xian-terracotta_1", "Terracotta Warriors, Xi'an"),
-        ("s:chongqing-gorges_1", "Qutang Gorge, the Yangtze"),
+        ("s:chongqing-gorges_1", "The Three Gorges, Yangtze River"),
         ("s:chongqing-cruise_2", "Aboard the Yangtze cruise"),
-        ("s:chongqing-yangtze_1", "Three Gorges Dam"),
+        ("s:beijing-summerpalace_0", "Summer Palace, Beijing"),
         ("chengdu-pandas", "Giant pandas, Chengdu"),
         ("dali-three-pagodas", "Three Pagodas, Dali"),
         ("li-river-karst-boats", "Li River cruise to Yangshuo"),
         ("s:hangzhou-westlake_0", "West Lake, Hangzhou"),
         ("suzhou-canal", "Suzhou"),
-        ("s:shanghai-pudong_0", "Shanghai by night"),
+        ("s:shanghai-pudong_1", "Shanghai by night"),
     ],
     "legacy": [
         ("s:beijing-forbiddencity_1", "Forbidden City, Beijing"),
