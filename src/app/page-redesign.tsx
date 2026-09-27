@@ -277,7 +277,7 @@ const HomePageRedesign = () => {
                   id={`city-slide-${i}`}
                   className="relative h-[530px] w-full flex-none scroll-ml-4 snap-center overflow-hidden rounded-[20px]"
                 >
-                  <Link href={`/${c.slug}-tours`} className="absolute inset-0" aria-label={`Explore ${c.name} tours`}>
+                  <Link href={`/${c.slug}-travel-guide`} className="absolute inset-0" aria-label={`Explore the ${c.name} travel guide`}>
                     <Image src={c.img} alt={c.name} fill sizes="100vw" className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-6">
@@ -310,7 +310,7 @@ const HomePageRedesign = () => {
             {CITIES.map((c) => (
               <Link
                 key={c.slug}
-                href={`/${c.slug}-tours`}
+                href={`/${c.slug}-travel-guide`}
                 className="group relative block h-64 overflow-hidden rounded-2xl lg:h-[420px]"
               >
                 <Image
