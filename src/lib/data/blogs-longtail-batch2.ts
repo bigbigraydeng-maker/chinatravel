@@ -215,8 +215,8 @@ The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin s
   {
     id: 'lt-b2-4',
     slug: 'china-visa-free-nz-2026',
-    title: 'China Visa-Free for New Zealand 2026: 30 Days, No Application Needed',
-    excerpt: 'NZ passport holders can enter China visa-free for 30 days per visit until 31 Dec 2026 — no application, no embassy queue. Here are the exact documents to carry at the border, who qualifies, and the traps that catch New Zealanders out. Written by Baker Gu, CTS Tours NZ.',
+    title: 'China Visa for NZ: Border Documents & Mistakes',
+    excerpt: 'The exact documents to carry at the China border, who qualifies for the 30-day visa-free entry (until 31 Dec 2026), and the mistakes that catch New Zealanders out. Written by Baker Gu, CTS Tours NZ.',
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'travel-tips',

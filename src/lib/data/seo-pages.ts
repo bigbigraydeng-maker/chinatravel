@@ -479,7 +479,7 @@ export const bestTimeToVisitChinaMeta: SeoPageMeta = {
 
 export const chinaVisaGuideMeta: SeoPageMeta = {
   slug: 'china-visa-guide-for-new-zealanders',
-  title: 'China Visa-Free for New Zealand 2026: 30-Day Rules & Documents',
+  title: 'China Visa-Free for NZ: 30 Days, No Application',
   description: 'NZ passport holders enter China visa-free for 30 days until 31 Dec 2026. Multiple entries, no application. Exact documents to carry — and the traps to avoid.',
   h1: 'China Visa-Free for New Zealand Citizens',
   heroSubtitle: 'No visa required for 30-day stays. Multiple entries allowed. Valid until 31 December 2026.',

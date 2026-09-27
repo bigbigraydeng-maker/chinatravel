@@ -22,7 +22,7 @@ import type { BlogPost } from '@/lib/types/blog-post';
 export const chongqingVsChengduPost: BlogPost = {
   id: 'lt-cqcd-vs-1',
   slug: 'chongqing-vs-chengdu',
-  title: 'Chongqing vs Chengdu: Which Should NZ Travellers Visit in 2026?',
+  title: 'Chongqing vs Chengdu: Which to Visit in 2026?',
   excerpt:
     'Hotpot capital vs panda capital — which Sichuan-region city is right for your China trip from New Zealand? A practical comparison covering food, pace, day trips, and how long to spend in each, written for Kiwi travellers by CTS Tours NZ.',
   author: 'Baker Gu',

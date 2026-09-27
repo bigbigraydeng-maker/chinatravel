@@ -612,7 +612,7 @@ The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3
   {
     id: 'lt-b5',
     slug: 'china-water-towns-jiangnan-guide',
-    title: 'China\'s Water Towns: The Jiangnan Region Guide',
+    title: 'Suzhou & Wuxi: China\'s Ancient Water Towns Guide',
     excerpt: 'The Jiangnan water towns — canal cities, classical gardens, silk culture, and West Lake — are a different China from Beijing and Xi\'an. Here\'s what makes them special and how to experience them from New Zealand.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -785,7 +785,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
   {
     id: 'lt-c4',
     slug: 'liziba-station-chongqing-guide',
-    title: 'Liziba Station Chongqing: Complete Visitor Guide',
+    title: 'Liziba: China\'s Most Photographed Train Station',
     excerpt: 'Liziba Station is the most photographed railway station in China — and possibly the world. Here\'s everything you need to know: what it is, how to visit, and how to get the best shot.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -861,6 +861,8 @@ New Zealand passport holders can currently visit China [visa-free for up to 30 d
 ## Visiting With CTS Tours
 
 Our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) includes Liziba Station on the Chongqing days, timed for the viewing platform and combined with Hongyadong in the evening. Your guide handles the metro, the timing, and the photo spots.
+
+For the quick practical essentials — transport, cost, and viewing times at a glance — see our [Liziba Station visitor guide](/liziba-station-chongqing).
 
 [View the full itinerary →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
     `
