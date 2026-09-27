@@ -50,6 +50,11 @@ export default function ChinaVisaGuidePage() {
       title: 'All China Tours',
       slug: 'china-tours',
       description: 'Browse our complete Signature, Discovery, and Stopover collections'
+    },
+    {
+      title: 'China Visa: Border Documents & Common Mistakes',
+      slug: 'blog/china-visa-free-nz-2026',
+      description: 'A deeper walkthrough of exactly what to carry at the border and the mistakes that catch New Zealanders out, by our China travel specialist'
     }
   ];
 

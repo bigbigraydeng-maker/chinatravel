@@ -26,7 +26,7 @@ import type { BlogPost } from '@/lib/types/blog-post';
 export const howManyDaysInChongqingPost: BlogPost = {
   id: 'lt-hmdic-1',
   slug: 'how-many-days-in-chongqing',
-  title: 'How Many Days in Chongqing? A 3, 5 & 7-Day Itinerary Guide for NZ Travellers',
+  title: 'How Many Days in Chongqing? 3, 5 or 7 Days',
   excerpt:
     'How long should you spend in Chongqing — 2 days, 5 days, or longer? A practical day-by-day planning guide for Kiwi travellers covering Liziba monorail, Hongyadong, hotpot, day trips, and Yangtze River cruise embarkation, by CTS Tours NZ.',
   author: 'Baker Gu',
