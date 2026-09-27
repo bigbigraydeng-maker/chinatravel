@@ -144,9 +144,15 @@ export default function TravellerDetailsForm() {
           <div className="text-sm text-amber-800">
             <p className="font-semibold">Please check your passport before you travel</p>
             <p className="mt-1 leading-relaxed">
-              China requires your passport to be valid for at least <strong>6 months</strong> from your date
-              of travel, with at least two blank pages. If your passport expires sooner, please renew it before
-              your trip and let us know your new passport details.
+              New Zealand passport holders can currently enter China <strong>visa-free</strong> for up to 30 days
+              (until 31 December 2026), so no visa is needed — but keeping your passport in order is your own
+              responsibility. We recommend at least <strong>6 months&apos;</strong> validity from your travel date,
+              plus a couple of blank pages. If it expires sooner, please renew it before your trip and send us
+              your new passport details. See our{' '}
+              <Link href="/china-visa-guide-for-new-zealanders" className="font-semibold underline hover:text-amber-900">
+                China visa &amp; passport guide
+              </Link>{' '}
+              for the full rules.
             </p>
           </div>
         </div>
