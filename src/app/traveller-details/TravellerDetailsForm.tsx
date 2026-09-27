@@ -137,6 +137,20 @@ export default function TravellerDetailsForm() {
           All information is kept confidential and used only to arrange your trip.
         </p>
 
+        <div className="mb-8 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-5 py-4">
+          <svg className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+          </svg>
+          <div className="text-sm text-amber-800">
+            <p className="font-semibold">Please check your passport before you travel</p>
+            <p className="mt-1 leading-relaxed">
+              China requires your passport to be valid for at least <strong>6 months</strong> from your date
+              of travel, with at least two blank pages. If your passport expires sooner, please renew it before
+              your trip and let us know your new passport details.
+            </p>
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-10">
           {/* Booking / lead contact */}
           <fieldset className="space-y-5">
