@@ -4,6 +4,11 @@ import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { migratedSite } from '@/lib/site-media';
 import TravellerDetailsForm from './TravellerDetailsForm';
 
+// Personalised booking form (reads URL params, not indexed). Render per request
+// so content changes ship immediately instead of being pinned by the 1-year
+// static cache Next.js applies to fully static routes.
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Traveller Details Form | CTS Tours',
   description:
