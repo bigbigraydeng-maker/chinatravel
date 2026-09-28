@@ -25,14 +25,18 @@ export interface CtsReviewQuote {
   excerpt: string;
 }
 
-export const CTS_REVIEW_QUOTES: CtsReviewQuote[] = [
-  {
-    reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT25obWRsUkVaalZhUkhVdFFVWldXRWRSU0VwdWNYYxAB',
-    author: 'Murray Middendorf',
-    rating: 5,
-    excerpt:
-      'We had a fantastic time, the culture and scenery in Xinjiang is stunning and the tour was led by an experienced guide with excellent English.',
-  },
+/**
+ * Location-neutral quotes — none names a specific city or landmark, so any of
+ * these is accurate on any China Stopover card. Safe to rotate freely.
+ *
+ * Excluded on purpose: Murray Middendorf's review ("...a stopover in Xian...
+ * the culture and scenery in Xinjiang is stunning...") reads as Xian-relevant,
+ * but the excerpt itself only describes Xinjiang — it doesn't say anything
+ * true of Xian specifically, so no stopover card (including the Xian one) can
+ * accurately show it (子牙 review, 2026-09-29, on the first version of this file,
+ * which had assigned it to the xian and shanghai-suzhou cards).
+ */
+const NEUTRAL_QUOTES: CtsReviewQuote[] = [
   {
     reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT2xKVGFFRnhVbFUzVnpaVVdWbGZTVlZSWWxaMWRYYxAB',
     author: 'Colin Wright',
@@ -44,12 +48,6 @@ export const CTS_REVIEW_QUOTES: CtsReviewQuote[] = [
     author: 'Tessa A',
     rating: 5,
     excerpt: 'Communication was great and the tour itself was amazing.',
-  },
-  {
-    reviewUid: 'ChdDSUhNMG9nS0VJQ0FnSUQwbEkzdzdRRRAB',
-    author: 'Catherine Horide',
-    rating: 5,
-    excerpt: 'Shanghai night boat cruise and climbing the Great wall were standouts.',
   },
   {
     reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT2taWmMyZFpVamx6UWxGT2VXVmZiM0JaUWs5R04zYxAB',
@@ -79,28 +77,46 @@ export const CTS_REVIEW_QUOTES: CtsReviewQuote[] = [
 ];
 
 /**
- * Deterministic slug → quote assignment for every China Stopover tour, hand-picked
- * where a quote's own content matches the destination (Murray's review literally
- * mentions "a stopover in Xian"), otherwise rotated through the pool above.
+ * Place-specific quote: only accurate on the exact slug it names, never a fallback
+ * or a rotation candidate for any other card.
  */
-const STOPOVER_QUOTE_BY_SLUG: Record<string, number> = {
-  xian: 0,
-  beijing: 1,
-  'beijing-express': 2,
-  shanghai: 3,
-  'shanghai-express': 4,
-  chengdu: 5,
-  guilin: 6,
-  guangzhou: 7,
-  'shanghai-suzhou': 0,
-  'shanghai-wuzhen': 1,
-  'guilin-surrounds': 2,
-  zhangjiajie: 3,
-  'guangzhou-shenzhen': 4,
-  huangshan: 5,
+const SHANGHAI_QUOTE: CtsReviewQuote = {
+  reviewUid: 'ChdDSUhNMG9nS0VJQ0FnSUQwbEkzdzdRRRAB',
+  author: 'Catherine Horide',
+  rating: 5,
+  excerpt: 'Shanghai night boat cruise and climbing the Great wall were standouts.',
 };
 
-export function getCtsStopoverReviewQuote(slug: string): CtsReviewQuote {
-  const index = STOPOVER_QUOTE_BY_SLUG[slug] ?? 0;
-  return CTS_REVIEW_QUOTES[index];
+const PLACE_SPECIFIC_QUOTE_BY_SLUG: Record<string, CtsReviewQuote> = {
+  shanghai: SHANGHAI_QUOTE,
+};
+
+/** Every other China Stopover slug, in display order — rotates through NEUTRAL_QUOTES only. */
+const NEUTRAL_ROTATION_SLUGS = [
+  'xian',
+  'beijing',
+  'beijing-express',
+  'shanghai-express',
+  'chengdu',
+  'guilin',
+  'guangzhou',
+  'shanghai-suzhou',
+  'shanghai-wuzhen',
+  'guilin-surrounds',
+  'zhangjiajie',
+  'guangzhou-shenzhen',
+  'huangshan',
+];
+
+/**
+ * Returns undefined for a slug this file doesn't know about, so the caller's
+ * existing "no review data → don't render the block" path applies — never a
+ * silent default to some other tour's quote.
+ */
+export function getCtsStopoverReviewQuote(slug: string): CtsReviewQuote | undefined {
+  const placeSpecific = PLACE_SPECIFIC_QUOTE_BY_SLUG[slug];
+  if (placeSpecific) return placeSpecific;
+  const rotationIndex = NEUTRAL_ROTATION_SLUGS.indexOf(slug);
+  if (rotationIndex === -1) return undefined;
+  return NEUTRAL_QUOTES[rotationIndex % NEUTRAL_QUOTES.length];
 }
