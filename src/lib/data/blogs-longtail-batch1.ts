@@ -181,8 +181,8 @@ Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 Marc
   {
     id: 'lt-a3',
     slug: 'beijing-to-xian-high-speed-train',
-    title: 'Beijing to Xi\'an High-Speed Train: NZ Travel Guide',
-    excerpt: 'The high-speed train between Beijing and Xi\'an is one of the best travel experiences in China. Here\'s how it works, what to expect, and why it\'s better than flying.',
+    title: 'Beijing to Xian High Speed Train Guide',
+    excerpt: 'Plan your Beijing to Xian high speed train journey. Routes, schedules & booking tips for NZ travellers heading to China\'s ancient capital.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'travel-tips',
