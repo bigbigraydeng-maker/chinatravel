@@ -3,6 +3,11 @@ import Image from 'next/image';
 import type { Tour } from '@/lib/data/tours';
 import { Icon } from '@/components/ui/Icon';
 import TourCardViewDetailsButton from './TourCardViewDetailsButton';
+import {
+  CTS_GOOGLE_RATING,
+  CTS_GOOGLE_REVIEW_COUNT,
+  getCtsStopoverReviewQuote,
+} from '@/lib/data/cts-review-quotes';
 import { getTourCardMedia } from '@/lib/tour-card-media';
 
 interface TourCardProps {
@@ -24,6 +29,17 @@ const tierColors: Record<string, string> = {
 export default function TourCard({ tour, destination, tier }: TourCardProps) {
   const tierClass = tierColors[tier] ?? tierColors.discovery;
   const detailHref = `/tours/${destination}/${tier}/${tour.slug}`;
+
+  // China Stopover cards have no per-tour review data (CTS's real Google reviews are
+  // company-wide, not per-tour) — fall back to the real aggregate + a real, traceable
+  // excerpt instead of leaving the card without a review block. Other destinations/tiers
+  // keep using `tour.reviewSummary` etc. verbatim when an editor has set them.
+  const isChinaStopover = destination === 'china' && tier === 'stopover';
+  const fallbackQuote = isChinaStopover && !tour.reviewSummary ? getCtsStopoverReviewQuote(tour.slug) : null;
+  const displayRating = tour.rating ?? (fallbackQuote ? CTS_GOOGLE_RATING : undefined);
+  const displayReviewCount = tour.reviewCount ?? (fallbackQuote ? CTS_GOOGLE_REVIEW_COUNT : undefined);
+  const displaySummary = tour.reviewSummary ?? (fallbackQuote ? fallbackQuote.excerpt : undefined);
+  const displayAuthor = fallbackQuote?.author;
   const media = getTourCardMedia(tour);
 
   // Format price consistently: remove "NZD $" prefix if it exists, show as "From NZD $..."
@@ -34,8 +50,8 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   };
 
   return (
-    <Link href={detailHref} className="group block min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-lg" aria-label={`View ${tour.name} – ${tier} tour details`}>
-      <div className="min-h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
+    <Link href={detailHref} className="group block h-full min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 rounded-lg" aria-label={`View ${tour.name} – ${tier} tour details`}>
+      <div className="h-full min-h-[650px] flex flex-col bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 border border-warm-100/50">
         {/* Image section — one stable ratio across every tour card */}
         <div className="relative aspect-video w-full shrink-0 overflow-hidden bg-warm-100">
           <Image
@@ -87,29 +103,34 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
             </div>
           </div>
 
-          {/* Review Summary — NEW */}
-          {(tour.rating || tour.reviewCount || tour.reviewSummary) && (
+          {/* Review Summary */}
+          {(displayRating || displayReviewCount || displaySummary) && (
             <div className="mb-3 p-3 bg-warm-50 rounded-lg border border-warm-100">
-              {tour.rating && (
+              {displayRating && (
                 <div className="flex items-center gap-1 mb-1">
-                  <span className="flex items-center gap-0.5" aria-label={`${tour.rating} out of 5 stars`}>
+                  <span className="flex items-center gap-0.5" aria-label={`${displayRating} out of 5 stars`}>
                     {Array.from({ length: 5 }).map((_, i) => (
                       <Icon
                         key={i}
                         name="star"
-                        filled={i < Math.round(tour.rating!)}
-                        className={`w-4 h-4 ${i < Math.round(tour.rating!) ? 'text-amber-400' : 'text-warm-200'}`}
+                        filled={i < Math.round(displayRating)}
+                        className={`w-4 h-4 ${i < Math.round(displayRating) ? 'text-amber-400' : 'text-warm-200'}`}
                       />
                     ))}
                   </span>
-                  <span className="text-sm font-semibold text-gray-900">{tour.rating}/5</span>
-                  {tour.reviewCount && (
-                    <span className="text-xs text-gray-500">({tour.reviewCount} reviews)</span>
+                  <span className="text-sm font-semibold text-gray-900">{displayRating}/5</span>
+                  {displayReviewCount && (
+                    <span className="text-xs text-gray-500">
+                      ({displayReviewCount} Google review{displayReviewCount === 1 ? '' : 's'})
+                    </span>
                   )}
                 </div>
               )}
-              {tour.reviewSummary && (
-                <p className="text-xs text-gray-700 italic leading-relaxed">"{tour.reviewSummary}"</p>
+              {displaySummary && (
+                <p className="text-xs text-gray-700 italic leading-relaxed">
+                  "{displaySummary}"
+                  {displayAuthor && <span className="not-italic text-gray-500"> — {displayAuthor}</span>}
+                </p>
               )}
             </div>
           )}

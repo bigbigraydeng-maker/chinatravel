@@ -1829,9 +1829,6 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2025-01-01',
     singleSupplement: 'NZD $585',
-    rating: 4.5,
-    reviewCount: 89,
-    reviewSummary: 'Perfect Beijing stopover',
   },
   {
     id: 'tour-cn-stp-2',
@@ -1878,9 +1875,6 @@ export const tours: Tour[] = [
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2025-01-01',
-    rating: 4.7,
-    reviewCount: 156,
-    reviewSummary: 'Efficient Beijing transit experience',
   },
   {
     id: 'tour-cn-stp-3',
