@@ -30,9 +30,9 @@ import type { BlogPost } from '@/lib/types/blog-post';
 export const lizibaMonorailGuidePost: BlogPost = {
   id: 'lt-lzb-1',
   slug: 'liziba-monorail-chongqing-guide',
-  title: 'Liziba Monorail Through-the-Building: How to Visit Chongqing\'s Most Photographed Station',
+  title: 'How Many Days in Chongqing | CTS Tours',
   excerpt:
-    'How to find, ride, and photograph Liziba Monorail Station — the famous Chongqing metro line that runs straight through a residential apartment building. NZ traveller guide with timing, exits, photo spots, and how it fits into a Chongqing itinerary.',
+    'How many days in Chongqing do you need? Our guide helps NZ travellers plan the perfect itinerary. Discover what to see and do. Book with CTS today.',
   author: 'Baker Gu',
   authorRole: 'China Travel Specialist, CTS Tours NZ',
   category: 'destination',
