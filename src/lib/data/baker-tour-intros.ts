@@ -24,7 +24,7 @@ const BAKER_VOICE_BY_SLUG: Record<string, BakerTourVoice> = {
   },
   'landscapes': {
     intro:
-      'I put this natural-China route together for people who have done the cities and want Jiuzhaigou-style drama and Zhangjiajie without a DIY logistics headache. I time the transfers so you are looking out the window, not staring at booking apps.',
+      'I built this route around the landscapes you can only really appreciate in person: the Three Gorges by river, the changing scenery between Chongqing and Chengdu, and Zhangjiajie’s sandstone peaks. The rail and flight connections keep the long transfers manageable.',
   },
   'beijing-xian': {
     intro:

@@ -27,8 +27,8 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     objectPosition: '50% 50%',
   },
   landscapes: {
-    src: '/images/tours/yunnan-terraced-fields-pavilion.jpg',
-    objectPosition: '65% 50%',
+    src: '/images/tours/three-gorges-cruise-wide.jpg',
+    objectPosition: '50% 48%',
   },
   'shanghai-surroundings': {
     src: '/images/tours/shanghai-yuyuan-night.jpg',

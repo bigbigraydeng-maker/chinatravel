@@ -19,6 +19,7 @@ const MAP_SLUGS = [
   'essentials',
   'silk-road',
   'grand-tour',
+  'landscapes',
   'china-icons-collection',
   'china-icons-collection-christchurch',
   'yunnan-explorer',
