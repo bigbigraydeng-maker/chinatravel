@@ -93,7 +93,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     relatedTours: [
 
       { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -121,7 +120,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/zhangjiajie-tours', hubLabel: 'All Zhangjiajie Tours',
     relatedTours: [
       { name: 'Zhangjiajie Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,899', url: '/tours/china/stopover/zhangjiajie', image: `${TI}/zhangjiajie.jpg`, tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Tianmen Mountain', slug: 'tianmen-mountain-travel-guide', emoji: '⛰️' },
@@ -134,7 +132,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
       { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Lijiang Travel Guide', slug: 'lijiang-travel-guide', emoji: '🏘️' },
@@ -238,7 +235,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     relatedTours: [
 
       { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
-      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
@@ -303,7 +299,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chongqing-tours', hubLabel: 'All Chongqing Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Natural China (16 Days)', duration: '16 Days', price: 'From NZD $7,670', url: '/tours/china/signature/landscapes', image: `${TI}/jiuzhaigou-lake.jpg`, tier: 'signature' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [

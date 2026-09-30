@@ -21,9 +21,11 @@ function RowGrid({
   rows: DepartureScheduleRow[];
   currentSlug?: string;
 }) {
+  const availableRows = rows.filter((row) => row.dates.length > 0);
+
   return (
     <div className="space-y-3">
-      {rows.map((row) => {
+      {availableRows.map((row) => {
         const active = currentSlug === row.slug;
         return (
           <div

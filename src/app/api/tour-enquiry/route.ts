@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSiteUrl } from '@/lib/site';
+import { getTourBySlug } from '@/lib/data/tours';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
@@ -36,6 +37,11 @@ export async function POST(req: NextRequest) {
     // Name is required; phone OR email is enough (older travellers prefer to be called).
     if (!name || (!email && !phone) || !tourName || !tourSlug || !destination || !tier) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
+    }
+
+    const selectedTour = getTourBySlug(destination, tier, tourSlug);
+    if (selectedTour && !selectedTour.isActive) {
+      return NextResponse.json({ error: 'This tour is currently unavailable.' }, { status: 404 });
     }
 
     const submittedAt = new Date().toISOString();

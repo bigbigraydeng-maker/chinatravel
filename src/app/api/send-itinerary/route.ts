@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     const tour = getTourBySlug(destination, tier, tourSlug);
 
-    if (!tour) {
+    if (!tour || !tour.isActive) {
       return NextResponse.json({ error: 'Tour not found.' }, { status: 404 });
     }
 

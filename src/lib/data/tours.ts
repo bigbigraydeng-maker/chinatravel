@@ -594,7 +594,7 @@ export const tours: Tour[] = [
     ],
     metaTitle: 'China Signature — Natural China | 15 Days | CTS Tours',
     metaDescription: 'Discover China\'s natural landscapes on a 15-day premium tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. From NZD $8,150 per person.',
-    isActive: true,
+    isActive: false,
     createdAt: '2024-01-01',
     updatedAt: '2026-03-29',
     tags: [
