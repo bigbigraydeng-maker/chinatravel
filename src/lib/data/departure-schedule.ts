@@ -18,7 +18,8 @@ export type DepartureScheduleRow = {
 
 /** Departure dates for a China tour, sourced from tours.ts (empty if none published). */
 function departuresForTour(tier: 'signature' | 'discovery', slug: string): string[] {
-  return getTourBySlug('china', tier, slug)?.departureDates ?? [];
+  const tour = getTourBySlug('china', tier, slug);
+  return tour?.isActive ? tour.departureDates ?? [] : [];
 }
 
 /** This tour's duration, sourced from tours.ts (empty string if the tour isn't found). */

@@ -13,7 +13,7 @@ interface PrintPageProps {
 export default function TourPrintPage({ params }: PrintPageProps) {
   const tour = getTourBySlug(params.destination, params.tier, params.tour);
 
-  if (!tour) {
+  if (!tour || !tour.isActive) {
     notFound();
   }
 

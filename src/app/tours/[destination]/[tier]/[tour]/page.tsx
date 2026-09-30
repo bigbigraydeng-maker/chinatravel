@@ -61,7 +61,7 @@ export const revalidate = 3600;
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const tour = getTourBySlug(params.destination, params.tier, params.tour);
   
-  if (!tour) {
+  if (!tour || !tour.isActive) {
     return {
       title: 'Tour Not Found | CTS Tours',
       description: 'The requested tour could not be found.',
@@ -116,7 +116,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 export default function TourPage({ params }: TourPageProps) {
   const tour = getTourBySlug(params.destination, params.tier, params.tour);
   
-  if (!tour) {
+  if (!tour || !tour.isActive) {
     notFound();
   }
 
