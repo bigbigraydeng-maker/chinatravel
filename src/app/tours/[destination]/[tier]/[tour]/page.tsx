@@ -221,6 +221,7 @@ export default function TourPage({ params }: TourPageProps) {
         tags={tour.tags}
         departureDates={tour.departureDates}
         departurePricing={tour.departurePricing}
+        singleSupplementNote={tour.singleSupplementNote}
         showAvailability={tour.departureDates?.[0] !== 'TBC'}
         // October 2026 departures for both `beijing-xian` and `shanghai-surroundings`
         // have sold out — soften the hero CTA so it doesn't promise a departure

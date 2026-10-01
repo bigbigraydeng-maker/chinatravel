@@ -24,6 +24,8 @@ interface TourHeroProps {
   secondaryCtaLabel?: string;
   /** Single room supplement price, shown below the price row */
   singleSupplement?: string;
+  /** Explains what the single supplement covers. */
+  singleSupplementNote?: string;
   /**
    * Maximum group size for this specific tour. Overrides the tier default
    * (signature 16 / discovery 20 / stopover 18) shown in the USP triplet.
@@ -67,6 +69,7 @@ export default function TourHero({
   primaryCtaLabel = 'Enquire Now',
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
+  singleSupplementNote,
   maxGroupSize,
   departurePricing,
   seasonalBadge,
@@ -321,6 +324,11 @@ export default function TourHero({
                 {singleSupplement && (
                   <span className="block text-sm text-white/80 mt-0.5">
                     + {singleSupplement} single supplement
+                  </span>
+                )}
+                {singleSupplementNote && (
+                  <span className="block text-xs text-white/70 mt-0.5">
+                    {singleSupplementNote}
                   </span>
                 )}
                 {fareSavingsBadge && (
