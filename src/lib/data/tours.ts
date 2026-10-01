@@ -41,6 +41,8 @@ export interface Tour {
   faqs?: Array<{ question: string; answer: string; link?: { href: string; label: string } }>;
   /** Single room supplement price, e.g. 'NZD $400' */
   singleSupplement?: string;
+  /** Clarifies which single-room costs the supplement covers. */
+  singleSupplementNote?: string;
   /** Customer rating (0-5), e.g. 4.9 */
   rating?: number;
   /** Total number of reviews/customer feedback count */
@@ -539,9 +541,9 @@ export const tours: Tour[] = [
     tier: 'signature',
     name: 'China Signature — Natural China',
     title: 'China Signature — Natural China',
-    shortDescription: 'Discover China\'s dramatic natural landscapes on a 15-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
-    duration: '15 Days',
-    price: 'NZD $8,150',
+    shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
+    duration: '16 Days',
+    price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
     gallery: [
       '/images/tours/three-gorges-cruise.jpg',
@@ -559,21 +561,22 @@ export const tours: Tour[] = [
       'Enjoy an optional Sichuan Opera face-changing performance in Chengdu',
     ],
     itinerary: [
-      { day: 1, title: 'Auckland — Shanghai (Overnight Flight)', description: 'Depart for Shanghai.', meals: [] },
-      { day: 2, title: 'Arrive in Shanghai', description: 'Arrive in Shanghai in the morning and meet your guide. Visit Chenghuang Temple and Yuyuan Garden, Nanjing Road, the Bund, Xintiandi and Tianzifang, including the traditional Shikumen area.', meals: ['Lunch', 'Dinner'], accommodation: 'Hyatt Place Shanghai Changfeng or similar 5-star hotel' },
-      { day: 3, title: 'Shanghai', description: 'Visit Jade Buddha Temple, the Oriental Pearl Radio & TV Tower and Shanghai Museum East. In the evening, enjoy a night cruise along the Huangpu River.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Hyatt Place Shanghai Changfeng or similar 5-star hotel' },
-      { day: 4, title: 'Shanghai — Yichang — Three Gorges Cruise', description: 'Enjoy free time in Shanghai in the morning. After lunch, transfer to the airport and fly to Yichang. Meet your local guide on arrival, transfer for dinner, then board the Three Gorges cruise ship.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Yangtze River cruise ship' },
-      { day: 5, title: 'Three Gorges Cruise', description: 'Enjoy the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Yangtze River cruise ship' },
-      { day: 6, title: 'Three Gorges Cruise', description: 'Continue the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Yangtze River cruise ship' },
-      { day: 7, title: 'Three Gorges Cruise', description: 'Continue the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Yangtze River cruise ship' },
-      { day: 8, title: 'Arrive in Chongqing', description: 'Disembark from the cruise and meet your guide. Visit Liziba Monorail Station, Jiefangbei and Ciqikou Ancient Town. After dinner, see Hongyadong\'s night scenery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Four Points by Sheraton Chongqing' },
-      { day: 9, title: 'Chongqing — Chengdu by High-Speed Train', description: 'Take the reference high-speed train from Chongqing North to Chengdu East, G8610, 09:32–10:58 (1 hr 26 min), First Class, or a similar service. On arrival, meet your guide. After lunch, visit Wuhou Shrine and Jinli Ancient Street.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star hotel' },
-      { day: 10, title: 'Chengdu', description: 'Visit the Chengdu Research Base of Giant Panda Breeding, People\'s Park for a traditional tea experience, Taikoo Li and Kuanzhai Alley. Optional activity: Sichuan Opera face-changing performance.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star hotel' },
-      { day: 11, title: 'Chengdu — Zhangjiajie — Wulingyuan', description: 'Take the reference high-speed train from Chengdu East to Zhangjiajie West, G2321, 10:20–15:27 (5 hr 7 min), First Class, or a similar service. Meet your guide on arrival and transfer to Wulingyuan. After dinner, check in at the hotel.', meals: ['Breakfast', 'Dinner'], accommodation: 'Wulingyuan Rêverie Mansen Wyndham Hotel or similar 5-star hotel' },
-      { day: 12, title: 'Wulingyuan — Zhangjiajie National Forest Park', description: 'Visit Zhangjiajie National Forest Park. Take the Bailong Elevator up and the Tianzi Mountain Cableway down, visiting Yuanjiajie, West Sea Stone Forest and the landscapes associated with Hallelujah Mountain. Continue to Ten-Mile Gallery, including a sightseeing mini-train ride.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wulingyuan Rêverie Mansen Wyndham Hotel or similar 5-star hotel' },
-      { day: 13, title: 'Zhangjiajie — Shanghai', description: 'Visit Tianmen Mountain National Forest Park, including the cable car, eco-friendly sightseeing shuttle, one-way escalator through Tianmen Cave, Glass Skywalk with shoe covers, and Guigu Plank Walk. Continue to Tujia Folk Customs Park, then take the reference flight from Zhangjiajie T2 to Shanghai Pudong T2, HO1136, 16:25–18:30. Meet your guide on arrival, transfer for dinner and check in at the hotel.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Hyatt Place Shanghai Changfeng or similar 5-star hotel' },
-      { day: 14, title: 'Shanghai — Auckland', description: 'At the designated time, transfer to Shanghai Pudong Airport Terminal 2 for your international flight to Auckland.', meals: ['Breakfast'] },
-      { day: 15, title: 'Arrive in Auckland', description: 'Arrive in Auckland and conclude the tour.', meals: [] },
+      { day: 1, title: 'Fly to Shanghai', description: 'Depart for Shanghai.', meals: ['On board'] },
+      { day: 2, title: 'Arrive in Shanghai', description: 'Arrive in Shanghai in the morning. Meet your guide and visit Chenghuang Temple and Yuyuan Garden, Nanjing Road, The Bund, Xintiandi and Tianzifang, and the traditional Shikumen area.', meals: ['Lunch', 'Dinner'], accommodation: 'Hyatt Place Shanghai Changfeng or similar 5-star hotel' },
+      { day: 3, title: 'Shanghai', description: 'After breakfast, visit Jade Buddha Temple, followed by the Oriental Pearl Radio & TV Tower and the Shanghai Museum East. In the evening, enjoy a night cruise along the Huangpu River.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Hyatt Place Shanghai Changfeng or similar 5-star hotel' },
+      { day: 4, title: 'Shanghai — Yichang — Three Gorges Cruise', description: 'Enjoy some free time in Shanghai in the morning. After lunch, transfer to the airport for the flight to Yichang. Upon arrival, meet your local guide and transfer for dinner. After dinner, board the Three Gorges cruise ship.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Three Gorges cruise ship' },
+      { day: 5, title: 'Three Gorges Cruise', description: 'Enjoy the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Three Gorges cruise ship' },
+      { day: 6, title: 'Three Gorges Cruise', description: 'Continue the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Three Gorges cruise ship' },
+      { day: 7, title: 'Three Gorges Cruise', description: 'Continue the Three Gorges cruise.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Three Gorges cruise ship' },
+      { day: 8, title: 'Arrive in Chongqing', description: 'Disembark from the cruise and meet your guide. Visit Liziba Monorail Station, where the light rail passes through a residential building, followed by Jiefangbei and Ciqikou Ancient Town. After dinner, enjoy an exterior view of Hongyadong and its night scenery.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Four Points by Sheraton Chongqing' },
+      { day: 9, title: 'Chongqing', description: 'Enjoy free time to explore this exciting city.', meals: ['Breakfast'], accommodation: 'Four Points by Sheraton Chongqing' },
+      { day: 10, title: 'Chongqing — Chengdu by High-Speed Train', description: 'After breakfast, transfer to the railway station and take a high-speed train to Chengdu. Reference train: Chongqing North to Chengdu East, G8610, 09:32–10:58 (1 hr 26 min), First Class, or a similar service. Upon arrival in Chengdu, meet your guide. After lunch, visit Wuhou Shrine and Jinli Ancient Street.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star hotel' },
+      { day: 11, title: 'Chengdu', description: 'After breakfast, visit the Chengdu Research Base of Giant Panda Breeding. Continue to People\'s Park, where you can experience the local tradition of enjoying tea, followed by Taikoo Li and Kuanzhai Alley. Optional activity: Sichuan Opera face-changing performance.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Holiday Inn Chengdu Oriental Plaza or similar 5-star hotel' },
+      { day: 12, title: 'Chengdu — Zhangjiajie', description: 'After breakfast, transfer to Chengdu East Railway Station and take a high-speed train to Zhangjiajie. Reference train: Chengdu East to Zhangjiajie West, G2321, 10:20–15:27 (5 hr 7 min), First Class, or a similar service. After dinner, check in at the hotel.', meals: ['Breakfast', 'Dinner'], accommodation: 'Wulingyuan Rêverie Mansen Wyndham Hotel or similar 5-star hotel' },
+      { day: 13, title: 'Zhangjiajie', description: 'After breakfast, visit Tianmen Mountain National Forest Park, including the cable car, eco-friendly sightseeing shuttle, one-way escalator through Tianmen Cave, Glass Skywalk with shoe covers, and Guigu Plank Walk. Continue to Tujia Folk Customs Park.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wulingyuan Rêverie Mansen Wyndham Hotel or similar 5-star hotel' },
+      { day: 14, title: 'Zhangjiajie', description: 'After breakfast, visit Zhangjiajie National Forest Park. Take the Bailong Elevator up and the Tianzi Mountain Cableway down, visiting Yuanjiajie, West Sea Stone Forest and the landscapes associated with Hallelujah Mountain.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'Wulingyuan Rêverie Mansen Wyndham Hotel or similar 5-star hotel' },
+      { day: 15, title: 'Zhangjiajie — Shanghai', description: 'Continue to Zhangjiajie National Forest Park, including Ten-Mile Gallery Valley and Golden Whip Stream. Transfer to the airport and fly to Shanghai. Upon arrival in Shanghai, connect to an international flight departing in the early hours of the next morning for Auckland.', meals: ['Breakfast', 'Lunch', 'Dinner'], accommodation: 'On board international flight' },
+      { day: 16, title: 'Shanghai — Auckland', description: 'Arrive in Auckland in the afternoon.', meals: ['Meals on board'] },
     ],
     tourCities: ['shanghai', 'yichang', 'chongqing', 'chengdu', 'zhangjiajie'],
     inclusions: [
@@ -592,11 +595,11 @@ export const tours: Tour[] = [
       'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included'
     ],
-    metaTitle: 'China Signature — Natural China | 15 Days | CTS Tours',
-    metaDescription: 'Discover China\'s natural landscapes on a 15-day premium tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. From NZD $8,150 per person.',
-    isActive: false,
+    metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
+    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
+    isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-03-29',
+    updatedAt: '2026-10-02',
     tags: [
       'Shanghai',
       'Yichang',
@@ -610,8 +613,10 @@ export const tours: Tour[] = [
       'Tianmen Mountain',
       'Huangpu River cruise',
     ],
-    departureDates: ['TBC'],
-    singleSupplement: 'NZD $1,355',
+    departureDates: ['26 March 2027'],
+    departurePricing: { '26 March 2027': 'NZD $7,349' },
+    singleSupplement: 'NZD $1,895',
+    singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     rating: 4.6,
     reviewCount: 156,
     reviewSummary: 'Excellent classical journey, superbly organized',
