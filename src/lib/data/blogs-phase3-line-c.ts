@@ -199,8 +199,8 @@ Explore Chengdu's food culture on our [Chengdu tours](/chengdu-tours) — every 
   {
     id: 'p3-c4',
     slug: 'chongqing-night-city-lights',
-    title: 'The Forbidden City & China\'s Best Cities | CTS',
-    excerpt: 'Explore the Forbidden City and China\'s iconic destinations. NZ travellers discover Beijing\'s treasures with CTS Tours. Book your China adventure today.',
+    title: 'Chongqing Night City: Why This Mountain Metropolis Glows After Dark',
+    excerpt: 'Chongqing at night is one of the great urban spectacles in Asia — a city of 32 million built on steep hills above two rivers, with a light display that outdoes anything in mainland China.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
