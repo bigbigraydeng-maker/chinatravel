@@ -92,4 +92,10 @@ export function trackEnquirySubmitted(): void {
     enquiry_source: source,
     timestamp: new Date().toISOString(),
   });
+  // Same GA4 `generate_lead` the other enquiry forms send (see lead-conversion.ts),
+  // so "how many real enquiries" is one event across every form. No money value.
+  gtag()?.('event', 'generate_lead', {
+    lead_source: 'tailor_made',
+    enquiry_source: source,
+  });
 }
