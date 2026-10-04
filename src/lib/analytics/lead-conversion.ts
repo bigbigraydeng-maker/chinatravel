@@ -2,7 +2,10 @@
  * Lead-conversion firing for CTS Tours enquiry funnels.
  *
  * Fires the Google Ads "Booking Service" conversion + the Meta Pixel `Lead`
- * event together, so every enquiry path reports identically:
+ * event + a GA4 `generate_lead` event together, so every enquiry path reports
+ * identically (the GA4 event is what Magic Engine / GA4 reports read as "a
+ * real enquiry was accepted"; the form-level `dataLayer` pushes never reach GA4
+ * because the GTM container script is not installed on the site):
  *   - /contact form submit (inline success state)
  *   - tour enquiry → /thank-you landing
  *
@@ -62,6 +65,12 @@ export function fireLeadConversion(source: LeadSource): void {
           send_to: GOOGLE_ADS_SEND_TO,
           value: LEAD_VALUE,
           currency: CURRENCY,
+          transaction_id: eventId,
+        });
+        // GA4: no value on purpose — the 1.0 above is an Ads bidding placeholder,
+        // not revenue, and must not show up as money in GA4 reports.
+        g('event', 'generate_lead', {
+          lead_source: source,
           transaction_id: eventId,
         });
         gtagDone = true;

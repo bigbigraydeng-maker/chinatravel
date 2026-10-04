@@ -167,3 +167,13 @@ describe('trackEnquirySubmitted', () => {
     );
   });
 });
+
+describe('trackEnquirySubmitted → generate_lead', () => {
+  it('also sends the shared GA4 generate_lead event (lead_source tailor_made), with no money value', () => {
+    trackEnquirySubmitted();
+    const lead = mockGtag.mock.calls.find((c) => c[1] === 'generate_lead');
+    expect(lead).toBeDefined();
+    expect(lead![2]).toEqual({ lead_source: 'tailor_made', enquiry_source: 'tailor-made-direct' });
+    expect(lead![2]).not.toHaveProperty('value');
+  });
+});
