@@ -21,7 +21,7 @@ export const longtailBatch3Posts: BlogPost[] = [
       },
       {
         question: 'How much does a China holiday package from NZ cost?',
-        answer: 'CTS Discovery tours start from NZD $3,399 per person including return flights from Auckland. Signature (premium) tours start from NZD $4,800. Prices include accommodation, most meals, guided sightseeing, and domestic transport within China.'
+        answer: 'CTS Discovery tours start from NZD $2,699 per person including return flights from Auckland. Signature (premium) tours start from NZD $4,800. Prices include accommodation, most meals, guided sightseeing, and domestic transport within China.'
       },
       {
         question: 'Do New Zealanders need a visa for China in 2026?',
@@ -37,7 +37,7 @@ export const longtailBatch3Posts: BlogPost[] = [
       }
     ],
     content: `
-New Zealand ordinary passport holders can travel to China visa-free in 2026 for up to 30 days — no visa application required. China tour packages from Auckland (AKL) start from NZD $3,399 including return international flights. Most Kiwi travellers choose a 10–15 day itinerary covering two or three cities. CTS Tours NZ has been running Kiwi-led China holidays from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928).
+New Zealand ordinary passport holders can travel to China visa-free in 2026 for up to 30 days — no visa application required. China tour packages from Auckland (AKL) start from NZD $2,699 including return international flights. Most Kiwi travellers choose a 10–15 day itinerary covering two or three cities. CTS Tours NZ has been running Kiwi-led China holidays from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928).
 
 ---
 
@@ -93,7 +93,7 @@ Not included: personal travel insurance (strongly recommended), optional excursi
 
 | Collection | Style | Starting Price | Group Size |
 |-----------|-------|---------------|-----------|
-| **Discovery** | 3–4 star, great value | From NZD $3,399 | Up to 24 |
+| **Discovery** | 3–4 star, great value | From NZD $2,699 | Up to 24 |
 | **Signature** | 4–5 star, premium | From NZD $4,800 | Max 16 |
 | **Stopover** | City break, 2–4 days | From NZD $1,200 | Flexible |
 

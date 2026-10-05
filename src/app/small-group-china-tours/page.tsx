@@ -237,7 +237,7 @@ export default function SmallGroupChinaToursPage() {
                           plantation, Shanghai Bund and Yu Garden
                         </p>
                         <p className="mt-3">
-                          <span className="font-bold text-primary text-lg">From NZD $3,399</span>
+                          <span className="font-bold text-primary text-lg">From NZD $2,699</span>
                           <span className="text-gray-500 text-sm ml-2">· October 2026</span>
                         </p>
                       </div>
