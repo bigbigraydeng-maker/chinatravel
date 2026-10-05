@@ -104,7 +104,8 @@ export default function ContactFormClient() {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Office</h3>
                   <p className="text-gray-600">2F CTS House</p>
-                  <p className="text-gray-600">175 Queen Street, Auckland</p>
+                  <p className="text-gray-600">175 Queen Street</p>
+                  <p className="text-gray-600">Auckland City, Auckland, New Zealand</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
