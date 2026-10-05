@@ -2479,7 +2479,7 @@ export const chongqingGuide: DestinationGuide = {
         'Ride Line 2 through the building for the inside view, then watch from the street below — both perspectives are worth having. Trains run every few minutes; most visitors spend 30 to 60 minutes. Walk up to the platform itself and look out the windows while waiting: the city view from inside a residential building at floor 7 is extraordinary and most visitors miss it.',
         'Liziba is 15 minutes from central Chongqing by metro. It pairs naturally with Eling Park two stops away — a morning covering both, then Hongyadong after dark, makes a satisfying first-day loop.',
       ],
-      link: { label: 'Liziba Station: complete visitor guide →', href: '/liziba-station-chongqing' },
+      link: { label: 'Liziba Station: complete visitor guide →', href: '/blog/liziba-station-chongqing-guide' },
     },
     {
       title: 'Luohan Temple (罗汉寺) — 500 Clay Faces in the City Centre',

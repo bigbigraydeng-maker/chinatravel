@@ -93,7 +93,7 @@ Both cities sit in the Sichuan-Chongqing region of southwest China. Both are fam
 | | **Chengdu** | **Chongqing** |
 |---|---|---|
 | **Pace** | Slow, walkable | Fast, vertical |
-| **Headline draw** | [Giant pandas](/chengdu-panda-sanctuary) | [Liziba monorail through-building](/liziba-station-chongqing) |
+| **Headline draw** | [Giant pandas](/chengdu-panda-sanctuary) | [Liziba monorail through-building](/blog/liziba-station-chongqing-guide) |
 | **Food signature** | Sichuan cuisine, dan-dan noodles, mapo tofu | [Chongqing hotpot](/hongyadong-chongqing), mala beef tallow |
 | **Layout** | Flat, grid-like | Mountainous, multi-level streets |
 | **Best for** | First-timers, families, slow travel | Repeat visitors, photographers, foodies |

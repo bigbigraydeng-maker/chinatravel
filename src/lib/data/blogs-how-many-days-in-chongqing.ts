@@ -110,7 +110,7 @@ This is for travellers on a tight schedule, usually because Chongqing is one sto
 
 **Day 1 — Central Chongqing highlights**
 
-Morning: Start at **Liziba Monorail Station** — the famous monorail that runs through the middle of a residential apartment building. Get there before 10am for the cleanest photos. Pay the equivalent of NZD $1 to ride the monorail one stop to see it from the inside. [Full guide here](/liziba-station-chongqing).
+Morning: Start at **Liziba Monorail Station** — the famous monorail that runs through the middle of a residential apartment building. Get there before 10am for the cleanest photos. Pay the equivalent of NZD $1 to ride the monorail one stop to see it from the inside. [Full guide here](/blog/liziba-station-chongqing-guide).
 
 Late morning: **Three Gorges Museum** (free entry, allow 90 minutes). The collection covers the Yangtze River, the construction of the Three Gorges Dam, and Chongqing\'s wartime history as China\'s temporary capital. Good context for the rest of your trip.
 
