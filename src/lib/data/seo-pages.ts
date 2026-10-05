@@ -57,7 +57,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'How much does a China tour package from New Zealand cost?',
-      answer: 'CTS Tours\' published lead-in prices range from NZD $3,399 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Best of China 15 days from NZD $4,080, and Christmas & New Year in China 16 days from NZD $7,188. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+      answer: 'CTS Tours\' published lead-in prices range from NZD $2,699 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Best of China 15 days from NZD $4,080, and Christmas & New Year in China 16 days from NZD $7,188. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
     },
     {
       question: 'Do New Zealand passport holders need a visa for China?',
@@ -346,10 +346,10 @@ export const yunnanToursMeta: CityHubMeta = {
 
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
-  title: 'China Tours from NZ 2026-27 · 4 Tours from NZD $3,399 | CTS',
-  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. Visa-free for Kiwi passports.',
+  title: 'China Tours from NZ 2026-27 · 4 Tours from NZD $2,699 | CTS',
+  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. Visa-free for Kiwi passports.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: '4 Kiwi-Led China itineraries 2026-27 · NZD $3,399-7,999 · Auckland-based · Visa-free for NZ passports',
+  heroSubtitle: '4 Kiwi-Led China itineraries 2026-27 · NZD $2,699-7,999 · Auckland-based · Visa-free for NZ passports',
   introText:
     'CTS is backed by China Travel Service — the pioneering China travel brand established in 1928 — with our New Zealand operations running Kiwi-led China tours for 25 years. We understand what Kiwis love about travel: authenticity, value, and expert guidance. Our China tours are designed for New Zealand visitors with direct return international flights from Auckland (AKL) — the only NZ airport with direct service to mainland China — transparent NZD pricing, and help with China entry rules including the current visa-free window for NZ ordinary passport holders (see our guide for eligibility and what to carry). If you are based in Wellington, Christchurch or regional New Zealand, our team arranges a connecting domestic flight to Auckland for the international departure; the connecting leg is quoted separately at additional cost on top of the headline tour price.\n\n' +
     'Whether you want a first-time highlights loop (Beijing, Xi\'an, Shanghai), a deeper regional journey (Yunnan, the Silk Road, or the Yangtze), or a short stopover bolted onto business travel, our Auckland-based consultants quote in NZD, explain what is included, and stay with you from enquiry to touchdown back home.',
@@ -376,7 +376,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What are the most popular China tours for New Zealand travellers?',
-      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $3,399), and Silk Road (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
+      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $2,699), and Silk Road (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
     },
     {
       question: 'Is it safe to travel from New Zealand to China?',
@@ -408,7 +408,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What is the difference between Discovery and Signature tour collections?',
-      answer: 'Discovery (from NZD $3,399) uses 3-4 star city centre hotels, larger group sizes (up to 24), and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups (max 16), more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
+      answer: 'Discovery (from NZD $2,699) uses 3-4 star city centre hotels, larger group sizes (up to 24), and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups (max 16), more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
     },
     {
       question: 'What travel insurance do New Zealanders need for a China tour?',

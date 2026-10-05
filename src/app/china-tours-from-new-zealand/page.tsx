@@ -72,7 +72,7 @@ export default function ChinaToursFromNZPage() {
       url: '/campaigns/october-2026/shanghai-surroundings',
       duration: '10 days',
       cities: 'Shanghai + Suzhou + Wuxi + Hangzhou',
-      price: 'NZD $3,399',
+      price: 'NZD $2,699',
       bestFor: 'Comfort travel, lower flight fatigue, water-towns culture',
     },
     {
@@ -207,7 +207,7 @@ export default function ChinaToursFromNZPage() {
                   only NZ airport with direct service to mainland China. For travellers based in
                   Wellington, Christchurch or regional NZ, we arrange connecting domestic flights to
                   Auckland; the connecting leg is quoted separately at additional cost on top of the
-                  headline tour price. All packages are priced in NZD (lead-in from NZD $3,399 for a
+                  headline tour price. All packages are priced in NZD (lead-in from NZD $2,699 for a
                   10-day Discovery tour) and include return international airfares from AKL, hotels,
                   English-speaking guides, and most meals. NZ ordinary passport holders enjoy visa-free
                   entry to China for up to 30 days, currently published through 31 December 2026. CTS is
@@ -279,7 +279,7 @@ export default function ChinaToursFromNZPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">From price (per pax)</td><td className="px-4 py-3 text-gray-700">NZD $3,399</td><td className="px-4 py-3 text-gray-700">NZD $4,800</td></tr>
+                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">From price (per pax)</td><td className="px-4 py-3 text-gray-700">NZD $2,699</td><td className="px-4 py-3 text-gray-700">NZD $4,800</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Hotels</td><td className="px-4 py-3 text-gray-700">3–4 star city centre</td><td className="px-4 py-3 text-gray-700">4–5 star premium</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Group size</td><td className="px-4 py-3 text-gray-700">Up to 24</td><td className="px-4 py-3 text-gray-700">Max 16</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Pace</td><td className="px-4 py-3 text-gray-700">Active sightseeing</td><td className="px-4 py-3 text-gray-700">Relaxed with free time</td></tr>

@@ -32,7 +32,7 @@ const TOUR_IMG =
 
 const PAGE_TITLE = 'China Tours for Seniors 2026-27 · NZ-Friendly Pace, Mobility-Aware | CTS Tours';
 const PAGE_DESCRIPTION =
-  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $3,399. 25 years arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
+  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. 25 years arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
 const PAGE_H1 = 'China Tours for New Zealand Seniors (2026-27)';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,7 +62,7 @@ const seniorFriendlyTours = [
     duration: '10 days',
     pace: 'Relaxed — multiple half-day options',
     walkingLevel: 'Low to moderate',
-    priceFrom: 'NZD $3,399',
+    priceFrom: 'NZD $2,699',
     seniorWhy: 'Flat city terrain, hotels in central walkable areas, water town day trip on smooth boat decks',
   },
   {
@@ -134,7 +134,7 @@ const faqs = [
   {
     question: 'What\'s the best China tour for first-time senior travellers?',
     answer:
-      'For most NZ seniors travelling to China for the first time, we recommend Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) or Shanghai & Surroundings (10 days, NZD $3,399). Both pace at moderate levels, cover iconic sights without overload, and offer afternoon free time. For seniors with more travel experience or longer holidays, Best of China (15 days, 4 cities, NZD $3,880) is the most popular — see iconic China with breathing room. If mobility is a primary concern, add the Yangtze River Cruise (3 nights cabin accommodation, ship is the hotel) — many senior travellers consider this the most enjoyable leg.',
+      'For most NZ seniors travelling to China for the first time, we recommend Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) or Shanghai & Surroundings (10 days, NZD $2,699). Both pace at moderate levels, cover iconic sights without overload, and offer afternoon free time. For seniors with more travel experience or longer holidays, Best of China (15 days, 4 cities, NZD $3,880) is the most popular — see iconic China with breathing room. If mobility is a primary concern, add the Yangtze River Cruise (3 nights cabin accommodation, ship is the hotel) — many senior travellers consider this the most enjoyable leg.',
   },
   {
     question: 'How walking-intensive are CTS senior China tours?',
@@ -301,7 +301,7 @@ export default function ChinaToursForSeniorsPage() {
                   relaxed pace with built-in afternoon rest, mobility-aware planning (cable cars at the Great
                   Wall, electric shuttles at major sites, private coach transfers), English-speaking guides
                   who understand Western seniors&apos; expectations, and Auckland-based booking support.
-                  Most popular senior itineraries: <strong>Shanghai &amp; Surroundings (10 days, NZD $3,399)</strong>
+                  Most popular senior itineraries: <strong>Shanghai &amp; Surroundings (10 days, NZD $2,699)</strong>
                   {' '}for low-walking comfort, <strong>Tale of Two Cities (10 days, NZD $3,480)</strong>{' '}
                   for first-time imperial highlights, and <strong>Best of China + Yangtze River Cruise
                   (15-18 days)</strong> for senior travellers&apos; favourite — the cruise leg means unpacking
@@ -514,7 +514,7 @@ export default function ChinaToursForSeniorsPage() {
                   <dl className="space-y-3 text-sm">
                     <div>
                       <dt className="text-gray-600">Lead-in price</dt>
-                      <dd className="font-medium">NZD $3,399</dd>
+                      <dd className="font-medium">NZD $2,699</dd>
                     </div>
                     <div>
                       <dt className="text-gray-600">Most-booked senior trip</dt>

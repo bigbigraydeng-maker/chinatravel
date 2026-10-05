@@ -32,7 +32,7 @@ const FLAGSHIP_TOURS = [
  * Strip the "From " prefix and " per person" suffix so prices render with
  * consistent visual weight across cards. Stays a no-op for clean strings.
  *   "From NZD $3,480"           → "NZD $3,480"
- *   "NZD $3,399 per person"     → "NZD $3,399"
+ *   "NZD $2,699 per person"     → "NZD $2,699"
  *   "From NZD $3,880 per person"→ "NZD $3,880"
  */
 function formatPrice(raw: string | undefined): string | null {

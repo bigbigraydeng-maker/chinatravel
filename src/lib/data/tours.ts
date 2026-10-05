@@ -913,7 +913,8 @@ export const tours: Tour[] = [
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     duration: '10 Days',
-    price: 'NZD $3,399 per person',
+    price: 'NZD $2,699 per person',
+    maxGroupSize: 20,
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/wuzhen-canal/wuzhen-canal.jpg',
@@ -959,7 +960,7 @@ export const tours: Tour[] = [
     ],
     metaTitle: 'Shanghai & Surroundings Discovery | March 2027 | CTS NZ',
     metaDescription:
-      'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $3,399. Visa-free options for many NZ travellers — CTS China visa guide.',
+      'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-05-07',
@@ -992,7 +993,7 @@ export const tours: Tour[] = [
           'Many NZ leisure trips qualify for China\'s visa-free entry (often up to 30 days under current published policy to 31 December 2026). This 10-day loop is a typical holiday length, but rules depend on your dates and travel purpose — always confirm before booking. See our China visa guide for New Zealanders or ask CTS when you enquire.',
       },
       {
-        question: 'What is included in the NZD $3,399 price?',
+        question: 'What is included in the NZD $2,699 price?',
         answer:
           'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, tips (we suggest about NZD $10 per person per day), most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
       },

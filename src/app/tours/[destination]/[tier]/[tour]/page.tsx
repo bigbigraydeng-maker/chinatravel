@@ -344,7 +344,7 @@ export default function TourPage({ params }: TourPageProps) {
               Next Departure: 25 March 2027
             </p>
             <p className="text-sm text-gray-600 mt-1">
-              From NZD $3,399 per person twin-share. Contact us to register interest in a future October departure.
+              From NZD $2,699 per person twin-share. Contact us to register interest in a future October departure.
             </p>
           </div>
         </section>

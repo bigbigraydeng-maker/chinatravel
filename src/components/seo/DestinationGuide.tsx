@@ -79,7 +79,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,080', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
       { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: `${TI}/shanghai-night-red.jpg`, tier: 'stopover' },
       { name: 'A Tale of Two Cities (10 Days)', duration: '10 Days', price: 'From NZD $3,480', url: '/tours/china/discovery/beijing-xian', image: `${TI}/forbidden-city-gold-lion.jpg`, tier: 'discovery' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'The Bund', slug: 'the-bund-travel-guide', emoji: '🌉' },
@@ -272,7 +272,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'hangzhou-travel-guide': {
     hubUrl: '/hangzhou-tours', hubLabel: 'All Hangzhou Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,080', url: '/tours/china/discovery/essentials', image: `${TI}/shanghai-night-blue.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
@@ -286,7 +286,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/suzhou-tours', hubLabel: 'All Suzhou Tours',
     relatedTours: [
       { name: 'Shanghai & Suzhou (3 Days)', duration: '3 Days', price: 'From NZD $1,356', url: '/tours/china/stopover/shanghai-suzhou', image: `${TI}/suzhou-canal.jpg`, tier: 'stopover' },
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: `${TI}/wuzhen-canal.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Shanghai Travel Guide', slug: 'shanghai-travel-guide', emoji: '🌆' },
@@ -363,7 +363,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'west-lake-travel-guide': {
     hubUrl: '/hangzhou-tours', hubLabel: 'All Hangzhou Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/west-lake/causeway.webp', tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/west-lake/causeway.webp', tier: 'discovery' },
       { name: 'Best of China (15 Days)', duration: '15 Days', price: 'NZD $4,080', url: '/tours/china/discovery/essentials', image: '/images/guides/west-lake/gallery.webp', tier: 'discovery' },
     ],
     relatedGuides: [
@@ -376,7 +376,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yu-garden-travel-guide': {
     hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/yu-garden/pavilion.webp', tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/yu-garden/pavilion.webp', tier: 'discovery' },
       { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: '/images/guides/yu-garden/gallery.webp', tier: 'stopover' },
     ],
     relatedGuides: [
@@ -389,7 +389,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'the-bund-travel-guide': {
     hubUrl: '/shanghai-tours', hubLabel: 'All Shanghai Tours',
     relatedTours: [
-      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $3,399', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/the-bund/skyline.webp', tier: 'discovery' },
+      { name: 'Shanghai & Surroundings (10 Days)', duration: '10 Days', price: 'NZD $2,699', url: '/tours/china/discovery/shanghai-surroundings', image: '/images/guides/the-bund/skyline.webp', tier: 'discovery' },
       { name: 'Shanghai Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,060', url: '/tours/china/stopover/shanghai', image: '/images/guides/the-bund/night.webp', tier: 'stopover' },
     ],
     relatedGuides: [

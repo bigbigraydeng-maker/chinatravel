@@ -90,7 +90,7 @@ export default function ChinaTravelSpecialistsNzPage() {
             itemOffered: {
               '@type': 'TouristTrip',
               name: 'China Discovery — Shanghai & Surroundings',
-              description: 'Yangtze Delta loop, 10 days from NZD $3,399',
+              description: 'Yangtze Delta loop, 10 days from NZD $2,699',
             },
           },
         ],
@@ -270,7 +270,7 @@ export default function ChinaTravelSpecialistsNzPage() {
                       <p className="text-gray-600 text-sm mt-1">
                         10 days · Suzhou, Wuxi, Hangzhou West Lake, Shanghai Bund
                       </p>
-                      <p className="text-primary font-semibold mt-1">From NZD $3,399</p>
+                      <p className="text-primary font-semibold mt-1">From NZD $2,699</p>
                     </div>
                     <Link
                       href="/campaigns/october-2026/shanghai-surroundings"

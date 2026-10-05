@@ -439,7 +439,7 @@ October is the strongest month for this route. The summer heat and humidity have
 
 ## Visa and Pricing
 
-Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $3,399** per person (twin share), including international airfares from Auckland. A confirmed 2027 group departure leaves Auckland on 25 March 2027 (returns 3 April 2027).
+Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $2,699** per person (twin share), including international airfares from Auckland. A confirmed 2027 group departure leaves Auckland on 25 March 2027 (returns 3 April 2027).
 
 [View the Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -491,7 +491,7 @@ The atmosphere in the early morning is genuine religious activity rather than to
 
 Hangzhou is best experienced as part of the Jiangnan triangle: Suzhou for the classical gardens and canals, Hangzhou for West Lake and tea culture, Shanghai for the modern city and the Bund. The three are connected by comfortable inter-city distances, and the contrast between them — ancient, romantic, modern — is itself one of the pleasures of the route.
 
-CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $3,399 per person from Auckland, departing 14 October 2026.
+CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,699 per person from Auckland, departing 14 October 2026.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -540,7 +540,7 @@ Beyond the gardens, Suzhou has an ancient canal district that has been the city'
 
 Suzhou is approximately 1 hour by high-speed train from Shanghai and 1.5–2 hours from Hangzhou — perfectly positioned as the first stop on a Yangtze Delta tour. CTS Tours allocates 2 nights in Suzhou within the **Shanghai & Surroundings** itinerary, covering the Humble Administrator's Garden, Master of the Nets, and the canal district.
 
-The tour is priced from NZD $3,399 per person (twin share) from Auckland, departing 14 October 2026.
+The tour is priced from NZD $2,699 per person (twin share) from Auckland, departing 14 October 2026.
 
 [View the full Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -550,7 +550,7 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
     id: 'lt-b4',
     slug: 'shanghai-10-days-itinerary',
     title: '10-Day Shanghai & Jiangnan Itinerary for NZ Travellers (2026)',
-    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $3,399. By CTS Tours, NZ\'s China specialists — Auckland since 2000, backed by CTS (founded 1928).',
+    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $2,699. By CTS Tours, NZ\'s China specialists — Auckland since 2000, backed by CTS (founded 1928).',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',
@@ -559,7 +559,7 @@ The tour is priced from NZD $3,399 per person (twin share) from Auckland, depart
     publishedAt: '2026-04-25',
     readTime: '7 min read',
     content: `
-> **Quick answer:** A 10-day Shanghai & Jiangnan itinerary covers Shanghai (2 days), Suzhou (2 days), Wuxi & Lake Tai (1–2 days), Hangzhou (2 days), and a final Shanghai day before flying home. Best in October (warm days, clear skies). From NZD $3,399 per person twin share with CTS Tours, including international airfares from Auckland.
+> **Quick answer:** A 10-day Shanghai & Jiangnan itinerary covers Shanghai (2 days), Suzhou (2 days), Wuxi & Lake Tai (1–2 days), Hangzhou (2 days), and a final Shanghai day before flying home. Best in October (warm days, clear skies). From NZD $2,699 per person twin share with CTS Tours, including international airfares from Auckland.
 
 Ten days in Shanghai and the surrounding Jiangnan region gives you enough time to do this part of China properly — not rushing, not skipping things, with room to follow your own interests on the free days built into the itinerary.
 
@@ -603,7 +603,7 @@ Return to Shanghai for the international connection. Depending on flight timing,
 
 **October weather:** Warm days (18–24°C), cooler evenings (10–15°C), generally clear skies. Light layers recommended. The autumn light on West Lake is worth the timing specifically.
 
-The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $3,399 per person (twin share) including international airfares from Auckland. Departs 14 October 2026.
+The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $2,699 per person (twin share) including international airfares from Auckland. Departs 14 October 2026.
 
 [View full tour details →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -683,7 +683,7 @@ This is the easiest region in China to travel independently or in a small group:
 
 ## Experiencing Jiangnan With CTS
 
-Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop, with the October departure timed for the region's best weather. From NZD 3,399 per person twin share including airfares from Auckland.
+Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop, with the October departure timed for the region's best weather. From NZD 2,699 per person twin share including airfares from Auckland.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings), or browse [Shanghai](/shanghai-tours), [Suzhou](/suzhou-tours) and [Hangzhou](/hangzhou-tours) tours.
     `
