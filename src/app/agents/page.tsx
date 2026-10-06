@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/agents' },
 };
 
-const CHINA_UNLOCKED_REGISTER_URL =
-  'https://os.ctstours.co.nz/widget/form/zBLTPanEAiP9Eifa1qAb';
-const CHINA_UNLOCKED_PORTAL_URL = 'https://chinaunlocked.ctstours.co.nz';
+// All agent buttons go to the join page, which handles both login (already registered)
+// and registration (new agents), so nobody lands on login without signing up first.
+const CHINA_UNLOCKED_JOIN_URL = 'https://agents.ctstours.co.nz/join';
 
 const CHRISTMAS_HERO_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg';
@@ -169,7 +169,7 @@ const AgentsPage = () => {
                   <ArrowRight className="h-5 w-5" aria-hidden />
                 </a>
                 <a
-                  href={CHINA_UNLOCKED_PORTAL_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
@@ -306,7 +306,7 @@ const AgentsPage = () => {
               </div>
             </div>
             <a
-              href={CHINA_UNLOCKED_PORTAL_URL}
+              href={CHINA_UNLOCKED_JOIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-[#171923] transition hover:bg-secondary"
@@ -400,7 +400,7 @@ const AgentsPage = () => {
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={CHINA_UNLOCKED_REGISTER_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-center"
@@ -408,7 +408,7 @@ const AgentsPage = () => {
                   Register for China Unlocked →
                 </a>
                 <a
-                  href={CHINA_UNLOCKED_PORTAL_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
