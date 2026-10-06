@@ -26,7 +26,7 @@ import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotl
 export const metadata: Metadata = {
   title: 'Travel Agent Partnerships | CTS Tours New Zealand',
   description:
-    'Partner with CTS Tours for China travel expertise, digital marketing content, online and in-person agent training, a dedicated agent portal and intelligent itinerary support.',
+    'Partner with CTS Tours for China travel expertise, digital marketing content, online and in-person agent training, a dedicated agent portal for training and resources.',
   keywords: [
     'CTS Tours travel agent partnership',
     'China tours for New Zealand travel agents',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Let’s Grow China Travel Together | CTS Tours',
     description:
-      'A digitally enabled China specialist partner for New Zealand travel advisors — local support, marketing content, training, agent portal access and intelligent itinerary support.',
+      'A digitally enabled China specialist partner for New Zealand travel advisors — local support, marketing content, training and agent portal access.',
     type: 'website',
     images: [
       {
@@ -116,13 +116,13 @@ const digitalAgentTools = [
     icon: LogIn,
     eyebrow: 'Book',
     title: 'A dedicated Agent Portal',
-    body: 'Sign in to reach agent resources, product information and a simpler path for submitting and progressing client booking requests.',
+    body: 'Sign in to reach agent resources and product information. We are also exploring an English-language online booking tool for New Zealand agents, currently in trial and not yet available. For now, bookings continue through the CTS trade team.',
   },
   {
     icon: Bot,
-    eyebrow: 'Plan smarter',
-    title: 'Intelligent itinerary support',
-    body: 'Turn a client brief into a stronger starting point with AI-assisted planning, then rely on CTS specialists to review the detail before it reaches your client.',
+    eyebrow: 'Coming soon',
+    title: 'Itinerary support, in development',
+    body: 'We are exploring using AI tools to help produce itinerary and travel content faster, with CTS specialists reviewing every detail. This is still an idea under development and is not yet available.',
   },
 ];
 
@@ -264,13 +264,13 @@ const AgentsPage = () => {
                 Smarter agent support
               </span>
               <h2 className="mt-4 font-serif text-4xl font-semibold md:text-5xl">
-                Digital tools that help you sell, learn and book.
+                Digital tools that help you sell and learn.
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-white/65">
               CTS combines destination specialists with practical digital support. You get useful
-              content, clearer training and faster ways to move from client interest to a reviewed
-              booking request.
+              content and clearer training today, with more digital tools we are looking to develop
+              with you over time.
             </p>
           </div>
 
