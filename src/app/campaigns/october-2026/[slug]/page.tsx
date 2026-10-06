@@ -186,6 +186,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
         primaryCtaLabel="Enquire about a future departure →"
         secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
+        maxGroupSize={tour.maxGroupSize}
       />
 
       {/* Replaces OctoberUrgencyBar — the countdown was pointed at a departure
