@@ -26,7 +26,7 @@ import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotl
 export const metadata: Metadata = {
   title: 'Travel Agent Partnerships | CTS Tours New Zealand',
   description:
-    'Partner with CTS Tours for China travel expertise, digital marketing content, online and in-person agent training, a dedicated agent portal and intelligent itinerary support.',
+    'Partner with CTS Tours for China travel expertise, digital marketing content, online and in-person agent training, a dedicated agent portal for training and resources.',
   keywords: [
     'CTS Tours travel agent partnership',
     'China tours for New Zealand travel agents',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Let’s Grow China Travel Together | CTS Tours',
     description:
-      'A digitally enabled China specialist partner for New Zealand travel advisors — local support, marketing content, training, agent portal access and intelligent itinerary support.',
+      'A digitally enabled China specialist partner for New Zealand travel advisors — local support, marketing content, training and agent portal access.',
     type: 'website',
     images: [
       {
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/agents' },
 };
 
-const CHINA_UNLOCKED_REGISTER_URL =
-  'https://os.ctstours.co.nz/widget/form/zBLTPanEAiP9Eifa1qAb';
-const CHINA_UNLOCKED_PORTAL_URL = 'https://chinaunlocked.ctstours.co.nz';
+// All agent buttons go to the join page, which handles both login (already registered)
+// and registration (new agents), so nobody lands on login without signing up first.
+const CHINA_UNLOCKED_JOIN_URL = 'https://agents.ctstours.co.nz/join';
 
 const CHRISTMAS_HERO_IMAGE =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg';
@@ -116,13 +116,13 @@ const digitalAgentTools = [
     icon: LogIn,
     eyebrow: 'Book',
     title: 'A dedicated Agent Portal',
-    body: 'Sign in to reach agent resources, product information and a simpler path for submitting and progressing client booking requests.',
+    body: 'Sign in to reach agent resources and product information. We are also exploring an English-language online booking tool for New Zealand agents, currently in trial and not yet available. For now, bookings continue through the CTS trade team.',
   },
   {
     icon: Bot,
-    eyebrow: 'Plan smarter',
-    title: 'Intelligent itinerary support',
-    body: 'Turn a client brief into a stronger starting point with AI-assisted planning, then rely on CTS specialists to review the detail before it reaches your client.',
+    eyebrow: 'Coming soon',
+    title: 'Itinerary support, in development',
+    body: 'We are exploring using AI tools to help produce itinerary and travel content faster, with CTS specialists reviewing every detail. This is still an idea under development and is not yet available.',
   },
 ];
 
@@ -169,7 +169,7 @@ const AgentsPage = () => {
                   <ArrowRight className="h-5 w-5" aria-hidden />
                 </a>
                 <a
-                  href={CHINA_UNLOCKED_PORTAL_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
@@ -264,13 +264,13 @@ const AgentsPage = () => {
                 Smarter agent support
               </span>
               <h2 className="mt-4 font-serif text-4xl font-semibold md:text-5xl">
-                Digital tools that help you sell, learn and book.
+                Digital tools that help you sell and learn.
               </h2>
             </div>
             <p className="text-lg leading-relaxed text-white/65">
               CTS combines destination specialists with practical digital support. You get useful
-              content, clearer training and faster ways to move from client interest to a reviewed
-              booking request.
+              content and clearer training today, with more digital tools we are looking to develop
+              with you over time.
             </p>
           </div>
 
@@ -306,7 +306,7 @@ const AgentsPage = () => {
               </div>
             </div>
             <a
-              href={CHINA_UNLOCKED_PORTAL_URL}
+              href={CHINA_UNLOCKED_JOIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 font-bold text-[#171923] transition hover:bg-secondary"
@@ -400,7 +400,7 @@ const AgentsPage = () => {
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
-                  href={CHINA_UNLOCKED_REGISTER_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-primary text-center"
@@ -408,7 +408,7 @@ const AgentsPage = () => {
                   Register for China Unlocked →
                 </a>
                 <a
-                  href={CHINA_UNLOCKED_PORTAL_URL}
+                  href={CHINA_UNLOCKED_JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary text-center"
