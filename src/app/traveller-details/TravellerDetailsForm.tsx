@@ -4,30 +4,63 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import {
+  parseDepartureDate,
+  passportStatus,
+  type PassportStatus,
+  type TourOption,
+} from '@/lib/traveller-form';
 
 interface Traveller {
   fullName: string;
   dob: string;
   dietary: string;
   medical: string;
+  passportExpiry: string;
 }
 
-const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', medical: '' });
+const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', medical: '', passportExpiry: '' });
 
 const inputClass =
   'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary';
 const labelClass = 'block text-gray-700 mb-2 text-sm font-medium';
 
-export default function TravellerDetailsForm() {
+const OTHER_TOUR = '__other__';
+
+const PASSPORT_MESSAGES: Record<Exclude<PassportStatus, 'unknown'>, { text: string; className: string }> = {
+  ok: { text: 'Great — this passport meets the 6-month recommendation.', className: 'text-green-700' },
+  short: {
+    text: 'This passport is valid on your travel date but has under 6 months left. We recommend renewing it before you travel.',
+    className: 'text-amber-700',
+  },
+  expired: {
+    text: 'This passport expires before your travel date. Please renew it and send us your new passport details.',
+    className: 'text-red-700',
+  },
+};
+
+export default function TravellerDetailsForm({ tourOptions }: { tourOptions: TourOption[] }) {
   const params = useSearchParams();
 
   const [bookingRef, setBookingRef] = useState(params.get('booking') ?? '');
-  const [tourName, setTourName] = useState(params.get('tour') ?? '');
+  const tourParam = params.get('tour') ?? '';
+  const matchedTour = tourOptions.find((t) => t.name.toLowerCase() === tourParam.trim().toLowerCase());
+  const [tourSlug, setTourSlug] = useState(matchedTour?.key ?? (tourParam ? OTHER_TOUR : ''));
+  const [otherTourName, setOtherTourName] = useState(matchedTour ? '' : tourParam);
+  const [departureDate, setDepartureDate] = useState('');
   const [leadName, setLeadName] = useState(params.get('name') ?? '');
   const [leadEmail, setLeadEmail] = useState(params.get('email') ?? '');
   const [leadPhone, setLeadPhone] = useState('');
 
   const [travellers, setTravellers] = useState<Traveller[]>([emptyTraveller()]);
+  const [roomType, setRoomType] = useState<'' | 'double' | 'twin'>('');
+  const [hasChildren, setHasChildren] = useState(false);
+  const [childrenNotes, setChildrenNotes] = useState('');
+
+  const selectedTour = tourOptions.find((t) => t.key === tourSlug);
+  const tourName = tourSlug === OTHER_TOUR ? otherTourName : selectedTour?.name ?? '';
+  const departure = departureDate ? parseDepartureDate(departureDate) : null;
+  const needsRoomChoice = travellers.length >= 2;
 
   const [emergencyName, setEmergencyName] = useState('');
   const [emergencyRelationship, setEmergencyRelationship] = useState('');
@@ -59,6 +92,11 @@ export default function TravellerDetailsForm() {
       return;
     }
 
+    if (needsRoomChoice && !roomType) {
+      setSubmitError('Please choose Double or Twin for your room.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       const res = await fetch('/api/traveller-details', {
@@ -70,11 +108,16 @@ export default function TravellerDetailsForm() {
           leadEmail: leadEmail.trim(),
           leadPhone: leadPhone.trim(),
           tourName: tourName.trim(),
+          departureDate,
+          roomType: needsRoomChoice ? roomType : '',
+          hasChildren,
+          childrenNotes: hasChildren ? childrenNotes.trim() : '',
           travellers: travellers.map((t) => ({
             fullName: t.fullName.trim(),
             dob: t.dob.trim(),
             dietary: t.dietary.trim(),
             medical: t.medical.trim(),
+            passportExpiry: t.passportExpiry,
           })),
           emergencyName: emergencyName.trim(),
           emergencyRelationship: emergencyRelationship.trim(),
@@ -163,10 +206,35 @@ export default function TravellerDetailsForm() {
             <legend className="text-xl font-serif font-semibold text-dark mb-2">Your booking</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="tourName" className={labelClass}>Tour name</label>
-                <input id="tourName" type="text" value={tourName} onChange={(e) => setTourName(e.target.value)}
-                  placeholder="e.g. Golden China — 12 Days" className={inputClass} />
+                <label htmlFor="tourSlug" className={labelClass}>Which tour did you book?</label>
+                <select id="tourSlug" value={tourSlug} className={inputClass}
+                  onChange={(e) => { setTourSlug(e.target.value); setDepartureDate(''); }}>
+                  <option value="">Select your tour</option>
+                  {tourOptions.map((t) => (
+                    <option key={t.key} value={t.key}>{t.name}</option>
+                  ))}
+                  <option value={OTHER_TOUR}>My tour isn&apos;t listed</option>
+                </select>
               </div>
+              {tourSlug === OTHER_TOUR && (
+                <div>
+                  <label htmlFor="otherTourName" className={labelClass}>Tour name</label>
+                  <input id="otherTourName" type="text" value={otherTourName}
+                    onChange={(e) => setOtherTourName(e.target.value)} className={inputClass} />
+                </div>
+              )}
+              {selectedTour && selectedTour.dates.length > 0 && (
+                <div>
+                  <label htmlFor="departureDate" className={labelClass}>Departure date</label>
+                  <select id="departureDate" value={departureDate} className={inputClass}
+                    onChange={(e) => setDepartureDate(e.target.value)}>
+                    <option value="">Select your departure date</option>
+                    {selectedTour.dates.map((d) => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
               <div>
                 <label htmlFor="bookingRef" className={labelClass}>Booking reference (if you have one)</label>
                 <input id="bookingRef" type="text" value={bookingRef} onChange={(e) => setBookingRef(e.target.value)}
@@ -225,6 +293,19 @@ export default function TravellerDetailsForm() {
                   </div>
                 </div>
                 <div>
+                  <label htmlFor={`passportExpiry-${i}`} className={labelClass}>
+                    Passport expiry date <span className="text-gray-400">(optional — we never ask for your passport number here)</span>
+                  </label>
+                  <input id={`passportExpiry-${i}`} type="date" value={t.passportExpiry}
+                    onChange={(e) => updateTraveller(i, 'passportExpiry', e.target.value)} className={inputClass} />
+                  {(() => {
+                    const status = passportStatus(t.passportExpiry, departure, new Date());
+                    if (status === 'unknown') return null;
+                    const message = PASSPORT_MESSAGES[status];
+                    return <p role="status" className={`mt-2 text-sm ${message.className}`}>{message.text}</p>;
+                  })()}
+                </div>
+                <div>
                   <label htmlFor={`dietary-${i}`} className={labelClass}>
                     Dietary requirements <span className="text-gray-400">(optional)</span>
                   </label>
@@ -250,6 +331,45 @@ export default function TravellerDetailsForm() {
               </svg>
               Add another traveller
             </button>
+          </fieldset>
+
+          {/* Rooming */}
+          <fieldset className="space-y-4">
+            <legend className="text-xl font-serif font-semibold text-dark mb-2">Rooming</legend>
+            {needsRoomChoice ? (
+              <div>
+                <p className={labelClass}>
+                  Room type for two people sharing <span className="text-red-500">*</span>
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {([['double', 'Double', 'One bed'], ['twin', 'Twin', 'Two separate beds']] as const).map(([value, title, hint]) => (
+                    <label key={value} className="flex items-start gap-3 rounded-lg border border-gray-300 p-4 cursor-pointer">
+                      <input type="radio" name="roomType" value={value} checked={roomType === value}
+                        onChange={() => setRoomType(value)}
+                        className="mt-1 h-5 w-5 border-gray-300 text-primary focus:ring-primary" />
+                      <span className="text-sm text-gray-700"><strong>{title}</strong> — {hint}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <p className="text-sm text-gray-500">Travelling solo? No room choice needed — add another traveller above if you are sharing a room.</p>
+            )}
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
+                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+              <span className="text-sm text-gray-700">Children are travelling with us</span>
+            </label>
+            {hasChildren && (
+              <div>
+                <label htmlFor="childrenNotes" className={labelClass}>
+                  Children&apos;s ages and room needs <span className="text-gray-400">(optional)</span>
+                </label>
+                <input id="childrenNotes" type="text" value={childrenNotes}
+                  onChange={(e) => setChildrenNotes(e.target.value)}
+                  placeholder="e.g. one child aged 8, sharing with parents" className={inputClass} />
+              </div>
+            )}
           </fieldset>
 
           {/* Emergency contact */}

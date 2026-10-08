@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { migratedSite } from '@/lib/site-media';
+import { getAllActiveTours } from '@/lib/data/tours';
+import { upcomingDates, type TourOption } from '@/lib/traveller-form';
 import TravellerDetailsForm from './TravellerDetailsForm';
 
 // Personalised booking form (reads URL params, not indexed). Render per request
@@ -17,7 +19,15 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+function buildTourOptions(): TourOption[] {
+  const today = new Date();
+  return getAllActiveTours()
+    .map((tour) => ({ key: `${tour.destination}/${tour.tier}/${tour.slug}`, name: tour.title || tour.name, dates: upcomingDates(tour.departureDates, today) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
 export default function TravellerDetailsPage() {
+  const tourOptions = buildTourOptions();
   return (
     <div>
       <ImmersivePageHero
@@ -29,7 +39,7 @@ export default function TravellerDetailsPage() {
         priority
       />
       <Suspense fallback={null}>
-        <TravellerDetailsForm />
+        <TravellerDetailsForm tourOptions={tourOptions} />
       </Suspense>
     </div>
   );

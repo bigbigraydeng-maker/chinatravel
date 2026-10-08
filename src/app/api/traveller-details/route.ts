@@ -10,6 +10,7 @@ interface TravellerInput {
   dob?: string;
   dietary?: string;
   medical?: string;
+  passportExpiry?: string;
 }
 
 export async function POST(req: NextRequest) {
@@ -32,6 +33,10 @@ export async function POST(req: NextRequest) {
       leadEmail,
       leadPhone,
       tourName,
+      departureDate,
+      roomType,
+      hasChildren,
+      childrenNotes,
       travellers,
       emergencyName,
       emergencyRelationship,
@@ -57,6 +62,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+    if (validTravellers.length >= 2 && roomType !== 'double' && roomType !== 'twin') {
+      return NextResponse.json({ error: 'Please choose Double or Twin for your room.' }, { status: 400 });
+    }
     if (!emergencyName || !emergencyPhone) {
       return NextResponse.json(
         { error: 'Please provide an emergency contact name and phone number.' },
@@ -80,6 +88,7 @@ export async function POST(req: NextRequest) {
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${escapeHtml(String(t.fullName))}</td>
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${escapeHtml(String(t.dob))}</td>
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;white-space:pre-wrap;">${t.dietary ? escapeHtml(String(t.dietary)) : '—'}</td>
+          <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${t.passportExpiry ? escapeHtml(String(t.passportExpiry)) : '—'}</td>
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;white-space:pre-wrap;">${t.medical ? escapeHtml(String(t.medical)) : '—'}</td>
         </tr>`
       )
@@ -95,6 +104,9 @@ export async function POST(req: NextRequest) {
   <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;margin-bottom:16px;">
     <tr><td style="font-weight:bold;">Booking ref</td><td>${bookingRef ? escapeHtml(String(bookingRef)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Tour</td><td>${tourName ? escapeHtml(String(tourName)) : '—'}</td></tr>
+    <tr><td style="font-weight:bold;">Departure date</td><td>${departureDate ? escapeHtml(String(departureDate)) : '—'}</td></tr>
+    <tr><td style="font-weight:bold;">Room type</td><td>${roomType === 'double' ? 'Double (one bed)' : roomType === 'twin' ? 'Twin (two beds)' : '—'}</td></tr>
+    <tr><td style="font-weight:bold;">Children travelling</td><td>${hasChildren === true ? `Yes${childrenNotes ? ` — ${escapeHtml(String(childrenNotes))}` : ''}` : 'No'}</td></tr>
     <tr><td style="font-weight:bold;">Lead contact</td><td>${escapeHtml(String(leadName))}</td></tr>
     <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(String(leadEmail))}</td></tr>
     <tr><td style="font-weight:bold;">Phone</td><td>${leadPhone ? escapeHtml(String(leadPhone)) : '—'}</td></tr>
@@ -109,6 +121,7 @@ export async function POST(req: NextRequest) {
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Full legal name (as per passport)</th>
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Date of birth</th>
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Dietary requirements</th>
+        <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Passport expiry</th>
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Medical / mobility notes</th>
       </tr>
     </thead>
