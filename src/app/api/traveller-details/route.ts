@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
       emergencyPhone,
       specialOccasion,
       agreeAccurate,
+      agreePassport,
       agreeTerms,
     } = body ?? {};
 
@@ -62,8 +63,8 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    if (validTravellers.length >= 2 && roomType !== 'double' && roomType !== 'twin') {
-      return NextResponse.json({ error: 'Please choose Double or Twin for your room.' }, { status: 400 });
+    if (roomType !== 'double' && roomType !== 'twin' && roomType !== 'single') {
+      return NextResponse.json({ error: 'Please choose your room type: Double, Twin or Single.' }, { status: 400 });
     }
     if (!emergencyName || !emergencyPhone) {
       return NextResponse.json(
@@ -71,9 +72,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    if (agreeAccurate !== true || agreeTerms !== true) {
+    if (agreeAccurate !== true || agreeTerms !== true || agreePassport !== true) {
       return NextResponse.json(
-        { error: 'Please tick both confirmation boxes to submit.' },
+        { error: 'Please tick all three confirmation boxes to submit.' },
         { status: 400 }
       );
     }
@@ -105,7 +106,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Booking ref</td><td>${bookingRef ? escapeHtml(String(bookingRef)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Tour</td><td>${tourName ? escapeHtml(String(tourName)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Departure date</td><td>${departureDate ? escapeHtml(String(departureDate)) : '—'}</td></tr>
-    <tr><td style="font-weight:bold;">Room type</td><td>${roomType === 'double' ? 'Double (one bed)' : roomType === 'twin' ? 'Twin (two beds)' : '—'}</td></tr>
+    <tr><td style="font-weight:bold;">Room type</td><td>${roomType === 'double' ? 'Double (one bed)' : roomType === 'twin' ? 'Twin (two beds)' : roomType === 'single' ? 'Single (solo)' : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Children travelling</td><td>${hasChildren === true ? `Yes${childrenNotes ? ` — ${escapeHtml(String(childrenNotes))}` : ''}` : 'No'}</td></tr>
     <tr><td style="font-weight:bold;">Lead contact</td><td>${escapeHtml(String(leadName))}</td></tr>
     <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(String(leadEmail))}</td></tr>
@@ -143,6 +144,7 @@ export async function POST(req: NextRequest) {
 
   <p style="margin-top:16px;font-size:13px;color:#166534;">
     ✔ Traveller confirmed details are accurate as per passport.<br />
+    ✔ Traveller confirmed passports are valid for at least 6 months from the travel date.<br />
     ✔ Traveller read and agreed to the Terms &amp; Conditions and understands the deposit is non-refundable.
   </p>
 </body>

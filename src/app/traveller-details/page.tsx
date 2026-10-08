@@ -19,11 +19,25 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+function capitalise(value: string): string {
+  return value.charAt(0).toUpperCase() + value.slice(1);
+}
+
 function buildTourOptions(): TourOption[] {
   const today = new Date();
   return getAllActiveTours()
-    .map((tour) => ({ key: `${tour.destination}/${tour.tier}/${tour.slug}`, name: tour.title || tour.name, dates: upcomingDates(tour.departureDates, today) }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+    .map((tour) => {
+      const name = tour.title || tour.name;
+      const group = `${capitalise(tour.destination)} ${capitalise(tour.tier)}`;
+      return {
+        key: `${tour.destination}/${tour.tier}/${tour.slug}`,
+        group,
+        shortName: name.startsWith(`${group} — `) ? name.slice(group.length + 3) : name,
+        name,
+        dates: upcomingDates(tour.departureDates, today),
+      };
+    })
+    .sort((a, b) => a.group.localeCompare(b.group) || a.shortName.localeCompare(b.shortName));
 }
 
 export default function TravellerDetailsPage() {

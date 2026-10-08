@@ -1,6 +1,10 @@
 export interface TourOption {
   /** destination/tier/slug — slugs alone repeat across destinations (e.g. "highlights"). */
   key: string;
+  /** Short list the guest picks first, e.g. "China Discovery". */
+  group: string;
+  /** Name shown in the second list, without the group prefix. */
+  shortName: string;
   name: string;
   /** Upcoming departures, formatted like the tour data, e.g. "13 May 2027". */
   dates: string[];

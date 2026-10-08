@@ -45,7 +45,8 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [bookingRef, setBookingRef] = useState(params.get('booking') ?? '');
   const tourParam = params.get('tour') ?? '';
   const matchedTour = tourOptions.find((t) => t.name.toLowerCase() === tourParam.trim().toLowerCase());
-  const [tourSlug, setTourSlug] = useState(matchedTour?.key ?? (tourParam ? OTHER_TOUR : ''));
+  const [tourGroup, setTourGroup] = useState(matchedTour?.group ?? (tourParam ? OTHER_TOUR : ''));
+  const [tourSlug, setTourSlug] = useState(matchedTour?.key ?? '');
   const [otherTourName, setOtherTourName] = useState(matchedTour ? '' : tourParam);
   const [departureDate, setDepartureDate] = useState('');
   const [leadName, setLeadName] = useState(params.get('name') ?? '');
@@ -53,14 +54,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [leadPhone, setLeadPhone] = useState('');
 
   const [travellers, setTravellers] = useState<Traveller[]>([emptyTraveller()]);
-  const [roomType, setRoomType] = useState<'' | 'double' | 'twin'>('');
+  const [roomType, setRoomType] = useState<'' | 'double' | 'twin' | 'single'>('');
   const [hasChildren, setHasChildren] = useState(false);
   const [childrenNotes, setChildrenNotes] = useState('');
 
   const selectedTour = tourOptions.find((t) => t.key === tourSlug);
-  const tourName = tourSlug === OTHER_TOUR ? otherTourName : selectedTour?.name ?? '';
+  const tourName = tourGroup === OTHER_TOUR ? otherTourName : selectedTour?.name ?? '';
+  const groups = Array.from(new Set(tourOptions.map((t) => t.group)));
+  const toursInGroup = tourOptions.filter((t) => t.group === tourGroup);
   const departure = departureDate ? parseDepartureDate(departureDate) : null;
-  const needsRoomChoice = travellers.length >= 2;
 
   const [emergencyName, setEmergencyName] = useState('');
   const [emergencyRelationship, setEmergencyRelationship] = useState('');
@@ -68,6 +70,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [specialOccasion, setSpecialOccasion] = useState('');
 
   const [agreeAccurate, setAgreeAccurate] = useState(false);
+  const [agreePassport, setAgreePassport] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -87,13 +90,13 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     e.preventDefault();
     setSubmitError(null);
 
-    if (!agreeAccurate || !agreeTerms) {
-      setSubmitError('Please tick both confirmation boxes before submitting.');
+    if (!agreeAccurate || !agreeTerms || !agreePassport) {
+      setSubmitError('Please tick all three confirmation boxes before submitting.');
       return;
     }
 
-    if (needsRoomChoice && !roomType) {
-      setSubmitError('Please choose Double or Twin for your room.');
+    if (!roomType) {
+      setSubmitError('Please choose your room type: Double, Twin or Single.');
       return;
     }
 
@@ -109,7 +112,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           leadPhone: leadPhone.trim(),
           tourName: tourName.trim(),
           departureDate,
-          roomType: needsRoomChoice ? roomType : '',
+          roomType,
           hasChildren,
           childrenNotes: hasChildren ? childrenNotes.trim() : '',
           travellers: travellers.map((t) => ({
@@ -124,6 +127,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           emergencyPhone: emergencyPhone.trim(),
           specialOccasion: specialOccasion.trim(),
           agreeAccurate,
+          agreePassport,
           agreeTerms,
         }),
       });
@@ -206,17 +210,29 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
             <legend className="text-xl font-serif font-semibold text-dark mb-2">Your booking</legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="tourSlug" className={labelClass}>Which tour did you book?</label>
-                <select id="tourSlug" value={tourSlug} className={inputClass}
-                  onChange={(e) => { setTourSlug(e.target.value); setDepartureDate(''); }}>
-                  <option value="">Select your tour</option>
-                  {tourOptions.map((t) => (
-                    <option key={t.key} value={t.key}>{t.name}</option>
+                <label htmlFor="tourGroup" className={labelClass}>Which tour did you book?</label>
+                <select id="tourGroup" value={tourGroup} className={inputClass}
+                  onChange={(e) => { setTourGroup(e.target.value); setTourSlug(''); setDepartureDate(''); }}>
+                  <option value="">Select tour type</option>
+                  {groups.map((g) => (
+                    <option key={g} value={g}>{g}</option>
                   ))}
                   <option value={OTHER_TOUR}>My tour isn&apos;t listed</option>
                 </select>
               </div>
-              {tourSlug === OTHER_TOUR && (
+              {tourGroup && tourGroup !== OTHER_TOUR && (
+                <div>
+                  <label htmlFor="tourSlug" className={labelClass}>Tour</label>
+                  <select id="tourSlug" value={tourSlug} className={inputClass}
+                    onChange={(e) => { setTourSlug(e.target.value); setDepartureDate(''); }}>
+                    <option value="">Select your tour</option>
+                    {toursInGroup.map((t) => (
+                      <option key={t.key} value={t.key}>{t.shortName}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              {tourGroup === OTHER_TOUR && (
                 <div>
                   <label htmlFor="otherTourName" className={labelClass}>Tour name</label>
                   <input id="otherTourName" type="text" value={otherTourName}
@@ -336,25 +352,25 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           {/* Rooming */}
           <fieldset className="space-y-4">
             <legend className="text-xl font-serif font-semibold text-dark mb-2">Rooming</legend>
-            {needsRoomChoice ? (
-              <div>
-                <p className={labelClass}>
-                  Room type for two people sharing <span className="text-red-500">*</span>
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {([['double', 'Double', 'One bed'], ['twin', 'Twin', 'Two separate beds']] as const).map(([value, title, hint]) => (
-                    <label key={value} className="flex items-start gap-3 rounded-lg border border-gray-300 p-4 cursor-pointer">
-                      <input type="radio" name="roomType" value={value} checked={roomType === value}
-                        onChange={() => setRoomType(value)}
-                        className="mt-1 h-5 w-5 border-gray-300 text-primary focus:ring-primary" />
-                      <span className="text-sm text-gray-700"><strong>{title}</strong> — {hint}</span>
-                    </label>
-                  ))}
-                </div>
+            <div>
+              <p className={labelClass}>
+                Room type <span className="text-red-500">*</span>
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {([
+                  ['double', 'Double', 'Two people, one bed'],
+                  ['twin', 'Twin', 'Two people, two separate beds'],
+                  ['single', 'Single', 'Travelling solo'],
+                ] as const).map(([value, title, hint]) => (
+                  <label key={value} className="flex items-start gap-3 rounded-lg border border-gray-300 p-4 cursor-pointer">
+                    <input type="radio" name="roomType" value={value} checked={roomType === value}
+                      onChange={() => setRoomType(value)}
+                      className="mt-1 h-5 w-5 border-gray-300 text-primary focus:ring-primary" />
+                    <span className="text-sm text-gray-700"><strong>{title}</strong> — {hint}</span>
+                  </label>
+                ))}
               </div>
-            ) : (
-              <p className="text-sm text-gray-500">Travelling solo? No room choice needed — add another traveller above if you are sharing a room.</p>
-            )}
+            </div>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
                 className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
@@ -415,6 +431,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           {/* Consent */}
           <fieldset className="space-y-4 rounded-xl border border-gray-200 bg-gray-50/60 p-5">
             <legend className="text-xl font-serif font-semibold text-dark mb-2 px-2">Confirmation</legend>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" checked={agreePassport} onChange={(e) => setAgreePassport(e.target.checked)}
+                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+              <span className="text-sm text-gray-700">
+                I have checked that every traveller&apos;s passport is valid for at least 6 months from the travel date,
+                with a couple of blank pages.
+              </span>
+            </label>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreeAccurate} onChange={(e) => setAgreeAccurate(e.target.checked)}
                 className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
