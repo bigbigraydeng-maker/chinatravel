@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { roomLabel, validateRooms, type BedType, type Room } from '@/lib/traveller-rooms';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 // Traveller registration forms always go to the CTS main inbox — fixed by request.
@@ -13,6 +14,25 @@ interface TravellerInput {
   passportExpiry?: string;
 }
 
+const BED_TYPES: BedType[] = ['double', 'twin', 'single'];
+
+function parseRooms(input: unknown): Room[] | null {
+  if (!Array.isArray(input)) return null;
+  const rooms: Room[] = [];
+  for (const raw of input) {
+    if (!raw || typeof raw !== 'object') return null;
+    const candidate = raw as { bedType?: unknown; travellerIndexes?: unknown };
+    if (typeof candidate.bedType !== 'string' || !BED_TYPES.includes(candidate.bedType as BedType)) return null;
+    if (!Array.isArray(candidate.travellerIndexes)) return null;
+    if (!candidate.travellerIndexes.every((idx) => typeof idx === 'number' && Number.isInteger(idx))) return null;
+    rooms.push({
+      bedType: candidate.bedType as BedType,
+      travellerIndexes: candidate.travellerIndexes as number[],
+    });
+  }
+  return rooms;
+}
+
 export async function POST(req: NextRequest) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -20,7 +40,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { error: 'This form is not configured yet. Please call 0800 CTS 888.' },
       { status: 503 }
-    );
+    ); 
   }
 
   const resend = new Resend(apiKey);
@@ -34,7 +54,7 @@ export async function POST(req: NextRequest) {
       leadPhone,
       tourName,
       departureDate,
-      roomType,
+      rooms: roomsInput,
       hasChildren,
       childrenNotes,
       travellers,
@@ -63,8 +83,19 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    if (roomType !== 'double' && roomType !== 'twin' && roomType !== 'single') {
-      return NextResponse.json({ error: 'Please choose your room type: Double, Twin or Single.' }, { status: 400 });
+    const rooms = parseRooms(roomsInput);
+    if (!rooms) {
+      return NextResponse.json(
+        { error: 'Please check the rooming section: room data was not in the expected format.' },
+        { status: 400 }
+      );
+    }
+    const roomErrors = validateRooms(rooms, validTravellers.length);
+    if (roomErrors.length > 0) {
+      return NextResponse.json(
+        { error: 'Please check the rooming section: ' + roomErrors[0] },
+        { status: 400 }
+      );
     }
     if (!emergencyName || !emergencyPhone) {
       return NextResponse.json(
@@ -81,6 +112,11 @@ export async function POST(req: NextRequest) {
 
     const submittedAt = new Date().toISOString();
 
+    const roomForTraveller = (travellerIndex: number): number | null => {
+      const idx = rooms.findIndex((r) => r.travellerIndexes.includes(travellerIndex));
+      return idx === -1 ? null : idx;
+    };
+
     const travellerRows = validTravellers
       .map(
         (t, i) => `
@@ -91,8 +127,31 @@ export async function POST(req: NextRequest) {
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;white-space:pre-wrap;">${t.dietary ? escapeHtml(String(t.dietary)) : '—'}</td>
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${t.passportExpiry ? escapeHtml(String(t.passportExpiry)) : '—'}</td>
           <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;white-space:pre-wrap;">${t.medical ? escapeHtml(String(t.medical)) : '—'}</td>
+          <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${(() => {
+            const roomIdx = roomForTraveller(i);
+            return roomIdx === null ? '—' : `Room ${roomIdx + 1}`;
+          })()}</td>
         </tr>`
       )
+      .join('');
+
+    const roomRows = rooms
+      .map((room, roomIndex) => {
+        const names = room.travellerIndexes
+          .slice()
+          .sort((a, b) => a - b)
+          .map((idx) => {
+            const t = validTravellers[idx];
+            return t ? escapeHtml(String(t.fullName)) : `Traveller ${idx + 1}`;
+          })
+          .join(', ');
+        return `
+        <tr>
+          <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">Room ${roomIndex + 1}</td>
+          <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${escapeHtml(roomLabel(room.bedType))}</td>
+          <td style="padding:8px;border:1px solid #e5e7eb;vertical-align:top;">${names || '—'}</td>
+        </tr>`;
+      })
       .join('');
 
     const html = `
@@ -106,12 +165,23 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Booking ref</td><td>${bookingRef ? escapeHtml(String(bookingRef)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Tour</td><td>${tourName ? escapeHtml(String(tourName)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Departure date</td><td>${departureDate ? escapeHtml(String(departureDate)) : '—'}</td></tr>
-    <tr><td style="font-weight:bold;">Room type</td><td>${roomType === 'double' ? 'Double (one bed)' : roomType === 'twin' ? 'Twin (two beds)' : roomType === 'single' ? 'Single (solo)' : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Children travelling</td><td>${hasChildren === true ? `Yes${childrenNotes ? ` — ${escapeHtml(String(childrenNotes))}` : ''}` : 'No'}</td></tr>
     <tr><td style="font-weight:bold;">Lead contact</td><td>${escapeHtml(String(leadName))}</td></tr>
     <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(String(leadEmail))}</td></tr>
     <tr><td style="font-weight:bold;">Phone</td><td>${leadPhone ? escapeHtml(String(leadPhone)) : '—'}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
+  </table>
+
+  <h2 style="font-size:15px;">Rooms</h2>
+  <table cellpadding="8" cellspacing="0" style="border-collapse:collapse;border:1px solid #e5e7eb;margin-bottom:16px;">
+    <thead>
+      <tr style="background:#f9fafb;">
+        <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Room</th>
+        <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Beds</th>
+        <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Travellers</th>
+      </tr>
+    </thead>
+    <tbody>${roomRows}</tbody>
   </table>
 
   <h2 style="font-size:15px;">Travellers</h2>
@@ -124,6 +194,7 @@ export async function POST(req: NextRequest) {
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Dietary requirements</th>
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Passport expiry</th>
         <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Medical / mobility notes</th>
+        <th style="padding:8px;border:1px solid #e5e7eb;text-align:left;">Room</th>
       </tr>
     </thead>
     <tbody>${travellerRows}</tbody>

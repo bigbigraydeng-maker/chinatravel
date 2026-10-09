@@ -1,11 +1,11 @@
 /**
  * The traveller-details form must let guests pick the tour + departure, choose
- * Double/Twin when two or more people share, and see a passport expiry hint.
- * Tests encode why: CTS needs the booked departure for filing, and the bed
- * choice is the one rooming fact it cannot guess.
+ * rooming per traveller (who shares with whom, and what beds), and see a
+ * passport expiry hint. Tests encode why: CTS needs the booked departure for
+ * filing, and the rooming split is the one fact it cannot guess.
  */
 
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import TravellerDetailsForm from '@/app/traveller-details/TravellerDetailsForm';
 
 jest.mock('next/navigation', () => ({
@@ -25,6 +25,26 @@ function setup() {
 function pickTour(group: string, key: string) {
   fireEvent.change(screen.getByLabelText('Which tour did you book?'), { target: { value: group } });
   fireEvent.change(screen.getByLabelText('Tour'), { target: { value: key } });
+}
+
+function addTravellers(count: number) {
+  for (let i = 0; i < count; i += 1) {
+    fireEvent.click(screen.getByText('Add another traveller'));
+  }
+}
+
+function fillRequiredFields() {
+  fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smith' } });
+  fireEvent.change(screen.getByLabelText(/Email/), { target: { value: 'jane@example.com' } });
+  fireEvent.change(document.querySelector('#emergencyName')!, {
+    target: { value: 'Bob Smith' },
+  });
+  fireEvent.change(document.querySelector('#emergencyPhone')!, {
+    target: { value: '021 000 000' },
+  });
+  fireEvent.click(screen.getByLabelText(/details above are correct/));
+  fireEvent.click(screen.getByLabelText(/valid for at least 6 months/));
+  fireEvent.click(screen.getByLabelText(/Terms/));
 }
 
 describe('tour and departure dropdowns', () => {
@@ -61,11 +81,56 @@ describe('tour and departure dropdowns', () => {
 });
 
 describe('rooming', () => {
-  it('always shows the Double / Twin / Single choice, even for one traveller', () => {
+  it('starts a lone traveller in a single room', () => {
     setup();
-    expect(screen.getByLabelText(/Double/)).toBeTruthy();
-    expect(screen.getByLabelText(/Twin/)).toBeTruthy();
-    expect(screen.getByLabelText(/Single/)).toBeTruthy();
+    expect(screen.getByText('Room 1')).toBeTruthy();
+    const single = screen.getByLabelText(/Single/) as HTMLInputElement;
+    expect(single.checked).toBe(true);
+  });
+
+  it('pairs four travellers into two double rooms by default', () => {
+    setup();
+    addTravellers(3);
+    expect(screen.getByText('Room 1')).toBeTruthy();
+    expect(screen.getByText('Room 2')).toBeTruthy();
+    const room1 = screen.getByText('Room 1').closest('div')!.parentElement!;
+    const room2 = screen.getByText('Room 2').closest('div')!.parentElement!;
+    expect((room1.querySelector('input[name="bedType-0"]') as HTMLInputElement).checked).toBe(true);
+    expect((room2.querySelector('input[name="bedType-1"]') as HTMLInputElement).checked).toBe(true);
+    expect((room1.querySelectorAll('input[type="checkbox"]')[0] as HTMLInputElement).checked).toBe(true);
+    expect((room1.querySelectorAll('input[type="checkbox"]')[1] as HTMLInputElement).checked).toBe(true);
+    expect((room2.querySelectorAll('input[type="checkbox"]')[2] as HTMLInputElement).checked).toBe(true);
+    expect((room2.querySelectorAll('input[type="checkbox"]')[3] as HTMLInputElement).checked).toBe(true);
+  });
+
+  it('sends per-room bed types and traveller indexes on submit', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ success: true }) });
+    (global as unknown as { fetch: typeof fetch }).fetch = fetchMock as unknown as typeof fetch;
+
+    setup();
+    addTravellers(3);
+    fillRequiredFields();
+
+    const room1 = screen.getByText('Room 1').closest('div')!.parentElement!;
+    fireEvent.click(room1.querySelector('input[name="bedType-0"][value="twin"]')!);
+
+    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    const body = JSON.parse((fetchMock.mock.calls[0][1] as { body: string }).body);
+    expect(body.rooms).toEqual([
+      { bedType: 'twin', travellerIndexes: [0, 1] },
+      { bedType: 'double', travellerIndexes: [2, 3] },
+    ]);
+  });
+
+  it('flags a room left with one person after moving a traveller out', () => {
+    setup();
+    addTravellers(3);
+    fireEvent.click(screen.getByText('Add another room'));
+    const room3 = screen.getByText('Room 3').closest('div')!.parentElement!;
+    fireEvent.click(room3.querySelectorAll('input[type="checkbox"]')[3]);
+    expect(screen.getByText(/Room 2 is a double room but has 1 person/)).toBeTruthy();
   });
 
   it('reveals the children notes field when children are travelling', () => {
