@@ -82,6 +82,8 @@ interface TravellerCardProps {
   onChange: (field: keyof Traveller, value: string) => void;
   onRemove: () => void;
   onRoomChange: (value: string) => void;
+  /** Names of the people sharing this traveller's room, for an at-a-glance hint. */
+  roomMates: string[];
   departure: Date | null;
 }
 
@@ -97,6 +99,7 @@ function TravellerCard({
   onChange,
   onRemove,
   onRoomChange,
+  roomMates,
   departure,
 }: TravellerCardProps) {
   const name = traveller.fullName.trim();
@@ -176,6 +179,12 @@ function TravellerCard({
               ))}
               <option value={NEW_ROOM}>New room</option>
             </select>
+            {roomMates.length > 0 && (
+              <p className="mt-1 text-sm text-gray-600">Sharing with {roomMates.join(', ')}</p>
+            )}
+            {roomIndex !== null && roomMates.length === 0 && (
+              <p className="mt-1 text-sm text-gray-500">Own room for now — pick the same room on another traveller to share.</p>
+            )}
           </div>
 
           <div>
@@ -233,13 +242,15 @@ interface RoomSummaryRowProps {
   room: Room;
   roomIndex: number;
   names: string[];
+  invalid: boolean;
   onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
 }
 
-function RoomSummaryRow({ room, roomIndex, names, onBedTypeChange }: RoomSummaryRowProps) {
+function RoomSummaryRow({ room, roomIndex, names, invalid, onBedTypeChange }: RoomSummaryRowProps) {
   const members = roomSummary(room, names);
+  const frame = invalid ? 'border-red-300 bg-red-50/40' : 'border-gray-200 bg-gray-50/60';
   return (
-    <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-3">
+    <div className={`rounded-xl border p-5 space-y-3 ${frame}`}>
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-dark">Room {roomIndex + 1}</h3>
         <span className="text-sm text-gray-600">{members || '—'}</span>
@@ -348,12 +359,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         setRooms(defaultRooms(next.length));
       } else {
         setRooms((current) =>
-          current.map((room) => ({
-            ...room,
-            travellerIndexes: room.travellerIndexes
-              .filter((idx) => idx !== index)
-              .map((idx) => (idx > index ? idx - 1 : idx)),
-          }))
+          current
+            .map((room) => ({
+              ...room,
+              travellerIndexes: room.travellerIndexes
+                .filter((idx) => idx !== index)
+                .map((idx) => (idx > index ? idx - 1 : idx)),
+            }))
+            .filter((room) => room.travellerIndexes.length > 0)
         );
       }
       setExpanded((current) =>
@@ -375,14 +388,18 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         ...room,
         travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
       }));
-      if (value === '') return cleared;
+      // Rooms that end up empty are dropped, so "Room N" means the same thing on every card and in the summary.
+      const prune = (list: Room[]) => list.filter((room) => room.travellerIndexes.length > 0);
+      if (value === '') return prune(cleared);
       if (value === NEW_ROOM) {
-        return [...cleared, { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }];
+        return [...prune(cleared), { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }];
       }
       const target = Number(value);
-      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return cleared;
-      return cleared.map((room, i) =>
-        i === target ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] } : room
+      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return prune(cleared);
+      return prune(
+        cleared.map((room, i) =>
+          i === target ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] } : room
+        ),
       );
     });
   };
@@ -399,6 +416,19 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   };
 
   const names = travellers.map((t) => t.fullName.trim());
+  const roomMatesOf = (travellerIndex: number): string[] => {
+    const room = rooms.find((r) => r.travellerIndexes.includes(travellerIndex));
+    if (!room) return [];
+    return room.travellerIndexes
+      .filter((idx) => idx !== travellerIndex)
+      .sort((a, b) => a - b)
+      .map((idx) => names[idx] || `Traveller ${idx + 1}`);
+  };
+  const roomHasProblem = (room: Room): boolean => {
+    const size = room.travellerIndexes.length;
+    if (room.bedType === 'single') return size !== 1;
+    return size < 2 || size > (hasChildren ? 3 : 2);
+  };
   const roomErrors = validateRooms(rooms, travellers.length, names, { allowThird: hasChildren });
   const activeRooms = rooms
     .map((room, index) => ({ room, index }))
@@ -699,11 +729,12 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                 onChange={(field, value) => updateTraveller(i, field, value)}
                 onRemove={() => removeTraveller(i)}
                 onRoomChange={(value) => assignTravellerToRoom(i, value)}
+                roomMates={roomMatesOf(i)}
                 departure={departure}
               />
             ))}
             <button type="button" onClick={addTraveller}
-              className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+              className="min-h-[44px] inline-flex items-center gap-2 text-primary font-medium hover:underline">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
@@ -726,6 +757,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                 room={room}
                 roomIndex={index}
                 names={names}
+                invalid={roomHasProblem(room)}
                 onBedTypeChange={setRoomBedType}
               />
             ))}

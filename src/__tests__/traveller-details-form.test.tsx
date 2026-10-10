@@ -239,3 +239,20 @@ describe('passport confirmation', () => {
     expect(screen.getByText(/tick all three confirmation boxes/)).toBeTruthy();
   });
 });
+
+describe('room numbering stays consistent', () => {
+  it('drops empty rooms so the card, the select and the summary agree', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    fireEvent.click(screen.getByText('Add another traveller'));
+    fillTraveller(1, 'Dan');
+    // Dan leaves Room 1 for a new room, then comes back: the empty room must vanish.
+    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '__new__' } });
+    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '0' } });
+    const select = document.querySelector('#room-1') as HTMLSelectElement;
+    expect(Array.from(select.options).map((o) => o.text)).toEqual(['Not assigned', 'Room 1', 'New room']);
+    expect(screen.queryByRole('heading', { name: 'Room 2' })).toBeNull();
+    expect(screen.getByText(/Traveller 2 · Dan · Room 1/)).toBeTruthy();
+    expect(screen.getAllByText('Sharing with Alice').length).toBe(1);
+  });
+});
