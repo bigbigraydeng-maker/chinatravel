@@ -17,6 +17,40 @@ export function defaultRooms(travellerCount: number): Room[] {
   return rooms;
 }
 
+/** Give a newly added traveller a room without disturbing what the customer already chose. */
+export function placeNewTraveller(rooms: Room[], travellerIndex: number): Room[] {
+  const waitingIndex = rooms.findIndex(
+    (room) => room.travellerIndexes.length === 1 && room.bedType !== 'single',
+  );
+  if (waitingIndex !== -1) {
+    return rooms.map((room, i) =>
+      i === waitingIndex
+        ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] }
+        : { ...room, travellerIndexes: [...room.travellerIndexes] },
+    );
+  }
+  return [
+    ...rooms.map((room) => ({ ...room, travellerIndexes: [...room.travellerIndexes] })),
+    { bedType: 'single', travellerIndexes: [travellerIndex] },
+  ];
+}
+
+/** Drop empty rooms and keep bed type consistent with how many people are in the room. */
+export function tidyRooms(rooms: Room[]): Room[] {
+  return rooms
+    .filter((room) => room.travellerIndexes.length > 0)
+    .map((room) => {
+      const size = room.travellerIndexes.length;
+      let bedType = room.bedType;
+      if (size === 1 && (bedType === 'double' || bedType === 'twin')) {
+        bedType = 'single';
+      } else if (size >= 2 && bedType === 'single') {
+        bedType = 'double';
+      }
+      return { bedType, travellerIndexes: [...room.travellerIndexes] };
+    });
+}
+
 function travellerLabel(index: number, names?: string[]): string {
   const name = names?.[index]?.trim();
   return name ? name : `Traveller ${index + 1}`;

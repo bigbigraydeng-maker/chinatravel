@@ -12,7 +12,9 @@ import {
 } from '@/lib/traveller-form';
 import {
   defaultRooms,
+  placeNewTraveller,
   roomSummary,
+  tidyRooms,
   validateRooms,
   type BedType,
   type Room,
@@ -221,11 +223,13 @@ function RoomLine({ room, roomIndex, names, invalid, onBedTypeChange }: RoomLine
       : `${memberNames.slice(0, -1).join(', ')} & ${memberNames[memberNames.length - 1]}`;
   const size = room.travellerIndexes.length;
   const frame = invalid ? 'border-red-300 bg-red-50/40' : 'border-gray-200 bg-gray-50/60';
-  const options: { value: BedType; label: string }[] = [
-    { value: 'double', label: 'Double bed' },
-    { value: 'twin', label: 'Twin beds' },
-  ];
-  if (size === 1) options.push({ value: 'single', label: 'Single' });
+  const options: { value: BedType; label: string }[] =
+    size === 1
+      ? [{ value: 'single', label: 'Single' }]
+      : [
+          { value: 'double', label: 'Double bed' },
+          { value: 'twin', label: 'Twin beds' },
+        ];
 
   return (
     <div className={`rounded-xl border p-4 space-y-3 ${frame}`}>
@@ -339,6 +343,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     setTravellers((prev) => {
       const next = [...prev, emptyTraveller()];
       if (!roomsTouched) setRooms(defaultRooms(next.length));
+      else setRooms((current) => placeNewTraveller(current, next.length - 1));
       const newIndex = next.length - 1;
       setExpanded((current) => {
         const previous = current.filter((i) => i !== newIndex);
@@ -367,14 +372,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         setRooms(defaultRooms(next.length));
       } else {
         setRooms((current) =>
-          current
-            .map((room) => ({
+          tidyRooms(
+            current.map((room) => ({
               ...room,
               travellerIndexes: room.travellerIndexes
                 .filter((idx) => idx !== index)
                 .map((idx) => (idx > index ? idx - 1 : idx)),
             }))
-            .filter((room) => room.travellerIndexes.length > 0)
+          )
         );
       }
       setExpanded((current) =>
@@ -396,16 +401,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         ...room,
         travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
       }));
-      const prune = (list: Room[]) => list.filter((room) => room.travellerIndexes.length > 0);
       if (value === '') {
-        return [...prune(cleared), { bedType: 'single' as BedType, travellerIndexes: [travellerIndex] }];
+        return tidyRooms([...cleared, { bedType: 'single' as BedType, travellerIndexes: [travellerIndex] }]);
       }
       if (value === NEW_ROOM) {
-        return [...prune(cleared), { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }];
+        return tidyRooms([...cleared, { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }]);
       }
       const target = Number(value);
-      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return prune(cleared);
-      return prune(
+      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return tidyRooms(cleared);
+      return tidyRooms(
         cleared.map((room, i) =>
           i === target ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] } : room
         ),
@@ -620,6 +624,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   );
 
   const showRooming = travellers.length >= 2;
+  const totalSteps = showRooming ? 4 : 3;
 
   return (
     <section className="section bg-white">
@@ -654,7 +659,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           {/* Booking / lead contact */}
           <fieldset className="space-y-5">
             <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>Step 1 of 4</span>
+              <span className={stepClass}>{`Step 1 of ${totalSteps}`}</span>
               Your booking
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -730,7 +735,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           {/* Travellers */}
           <fieldset className="space-y-5">
             <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>Step 2 of 4</span>
+              <span className={stepClass}>{`Step 2 of ${totalSteps}`}</span>
               Travellers
             </legend>
             {travellers.map((t, i) => (
@@ -800,7 +805,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           {/* Emergency contact */}
           <fieldset className="space-y-5">
             <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>Step 4 of 4</span>
+              <span className={stepClass}>{`Step ${totalSteps} of ${totalSteps}`}</span>
               Emergency contact &amp; confirmation
             </legend>
             <p className="text-sm text-gray-500 -mt-2">Someone not travelling with you whom we can contact if needed.</p>

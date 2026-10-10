@@ -1,4 +1,4 @@
-import { defaultRooms, roomLabel, roomSummary, validateRooms } from '@/lib/traveller-rooms';
+import { defaultRooms, placeNewTraveller, roomLabel, roomSummary, tidyRooms, validateRooms } from '@/lib/traveller-rooms';
 
 describe('defaultRooms', () => {
   it('pairs four travellers into two double rooms', () => {
@@ -21,6 +21,63 @@ describe('defaultRooms', () => {
 
   it('returns no rooms for zero travellers', () => {
     expect(defaultRooms(0)).toEqual([]);
+  });
+});
+
+describe('placeNewTraveller', () => {
+  it('joins a waiting double room', () => {
+    const rooms = [{ bedType: 'double' as const, travellerIndexes: [0] }];
+    expect(placeNewTraveller(rooms, 1)).toEqual([
+      { bedType: 'double', travellerIndexes: [0, 1] },
+    ]);
+  });
+
+  it('does not join a single room', () => {
+    const rooms = [{ bedType: 'single' as const, travellerIndexes: [0] }];
+    expect(placeNewTraveller(rooms, 1)).toEqual([
+      { bedType: 'single', travellerIndexes: [0] },
+      { bedType: 'single', travellerIndexes: [1] },
+    ]);
+  });
+
+  it('appends a single room when all rooms are full', () => {
+    const rooms = [{ bedType: 'double' as const, travellerIndexes: [0, 1] }];
+    expect(placeNewTraveller(rooms, 2)).toEqual([
+      { bedType: 'double', travellerIndexes: [0, 1] },
+      { bedType: 'single', travellerIndexes: [2] },
+    ]);
+  });
+
+  it('does not mutate the input', () => {
+    const rooms = [{ bedType: 'double' as const, travellerIndexes: [0] }];
+    placeNewTraveller(rooms, 1);
+    expect(rooms).toEqual([{ bedType: 'double', travellerIndexes: [0] }]);
+  });
+});
+
+describe('tidyRooms', () => {
+  it('drops empty rooms', () => {
+    const rooms = [
+      { bedType: 'double' as const, travellerIndexes: [0, 1] },
+      { bedType: 'double' as const, travellerIndexes: [] },
+    ];
+    expect(tidyRooms(rooms)).toEqual([{ bedType: 'double', travellerIndexes: [0, 1] }]);
+  });
+
+  it('turns a one-person double into a single', () => {
+    const rooms = [{ bedType: 'double' as const, travellerIndexes: [0] }];
+    expect(tidyRooms(rooms)).toEqual([{ bedType: 'single', travellerIndexes: [0] }]);
+  });
+
+  it('turns a two-person single into a double', () => {
+    const rooms = [{ bedType: 'single' as const, travellerIndexes: [0, 1] }];
+    expect(tidyRooms(rooms)).toEqual([{ bedType: 'double', travellerIndexes: [0, 1] }]);
+  });
+
+  it('does not mutate the input', () => {
+    const rooms = [{ bedType: 'double' as const, travellerIndexes: [0] }];
+    tidyRooms(rooms);
+    expect(rooms).toEqual([{ bedType: 'double', travellerIndexes: [0] }]);
   });
 });
 

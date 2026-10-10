@@ -5,7 +5,7 @@
  * filing, and the rooming split is the one fact it cannot guess.
  */
 
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import TravellerDetailsForm from '@/app/traveller-details/TravellerDetailsForm';
 
 jest.mock('next/navigation', () => ({
@@ -187,10 +187,17 @@ describe('rooming', () => {
     fireEvent.click(screen.getByText('Change who shares with whom'));
     fireEvent.change(screen.getByLabelText('Room for Dan'), { target: { value: '' } });
     expect(screen.getByText('Room 3 — Dan')).toBeTruthy();
-    expect(screen.getByText(/Room 2 \(Carol\) is a double room but has 1 person/)).toBeTruthy();
+    // Carol is left alone, so her room turns into a single room instead of showing an error.
+    const room2 = screen.getByText('Room 2 — Carol').closest('div')!;
+    expect((room2.querySelector('button[aria-pressed="true"]') as HTMLButtonElement).textContent).toBe('Single');
+    expect(room2.querySelectorAll('button').length).toBe(1);
+    expect(screen.queryByText(/is a double room but has 1 person/)).toBeNull();
+    expect(screen.getByText('Everyone has a room')).toBeTruthy();
   });
 
-  it('blocks submit with a name-based message when a double room has one person', () => {
+  it('turns the room left behind into a single room and lets the form submit', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ success: true }) });
+    (global as unknown as { fetch: typeof fetch }).fetch = fetchMock as unknown as typeof fetch;
     setup();
     addTravellers(1);
     fillTraveller(0, 'Alice');
@@ -198,8 +205,14 @@ describe('rooming', () => {
     fillRequiredFields();
     fireEvent.click(screen.getByText('Change who shares with whom'));
     fireEvent.change(screen.getByLabelText('Room for Bob'), { target: { value: '' } });
+    expect(screen.queryByText(/is a double room but has 1 person/)).toBeNull();
     fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
-    expect(screen.getAllByText(/Room 1 \(Alice\) is a double room but has 1 person/).length).toBeGreaterThan(0);
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    const body = JSON.parse((fetchMock.mock.calls[0][1] as { body: string }).body);
+    expect(body.rooms).toEqual([
+      { bedType: 'single', travellerIndexes: [0] },
+      { bedType: 'single', travellerIndexes: [1] },
+    ]);
   });
 
   it('reveals the children notes field when children are travelling', () => {
@@ -207,6 +220,32 @@ describe('rooming', () => {
     expect(screen.queryByLabelText(/Children.s ages/)).toBeNull();
     fireEvent.click(screen.getByLabelText('Children are travelling with us'));
     expect(screen.getByLabelText(/Children.s ages/)).toBeTruthy();
+  });
+
+  it('places a new traveller into a waiting twin room without leaving anyone unroomed', () => {
+    setup();
+    addTravellers(1);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    const room1 = screen.getByText('Room 1 — Alice & Bob').closest('div')!;
+    fireEvent.click(within(room1).getByText('Twin beds'));
+    addTravellers(2);
+    expect(screen.queryByText(/is not in any room/)).toBeNull();
+    expect(screen.getByText(/Room 2/)).toBeTruthy();
+  });
+});
+
+describe('step numbering', () => {
+  it('shows three steps for a single traveller', () => {
+    setup();
+    expect(screen.getByText('Step 3 of 3')).toBeTruthy();
+    expect(screen.queryByText('Step 4 of 4')).toBeNull();
+  });
+
+  it('shows four steps once a second traveller is added', () => {
+    setup();
+    addTravellers(1);
+    expect(screen.getByText('Step 4 of 4')).toBeTruthy();
   });
 });
 
