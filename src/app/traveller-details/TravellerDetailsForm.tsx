@@ -295,19 +295,27 @@ function RoomAssignList({ travellers, rooms, onAssign }: RoomAssignListProps) {
       {travellers.map((t, i) => {
         const roomIndex = rooms.findIndex((r) => r.travellerIndexes.includes(i));
         const label = t.fullName.trim() || `Traveller ${i + 1}`;
+        const alone = roomIndex === -1 || rooms[roomIndex].travellerIndexes.length === 1;
         return (
           <div key={i} className="flex flex-wrap items-center gap-3">
             <span className="text-sm text-gray-700 min-w-[8rem]">{label}</span>
             <select
               aria-label={`Room for ${label}`}
-              value={roomIndex === -1 ? '' : String(roomIndex)}
+              value={alone ? '' : String(roomIndex)}
               onChange={(e) => onAssign(i, e.target.value)}
               className={inputClass}
             >
               <option value="">Own room</option>
-              {rooms.map((_, ri) => (
-                <option key={ri} value={String(ri)}>{`Room ${ri + 1}`}</option>
-              ))}
+              {rooms.map((room, ri) => {
+                const others = room.travellerIndexes.filter((idx) => idx !== i);
+                if (others.length === 0) return null;
+                const othersLabel = others
+                  .map((idx) => travellers[idx]?.fullName.trim() || `Traveller ${idx + 1}`)
+                  .join(' & ');
+                return (
+                  <option key={ri} value={String(ri)}>{`Share with ${othersLabel}`}</option>
+                );
+              })}
             </select>
           </div>
         );
@@ -810,6 +818,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
               </svg>
               Add another traveller
             </button>
+            {travellers.length === 1 && (
+              <p className="text-sm text-gray-700">
+                {selectedTour?.singleSupplement
+                  ? `Travelling on your own means a room to yourself — single supplement ${selectedTour.singleSupplement} applies (added to the tour price).`
+                  : 'Travelling on your own means a room to yourself — a single supplement applies and we will confirm the amount with you.'}
+                {' '}Sharing with someone? Add them with “Add another traveller”.
+              </p>
+            )}
             {!showRooming && childrenBlock}
           </fieldset>
 

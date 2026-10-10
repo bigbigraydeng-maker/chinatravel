@@ -230,8 +230,12 @@ describe('rooming', () => {
     const room1 = screen.getByText('Room 1 — Alice & Bob').closest('div')!;
     fireEvent.click(within(room1).getByText('Twin beds'));
     addTravellers(2);
+    fillTraveller(2, 'Carol');
+    fillTraveller(3, 'Dan');
     expect(screen.queryByText(/is not in any room/)).toBeNull();
-    expect(screen.getByText(/Room 2/)).toBeTruthy();
+    // People added later pair up in order instead of each getting a single room.
+    expect(screen.getByText('Room 2 — Carol & Dan')).toBeTruthy();
+    expect(screen.queryByText(/Single supplement applies/)).toBeNull();
   });
 });
 
@@ -344,5 +348,38 @@ describe('lead name mirrors Traveller 1', () => {
     fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smyth' } });
     expect((document.querySelector('#fullName-0') as HTMLInputElement).value).toBe('Alice');
     expect((screen.getByLabelText(/use this name for Traveller 1/) as HTMLInputElement).checked).toBe(false);
+  });
+});
+
+describe('room sharing reads in plain words', () => {
+  it('tells a solo traveller about the single supplement', () => {
+    setup();
+    pickTour('China Discovery', 'china/discovery/best-of-china');
+    expect(screen.getByText(/Travelling on your own.*NZD \$968/)).toBeTruthy();
+    addTravellers(1);
+    expect(screen.queryByText(/Travelling on your own/)).toBeNull();
+  });
+
+  it('names the people in the sharing options instead of room numbers', () => {
+    setup();
+    addTravellers(1);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    fireEvent.click(screen.getByText('Change who shares with whom'));
+    const select = screen.getByLabelText('Room for Bob') as HTMLSelectElement;
+    const labels = Array.from(select.options).map((o) => o.text);
+    expect(labels).toEqual(['Own room', 'Share with Alice']);
+  });
+
+  it('keeps Traveller 1 in Room 1 when they take their own room', () => {
+    setup();
+    addTravellers(1);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    fireEvent.click(screen.getByText('Change who shares with whom'));
+    fireEvent.change(screen.getByLabelText('Room for Alice'), { target: { value: '' } });
+    expect(screen.getByText('Room 1 — Alice')).toBeTruthy();
+    expect(screen.getByText('Room 2 — Bob')).toBeTruthy();
+    expect((screen.getByLabelText('Room for Alice') as HTMLSelectElement).value).toBe('');
   });
 });

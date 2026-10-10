@@ -32,11 +32,29 @@ describe('placeNewTraveller', () => {
     ]);
   });
 
-  it('does not join a single room', () => {
+  it('joins the single room of the previously added traveller and upgrades it to a double', () => {
     const rooms = [{ bedType: 'single' as const, travellerIndexes: [0] }];
     expect(placeNewTraveller(rooms, 1)).toEqual([
-      { bedType: 'single', travellerIndexes: [0] },
-      { bedType: 'single', travellerIndexes: [1] },
+      { bedType: 'double', travellerIndexes: [0, 1] },
+    ]);
+  });
+
+  it('pairs the new traveller with the previously added one in their single room', () => {
+    const rooms = [
+      { bedType: 'twin' as const, travellerIndexes: [0, 1] },
+      { bedType: 'single' as const, travellerIndexes: [2] },
+    ];
+    expect(placeNewTraveller(rooms, 3)).toEqual([
+      { bedType: 'twin', travellerIndexes: [0, 1] },
+      { bedType: 'double', travellerIndexes: [2, 3] },
+    ]);
+  });
+
+  it('appends a single room when the previous traveller is already sharing', () => {
+    const rooms = [{ bedType: 'twin' as const, travellerIndexes: [0, 1] }];
+    expect(placeNewTraveller(rooms, 2)).toEqual([
+      { bedType: 'twin', travellerIndexes: [0, 1] },
+      { bedType: 'single', travellerIndexes: [2] },
     ]);
   });
 
@@ -72,6 +90,17 @@ describe('tidyRooms', () => {
   it('turns a two-person single into a double', () => {
     const rooms = [{ bedType: 'single' as const, travellerIndexes: [0, 1] }];
     expect(tidyRooms(rooms)).toEqual([{ bedType: 'double', travellerIndexes: [0, 1] }]);
+  });
+
+  it('orders rooms by the lowest traveller index', () => {
+    const rooms = [
+      { bedType: 'single' as const, travellerIndexes: [1] },
+      { bedType: 'single' as const, travellerIndexes: [0] },
+    ];
+    expect(tidyRooms(rooms)).toEqual([
+      { bedType: 'single', travellerIndexes: [0] },
+      { bedType: 'single', travellerIndexes: [1] },
+    ]);
   });
 
   it('does not mutate the input', () => {

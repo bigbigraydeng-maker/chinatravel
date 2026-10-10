@@ -17,8 +17,31 @@ export function defaultRooms(travellerCount: number): Room[] {
   return rooms;
 }
 
-/** Give a newly added traveller a room without disturbing what the customer already chose. */
+/**
+ * Give a newly added traveller a room without disturbing what the customer already chose.
+ *
+ * Pair people up in the order they are added, like the default:
+ * 1. If the room holding the previously added traveller has exactly one person,
+ *    join it (upgrading a single room to a double; twin/double are kept as is).
+ * 2. Otherwise join the first room that has exactly one person and is not a single.
+ * 3. Otherwise append a new single room.
+ */
 export function placeNewTraveller(rooms: Room[], travellerIndex: number): Room[] {
+  const previousIndex = travellerIndex - 1;
+  const previousRoomIndex = rooms.findIndex((room) =>
+    room.travellerIndexes.includes(previousIndex),
+  );
+  if (previousRoomIndex !== -1 && rooms[previousRoomIndex].travellerIndexes.length === 1) {
+    return rooms.map((room, i) =>
+      i === previousRoomIndex
+        ? {
+            bedType: room.bedType === 'single' ? 'double' : room.bedType,
+            travellerIndexes: [...room.travellerIndexes, travellerIndex],
+          }
+        : { ...room, travellerIndexes: [...room.travellerIndexes] },
+    );
+  }
+
   const waitingIndex = rooms.findIndex(
     (room) => room.travellerIndexes.length === 1 && room.bedType !== 'single',
   );
@@ -47,8 +70,9 @@ export function tidyRooms(rooms: Room[]): Room[] {
       } else if (size >= 2 && bedType === 'single') {
         bedType = 'double';
       }
-      return { bedType, travellerIndexes: [...room.travellerIndexes] };
-    });
+      return { bedType, travellerIndexes: [...room.travellerIndexes].sort((a, b) => a - b) };
+    })
+    .sort((a, b) => a.travellerIndexes[0] - b.travellerIndexes[0]);
 }
 
 function travellerLabel(index: number, names?: string[]): string {
