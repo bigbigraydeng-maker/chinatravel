@@ -300,3 +300,27 @@ describe('room numbering stays consistent', () => {
     expect(screen.queryByText('Room 2 — Bob')).toBeNull();
   });
 });
+
+describe('lead name mirrors Traveller 1', () => {
+  it('copies the lead name into Traveller 1 as it is typed', () => {
+    setup();
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smith' } });
+    expect((document.querySelector('#fullName-0') as HTMLInputElement).value).toBe('Jane Smith');
+  });
+
+  it('stops mirroring once the checkbox is unticked', () => {
+    setup();
+    fireEvent.click(screen.getByLabelText(/use this name for Traveller 1/));
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smith' } });
+    expect((document.querySelector('#fullName-0') as HTMLInputElement).value).toBe('');
+  });
+
+  it('keeps a name typed directly into Traveller 1 and unticks the checkbox', () => {
+    setup();
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smith' } });
+    fireEvent.change(document.querySelector('#fullName-0')!, { target: { value: 'Alice' } });
+    fireEvent.change(screen.getByLabelText(/Your name/), { target: { value: 'Jane Smyth' } });
+    expect((document.querySelector('#fullName-0') as HTMLInputElement).value).toBe('Alice');
+    expect((screen.getByLabelText(/use this name for Traveller 1/) as HTMLInputElement).checked).toBe(false);
+  });
+});

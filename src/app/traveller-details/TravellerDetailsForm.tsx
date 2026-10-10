@@ -304,8 +304,11 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [leadName, setLeadName] = useState(params.get('name') ?? '');
   const [leadEmail, setLeadEmail] = useState(params.get('email') ?? '');
   const [leadPhone, setLeadPhone] = useState('');
+  const [leadIsTraveller, setLeadIsTraveller] = useState(true);
 
-  const [travellers, setTravellers] = useState<Traveller[]>([emptyTraveller()]);
+  const [travellers, setTravellers] = useState<Traveller[]>(() => [
+    { ...emptyTraveller(), fullName: params.get('name') ?? '' },
+  ]);
   const [rooms, setRooms] = useState<Room[]>(() => defaultRooms(1));
   const [roomsTouched, setRoomsTouched] = useState(false);
   const [expanded, setExpanded] = useState<number[]>([0]);
@@ -336,7 +339,17 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const roomingRef = useRef<HTMLFieldSetElement | null>(null);
 
   const updateTraveller = (index: number, field: keyof Traveller, value: string) => {
+    if (index === 0 && field === 'fullName' && value !== leadName) {
+      setLeadIsTraveller(false);
+    }
     setTravellers((prev) => prev.map((t, i) => (i === index ? { ...t, [field]: value } : t)));
+  };
+
+  const handleLeadNameChange = (value: string) => {
+    setLeadName(value);
+    if (leadIsTraveller) {
+      setTravellers((prev) => prev.map((t, i) => (i === 0 ? { ...t, fullName: value } : t)));
+    }
   };
 
   const addTraveller = () => {
@@ -714,8 +727,21 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                 <label htmlFor="leadName" className={labelClass}>
                   Your name <span className="text-red-500">*</span>
                 </label>
-                <input id="leadName" type="text" required value={leadName} onChange={(e) => setLeadName(e.target.value)}
+                <input id="leadName" type="text" required value={leadName} onChange={(e) => handleLeadNameChange(e.target.value)}
                   className={inputClass} />
+                <label className="mt-2 flex items-start gap-2 text-sm text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={leadIsTraveller}
+                    onChange={(e) => {
+                      const on = e.target.checked;
+                      setLeadIsTraveller(on);
+                      if (on) setTravellers((prev) => prev.map((t, i) => (i === 0 ? { ...t, fullName: leadName } : t)));
+                    }}
+                    className="mt-0.5 h-4 w-4"
+                  />
+                  <span>I&apos;m travelling too — use this name for Traveller 1</span>
+                </label>
               </div>
               <div>
                 <label htmlFor="leadEmail" className={labelClass}>
