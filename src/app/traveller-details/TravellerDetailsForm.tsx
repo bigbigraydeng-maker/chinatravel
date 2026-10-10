@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
@@ -294,6 +294,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
 
   const nameRefs = useRef<(HTMLInputElement | null)[]>([]);
   const roomingRef = useRef<HTMLFieldSetElement | null>(null);
+  const successRef = useRef<HTMLDivElement | null>(null);
+
+  // The thank-you panel replaces a long form; without this the customer is left looking at the footer.
+  useEffect(() => {
+    if (!success) return;
+    successRef.current?.scrollIntoView?.({ block: 'center' });
+    successRef.current?.focus?.();
+  }, [success]);
 
   const updateTraveller = (index: number, field: keyof Traveller, value: string) => {
     if (index === 0 && field === 'fullName' && value !== leadName) {
@@ -567,7 +575,8 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     return (
       <section className="section bg-white">
         <div className="container max-w-2xl">
-          <div className="bg-green-50 border border-green-300 text-green-800 px-6 py-10 rounded-2xl text-center">
+          <div ref={successRef} tabIndex={-1} role="status"
+            className="bg-green-50 border border-green-300 text-green-800 px-6 py-10 rounded-2xl text-center outline-none">
             <div className="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
               <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
