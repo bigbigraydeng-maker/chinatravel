@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { tours } from '@/lib/data/tours';
+import { tourToFeed } from '@/lib/tour-feed';
 
 export const revalidate = 3600;
 
@@ -17,25 +18,6 @@ export async function GET() {
   return NextResponse.json({
     source: 'chinatravel.tours',
     source_version: sourceVersion,
-    products: tours.map((tour) => ({
-      id: tour.id,
-      slug: tour.slug,
-      destination: tour.destination,
-      tier: tour.tier,
-      name: tour.name,
-      title: tour.title,
-      duration: tour.duration,
-      price: tour.price,
-      is_active: tour.isActive,
-      updated_at: tour.updatedAt,
-      departure_dates: tour.departureDates ?? [],
-      departure_pricing: tour.departurePricing ?? {},
-      tour_cities: tour.tourCities ?? [],
-      itinerary: tour.itinerary,
-      inclusions: tour.inclusions,
-      exclusions: tour.exclusions,
-      single_supplement: tour.singleSupplement ?? null,
-      max_group_size: tour.maxGroupSize ?? null,
-    })),
+    products: tours.map(tourToFeed),
   });
 }
