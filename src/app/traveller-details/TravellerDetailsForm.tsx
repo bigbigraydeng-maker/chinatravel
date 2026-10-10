@@ -1,33 +1,283 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import { Avatar, RoomAssignList, RoomLine } from './RoomingParts';
+import {
+  EARLIEST_BIRTH_DATE,
+  MAX_PASSPORT_YEARS_AHEAD,
+  dobProblem,
+  parseDepartureDate,
+  passportExpiryProblem,
+  toIsoDate,
+  passportStatus,
+  type PassportStatus,
+  type TourOption,
+} from '@/lib/traveller-form';
+import {
+  defaultRooms,
+  placeNewTraveller,
+  tidyRooms,
+  validateRooms,
+  type BedType,
+  type Room,
+} from '@/lib/traveller-rooms';
 
 interface Traveller {
   fullName: string;
   dob: string;
   dietary: string;
   medical: string;
+  passportExpiry: string;
 }
 
-const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', medical: '' });
+const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', medical: '', passportExpiry: '' });
 
 const inputClass =
-  'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary';
+  'w-full px-4 py-3 border border-gray-300 rounded-lg bg-white placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30';
 const labelClass = 'block text-gray-700 mb-2 text-sm font-medium';
+const stepClass = 'block font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-gray-600';
+const stepBadgeClass =
+  'flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-primary font-sans text-sm font-semibold text-white';
+// A legend normally straddles the fieldset's top edge; floating it makes it flow inside the card padding.
+const cardClass =
+  'space-y-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 sm:p-8 [&>legend]:float-left [&>legend]:mb-5 [&>legend]:w-full [&>legend+*]:clear-both';
+const legendClass = 'font-serif text-xl font-semibold text-dark';
 
-export default function TravellerDetailsForm() {
+const OTHER_TOUR = '__other__';
+const NEW_ROOM = '__new__';
+
+const PASSPORT_MESSAGES: Record<Exclude<PassportStatus, 'unknown'>, { text: string; className: string }> = {
+  ok: { text: 'Great — this passport meets the 6-month recommendation.', className: 'text-green-700' },
+  short: {
+    text: 'This passport is valid on your travel date but has under 6 months left. We recommend renewing it before you travel.',
+    className: 'text-amber-700',
+  },
+  expired: {
+    text: 'This passport expires before your travel date. Please renew it and send us your new passport details.',
+    className: 'text-red-700',
+  },
+};
+
+function scrollIntoViewSafe(el: HTMLElement | null) {
+  if (!el) return;
+  el.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
+}
+
+function travellerHasContent(t: Traveller): boolean {
+  return Boolean(
+    t.fullName.trim() || t.dob.trim() || t.dietary.trim() || t.medical.trim() || t.passportExpiry.trim()
+  );
+}
+
+function travellerIsComplete(t: Traveller): boolean {
+  const today = new Date();
+  return Boolean(
+    t.fullName.trim() && t.dob.trim() && !dobProblem(t.dob, today) && !passportExpiryProblem(t.passportExpiry, today)
+  );
+}
+
+interface TravellerCardProps {
+  index: number;
+  traveller: Traveller;
+  expanded: boolean;
+  canRemove: boolean;
+  nameInputRef: (el: HTMLInputElement | null) => void;
+  onToggleExpand: () => void;
+  onChange: (field: keyof Traveller, value: string) => void;
+  onRemove: () => void;
+  departure: Date | null;
+}
+
+function TravellerCard({
+  index,
+  traveller,
+  expanded,
+  canRemove,
+  nameInputRef,
+  onToggleExpand,
+  onChange,
+  onRemove,
+  departure,
+}: TravellerCardProps) {
+  const name = traveller.fullName.trim();
+  const complete = travellerIsComplete(traveller);
+  const header = `Traveller ${index + 1}${name ? ` · ${name}` : ''}`;
+
+  const today = new Date();
+  const dobIssue = dobProblem(traveller.dob, today);
+  const expiryIssue = passportExpiryProblem(traveller.passportExpiry, today);
+  const latestExpiry = toIsoDate(
+    new Date(Date.UTC(today.getUTCFullYear() + MAX_PASSPORT_YEARS_AHEAD, today.getUTCMonth(), today.getUTCDate()))
+  );
+  const status = expiryIssue ? 'unknown' : passportStatus(traveller.passportExpiry, departure, today);
+  const invalidClass = 'border-red-400 focus:border-red-500 focus:ring-red-200';
+
+  return (
+    <div className={`space-y-4 rounded-xl border p-3 sm:p-5 ${expanded ? 'border-warm-300 bg-warm-50' : 'border-gray-200 bg-white'}`}>
+      <div className="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={onToggleExpand}
+          className="font-semibold text-dark flex items-center gap-3 text-left"
+        >
+          <Avatar name={traveller.fullName} index={index} />
+          <span>{header}</span>
+          {complete && (
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs" aria-label="Complete">
+              ✓
+            </span>
+          )}
+        </button>
+        <div className="flex flex-shrink-0 items-center gap-1 sm:gap-3">
+          {canRemove && (
+            // On a phone a collapsed card only offers Edit; Remove appears once the card is open.
+            <button type="button" onClick={onRemove}
+              className={`min-h-[44px] px-2 text-sm text-red-600 hover:text-red-700 ${expanded ? '' : 'hidden sm:inline-block'}`}>
+              Remove
+            </button>
+          )}
+          {!expanded && (
+            <button type="button" onClick={onToggleExpand} className="min-h-[44px] px-2 text-sm text-primary font-medium hover:underline">
+              Edit
+            </button>
+          )}
+        </div>
+      </div>
+
+      {expanded && (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor={`fullName-${index}`} className={labelClass}>
+                Full legal name (as per passport) <span className="text-red-500">*</span>
+              </label>
+              <input
+                id={`fullName-${index}`}
+                ref={nameInputRef}
+                type="text"
+                required
+                value={traveller.fullName}
+                onChange={(e) => onChange('fullName', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor={`dob-${index}`} className={labelClass}>
+                Date of birth <span className="text-red-500">*</span>
+              </label>
+              <input
+                id={`dob-${index}`}
+                type="date"
+                required
+                min={EARLIEST_BIRTH_DATE}
+                max={toIsoDate(today)}
+                aria-invalid={dobIssue ? true : undefined}
+                aria-describedby={dobIssue ? `dob-error-${index}` : undefined}
+                value={traveller.dob}
+                onChange={(e) => onChange('dob', e.target.value)}
+                className={`${inputClass} ${dobIssue ? invalidClass : ''}`}
+              />
+              {dobIssue && (
+                <p id={`dob-error-${index}`} role="alert" className="mt-2 text-sm text-red-700">
+                  {dobIssue}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor={`passportExpiry-${index}`} className={labelClass}>
+              Passport expiry date <span className="text-gray-500">(optional — we never ask for your passport number here)</span>
+            </label>
+            <input
+              id={`passportExpiry-${index}`}
+              type="date"
+              min="1990-01-01"
+              max={latestExpiry}
+              aria-invalid={expiryIssue ? true : undefined}
+              aria-describedby={expiryIssue ? `passportExpiry-error-${index}` : undefined}
+              value={traveller.passportExpiry}
+              onChange={(e) => onChange('passportExpiry', e.target.value)}
+              className={`${inputClass} ${expiryIssue ? invalidClass : ''}`}
+            />
+            {expiryIssue && (
+              <p id={`passportExpiry-error-${index}`} role="alert" className="mt-2 text-sm text-red-700">
+                {expiryIssue}
+              </p>
+            )}
+            {status !== 'unknown' && (
+              <p role="status" className={`mt-2 text-sm ${PASSPORT_MESSAGES[status].className}`}>
+                {PASSPORT_MESSAGES[status].text}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor={`dietary-${index}`} className={labelClass}>
+              Dietary requirements <span className="text-gray-500">(optional)</span>
+            </label>
+            <input
+              id={`dietary-${index}`}
+              type="text"
+              value={traveller.dietary}
+              onChange={(e) => onChange('dietary', e.target.value)}
+              placeholder="e.g. vegetarian, no seafood, gluten-free"
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label htmlFor={`medical-${index}`} className={labelClass}>
+              Medical or mobility notes <span className="text-gray-500">(optional)</span>
+            </label>
+            <textarea
+              id={`medical-${index}`}
+              rows={2}
+              value={traveller.medical}
+              onChange={(e) => onChange('medical', e.target.value)}
+              placeholder="Anything our guides should know — medication, allergies, walking limits, wheelchair, etc."
+              className={inputClass}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function TravellerDetailsForm({ tourOptions }: { tourOptions: TourOption[] }) {
   const params = useSearchParams();
 
   const [bookingRef, setBookingRef] = useState(params.get('booking') ?? '');
-  const [tourName, setTourName] = useState(params.get('tour') ?? '');
+  const tourParam = params.get('tour') ?? '';
+  const matchedTour = tourOptions.find((t) => t.name.toLowerCase() === tourParam.trim().toLowerCase());
+  const [tourGroup, setTourGroup] = useState(matchedTour?.group ?? (tourParam ? OTHER_TOUR : ''));
+  const [tourSlug, setTourSlug] = useState(matchedTour?.key ?? '');
+  const [otherTourName, setOtherTourName] = useState(matchedTour ? '' : tourParam);
+  const [departureDate, setDepartureDate] = useState('');
   const [leadName, setLeadName] = useState(params.get('name') ?? '');
   const [leadEmail, setLeadEmail] = useState(params.get('email') ?? '');
   const [leadPhone, setLeadPhone] = useState('');
+  const [leadIsTraveller, setLeadIsTraveller] = useState(true);
 
-  const [travellers, setTravellers] = useState<Traveller[]>([emptyTraveller()]);
+  const [travellers, setTravellers] = useState<Traveller[]>(() => [
+    { ...emptyTraveller(), fullName: params.get('name') ?? '' },
+  ]);
+  const [rooms, setRooms] = useState<Room[]>(() => defaultRooms(1));
+  const [roomsTouched, setRoomsTouched] = useState(false);
+  const [expanded, setExpanded] = useState<number[]>([0]);
+  const [hasChildren, setHasChildren] = useState(false);
+  const [childrenNotes, setChildrenNotes] = useState('');
+  const [showAssign, setShowAssign] = useState(false);
+
+  const selectedTour = tourOptions.find((t) => t.key === tourSlug);
+  const tourName = tourGroup === OTHER_TOUR ? otherTourName : selectedTour?.name ?? '';
+  const groups = Array.from(new Set(tourOptions.map((t) => t.group)));
+  const toursInGroup = tourOptions.filter((t) => t.group === tourGroup);
+  const departure = departureDate ? parseDepartureDate(departureDate) : null;
 
   const [emergencyName, setEmergencyName] = useState('');
   const [emergencyRelationship, setEmergencyRelationship] = useState('');
@@ -35,27 +285,228 @@ export default function TravellerDetailsForm() {
   const [specialOccasion, setSpecialOccasion] = useState('');
 
   const [agreeAccurate, setAgreeAccurate] = useState(false);
+  const [agreePassport, setAgreePassport] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  const nameRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const roomingRef = useRef<HTMLFieldSetElement | null>(null);
+
   const updateTraveller = (index: number, field: keyof Traveller, value: string) => {
+    if (index === 0 && field === 'fullName' && value !== leadName) {
+      setLeadIsTraveller(false);
+    }
     setTravellers((prev) => prev.map((t, i) => (i === index ? { ...t, [field]: value } : t)));
   };
 
-  const addTraveller = () => setTravellers((prev) => [...prev, emptyTraveller()]);
+  const handleLeadNameChange = (value: string) => {
+    setLeadName(value);
+    if (leadIsTraveller) {
+      setTravellers((prev) => prev.map((t, i) => (i === 0 ? { ...t, fullName: value } : t)));
+    }
+  };
 
-  const removeTraveller = (index: number) =>
-    setTravellers((prev) => (prev.length > 1 ? prev.filter((_, i) => i !== index) : prev));
+  const addTraveller = () => {
+    setTravellers((prev) => {
+      const next = [...prev, emptyTraveller()];
+      if (!roomsTouched) setRooms(defaultRooms(next.length));
+      else setRooms((current) => placeNewTraveller(current, next.length - 1));
+      const newIndex = next.length - 1;
+      setExpanded((current) => {
+        const previous = current.filter((i) => i !== newIndex);
+        const keep = previous.filter((i) => !travellerIsComplete(prev[i]));
+        return [...keep, newIndex];
+      });
+      requestAnimationFrame(() => {
+        const el = nameRefs.current[newIndex];
+        scrollIntoViewSafe(el);
+        el?.focus();
+      });
+      return next;
+    });
+  };
+
+  const removeTraveller = (index: number) => {
+    const target = travellers[index];
+    if (target && travellerHasContent(target)) {
+      const ok = typeof window !== 'undefined' && window.confirm('Remove this traveller? Anything typed for them will be cleared.');
+      if (!ok) return;
+    }
+    setTravellers((prev) => {
+      if (prev.length <= 1) return prev;
+      const next = prev.filter((_, i) => i !== index);
+      if (!roomsTouched) {
+        setRooms(defaultRooms(next.length));
+      } else {
+        setRooms((current) =>
+          tidyRooms(
+            current.map((room) => ({
+              ...room,
+              travellerIndexes: room.travellerIndexes
+                .filter((idx) => idx !== index)
+                .map((idx) => (idx > index ? idx - 1 : idx)),
+            }))
+          )
+        );
+      }
+      setExpanded((current) =>
+        current.filter((i) => i !== index).map((i) => (i > index ? i - 1 : i))
+      );
+      return next;
+    });
+  };
+
+  const setRoomBedType = (roomIndex: number, bedType: BedType) => {
+    setRoomsTouched(true);
+    setRooms((prev) => prev.map((r, i) => (i === roomIndex ? { ...r, bedType } : r)));
+  };
+
+  const assignTravellerToRoom = (travellerIndex: number, value: string) => {
+    setRoomsTouched(true);
+    setRooms((prev) => {
+      const cleared = prev.map((room) => ({
+        ...room,
+        travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
+      }));
+      if (value === '') {
+        return tidyRooms([...cleared, { bedType: 'single' as BedType, travellerIndexes: [travellerIndex] }]);
+      }
+      if (value === NEW_ROOM) {
+        return tidyRooms([...cleared, { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }]);
+      }
+      const target = Number(value);
+      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return tidyRooms(cleared);
+      return tidyRooms(
+        cleared.map((room, i) =>
+          i === target ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] } : room
+        ),
+      );
+    });
+  };
+
+  const toggleExpanded = (index: number) => {
+    setExpanded((current) =>
+      current.includes(index) ? current.filter((i) => i !== index) : [...current, index]
+    );
+  };
+
+  const names = travellers.map((t) => t.fullName.trim());
+  const roomHasProblem = (room: Room): boolean => {
+    const size = room.travellerIndexes.length;
+    if (room.bedType === 'single') return size !== 1;
+    return size < 2 || size > (hasChildren ? 3 : 2);
+  };
+  const roomErrors = validateRooms(rooms, travellers.length, names, { allowThird: hasChildren });
+  const activeRooms = rooms
+    .map((room, index) => ({ room, index }))
+    .filter(({ room }) => room.travellerIndexes.length > 0);
+
+  const focusTravellerField = (index: number, field: 'fullName' | 'dob' | 'passportExpiry') => {
+    setExpanded((current) => (current.includes(index) ? current : [...current, index]));
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`${field}-${index}`) as HTMLInputElement | null;
+      scrollIntoViewSafe(el);
+      el?.focus();
+    });
+  };
+
+  const findFirstMissing = (): { message: string; focus: () => void } | null => {
+    if (!leadName.trim()) {
+      return {
+        message: 'Please fill in your name.',
+        focus: () => {
+          const el = document.getElementById('leadName') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    if (!leadEmail.trim()) {
+      return {
+        message: 'Please fill in your email.',
+        focus: () => {
+          const el = document.getElementById('leadEmail') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    for (let i = 0; i < travellers.length; i += 1) {
+      const t = travellers[i];
+      const label = t.fullName.trim() || `Traveller ${i + 1}`;
+      if (!t.fullName.trim()) {
+        return {
+          message: `Please fill in full legal name for Traveller ${i + 1} (${label}).`,
+          focus: () => focusTravellerField(i, 'fullName'),
+        };
+      }
+      if (!t.dob.trim()) {
+        return {
+          message: `Please fill in date of birth for Traveller ${i + 1} (${label}).`,
+          focus: () => focusTravellerField(i, 'dob'),
+        };
+      }
+      const dobIssue = dobProblem(t.dob, new Date());
+      if (dobIssue) {
+        return {
+          message: `Traveller ${i + 1} (${label}): ${dobIssue}`,
+          focus: () => focusTravellerField(i, 'dob'),
+        };
+      }
+      const expiryIssue = passportExpiryProblem(t.passportExpiry, new Date());
+      if (expiryIssue) {
+        return {
+          message: `Traveller ${i + 1} (${label}): ${expiryIssue}`,
+          focus: () => focusTravellerField(i, 'passportExpiry'),
+        };
+      }
+    }
+    if (!emergencyName.trim()) {
+      return {
+        message: 'Please fill in the emergency contact name.',
+        focus: () => {
+          const el = document.getElementById('emergencyName') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    if (!emergencyPhone.trim()) {
+      return {
+        message: 'Please fill in the emergency contact phone.',
+        focus: () => {
+          const el = document.getElementById('emergencyPhone') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    return null;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitError(null);
 
-    if (!agreeAccurate || !agreeTerms) {
-      setSubmitError('Please tick both confirmation boxes before submitting.');
+    if (!agreeAccurate || !agreeTerms || !agreePassport) {
+      setSubmitError('Please tick all three confirmation boxes before submitting.');
+      return;
+    }
+
+    const missing = findFirstMissing();
+    if (missing) {
+      setSubmitError(missing.message);
+      missing.focus();
+      return;
+    }
+
+    const errors = validateRooms(rooms, travellers.length, names, { allowThird: hasChildren });
+    if (errors.length > 0) {
+      setSubmitError(errors[0]);
+      scrollIntoViewSafe(roomingRef.current);
       return;
     }
 
@@ -70,17 +521,25 @@ export default function TravellerDetailsForm() {
           leadEmail: leadEmail.trim(),
           leadPhone: leadPhone.trim(),
           tourName: tourName.trim(),
+          departureDate,
+          rooms: rooms
+            .filter((r) => r.travellerIndexes.length > 0)
+            .map((r) => ({ bedType: r.bedType, travellerIndexes: [...r.travellerIndexes].sort() })),
+          hasChildren,
+          childrenNotes: hasChildren ? childrenNotes.trim() : '',
           travellers: travellers.map((t) => ({
             fullName: t.fullName.trim(),
             dob: t.dob.trim(),
             dietary: t.dietary.trim(),
             medical: t.medical.trim(),
+            passportExpiry: t.passportExpiry,
           })),
           emergencyName: emergencyName.trim(),
           emergencyRelationship: emergencyRelationship.trim(),
           emergencyPhone: emergencyPhone.trim(),
           specialOccasion: specialOccasion.trim(),
           agreeAccurate,
+          agreePassport,
           agreeTerms,
         }),
       });
@@ -128,9 +587,32 @@ export default function TravellerDetailsForm() {
     );
   }
 
+  const childrenBlock = (
+    <div className="space-y-3">
+      <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3">
+        <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
+          className="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+        <span className="text-sm text-gray-700">Children are travelling with us</span>
+      </label>
+      {hasChildren && (
+        <div>
+          <label htmlFor="childrenNotes" className={labelClass}>
+            Children&apos;s ages and room needs <span className="text-gray-500">(optional)</span>
+          </label>
+          <input id="childrenNotes" type="text" value={childrenNotes}
+            onChange={(e) => setChildrenNotes(e.target.value)}
+            placeholder="e.g. one child aged 8, sharing with parents" className={inputClass} />
+        </div>
+      )}
+    </div>
+  );
+
+  const showRooming = travellers.length >= 2;
+  const totalSteps = showRooming ? 4 : 3;
+
   return (
-    <section className="section bg-white">
-      <div className="container max-w-3xl">
+    <section className="section bg-light">
+      <div className="container !max-w-3xl">
         <p className="text-gray-600 mb-8 leading-relaxed">
           Please complete this form so we can finalise your booking. Enter each traveller&apos;s full legal
           name exactly as it appears on their passport — this is what we use for flights, visas and hotels.
@@ -157,16 +639,61 @@ export default function TravellerDetailsForm() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-10">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Booking / lead contact */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Your booking</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">1</span>
+                <span>
+                  <span className={stepClass}>{`Step 1 of ${totalSteps}`}</span>
+                  Your booking
+                </span>
+              </span>
+            </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="tourName" className={labelClass}>Tour name</label>
-                <input id="tourName" type="text" value={tourName} onChange={(e) => setTourName(e.target.value)}
-                  placeholder="e.g. Golden China — 12 Days" className={inputClass} />
+                <label htmlFor="tourGroup" className={labelClass}>Which tour did you book?</label>
+                <select id="tourGroup" value={tourGroup} className={inputClass}
+                  onChange={(e) => { setTourGroup(e.target.value); setTourSlug(''); setDepartureDate(''); }}>
+                  <option value="">Select tour type</option>
+                  {groups.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                  <option value={OTHER_TOUR}>My tour isn&apos;t listed</option>
+                </select>
               </div>
+              {tourGroup && tourGroup !== OTHER_TOUR && (
+                <div>
+                  <label htmlFor="tourSlug" className={labelClass}>Tour</label>
+                  <select id="tourSlug" value={tourSlug} className={inputClass}
+                    onChange={(e) => { setTourSlug(e.target.value); setDepartureDate(''); }}>
+                    <option value="">Select your tour</option>
+                    {toursInGroup.map((t) => (
+                      <option key={t.key} value={t.key}>{t.shortName}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+              {tourGroup === OTHER_TOUR && (
+                <div>
+                  <label htmlFor="otherTourName" className={labelClass}>Tour name</label>
+                  <input id="otherTourName" type="text" value={otherTourName}
+                    onChange={(e) => setOtherTourName(e.target.value)} className={inputClass} />
+                </div>
+              )}
+              {selectedTour && selectedTour.dates.length > 0 && (
+                <div>
+                  <label htmlFor="departureDate" className={labelClass}>Departure date</label>
+                  <select id="departureDate" value={departureDate} className={inputClass}
+                    onChange={(e) => setDepartureDate(e.target.value)}>
+                    <option value="">Select your departure date</option>
+                    {selectedTour.dates.map((d) => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
               <div>
                 <label htmlFor="bookingRef" className={labelClass}>Booking reference (if you have one)</label>
                 <input id="bookingRef" type="text" value={bookingRef} onChange={(e) => setBookingRef(e.target.value)}
@@ -176,8 +703,21 @@ export default function TravellerDetailsForm() {
                 <label htmlFor="leadName" className={labelClass}>
                   Your name <span className="text-red-500">*</span>
                 </label>
-                <input id="leadName" type="text" required value={leadName} onChange={(e) => setLeadName(e.target.value)}
+                <input id="leadName" type="text" required value={leadName} onChange={(e) => handleLeadNameChange(e.target.value)}
                   className={inputClass} />
+                <label className="mt-2 flex items-start gap-2 text-sm text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={leadIsTraveller}
+                    onChange={(e) => {
+                      const on = e.target.checked;
+                      setLeadIsTraveller(on);
+                      if (on) setTravellers((prev) => prev.map((t, i) => (i === 0 ? { ...t, fullName: leadName } : t)));
+                    }}
+                    className="mt-0.5 h-4 w-4"
+                  />
+                  <span>I&apos;m travelling too — use this name for Traveller 1</span>
+                </label>
               </div>
               <div>
                 <label htmlFor="leadEmail" className={labelClass}>
@@ -195,66 +735,121 @@ export default function TravellerDetailsForm() {
           </fieldset>
 
           {/* Travellers */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Traveller details</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">2</span>
+                <span>
+                  <span className={stepClass}>{`Step 2 of ${totalSteps}`}</span>
+                  Travellers
+                </span>
+              </span>
+            </legend>
             {travellers.map((t, i) => (
-              <div key={i} className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-dark">Traveller {i + 1}</h3>
-                  {travellers.length > 1 && (
-                    <button type="button" onClick={() => removeTraveller(i)}
-                      className="text-sm text-red-600 hover:text-red-700">
-                      Remove
-                    </button>
-                  )}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor={`fullName-${i}`} className={labelClass}>
-                      Full legal name (as per passport) <span className="text-red-500">*</span>
-                    </label>
-                    <input id={`fullName-${i}`} type="text" required value={t.fullName}
-                      onChange={(e) => updateTraveller(i, 'fullName', e.target.value)} className={inputClass} />
-                  </div>
-                  <div>
-                    <label htmlFor={`dob-${i}`} className={labelClass}>
-                      Date of birth <span className="text-red-500">*</span>
-                    </label>
-                    <input id={`dob-${i}`} type="date" required value={t.dob}
-                      onChange={(e) => updateTraveller(i, 'dob', e.target.value)} className={inputClass} />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor={`dietary-${i}`} className={labelClass}>
-                    Dietary requirements <span className="text-gray-400">(optional)</span>
-                  </label>
-                  <input id={`dietary-${i}`} type="text" value={t.dietary}
-                    onChange={(e) => updateTraveller(i, 'dietary', e.target.value)}
-                    placeholder="e.g. vegetarian, no seafood, gluten-free" className={inputClass} />
-                </div>
-                <div>
-                  <label htmlFor={`medical-${i}`} className={labelClass}>
-                    Medical or mobility notes <span className="text-gray-400">(optional)</span>
-                  </label>
-                  <textarea id={`medical-${i}`} rows={2} value={t.medical}
-                    onChange={(e) => updateTraveller(i, 'medical', e.target.value)}
-                    placeholder="Anything our guides should know — medication, allergies, walking limits, wheelchair, etc."
-                    className={inputClass} />
-                </div>
-              </div>
+              <TravellerCard
+                key={i}
+                index={i}
+                traveller={t}
+                expanded={expanded.includes(i)}
+                canRemove={travellers.length > 1}
+                nameInputRef={(el) => { nameRefs.current[i] = el; }}
+                onToggleExpand={() => toggleExpanded(i)}
+                onChange={(field, value) => updateTraveller(i, field, value)}
+                onRemove={() => removeTraveller(i)}
+                departure={departure}
+              />
             ))}
             <button type="button" onClick={addTraveller}
-              className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-warm-300 font-medium text-primary transition-colors hover:border-primary/50 hover:bg-warm-50">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
               Add another traveller
             </button>
+            {travellers.length === 1 && (
+              <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                {selectedTour?.singleSupplement
+                  ? `Travelling on your own means a room to yourself — single supplement ${selectedTour.singleSupplement} applies (added to the tour price).`
+                  : 'Travelling on your own means a room to yourself — a single supplement applies and we will confirm the amount with you.'}
+                {' '}Sharing with someone? Add them with “Add another traveller”.
+              </p>
+            )}
+            {!showRooming && childrenBlock}
           </fieldset>
 
+          {/* Rooming */}
+          {showRooming && (
+            <fieldset ref={roomingRef} className={cardClass}>
+              <legend className={legendClass}>
+                <span className="flex items-center gap-3">
+                  <span className={stepBadgeClass} aria-hidden="true">3</span>
+                  <span>
+                    <span className={stepClass}>Step 3 of 4</span>
+                    Who shares a room?
+                  </span>
+                </span>
+              </legend>
+              {activeRooms.map(({ room, index }) => (
+                <RoomLine
+                  key={index}
+                  room={room}
+                  roomIndex={index}
+                  names={names}
+                  invalid={roomHasProblem(room)}
+                  onBedTypeChange={setRoomBedType}
+                  singleSupplement={selectedTour?.singleSupplement}
+                  singleSupplementNote={selectedTour?.singleSupplementNote}
+                  onShareInstead={() => setShowAssign(true)}
+                />
+              ))}
+              {roomErrors.length > 0 && (
+                <div className="space-y-1 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+                  {roomErrors.map((err) => (
+                    <p key={err} className="text-sm text-red-700">{err}</p>
+                  ))}
+                </div>
+              )}
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                {roomErrors.length === 0 ? (
+                  <p className="inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Everyone has a room
+                  </p>
+                ) : (
+                  <span />
+                )}
+                <button
+                  type="button"
+                  aria-expanded={showAssign}
+                  onClick={() => setShowAssign((open) => !open)}
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gray-300 bg-white px-4 text-sm font-medium text-dark transition-colors hover:border-primary hover:text-primary"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                  </svg>
+                  Change who shares with whom
+                </button>
+              </div>
+              {showAssign && (
+                <RoomAssignList travellers={travellers} rooms={rooms} onAssign={assignTravellerToRoom} />
+              )}
+              {childrenBlock}
+            </fieldset>
+          )}
+
           {/* Emergency contact */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Emergency contact</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">{totalSteps}</span>
+                <span>
+                  <span className={stepClass}>{`Step ${totalSteps} of ${totalSteps}`}</span>
+                  Emergency contact &amp; confirmation
+                </span>
+              </span>
+            </legend>
             <p className="text-sm text-gray-500 -mt-2">Someone not travelling with you whom we can contact if needed.</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
@@ -281,10 +876,10 @@ export default function TravellerDetailsForm() {
           </fieldset>
 
           {/* Special occasion */}
-          <fieldset className="space-y-3">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Special occasion</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>Special occasion</legend>
             <label htmlFor="specialOccasion" className={labelClass}>
-              Celebrating something during your trip? <span className="text-gray-400">(optional)</span>
+              Celebrating something during your trip? <span className="text-gray-500">(optional)</span>
             </label>
             <input id="specialOccasion" type="text" value={specialOccasion}
               onChange={(e) => setSpecialOccasion(e.target.value)}
@@ -293,18 +888,26 @@ export default function TravellerDetailsForm() {
           </fieldset>
 
           {/* Consent */}
-          <fieldset className="space-y-4 rounded-xl border border-gray-200 bg-gray-50/60 p-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2 px-2">Confirmation</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>Confirmation</legend>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" checked={agreePassport} onChange={(e) => setAgreePassport(e.target.checked)}
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
+              <span className="text-sm text-gray-700">
+                I have checked that every traveller&apos;s passport is valid for at least 6 months from the travel date,
+                with a couple of blank pages.
+              </span>
+            </label>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreeAccurate} onChange={(e) => setAgreeAccurate(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
               <span className="text-sm text-gray-700">
                 I confirm the details above are correct and match each traveller&apos;s passport.
               </span>
             </label>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
               <span className="text-sm text-gray-700">
                 I have read and agree to the{' '}
                 <Link href="/terms-and-conditions" target="_blank" className="text-primary font-medium underline">
@@ -325,7 +928,7 @@ export default function TravellerDetailsForm() {
             <button type="submit" disabled={isLoading} className="btn-primary w-full py-3">
               {isLoading ? 'Submitting...' : 'Submit details'}
             </button>
-            <p className="text-xs text-gray-400 text-center mt-3">
+            <p className="text-xs text-gray-600 text-center mt-3">
               Your information is handled in line with our{' '}
               <Link href="/privacy-policy" target="_blank" className="underline">Privacy Policy</Link>.
             </p>
