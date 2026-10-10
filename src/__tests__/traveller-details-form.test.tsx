@@ -47,6 +47,11 @@ function fillRequiredFields() {
   fireEvent.click(screen.getByLabelText(/Terms/));
 }
 
+function fillTraveller(index: number, name: string, dob = '1960-01-01') {
+  fireEvent.change(document.querySelector(`#fullName-${index}`)!, { target: { value: name } });
+  fireEvent.change(document.querySelector(`#dob-${index}`)!, { target: { value: dob } });
+}
+
 describe('tour and departure dropdowns', () => {
   it('shows departure dates only after a tour with dates is chosen', () => {
     setup();
@@ -80,10 +85,75 @@ describe('tour and departure dropdowns', () => {
   });
 });
 
+describe('travellers flow', () => {
+  it('shows the traveller name in the card header once typed', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    expect(screen.getByText(/Traveller 1 · Alice/)).toBeTruthy();
+  });
+
+  it('shows a tick once name and date of birth are filled', () => {
+    setup();
+    expect(screen.queryByLabelText('Complete')).toBeNull();
+    fillTraveller(0, 'Alice');
+    expect(screen.getByLabelText('Complete')).toBeTruthy();
+  });
+
+  it('expands the new card and collapses the completed previous one', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    fireEvent.click(screen.getByText('Add another traveller'));
+    expect(document.querySelector('#fullName-1')).toBeTruthy();
+    expect(document.querySelector('#fullName-0')).toBeNull();
+  });
+
+  it('lists rooms and New room in the Room select', () => {
+    setup();
+    const select = document.querySelector('#room-0') as HTMLSelectElement;
+    expect(Array.from(select.options).map((o) => o.text)).toEqual([
+      'Not assigned', 'Room 1', 'New room',
+    ]);
+  });
+
+  it('creates a new room when New room is chosen and names the old room-mate in the error', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    fireEvent.click(screen.getByText('Add another traveller'));
+    fillTraveller(1, 'Dan');
+    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '__new__' } });
+    // Alice and Dan were paired in Room 1; Dan moves to a new Room 2, leaving both rooms with one person.
+    expect(screen.getByRole('heading', { name: 'Room 2' })).toBeTruthy();
+    expect(screen.getByText(/Room 1 \(Alice\) is a double room but has 1 person/)).toBeTruthy();
+    expect(screen.getByText(/Room 2 \(Dan\) is a double room but has 1 person/)).toBeTruthy();
+  });
+
+  it('blocks submit with a name-based message when a double room has one person', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    fillRequiredFields();
+    // A lone traveller defaults to Single; switch the room to Double to create the problem.
+    fireEvent.click(document.querySelector('input[name="bedType-0"][value="double"]')!);
+    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
+    expect(screen.getAllByText(/Room 1 \(Alice\) is a double room but has 1 person/).length).toBeGreaterThan(0);
+  });
+
+  it('asks for confirmation before removing a traveller with content', () => {
+    const confirmSpy = jest.spyOn(window, 'confirm').mockReturnValue(false);
+    setup();
+    fillTraveller(0, 'Alice');
+    fireEvent.click(screen.getByText('Add another traveller'));
+    fillTraveller(1, 'Dan');
+    fireEvent.click(screen.getAllByText('Remove')[1]);
+    expect(confirmSpy).toHaveBeenCalled();
+    expect(document.querySelector('#fullName-1')).toBeTruthy();
+    confirmSpy.mockRestore();
+  });
+});
+
 describe('rooming', () => {
   it('starts a lone traveller in a single room', () => {
     setup();
-    expect(screen.getByText('Room 1')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Room 1' })).toBeTruthy();
     const single = screen.getByLabelText(/Single/) as HTMLInputElement;
     expect(single.checked).toBe(true);
   });
@@ -91,16 +161,12 @@ describe('rooming', () => {
   it('pairs four travellers into two double rooms by default', () => {
     setup();
     addTravellers(3);
-    expect(screen.getByText('Room 1')).toBeTruthy();
-    expect(screen.getByText('Room 2')).toBeTruthy();
-    const room1 = screen.getByText('Room 1').closest('div')!.parentElement!;
-    const room2 = screen.getByText('Room 2').closest('div')!.parentElement!;
+    expect(screen.getByRole('heading', { name: 'Room 1' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Room 2' })).toBeTruthy();
+    const room1 = screen.getByRole('heading', { name: 'Room 1' }).closest('div')!.parentElement!;
+    const room2 = screen.getByRole('heading', { name: 'Room 2' }).closest('div')!.parentElement!;
     expect((room1.querySelector('input[name="bedType-0"]') as HTMLInputElement).checked).toBe(true);
     expect((room2.querySelector('input[name="bedType-1"]') as HTMLInputElement).checked).toBe(true);
-    expect((room1.querySelectorAll('input[type="checkbox"]')[0] as HTMLInputElement).checked).toBe(true);
-    expect((room1.querySelectorAll('input[type="checkbox"]')[1] as HTMLInputElement).checked).toBe(true);
-    expect((room2.querySelectorAll('input[type="checkbox"]')[2] as HTMLInputElement).checked).toBe(true);
-    expect((room2.querySelectorAll('input[type="checkbox"]')[3] as HTMLInputElement).checked).toBe(true);
   });
 
   it('sends per-room bed types and traveller indexes on submit', async () => {
@@ -109,9 +175,13 @@ describe('rooming', () => {
 
     setup();
     addTravellers(3);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    fillTraveller(2, 'Carol');
+    fillTraveller(3, 'Dan');
     fillRequiredFields();
 
-    const room1 = screen.getByText('Room 1').closest('div')!.parentElement!;
+    const room1 = screen.getByRole('heading', { name: 'Room 1' }).closest('div')!.parentElement!;
     fireEvent.click(room1.querySelector('input[name="bedType-0"][value="twin"]')!);
 
     fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
@@ -122,15 +192,6 @@ describe('rooming', () => {
       { bedType: 'twin', travellerIndexes: [0, 1] },
       { bedType: 'double', travellerIndexes: [2, 3] },
     ]);
-  });
-
-  it('flags a room left with one person after moving a traveller out', () => {
-    setup();
-    addTravellers(3);
-    fireEvent.click(screen.getByText('Add another room'));
-    const room3 = screen.getByText('Room 3').closest('div')!.parentElement!;
-    fireEvent.click(room3.querySelectorAll('input[type="checkbox"]')[3]);
-    expect(screen.getByText(/Room 2 is a double room but has 1 person/)).toBeTruthy();
   });
 
   it('reveals the children notes field when children are travelling', () => {

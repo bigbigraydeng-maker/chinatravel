@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
@@ -13,6 +13,7 @@ import {
 import {
   defaultRooms,
   roomLabel,
+  roomSummary,
   validateRooms,
   type BedType,
   type Room,
@@ -31,8 +32,10 @@ const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', m
 const inputClass =
   'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary';
 const labelClass = 'block text-gray-700 mb-2 text-sm font-medium';
+const stepClass = 'block text-xs uppercase tracking-wide text-gray-400 mb-1';
 
 const OTHER_TOUR = '__other__';
+const NEW_ROOM = '__new__';
 
 const BED_OPTIONS: { value: BedType; title: string; hint: string }[] = [
   { value: 'double', title: 'Double', hint: 'one bed' },
@@ -52,38 +55,194 @@ const PASSPORT_MESSAGES: Record<Exclude<PassportStatus, 'unknown'>, { text: stri
   },
 };
 
-interface RoomCardProps {
-  room: Room;
-  roomIndex: number;
-  travellers: Traveller[];
-  canRemove: boolean;
-  onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
-  onToggleTraveller: (roomIndex: number, travellerIndex: number) => void;
-  onRemove: (roomIndex: number) => void;
+function scrollIntoViewSafe(el: HTMLElement | null) {
+  if (!el) return;
+  el.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
 }
 
-function RoomCard({
-  room,
+function travellerHasContent(t: Traveller): boolean {
+  return Boolean(
+    t.fullName.trim() || t.dob.trim() || t.dietary.trim() || t.medical.trim() || t.passportExpiry.trim()
+  );
+}
+
+function travellerIsComplete(t: Traveller): boolean {
+  return Boolean(t.fullName.trim() && t.dob.trim());
+}
+
+interface TravellerCardProps {
+  index: number;
+  traveller: Traveller;
+  expanded: boolean;
+  roomIndex: number | null;
+  rooms: Room[];
+  canRemove: boolean;
+  nameInputRef: (el: HTMLInputElement | null) => void;
+  onToggleExpand: () => void;
+  onChange: (field: keyof Traveller, value: string) => void;
+  onRemove: () => void;
+  onRoomChange: (value: string) => void;
+  departure: Date | null;
+}
+
+function TravellerCard({
+  index,
+  traveller,
+  expanded,
   roomIndex,
-  travellers,
+  rooms,
   canRemove,
-  onBedTypeChange,
-  onToggleTraveller,
+  nameInputRef,
+  onToggleExpand,
+  onChange,
   onRemove,
-}: RoomCardProps) {
+  onRoomChange,
+  departure,
+}: TravellerCardProps) {
+  const name = traveller.fullName.trim();
+  const complete = travellerIsComplete(traveller);
+  const header = `Traveller ${index + 1}${name ? ` · ${name}` : ''}${
+    roomIndex !== null ? ` · Room ${roomIndex + 1}` : ''
+  }`;
+
+  const status = passportStatus(traveller.passportExpiry, departure, new Date());
+
   return (
     <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-4">
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="font-semibold text-dark flex items-center gap-2">
+          <span>{header}</span>
+          {complete && (
+            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs" aria-label="Complete">
+              ✓
+            </span>
+          )}
+        </h3>
+        <div className="flex items-center gap-3">
+          {canRemove && (
+            <button type="button" onClick={onRemove} className="text-sm text-red-600 hover:text-red-700">
+              Remove
+            </button>
+          )}
+          <button type="button" onClick={onToggleExpand} className="text-sm text-primary font-medium hover:underline">
+            {expanded ? 'Done' : 'Edit'}
+          </button>
+        </div>
+      </div>
+
+      {expanded && (
+        <div className="space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor={`fullName-${index}`} className={labelClass}>
+                Full legal name (as per passport) <span className="text-red-500">*</span>
+              </label>
+              <input
+                id={`fullName-${index}`}
+                ref={nameInputRef}
+                type="text"
+                required
+                value={traveller.fullName}
+                onChange={(e) => onChange('fullName', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor={`dob-${index}`} className={labelClass}>
+                Date of birth <span className="text-red-500">*</span>
+              </label>
+              <input
+                id={`dob-${index}`}
+                type="date"
+                required
+                value={traveller.dob}
+                onChange={(e) => onChange('dob', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor={`room-${index}`} className={labelClass}>Room</label>
+            <select
+              id={`room-${index}`}
+              value={roomIndex === null ? '' : String(roomIndex)}
+              onChange={(e) => onRoomChange(e.target.value)}
+              className={inputClass}
+            >
+              <option value="">Not assigned</option>
+              {rooms.map((_, i) => (
+                <option key={i} value={String(i)}>{`Room ${i + 1}`}</option>
+              ))}
+              <option value={NEW_ROOM}>New room</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor={`passportExpiry-${index}`} className={labelClass}>
+              Passport expiry date <span className="text-gray-400">(optional — we never ask for your passport number here)</span>
+            </label>
+            <input
+              id={`passportExpiry-${index}`}
+              type="date"
+              value={traveller.passportExpiry}
+              onChange={(e) => onChange('passportExpiry', e.target.value)}
+              className={inputClass}
+            />
+            {status !== 'unknown' && (
+              <p role="status" className={`mt-2 text-sm ${PASSPORT_MESSAGES[status].className}`}>
+                {PASSPORT_MESSAGES[status].text}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor={`dietary-${index}`} className={labelClass}>
+              Dietary requirements <span className="text-gray-400">(optional)</span>
+            </label>
+            <input
+              id={`dietary-${index}`}
+              type="text"
+              value={traveller.dietary}
+              onChange={(e) => onChange('dietary', e.target.value)}
+              placeholder="e.g. vegetarian, no seafood, gluten-free"
+              className={inputClass}
+            />
+          </div>
+
+          <div>
+            <label htmlFor={`medical-${index}`} className={labelClass}>
+              Medical or mobility notes <span className="text-gray-400">(optional)</span>
+            </label>
+            <textarea
+              id={`medical-${index}`}
+              rows={2}
+              value={traveller.medical}
+              onChange={(e) => onChange('medical', e.target.value)}
+              placeholder="Anything our guides should know — medication, allergies, walking limits, wheelchair, etc."
+              className={inputClass}
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface RoomSummaryRowProps {
+  room: Room;
+  roomIndex: number;
+  names: string[];
+  onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
+}
+
+function RoomSummaryRow({ room, roomIndex, names, onBedTypeChange }: RoomSummaryRowProps) {
+  const members = roomSummary(room, names);
+  return (
+    <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-3">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-dark">Room {roomIndex + 1}</h3>
-        {canRemove && (
-          <button
-            type="button"
-            onClick={() => onRemove(roomIndex)}
-            className="text-sm text-red-600 hover:text-red-700"
-          >
-            Remove this room
-          </button>
-        )}
+        <span className="text-sm text-gray-600">{members || '—'}</span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {BED_OPTIONS.map((option) => (
@@ -104,23 +263,6 @@ function RoomCard({
             </span>
           </label>
         ))}
-      </div>
-      <div className="space-y-2">
-        {travellers.map((t, i) => {
-          const name = t.fullName.trim();
-          const label = name ? `Traveller ${i + 1} — ${name}` : `Traveller ${i + 1}`;
-          return (
-            <label key={i} className="flex items-center gap-3 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={room.travellerIndexes.includes(i)}
-                onChange={() => onToggleTraveller(roomIndex, i)}
-                className="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary"
-              />
-              <span className="text-sm text-gray-700">{label}</span>
-            </label>
-          );
-        })}
       </div>
     </div>
   );
@@ -143,6 +285,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [travellers, setTravellers] = useState<Traveller[]>([emptyTraveller()]);
   const [rooms, setRooms] = useState<Room[]>(() => defaultRooms(1));
   const [roomsTouched, setRoomsTouched] = useState(false);
+  const [expanded, setExpanded] = useState<number[]>([0]);
   const [hasChildren, setHasChildren] = useState(false);
   const [childrenNotes, setChildrenNotes] = useState('');
 
@@ -165,6 +308,9 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  const nameRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const roomingRef = useRef<HTMLFieldSetElement | null>(null);
+
   const updateTraveller = (index: number, field: keyof Traveller, value: string) => {
     setTravellers((prev) => prev.map((t, i) => (i === index ? { ...t, [field]: value } : t)));
   };
@@ -173,11 +319,28 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     setTravellers((prev) => {
       const next = [...prev, emptyTraveller()];
       if (!roomsTouched) setRooms(defaultRooms(next.length));
+      const newIndex = next.length - 1;
+      setExpanded((current) => {
+        const previous = current.filter((i) => i !== newIndex);
+        // Finished cards fold away; a half-filled one stays open so nothing gets lost.
+        const keep = previous.filter((i) => !travellerIsComplete(prev[i]));
+        return [...keep, newIndex];
+      });
+      requestAnimationFrame(() => {
+        const el = nameRefs.current[newIndex];
+        scrollIntoViewSafe(el);
+        el?.focus();
+      });
       return next;
     });
   };
 
   const removeTraveller = (index: number) => {
+    const target = travellers[index];
+    if (target && travellerHasContent(target)) {
+      const ok = typeof window !== 'undefined' && window.confirm('Remove this traveller? Anything typed for them will be cleared.');
+      if (!ok) return;
+    }
     setTravellers((prev) => {
       if (prev.length <= 1) return prev;
       const next = prev.filter((_, i) => i !== index);
@@ -193,6 +356,9 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           }))
         );
       }
+      setExpanded((current) =>
+        current.filter((i) => i !== index).map((i) => (i > index ? i - 1 : i))
+      );
       return next;
     });
   };
@@ -202,39 +368,110 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     setRooms((prev) => prev.map((r, i) => (i === roomIndex ? { ...r, bedType } : r)));
   };
 
-  const toggleTravellerInRoom = (roomIndex: number, travellerIndex: number) => {
+  const assignTravellerToRoom = (travellerIndex: number, value: string) => {
     setRoomsTouched(true);
-    setRooms((prev) =>
-      prev.map((room, i) => {
-        if (i === roomIndex) {
-          const has = room.travellerIndexes.includes(travellerIndex);
-          return {
-            ...room,
-            travellerIndexes: has
-              ? room.travellerIndexes.filter((idx) => idx !== travellerIndex)
-              : [...room.travellerIndexes, travellerIndex],
-          };
-        }
-        return {
-          ...room,
-          travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
-        };
-      })
+    setRooms((prev) => {
+      const cleared = prev.map((room) => ({
+        ...room,
+        travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
+      }));
+      if (value === '') return cleared;
+      if (value === NEW_ROOM) {
+        return [...cleared, { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }];
+      }
+      const target = Number(value);
+      if (!Number.isInteger(target) || target < 0 || target >= cleared.length) return cleared;
+      return cleared.map((room, i) =>
+        i === target ? { ...room, travellerIndexes: [...room.travellerIndexes, travellerIndex] } : room
+      );
+    });
+  };
+
+  const toggleExpanded = (index: number) => {
+    setExpanded((current) =>
+      current.includes(index) ? current.filter((i) => i !== index) : [...current, index]
     );
   };
 
-  const addRoom = () => {
-    setRoomsTouched(true);
-    setRooms((prev) => [...prev, { bedType: 'double', travellerIndexes: [] }]);
+  const roomIndexForTraveller = (travellerIndex: number): number | null => {
+    const idx = rooms.findIndex((r) => r.travellerIndexes.includes(travellerIndex));
+    return idx === -1 ? null : idx;
   };
 
-  const removeRoom = (roomIndex: number) => {
-    setRoomsTouched(true);
-    setRooms((prev) => prev.filter((_, i) => i !== roomIndex));
+  const names = travellers.map((t) => t.fullName.trim());
+  const roomErrors = validateRooms(rooms, travellers.length, names, { allowThird: hasChildren });
+  const activeRooms = rooms
+    .map((room, index) => ({ room, index }))
+    .filter(({ room }) => room.travellerIndexes.length > 0);
+
+  const focusTravellerField = (index: number, field: 'fullName' | 'dob') => {
+    setExpanded((current) => (current.includes(index) ? current : [...current, index]));
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`${field}-${index}`) as HTMLInputElement | null;
+      scrollIntoViewSafe(el);
+      el?.focus();
+    });
   };
 
-  const roomErrors = validateRooms(rooms, travellers.length);
-  const allPlaced = roomErrors.length === 0;
+  const findFirstMissing = (): { message: string; focus: () => void } | null => {
+    if (!leadName.trim()) {
+      return {
+        message: 'Please fill in your name.',
+        focus: () => {
+          const el = document.getElementById('leadName') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    if (!leadEmail.trim()) {
+      return {
+        message: 'Please fill in your email.',
+        focus: () => {
+          const el = document.getElementById('leadEmail') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    for (let i = 0; i < travellers.length; i += 1) {
+      const t = travellers[i];
+      const label = t.fullName.trim() || `Traveller ${i + 1}`;
+      if (!t.fullName.trim()) {
+        return {
+          message: `Please fill in full legal name for Traveller ${i + 1} (${label}).`,
+          focus: () => focusTravellerField(i, 'fullName'),
+        };
+      }
+      if (!t.dob.trim()) {
+        return {
+          message: `Please fill in date of birth for Traveller ${i + 1} (${label}).`,
+          focus: () => focusTravellerField(i, 'dob'),
+        };
+      }
+    }
+    if (!emergencyName.trim()) {
+      return {
+        message: 'Please fill in the emergency contact name.',
+        focus: () => {
+          const el = document.getElementById('emergencyName') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    if (!emergencyPhone.trim()) {
+      return {
+        message: 'Please fill in the emergency contact phone.',
+        focus: () => {
+          const el = document.getElementById('emergencyPhone') as HTMLInputElement | null;
+          scrollIntoViewSafe(el);
+          el?.focus();
+        },
+      };
+    }
+    return null;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -245,9 +482,17 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
       return;
     }
 
-    const errors = validateRooms(rooms, travellers.length);
+    const missing = findFirstMissing();
+    if (missing) {
+      setSubmitError(missing.message);
+      missing.focus();
+      return;
+    }
+
+    const errors = validateRooms(rooms, travellers.length, names, { allowThird: hasChildren });
     if (errors.length > 0) {
-      setSubmitError(errors.join(' '));
+      setSubmitError(errors[0]);
+      scrollIntoViewSafe(roomingRef.current);
       return;
     }
 
@@ -360,7 +605,10 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         <form onSubmit={handleSubmit} className="space-y-10">
           {/* Booking / lead contact */}
           <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Your booking</legend>
+            <legend className="text-xl font-serif font-semibold text-dark mb-2">
+              <span className={stepClass}>Step 1 of 4</span>
+              Your booking
+            </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="tourGroup" className={labelClass}>Which tour did you book?</label>
@@ -433,65 +681,26 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
 
           {/* Travellers */}
           <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Traveller details</legend>
+            <legend className="text-xl font-serif font-semibold text-dark mb-2">
+              <span className={stepClass}>Step 2 of 4</span>
+              Travellers
+            </legend>
             {travellers.map((t, i) => (
-              <div key={i} className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-dark">Traveller {i + 1}</h3>
-                  {travellers.length > 1 && (
-                    <button type="button" onClick={() => removeTraveller(i)}
-                      className="text-sm text-red-600 hover:text-red-700">
-                      Remove
-                    </button>
-                  )}
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor={`fullName-${i}`} className={labelClass}>
-                      Full legal name (as per passport) <span className="text-red-500">*</span>
-                    </label>
-                    <input id={`fullName-${i}`} type="text" required value={t.fullName}
-                      onChange={(e) => updateTraveller(i, 'fullName', e.target.value)} className={inputClass} />
-                  </div>
-                  <div>
-                    <label htmlFor={`dob-${i}`} className={labelClass}>
-                      Date of birth <span className="text-red-500">*</span>
-                    </label>
-                    <input id={`dob-${i}`} type="date" required value={t.dob}
-                      onChange={(e) => updateTraveller(i, 'dob', e.target.value)} className={inputClass} />
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor={`passportExpiry-${i}`} className={labelClass}>
-                    Passport expiry date <span className="text-gray-400">(optional — we never ask for your passport number here)</span>
-                  </label>
-                  <input id={`passportExpiry-${i}`} type="date" value={t.passportExpiry}
-                    onChange={(e) => updateTraveller(i, 'passportExpiry', e.target.value)} className={inputClass} />
-                  {(() => {
-                    const status = passportStatus(t.passportExpiry, departure, new Date());
-                    if (status === 'unknown') return null;
-                    const message = PASSPORT_MESSAGES[status];
-                    return <p role="status" className={`mt-2 text-sm ${message.className}`}>{message.text}</p>;
-                  })()}
-                </div>
-                <div>
-                  <label htmlFor={`dietary-${i}`} className={labelClass}>
-                    Dietary requirements <span className="text-gray-400">(optional)</span>
-                  </label>
-                  <input id={`dietary-${i}`} type="text" value={t.dietary}
-                    onChange={(e) => updateTraveller(i, 'dietary', e.target.value)}
-                    placeholder="e.g. vegetarian, no seafood, gluten-free" className={inputClass} />
-                </div>
-                <div>
-                  <label htmlFor={`medical-${i}`} className={labelClass}>
-                    Medical or mobility notes <span className="text-gray-400">(optional)</span>
-                  </label>
-                  <textarea id={`medical-${i}`} rows={2} value={t.medical}
-                    onChange={(e) => updateTraveller(i, 'medical', e.target.value)}
-                    placeholder="Anything our guides should know — medication, allergies, walking limits, wheelchair, etc."
-                    className={inputClass} />
-                </div>
-              </div>
+              <TravellerCard
+                key={i}
+                index={i}
+                traveller={t}
+                expanded={expanded.includes(i)}
+                roomIndex={roomIndexForTraveller(i)}
+                rooms={rooms}
+                canRemove={travellers.length > 1}
+                nameInputRef={(el) => { nameRefs.current[i] = el; }}
+                onToggleExpand={() => toggleExpanded(i)}
+                onChange={(field, value) => updateTraveller(i, field, value)}
+                onRemove={() => removeTraveller(i)}
+                onRoomChange={(value) => assignTravellerToRoom(i, value)}
+                departure={departure}
+              />
             ))}
             <button type="button" onClick={addTraveller}
               className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
@@ -503,31 +712,23 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           </fieldset>
 
           {/* Rooming */}
-          <fieldset className="space-y-4">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Rooming</legend>
+          <fieldset ref={roomingRef} className="space-y-4">
+            <legend className="text-xl font-serif font-semibold text-dark mb-2">
+              <span className={stepClass}>Step 3 of 4</span>
+              Rooming
+            </legend>
             <p className="text-sm text-gray-500 -mt-2">
-              Tell us who shares a room and what beds they&apos;d like. Dietary and medical notes are entered per
-              traveller above.
+              Change who is in a room from the Room field on each traveller.
             </p>
-            {rooms.map((room, roomIndex) => (
-              <RoomCard
-                key={roomIndex}
+            {activeRooms.map(({ room, index }) => (
+              <RoomSummaryRow
+                key={index}
                 room={room}
-                roomIndex={roomIndex}
-                travellers={travellers}
-                canRemove={room.travellerIndexes.length === 0 || rooms.length > 1}
+                roomIndex={index}
+                names={names}
                 onBedTypeChange={setRoomBedType}
-                onToggleTraveller={toggleTravellerInRoom}
-                onRemove={removeRoom}
               />
             ))}
-            <button type="button" onClick={addRoom}
-              className="inline-flex items-center gap-2 text-primary font-medium hover:underline">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-              </svg>
-              Add another room
-            </button>
             {roomErrors.length > 0 ? (
               <div className="space-y-1">
                 {roomErrors.map((err) => (
@@ -556,7 +757,10 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
 
           {/* Emergency contact */}
           <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Emergency contact</legend>
+            <legend className="text-xl font-serif font-semibold text-dark mb-2">
+              <span className={stepClass}>Step 4 of 4</span>
+              Emergency contact &amp; confirmation
+            </legend>
             <p className="text-sm text-gray-500 -mt-2">Someone not travelling with you whom we can contact if needed.</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>

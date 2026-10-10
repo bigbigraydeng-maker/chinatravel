@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    const roomErrors = validateRooms(rooms, validTravellers.length);
+    const roomErrors = validateRooms(rooms, validTravellers.length, undefined, { allowThird: hasChildren === true });
     if (roomErrors.length > 0) {
       return NextResponse.json(
         { error: 'Please check the rooming section: ' + roomErrors[0] },
