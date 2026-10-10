@@ -120,11 +120,11 @@ function TravellerCard({
         </h3>
         <div className="flex items-center gap-3">
           {canRemove && (
-            <button type="button" onClick={onRemove} className="text-sm text-red-600 hover:text-red-700">
+            <button type="button" onClick={onRemove} className="min-h-[44px] px-2 text-sm text-red-600 hover:text-red-700">
               Remove
             </button>
           )}
-          <button type="button" onClick={onToggleExpand} className="text-sm text-primary font-medium hover:underline">
+          <button type="button" onClick={onToggleExpand} className="min-h-[44px] px-2 text-sm text-primary font-medium hover:underline">
             {expanded ? 'Done' : 'Edit'}
           </button>
         </div>
