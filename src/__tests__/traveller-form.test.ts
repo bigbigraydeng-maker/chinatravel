@@ -1,7 +1,10 @@
 import {
+  dobProblem,
   parseDepartureDate,
   parseIsoDate,
+  passportExpiryProblem,
   passportStatus,
+  toIsoDate,
   upcomingDates,
 } from '@/lib/traveller-form';
 
@@ -45,5 +48,63 @@ describe('upcomingDates', () => {
   });
   it('handles tours without dates', () => {
     expect(upcomingDates(undefined, today)).toEqual([]);
+  });
+});
+
+describe('dobProblem', () => {
+  const dobToday = new Date(Date.UTC(2026, 9, 10));
+
+  it('accepts empty input', () => {
+    expect(dobProblem('', dobToday)).toBeNull();
+  });
+  it('accepts a normal date of birth', () => {
+    expect(dobProblem('1960-07-08', dobToday)).toBeNull();
+  });
+  it('rejects an unparseable date', () => {
+    expect(dobProblem('275760-07-08', dobToday)).toBe('Please enter a real date of birth, e.g. 08/07/1960.');
+  });
+  it('rejects an impossible calendar date', () => {
+    expect(dobProblem('2024-02-31', dobToday)).toBe('Please enter a real date of birth, e.g. 08/07/1960.');
+  });
+  it('rejects a future date', () => {
+    expect(dobProblem('2026-10-11', dobToday)).toBe('Date of birth cannot be in the future.');
+  });
+  it('accepts today', () => {
+    expect(dobProblem('2026-10-10', dobToday)).toBeNull();
+  });
+  it('rejects a year before 1900', () => {
+    expect(dobProblem('1899-12-31', dobToday)).toBe('Please check the year of birth.');
+  });
+  it('accepts the earliest allowed date', () => {
+    expect(dobProblem('1900-01-01', dobToday)).toBeNull();
+  });
+});
+
+describe('passportExpiryProblem', () => {
+  const expiryToday = new Date(Date.UTC(2026, 9, 10));
+
+  it('accepts empty input', () => {
+    expect(passportExpiryProblem('', expiryToday)).toBeNull();
+  });
+  it('accepts a plausible future expiry', () => {
+    expect(passportExpiryProblem('2031-05-01', expiryToday)).toBeNull();
+  });
+  it('accepts a past expiry', () => {
+    expect(passportExpiryProblem('2020-01-01', expiryToday)).toBeNull();
+  });
+  it('rejects an unparseable date', () => {
+    expect(passportExpiryProblem('275760-01-01', expiryToday)).toBe('Please enter a real expiry date.');
+  });
+  it('rejects a year before 1990', () => {
+    expect(passportExpiryProblem('1980-01-01', expiryToday)).toBe('Please check the year of the expiry date.');
+  });
+  it('rejects a date more than 10 years ahead', () => {
+    expect(passportExpiryProblem('2040-01-01', expiryToday)).toBe('Please check the year — a passport is valid for 10 years at most.');
+  });
+});
+
+describe('toIsoDate', () => {
+  it('formats a UTC date as yyyy-mm-dd', () => {
+    expect(toIsoDate(new Date(Date.UTC(2026, 0, 5)))).toBe('2026-01-05');
   });
 });

@@ -383,3 +383,34 @@ describe('room sharing reads in plain words', () => {
     expect((screen.getByLabelText('Room for Alice') as HTMLSelectElement).value).toBe('');
   });
 });
+
+describe('date of birth checks', () => {
+  it('flags an impossible year, withholds the tick and blocks submit', () => {
+    const fetchMock = jest.fn();
+    (global as unknown as { fetch: typeof fetch }).fetch = fetchMock as unknown as typeof fetch;
+    setup();
+    fillRequiredFields();
+    fillTraveller(0, 'Alice', '275760-07-08');
+    expect(screen.getByText(/Please enter a real date of birth/)).toBeTruthy();
+    expect(screen.queryByLabelText('Complete')).toBeNull();
+    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
+    expect(fetchMock).not.toHaveBeenCalled();
+    expect(screen.getAllByText(/Please enter a real date of birth/).length).toBeGreaterThan(1);
+  });
+
+  it('rejects a date of birth in the future and accepts a normal one', () => {
+    setup();
+    fillTraveller(0, 'Alice', '2999-01-01');
+    expect(screen.getByText('Date of birth cannot be in the future.')).toBeTruthy();
+    fillTraveller(0, 'Alice', '1960-07-08');
+    expect(screen.queryByText('Date of birth cannot be in the future.')).toBeNull();
+    expect(screen.getByLabelText('Complete')).toBeTruthy();
+  });
+
+  it('flags a passport expiry year that cannot be right', () => {
+    setup();
+    fillTraveller(0, 'Alice');
+    fireEvent.change(document.querySelector('#passportExpiry-0')!, { target: { value: '2099-01-01' } });
+    expect(screen.getByText(/a passport is valid for 10 years at most/)).toBeTruthy();
+  });
+});

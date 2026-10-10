@@ -6,7 +6,12 @@ import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { Avatar, RoomAssignList, RoomLine } from './RoomingParts';
 import {
+  EARLIEST_BIRTH_DATE,
+  MAX_PASSPORT_YEARS_AHEAD,
+  dobProblem,
   parseDepartureDate,
+  passportExpiryProblem,
+  toIsoDate,
   passportStatus,
   type PassportStatus,
   type TourOption,
@@ -68,7 +73,10 @@ function travellerHasContent(t: Traveller): boolean {
 }
 
 function travellerIsComplete(t: Traveller): boolean {
-  return Boolean(t.fullName.trim() && t.dob.trim());
+  const today = new Date();
+  return Boolean(
+    t.fullName.trim() && t.dob.trim() && !dobProblem(t.dob, today) && !passportExpiryProblem(t.passportExpiry, today)
+  );
 }
 
 interface TravellerCardProps {
@@ -98,7 +106,14 @@ function TravellerCard({
   const complete = travellerIsComplete(traveller);
   const header = `Traveller ${index + 1}${name ? ` · ${name}` : ''}`;
 
-  const status = passportStatus(traveller.passportExpiry, departure, new Date());
+  const today = new Date();
+  const dobIssue = dobProblem(traveller.dob, today);
+  const expiryIssue = passportExpiryProblem(traveller.passportExpiry, today);
+  const latestExpiry = toIsoDate(
+    new Date(Date.UTC(today.getUTCFullYear() + MAX_PASSPORT_YEARS_AHEAD, today.getUTCMonth(), today.getUTCDate()))
+  );
+  const status = expiryIssue ? 'unknown' : passportStatus(traveller.passportExpiry, departure, today);
+  const invalidClass = 'border-red-400 focus:border-red-500 focus:ring-red-200';
 
   return (
     <div className={`space-y-4 rounded-xl border p-3 sm:p-5 ${expanded ? 'border-warm-300 bg-warm-50' : 'border-gray-200 bg-white'}`}>
@@ -157,10 +172,19 @@ function TravellerCard({
                 id={`dob-${index}`}
                 type="date"
                 required
+                min={EARLIEST_BIRTH_DATE}
+                max={toIsoDate(today)}
+                aria-invalid={dobIssue ? true : undefined}
+                aria-describedby={dobIssue ? `dob-error-${index}` : undefined}
                 value={traveller.dob}
                 onChange={(e) => onChange('dob', e.target.value)}
-                className={inputClass}
+                className={`${inputClass} ${dobIssue ? invalidClass : ''}`}
               />
+              {dobIssue && (
+                <p id={`dob-error-${index}`} role="alert" className="mt-2 text-sm text-red-700">
+                  {dobIssue}
+                </p>
+              )}
             </div>
           </div>
 
@@ -171,10 +195,19 @@ function TravellerCard({
             <input
               id={`passportExpiry-${index}`}
               type="date"
+              min="1990-01-01"
+              max={latestExpiry}
+              aria-invalid={expiryIssue ? true : undefined}
+              aria-describedby={expiryIssue ? `passportExpiry-error-${index}` : undefined}
               value={traveller.passportExpiry}
               onChange={(e) => onChange('passportExpiry', e.target.value)}
-              className={inputClass}
+              className={`${inputClass} ${expiryIssue ? invalidClass : ''}`}
             />
+            {expiryIssue && (
+              <p id={`passportExpiry-error-${index}`} role="alert" className="mt-2 text-sm text-red-700">
+                {expiryIssue}
+              </p>
+            )}
             {status !== 'unknown' && (
               <p role="status" className={`mt-2 text-sm ${PASSPORT_MESSAGES[status].className}`}>
                 {PASSPORT_MESSAGES[status].text}
@@ -371,7 +404,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     .map((room, index) => ({ room, index }))
     .filter(({ room }) => room.travellerIndexes.length > 0);
 
-  const focusTravellerField = (index: number, field: 'fullName' | 'dob') => {
+  const focusTravellerField = (index: number, field: 'fullName' | 'dob' | 'passportExpiry') => {
     setExpanded((current) => (current.includes(index) ? current : [...current, index]));
     requestAnimationFrame(() => {
       const el = document.getElementById(`${field}-${index}`) as HTMLInputElement | null;
@@ -414,6 +447,20 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         return {
           message: `Please fill in date of birth for Traveller ${i + 1} (${label}).`,
           focus: () => focusTravellerField(i, 'dob'),
+        };
+      }
+      const dobIssue = dobProblem(t.dob, new Date());
+      if (dobIssue) {
+        return {
+          message: `Traveller ${i + 1} (${label}): ${dobIssue}`,
+          focus: () => focusTravellerField(i, 'dob'),
+        };
+      }
+      const expiryIssue = passportExpiryProblem(t.passportExpiry, new Date());
+      if (expiryIssue) {
+        return {
+          message: `Traveller ${i + 1} (${label}): ${expiryIssue}`,
+          focus: () => focusTravellerField(i, 'passportExpiry'),
         };
       }
     }

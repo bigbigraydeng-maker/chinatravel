@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { roomLabel, validateRooms, type BedType, type Room } from '@/lib/traveller-rooms';
+import { dobProblem, passportExpiryProblem } from '@/lib/traveller-form';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 // Traveller registration forms always go to the CTS main inbox — fixed by request.
@@ -82,6 +83,20 @@ export async function POST(req: NextRequest) {
         { error: 'Please add at least one traveller with a full legal name and date of birth.' },
         { status: 400 }
       );
+    }
+    const now = new Date();
+    for (const t of validTravellers) {
+      const name = String(t.fullName || '').trim();
+      const dobIssue = dobProblem(String(t.dob || ''), now);
+      if (dobIssue) {
+        return NextResponse.json({ error: `${name}: ${dobIssue}` }, { status: 400 });
+      }
+      if (typeof t.passportExpiry === 'string' && t.passportExpiry.trim()) {
+        const expiryIssue = passportExpiryProblem(t.passportExpiry, now);
+        if (expiryIssue) {
+          return NextResponse.json({ error: `${name}: ${expiryIssue}` }, { status: 400 });
+        }
+      }
     }
     const rooms = parseRooms(roomsInput);
     if (!rooms) {
