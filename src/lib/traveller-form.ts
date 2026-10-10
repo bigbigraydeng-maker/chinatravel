@@ -8,6 +8,9 @@ export interface TourOption {
   name: string;
   /** Upcoming departures, formatted like the tour data, e.g. "13 May 2027". */
   dates: string[];
+  /** e.g. "NZD $968" — shown when a traveller has a room to themselves. */
+  singleSupplement?: string;
+  singleSupplementNote?: string;
 }
 
 export type PassportStatus = 'ok' | 'short' | 'expired' | 'unknown';

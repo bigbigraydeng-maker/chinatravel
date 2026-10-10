@@ -14,7 +14,7 @@ jest.mock('next/navigation', () => ({
 jest.mock('@/components/GoogleTagManager', () => ({ triggerGtmEvent: jest.fn() }));
 
 const tourOptions = [
-  { key: 'china/discovery/best-of-china', group: 'China Discovery', shortName: 'Best of China', name: 'China Discovery — Best of China', dates: ['13 May 2027', '21 October 2027'] },
+  { key: 'china/discovery/best-of-china', group: 'China Discovery', shortName: 'Best of China', name: 'China Discovery — Best of China', dates: ['13 May 2027', '21 October 2027'], singleSupplement: 'NZD $968' },
   { key: 'china/stopover/beijing-express', group: 'China Stopover', shortName: 'Beijing Express', name: 'China Stopover — Beijing Express', dates: [] },
 ];
 
@@ -190,7 +190,7 @@ describe('rooming', () => {
     // Carol is left alone, so her room turns into a single room instead of showing an error.
     const room2 = screen.getByText('Room 2 — Carol').closest('div')!;
     expect((room2.querySelector('button[aria-pressed="true"]') as HTMLButtonElement).textContent).toBe('Single');
-    expect(room2.querySelectorAll('button').length).toBe(1);
+    expect(room2.querySelectorAll('button').length).toBe(2);
     expect(screen.queryByText(/is a double room but has 1 person/)).toBeNull();
     expect(screen.getByText('Everyone has a room')).toBeTruthy();
   });
@@ -232,6 +232,28 @@ describe('rooming', () => {
     addTravellers(2);
     expect(screen.queryByText(/is not in any room/)).toBeNull();
     expect(screen.getByText(/Room 2/)).toBeTruthy();
+  });
+});
+
+describe('single supplement', () => {
+  it('shows the tour single supplement when a traveller is alone in a room', () => {
+    setup();
+    addTravellers(2);
+    pickTour('China Discovery', 'china/discovery/best-of-china');
+    expect(screen.getByText(/Single supplement applies: NZD \$968/)).toBeTruthy();
+  });
+
+  it('falls back to a generic message when no tour is picked', () => {
+    setup();
+    addTravellers(2);
+    expect(screen.getByText(/we will confirm the amount with you/)).toBeTruthy();
+  });
+
+  it('reveals the per-traveller room selects when Share a room instead is clicked', () => {
+    setup();
+    addTravellers(2);
+    fireEvent.click(screen.getByText('Share a room instead'));
+    expect(screen.getByLabelText('Room for Traveller 3')).toBeTruthy();
   });
 });
 

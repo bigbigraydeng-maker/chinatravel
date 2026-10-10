@@ -212,9 +212,21 @@ interface RoomLineProps {
   names: string[];
   invalid: boolean;
   onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
+  singleSupplement?: string;
+  singleSupplementNote?: string;
+  onShareInstead: () => void;
 }
 
-function RoomLine({ room, roomIndex, names, invalid, onBedTypeChange }: RoomLineProps) {
+function RoomLine({
+  room,
+  roomIndex,
+  names,
+  invalid,
+  onBedTypeChange,
+  singleSupplement,
+  singleSupplementNote,
+  onShareInstead,
+}: RoomLineProps) {
   // "Alice & Bob" / "Alice, Bob & Carol" reads better than a comma list on a room line.
   const memberNames = roomSummary(room, names).split(', ').filter(Boolean);
   const members =
@@ -254,6 +266,19 @@ function RoomLine({ room, roomIndex, names, invalid, onBedTypeChange }: RoomLine
           );
         })}
       </div>
+      {size === 1 && (
+        <div className="space-y-2">
+          <p className="text-sm text-gray-700">
+            {singleSupplement
+              ? `Single supplement applies: ${singleSupplement} (added to the tour price).`
+              : 'A single supplement applies for a room to yourself — we will confirm the amount with you.'}
+            {singleSupplementNote ? ` ${singleSupplementNote}` : ''}
+          </p>
+          <button type="button" onClick={onShareInstead} className="text-sm text-primary font-medium hover:underline">
+            Share a room instead
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -803,6 +828,9 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                   names={names}
                   invalid={roomHasProblem(room)}
                   onBedTypeChange={setRoomBedType}
+                  singleSupplement={selectedTour?.singleSupplement}
+                  singleSupplementNote={selectedTour?.singleSupplementNote}
+                  onShareInstead={() => setShowAssign(true)}
                 />
               ))}
               {roomErrors.length > 0 ? (

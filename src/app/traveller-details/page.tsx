@@ -35,6 +35,8 @@ function buildTourOptions(): TourOption[] {
         shortName: name.startsWith(`${group} — `) ? name.slice(group.length + 3) : name,
         name,
         dates: upcomingDates(tour.departureDates, today),
+        singleSupplement: tour.singleSupplement,
+        singleSupplementNote: tour.singleSupplementNote,
       };
     })
     .sort((a, b) => a.group.localeCompare(b.group) || a.shortName.localeCompare(b.shortName));
