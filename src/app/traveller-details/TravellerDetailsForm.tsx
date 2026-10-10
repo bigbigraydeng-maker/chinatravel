@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
+import { Avatar, RoomAssignList, RoomLine } from './RoomingParts';
 import {
   parseDepartureDate,
   passportStatus,
@@ -13,7 +14,6 @@ import {
 import {
   defaultRooms,
   placeNewTraveller,
-  roomSummary,
   tidyRooms,
   validateRooms,
   type BedType,
@@ -31,9 +31,15 @@ interface Traveller {
 const emptyTraveller = (): Traveller => ({ fullName: '', dob: '', dietary: '', medical: '', passportExpiry: '' });
 
 const inputClass =
-  'w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary';
+  'w-full px-4 py-3 border border-gray-300 rounded-lg bg-white placeholder:text-gray-500 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/30';
 const labelClass = 'block text-gray-700 mb-2 text-sm font-medium';
-const stepClass = 'block text-xs uppercase tracking-wide text-gray-400 mb-1';
+const stepClass = 'block font-sans text-[11px] font-medium uppercase tracking-[0.14em] text-gray-600';
+const stepBadgeClass =
+  'flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-primary font-sans text-sm font-semibold text-white';
+// A legend normally straddles the fieldset's top edge; floating it makes it flow inside the card padding.
+const cardClass =
+  'space-y-5 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-black/5 sm:p-8 [&>legend]:float-left [&>legend]:mb-5 [&>legend]:w-full [&>legend+*]:clear-both';
+const legendClass = 'font-serif text-xl font-semibold text-dark';
 
 const OTHER_TOUR = '__other__';
 const NEW_ROOM = '__new__';
@@ -95,13 +101,14 @@ function TravellerCard({
   const status = passportStatus(traveller.passportExpiry, departure, new Date());
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-4">
+    <div className={`space-y-4 rounded-xl border p-3 sm:p-5 ${expanded ? 'border-warm-300 bg-warm-50' : 'border-gray-200 bg-white'}`}>
       <div className="flex items-center justify-between gap-3">
         <button
           type="button"
           onClick={onToggleExpand}
-          className="font-semibold text-dark flex items-center gap-2 text-left"
+          className="font-semibold text-dark flex items-center gap-3 text-left"
         >
+          <Avatar name={traveller.fullName} index={index} />
           <span>{header}</span>
           {complete && (
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs" aria-label="Complete">
@@ -109,9 +116,11 @@ function TravellerCard({
             </span>
           )}
         </button>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-shrink-0 items-center gap-1 sm:gap-3">
           {canRemove && (
-            <button type="button" onClick={onRemove} className="min-h-[44px] px-2 text-sm text-red-600 hover:text-red-700">
+            // On a phone a collapsed card only offers Edit; Remove appears once the card is open.
+            <button type="button" onClick={onRemove}
+              className={`min-h-[44px] px-2 text-sm text-red-600 hover:text-red-700 ${expanded ? '' : 'hidden sm:inline-block'}`}>
               Remove
             </button>
           )}
@@ -157,7 +166,7 @@ function TravellerCard({
 
           <div>
             <label htmlFor={`passportExpiry-${index}`} className={labelClass}>
-              Passport expiry date <span className="text-gray-400">(optional — we never ask for your passport number here)</span>
+              Passport expiry date <span className="text-gray-500">(optional — we never ask for your passport number here)</span>
             </label>
             <input
               id={`passportExpiry-${index}`}
@@ -175,7 +184,7 @@ function TravellerCard({
 
           <div>
             <label htmlFor={`dietary-${index}`} className={labelClass}>
-              Dietary requirements <span className="text-gray-400">(optional)</span>
+              Dietary requirements <span className="text-gray-500">(optional)</span>
             </label>
             <input
               id={`dietary-${index}`}
@@ -189,7 +198,7 @@ function TravellerCard({
 
           <div>
             <label htmlFor={`medical-${index}`} className={labelClass}>
-              Medical or mobility notes <span className="text-gray-400">(optional)</span>
+              Medical or mobility notes <span className="text-gray-500">(optional)</span>
             </label>
             <textarea
               id={`medical-${index}`}
@@ -202,124 +211,6 @@ function TravellerCard({
           </div>
         </div>
       )}
-    </div>
-  );
-}
-
-interface RoomLineProps {
-  room: Room;
-  roomIndex: number;
-  names: string[];
-  invalid: boolean;
-  onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
-  singleSupplement?: string;
-  singleSupplementNote?: string;
-  onShareInstead: () => void;
-}
-
-function RoomLine({
-  room,
-  roomIndex,
-  names,
-  invalid,
-  onBedTypeChange,
-  singleSupplement,
-  singleSupplementNote,
-  onShareInstead,
-}: RoomLineProps) {
-  // "Alice & Bob" / "Alice, Bob & Carol" reads better than a comma list on a room line.
-  const memberNames = roomSummary(room, names).split(', ').filter(Boolean);
-  const members =
-    memberNames.length <= 1
-      ? memberNames.join('')
-      : `${memberNames.slice(0, -1).join(', ')} & ${memberNames[memberNames.length - 1]}`;
-  const size = room.travellerIndexes.length;
-  const frame = invalid ? 'border-red-300 bg-red-50/40' : 'border-gray-200 bg-gray-50/60';
-  const options: { value: BedType; label: string }[] =
-    size === 1
-      ? [{ value: 'single', label: 'Single' }]
-      : [
-          { value: 'double', label: 'Double bed' },
-          { value: 'twin', label: 'Twin beds' },
-        ];
-
-  return (
-    <div className={`rounded-xl border p-4 space-y-3 ${frame}`}>
-      <p className="font-semibold text-dark">{`Room ${roomIndex + 1} — ${members || '—'}`}</p>
-      <div className="flex flex-wrap gap-2">
-        {options.map((option) => {
-          const selected = room.bedType === option.value;
-          return (
-            <button
-              key={option.value}
-              type="button"
-              aria-pressed={selected}
-              onClick={() => onBedTypeChange(roomIndex, option.value)}
-              className={`min-h-[44px] px-4 rounded-full border text-sm font-medium ${
-                selected
-                  ? 'bg-primary text-white border-primary'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-primary'
-              }`}
-            >
-              {option.label}
-            </button>
-          );
-        })}
-      </div>
-      {size === 1 && (
-        <div className="space-y-2">
-          <p className="text-sm text-gray-700">
-            {singleSupplement
-              ? `Single supplement applies: ${singleSupplement} (added to the tour price).`
-              : 'A single supplement applies for a room to yourself — we will confirm the amount with you.'}
-            {singleSupplementNote ? ` ${singleSupplementNote}` : ''}
-          </p>
-          <button type="button" onClick={onShareInstead} className="text-sm text-primary font-medium hover:underline">
-            Share a room instead
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
-interface RoomAssignListProps {
-  travellers: Traveller[];
-  rooms: Room[];
-  onAssign: (travellerIndex: number, value: string) => void;
-}
-
-function RoomAssignList({ travellers, rooms, onAssign }: RoomAssignListProps) {
-  return (
-    <div className="space-y-3 rounded-xl border border-gray-200 p-4">
-      {travellers.map((t, i) => {
-        const roomIndex = rooms.findIndex((r) => r.travellerIndexes.includes(i));
-        const label = t.fullName.trim() || `Traveller ${i + 1}`;
-        const alone = roomIndex === -1 || rooms[roomIndex].travellerIndexes.length === 1;
-        return (
-          <div key={i} className="flex flex-wrap items-center gap-3">
-            <span className="text-sm text-gray-700 min-w-[8rem]">{label}</span>
-            <select
-              aria-label={`Room for ${label}`}
-              value={alone ? '' : String(roomIndex)}
-              onChange={(e) => onAssign(i, e.target.value)}
-              className={inputClass}
-            >
-              <option value="">Own room</option>
-              {rooms.map((room, ri) => {
-                const others = room.travellerIndexes.filter((idx) => idx !== i);
-                if (others.length === 0) return null;
-                const othersLabel = others
-                  .map((idx) => travellers[idx]?.fullName.trim() || `Traveller ${idx + 1}`)
-                  .join(' & ');
-                return (
-                  <option key={ri} value={String(ri)}>{`Share with ${othersLabel}`}</option>
-                );
-              })}
-            </select>
-          </div>
-        );
-      })}
     </div>
   );
 }
@@ -651,15 +542,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
 
   const childrenBlock = (
     <div className="space-y-3">
-      <label className="flex items-start gap-3 cursor-pointer">
+      <label className="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3">
         <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
-          className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+          className="h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
         <span className="text-sm text-gray-700">Children are travelling with us</span>
       </label>
       {hasChildren && (
         <div>
           <label htmlFor="childrenNotes" className={labelClass}>
-            Children&apos;s ages and room needs <span className="text-gray-400">(optional)</span>
+            Children&apos;s ages and room needs <span className="text-gray-500">(optional)</span>
           </label>
           <input id="childrenNotes" type="text" value={childrenNotes}
             onChange={(e) => setChildrenNotes(e.target.value)}
@@ -673,8 +564,8 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const totalSteps = showRooming ? 4 : 3;
 
   return (
-    <section className="section bg-white">
-      <div className="container max-w-3xl">
+    <section className="section bg-light">
+      <div className="container !max-w-3xl">
         <p className="text-gray-600 mb-8 leading-relaxed">
           Please complete this form so we can finalise your booking. Enter each traveller&apos;s full legal
           name exactly as it appears on their passport — this is what we use for flights, visas and hotels.
@@ -701,12 +592,17 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-10">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Booking / lead contact */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>{`Step 1 of ${totalSteps}`}</span>
-              Your booking
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">1</span>
+                <span>
+                  <span className={stepClass}>{`Step 1 of ${totalSteps}`}</span>
+                  Your booking
+                </span>
+              </span>
             </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
@@ -792,10 +688,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           </fieldset>
 
           {/* Travellers */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>{`Step 2 of ${totalSteps}`}</span>
-              Travellers
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">2</span>
+                <span>
+                  <span className={stepClass}>{`Step 2 of ${totalSteps}`}</span>
+                  Travellers
+                </span>
+              </span>
             </legend>
             {travellers.map((t, i) => (
               <TravellerCard
@@ -812,14 +713,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
               />
             ))}
             <button type="button" onClick={addTraveller}
-              className="min-h-[44px] inline-flex items-center gap-2 text-primary font-medium hover:underline">
+              className="inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl border-2 border-dashed border-warm-300 font-medium text-primary transition-colors hover:border-primary/50 hover:bg-warm-50">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
               Add another traveller
             </button>
             {travellers.length === 1 && (
-              <p className="text-sm text-gray-700">
+              <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
                 {selectedTour?.singleSupplement
                   ? `Travelling on your own means a room to yourself — single supplement ${selectedTour.singleSupplement} applies (added to the tour price).`
                   : 'Travelling on your own means a room to yourself — a single supplement applies and we will confirm the amount with you.'}
@@ -831,10 +732,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
 
           {/* Rooming */}
           {showRooming && (
-            <fieldset ref={roomingRef} className="space-y-4">
-              <legend className="text-xl font-serif font-semibold text-dark mb-2">
-                <span className={stepClass}>Step 3 of 4</span>
-                Who shares a room?
+            <fieldset ref={roomingRef} className={cardClass}>
+              <legend className={legendClass}>
+                <span className="flex items-center gap-3">
+                  <span className={stepBadgeClass} aria-hidden="true">3</span>
+                  <span>
+                    <span className={stepClass}>Step 3 of 4</span>
+                    Who shares a room?
+                  </span>
+                </span>
               </legend>
               {activeRooms.map(({ room, index }) => (
                 <RoomLine
@@ -849,22 +755,36 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                   onShareInstead={() => setShowAssign(true)}
                 />
               ))}
-              {roomErrors.length > 0 ? (
-                <div className="space-y-1">
+              {roomErrors.length > 0 && (
+                <div className="space-y-1 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
                   {roomErrors.map((err) => (
                     <p key={err} className="text-sm text-red-700">{err}</p>
                   ))}
                 </div>
-              ) : (
-                <p className="text-sm text-green-700">Everyone has a room</p>
               )}
-              <button
-                type="button"
-                onClick={() => setShowAssign(true)}
-                className="text-sm text-primary font-medium hover:underline"
-              >
-                Change who shares with whom
-              </button>
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                {roomErrors.length === 0 ? (
+                  <p className="inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1.5 text-sm font-medium text-green-700">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Everyone has a room
+                  </p>
+                ) : (
+                  <span />
+                )}
+                <button
+                  type="button"
+                  aria-expanded={showAssign}
+                  onClick={() => setShowAssign((open) => !open)}
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gray-300 bg-white px-4 text-sm font-medium text-dark transition-colors hover:border-primary hover:text-primary"
+                >
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                  </svg>
+                  Change who shares with whom
+                </button>
+              </div>
               {showAssign && (
                 <RoomAssignList travellers={travellers} rooms={rooms} onAssign={assignTravellerToRoom} />
               )}
@@ -873,10 +793,15 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           )}
 
           {/* Emergency contact */}
-          <fieldset className="space-y-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>{`Step ${totalSteps} of ${totalSteps}`}</span>
-              Emergency contact &amp; confirmation
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>
+              <span className="flex items-center gap-3">
+                <span className={stepBadgeClass} aria-hidden="true">{totalSteps}</span>
+                <span>
+                  <span className={stepClass}>{`Step ${totalSteps} of ${totalSteps}`}</span>
+                  Emergency contact &amp; confirmation
+                </span>
+              </span>
             </legend>
             <p className="text-sm text-gray-500 -mt-2">Someone not travelling with you whom we can contact if needed.</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -904,10 +829,10 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           </fieldset>
 
           {/* Special occasion */}
-          <fieldset className="space-y-3">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">Special occasion</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>Special occasion</legend>
             <label htmlFor="specialOccasion" className={labelClass}>
-              Celebrating something during your trip? <span className="text-gray-400">(optional)</span>
+              Celebrating something during your trip? <span className="text-gray-500">(optional)</span>
             </label>
             <input id="specialOccasion" type="text" value={specialOccasion}
               onChange={(e) => setSpecialOccasion(e.target.value)}
@@ -916,11 +841,11 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
           </fieldset>
 
           {/* Consent */}
-          <fieldset className="space-y-4 rounded-xl border border-gray-200 bg-gray-50/60 p-5">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2 px-2">Confirmation</legend>
+          <fieldset className={cardClass}>
+            <legend className={legendClass}>Confirmation</legend>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreePassport} onChange={(e) => setAgreePassport(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
               <span className="text-sm text-gray-700">
                 I have checked that every traveller&apos;s passport is valid for at least 6 months from the travel date,
                 with a couple of blank pages.
@@ -928,14 +853,14 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
             </label>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreeAccurate} onChange={(e) => setAgreeAccurate(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
               <span className="text-sm text-gray-700">
                 I confirm the details above are correct and match each traveller&apos;s passport.
               </span>
             </label>
             <label className="flex items-start gap-3 cursor-pointer">
               <input type="checkbox" checked={agreeTerms} onChange={(e) => setAgreeTerms(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+                className="mt-0.5 h-5 w-5 flex-shrink-0 rounded border-gray-300 text-primary focus:ring-primary" />
               <span className="text-sm text-gray-700">
                 I have read and agree to the{' '}
                 <Link href="/terms-and-conditions" target="_blank" className="text-primary font-medium underline">
@@ -956,7 +881,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
             <button type="submit" disabled={isLoading} className="btn-primary w-full py-3">
               {isLoading ? 'Submitting...' : 'Submit details'}
             </button>
-            <p className="text-xs text-gray-400 text-center mt-3">
+            <p className="text-xs text-gray-600 text-center mt-3">
               Your information is handled in line with our{' '}
               <Link href="/privacy-policy" target="_blank" className="underline">Privacy Policy</Link>.
             </p>
