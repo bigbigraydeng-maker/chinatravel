@@ -107,34 +107,19 @@ describe('travellers flow', () => {
     expect(document.querySelector('#fullName-0')).toBeNull();
   });
 
-  it('lists rooms and New room in the Room select', () => {
+  it('has no Done button and no Room select on a card', () => {
     setup();
-    const select = document.querySelector('#room-0') as HTMLSelectElement;
-    expect(Array.from(select.options).map((o) => o.text)).toEqual([
-      'Not assigned', 'Room 1', 'New room',
-    ]);
+    expect(screen.queryByText('Done')).toBeNull();
+    expect(screen.queryByLabelText('Room')).toBeNull();
   });
 
-  it('creates a new room when New room is chosen and names the old room-mate in the error', () => {
+  it('expands a collapsed card when its header is clicked', () => {
     setup();
     fillTraveller(0, 'Alice');
     fireEvent.click(screen.getByText('Add another traveller'));
-    fillTraveller(1, 'Dan');
-    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '__new__' } });
-    // Alice and Dan were paired in Room 1; Dan moves to a new Room 2, leaving both rooms with one person.
-    expect(screen.getByRole('heading', { name: 'Room 2' })).toBeTruthy();
-    expect(screen.getByText(/Room 1 \(Alice\) is a double room but has 1 person/)).toBeTruthy();
-    expect(screen.getByText(/Room 2 \(Dan\) is a double room but has 1 person/)).toBeTruthy();
-  });
-
-  it('blocks submit with a name-based message when a double room has one person', () => {
-    setup();
-    fillTraveller(0, 'Alice');
-    fillRequiredFields();
-    // A lone traveller defaults to Single; switch the room to Double to create the problem.
-    fireEvent.click(document.querySelector('input[name="bedType-0"][value="double"]')!);
-    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
-    expect(screen.getAllByText(/Room 1 \(Alice\) is a double room but has 1 person/).length).toBeGreaterThan(0);
+    expect(document.querySelector('#fullName-0')).toBeNull();
+    fireEvent.click(screen.getByText(/Traveller 1 · Alice/));
+    expect(document.querySelector('#fullName-0')).toBeTruthy();
   });
 
   it('asks for confirmation before removing a traveller with content', () => {
@@ -151,22 +136,20 @@ describe('travellers flow', () => {
 });
 
 describe('rooming', () => {
-  it('starts a lone traveller in a single room', () => {
+  it('hides the rooming section for a single traveller', () => {
     setup();
-    expect(screen.getByRole('heading', { name: 'Room 1' })).toBeTruthy();
-    const single = screen.getByLabelText(/Single/) as HTMLInputElement;
-    expect(single.checked).toBe(true);
+    expect(screen.queryByText('Who shares a room?')).toBeNull();
   });
 
   it('pairs four travellers into two double rooms by default', () => {
     setup();
     addTravellers(3);
-    expect(screen.getByRole('heading', { name: 'Room 1' })).toBeTruthy();
-    expect(screen.getByRole('heading', { name: 'Room 2' })).toBeTruthy();
-    const room1 = screen.getByRole('heading', { name: 'Room 1' }).closest('div')!.parentElement!;
-    const room2 = screen.getByRole('heading', { name: 'Room 2' }).closest('div')!.parentElement!;
-    expect((room1.querySelector('input[name="bedType-0"]') as HTMLInputElement).checked).toBe(true);
-    expect((room2.querySelector('input[name="bedType-1"]') as HTMLInputElement).checked).toBe(true);
+    ['Alice', 'Bob', 'Carol', 'Dan'].forEach((name, i) => fillTraveller(i, name));
+    expect(screen.getByText('Room 1 — Alice & Bob')).toBeTruthy();
+    expect(screen.getByText('Room 2 — Carol & Dan')).toBeTruthy();
+    const room1 = screen.getByText('Room 1 — Alice & Bob').closest('div')!;
+    const doubleBtn = room1.querySelector('button[aria-pressed="true"]') as HTMLButtonElement;
+    expect(doubleBtn.textContent).toBe('Double bed');
   });
 
   it('sends per-room bed types and traveller indexes on submit', async () => {
@@ -181,8 +164,8 @@ describe('rooming', () => {
     fillTraveller(3, 'Dan');
     fillRequiredFields();
 
-    const room1 = screen.getByRole('heading', { name: 'Room 1' }).closest('div')!.parentElement!;
-    fireEvent.click(room1.querySelector('input[name="bedType-0"][value="twin"]')!);
+    const room1 = screen.getByText('Room 1 — Alice & Bob').closest('div')!;
+    fireEvent.click(room1.querySelector('button')!.nextElementSibling as HTMLButtonElement);
 
     fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
 
@@ -192,6 +175,31 @@ describe('rooming', () => {
       { bedType: 'twin', travellerIndexes: [0, 1] },
       { bedType: 'double', travellerIndexes: [2, 3] },
     ]);
+  });
+
+  it('reveals per-traveller room selects and moves a traveller to their own room', () => {
+    setup();
+    addTravellers(3);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    fillTraveller(2, 'Carol');
+    fillTraveller(3, 'Dan');
+    fireEvent.click(screen.getByText('Change who shares with whom'));
+    fireEvent.change(screen.getByLabelText('Room for Dan'), { target: { value: '' } });
+    expect(screen.getByText('Room 3 — Dan')).toBeTruthy();
+    expect(screen.getByText(/Room 2 \(Carol\) is a double room but has 1 person/)).toBeTruthy();
+  });
+
+  it('blocks submit with a name-based message when a double room has one person', () => {
+    setup();
+    addTravellers(1);
+    fillTraveller(0, 'Alice');
+    fillTraveller(1, 'Bob');
+    fillRequiredFields();
+    fireEvent.click(screen.getByText('Change who shares with whom'));
+    fireEvent.change(screen.getByLabelText('Room for Bob'), { target: { value: '' } });
+    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
+    expect(screen.getAllByText(/Room 1 \(Alice\) is a double room but has 1 person/).length).toBeGreaterThan(0);
   });
 
   it('reveals the children notes field when children are travelling', () => {
@@ -243,16 +251,13 @@ describe('passport confirmation', () => {
 describe('room numbering stays consistent', () => {
   it('drops empty rooms so the card, the select and the summary agree', () => {
     setup();
+    addTravellers(1);
     fillTraveller(0, 'Alice');
-    fireEvent.click(screen.getByText('Add another traveller'));
-    fillTraveller(1, 'Dan');
-    // Dan leaves Room 1 for a new room, then comes back: the empty room must vanish.
-    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '__new__' } });
-    fireEvent.change(document.querySelector('#room-1')!, { target: { value: '0' } });
-    const select = document.querySelector('#room-1') as HTMLSelectElement;
-    expect(Array.from(select.options).map((o) => o.text)).toEqual(['Not assigned', 'Room 1', 'New room']);
-    expect(screen.queryByRole('heading', { name: 'Room 2' })).toBeNull();
-    expect(screen.getByText(/Traveller 2 · Dan · Room 1/)).toBeTruthy();
-    expect(screen.getAllByText('Sharing with Alice').length).toBe(1);
+    fillTraveller(1, 'Bob');
+    fireEvent.click(screen.getByText('Change who shares with whom'));
+    fireEvent.change(screen.getByLabelText('Room for Bob'), { target: { value: '' } });
+    fireEvent.change(screen.getByLabelText('Room for Bob'), { target: { value: '0' } });
+    expect(screen.getByText('Room 1 — Alice & Bob')).toBeTruthy();
+    expect(screen.queryByText('Room 2 — Bob')).toBeNull();
   });
 });

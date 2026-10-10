@@ -12,7 +12,6 @@ import {
 } from '@/lib/traveller-form';
 import {
   defaultRooms,
-  roomLabel,
   roomSummary,
   validateRooms,
   type BedType,
@@ -36,12 +35,6 @@ const stepClass = 'block text-xs uppercase tracking-wide text-gray-400 mb-1';
 
 const OTHER_TOUR = '__other__';
 const NEW_ROOM = '__new__';
-
-const BED_OPTIONS: { value: BedType; title: string; hint: string }[] = [
-  { value: 'double', title: 'Double', hint: 'one bed' },
-  { value: 'twin', title: 'Twin', hint: 'two separate beds' },
-  { value: 'single', title: 'Single', hint: 'one person' },
-];
 
 const PASSPORT_MESSAGES: Record<Exclude<PassportStatus, 'unknown'>, { text: string; className: string }> = {
   ok: { text: 'Great — this passport meets the 6-month recommendation.', className: 'text-green-700' },
@@ -74,16 +67,11 @@ interface TravellerCardProps {
   index: number;
   traveller: Traveller;
   expanded: boolean;
-  roomIndex: number | null;
-  rooms: Room[];
   canRemove: boolean;
   nameInputRef: (el: HTMLInputElement | null) => void;
   onToggleExpand: () => void;
   onChange: (field: keyof Traveller, value: string) => void;
   onRemove: () => void;
-  onRoomChange: (value: string) => void;
-  /** Names of the people sharing this traveller's room, for an at-a-glance hint. */
-  roomMates: string[];
   departure: Date | null;
 }
 
@@ -91,45 +79,45 @@ function TravellerCard({
   index,
   traveller,
   expanded,
-  roomIndex,
-  rooms,
   canRemove,
   nameInputRef,
   onToggleExpand,
   onChange,
   onRemove,
-  onRoomChange,
-  roomMates,
   departure,
 }: TravellerCardProps) {
   const name = traveller.fullName.trim();
   const complete = travellerIsComplete(traveller);
-  const header = `Traveller ${index + 1}${name ? ` · ${name}` : ''}${
-    roomIndex !== null ? ` · Room ${roomIndex + 1}` : ''
-  }`;
+  const header = `Traveller ${index + 1}${name ? ` · ${name}` : ''}`;
 
   const status = passportStatus(traveller.passportExpiry, departure, new Date());
 
   return (
     <div className="rounded-xl border border-gray-200 bg-gray-50/60 p-5 space-y-4">
       <div className="flex items-center justify-between gap-3">
-        <h3 className="font-semibold text-dark flex items-center gap-2">
+        <button
+          type="button"
+          onClick={onToggleExpand}
+          className="font-semibold text-dark flex items-center gap-2 text-left"
+        >
           <span>{header}</span>
           {complete && (
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100 text-green-700 text-xs" aria-label="Complete">
               ✓
             </span>
           )}
-        </h3>
+        </button>
         <div className="flex items-center gap-3">
           {canRemove && (
             <button type="button" onClick={onRemove} className="min-h-[44px] px-2 text-sm text-red-600 hover:text-red-700">
               Remove
             </button>
           )}
-          <button type="button" onClick={onToggleExpand} className="min-h-[44px] px-2 text-sm text-primary font-medium hover:underline">
-            {expanded ? 'Done' : 'Edit'}
-          </button>
+          {!expanded && (
+            <button type="button" onClick={onToggleExpand} className="min-h-[44px] px-2 text-sm text-primary font-medium hover:underline">
+              Edit
+            </button>
+          )}
         </div>
       </div>
 
@@ -163,28 +151,6 @@ function TravellerCard({
                 className={inputClass}
               />
             </div>
-          </div>
-
-          <div>
-            <label htmlFor={`room-${index}`} className={labelClass}>Room</label>
-            <select
-              id={`room-${index}`}
-              value={roomIndex === null ? '' : String(roomIndex)}
-              onChange={(e) => onRoomChange(e.target.value)}
-              className={inputClass}
-            >
-              <option value="">Not assigned</option>
-              {rooms.map((_, i) => (
-                <option key={i} value={String(i)}>{`Room ${i + 1}`}</option>
-              ))}
-              <option value={NEW_ROOM}>New room</option>
-            </select>
-            {roomMates.length > 0 && (
-              <p className="mt-1 text-sm text-gray-600">Sharing with {roomMates.join(', ')}</p>
-            )}
-            {roomIndex !== null && roomMates.length === 0 && (
-              <p className="mt-1 text-sm text-gray-500">Own room for now — pick the same room on another traveller to share.</p>
-            )}
           </div>
 
           <div>
@@ -238,7 +204,7 @@ function TravellerCard({
   );
 }
 
-interface RoomSummaryRowProps {
+interface RoomLineProps {
   room: Room;
   roomIndex: number;
   names: string[];
@@ -246,35 +212,77 @@ interface RoomSummaryRowProps {
   onBedTypeChange: (roomIndex: number, bedType: BedType) => void;
 }
 
-function RoomSummaryRow({ room, roomIndex, names, invalid, onBedTypeChange }: RoomSummaryRowProps) {
-  const members = roomSummary(room, names);
+function RoomLine({ room, roomIndex, names, invalid, onBedTypeChange }: RoomLineProps) {
+  // "Alice & Bob" / "Alice, Bob & Carol" reads better than a comma list on a room line.
+  const memberNames = roomSummary(room, names).split(', ').filter(Boolean);
+  const members =
+    memberNames.length <= 1
+      ? memberNames.join('')
+      : `${memberNames.slice(0, -1).join(', ')} & ${memberNames[memberNames.length - 1]}`;
+  const size = room.travellerIndexes.length;
   const frame = invalid ? 'border-red-300 bg-red-50/40' : 'border-gray-200 bg-gray-50/60';
+  const options: { value: BedType; label: string }[] = [
+    { value: 'double', label: 'Double bed' },
+    { value: 'twin', label: 'Twin beds' },
+  ];
+  if (size === 1) options.push({ value: 'single', label: 'Single' });
+
   return (
-    <div className={`rounded-xl border p-5 space-y-3 ${frame}`}>
-      <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-dark">Room {roomIndex + 1}</h3>
-        <span className="text-sm text-gray-600">{members || '—'}</span>
+    <div className={`rounded-xl border p-4 space-y-3 ${frame}`}>
+      <p className="font-semibold text-dark">{`Room ${roomIndex + 1} — ${members || '—'}`}</p>
+      <div className="flex flex-wrap gap-2">
+        {options.map((option) => {
+          const selected = room.bedType === option.value;
+          return (
+            <button
+              key={option.value}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => onBedTypeChange(roomIndex, option.value)}
+              className={`min-h-[44px] px-4 rounded-full border text-sm font-medium ${
+                selected
+                  ? 'bg-primary text-white border-primary'
+                  : 'bg-white text-gray-700 border-gray-300 hover:border-primary'
+              }`}
+            >
+              {option.label}
+            </button>
+          );
+        })}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        {BED_OPTIONS.map((option) => (
-          <label
-            key={option.value}
-            className="flex items-start gap-3 rounded-lg border border-gray-300 p-4 cursor-pointer"
-          >
-            <input
-              type="radio"
-              name={`bedType-${roomIndex}`}
-              value={option.value}
-              checked={room.bedType === option.value}
-              onChange={() => onBedTypeChange(roomIndex, option.value)}
-              className="mt-1 h-5 w-5 border-gray-300 text-primary focus:ring-primary"
-            />
-            <span className="text-sm text-gray-700">
-              <strong>{option.title}</strong> — {option.hint}
-            </span>
-          </label>
-        ))}
-      </div>
+    </div>
+  );
+}
+
+interface RoomAssignListProps {
+  travellers: Traveller[];
+  rooms: Room[];
+  onAssign: (travellerIndex: number, value: string) => void;
+}
+
+function RoomAssignList({ travellers, rooms, onAssign }: RoomAssignListProps) {
+  return (
+    <div className="space-y-3 rounded-xl border border-gray-200 p-4">
+      {travellers.map((t, i) => {
+        const roomIndex = rooms.findIndex((r) => r.travellerIndexes.includes(i));
+        const label = t.fullName.trim() || `Traveller ${i + 1}`;
+        return (
+          <div key={i} className="flex flex-wrap items-center gap-3">
+            <span className="text-sm text-gray-700 min-w-[8rem]">{label}</span>
+            <select
+              aria-label={`Room for ${label}`}
+              value={roomIndex === -1 ? '' : String(roomIndex)}
+              onChange={(e) => onAssign(i, e.target.value)}
+              className={inputClass}
+            >
+              <option value="">Own room</option>
+              {rooms.map((_, ri) => (
+                <option key={ri} value={String(ri)}>{`Room ${ri + 1}`}</option>
+              ))}
+            </select>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -299,6 +307,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
   const [expanded, setExpanded] = useState<number[]>([0]);
   const [hasChildren, setHasChildren] = useState(false);
   const [childrenNotes, setChildrenNotes] = useState('');
+  const [showAssign, setShowAssign] = useState(false);
 
   const selectedTour = tourOptions.find((t) => t.key === tourSlug);
   const tourName = tourGroup === OTHER_TOUR ? otherTourName : selectedTour?.name ?? '';
@@ -333,7 +342,6 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
       const newIndex = next.length - 1;
       setExpanded((current) => {
         const previous = current.filter((i) => i !== newIndex);
-        // Finished cards fold away; a half-filled one stays open so nothing gets lost.
         const keep = previous.filter((i) => !travellerIsComplete(prev[i]));
         return [...keep, newIndex];
       });
@@ -388,9 +396,10 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
         ...room,
         travellerIndexes: room.travellerIndexes.filter((idx) => idx !== travellerIndex),
       }));
-      // Rooms that end up empty are dropped, so "Room N" means the same thing on every card and in the summary.
       const prune = (list: Room[]) => list.filter((room) => room.travellerIndexes.length > 0);
-      if (value === '') return prune(cleared);
+      if (value === '') {
+        return [...prune(cleared), { bedType: 'single' as BedType, travellerIndexes: [travellerIndex] }];
+      }
       if (value === NEW_ROOM) {
         return [...prune(cleared), { bedType: 'double' as BedType, travellerIndexes: [travellerIndex] }];
       }
@@ -410,20 +419,7 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     );
   };
 
-  const roomIndexForTraveller = (travellerIndex: number): number | null => {
-    const idx = rooms.findIndex((r) => r.travellerIndexes.includes(travellerIndex));
-    return idx === -1 ? null : idx;
-  };
-
   const names = travellers.map((t) => t.fullName.trim());
-  const roomMatesOf = (travellerIndex: number): string[] => {
-    const room = rooms.find((r) => r.travellerIndexes.includes(travellerIndex));
-    if (!room) return [];
-    return room.travellerIndexes
-      .filter((idx) => idx !== travellerIndex)
-      .sort((a, b) => a - b)
-      .map((idx) => names[idx] || `Traveller ${idx + 1}`);
-  };
   const roomHasProblem = (room: Room): boolean => {
     const size = room.travellerIndexes.length;
     if (room.bedType === 'single') return size !== 1;
@@ -603,6 +599,28 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
     );
   }
 
+  const childrenBlock = (
+    <div className="space-y-3">
+      <label className="flex items-start gap-3 cursor-pointer">
+        <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
+          className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
+        <span className="text-sm text-gray-700">Children are travelling with us</span>
+      </label>
+      {hasChildren && (
+        <div>
+          <label htmlFor="childrenNotes" className={labelClass}>
+            Children&apos;s ages and room needs <span className="text-gray-400">(optional)</span>
+          </label>
+          <input id="childrenNotes" type="text" value={childrenNotes}
+            onChange={(e) => setChildrenNotes(e.target.value)}
+            placeholder="e.g. one child aged 8, sharing with parents" className={inputClass} />
+        </div>
+      )}
+    </div>
+  );
+
+  const showRooming = travellers.length >= 2;
+
   return (
     <section className="section bg-white">
       <div className="container max-w-3xl">
@@ -721,15 +739,11 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
                 index={i}
                 traveller={t}
                 expanded={expanded.includes(i)}
-                roomIndex={roomIndexForTraveller(i)}
-                rooms={rooms}
                 canRemove={travellers.length > 1}
                 nameInputRef={(el) => { nameRefs.current[i] = el; }}
                 onToggleExpand={() => toggleExpanded(i)}
                 onChange={(field, value) => updateTraveller(i, field, value)}
                 onRemove={() => removeTraveller(i)}
-                onRoomChange={(value) => assignTravellerToRoom(i, value)}
-                roomMates={roomMatesOf(i)}
                 departure={departure}
               />
             ))}
@@ -740,52 +754,48 @@ export default function TravellerDetailsForm({ tourOptions }: { tourOptions: Tou
               </svg>
               Add another traveller
             </button>
+            {!showRooming && childrenBlock}
           </fieldset>
 
           {/* Rooming */}
-          <fieldset ref={roomingRef} className="space-y-4">
-            <legend className="text-xl font-serif font-semibold text-dark mb-2">
-              <span className={stepClass}>Step 3 of 4</span>
-              Rooming
-            </legend>
-            <p className="text-sm text-gray-500 -mt-2">
-              Change who is in a room from the Room field on each traveller.
-            </p>
-            {activeRooms.map(({ room, index }) => (
-              <RoomSummaryRow
-                key={index}
-                room={room}
-                roomIndex={index}
-                names={names}
-                invalid={roomHasProblem(room)}
-                onBedTypeChange={setRoomBedType}
-              />
-            ))}
-            {roomErrors.length > 0 ? (
-              <div className="space-y-1">
-                {roomErrors.map((err) => (
-                  <p key={err} className="text-sm text-red-700">{err}</p>
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm text-green-700">Everyone has a room</p>
-            )}
-            <label className="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" checked={hasChildren} onChange={(e) => setHasChildren(e.target.checked)}
-                className="mt-1 h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary" />
-              <span className="text-sm text-gray-700">Children are travelling with us</span>
-            </label>
-            {hasChildren && (
-              <div>
-                <label htmlFor="childrenNotes" className={labelClass}>
-                  Children&apos;s ages and room needs <span className="text-gray-400">(optional)</span>
-                </label>
-                <input id="childrenNotes" type="text" value={childrenNotes}
-                  onChange={(e) => setChildrenNotes(e.target.value)}
-                  placeholder="e.g. one child aged 8, sharing with parents" className={inputClass} />
-              </div>
-            )}
-          </fieldset>
+          {showRooming && (
+            <fieldset ref={roomingRef} className="space-y-4">
+              <legend className="text-xl font-serif font-semibold text-dark mb-2">
+                <span className={stepClass}>Step 3 of 4</span>
+                Who shares a room?
+              </legend>
+              {activeRooms.map(({ room, index }) => (
+                <RoomLine
+                  key={index}
+                  room={room}
+                  roomIndex={index}
+                  names={names}
+                  invalid={roomHasProblem(room)}
+                  onBedTypeChange={setRoomBedType}
+                />
+              ))}
+              {roomErrors.length > 0 ? (
+                <div className="space-y-1">
+                  {roomErrors.map((err) => (
+                    <p key={err} className="text-sm text-red-700">{err}</p>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-green-700">Everyone has a room</p>
+              )}
+              <button
+                type="button"
+                onClick={() => setShowAssign(true)}
+                className="text-sm text-primary font-medium hover:underline"
+              >
+                Change who shares with whom
+              </button>
+              {showAssign && (
+                <RoomAssignList travellers={travellers} rooms={rooms} onAssign={assignTravellerToRoom} />
+              )}
+              {childrenBlock}
+            </fieldset>
+          )}
 
           {/* Emergency contact */}
           <fieldset className="space-y-5">
