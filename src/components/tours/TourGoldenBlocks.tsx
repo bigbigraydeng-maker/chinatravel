@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Tour } from '@/lib/data/tours';
-import { computeReturnDate, parseDepartureDate } from '@/lib/data/tour-dates';
+import { computeReturnDate } from '@/lib/data/tour-dates';
 import { aucklandToday, departures } from '@/lib/tour-discovery';
 
 /**
@@ -20,51 +20,27 @@ function displayPrice(price: string): string {
 interface DepartureRow {
   label: string;
   returnDate: string | null;
-  price: string | null;
+  price: string;
 }
 
-function isoDate(label: string): string | null {
-  const parsed = parseDepartureDate(label);
-  return parsed ? parsed.toISOString().slice(0, 10) : null;
-}
-
-/**
- * Confirmed rows (published price, still in the future) and planned rows (in CTS's
- * schedule, no published price yet). Planned rows that have already passed are dropped.
- */
-export function getDepartureRows(
-  tour: Tour,
-  today: string = aucklandToday(),
-): { confirmed: DepartureRow[]; planned: DepartureRow[] } {
-  const confirmed: DepartureRow[] = departures(tour, today).map((d) => ({
+/** Departures with a published price whose date has not passed. Nothing else is shown. */
+export function getDepartureRows(tour: Tour, today: string = aucklandToday()): DepartureRow[] {
+  return departures(tour, today).map((d) => ({
     label: d.label,
     returnDate: computeReturnDate(d.label, tour.duration),
     price: displayPrice(d.price),
   }));
-  const planned: DepartureRow[] = (tour.pendingDepartures ?? [])
-    .filter((label) => {
-      const iso = isoDate(label);
-      return iso !== null && iso >= today;
-    })
-    .sort((x, y) => (isoDate(x) as string).localeCompare(isoDate(y) as string))
-    .map((label) => ({
-      label,
-      returnDate: computeReturnDate(label, tour.duration),
-      price: null,
-    }));
-  return { confirmed, planned };
 }
 
 /** True when the departure block will render something (used to decide on the nav link). */
 export function hasDepartureRows(tour: Tour): boolean {
   if (!tour.goldenBlocks || tour.soldOut) return false;
-  const { confirmed, planned } = getDepartureRows(tour);
-  return confirmed.length + planned.length > 0;
+  return getDepartureRows(tour).length > 0;
 }
 
 export function TourDepartureTable({ tour }: { tour: Tour }) {
   if (!hasDepartureRows(tour)) return null;
-  const { confirmed, planned } = getDepartureRows(tour);
+  const confirmed = getDepartureRows(tour);
   const note = tour.singleSupplementNote?.trim().replace(/\.$/, '');
 
   return (
@@ -111,31 +87,11 @@ export function TourDepartureTable({ tour }: { tour: Tour }) {
           {note ? ` — ${note}` : ''}.
         </p>
       )}
-      {planned.length > 0 && (
-        <div className="mt-6">
-          <h3 className="font-semibold">Planned departures — not yet open for booking</h3>
-          <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-            These dates are planned but have no published price yet. Send an enquiry and we will let you
-            know when they open.
-          </p>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {planned.map((row) => (
-              <li
-                key={row.label}
-                className="rounded-full border border-warm-200 bg-white px-4 py-2 text-sm text-ink-muted"
-              >
-                {row.label}
-                {row.returnDate ? ` – ${row.returnDate}` : ''}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
       <a
         href="#enquiry"
         className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
       >
-        {confirmed.length > 0 ? 'Check availability →' : 'Register interest →'}
+        Check availability →
       </a>
     </section>
   );
@@ -175,14 +131,6 @@ export function TourBookingTerms({ tour }: { tour: Tour }) {
           <dd className="mt-2 text-sm leading-relaxed text-ink-muted">
             A non-refundable deposit of NZD $1,000 per person confirms your booking, payable within 3
             working days of reserving. Your booking is not confirmed until we receive it.
-          </dd>
-        </div>
-        <div className="rounded-xl border border-warm-200 bg-white p-5">
-          <dt className="font-semibold">Final payment</dt>
-          <dd className="mt-2 text-sm leading-relaxed text-ink-muted">
-            Due 90 days before departure for itineraries under 15 days, or 120 days before departure for
-            itineraries of 15 days or longer (or with an ocean cruise). We confirm your exact due date when
-            you book.
           </dd>
         </div>
         <div className="rounded-xl border border-warm-200 bg-white p-5">

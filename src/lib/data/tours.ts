@@ -71,13 +71,6 @@ export interface Tour {
    * (see components/tours/TourGoldenBlocks.tsx). Off by default.
    */
   goldenBlocks?: boolean;
-  /**
-   * Planned departures that are in CTS's schedule but have no confirmed public
-   * price yet. Shown in the departure table as "Price to be confirmed" and kept
-   * OUT of the Offers schema, the booking selector and the schedule block, so no
-   * price or availability is implied. Same "D Month YYYY" format as departureDates.
-   */
-  pendingDepartures?: string[];
   /** Internal links shown under "Plan this trip" in the booking terms block. */
   planLinks?: Array<{ href: string; label: string }>;
   /**
@@ -641,8 +634,6 @@ export const tours: Tour[] = [
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     goldenBlocks: true,
     suppressAggregateRating: true,
-    // Planned 2027 dates with no published price yet — CTS to confirm before this goes live.
-    pendingDepartures: ['28 May 2027', '14 June 2027', '8 August 2027', '8 October 2027', '1 November 2027'],
     planLinks: [
       { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
       { href: '/chengdu-panda-sanctuary', label: 'Chengdu panda base' },
@@ -654,7 +645,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departure from Auckland is 26 March (returning 10 April), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise. More 2027 dates are planned and listed on this page; they are not yet open for booking.',
+          'The scheduled 2027 departure from Auckland is 26 March (returning 10 April), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
