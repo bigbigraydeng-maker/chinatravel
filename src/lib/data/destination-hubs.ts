@@ -123,7 +123,7 @@ export const chengduHub: DestinationHubConfig = {
     { tier: 'stopover', slug: 'chengdu' },
   ],
   offerSummary:
-    'trips from New Zealand: land-only stopovers, plus Signature group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
+    'trips from New Zealand: a land-only stopover, plus Signature group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /chengdu/i,
   sampleRef: { tier: 'stopover', slug: 'chengdu' },
   sampleHeading: 'A 3-day Chengdu itinerary',

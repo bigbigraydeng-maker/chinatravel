@@ -48,17 +48,17 @@ export default function XianToursPage() {
         tours={tours}
         faqs={xianToursMeta.faqs}
         proseSections={xianHub.prose}
-        departureRows={buildDepartureRows(tours, xianHub.cityPattern)}
+        departureRows={buildDepartureRows(tours.slice(0, xianHub.featuredCount ?? tours.length), xianHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(xianHub)}
         offerSummary={xianHub.offerSummary}
         startingFrom={cheapestPrice(tours)}
         featuredCount={xianHub.featuredCount}
         guideLinks={[
-          { label: 'Terracotta Warriors History', href: '/blog/terracotta-warriors-history', icon: 'landmark', description: 'Qin Shi Huang and the army underground' },
-          { label: 'Terracotta Warriors Guide for NZ', href: '/blog/terracotta-warriors-guide-nz', icon: 'landmark', description: 'What to expect at the museum' },
-          { label: 'First Time in China: Beijing & Xi\'an', href: '/blog/first-time-china-beijing-xian', icon: 'map', description: 'Planning a first trip' },
-          { label: 'Beijing & Xi\'an Discovery Guide', href: '/beijing-xian-discovery-guide', icon: 'compass', description: 'How the two cities fit together' },
-          { label: 'Why the Silk Road', href: '/blog/why-silk-road-should-be-your-next-adventure', icon: 'compass', description: 'The ancient route west from Xi\'an' },
+          { label: 'Terracotta Warriors History', href: '/blog/terracotta-warriors-history', icon: 'landmark', description: 'History, discovery and what you will see' },
+          { label: 'Terracotta Warriors Guide for NZ', href: '/blog/terracotta-warriors-guide-nz', icon: 'landmark', description: 'What to expect on your visit' },
+          { label: 'First Time in China: Beijing & Xi\'an', href: '/blog/first-time-china-beijing-xian', icon: 'map', description: 'Why this pairing suits a first trip' },
+          { label: 'Beijing & Xi\'an Discovery Guide', href: '/beijing-xian-discovery-guide', icon: 'compass', description: 'The Beijing and Xi\'an route' },
+          { label: 'Why the Silk Road', href: '/blog/why-silk-road-should-be-your-next-adventure', icon: 'compass', description: 'Why the Silk Road belongs on your list' },
         ]}
       />
     </>

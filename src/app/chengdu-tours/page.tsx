@@ -48,7 +48,7 @@ export default function ChengduToursPage() {
         tours={tours}
         faqs={chengduToursMeta.faqs}
         proseSections={chengduHub.prose}
-        departureRows={buildDepartureRows(tours, chengduHub.cityPattern)}
+        departureRows={buildDepartureRows(tours.slice(0, chengduHub.featuredCount ?? tours.length), chengduHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(chengduHub)}
         offerSummary={chengduHub.offerSummary}
         startingFrom={cheapestPrice(tours)}
@@ -56,7 +56,7 @@ export default function ChengduToursPage() {
         guideLinks={[
           { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', icon: 'landmark', description: 'Giant cliffside Buddha visitor tips' },
           { label: 'Panda Sanctuary: Plan Your Visit', href: '/blog/chengdu-panda-sanctuary-experience', icon: 'paw', description: 'Timing, exclusive access & what to book' },
-          { label: 'Giant Pandas: Complete Guide', href: '/blog/giant-pandas-chengdu-complete-guide', icon: 'paw', description: 'Breeding, behaviour & the best time to go' },
+          { label: 'Giant Pandas: Complete Guide', href: '/blog/giant-pandas-chengdu-complete-guide', icon: 'paw', description: 'Planning panda time in Chengdu' },
           { label: 'Things to Do in Chengdu', href: '/blog/chengdu-things-to-do', icon: 'map', description: 'Beyond the pandas' },
         ]}
       />

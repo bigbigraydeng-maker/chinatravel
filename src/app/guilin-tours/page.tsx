@@ -48,18 +48,11 @@ export default function GuilinToursPage() {
         tours={tours}
         faqs={guilinToursMeta.faqs}
         proseSections={guilinHub.prose}
-        departureRows={buildDepartureRows(tours, guilinHub.cityPattern)}
+        departureRows={buildDepartureRows(tours.slice(0, guilinHub.featuredCount ?? tours.length), guilinHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(guilinHub)}
         offerSummary={guilinHub.offerSummary}
         startingFrom={cheapestPrice(tours)}
         featuredCount={guilinHub.featuredCount}
-        guideLinks={[
-          { label: 'Guilin Travel Guide', href: '/guilin-travel-guide', icon: 'mountain', description: 'Karst peaks & Li River overview' },
-          { label: 'Li River Travel Guide', href: '/li-river-travel-guide', icon: 'ship', description: 'Cruise guide & scenic tips' },
-          { label: 'Yangshuo Travel Guide', href: '/yangshuo-travel-guide', icon: 'bike', description: 'Village cycling & countryside hikes' },
-          { label: 'Chengdu Tours', href: '/chengdu-tours', icon: 'paw', description: 'Pandas, Jinli Street & Sichuan cuisine' },
-          { label: 'Tailor-made Trips', href: '/tailor-made', icon: 'compass', description: 'Build your own China itinerary' },
-        ]}
       />
     </>
   );
