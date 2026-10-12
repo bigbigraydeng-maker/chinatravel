@@ -38,7 +38,6 @@ const SCHEDULE: Record<string, Array<[string, string]>> = {
   ],
   'shanghai-surroundings': [
     ['25 March 2027', '3 April 2027'],
-    ['25 May 2027', '2 June 2027'],
     ['5 November 2027', '14 November 2027'],
   ],
   landscapes: [
@@ -50,6 +49,11 @@ const SCHEDULE: Record<string, Array<[string, string]>> = {
     ['1 November 2027', '16 November 2027'],
   ],
 };
+
+// Dates held back from the page until CTS confirms them. 25 May 2027 Shanghai & Surroundings:
+// the internal schedule returns on 2 June (9 days) but the product is a 10-day itinerary, so the
+// real return date is unknown. Showing a computed 3 June would be a guess.
+const HELD_BACK: Record<string, string[]> = { 'shanghai-surroundings': ['25 May 2027'] };
 
 const flagships: Tour[] = tours.filter((t) => t.goldenBlocks);
 const destination = { id: 'china', name: 'China', slug: 'china' } as never;
@@ -66,6 +70,11 @@ describe('goldenBlocks flagship pages', () => {
       for (const [dep, ret] of SCHEDULE[slug]) {
         expect(computeReturnDate(dep, tour.duration)).toBe(ret);
       }
+    });
+
+    it('does not show dates that are held back pending CTS confirmation', () => {
+      const listed = [...(tour.departureDates ?? []), ...(tour.pendingDepartures ?? [])];
+      for (const held of HELD_BACK[slug] ?? []) expect(listed).not.toContain(held);
     });
 
     it('keeps planned dates out of the booking selector and the Offers schema', () => {
