@@ -13,7 +13,7 @@ import ItineraryActions from '@/components/tours/ItineraryActions';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
-import { TourDepartureTable, TourBookingTerms } from '@/components/tours/TourGoldenBlocks';
+import { TourDepartureTable, TourBookingTerms, hasDepartureRows } from '@/components/tours/TourGoldenBlocks';
 import { getSoloTourPrice } from '@/lib/tour-price';
 
 const goldenDayHeadings: Record<number, string> = {
@@ -272,7 +272,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
         <div className="mx-auto flex max-w-7xl flex-wrap gap-x-7 gap-y-3 px-4 py-5 text-sm font-semibold">
           {[
             ['overview', 'Overview'],
-            ...(tour.goldenBlocks && !tour.soldOut ? [['departures', 'Dates & prices']] : []),
+            ...(hasDepartureRows(tour) ? [['departures', 'Dates & prices']] : []),
             ['route-map', 'Route map'],
             ['itinerary', 'Day by day'],
             ['inclusions', 'Inclusions'],

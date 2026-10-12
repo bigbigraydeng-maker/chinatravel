@@ -17,8 +17,19 @@ import { render, screen } from '@testing-library/react';
 import { tours, type Tour } from '@/lib/data/tours';
 import { departures } from '@/lib/tour-discovery';
 import { computeReturnDate } from '@/lib/data/tour-dates';
-import { generateProductSchema, generateTourSchema } from '@/lib/schema-tour';
-import { TourBookingTerms, TourDepartureTable } from '@/components/tours/TourGoldenBlocks';
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import {
+  generateEssentialsTouristTripSchema,
+  generateProductSchema,
+  generateTourSchema,
+} from '@/lib/schema-tour';
+import {
+  TourBookingTerms,
+  TourDepartureTable,
+  getDepartureRows,
+  hasDepartureRows,
+} from '@/components/tours/TourGoldenBlocks';
 
 // slug -> [departure, return] pairs from CTS's 2027 schedule (docs: 2027-departures-master-table)
 const SCHEDULE: Record<string, Array<[string, string]>> = {
@@ -54,6 +65,12 @@ const SCHEDULE: Record<string, Array<[string, string]>> = {
 // the internal schedule returns on 2 June (9 days) but the product is a 10-day itinerary, so the
 // real return date is unknown. Showing a computed 3 June would be a guess.
 const HELD_BACK: Record<string, string[]> = { 'shanghai-surroundings': ['25 May 2027'] };
+
+beforeAll(() => {
+  jest.useFakeTimers();
+  jest.setSystemTime(new Date('2026-10-13T00:00:00Z').getTime());
+});
+afterAll(() => jest.useRealTimers());
 
 const flagships: Tour[] = tours.filter((t) => t.goldenBlocks);
 const destination = { id: 'china', name: 'China', slug: 'china' } as never;
@@ -97,6 +114,31 @@ describe('goldenBlocks flagship pages', () => {
       expect(tour.reviewSummary).toBeUndefined();
     });
 
+    it('keeps company-age claims out of every JSON-LD block it emits', () => {
+      const ld = JSON.stringify([
+        generateTourSchema(tour, destination),
+        generateEssentialsTouristTripSchema(tour, destination),
+        generateProductSchema(tour),
+      ]);
+      expect(ld).not.toMatch(/1928|25 years|since 2000|100\+? years/i);
+      expect(generateEssentialsTouristTripSchema(tour, destination)).not.toHaveProperty('aggregateRating');
+    });
+
+    it('offers carry no start-date fields and drop out once the date has passed', () => {
+      const now = ([] as Array<Record<string, unknown>>).concat(
+        generateTourSchema(tour, destination).offers as never,
+      );
+      for (const o of now) {
+        expect(o).not.toHaveProperty('availabilityStarts');
+        expect(o).not.toHaveProperty('validFrom');
+      }
+      jest.setSystemTime(new Date('2028-01-01T00:00:00Z').getTime());
+      expect(generateTourSchema(tour, destination).offers).toEqual([]);
+      expect(hasDepartureRows(tour)).toBe(false);
+      jest.setSystemTime(new Date('2026-10-13T00:00:00Z').getTime());
+      expect(hasDepartureRows(tour)).toBe(true);
+    });
+
     it('keeps the company-age claims and competitor names out of the page copy', () => {
       const copy = JSON.stringify({
         q: tour.quickAnswer,
@@ -116,22 +158,45 @@ describe('goldenBlocks flagship pages', () => {
   });
 });
 
+describe('rating markup stays on for pages that have not opted in', () => {
+  it('a stopover page still carries the company rating', () => {
+    const t = tours.find((x) => !x.goldenBlocks && x.tier === 'stopover') as Tour;
+    expect(generateTourSchema(t, destination)).toHaveProperty('aggregateRating');
+    expect(generateProductSchema(t)).toHaveProperty('aggregateRating');
+  });
+});
+
 describe('TourDepartureTable', () => {
   const sample = (over: Partial<Tour> = {}): Tour => ({
     ...(tours.find((t) => t.slug === 'landscapes') as Tour),
     goldenBlocks: true,
     departureDates: ['26 March 2027'],
     departurePricing: { '26 March 2027': 'NZD $7,349' },
-    pendingDepartures: ['28 May 2027'],
+    pendingDepartures: ['28 May 2027', '14 June 2027'],
     ...over,
   });
 
-  it('shows a price only for confirmed dates and marks planned ones as to be confirmed', () => {
-    render(<TourDepartureTable tour={sample()} />);
-    expect(screen.getByText('NZD $7,349')).toBeTruthy();
-    expect(screen.getByText('28 May 2027')).toBeTruthy();
-    expect(screen.getByText('12 June 2027')).toBeTruthy();
-    expect(screen.getAllByText(/Price to be confirmed/).length).toBe(1);
+  it('puts only priced dates in the table and lists planned ones separately', () => {
+    const { container } = render(<TourDepartureTable tour={sample()} />);
+    const table = container.querySelector('table') as HTMLElement;
+    expect(table.textContent).toContain('26 March 2027');
+    expect(table.textContent).toContain('NZD $7,349');
+    expect(table.textContent).not.toContain('28 May 2027');
+    expect(screen.getByText(/Planned departures/)).toBeTruthy();
+    expect(screen.getByText(/28 May 2027 – 12 June 2027/)).toBeTruthy();
+    expect(container.textContent).not.toMatch(/to be confirmed/i);
+  });
+
+  it('drops planned dates that have passed and keeps the rest in date order', () => {
+    jest.setSystemTime(new Date('2027-06-01T00:00:00Z').getTime());
+    const rows = getDepartureRows(sample({ pendingDepartures: ['14 June 2027', '28 May 2027'] }));
+    expect(rows.planned.map((r) => r.label)).toEqual(['14 June 2027']);
+    jest.setSystemTime(new Date('2026-10-13T00:00:00Z').getTime());
+  });
+
+  it('does not end the single-supplement note with a double full stop', () => {
+    const { container } = render(<TourDepartureTable tour={sample()} />);
+    expect(container.textContent).not.toMatch(/\.\./);
   });
 
   it('renders nothing when the tour has not opted in or is sold out', () => {
@@ -143,15 +208,38 @@ describe('TourDepartureTable', () => {
 });
 
 describe('TourBookingTerms', () => {
-  it('states the published deposit, payment, tipping and cancellation terms', () => {
-    const tour = { ...(tours.find((t) => t.slug === 'landscapes') as Tour), goldenBlocks: true };
-    const { container } = render(<TourBookingTerms tour={tour} />);
+  const natural = { ...(tours.find((t) => t.slug === 'landscapes') as Tour), goldenBlocks: true };
+
+  it('states the published deposit, payment, tipping and every cancellation step', () => {
+    const { container } = render(<TourBookingTerms tour={natural} />);
     const text = container.textContent ?? '';
     expect(text).toMatch(/non-refundable deposit of NZD \$1,000 per person/);
     expect(text).toMatch(/90 days before departure for itineraries under 15 days/);
     expect(text).toMatch(/120 days before departure for\s+itineraries of 15 days or longer/);
     expect(text).toMatch(/prepaid in New Zealand/);
-    expect(text).toMatch(/75% of the total booking cost/);
-    expect(text).toMatch(/no minimum spend/);
+    expect(text).toMatch(/90 days or more before departure/);
+    expect(text).toMatch(/89 to 61 days before departure[^.]*50%/);
+    expect(text).toMatch(/60 to 31 days before departure[^.]*75%/);
+    expect(text).toMatch(/30 days or less before departure[^.]*100%/);
+    expect(text).toMatch(/no\s+minimum spend/);
+  });
+
+  it('mentions cruise tickets only on tours that include a cruise', () => {
+    const withCruise = render(<TourBookingTerms tour={natural} />).container.textContent ?? '';
+    expect(withCruise).toMatch(/air and cruise tickets/);
+    const noCruise = {
+      ...(tours.find((t) => t.slug === 'beijing-xian') as Tour),
+      goldenBlocks: true,
+    };
+    const without = render(<TourBookingTerms tour={noCruise} />).container.textContent ?? '';
+    expect(without).toMatch(/air tickets/);
+    expect(without).not.toMatch(/air and cruise tickets/);
+  });
+
+  it('matches the figures in the published terms page source', () => {
+    const src = readFileSync(join(process.cwd(), 'src/app/terms-and-conditions/TermsContent.tsx'), 'utf8');
+    for (const fact of ['$1,000', '90 days', '120 days', '50%', '75%', '100%']) {
+      expect(src).toContain(fact);
+    }
   });
 });
