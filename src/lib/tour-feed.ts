@@ -46,6 +46,10 @@ export interface TourFeedProduct {
   review_summary: string | null;
   related_blog_slugs: string[];
   quick_answer: string | null;
+  golden_blocks: boolean;
+  pending_departures: string[];
+  plan_links: Array<{ href: string; label: string }>;
+  suppress_aggregate_rating: boolean;
 }
 
 export function tourToFeed(tour: Tour): TourFeedProduct {
@@ -88,6 +92,10 @@ export function tourToFeed(tour: Tour): TourFeedProduct {
     review_summary: tour.reviewSummary ?? null,
     related_blog_slugs: tour.relatedBlogSlugs ?? [],
     quick_answer: tour.quickAnswer ?? null,
+    golden_blocks: tour.goldenBlocks ?? false,
+    pending_departures: tour.pendingDepartures ?? [],
+    plan_links: tour.planLinks ?? [],
+    suppress_aggregate_rating: tour.suppressAggregateRating ?? false,
   };
 }
 
@@ -144,6 +152,10 @@ export function feedToTour(product: TourFeedProduct): Tour {
   if (product.related_blog_slugs.length > 0) tour.relatedBlogSlugs = product.related_blog_slugs;
   if (product.quick_answer !== null) tour.quickAnswer = product.quick_answer;
   if (product.max_group_size !== null) tour.maxGroupSize = product.max_group_size;
+  if (product.golden_blocks) tour.goldenBlocks = true;
+  if (product.pending_departures.length > 0) tour.pendingDepartures = product.pending_departures;
+  if (product.plan_links.length > 0) tour.planLinks = product.plan_links;
+  if (product.suppress_aggregate_rating) tour.suppressAggregateRating = true;
 
   return tour;
 }
