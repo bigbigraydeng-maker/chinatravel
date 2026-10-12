@@ -37,7 +37,7 @@ afterAll(() => {
 describe('fireLeadConversion', () => {
   it('fires the Google Ads conversion to the Booking Service action', () => {
     fireLeadConversion('contact_page');
-    expect(mockGtag).toHaveBeenCalledTimes(2);
+    expect(mockGtag).toHaveBeenCalledTimes(3);
     expect(mockGtag).toHaveBeenCalledWith(
       'event',
       'conversion',
@@ -51,7 +51,7 @@ describe('fireLeadConversion', () => {
 
   it('accepts the china_tours_hub source and reflects it in the eventID', () => {
     fireLeadConversion('china_tours_hub');
-    expect(mockGtag).toHaveBeenCalledTimes(2);
+    expect(mockGtag).toHaveBeenCalledTimes(3);
     const gtagCall = mockGtag.mock.calls[0];
     expect(gtagCall[2].transaction_id).toMatch(/^cts-china_tours_hub-\d+$/);
     expect(mockFbq).toHaveBeenCalledTimes(1);
@@ -62,7 +62,7 @@ describe('fireLeadConversion', () => {
 
   it('accepts the china_visa_guide source so visa-LP enquiries attribute separately in ME', () => {
     fireLeadConversion('china_visa_guide');
-    expect(mockGtag).toHaveBeenCalledTimes(2);
+    expect(mockGtag).toHaveBeenCalledTimes(3);
     expect(mockGtag.mock.calls[0][2].transaction_id).toMatch(
       /^cts-china_visa_guide-\d+$/
     );
@@ -102,7 +102,7 @@ describe('fireLeadConversion', () => {
   it('does not throw and still fires Google Ads when fbq is missing', () => {
     delete (window as any).fbq;
     expect(() => fireLeadConversion('tour_enquiry')).not.toThrow();
-    expect(mockGtag).toHaveBeenCalledTimes(2);
+    expect(mockGtag).toHaveBeenCalledTimes(3);
   });
 
   it('retries until gtag/fbq become available (afterInteractive race)', () => {
@@ -116,7 +116,7 @@ describe('fireLeadConversion', () => {
     (window as any).gtag = mockGtag;
     (window as any).fbq = mockFbq;
     jest.advanceTimersByTime(200); // > one retry interval (150ms)
-    expect(mockGtag).toHaveBeenCalledTimes(2);
+    expect(mockGtag).toHaveBeenCalledTimes(3);
     expect(mockFbq).toHaveBeenCalledTimes(1);
     // Still shares one id across channels after the retry.
     expect(mockGtag.mock.calls[0][2].transaction_id).toBe(mockFbq.mock.calls[0][3].eventID);
@@ -125,11 +125,11 @@ describe('fireLeadConversion', () => {
   it('fires each channel exactly once even if one loads later than the other', () => {
     delete (window as any).fbq; // gtag ready, fbq not
     fireLeadConversion('tour_enquiry');
-    expect(mockGtag).toHaveBeenCalledTimes(2); // gtag fired immediately
+    expect(mockGtag).toHaveBeenCalledTimes(3); // gtag fired immediately
     expect(mockFbq).not.toHaveBeenCalled();
     (window as any).fbq = mockFbq; // fbq shows up later
     jest.advanceTimersByTime(200);
-    expect(mockGtag).toHaveBeenCalledTimes(2); // not re-fired
+    expect(mockGtag).toHaveBeenCalledTimes(3); // not re-fired
     expect(mockFbq).toHaveBeenCalledTimes(1);
   });
 
@@ -174,5 +174,33 @@ describe('fireLeadConversion', () => {
     jest.advanceTimersByTime(200);
     jest.advanceTimersByTime(2000);
     expect(mockGtag.mock.calls.filter((c) => c[1] === 'generate_lead')).toHaveLength(1);
+  });
+});
+
+describe('fireLeadConversion — unified enquiry_thank_you event', () => {
+  beforeEach(() => sessionStorage.clear());
+
+  it('fires enquiry_thank_you with first landing page and submit page when attribution was captured', () => {
+    sessionStorage.setItem(
+      'cts_last_submit_attribution',
+      JSON.stringify({ first_landing_path: '/beijing-travel-guide', submit_path: '/tours/china/discovery/x', referrer_host: 'www.google.com', viewed_tour_paths: ['/tours/china/discovery/x'] })
+    );
+    fireLeadConversion('tour_enquiry');
+    const ev = mockGtag.mock.calls.find((c) => c[1] === 'enquiry_thank_you');
+    expect(ev).toBeDefined();
+    expect(ev![2]).toMatchObject({
+      lead_source: 'tour_enquiry',
+      first_landing_path: '/beijing-travel-guide',
+      submit_path: '/tours/china/discovery/x',
+      referrer_host: 'www.google.com',
+      viewed_tour_paths: '/tours/china/discovery/x',
+    });
+  });
+
+  it('still fires enquiry_thank_you (without attribution fields) when nothing was captured — never blocks the conversion', () => {
+    fireLeadConversion('contact_page');
+    const ev = mockGtag.mock.calls.find((c) => c[1] === 'enquiry_thank_you');
+    expect(ev![2]).toEqual({ lead_source: 'contact_page', transaction_id: expect.stringMatching(/^cts-contact_page-/) });
+    expect(mockGtag.mock.calls.some((c) => c[1] === 'conversion')).toBe(true);
   });
 });

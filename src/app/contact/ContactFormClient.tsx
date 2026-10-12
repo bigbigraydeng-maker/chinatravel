@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
+import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 
 export default function ContactFormClient() {
   const [formData, setFormData] = useState({
@@ -36,6 +37,7 @@ export default function ContactFormClient() {
           phone: formData.phone.trim(),
           travel_interest: formData.travel_interest,
           message: formData.message.trim(),
+          attribution: captureSubmitAttribution(),
         }),
       });
       const data = await res.json().catch(() => ({}));

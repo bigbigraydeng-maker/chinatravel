@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
+import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 
 const DEPARTURES = {
   auckland: {
@@ -67,6 +68,7 @@ export default function FestiveTourEnquiry() {
           message: context,
           source: 'Christmas & New Year China Landing Page',
           utm,
+          attribution: captureSubmitAttribution(),
         }),
       });
       const data = await response.json().catch(() => ({}));

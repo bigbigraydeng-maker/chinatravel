@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
 import GeoDirective from '@/components/GeoDirective';
 import TrackingScripts from '@/components/TrackingScripts';
+import FirstTouchTracker from '@/components/FirstTouchTracker';
 import { META_PIXEL_IDS } from '@/lib/analytics/meta-pixels';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import { getSiteUrl } from '@/lib/site';
@@ -76,6 +77,7 @@ export default function RootLayout({
         <ConditionalChrome>{children}</ConditionalChrome>
         <GeoDirective />
         <TrackingScripts />
+        <FirstTouchTracker />
         <GoogleAnalytics />
         {/* No-JS PageView fallback — mirrors both datasets initialised in <TrackingScripts>. */}
         {META_PIXEL_IDS.map((pixelId) => (

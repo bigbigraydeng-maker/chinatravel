@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
+import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 
 interface TourEnquiryProps {
   tourName: string;
@@ -59,6 +60,7 @@ export default function TourEnquiry({
       message: [enquiryContext, formData.message.trim()].filter(Boolean).join('\n\n') || undefined,
       source,
       utm,
+      attribution: captureSubmitAttribution(),
     };
 
     try {
