@@ -47,6 +47,12 @@ const nextConfig = {
        */
       { source: '/china-tours-from-australia', destination: '/china-tours-from-new-zealand', permanent: true },
       { source: '/china-tours-from-australia/', destination: '/china-tours-from-new-zealand', permanent: true },
+      /**
+       * 「China Discovery — Natural China」(14 天、价格与班期一直是 TBC) 下线 (Product Owner, 2026-10-12)：
+       * 同一条线路的在售版本是 Signature 档的 /tours/china/signature/landscapes。
+       * 保留 301，让已被索引或被外链指到旧地址的访客落到在售页，而不是 404。
+       */
+      { source: '/tours/china/discovery/natural-china', destination: '/tours/china/signature/landscapes', permanent: true },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
       /**
