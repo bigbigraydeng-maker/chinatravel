@@ -8,9 +8,9 @@ import { migratedSite, tourImage } from '@/lib/site-media';
 import { generateBreadcrumbListSchema } from '@/lib/schema-seo';
 
 export const metadata: Metadata = {
-  title: 'About CTS Tours | Kiwi-Led China Travel Specialists (Auckland since 2000)',
+  title: 'About CTS Tours | Kiwi-Led China Travel Specialists (Auckland-based)',
   description:
-    "Learn about CTS Tours — New Zealand's dedicated China travel specialist. CTS Tours NZ has 25 years in Auckland (established 2000), backed by China Travel Service (founded 1928), with TAANZ membership and direct operations in China. Meet our expert team.",
+    "Learn about CTS Tours — New Zealand's dedicated China travel specialist. CTS Tours NZ is Auckland-based and backed by China Travel Service, with TAANZ membership and direct operations in China. Meet our expert team.",
   alternates: { canonical: '/about' },
 };
 

@@ -25,7 +25,7 @@ export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
   title: 'China Tours from New Zealand 2026-27 | CTS Tours',
   description:
-    'Featured China tours from NZ 2026-27: Christmas & New Year in China $7,188 (22 Dec 2026) · Christchurch departure $6,188 (22 Dec 2026). Backed by CTS — global travel brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. TAANZ-bonded. Free quote.',
+    'Featured China tours from NZ 2026-27: Christmas & New Year in China $7,188 (22 Dec 2026) · Christchurch departure $6,188 (22 Dec 2026). Backed by CTS; Auckland-based team. TAANZ-bonded. Free quote.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland & Christchurch departures',
   introText:
@@ -347,7 +347,7 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from NZ 2026-27 · 4 Tours from NZD $2,699 | CTS',
-  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand founded in 1928; CTS Tours NZ team in Auckland for 25 years. Visa-free for Kiwi passports.',
+  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS; Auckland-based team. Visa-free for Kiwi passports.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: '4 Kiwi-Led China itineraries 2026-27 · NZD $2,699-7,999 · Auckland-based · Visa-free for NZ passports',
   introText:

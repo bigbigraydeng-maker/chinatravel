@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Best China Tours from NZ 2026-27 · Compare 4 Itineraries | CTS',
     description:
-      'Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS — global brand founded in 1928; CTS Tours NZ team in Auckland for 25 years.',
+      'Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS; Auckland-based team.',
     path: '/best-china-tours',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',

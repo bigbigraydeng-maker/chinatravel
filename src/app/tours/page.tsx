@@ -11,7 +11,7 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Asia Tours from NZ | China, Japan, Vietnam | CTS Tours',
-    description: 'Signature, Discovery and Stopover tours to China, Japan and Vietnam from New Zealand. Kiwi-led, Auckland-based since 2000, backed by China Travel Service.',
+    description: 'Signature, Discovery and Stopover tours to China, Japan and Vietnam from New Zealand. Kiwi-led, Auckland-based, backed by China Travel Service.',
     path: '/tours',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'Asia Tours — China, Japan, Vietnam with CTS Tours',

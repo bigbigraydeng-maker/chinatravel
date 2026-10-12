@@ -9,9 +9,9 @@ import { getSiteUrl } from '@/lib/site';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
-    title: 'China Travel Specialists NZ | CTS Tours Auckland (Since 2000, backed by CTS founded 1928)',
+    title: 'China Travel Specialists NZ | CTS Tours Auckland (Auckland-based, backed by CTS)',
     description:
-      "New Zealand's longest-running China travel specialists. 25 years of Kiwi-led NZ operations, backed by CTS Group (founded 1928), 1,200+ Kiwi travellers, direct on-ground China operations. Auckland-based team.",
+      "China travel specialists in New Zealand. Kiwi-led and backed by CTS Group, 1,200+ Kiwi travellers, direct on-ground China operations. Auckland-based team.",
     path: '/china-travel-specialists-nz',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',

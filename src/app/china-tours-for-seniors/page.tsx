@@ -32,7 +32,7 @@ const TOUR_IMG =
 
 const PAGE_TITLE = 'China Tours for Seniors 2026-27 · NZ-Friendly Pace, Mobility-Aware | CTS Tours';
 const PAGE_DESCRIPTION =
-  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. 25 years arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
+  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
 // JSON-LD copy of PAGE_DESCRIPTION without company-history wording (metadata copy is pending PM approval).
 const PAGE_SCHEMA_DESCRIPTION =
   'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Visa-free for NZ passports through 31 Dec 2026.';

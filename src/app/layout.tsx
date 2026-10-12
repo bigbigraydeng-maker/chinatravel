@@ -25,7 +25,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'China Tours from New Zealand | CTS Tours',
   description:
-    "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
+    "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
   keywords: [
     'China tours from New Zealand',
     'China travel specialists',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'China Tours from New Zealand | CTS Tours',
     description:
-      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Expertly crafted tours, direct China operations, authentic experiences.",
+      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Expertly crafted tours, direct China operations, authentic experiences.",
     type: 'website',
     locale: 'en_NZ',
     siteName: 'CTS Tours',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'CTS Tours NZ — Kiwi-Led China Travel Specialists (Auckland since 2000, backed by CTS founded 1928)',
+        alt: 'CTS Tours NZ — Kiwi-Led China Travel Specialists (Auckland-based, backed by CTS)',
       },
     ],
   },
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'China Tours from New Zealand | CTS Tours',
     description:
-      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Direct China operations, authentic experiences. Free quote today.",
+      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Direct China operations, authentic experiences. Free quote today.",
     images: ['/logo.png'],
   },
 };
