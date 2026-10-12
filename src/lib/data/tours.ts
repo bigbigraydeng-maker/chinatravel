@@ -562,6 +562,8 @@ export const tours: Tour[] = [
     name: 'China Signature — Natural China',
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
+    quickAnswer:
+      'Natural China is a 16-day escorted Signature journey from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, from NZD $7,349 per person twin share (private room +NZD $1,895). The scheduled 2027 departure is 26 March, returning 10 April. Highlights include giant pandas, Liziba Monorail Station, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
@@ -619,7 +621,7 @@ export const tours: Tour[] = [
     metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-02',
+    updatedAt: '2026-10-13',
     tags: [
       'Shanghai',
       'Yichang',
@@ -637,9 +639,68 @@ export const tours: Tour[] = [
     departurePricing: { '26 March 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
-    rating: 4.6,
-    reviewCount: 156,
-    reviewSummary: 'Excellent classical journey, superbly organized',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    // Planned 2027 dates with no published price yet — CTS to confirm before this goes live.
+    pendingDepartures: ['28 May 2027', '14 June 2027', '8 August 2027', '8 October 2027', '1 November 2027'],
+    planLinks: [
+      { href: '/china-visa-guide-for-new-zealanders', label: 'China entry for NZ passport holders' },
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/chongqing-travel-guide', label: 'Chongqing travel guide' },
+      { href: '/liziba-station-chongqing', label: 'Liziba Monorail Station' },
+      { href: '/chengdu-panda-sanctuary', label: 'Chengdu panda base' },
+      { href: '/zhangjiajie-travel-guide', label: 'Zhangjiajie travel guide' },
+      { href: '/tianmen-mountain-travel-guide', label: 'Tianmen Mountain guide' },
+      { href: '/blog/yangtze-river-cruise-from-chongqing', label: 'Yangtze cruise guide' },
+    ],
+    faqs: [
+      {
+        question: 'When can I depart on Natural China, and what does it cost?',
+        answer:
+          'The scheduled 2027 departure from Auckland is 26 March (returning 10 April), priced at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise. Five further 2027 dates (28 May, 14 June, 8 August, 8 October and 1 November) are planned but do not have a published price yet — send an enquiry and we will tell you where they stand.',
+      },
+      {
+        question: 'What is included in the price?',
+        answer:
+          'Return international airfares from Auckland, domestic airfares within China, 4–5 star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional activities such as the Sichuan Opera face-changing performance, and tips.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Hyatt Place Shanghai Changfeng (2 nights), the Three Gorges cruise ship (4 nights), Four Points by Sheraton Chongqing (2 nights), Holiday Inn Chengdu Oriental Plaza (2 nights) and Wulingyuan Rêverie Mansen Wyndham Hotel (3 nights). Where the itinerary says "or similar", the hotel is rated 5-star by local standards. The night before you land in Auckland is spent on your international flight. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+      },
+      {
+        question: 'How do the deposit, final payment and tips work?',
+        answer:
+          'A non-refundable deposit of NZD $1,000 per person confirms your booking, payable within 3 working days of reserving. For an itinerary of 15 days or longer the final payment is due 120 days before departure, and we confirm your exact date when you book. Tips are prepaid in New Zealand before you leave — we suggest NZD $10 per person per day — so there is no cash to hand out in China. Full terms are on our Terms & Conditions page.',
+      },
+      {
+        question: 'Which parts of the journey are by train?',
+        answer:
+          'Two sectors are by First Class high-speed train: Chongqing to Chengdu on Day 10 (reference train G8610, 09:32–10:58, 1 hr 26 min) and Chengdu to Zhangjiajie on Day 12 (reference train G2321, 10:20–15:27, 5 hr 7 min). Both are reference services, or a similar service on the day.',
+      },
+      {
+        question: 'Is there compulsory shopping on this tour?',
+        answer:
+          'No. There is no obligation to buy and no minimum spend on any CTS tour, and this itinerary does not list shopping stops.',
+      },
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'Many leisure visits qualify for China\'s visa-free entry for NZ ordinary passport holders, commonly up to 30 days under the current policy, published to 31 December 2026. This 16-day itinerary sits within a typical holiday length. Entry rules depend on your travel dates and purpose, so confirm before you book. Our visa guide for New Zealanders sets out the current position.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
+      },
+      {
+        question: 'How physically demanding is Natural China?',
+        answer:
+          'Zhangjiajie uses cable cars, the Bailong Elevator and an escalator through Tianmen Cave, but the days still include walking on paths and steps, including the Glass Skywalk and the Guigu Plank Walk. If you have mobility concerns, tell us when you enquire so we can note it for your guide. Travellers who need special assistance must be accompanied by a physically able companion.',
+      },
+      {
+        question: 'What are the cancellation charges?',
+        answer:
+          'Cancellations must be in writing. 90 days or more before departure you lose the deposit plus administration fees and the cost of any issued air tickets. From 89 to 61 days you lose the deposit and 50% of the total booking cost; from 60 to 31 days, the deposit and 75%; at 30 days or less, the deposit and 100% — each plus the cost of air tickets. We recommend comprehensive travel insurance at booking.',
+      },
+    ],
   },
   // China Discovery Tours
   {
