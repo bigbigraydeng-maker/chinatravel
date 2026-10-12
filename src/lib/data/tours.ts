@@ -985,6 +985,8 @@ export const tours: Tour[] = [
     title: 'China Discovery — Shanghai & Surroundings',
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
+    quickAnswer:
+      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, at NZD $2,699 per person twin share. A private room adds NZD $400. The scheduled 2027 departure is 25 March, returning 3 April. Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1027,7 +1029,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
@@ -1036,7 +1037,7 @@ export const tours: Tour[] = [
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-05-07',
+    updatedAt: '2026-10-13',
     tags: [
       'Shanghai',
       'The Bund',
@@ -1052,28 +1053,41 @@ export const tours: Tour[] = [
      * date from every surface that reads `departureDates`.
      */
     departureDates: ['25 March 2027'],
+    departurePricing: { '25 March 2027': 'NZD $2,699' },
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/west-lake-travel-guide', label: 'West Lake guide' },
+      { href: '/the-bund-travel-guide', label: 'The Bund guide' },
+    ],
     faqs: [
       {
-        question: 'Does this tour visit Beijing or the Terracotta Warriors?',
+        question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
-      },
-      {
-        question: 'Do New Zealand passport holders need a visa?',
-        answer:
-          'Many NZ leisure trips qualify for China\'s visa-free entry (often up to 30 days under current published policy to 31 December 2026). This 10-day loop is a typical holiday length, but rules depend on your dates and travel purpose — always confirm before booking. See our China visa guide for New Zealanders or ask CTS when you enquire.',
+          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400.',
       },
       {
         question: 'What is included in the NZD $2,699 price?',
         answer:
-          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, tips (we suggest about NZD $10 per person per day), most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Rosedale Chunshenhu Resort Hotel in Suzhou (1 night, 5-star standard), Holiday Inn Express Wuxi (2 nights), Holiday Inn near Xinshi Ancient Town (1 night), New Century Hotel Hangzhou (1 night, 5-star standard) and Holiday Inn Express Shanghai (2 nights), each "or similar" and rated by local standards. Five different hotels are used, one in each stop; if one is unavailable, CTS arranges a substitute of similar standard.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'The itinerary includes a silk factory visit (Day 3) and a few specialist stops: the Purple Sand Museum (Day 3), the Wuxi Pearl Exhibition Centre (Day 4) and Longjing tea at Meijiawu (Day 7). Whether or not items are on sale at a stop, there is no obligation to buy and no minimum spend.',
       },
       {
         question: 'Several meals are "at own expense" — what should I expect?',
         answer:
-          'The itinerary deliberately leaves some lunches and dinners free so you can try local street food (for example on Shantang Street or in Wuxi\'s market areas), casual restaurants, or hot pot in Xinshi as suggested locally. Your guide can recommend options; budget a modest amount per day for those meals if you want to eat out every time.',
+          'The itinerary deliberately leaves some lunches and dinners free so you can try local street food (for example on Shantang Street or in Wuxi\'s market areas), casual restaurants, or hot pot in Xinshi as suggested locally. Your guide can recommend options; budget a modest amount per day for those meals if you want to eat out every time. The programme includes 7 breakfasts, 5 lunches and 1 dinner, plus meals on board your flights; all other meals are at your own expense.',
       },
       {
         question: 'What optional activities are offered in Shanghai?',
@@ -1081,19 +1095,21 @@ export const tours: Tour[] = [
           'On the listed programme, you can add the Shanghai Acrobatics Show (approximately NZD $80 per person) and a Maglev train round trip (approximately NZD $30 per person), subject to availability and schedule. These are paid locally or as advised at booking — they are not required to enjoy the tour.',
       },
       {
-        question: 'How much coach or driving is there between cities?',
+        question: 'Does this tour visit Beijing or the Terracotta Warriors?',
         answer:
-          'Distances are relatively short within the delta — for example Shanghai to Suzhou about 1.5 hours and Wuxi to Xinshi about 1.5 hours, with other transfers similar. You stay a few nights in each area so the pace is steady rather than constant long drives.',
+          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
       },
       {
-        question: 'Is October a good time for this route?',
+        question: 'Do New Zealand passport holders need a visa for China?',
         answer:
-          'Autumn is popular: mild temperatures, comfortable for walking gardens, lakeside parks, and West Lake. Bring light layers and waterproofs for occasional rain. Ask CTS if you want tips tailored to the mid-October departure.',
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 10-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
       },
       {
-        question: 'Can I have a single room, and when does the tour depart?',
+        question: 'How do I book?',
         answer:
-          'Twin-share pricing is shown; a single room supplement applies — ask CTS for the current amount on your departure. Published departure for this programme is 14 October (year as on site — subject to change; confirm live availability). Call 0800 CTS 888 (0800 287 888) or use the enquiry form to hold a seat and confirm the exact price for your room choice.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $400 extra) for the 25 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
   },
