@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GeneratedItinerary } from '@/lib/itinerary/engine'
+import { itineraryEmailSubject } from '@/lib/email-subjects'
 
 /**
  * POST /api/itinerary/send-email
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         from: 'tours@ctstours.co.nz',
         to: itinerary.request.customer.email,
-        subject: `你的 ${itinerary.request.days} 日 ${getDestinationName(itinerary.request.destination)} 行程方案`,
+        subject: itineraryEmailSubject(itinerary.request.days, itinerary.request.destination),
         html: emailHTML,
         reply_to: 'support@ctstours.co.nz',
       }),

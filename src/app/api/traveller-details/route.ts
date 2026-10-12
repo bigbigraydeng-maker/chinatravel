@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { roomLabel, validateRooms, type BedType, type Room } from '@/lib/traveller-rooms';
 import { dobProblem, passportExpiryProblem } from '@/lib/traveller-form';
+import { travellerDetailsSubject } from '@/lib/email-subjects';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 // Traveller registration forms always go to the CTS main inbox — fixed by request.
@@ -240,7 +241,7 @@ export async function POST(req: NextRequest) {
       from: FROM_ADDRESS,
       to: NOTIFY_ADDRESS,
       replyTo: String(leadEmail),
-      subject: `出行登记表 — ${leadName}${bookingRef ? ` (${bookingRef})` : ''}`,
+      subject: travellerDetailsSubject(String(leadName), bookingRef ? String(bookingRef) : undefined),
       html,
     });
 
