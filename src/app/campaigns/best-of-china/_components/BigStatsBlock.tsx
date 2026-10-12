@@ -30,11 +30,6 @@ const STATS: Stat[] = [
     label: 'NZD lead-in',
     sub: 'Auckland return flights included',
   },
-  {
-    number: '25',
-    label: 'Years in NZ',
-    sub: 'Backed by CTS Group — founded 1928',
-  },
 ];
 
 export default function BigStatsBlock() {
@@ -44,7 +39,7 @@ export default function BigStatsBlock() {
       className="bg-white py-12 md:py-16 border-y border-warm-100"
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-4 max-w-6xl mx-auto">
           {STATS.map((s, idx) => (
             <div
               key={s.label}

@@ -147,7 +147,7 @@ export default function October2026CampaignIndexPage() {
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
               Golden China departs Auckland on 16 November, followed by Christmas &amp; New Year journeys from Auckland or Christchurch on 22 December 2026.
-              Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland since 2000, backed by CTS Group (founded 1928).
+              Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
             {/* Stats Row */}
@@ -300,15 +300,15 @@ export default function October2026CampaignIndexPage() {
               Why Book Direct With Us
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              We&apos;re not a reseller. We&apos;re the New Zealand–owned operator — CTS Tours NZ, Auckland since 2000 (25 years), backed by China Travel Service (founded 1928).
+              We&apos;re not a reseller. We&apos;re the New Zealand–owned operator — CTS Tours NZ, Auckland-based and backed by China Travel Service.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               {
-                title: 'Backed by CTS · Founded 1928',
-                body: '25 years of Kiwi-led NZ operations from Auckland (est. 2000), backed by CTS Group experience since 1928. We helped pioneer NZ–China tourism.',
+                title: 'Backed by CTS',
+                body: 'Kiwi-led NZ operations from Auckland, backed by the CTS Group.',
                 icon: (
                   <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />

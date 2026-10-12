@@ -101,20 +101,19 @@ describe('LCP contract on hero images', () => {
 });
 
 describe('brand compliance copy outside the footer', () => {
-  // The footer's 1928 strings are covered by shell-contract.test.ts. These two
-  // were unguarded — they sit in templates week 2 rewrites.
-  //
-  // CTS group founding (1928) and NZ trading history (since 2000) are separate
-  // facts. Merging them is the standing brand red line; shell-contract.test.ts
-  // enforces that repo-wide.
-  it('TrustBar keeps the CTS attribution', () => {
-    expect(read(TRUST_BAR)).toContain('Backed by CTS · Founded 1928');
+  // PM decision 2026-10-13: company-history claims (1928 / since 2000 /
+  // 25 years / 100+ years) are removed site-wide; the footer is covered by
+  // shell-contract.test.ts. These two templates must stay free of them.
+  const HISTORY = /1928|since 2000|25 years|100\+? years/i;
+
+  it('TrustBar carries no company-history claim', () => {
+    expect(read(TRUST_BAR)).not.toMatch(HISTORY);
   });
 
-  it('CityTourHub keeps the TAANZ + since-2000 sentence', () => {
-    expect(read(CITY_TOUR_HUB)).toContain(
-      'TAANZ-bonded and Auckland-based since 2000'
-    );
+  it('CityTourHub keeps the TAANZ sentence without company-history years', () => {
+    const src = read(CITY_TOUR_HUB);
+    expect(src).toContain('TAANZ-bonded and Auckland-based');
+    expect(src).not.toMatch(HISTORY);
   });
 });
 

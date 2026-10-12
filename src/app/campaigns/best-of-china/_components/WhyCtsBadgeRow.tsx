@@ -21,8 +21,8 @@ const BADGES: Badge[] = [
   },
   {
     icon: 'sparkles',
-    title: '25 Years in NZ',
-    body: 'Backed by CTS — global brand since 1928',
+    title: 'Backed by CTS',
+    body: 'Part of the China Travel Service group',
   },
   {
     icon: 'heart',

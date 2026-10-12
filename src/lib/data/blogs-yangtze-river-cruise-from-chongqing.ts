@@ -88,7 +88,7 @@ export const yangtzeRiverCruiseFromChongqingPost: BlogPost = {
     },
   ],
   content: `
-**Quick answer:** A Yangtze River cruise from Chongqing to Yichang runs **4 days / 3 nights** downstream, passing through the three iconic gorges (Qutang, Wu, Xiling), the engineering marvel of the Three Gorges Dam locks, and shore excursions to Fengdu Ghost City and the Lesser Three Gorges at Wushan. Premium ships like Century Cruises and Victoria Cruises offer en-suite balcony cabins, English-speaking guides, and Western-standard dining. For NZ travellers, the Yangtze cruise pairs naturally with a Beijing-Xi\'an-Chongqing-Shanghai 14-day China holiday from Auckland — visa-free entry through 31 December 2026, no extra permits needed. CTS Tours NZ has been arranging Yangtze cruises for Kiwi travellers for 25 years.
+**Quick answer:** A Yangtze River cruise from Chongqing to Yichang runs **4 days / 3 nights** downstream, passing through the three iconic gorges (Qutang, Wu, Xiling), the engineering marvel of the Three Gorges Dam locks, and shore excursions to Fengdu Ghost City and the Lesser Three Gorges at Wushan. Premium ships like Century Cruises and Victoria Cruises offer en-suite balcony cabins, English-speaking guides, and Western-standard dining. For NZ travellers, the Yangtze cruise pairs naturally with a Beijing-Xi\'an-Chongqing-Shanghai 14-day China holiday from Auckland — visa-free entry through 31 December 2026, no extra permits needed. CTS Tours NZ arranges Yangtze cruises for Kiwi travellers.
 
 ---
 
@@ -210,7 +210,7 @@ The Yangtze River cruise isn\'t for everyone. If you\'re a fast-paced traveller 
 
 But if you want **slow travel done well** — proper cabins, gentle pacing, lectures that are actually interesting, scenery that genuinely earns its reputation, and one of the great engineering experiences of modern China — then yes, the Yangtze cruise is worth it. It\'s the kind of trip Kiwi travellers come home raving about, and almost always recommend to friends planning their own China trip.
 
-If you want to talk through whether it\'s right for your specific trip, the [CTS Tours team](/contact) is in Auckland and happy to walk through ship choices, dates, and how it fits with the rest of your China itinerary. China Travel Service has been arranging tours globally since 1928 — our NZ team has been booking Yangtze cruises for Kiwi travellers for 25 years, and most of us have done the route ourselves multiple times across different seasons.
+If you want to talk through whether it\'s right for your specific trip, the [CTS Tours team](/contact) is in Auckland and happy to walk through ship choices, dates, and how it fits with the rest of your China itinerary. China Travel Service is our parent group — our NZ team books Yangtze cruises for Kiwi travellers, and most of us have done the route ourselves multiple times across different seasons.
 
 Whether you choose Century or Victoria, April or October, 4 nights or just 3, the Yangtze will leave you with stories — and a much deeper sense of China — that you won\'t get from city visits alone.
 `,

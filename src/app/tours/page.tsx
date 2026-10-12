@@ -209,15 +209,15 @@ export default function ToursPage() {
               Why Choose CTS Tours
             </h2>
             <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              25 years of Kiwi-led NZ operations (Auckland since 2000), backed by CTS Group experience since 1928 — crafting unforgettable journeys across Asia
+              Kiwi-led NZ operations from Auckland, backed by the CTS Group — crafting unforgettable journeys across Asia
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                title: 'Backed by CTS · Founded 1928',
-                description: '25 years of Kiwi-led NZ operations, backed by CTS Group experience since 1928'
+                title: 'Backed by CTS',
+                description: 'Kiwi-led NZ operations, backed by the CTS Group'
               },
               {
                 title: 'Local Experts',

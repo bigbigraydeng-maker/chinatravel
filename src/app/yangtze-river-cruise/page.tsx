@@ -288,7 +288,7 @@ export default function YangtzeRiverCruisePage() {
                   cabins, English-speaking guides, and Western-standard dining. For NZ travellers, the
                   cruise pairs naturally with a Beijing-Xi&apos;an-Chongqing-Shanghai 14-day China holiday
                   from Auckland. NZ passport holders enter visa-free up to 30 days through 31 December 2026.
-                  CTS Tours NZ has been arranging Yangtze cruises for Kiwi travellers for 25 years.
+                  CTS Tours NZ arranges Yangtze cruises for Kiwi travellers.
                 </p>
               </aside>
 
@@ -505,7 +505,7 @@ export default function YangtzeRiverCruisePage() {
                 </h2>
                 <p className="text-gray-700 mb-5 max-w-2xl mx-auto">
                   Our Auckland-based team will match the ship to your dates, integrate the cruise with your wider
-                  China itinerary, and quote everything in NZD. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.
+                  China itinerary, and quote everything in NZD. Backed by China Travel Service; CTS Tours NZ is Auckland-based.
                 </p>
                 <Link
                   href="/contact"

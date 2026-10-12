@@ -219,7 +219,7 @@ export default function TourHero({
               <svg className="w-4 h-4 shrink-0 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
               </svg>
-              <span>TAANZ member · IATA-accredited · Backed by CTS (founded 1928)</span>
+              <span>TAANZ member · IATA-accredited · Backed by CTS</span>
             </li>
           </ul>
 
