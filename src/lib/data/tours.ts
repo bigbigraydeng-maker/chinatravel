@@ -66,6 +66,26 @@ export interface Tour {
    * default.
    */
   maxGroupSize?: number;
+  /**
+   * Opt in to the departure/price table and plain-words booking terms blocks
+   * (see components/tours/TourGoldenBlocks.tsx). Off by default.
+   */
+  goldenBlocks?: boolean;
+  /**
+   * Planned departures that are in CTS's schedule but have no confirmed public
+   * price yet. Shown in the departure table as "Price to be confirmed" and kept
+   * OUT of the Offers schema, the booking selector and the schedule block, so no
+   * price or availability is implied. Same "D Month YYYY" format as departureDates.
+   */
+  pendingDepartures?: string[];
+  /** Internal links shown under "Plan this trip" in the booking terms block. */
+  planLinks?: Array<{ href: string; label: string }>;
+  /**
+   * Leave aggregateRating out of this tour's JSON-LD. The site-wide Google rating
+   * belongs to the company, not to one product, and Google does not show star
+   * results for a business rating its own offer.
+   */
+  suppressAggregateRating?: boolean;
 }
 
 export interface DayItinerary {

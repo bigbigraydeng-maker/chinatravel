@@ -30,6 +30,7 @@ import FacebookFollowStrip from '@/components/FacebookFollowStrip';
 import FAQSection from '@/components/FAQSection';
 import FlipbookSection from '@/components/tours/FlipbookSection';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
+import { TourDepartureTable, TourBookingTerms } from '@/components/tours/TourGoldenBlocks';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import {
   generateTourSchema,
@@ -576,6 +577,13 @@ export default function TourPage({ params }: TourPageProps) {
           </div>
         </div>
       </div>
+
+      {tour.goldenBlocks && !tour.soldOut && (
+        <div className="container mx-auto space-y-14 px-4 pb-16">
+          <TourDepartureTable tour={tour} />
+          <TourBookingTerms tour={tour} />
+        </div>
+      )}
 
       {tour.destination === 'china' && <div className="container mx-auto px-4 pb-16"><TourSupportingContentLinks tour={tour} wide /></div>}
 

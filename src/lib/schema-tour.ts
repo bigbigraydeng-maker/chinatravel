@@ -68,10 +68,14 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
       '@type': 'Audience',
       audienceType: 'Travelers from New Zealand',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
@@ -161,10 +165,14 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
       'First-time China travellers',
       'Travelers from New Zealand',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
@@ -203,10 +211,14 @@ export function generateProductSchema(tour: Tour) {
     image: tour.heroImage.startsWith('http')
       ? tour.heroImage
       : `${getSiteUrl()}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     brand: {
       '@type': 'Brand',
       name: 'CTS Tours',
