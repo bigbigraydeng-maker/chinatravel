@@ -112,7 +112,7 @@ const DEFAULT_TRAVEL_INTEREST_OPTIONS = [
 ];
 
 const DEFAULT_BULLETS = [
-  '25 years in NZ (parent CTS since 1928) of China-direct operations · Auckland & Christchurch departures',
+  'Kiwi-led, backed by CTS, with China-direct operations · Auckland & Christchurch departures',
   'NZD pricing · small groups · visa-free options for many NZ travellers',
   'December 2026 departures from Auckland & Christchurch — ask about availability',
 ];

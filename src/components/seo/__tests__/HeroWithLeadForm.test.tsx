@@ -37,10 +37,8 @@ jest.mock('@/lib/utils/utm-parser', () => ({
 
 const RENDER_PROPS = {
   title: 'China Tours from New Zealand',
-  // Compliant phrasing: the NZ company dates from 2000; 1928 belongs to the
-  // parent group. Binding Auckland/NZ directly to 1928 is the standing brand
-  // red line — see src/__tests__/shell-contract.test.ts.
-  subtitle: 'Auckland-based China specialists since 2000, backed by CTS Group (founded 1928).',
+  // Test fixture only; no company-history years (2026-10-13 decision).
+  subtitle: 'Auckland-based China specialists, backed by CTS Group.',
   posterImage: '/images/poster.jpg',
 };
 

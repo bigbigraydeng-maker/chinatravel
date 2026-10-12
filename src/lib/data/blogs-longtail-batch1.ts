@@ -336,7 +336,7 @@ The Terracotta Warriors are the anchor of any Xi'an visit, but they shouldn't be
     content: `
 Booking a China tour from New Zealand has historically meant dealing with operators based in Australia or the UK — companies with good products but no particular understanding of what Kiwi travellers want or expect, and no one to call in your timezone.
 
-CTS Tours is different. We're Auckland-based, have been running guided China tours for New Zealand travellers for decades, and price everything in NZD. Here's what you should know about booking a Beijing and Xi'an tour from New Zealand in 2026.
+CTS Tours is different. We're Auckland-based, run guided China tours for New Zealand travellers, and price everything in NZD. Here's what you should know about booking a Beijing and Xi'an tour from New Zealand in 2026.
 
 ## What's Typically Included
 
@@ -388,7 +388,7 @@ New Zealand passport holders currently benefit from China's visa-free entry poli
 
 The practical difference: when you have a question at 2pm on a weekday, you call us. Not an Australian toll-free number. Not a UK call centre. Us, in Auckland, in your timezone, familiar with where you're flying from and what matters to you.
 
-We've been running China tours for New Zealand travellers for decades. We know what Kiwi travellers find surprising about China, what they find challenging, and what they find extraordinary. Our itineraries are designed with that knowledge, not adapted from a product built for a different market.
+We run China tours for New Zealand travellers. We know what Kiwi travellers find surprising about China, what they find challenging, and what they find extraordinary. Our itineraries are designed with that knowledge, not adapted from a product built for a different market.
 
 [Enquire about the Beijing & Xi'an tour →](/tours/china/discovery/beijing-xian)
     `
@@ -550,7 +550,7 @@ The tour is priced from NZD $2,699 per person (twin share) from Auckland, depart
     id: 'lt-b4',
     slug: 'shanghai-10-days-itinerary',
     title: '10-Day Shanghai & Jiangnan Itinerary for NZ Travellers (2026)',
-    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $2,699. By CTS Tours, NZ\'s China specialists — Auckland since 2000, backed by CTS (founded 1928).',
+    excerpt: 'Day-by-day 10-day route covering Shanghai, Suzhou, Wuxi & Hangzhou — pacing, October weather, meals, and real prices from NZD $2,699. By CTS Tours, NZ\'s China specialists — Auckland-based, backed by CTS.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
     category: 'destination',

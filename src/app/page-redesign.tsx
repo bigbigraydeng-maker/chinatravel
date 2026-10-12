@@ -48,7 +48,7 @@ const ArrowRight = ({ className = 'h-4 w-4' }: { className?: string }) => (
 );
 
 const FEATURES: { icon: IconName; title: string; body: string }[] = [
-  { icon: 'landmark', title: 'Backed by CTS · Founded 1928', body: "Backed by CTS — China's travel brand since 1928 — with 25 years of Kiwi-led NZ operations in Chinese culture, logistics and hospitality." },
+  { icon: 'landmark', title: 'Backed by CTS', body: "Backed by CTS, with Kiwi-led NZ operations drawing on Chinese culture, logistics and hospitality." },
   { icon: 'pencil', title: 'Tailor-Made Design', body: 'Flexible itineraries customised down to the finest detail around your interests and pace.' },
   { icon: 'shield', title: 'Fully Protected', body: 'TAANZ-bonded and IATA-accredited, so your investment is secure from the first deposit.' },
   { icon: 'users', title: 'Local NZ Support', body: 'Talk directly with our Auckland-based team before, during and after your journey.' },
@@ -155,7 +155,7 @@ const HomePageRedesign = () => {
           <div className="text-center md:text-left">
             <p className="font-serif text-lg font-bold text-ink md:text-xl">Trusted by 10,000+ Kiwi travellers</p>
             <p className="mt-1.5 flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 text-sm text-ink-muted md:justify-start">
-              <span>Licensed NZ specialists — Auckland since 2000, backed by CTS (founded 1928)</span>
+              <span>Licensed NZ specialists — Auckland-based, backed by CTS</span>
               <span className="text-ink/20">·</span>
               <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
                 <Icon name="check-circle" className="h-4 w-4" /> No forced shopping stops
@@ -361,7 +361,6 @@ const HomePageRedesign = () => {
               {([
                 { icon: 'landmark', label: 'Born in China', width: 'w-20' },
                 { icon: 'map-pin', label: 'NZ-based', width: 'w-20' },
-                { icon: 'briefcase', label: '20+ Years in Travel', width: 'w-20' },
                 { icon: 'message', label: 'Speaks Mandarin, English and Cantonese', width: 'w-32' },
               ] as { icon: IconName; label: string; width: string }[]).map((c) => (
                 <div key={c.label} className={`flex ${c.width} flex-col items-center text-center`}>
@@ -429,7 +428,7 @@ const HomePageRedesign = () => {
                 can trust.
               </h2>
               <p className="mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">
-                For 25 years CTS Tours NZ has crafted (parent CTS Group in the industry since 1928) exceptional travel experiences, bridging New Zealand and the
+                CTS Tours NZ crafts exceptional travel experiences, bridging New Zealand and the
                 wonders of China.
               </p>
               <div className="mt-10 grid grid-cols-2 gap-4">

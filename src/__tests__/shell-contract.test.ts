@@ -7,7 +7,7 @@
  * fallbacks, and the sticky-offset coupling between Navbar and VisaFreeBanner.
  *
  * Analysis before the reskin confirmed the gap concretely: a shell PR could
- * delete every 1928 compliance string and CI would stay green. This suite
+ * delete the brand-compliance strings and CI would stay green. This suite
  * closes that, and must stay green through the reskin.
  *
  * These are static source assertions rather than renders. What we are guarding
@@ -30,15 +30,13 @@ const LAYOUT = 'src/app/layout.tsx';
 describe('Footer brand-compliance strings', () => {
   const footer = read(FOOTER);
 
-  // CTS group founding (1928) and NZ trading history (since 2000, 25 years)
-  // are two SEPARATE facts. Merging them into "Auckland since 1928" is the
-  // standing brand red line — a site-wide correction already went through for
-  // it. These exact strings are the compliant phrasings.
-  it.each([
-    'Backed by CTS · Founded 1928 | Direct China Operations',
-    'Part of China Travel Service Group, est. 1928',
-  ])('keeps the compliant 1928 attribution: %s', (needle) => {
-    expect(footer).toContain(needle);
+  // PM decision 2026-10-13: company-history claims (1928 / since 2000 /
+  // 25 years / 100+ years) are removed site-wide. The footer keeps the plain
+  // parent-group attribution only, with no years.
+  it('keeps the parent-group attribution without any company-history years', () => {
+    expect(footer).toContain('Backed by CTS | Direct China Operations');
+    expect(footer).toContain('Part of China Travel Service Group');
+    expect(footer).not.toMatch(/1928|since 2000|25 years|100\+? years/i);
   });
 
   it.each([
