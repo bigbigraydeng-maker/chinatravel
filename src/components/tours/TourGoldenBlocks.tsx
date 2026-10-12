@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Tour } from '@/lib/data/tours';
-import { computeReturnDate } from '@/lib/data/tour-dates';
-import { departures } from '@/lib/tour-discovery';
+import { computeReturnDate, parseDepartureDate } from '@/lib/data/tour-dates';
+import { aucklandToday, departures } from '@/lib/tour-discovery';
 
 /**
  * Opt-in blocks for the "tour page golden structure" (departure and price table,
@@ -23,93 +23,141 @@ interface DepartureRow {
   price: string | null;
 }
 
-function buildRows(tour: Tour): DepartureRow[] {
-  const confirmed: DepartureRow[] = departures(tour).map((d) => ({
+function isoDate(label: string): string | null {
+  const parsed = parseDepartureDate(label);
+  return parsed ? parsed.toISOString().slice(0, 10) : null;
+}
+
+/**
+ * Confirmed rows (published price, still in the future) and planned rows (in CTS's
+ * schedule, no published price yet). Planned rows that have already passed are dropped.
+ */
+export function getDepartureRows(
+  tour: Tour,
+  today: string = aucklandToday(),
+): { confirmed: DepartureRow[]; planned: DepartureRow[] } {
+  const confirmed: DepartureRow[] = departures(tour, today).map((d) => ({
     label: d.label,
     returnDate: computeReturnDate(d.label, tour.duration),
     price: displayPrice(d.price),
   }));
-  const pending: DepartureRow[] = (tour.pendingDepartures ?? []).map((label) => ({
-    label,
-    returnDate: computeReturnDate(label, tour.duration),
-    price: null,
-  }));
-  return [...confirmed, ...pending];
+  const planned: DepartureRow[] = (tour.pendingDepartures ?? [])
+    .filter((label) => {
+      const iso = isoDate(label);
+      return iso !== null && iso >= today;
+    })
+    .sort((x, y) => (isoDate(x) as string).localeCompare(isoDate(y) as string))
+    .map((label) => ({
+      label,
+      returnDate: computeReturnDate(label, tour.duration),
+      price: null,
+    }));
+  return { confirmed, planned };
+}
+
+/** True when the departure block will render something (used to decide on the nav link). */
+export function hasDepartureRows(tour: Tour): boolean {
+  if (!tour.goldenBlocks || tour.soldOut) return false;
+  const { confirmed, planned } = getDepartureRows(tour);
+  return confirmed.length + planned.length > 0;
 }
 
 export function TourDepartureTable({ tour }: { tour: Tour }) {
-  if (!tour.goldenBlocks || tour.soldOut) return null;
-  const rows = buildRows(tour);
-  if (rows.length === 0) return null;
-  const hasPending = rows.some((r) => r.price === null);
+  if (!hasDepartureRows(tour)) return null;
+  const { confirmed, planned } = getDepartureRows(tour);
+  const note = tour.singleSupplementNote?.trim().replace(/\.$/, '');
 
   return (
     <section id="departures" className="scroll-mt-24">
       <h2 className="font-serif text-3xl">Departure dates and prices.</h2>
-      <p className="mt-3 text-sm leading-relaxed text-ink-muted">
-        Scheduled group departures from Auckland. Prices are per person in NZD, twin share. See What&apos;s
-        Included below for exactly what the price covers.
-      </p>
-      <div className="mt-5 overflow-x-auto rounded-xl border border-warm-200 bg-white">
-        <table className="w-full min-w-[30rem] text-left text-sm">
-          <caption className="sr-only">{tour.name} departure dates and prices</caption>
-          <thead className="bg-warm-50 text-xs uppercase tracking-wide text-ink-muted">
-            <tr>
-              <th scope="col" className="px-4 py-3 font-semibold">Departs Auckland</th>
-              <th scope="col" className="px-4 py-3 font-semibold">Returns</th>
-              <th scope="col" className="px-4 py-3 font-semibold">Price per person (twin share)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.label} className="border-t border-warm-200">
-                <th scope="row" className="px-4 py-3 font-semibold">{row.label}</th>
-                <td className="px-4 py-3 text-ink-muted">{row.returnDate ?? 'On request'}</td>
-                <td className="px-4 py-3">
-                  {row.price ? (
-                    <span className="font-semibold text-primary">{row.price}</span>
-                  ) : (
-                    <span className="text-ink-muted">Price to be confirmed — ask us</span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      {tour.singleSupplement && (
+      {confirmed.length > 0 && (
+        <>
+          <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+            Scheduled group departures from Auckland. Prices are per person in NZD, twin share. See the
+            inclusions on this page for exactly what the price covers.
+          </p>
+          <div
+            className="mt-5 overflow-x-auto rounded-xl border border-warm-200 bg-white"
+            role="region"
+            aria-label={`${tour.name} departure dates and prices`}
+            tabIndex={0}
+          >
+            <table className="w-full min-w-[30rem] text-left text-sm">
+              <caption className="sr-only">{tour.name} departure dates and prices</caption>
+              <thead className="bg-warm-50 text-xs uppercase tracking-wide text-ink-muted">
+                <tr>
+                  <th scope="col" className="px-4 py-3 font-semibold">Departs Auckland</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Returns</th>
+                  <th scope="col" className="px-4 py-3 font-semibold">Price per person (twin share)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {confirmed.map((row) => (
+                  <tr key={row.label} className="border-t border-warm-200">
+                    <th scope="row" className="px-4 py-3 font-semibold">{row.label}</th>
+                    <td className="px-4 py-3 text-ink-muted">{row.returnDate ?? 'On request'}</td>
+                    <td className="px-4 py-3 font-semibold text-primary">{row.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
+      {tour.singleSupplement && confirmed.length > 0 && (
         <p className="mt-3 text-sm text-ink-muted">
-          <strong className="text-ink">Travelling solo?</strong> A private room is an additional{' '}
-          <strong className="text-primary">{tour.singleSupplement}</strong>
-          {tour.singleSupplementNote ? ` — ${tour.singleSupplementNote}` : ''}.
+          <strong className="text-ink">Travelling solo?</strong> The single supplement (the extra cost of your
+          own room) is <strong className="text-primary">{tour.singleSupplement}</strong>
+          {note ? ` — ${note}` : ''}.
         </p>
       )}
-      {hasPending && (
-        <p className="mt-2 text-xs text-ink-muted">
-          Dates marked &ldquo;to be confirmed&rdquo; are planned but not yet open for booking at a published
-          price. Send an enquiry and we will tell you where they stand.
-        </p>
+      {planned.length > 0 && (
+        <div className="mt-6">
+          <h3 className="font-semibold">Planned departures — not yet open for booking</h3>
+          <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+            These dates are planned but have no published price yet. Send an enquiry and we will let you
+            know when they open.
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {planned.map((row) => (
+              <li
+                key={row.label}
+                className="rounded-full border border-warm-200 bg-white px-4 py-2 text-sm text-ink-muted"
+              >
+                {row.label}
+                {row.returnDate ? ` – ${row.returnDate}` : ''}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
       <a
         href="#enquiry"
         className="mt-5 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-semibold text-white transition-colors hover:bg-primary/90"
       >
-        Check availability →
+        {confirmed.length > 0 ? 'Check availability →' : 'Register interest →'}
       </a>
     </section>
   );
 }
 
-/** Cancellation steps exactly as published in the Terms & Conditions of Booking. */
-const CANCELLATION_STEPS: Array<{ when: string; cost: string }> = [
-  { when: '90 days or more before departure', cost: 'You lose the deposit, plus administration fees and the cost of any air and cruise tickets already issued.' },
-  { when: '89 to 61 days before departure', cost: 'You lose the deposit and 50% of the total booking cost, plus the cost of air and cruise tickets.' },
-  { when: '60 to 31 days before departure', cost: 'You lose the deposit and 75% of the total booking cost, plus the cost of air and cruise tickets.' },
-  { when: '30 days or less before departure', cost: 'You lose the deposit and 100% of the total booking cost, plus the cost of air and cruise tickets.' },
-];
+/** Cancellation steps as published in the Terms & Conditions of Booking. */
+function cancellationSteps(tickets: string): Array<{ when: string; cost: string }> {
+  return [
+    { when: '90 days or more before departure', cost: `You lose the deposit, plus administration fees and the cost of any ${tickets} already issued.` },
+    { when: '89 to 61 days before departure', cost: `You lose the deposit and 50% of the total booking cost, plus the cost of ${tickets}.` },
+    { when: '60 to 31 days before departure', cost: `You lose the deposit and 75% of the total booking cost, plus the cost of ${tickets}.` },
+    { when: '30 days or less before departure', cost: `You lose the deposit and 100% of the total booking cost, plus the cost of ${tickets}.` },
+  ];
+}
+
+function hasCruise(tour: Tour): boolean {
+  return tour.itinerary.some((d) => /cruise/i.test(`${d.title} ${d.accommodation ?? ''}`));
+}
 
 export function TourBookingTerms({ tour }: { tour: Tour }) {
   if (!tour.goldenBlocks || tour.soldOut) return null;
+  const tickets = hasCruise(tour) ? 'air and cruise tickets' : 'air tickets';
 
   return (
     <section id="booking-terms" className="scroll-mt-24">
@@ -140,15 +188,16 @@ export function TourBookingTerms({ tour }: { tour: Tour }) {
         <div className="rounded-xl border border-warm-200 bg-white p-5">
           <dt className="font-semibold">Tips</dt>
           <dd className="mt-2 text-sm leading-relaxed text-ink-muted">
-            Tipping is prepaid in New Zealand before you leave, so there is no cash to hand out in China. We
-            suggest NZD $10 per person per day, and confirm the exact amount when you book.
+            Tipping is prepaid in New Zealand before you leave, and we confirm the exact amount when you
+            book. We suggest NZD $10 per person per day.
           </dd>
         </div>
         <div className="rounded-xl border border-warm-200 bg-white p-5">
           <dt className="font-semibold">Shopping stops</dt>
           <dd className="mt-2 text-sm leading-relaxed text-ink-muted">
-            Some itineraries include a visit to a local speciality store, such as a silk or jade workshop.
-            There is no obligation to buy and no minimum spend.
+            Some itineraries include visits to local speciality stores, such as silk, jade or tea. The
+            day-by-day programme lists the stops on this tour. You are never obliged to buy, and there is no
+            minimum spend.
           </dd>
         </div>
       </dl>
@@ -157,7 +206,7 @@ export function TourBookingTerms({ tour }: { tour: Tour }) {
         Cancellations must be made in writing. Charges run from the date we receive your written cancellation.
       </p>
       <ol className="mt-4 space-y-2">
-        {CANCELLATION_STEPS.map((step) => (
+        {cancellationSteps(tickets).map((step) => (
           <li key={step.when} className="rounded-lg bg-warm-50 px-4 py-3 text-sm">
             <strong className="text-ink">{step.when}:</strong>{' '}
             <span className="text-ink-muted">{step.cost}</span>
