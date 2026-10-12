@@ -607,7 +607,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
@@ -650,12 +649,12 @@ export const tours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international airfares from Auckland, domestic airfares within China, 4–5 star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional activities such as the Sichuan Opera face-changing performance, and tips (see the booking terms on this page).',
+          'Return international airfares from Auckland, domestic airfares within China, 4–5 star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
       },
       {
         question: 'Which hotels do we stay in?',
         answer:
-          'Hyatt Place Shanghai Changfeng (2 nights), the Three Gorges cruise ship (4 nights), Four Points by Sheraton Chongqing (2 nights), Holiday Inn Chengdu Oriental Plaza (2 nights) and Wulingyuan Rêverie Mansen Wyndham Hotel (3 nights). Hotels are rated 4 to 5-star by local standards, and the final night is spent on your international flight. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+          'Hyatt Place Shanghai Changfeng (2 nights), the Three Gorges cruise ship (4 nights), Four Points by Sheraton Chongqing (2 nights), Holiday Inn Chengdu Oriental Plaza (2 nights) and Wulingyuan Rêverie Mansen Wyndham Hotel (3 nights). Hotels are rated 4 to 5-star by local standards, and the final night is spent on your international flight. The cruise ship and every hotel are named in the day-by-day programme; if a hotel is unavailable, CTS arranges one of similar standard.',
       },
       {
         question: 'Which parts of the journey are by train?',
@@ -681,7 +680,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). We will check seats on your chosen date and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $1,895 extra, cruise included) for the 26 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
