@@ -44,6 +44,12 @@ interface CityHubProps {
   proseSections?: HubProseSection[];
   departureRows?: HubDepartureRow[];
   sampleItinerary?: HubSampleItinerary | null;
+  /** Replaces the default "packages ... with return flights" clause in the quick answer (stopovers are land only). */
+  offerSummary?: string;
+  /** Overrides the sidebar "Starting From" price (default: price of the last tour in the list). */
+  startingFrom?: string;
+  /** Show the first N tours as cards and put the rest in a collapsed list. */
+  featuredCount?: number;
 }
 
 const CityTourHub: React.FC<CityHubProps> = ({
@@ -60,7 +66,10 @@ const CityTourHub: React.FC<CityHubProps> = ({
   metaDescription,
   proseSections,
   departureRows,
-  sampleItinerary
+  sampleItinerary,
+  offerSummary,
+  startingFrom,
+  featuredCount
 }) => {
   return (
     <div>
@@ -88,7 +97,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                   Quick answer
                 </p>
                 <p className="text-foreground leading-relaxed">
-                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded and Auckland-based since 2000, backed by China Travel Service (founded 1928). NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
+                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} {offerSummary ?? 'packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides'}. TAANZ-bonded and Auckland-based since 2000, backed by China Travel Service (founded 1928). NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
                 </p>
               </aside>
 
@@ -141,7 +150,17 @@ const CityTourHub: React.FC<CityHubProps> = ({
                   title={`${cityName} Tours`}
                   subtitle={`Discover our ${cityName} experiences`}
                 />
-                <TourGrid tours={tours} columns={2} />
+                <TourGrid tours={featuredCount ? tours.slice(0, featuredCount) : tours} columns={2} />
+                {featuredCount && tours.length > featuredCount && (
+                  <details className="mt-8 group">
+                    <summary className="cursor-pointer text-primary font-semibold">
+                      More trips that include {cityName} ({tours.length - featuredCount})
+                    </summary>
+                    <div className="mt-6">
+                      <TourGrid tours={tours.slice(featuredCount)} columns={2} />
+                    </div>
+                  </details>
+                )}
               </section>
 
               {departureRows && departureRows.length > 0 && (
@@ -173,7 +192,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                         <div>
                           <dt className="text-sm text-muted-foreground">Starting From</dt>
                           <dd className="text-base font-semibold leading-snug text-primary">
-                            {tours[tours.length - 1].price}
+                            {startingFrom ?? tours[tours.length - 1].price}
                           </dd>
                         </div>
                         <div>

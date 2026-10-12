@@ -4,7 +4,7 @@ import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chengduToursMeta } from '@/lib/data/seo-pages';
-import { chengduHub, buildDepartureRows, buildSampleItinerary, resolveHubTours } from '@/lib/data/destination-hubs';
+import { chengduHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
 
 // Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
 export const revalidate = 3600;
@@ -50,13 +50,14 @@ export default function ChengduToursPage() {
         proseSections={chengduHub.prose}
         departureRows={buildDepartureRows(tours, chengduHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(chengduHub)}
+        offerSummary={chengduHub.offerSummary}
+        startingFrom={cheapestPrice(tours)}
+        featuredCount={chengduHub.featuredCount}
         guideLinks={[
-          { label: 'Chengdu Travel Guide', href: '/chengdu-travel-guide', icon: 'paw', description: 'Pandas, temples & hot pot' },
-          { label: 'Panda Sanctuary Guide', href: '/chengdu-panda-sanctuary', icon: 'paw', description: '200+ pandas · morning feeding · visitor tips' },
           { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', icon: 'landmark', description: 'Giant cliffside Buddha visitor tips' },
           { label: 'Panda Sanctuary: Plan Your Visit', href: '/blog/chengdu-panda-sanctuary-experience', icon: 'paw', description: 'Timing, exclusive access & what to book' },
-          { label: 'Chengdu Spicy Cuisine', href: '/blog/chengdu-spicy-cuisine-culture', icon: 'flame', description: 'Mala science & must-eat Sichuan dishes' },
-          { label: 'Chongqing vs Chengdu', href: '/blog/chongqing-vs-chengdu', icon: 'map', description: 'Which Sichuan-basin city suits you' },
+          { label: 'Giant Pandas: Complete Guide', href: '/blog/giant-pandas-chengdu-complete-guide', icon: 'paw', description: 'Breeding, behaviour & the best time to go' },
+          { label: 'Things to Do in Chengdu', href: '/blog/chengdu-things-to-do', icon: 'map', description: 'Beyond the pandas' },
         ]}
       />
     </>

@@ -44,7 +44,7 @@ export function HubDepartures({ cityName, rows }: { cityName: string; rows: HubD
       <h2 className={H2_SECTION}>{cityName} group departures</h2>
       <p className="text-muted-foreground mb-6">
         Upcoming group departures from New Zealand that include {cityName}, as published on each tour page. Prices are per
-        person; open a tour for what is included.
+        person; open a tour for room options and what is included.
       </p>
       <div className="space-y-3">
         {rows.map((row) => (

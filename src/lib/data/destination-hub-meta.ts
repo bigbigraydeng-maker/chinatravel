@@ -43,17 +43,17 @@ export const chengduToursMeta: CityHubMeta = {
     {
       question: 'How many days do I need in Chengdu?',
       answer:
-        'Our Chengdu stopover is 3 days: arrival, a full day at the panda base and in the city, then the Dujiangyan Irrigation System on departure day. On our group tours Chengdu is a two-day stop within a longer route.',
+        'Our Chengdu stopover is 3 days, including arrival and departure days. On our group tours Chengdu is one to two days within a longer route.',
     },
     {
       question: 'Can I add Chengdu to a longer China trip?',
       answer:
-        'Yes. Chengdu is on Natural China (after Chongqing, before Zhangjiajie), Legacy of China (after Lhasa, before the Yangtze cruise) and China Panorama (after the Yangtze cruise, before Dali). Each is a Signature group tour with international and domestic flights included.',
+        'Yes. Chengdu is on three Signature group tours: Natural China, Legacy of China and China Panorama. Their upcoming departures are listed above, and flights are included in each.',
     },
     {
       question: 'Is Sichuan food too spicy?',
       answer:
-        'Sichuan cooking is known for "ma la", a numbing-spicy flavour from Sichuan peppercorns, which many visitors find interesting rather than painful. You can ask for "bu la" (not spicy) when ordering, and mild versions of most dishes exist. Our Sichuan food guide explains what to try.',
+        'Sichuan cooking is known for "ma la", a numbing-spicy flavour from Sichuan peppercorns. Our Sichuan food guide explains what to try.',
     },
   ],
 };
@@ -83,7 +83,7 @@ export const xianToursMeta: CityHubMeta = {
     {
       question: 'How much time do I need for the Terracotta Warriors?',
       answer:
-        'Plan around half a day. On A Tale of Two Cities the Terracotta Warriors fill the morning of day 7, and China Panorama gives them a full day (day 7).',
+        'It depends on the tour. On A Tale of Two Cities the Terracotta Warriors fill the morning of day 7, and China Panorama gives them a full day (day 7).',
     },
     {
       question: "How much does a Xi'an tour from New Zealand cost?",
@@ -102,7 +102,7 @@ export const xianToursMeta: CityHubMeta = {
     {
       question: "Can I visit Xi'an as part of a Beijing trip?",
       answer:
-        "Yes. A Tale of Two Cities and Best of China both take the high-speed train from Beijing to Xi'an (Train G89, departing 15:00 and arriving 19:12 on the reference service).",
+        "Yes. A Tale of Two Cities and Best of China both take the high-speed train from Beijing to Xi'an.",
     },
   ],
 };
@@ -132,7 +132,7 @@ export const guilinToursMeta: CityHubMeta = {
     {
       question: 'What is the Li River cruise like?',
       answer:
-        'On our Guilin stopover the Li River cruise from Guilin to Yangshuo takes 5-6 hours through limestone mountain formations, and includes a visit to Yangshuo market. On Guilin & Surrounds and China Panorama the cruise also ends in Yangshuo.',
+        'On our Guilin stopover the cruise from Guilin to Yangshuo takes 5-6 hours through limestone mountain formations. Guilin & Surrounds and China Panorama also include it.',
     },
     {
       question: 'Should I visit Guilin or Yangshuo?',
@@ -142,11 +142,6 @@ export const guilinToursMeta: CityHubMeta = {
     {
       question: 'How much does a Guilin tour from New Zealand cost?',
       answer: `The 3-day Guilin stopover is ${price('stopover', 'guilin')} and the 4-day Guilin & Surrounds is ${price('stopover', 'guilin-surrounds')}; both are land only, so airfare is not included. China Panorama, 27 days with return flights from Auckland included, is ${price('signature', 'grand-tour')}.`,
-    },
-    {
-      question: 'Which Guilin trip should I choose?',
-      answer:
-        'Choose the 3-day stopover for the Li River cruise, Reed Flute Cave and Elephant Trunk Hill. Choose the 4-day Guilin & Surrounds to add a full day at Longsheng, with the Longji terraces and Zhuang and Yao villages.',
     },
   ],
 };

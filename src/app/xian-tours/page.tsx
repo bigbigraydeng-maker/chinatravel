@@ -4,7 +4,7 @@ import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { xianToursMeta } from '@/lib/data/seo-pages';
-import { xianHub, buildDepartureRows, buildSampleItinerary, resolveHubTours } from '@/lib/data/destination-hubs';
+import { xianHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
 
 // Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
 export const revalidate = 3600;
@@ -50,13 +50,15 @@ export default function XianToursPage() {
         proseSections={xianHub.prose}
         departureRows={buildDepartureRows(tours, xianHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(xianHub)}
+        offerSummary={xianHub.offerSummary}
+        startingFrom={cheapestPrice(tours)}
+        featuredCount={xianHub.featuredCount}
         guideLinks={[
-          { label: "Xi'an Travel Guide", href: '/xian-travel-guide', icon: 'landmark', description: 'City sights, food & planning' },
-          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'landmark', description: 'Visitor guide to the Terracotta Army' },
-          { label: "Xi'an City Wall Guide", href: '/xian-city-wall-travel-guide', icon: 'landmark', description: 'Walking and cycling the ancient wall' },
           { label: 'Terracotta Warriors History', href: '/blog/terracotta-warriors-history', icon: 'landmark', description: 'Qin Shi Huang and the army underground' },
-          { label: "Xi'an Street Food", href: '/blog/xian-street-food-adventure', icon: 'utensils', description: 'What to eat in the Muslim Quarter' },
-          { label: 'Beijing to Xi\'an by Train', href: '/blog/beijing-to-xian-high-speed-train', icon: 'train', description: 'Route and timings for the high-speed link' },
+          { label: 'Terracotta Warriors Guide for NZ', href: '/blog/terracotta-warriors-guide-nz', icon: 'landmark', description: 'What to expect at the museum' },
+          { label: 'First Time in China: Beijing & Xi\'an', href: '/blog/first-time-china-beijing-xian', icon: 'map', description: 'Planning a first trip' },
+          { label: 'Beijing & Xi\'an Discovery Guide', href: '/beijing-xian-discovery-guide', icon: 'compass', description: 'How the two cities fit together' },
+          { label: 'Why the Silk Road', href: '/blog/why-silk-road-should-be-your-next-adventure', icon: 'compass', description: 'The ancient route west from Xi\'an' },
         ]}
       />
     </>

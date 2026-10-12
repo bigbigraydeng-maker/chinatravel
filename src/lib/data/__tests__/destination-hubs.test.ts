@@ -5,6 +5,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import {
   buildDepartureRows,
   buildSampleItinerary,
+  cheapestPrice,
   cityDayRange,
   guilinHub,
   resolveHubTours,
@@ -50,9 +51,15 @@ describe.each(HUBS)('$name destination hub', ({ hub, meta }) => {
     }
   });
 
-  it('puts the cheapest tour last, because the template reads "Starting From" from the last card', () => {
-    const prices = resolveHubTours(hub.tourRefs).map((t) => priceNumber(t.price) ?? Infinity);
-    expect(prices[prices.length - 1]).toBe(Math.min(...prices));
+  it('reports the cheapest listed tour as the starting price, whatever the display order', () => {
+    const tours = resolveHubTours(hub.tourRefs);
+    const cheapest = Math.min(...tours.map((t) => priceNumber(t.price) ?? Infinity));
+    expect(priceNumber(cheapestPrice(tours) ?? '')).toBe(cheapest);
+  });
+
+  it('never promises flights in the quick answer for land-only stopovers', () => {
+    expect(hub.offerSummary).toMatch(/land-only/);
+    expect(hub.offerSummary).not.toMatch(/return flights/);
   });
 
   it('has at least 6 distinct in-prose links, and every one resolves to a real page', () => {

@@ -6,7 +6,7 @@
 
 import { getTourBySlug, type DayItinerary, type Tour } from '@/lib/data/tours';
 import { computeReturnDate } from '@/lib/data/tour-dates';
-import { departures, tourUrl } from '@/lib/tour-discovery';
+import { departures, priceNumber, tourUrl } from '@/lib/tour-discovery';
 
 export type TourTier = 'signature' | 'discovery' | 'stopover';
 export type TourRef = { tier: TourTier; slug: string };
@@ -40,7 +40,10 @@ export interface HubSampleItinerary {
 }
 
 export interface DestinationHubConfig {
-  /** Tours listed on the hub, in display order (cheapest last: the template reads "Starting From" from the last one). */
+  featuredCount?: number;
+  /** Quick-answer clause; stopovers are land only, so it must not promise flights for every trip. */
+  offerSummary: string;
+  /** Tours listed on the hub, in display order. */
   tourRefs: TourRef[];
   /** Matches itinerary day titles that mean "the traveller is in this city". */
   cityPattern: RegExp;
@@ -52,6 +55,13 @@ export interface DestinationHubConfig {
 }
 
 const link = (text: string, href: string): RichPart => ({ text, href });
+
+/** Lowest listed price, e.g. "from NZD $945", for the sidebar "Starting From" fact. */
+export function cheapestPrice(tours: Tour[]): string | undefined {
+  const priced = tours.map((t) => ({ t, n: priceNumber(t.price) })).filter((x) => x.n !== null);
+  if (priced.length === 0) return undefined;
+  return priced.reduce((a, b) => ((b.n as number) < (a.n as number) ? b : a)).t.price;
+}
 
 export function resolveHubTours(refs: TourRef[]): Tour[] {
   return refs.flatMap((ref) => {
@@ -112,6 +122,8 @@ export const chengduHub: DestinationHubConfig = {
     { tier: 'signature', slug: 'grand-tour' },
     { tier: 'stopover', slug: 'chengdu' },
   ],
+  offerSummary:
+    'trips from New Zealand: land-only stopovers, plus Signature group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /chengdu/i,
   sampleRef: { tier: 'stopover', slug: 'chengdu' },
   sampleHeading: 'A 3-day Chengdu itinerary',
@@ -141,7 +153,7 @@ export const chengduHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Which Chengdu trip suits you',
+      heading: 'Choosing your Chengdu trip',
       paragraphs: [
         [
           'Short on time, or already have flights booked? Start with the stopover. Want a river cruise as well? All three group tours include one: the Three Gorges on Natural China (which then goes on to Zhangjiajie), the Yangtze on Legacy of China and China Panorama. Still deciding between Sichuan and Chongqing? Read ',
@@ -153,7 +165,7 @@ export const chengduHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Plan the rest of your Chengdu trip',
+      heading: 'Before you go: Chengdu reading',
       paragraphs: [
         [
           'Our ',
@@ -175,16 +187,20 @@ export const chengduHub: DestinationHubConfig = {
 
 export const xianHub: DestinationHubConfig = {
   tourRefs: [
-    { tier: 'signature', slug: 'silk-road' },
-    { tier: 'signature', slug: 'imperial-heritage' },
-    { tier: 'signature', slug: 'grand-tour' },
     { tier: 'discovery', slug: 'beijing-xian' },
     { tier: 'discovery', slug: 'essentials' },
+    { tier: 'signature', slug: 'silk-road' },
+    { tier: 'stopover', slug: 'xian' },
+    { tier: 'signature', slug: 'imperial-heritage' },
+    { tier: 'signature', slug: 'grand-tour' },
     { tier: 'discovery', slug: 'golden-china' },
     { tier: 'discovery', slug: 'china-icons-collection' },
     { tier: 'discovery', slug: 'china-icons-collection-christchurch' },
-    { tier: 'stopover', slug: 'xian' },
   ],
+  /** First N tours are shown as cards; the rest sit in a collapsed list. */
+  featuredCount: 4,
+  offerSummary:
+    'trips from New Zealand: a land-only stopover, plus group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /xi.?an/i,
   sampleRef: { tier: 'discovery', slug: 'beijing-xian' },
   sampleHeading: 'A 10-day Beijing and Xi\'an itinerary',
@@ -192,10 +208,10 @@ export const xianHub: DestinationHubConfig = {
     'A Tale of Two Cities is our shortest group tour that includes Xi\'an: Beijing first, then the high-speed train to Xi\'an for the last four days.',
   prose: [
     {
-      heading: 'Ways to see Xi\'an with CTS',
+      heading: 'Where Xi\'an fits in our trips',
       paragraphs: [
         [
-          'Xi\'an (also spelled Xian) is the home of the Terracotta Warriors, and you can reach it on several of our trips. The ',
+          'Xi\'an is the home of the Terracotta Warriors, and you can reach it on several of our trips. The ',
           link('3-day Xi\'an stopover', '/tours/china/stopover/xian'),
           ` (${price('stopover', 'xian')}, land only, so airfare is not included) covers the Terracotta Warriors, the Muslim Quarter, the Great Mosque, the Shaanxi History Museum and a dumpling banquet with a cultural show.`,
         ],
@@ -220,7 +236,7 @@ export const xianHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Which Xi\'an trip suits you',
+      heading: 'Picking a Xi\'an trip',
       paragraphs: [
         [
           'Short on time or building around your own flights? The stopover. First time in China and happy to travel by high-speed train? A Tale of Two Cities. Want Xi\'an as the gateway to the ancient trade route? The Silk Road tour. If none fits, ',
@@ -230,7 +246,7 @@ export const xianHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Plan the rest of your Xi\'an trip',
+      heading: 'More on Xi\'an before you book',
       paragraphs: [
         [
           'Start with our ',
@@ -239,15 +255,21 @@ export const xianHub: DestinationHubConfig = {
           link('Terracotta Warriors visitor guide', '/terracotta-warriors-travel-guide'),
           ' and the ',
           link('City Wall guide', '/xian-city-wall-travel-guide'),
-          '. For the food, see ',
+          '.',
+        ],
+        [
+          'For the food, see ',
           link('Xi\'an street food', '/blog/xian-street-food-adventure'),
           '. Travelling from Beijing? Our ',
           link('Beijing to Xi\'an train notes', '/blog/beijing-to-xian-high-speed-train'),
           ' explain the route, and the ',
           link('10-day Beijing and Xi\'an itinerary', '/blog/beijing-xian-itinerary-10-days'),
-          ' shows how the days fit together. Check current entry rules in our ',
+          ' shows how the days fit together.',
+        ],
+        [
+          'Check current entry rules in our ',
           link('China visa guide for New Zealanders', '/china-visa-guide-for-new-zealanders'),
-          '.',
+          ' before you book.',
         ],
       ],
     },
@@ -260,13 +282,15 @@ export const guilinHub: DestinationHubConfig = {
     { tier: 'stopover', slug: 'guilin-surrounds' },
     { tier: 'stopover', slug: 'guilin' },
   ],
+  offerSummary:
+    'trips from New Zealand: land-only stopovers, plus the 27-day China Panorama group tour with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /guilin|yangshuo|li river/i,
   sampleRef: { tier: 'stopover', slug: 'guilin' },
   sampleHeading: 'A 3-day Guilin itinerary',
   sampleIntro: 'The Guilin stopover puts the Li River cruise at the centre of the trip. The days below are set out in full on the tour page.',
   prose: [
     {
-      heading: 'Ways to see Guilin with CTS',
+      heading: 'Guilin on a short stay or a long tour',
       paragraphs: [
         [
           'In our programme Guilin is mostly a short-stay destination. The ',
@@ -286,7 +310,7 @@ export const guilinHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Which Guilin trip suits you',
+      heading: 'Short stop or whole-of-China?',
       paragraphs: [
         [
           'Want the Li River without committing to a long tour? Choose a stopover; the 4-day Guilin & Surrounds trip adds the rice terraces. Want Guilin as one part of a whole-of-China journey? China Panorama is the only group tour that includes it. For anything else, ask us about a ',
@@ -296,7 +320,7 @@ export const guilinHub: DestinationHubConfig = {
       ],
     },
     {
-      heading: 'Plan the rest of your Guilin trip',
+      heading: 'Read next: Guilin and Yangshuo',
       paragraphs: [
         [
           'Our ',

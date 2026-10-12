@@ -4,7 +4,7 @@ import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { guilinToursMeta } from '@/lib/data/seo-pages';
-import { guilinHub, buildDepartureRows, buildSampleItinerary, resolveHubTours } from '@/lib/data/destination-hubs';
+import { guilinHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
 
 // Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
 export const revalidate = 3600;
@@ -50,6 +50,9 @@ export default function GuilinToursPage() {
         proseSections={guilinHub.prose}
         departureRows={buildDepartureRows(tours, guilinHub.cityPattern)}
         sampleItinerary={buildSampleItinerary(guilinHub)}
+        offerSummary={guilinHub.offerSummary}
+        startingFrom={cheapestPrice(tours)}
+        featuredCount={guilinHub.featuredCount}
         guideLinks={[
           { label: 'Guilin Travel Guide', href: '/guilin-travel-guide', icon: 'mountain', description: 'Karst peaks & Li River overview' },
           { label: 'Li River Travel Guide', href: '/li-river-travel-guide', icon: 'ship', description: 'Cruise guide & scenic tips' },
