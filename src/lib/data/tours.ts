@@ -969,7 +969,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
@@ -994,6 +993,7 @@ export const tours: Tour[] = [
      * date from every surface that reads `departureDates`.
      */
     departureDates: ['25 March 2027'],
+    departurePricing: { '25 March 2027': 'NZD $2,699' },
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
     goldenBlocks: true,
@@ -1012,12 +1012,12 @@ export const tours: Tour[] = [
       {
         question: 'What is included in the NZD $2,699 price?',
         answer:
-          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, tips (we suggest about NZD $10 per person per day), most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
       },
       {
         question: 'Which hotels do we stay in?',
         answer:
-          'Rosedale Chunshenhu Resort Hotel in Suzhou (1 night, 5-star standard), Holiday Inn Express Wuxi (2 nights), Holiday Inn near Xinshi Ancient Town (1 night), New Century Hotel Hangzhou (1 night, 5-star standard) and Holiday Inn Express Shanghai (2 nights), each "or similar" and rated by local standards. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+          'Rosedale Chunshenhu Resort Hotel in Suzhou (1 night, 5-star standard), Holiday Inn Express Wuxi (2 nights), Holiday Inn near Xinshi Ancient Town (1 night), New Century Hotel Hangzhou (1 night, 5-star standard) and Holiday Inn Express Shanghai (2 nights), each "or similar" and rated by local standards. Five different hotels are used, one in each stop; if one is unavailable, CTS arranges a substitute of similar standard.',
       },
       {
         question: 'Are there shopping stops on this tour?',
@@ -1048,7 +1048,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). We will check seats on your chosen date and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $400 extra) for the 25 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],

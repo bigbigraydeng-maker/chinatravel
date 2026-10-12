@@ -42,14 +42,16 @@ function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
   if (tour.goldenBlocks && !tour.soldOut) {
     // Only departures that are still ahead and have a published price. No start-date fields:
     // the offer is open now, the tour departs later.
-    return departures(tour).map((d) => ({
-      '@type': 'Offer',
-      price: parsePriceAmount(d.price),
-      priceCurrency: PRICE_CURRENCY,
-      availability: 'https://schema.org/InStock',
-      url,
-      seller,
-    }));
+    return departures(tour)
+      .filter((d) => Boolean(tour.departurePricing?.[d.label]))
+      .map((d) => ({
+        '@type': 'Offer',
+        price: parsePriceAmount(d.price),
+        priceCurrency: PRICE_CURRENCY,
+        availability: 'https://schema.org/InStock',
+        url,
+        seller,
+      }));
   }
   const basePrice = parsePriceAmount(tour.price);
   if (!tour.departureDates || tour.departureDates.length === 0) {

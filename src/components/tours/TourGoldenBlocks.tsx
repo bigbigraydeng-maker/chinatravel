@@ -14,7 +14,7 @@ import { aucklandToday, departures } from '@/lib/tour-discovery';
  */
 
 function displayPrice(price: string): string {
-  return price.replace(/\s*(?:per\s+person|pp)\s*$/i, '');
+  return price.replace(/^From\s+/i, '').replace(/\s*(?:per\s+person|pp)\s*$/i, '');
 }
 
 interface DepartureRow {
@@ -23,13 +23,18 @@ interface DepartureRow {
   price: string;
 }
 
-/** Departures with a published price whose date has not passed. Nothing else is shown. */
+/**
+ * Departures whose date has not passed AND that have their own published price in
+ * `departurePricing`. A date with no price entry is never shown, whatever the tour's headline price.
+ */
 export function getDepartureRows(tour: Tour, today: string = aucklandToday()): DepartureRow[] {
-  return departures(tour, today).map((d) => ({
-    label: d.label,
-    returnDate: computeReturnDate(d.label, tour.duration),
-    price: displayPrice(d.price),
-  }));
+  return departures(tour, today)
+    .filter((d) => Boolean(tour.departurePricing?.[d.label]))
+    .map((d) => ({
+      label: d.label,
+      returnDate: computeReturnDate(d.label, tour.duration),
+      price: displayPrice(d.price),
+    }));
 }
 
 /** True when the departure block will render something (used to decide on the nav link). */
@@ -60,7 +65,7 @@ export function TourDepartureTable({ tour }: { tour: Tour }) {
           >
             <table className="w-full min-w-[30rem] text-left text-sm">
               <caption className="sr-only">{tour.name} departure dates and prices</caption>
-              <thead className="bg-warm-50 text-xs uppercase tracking-wide text-ink-muted">
+              <thead className="bg-warm-50 text-sm text-ink-muted">
                 <tr>
                   <th scope="col" className="px-4 py-3 font-semibold">Departs Auckland</th>
                   <th scope="col" className="px-4 py-3 font-semibold">Returns</th>
@@ -136,8 +141,8 @@ export function TourBookingTerms({ tour }: { tour: Tour }) {
         <div className="rounded-xl border border-warm-200 bg-white p-5">
           <dt className="font-semibold">Tips</dt>
           <dd className="mt-2 text-sm leading-relaxed text-ink-muted">
-            Tipping is prepaid in New Zealand before you leave, and we confirm the exact amount when you
-            book. We suggest NZD $10 per person per day.
+            Tipping is prepaid in New Zealand before you leave. The amount for each tour is shown in the
+            tour price, and we advise the exact amount per person when you book.
           </dd>
         </div>
         <div className="rounded-xl border border-warm-200 bg-white p-5">
