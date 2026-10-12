@@ -8,7 +8,7 @@ import { H2_SECTION, H3_CARD, PANEL } from '@/lib/ui/typography';
 
 function RichParagraph({ parts }: { parts: RichPart[] }) {
   return (
-    <p className="text-lg text-muted-foreground leading-relaxed">
+    <p className="text-lg text-muted-foreground leading-relaxed max-w-[58ch]">
       {parts.map((part, i) =>
         typeof part === 'string' ? (
           <React.Fragment key={i}>{part}</React.Fragment>
@@ -42,7 +42,7 @@ export function HubDepartures({ cityName, rows }: { cityName: string; rows: HubD
   return (
     <section id="departures" className="scroll-mt-24">
       <h2 className={H2_SECTION}>{cityName} group departures</h2>
-      <p className="text-muted-foreground mb-6">
+      <p className="text-muted-foreground mb-6 max-w-[58ch]">
         Upcoming group departures from New Zealand that include {cityName}, as published on each tour page. Prices are per
         person; open a tour for room options and what is included.
       </p>
@@ -81,7 +81,7 @@ export function HubSampleItineraryBlock({ sample }: { sample: HubSampleItinerary
   return (
     <section id="sample-itinerary" className="scroll-mt-24">
       <h2 className={H2_SECTION}>{sample.heading}</h2>
-      <p className="text-muted-foreground mb-6">
+      <p className="text-muted-foreground mb-6 max-w-[58ch]">
         {sample.intro}{' '}
         <Link href={sample.tourHref} className="text-primary font-medium underline-offset-2 hover:underline">
           {sample.tourName}
@@ -94,7 +94,7 @@ export function HubSampleItineraryBlock({ sample }: { sample: HubSampleItinerary
             <h3 className={H3_CARD}>
               Day {day.day}: {day.title}
             </h3>
-            <p className="text-muted-foreground mt-1">{day.description}</p>
+            <p className="text-muted-foreground mt-1 max-w-[58ch]">{day.description}</p>
             {day.meals.length > 0 && <p className="text-sm text-muted-foreground mt-2">Meals: {day.meals.join(', ')}</p>}
           </li>
         ))}
