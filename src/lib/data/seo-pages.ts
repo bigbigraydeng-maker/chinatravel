@@ -1,6 +1,8 @@
 // SEO Pages Data
 // Metadata, introductions, and FAQs for all 12 Phase 1 pages
 
+import { chengduToursMeta, guilinToursMeta, xianToursMeta } from './destination-hub-meta';
+
 export interface SeoPageMeta {
   slug: string;
   title: string; // Page <title>
@@ -18,6 +20,9 @@ export interface CityHubMeta extends SeoPageMeta {
   bestTimeToVisit: string; // Season description
   heroImage?: string; // Optional hero image
 }
+
+// Destination hubs (Chengdu, Xi'an, Guilin) live in destination-hub-meta.ts.
+export { chengduToursMeta, guilinToursMeta, xianToursMeta };
 
 // ===== Commercial hub pages =====
 
@@ -114,44 +119,6 @@ export const beijingToursMeta: CityHubMeta = {
   ]
 };
 
-export const xianToursMeta: CityHubMeta = {
-  slug: 'xian-tours',
-  cityName: "Xi'an",
-  title: "Xi'an Tours NZ | Terracotta Warriors | CTS Tours",
-  description: "Visit Xi'an with CTS Tours. Meet the Terracotta Warriors, walk the ancient city walls, explore Buddhist temples. Signature and Discovery tours available.",
-  h1: "Xi'an Tours from New Zealand",
-  heroSubtitle: 'Marvel at the Terracotta Warriors. Walk 2,000-year-old city walls. Experience China\'s ancient capital.',
-  introText: 'Xi\'an, once the capital of multiple Chinese dynasties, is home to one of the world\'s greatest archaeological discoveries: the Terracotta Warriors. This ancient city blends millennia-old history with vibrant street markets, Buddhist temples, and authentic local culture. Our Xi\'an tours range from short stopovers to multi-day explorations combining the Terracotta Warriors, the Great Goose Pagoda, the ancient city walls, and the Silk Road heritage.',
-  searchTerms: ['xi\'an', 'xian', 'terracotta warriors', 'terracotta army', 'ancient city walls', 'great goose pagoda'],
-  highlights: [
-    'Discover the world-famous Terracotta Warriors at Mausoleum of Emperor Qin',
-    'Walk the stunning ancient city walls (13.6 km circumference)',
-    'Visit the Giant Goose Pagoda and learn Buddhist history',
-    'Explore the Muslim Quarter with its bustling street markets',
-    'Visit a traditional Chinese dumpling restaurant for a special lunch',
-    'See the Shaanxi History Museum with Silk Road treasures'
-  ],
-  bestTimeToVisit: 'Spring (April-May) and autumn (September-October) offer ideal weather. Summer is hot, and winter can be cold. Avoid peak tourist seasons (July-August, December-January) for a more intimate experience.',
-  faqs: [
-    {
-      question: 'How much time do I need for the Terracotta Warriors?',
-      answer: 'Plan 3-4 hours to explore the Terracotta Warriors museum and excavation site, including time for queues and an audio guide. Most CTS tours allocate a full half-day to this iconic attraction.'
-    },
-    {
-      question: 'Can I walk the entire city wall?',
-      answer: 'Yes! The complete circuit is 13.6 km and takes about 2 hours by bicycle or 3-4 hours on foot. Our tours typically include a partial walk (2-3 km) along the most scenic and historic sections. Bicycle rental is available.'
-    },
-    {
-      question: 'What is the Muslim Quarter?',
-      answer: 'The Muslim Quarter (Hui neighbourhood) is a vibrant 2.5 km area with narrow streets filled with food stalls, small shops, and mosques. It\'s one of Xi\'an\'s best culinary destinations. Our guides will lead you through the highlights and best street food vendors.'
-    },
-    {
-      question: 'Is Xi\'an a good starting point for the Silk Road?',
-      answer: 'Absolutely! Xi\'an was the eastern terminus of the ancient Silk Road. Our Silk Road tours depart from Xi\'an and travel west through Lanzhou, Dunhuang, and beyond, following the historical trade routes.'
-    }
-  ]
-};
-
 export const shanghaiToursMeta: CityHubMeta = {
   slug: 'shanghai-tours',
   cityName: 'Shanghai',
@@ -186,82 +153,6 @@ export const shanghaiToursMeta: CityHubMeta = {
     {
       question: 'Can I see the Oriental Pearl Tower at night?',
       answer: 'Yes! The tower is illuminated beautifully at night. However, daytime visits offer the clearest views. Many of our tours include a daytime tower visit followed by evening river cruises or strolls along the night-lit Bund.'
-    }
-  ]
-};
-
-export const chengduToursMeta: CityHubMeta = {
-  slug: 'chengdu-tours',
-  cityName: 'Chengdu',
-  title: 'Chengdu Tours from New Zealand | Giant Pandas | CTS Tours',
-  description: 'Visit Chengdu with CTS Tours. Meet giant pandas at the Panda Reserve, explore temples, enjoy authentic Sichuan cuisine. Tours from NZD $3,700.',
-  h1: 'Chengdu Tours from New Zealand',
-  heroSubtitle: 'Meet giant pandas. Explore ancient temples. Savour world-famous Sichuan cuisine.',
-  introText: 'Chengdu, the capital of Sichuan Province, is synonymous with China\'s most iconic animal: the giant panda. But this vibrant city offers far more than just pandas—ancient Buddhist temples, breathtaking natural landscapes like Mount Emei, and a world-renowned food scene centered on fiery Sichuan cuisine. Our Chengdu tours showcase the city\'s unique blend of wildlife, culture, and gastronomy.',
-  searchTerms: ['chengdu', 'giant panda', 'panda', 'mount emei', 'leshan buddha'],
-  highlights: [
-    'Visit the Giant Panda Research Base and observe pandas in a natural setting',
-    'Explore Wenshu Monastery, a 1,400-year-old Buddhist temple in the city',
-    'Hike Mount Emei, one of Buddhism\'s four sacred mountains',
-    'See the colossal Leshan Buddha carved into a cliffside',
-    'Enjoy an authentic Sichuan hot pot (malatang) dinner experience',
-    'Relax at traditional teahouses with locals playing cards and mahjong'
-  ],
-  bestTimeToVisit: 'Spring (March-May) and autumn (September-October) are ideal. Summers are hot and humid, while winters are cold and often cloudy. Mount Emei can have snow or fog in winter, making visibility poor.',
-  faqs: [
-    {
-      question: 'What is it like to see giant pandas up close?',
-      answer: 'The Giant Panda Research Base allows visitors to see pandas in a semi-natural habitat as they eat, play, and rest. Morning visits (7-9 AM) are best when pandas are most active. You can also see baby pandas in the breeding facility. It\'s an unforgettable experience—the pandas are adorable and surprisingly graceful.'
-    },
-    {
-      question: 'Is Mount Emei difficult to climb?',
-      answer: 'Mount Emei can be explored by cable car, walking certain sections, or a combination of both. Our tours typically take visitors to the Golden Summit (3,077 m) by cable car for stunning views and temples. Some visitors hike the lower slopes. All fitness levels can enjoy the experience with proper planning.'
-    },
-    {
-      question: 'What is Sichuan cuisine like?',
-      answer: 'Sichuan cuisine is famous for fiery heat from Sichuan peppercorns (má là = numb + spicy). Popular dishes include hot pot (huoguo), mapo tofu, and Chongqing la zi ji (spicy chicken). It\'s intensely flavorful. CTS will inform you of heat levels for each dish—ask for mild options if you prefer.'
-    },
-    {
-      question: 'Can I see pandas and Mount Emei in one trip?',
-      answer: 'Absolutely! A 4-5 day Chengdu-based tour can include both the Panda Base (1 day), Mount Emei & Leshan Buddha (2-3 days), and city experiences (1 day). Our tours combine these perfectly for a well-rounded Chengdu experience.'
-    }
-  ]
-};
-
-export const guilinToursMeta: CityHubMeta = {
-  slug: 'guilin-tours',
-  cityName: 'Guilin',
-  title: 'Guilin Tours from New Zealand | Li River Cruise | CTS Tours',
-  description: 'Explore Guilin with CTS Tours. Cruise the Li River, explore karst mountains, visit Yangshuo. Signature and Discovery tours available.',
-  h1: 'Guilin Tours from New Zealand',
-  heroSubtitle: 'Cruise the Li River\'s dreamscape. Hike dramatic karst peaks. Discover rural Yangshuo.',
-  introText: 'Guilin, nestled in southern China\'s Guangxi Province, is famous worldwide for its ethereal landscape of limestone karst mountains rising from emerald rivers and valleys. The Li River cruise from Guilin to Yangshuo is considered one of the most beautiful journeys in China. Our Guilin tours combine river cruises, mountain hiking, traditional bamboo rafting, and the charming rural town of Yangshuo.',
-  searchTerms: ['guilin', 'li river', 'yangshuo', 'karst mountains', 'bamboo raft'],
-  highlights: [
-    'Cruise the legendary Li River from Guilin to Yangshuo (4-5 hours of breathtaking scenery)',
-    'Hike among the dramatic karst mountains surrounding Yangshuo',
-    'Experience a traditional bamboo raft ride at sunset',
-    'Explore Yangshuo\'s cycling routes through rural villages and rice paddies',
-    'Visit local limestone caves with stunning stalactite formations',
-    'Enjoy fresh river fish and farm-to-table village cuisine'
-  ],
-  bestTimeToVisit: 'Spring (March-May) and autumn (September-October) are perfect—clear skies, comfortable temperatures, and water levels ideal for cruising. Summer is hot and humid. Winter is cool but may have mist obscuring mountain views.',
-  faqs: [
-    {
-      question: 'What is the Li River cruise like?',
-      answer: 'The Li River cruise from Guilin to Yangshuo (4-5 hours) is one of China\'s most famous scenic journeys. You\'ll drift past limestone mountains, bamboo groves, water buffalo, and villages straight out of classical Chinese paintings. Modern tourist boats offer comfortable seating and light meals. The journey is relaxing and spectacular.'
-    },
-    {
-      question: 'Should I visit Guilin or Yangshuo?',
-      answer: 'Both! Guilin is the larger city (gateway airport, museums, restaurants) but more touristy. Yangshuo is a charming countryside town where you can hike, cycle, relax by the river, and experience rural life. Most CTS tours start in Guilin and spend 2-3 days in Yangshuo for the best experience.'
-    },
-    {
-      question: 'Can I do the Li River cruise multiple times?',
-      answer: 'The main cruise (Guilin to Yangshuo) is typically done once as it\'s quite long. However, there are shorter boat rides and bamboo raft experiences near Yangshuo. Some visitors explore different sections of the Li River on different visits, but most find the main cruise sufficient.'
-    },
-    {
-      question: 'Is Yangshuo good for hiking?',
-      answer: 'Yes! Yangshuo is surrounded by karst mountains perfect for hiking. Trails range from easy (1-2 hours) to challenging full-day hikes. Local guides can take you on scenic routes through villages and rice paddies. Your fitness level determines which trails are best.'
     }
   ]
 };

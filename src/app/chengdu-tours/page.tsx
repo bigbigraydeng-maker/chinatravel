@@ -2,9 +2,12 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chengduToursMeta } from '@/lib/data/seo-pages';
+import { chengduHub, buildDepartureRows, buildSampleItinerary, resolveHubTours } from '@/lib/data/destination-hubs';
+
+// Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
+export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -19,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ChengduToursPage() {
-  const tours = getToursByCityName('chengdu');
+  const tours = resolveHubTours(chengduHub.tourRefs);
 
   const schemas = [
     generateTouristDestinationSchema('Chengdu', chengduToursMeta.description, '/chengdu-tours', tours),
@@ -44,12 +47,16 @@ export default function ChengduToursPage() {
         bestTimeToVisit={chengduToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={chengduToursMeta.faqs}
+        proseSections={chengduHub.prose}
+        departureRows={buildDepartureRows(tours, chengduHub.cityPattern)}
+        sampleItinerary={buildSampleItinerary(chengduHub)}
         guideLinks={[
           { label: 'Chengdu Travel Guide', href: '/chengdu-travel-guide', icon: 'paw', description: 'Pandas, temples & hot pot' },
           { label: 'Panda Sanctuary Guide', href: '/chengdu-panda-sanctuary', icon: 'paw', description: '200+ pandas · morning feeding · visitor tips' },
           { label: 'Leshan Buddha Guide', href: '/leshan-buddha-travel-guide', icon: 'landmark', description: 'Giant cliffside Buddha visitor tips' },
           { label: 'Panda Sanctuary: Plan Your Visit', href: '/blog/chengdu-panda-sanctuary-experience', icon: 'paw', description: 'Timing, exclusive access & what to book' },
           { label: 'Chengdu Spicy Cuisine', href: '/blog/chengdu-spicy-cuisine-culture', icon: 'flame', description: 'Mala science & must-eat Sichuan dishes' },
+          { label: 'Chongqing vs Chengdu', href: '/blog/chongqing-vs-chengdu', icon: 'map', description: 'Which Sichuan-basin city suits you' },
         ]}
       />
     </>

@@ -13,6 +13,8 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import { Icon } from '@/components/ui/Icon';
 import { EYEBROW, H2_SECTION, H3_CARD, PANEL } from '@/lib/ui/typography';
+import { HubDepartures, HubProse, HubSampleItineraryBlock } from './CityHubSections';
+import type { HubDepartureRow, HubProseSection, HubSampleItinerary } from '@/lib/data/destination-hubs';
 
 interface CityHubProps {
   // Metadata
@@ -37,6 +39,11 @@ interface CityHubProps {
 
   // Meta description (for SEO)
   metaDescription?: string;
+
+  // Destination hub extras (optional; other city hubs omit them)
+  proseSections?: HubProseSection[];
+  departureRows?: HubDepartureRow[];
+  sampleItinerary?: HubSampleItinerary | null;
 }
 
 const CityTourHub: React.FC<CityHubProps> = ({
@@ -50,7 +57,10 @@ const CityTourHub: React.FC<CityHubProps> = ({
   tours,
   faqs,
   guideLinks,
-  metaDescription
+  metaDescription,
+  proseSections,
+  departureRows,
+  sampleItinerary
 }) => {
   return (
     <div>
@@ -111,6 +121,8 @@ const CityTourHub: React.FC<CityHubProps> = ({
                 </div>
               </section>
 
+              {proseSections && proseSections.length > 0 && <HubProse sections={proseSections.slice(0, 2)} />}
+
               {/* Best time to visit */}
               <section>
                 <h2 className={H2_SECTION}>
@@ -131,6 +143,14 @@ const CityTourHub: React.FC<CityHubProps> = ({
                 />
                 <TourGrid tours={tours} columns={2} />
               </section>
+
+              {departureRows && departureRows.length > 0 && (
+                <HubDepartures cityName={cityName} rows={departureRows} />
+              )}
+
+              {sampleItinerary && <HubSampleItineraryBlock sample={sampleItinerary} />}
+
+              {proseSections && proseSections.length > 2 && <HubProse sections={proseSections.slice(2)} />}
             </div>
 
             {/* Sidebar */}
