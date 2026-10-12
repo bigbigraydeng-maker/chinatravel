@@ -20,6 +20,8 @@
  * each channel for a few seconds until it is ready, firing each at most once.
  */
 
+import { readSubmitAttribution } from './first-touch';
+
 type GtagFn = (...args: unknown[]) => void;
 type FbqFn = (...args: unknown[]) => void;
 
@@ -49,6 +51,22 @@ export type LeadSource = 'contact_page' | 'tour_enquiry' | 'china_tours_hub' | '
 const MAX_ATTEMPTS = 20; // retry for ~3s (20 × 150ms) while gtag/fbq finish loading
 const RETRY_MS = 150;
 
+function attributionParams(): Record<string, string> {
+  // Never let a damaged storage value interrupt the conversion calls that follow.
+  try {
+    const a = readSubmitAttribution();
+    if (!a) return {};
+    return {
+      first_landing_path: String(a.first_landing_path ?? ''),
+      submit_path: String(a.submit_path ?? ''),
+      referrer_host: String(a.referrer_host ?? ''),
+      viewed_tour_paths: Array.isArray(a.viewed_tour_paths) ? a.viewed_tour_paths.join(',') : '',
+    };
+  } catch {
+    return {};
+  }
+}
+
 export function fireLeadConversion(source: LeadSource): void {
   if (typeof window === 'undefined') return;
 
@@ -72,6 +90,15 @@ export function fireLeadConversion(source: LeadSource): void {
         g('event', 'generate_lead', {
           lead_source: source,
           transaction_id: eventId,
+        });
+        // One unified "an enquiry was accepted" event for every form, whether the visitor
+        // is sent to /thank-you or sees an inline success message. Carries the first
+        // landing page and the submit page so Magic Engine can split enquiries by where
+        // the visitor first arrived. Additive: the two events above are unchanged.
+        g('event', 'enquiry_thank_you', {
+          lead_source: source,
+          transaction_id: eventId,
+          ...attributionParams(),
         });
         gtagDone = true;
       }

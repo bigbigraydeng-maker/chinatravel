@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { fireLeadConversion, type LeadSource } from '@/lib/analytics/lead-conversion';
+import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 
 /**
@@ -219,6 +220,7 @@ export default function HeroWithLeadForm({
           phone: formData.phone.trim(),
           travel_interest: formData.travel_interest,
           message: messagePayload || 'Enquiry from /china-tours hero form',
+          attribution: captureSubmitAttribution(),
         }),
       });
       const data = await res.json().catch(() => ({}));

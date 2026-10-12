@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSiteUrl } from '@/lib/site';
+import { attributionEmailRows, sanitizeAttribution } from '@/lib/analytics/attribution';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
@@ -21,6 +22,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { name, email, phone, travel_interest, message } = body;
+    const attribution = sanitizeAttribution(body.attribution);
 
     // Name + interest + message are required. Email OR phone is enough so that
     // landing-page hero forms (e.g. /china-tours) accept phone-only enquiries
@@ -45,6 +47,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Travel interest</td><td>${escapeHtml(String(travel_interest))}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
     <tr><td style="font-weight:bold;">Form URL</td><td><a href="${escapeHtml(contactUrl)}">/contact</a></td></tr>
+    ${attributionEmailRows(attribution)}
   </table>
   <p style="margin-top:16px;"><strong>Message</strong></p>
   <p style="white-space:pre-wrap;">${escapeHtml(String(message))}</p>
