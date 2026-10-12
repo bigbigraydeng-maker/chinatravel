@@ -71,13 +71,6 @@ export interface Tour {
    * (see components/tours/TourGoldenBlocks.tsx). Off by default.
    */
   goldenBlocks?: boolean;
-  /**
-   * Planned departures that are in CTS's schedule but have no confirmed public
-   * price yet. Shown in the departure table as "Price to be confirmed" and kept
-   * OUT of the Offers schema, the booking selector and the schedule block, so no
-   * price or availability is implied. Same "D Month YYYY" format as departureDates.
-   */
-  pendingDepartures?: string[];
   /** Internal links shown under "Plan this trip" in the booking terms block. */
   planLinks?: Array<{ href: string; label: string }>;
   /**
@@ -782,8 +775,6 @@ export const tours: Tour[] = [
     tourCities: ['beijing', 'xian'],
     goldenBlocks: true,
     suppressAggregateRating: true,
-    // Planned 2027 dates with no published price yet — CTS to confirm before this goes live.
-    pendingDepartures: ['21 August 2027', '2 September 2027', '21 October 2027', '14 November 2027'],
     planLinks: [
       { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
       { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
@@ -793,7 +784,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395. More 2027 dates are planned and listed on this page; they are not yet open for booking.',
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395.',
       },
       {
         question: 'What is included in the price?',

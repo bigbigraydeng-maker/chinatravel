@@ -46,7 +46,6 @@ const NEW_KEYS: Array<keyof TourFeedProduct> = [
   'related_blog_slugs',
   'quick_answer',
   'golden_blocks',
-  'pending_departures',
   'plan_links',
   'suppress_aggregate_rating',
 ];
