@@ -71,13 +71,6 @@ export interface Tour {
    * (see components/tours/TourGoldenBlocks.tsx). Off by default.
    */
   goldenBlocks?: boolean;
-  /**
-   * Planned departures that are in CTS's schedule but have no confirmed public
-   * price yet. Shown in the departure table as "Price to be confirmed" and kept
-   * OUT of the Offers schema, the booking selector and the schedule block, so no
-   * price or availability is implied. Same "D Month YYYY" format as departureDates.
-   */
-  pendingDepartures?: string[];
   /** Internal links shown under "Plan this trip" in the booking terms block. */
   planLinks?: Array<{ href: string; label: string }>;
   /**
@@ -1005,8 +998,6 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $400',
     goldenBlocks: true,
     suppressAggregateRating: true,
-    // Planned 2027 dates with no published price yet — CTS to confirm before this goes live.
-    pendingDepartures: ['5 November 2027'],
     planLinks: [
       { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
       { href: '/west-lake-travel-guide', label: 'West Lake guide' },
@@ -1016,7 +1007,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400. More 2027 dates are planned and listed on this page; they are not yet open for booking.',
+          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400.',
       },
       {
         question: 'What is included in the NZD $2,699 price?',

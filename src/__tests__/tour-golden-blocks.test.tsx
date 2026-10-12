@@ -5,9 +5,9 @@
  * Why these checks exist, not just what they do:
  *  - Dates and return dates must match CTS's internal 2027 schedule. A page that
  *    drifts from it sends customers to dates that do not exist.
- *  - Planned dates with no published price must never reach the Offers schema,
- *    the booking selector or the schedule block, because that would publish a
- *    price and availability nobody has confirmed.
+ *  - The front end only shows departures that already have a published price on
+ *    the site. There is no "planned" or "coming soon" state: a date with no price
+ *    stays off the page until the back office puts it live.
  *  - The company's Google rating must not be stamped on a single product, and
  *    invented per-tour ratings must stay off these pages.
  *  - PM rule (2026-10-08): the company-age claims are not used in page copy.
@@ -81,28 +81,28 @@ describe('goldenBlocks flagship pages', () => {
   });
 
   describe.each(flagships.map((t) => [t.slug, t] as const))('%s', (slug, tour) => {
-    it('lists exactly the scheduled dates, with matching return dates', () => {
-      const listed = [...(tour.departureDates ?? []), ...(tour.pendingDepartures ?? [])];
-      expect(listed).toEqual(SCHEDULE[slug].map(([d]) => d));
+    it('shows only dates from the 2027 schedule, with matching return dates', () => {
+      const known = SCHEDULE[slug].map(([d]) => d);
+      expect(tour.departureDates?.length).toBeGreaterThan(0);
+      for (const d of tour.departureDates ?? []) expect(known).toContain(d);
       for (const [dep, ret] of SCHEDULE[slug]) {
         expect(computeReturnDate(dep, tour.duration)).toBe(ret);
       }
     });
 
+    it('has no planned / pending departure state', () => {
+      expect(tour).not.toHaveProperty('pendingDepartures');
+    });
+
     it('does not show dates that are held back pending CTS confirmation', () => {
-      const listed = [...(tour.departureDates ?? []), ...(tour.pendingDepartures ?? [])];
+      const listed = tour.departureDates ?? [];
       for (const held of HELD_BACK[slug] ?? []) expect(listed).not.toContain(held);
     });
 
-    it('keeps planned dates out of the booking selector and the Offers schema', () => {
-      const bookable = departures(tour, '2026-10-13').map((d) => d.label);
-      for (const pending of tour.pendingDepartures ?? []) {
-        expect(bookable).not.toContain(pending);
-      }
-      const offers = ([] as Array<{ availabilityStarts?: string }>).concat(
-        generateTourSchema(tour, destination).offers as never,
-      );
+    it('puts one priced offer per listed departure into the markup', () => {
+      const offers = ([] as Array<unknown>).concat(generateTourSchema(tour, destination).offers as never);
       expect(offers).toHaveLength(tour.departureDates?.length ?? 1);
+      expect(departures(tour, '2026-10-13')).toHaveLength(tour.departureDates?.length ?? 0);
     });
 
     it('does not put a rating on the product markup', () => {
@@ -172,25 +172,22 @@ describe('TourDepartureTable', () => {
     goldenBlocks: true,
     departureDates: ['26 March 2027'],
     departurePricing: { '26 March 2027': 'NZD $7,349' },
-    pendingDepartures: ['28 May 2027', '14 June 2027'],
     ...over,
   });
 
-  it('puts only priced dates in the table and lists planned ones separately', () => {
+  it('shows priced departures and nothing that sounds like a planned or coming-soon date', () => {
     const { container } = render(<TourDepartureTable tour={sample()} />);
     const table = container.querySelector('table') as HTMLElement;
     expect(table.textContent).toContain('26 March 2027');
+    expect(table.textContent).toContain('10 April 2027');
     expect(table.textContent).toContain('NZD $7,349');
-    expect(table.textContent).not.toContain('28 May 2027');
-    expect(screen.getByText(/Planned departures/)).toBeTruthy();
-    expect(screen.getByText(/28 May 2027 – 12 June 2027/)).toBeTruthy();
-    expect(container.textContent).not.toMatch(/to be confirmed/i);
+    expect(container.textContent).not.toMatch(/planned|not yet open|to be confirmed|register interest/i);
   });
 
-  it('drops planned dates that have passed and keeps the rest in date order', () => {
+  it('drops a date once it has passed and hides the block when none are left', () => {
     jest.setSystemTime(new Date('2027-06-01T00:00:00Z').getTime());
-    const rows = getDepartureRows(sample({ pendingDepartures: ['14 June 2027', '28 May 2027'] }));
-    expect(rows.planned.map((r) => r.label)).toEqual(['14 June 2027']);
+    expect(getDepartureRows(sample())).toEqual([]);
+    expect(hasDepartureRows(sample())).toBe(false);
     jest.setSystemTime(new Date('2026-10-13T00:00:00Z').getTime());
   });
 
@@ -214,8 +211,8 @@ describe('TourBookingTerms', () => {
     const { container } = render(<TourBookingTerms tour={natural} />);
     const text = container.textContent ?? '';
     expect(text).toMatch(/non-refundable deposit of NZD \$1,000 per person/);
-    expect(text).toMatch(/90 days before departure for itineraries under 15 days/);
-    expect(text).toMatch(/120 days before departure for\s+itineraries of 15 days or longer/);
+    // The final-payment deadline is not summarised on the page; the terms page is the source.
+    expect(text).not.toMatch(/final payment|120 days|90 days before departure for itineraries/i);
     expect(text).toMatch(/prepaid in New Zealand/);
     expect(text).toMatch(/90 days or more before departure/);
     expect(text).toMatch(/89 to 61 days before departure[^.]*50%/);
@@ -238,7 +235,7 @@ describe('TourBookingTerms', () => {
 
   it('matches the figures in the published terms page source', () => {
     const src = readFileSync(join(process.cwd(), 'src/app/terms-and-conditions/TermsContent.tsx'), 'utf8');
-    for (const fact of ['$1,000', '90 days', '120 days', '50%', '75%', '100%']) {
+    for (const fact of ['$1,000', '90 days', '50%', '75%', '100%']) {
       expect(src).toContain(fact);
     }
   });
