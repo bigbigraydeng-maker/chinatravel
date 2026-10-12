@@ -90,6 +90,12 @@ describe('goldenBlocks flagship pages', () => {
       }
     });
 
+    it('gives every listed date its own published price', () => {
+      for (const d of tour.departureDates ?? []) {
+        expect(tour.departurePricing?.[d]).toBeTruthy();
+      }
+    });
+
     it('has no planned / pending departure state', () => {
       expect(tour).not.toHaveProperty('pendingDepartures');
     });
@@ -184,6 +190,20 @@ describe('TourDepartureTable', () => {
     expect(container.textContent).not.toMatch(/planned|not yet open|to be confirmed|register interest/i);
   });
 
+  it('never shows or marks up a date that has no price of its own', () => {
+    const t = sample({ departureDates: ['26 March 2027', '1 September 2027'] });
+    const { container } = render(<TourDepartureTable tour={t} />);
+    expect(container.textContent).not.toContain('1 September 2027');
+    expect(getDepartureRows(t).map((r) => r.label)).toEqual(['26 March 2027']);
+    const offers = ([] as Array<unknown>).concat(generateTourSchema(t, destination).offers as never);
+    expect(offers).toHaveLength(1);
+  });
+
+  it('shows the price without a "From" prefix', () => {
+    const t = sample({ departurePricing: { '26 March 2027': 'From NZD $7,349' } });
+    expect(getDepartureRows(t)[0].price).toBe('NZD $7,349');
+  });
+
   it('drops a date once it has passed and hides the block when none are left', () => {
     jest.setSystemTime(new Date('2027-06-01T00:00:00Z').getTime());
     expect(getDepartureRows(sample())).toEqual([]);
@@ -214,6 +234,8 @@ describe('TourBookingTerms', () => {
     // The final-payment deadline is not summarised on the page; the terms page is the source.
     expect(text).not.toMatch(/final payment|120 days|90 days before departure for itineraries/i);
     expect(text).toMatch(/prepaid in New Zealand/);
+    // Tipping follows the terms page: the amount is shown in the tour price and advised at booking.
+    expect(text).not.toMatch(/\$10|suggest/i);
     expect(text).toMatch(/90 days or more before departure/);
     expect(text).toMatch(/89 to 61 days before departure[^.]*50%/);
     expect(text).toMatch(/60 to 31 days before departure[^.]*75%/);

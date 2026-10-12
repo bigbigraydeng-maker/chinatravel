@@ -875,7 +875,6 @@ export const tours: Tour[] = [
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
       'Optional tours and performances (e.g. acrobatic show, Tang Palace show)',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
@@ -922,12 +921,12 @@ export const tours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international airfares from Auckland, domestic airfares within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional extras such as the acrobatic show and the Tang Palace show, and tips (see the booking terms on this page).',
+          'Return international airfares from Auckland, domestic airfares within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional extras such as the acrobatic show and the Tang Palace show.',
       },
       {
         question: 'Which hotels do we stay in?',
         answer:
-          'Beijing Wanda Moments (4 nights), Mercure Xi\'an Downtown (3 nights), Puyuan Hotel (1 night, 5-star), Holiday Inn Hangzhou (1 night) and Holiday Inn Express Shanghai (3 nights), each "or similar" and rated by local standards. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+          'Beijing Wanda Moments (4 nights), Mercure Xi\'an Downtown (3 nights), Puyuan Hotel (1 night, 5-star), Holiday Inn Hangzhou (1 night) and Holiday Inn Express Shanghai (3 nights), each "or similar" and rated by local standards. Each night\'s hotel is listed in the day-by-day programme; if a listed hotel is unavailable, CTS arranges one of similar standard.',
       },
       {
         question: 'Are there shopping stops on this tour?',
@@ -958,7 +957,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). We will check seats on your chosen date and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 11 March or 13 May departure and whether you would like your own room (NZD $800 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
