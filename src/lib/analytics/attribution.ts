@@ -27,7 +27,8 @@ const MAX_TOUR_PATHS = 5;
 function cleanPath(v: unknown): string {
   if (typeof v !== 'string') return '';
   const p = v.split('?')[0].split('#')[0].trim().slice(0, MAX_LEN);
-  return p.startsWith('/') ? p : '';
+  // a path never contains whitespace or control characters; anything that does is not a path
+  return p.startsWith('/') && !/[\s\u0000-\u001f]/.test(p) ? p : '';
 }
 
 function cleanText(v: unknown): string {

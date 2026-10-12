@@ -204,3 +204,26 @@ describe('fireLeadConversion — unified enquiry_thank_you event', () => {
     expect(mockGtag.mock.calls.some((c) => c[1] === 'conversion')).toBe(true);
   });
 });
+
+describe('fireLeadConversion — each GA4 event exactly once, one shared id', () => {
+  beforeEach(() => sessionStorage.clear());
+
+  it('generate_lead and enquiry_thank_you fire once each and share the conversion transaction_id (no double count on retry ticks)', () => {
+    fireLeadConversion('contact_page');
+    jest.advanceTimersByTime(3500);
+    const calls = mockGtag.mock.calls;
+    expect(calls.filter((c) => c[1] === 'enquiry_thank_you')).toHaveLength(1);
+    expect(calls.filter((c) => c[1] === 'generate_lead')).toHaveLength(1);
+    const ids = calls.map((c) => c[2].transaction_id);
+    expect(new Set(ids).size).toBe(1);
+  });
+});
+
+describe('fireLeadConversion — damaged stored attribution', () => {
+  it('a corrupted stored attribution never stops the Ads conversion or the Meta Lead', () => {
+    sessionStorage.setItem('cts_last_submit_attribution', JSON.stringify({ viewed_tour_paths: 'x' }));
+    expect(() => fireLeadConversion('contact_page')).not.toThrow();
+    expect(mockGtag.mock.calls.some((c) => c[1] === 'conversion')).toBe(true);
+    expect(mockFbq).toHaveBeenCalledTimes(1);
+  });
+});

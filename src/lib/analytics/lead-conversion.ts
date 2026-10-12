@@ -52,14 +52,19 @@ const MAX_ATTEMPTS = 20; // retry for ~3s (20 × 150ms) while gtag/fbq finish lo
 const RETRY_MS = 150;
 
 function attributionParams(): Record<string, string> {
-  const a = readSubmitAttribution();
-  if (!a) return {};
-  return {
-    first_landing_path: a.first_landing_path,
-    submit_path: a.submit_path,
-    referrer_host: a.referrer_host,
-    viewed_tour_paths: a.viewed_tour_paths.join(','),
-  };
+  // Never let a damaged storage value interrupt the conversion calls that follow.
+  try {
+    const a = readSubmitAttribution();
+    if (!a) return {};
+    return {
+      first_landing_path: String(a.first_landing_path ?? ''),
+      submit_path: String(a.submit_path ?? ''),
+      referrer_host: String(a.referrer_host ?? ''),
+      viewed_tour_paths: Array.isArray(a.viewed_tour_paths) ? a.viewed_tour_paths.join(',') : '',
+    };
+  } catch {
+    return {};
+  }
 }
 
 export function fireLeadConversion(source: LeadSource): void {

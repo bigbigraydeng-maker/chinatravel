@@ -13,6 +13,9 @@ describe('sanitizeAttribution', () => {
     expect(a).toMatchObject({ first_landing_path: '/beijing-travel-guide', submit_path: '/tours/a/b/c', utm_source: 'google' });
     expect(a!.viewed_tour_paths).toEqual(['/tours/1', '/tours/2', '/tours/3', '/tours/4', '/tours/5']);
   });
+  it('a path containing a line break is rejected, not shown as a forged extra line in the email', () => {
+    expect(sanitizeAttribution({ first_landing_path: '/a\r\nBcc: x@evil.test', submit_path: '/b' })).toMatchObject({ first_landing_path: '', submit_path: '/b' });
+  });
   it('garbage in → null or empty, never a throw', () => {
     for (const bad of [undefined, null, 5, 'x', [], {}, { first_landing_path: 'javascript:alert(1)' }, { first_landing_path: { a: 1 } }]) {
       expect(sanitizeAttribution(bad)).toBeNull();
@@ -55,6 +58,13 @@ describe('first-touch (browser side)', () => {
     captureSubmitAttribution();
     window.history.pushState({}, '', '/thank-you');
     expect(readSubmitAttribution()?.submit_path).toBe('/contact');
+  });
+
+  it('a brand-new tab (empty storage) falls back to the current page as the landing page — it never invents a path', () => {
+    window.history.pushState({}, '', '/contact');
+    const a = captureSubmitAttribution()!;
+    expect(a.first_landing_path).toBe('/contact');
+    expect(a.viewed_tour_paths).toEqual([]);
   });
 
   it('storage failure never throws and never blocks', () => {
