@@ -71,13 +71,6 @@ export interface Tour {
    * (see components/tours/TourGoldenBlocks.tsx). Off by default.
    */
   goldenBlocks?: boolean;
-  /**
-   * Planned departures that are in CTS's schedule but have no confirmed public
-   * price yet. Shown in the departure table as "Price to be confirmed" and kept
-   * OUT of the Offers schema, the booking selector and the schedule block, so no
-   * price or availability is implied. Same "D Month YYYY" format as departureDates.
-   */
-  pendingDepartures?: string[];
   /** Internal links shown under "Plan this trip" in the booking terms block. */
   planLinks?: Array<{ href: string; label: string }>;
   /**
@@ -912,8 +905,6 @@ export const tours: Tour[] = [
     singleSupplement: 'NZD $800',
     goldenBlocks: true,
     suppressAggregateRating: true,
-    // Dates in CTS's internal 2027 schedule that have no published price yet — CTS to confirm.
-    pendingDepartures: ['9 September 2027', '28 October 2027'],
     planLinks: [
       { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
       { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
@@ -926,7 +917,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Best of China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from NZD $4,080 per person, twin share. If you want your own room, the single supplement is NZD $800. More 2027 dates are planned and listed on this page; they are not yet open for booking.',
+          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from NZD $4,080 per person, twin share. If you want your own room, the single supplement is NZD $800.',
       },
       {
         question: 'What is included in the price?',
