@@ -13,6 +13,7 @@ import ItineraryActions from '@/components/tours/ItineraryActions';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
+import { TourDepartureTable, TourBookingTerms, hasDepartureRows } from '@/components/tours/TourGoldenBlocks';
 import { getSoloTourPrice } from '@/lib/tour-price';
 
 const goldenDayHeadings: Record<number, string> = {
@@ -271,9 +272,11 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
         <div className="mx-auto flex max-w-7xl flex-wrap gap-x-7 gap-y-3 px-4 py-5 text-sm font-semibold">
           {[
             ['overview', 'Overview'],
+            ...(hasDepartureRows(tour) ? [['departures', 'Dates & prices']] : []),
             ['route-map', 'Route map'],
             ['itinerary', 'Day by day'],
             ['inclusions', 'Inclusions'],
+            ...(tour.goldenBlocks && !tour.soldOut ? [['booking-terms', 'Booking terms']] : []),
             ['planning-resources', 'Travel guides'],
             ['enquiry', tour.soldOut ? 'Available alternatives' : 'Enquire'],
           ].map(([id, label]) => <a key={id} href={`#${id}`} className="text-primary hover:underline">{label}</a>)}
@@ -306,6 +309,8 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
               ))}
             </div>
           </section>
+
+          <TourDepartureTable tour={tour} />
 
           <section id="route-map" className="scroll-mt-24">
             <h2 className="mb-6 font-serif text-3xl">Your route at a glance.</h2>
@@ -350,6 +355,8 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
               </p>
             )}
           </section>
+
+          <TourBookingTerms tour={tour} />
         </div>
         <Suspense fallback={<a href="/contact">Contact CTS to enquire about this journey</a>}>
           <UpgradedTourBooking tour={tour} />

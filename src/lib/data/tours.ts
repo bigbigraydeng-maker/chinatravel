@@ -66,6 +66,19 @@ export interface Tour {
    * default.
    */
   maxGroupSize?: number;
+  /**
+   * Opt in to the departure/price table and plain-words booking terms blocks
+   * (see components/tours/TourGoldenBlocks.tsx). Off by default.
+   */
+  goldenBlocks?: boolean;
+  /** Internal links shown under "Plan this trip" in the booking terms block. */
+  planLinks?: Array<{ href: string; label: string }>;
+  /**
+   * Leave aggregateRating out of this tour's JSON-LD. The site-wide Google rating
+   * belongs to the company, not to one product, and Google does not show star
+   * results for a business rating its own offer.
+   */
+  suppressAggregateRating?: boolean;
 }
 
 export interface DayItinerary {
@@ -542,6 +555,8 @@ export const tours: Tour[] = [
     name: 'China Signature — Natural China',
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
+    quickAnswer:
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departure is 26 March, returning 10 April. Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
@@ -592,14 +607,13 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
     metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-02',
+    updatedAt: '2026-10-13',
     tags: [
       'Shanghai',
       'Yichang',
@@ -617,9 +631,59 @@ export const tours: Tour[] = [
     departurePricing: { '26 March 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
-    rating: 4.6,
-    reviewCount: 156,
-    reviewSummary: 'Excellent classical journey, superbly organized',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/chengdu-panda-sanctuary', label: 'Chengdu panda base' },
+      { href: '/tianmen-mountain-travel-guide', label: 'Tianmen Mountain guide' },
+      { href: '/blog/liziba-station-chongqing-guide', label: 'Liziba monorail guide' },
+      { href: '/blog/yangtze-river-cruise-from-chongqing', label: 'Yangtze cruise guide' },
+    ],
+    faqs: [
+      {
+        question: 'When can I depart on Natural China, and what does it cost?',
+        answer:
+          'The scheduled 2027 departure from Auckland is 26 March (returning 10 April), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+      },
+      {
+        question: 'What is included in the price?',
+        answer:
+          'Return international airfares from Auckland, domestic airfares within China, 4–5 star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Hyatt Place Shanghai Changfeng (2 nights), the Three Gorges cruise ship (4 nights), Four Points by Sheraton Chongqing (2 nights), Holiday Inn Chengdu Oriental Plaza (2 nights) and Wulingyuan Rêverie Mansen Wyndham Hotel (3 nights). Hotels are rated 4 to 5-star by local standards, and the final night is spent on your international flight. The cruise ship and every hotel are named in the day-by-day programme; if a hotel is unavailable, CTS arranges one of similar standard.',
+      },
+      {
+        question: 'Which parts of the journey are by train?',
+        answer:
+          'Two sectors are by First Class high-speed train: Chongqing to Chengdu on Day 10 (for example train G8610, 09:32–10:58, 1 hr 26 min) and Chengdu to Zhangjiajie on Day 12 (for example train G2321, 10:20–15:27, 5 hr 7 min). Both are reference services, or a similar service on the day.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'No factory or showroom visits are listed in the itinerary. You pass through shopping streets such as Nanjing Road, Xintiandi and Tianzifang in Shanghai, and Taikoo Li and Kuanzhai Alley in Chengdu, where you can browse as you like. There is no obligation to buy and no minimum spend.',
+      },
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 16-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
+      },
+      {
+        question: 'How physically demanding is Natural China?',
+        answer:
+          'Zhangjiajie uses cable cars, the Bailong Elevator and an escalator through Tianmen Cave, but the days still include walking on paths and steps, including the Glass Skywalk and the Guigu Plank Walk. If you have mobility concerns, tell us when you enquire so we can note it for your guide. If you need special assistance, you must travel with a physically able companion; please call us before booking so we can talk it through.',
+      },
+      {
+        question: 'How do I book?',
+        answer:
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $1,895 extra, cruise included) for the 26 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
+      },
+    ],
   },
   // China Discovery Tours
   {
@@ -633,7 +697,7 @@ export const tours: Tour[] = [
     shortDescription:
       'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
-      "Tale of Two Cities is a 10-day Beijing + Xi'an escorted tour for New Zealand travellers, from NZD $3,480 per person twin share (single supplement NZD $395). The route covers Beijing (Forbidden City, Great Wall, Temple of Heaven, Tiananmen Square, hutong pedi-cab tour, Olympic Park) then high-speed rail G89 to Xi'an (Terracotta Warriors, City Wall, Big Wild Goose Pagoda). 4-star hotels, English-speaking guides, return international airfares from Auckland, listed meals, and entrance fees all included. NZ passport holders enjoy visa-free entry up to 30 days, published through 31 December 2026.",
+      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share. A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',
@@ -734,7 +798,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary'
     ],
     metaTitle: 'Beijing & Xi\'an Discovery Tour | March 2027 | CTS NZ',
@@ -742,7 +805,7 @@ export const tours: Tour[] = [
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-07-16',
+    updatedAt: '2026-10-13',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -759,22 +822,49 @@ export const tours: Tour[] = [
      * date from every surface that reads `departureDates`.
      */
     departureDates: ['18 March 2027', '10 June 2027'],
+    departurePricing: {
+      '18 March 2027': 'NZD $3,480',
+      '10 June 2027': 'NZD $3,480',
+    },
     tourCities: ['beijing', 'xian'],
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
+      { href: '/terracotta-warriors-travel-guide', label: 'Terracotta Warriors guide' },
+    ],
     faqs: [
+      {
+        question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
+        answer:
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395.',
+      },
+      {
+        question: 'What is included in the price?',
+        answer:
+          'Return international and domestic airfares, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional evening shows.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Beijing Wanda Moments (4 nights) and Mercure Xi\'an Downtown (3 nights), each "or similar" 4-star and rated by local standards. The same two hotels are used throughout; if one is unavailable, CTS arranges a substitute of similar standard.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'Yes, a few. The itinerary includes a tea factory (Day 2), a silk factory (Day 3), a jade carving factory on the Great Wall day (Day 4) and the Silk Market (Day 5). There is no obligation to buy and no minimum spend.',
+      },
       {
         question: 'Does this tour include Shanghai or other cities?',
         answer:
           'No — A Tale of Two Cities is focused on Beijing and Xi\'an only. You spend several nights in Beijing (Forbidden City, Great Wall, hutongs), travel by high-speed train to Xi\'an for the Terracotta Warriors and ancient city sights, then fly back to Beijing to connect home. It is ideal if you want imperial Beijing and ancient-capital Xi\'an without a longer multi-region loop.',
       },
       {
-        question: 'Do New Zealand passport holders need a visa for this itinerary?',
+        question: 'Do New Zealand passport holders need a visa for China?',
         answer:
-          'Many leisure visits qualify for China\'s visa-free entry for NZ ordinary passport holders (commonly up to 30 days under current policy, published to 31 December 2026). This route stays well within a typical holiday length, but entry rules depend on your exact travel dates and purpose — confirm before you book. We summarise options in our China visa guide for New Zealanders; CTS can help you check what applies to your booking.',
-      },
-      {
-        question: 'What is included in the tour price from New Zealand?',
-        answer:
-          'The advertised lead-in price covers return international flights from Auckland, domestic flights within China as per the itinerary, 4-star hotel accommodation, English-speaking guides, entrance fees and meals where listed, land transfers, and the Beijing–Xi\'an sector on high-speed train G89 (or similar) in 2nd class. Items such as travel insurance, tips (we suggest about NZD $10 per person per day), optional evening shows, and meals not listed are extra — see the Inclusions and Exclusions sections on this page.',
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 10-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
       },
       {
         question: 'How does the Beijing to Xi\'an journey work?',
@@ -782,29 +872,17 @@ export const tours: Tour[] = [
           'You travel by high-speed rail — typically train G89 departing Beijing around 15:00 and arriving in Xi\'an in the evening (about four hours), in a 2nd-class seat unless otherwise advised. Morning of that day is free at leisure in Beijing; you check out by noon. Your Xi\'an guide meets you at the station and transfers you to the hotel. It is a comfortable way to see the countryside between China\'s northern capital and the ancient Tang capital.',
       },
       {
-        question: 'Which Beijing and Xi\'an highlights are covered?',
-        answer:
-          'In Beijing: Temple of Heaven, Tiananmen Square and the Forbidden City, Beihai Park, the Great Wall (with a jade workshop en route), Olympic Park photo stop, and a pedi-cab hutong tour with a family visit — plus optional acrobatic show in the evening where available. In Xi\'an: the Terracotta Warriors (including Circle Vision and Bronze Chariot), City Wall, Big Wild Goose Pagoda, Small Wild Goose Pagoda Museum, and Huimin Street — with an optional Tang Dynasty banquet show. Exact order follows the day-by-day itinerary.',
-      },
-      {
         question: 'How physically demanding is this tour?',
         answer:
-          'Most sightseeing is at a Discovery pace with coach transfers, but the Great Wall involves walking on slopes and steps, Xi\'an\'s City Wall can be explored on foot or by bike depending on options offered locally, and hutong pedi-cabs are short rides with walking in narrow lanes. If you have mobility concerns, tell us when you enquire so we can note it for your guide.',
+          'Most sightseeing is at a steady pace with coach transfers, but the Great Wall involves walking on slopes and steps, Xi\'an\'s City Wall can be explored on foot or by bike depending on options offered locally, and hutong pedi-cabs are short rides with walking in narrow lanes. If you have mobility concerns, tell us when you enquire so we can note it for your guide.',
       },
       {
-        question: 'When can I depart, and is a single room available?',
+        question: 'How do I book?',
         answer:
-          'The 15 October 2026 departure has sold out. Confirmed 2027 group departures are 18 March 2027 and 10 June 2027 from Auckland, priced from NZD $3,480 per person twin-share. If you prefer your own room, a single supplement of NZD $395 applies. Contact CTS to register interest in another Beijing & Xi\'an window.',
-      },
-      {
-        question: 'How do I book or ask a specific question about this route?',
-        answer:
-          'Use the enquiry form on this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability on your dates, explain deposit and balance, and walk through any optional extras (such as evening shows) so you know the full picture before you commit.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 18 March or 10 June departure and whether you would like your own room (NZD $395 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
-    rating: 4.8,
-    reviewCount: 312,
-    reviewSummary: 'Perfect first China experience — the essence of Beijing and Xi\'an',
   },
   {
     id: 'tour-cn-dis-3',
@@ -862,14 +940,13 @@ export const tours: Tour[] = [
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
       'Optional tours and performances (e.g. acrobatic show, Tang Palace show)',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
     metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $4,080. 11 March 2027 departure from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-06-12',
+    updatedAt: '2026-10-13',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -890,16 +967,63 @@ export const tours: Tour[] = [
       '13 May 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $800',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
+      { href: '/terracotta-warriors-travel-guide', label: 'Terracotta Warriors guide' },
+      { href: '/west-lake-travel-guide', label: 'West Lake guide' },
+    ],
+    quickAnswer:
+      'Best of China is a 15-day escorted group tour from Auckland through Beijing, Xi\'an, Hangzhou and Shanghai, with a night in the Puyuan water town, from NZD $4,080 per person twin share. Scheduled 2027 departures: 11 March (returning 25 March) and 13 May (returning 27 May). Highlights are the Forbidden City, Great Wall, Terracotta Warriors, West Lake and the Bund, with named hotels and an English-speaking guide. A private room adds NZD $800.',
     faqs: [
       {
-        question: 'When can I depart on Best of China?',
+        question: 'When can I depart on Best of China, and what does it cost?',
         answer:
-          'Our 3 November 2026 group departure is now sold out. The next scheduled group departure from Auckland is 11 March 2027, returning 25 March 2027 (priced from NZD $4,080 per person twin-share), covering the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability, or to register interest in a future November departure.',
+          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from NZD $4,080 per person, twin share. If you want your own room, the single supplement is NZD $800.',
       },
       {
-        question: 'Will there be another November departure?',
+        question: 'What is included in the price?',
         answer:
-          'The November 2026 departure sold out. CTS regularly adds new departures for popular itineraries like Best of China — contact our Auckland team to register your interest in a future November-window departure, or book the confirmed 11 March 2027 departure now.',
+          'Return international airfares from Auckland, domestic airfares within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional extras such as the acrobatic show and the Tang Palace show.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Beijing Wanda Moments (4 nights), Mercure Xi\'an Downtown (3 nights), Puyuan Hotel (1 night, 5-star), Holiday Inn Hangzhou (1 night) and Holiday Inn Express Shanghai (3 nights), each "or similar" and rated by local standards. Each night\'s hotel is listed in the day-by-day programme; if a listed hotel is unavailable, CTS arranges one of similar standard.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'Yes, a few. The itinerary includes a silk factory in Beijing (Day 3) and another in Shanghai (Day 12), a jade carving factory on the Great Wall day (Day 4), the Silk Market (Day 5) and a Longjing tea plantation with tea tasting (Day 11). There is no obligation to buy and no minimum spend.',
+      },
+      {
+        question: 'What happens if Forbidden City tickets are not available?',
+        answer:
+          'Forbidden City tickets are capacity-limited. If tickets cannot be obtained for your day, the itinerary substitutes Jingshan Park, which overlooks the palace, and Prince Gong\'s Mansion.',
+      },
+      {
+        question: 'How does the Beijing to Xi\'an train work?',
+        answer:
+          'On Day 6 your morning in Beijing is free. You then take train G89 at 15:00, arriving in Xi\'an at 19:12 (or a similar service), in a second-class seat. Your local Xi\'an guide meets you on arrival and takes you to the hotel.',
+      },
+      {
+        question: 'What is Puyuan, and why is it on this route?',
+        answer:
+          'Puyuan Fashion Ancient Town, in Tongxiang, is a water town built in the style of the Song dynasty, with canals and lanes that follow the Jiangnan pattern of water beside land. You spend one night there on Day 9, then drive to Hangzhou on Day 10.',
+      },
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 15-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
+      },
+      {
+        question: 'How do I book?',
+        answer:
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 11 March or 13 May departure and whether you would like your own room (NZD $800 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
   },
@@ -912,6 +1036,8 @@ export const tours: Tour[] = [
     title: 'China Discovery — Shanghai & Surroundings',
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
+    quickAnswer:
+      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, at NZD $2,699 per person twin share. A private room adds NZD $400. The scheduled 2027 departure is 25 March, returning 3 April. Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -954,7 +1080,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
@@ -963,7 +1088,7 @@ export const tours: Tour[] = [
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-05-07',
+    updatedAt: '2026-10-13',
     tags: [
       'Shanghai',
       'The Bund',
@@ -979,28 +1104,41 @@ export const tours: Tour[] = [
      * date from every surface that reads `departureDates`.
      */
     departureDates: ['25 March 2027'],
+    departurePricing: { '25 March 2027': 'NZD $2,699' },
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/west-lake-travel-guide', label: 'West Lake guide' },
+      { href: '/the-bund-travel-guide', label: 'The Bund guide' },
+    ],
     faqs: [
       {
-        question: 'Does this tour visit Beijing or the Terracotta Warriors?',
+        question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
-      },
-      {
-        question: 'Do New Zealand passport holders need a visa?',
-        answer:
-          'Many NZ leisure trips qualify for China\'s visa-free entry (often up to 30 days under current published policy to 31 December 2026). This 10-day loop is a typical holiday length, but rules depend on your dates and travel purpose — always confirm before booking. See our China visa guide for New Zealanders or ask CTS when you enquire.',
+          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400.',
       },
       {
         question: 'What is included in the NZD $2,699 price?',
         answer:
-          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, tips (we suggest about NZD $10 per person per day), most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Rosedale Chunshenhu Resort Hotel in Suzhou (1 night, 5-star standard), Holiday Inn Express Wuxi (2 nights), Holiday Inn near Xinshi Ancient Town (1 night), New Century Hotel Hangzhou (1 night, 5-star standard) and Holiday Inn Express Shanghai (2 nights), each "or similar" and rated by local standards. Five different hotels are used, one in each stop; if one is unavailable, CTS arranges a substitute of similar standard.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'The itinerary includes a silk factory visit (Day 3) and a few specialist stops: the Purple Sand Museum (Day 3), the Wuxi Pearl Exhibition Centre (Day 4) and Longjing tea at Meijiawu (Day 7). Whether or not items are on sale at a stop, there is no obligation to buy and no minimum spend.',
       },
       {
         question: 'Several meals are "at own expense" — what should I expect?',
         answer:
-          'The itinerary deliberately leaves some lunches and dinners free so you can try local street food (for example on Shantang Street or in Wuxi\'s market areas), casual restaurants, or hot pot in Xinshi as suggested locally. Your guide can recommend options; budget a modest amount per day for those meals if you want to eat out every time.',
+          'The itinerary deliberately leaves some lunches and dinners free so you can try local street food (for example on Shantang Street or in Wuxi\'s market areas), casual restaurants, or hot pot in Xinshi as suggested locally. Your guide can recommend options; budget a modest amount per day for those meals if you want to eat out every time. The programme includes 7 breakfasts, 5 lunches and 1 dinner, plus meals on board your flights; all other meals are at your own expense.',
       },
       {
         question: 'What optional activities are offered in Shanghai?',
@@ -1008,19 +1146,21 @@ export const tours: Tour[] = [
           'On the listed programme, you can add the Shanghai Acrobatics Show (approximately NZD $80 per person) and a Maglev train round trip (approximately NZD $30 per person), subject to availability and schedule. These are paid locally or as advised at booking — they are not required to enjoy the tour.',
       },
       {
-        question: 'How much coach or driving is there between cities?',
+        question: 'Does this tour visit Beijing or the Terracotta Warriors?',
         answer:
-          'Distances are relatively short within the delta — for example Shanghai to Suzhou about 1.5 hours and Wuxi to Xinshi about 1.5 hours, with other transfers similar. You stay a few nights in each area so the pace is steady rather than constant long drives.',
+          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
       },
       {
-        question: 'Is October a good time for this route?',
+        question: 'Do New Zealand passport holders need a visa for China?',
         answer:
-          'Autumn is popular: mild temperatures, comfortable for walking gardens, lakeside parks, and West Lake. Bring light layers and waterproofs for occasional rain. Ask CTS if you want tips tailored to the mid-October departure.',
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 10-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
       },
       {
-        question: 'Can I have a single room, and when does the tour depart?',
+        question: 'How do I book?',
         answer:
-          'Twin-share pricing is shown; a single room supplement applies — ask CTS for the current amount on your departure. Published departure for this programme is 14 October (year as on site — subject to change; confirm live availability). Call 0800 CTS 888 (0800 287 888) or use the enquiry form to hold a seat and confirm the exact price for your room choice.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $400 extra) for the 25 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
   },

@@ -45,6 +45,9 @@ const NEW_KEYS: Array<keyof TourFeedProduct> = [
   'review_summary',
   'related_blog_slugs',
   'quick_answer',
+  'golden_blocks',
+  'plan_links',
+  'suppress_aggregate_rating',
 ];
 
 const REQUIRED_TOUR_KEYS: Array<keyof Tour> = [
