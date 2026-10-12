@@ -747,7 +747,6 @@ export const tours: Tour[] = [
       'Personal expenses',
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary'
     ],
     metaTitle: 'Beijing & Xi\'an Discovery Tour | March 2027 | CTS NZ',
@@ -772,6 +771,10 @@ export const tours: Tour[] = [
      * date from every surface that reads `departureDates`.
      */
     departureDates: ['18 March 2027', '10 June 2027'],
+    departurePricing: {
+      '18 March 2027': 'NZD $3,480',
+      '10 June 2027': 'NZD $3,480',
+    },
     tourCities: ['beijing', 'xian'],
     goldenBlocks: true,
     suppressAggregateRating: true,
@@ -789,12 +792,12 @@ export const tours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international and domestic airfares, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional evening shows, and tips (see the booking terms on this page).',
+          'Return international and domestic airfares, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional evening shows.',
       },
       {
         question: 'Which hotels do we stay in?',
         answer:
-          'Beijing Wanda Moments (4 nights) and Mercure Xi\'an Downtown (3 nights), each "or similar" 4-star and rated by local standards. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+          'Beijing Wanda Moments (4 nights) and Mercure Xi\'an Downtown (3 nights), each "or similar" 4-star and rated by local standards. The same two hotels are used throughout; if one is unavailable, CTS arranges a substitute of similar standard.',
       },
       {
         question: 'Are there shopping stops on this tour?',
@@ -825,7 +828,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). We will check seats on your chosen date and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 18 March or 10 June departure and whether you would like your own room (NZD $395 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
