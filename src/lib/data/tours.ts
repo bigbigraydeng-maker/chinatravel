@@ -910,16 +910,61 @@ export const tours: Tour[] = [
       '13 May 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $800',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    // Dates in CTS's internal 2027 schedule that have no published price yet — CTS to confirm.
+    pendingDepartures: ['9 September 2027', '28 October 2027'],
+    planLinks: [
+      { href: '/china-visa-guide-for-new-zealanders', label: 'China entry for NZ passport holders' },
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/beijing-travel-guide', label: 'Beijing travel guide' },
+      { href: '/xian-travel-guide', label: 'Xi\'an travel guide' },
+      { href: '/hangzhou-travel-guide', label: 'Hangzhou travel guide' },
+      { href: '/shanghai-travel-guide', label: 'Shanghai travel guide' },
+    ],
+    quickAnswer:
+      'Best of China is a 15-day escorted group tour from Auckland through Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai, from NZD $4,080 per person twin share. Scheduled 2027 departures: 11 March (returning 25 March) and 13 May (returning 27 May). Highlights are the Forbidden City, Great Wall, Terracotta Warriors, West Lake and the Bund, with named hotels and an English-speaking guide. A private room adds NZD $800.',
     faqs: [
       {
-        question: 'When can I depart on Best of China?',
+        question: 'When can I depart on Best of China, and what does it cost?',
         answer:
-          'Our 3 November 2026 group departure is now sold out. The next scheduled group departure from Auckland is 11 March 2027, returning 25 March 2027 (priced from NZD $4,080 per person twin-share), covering the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability, or to register interest in a future November departure.',
+          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May). Both are priced from NZD $4,080 per person, twin share. If you want your own room, a single supplement of NZD $800 applies. Two further 2027 dates (9 September and 28 October) are planned but do not have a published price yet — send an enquiry and we will tell you where they stand.',
       },
       {
-        question: 'Will there be another November departure?',
+        question: 'What is included in the price?',
         answer:
-          'The November 2026 departure sold out. CTS regularly adds new departures for popular itineraries like Best of China — contact our Auckland team to register your interest in a future November-window departure, or book the confirmed 11 March 2027 departure now.',
+          'International and domestic airfares, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional extras such as the acrobatic show and the Tang Palace show, and tips.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Beijing Wanda Moments (4 nights), Mercure Xi\'an Downtown (3 nights), Puyuan Hotel (1 night, 5-star), Holiday Inn Hangzhou (1 night) and Holiday Inn Express Shanghai (3 nights), each "or similar" and rated by local standards. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+      },
+      {
+        question: 'How do the deposit, final payment and tips work?',
+        answer:
+          'A non-refundable deposit of NZD $1,000 per person confirms your booking, payable within 3 working days of reserving. Final payment is due 120 days before departure for itineraries of 15 days or longer, and we confirm your exact date when you book. Tips are prepaid in New Zealand before you leave — we suggest NZD $10 per person per day — so there is no cash to hand out in China. Full terms are on our Terms & Conditions page.',
+      },
+      {
+        question: 'Is there compulsory shopping on this tour?',
+        answer:
+          'No. The itinerary includes a few visits to local speciality stores — a silk factory in Beijing and Shanghai and a jade carving factory on the Great Wall day — and there is no obligation to buy and no minimum spend. Day 5 also includes a stop at the Silk Market.',
+      },
+      {
+        question: 'What happens if Forbidden City tickets are not available?',
+        answer:
+          'Forbidden City tickets are capacity-limited. If tickets cannot be obtained for your day, the itinerary substitutes Jingshan Park, which overlooks the palace, and Prince Gong\'s Mansion.',
+      },
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'Many leisure visits qualify for China\'s visa-free entry for NZ ordinary passport holders, commonly up to 30 days under the current policy, published to 31 December 2026. Entry rules depend on your travel dates and purpose, so confirm before you book. Our visa guide for New Zealanders sets out the current position.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
+      },
+      {
+        question: 'What are the cancellation charges?',
+        answer:
+          'Cancellations must be in writing. 90 days or more before departure you lose the deposit plus administration fees and the cost of any issued air tickets. From 89 to 61 days you lose the deposit and 50% of the total booking cost; from 60 to 31 days, the deposit and 75%; at 30 days or less, the deposit and 100% — each plus the cost of air tickets. We recommend comprehensive travel insurance at booking.',
       },
     ],
   },
