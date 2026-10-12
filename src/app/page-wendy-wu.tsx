@@ -62,8 +62,8 @@ const HomePageWendyWu = () => {
     },
     {
       icon: 'target',
-      title: 'Backed by CTS · Founded 1928',
-      description: 'CTS Tours NZ has been crafting Kiwi-led journeys from Auckland since 2000 (25 years), backed by China Travel Service — founded in 1928.',
+      title: 'Backed by CTS',
+      description: 'CTS Tours NZ crafts Kiwi-led journeys from Auckland, backed by China Travel Service.',
       gradient: 'from-rose-50 to-pink-50'
     },
     {
@@ -105,7 +105,7 @@ const HomePageWendyWu = () => {
                   Journey into Real China
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
-                  Discover authentic experiences beyond the guidebook. With 25 years of Kiwi-led NZ operations, backed by CTS Group (founded 1928) and local ground presence, we craft journeys that transform how you see Asia.
+                  Discover authentic experiences beyond the guidebook. With Kiwi-led NZ operations, backed by CTS Group and local ground presence, we craft journeys that transform how you see Asia.
                 </p>
               </div>
 
@@ -171,7 +171,7 @@ const HomePageWendyWu = () => {
               Why Choose CTS
             </h2>
             <p className="text-xl text-gray-600">
-              CTS Tours NZ: 25 years connecting New Zealanders with authentic Asia — backed by CTS (founded 1928)
+              CTS Tours NZ: connecting New Zealanders with authentic Asia — backed by CTS
             </p>
           </div>
 

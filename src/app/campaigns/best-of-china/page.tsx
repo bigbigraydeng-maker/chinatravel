@@ -212,8 +212,8 @@ export default function BestOfChinaLandingPage() {
                 {tour.departureDates && tour.departureDates.length > 0 && (
                   <> Scheduled small-group departures: {tour.departureDates.join(', ')}.</>
                 )}
-                {' '}Backed by China Travel Service (founded 1928); CTS Tours NZ team
-                25 years. NZ ordinary passport holders currently enjoy visa-free entry
+                {' '}Backed by China Travel Service; CTS Tours NZ is Auckland-based.
+                NZ ordinary passport holders currently enjoy visa-free entry
                 of up to 30 days, published through 31 December 2026.
               </p>
             </div>

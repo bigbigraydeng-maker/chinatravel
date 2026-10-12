@@ -211,7 +211,7 @@ export default function ChinaToursFromNZPage() {
                   10-day Discovery tour) and include return international airfares from AKL, hotels,
                   English-speaking guides, and most meals. NZ ordinary passport holders enjoy visa-free
                   entry to China for up to 30 days, currently published through 31 December 2026. CTS is
-                  TAANZ-bonded, Auckland-based, and has been taking Kiwis to China from our Auckland office since 2000, backed by China Travel Service (founded 1928).
+                  TAANZ-bonded, Auckland-based, and takes Kiwis to China from our Auckland office, backed by China Travel Service.
                 </p>
               </aside>
 
@@ -347,9 +347,9 @@ export default function ChinaToursFromNZPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Auckland office</td><td className="px-4 py-3 text-gray-700">Yes, 25 years in NZ</td><td className="px-4 py-3 text-gray-700">Often Australia-based</td></tr>
+                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Auckland office</td><td className="px-4 py-3 text-gray-700">Yes, Auckland-based team</td><td className="px-4 py-3 text-gray-700">Often Australia-based</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">NZD pricing</td><td className="px-4 py-3 text-gray-700">Yes, locked at booking</td><td className="px-4 py-3 text-gray-700">Sometimes AUD with FX markup</td></tr>
-                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Direct China operations</td><td className="px-4 py-3 text-gray-700">Yes (CTS group founded 1928)</td><td className="px-4 py-3 text-gray-700">Usually re-sold via brokers</td></tr>
+                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Direct China operations</td><td className="px-4 py-3 text-gray-700">Yes (backed by CTS group)</td><td className="px-4 py-3 text-gray-700">Usually re-sold via brokers</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">TAANZ bonding</td><td className="px-4 py-3 text-gray-700">Yes — NZ payment protection</td><td className="px-4 py-3 text-gray-700">Varies — check before booking</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">In-country English guides</td><td className="px-4 py-3 text-gray-700">CTS own guides every city</td><td className="px-4 py-3 text-gray-700">Often contracted local guides</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">NZ school holiday awareness</td><td className="px-4 py-3 text-gray-700">Yes — Kiwi-led booking</td><td className="px-4 py-3 text-gray-700">Generic global calendar</td></tr>
@@ -547,8 +547,8 @@ export default function ChinaToursFromNZPage() {
                       desc: 'CTS team based in Auckland. NZ office hours. Kiwi expertise.'
                     },
                     {
-                      title: 'Backed by CTS · Founded 1928',
-                      desc: 'CTS Tours NZ has taken New Zealand travellers to China from our Auckland office since 2000 (25 years), backed by China Travel Service (founded 1928). Trust & reliability.'
+                      title: 'Backed by CTS',
+                      desc: 'CTS Tours NZ takes New Zealand travellers to China from our Auckland office, backed by China Travel Service. Trust & reliability.'
                     },
                     {
                       title: 'Entry for NZ passports',

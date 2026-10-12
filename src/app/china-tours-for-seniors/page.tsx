@@ -32,7 +32,10 @@ const TOUR_IMG =
 
 const PAGE_TITLE = 'China Tours for Seniors 2026-27 · NZ-Friendly Pace, Mobility-Aware | CTS Tours';
 const PAGE_DESCRIPTION =
-  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. 25 years arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
+  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
+// JSON-LD copy of PAGE_DESCRIPTION without company-history wording (metadata copy is pending PM approval).
+const PAGE_SCHEMA_DESCRIPTION =
+  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Visa-free for NZ passports through 31 Dec 2026.';
 const PAGE_H1 = 'China Tours for New Zealand Seniors (2026-27)';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -177,7 +180,7 @@ export default function ChinaToursForSeniorsPage() {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: PAGE_H1,
-    description: PAGE_DESCRIPTION,
+    description: PAGE_SCHEMA_DESCRIPTION,
     image: `${siteUrl}/seniors-china-tour.jpg`,
     datePublished: '2026-06-27',
     dateModified: '2026-06-27',
@@ -224,7 +227,7 @@ export default function ChinaToursForSeniorsPage() {
   };
 
   const schemas = [
-    generateWebPageSchema(PAGE_TITLE, PAGE_DESCRIPTION, '/china-tours-for-seniors', {
+    generateWebPageSchema(PAGE_TITLE, PAGE_SCHEMA_DESCRIPTION, '/china-tours-for-seniors', {
       name: 'New Zealand',
       address: 'Auckland, New Zealand',
     }),
@@ -306,7 +309,7 @@ export default function ChinaToursForSeniorsPage() {
                   for first-time imperial highlights, and <strong>Best of China + Yangtze River Cruise
                   (15-18 days)</strong> for senior travellers&apos; favourite — the cruise leg means unpacking
                   once for 3 nights. NZ passport holders enter visa-free up to 30 days (through 31 Dec 2026).
-                  CTS has been arranging China tours for Kiwi retirees for 25 years.
+                  Our Auckland-based, Kiwi-led team arranges China tours for Kiwi retirees.
                 </p>
               </aside>
 
@@ -494,8 +497,8 @@ export default function ChinaToursForSeniorsPage() {
                 </h2>
                 <p className="text-gray-700 mb-5 max-w-2xl mx-auto">
                   Tell us your mobility level, preferred pace, and trip length. Our Auckland-based consultants will
-                  match the right itinerary, ship, and hotel category to your specific needs. China Travel Service
-                  founded in 1928; CTS Tours NZ team in Auckland for 25 years.
+                  match the right itinerary, ship, and hotel category to your specific needs. Backed by China Travel Service;
+                  CTS Tours NZ is Auckland-based.
                 </p>
                 <Link
                   href="/contact"

@@ -14,7 +14,7 @@ const Footer = () => {
               <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-10 md:h-12 w-auto" />
             </div>
             <p className="text-ink-muted text-sm mb-2">China Travel Specialists for New Zealanders</p>
-            <p className="text-ink-muted text-xs mb-4">Backed by CTS · Founded 1928 | Direct China Operations</p>
+            <p className="text-ink-muted text-xs mb-4">Backed by CTS | Direct China Operations</p>
             <p className="text-ink-muted text-xs mb-2 uppercase tracking-wide">Follow us</p>
             <div className="flex items-center gap-3">
               <a
@@ -197,7 +197,7 @@ const Footer = () => {
               ·
             </span>
             <span className="text-ink-muted">
-              Part of China Travel Service Group, est. 1928
+              Part of China Travel Service Group
             </span>
           </div>
           <p className="mt-6 text-center md:order-1 md:mt-0 md:text-left">

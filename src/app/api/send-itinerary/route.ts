@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
           <tr>
             <td style="background:#1f2937;padding:24px 32px;text-align:left;">
               <img src="${logoUrl}" alt="CTS Tours" height="40" style="display:block;margin-bottom:8px;" />
-              <p style="margin:0;font-size:12px;color:#9ca3af;">CTS Tours NZ — Auckland since 2000 · Backed by CTS (founded 1928)</p>
+              <p style="margin:0;font-size:12px;color:#9ca3af;">CTS Tours NZ — Auckland-based · Backed by China Travel Service</p>
             </td>
           </tr>
 
@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
           <tr>
             <td style="padding:16px 32px;text-align:center;">
               <p style="margin:0;font-size:11px;color:#9ca3af;">
-                © ${new Date().getFullYear()} CTS Tours. Part of China Travel Service Group, est. 1928.<br />
+                © ${new Date().getFullYear()} CTS Tours. Part of China Travel Service Group.<br />
                 2F CTS House, 175 Queen Street, Auckland, New Zealand.
               </p>
             </td>

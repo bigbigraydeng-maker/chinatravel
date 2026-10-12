@@ -172,7 +172,7 @@ export default function SmallGroupChinaToursPage() {
                     { icon: 'ticket', label: 'All entrance fees', desc: 'Great Wall, Forbidden City, Terracotta Warriors — no surprise costs' },
                     { icon: 'utensils', label: 'Most meals included', desc: 'Breakfasts daily, select lunches and dinners at quality local restaurants' },
                     { icon: 'bus', label: 'Private coach throughout', desc: 'Your own coach and driver for the group — no shared buses with strangers' },
-                    { icon: 'message', label: 'English-speaking guide', desc: '20+ years China expertise; the same guide stays with the group throughout' },
+                    { icon: 'message', label: 'English-speaking guide', desc: 'Experienced China guide; the same guide stays with the group throughout' },
                   ] as { icon: IconName; label: string; desc: string }[]).map((item) => (
                     <div key={item.label} className="flex gap-4 p-4 bg-warm-50 rounded-lg border border-warm-100">
                       <Icon name={item.icon} className="w-6 h-6 shrink-0 text-primary" />
@@ -285,7 +285,7 @@ export default function SmallGroupChinaToursPage() {
                   The Guide Makes the Difference
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  Our China specialists have 20+ years on the ground. They know which section of the
+                  Our China specialists know the ground. They know which section of the
                   Great Wall is worth the climb for your fitness level, which Terracotta Warrior pit
                   has the best vantage, and which street food stall in Xi&apos;an has been running for
                   three generations. They also know what Kiwis like — honest itineraries with enough
@@ -318,7 +318,7 @@ export default function SmallGroupChinaToursPage() {
                   </li>
                   <li>
                     <Link href="/china-travel-specialists-nz" className="text-primary font-medium hover:underline">
-                      About CTS — China travel specialists — Auckland since 2000, backed by CTS (founded 1928)
+                      About CTS — China travel specialists — Auckland-based, backed by CTS
                     </Link>
                   </li>
                   <li>

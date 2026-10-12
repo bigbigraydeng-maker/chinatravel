@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return buildCtsPageMetadata({
       title: 'China Tours from New Zealand | CTS Tours',
       description:
-        "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
+        "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
       path: '/',
       ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
       ogImageAlt: 'Great Wall of China mist, CTS Tours',
@@ -35,14 +35,14 @@ export async function generateMetadata(): Promise<Metadata> {
       ogType: 'website',
       openGraphTitle: 'China Tours from New Zealand | CTS Tours',
       openGraphDescription:
-        "Discover authentic China with CTS Tours, New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Expert-led small groups, direct China operations, and immersive itineraries.",
+        "Discover authentic China with CTS Tours, New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Expert-led small groups, direct China operations, and immersive itineraries.",
       openGraphSiteName: 'CTS Tours',
     });
   } catch {
     return {
       title: 'China Tours from New Zealand | CTS Tours',
       description:
-        "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
+        "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Expertly crafted tours, direct China operations, authentic experiences. Get your free quote today.",
       robots: { index: true, follow: true },
     };
   }
@@ -59,9 +59,8 @@ const buildHomePageSchemas = () => {
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     image: `${siteUrl}/logo.png`,
-    foundingDate: '1928',
     description:
-      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928). Direct China operations, authentic experiences, expertly crafted tours.",
+      "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service. Direct China operations, authentic experiences, expertly crafted tours.",
     areaServed: [
       { '@type': 'Country', name: 'New Zealand' },
       { '@type': 'Country', name: 'China' },
@@ -92,7 +91,7 @@ const buildHomePageSchemas = () => {
     url: siteUrl,
     name: 'CTS Tours',
     alternateName: 'China Travel Service',
-    description: "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland since 2000, backed by China Travel Service (founded 1928).",
+    description: "New Zealand's Kiwi-led China travel specialists — CTS Tours NZ, Auckland-based and backed by China Travel Service.",
     publisher: {
       '@type': 'Organization',
       name: 'CTS Tours',
