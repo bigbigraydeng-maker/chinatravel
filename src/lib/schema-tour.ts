@@ -1,9 +1,22 @@
 import type { Destination, Tour } from '@/lib/data/tours';
 import { parseDepartureDate } from '@/lib/data/tour-dates';
+import { departures } from '@/lib/tour-discovery';
 import { getCtsTravelAgencySchema, getSiteUrl } from '@/lib/site';
 import { GOOGLE_RATING_SCHEMA } from '@/lib/data/google-rating'
 
 const PRICE_CURRENCY = 'NZD';
+
+/**
+ * Agency block for a tour's JSON-LD. Tours that opted in to the reviewed page structure
+ * (`goldenBlocks`) use a description without company-age claims, because that text is
+ * repeated in every Offer `seller` and in `provider`.
+ */
+function agencyFor(tour: Tour) {
+  const agency = getCtsTravelAgencySchema();
+  return tour.goldenBlocks
+    ? { ...agency, description: 'CTS Tours NZ — Kiwi-Led China Travel Specialists, Auckland' }
+    : agency;
+}
 
 function parsePriceAmount(price: string): number {
   const n = parseFloat(price.replace(/[^0-9.]/g, ''));
@@ -26,6 +39,20 @@ function toISODate(raw: string): string | null {
  */
 function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
   const url = `${siteUrl}/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+  if (tour.goldenBlocks && !tour.soldOut) {
+    // Only departures that are still ahead and have a published price. No start-date fields:
+    // the offer is open now, the tour departs later.
+    return departures(tour)
+      .filter((d) => Boolean(tour.departurePricing?.[d.label]))
+      .map((d) => ({
+        '@type': 'Offer',
+        price: parsePriceAmount(d.price),
+        priceCurrency: PRICE_CURRENCY,
+        availability: 'https://schema.org/InStock',
+        url,
+        seller,
+      }));
+  }
   const basePrice = parsePriceAmount(tour.price);
   if (!tour.departureDates || tour.departureDates.length === 0) {
     return {
@@ -53,7 +80,7 @@ function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
 }
 
 export function generateTourSchema(tour: Tour, destination: Destination) {
-  const agency = getCtsTravelAgencySchema();
+  const agency = agencyFor(tour);
   const siteUrl = getSiteUrl();
 
   return {
@@ -68,10 +95,14 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
       '@type': 'Audience',
       audienceType: 'Travelers from New Zealand',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
@@ -116,7 +147,7 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
  * Price: read from tour.price at render time (currently NZD $4,080 per tours.ts).
  */
 export function generateEssentialsTouristTripSchema(tour: Tour, destination: Destination) {
-  const agency = getCtsTravelAgencySchema();
+  const agency = agencyFor(tour);
   const siteUrl = getSiteUrl();
 
   const cityStops = [
@@ -161,10 +192,14 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
       'First-time China travellers',
       'Travelers from New Zealand',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
@@ -193,7 +228,7 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
 
 export function generateProductSchema(tour: Tour) {
   const price = parsePriceAmount(tour.price);
-  const agency = getCtsTravelAgencySchema();
+  const agency = agencyFor(tour);
 
   return {
     '@context': 'https://schema.org',
@@ -203,10 +238,14 @@ export function generateProductSchema(tour: Tour) {
     image: tour.heroImage.startsWith('http')
       ? tour.heroImage
       : `${getSiteUrl()}${tour.heroImage.startsWith('/') ? '' : '/'}${tour.heroImage}`,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ...GOOGLE_RATING_SCHEMA,
-    },
+    ...(tour.suppressAggregateRating
+      ? {}
+      : {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ...GOOGLE_RATING_SCHEMA,
+          },
+        }),
     brand: {
       '@type': 'Brand',
       name: 'CTS Tours',

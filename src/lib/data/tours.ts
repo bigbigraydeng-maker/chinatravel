@@ -66,6 +66,19 @@ export interface Tour {
    * default.
    */
   maxGroupSize?: number;
+  /**
+   * Opt in to the departure/price table and plain-words booking terms blocks
+   * (see components/tours/TourGoldenBlocks.tsx). Off by default.
+   */
+  goldenBlocks?: boolean;
+  /** Internal links shown under "Plan this trip" in the booking terms block. */
+  planLinks?: Array<{ href: string; label: string }>;
+  /**
+   * Leave aggregateRating out of this tour's JSON-LD. The site-wide Google rating
+   * belongs to the company, not to one product, and Google does not show star
+   * results for a business rating its own offer.
+   */
+  suppressAggregateRating?: boolean;
 }
 
 export interface DayItinerary {
@@ -862,14 +875,13 @@ export const tours: Tour[] = [
       'Transportation and guide services during free time',
       'Meals not listed in the itinerary',
       'Optional tours and performances (e.g. acrobatic show, Tang Palace show)',
-      'Tips (suggested NZD $10 per day per person)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
     metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $4,080. 11 March 2027 departure from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-06-12',
+    updatedAt: '2026-10-13',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -890,16 +902,63 @@ export const tours: Tour[] = [
       '13 May 2027': 'NZD $4,080',
     },
     singleSupplement: 'NZD $800',
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    planLinks: [
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
+      { href: '/terracotta-warriors-travel-guide', label: 'Terracotta Warriors guide' },
+      { href: '/west-lake-travel-guide', label: 'West Lake guide' },
+    ],
+    quickAnswer:
+      'Best of China is a 15-day escorted group tour from Auckland through Beijing, Xi\'an, Hangzhou and Shanghai, with a night in the Puyuan water town, from NZD $4,080 per person twin share. Scheduled 2027 departures: 11 March (returning 25 March) and 13 May (returning 27 May). Highlights are the Forbidden City, Great Wall, Terracotta Warriors, West Lake and the Bund, with named hotels and an English-speaking guide. A private room adds NZD $800.',
     faqs: [
       {
-        question: 'When can I depart on Best of China?',
+        question: 'When can I depart on Best of China, and what does it cost?',
         answer:
-          'Our 3 November 2026 group departure is now sold out. The next scheduled group departure from Auckland is 11 March 2027, returning 25 March 2027 (priced from NZD $4,080 per person twin-share), covering the same 15-day itinerary — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai. Single supplement is NZD $800 if you want your own room. Contact CTS to confirm seat availability, or to register interest in a future November departure.',
+          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from NZD $4,080 per person, twin share. If you want your own room, the single supplement is NZD $800.',
       },
       {
-        question: 'Will there be another November departure?',
+        question: 'What is included in the price?',
         answer:
-          'The November 2026 departure sold out. CTS regularly adds new departures for popular itineraries like Best of China — contact our Auckland team to register your interest in a future November-window departure, or book the confirmed 11 March 2027 departure now.',
+          'Return international airfares from Auckland, domestic airfares within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional extras such as the acrobatic show and the Tang Palace show.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Beijing Wanda Moments (4 nights), Mercure Xi\'an Downtown (3 nights), Puyuan Hotel (1 night, 5-star), Holiday Inn Hangzhou (1 night) and Holiday Inn Express Shanghai (3 nights), each "or similar" and rated by local standards. Each night\'s hotel is listed in the day-by-day programme; if a listed hotel is unavailable, CTS arranges one of similar standard.',
+      },
+      {
+        question: 'Are there shopping stops on this tour?',
+        answer:
+          'Yes, a few. The itinerary includes a silk factory in Beijing (Day 3) and another in Shanghai (Day 12), a jade carving factory on the Great Wall day (Day 4), the Silk Market (Day 5) and a Longjing tea plantation with tea tasting (Day 11). There is no obligation to buy and no minimum spend.',
+      },
+      {
+        question: 'What happens if Forbidden City tickets are not available?',
+        answer:
+          'Forbidden City tickets are capacity-limited. If tickets cannot be obtained for your day, the itinerary substitutes Jingshan Park, which overlooks the palace, and Prince Gong\'s Mansion.',
+      },
+      {
+        question: 'How does the Beijing to Xi\'an train work?',
+        answer:
+          'On Day 6 your morning in Beijing is free. You then take train G89 at 15:00, arriving in Xi\'an at 19:12 (or a similar service), in a second-class seat. Your local Xi\'an guide meets you on arrival and takes you to the hotel.',
+      },
+      {
+        question: 'What is Puyuan, and why is it on this route?',
+        answer:
+          'Puyuan Fashion Ancient Town, in Tongxiang, is a water town built in the style of the Song dynasty, with canals and lanes that follow the Jiangnan pattern of water beside land. You spend one night there on Day 9, then drive to Hangzhou on Day 10.',
+      },
+      {
+        question: 'Do New Zealand passport holders need a visa for China?',
+        answer:
+          'NZ passport holders can usually stay up to 30 days without a tourist visa under China\'s current visa-free policy, which is published to 31 December 2026. All 2027 departures fall after that date, and whether the policy will be extended has not been confirmed, so please check the current position before you book. This 15-day trip is within the 30-day limit. Our visa guide for New Zealanders sets out the rules.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
+      },
+      {
+        question: 'How do I book?',
+        answer:
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 11 March or 13 May departure and whether you would like your own room (NZD $800 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+        link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
   },
