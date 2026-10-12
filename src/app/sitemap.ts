@@ -79,7 +79,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'china-travel-specialists-nz',
     'small-group-china-tours',
     'chengdu-panda-sanctuary',
-    'liziba-station-chongqing',
     'hongyadong-chongqing',
   ].map((slug) => ({
     url: `${SITE}/${slug}`,

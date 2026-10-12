@@ -34,6 +34,16 @@ const nextConfig = {
     }));
 
     const pathRedirects = [
+      /**
+       * Liziba consolidation (2026-10): three pages competed for the same queries. The weakest
+       * (/liziba-station-chongqing, 4 clicks / 28d) now 301s to the main guide; internal links
+       * were updated to point straight at the main guide.
+       */
+      {
+        source: '/liziba-station-chongqing',
+        destination: '/blog/liziba-station-chongqing-guide',
+        permanent: true,
+      },
       {
         source: '/guide/china-visa-guide-for-new-zealanders',
         destination: '/china-visa-guide-for-new-zealanders',

@@ -785,7 +785,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
   {
     id: 'lt-c4',
     slug: 'liziba-station-chongqing-guide',
-    title: 'Liziba: China\'s Most Photographed Train Station',
+    title: 'Liziba Station Chongqing: Train in a Building',
     excerpt: 'Liziba Station is the most photographed railway station in China — and possibly the world. Here\'s everything you need to know: what it is, how to visit, and how to get the best shot.',
     author: 'CTS Tours',
     authorRole: 'China Travel Specialists, Auckland NZ',
@@ -862,7 +862,7 @@ New Zealand passport holders can currently visit China [visa-free for up to 30 d
 
 Our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) includes Liziba Station on the Chongqing days, timed for the viewing platform and combined with Hongyadong in the evening. Your guide handles the metro, the timing, and the photo spots.
 
-For the quick practical essentials — transport, cost, and viewing times at a glance — see our [Liziba Station visitor guide](/liziba-station-chongqing).
+For the practical side — how to ride the monorail and where to stand for the photo — see our [Liziba monorail photo and ride guide](/blog/liziba-monorail-chongqing-guide).
 
 [View the full itinerary →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
     `
