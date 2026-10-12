@@ -653,7 +653,7 @@ export const tours: Tour[] = [
     shortDescription:
       'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
-      "Tale of Two Cities is a 10-day Beijing + Xi'an escorted tour for New Zealand travellers, from NZD $3,480 per person twin share (single supplement NZD $395). The route covers Beijing (Forbidden City, Great Wall, Temple of Heaven, Tiananmen Square, hutong pedi-cab tour, Olympic Park) then high-speed rail G89 to Xi'an (Terracotta Warriors, City Wall, Big Wild Goose Pagoda). 4-star hotels, English-speaking guides, return international airfares from Auckland, listed meals, and entrance fees all included. NZ passport holders enjoy visa-free entry up to 30 days, published through 31 December 2026.",
+      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share (private room +NZD $395). Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then high-speed train to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',
@@ -762,7 +762,7 @@ export const tours: Tour[] = [
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-07-16',
+    updatedAt: '2026-10-13',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -780,7 +780,45 @@ export const tours: Tour[] = [
      */
     departureDates: ['18 March 2027', '10 June 2027'],
     tourCities: ['beijing', 'xian'],
+    goldenBlocks: true,
+    suppressAggregateRating: true,
+    // Planned 2027 dates with no published price yet — CTS to confirm before this goes live.
+    pendingDepartures: ['21 August 2027', '2 September 2027', '21 October 2027', '14 November 2027'],
+    planLinks: [
+      { href: '/china-visa-guide-for-new-zealanders', label: 'China entry for NZ passport holders' },
+      { href: '/best-time-to-visit-china', label: 'Best time to visit China' },
+      { href: '/beijing-xian-discovery-guide', label: 'Beijing & Xi\'an discovery guide' },
+      { href: '/beijing-travel-guide', label: 'Beijing travel guide' },
+      { href: '/xian-travel-guide', label: 'Xi\'an travel guide' },
+      { href: '/great-wall-travel-guide', label: 'Great Wall guide' },
+      { href: '/terracotta-warriors-travel-guide', label: 'Terracotta Warriors guide' },
+    ],
     faqs: [
+      {
+        question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
+        answer:
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395. Four further 2027 dates (21 August, 2 September, 21 October and 14 November) are planned but do not have a published price yet — send an enquiry and we will tell you where they stand.',
+      },
+      {
+        question: 'What is included in the price?',
+        answer:
+          'Return international and domestic airfares, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, optional evening shows, and tips.',
+      },
+      {
+        question: 'Which hotels do we stay in?',
+        answer:
+          'Beijing Wanda Moments (4 nights) and Mercure Xi\'an Downtown (3 nights), each "or similar" 4-star and rated by local standards. Hotels are intended for every departure but cannot be guaranteed; if one is unavailable we substitute a hotel of similar standard.',
+      },
+      {
+        question: 'How do the deposit, final payment and tips work?',
+        answer:
+          'A non-refundable deposit of NZD $1,000 per person confirms your booking, payable within 3 working days of reserving. For a 10-day itinerary the final payment is due 90 days before departure, and we confirm your exact date when you book. Tips are prepaid in New Zealand before you leave — we suggest NZD $10 per person per day — so there is no cash to hand out in China. Full terms are on our Terms & Conditions page.',
+      },
+      {
+        question: 'Is there compulsory shopping on this tour?',
+        answer:
+          'No. The itinerary includes a tea factory (Day 2), a silk factory (Day 3), a jade carving factory on the Great Wall day (Day 4) and the Silk Market (Day 5). There is no obligation to buy and no minimum spend.',
+      },
       {
         question: 'Does this tour include Shanghai or other cities?',
         answer:
@@ -790,21 +828,7 @@ export const tours: Tour[] = [
         question: 'Do New Zealand passport holders need a visa for this itinerary?',
         answer:
           'Many leisure visits qualify for China\'s visa-free entry for NZ ordinary passport holders (commonly up to 30 days under current policy, published to 31 December 2026). This route stays well within a typical holiday length, but entry rules depend on your exact travel dates and purpose — confirm before you book. We summarise options in our China visa guide for New Zealanders; CTS can help you check what applies to your booking.',
-      },
-      {
-        question: 'What is included in the tour price from New Zealand?',
-        answer:
-          'The advertised lead-in price covers return international flights from Auckland, domestic flights within China as per the itinerary, 4-star hotel accommodation, English-speaking guides, entrance fees and meals where listed, land transfers, and the Beijing–Xi\'an sector on high-speed train G89 (or similar) in 2nd class. Items such as travel insurance, tips (we suggest about NZD $10 per person per day), optional evening shows, and meals not listed are extra — see the Inclusions and Exclusions sections on this page.',
-      },
-      {
-        question: 'How does the Beijing to Xi\'an journey work?',
-        answer:
-          'You travel by high-speed rail — typically train G89 departing Beijing around 15:00 and arriving in Xi\'an in the evening (about four hours), in a 2nd-class seat unless otherwise advised. Morning of that day is free at leisure in Beijing; you check out by noon. Your Xi\'an guide meets you at the station and transfers you to the hotel. It is a comfortable way to see the countryside between China\'s northern capital and the ancient Tang capital.',
-      },
-      {
-        question: 'Which Beijing and Xi\'an highlights are covered?',
-        answer:
-          'In Beijing: Temple of Heaven, Tiananmen Square and the Forbidden City, Beihai Park, the Great Wall (with a jade workshop en route), Olympic Park photo stop, and a pedi-cab hutong tour with a family visit — plus optional acrobatic show in the evening where available. In Xi\'an: the Terracotta Warriors (including Circle Vision and Bronze Chariot), City Wall, Big Wild Goose Pagoda, Small Wild Goose Pagoda Museum, and Huimin Street — with an optional Tang Dynasty banquet show. Exact order follows the day-by-day itinerary.',
+        link: { href: '/china-visa-guide-for-new-zealanders', label: 'Read the China visa guide for NZ' },
       },
       {
         question: 'How physically demanding is this tour?',
@@ -812,19 +836,11 @@ export const tours: Tour[] = [
           'Most sightseeing is at a Discovery pace with coach transfers, but the Great Wall involves walking on slopes and steps, Xi\'an\'s City Wall can be explored on foot or by bike depending on options offered locally, and hutong pedi-cabs are short rides with walking in narrow lanes. If you have mobility concerns, tell us when you enquire so we can note it for your guide.',
       },
       {
-        question: 'When can I depart, and is a single room available?',
+        question: 'What are the cancellation charges?',
         answer:
-          'The 15 October 2026 departure has sold out. Confirmed 2027 group departures are 18 March 2027 and 10 June 2027 from Auckland, priced from NZD $3,480 per person twin-share. If you prefer your own room, a single supplement of NZD $395 applies. Contact CTS to register interest in another Beijing & Xi\'an window.',
-      },
-      {
-        question: 'How do I book or ask a specific question about this route?',
-        answer:
-          'Use the enquiry form on this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability on your dates, explain deposit and balance, and walk through any optional extras (such as evening shows) so you know the full picture before you commit.',
+          'Cancellations must be in writing. 90 days or more before departure you lose the deposit plus administration fees and the cost of any issued air tickets. From 89 to 61 days you lose the deposit and 50% of the total booking cost; from 60 to 31 days, the deposit and 75%; at 30 days or less, the deposit and 100% — each plus the cost of air tickets. We recommend comprehensive travel insurance at booking.',
       },
     ],
-    rating: 4.8,
-    reviewCount: 312,
-    reviewSummary: 'Perfect first China experience — the essence of Beijing and Xi\'an',
   },
   {
     id: 'tour-cn-dis-3',
