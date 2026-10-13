@@ -47,7 +47,7 @@ export default function ChongqingCustomEnquiry() {
         setError(data.error || 'Something went wrong. Please try again.');
         return;
       }
-      router.push('/enquiry-thank-you?source=chongqing-custom');
+      router.push('/thank-you?source=chongqing-custom&tour=Chongqing+custom+itinerary');
     } catch {
       setError('Connection error. Please try again or call 0800 CTS 888.');
     } finally {
