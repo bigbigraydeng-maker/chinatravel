@@ -460,9 +460,7 @@ There are two ways to experience Liziba: watching from the street-level plaza be
 
 > **Practical rule:** Come with your phone charged. This is the single most shareable moment of the trip — every travel media outlet from the BBC to TikTok has covered it, but seeing it in person is different from the video.
 
-For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting. CTS Tours includes Liziba as an afternoon stop on Day 3, which is the right placement — it pairs well with Ciqikou Ancient Town for a sharp ancient-vs-futuristic contrast within the same afternoon.
-
----
+For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting.---
 
 <a id="hongyadong"></a>
 ## 2. Hongyadong — The Cliffside That Looks Like a Film Set
@@ -583,9 +581,7 @@ Outside the matchmaking activity, People's Park is also one of the best places t
 
 > The matchmaking notices you'll read — age, height, profession, property, income — are a window into a specific kind of social pressure that most Kiwi travellers will find both alien and surprisingly recognisable.
 
-For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing). CTS Tours pairs this with the morning Panda Base visit on Day 7, which is a strong combination — the two most emotionally distinct experiences of the Chengdu leg back to back.
-
----
+For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing).---
 
 <a id="sichuan-food"></a>
 ## 7. Sichuan Hot Pot and Food Culture — The Meal That Changes Everything
@@ -623,7 +619,7 @@ The second-class seat is appropriate for this journey — comfortable, practical
 <a id="bullet-train-onboard"></a>
 ### What to Expect On Board
 
-- **Boarding:** Chongqing has multiple high-speed rail stations; the itinerary uses the appropriate station based on your hotel location. Your guide handles the logistics.
+- **Boarding:** Chongqing has multiple high-speed rail stations; check which station your train leaves from, as it depends on where you are staying.
 - **Luggage:** Overhead racks accommodate standard carry-on luggage. Larger bags go in the end-of-carriage racks. The train is not a good place for oversized bags.
 - **Food and drink:** A trolley service runs through the carriages. Basic food and drinks available. Nothing remarkable — bring your own snacks from a convenience store if you're particular.
 - **Arrival in Chengdu:** The guide meets the group at the station exit for transfer to the hotel. No navigation required.

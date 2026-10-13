@@ -772,7 +772,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
 
 ## Practical Notes
 
-**Hotels:** Pagoda SASA Design Hotel (or similar 4-star) in Chongqing; Holiday Inn Express Chengdu Gulou (or similar 4-star) in Chengdu.
+
 
 **Visa:** Many NZ passport holders qualify for visa-free entry for short leisure visits. Confirm current rules before booking.
 
