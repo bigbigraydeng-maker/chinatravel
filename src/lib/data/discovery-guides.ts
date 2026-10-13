@@ -460,7 +460,9 @@ There are two ways to experience Liziba: watching from the street-level plaza be
 
 > **Practical rule:** Come with your phone charged. This is the single most shareable moment of the trip — every travel media outlet from the BBC to TikTok has covered it, but seeing it in person is different from the video.
 
-For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting.---
+For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting.
+
+---
 
 <a id="hongyadong"></a>
 ## 2. Hongyadong — The Cliffside That Looks Like a Film Set
@@ -581,7 +583,9 @@ Outside the matchmaking activity, People's Park is also one of the best places t
 
 > The matchmaking notices you'll read — age, height, profession, property, income — are a window into a specific kind of social pressure that most Kiwi travellers will find both alien and surprisingly recognisable.
 
-For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing).---
+For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing).
+
+---
 
 <a id="sichuan-food"></a>
 ## 7. Sichuan Hot Pot and Food Culture — The Meal That Changes Everything
