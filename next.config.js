@@ -62,6 +62,9 @@ const nextConfig = {
        * untouched — this redirect matches only the exact hub path, not its children.
        */
       { source: '/campaigns/october-2026', destination: '/campaigns/spotlight', permanent: true },
+      /** Fire & Fuzz (chongqing-chengdu) was archived 2026-06-12 and will not return (PM 2026-10-13). Its campaign LPs now send visitors, ad clicks included, to the Chongqing hub. Query strings (UTM) pass through. */
+      { source: '/campaigns/fire-fuzz', destination: '/chongqing-tours', permanent: true },
+      { source: '/campaigns/chongqing', destination: '/chongqing-tours', permanent: true },
       /** Short URL for organic social grid (same as /marketing/campaign/social; cookie applies after redirect). */
       { source: '/campaign/social', destination: '/marketing/campaign/social', permanent: true },
       {
