@@ -778,7 +778,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
 
 **Visa:** Many NZ passport holders qualify for visa-free entry for short leisure visits. Confirm current rules before booking.
 
-[See our Chengdu tours →](/chengdu-tours)
+[See our Chongqing tours →](/chongqing-tours) or [Chengdu tours](/chengdu-tours)
     `
   },
 
