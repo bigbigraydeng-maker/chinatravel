@@ -778,7 +778,7 @@ Transfer to airport, connecting flight via Beijing to Auckland.
 
 **Visa:** Many NZ passport holders qualify for visa-free entry for short leisure visits. Confirm current rules before booking.
 
-[View the full tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chengdu tours →](/chengdu-tours)
     `
   },
 
@@ -864,7 +864,7 @@ Our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) includes Liziba
 
 For the quick practical essentials — transport, cost, and viewing times at a glance — see our [Liziba Station visitor guide](/liziba-station-chongqing).
 
-[View the full itinerary →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
+Browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
@@ -921,7 +921,7 @@ CTS Tours' **Fire & Fuzz** itinerary combines 4 nights in Chongqing (Liziba Stat
 
 The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin share). Single supplement NZD $400.
 
-[View the full tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chengdu tours →](/chengdu-tours)
     `
   },
 

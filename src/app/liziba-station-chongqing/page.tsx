@@ -144,14 +144,16 @@ export default function LizibaStationChongqingPage() {
                 </div>
               </section>
 
-              {/* Featured Tour */}
-              <section>
-                <SectionTitle
-                  title="See Liziba Station as Part of Our Chongqing &amp; Chengdu Tour"
-                  subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
-                />
-                <TourGrid tours={featuredTours} columns={2} />
-              </section>
+              {/* Featured Tour — hidden when the tour is not on sale (allTours only holds active tours) */}
+              {featuredTours.length > 0 && (
+                <section>
+                  <SectionTitle
+                    title="See Liziba Station as Part of Our Chongqing &amp; Chengdu Tour"
+                    subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
+                  />
+                  <TourGrid tours={featuredTours} columns={2} />
+                </section>
+              )}
 
               {/* All Tours Link */}
               <section className="text-center py-8 border-t border-gray-200">
@@ -199,10 +201,10 @@ export default function LizibaStationChongqingPage() {
                 </div>
 
                 <a
-                  href="/tours/china/discovery/chongqing-chengdu"
+                  href="/chongqing-tours"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
                 >
-                  View Fire &amp; Fuzz Itinerary →
+                  See our Chongqing tours →
                 </a>
               </div>
             </div>
@@ -217,8 +219,8 @@ export default function LizibaStationChongqingPage() {
       <CTASection
         title="See Chongqing&apos;s Most Extraordinary Engineering on Tour"
         description="Liziba Station is Day 1 of our Fire &amp; Fuzz tour — guided, hassle-free, with full context from your expert guide."
-        primaryButtonText="View Fire &amp; Fuzz Itinerary"
-        primaryButtonLink="/tours/china/discovery/chongqing-chengdu"
+        primaryButtonText="See our Chongqing tours"
+        primaryButtonLink="/chongqing-tours"
         secondaryButtonText="Talk to Our Team"
         secondaryButtonLink="/contact"
       />

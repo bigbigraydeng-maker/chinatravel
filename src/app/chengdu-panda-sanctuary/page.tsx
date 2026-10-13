@@ -124,14 +124,16 @@ export default function ChengduPandaSanctuaryPage() {
                 </div>
               </section>
 
-              {/* Featured Tour */}
-              <section>
-                <SectionTitle
-                  title="See Giant Pandas on Our Chongqing &amp; Chengdu Tour"
-                  subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
-                />
-                <TourGrid tours={featuredTours} columns={2} />
-              </section>
+              {/* Featured Tour — hidden when the tour is not on sale (allTours only holds active tours) */}
+              {featuredTours.length > 0 && (
+                <section>
+                  <SectionTitle
+                    title="See Giant Pandas on Our Chongqing &amp; Chengdu Tour"
+                    subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
+                  />
+                  <TourGrid tours={featuredTours} columns={2} />
+                </section>
+              )}
 
               {/* All Tours Link */}
               <section className="text-center py-8 border-t border-gray-200">
@@ -179,10 +181,10 @@ export default function ChengduPandaSanctuaryPage() {
                 </div>
 
                 <a
-                  href="/tours/china/discovery/chongqing-chengdu"
+                  href="/chengdu-tours"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
                 >
-                  View Fire &amp; Fuzz Itinerary →
+                  See our Chengdu tours →
                 </a>
               </div>
             </div>
@@ -197,8 +199,8 @@ export default function ChengduPandaSanctuaryPage() {
       <CTASection
         title="Ready to See Giant Pandas in Chengdu?"
         description="Our team handles everything — flights, transfers, panda base entry, and expert guide commentary."
-        primaryButtonText="View Fire &amp; Fuzz Itinerary"
-        primaryButtonLink="/tours/china/discovery/chongqing-chengdu"
+        primaryButtonText="See our Chengdu tours"
+        primaryButtonLink="/chengdu-tours"
         secondaryButtonText="Talk to Our Team"
         secondaryButtonLink="/contact"
       />
