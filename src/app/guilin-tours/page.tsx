@@ -2,9 +2,12 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { guilinToursMeta } from '@/lib/data/seo-pages';
+import { guilinHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
+
+// Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
+export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -19,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function GuilinToursPage() {
-  const tours = getToursByCityName('guilin');
+  const tours = resolveHubTours(guilinHub.tourRefs);
 
   const schemas = [
     generateTouristDestinationSchema('Guilin', guilinToursMeta.description, '/guilin-tours', tours),
@@ -44,11 +47,12 @@ export default function GuilinToursPage() {
         bestTimeToVisit={guilinToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={guilinToursMeta.faqs}
-        guideLinks={[
-          { label: 'Guilin Travel Guide', href: '/guilin-travel-guide', icon: 'mountain', description: 'Karst peaks & Li River overview' },
-          { label: 'Li River Travel Guide', href: '/li-river-travel-guide', icon: 'ship', description: 'Cruise guide & scenic tips' },
-          { label: 'Yangshuo Travel Guide', href: '/yangshuo-travel-guide', icon: 'bike', description: 'Village cycling & countryside hikes' },
-        ]}
+        proseSections={guilinHub.prose}
+        departureRows={buildDepartureRows(tours.slice(0, guilinHub.featuredCount ?? tours.length), guilinHub.cityPattern)}
+        sampleItinerary={buildSampleItinerary(guilinHub)}
+        offerSummary={guilinHub.offerSummary}
+        startingFrom={cheapestPrice(tours)}
+        featuredCount={guilinHub.featuredCount}
       />
     </>
   );

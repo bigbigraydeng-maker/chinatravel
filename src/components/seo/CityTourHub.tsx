@@ -13,6 +13,8 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import { Icon } from '@/components/ui/Icon';
 import { EYEBROW, H2_SECTION, H3_CARD, PANEL } from '@/lib/ui/typography';
+import { HubDepartures, HubProse, HubSampleItineraryBlock } from './CityHubSections';
+import type { HubDepartureRow, HubProseSection, HubSampleItinerary } from '@/lib/data/destination-hubs';
 
 interface CityHubProps {
   // Metadata
@@ -37,6 +39,17 @@ interface CityHubProps {
 
   // Meta description (for SEO)
   metaDescription?: string;
+
+  // Destination hub extras (optional; other city hubs omit them)
+  proseSections?: HubProseSection[];
+  departureRows?: HubDepartureRow[];
+  sampleItinerary?: HubSampleItinerary | null;
+  /** Replaces the default "packages ... with return flights" clause in the quick answer (stopovers are land only). */
+  offerSummary?: string;
+  /** Overrides the sidebar "Starting From" price (default: price of the last tour in the list). */
+  startingFrom?: string;
+  /** Show the first N tours as cards and put the rest in a collapsed list. */
+  featuredCount?: number;
 }
 
 const CityTourHub: React.FC<CityHubProps> = ({
@@ -50,7 +63,13 @@ const CityTourHub: React.FC<CityHubProps> = ({
   tours,
   faqs,
   guideLinks,
-  metaDescription
+  metaDescription,
+  proseSections,
+  departureRows,
+  sampleItinerary,
+  offerSummary,
+  startingFrom,
+  featuredCount
 }) => {
   return (
     <div>
@@ -78,7 +97,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                   Quick answer
                 </p>
                 <p className="text-foreground leading-relaxed">
-                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides. TAANZ-bonded and Auckland-based, backed by China Travel Service. NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
+                  {introText.split(/\.\s+/)[0]}. CTS Tours offers {cityName} {offerSummary ?? 'packages from New Zealand with return flights from Auckland, NZD pricing, and English-speaking guides'}. TAANZ-bonded and Auckland-based, backed by China Travel Service. NZ passport holders can visit China visa-free for up to 30 days (confirmed until 31 December 2026).
                 </p>
               </aside>
 
@@ -111,6 +130,8 @@ const CityTourHub: React.FC<CityHubProps> = ({
                 </div>
               </section>
 
+              {proseSections && proseSections.length > 0 && <HubProse sections={proseSections.slice(0, 2)} />}
+
               {/* Best time to visit */}
               <section>
                 <h2 className={H2_SECTION}>
@@ -129,8 +150,26 @@ const CityTourHub: React.FC<CityHubProps> = ({
                   title={`${cityName} Tours`}
                   subtitle={`Discover our ${cityName} experiences`}
                 />
-                <TourGrid tours={tours} columns={2} />
+                <TourGrid tours={featuredCount ? tours.slice(0, featuredCount) : tours} columns={2} />
+                {featuredCount && tours.length > featuredCount && (
+                  <details className="mt-8 group">
+                    <summary className="cursor-pointer text-primary font-semibold">
+                      More trips that include {cityName} ({tours.length - featuredCount})
+                    </summary>
+                    <div className="mt-6">
+                      <TourGrid tours={tours.slice(featuredCount)} columns={2} />
+                    </div>
+                  </details>
+                )}
               </section>
+
+              {departureRows && departureRows.length > 0 && (
+                <HubDepartures cityName={cityName} rows={departureRows} />
+              )}
+
+              {sampleItinerary && <HubSampleItineraryBlock sample={sampleItinerary} />}
+
+              {proseSections && proseSections.length > 2 && <HubProse sections={proseSections.slice(2)} />}
             </div>
 
             {/* Sidebar */}
@@ -153,7 +192,7 @@ const CityTourHub: React.FC<CityHubProps> = ({
                         <div>
                           <dt className="text-sm text-muted-foreground">Starting From</dt>
                           <dd className="text-base font-semibold leading-snug text-primary">
-                            {tours[tours.length - 1].price}
+                            {startingFrom ?? tours[tours.length - 1].price}
                           </dd>
                         </div>
                         <div>
