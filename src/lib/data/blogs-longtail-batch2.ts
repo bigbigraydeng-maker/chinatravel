@@ -16,7 +16,7 @@ export const longtailBatch2Posts: BlogPost[] = [
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist, CTS Tours NZ',
     category: 'destination',
-    tags: ['Chongqing', 'Nightlife', 'China Travel', 'Chongqing Night', 'Fire & Fuzz'],
+    tags: ['Chongqing', 'Nightlife', 'China Travel', 'Chongqing Night'],
     heroImage: '/blog/chongqing-night-skyline-hongyadong.jpg',
     publishedAt: '2026-04-27',
     readTime: '6 min read',
@@ -39,7 +39,7 @@ Inside, the complex runs across interconnected stairways with restaurants, tea h
 
 The night river cruise is the best way to see both rivers at once, and it's consistently one of the things clients remember most. You board near Chaotianmen — where the Yangtze and Jialing meet — and cruise downstream and back with the lit skyline on both sides. Most cruises run 1.5–2 hours. The bridges are the highlight: each one is individually lit, and passing under them from the water level is something you can't replicate from the road.
 
-Book in advance during peak season. CTS handles this for all Fire & Fuzz departures.
+Book in advance during peak season.
 
 ## Hot Pot at Night
 
@@ -57,11 +57,7 @@ The restaurant atmosphere at 8pm in Chongqing is unlike any meal experience I ca
 
 For a panoramic night view of the entire city, Nanshan One Tree Hill (南山一棵树观景台) is where I send photographers. The platform faces the full skyline across the Yangtze — you can see the entire vertically stacked city from a single vantage point. Take a taxi up; 20–30 minutes from city centre. Best from 8:30pm when the city is fully lit.
 
-## Planning Evening Time in Chongqing
-
-My **Fire & Fuzz** 10-day tour allocates 4 nights in Chongqing specifically to allow unhurried evenings. I build the hot pot dinner, the Hongyadong walk, and the night cruise on separate evenings so you're not rushing between all three. You also have a free evening for independent exploration — which in Chongqing always turns into something memorable.
-
-[View the Fire & Fuzz tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chongqing tours →](/chongqing-tours)
     `
   },
 
@@ -147,11 +143,7 @@ For a first visit, pick a busy restaurant in the Jiefangbei area or near [Hongya
 
 If your route runs on to Chengdu, taste the two cities' styles side by side — the differences are real, and the argument over which is better has run for a century. Our guide to [Sichuan food culture in Chengdu](/blog/chengdu-spicy-cuisine-culture) covers the other half of the story.
 
-## Eating Hot Pot on a CTS Tour
-
-On our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) I include a guided hot pot dinner early in the trip — ordering handled, dishes explained, spice levels negotiated — so that by your free evenings you can walk into any local restaurant and order with confidence. That first supervised dinner is the difference between eating hot pot and understanding it.
-
-[View the Fire and Fuzz tour →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
+Browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
@@ -182,7 +174,7 @@ UNESCO inscribed the site as a World Heritage Site in 1996.
 
 **From the cliff stairs (上山步道):** You descend a steep switchback staircase cut into the cliff face beside the Buddha, reaching foot level at the base. This is the most dramatic perspective — you're standing next to the Buddha's feet, each of which is large enough to seat 100 people. The descent is steep and the staircase is narrow during peak season; expect queues of 40–60 minutes at busy times. Worth it.
 
-**From the boat:** River cruise boats pass directly in front of the Buddha at water level. This is the only angle from which you can see the entire figure at once — from crown to feet. Most visitors do both: the cliff stairs for the close-up experience, the boat for the full-figure photograph. I include the boat in all Fire & Fuzz itineraries that go to Leshan.
+**From the boat:** River cruise boats pass directly in front of the Buddha at water level. This is the only angle from which you can see the entire figure at once — from crown to feet. Most visitors do both: the cliff stairs for the close-up experience, the boat for the full-figure photograph.
 
 My recommendation: **do the stairs first** (morning, before heat and crowds build), then take the boat back downstream.
 
@@ -202,13 +194,7 @@ Allow a full day. Rushing through in three hours means you've seen the Buddha bu
 
 **Season:** Spring (March–May) and autumn (September–November) are optimal. Summer is hot and humid but not impossible. Winter can bring mist that partially obscures the statue — atmospheric for photography, less satisfying for the first-time visit.
 
-## On the Fire & Fuzz Tour
-
-The **Fire & Fuzz** 10-day itinerary includes Leshan Giant Buddha as an optional enhancement on the Chengdu segment. The base tour allocates time in Chengdu for the Panda Base, People's Park, and cultural highlights; Leshan is a full-day add-on that I recommend for anyone with three or more nights in Chengdu.
-
-The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin share).
-
-[View the full Fire & Fuzz itinerary →](/tours/china/discovery/chongqing-chengdu)
+[See our Chengdu tours →](/chengdu-tours)
     `
   },
 
@@ -365,9 +351,9 @@ The [Leshan Giant Buddha](/blog/leshan-giant-buddha-day-trip) is 120km from Chen
 - **Day 2:** Leshan Giant Buddha full day trip
 - **Day 3:** Sichuan Opera evening, free morning for Jinli Ancient Street or independent exploration
 
-This is the structure I use for the Chengdu segment of the **Fire & Fuzz** tour, which arrives from Chongqing by bullet train and allocates 3 nights before the return flight from Chengdu. The contrast between Chongqing's dramatic mountain city energy and Chengdu's teahouse pace is itself one of the pleasures of the combination.
+The contrast between Chongqing's dramatic mountain city energy and Chengdu's teahouse pace is one of the pleasures of combining the two cities.
 
-[View the full Fire & Fuzz tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chengdu tours →](/chengdu-tours)
     `
   },
 

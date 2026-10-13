@@ -772,13 +772,11 @@ Transfer to airport, connecting flight via Beijing to Auckland.
 
 ## Practical Notes
 
-**Pricing:** CTS Tours **China Discovery — Fire & Fuzz** covers this itinerary from NZD $2,999 per person (twin share), including international airfares from Auckland. Single supplement NZD $400. Departs 1 November 2026.
 
-**Hotels:** Pagoda SASA Design Hotel (or similar 4-star) in Chongqing; Holiday Inn Express Chengdu Gulou (or similar 4-star) in Chengdu.
 
 **Visa:** Many NZ passport holders qualify for visa-free entry for short leisure visits. Confirm current rules before booking.
 
-[View the full tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chongqing tours →](/chongqing-tours) or [Chengdu tours](/chengdu-tours)
     `
   },
 
@@ -858,13 +856,11 @@ Yes — with the right expectations. Liziba is a 45-minute wonder, not a half-da
 
 New Zealand passport holders can currently visit China [visa-free for up to 30 days](/china-visa-guide-for-new-zealanders), which makes a Chongqing stop easier than it has ever been.
 
-## Visiting With CTS Tours
-
-Our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) includes Liziba Station on the Chongqing days, timed for the viewing platform and combined with Hongyadong in the evening. Your guide handles the metro, the timing, and the photo spots.
+## Planning Your Visit
 
 For the quick practical essentials — transport, cost, and viewing times at a glance — see our [Liziba Station visitor guide](/liziba-station-chongqing).
 
-[View the full itinerary →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
+Browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
@@ -917,11 +913,9 @@ The facility is clean, well-organised, and easy to navigate. Paths wind through 
 
 ## Combining the Panda Base with Chongqing
 
-CTS Tours' **Fire & Fuzz** itinerary combines 4 nights in Chongqing (Liziba Station, Hongyadong, UNESCO Dazu Rock Carvings) with 3 nights in Chengdu (panda base, People's Park, optional Leshan Giant Buddha or Sichuan Opera). The cities are 90 minutes apart by bullet train.
+Chongqing (Liziba Station, Hongyadong, UNESCO Dazu Rock Carvings) and Chengdu (panda base, People's Park, Leshan Giant Buddha or Sichuan Opera) are 90 minutes apart by bullet train, which makes them an easy pairing.
 
-The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin share). Single supplement NZD $400.
-
-[View the full tour →](/tours/china/discovery/chongqing-chengdu)
+[See our Chengdu tours →](/chengdu-tours)
     `
   },
 

@@ -388,11 +388,11 @@ For NZ travellers making their first China trip, this northern route — two cit
   },
   'chongqing-chengdu-discovery-guide': {
     slug: 'chongqing-chengdu-discovery-guide',
-    title: 'Chongqing & Chengdu: Why New Zealand Travellers Are Discovering China\'s Fire & Fuzz',
-    metaTitle: 'Chongqing & Chengdu Tour | Fire & Fuzz Discovery Guide',
-    metaDescription: 'Explore the Fire & Fuzz: Liziba Station, Hongyadong, Dazu Rock Carvings (UNESCO), Chengdu Pandas & Sichuan hotpot. A 10-day Discovery tour for NZ couples.',
+    title: 'Chongqing & Chengdu: Why New Zealand Travellers Are Discovering China\'s Cyberpunk City and Panda Capital',
+    metaTitle: 'Chongqing & Chengdu Discovery Guide | Things to Do',
+    metaDescription: 'Explore Liziba Station, Hongyadong, Dazu Rock Carvings (UNESCO), Chengdu Pandas & Sichuan hotpot. A Chongqing and Chengdu guide for NZ travellers.',
     keywords: 'Chongqing tour, Chengdu travel, China Discovery tour, UNESCO Dazu Rock Carvings, Chengdu pandas, Sichuan hotpot, Liziba Station, Hongyadong, New Zealand China tours',
-    h1: 'Chongqing & Chengdu: Why New Zealand Travellers Are Discovering China\'s Fire & Fuzz',
+    h1: 'Chongqing & Chengdu: Why New Zealand Travellers Are Discovering China\'s Cyberpunk City and Panda Capital',
     heroImage: 'https://images.unsplash.com/photo-1725076021478-173130f22f06?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     ogImage: 'https://images.unsplash.com/photo-1725076021478-173130f22f06?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     createdAt: '2026-04-28',
@@ -408,7 +408,7 @@ The challenge with choosing what to do across these two cities is the same chall
 
 For NZ travellers, the practical tension is usually time. Ten days is enough to do both cities justice — not rushing, but not lingering either. The bullet train connection between them is part of the experience, not just a logistics solution. And Chengdu has optional day trips (Leshan Giant Buddha, Sanxingdui Museum) that reward people who want to go deeper.
 
-This guide covers the eight experiences I'd prioritise if I were putting together a Chongqing–Chengdu itinerary for New Zealand visitors — along with honest trade-offs, timing advice, and the optional extras worth knowing about. The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) tour (10 days, from NZD $2,750 per person, departing 1 November) covers most of what's here and is the most coherent version of this trip I've seen packaged for NZ travellers.
+This guide covers the eight experiences I'd prioritise if I were putting together a Chongqing–Chengdu itinerary for New Zealand visitors — along with honest trade-offs, timing advice, and the optional extras worth knowing about. Browse our [Chongqing tours](https://www.ctstours.co.nz/chongqing-tours) for current options.
 
 <a id="table-of-contents"></a>
 
@@ -460,7 +460,7 @@ There are two ways to experience Liziba: watching from the street-level plaza be
 
 > **Practical rule:** Come with your phone charged. This is the single most shareable moment of the trip — every travel media outlet from the BBC to TikTok has covered it, but seeing it in person is different from the video.
 
-For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting. CTS Tours includes Liziba as an afternoon stop on Day 3, which is the right placement — it pairs well with Ciqikou Ancient Town for a sharp ancient-vs-futuristic contrast within the same afternoon.
+For first-time China visitors from New Zealand, this is one of the stops where no cultural preparation is needed — you just show up and watch. For couples, it's a genuinely memorable joint experience. For travellers who are more architecture or engineering minded, the structural explanation makes it even more interesting.
 
 ---
 
@@ -484,7 +484,7 @@ The practical reality: the complex itself is busy and commercialised, particular
 
 > The trade-off is straightforward: Hongyadong is very well known and will be busy on most evenings. You come for the setting and the architecture, not for a quiet riverside walk.
 
-For NZ travellers, this is the "hero image of the trip" moment — the photograph that looks like nowhere else you've been. Couples will find it genuinely atmospheric after dark. Retirees planning an evening out: the internal levels are connected by lifts and the paths are well-maintained, though some stairways between levels are steep. The [Fire & Fuzz itinerary](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) schedules this on the evening of Day 4, which is exactly right — you've already seen the daytime city by then and you're ready for the contrast.
+For NZ travellers, this is the "hero image of the trip" moment — the photograph that looks like nowhere else you've been. Couples will find it genuinely atmospheric after dark. Retirees planning an evening out: the internal levels are connected by lifts and the paths are well-maintained, though some stairways between levels are steep.
 
 ---
 
@@ -504,7 +504,7 @@ The main visitor sites are Baodingshan and Beishan. I'd prioritise Baodingshan: 
 
 - **Time-limited (half day at Dazu):** Baodingshan only. The 31-metre reclining Buddha plus the main narrative carvings take 1.5–2 hours to see properly. The Tourist Centre shows a 4K digital film that provides useful context — worth 20 minutes before entering the site.
 - **Full day at Dazu:** Baodingshan in the morning, Beishan after lunch. Beishan requires more context to appreciate — the sculptures are smaller and more densely arranged, and some knowledge of Buddhist iconography helps.
-- **Practical logistics:** The site is approximately 100km from central Chongqing and requires a full-day commitment. CTS tours handle the transport, which is the sensible approach — arranging your own transport to Dazu is possible but adds complexity to what is already a full day.
+- **Practical logistics:** The site is approximately 100km from central Chongqing and requires a full-day commitment. A private driver or an organised day trip is the sensible approach — arranging your own transport to Dazu is possible but adds complexity to what is already a full day.
 
 > **Practical rule:** What I'd prioritise at Baodingshan is the reclining Buddha first, before the main crowd groups arrive. The sheer scale of the carving is easier to absorb without people in the foreground.
 
@@ -533,7 +533,7 @@ I find the contrast jarring in exactly the right way. You walk out of the Guild 
 
 > The trade-off: the Guild Hall is genuinely fascinating for travellers who arrive with some context, and noticeably less so for those who don't. Reading about the Huguang Migration before your visit will make it ten times more interesting.
 
-CTS Tours schedules this as the morning activity on Day 3, before Liziba Station in the afternoon — which is a sensible pairing. The ancient-to-futuristic arc within a single day is one of the more satisfying structural choices in the itinerary. For first-time China visitors from New Zealand, this is an excellent way to start building an understanding of the historical layers underneath Chongqing's modern surface.
+For first-time China visitors from New Zealand, this is an excellent way to start building an understanding of the historical layers underneath Chongqing's modern surface.
 
 ---
 
@@ -558,7 +558,7 @@ The morning window matters. Giant pandas are most active between 8am and 10am, d
 
 > **Practical rule:** The photographs you'll take here will be the most-shared images of the trip. The trade-off is that the site is very popular — Chengdu receives more than [20 million tourists annually](https://www.chengdu.gov.cn/chengdu/c149601/2024-02/02/content_c5e5d2b10f9e4f77b1d1c8d3a6e7f9b2.shtml), and the Panda Base is the top-rated attraction. Come early.
 
-For NZ travellers: this is the experience most likely to appear in social media posts from the trip. The emotional response to being 10 metres from a panda eating bamboo is consistent across ages and travel styles — it's one of those places where the reality delivers on the expectation. Retirees and couples both find it satisfying. For families travelling with adult children, it's often the undisputed highlight. CTS Tours' expert [guide to China's giant panda programme](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) provides the ecological context that makes the visit more meaningful.
+For NZ travellers: this is the experience most likely to appear in social media posts from the trip. The emotional response to being 10 metres from a panda eating bamboo is consistent across ages and travel styles — it's one of those places where the reality delivers on the expectation. Retirees and couples both find it satisfying. For families travelling with adult children, it's often the undisputed highlight.
 
 ---
 
@@ -583,7 +583,7 @@ Outside the matchmaking activity, People's Park is also one of the best places t
 
 > The matchmaking notices you'll read — age, height, profession, property, income — are a window into a specific kind of social pressure that most Kiwi travellers will find both alien and surprisingly recognisable.
 
-For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing). CTS Tours pairs this with the morning Panda Base visit on Day 7, which is a strong combination — the two most emotionally distinct experiences of the Chengdu leg back to back.
+For NZ travellers, this is the "most memorable slice of local life" moment of the itinerary. Not because it's dramatic, but because it's so genuinely human — a park full of parents trying to do right by their kids, using methods that are both deeply traditional and entirely contemporary. For couples who travel together, it produces unexpectedly good conversation. For solo travellers and people with some Mandarin, there are occasional opportunities for real interaction with the parents (who are generally happy to explain what they're doing).
 
 ---
 
@@ -601,7 +601,7 @@ I'll be honest: hot pot in Chongqing can be seriously spicy for a New Zealand pa
 
 - **Malatang (麻辣烫):** A lighter, single-serving version of hot pot, widely available from street stalls and casual restaurants. Good for solo or quick meals.
 - **Rabbit heads (兔头):** A Chengdu specialty — braised rabbit heads in Sichuan spices. Confronting for some, completely normal here. Worth trying once if you're adventurous.
-- **Ciqikou Ancient Town snacks:** The afternoon visit to Ciqikou on Day 3 offers maoxuewang (spicy pork blood curd stew), zhounü (glutinous rice rolls), and traditional Chongqing street food in a historical lane setting.
+- **Ciqikou Ancient Town snacks:** An afternoon at Ciqikou offers maoxuewang (spicy pork blood curd stew), zhounü (glutinous rice rolls), and traditional Chongqing street food in a historical lane setting.
 - **Jinli Ancient Street, Chengdu:** Similar snack culture — three-gun noodles (三炮乃), rabbit heads, glutinous rice balls. Good for afternoon food exploration before or after the Wuhou Shrine.
 - **Spice management tip:** Cold beer and plain white rice are the most effective counterbalances. Avoid milk — the fat actually helps briefly but the spice returns. Water makes it worse.
 
@@ -614,7 +614,7 @@ For NZ travellers, food is one of the main reasons people come to China — and 
 <a id="bullet-train"></a>
 ## 8. The Bullet Train — China's Infrastructure at Its Most Impressive
 
-On Day 6, the itinerary moves from Chongqing to Chengdu. The distance between the two cities is approximately 300 kilometres. The bullet train covers it in about 1.5 hours in second class — which is a comfortable, air-conditioned seat with a fold-down tray table and more legroom than most domestic flights. The trains are quiet, on time, and run on a dense schedule.
+Most itineraries move from Chongqing to Chengdu by bullet train. The distance between the two cities is approximately 300 kilometres. The bullet train covers it in about 1.5 hours in second class — which is a comfortable, air-conditioned seat with a fold-down tray table and more legroom than most domestic flights. The trains are quiet, on time, and run on a dense schedule.
 
 I'd frame this differently from most travel writing about Chinese high-speed rail, which tends to lead with superlatives about speed records. What's actually impressive about the Chongqing–Chengdu line is the normalcy of it. This is not a special express that requires expensive tickets and advance planning — it's a frequently-used domestic service that connects two major metropolitan areas at 250+ km/h as a matter of routine. The infrastructure that makes this possible (the tunnels through the mountains, the elevated track across the flat basin, the station management systems) represents a level of investment and engineering coordination that has no real equivalent in New Zealand. Riding it once makes that scale tangible in a way that reading about it doesn't.
 
@@ -623,7 +623,7 @@ The second-class seat is appropriate for this journey — comfortable, practical
 <a id="bullet-train-onboard"></a>
 ### What to Expect On Board
 
-- **Boarding:** Chongqing has multiple high-speed rail stations; the itinerary uses the appropriate station based on your hotel location. Your guide handles the logistics.
+- **Boarding:** Chongqing has multiple high-speed rail stations; check which station your train leaves from, as it depends on where you are staying.
 - **Luggage:** Overhead racks accommodate standard carry-on luggage. Larger bags go in the end-of-carriage racks. The train is not a good place for oversized bags.
 - **Food and drink:** A trolley service runs through the carriages. Basic food and drinks available. Nothing remarkable — bring your own snacks from a convenience store if you're particular.
 - **Arrival in Chengdu:** The guide meets the group at the station exit for transfer to the hotel. No navigation required.
@@ -646,7 +646,7 @@ For NZ travellers who haven't used high-speed rail before, this is a useful orie
 | Chengdu Panda Base | Medium, timing-dependent | Moderate, entrance fee + transport | Emotionally resonant, photography guaranteed | All travellers; couples; families | Arrive at 7:30am opening — pandas are asleep by 10:30am |
 | People's Park Matchmaking Corner | Low, walk in and observe | Minimal, tea optional | Unexpected cultural depth | Curious travellers; couples; solo travellers | Sit in a teahouse for 30 minutes after observing the matchmaking activity |
 | Sichuan Hot Pot | Low, local restaurants everywhere | Low, very affordable | Regional food experience at source | Food-focused travellers; all groups | Order the split pot (鸳鸯锅) if spice tolerance varies within your group |
-| Bullet Train | Low, fully guided | Included in tour | Infrastructure experience | All travellers; first-time China visitors | Watch the first 30 minutes out of Chongqing — the river crossings and tunnels are the scenic highlight |
+| Bullet Train | Low | Book ahead | Infrastructure experience | All travellers; first-time China visitors | Watch the first 30 minutes out of Chongqing — the river crossings and tunnels are the scenic highlight |
 
 ---
 
@@ -655,7 +655,7 @@ For NZ travellers who haven't used high-speed rail before, this is a useful orie
 
 ### How Long Do You Need?
 
-**10 days (the full tour structure):** This is the right length for first-time visitors to this region. It allows 4 nights in Chongqing (enough for Huguang Guild Hall, Liziba, Ciqikou, Dazu Rock Carvings, Hongyadong, and a free day for the river cableway or night cruise) plus 3 nights in Chengdu (Panda Base, People's Park, Jinli Street, and a free day for either Leshan Giant Buddha or Sanxingdui Museum). The bullet train connection between the cities takes half a day.
+**10 days:** This is the right length for first-time visitors to this region. It allows 4 nights in Chongqing (enough for Huguang Guild Hall, Liziba, Ciqikou, Dazu Rock Carvings, Hongyadong, and a free day for the river cableway or night cruise) plus 3 nights in Chengdu (Panda Base, People's Park, Jinli Street, and a free day for either Leshan Giant Buddha or Sanxingdui Museum). The bullet train connection between the cities takes half a day.
 
 **7 days (tight but manageable):** You'd keep Liziba, Hongyadong, Dazu (one-day commitment), Panda Base, and People's Park. You'd skip Huguang Guild Hall or reduce Ciqikou to a brief stop. Leshan and Sanxingdui would both go. This is workable but leaves the itinerary feeling slightly rushed in Chengdu.
 
@@ -663,13 +663,13 @@ For NZ travellers who haven't used high-speed rail before, this is a useful orie
 
 ### The Optional Extras Worth Knowing About
 
-The itinerary has two free days built in — one in Chongqing (Day 5) and one in Chengdu (Day 8). Here's how to use them:
+If you build in two free days — one in Chongqing and one in Chengdu — here's how to use them:
 
-**Chongqing free day (Day 5):**
+**Chongqing free day:**
 - *Yangtze River Cableway:* Opened in 1987, this aerial tramway crosses the Yangtze River in about four minutes, connecting Yuzhong Peninsula with Nanan District. It is one of the last urban cable car commuter systems remaining in any major Chinese city — historically significant and practically spectacular. Cost is a few RMB. Go on a weekday morning to avoid weekend queues.
 - *Yangtze and Jialing River Night Cruise:* Available from Chaotianmen Dock, best after 8pm. The 45–60 minute cruise passes Hongyadong from the water and gives you the full panorama of Chongqing's neon skyline from below. If you haven't yet seen Hongyadong, pair the cruise with an afterwards visit to the complex.
 
-**Chengdu free day (Day 8):**
+**Chengdu free day:**
 - *Leshan Giant Buddha (Option A):* A [UNESCO World Heritage Site inscribed in 1996](https://whc.unesco.org/en/list/779), located 120km south of Chengdu. The Leshan Buddha is the world's largest stone Buddha statue at 71 metres tall — carved into red sandstone cliffs above the confluence of three rivers. Construction started in 713 AD under the Tang Dynasty and took 90 years to complete. The boat view from the river is the only way to see the full scale. This is a full-day trip; the high-speed rail from Chengdu takes approximately 35 minutes to Leshan city. Worth it for travellers who want their UNESCO content outside Dazu.
 - *Sanxingdui Museum (Option B):* Approximately 1.5 hours from Chengdu, this is arguably China's most surprising museum. The Sanxingdui civilisation (c. 3,000–5,000 years old) existed entirely independently of the Yellow River cultures that dominate Chinese historical narratives. Its Bronze Age artefacts — towering masks with protruding eyes, humanoid bronze figures unlike anything in mainstream Chinese art — were excavated from pits that remained hidden until 1986. The museum was substantially expanded in 2022 with a new wing. Best for travellers with strong interests in history and archaeology.
 - *Sichuan Opera Face-Changing (Option C):* Evening performances available across Chengdu at teahouse venues and dedicated theatres. The biànliǎn technique — performers switching between elaborately painted silk masks in fractions of a second, with no visible mechanism — is classified as a national intangible cultural heritage. The method of mask-switching is a trade secret. Visually spectacular and completely unique to Sichuan. Combine with a pre-show dinner.
@@ -684,15 +684,9 @@ The itinerary has two free days built in — one in Chongqing (Day 5) and one in
 
 **Visa:** Australian and New Zealand passport holders are eligible for the 144-hour visa-free transit policy for some entry points; however, this has specific conditions and does not apply to all itinerary structures. CTS Tours will advise on the current visa requirements for NZ passport holders at time of booking.
 
-### The Tour Option
-
-The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) tour (from NZD $2,750 per person, single supplement NZD $400, departing 1 November, returning 10 November, minimum 15 persons) covers the full Chongqing–Chengdu itinerary with an English-speaking guide, 4-star hotels, included meals, and the bullet train. For NZ travellers doing this region for the first time, the case for a guided tour is simple: both cities reward context, and the guide turns attractions from spectacle into understanding. Dazu in particular is in a completely different category with explanation.
-
-The Discovery tier pricing positions this as an accessible first China trip, not a luxury product — the inclusions are practical rather than indulgent. What you're paying for is logistics that work, a guide who knows the sites, and a group rhythm that respects the pace of the itinerary without rushing.
-
 ### The Trip Rhythm That Works
 
-If I were advising a NZ couple doing this trip, I'd say: arrive in Chongqing with no expectations from previous China trips. The city looks different from Beijing, moves differently from Shanghai, and the food is in a different category from either. Give it two full days before you try to make comparisons. By Day 4 (Dazu in the morning, Hongyadong in the evening), you'll have calibrated — and the transition to Chengdu the next day will feel less like a transfer and more like a deliberate shift in register.
+If I were advising a NZ couple doing this trip, I'd say: arrive in Chongqing with no expectations from previous China trips. The city looks different from Beijing, moves differently from Shanghai, and the food is in a different category from either. Give it two full days before you try to make comparisons. By the fourth day, you'll have calibrated — and the transition to Chengdu the next day will feel less like a transfer and more like a deliberate shift in register.
 
 Chengdu rewards the slower pace that Chongqing doesn't particularly invite. Use the teahouses. Don't rush the Panda Base. Sit in People's Park longer than feels necessary. The city's claim to be China's most relaxed major city is more than marketing — it's a genuinely different urban culture, and you need a little time to settle into it.
 
@@ -708,9 +702,7 @@ Chengdu rewards the slower pace that Chongqing doesn't particularly invite. Use 
 - [IUCN Red List — Giant Panda](https://www.iucnredlist.org/species/712/121745718): ~1,800 wild pandas as of 2016 assessment
 - [UNESCO — Leshan Giant Buddha (1996)](https://whc.unesco.org/en/list/779): inscribed jointly with Mt. Emei
 - Chongqing Rail Transit Line 2 — Liziba Station opened June 2005 (Chongqing Metro official records)
-- Chengdu Research Base of Giant Panda Breeding — established 1987 (official base records)
-
-*The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) departs Auckland 1 November 2026 and returns 10 November. From NZD $2,750 per person (twin share), single supplement NZD $400. Minimum 15 persons. Includes international and domestic flights, 4-star accommodation, English-speaking guide, bullet train, and meals as specified.*`,
+- Chengdu Research Base of Giant Panda Breeding — established 1987 (official base records)`,
     faqs: [
       {
         question: 'Is Sichuan hotpot too spicy?',

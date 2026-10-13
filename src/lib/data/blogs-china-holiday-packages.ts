@@ -88,7 +88,7 @@ Most itineraries skip Chongqing. I don't — and it almost always becomes the st
 
 Chongqing doesn't look like any other China you've seen: neon-lit stilt houses dropping six storeys into the Yangtze, a metro line that passes through the middle of an apartment building, and hot pot so good it justifies a detour from anywhere. Pair it with Chengdu's Giant Panda Base and the contrast is extraordinary — electric energy, then panda calm.
 
-That contrast is exactly why we built [Fire & Fuzz — Chongqing & Chengdu](/campaigns/fire-fuzz). It departs 1 November 2026, all-inclusive from $2,750pp.
+Browse our [Chongqing tours](/chongqing-tours) or [Chengdu tours](/chengdu-tours).
 
 ## From Auckland — what the journey looks like
 

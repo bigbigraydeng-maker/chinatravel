@@ -25,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     `${SITE}/campaigns/spotlight`,
     `${SITE}/campaigns/october-2026/shanghai-surroundings`,
     `${SITE}/campaigns/october-2026/tale-of-two-cities`,
-    `${SITE}/campaigns/fire-fuzz`,
   ].map((url) => ({
     url,
     lastModified: now,
@@ -50,7 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/experts/baker-gu`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/experts/lisa-li`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/campaigns/best-of-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.65 },
-    { url: `${SITE}/campaigns/chongqing`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
     { url: `${SITE}/christmas-new-year-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/best-china-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/china-tours-for-seniors`, lastModified: now, changeFrequency: 'monthly', priority: 0.65 },

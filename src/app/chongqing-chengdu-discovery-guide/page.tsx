@@ -133,16 +133,16 @@ export default function DiscoveryGuidePage() {
         <div className="container mx-auto px-4 max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">Ready to Go?</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-accent mb-5">
-            China Discovery — Fire &amp; Fuzz
+            Explore Chongqing &amp; Chengdu with CTS Tours
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
-            10 days from Auckland. Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas at the Research Base — and the bullet train south to Chengdu. From <strong className="text-accent">NZD $2,999</strong>.
+            Browse our <a href="/chongqing-tours" className="underline">Chongqing tours</a> or <a href="/chengdu-tours" className="underline">Chengdu tours</a>.
           </p>
           <a
-            href="/tours/china/discovery/chongqing-chengdu"
+            href="/chongqing-tours"
             className="inline-block bg-primary text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition text-base shadow-md hover:shadow-lg"
           >
-            View the Fire &amp; Fuzz Tour →
+            See our Chongqing tours →
           </a>
         </div>
       </section>

@@ -412,11 +412,6 @@ export default function ChinaToursFromNZPage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/campaigns/fire-fuzz" className="text-primary font-medium hover:underline">
-                      November 2026 · Fire &amp; Fuzz — Chongqing × Chengdu spotlight
-                    </Link>
-                  </li>
-                  <li>
                     <Link href="/great-wall-travel-guide" className="text-primary font-medium hover:underline">
                       Great Wall travel guide (Mutianyu, Badaling, Jinshanling)
                     </Link>

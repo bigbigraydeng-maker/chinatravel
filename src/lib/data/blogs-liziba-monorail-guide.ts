@@ -192,7 +192,7 @@ If you\'re travelling on a non-NZ passport, the [China visa guide for New Zealan
 
 Liziba is one of those rare tourist sights that genuinely lives up to its viral video reputation. It\'s free, it\'s easy to find, it photographs beautifully, and it gives you a real taste of how Chongqing solves the "mountain city + dense urban planning" puzzle. Most Kiwi travellers come away with not just the famous photo but a better appreciation of what makes Chongqing fundamentally different from any other Chinese city they\'ve seen.
 
-If you want to talk through how to slot Liziba into a wider Chongqing or full China itinerary, the [CTS Tours team](/contact) is in Auckland and happy to help. China Travel Service is our parent group. Our NZ team runs Kiwi-focused trips through Chongqing from Auckland.
+If you want to slot Liziba into a wider Chongqing or full China itinerary, browse our [Chongqing tours](/chongqing-tours) or talk to the [CTS Tours team](/contact) in Auckland. China Travel Service is our parent group. Our NZ team runs Kiwi-focused trips through Chongqing from Auckland.
 
 Pack a phone with charged battery, head to Line 2, and enjoy one of the few "must see" sights in China that\'s actually a working piece of public infrastructure.
 `,
