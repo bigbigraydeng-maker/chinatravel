@@ -303,7 +303,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
-      { name: 'Liziba Station Guide', slug: 'liziba-station-chongqing', emoji: '🚝' },
+      { name: 'Liziba Station Guide', slug: 'blog/liziba-station-chongqing-guide', emoji: '🚝', image: '/blog/sourced/liziba-station-train-arriving.jpg' },
       { name: 'Hongyadong Guide', slug: 'hongyadong-chongqing', emoji: '🏮' },
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
       { name: 'Leshan Buddha', slug: 'leshan-buddha-travel-guide', emoji: '🏔️' },

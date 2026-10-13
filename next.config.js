@@ -62,6 +62,8 @@ const nextConfig = {
        * untouched — this redirect matches only the exact hub path, not its children.
        */
       { source: '/campaigns/october-2026', destination: '/campaigns/spotlight', permanent: true },
+      /** Liziba pages consolidated 2026-10-14: the standalone landmark page competed with the blog guide for the same queries (13 shared queries, 5.6k impressions / 28d). */
+      { source: '/liziba-station-chongqing', destination: '/blog/liziba-station-chongqing-guide', permanent: true },
       /** Fire & Fuzz (chongqing-chengdu) was archived 2026-06-12 and will not return (PM 2026-10-13). Its campaign LPs now send visitors, ad clicks included, to the Chongqing hub. Query strings (UTM) pass through. */
       { source: '/campaigns/fire-fuzz', destination: '/chongqing-tours', permanent: true },
       { source: '/campaigns/chongqing', destination: '/chongqing-tours', permanent: true },

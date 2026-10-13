@@ -46,7 +46,7 @@ export default function ChongqingToursPage() {
         faqs={chongqingToursMeta.faqs}
         guideLinks={[
           { label: 'Chongqing Travel Guide', href: '/chongqing-travel-guide', icon: 'bridge', description: 'Mountain city, gorges & hot pot' },
-          { label: 'Liziba Station Guide', href: '/liziba-station-chongqing', icon: 'train', description: 'The train that runs through a building' },
+          { label: 'Liziba Station Guide', href: '/blog/liziba-station-chongqing-guide', icon: 'train', description: 'The train that runs through a building' },
           { label: 'Hongyadong Guide', href: '/hongyadong-chongqing', icon: 'lantern', description: 'Clifftop night market & river views' },
           { label: 'Days in Chongqing', href: '/blog/how-many-days-in-chongqing', icon: 'calendar', description: 'How long to spend in Chongqing' },
           { label: 'Three Gorges Scenic Guide', href: '/blog/chongqing-three-gorges-scenic', icon: 'mountain', description: 'Chongqing city + Yangtze + Dazu Rocks' },

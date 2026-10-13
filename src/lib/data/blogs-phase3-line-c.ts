@@ -243,7 +243,7 @@ Chongqing's night food culture centres on the riverside areas and the old alleyw
 - **Transport:** Chongqing's metro system runs until 11pm and connects all major viewpoints
 - **Dinner timing:** Eat hot pot from 7pm; the riverside restaurants are fullest (and most atmospheric) between 8–10pm
 
-Chongqing is included in our longer western China itineraries combining Chengdu, Chongqing, and the Yangtze River cruise. Browse our [Chongqing tours](/chongqing-tours), or read our guides to [Hongyadong](/hongyadong-chongqing) and [Liziba Station](/liziba-station-chongqing). [Contact us](/contact) to discuss building it into your journey.
+Chongqing is included in our longer western China itineraries combining Chengdu, Chongqing, and the Yangtze River cruise. Browse our [Chongqing tours](/chongqing-tours), or read our guides to [Hongyadong](/hongyadong-chongqing) and [Liziba Station](/blog/liziba-station-chongqing-guide). [Contact us](/contact) to discuss building it into your journey.
     `
   },
 

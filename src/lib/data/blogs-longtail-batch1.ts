@@ -858,7 +858,7 @@ New Zealand passport holders can currently visit China [visa-free for up to 30 d
 
 ## Planning Your Visit
 
-For the quick practical essentials — transport, cost, and viewing times at a glance — see our [Liziba Station visitor guide](/liziba-station-chongqing).
+Many visitors search for the "Chongqing train through a building" — this is that station. For the monorail ride itself and the best viewing platforms, read our [Liziba monorail guide](/blog/liziba-monorail-chongqing-guide).
 
 Browse all [Chongqing tours](/chongqing-tours).
     `
