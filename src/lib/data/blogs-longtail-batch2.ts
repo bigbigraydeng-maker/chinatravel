@@ -51,7 +51,7 @@ The restaurant atmosphere at 8pm in Chongqing is unlike any meal experience I ca
 
 ## Liziba Station at Night
 
-[Liziba Station](/liziba-station-chongqing) — the monorail that passes through the 6th–8th floors of a residential building — is arguably more atmospheric at night than during the day. The lit train windows appear in the building's floors like something from a science fiction film. The street-level plaza below is busy with people who've come to photograph it. Trains run every few minutes; watch several passes.
+[Liziba Station](/blog/liziba-station-chongqing-guide) — the monorail that passes through the 6th–8th floors of a residential building — is arguably more atmospheric at night than during the day. The lit train windows appear in the building's floors like something from a science fiction film. The street-level plaza below is busy with people who've come to photograph it. Trains run every few minutes; watch several passes.
 
 ## The Hilltop View: Nanshan One Tree Hill
 
