@@ -1,14 +1,10 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import HubHero from '@/components/seo/HubHero';
-import TourGrid from '@/components/seo/TourGrid';
-import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { hongyadongChongqingMeta } from '@/lib/data/seo-pages';
 
@@ -22,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: '/hongyadong-chongqing',
     ogImagePath: '/blog/chongqing-night-skyline-hongyadong.jpg',
     ogImageAlt: 'Hongyadong Chongqing Night — CTS Tours NZ',
-    keywords: ['Hongyadong Chongqing', 'Chongqing night market', 'Chongqing cliffside', 'Chongqing Spirited Away', 'Fire & Fuzz tour NZ'],
+    keywords: ['Hongyadong Chongqing', 'Chongqing night market', 'Chongqing cliffside', 'Chongqing Spirited Away'],
     ogType: 'website',
   });
 }
@@ -39,8 +35,6 @@ const visitInfo = [
 ];
 
 export default function HongyadongChongqingPage() {
-  const allTours = getAllChinaTours();
-  const featuredTours = allTours.filter(t => t.slug === 'chongqing-chengdu');
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
@@ -137,7 +131,7 @@ export default function HongyadongChongqingPage() {
                     { time: '6:30pm', desc: 'Chongqing hot pot dinner near Jiefangbei — your guide recommends local restaurants, not tourist traps.' },
                     { time: '8:00pm', desc: 'Walk to Hongyadong (10 min). Enter the complex and explore levels via staircases and lifts. Free to enter.' },
                     { time: '8:45pm', desc: 'Walk to Qiansimen Bridge for the full panoramic view — the entire lit facade reflected in the Jialing River.' },
-                    { time: '9:15pm', desc: 'Optional: Jialing River night cruise (45–60 min) — pass Hongyadong from the water at its most dramatic angle. Included in Fire & Fuzz tour.' },
+                    { time: '9:15pm', desc: 'Optional: Jialing River night cruise (45–60 min) — pass Hongyadong from the water at its most dramatic angle.' },
                   ].map((step, idx) => (
                     <li key={idx} className="flex gap-4">
                       <span className="flex-shrink-0 w-16 text-sm font-bold text-primary">{step.time}</span>
@@ -161,17 +155,6 @@ export default function HongyadongChongqingPage() {
                   ))}
                 </div>
               </section>
-
-              {/* Featured Tour — hidden when the tour is not on sale (allTours only holds active tours) */}
-              {featuredTours.length > 0 && (
-                <section>
-                  <SectionTitle
-                    title="See Hongyadong After Dark on Our Chongqing &amp; Chengdu Tour"
-                    subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
-                  />
-                  <TourGrid tours={featuredTours} columns={2} />
-                </section>
-              )}
 
               {/* All Tours Link */}
               <section className="text-center py-8 border-t border-gray-200">
@@ -210,14 +193,6 @@ export default function HongyadongChongqingPage() {
                   </dl>
                 </div>
 
-                <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-                  <Icon name="lantern" className="w-8 h-8 text-primary mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Included in Fire &amp; Fuzz</h4>
-                  <p className="text-sm text-gray-700">
-                    Day 4 evening includes Hongyadong visit plus Jialing River night cruise — the best way to see the lit facade from the water.
-                  </p>
-                </div>
-
                 <a
                   href="/chongqing-tours"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
@@ -236,7 +211,7 @@ export default function HongyadongChongqingPage() {
       {/* Final CTA */}
       <CTASection
         title="Experience Hongyadong on Our Chongqing Tour"
-        description="Day 4 evening: Hongyadong after dark, followed by a Jialing River cruise past the illuminated cliffside."
+        description="See Hongyadong after dark, then take a Jialing River cruise past the illuminated cliffside."
         primaryButtonText="See our Chongqing tours"
         primaryButtonLink="/chongqing-tours"
         secondaryButtonText="Talk to Our Team"

@@ -1,14 +1,10 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import HubHero from '@/components/seo/HubHero';
-import TourGrid from '@/components/seo/TourGrid';
-import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { chengduPandaSanctuaryMeta } from '@/lib/data/seo-pages';
 
@@ -39,8 +35,6 @@ const visitInfo = [
 ];
 
 export default function ChengduPandaSanctuaryPage() {
-  const allTours = getAllChinaTours();
-  const featuredTours = allTours.filter(t => t.slug === 'chongqing-chengdu');
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
@@ -124,17 +118,6 @@ export default function ChengduPandaSanctuaryPage() {
                 </div>
               </section>
 
-              {/* Featured Tour — hidden when the tour is not on sale (allTours only holds active tours) */}
-              {featuredTours.length > 0 && (
-                <section>
-                  <SectionTitle
-                    title="See Giant Pandas on Our Chongqing &amp; Chengdu Tour"
-                    subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
-                  />
-                  <TourGrid tours={featuredTours} columns={2} />
-                </section>
-              )}
-
               {/* All Tours Link */}
               <section className="text-center py-8 border-t border-gray-200">
                 <p className="text-gray-600 mb-4">Explore all our China tour options</p>
@@ -170,14 +153,6 @@ export default function ChengduPandaSanctuaryPage() {
                       <dd className="font-medium">Visa-free up to 30 days</dd>
                     </div>
                   </dl>
-                </div>
-
-                <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
-                  <Icon name="paw" className="w-8 h-8 text-primary mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Included in Fire &amp; Fuzz</h4>
-                  <p className="text-sm text-gray-700">
-                    Day 7 morning visit to the panda base is built into our Chongqing &amp; Chengdu Discovery tour. No separate booking needed.
-                  </p>
                 </div>
 
                 <a

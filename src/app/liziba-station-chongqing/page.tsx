@@ -1,14 +1,10 @@
 import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import HubHero from '@/components/seo/HubHero';
-import TourGrid from '@/components/seo/TourGrid';
-import SectionTitle from '@/components/SectionTitle';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
 import { generateWebPageSchema, generateBreadcrumbListSchema, generateFAQPageSchema } from '@/lib/schema-seo';
 import { lizibastationChongqingMeta } from '@/lib/data/seo-pages';
 
@@ -22,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: '/liziba-station-chongqing',
     ogImagePath: `${TOUR_IMG}/migrated/unsplash/photo-1581252584837-95f73fd23574.jpg`,
     ogImageAlt: 'Liziba Station Chongqing — Train Through a Building — CTS Tours NZ',
-    keywords: ['Liziba Station Chongqing', 'train through building Chongqing', 'monorail building Chongqing', 'Chongqing things to do', 'Fire & Fuzz tour NZ'],
+    keywords: ['Liziba Station Chongqing', 'train through building Chongqing', 'monorail building Chongqing', 'Chongqing things to do'],
     ogType: 'website',
   });
 }
@@ -39,8 +35,6 @@ const visitInfo = [
 ];
 
 export default function LizibaStationChongqingPage() {
-  const allTours = getAllChinaTours();
-  const featuredTours = allTours.filter(t => t.slug === 'chongqing-chengdu');
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
@@ -144,17 +138,6 @@ export default function LizibaStationChongqingPage() {
                 </div>
               </section>
 
-              {/* Featured Tour — hidden when the tour is not on sale (allTours only holds active tours) */}
-              {featuredTours.length > 0 && (
-                <section>
-                  <SectionTitle
-                    title="See Liziba Station as Part of Our Chongqing &amp; Chengdu Tour"
-                    subtitle="Fire &amp; Fuzz — 10 days from NZD $2,999"
-                  />
-                  <TourGrid tours={featuredTours} columns={2} />
-                </section>
-              )}
-
               {/* All Tours Link */}
               <section className="text-center py-8 border-t border-gray-200">
                 <p className="text-gray-600 mb-4">Explore all our China tour options</p>
@@ -192,14 +175,6 @@ export default function LizibaStationChongqingPage() {
                   </dl>
                 </div>
 
-                <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
-                  <Icon name="train" className="w-8 h-8 text-primary mb-3" />
-                  <h4 className="font-bold text-gray-900 mb-2">Included in Fire &amp; Fuzz</h4>
-                  <p className="text-sm text-gray-700">
-                    Day 1 of the Chongqing &amp; Chengdu tour includes a guided Liziba visit — watch from the street and ride through the building.
-                  </p>
-                </div>
-
                 <a
                   href="/chongqing-tours"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
@@ -218,7 +193,7 @@ export default function LizibaStationChongqingPage() {
       {/* Final CTA */}
       <CTASection
         title="See Chongqing&apos;s Most Extraordinary Engineering on Tour"
-        description="Liziba Station is Day 1 of our Fire &amp; Fuzz tour — guided, hassle-free, with full context from your expert guide."
+        description="Visit Liziba Station on a guided, hassle-free Chongqing trip, with full context from your expert guide."
         primaryButtonText="See our Chongqing tours"
         primaryButtonLink="/chongqing-tours"
         secondaryButtonText="Talk to Our Team"
