@@ -414,3 +414,22 @@ describe('date of birth checks', () => {
     expect(screen.getByText(/a passport is valid for 10 years at most/)).toBeTruthy();
   });
 });
+
+describe('after submitting', () => {
+  it('brings the thank-you message into view', async () => {
+    const fetchMock = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ success: true }) });
+    (global as unknown as { fetch: typeof fetch }).fetch = fetchMock as unknown as typeof fetch;
+    const scrollSpy = jest.fn();
+    Element.prototype.scrollIntoView = scrollSpy;
+    setup();
+    fillRequiredFields();
+    fillTraveller(0, 'Alice');
+    scrollSpy.mockClear();
+    fireEvent.submit(screen.getByText('Submit details').closest('form') as HTMLFormElement);
+    const heading = await screen.findByText(/details received/);
+    const panel = heading.closest('[role="status"]') as HTMLElement;
+    expect(panel).toBeTruthy();
+    await waitFor(() => expect(scrollSpy).toHaveBeenCalled());
+    expect(scrollSpy.mock.instances[scrollSpy.mock.instances.length - 1]).toBe(panel);
+  });
+});
