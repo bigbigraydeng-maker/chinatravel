@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
-import GeoDirective from '@/components/GeoDirective';
 import TrackingScripts from '@/components/TrackingScripts';
 import FirstTouchTracker from '@/components/FirstTouchTracker';
 import { META_PIXEL_IDS } from '@/lib/analytics/meta-pixels';
@@ -75,7 +74,6 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ConditionalChrome>{children}</ConditionalChrome>
-        <GeoDirective />
         <TrackingScripts />
         <FirstTouchTracker />
         <GoogleAnalytics />
