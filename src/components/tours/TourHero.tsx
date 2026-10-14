@@ -27,14 +27,10 @@ interface TourHeroProps {
   /** Explains what the single supplement covers. */
   singleSupplementNote?: string;
   /**
-   * Maximum group size for this specific tour. Overrides the tier default
-   * (signature 16 / discovery 20 / stopover 18) shown in the USP triplet.
-   * Only pass when the tour data carries `maxGroupSize` — otherwise leave
-   * undefined and the tier default wins.
+   * Kept for callers that still pass `tour.maxGroupSize`; not displayed
+   * (PM 2026-10-14: no public group-size number).
    */
   maxGroupSize?: number;
-  /** Drops the group-size cap and the "Limited Availability" badge heading. */
-  hideScarcityClaims?: boolean;
   /**
    * Per-departure lead-in pricing. When provided, the "All departure dates"
    * section renders price cards (date + price + single supplement) instead of
@@ -72,24 +68,15 @@ export default function TourHero({
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
   singleSupplementNote,
-  maxGroupSize,
-  hideScarcityClaims,
   departurePricing,
   seasonalBadge,
   fareSavingsBadge,
 }: TourHeroProps) {
-  // Tier default group size (PM 2026-09-12): Signature capped smaller than
-  // Discovery. A tour's own `maxGroupSize` (e.g. Golden China's 12) always
-  // wins over this default.
-  const TIER_DEFAULT_GROUP_SIZE: Record<string, number> = {
-    signature: 16,
-    discovery: 20,
-  };
+  // PM 2026-10-14: no public group-size number on any tour page. `maxGroupSize`
+  // stays in tour data but is no longer rendered here.
   const groupSizeLabel = tier === 'stopover'
     ? 'Flexible stopover package · confirm traveller numbers'
-    : hideScarcityClaims
-      ? 'Small group'
-      : `Small group · max ${maxGroupSize ?? TIER_DEFAULT_GROUP_SIZE[tier] ?? 18} travellers`;
+    : 'Small group';
   const tierColors = {
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',
@@ -236,7 +223,6 @@ export default function TourHero({
                   departureDate={departureDates[0]}
                   returnDate={computeReturnDate(departureDates[0], duration) ?? undefined}
                   showCountdown={false}
-                  hideLimitedLabel={hideScarcityClaims}
                 />
               )}
               <div>

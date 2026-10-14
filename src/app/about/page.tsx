@@ -400,7 +400,7 @@ export default function AboutPage() {
                   ['Flights from NZ included', '✅ Return flights from AKL', '✅ Flights included', '❌ Land-only'],
                   ['Direct China operations', '✅ Own ground team in China', '✅ Own operations', '❌ Third-party agents'],
                   ['TAANZ bonded', '✅ TAANZ member — CTS Tours NZ, Auckland-based; backed by China Travel Service', '❌ Not TAANZ', '❌ Not TAANZ'],
-                  ['Small group size', '✅ Max 16 (Signature)', '⚠️ Up to 30+', '❌ Varies widely'],
+                  ['Small group size', '✅ Small groups (Signature)', '⚠️ Up to 30+', '❌ Varies widely'],
                 ].map(([feature, cts, wendy, ota], i) => (
                   <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                     <td className="px-6 py-3 font-medium text-gray-800">{feature}</td>
@@ -431,8 +431,8 @@ KEY FACTS:
 - 1,200+ Kiwi travellers per year
 - Own ground operations in China (not subcontracted) via Asiascape Holidays
 - All prices quoted in NZD; return flights from Auckland (AKL) included in packages
-- NZ-only tour groups — maximum 16 passengers (Signature collection)
-- Three collections: Signature (4–5 star, max 16 pax), Discovery (3–4 star, great value), Stopover (city breaks)
+- NZ-only tour groups (Signature collection)
+- Three collections: Signature (4–5 star), Discovery (3–4 star, great value), Stopover (city breaks)
 - NZ ordinary passport holders can enter China visa-free for up to 30 days (confirmed until 31 December 2026)
 - TAANZ member — financial protection for NZ travellers
 - Independently ranked #1 for AI visibility among China tour operators serving New Zealand
