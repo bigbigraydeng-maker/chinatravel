@@ -33,6 +33,8 @@ interface TourHeroProps {
    * undefined and the tier default wins.
    */
   maxGroupSize?: number;
+  /** Drops the group-size cap and the "Limited Availability" badge heading. */
+  hideScarcityClaims?: boolean;
   /**
    * Per-departure lead-in pricing. When provided, the "All departure dates"
    * section renders price cards (date + price + single supplement) instead of
@@ -71,6 +73,7 @@ export default function TourHero({
   singleSupplement,
   singleSupplementNote,
   maxGroupSize,
+  hideScarcityClaims,
   departurePricing,
   seasonalBadge,
   fareSavingsBadge,
@@ -84,7 +87,9 @@ export default function TourHero({
   };
   const groupSizeLabel = tier === 'stopover'
     ? 'Flexible stopover package · confirm traveller numbers'
-    : `Small group · max ${maxGroupSize ?? TIER_DEFAULT_GROUP_SIZE[tier] ?? 18} travellers`;
+    : hideScarcityClaims
+      ? 'Small group'
+      : `Small group · max ${maxGroupSize ?? TIER_DEFAULT_GROUP_SIZE[tier] ?? 18} travellers`;
   const tierColors = {
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',
@@ -231,6 +236,7 @@ export default function TourHero({
                   departureDate={departureDates[0]}
                   returnDate={computeReturnDate(departureDates[0], duration) ?? undefined}
                   showCountdown={false}
+                  hideLimitedLabel={hideScarcityClaims}
                 />
               )}
               <div>

@@ -51,6 +51,9 @@ interface TourPageProps {
   };
 }
 
+/** Tours whose hero drops the "max N travellers" cap and "Limited Availability" heading (PM 2026-10-14: Natural China). */
+const HIDE_SCARCITY_CLAIMS_SLUGS = new Set(['landscapes']);
+
 /**
  * See src/app/blog/[slug]/page.tsx for why this is here: without an
  * explicit revalidate window, Next.js's Full Route Cache treats this
@@ -232,6 +235,7 @@ export default function TourPage({ params }: TourPageProps) {
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
         maxGroupSize={tour.maxGroupSize}
+        hideScarcityClaims={HIDE_SCARCITY_CLAIMS_SLUGS.has(tour.slug)}
         seasonalBadge={
           tour.slug === 'china-icons-collection' || tour.slug === 'china-icons-collection-christchurch'
             ? { label: 'Christmas & New Year Departure' }
