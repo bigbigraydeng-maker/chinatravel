@@ -338,7 +338,7 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2026-05-22',
     tags: [
-      '10–16 small group',
+      'small group',
       'Ancient Silk Road',
       'Terracotta Warriors',
       'fully inclusive',
@@ -418,7 +418,7 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2026-04-02',
     tags: [
-      '10–16 small group',
+      'small group',
       'Beijing',
       'Peking duck',
       'Great Wall',
@@ -522,7 +522,7 @@ export const tours: Tour[] = [
     createdAt: '2024-01-01',
     updatedAt: '2026-03-29',
     tags: [
-      '10–16 small group',
+      'small group',
       'Beijing',
       'Peking duck',
       'Great Wall',

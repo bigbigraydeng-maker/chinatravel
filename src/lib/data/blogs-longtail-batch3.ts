@@ -91,11 +91,11 @@ Not included: personal travel insurance (strongly recommended), optional excursi
 
 ## How Much Does a China Holiday Package Cost?
 
-| Collection | Style | Starting Price | Group Size |
-|-----------|-------|---------------|-----------|
-| **Discovery** | 3–4 star, great value | From NZD $2,699 | Up to 24 |
-| **Signature** | 4–5 star, premium | From NZD $4,800 | Max 16 |
-| **Stopover** | City break, 2–4 days | From NZD $1,200 | Flexible |
+| Collection | Style | Starting Price |
+|-----------|-------|---------------|
+| **Discovery** | 3–4 star, great value | From NZD $2,699 |
+| **Signature** | 4–5 star, premium | From NZD $4,800 |
+| **Stopover** | City break, 2–4 days | From NZD $1,200 |
 
 All prices are per person, twin share, including flights from Auckland. [Contact our team](/contact) for current pricing on specific departures — the October 2026 dates are already confirmed.
 

@@ -299,7 +299,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What is the difference between Discovery and Signature tour collections?',
-      answer: 'Discovery (from NZD $2,699) uses 3-4 star city centre hotels, larger group sizes (up to 24), and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups (max 16), more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
+      answer: 'Discovery (from NZD $2,699) uses 3-4 star city centre hotels, larger groups, and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups, more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
     },
     {
       question: 'What travel insurance do New Zealanders need for a China tour?',
