@@ -126,7 +126,7 @@ I’ll be direct about why CTS earns its place on this market. There are three t
 
 - **Honest itinerary writing.** Where Forbidden City tickets are capacity-limited, our itinerary tells you what we substitute (Jingshan Park overlook and Prince Gong’s Mansion). Where airfare moves the lead-in price between November and March, we tell you which fare window each departure sits in. The brochures don’t always do that.
 
-If you want the small-group, premium-end version of the same trip, our [Signature tours](/tours/china/signature) cap at sixteen travellers, with boutique 4- to 5-star hotels and additional access. Discovery is excellent value; Signature is for travellers who want the polish.
+If you want the small-group, premium-end version of the same trip, our [Signature tours](/tours/china/signature) run as small groups, with boutique 4- to 5-star hotels and additional access. Discovery is excellent value; Signature is for travellers who want the polish.
 
 ## Best months to travel
 
