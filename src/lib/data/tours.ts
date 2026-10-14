@@ -556,7 +556,7 @@ export const tours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
     quickAnswer:
-      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departure is 26 March, returning 10 April. Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
@@ -627,8 +627,8 @@ export const tours: Tour[] = [
       'Tianmen Mountain',
       'Huangpu River cruise',
     ],
-    departureDates: ['26 March 2027'],
-    departurePricing: { '26 March 2027': 'NZD $7,349' },
+    departureDates: ['26 March 2027', '28 May 2027'],
+    departurePricing: { '26 March 2027': 'NZD $7,349', '28 May 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     goldenBlocks: true,
@@ -644,7 +644,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departure from Auckland is 26 March (returning 10 April), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
@@ -1257,7 +1257,9 @@ export const tours: Tour[] = [
         link: { href: '/tailor-made', label: 'Plan a tailor-made Yunnan journey' },
       },
     ],
-    departureDates: ['10 September 2026'],
+    // The only listed departure (10 September 2026) has passed. Left empty so no
+    // surface shows it as the "next" departure; the FAQ above already says to enquire.
+    departureDates: [],
     singleSupplement: 'NZD $340',
   },
   // China Discovery — Fire & Fuzz (Chongqing + Chengdu)
