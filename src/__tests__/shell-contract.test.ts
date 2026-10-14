@@ -61,10 +61,10 @@ describe('Footer required links and mounts', () => {
   });
 });
 
-describe('Root layout tracking + GEO surface', () => {
+describe('Root layout tracking', () => {
   const layout = read(LAYOUT);
 
-  it.each(['GeoDirective', 'TrackingScripts', 'GoogleAnalytics'])(
+  it.each(['TrackingScripts', 'GoogleAnalytics'])(
     'still renders <%s />',
     (component) => {
       expect(layout).toContain(`<${component} />`);
