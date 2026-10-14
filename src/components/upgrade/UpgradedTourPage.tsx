@@ -232,7 +232,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
             <div className="grid gap-px bg-white/15 sm:grid-cols-2 lg:grid-cols-[1.15fr_1fr_1.2fr_auto]">
               <div className="bg-accent px-5 py-5">
                 <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/65">Next confirmed departure</p>
-                <p className="mt-2 text-lg font-semibold">{leadDeparture ?? 'Ask about future dates'}</p>
+                <p className="mt-2 text-lg font-semibold">{leadDeparture ?? 'Please enquire for the next departure'}</p>
                 <p className="mt-1 text-xs text-white/65">Scheduled group departure</p>
               </div>
               <div className="bg-accent px-5 py-5">
