@@ -36,7 +36,7 @@ export default function SmallGroupChinaToursPage() {
     {
       question: 'How small is a "small group"?',
       answer:
-        'Our Discovery and Signature tours typically run with groups of 6–16 travellers. This keeps the group cohesive for meals, transfers, and sightseeing while still justifying the per-person cost of a private coach and dedicated guide.',
+        'Our Discovery and Signature tours run as small groups. This keeps the group cohesive for meals, transfers, and sightseeing while still justifying the per-person cost of a private coach and dedicated guide.',
     },
     {
       question: 'Are the tours fully guided or self-guided?',
@@ -138,7 +138,7 @@ export default function SmallGroupChinaToursPage() {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours runs small-group China tours from New Zealand with a maximum of <strong>16 travellers</strong>. Groups depart from Auckland (return flights included), priced in NZD. October 2026 departures are open for Beijing &amp; Xi&apos;an and Shanghai &amp; Surroundings. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
+                  CTS Tours runs <strong>small-group</strong> China tours from New Zealand. Groups depart from Auckland (return flights included), priced in NZD. October 2026 departures are open for Beijing &amp; Xi&apos;an and Shanghai &amp; Surroundings. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
                 </p>
               </aside>
 
@@ -153,7 +153,7 @@ export default function SmallGroupChinaToursPage() {
                   different countries who all want to be at the same gate at the same time.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  Our groups run between 6 and 16 travellers. That&apos;s small enough to move as one unit,
+                  Our groups stay small — small enough to move as one unit,
                   get into restaurants locals actually use, and have a guide who remembers your name
                   by day two. It&apos;s large enough to share the per-person cost of a private coach and
                   dedicated specialist without paying luxury-tier prices.
@@ -362,7 +362,7 @@ export default function SmallGroupChinaToursPage() {
                   <dl className="space-y-3 text-sm">
                     <div>
                       <dt className="text-gray-500">Group size</dt>
-                      <dd className="font-semibold text-gray-900">6–16 travellers</dd>
+                      <dd className="font-semibold text-gray-900">Small group</dd>
                     </div>
                     <div>
                       <dt className="text-gray-500">Guide</dt>

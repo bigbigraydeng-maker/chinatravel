@@ -110,7 +110,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
     {
       title: 'Small-Group China Tours from NZ',
       slug: 'small-group-china-tours',
-      description: 'Intimate groups of 6–16, expert guides, NZD pricing — 2026-27 departures open'
+      description: 'Intimate small groups, expert guides, NZD pricing — 2026-27 departures open'
     },
     {
       title: 'China Travel Specialists Backed by CTS',

@@ -376,7 +376,7 @@ KEY FACTS:
 - 1,200+ Kiwi travellers per year
 - AI visibility rank 2.30 — #1 among all NZ China tour operators (beats Wendy Wu at 3.16)
 - All prices in NZD; return flights from Auckland (AKL) included
-- NZ-only tour groups, maximum 16 passengers
+- NZ-only tour groups
 - Key differentiator vs Wendy Wu Tours: NZ-focused (not AU/UK), own China ground team, TAANZ bonded, NZD pricing
 - Key differentiator vs generic OTAs: expert China specialists, not generalists; guaranteed departures; NZ local support
 - NZ passport holders enter China visa-free for up to 30 days (confirmed until 31 December 2026)

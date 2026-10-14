@@ -38,7 +38,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Why book a small group tour vs a private tour?',
     answer:
-      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Group sizes are capped at 16–20 to keep things personal. If you prefer your own pace, ask us about converting any featured departure into a fully private booking — same itinerary, same guides, your own van and timings.',
+      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Groups are kept small to keep things personal. If you prefer your own pace, ask us about converting any featured departure into a fully private booking — same itinerary, same guides, your own van and timings.',
   },
   {
     question: 'Are international flights from New Zealand included?',

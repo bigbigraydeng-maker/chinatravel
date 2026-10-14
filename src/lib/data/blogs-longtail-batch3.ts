@@ -101,7 +101,7 @@ All prices are per person, twin share, including flights from Auckland. [Contact
 
 ## [Small-Group Tours](/small-group-china-tours): Why We Keep Groups Small
 
-Our Signature collection runs a maximum of 16 passengers. Our Discovery tours cap at 24. Both are substantially smaller than the 40–50 person coaches operated by some competitors.
+Our Signature and Discovery tours both run as small groups, substantially smaller than the 40–50 person coaches operated by some competitors.
 
 The practical difference: smaller groups move faster through attractions, get better table placement at restaurants locals actually use, and have a guide who is actually teaching rather than just marshalling.
 
