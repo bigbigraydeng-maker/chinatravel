@@ -179,7 +179,7 @@ export default function ChengduPandaSanctuaryPage() {
                 </div>
 
                 <a
-                  href="/tours/china/discovery/chongqing-chengdu"
+                  href="/campaigns/fire-fuzz"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
                 >
                   View Fire &amp; Fuzz Itinerary →
@@ -198,7 +198,7 @@ export default function ChengduPandaSanctuaryPage() {
         title="Ready to See Giant Pandas in Chengdu?"
         description="Our team handles everything — flights, transfers, panda base entry, and expert guide commentary."
         primaryButtonText="View Fire &amp; Fuzz Itinerary"
-        primaryButtonLink="/tours/china/discovery/chongqing-chengdu"
+        primaryButtonLink="/campaigns/fire-fuzz"
         secondaryButtonText="Talk to Our Team"
         secondaryButtonLink="/contact"
       />

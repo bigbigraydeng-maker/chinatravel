@@ -408,7 +408,7 @@ The challenge with choosing what to do across these two cities is the same chall
 
 For NZ travellers, the practical tension is usually time. Ten days is enough to do both cities justice — not rushing, but not lingering either. The bullet train connection between them is part of the experience, not just a logistics solution. And Chengdu has optional day trips (Leshan Giant Buddha, Sanxingdui Museum) that reward people who want to go deeper.
 
-This guide covers the eight experiences I'd prioritise if I were putting together a Chongqing–Chengdu itinerary for New Zealand visitors — along with honest trade-offs, timing advice, and the optional extras worth knowing about. The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) tour (10 days, from NZD $2,750 per person, departing 1 November) covers most of what's here and is the most coherent version of this trip I've seen packaged for NZ travellers.
+This guide covers the eight experiences I'd prioritise if I were putting together a Chongqing–Chengdu itinerary for New Zealand visitors — along with honest trade-offs, timing advice, and the optional extras worth knowing about. The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/campaigns/fire-fuzz) tour (10 days, from NZD $2,750 per person, departing 1 November) covers most of what's here and is the most coherent version of this trip I've seen packaged for NZ travellers.
 
 <a id="table-of-contents"></a>
 
@@ -484,7 +484,7 @@ The practical reality: the complex itself is busy and commercialised, particular
 
 > The trade-off is straightforward: Hongyadong is very well known and will be busy on most evenings. You come for the setting and the architecture, not for a quiet riverside walk.
 
-For NZ travellers, this is the "hero image of the trip" moment — the photograph that looks like nowhere else you've been. Couples will find it genuinely atmospheric after dark. Retirees planning an evening out: the internal levels are connected by lifts and the paths are well-maintained, though some stairways between levels are steep. The [Fire & Fuzz itinerary](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) schedules this on the evening of Day 4, which is exactly right — you've already seen the daytime city by then and you're ready for the contrast.
+For NZ travellers, this is the "hero image of the trip" moment — the photograph that looks like nowhere else you've been. Couples will find it genuinely atmospheric after dark. Retirees planning an evening out: the internal levels are connected by lifts and the paths are well-maintained, though some stairways between levels are steep. The [Fire & Fuzz itinerary](https://www.ctstours.co.nz/campaigns/fire-fuzz) schedules this on the evening of Day 4, which is exactly right — you've already seen the daytime city by then and you're ready for the contrast.
 
 ---
 
@@ -558,7 +558,7 @@ The morning window matters. Giant pandas are most active between 8am and 10am, d
 
 > **Practical rule:** The photographs you'll take here will be the most-shared images of the trip. The trade-off is that the site is very popular — Chengdu receives more than [20 million tourists annually](https://www.chengdu.gov.cn/chengdu/c149601/2024-02/02/content_c5e5d2b10f9e4f77b1d1c8d3a6e7f9b2.shtml), and the Panda Base is the top-rated attraction. Come early.
 
-For NZ travellers: this is the experience most likely to appear in social media posts from the trip. The emotional response to being 10 metres from a panda eating bamboo is consistent across ages and travel styles — it's one of those places where the reality delivers on the expectation. Retirees and couples both find it satisfying. For families travelling with adult children, it's often the undisputed highlight. CTS Tours' expert [guide to China's giant panda programme](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) provides the ecological context that makes the visit more meaningful.
+For NZ travellers: this is the experience most likely to appear in social media posts from the trip. The emotional response to being 10 metres from a panda eating bamboo is consistent across ages and travel styles — it's one of those places where the reality delivers on the expectation. Retirees and couples both find it satisfying. For families travelling with adult children, it's often the undisputed highlight. CTS Tours' expert [guide to China's giant panda programme](https://www.ctstours.co.nz/campaigns/fire-fuzz) provides the ecological context that makes the visit more meaningful.
 
 ---
 
@@ -686,7 +686,7 @@ The itinerary has two free days built in — one in Chongqing (Day 5) and one in
 
 ### The Tour Option
 
-The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) tour (from NZD $2,750 per person, single supplement NZD $400, departing 1 November, returning 10 November, minimum 15 persons) covers the full Chongqing–Chengdu itinerary with an English-speaking guide, 4-star hotels, included meals, and the bullet train. For NZ travellers doing this region for the first time, the case for a guided tour is simple: both cities reward context, and the guide turns attractions from spectacle into understanding. Dazu in particular is in a completely different category with explanation.
+The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/campaigns/fire-fuzz) tour (from NZD $2,750 per person, single supplement NZD $400, departing 1 November, returning 10 November, minimum 15 persons) covers the full Chongqing–Chengdu itinerary with an English-speaking guide, 4-star hotels, included meals, and the bullet train. For NZ travellers doing this region for the first time, the case for a guided tour is simple: both cities reward context, and the guide turns attractions from spectacle into understanding. Dazu in particular is in a completely different category with explanation.
 
 The Discovery tier pricing positions this as an accessible first China trip, not a luxury product — the inclusions are practical rather than indulgent. What you're paying for is logistics that work, a guide who knows the sites, and a group rhythm that respects the pace of the itinerary without rushing.
 
@@ -710,7 +710,7 @@ Chengdu rewards the slower pace that Chongqing doesn't particularly invite. Use 
 - Chongqing Rail Transit Line 2 — Liziba Station opened June 2005 (Chongqing Metro official records)
 - Chengdu Research Base of Giant Panda Breeding — established 1987 (official base records)
 
-*The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/tours/china/discovery/chongqing-chengdu) departs Auckland 1 November 2026 and returns 10 November. From NZD $2,750 per person (twin share), single supplement NZD $400. Minimum 15 persons. Includes international and domestic flights, 4-star accommodation, English-speaking guide, bullet train, and meals as specified.*`,
+*The CTS Tours [China Discovery — Fire & Fuzz](https://www.ctstours.co.nz/campaigns/fire-fuzz) departs Auckland 1 November 2026 and returns 10 November. From NZD $2,750 per person (twin share), single supplement NZD $400. Minimum 15 persons. Includes international and domestic flights, 4-star accommodation, English-speaking guide, bullet train, and meals as specified.*`,
     faqs: [
       {
         question: 'Is Sichuan hotpot too spicy?',

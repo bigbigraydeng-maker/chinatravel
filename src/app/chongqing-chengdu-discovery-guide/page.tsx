@@ -139,7 +139,7 @@ export default function DiscoveryGuidePage() {
             10 days from Auckland. Liziba Station, Hongyadong, Dazu Rock Carvings, giant pandas at the Research Base — and the bullet train south to Chengdu. From <strong className="text-accent">NZD $2,999</strong>.
           </p>
           <a
-            href="/tours/china/discovery/chongqing-chengdu"
+            href="/campaigns/fire-fuzz"
             className="inline-block bg-primary text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition text-base shadow-md hover:shadow-lg"
           >
             View the Fire &amp; Fuzz Tour →

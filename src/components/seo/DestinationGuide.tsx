@@ -92,7 +92,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/campaigns/fire-fuzz', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [
@@ -234,7 +234,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chengdu-tours', hubLabel: 'All Chengdu Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/campaigns/fire-fuzz', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },      { name: 'Chengdu Stopover (3 Days)', duration: '3 Days', price: 'From NZD $1,359', url: '/tours/china/stopover/chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'stopover' },
     ],
     relatedGuides: [
       { name: 'Chengdu Travel Guide', slug: 'chengdu-travel-guide', emoji: '🐼' },
@@ -299,7 +299,7 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
     hubUrl: '/chongqing-tours', hubLabel: 'All Chongqing Tours',
     relatedTours: [
 
-      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/tours/china/discovery/chongqing-chengdu', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },
+      { name: 'Fire & Fuzz (10 Days)', duration: '10 Days', price: 'From NZD $2,999', url: '/campaigns/fire-fuzz', image: `${TI}/chengdu-pandas.jpg`, tier: 'discovery' },
       { name: 'China Panorama (27 Days)', duration: '27 Days', price: 'From NZD $10,899', url: '/tours/china/signature/grand-tour', image: `${TI}/great-wall-mist.jpg`, tier: 'signature' },
     ],
     relatedGuides: [

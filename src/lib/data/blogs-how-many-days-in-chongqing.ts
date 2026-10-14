@@ -148,7 +148,7 @@ Dazu deserves more than the one-line mention it usually gets. It is a UNESCO Wor
 
 ## Why our guided tour allocates four nights, not three
 
-Worth flagging, because clients notice the difference: our [Fire & Fuzz Chongqing & Chengdu tour](/tours/china/discovery/chongqing-chengdu) gives Chongqing **4 nights**, not 3. That is not a contradiction of the advice above — it is what happens when Dazu becomes a fixed full day rather than an optional one. Take a full day out for Dazu and a 3-day plan has effectively become a 2-day plan for the city itself, so we add the night back.
+Worth flagging, because clients notice the difference: our [Fire & Fuzz Chongqing & Chengdu tour](/campaigns/fire-fuzz) gives Chongqing **4 nights**, not 3. That is not a contradiction of the advice above — it is what happens when Dazu becomes a fixed full day rather than an optional one. Take a full day out for Dazu and a 3-day plan has effectively become a 2-day plan for the city itself, so we add the night back.
 
 The fourth night buys the thing no itinerary can schedule: an unstructured morning. That is when people finally ride the **Yangtze River Cableway** (the 1987 aerial tramway across the river to Nanshan — still a working commuter route, not a tourist ride) without watching the clock, sit down to a proper **morning hot pot** (yes, hot pot for breakfast is genuinely a Chongqing habit), and walk Jiefangbei at their own pace.
 

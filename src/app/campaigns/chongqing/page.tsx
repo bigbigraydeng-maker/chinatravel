@@ -220,7 +220,7 @@ export default function ChongqingLandingPage() {
                     View Tour Details →
                   </Link>
                   <Link
-                    href="/tours/china/discovery/chongqing-chengdu"
+                    href="/campaigns/fire-fuzz"
                     className="block text-center border border-primary/30 text-primary font-semibold py-2.5 px-5 rounded-lg hover:bg-primary/5 transition text-sm"
                   >
                     Full itinerary &amp; dates

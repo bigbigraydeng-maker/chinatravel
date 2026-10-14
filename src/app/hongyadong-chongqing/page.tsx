@@ -217,7 +217,7 @@ export default function HongyadongChongqingPage() {
                 </div>
 
                 <a
-                  href="/tours/china/discovery/chongqing-chengdu"
+                  href="/campaigns/fire-fuzz"
                   className="block w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl transition-colors text-center"
                 >
                   View Fire &amp; Fuzz Itinerary →
@@ -236,7 +236,7 @@ export default function HongyadongChongqingPage() {
         title="Experience Hongyadong on Our Chongqing Tour"
         description="Day 4 evening: Hongyadong after dark, followed by a Jialing River cruise past the illuminated cliffside."
         primaryButtonText="View Fire &amp; Fuzz Itinerary"
-        primaryButtonLink="/tours/china/discovery/chongqing-chengdu"
+        primaryButtonLink="/campaigns/fire-fuzz"
         secondaryButtonText="Talk to Our Team"
         secondaryButtonLink="/contact"
       />

@@ -61,7 +61,7 @@ For a panoramic night view of the entire city, Nanshan One Tree Hill (南山一�
 
 My **Fire & Fuzz** 10-day tour allocates 4 nights in Chongqing specifically to allow unhurried evenings. I build the hot pot dinner, the Hongyadong walk, and the night cruise on separate evenings so you're not rushing between all three. You also have a free evening for independent exploration — which in Chongqing always turns into something memorable.
 
-[View the Fire & Fuzz tour →](/tours/china/discovery/chongqing-chengdu)
+[View the Fire & Fuzz tour →](/campaigns/fire-fuzz)
     `
   },
 
@@ -151,7 +151,7 @@ If your route runs on to Chengdu, taste the two cities' styles side by side — 
 
 On our **Fire and Fuzz** itinerary (Chongqing and Chengdu, 10 days) I include a guided hot pot dinner early in the trip — ordering handled, dishes explained, spice levels negotiated — so that by your free evenings you can walk into any local restaurant and order with confidence. That first supervised dinner is the difference between eating hot pot and understanding it.
 
-[View the Fire and Fuzz tour →](/tours/china/discovery/chongqing-chengdu) or browse all [Chongqing tours](/chongqing-tours).
+[View the Fire and Fuzz tour →](/campaigns/fire-fuzz) or browse all [Chongqing tours](/chongqing-tours).
     `
   },
 
@@ -208,7 +208,7 @@ The **Fire & Fuzz** 10-day itinerary includes Leshan Giant Buddha as an optional
 
 The tour departs Auckland on 1 November 2026, from NZD $2,999 per person (twin share).
 
-[View the full Fire & Fuzz itinerary →](/tours/china/discovery/chongqing-chengdu)
+[View the full Fire & Fuzz itinerary →](/campaigns/fire-fuzz)
     `
   },
 
@@ -367,7 +367,7 @@ The [Leshan Giant Buddha](/blog/leshan-giant-buddha-day-trip) is 120km from Chen
 
 This is the structure I use for the Chengdu segment of the **Fire & Fuzz** tour, which arrives from Chongqing by bullet train and allocates 3 nights before the return flight from Chengdu. The contrast between Chongqing's dramatic mountain city energy and Chengdu's teahouse pace is itself one of the pleasures of the combination.
 
-[View the full Fire & Fuzz tour →](/tours/china/discovery/chongqing-chengdu)
+[View the full Fire & Fuzz tour →](/campaigns/fire-fuzz)
     `
   },
 
