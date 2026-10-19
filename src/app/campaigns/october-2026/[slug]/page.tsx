@@ -12,6 +12,7 @@ import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
@@ -139,6 +140,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
     <>
       <OctoberCampaignScrollTracker />
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">

@@ -16,6 +16,7 @@ import TourTabs from '@/components/tours/TourTabs';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import RecommendedReading from '@/components/RecommendedReading';
@@ -163,12 +164,13 @@ export default function TourPage({ params }: TourPageProps) {
     'zhangjiajie',
   ]);
   if (upgradedTourSlugs.has(tour.slug)) {
-    return <><SchemaMarkup data={schemas} /><UpgradedTourPage tour={tour} /></>;
+    return <><SchemaMarkup data={schemas} /><TourViewContent tour={tour} /><UpgradedTourPage tour={tour} /></>;
   }
 
   return (
     <>
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       {/* Breadcrumb Navigation */}
       <nav className="bg-gray-50 border-b border-gray-200">

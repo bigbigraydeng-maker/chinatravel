@@ -11,10 +11,13 @@
  * ("弹窗是不是浪费"). Without it we can't tell where subscriptions actually
  * come from.
  *
- * The Meta Pixel side uses `Subscribe` for popup submissions so it can drive
- * lookalike / retargeting audiences directly. Dismiss and view fire only as
- * GTM dataLayer events — pushing "somebody closed a popup" to Facebook's ad
- * pixel is signal-poor and audience-hostile.
+ * The Meta Pixel side sends the CUSTOM event `NewsletterSignup` for popup
+ * submissions so it can still drive lookalike / retargeting audiences. It is
+ * deliberately not the standard `Subscribe` event: Meta defines Subscribe as the
+ * start of a paid subscription, and this newsletter is free, so there is no real
+ * value to report and the standard name would misdescribe the signup. Dismiss and
+ * view fire only as GTM dataLayer events — pushing "somebody closed a popup" to
+ * Facebook's ad pixel is signal-poor and audience-hostile.
  */
 
 type FbqFn = (...args: unknown[]) => void
@@ -49,9 +52,9 @@ export function trackNewsletterSubmit(location: 'popup' | 'footer', email?: stri
   if (location === 'popup') {
     const f = fbq()
     if (f) {
-      // eventID lets a future CAPI Subscribe event de-dupe against this browser hit.
+      // eventID lets a future CAPI event of the same name de-dupe against this browser hit.
       const eventId = `cts-newsletter-${Date.now()}`
-      f('track', 'Subscribe', { content_name: 'newsletter_popup' }, { eventID: eventId })
+      f('trackCustom', 'NewsletterSignup', { content_name: 'newsletter_popup' }, { eventID: eventId })
       void email // reserved for CAPI hashed-email payload, not sent client-side.
     }
   }
