@@ -53,6 +53,18 @@ const nextConfig = {
        * 保留 301，让已被索引或被外链指到旧地址的访客落到在售页，而不是 404。
        */
       { source: '/tours/china/discovery/natural-china', destination: '/tours/china/signature/landscapes', permanent: true },
+      /**
+       * "China Discovery — Christmas & New Year in China" (Auckland and Christchurch
+       * versions, 22 December 2026) is retired (Product Owner, 2026-10-19). The two tour
+       * pages (and their /print children) and the /christmas-new-year-china landing page
+       * 301 to the Discovery tier page, so indexed, linked or printed-QR visitors land on
+       * a live page instead of a 404.
+       */
+      { source: '/tours/china/discovery/china-icons-collection', destination: '/tours/china/discovery', statusCode: 301 },
+      { source: '/tours/china/discovery/china-icons-collection/:path*', destination: '/tours/china/discovery', statusCode: 301 },
+      { source: '/tours/china/discovery/china-icons-collection-christchurch', destination: '/tours/china/discovery', statusCode: 301 },
+      { source: '/tours/china/discovery/china-icons-collection-christchurch/:path*', destination: '/tours/china/discovery', statusCode: 301 },
+      { source: '/christmas-new-year-china', destination: '/tours/china/discovery', statusCode: 301 },
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
       /**

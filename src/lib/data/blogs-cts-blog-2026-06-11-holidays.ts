@@ -83,7 +83,7 @@ Best of China is the itinerary I put first when someone asks me what a sensible 
 
 Our 3 November 2026 departure has **sold out**. The 11 March 2027 and 13 May 2027 departures run the same itinerary — same hotels, same guides, same inclusions, same day-by-day programme. The 11 March departure returns 25 March 2027; the 13 May departure returns 27 May 2027.
 
-Both are worth wanting in their own right: spring in China is one of the cleaner photographic months I work with, and it lines up with autumn at home. If you want a November window, the 12-day [Golden China tour](/tours/china/discovery/golden-china) departs Auckland on 16 November 2026 from NZD $4,999 per person twin-share. Our [Christmas & New Year tours](/campaigns/spotlight) depart Auckland or Christchurch on 22 December 2026.
+Both are worth wanting in their own right: spring in China is one of the cleaner photographic months I work with, and it lines up with autumn at home. If you want a November window, the 12-day [Golden China tour](/tours/china/discovery/golden-china) departs Auckland on 16 November 2026 from NZD $4,999 per person twin-share.
 
 ## What’s included in the lead-in price
 
@@ -159,7 +159,7 @@ If you’re still deciding shape, our [China holiday packages guide](/blog/china
 <p>For a 15-day inclusive group tour with return flights from Auckland, hotels, guides and most meals, the lead-in price is NZD $4,080 per person twin-share for our 11 March 2027 Best of China departure. Shorter Discovery routes (10 days) start lower; Signature tours and tailor-made itineraries sit higher.</p>
 
 <h3>When does CTS Tours have China holiday departures from New Zealand?</h3>
-<p>Golden China departs Auckland on 16 November 2026 — 12 days from NZD $4,999 per person twin-share. Our next Best of China departure is 11 March 2027 — 15 days, NZD $4,080 twin-share — followed by a second confirmed departure on 13 May 2027 at the same price. The 3 November 2026 Best of China departure has sold out. Christmas and New Year tours depart Auckland or Christchurch on 22 December 2026. Other Discovery and Signature routes have their own published departure dates on each tour page; tailor-made trips can be built on any dates that suit you.</p>
+<p>Golden China departs Auckland on 16 November 2026 — 12 days from NZD $4,999 per person twin-share. Our next Best of China departure is 11 March 2027 — 15 days, NZD $4,080 twin-share — followed by a second confirmed departure on 13 May 2027 at the same price. The 3 November 2026 Best of China departure has sold out. Other Discovery and Signature routes have their own published departure dates on each tour page; tailor-made trips can be built on any dates that suit you.</p>
 
 <h3>Is the airfare from Auckland included in CTS holiday packages?</h3>
 <p>Yes — our published Discovery and Signature group tours include return international flights from Auckland as part of the lead-in price, plus domestic flights within China where the itinerary requires them. You don’t book the flight separately. If you’d prefer a land-only price (for example, you’re using airline points), our team can quote that on request.</p>
@@ -273,7 +273,7 @@ If you’re still deciding shape, our [China holiday packages guide](/blog/china
       "name": "When does CTS Tours have China holiday departures from New Zealand?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Golden China departs Auckland on 16 November 2026 — 12 days from NZD $4,999 per person twin-share. CTS Tours’ next Best of China departure is 11 March 2027 — 15 days, NZD $4,080 twin-share — followed by a second confirmed departure on 13 May 2027 at the same price. The 3 November 2026 Best of China departure has sold out. Christmas and New Year tours depart Auckland or Christchurch on 22 December 2026."
+        "text": "Golden China departs Auckland on 16 November 2026 — 12 days from NZD $4,999 per person twin-share. CTS Tours’ next Best of China departure is 11 March 2027 — 15 days, NZD $4,080 twin-share — followed by a second confirmed departure on 13 May 2027 at the same price. The 3 November 2026 Best of China departure has sold out."
       }
     },
     {

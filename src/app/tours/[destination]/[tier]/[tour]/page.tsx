@@ -156,8 +156,6 @@ export default function TourPage({ params }: TourPageProps) {
   // Roll the approved Golden China detail design out one product at a time.
   const upgradedTourSlugs = new Set([
     'golden-china',
-    'china-icons-collection',
-    'china-icons-collection-christchurch',
     'essentials',
     'beijing-xian',
     'shanghai-surroundings',
@@ -232,20 +230,6 @@ export default function TourPage({ params }: TourPageProps) {
         secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
         maxGroupSize={tour.maxGroupSize}
-        seasonalBadge={
-          tour.slug === 'china-icons-collection' || tour.slug === 'china-icons-collection-christchurch'
-            ? { label: 'Christmas & New Year Departure' }
-            : undefined
-        }
-        fareSavingsBadge={
-          tour.slug === 'china-icons-collection-christchurch'
-            ? {
-                logoSrc: '/images/airlines/china-southern-tail-badge.png',
-                logoAlt: 'China Southern Airlines',
-                text: "South Island fare saving — NZD $1,000 lower than the Auckland departure, thanks to China Southern's resumed Christchurch–Guangzhou route.",
-              }
-            : undefined
-        }
       />
 
       {/* Quick-facts strip — anchors that jump into the tour tabs */}
@@ -264,41 +248,6 @@ export default function TourPage({ params }: TourPageProps) {
       <TrustBar />
 
       <TourTrustSignals />
-
-      {/* China Icons Collection: cross-link to the sibling Christchurch/Auckland departure */}
-      {(tour.slug === 'china-icons-collection' || tour.slug === 'china-icons-collection-christchurch') && (
-        <section className="bg-red-50 border-y border-red-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-red-700 font-semibold mb-1">
-              {tour.slug === 'china-icons-collection'
-                ? 'Departing From the South Island?'
-                : 'Departing From the North Island?'}
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              {tour.slug === 'china-icons-collection'
-                ? '15-Day Christchurch Departure Available'
-                : '16-Day Auckland Departure Available'}
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              {tour.slug === 'china-icons-collection' ? (
-                <>
-                  Fly direct ex-Christchurch via Guangzhou —{' '}
-                  <Link href="/tours/china/discovery/china-icons-collection-christchurch" className="text-primary underline">
-                    view the 15-day Christchurch itinerary
-                  </Link>
-                </>
-              ) : (
-                <>
-                  Prefer to fly ex-Auckland with an extra day in Guangzhou?{' '}
-                  <Link href="/tours/china/discovery/china-icons-collection" className="text-primary underline">
-                    view the 16-day Auckland itinerary
-                  </Link>
-                </>
-              )}
-            </p>
-          </div>
-        </section>
-      )}
 
       {/* Essentials: November 2026 departure sold out, now selling March 2027 */}
       {tour.slug === 'essentials' && (

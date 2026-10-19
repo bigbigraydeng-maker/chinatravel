@@ -85,7 +85,7 @@ const MONTHS: MonthData[] = [
   {
     label: 'December', short: 'Dec', season: 'Winter', seasonIcon: 'snowflake',
     weather: 'Cold north (Beijing –5 to 5°C), mild south',
-    crowds: 'Low', highlights: 'Fewer tourists, good value, Christmas–New Year tours',
+    crowds: 'Low', highlights: 'Fewer tourists, good value',
     bestFor: ['Yunnan warmth', 'Off-season exploration', 'Value travel'], rating: 3,
   },
 ];

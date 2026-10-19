@@ -30,15 +30,15 @@ export const chinaToursMeta: SeoPageMeta = {
   slug: 'china-tours',
   title: 'China Tours from New Zealand 2026-27 | CTS Tours',
   description:
-    'Featured China tours from NZ 2026-27: Christmas & New Year in China $7,188 (22 Dec 2026) · Christchurch departure $6,188 (22 Dec 2026). Backed by CTS; Auckland-based team. TAANZ-bonded. Free quote.',
+    'Featured China tours from NZ 2026-27: Best of China from $4,080 (11 Mar 2027). Backed by CTS; Auckland-based team. TAANZ-bonded. Free quote.',
   h1: 'China Tours from New Zealand',
-  heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland & Christchurch departures',
+  heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland departures',
   introText:
     'CTS Tours NZ is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland, backed by China Travel Service which runs direct China operations. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
   faqs: [
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
-      answer: 'CTS Tours\' featured China itineraries for Kiwi travellers in 2026-27 are: Christmas & New Year in China (16 days, NZD $7,188, departing 22 December 2026); and Best of China — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai (15 days, NZD $4,080, departing 11 March 2027 — the November 2026 departure sold out). South Island travellers can also fly direct from Christchurch on the 15-day Christmas & New Year departure (NZD $6,188). All are Kiwi-led with NZD pricing and English-speaking guides on the ground in China.'
+      answer: 'CTS Tours\' featured China itinerary for Kiwi travellers in 2026-27 is Best of China — Beijing, Xi\'an, Puyuan, Hangzhou and Shanghai (15 days, NZD $4,080, departing 11 March 2027 — the November 2026 departure sold out). It is Kiwi-led with NZD pricing and English-speaking guides on the ground in China.'
     },
     {
       question: 'What China tour packages does CTS offer?',
@@ -46,7 +46,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
-      answer: 'Yes. Our December Christmas and New Year tours are priced in NZD and include return international airfares from the specified departure city: Auckland or Christchurch. Travellers based elsewhere can ask about domestic connections, quoted separately. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
+      answer: 'Yes. Our China holiday packages are priced in NZD and include return international airfares from Auckland. Travellers based elsewhere can ask about domestic connections, quoted separately. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
     },
     {
       question: 'What is included in a CTS China travel package?',
@@ -62,7 +62,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'How much does a China tour package from New Zealand cost?',
-      answer: 'CTS Tours\' published lead-in prices range from NZD $2,699 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Best of China 15 days from NZD $4,080, and Christmas & New Year in China 16 days from NZD $7,188. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
+      answer: 'CTS Tours\' published lead-in prices range from NZD $2,699 (Shanghai & Surroundings, 10 days, Discovery tier) and NZD $3,480 (Tale of Two Cities — Beijing & Xi\'an, 10 days, Discovery) up to NZD $7,999 (Silk Road, 18 days). Among our featured departures, Best of China 15 days from NZD $4,080. All prices include return international airfares from New Zealand, accommodation, English-speaking guides, entrance fees, and listed meals. Single supplement applies for solo travellers.'
     },
     {
       question: 'Do New Zealand passport holders need a visa for China?',
@@ -70,7 +70,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Which is the best China tour package for first-time visitors?',
-      answer: 'For first-time visitors, Golden China is a focused 12-day journey through Beijing, Xi\'an and Shanghai, departing Auckland on 16 November 2026 from NZD $4,999. Christmas & New Year in China also departs 22 December 2026 from Auckland or Christchurch. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
+      answer: 'For first-time visitors, Golden China is a focused 12-day journey through Beijing, Xi\'an and Shanghai, departing Auckland on 16 November 2026 from NZD $4,999. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
     },
     {
       question: 'What makes CTS Tours different from other China travel agencies in NZ?',

@@ -42,20 +42,6 @@
         "reviewedAt": "2026-09-17"
       },
       {
-        "tourSlug": "china-icons-collection",
-        "status": "included",
-        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
-        "source": "src/lib/data/tours.ts#china-icons-collection",
-        "reviewedAt": "2026-09-17"
-      },
-      {
-        "tourSlug": "china-icons-collection-christchurch",
-        "status": "included",
-        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
-        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
-        "reviewedAt": "2026-09-17"
-      },
-      {
         "tourSlug": "golden-china",
         "status": "included",
         "evidence": "Walk the Great Wall at Juyongguan section",
@@ -105,20 +91,6 @@
         "status": "included",
         "evidence": "Terracotta Warriors with Circle Vision and Bronze Chariot; optional Tang Palace banquet show",
         "source": "src/lib/data/tours.ts#essentials",
-        "reviewedAt": "2026-09-17"
-      },
-      {
-        "tourSlug": "china-icons-collection",
-        "status": "included",
-        "evidence": "The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot",
-        "source": "src/lib/data/tours.ts#china-icons-collection",
-        "reviewedAt": "2026-09-17"
-      },
-      {
-        "tourSlug": "china-icons-collection-christchurch",
-        "status": "included",
-        "evidence": "The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot",
-        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
         "reviewedAt": "2026-09-17"
       },
       {
@@ -259,20 +231,6 @@
         "status": "included",
         "evidence": "Temple of Heaven, Tian'anmen Square, Forbidden City (or substitute Jingshan Park & Prince Gong's Mansion if tickets unavailable), Beihai Park, and the Great Wall",
         "source": "src/lib/data/tours.ts#essentials",
-        "reviewedAt": "2026-09-17"
-      },
-      {
-        "tourSlug": "china-icons-collection",
-        "status": "included",
-        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
-        "source": "src/lib/data/tours.ts#china-icons-collection",
-        "reviewedAt": "2026-09-17"
-      },
-      {
-        "tourSlug": "china-icons-collection-christchurch",
-        "status": "included",
-        "evidence": "The Great Wall at Mutianyu and the Forbidden City, Tian'anmen Square and the Summer Palace in Beijing",
-        "source": "src/lib/data/tours.ts#china-icons-collection-christchurch",
         "reviewedAt": "2026-09-17"
       },
       {

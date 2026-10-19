@@ -15,20 +15,17 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
     description:
-      'Compare Golden China departing Auckland on 16 November 2026 with Christmas & New Year tours departing Auckland or Christchurch on 22 December 2026.',
+      'Golden China, a 12-day journey through Beijing, Xi’an and Shanghai, departing Auckland on 16 November 2026.',
     path: '/campaigns/spotlight',
     ogImagePath: '/images/tours/shanghai-yuyuan-night.jpg',
-    ogImageAlt: 'Shanghai Yu Garden illuminated at night for the CTS Christmas and New Year China tours',
+    ogImageAlt: 'Shanghai Yu Garden illuminated at night',
     keywords: [
       'China group tours 2026',
       'China group tours 2027',
       'New Zealand China tours',
       'CTS Tours spotlight departures',
-      'Christmas & New Year in China',
-      'Christmas in China tour',
       "Beijing Xi'an tour 2027",
       'Best of China tour March 2027',
-      'China tours December 2026',
       'Golden China November 2026',
     ],
   });
@@ -43,7 +40,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Yes — Golden China and both December departures include return international airfares from their respective New Zealand departure city, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
+      'Yes — Golden China includes return international airfares from Auckland, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See the tour’s own inclusions list for the exact detail.',
   },
   {
     question: 'Do I need a visa to visit China?',
@@ -58,7 +55,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these departures sell out?',
     answer:
-      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026 or either 22 December 2026 departure, along with the deposit and cancellation terms before booking.',
+      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026, along with the deposit and cancellation terms before booking.',
   },
 ];
 
@@ -87,7 +84,7 @@ export default function October2026CampaignIndexPage() {
     '@type': 'ItemList',
     name: 'CTS Spotlight China Tours',
     description:
-      'Golden China departing Auckland on 16 November 2026, plus Christmas and New Year group tours departing Auckland and Christchurch on 22 December 2026.',
+      'Golden China departing Auckland on 16 November 2026.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -146,16 +143,16 @@ export default function October2026CampaignIndexPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Golden China departs Auckland on 16 November, followed by Christmas &amp; New Year journeys from Auckland or Christchurch on 22 December 2026.
+              Golden China departs Auckland on 16 November 2026.
               Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 max-w-2xl">
               {[
-                { v: '3', l: 'Featured Tours' },
-                { v: '2', l: 'NZ Departure Cities' },
-                { v: 'Nov–Dec', l: '2026 Departures' },
+                { v: '1', l: 'Featured Tour' },
+                { v: '1', l: 'NZ Departure City' },
+                { v: 'Nov', l: '2026 Departure' },
                 { v: 'NZD $4,999', l: 'From' },
               ].map((s) => (
                 <div

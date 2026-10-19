@@ -49,7 +49,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/experts/baker-gu`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/experts/lisa-li`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/campaigns/best-of-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.65 },
-    { url: `${SITE}/christmas-new-year-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/best-china-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/china-tours-for-seniors`, lastModified: now, changeFrequency: 'monthly', priority: 0.65 },
     { url: `${SITE}/chongqing-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
