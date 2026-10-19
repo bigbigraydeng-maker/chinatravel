@@ -138,8 +138,16 @@ describe('early bird pricing', () => {
   });
 
   test('a date that is not one of the tour departures gets no early bird price', () => {
-    expect(earlyBirdForDeparture(tour('discovery', 'essentials'), '12 March 2027', today)).toBeNull();
-    expect(earlyBirdForDeparture(tour('discovery', 'essentials'), 'not a date', today)).toBeNull();
+    const base = tour('discovery', 'essentials');
+    expect(earlyBirdForDeparture(base, '12 March 2027', today)).toBeNull();
+    expect(earlyBirdForDeparture(base, 'not a date', today)).toBeNull();
+    // Even a stray price entry for a date the tour does not run must not produce one.
+    const stray: Tour = {
+      ...base,
+      departurePricing: { ...base.departurePricing, '12 March 2027': 'NZD $4,080' },
+    };
+    expect(earlyBirdForDeparture(stray, '12 March 2027', today)).toBeNull();
+    expect(Object.keys(earlyBirdPrices(stray, today))).toEqual(['11 March 2027', '13 May 2027']);
   });
 
   test('every early bird price in the catalogue is the regular price minus 200 (Discovery) or 500 (Signature)', () => {
