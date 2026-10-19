@@ -3,17 +3,12 @@ import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getTourBySlug } from '@/lib/data/tours';
 
 describe('Spotlight tour roster', () => {
-  it('restores Golden China without changing the homepage December focus', () => {
+  it('features only Golden China on the spotlight hub and nothing on the homepage', () => {
     expect(OCTOBER_2026_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([
       'golden-china',
-      'china-icons-collection',
-      'china-icons-collection-christchurch',
     ]);
 
-    expect(HOME_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([
-      'china-icons-collection',
-      'china-icons-collection-christchurch',
-    ]);
+    expect(HOME_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([]);
   });
 
   it('only references active, available tours', () => {

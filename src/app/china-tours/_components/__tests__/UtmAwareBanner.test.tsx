@@ -102,7 +102,7 @@ describe('UtmAwareBanner', () => {
     const region = screen.getByRole('region');
     expect(region).toHaveAttribute('data-variant', 'best_of_china');
     expect(screen.getByText(/Best of China · 15 days/i)).toBeInTheDocument();
-    expect(screen.getByText(/from NZD \$3,880/i)).toBeInTheDocument();
+    expect(screen.getByText(/from NZD \$4,080/i)).toBeInTheDocument();
   });
 
   it('best_of_china CTA points at the campaign LP (not the hero anchor)', async () => {

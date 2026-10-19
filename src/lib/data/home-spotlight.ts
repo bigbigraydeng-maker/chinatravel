@@ -11,7 +11,7 @@ import {
  *
  * Reorder or replace entries when marketing priorities change.
  *
- * Current focus: December 2026 departures from Auckland and Christchurch.
+ * Currently empty: no tour is featured. Add entries here to feature tours.
  */
 export type HomeSpotlightTourRef = {
   destination: 'china';
@@ -21,24 +21,14 @@ export type HomeSpotlightTourRef = {
   campaignHref: string;
   /** Short label shown on the tour card departure badge, e.g. "15 Oct 2026". */
   departureLabel: string;
+  /** Departure date as YYYY-MM-DD; orders the card on the spotlight hub. */
+  departureSortDate: string;
+  /** Optional extra badge on the spotlight hub card, e.g. "From Auckland". */
+  badgeText?: string;
   route: string[];
 };
 
-// September 2026: all primary promotion moves to the December departures.
-export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [
-  {
-    destination: 'china', tier: 'discovery', slug: 'china-icons-collection',
-    campaignHref: '/tours/china/discovery/china-icons-collection',
-    departureLabel: '22 Dec 2026 · Auckland',
-    route: ['Shanghai', 'Beijing', "Xi'an", 'Chongqing', 'Guangzhou'],
-  },
-  {
-    destination: 'china', tier: 'discovery', slug: 'china-icons-collection-christchurch',
-    campaignHref: '/tours/china/discovery/china-icons-collection-christchurch',
-    departureLabel: '22 Dec 2026 · Christchurch',
-    route: ['Shanghai', 'Beijing', "Xi'an", 'Chongqing', 'Guangzhou'],
-  },
-];
+export const HOME_SPOTLIGHT_TOURS: HomeSpotlightTourRef[] = [];
 
 // ---------------------------------------------------------------------------
 // Legacy helpers — kept for backward-compat with any code still importing them.

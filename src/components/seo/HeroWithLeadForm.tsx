@@ -99,22 +99,17 @@ interface HeroWithLeadFormProps {
   sectionId?: string;
 }
 
-// Match the flagship tours surfaced lower on /china-tours so the dropdown
-// doubles as the visitor's first signal of which tour they want, plus the
-// Christchurch departure that gets its own section there.
+// The dropdown doubles as the visitor's first signal of which tour they want.
 // Visa-guide page reuses the same list — visitors who land on visa info
 // still need to express tour interest for the FDE to route the lead.
 const DEFAULT_TRAVEL_INTEREST_OPTIONS = [
-  'Christmas & New Year in China — 16 Days (22 Dec 2026)',
-  'Christmas & New Year — 15 Days ex-Christchurch (22 Dec 2026)',
-  'Best of China — 15 Days (11 Mar 2027)',
   'Still deciding — show me all tours',
+  'Best of China — 15 Days (11 Mar 2027)',
 ];
 
 const DEFAULT_BULLETS = [
-  'Kiwi-led, backed by CTS, with China-direct operations · Auckland & Christchurch departures',
+  'Kiwi-led, backed by CTS, with China-direct operations · Auckland departures',
   'NZD pricing · small groups · visa-free options for many NZ travellers',
-  'December 2026 departures from Auckland & Christchurch — ask about availability',
 ];
 
 const PHONE_DISPLAY = '0800 CTS 888';
