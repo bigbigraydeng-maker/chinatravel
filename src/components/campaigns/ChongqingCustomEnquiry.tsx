@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
 
 export default function ChongqingCustomEnquiry() {
   const router = useRouter();
@@ -47,6 +48,9 @@ export default function ChongqingCustomEnquiry() {
         setError(data.error || 'Something went wrong. Please try again.');
         return;
       }
+      // Conversion fires here, once the API has accepted the enquiry. The /thank-you page itself
+      // no longer fires it (a direct visit is not a lead).
+      fireLeadConversion('tour_enquiry');
       router.push('/thank-you?source=chongqing-custom&tour=Chongqing+custom+itinerary');
     } catch {
       setError('Connection error. Please try again or call 0800 CTS 888.');

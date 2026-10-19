@@ -1,8 +1,9 @@
 /**
  * ChongqingCustomEnquiry — after a successful submit the visitor must land on
- * the real /thank-you page (which fires the lead conversion events). The form
- * previously pushed to /enquiry-thank-you, a route that does not exist, so
- * visitors saw a 404 right after enquiring.
+ * the real /thank-you page. The form previously pushed to /enquiry-thank-you,
+ * a route that does not exist, so visitors saw a 404 right after enquiring.
+ * (The lead conversion is fired by the form itself, not by /thank-you — see
+ * ChongqingCustomEnquiry.lead-timing.test.tsx.)
  */
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import ChongqingCustomEnquiry from '../ChongqingCustomEnquiry';

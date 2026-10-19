@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
+import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
 
 interface TourEnquiryProps {
   tourName: string;
@@ -87,6 +88,10 @@ export default function TourEnquiry({
         utm_content: utm.utm_content,
         timestamp: Date.now(),
       });
+      // Google Ads conversion + Meta Pixel Lead + GA4 generate_lead — only now that the API has
+      // accepted the enquiry. The /thank-you page itself no longer fires it (a direct visit is
+      // not a lead).
+      fireLeadConversion('tour_enquiry');
       const q = new URLSearchParams({
         tour: tourName,
         slug: tourSlug,
