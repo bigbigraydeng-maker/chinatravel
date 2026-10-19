@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getSiteUrl } from '@/lib/site';
-import { attributionEmailRows, sanitizeAttribution } from '@/lib/analytics/attribution';
+import {
+  attributionEmailRows,
+  fbclidEmailRow,
+  sanitizeAttribution,
+  sanitizeFbclid,
+} from '@/lib/analytics/attribution';
 import { getTourBySlug } from '@/lib/data/tours';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
@@ -69,6 +74,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Ad source</td><td>${escapeHtml(adSource)}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
     ${attributionEmailRows(attribution)}
+    ${fbclidEmailRow(sanitizeFbclid(utmObj.fbclid))}
   </table>
   ${message ? `<p style="margin-top:16px;"><strong>Message</strong></p><p style="white-space:pre-wrap;">${escapeHtml(String(message))}</p>` : ''}
 </body>

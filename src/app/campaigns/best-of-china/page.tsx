@@ -12,6 +12,7 @@ import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
@@ -103,6 +104,7 @@ export default function BestOfChinaLandingPage() {
   return (
     <>
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       <StickyPriceBar />
       <CampaignWelcomeBanner />

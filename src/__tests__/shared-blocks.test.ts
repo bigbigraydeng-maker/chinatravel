@@ -56,6 +56,8 @@ const SHARED_BLOCKS = [
   'FacebookFollowStrip',
   'CtsDepartureScheduleBlock',
   'SchemaMarkup',
+  // Invisible: Meta ViewContent ("viewed tour X" audiences) — see src/lib/analytics/view-content.ts.
+  'TourViewContent',
 ] as const;
 
 function extractImportedIdentifiers(relPath: string): Set<string> {

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getTourBySlug } from '@/lib/data/tours';
 import TrustBar from '@/components/TrustBar';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import ChongqingCustomEnquiry from '@/components/campaigns/ChongqingCustomEnquiry';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
@@ -93,6 +94,7 @@ export default function ChongqingLandingPage() {
   return (
     <>
       <SchemaMarkup data={[schema]} />
+      {tour && <TourViewContent tour={tour} />}
 
       {/* ── Hero ── */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">

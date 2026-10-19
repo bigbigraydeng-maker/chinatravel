@@ -8,6 +8,7 @@ import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import TourSupportingContentLinks from '@/components/tours/TourSupportingContentLinks';
 import ChinaVisaNudge from '@/components/tours/ChinaVisaNudge';
@@ -83,6 +84,7 @@ export default function FireFuzzCampaignPage() {
   return (
     <>
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
