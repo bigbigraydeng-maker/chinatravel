@@ -194,8 +194,6 @@ export const xianHub: DestinationHubConfig = {
     { tier: 'signature', slug: 'imperial-heritage' },
     { tier: 'signature', slug: 'grand-tour' },
     { tier: 'discovery', slug: 'golden-china' },
-    { tier: 'discovery', slug: 'china-icons-collection' },
-    { tier: 'discovery', slug: 'china-icons-collection-christchurch' },
   ],
   /** First N tours are shown as cards; the rest sit in a collapsed list. */
   featuredCount: 4,

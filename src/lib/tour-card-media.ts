@@ -54,14 +54,6 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     src: '/images/tours/forbidden-city-aerial.jpg',
     objectPosition: '50% 54%',
   },
-  'china-icons-collection': {
-    src: '/images/campaigns/christmas-new-year/festive-china-og.webp',
-    objectPosition: '50% 52%',
-  },
-  'china-icons-collection-christchurch': {
-    src: '/images/tours/great-wall-mist.jpg',
-    objectPosition: '50% 48%',
-  },
 };
 
 export function getTourCardMedia(tour: TourCardMediaSource): TourCardMedia {

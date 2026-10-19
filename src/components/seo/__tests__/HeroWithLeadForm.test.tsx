@@ -133,13 +133,14 @@ describe('HeroWithLeadForm', () => {
     const labels = Array.from(select.options).map((o) => o.value);
     expect(labels).toEqual(
       expect.arrayContaining([
-        'Christmas & New Year in China — 16 Days (22 Dec 2026)',
-        'Christmas & New Year — 15 Days ex-Christchurch (22 Dec 2026)',
         'Best of China — 15 Days (11 Mar 2027)',
         'Still deciding — show me all tours',
       ])
     );
-    expect(labels).toHaveLength(4);
+    expect(labels).toHaveLength(2);
+    expect(labels.join(' | ')).not.toMatch(/Christmas|Christchurch/);
+    // "Still deciding" is the default choice, so a visitor is not tagged with one tour by accident.
+    expect(select.value).toBe('Still deciding — show me all tours');
     expect(labels.join(' | ')).not.toMatch(/Golden China/);
   });
 

@@ -22,11 +22,17 @@ interface FlagshipTourGridProps {
   intro?: string;
 }
 
-// December departures are the primary promotion, approved 17 September 2026.
-const FLAGSHIP_TOURS = [
-  { slug: 'china-icons-collection', ribbon: '22 December · Auckland', href: '/tours/china/discovery/china-icons-collection', imageOverride: undefined },
-  { slug: 'china-icons-collection-christchurch', ribbon: '22 December · Christchurch', href: '/tours/china/discovery/china-icons-collection-christchurch', imageOverride: undefined },
-];
+interface FlagshipEntry {
+  slug: string;
+  ribbon: string;
+  href: string;
+  imageOverride?: string;
+}
+
+// Tours featured on the China Tours page, e.g.
+// { slug: 'beijing-xian', ribbon: '18 March · Auckland', href: '/tours/china/discovery/beijing-xian' }.
+// While this list is empty the grid renders nothing.
+const FLAGSHIP_TOURS: FlagshipEntry[] = [];
 
 /**
  * Strip the "From " prefix and " per person" suffix so prices render with
@@ -73,16 +79,18 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
     return { ...entry, tour };
   }).slice(0, limit ?? FLAGSHIP_TOURS.length);
 
+  if (cards.length === 0) return null;
+
   return (
     <section className="bg-warm-50 border-y border-warm-100">
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-3xl mb-8">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-            {heading ?? 'Christmas & New Year in China'}
+            {heading ?? 'Featured China journeys'}
           </h2>
           <p className="text-lg text-gray-700">
             {intro ??
-              'Depart on 22 December 2026 from Auckland or Christchurch. Choose your festive journey and ask our specialists about availability.'}
+              'Choose your journey and ask our specialists about availability.'}
           </p>
         </div>
 

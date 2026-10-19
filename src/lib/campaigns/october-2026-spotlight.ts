@@ -11,8 +11,8 @@ export type SpotlightTourCard = {
   badgeText?: string;
 };
 
-// Retain the export name for existing consumers. The campaign hub includes the
-// reopened November departure while the homepage keeps its December-first focus.
+// Retain the export name for existing consumers. The campaign hub features the
+// November departure; the homepage roster (HOME_SPOTLIGHT_TOURS) is currently empty.
 export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
   {
     slug: 'golden-china',
@@ -30,8 +30,8 @@ export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
     tier: ref.tier,
     href: ref.campaignHref,
     departureLabel: ref.departureLabel,
-    departureSortDate: '2026-12-22',
+    departureSortDate: ref.departureSortDate,
     routeCities: ref.route,
-    badgeText: ref.slug.endsWith('christchurch') ? 'From Christchurch' : 'From Auckland',
+    badgeText: ref.badgeText,
   })),
 ];

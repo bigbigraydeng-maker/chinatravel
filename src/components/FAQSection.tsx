@@ -43,7 +43,7 @@ const defaultFaqs: FAQ[] = [
   },
   {
     question: 'What is the group size for these tours?',
-    answer: 'Our small group tours typically have a maximum of 16-20 passengers to ensure a personalized experience. Private tours can be arranged for any group size. We also offer tailor-made itineraries for families or groups who prefer exclusive travel arrangements.',
+    answer: 'Our tours run as small groups to ensure a personalized experience. Private tours can be arranged for any group size. We also offer tailor-made itineraries for families or groups who prefer exclusive travel arrangements.',
   },
   {
     question: 'Are airport transfers included?',

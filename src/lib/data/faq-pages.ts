@@ -563,7 +563,7 @@ export const faqTourPlanning: FAQPage = {
       monthlySearches: 180,
       answer: `Both work well — the right choice depends on your travel style and budget.
 
-<strong>Group tours</strong> are structured itineraries with fixed dates, set accommodation, and a group of typically 8–16 travellers sharing the same schedule. They cost 20–40% less than private equivalents, are fully organised so you do not need to handle logistics, and provide a social dimension that solo or couple travellers often appreciate. The trade-off is flexibility: the itinerary is set, and the pace must accommodate the whole group.
+<strong>Group tours</strong> are structured itineraries with fixed dates, set accommodation, and a small group of travellers sharing the same schedule. They cost 20–40% less than private equivalents, are fully organised so you do not need to handle logistics, and provide a social dimension that solo or couple travellers often appreciate. The trade-off is flexibility: the itinerary is set, and the pace must accommodate the whole group.
 
 <strong>Tailor-made private tours</strong> are planned specifically for you. Departure dates are flexible, the itinerary can be built around your interests (food, history, photography, hiking), accommodation can range from 3-star to 5-star at your choice, and the pace is yours. They cost more, but the experience is qualitatively different.
 
@@ -715,7 +715,7 @@ Our guides handle payments for group activities; this is most relevant for perso
 - <a href="/tours/china/discovery/beijing-xian">A Tale of Two Cities — Beijing & Xi'an</a> (7 days)
 - <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Surroundings</a> (7 days)
 - Fixed departure dates throughout the year
-- Group size: 8–16 travellers
+- Small group departures
 - Includes accommodation, transport, guide, major entrance fees
 
 <strong>Signature Tours (tailor-made):</strong>

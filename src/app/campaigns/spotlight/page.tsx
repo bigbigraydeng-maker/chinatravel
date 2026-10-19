@@ -10,25 +10,23 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { priceNumber } from '@/lib/tour-discovery';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
     description:
-      'Compare Golden China departing Auckland on 16 November 2026 with Christmas & New Year tours departing Auckland or Christchurch on 22 December 2026.',
+      'Golden China, a 12-day journey through Beijing, Xi’an and Shanghai, departing Auckland on 16 November 2026.',
     path: '/campaigns/spotlight',
     ogImagePath: '/images/tours/shanghai-yuyuan-night.jpg',
-    ogImageAlt: 'Shanghai Yu Garden illuminated at night for the CTS Christmas and New Year China tours',
+    ogImageAlt: 'Shanghai Yu Garden illuminated at night',
     keywords: [
       'China group tours 2026',
       'China group tours 2027',
       'New Zealand China tours',
       'CTS Tours spotlight departures',
-      'Christmas & New Year in China',
-      'Christmas in China tour',
       "Beijing Xi'an tour 2027",
       'Best of China tour March 2027',
-      'China tours December 2026',
       'Golden China November 2026',
     ],
   });
@@ -38,12 +36,12 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Why book a small group tour vs a private tour?',
     answer:
-      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Group sizes are capped at 16–20 to keep things personal. If you prefer your own pace, ask us about converting any featured departure into a fully private booking — same itinerary, same guides, your own van and timings.',
+      'Group tours give you the full CTS itinerary at a sharper per-person price, plus the social side of travelling with like-minded Kiwis. Groups are kept small to keep things personal. If you prefer your own pace, ask us about converting any featured departure into a fully private booking — same itinerary, same guides, your own van and timings.',
   },
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Yes — Golden China and both December departures include return international airfares from their respective New Zealand departure city, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
+      'Yes — Golden China includes return international airfares from Auckland, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See the tour’s own inclusions list for the exact detail.',
   },
   {
     question: 'Do I need a visa to visit China?',
@@ -58,7 +56,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these departures sell out?',
     answer:
-      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026 or either 22 December 2026 departure, along with the deposit and cancellation terms before booking.',
+      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026, along with the deposit and cancellation terms before booking.',
   },
 ];
 
@@ -68,7 +66,7 @@ export default function October2026CampaignIndexPage() {
   // Build cards from spotlight config + tours.ts data.
   const cards = OCTOBER_2026_SPOTLIGHT_TOURS.map((spot) => {
     const tour = getTourBySlug(spot.destination, spot.tier, spot.slug);
-    if (!tour?.isActive || tour.soldOut) return null;
+    if (!tour?.isActive) return null;
     return {
       spot,
       tour,
@@ -87,7 +85,7 @@ export default function October2026CampaignIndexPage() {
     '@type': 'ItemList',
     name: 'CTS Spotlight China Tours',
     description:
-      'Golden China departing Auckland on 16 November 2026, plus Christmas and New Year group tours departing Auckland and Christchurch on 22 December 2026.',
+      'Golden China departing Auckland on 16 November 2026.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -98,6 +96,17 @@ export default function October2026CampaignIndexPage() {
       image: c.tour.heroImage,
     })),
   };
+
+  const available = cards.filter(({ tour }) => !tour.soldOut);
+  const lowestPrice = available
+    .map(({ tour }) => priceNumber(tour.price))
+    .filter((n): n is number => n !== null)
+    .sort((a, b) => a - b)[0];
+  const stats = [
+    { v: String(cards.length), l: cards.length === 1 ? 'Featured Tour' : 'Featured Tours' },
+    { v: available[0] ? available[0].spot.departureLabel.split(' · ')[0] : 'Sold out', l: 'Next Departure' },
+    ...(lowestPrice !== undefined ? [{ v: `NZD $${lowestPrice.toLocaleString('en-NZ')}`, l: 'From' }] : []),
+  ];
 
   return (
     <>
@@ -138,7 +147,7 @@ export default function October2026CampaignIndexPage() {
           <div className="max-w-3xl">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-sm px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-6">
               <span className="inline-block h-2 w-2 rounded-full bg-orange-400 animate-pulse" aria-hidden />
-              Limited Departures · Book Now
+              Featured Departures
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6">
@@ -146,18 +155,13 @@ export default function October2026CampaignIndexPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Golden China departs Auckland on 16 November, followed by Christmas &amp; New Year journeys from Auckland or Christchurch on 22 December 2026.
-              Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
+              Golden China departs Auckland on 16 November 2026.
+              Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 max-w-2xl">
-              {[
-                { v: '3', l: 'Featured Tours' },
-                { v: '2', l: 'NZ Departure Cities' },
-                { v: 'Nov–Dec', l: '2026 Departures' },
-                { v: 'NZD $4,999', l: 'From' },
-              ].map((s) => (
+              {stats.map((s) => (
                 <div
                   key={s.l}
                   className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm px-4 py-3"
@@ -207,7 +211,7 @@ export default function October2026CampaignIndexPage() {
               Choose Your Journey
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              Each tour is a confirmed group departure with set dates, fixed pricing, and limited seats.
+              Each tour is a confirmed group departure with set dates and fixed pricing.
               Click for full itineraries, day-by-day inclusions, and bookings.
             </p>
           </div>
@@ -237,9 +241,9 @@ export default function October2026CampaignIndexPage() {
                       </svg>
                       {spot.departureLabel}
                     </div>
-                    {spot.badgeText && (
+                    {(tour.soldOut || spot.badgeText) && (
                       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
-                        {spot.badgeText}
+                        {tour.soldOut ? 'Sold out' : spot.badgeText}
                       </div>
                     )}
                   </div>
@@ -286,6 +290,16 @@ export default function October2026CampaignIndexPage() {
               </Link>
             ))}
           </div>
+
+          {cards.length === 0 && (
+            <p className="text-center text-gray-600">
+              No featured departures are listed right now.{' '}
+              <Link href="/tours/china/discovery" className="text-primary underline">
+                See all Discovery tours
+              </Link>
+              .
+            </p>
+          )}
         </div>
       </section>
 
@@ -395,8 +409,7 @@ export default function October2026CampaignIndexPage() {
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
             Book a featured group departure above, or talk to our Auckland team about a
-            fully tailor-made private trip. Either way — limited seats, and pricing locks in
-            once you confirm.
+            fully tailor-made private trip. Either way, pricing locks in once you confirm.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

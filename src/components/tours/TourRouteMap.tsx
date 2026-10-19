@@ -20,8 +20,6 @@ const MAP_SLUGS = [
   'silk-road',
   'grand-tour',
   'landscapes',
-  'china-icons-collection',
-  'china-icons-collection-christchurch',
   'yunnan-explorer',
   'zhangjiajie',
 ] as const;

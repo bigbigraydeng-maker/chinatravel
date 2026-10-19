@@ -50,12 +50,6 @@ export default function AvailabilityBadge({
 
   return (
     <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-4 mb-6">
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-        <span className="text-sm font-bold text-amber-800">
-          Limited Availability
-        </span>
-      </div>
 
       {departureDate && (
         <div className="flex items-center gap-4">

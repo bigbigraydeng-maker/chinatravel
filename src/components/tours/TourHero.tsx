@@ -27,10 +27,8 @@ interface TourHeroProps {
   /** Explains what the single supplement covers. */
   singleSupplementNote?: string;
   /**
-   * Maximum group size for this specific tour. Overrides the tier default
-   * (signature 16 / discovery 20 / stopover 18) shown in the USP triplet.
-   * Only pass when the tour data carries `maxGroupSize` — otherwise leave
-   * undefined and the tier default wins.
+   * Kept for callers that still pass `tour.maxGroupSize`; not displayed
+   * (PM 2026-10-14: no public group-size number).
    */
   maxGroupSize?: number;
   /**
@@ -40,12 +38,12 @@ interface TourHeroProps {
    */
   departurePricing?: Record<string, string>;
   /**
-   * Seasonal framing for a specific departure (e.g. Christmas & New Year).
+   * Seasonal framing for a specific departure (e.g. a festive-season departure).
    * Renders a warm badge above the title and a soft amber glow over the hero
    * photo. Deliberately restrained — research on comparable festive tour
-   * pages (Wendy Wu's Christmas-in-China line) shows the mood is carried by
-   * warm night photography and a single badge, not holiday iconography, so
-   * there's no snowflakes/santa-hat treatment here, just warmth and light.
+   * pages shows the mood is carried by warm night photography and a single
+   * badge, not holiday iconography, so there's no snowflakes/santa-hat
+   * treatment here, just warmth and light.
    */
   seasonalBadge?: { label: string };
   /**
@@ -70,21 +68,15 @@ export default function TourHero({
   secondaryCtaLabel = 'View Itinerary',
   singleSupplement,
   singleSupplementNote,
-  maxGroupSize,
   departurePricing,
   seasonalBadge,
   fareSavingsBadge,
 }: TourHeroProps) {
-  // Tier default group size (PM 2026-09-12): Signature capped smaller than
-  // Discovery. A tour's own `maxGroupSize` (e.g. Golden China's 12) always
-  // wins over this default.
-  const TIER_DEFAULT_GROUP_SIZE: Record<string, number> = {
-    signature: 16,
-    discovery: 20,
-  };
+  // PM 2026-10-14: no public group-size number on any tour page. `maxGroupSize`
+  // stays in tour data but is no longer rendered here.
   const groupSizeLabel = tier === 'stopover'
     ? 'Flexible stopover package · confirm traveller numbers'
-    : `Small group · max ${maxGroupSize ?? TIER_DEFAULT_GROUP_SIZE[tier] ?? 18} travellers`;
+    : 'Small group';
   const tierColors = {
     signature: 'bg-amber-500',
     discovery: 'bg-blue-500',

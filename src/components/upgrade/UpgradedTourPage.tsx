@@ -44,22 +44,6 @@ const goldenPhotos = [
 ];
 
 const galleryAlts: Record<string, string[]> = {
-  'china-icons-collection': [
-    'Shanghai skyline dressed for Christmas and New Year',
-    'Shanghai illuminated at night during the festive season',
-    'The Great Wall in winter mist',
-    'Aerial view across Beijing’s Forbidden City',
-    'The Terracotta Warriors in Xi’an',
-    'An illuminated Chinese pagoda at night',
-  ],
-  'china-icons-collection-christchurch': [
-    'Shanghai’s illuminated Nanjing Road during the festive season',
-    'Shanghai illuminated at night during the festive season',
-    'The Great Wall in winter mist',
-    'Aerial view across Beijing’s Forbidden City',
-    'The Terracotta Warriors in Xi’an',
-    'An illuminated Chinese pagoda at night',
-  ],
   'beijing-xian': [
     'Golden guardian lion at Beijing’s Forbidden City',
     'The Terracotta Warriors in Xi’an',
@@ -107,22 +91,6 @@ const additionalGalleryImages: Record<string, { src: string; alt: string }[]> = 
 };
 
 const localGallerySources: Record<string, string[]> = {
-  'china-icons-collection': [
-    'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
-    '/images/tours/shanghai-night-red.jpg',
-    '/images/tours/great-wall-mist.jpg',
-    '/images/tours/forbidden-city-aerial.jpg',
-    '/images/tours/xian-terracotta.jpg',
-    '/images/tours/china-pagoda-night.jpg',
-  ],
-  'china-icons-collection-christchurch': [
-    '/images/campaigns/christmas-new-year/festive-china-og.webp',
-    '/images/tours/shanghai-night-red.jpg',
-    '/images/tours/great-wall-mist.jpg',
-    '/images/tours/forbidden-city-aerial.jpg',
-    '/images/tours/xian-terracotta.jpg',
-    '/images/tours/china-pagoda-night.jpg',
-  ],
   'beijing-xian': [
     '/images/tours/forbidden-city-gold-lion.jpg',
     '/images/tours/xian-terracotta.jpg',
@@ -153,8 +121,6 @@ const localGallerySources: Record<string, string[]> = {
 
 const overviewHeadings: Record<string, string> = {
   'golden-china': 'A journey through China’s icons.',
-  'china-icons-collection': 'Celebrate the season across China’s great cities.',
-  'china-icons-collection-christchurch': 'A direct South Island departure for China’s festive season.',
   'beijing-xian': 'Two capitals, one clear introduction to China.',
   essentials: 'China’s essential cities, paced for discovery.',
   'shanghai-surroundings': 'Water towns, gardens and the Shanghai skyline.',
@@ -217,12 +183,10 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
           <section className="mb-8 rounded-2xl border border-primary/20 bg-white p-6">
             <h2 className="font-serif text-3xl text-primary">{tour.departureDates?.[0] ?? 'This departure'} · Sold Out</h2>
             <p className="mt-3 text-ink-muted">
-              {tour.slug === 'golden-china'
-                ? 'This Golden China departure is fully booked. Join our Christmas & New Year journeys departing Auckland or Christchurch on 22 December 2026.'
-                : 'This departure is fully booked. Explore our current confirmed journeys or ask CTS about future dates.'}
+              This departure is fully booked. Explore our current confirmed journeys or ask CTS about future dates.
             </p>
-            <Link href="/campaigns/spotlight" className="mt-4 inline-block font-semibold text-primary">
-              {tour.slug === 'golden-china' ? 'Explore December tours →' : 'Explore available tours →'}
+            <Link href="/tours/china/discovery" className="mt-4 inline-block font-semibold text-primary">
+              Explore available tours →
             </Link>
           </section>
         )}

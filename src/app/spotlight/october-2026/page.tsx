@@ -11,9 +11,9 @@ import {
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
-    title: 'Spotlight Poster | October–December 2026 China Tours',
+    title: 'Spotlight Poster | October–November 2026 China Tours',
     description:
-      "Newspaper-style Spotlight poster for CTS Tours' October to December 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities, Best of China and the Christmas & New Year in China journey.",
+      "Newspaper-style Spotlight poster for CTS Tours' October and November 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities and Best of China.",
     path: '/spotlight/october-2026',
     /** Print / QR-only: not linked from site nav; keep out of organic results. */
     robots: { index: false, follow: true },
@@ -23,12 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [
       'China spotlight tours',
       'October 2026 China departures',
-      'December 2026 China departures',
       'Shanghai and Surroundings',
       'Beijing and Xian tour',
       'Best of China 15 day tour',
-      'Christmas & New Year in China',
-      'Christmas in China tour',
       'CTS Tours',
     ],
     ogType: 'website',
@@ -45,7 +42,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
   const shanghaiTour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
   const twoCitiesTour = getTourBySlug('china', 'discovery', 'beijing-xian');
   const bestOfChinaTour = getTourBySlug('china', 'discovery', 'essentials');
-  const iconsTour = getTourBySlug('china', 'discovery', 'china-icons-collection');
 
   if (!shanghaiTour || !twoCitiesTour) {
     return null;
@@ -78,14 +74,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
       utm_content: 'discovery_best_of_china',
     }
   ).toString()}`;
-  const iconsUtmUrl = `${siteUrl.replace(/\/$/, '')}/tours/china/discovery/china-icons-collection?${new URLSearchParams(
-    {
-      utm_source: 'nz_newspaper',
-      utm_medium: 'print',
-      utm_campaign: 'tour_spotlight_202612',
-      utm_content: 'discovery_china_icons_collection',
-    }
-  ).toString()}`;
   const posterHeroImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg';
   const posterShanghaiImage =
@@ -93,13 +81,11 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
   const posterBeijingXianImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg';
   const posterBestOfChinaImage = '/blog/group-great-wall-cts.jpg';
-  const posterIconsImage = '/blog/group-shanghai-bund-skyline.jpg';
 
   const focus = searchParams?.focus;
   const highlightShanghai = focus === 'shanghai-surroundings';
   const highlightTwoCities = focus === 'tale-of-two-cities';
   const highlightBestOfChina = focus === 'essentials';
-  const highlightIcons = focus === 'china-icons-collection';
 
   return (
     <main className="bg-[#f3f0eb]">
@@ -135,9 +121,8 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 </p>
                 <p className="mt-1.5 text-[10px] leading-[1.2] text-gray-800 md:text-[11px]">
                   Explore China&apos;s most iconic destinations this October &mdash; from the elegance of Shanghai
-                  and its surrounding water towns to the history of Beijing and Xi&apos;an &mdash; or spend Christmas
-                  and New Year there on our 16-day festive journey. Designed for first-time travellers, these
-                  small-group journeys make it easy to experience the very best of China.
+                  and its surrounding water towns to the history of Beijing and Xi&apos;an. Designed for first-time
+                  travellers, these small-group journeys make it easy to experience the very best of China.
                 </p>
               </div>
             </div>
@@ -318,74 +303,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
             </section>
           )}
 
-          {iconsTour && (
-            <section className="bg-[#ece9e4] px-4 pb-6 md:px-6 md:pb-6">
-              <div className="mb-3 flex items-center gap-3">
-                <div className="h-px flex-1 bg-[#d3203b]/30" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">
-                  Christmas &amp; New Year Departure
-                </span>
-                <div className="h-px flex-1 bg-[#d3203b]/30" />
-              </div>
-              <article
-                className={`overflow-hidden bg-white shadow-sm transition md:grid md:grid-cols-2 ${
-                  highlightIcons ? 'ring-4 ring-[#d3203b]/40 shadow-xl' : ''
-                }`}
-              >
-                <div className="relative h-56 md:h-auto md:min-h-[280px]">
-                  <Image
-                    src={posterIconsImage}
-                    alt="CTS travellers on the Shanghai Bund with the Pudong skyline behind them"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div className="p-4 md:p-5">
-                  <h2 className="font-serif text-[42px] font-bold leading-[0.95] text-[#c72235]">
-                    Christmas &amp; New Year in China
-                  </h2>
-                  <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
-                    16 Days | Depart 22 December 2026
-                  </p>
-                  <p className="mt-2 text-[16px] leading-relaxed text-black">
-                    &bull; Christmas in Shanghai &bull; New Year&apos;s Eve in Xi&apos;an &bull; Great Wall at Mutianyu &bull; Terracotta Warriors
-                  </p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                    Spend Christmas among Shanghai&apos;s markets and skyline, then count down to the New Year
-                    at Xi&apos;an&apos;s Tang Dynasty Ever-Bright City. Beijing, Chongqing and a Cantonese
-                    yum cha finale in Guangzhou complete the journey.
-                  </p>
-                  <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
-                    <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                    <p className="text-4xl font-bold">$7,188pp</p>
-                  </div>
-                  <div className="mt-4 grid grid-cols-4 gap-1.5">
-                    {[
-                      { src: '/blog/group-shanghai-bund-selfie.jpg', alt: 'CTS travellers photographing themselves on the Shanghai Bund' },
-                      { src: '/blog/group-ancient-gate-night.jpg', alt: 'Travellers at a floodlit ancient city gate at night' },
-                      { src: '/blog/chongqing-night-skyline-hongyadong.jpg', alt: 'Hongyadong stilt houses lit up above the river in Chongqing' },
-                      { src: '/blog/group-walking-shanghai-lane.jpg', alt: 'Travellers walking a Shanghai lane with a local guide' },
-                    ].map((img) => (
-                      <div key={img.src} className="relative aspect-square rounded overflow-hidden">
-                        <Image src={img.src} alt={img.alt} fill className="object-cover object-top" sizes="80px" />
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-1.5 text-[11px] text-gray-500 italic">Shanghai, Xi&apos;an and Chongqing on recent CTS departures</p>
-                  <div className="mt-4">
-                    <Link
-                      href={iconsUtmUrl}
-                      className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"
-                    >
-                      View Christmas &amp; New Year in China
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            </section>
-          )}
-
           <footer className="bg-[#1f3563] px-4 py-4 text-center text-sm font-semibold text-white md:text-base">
             NEW ZEALAND&apos;S CHINA SPECIALISTS &middot; ON-THE-GROUND SUPPORT &middot; BACKED BY CTS
           </footer>
@@ -422,16 +339,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 <p className="font-semibold text-gray-900">Best of China:</p>
                 <a href={bestOfChinaUtmUrl} className="break-all text-primary underline underline-offset-2">
                   {bestOfChinaUtmUrl}
-                </a>
-              </div>
-            )}
-            {iconsTour && (
-              <div>
-                <p className="font-semibold text-gray-900">
-                  Christmas &amp; New Year in China:
-                </p>
-                <a href={iconsUtmUrl} className="break-all text-primary underline underline-offset-2">
-                  {iconsUtmUrl}
                 </a>
               </div>
             )}
