@@ -4,6 +4,8 @@ import type { DayItinerary } from '@/lib/data/tours';
 interface TourQuickInfoStripProps {
   duration: string;
   price: string;
+  /** Small label under the price when it is an early bird price. */
+  priceNote?: string;
   itinerary: DayItinerary[];
   tier: 'signature' | 'discovery' | 'stopover';
   singleSupplement?: string;
@@ -21,6 +23,7 @@ interface TourQuickInfoStripProps {
 export default function TourQuickInfoStrip({
   duration,
   price,
+  priceNote,
   itinerary,
   tier,
   singleSupplement,
@@ -42,7 +45,7 @@ export default function TourQuickInfoStrip({
   }
   const totalMeals = breakfasts + lunches + dinners;
 
-  const items: { label: string; value: string; sub: string; href: string }[] = [
+  const items: { label: string; value: string; sub: string; note?: string; href: string }[] = [
     {
       label: tier === 'stopover' ? 'Land Package' : 'Fully Inclusive',
       value: tier === 'stopover' ? 'Clear inclusions' : 'All-in NZD',
@@ -71,6 +74,7 @@ export default function TourQuickInfoStrip({
       label: 'From',
       value: price,
       sub: 'Per person twin share',
+      note: priceNote,
       href: '#enquiry',
     },
     ...(singleSupplement
@@ -109,6 +113,9 @@ export default function TourQuickInfoStrip({
                 <p className="mt-0.5 text-xs text-gray-600 leading-snug">
                   {item.sub}
                 </p>
+                {item.note && (
+                  <p className="mt-0.5 text-xs text-primary leading-snug">{item.note}</p>
+                )}
               </Link>
             </li>
           ))}

@@ -11,6 +11,7 @@ import {
   headlineWithEarlyBird,
   pricePlaceholders,
   resolvePriceText,
+  tourPriceDisplay,
 } from '@/lib/pricing/display-price';
 
 const tour = (tier: 'discovery' | 'signature', slug: string): Tour => {
@@ -109,5 +110,34 @@ describe('display-price', () => {
     expect(resolvePriceText('A private room adds NZD $800.', tour('discovery', 'essentials'), { today: during })).toBe(
       'A private room adds NZD $800.',
     );
+  });
+
+  test('tourPriceDisplay bundles every price a page shows, early bird while the promotion is open', () => {
+    const t = tour('discovery', 'beijing-xian');
+    const view = tourPriceDisplay(t, during);
+    expect(view.headline).toBe('From NZD $3,280');
+    expect(view.departurePricing).toEqual({ '18 March 2027': 'NZD $3,280', '10 June 2027': 'NZD $3,480' });
+    expect(view.lead?.amount).toBe(3280);
+    expect(Object.keys(view.earlyBird)).toEqual(['18 March 2027', '10 June 2027']);
+    expect(view.label).toBe('Early bird price · available until 30 November 2026');
+  });
+
+  test('tourPriceDisplay shows regular prices and no label after the deadline', () => {
+    const t = tour('discovery', 'beijing-xian');
+    const view = tourPriceDisplay(t, after);
+    expect(view.headline).toBe(t.price);
+    expect(view.departurePricing).toEqual({ '18 March 2027': 'NZD $3,480', '10 June 2027': 'NZD $3,680' });
+    expect(view.lead).toBeNull();
+    expect(view.earlyBird).toEqual({});
+    expect(view.label).toBeNull();
+  });
+
+  test('tourPriceDisplay leaves a tour outside the promotion untouched, and one without per-departure prices has no map', () => {
+    const silk = tour('signature', 'silk-road');
+    const view = tourPriceDisplay(silk, during);
+    expect(view.headline).toBe(silk.price);
+    expect(view.label).toBeNull();
+    const noPricing: Tour = { ...tour('discovery', 'essentials'), departurePricing: undefined };
+    expect(tourPriceDisplay(noPricing, during).departurePricing).toBeUndefined();
   });
 });

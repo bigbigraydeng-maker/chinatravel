@@ -37,6 +37,10 @@ interface TourHeroProps {
    * simple chips. Keys MUST match entries in `departureDates`.
    */
   departurePricing?: Record<string, string>;
+  /** Small label shown under an early bird price (price cards and the headline price). */
+  earlyBirdLabel?: string;
+  /** Departure labels whose price in `departurePricing` is an early bird price. */
+  earlyBirdDepartures?: string[];
   /**
    * Seasonal framing for a specific departure (e.g. a festive-season departure).
    * Renders a warm badge above the title and a soft amber glow over the hero
@@ -69,6 +73,8 @@ export default function TourHero({
   singleSupplement,
   singleSupplementNote,
   departurePricing,
+  earlyBirdLabel,
+  earlyBirdDepartures,
   seasonalBadge,
   fareSavingsBadge,
 }: TourHeroProps) {
@@ -251,6 +257,9 @@ export default function TourHero({
                             <p className="text-lg font-bold text-white mt-1">
                               {datePrice}
                               <span className="text-xs font-normal text-white/70 ml-1">per person</span>
+                              {earlyBirdLabel && earlyBirdDepartures?.includes(d) && (
+                                <span className="block text-xs font-normal text-white/80 mt-0.5">{earlyBirdLabel}</span>
+                              )}
                             </p>
                           )}
                           {singleSupplement && (
@@ -313,6 +322,9 @@ export default function TourHero({
               </svg>
               <div>
                 <span className="text-lg font-semibold">{price}</span>
+                {earlyBirdLabel && (
+                  <span className="block text-xs text-white/80 mt-0.5">{earlyBirdLabel}</span>
+                )}
                 {singleSupplement && (
                   <span className="block text-sm text-white/80 mt-0.5">
                     + {singleSupplement} single supplement

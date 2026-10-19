@@ -15,6 +15,7 @@ import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
 import { TourDepartureTable, TourBookingTerms, hasDepartureRows } from '@/components/tours/TourGoldenBlocks';
 import { getSoloTourPrice } from '@/lib/tour-price';
+import { resolvePriceText, tourPriceDisplay } from '@/lib/pricing/display-price';
 
 const goldenDayHeadings: Record<number, string> = {
   1: 'Your journey begins',
@@ -163,7 +164,10 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
     .sort((a, b) => Number(b.departureDates?.some((date) => date.includes('December 2026'))) - Number(a.departureDates?.some((date) => date.includes('December 2026'))))
     .slice(0, 3);
   const leadDeparture = tour.departureDates?.[0];
-  const leadPrice = (leadDeparture && tour.departurePricing?.[leadDeparture]) || tour.price;
+  // Every price on this page comes from here: the early bird price while the promotion is open, the regular price after.
+  const priceView = tourPriceDisplay(tour);
+  const leadPrice = (leadDeparture && priceView.departurePricing?.[leadDeparture]) || priceView.headline;
+  const leadEarlyBird = leadDeparture ? priceView.earlyBird[leadDeparture] : undefined;
   const soloTourPrice = tour.singleSupplement ? getSoloTourPrice(leadPrice, tour.singleSupplement) : null;
 
   return (
@@ -203,6 +207,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
                 <p className="text-[11px] font-semibold uppercase tracking-[.16em] text-white/65">Twin-share price</p>
                 <p className="mt-2 text-xl font-semibold">{displayPrice(leadPrice)}</p>
                 <p className="mt-1 text-xs text-white/65">Per person · NZD</p>
+                {leadEarlyBird && <p className="mt-1 text-xs font-medium text-white/85">{leadEarlyBird.label}</p>}
               </div>
               {tour.singleSupplement ? (
                 <div className="bg-accent px-5 py-5">
@@ -253,7 +258,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
             {tour.quickAnswer && (
               <aside className="mb-8 rounded-2xl border border-primary/20 bg-white p-6">
                 <p className="text-xs font-semibold uppercase tracking-[.2em] text-primary">Quick answer</p>
-                <p className="mt-3 leading-relaxed text-ink">{tour.quickAnswer}</p>
+                <p className="mt-3 leading-relaxed text-ink">{resolvePriceText(tour.quickAnswer, tour)}</p>
               </aside>
             )}
             <h2 className="font-serif text-3xl">{overviewHeadings[tour.slug] ?? 'The experiences that shape this journey.'}</h2>
@@ -274,7 +279,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
             </div>
           </section>
 
-          <TourDepartureTable tour={tour} />
+          <TourDepartureTable tour={tour} earlyBird={priceView.earlyBird} />
 
           <section id="route-map" className="scroll-mt-24">
             <h2 className="mb-6 font-serif text-3xl">Your route at a glance.</h2>
@@ -323,7 +328,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
           <TourBookingTerms tour={tour} />
         </div>
         <Suspense fallback={<a href="/contact">Contact CTS to enquire about this journey</a>}>
-          <UpgradedTourBooking tour={tour} />
+          <UpgradedTourBooking tour={tour} earlyBird={priceView.earlyBird} />
         </Suspense>
       </div>
 
@@ -336,6 +341,8 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {related.map((candidate) => {
             const offer = matchingOffer(candidate, {})!;
+            const candidateView = tourPriceDisplay(candidate);
+            const candidateEarlyBird = candidateView.earlyBird[offer.label];
             const photo = relatedImages[candidate.slug] ?? { src: candidate.heroImage, alt: candidate.name };
             return (
               <Link href={`${tourUrl(candidate)}${offer.date ? `?date=${offer.date}` : ''}`} key={candidate.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white">
@@ -348,8 +355,9 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
                   <p className="mt-3 line-clamp-2 text-sm text-ink-muted">{candidate.shortDescription}</p>
                   <p className="mt-5 text-sm">{offer.label}</p>
                   <p className="mt-2 font-semibold text-primary">
-                    {offer.price.replace(/\s*(?:per\s+person|pp)\s*$/i, '')} <span className="text-xs font-normal">per person</span> →
+                    {(candidateEarlyBird ? candidateEarlyBird.price : offer.price).replace(/\s*(?:per\s+person|pp)\s*$/i, '')} <span className="text-xs font-normal">per person</span> →
                   </p>
+                  {candidateEarlyBird && <p className="mt-1 text-xs text-ink-muted">{candidateEarlyBird.label}</p>}
                 </div>
               </Link>
             );

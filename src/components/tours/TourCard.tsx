@@ -9,6 +9,7 @@ import {
   getCtsStopoverReviewQuote,
 } from '@/lib/data/cts-review-quotes';
 import { getTourCardMedia } from '@/lib/tour-card-media';
+import { tourPriceDisplay } from '@/lib/pricing/display-price';
 
 interface TourCardProps {
   tour: Tour;
@@ -41,6 +42,8 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
   const displaySummary = tour.reviewSummary ?? (fallbackQuote ? fallbackQuote.excerpt : undefined);
   const displayAuthor = fallbackQuote?.author;
   const media = getTourCardMedia(tour);
+  // The card shows the early bird price (with its label) while the promotion is open, the regular price otherwise.
+  const priceView = tourPriceDisplay(tour);
 
   // Format price consistently: remove "NZD $" prefix if it exists, show as "From NZD $..."
   const formatPrice = (price: string) => {
@@ -138,8 +141,9 @@ export default function TourCard({ tour, destination, tier }: TourCardProps) {
           {/* Price section */}
           <div className="mb-3 py-3 border-t border-warm-100/50 border-b">
             <span className="text-xs text-gray-500">From</span>
-            <p className="text-lg font-bold text-primary">{formatPrice(tour.price)}</p>
+            <p className="text-lg font-bold text-primary">{formatPrice(priceView.headline)}</p>
             <span className="text-xs text-gray-500">per person</span>
+            {priceView.label && <p className="mt-0.5 text-xs text-ink-muted">{priceView.label}</p>}
           </div>
 
           {/* Spacer to push button to bottom */}

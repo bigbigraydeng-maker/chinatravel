@@ -1,6 +1,8 @@
 import type { Destination, Tour } from '@/lib/data/tours';
 import { parseDepartureDate } from '@/lib/data/tour-dates';
-import { departures } from '@/lib/tour-discovery';
+import { aucklandToday, departures } from '@/lib/tour-discovery';
+import { EARLY_BIRD_LAST_DATE, earlyBirdLead, earlyBirdPrices } from '@/lib/pricing/early-bird';
+import { resolvePriceText } from '@/lib/pricing/display-price';
 import { getCtsTravelAgencySchema, getSiteUrl } from '@/lib/site';
 import { GOOGLE_RATING_SCHEMA } from '@/lib/data/google-rating'
 
@@ -37,21 +39,27 @@ function toISODate(raw: string): string | null {
  * as an ISO date and per-date price where declared). Falls back to a single
  * generic Offer with the tour's base price if no departureDates are set.
  */
-function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
+function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown, today: string = aucklandToday()) {
   const url = `${siteUrl}/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
+  const earlyBird = earlyBirdPrices(tour, today);
   if (tour.goldenBlocks && !tour.soldOut) {
     // Only departures that are still ahead and have a published price. No start-date fields:
     // the offer is open now, the tour departs later.
     return departures(tour)
       .filter((d) => Boolean(tour.departurePricing?.[d.label]))
-      .map((d) => ({
-        '@type': 'Offer',
-        price: parsePriceAmount(d.price),
-        priceCurrency: PRICE_CURRENCY,
-        availability: 'https://schema.org/InStock',
-        url,
-        seller,
-      }));
+      .map((d) => {
+        const earlyBirdPrice = earlyBird[d.label];
+        return {
+          '@type': 'Offer',
+          price: earlyBirdPrice ? earlyBirdPrice.amount : parsePriceAmount(d.price),
+          priceCurrency: PRICE_CURRENCY,
+          // The early bird price is only offered until its last day; search engines drop it after that.
+          ...(earlyBirdPrice ? { priceValidUntil: EARLY_BIRD_LAST_DATE } : {}),
+          availability: 'https://schema.org/InStock',
+          url,
+          seller,
+        };
+      });
   }
   const basePrice = parsePriceAmount(tour.price);
   if (!tour.departureDates || tour.departureDates.length === 0) {
@@ -67,10 +75,12 @@ function buildTourOffers(tour: Tour, siteUrl: string, seller: unknown) {
   return tour.departureDates.map((d) => {
     const iso = toISODate(d);
     const perDatePrice = tour.departurePricing?.[d];
+    const earlyBirdPrice = earlyBird[d];
     return {
       '@type': 'Offer',
-      price: perDatePrice ? parsePriceAmount(perDatePrice) : basePrice,
+      price: earlyBirdPrice ? earlyBirdPrice.amount : perDatePrice ? parsePriceAmount(perDatePrice) : basePrice,
       priceCurrency: PRICE_CURRENCY,
+      ...(earlyBirdPrice ? { priceValidUntil: EARLY_BIRD_LAST_DATE } : {}),
       availability: tour.soldOut ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
       ...(iso ? { availabilityStarts: iso, validFrom: iso } : {}),
       url,
@@ -226,8 +236,9 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
   };
 }
 
-export function generateProductSchema(tour: Tour) {
-  const price = parsePriceAmount(tour.price);
+export function generateProductSchema(tour: Tour, today: string = aucklandToday()) {
+  const lead = earlyBirdLead(earlyBirdPrices(tour, today));
+  const price = lead ? lead.amount : parsePriceAmount(tour.price);
   const agency = agencyFor(tour);
 
   return {
@@ -254,6 +265,7 @@ export function generateProductSchema(tour: Tour) {
       '@type': 'Offer',
       price,
       priceCurrency: PRICE_CURRENCY,
+      ...(lead ? { priceValidUntil: EARLY_BIRD_LAST_DATE } : {}),
       availability: tour.soldOut ? 'https://schema.org/SoldOut' : 'https://schema.org/InStock',
       url: `${getSiteUrl()}/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
       seller: agency,
@@ -313,10 +325,17 @@ export function generateBreadcrumbSchema(
 /** Resolves FAQs for a tour: uses `tour.faqs` when present, otherwise generic destination FAQs. */
 export function getTourPageFaqsForTour(
   tour: Tour,
-  destinationLabel: string
+  destinationLabel: string,
+  today?: string
 ): Array<{ question: string; answer: string; link?: { href: string; label: string } }> {
   if (tour.faqs && tour.faqs.length > 0) {
-    return tour.faqs;
+    // Price placeholders in the text resolve to the price the page shows (early bird while it lasts),
+    // so the FAQ block and the FAQPage JSON-LD built from it always agree with the price cards.
+    return tour.faqs.map((faq) => ({
+      ...faq,
+      question: resolvePriceText(faq.question, tour, { today }),
+      answer: resolvePriceText(faq.answer, tour, { today }),
+    }));
   }
   if (tour.tier === 'stopover') {
     return [

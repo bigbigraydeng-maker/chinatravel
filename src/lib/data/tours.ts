@@ -560,7 +560,7 @@ const allTours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
     quickAnswer:
-      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, from {{from}} per person twin share.{{eb}} A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
@@ -614,7 +614,7 @@ const allTours: Tour[] = [
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
-    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
+    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from {{from}} per person.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-10-13',
@@ -648,7 +648,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), from {{from}} per person twin share.{{eb}} A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
@@ -701,7 +701,7 @@ const allTours: Tour[] = [
     shortDescription:
       'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
-      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share (NZD $3,680 on 10 June). A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
+      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from {{from}} per person twin share ({{price:10 June 2027}} on 10 June).{{eb}} A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',
@@ -806,7 +806,7 @@ const allTours: Tour[] = [
     ],
     metaTitle: 'Beijing & Xi\'an Discovery Tour | March 2027 | CTS NZ',
     metaDescription:
-      'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
+      'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From {{from}}. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-10-19',
@@ -842,7 +842,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) at NZD $3,480 and 10 June (returning 19 June) at NZD $3,680, per person twin share. A private room adds NZD $395.',
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) at {{price:18 March 2027}} and 10 June (returning 19 June) at {{price:10 June 2027}}, per person twin share.{{eb}} A private room adds NZD $395.',
       },
       {
         question: 'What is included in the price?',
@@ -947,7 +947,7 @@ const allTours: Tour[] = [
       'Any items not specifically mentioned as included in the itinerary',
     ],
     metaTitle: 'China Discovery — Best of China | 15 Days | CTS Tours',
-    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from NZD $4,080. 11 March 2027 departure from Auckland. Book with CTS Tours.',
+    metaDescription: 'Best of China — Beijing, Xi\'an Terracotta Warriors, Puyuan water town, West Lake Hangzhou, and Shanghai; 15 days from {{from}}. 11 March 2027 departure from Auckland. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-10-13',
@@ -980,12 +980,12 @@ const allTours: Tour[] = [
       { href: '/west-lake-travel-guide', label: 'West Lake guide' },
     ],
     quickAnswer:
-      'Best of China is a 15-day escorted group tour from Auckland through Beijing, Xi\'an, Hangzhou and Shanghai, with a night in the Puyuan water town, from NZD $4,080 per person twin share. Scheduled 2027 departures: 11 March (returning 25 March) and 13 May (returning 27 May). Highlights are the Forbidden City, Great Wall, Terracotta Warriors, West Lake and the Bund, with named hotels and an English-speaking guide. A private room adds NZD $800.',
+      'Best of China is a 15-day escorted group tour from Auckland through Beijing, Xi\'an, Hangzhou and Shanghai, with a night in the Puyuan water town, from {{from}} per person twin share.{{eb}} Scheduled 2027 departures: 11 March (returning 25 March) and 13 May (returning 27 May). Highlights are the Forbidden City, Great Wall, Terracotta Warriors, West Lake and the Bund, with named hotels and an English-speaking guide. A private room adds NZD $800.',
     faqs: [
       {
         question: 'When can I depart on Best of China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from NZD $4,080 per person, twin share. If you want your own room, the single supplement is NZD $800.',
+          'The scheduled 2027 departures from Auckland are 11 March (returning 25 March) and 13 May (returning 27 May), both priced from {{from}} per person, twin share.{{eb}} If you want your own room, the single supplement is NZD $800.',
       },
       {
         question: 'What is included in the price?',
@@ -1041,7 +1041,7 @@ const allTours: Tour[] = [
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     quickAnswer:
-      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
+      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from {{from}} per person twin share ({{price:5 November 2027}} on 5 November).{{eb}} A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1089,7 +1089,7 @@ const allTours: Tour[] = [
     ],
     metaTitle: 'Shanghai & Surroundings Discovery | March 2027 | CTS NZ',
     metaDescription:
-      'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
+      'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From {{from}}. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
     updatedAt: '2026-10-19',
@@ -1122,7 +1122,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at NZD $2,699 and 5 November (returning 14 November) at NZD $2,899, per person twin share. A private room adds NZD $400.',
+          'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at {{price:25 March 2027}} and 5 November (returning 14 November) at {{price:5 November 2027}}, per person twin share.{{eb}} A private room adds NZD $400.',
       },
       {
         question: 'What is included in the price?',

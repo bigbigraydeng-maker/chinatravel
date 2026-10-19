@@ -10,7 +10,12 @@
 import type { Tour } from '@/lib/data/tours';
 import { aucklandToday, priceNumber } from '@/lib/tour-discovery';
 import { parseDepartureDate } from '@/lib/data/tour-dates';
-import { EARLY_BIRD_LAST_DATE_LABEL, earlyBirdPrices, type EarlyBirdPrice } from '@/lib/pricing/early-bird';
+import {
+  EARLY_BIRD_LAST_DATE_LABEL,
+  earlyBirdLead,
+  earlyBirdPrices,
+  type EarlyBirdPrice,
+} from '@/lib/pricing/early-bird';
 
 /** Matches an NZD amount such as 'NZD $4,080' or 'NZD $3,880.50'. */
 const NZD_AMOUNT = /NZD\s*\$[\d,]+(?:\.\d+)?/;
@@ -141,4 +146,40 @@ export function pricePlaceholders(text: string): string[] {
     result.push(match[1].trim());
   }
   return result;
+}
+
+/** Everything a page needs to show a tour's price for one day. All of it is plain data, safe to pass to client components. */
+export interface TourPriceDisplay {
+  /** Auckland date ('YYYY-MM-DD') this was worked out for. */
+  today: string;
+  /** Early bird prices by departure label; {} when none applies. */
+  earlyBird: Record<string, EarlyBirdPrice>;
+  /** The lowest early bird price (the "From" price), or null. */
+  lead: EarlyBirdPrice | null;
+  /** The tour's headline price with the early bird amount swapped in when there is one. */
+  headline: string;
+  /** Displayed price by departure label (early bird where it applies, regular otherwise); undefined when the tour has no per-departure prices. */
+  departurePricing: Record<string, string> | undefined;
+  /** The small label to show next to an early bird price, or null when no early bird price is shown. */
+  label: string | null;
+}
+
+/** Works out, for one tour and one day, every price a page shows. The page then only prints what it is given. */
+export function tourPriceDisplay(tour: Tour, today: string = aucklandToday()): TourPriceDisplay {
+  const earlyBird = earlyBirdPrices(tour, today);
+  const lead = earlyBirdLead(earlyBird);
+  const regular = tour.departurePricing;
+  const departurePricing = regular
+    ? Object.fromEntries(
+        Object.keys(regular).map((label) => [label, displayedDeparturePrice(tour, label, earlyBird) ?? regular[label]]),
+      )
+    : undefined;
+  return {
+    today,
+    earlyBird,
+    lead,
+    headline: headlineWithEarlyBird(tour.price, lead),
+    departurePricing,
+    label: lead ? lead.label : null,
+  };
 }

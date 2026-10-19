@@ -6,6 +6,7 @@ import type { Tour } from '@/lib/data/tours';
 import TourEnquiry from '@/components/tours/TourEnquiry';
 import { departures } from '@/lib/tour-discovery';
 import SingleRoomPricing from '@/components/tours/SingleRoomPricing';
+import type { EarlyBirdPrice } from '@/lib/pricing/early-bird';
 
 function shortTourName(tour: Tour) {
   return tour.name.replace(/^[^—]+—\s*/, '');
@@ -15,7 +16,14 @@ function displayPrice(price: string) {
   return price.replace(/\s*(?:per\s+person|pp)\s*$/i, '');
 }
 
-export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
+export default function UpgradedTourBooking({
+  tour,
+  earlyBird = {},
+}: {
+  tour: Tour;
+  /** Early bird prices by departure label, worked out once on the server so this card agrees with the rest of the page. */
+  earlyBird?: Record<string, EarlyBirdPrice>;
+}) {
   const params = useSearchParams();
   const options = departures(tour);
   const [date, setDate] = useState(
@@ -24,6 +32,9 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
   const [pax, setPax] = useState('2');
   const [roomPreference, setRoomPreference] = useState<'twin' | 'single' | 'discuss'>('twin');
   const offer = options.find((departure) => departure.date === date);
+  const earlyBirdOffer = offer ? earlyBird[offer.label] : undefined;
+  // The price shown for the chosen departure: early bird while the promotion is open, regular otherwise.
+  const offerPrice = earlyBirdOffer ? earlyBirdOffer.price : offer?.price || tour.price;
 
   const handlePaxChange = (value: string) => {
     setPax(value);
@@ -53,12 +64,13 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
   return (
     <aside id="enquiry" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
       <p className="text-xs uppercase tracking-widest text-primary">Your {shortTourName(tour)} journey</p>
-      <p className="mt-3 font-serif text-3xl">{displayPrice(offer?.price || tour.price)}</p>
+      <p className="mt-3 font-serif text-3xl">{displayPrice(offerPrice)}</p>
+      {earlyBirdOffer && <p className="mt-1 text-xs font-medium text-primary">{earlyBirdOffer.label}</p>}
       <p className="mt-2 text-sm text-ink-muted">Per person · twin share · NZD</p>
       {tour.singleSupplement && (
         <div className="mt-4">
           <SingleRoomPricing
-            basePrice={offer?.price || tour.price}
+            basePrice={offerPrice}
             singleSupplement={tour.singleSupplement}
             compact
           />
@@ -99,7 +111,7 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
         tourSlug={tour.slug}
         destination={tour.destination}
         tier={tour.tier}
-        enquiryContext={`Preferred departure: ${offer?.label || 'Future dates requested'}\nTravellers: ${pax}\nRoom preference: ${roomPreference === 'twin' ? 'Twin share' : roomPreference === 'single' ? 'Private room' : 'Please advise'}\nDisplayed twin-share price per person: ${displayPrice(offer?.price || tour.price)}${tour.singleSupplement ? `\nPrivate-room supplement per solo traveller: ${tour.singleSupplement}` : ''}`}
+        enquiryContext={`Preferred departure: ${offer?.label || 'Future dates requested'}\nTravellers: ${pax}\nRoom preference: ${roomPreference === 'twin' ? 'Twin share' : roomPreference === 'single' ? 'Private room' : 'Please advise'}\nDisplayed twin-share price per person: ${displayPrice(offerPrice)}${earlyBirdOffer ? ` (${earlyBirdOffer.label})` : ''}${tour.singleSupplement ? `\nPrivate-room supplement per solo traveller: ${tour.singleSupplement}` : ''}`}
       />
     </aside>
   );

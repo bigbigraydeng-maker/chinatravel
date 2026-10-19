@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Tour } from '@/lib/data/tours';
 import { computeReturnDate } from '@/lib/data/tour-dates';
 import { aucklandToday, departures } from '@/lib/tour-discovery';
+import type { EarlyBirdPrice } from '@/lib/pricing/early-bird';
 
 /**
  * Opt-in blocks for the "tour page golden structure" (departure and price table,
@@ -21,19 +22,27 @@ interface DepartureRow {
   label: string;
   returnDate: string | null;
   price: string;
+  /** Small label shown under the price when it is an early bird price. */
+  earlyBirdLabel?: string;
 }
 
 /**
  * Departures whose date has not passed AND that have their own published price in
  * `departurePricing`. A date with no price entry is never shown, whatever the tour's headline price.
  */
-export function getDepartureRows(tour: Tour, today: string = aucklandToday()): DepartureRow[] {
+export function getDepartureRows(
+  tour: Tour,
+  today: string = aucklandToday(),
+  earlyBird: Record<string, EarlyBirdPrice> = {},
+): DepartureRow[] {
   return departures(tour, today)
     .filter((d) => Boolean(tour.departurePricing?.[d.label]))
     .map((d) => ({
       label: d.label,
       returnDate: computeReturnDate(d.label, tour.duration),
-      price: displayPrice(d.price),
+      // An early bird price replaces the regular price; the regular price is never shown next to it.
+      price: earlyBird[d.label] ? earlyBird[d.label].price : displayPrice(d.price),
+      earlyBirdLabel: earlyBird[d.label]?.label,
     }));
 }
 
@@ -43,9 +52,16 @@ export function hasDepartureRows(tour: Tour): boolean {
   return getDepartureRows(tour).length > 0;
 }
 
-export function TourDepartureTable({ tour }: { tour: Tour }) {
+export function TourDepartureTable({
+  tour,
+  earlyBird,
+}: {
+  tour: Tour;
+  /** Early bird prices by departure label, worked out once by the page. */
+  earlyBird?: Record<string, EarlyBirdPrice>;
+}) {
   if (!hasDepartureRows(tour)) return null;
-  const confirmed = getDepartureRows(tour);
+  const confirmed = getDepartureRows(tour, aucklandToday(), earlyBird);
   const note = tour.singleSupplementNote?.trim().replace(/\.$/, '');
 
   return (
@@ -77,7 +93,12 @@ export function TourDepartureTable({ tour }: { tour: Tour }) {
                   <tr key={row.label} className="border-t border-warm-200">
                     <th scope="row" className="px-4 py-3 font-semibold">{row.label}</th>
                     <td className="px-4 py-3 text-ink-muted">{row.returnDate ?? 'On request'}</td>
-                    <td className="px-4 py-3 font-semibold text-primary">{row.price}</td>
+                    <td className="px-4 py-3 font-semibold text-primary">
+                      {row.price}
+                      {row.earlyBirdLabel && (
+                        <span className="mt-0.5 block text-xs font-normal text-ink-muted">{row.earlyBirdLabel}</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>

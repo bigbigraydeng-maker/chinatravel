@@ -43,6 +43,7 @@ import {
 import { getSiteUrl } from '@/lib/site';
 import { Icon } from '@/components/ui/Icon';
 import { computeReturnDate } from '@/lib/data/tour-dates';
+import { resolvePriceText, tourPriceDisplay } from '@/lib/pricing/display-price';
 
 interface TourPageProps {
   params: {
@@ -58,7 +59,8 @@ interface TourPageProps {
  * SSG page as immutable across production deploys — a departureDates
  * edit in tours.ts silently would not show up on the live page.
  */
-export const revalidate = 3600;
+// 10 minutes, not an hour: from 1 December 2026 the early bird price must disappear from this page on its own.
+export const revalidate = 600;
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
   const tour = getTourBySlug(params.destination, params.tier, params.tour);
@@ -77,7 +79,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 
   return {
     title: documentTitle,
-    description: tour.metaDescription,
+    description: resolvePriceText(tour.metaDescription, tour),
     keywords: [
       `${tour.destination} tours`,
       `${tour.tier} tours`,
@@ -132,6 +134,8 @@ export default function TourPage({ params }: TourPageProps) {
     .slice(0, 3);
 
   const faqs = getTourPageFaqsForTour(tour, destination.name);
+  // Every price on this page comes from here: the early bird price while the promotion is open, the regular price after.
+  const priceView = tourPriceDisplay(tour);
   const siteUrl = getSiteUrl();
   const isOctoberCampaignTour = isOctoberCampaignTourSlug(tour.slug);
   const nextDeparture = tour.departureDates?.[0];
@@ -216,12 +220,14 @@ export default function TourPage({ params }: TourPageProps) {
         title={tour.title}
         shortDescription={tour.shortDescription}
         duration={tour.duration}
-        price={tour.price}
+        price={priceView.headline}
         heroImage={tour.heroImage}
         tier={tour.tier}
         tags={tour.tags}
         departureDates={tour.departureDates}
-        departurePricing={tour.departurePricing}
+        departurePricing={priceView.departurePricing}
+        earlyBirdLabel={priceView.label ?? undefined}
+        earlyBirdDepartures={Object.keys(priceView.earlyBird)}
         singleSupplementNote={tour.singleSupplementNote}
         showAvailability={tour.departureDates?.[0] !== 'TBC'}
         // October 2026 departures for both `beijing-xian` and `shanghai-surroundings`
@@ -237,7 +243,8 @@ export default function TourPage({ params }: TourPageProps) {
       {/* Quick-facts strip — anchors that jump into the tour tabs */}
       <TourQuickInfoStrip
         duration={tour.duration}
-        price={tour.price}
+        price={priceView.headline}
+        priceNote={priceView.label ?? undefined}
         itinerary={tour.itinerary}
         tier={tour.tier}
         singleSupplement={tour.singleSupplement}
@@ -351,7 +358,7 @@ export default function TourPage({ params }: TourPageProps) {
                       <p className="text-sm font-bold uppercase tracking-wide text-primary mb-2">
                         Quick answer
                       </p>
-                      <p className="text-gray-800 leading-relaxed">{tour.quickAnswer}</p>
+                      <p className="text-gray-800 leading-relaxed">{resolvePriceText(tour.quickAnswer, tour)}</p>
                     </aside>
                   )}
     {/* Overview */}
@@ -468,6 +475,12 @@ export default function TourPage({ params }: TourPageProps) {
                   tourSlug={tour.slug}
                   destination={tour.destination}
                   tier={tour.tier}
+                  // The sales team sees which price the visitor was shown.
+                  enquiryContext={
+                    priceView.label
+                      ? `Displayed twin-share price per person: ${priceView.headline} (${priceView.label})`
+                      : undefined
+                  }
                 />
 
                 {/* Testimonials */}
@@ -503,7 +516,12 @@ export default function TourPage({ params }: TourPageProps) {
                     )}
                     <div>
                       <dt className="text-sm text-gray-600">Price</dt>
-                      <dd className="font-medium text-primary">{tour.price}</dd>
+                      <dd className="font-medium text-primary">
+                        {priceView.headline}
+                        {priceView.label && (
+                          <span className="block text-xs font-normal text-gray-600">{priceView.label}</span>
+                        )}
+                      </dd>
                     </div>
                   </dl>
                 </div>
@@ -531,7 +549,7 @@ export default function TourPage({ params }: TourPageProps) {
 
       {tour.goldenBlocks && !tour.soldOut && (
         <div className="container mx-auto space-y-14 px-4 pb-16">
-          <TourDepartureTable tour={tour} />
+          <TourDepartureTable tour={tour} earlyBird={priceView.earlyBird} />
           <TourBookingTerms tour={tour} />
         </div>
       )}
