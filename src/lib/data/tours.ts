@@ -1041,7 +1041,7 @@ const allTours: Tour[] = [
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     quickAnswer:
-      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, at NZD $2,699 per person twin share. A private room adds NZD $400. The scheduled 2027 departure is 25 March, returning 3 April. Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
+      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1092,7 +1092,7 @@ const allTours: Tour[] = [
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-19',
     tags: [
       'Shanghai',
       'The Bund',
@@ -1107,8 +1107,8 @@ const allTours: Tour[] = [
      * the hero, sticky bar, and Offers schema, so hiding it here removes the
      * date from every surface that reads `departureDates`.
      */
-    departureDates: ['25 March 2027'],
-    departurePricing: { '25 March 2027': 'NZD $2,699' },
+    departureDates: ['25 March 2027', '5 November 2027'],
+    departurePricing: { '25 March 2027': 'NZD $2,699', '5 November 2027': 'NZD $2,899' },
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
     goldenBlocks: true,
@@ -1122,10 +1122,10 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400.',
+          'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at NZD $2,699 and 5 November (returning 14 November) at NZD $2,899, per person twin share. A private room adds NZD $400.',
       },
       {
-        question: 'What is included in the NZD $2,699 price?',
+        question: 'What is included in the price?',
         answer:
           'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
       },
@@ -1163,7 +1163,7 @@ const allTours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $400 extra) for the 25 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 25 March or 5 November departure and whether you would like your own room (NZD $400 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
