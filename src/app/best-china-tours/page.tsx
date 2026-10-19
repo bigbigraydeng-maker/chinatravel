@@ -64,9 +64,9 @@ const TOURS: TourCompareRow[] = [
     slug: '/tours/china/discovery/essentials',
     tier: 'Discovery',
     days: 15,
-    priceNZD: 3880,
+    priceNZD: 4080,
     cities: 'Beijing · Xi\'an · Shanghai · Guilin',
-    bestFor: 'Most coverage · 4 must-see cities · best NZD/day value',
+    bestFor: 'Most coverage · 4 must-see cities',
   },
   {
     name: 'Silk Road',

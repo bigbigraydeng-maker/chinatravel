@@ -238,7 +238,7 @@ export const yunnanToursMeta: CityHubMeta = {
 export const chinaToursFromNZMeta: SeoPageMeta = {
   slug: 'china-tours-from-new-zealand',
   title: 'China Tours from NZ 2026-27 · 4 Tours from NZD $2,699 | CTS',
-  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS; Auckland-based team. Visa-free for Kiwi passports.',
+  description: 'Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($4,080) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS; Auckland-based team. Visa-free for Kiwi passports.',
   h1: 'China Tours from New Zealand',
   heroSubtitle: '4 Kiwi-Led China itineraries 2026-27 · NZD $2,699-7,999 · Auckland-based · Visa-free for NZ passports',
   introText:
@@ -267,7 +267,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What are the most popular China tours for New Zealand travellers?',
-      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $3,880), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $2,699), and Silk Road (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
+      answer: 'Our four flagship China tours for NZ travellers are: Tale of Two Cities (Beijing + Xi\'an, 10 days, from NZD $3,480), Best of China (15 days covering Beijing, Xi\'an, Shanghai, Guilin, from NZD $4,080), Shanghai & Surroundings (10 days in Shanghai, Suzhou, Wuxi, Hangzhou, from NZD $2,699), and Silk Road (18 days through Xi\'an, Dunhuang, Turpan, Urumqi, from NZD $7,999). All include return flights from Auckland.'
     },
     {
       question: 'Is it safe to travel from New Zealand to China?',
