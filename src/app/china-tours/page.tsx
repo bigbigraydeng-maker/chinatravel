@@ -13,6 +13,7 @@ import { generateCollectionPageSchema, generateBreadcrumbListSchema } from '@/li
 import { chinaToursMeta } from '@/lib/data/seo-pages';
 import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import UtmAwareBanner from './_components/UtmAwareBanner';
+import FlagshipTourGrid from './_components/FlagshipTourGrid';
 import CustomerTripPhotos from './_components/CustomerTripPhotos';
 import ReviewsHighlights from './_components/ReviewsHighlights';
 
@@ -185,6 +186,22 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
         <CustomerTripPhotos />
       </div>
       <ReviewsHighlights mobileLimit={thankyou ? 1 : undefined} />
+
+      {/* Flagship itineraries — full roster by default; FB Leadform ThankYou
+          traffic drops to 2 (Hick's Law — fewer choices convert hot leads
+          faster). The heading + intro also flip to "these are the most
+          popular" framing for post-lead reassurance. Renders nothing while the
+          roster in FlagshipTourGrid.tsx is empty. */}
+      <FlagshipTourGrid
+        limit={thankyou ? 2 : undefined}
+        mobileLimit={thankyou ? 1 : undefined}
+        heading={thankyou ? 'Our most-requested China itineraries' : undefined}
+        intro={
+          thankyou
+            ? 'While you wait for our specialist to reach out, take a look at the routes New Zealand travellers most often start with. Your call will be tailored around whichever feels closest.'
+            : undefined
+        }
+      />
 
       {/* Main Content — hub-only. FB Leadform ThankYou traffic skips the
           long intro / all-tours grid / tier callouts / related guides / FAQ

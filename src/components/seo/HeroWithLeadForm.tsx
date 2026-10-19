@@ -103,8 +103,8 @@ interface HeroWithLeadFormProps {
 // Visa-guide page reuses the same list — visitors who land on visa info
 // still need to express tour interest for the FDE to route the lead.
 const DEFAULT_TRAVEL_INTEREST_OPTIONS = [
-  'Best of China — 15 Days (11 Mar 2027)',
   'Still deciding — show me all tours',
+  'Best of China — 15 Days (11 Mar 2027)',
 ];
 
 const DEFAULT_BULLETS = [

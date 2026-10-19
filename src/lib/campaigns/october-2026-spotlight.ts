@@ -30,8 +30,8 @@ export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
     tier: ref.tier,
     href: ref.campaignHref,
     departureLabel: ref.departureLabel,
-    departureSortDate: '2026-12-22',
+    departureSortDate: ref.departureSortDate,
     routeCities: ref.route,
-    badgeText: 'From Auckland',
+    badgeText: ref.badgeText,
   })),
 ];

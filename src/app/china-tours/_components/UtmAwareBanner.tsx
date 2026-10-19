@@ -65,7 +65,7 @@ const COPY: Record<Variant, BannerCopy> = {
       <>
         <span className="font-semibold">No embassy queues</span> · Visa-free
         for NZ passport holders until 31 Dec 2026 · Talk to a specialist
-        before the window closes.
+        about your dates.
       </>
     ),
     cta: 'Talk to a specialist →',
@@ -74,8 +74,8 @@ const COPY: Record<Variant, BannerCopy> = {
     message: (
       <>
         <span className="font-semibold">Best of China · 15 days</span>
-        {' '}· from NZD $3,880 · October 2026 from Auckland — talk to a
-        specialist about the next departure.
+        {' '}· from NZD $4,080 · next departure 11 March 2027 from Auckland —
+        talk to a specialist about your dates.
       </>
     ),
     cta: 'See Best of China →',
@@ -87,7 +87,7 @@ const COPY: Record<Variant, BannerCopy> = {
     message: (
       <>
         <span className="font-semibold">Welcome from our China campaign</span>
-        {' '}— limited October 2026 departures from NZ. Talk to a specialist today.
+        {' '}— escorted group departures from New Zealand. Talk to a specialist today.
       </>
     ),
     cta: 'Request a callback →',

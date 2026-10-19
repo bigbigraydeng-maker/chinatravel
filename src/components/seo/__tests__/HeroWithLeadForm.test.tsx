@@ -139,6 +139,8 @@ describe('HeroWithLeadForm', () => {
     );
     expect(labels).toHaveLength(2);
     expect(labels.join(' | ')).not.toMatch(/Christmas|Christchurch/);
+    // "Still deciding" is the default choice, so a visitor is not tagged with one tour by accident.
+    expect(select.value).toBe('Still deciding — show me all tours');
     expect(labels.join(' | ')).not.toMatch(/Golden China/);
   });
 

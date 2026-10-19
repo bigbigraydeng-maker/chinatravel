@@ -21,6 +21,10 @@ export type HomeSpotlightTourRef = {
   campaignHref: string;
   /** Short label shown on the tour card departure badge, e.g. "15 Oct 2026". */
   departureLabel: string;
+  /** Departure date as YYYY-MM-DD; orders the card on the spotlight hub. */
+  departureSortDate: string;
+  /** Optional extra badge on the spotlight hub card, e.g. "From Auckland". */
+  badgeText?: string;
   route: string[];
 };
 

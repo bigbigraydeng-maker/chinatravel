@@ -43,8 +43,8 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
               ? `The ${soldOutDate} ${shortTourName(tour)} departure is fully booked.`
               : 'This departure is fully booked.'}
         </p>
-        <a href="/campaigns/spotlight" className="mt-6 block rounded-full bg-primary px-6 py-3 text-center font-semibold text-white">
-          {isGoldenChina ? 'Explore December tours →' : 'Explore available tours →'}
+        <a href="/tours/china/discovery" className="mt-6 block rounded-full bg-primary px-6 py-3 text-center font-semibold text-white">
+          Explore available tours →
         </a>
       </aside>
     );

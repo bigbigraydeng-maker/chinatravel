@@ -10,6 +10,7 @@ import { getTourBySlug } from '@/lib/data/tours';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { priceNumber } from '@/lib/tour-discovery';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -65,7 +66,7 @@ export default function October2026CampaignIndexPage() {
   // Build cards from spotlight config + tours.ts data.
   const cards = OCTOBER_2026_SPOTLIGHT_TOURS.map((spot) => {
     const tour = getTourBySlug(spot.destination, spot.tier, spot.slug);
-    if (!tour?.isActive || tour.soldOut) return null;
+    if (!tour?.isActive) return null;
     return {
       spot,
       tour,
@@ -95,6 +96,17 @@ export default function October2026CampaignIndexPage() {
       image: c.tour.heroImage,
     })),
   };
+
+  const available = cards.filter(({ tour }) => !tour.soldOut);
+  const lowestPrice = available
+    .map(({ tour }) => priceNumber(tour.price))
+    .filter((n): n is number => n !== null)
+    .sort((a, b) => a - b)[0];
+  const stats = [
+    { v: String(cards.length), l: cards.length === 1 ? 'Featured Tour' : 'Featured Tours' },
+    { v: available[0] ? available[0].spot.departureLabel.split(' · ')[0] : 'Sold out', l: 'Next Departure' },
+    ...(lowestPrice !== undefined ? [{ v: `NZD $${lowestPrice.toLocaleString('en-NZ')}`, l: 'From' }] : []),
+  ];
 
   return (
     <>
@@ -135,7 +147,7 @@ export default function October2026CampaignIndexPage() {
           <div className="max-w-3xl">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-sm px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-6">
               <span className="inline-block h-2 w-2 rounded-full bg-orange-400 animate-pulse" aria-hidden />
-              Limited Departures · Book Now
+              Featured Departures
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6">
@@ -144,17 +156,12 @@ export default function October2026CampaignIndexPage() {
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
               Golden China departs Auckland on 16 November 2026.
-              Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
+              Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 max-w-2xl">
-              {[
-                { v: '1', l: 'Featured Tour' },
-                { v: '1', l: 'NZ Departure City' },
-                { v: 'Nov', l: '2026 Departure' },
-                { v: 'NZD $4,999', l: 'From' },
-              ].map((s) => (
+              {stats.map((s) => (
                 <div
                   key={s.l}
                   className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm px-4 py-3"
@@ -204,7 +211,7 @@ export default function October2026CampaignIndexPage() {
               Choose Your Journey
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              Each tour is a confirmed group departure with set dates, fixed pricing, and limited seats.
+              Each tour is a confirmed group departure with set dates and fixed pricing.
               Click for full itineraries, day-by-day inclusions, and bookings.
             </p>
           </div>
@@ -234,9 +241,9 @@ export default function October2026CampaignIndexPage() {
                       </svg>
                       {spot.departureLabel}
                     </div>
-                    {spot.badgeText && (
+                    {(tour.soldOut || spot.badgeText) && (
                       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
-                        {spot.badgeText}
+                        {tour.soldOut ? 'Sold out' : spot.badgeText}
                       </div>
                     )}
                   </div>
@@ -283,6 +290,16 @@ export default function October2026CampaignIndexPage() {
               </Link>
             ))}
           </div>
+
+          {cards.length === 0 && (
+            <p className="text-center text-gray-600">
+              No featured departures are listed right now.{' '}
+              <Link href="/tours/china/discovery" className="text-primary underline">
+                See all Discovery tours
+              </Link>
+              .
+            </p>
+          )}
         </div>
       </section>
 
@@ -392,8 +409,7 @@ export default function October2026CampaignIndexPage() {
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
             Book a featured group departure above, or talk to our Auckland team about a
-            fully tailor-made private trip. Either way — limited seats, and pricing locks in
-            once you confirm.
+            fully tailor-made private trip. Either way, pricing locks in once you confirm.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

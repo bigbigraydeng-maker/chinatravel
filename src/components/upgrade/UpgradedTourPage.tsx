@@ -185,7 +185,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
             <p className="mt-3 text-ink-muted">
               This departure is fully booked. Explore our current confirmed journeys or ask CTS about future dates.
             </p>
-            <Link href="/campaigns/spotlight" className="mt-4 inline-block font-semibold text-primary">
+            <Link href="/tours/china/discovery" className="mt-4 inline-block font-semibold text-primary">
               Explore available tours →
             </Link>
           </section>
