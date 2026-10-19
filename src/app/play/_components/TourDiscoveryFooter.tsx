@@ -29,7 +29,7 @@ const FLAGSHIP_TOURS: FlagshipTour[] = [
   {
     href: '/campaigns/best-of-china',
     title: 'Best of China',
-    duration: '15 days · from NZD $3,880',
+    duration: '15 days · from NZD $4,080',
     blurb:
       "Beijing · Xi'an · Shanghai · Suzhou — our most-booked grand tour, with the Great Wall, Terracotta Army and Yangtze Delta in one trip.",
     image: `${TOUR_IMG_LIB}/forbidden-city-aerial.jpg`,
