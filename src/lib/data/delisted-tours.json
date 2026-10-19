@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "china-icons-collection",
+    "destination": "china",
+    "tier": "discovery",
+    "nameKeywords": [
+      "Christmas & New Year in China",
+      "Christmas & New Year Departure",
+      "Christmas & New Year tours",
+      "Christmas & New Year journeys",
+      "Christmas & New Year departures",
+      "Christmas and New Year tours",
+      "Christmas and New Year journeys",
+      "Christmas and New Year departures",
+      "China Icons Collection"
+    ],
+    "redirectTo": "/tours/china/discovery",
+    "extraPaths": ["/christmas-new-year-china"],
+    "delistedOn": "2026-10-19"
+  },
+  {
+    "slug": "china-icons-collection-christchurch",
+    "destination": "china",
+    "tier": "discovery",
+    "nameKeywords": ["Christmas & New Year in China (Christchurch Departure)"],
+    "redirectTo": "/tours/china/discovery",
+    "extraPaths": [],
+    "delistedOn": "2026-10-19"
+  }
+]

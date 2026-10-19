@@ -1,6 +1,8 @@
 // CMS Data Model for Tours
 // This can be replaced with Supabase integration later
 
+import { isDelistedSlug } from './delisted-tours';
+
 export interface Tour {
   id: string;
   slug: string;
@@ -268,7 +270,7 @@ export const destinations: Destination[] = [
 
 
 // Tours Data — migrated from ctstours.co.nz
-export const tours: Tour[] = [
+const allTours: Tour[] = [
   // China Signature Tours
   {
     id: 'tour-cn-sig-1',
@@ -2721,6 +2723,12 @@ export const tours: Tour[] = [
     ],
   },
 ];
+
+/**
+ * Everything on sale: the entries above minus anything in the delisting registry
+ * (delisted-tours.ts), so a retired tour can never reach a page, list, feed or sitemap.
+ */
+export const tours: Tour[] = allTours.filter((tour) => !isDelistedSlug(tour.slug));
 
 // Utility Functions
 export const getTourBySlug = (destination: string, tier: string, slug: string): Tour | undefined => {

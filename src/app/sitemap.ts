@@ -13,6 +13,7 @@ import { getAllCities } from '@/lib/data/cities';
 import { getAllPlayQuizSlugs } from '@/lib/data/play-quizzes';
 import { getAllGuides } from '@/lib/data/guides';
 import { getAllBlogPosts } from '@/lib/data/blogs';
+import { isDelistedUrl } from '@/lib/data/delisted-tours';
 
 const SITE = getSiteUrl();
 
@@ -168,5 +169,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tourSlugs, ...blogPages];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tourSlugs, ...blogPages]
+    .filter((entry) => !isDelistedUrl(entry.url));
 }

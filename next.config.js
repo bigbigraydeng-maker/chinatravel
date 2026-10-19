@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+/** Tours taken off sale: their old URLs 301 to a live page (see src/lib/data/delisted-tours.ts). */
+const DELISTED_TOURS = require('./src/lib/data/delisted-tours.json');
+
 const CANONICAL_HOST = 'www.ctstours.co.nz';
 
 /** Hosts that should 308 to https://www.ctstours.co.nz (same Next.js app on Render). */
@@ -54,17 +57,17 @@ const nextConfig = {
        */
       { source: '/tours/china/discovery/natural-china', destination: '/tours/china/signature/landscapes', permanent: true },
       /**
-       * "China Discovery — Christmas & New Year in China" (Auckland and Christchurch
-       * versions, 22 December 2026) is retired (Product Owner, 2026-10-19). The two tour
-       * pages (and their /print children) and the /christmas-new-year-china landing page
-       * 301 to the Discovery tier page, so indexed, linked or printed-QR visitors land on
-       * a live page instead of a 404.
+       * Retired tours: every entry in src/lib/data/delisted-tours.json 301s (its tour page, the page's
+       * sub-pages such as /print, and any extra retired path) to that entry's redirectTo, so indexed,
+       * linked or printed-QR visitors land on a live page instead of a 404.
        */
-      { source: '/tours/china/discovery/china-icons-collection', destination: '/tours/china/discovery', statusCode: 301 },
-      { source: '/tours/china/discovery/china-icons-collection/:path*', destination: '/tours/china/discovery', statusCode: 301 },
-      { source: '/tours/china/discovery/china-icons-collection-christchurch', destination: '/tours/china/discovery', statusCode: 301 },
-      { source: '/tours/china/discovery/china-icons-collection-christchurch/:path*', destination: '/tours/china/discovery', statusCode: 301 },
-      { source: '/christmas-new-year-china', destination: '/tours/china/discovery', statusCode: 301 },
+      ...DELISTED_TOURS.flatMap((tour) =>
+        [
+          `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
+          `/tours/${tour.destination}/${tour.tier}/${tour.slug}/:path*`,
+          ...tour.extraPaths,
+        ].map((source) => ({ source, destination: tour.redirectTo, statusCode: 301 })),
+      ),
       { source: '/marketing-plan', destination: '/marketing/campaign', permanent: true },
       { source: '/marketing-plan/login', destination: '/marketing/campaign/login', permanent: true },
       /**
