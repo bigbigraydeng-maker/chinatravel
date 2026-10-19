@@ -24,6 +24,10 @@ describe('sitemap tier pages', () => {
     );
   });
 
+  it('lists the China overview page that the tier pages hang under', () => {
+    expect(urls()).toContain(`${SITE}/tours/china`);
+  });
+
   it('lists every China tier that has an active tour, and only those', () => {
     const expected = destinations
       .filter((d) => d.slug === 'china')

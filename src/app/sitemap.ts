@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const corePages: MetadataRoute.Sitemap = [
     { url: SITE, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE}/tours`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${SITE}/tours/china`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
     { url: `${SITE}/china-tours`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE}/tailor-made`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/travel-tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
