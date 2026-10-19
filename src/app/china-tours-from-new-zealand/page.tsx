@@ -63,7 +63,7 @@ export default function ChinaToursFromNZPage() {
       url: '/campaigns/best-of-china',
       duration: '15 days',
       cities: 'Beijing + Xi\'an + Hangzhou + Shanghai',
-      price: 'NZD $3,880',
+      price: 'NZD $4,080',
       bestFor: 'Classic 4-city loop covering imperial + modern China',
     },
     {

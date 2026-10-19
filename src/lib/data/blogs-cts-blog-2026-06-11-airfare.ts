@@ -218,15 +218,6 @@ A few next steps depending on where you are:
   "offers": [
     {
       "@type": "Offer",
-      "name": "Best of China — 3 November 2026",
-      "price": "3880",
-      "priceCurrency": "NZD",
-      "availability": "https://schema.org/SoldOut",
-      "url": "https://ctstours.co.nz/tours/china/discovery/essentials",
-      "itemCondition": "https://schema.org/NewCondition"
-    },
-    {
-      "@type": "Offer",
       "name": "Best of China — 11 March 2027",
       "price": "4080",
       "priceCurrency": "NZD",

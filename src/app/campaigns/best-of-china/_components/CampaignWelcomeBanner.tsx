@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
  *
  * The banner confirms ad-LP messaging match in a single glance — the visitor
  * just clicked an ad about Best of China and immediately sees "Best of
- * China · 15 days · NZD $3,880" reinforced at the top of the LP. This is
+ * China · 15 days · from NZD $4,080" reinforced at the top of the LP. This is
  * the visual equivalent of saying "yes, you're in the right place". Industry
  * pattern: messaging match cuts bounce rate and lifts conversion 20-40%.
  *

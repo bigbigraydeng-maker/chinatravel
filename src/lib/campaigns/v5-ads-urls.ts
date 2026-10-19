@@ -42,7 +42,7 @@ function buildUtmUrl(
 }
 
 // ---------------------------------------------------------------------------
-// A. ESSENTIALS — Best of China (15 天, NZD $3,880, 11/3 出发) — #1 主推团
+// A. ESSENTIALS — Best of China (15 天, NZD $4,080) — #1 主推团
 // ---------------------------------------------------------------------------
 
 const ESSENTIALS_PATH = '/tours/china/discovery/essentials';
