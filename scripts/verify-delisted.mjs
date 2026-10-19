@@ -4,12 +4,13 @@
  * their old URLs 301 to the replacement page.
  *
  * Usage:
- *   node scripts/verify-delisted.mjs [--base https://www.ctstours.co.nz] [--crawl-sitemap] [--concurrency 6]
+ *   node scripts/verify-delisted.mjs [--base https://www.ctstours.co.nz] [--no-crawl-sitemap] [--concurrency 6]
  *
  * Exit codes: 0 all checks passed, 1 any check failed, 2 usage/registry error.
  */
 
 import { readFileSync } from 'node:fs';
+import scan from '../src/lib/data/delisted-scan.cjs';
 
 const DEFAULT_BASE = 'https://www.ctstours.co.nz';
 const TIMEOUT_MS = 30000;
@@ -23,6 +24,8 @@ const STATIC_PAGE_PATHS = [
   '/china-tours',
   '/agents',
   '/campaigns/spotlight',
+  '/spotlight/october-2026',
+  '/preview-home',
   '/beijing-tours',
   '/xian-tours',
   '/shanghai-tours',
@@ -41,16 +44,18 @@ const CACHE_HEADERS = ['age', 'x-nextjs-cache', 'cache-control', 'date'];
 function usageError(message) {
   console.error(`error: ${message}`);
   console.error(
-    'usage: node scripts/verify-delisted.mjs [--base https://www.ctstours.co.nz] [--crawl-sitemap] [--concurrency 6]'
+    'usage: node scripts/verify-delisted.mjs [--base https://www.ctstours.co.nz] [--no-crawl-sitemap] [--concurrency 6]'
   );
   process.exitCode = 2;
 }
 
 function parseArgs(argv) {
-  const opts = { base: DEFAULT_BASE, crawlSitemap: false, concurrency: 6 };
+  const opts = { base: DEFAULT_BASE, crawlSitemap: true, concurrency: 6 };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
-    if (arg === '--crawl-sitemap') {
+    if (arg === '--no-crawl-sitemap') {
+      opts.crawlSitemap = false;
+    } else if (arg === '--crawl-sitemap') {
       opts.crawlSitemap = true;
     } else if (arg === '--base') {
       const value = argv[i + 1];
@@ -83,31 +88,6 @@ function loadRegistry() {
   const entries = JSON.parse(raw);
   if (!Array.isArray(entries)) throw new Error('registry is not an array');
   return entries;
-}
-
-// Must stay identical to normalizeForScan in src/lib/data/delisted-tours.ts.
-function normalise(text) {
-  return text
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/&amp;/gi, '&')
-    .replace(/[‘’]/g, "'")
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
-
-function buildNeedles(entries) {
-  const needles = new Set();
-  for (const entry of entries) {
-    needles.add(normalise(entry.slug));
-    for (const keyword of entry.nameKeywords || []) needles.add(normalise(keyword));
-    for (const extra of entry.extraPaths || []) needles.add(normalise(extra));
-  }
-  return [...needles].filter((n) => n.length > 0);
-}
-
-function findMatches(html, needles) {
-  const haystack = normalise(html);
-  return needles.filter((needle) => haystack.includes(needle));
 }
 
 function tourPath(entry) {
@@ -171,12 +151,12 @@ async function checkRedirects(entries, base, results) {
   }
 }
 
-async function checkPage(base, path, needles, results) {
+async function checkPage(base, path, scanner, results) {
   const label = `page ${path}`;
   try {
     const res = await fetchFollow(base + path);
     const body = await res.text();
-    const matches = findMatches(body, needles);
+    const matches = scanner.findInText(body);
     const cache = cacheDetail(res);
     const ok = res.status === 200 && matches.length === 0;
     const parts = [`status=${res.status}`];
@@ -224,13 +204,13 @@ async function runPool(items, concurrency, worker) {
   await Promise.all(runners);
 }
 
-async function checkPages(opts, entries, needles, results) {
+async function checkPages(opts, entries, scanner, results) {
   const checked = new Set();
   let sitemapBody = null;
 
   for (const path of STATIC_PAGE_PATHS) {
     checked.add(path);
-    const { body } = await checkPage(opts.base, path, needles, results);
+    const { body } = await checkPage(opts.base, path, scanner, results);
     if (path === '/sitemap.xml' && body !== null) sitemapBody = body;
   }
 
@@ -246,7 +226,7 @@ async function checkPages(opts, entries, needles, results) {
         checked.add(pathname);
         paths.push(pathname);
       }
-      await runPool(paths, opts.concurrency, (path) => checkPage(opts.base, path, needles, results));
+      await runPool(paths, opts.concurrency, (path) => checkPage(opts.base, path, scanner, results));
     }
   }
 
@@ -296,11 +276,11 @@ async function main() {
     return;
   }
 
-  const needles = buildNeedles(entries);
+  const scanner = scan.buildScanner(entries);
   const results = [];
 
   await checkRedirects(entries, opts.base, results);
-  const sitemapBody = await checkPages(opts, entries, needles, results);
+  const sitemapBody = await checkPages(opts, entries, scanner, results);
   checkSitemap(sitemapBody, entries, opts.base, results);
 
   const failed = results.filter((r) => !r.ok).length;

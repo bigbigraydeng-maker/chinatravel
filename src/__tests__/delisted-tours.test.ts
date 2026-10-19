@@ -3,28 +3,31 @@
  *
  * A tour is taken off sale by adding it to src/lib/data/delisted-tours.json. From then on it must
  * not reappear through a hard-coded page, a blog sentence, a lead-form option, the sitemap or the
- * built HTML. This test scans the site source and (when a build exists) the prerendered pages for
- * every slug, name keyword and retired path in the registry.
+ * built HTML. This test scans the site source (src/, public/, content/, scripts/) and, when a build
+ * exists, the prerendered pages for every slug, name keyword and retired path in the registry —
+ * in text files, SVG maps and file names (images, PDFs and fonts are checked by name only).
  *
  * The only files allowed to contain the registry's words are the registry itself
- * (delisted-tours.json / delisted-tours.ts) and this test.
+ * (delisted-tours.json / delisted-tours.ts), the shared scanner (delisted-scan.cjs), this test and
+ * its scanner test, plus the files listed under `knownResidue` in the registry.
  */
 import fs from 'fs';
 import path from 'path';
 import sitemap from '@/app/sitemap';
 import {
   DELISTED_TOURS,
-  delistedNeedles,
   delistedPaths,
   delistedTourPath,
+  findDelistedInPath,
+  findDelistedInText,
   isDelistedSlug,
   isDelistedUrl,
-  normalizeForScan,
+  knownResidueEntries,
 } from '@/lib/data/delisted-tours';
 import { tours, getAllActiveTours, getAllChinaTours } from '@/lib/data/tours';
 
 const ROOT = process.cwd();
-const SCAN_ROOTS = ['src', 'public', 'content'];
+const SCAN_ROOTS = ['src', 'public', 'content', 'scripts'];
 const TEXT_EXTENSIONS = new Set([
   '.ts',
   '.tsx',
@@ -43,13 +46,19 @@ const TEXT_EXTENSIONS = new Set([
   '.yml',
   '.yaml',
   '.csv',
+  '.svg',
+  '.py',
 ]);
 const SKIP_DIRS = new Set(['node_modules', '.next', '.git']);
-const ALLOWED = new Set([
+const ALWAYS_ALLOWED = new Set([
   'src/lib/data/delisted-tours.json',
   'src/lib/data/delisted-tours.ts',
+  'src/lib/data/delisted-scan.cjs',
   'src/__tests__/delisted-tours.test.ts',
+  'src/__tests__/delisted-scan.test.ts',
 ]);
+const KNOWN = new Set(knownResidueEntries().map((entry) => entry.path));
+const ALLOWED = new Set([...ALWAYS_ALLOWED, ...KNOWN]);
 
 function walk(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
@@ -70,20 +79,19 @@ function toRelative(absolute: string): string {
   return path.relative(ROOT, absolute).split(path.sep).join('/');
 }
 
-function findResidue(
-  files: string[],
-  needles: string[],
-  extensions: Set<string>,
-  allowed: Set<string>,
-): string[] {
+function findResidue(files: string[], extensions: Set<string>, allowed: Set<string>): string[] {
   const residue: string[] = [];
   for (const file of files) {
-    if (!extensions.has(path.extname(file).toLowerCase())) continue;
     const relativePath = toRelative(file);
     if (allowed.has(relativePath)) continue;
-    const text = normalizeForScan(fs.readFileSync(file, 'utf8'));
-    for (const needle of needles) {
-      if (text.includes(needle)) residue.push(`${relativePath}: ${needle}`);
+    if (extensions.has(path.extname(file).toLowerCase())) {
+      const text = fs.readFileSync(file, 'utf8');
+      for (const label of findDelistedInText(text)) {
+        residue.push(`${relativePath}: ${label}`);
+      }
+    }
+    for (const label of findDelistedInPath(relativePath)) {
+      residue.push(`${relativePath} (file name): ${label}`);
     }
   }
   return residue;
@@ -159,10 +167,40 @@ describe('a delisted tour cannot be reached through the tour data', () => {
   });
 });
 
+describe('the known-residue list is honest', () => {
+  it('every entry names an existing file, a reason and a ledger card', () => {
+    const problems: string[] = [];
+    for (const entry of knownResidueEntries()) {
+      if (!fs.existsSync(path.join(ROOT, entry.path))) {
+        problems.push(`${entry.path}: file does not exist`);
+      }
+      if (entry.reason.length <= 10) {
+        problems.push(`${entry.path}: reason is too short`);
+      }
+      if (!/^\d{4}-\d{2}-\d{2}-chinatravel-[a-z0-9-]+$/.test(entry.card)) {
+        problems.push(`${entry.path}: card "${entry.card}" is not a ledger card id`);
+      }
+    }
+    expect(problems).toEqual([]);
+  });
+
+  it('a text file on the list still mentions a delisted tour (otherwise remove it from the list)', () => {
+    const problems: string[] = [];
+    for (const entry of knownResidueEntries()) {
+      if (!TEXT_EXTENSIONS.has(path.extname(entry.path).toLowerCase())) continue;
+      const text = fs.readFileSync(path.join(ROOT, entry.path), 'utf8');
+      if (findDelistedInText(text).length === 0 && findDelistedInPath(entry.path).length === 0) {
+        problems.push(`${entry.path}: no longer mentions a delisted tour`);
+      }
+    }
+    expect(problems).toEqual([]);
+  });
+});
+
 describe('the site source has no delisted tour left', () => {
-  it('src/, public/ and content/ contain no delisted slug, name keyword or retired path outside the registry and this test', () => {
+  it('src/, public/, content/ and scripts/ contain no delisted word in text, SVG or file names outside the allowed files', () => {
     const files = SCAN_ROOTS.flatMap((dir) => walk(path.join(ROOT, dir)));
-    const residue = findResidue(files, delistedNeedles(), TEXT_EXTENSIONS, ALLOWED);
+    const residue = findResidue(files, TEXT_EXTENSIONS, ALLOWED);
     expect(residue).toEqual([]);
   });
 });
@@ -182,7 +220,7 @@ describe('the built pages have no delisted tour left', () => {
   (hasBuild ? it : it.skip)(
     'prerendered pages and the built sitemap contain no delisted slug, name keyword or retired path',
     () => {
-      const residue = findResidue(builtFiles, delistedNeedles(), BUILT_EXTENSIONS, new Set<string>());
+      const residue = findResidue(builtFiles, BUILT_EXTENSIONS, new Set<string>());
       expect(residue).toEqual([]);
     },
   );

@@ -1,4 +1,5 @@
 import registry from './delisted-tours.json';
+import scan from './delisted-scan.cjs';
 
 /**
  * Registry of tours that have been taken off sale — the single source of truth.
@@ -8,14 +9,26 @@ import registry from './delisted-tours.json';
  *  - tours.ts: the exported `tours` never contains these slugs, so every list, card,
  *    recommendation, feed and sitemap entry built from it drops them
  *  - sitemap.ts: drops any delisted URL, however it was added
- *  - src/__tests__/delisted-tours.test.ts: fails when a slug or name keyword is still in
- *    src/, public/, content/ or the built pages
+ *  - src/__tests__/delisted-tours.test.ts: fails when a slug, name keyword or pattern is still in
+ *    src/, public/, content/ or scripts/ (text, SVG and file names) or in the built pages, unless the
+ *    file is listed under `knownResidue`
  *  - scripts/verify-delisted.mjs: post-deploy check against the live site
  *
  * Retiring a tour: delete its entry from tours.ts, add an entry to delisted-tours.json, then run
  * `npm run tour:footprint -- <slug>` until nothing outside the registry is listed.
  * Bringing a tour back: remove its entry from the registry first (the residue test then stops flagging it).
+ *
+ * The matching rules (entities, quotes, dashes, tags) live in delisted-scan.cjs so the test, the
+ * post-deploy script and the footprint script all use one implementation.
  */
+export interface KnownResidue {
+  /** Repo-relative path that is still allowed to mention the tour. */
+  path: string;
+  reason: string;
+  /** Ledger card that owns the clean-up, e.g. "2026-10-19-chinatravel-brochure-reexport-without-christmas". */
+  card: string;
+}
+
 export interface DelistedTour {
   /** Slug the tour had in tours.ts. */
   slug: string;
@@ -23,10 +36,14 @@ export interface DelistedTour {
   tier: 'signature' | 'discovery' | 'stopover';
   /** Customer-facing names and phrases that must no longer appear anywhere on the site. */
   nameKeywords: string[];
+  /** Regular expressions (case-insensitive, applied to normalised text and file paths) for other spellings. */
+  patterns?: string[];
   /** Live page that old URLs 301 to. */
   redirectTo: string;
   /** Other retired paths (landing pages) that also 301 to `redirectTo`. */
   extraPaths: string[];
+  /** Files that still mention the tour on purpose, each owned by a ledger card. */
+  knownResidue?: KnownResidue[];
   /** YYYY-MM-DD */
   delistedOn: string;
 }
@@ -54,23 +71,19 @@ export function isDelistedUrl(urlOrPath: string): boolean {
   );
 }
 
-/** Normalise text before searching it for delisted words: comments, entities, curly quotes, case, whitespace. */
-export function normalizeForScan(text: string): string {
-  return text
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/&amp;/gi, '&')
-    .replace(/[‘’]/g, "'")
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
+const scanner = scan.buildScanner(DELISTED_TOURS);
 
-/** Normalised needles that must not appear in site content: every slug, name keyword and extra path. */
-export function delistedNeedles(): string[] {
-  const needles = new Set<string>();
-  for (const tour of DELISTED_TOURS) {
-    needles.add(normalizeForScan(tour.slug));
-    for (const keyword of tour.nameKeywords) needles.add(normalizeForScan(keyword));
-    for (const extra of tour.extraPaths) needles.add(normalizeForScan(extra));
-  }
-  return Array.from(needles);
-}
+/** Normalise text before searching it for delisted words (comments, escapes, entities, tags, quotes, dashes, case). */
+export const normalizeForScan = (text: string): string => scan.normalizeForScan(text);
+
+/** Normalised literal needles: every slug, name keyword and extra path. */
+export const delistedNeedles = (): string[] => scanner.needles.slice();
+
+/** Labels of every delisted slug, keyword or pattern found in a piece of text (empty when clean). */
+export const findDelistedInText = (text: string): string[] => scanner.findInText(text);
+
+/** Labels of every delisted slug, keyword or pattern found in a repo-relative file path. */
+export const findDelistedInPath = (relativePath: string): string[] => scanner.findInPath(relativePath);
+
+/** Every known-residue entry across the registry. */
+export const knownResidueEntries = (): KnownResidue[] => DELISTED_TOURS.flatMap((tour) => tour.knownResidue ?? []);

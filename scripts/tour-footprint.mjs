@@ -12,6 +12,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import scan from '../src/lib/data/delisted-scan.cjs';
 
 const SITE_DIRS = ['src', 'public', 'content'];
 const SITE_FILES = ['next.config.js'];
@@ -19,21 +20,13 @@ const NON_SITE_DIRS = ['scripts', 'docs'];
 const SKIP_DIRS = new Set(['node_modules', '.next', '.git']);
 const READ_EXTS = new Set([
   '.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.json', '.md', '.mdx',
-  '.html', '.css', '.txt', '.xml', '.yml', '.yaml', '.csv',
+  '.html', '.css', '.txt', '.xml', '.yml', '.yaml', '.csv', '.svg', '.py',
 ]);
 const CODE_EXTS = ['.ts', '.tsx', '.js', '.jsx'];
 const MAX_LINES = 3;
 const EXCERPT_LEN = 100;
 const MAX_ROUTES = 25;
 
-function normalise(text) {
-  return text
-    .replace(/<!--[\s\S]*?-->/g, '')
-    .replace(/&amp;/gi, '&')
-    .replace(/[‘’]/g, "'")
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
 
 function parseArgs(argv) {
   const args = { slug: null, root: process.cwd(), keywords: [] };
@@ -140,6 +133,7 @@ function nameVariants(name) {
 
 function buildNeedles(root, slug, keywords) {
   const needles = [slug];
+  const patterns = [];
   const tour = findTourInToursTs(root, slug);
   let found;
   if (tour) {
@@ -153,6 +147,7 @@ function buildNeedles(root, slug, keywords) {
       found = { kind: 'retired', delistedOn: retired.delistedOn };
       for (const kw of retired.nameKeywords ?? []) needles.push(kw);
       for (const p of retired.extraPaths ?? []) needles.push(p);
+      for (const p of retired.patterns ?? []) patterns.push(p);
     } else {
       found = { kind: 'missing' };
     }
@@ -161,12 +156,12 @@ function buildNeedles(root, slug, keywords) {
   const seen = new Set();
   const unique = [];
   for (const n of needles) {
-    const key = normalise(n);
+    const key = scan.normalizeForScan(n);
     if (!key || seen.has(key)) continue;
     seen.add(key);
     unique.push(n);
   }
-  return { found, needles: unique };
+  return { found, needles: unique, patterns };
 }
 
 function roleOf(root, file) {
@@ -304,15 +299,20 @@ function collectRoutes(root, reverse, file) {
   return [...routes].sort();
 }
 
-function findMatches(file, needles) {
+function findMatches(file, needles, patterns) {
   const text = readText(file);
   if (text === null) return null;
   const lines = text.split(/\r?\n/);
+  const normalisedNeedles = needles.map((n) => scan.normalizeForScan(n));
+  const regexes = patterns.map((source) => new RegExp(source, 'i'));
   const matches = [];
   for (let i = 0; i < lines.length; i++) {
-    const norm = normalise(lines[i]);
+    const norm = scan.normalizeForScan(lines[i]);
     if (!norm) continue;
-    if (needles.some((n) => norm.includes(normalise(n)))) {
+    if (
+      normalisedNeedles.some((n) => norm.includes(n)) ||
+      regexes.some((re) => re.test(norm))
+    ) {
       matches.push({ line: i + 1, text: lines[i].trim() });
     }
   }
@@ -324,8 +324,8 @@ function excerpt(text) {
 }
 
 function definesTour(matches, slug) {
-  const needle = normalise(`slug: '${slug}'`);
-  return matches.some((m) => normalise(m.text).includes(needle));
+  const needle = scan.normalizeForScan(`slug: '${slug}'`);
+  return matches.some((m) => scan.normalizeForScan(m.text).includes(needle));
 }
 
 function nearbyField(file, slug, field) {
@@ -353,7 +353,7 @@ function derivedNote(root, file, slug) {
   );
 }
 
-function printHeader(slug, found, needles) {
+function printHeader(slug, found, needles, patterns) {
   console.log(`Tour footprint: ${slug}`);
   if (found.kind === 'tours') {
     console.log(`  found: defined in tours.ts line ${found.line}`);
@@ -364,6 +364,10 @@ function printHeader(slug, found, needles) {
   }
   console.log('  needles:');
   for (const n of needles) console.log(`    - ${n}`);
+  if (patterns.length) {
+    console.log('  patterns:');
+    for (const p of patterns) console.log(`    - /${p}/`);
+  }
   console.log('');
 }
 
@@ -398,8 +402,8 @@ function main() {
     process.exit(2);
   }
   const root = args.root;
-  const { found, needles } = buildNeedles(root, args.slug, args.keywords);
-  printHeader(args.slug, found, needles);
+  const { found, needles, patterns } = buildNeedles(root, args.slug, args.keywords);
+  printHeader(args.slug, found, needles, patterns);
 
   const siteFiles = [];
   for (const dir of SITE_DIRS) walk(path.join(root, dir), siteFiles);
@@ -423,7 +427,7 @@ function main() {
 
   for (const file of siteFiles) {
     if (!isReadable(file)) continue;
-    const matches = findMatches(file, needles);
+    const matches = findMatches(file, needles, patterns);
     if (!matches) continue;
     siteMatches++;
     const role = roleOf(root, file);
@@ -447,7 +451,7 @@ function main() {
   const nonSiteResults = [];
   for (const file of nonSiteFiles) {
     if (!isReadable(file)) continue;
-    const matches = findMatches(file, needles);
+    const matches = findMatches(file, needles, patterns);
     if (matches) nonSiteResults.push({ file, count: matches.length });
   }
 
