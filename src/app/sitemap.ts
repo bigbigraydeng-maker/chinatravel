@@ -8,7 +8,7 @@ import {
   faqVisaRequirements,
   faqBestTimeTravel,
 } from '@/lib/data/faq-pages';
-import { getAllActiveTours } from '@/lib/data/tours';
+import { destinations, getAllActiveTours, getToursByDestinationAndTier } from '@/lib/data/tours';
 import { getAllCities } from '@/lib/data/cities';
 import { getAllPlayQuizSlugs } from '@/lib/data/play-quizzes';
 import { getAllGuides } from '@/lib/data/guides';
@@ -109,6 +109,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // ── Tour tier pages (/tours/china/discovery …) ──────────────────────────
+  // The category page of one tier, which every tour page breadcrumbs to. Derived from the
+  // destination data (China only, like the tour pages below) and only for tiers that currently
+  // have an active tour, so an empty tier cannot become a thin sitemap entry. The retired tours
+  // 301 to /tours/china/discovery, so search engines must be able to find that page here.
+  const tierPages: MetadataRoute.Sitemap = destinations
+    .filter((destination) => destination.slug === 'china')
+    .flatMap((destination) => destination.tiers.map((tier) => tier.slug))
+    .filter((tier) => getToursByDestinationAndTier('china', tier).length > 0)
+    .map((tier) => ({
+      url: `${SITE}/tours/china/${tier}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }));
+
   // ── Tour pages ──────────────────────────────────────────────────────────
   // 从 tours.ts 派生,不再手写 slug 列表。手写列表会和数据漂移 ——
   // 曾经出现过 isActive:false 的产品仍留在 sitemap 里,成为站内无入口的孤儿页。
@@ -169,6 +185,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tourSlugs, ...blogPages]
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tierPages, ...tourSlugs, ...blogPages]
     .filter((entry) => !isDelistedUrl(entry.url));
 }
