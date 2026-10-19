@@ -1,11 +1,15 @@
 /**
  * Tour pages must actually render <TourViewContent> — the Meta "viewed tour X" signal.
  *
- * shared-blocks.test.ts only proves the component is imported. A static scan cannot see "imported
- * but never rendered", and the tour detail page has two returns (the upgraded layout returns
- * early), so this test counts the rendered usages: dropping one silently stops Meta from learning
- * which tour a visitor looked at, and retargeting audiences ("viewed tour X, did not enquire")
- * would quietly stop filling.
+ * A static scan cannot see "imported but never rendered", and the tour detail page has two returns
+ * (the upgraded layout returns early), so this test counts the rendered usages: dropping one
+ * silently stops Meta from learning which tour a visitor looked at, and retargeting audiences
+ * ("viewed tour X, did not enquire") would quietly stop filling.
+ *
+ * Deliberately NOT covered: /campaigns/fire-fuzz and /campaigns/chongqing. Both are permanently
+ * redirected to /chongqing-tours in next.config.js (Fire & Fuzz archived, PM 2026-10-13), so they
+ * never render and carry no tracking block. They stay in shared-blocks.test.ts' list only because
+ * that contract predates the redirect; TourViewContent is therefore not in that list.
  */
 
 import { readFileSync } from 'node:fs';
@@ -17,9 +21,7 @@ const read = (rel: string) => readFileSync(join(REPO_ROOT, rel), 'utf8');
 const TOUR_DETAIL_PATH = 'src/app/tours/[destination]/[tier]/[tour]/page.tsx';
 const CAMPAIGN_PATHS = [
   'src/app/campaigns/october-2026/[slug]/page.tsx',
-  'src/app/campaigns/fire-fuzz/page.tsx',
   'src/app/campaigns/best-of-china/page.tsx',
-  'src/app/campaigns/chongqing/page.tsx',
 ] as const;
 
 const renderedCount = (src: string) => (src.match(/<TourViewContent\b/g) ?? []).length;
