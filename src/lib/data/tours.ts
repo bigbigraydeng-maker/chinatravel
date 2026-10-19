@@ -338,7 +338,7 @@ const allTours: Tour[] = [
     metaDescription: 'Journey along China\'s ancient Silk Road — Terracotta Warriors, Danxia Mountains, Mogao Caves, Heavenly Lake. 18 days from NZD $7,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-05-22',
+    updatedAt: '2026-10-19',
     tags: [
       'small group',
       'Ancient Silk Road',
@@ -350,6 +350,7 @@ const allTours: Tour[] = [
       'high-speed train',
     ],
     departureDates: ['13 May 2027', '21 October 2027'],
+    departurePricing: { '13 May 2027': 'NZD $7,999', '21 October 2027': 'NZD $8,499' },
     singleSupplement: 'NZD $1,488',
     rating: 4.8,
     reviewCount: 127,
@@ -522,7 +523,7 @@ const allTours: Tour[] = [
     metaDescription: 'The ultimate 27-day China experience — Great Wall, Forbidden City, Terracotta Warriors, Yangtze cruise, pandas, Li River, West Lake, and Shanghai. From NZD $10,899. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-03-29',
+    updatedAt: '2026-10-19',
     tags: [
       'small group',
       'Beijing',
@@ -544,6 +545,7 @@ const allTours: Tour[] = [
       'Suzhou gardens',
     ],
     departureDates: ['8 May 2027', '16 October 2027'],
+    departurePricing: { '8 May 2027': 'NZD $10,899', '16 October 2027': 'NZD $11,399' },
     singleSupplement: 'NZD $2,555',
     rating: 4.7,
     reviewCount: 94,
@@ -699,7 +701,7 @@ const allTours: Tour[] = [
     shortDescription:
       'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
-      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share. A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
+      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share (NZD $3,680 on 10 June). A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',
@@ -807,7 +809,7 @@ const allTours: Tour[] = [
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-19',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -826,7 +828,7 @@ const allTours: Tour[] = [
     departureDates: ['18 March 2027', '10 June 2027'],
     departurePricing: {
       '18 March 2027': 'NZD $3,480',
-      '10 June 2027': 'NZD $3,480',
+      '10 June 2027': 'NZD $3,680',
     },
     tourCities: ['beijing', 'xian'],
     goldenBlocks: true,
@@ -840,7 +842,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395.',
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) at NZD $3,480 and 10 June (returning 19 June) at NZD $3,680, per person twin share. A private room adds NZD $395.',
       },
       {
         question: 'What is included in the price?',
