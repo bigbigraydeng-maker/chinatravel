@@ -3,7 +3,8 @@
  *
  * Covers:
  *  - fires the Google Ads conversion to the correct send_to + value/currency
- *  - fires the Meta Pixel `Lead` event with a matching eventID (CAPI dedup)
+ *  - fires the Meta Pixel `Lead` event with a matching eventID (CAPI dedup) and NO
+ *    placeholder value/currency (the NZD 1 stays on the Google Ads conversion only)
  *  - gtag and fbq share the same transaction_id / eventID per call
  *  - each channel is guarded independently (missing gtag or fbq does not throw)
  *  - also sends a GA4 `generate_lead` event (source + same id, no money value)
@@ -70,15 +71,18 @@ describe('fireLeadConversion', () => {
     expect(mockFbq.mock.calls[0][3].eventID).toMatch(/^cts-china_visa_guide-\d+$/);
   });
 
-  it('fires the Meta Pixel Lead event with value + currency', () => {
+  it('fires the Meta Pixel Lead event WITHOUT a placeholder value or currency (a fake NZD 1 would mislead value-based bidding)', () => {
     fireLeadConversion('tour_enquiry');
     expect(mockFbq).toHaveBeenCalledTimes(1);
     expect(mockFbq).toHaveBeenCalledWith(
       'track',
       'Lead',
-      { value: 1.0, currency: 'NZD' },
+      {},
       expect.objectContaining({ eventID: expect.any(String) })
     );
+    const customData = mockFbq.mock.calls[0][2] as Record<string, unknown>;
+    expect(customData).not.toHaveProperty('value');
+    expect(customData).not.toHaveProperty('currency');
   });
 
   it('uses one shared id for gtag transaction_id and fbq eventID (CAPI dedup)', () => {

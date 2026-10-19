@@ -2,14 +2,19 @@
 
 import { useEffect } from 'react';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
-import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
 
 type Props = {
   tourSlug?: string;
   tourName?: string;
 };
 
-/** Fires once on landing so GTM / Ads can use /thank-you as a conversion URL. */
+/**
+ * Fires the GTM page event once on landing so GTM / Ads can use /thank-you as a conversion URL.
+ *
+ * Deliberately does NOT call fireLeadConversion: anyone can open /thank-you directly (bookmark,
+ * refresh, shared link, QA) and that is not an enquiry. The Lead conversion (Google Ads + Meta +
+ * GA4) is fired by the enquiry forms themselves, right after their API call succeeds.
+ */
 export default function ThankYouClient({ tourSlug, tourName }: Props) {
   useEffect(() => {
     triggerGtmEvent({
@@ -20,25 +25,6 @@ export default function ThankYouClient({ tourSlug, tourName }: Props) {
       pagePath: '/thank-you',
       timestamp: Date.now(),
     });
-
-    // Google Ads conversion + Meta Pixel Lead for the tour-enquiry path.
-    // Keyed per enquiry (tour params) so a manual refresh of the same /thank-you
-    // URL does not double-count, while a distinct enquiry still fires.
-    const dedupeKey = `cts_lead_fired:${tourSlug ?? ''}:${tourName ?? ''}`;
-    let alreadyFired = false;
-    try {
-      alreadyFired = sessionStorage.getItem(dedupeKey) === '1';
-    } catch {
-      // sessionStorage unavailable (private mode) — fall through and fire once.
-    }
-    if (!alreadyFired) {
-      try {
-        sessionStorage.setItem(dedupeKey, '1');
-      } catch {
-        // ignore — dedup is best-effort; Google Ads "count: one" backstops it.
-      }
-      fireLeadConversion('tour_enquiry');
-    }
   }, [tourSlug, tourName]);
 
   return null;
