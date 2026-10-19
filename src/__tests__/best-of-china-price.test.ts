@@ -14,6 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { normalizeForScan } from '@/lib/data/delisted-tours';
+import { getAllBlogPosts } from '@/lib/data/blogs';
 import { getTourBySlug } from '@/lib/data/tours';
 import { priceNumber } from '@/lib/tour-discovery';
 
@@ -130,6 +131,19 @@ function findProblems(files: string[], extensions: Set<string>, skip: Set<string
 
 const skipSet = new Set<string>([toRelative(__filename)]);
 
+const LD_JSON_BLOCK = /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g;
+
+function offersIn(node: unknown, found: Array<Record<string, unknown>> = []): Array<Record<string, unknown>> {
+  if (Array.isArray(node)) {
+    node.forEach((item) => offersIn(item, found));
+  } else if (node && typeof node === 'object') {
+    const record = node as Record<string, unknown>;
+    if (record['@type'] === 'Offer') found.push(record);
+    Object.values(record).forEach((value) => offersIn(value, found));
+  }
+  return found;
+}
+
 describe('Best of China has one published price', () => {
   it('the tour data publishes a readable headline price (the single source of truth)', () => {
     expect(tour).toBeTruthy();
@@ -140,6 +154,37 @@ describe('Best of China has one published price', () => {
   it('the site source has no stale Best of China figure and every structured price equals the tour price', () => {
     const files = SCAN_ROOTS.flatMap((dir) => walk(path.join(ROOT, dir)));
     expect(findProblems(files, TEXT_EXTENSIONS, skipSet)).toEqual([]);
+  });
+
+  // The blog posts carry hand-written JSON-LD inside their content. A sold-out departure must not stay
+  // there with a price (its old price is not a price anyone can book at), and a block that no longer
+  // parses is silently useless, so check what we edit by hand: valid JSON, only the tour price.
+  it('blog JSON-LD that mentions Best of China is valid JSON, with no sold-out departure and only the tour price', () => {
+    const problems: string[] = [];
+    let blocksChecked = 0;
+    for (const post of getAllBlogPosts()) {
+      for (const match of post.content.matchAll(LD_JSON_BLOCK)) {
+        if (!match[1].toLowerCase().includes(NAME)) continue;
+        blocksChecked += 1;
+        let data: unknown;
+        try {
+          data = JSON.parse(match[1]);
+        } catch (error) {
+          problems.push(`${post.slug}: a JSON-LD block does not parse (${(error as Error).message})`);
+          continue;
+        }
+        for (const offer of offersIn(data)) {
+          const name = String(offer.name ?? '');
+          if (!name.toLowerCase().startsWith(NAME)) continue;
+          if (Number(offer.price) !== PRICE) problems.push(`${post.slug}: "${name}" is priced ${String(offer.price)}`);
+          if (String(offer.availability).endsWith('SoldOut')) {
+            problems.push(`${post.slug}: "${name}" is a sold-out departure and must not be published with a price`);
+          }
+        }
+      }
+    }
+    expect(blocksChecked).toBeGreaterThan(0);
+    expect(problems).toEqual([]);
   });
 
   // Skipped when no production build exists (the CI jest job has none).

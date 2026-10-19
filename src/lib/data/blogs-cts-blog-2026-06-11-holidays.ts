@@ -216,14 +216,6 @@ If you’re still deciding shape, our [China holiday packages guide](/blog/china
   "offers": [
     {
       "@type": "Offer",
-      "name": "Best of China — 3 November 2026 departure",
-      "price": "4080",
-      "priceCurrency": "NZD",
-      "availability": "https://schema.org/SoldOut",
-      "url": "https://ctstours.co.nz/tours/china/discovery/essentials"
-    },
-    {
-      "@type": "Offer",
       "name": "Best of China — 11 March 2027 departure",
       "price": "4080",
       "priceCurrency": "NZD",
