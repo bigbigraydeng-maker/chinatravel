@@ -1,9 +1,8 @@
 /**
  * Early Bird promotion — pure pricing helpers.
  *
- * CTS Tours runs an Early Bird promotion: anyone who books by 30 November 2026
- * gets NZD 200 off per person on a Discovery tour and NZD 500 off per person on
- * a Signature tour. It only applies to departures in 2027 on China tours.
+ * CTS Tours runs an Early Bird promotion: until 30 November 2026 a Discovery tour is
+ * NZD 200 cheaper per person and a Signature tour NZD 500 cheaper. It only applies to departures in 2027 on China tours.
  *
  * First cut: only these four tours (slugs):
  *   - essentials            (Best of China)
@@ -24,14 +23,14 @@ import type { Tour } from '@/lib/data/tours';
 import { aucklandToday, priceNumber } from '@/lib/tour-discovery';
 import { parseDepartureDate } from '@/lib/data/tour-dates';
 
-/** Last Auckland calendar day the early bird price can be booked. */
-export const EARLY_BIRD_BOOK_BY_DATE = '2026-11-30';
+/** Last Auckland calendar day the early bird price is available. The tour itself has no sign-up deadline. */
+export const EARLY_BIRD_LAST_DATE = '2026-11-30';
 
-/** Human-readable form of {@link EARLY_BIRD_BOOK_BY_DATE}. */
-export const EARLY_BIRD_BOOK_BY_LABEL = '30 November 2026';
+/** Human-readable form of {@link EARLY_BIRD_LAST_DATE}. */
+export const EARLY_BIRD_LAST_DATE_LABEL = '30 November 2026';
 
 /** The small label shown next to the early bird price. */
-export const EARLY_BIRD_LABEL = `Early bird price · book by ${EARLY_BIRD_BOOK_BY_LABEL}`;
+export const EARLY_BIRD_LABEL = `Early bird price · available until ${EARLY_BIRD_LAST_DATE_LABEL}`;
 
 /** Only departures in this calendar year qualify. */
 export const EARLY_BIRD_DEPARTURE_YEAR = 2027;
@@ -57,8 +56,8 @@ export interface EarlyBirdPrice {
   regularAmount: number;
   /** 200 or 500. */
   amountOff: number;
-  /** {@link EARLY_BIRD_BOOK_BY_DATE}. */
-  bookByDate: string;
+  /** {@link EARLY_BIRD_LAST_DATE}. */
+  availableUntil: string;
   /** {@link EARLY_BIRD_LABEL}. */
   label: string;
 }
@@ -68,9 +67,9 @@ export function formatNzd(amount: number): string {
   return 'NZD $' + amount.toLocaleString('en-NZ');
 }
 
-/** True while today is on or before the book-by date (plain YYYY-MM-DD comparison). */
+/** True while today is on or before the last early bird day (plain YYYY-MM-DD comparison). */
 export function isEarlyBirdOpen(today: string = aucklandToday()): boolean {
-  return today <= EARLY_BIRD_BOOK_BY_DATE;
+  return today <= EARLY_BIRD_LAST_DATE;
 }
 
 /**
@@ -108,7 +107,7 @@ export function earlyBirdForDeparture(
     amount,
     regularAmount,
     amountOff,
-    bookByDate: EARLY_BIRD_BOOK_BY_DATE,
+    availableUntil: EARLY_BIRD_LAST_DATE,
     label: EARLY_BIRD_LABEL,
   };
 }

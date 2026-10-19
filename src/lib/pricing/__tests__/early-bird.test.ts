@@ -9,7 +9,7 @@ import { aucklandToday } from '@/lib/tour-discovery';
 import { getTourBySlug, tours, type Tour } from '@/lib/data/tours';
 import { priceNumber } from '@/lib/tour-discovery';
 import {
-  EARLY_BIRD_BOOK_BY_DATE,
+  EARLY_BIRD_LAST_DATE,
   EARLY_BIRD_LABEL,
   earlyBirdForDeparture,
   earlyBirdLead,
@@ -45,32 +45,32 @@ describe('early bird pricing', () => {
     expect(essentials!.price).toBe('NZD $3,880');
     expect(essentials!.amountOff).toBe(200);
     expect(essentials!.regularAmount).toBe(4080);
-    expect(essentials!.label).toBe('Early bird price · book by 30 November 2026');
-    expect(essentials!.bookByDate).toBe('2026-11-30');
+    expect(essentials!.label).toBe('Early bird price · available until 30 November 2026');
+    expect(essentials!.availableUntil).toBe('2026-11-30');
 
     const beijingXian = earlyBirdForDeparture(tour('discovery', 'beijing-xian'), '18 March 2027', today);
     expect(beijingXian).not.toBeNull();
     expect(beijingXian!.price).toBe('NZD $3,280');
     expect(beijingXian!.amountOff).toBe(200);
     expect(beijingXian!.regularAmount).toBe(3480);
-    expect(beijingXian!.label).toBe('Early bird price · book by 30 November 2026');
-    expect(beijingXian!.bookByDate).toBe('2026-11-30');
+    expect(beijingXian!.label).toBe('Early bird price · available until 30 November 2026');
+    expect(beijingXian!.availableUntil).toBe('2026-11-30');
 
     const shanghai = earlyBirdForDeparture(tour('discovery', 'shanghai-surroundings'), '25 March 2027', today);
     expect(shanghai).not.toBeNull();
     expect(shanghai!.price).toBe('NZD $2,499');
     expect(shanghai!.amountOff).toBe(200);
     expect(shanghai!.regularAmount).toBe(2699);
-    expect(shanghai!.label).toBe('Early bird price · book by 30 November 2026');
-    expect(shanghai!.bookByDate).toBe('2026-11-30');
+    expect(shanghai!.label).toBe('Early bird price · available until 30 November 2026');
+    expect(shanghai!.availableUntil).toBe('2026-11-30');
 
     const landscapes = earlyBirdForDeparture(tour('signature', 'landscapes'), '26 March 2027', today);
     expect(landscapes).not.toBeNull();
     expect(landscapes!.price).toBe('NZD $6,849');
     expect(landscapes!.amountOff).toBe(500);
     expect(landscapes!.regularAmount).toBe(7349);
-    expect(landscapes!.label).toBe('Early bird price · book by 30 November 2026');
-    expect(landscapes!.bookByDate).toBe('2026-11-30');
+    expect(landscapes!.label).toBe('Early bird price · available until 30 November 2026');
+    expect(landscapes!.availableUntil).toBe('2026-11-30');
   });
 
   test('covers all eight 2027 departures of the four tours with the same rule', () => {
@@ -186,11 +186,11 @@ describe('early bird pricing', () => {
   });
 
   test('the wording is exactly the agreed label and has no countdown or saving language', () => {
-    expect(EARLY_BIRD_LABEL).toBe('Early bird price · book by 30 November 2026');
+    expect(EARLY_BIRD_LABEL).toBe('Early bird price · available until 30 November 2026');
     expect(EARLY_BIRD_LABEL).not.toMatch(
-      /save|off\b|only|last chance|hurry|limited|left|remaining|countdown|days? to go|was\b|from\b/i,
+      /save|off\b|only|last chance|hurry|limited|left|remaining|countdown|days? to go|was\b|from\b|book by|deadline|closes/i,
     );
     // Sanity: the book-by date constant is the one the label references.
-    expect(EARLY_BIRD_BOOK_BY_DATE).toBe('2026-11-30');
+    expect(EARLY_BIRD_LAST_DATE).toBe('2026-11-30');
   });
 });
