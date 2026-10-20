@@ -258,6 +258,21 @@ describe('StickyCtaBar', () => {
     expect(bar).toHaveClass('visible');
   });
 
+  it('is for phones only: never shown from lg up, where the form is already beside the content', () => {
+    mockMatchMedia(false);
+    render(<Harness />);
+
+    const bar = screen.getByText('From NZD $2,699 per person').closest('[aria-hidden]');
+    expect(bar).toHaveClass('lg:hidden');
+  });
+
+  it('keeps its button on one line', () => {
+    mockMatchMedia(false);
+    render(<Harness />);
+
+    expect(screen.getByRole('button', { name: 'Send Enquiry', hidden: true })).toHaveClass('whitespace-nowrap');
+  });
+
   it('stays hidden while the hero button is still on screen', () => {
     mockMatchMedia(false);
     render(<Harness />);

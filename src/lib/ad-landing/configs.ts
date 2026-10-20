@@ -23,12 +23,6 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
       { text: 'Longjing tea tasting', source: 'Longjing tea tasting' },
       { text: 'the Bund', source: 'The Bund' },
     ],
-    chips: [
-      { text: 'Suzhou gardens', source: 'Master of the Nets Garden' },
-      { text: 'Water-town afternoon tea', source: 'afternoon tea' },
-      { text: 'Longjing tea tasting', source: 'Longjing tea tasting' },
-      { text: 'West Lake boat tour', source: 'West Lake boat tour' },
-    ],
     imageAlt: 'A canal lined with old houses in a Yangtze Delta water town, with a wooden boat on the water',
     imageCaption: 'A Yangtze Delta water town',
   },
