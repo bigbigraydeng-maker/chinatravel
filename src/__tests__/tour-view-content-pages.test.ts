@@ -22,6 +22,8 @@ const TOUR_DETAIL_PATH = 'src/app/tours/[destination]/[tier]/[tour]/page.tsx';
 const CAMPAIGN_PATHS = [
   'src/app/campaigns/october-2026/[slug]/page.tsx',
   'src/app/campaigns/best-of-china/page.tsx',
+  // The data-driven ad landing page (/campaigns/{tour}, e.g. /campaigns/shanghai-surroundings) is built in this component.
+  'src/components/ad-landing/AdLandingPage.tsx',
 ] as const;
 
 const renderedCount = (src: string) => (src.match(/<TourViewContent\b/g) ?? []).length;

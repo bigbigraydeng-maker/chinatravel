@@ -14,7 +14,7 @@ import { mapSize } from '@/lib/ad-landing/map-size';
 import type { AdImage, AdLandingConfig, CopyItem } from '@/lib/ad-landing/types';
 
 function copyItems(config: AdLandingConfig): CopyItem[] {
-  const items: CopyItem[] = [...config.hero.subhead, ...config.hero.chips];
+  const items: CopyItem[] = [...config.hero.subhead];
   for (const block of config.blocks) {
     if (block.type === 'cityLoop') {
       for (const stop of block.stops) items.push(...stop.highlights);
@@ -160,6 +160,17 @@ describe.each(AD_LANDING_CONFIGS.map((config) => [config.pathKey, config] as con
         expect(config.hero.imageSrc.startsWith('/')).toBe(true);
         expect(existsSync(join(process.cwd(), 'public', config.hero.imageSrc))).toBe(true);
       }
+    });
+
+    it('gives every highlight card a picture: an icon-only tile looks like a picture that failed to load', () => {
+      const bare: string[] = [];
+      for (const block of config.blocks) {
+        if (block.type !== 'featureCards') continue;
+        for (const card of block.cards) {
+          if (!card.image) bare.push(card.title);
+        }
+      }
+      expect(bare).toEqual([]);
     });
 
     it('has the official route map when it shows one', () => {

@@ -23,12 +23,6 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
       { text: 'Longjing tea tasting', source: 'Longjing tea tasting' },
       { text: 'the Bund', source: 'The Bund' },
     ],
-    chips: [
-      { text: 'Suzhou gardens', source: 'Master of the Nets Garden' },
-      { text: 'Water-town afternoon tea', source: 'afternoon tea' },
-      { text: 'Longjing tea tasting', source: 'Longjing tea tasting' },
-      { text: 'West Lake boat tour', source: 'West Lake boat tour' },
-    ],
     imageAlt: 'A canal lined with old houses in a Yangtze Delta water town, with a wooden boat on the water',
     imageCaption: 'A Yangtze Delta water town',
   },
@@ -82,7 +76,12 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
       cards: [
         {
           title: 'Hanfu photos and afternoon tea',
-          icon: 'camera',
+          image: {
+            src: '/images/blog/inline/jiangnan-water-town.webp',
+            alt: 'Red paper lanterns and wooden boats along a canal in a Jiangnan water town',
+            width: 867,
+            height: 1300,
+          },
           body: [
             {
               text: 'Dress up in Hanfu for photos, then take afternoon tea in thousand-year-old Xinshi Town.',
@@ -134,7 +133,7 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
     {
       type: 'faq',
       title: 'Questions, answered',
-      pick: ['included in the price', 'which hotels', 'optional activities', 'visa', 'how do i book'],
+      pick: ['included in the price', 'shopping stops', 'which hotels', 'optional activities', 'visa', 'how do i book'],
     },
   ],
 };

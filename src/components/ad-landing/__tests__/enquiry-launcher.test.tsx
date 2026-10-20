@@ -1,5 +1,6 @@
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { AdEnquiryPanel, AdEnquiryProvider, OpenEnquiryButton, StickyCtaBar } from '@/components/ad-landing/enquiry-launcher';
+import { AdEnquiryPanel, AdEnquiryProvider, CallLink, OpenEnquiryButton, StickyCtaBar } from '@/components/ad-landing/enquiry-launcher';
+import { CTS_PHONE_HREF } from '@/lib/site';
 
 /**
  * The enquiry form of an ad landing page exists ONCE in the page. On a phone it is a bottom sheet that every
@@ -258,6 +259,21 @@ describe('StickyCtaBar', () => {
     expect(bar).toHaveClass('visible');
   });
 
+  it('is for phones only: never shown from lg up, where the form is already beside the content', () => {
+    mockMatchMedia(false);
+    render(<Harness />);
+
+    const bar = screen.getByText('From NZD $2,699 per person').closest('[aria-hidden]');
+    expect(bar).toHaveClass('lg:hidden');
+  });
+
+  it('keeps its button on one line', () => {
+    mockMatchMedia(false);
+    render(<Harness />);
+
+    expect(screen.getByRole('button', { name: 'Send Enquiry', hidden: true })).toHaveClass('whitespace-nowrap');
+  });
+
   it('stays hidden while the hero button is still on screen', () => {
     mockMatchMedia(false);
     render(<Harness />);
@@ -269,6 +285,24 @@ describe('StickyCtaBar', () => {
 
     expect(bar).toHaveAttribute('aria-hidden', 'true');
     expect(bar).toHaveClass('invisible');
+  });
+
+  it('has a "Call us" link to the CTS number; tapping it reports "call_click" and does not open the sheet', () => {
+    mockMatchMedia(false);
+    render(<Harness />);
+
+    scrollHeroOutOfSight();
+
+    const link = screen.getByRole('link', { name: 'Call us' });
+    expect(link).toHaveAttribute('href', CTS_PHONE_HREF);
+    // jsdom cannot dial: stop the navigation, the click handler still runs.
+    link.addEventListener('click', (event) => event.preventDefault());
+
+    fireEvent.click(link);
+
+    expect(gtag).toHaveBeenCalledWith('event', 'call_click', { tour_slug: 'test-tour', cta_location: 'sticky_bar' });
+    expect(gtag).not.toHaveBeenCalledWith('event', 'enquiry_open', expect.anything());
+    expect(document.getElementById('ad-enquiry-panel')).not.toHaveAttribute('role', 'dialog');
   });
 
   it('opens the sheet and reports "sticky_bar"', () => {
@@ -291,6 +325,26 @@ describe('StickyCtaBar', () => {
   });
 });
 
+describe('CallLink', () => {
+  it('dials the CTS number and reports "call_click" with the place it was tapped', () => {
+    mockMatchMedia(false);
+    render(
+      <AdEnquiryProvider tourSlug='test-tour'>
+        <CallLink location='hero'>Call now</CallLink>
+      </AdEnquiryProvider>,
+    );
+
+    const link = screen.getByRole('link', { name: 'Call now' });
+    expect(link).toHaveAttribute('href', CTS_PHONE_HREF);
+    link.addEventListener('click', (event) => event.preventDefault());
+
+    fireEvent.click(link);
+
+    expect(gtag).toHaveBeenCalledTimes(1);
+    expect(gtag).toHaveBeenCalledWith('event', 'call_click', { tour_slug: 'test-tour', cta_location: 'hero' });
+  });
+});
+
 describe('outside the provider', () => {
   it('fails loudly when a button is used without the provider', () => {
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -298,6 +352,14 @@ describe('outside the provider', () => {
     expect(() => render(<OpenEnquiryButton location='hero'>x</OpenEnquiryButton>)).toThrow(
       'must be inside <AdEnquiryProvider>',
     );
+
+    spy.mockRestore();
+  });
+
+  it('fails loudly when a call link is used without the provider', () => {
+    const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
+    expect(() => render(<CallLink location='hero'>x</CallLink>)).toThrow('must be inside <AdEnquiryProvider>');
 
     spy.mockRestore();
   });

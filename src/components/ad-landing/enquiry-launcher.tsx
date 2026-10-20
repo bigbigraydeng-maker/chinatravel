@@ -10,6 +10,8 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { Phone } from 'lucide-react';
+import { CTS_PHONE_HREF } from '@/lib/site';
 
 /**
  * The enquiry form of an ad landing page exists ONCE in the page. On a phone it is a bottom sheet that the buttons
@@ -24,6 +26,8 @@ interface LauncherValue {
   /** `trigger` is the button that was pressed; focus goes back to it when the sheet closes. */
   open: (location: CtaLocation, trigger?: HTMLElement | null) => void;
   close: () => void;
+  /** A "call us" link was tapped: counted in GA4 only (it is not a conversion). */
+  trackCall: (location: CtaLocation) => void;
 }
 
 const LauncherContext = createContext<LauncherValue | null>(null);
@@ -59,6 +63,12 @@ function useIsDesktop(): boolean {
 function trackEnquiryOpen(location: CtaLocation, tourSlug: string): void {
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
   if (typeof gtag === 'function') gtag('event', 'enquiry_open', { tour_slug: tourSlug, cta_location: location });
+}
+
+/** GA4 only, and not a conversion: "someone chose to phone instead of filling in the form". */
+function trackCallClick(location: CtaLocation, tourSlug: string): void {
+  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+  if (typeof gtag === 'function') gtag('event', 'call_click', { tour_slug: tourSlug, cta_location: location });
 }
 
 export function AdEnquiryProvider({ tourSlug, children }: { tourSlug: string; children: ReactNode }) {
@@ -133,7 +143,9 @@ export function AdEnquiryProvider({ tourSlug, children }: { tourSlug: string; ch
     };
   }, [isOpen]);
 
-  const value = useMemo(() => ({ isOpen, open, close }), [isOpen, open, close]);
+  const trackCall = useCallback((location: CtaLocation) => trackCallClick(location, tourSlug), [tourSlug]);
+
+  const value = useMemo(() => ({ isOpen, open, close, trackCall }), [isOpen, open, close, trackCall]);
   return <LauncherContext.Provider value={value}>{children}</LauncherContext.Provider>;
 }
 
@@ -159,7 +171,8 @@ export function AdEnquiryPanel({ children }: { children: ReactNode }) {
         aria-modal={asDialog ? true : undefined}
         aria-label={asDialog ? 'Send an enquiry' : undefined}
         className={[
-          'fixed inset-x-0 bottom-0 z-50 max-h-[90vh] overflow-y-auto rounded-t-2xl bg-white text-gray-900 shadow-2xl',
+          // dvh = the height of what is actually visible on a phone (the address bar comes and goes); vh is the fallback.
+          'fixed inset-x-0 bottom-0 z-50 max-h-[90vh] supports-[height:100dvh]:max-h-[90dvh] overflow-y-auto rounded-t-2xl bg-white text-gray-900 shadow-2xl',
           'transition-transform duration-300 ease-out',
           isOpen ? 'visible translate-y-0' : 'invisible translate-y-full',
           'lg:visible lg:static lg:z-auto lg:max-h-[calc(100vh-3rem)] lg:translate-y-0 lg:rounded-2xl lg:shadow-xl',
@@ -201,7 +214,25 @@ export function OpenEnquiryButton({
   );
 }
 
-/** Fixed bar at the bottom of the screen once the hero button has scrolled out of sight; hidden while the sheet is open. */
+/** A "call us" link. Many older travellers would rather phone than fill in a form, so the page offers both; the tap is counted. */
+export function CallLink({
+  location,
+  className,
+  children,
+}: {
+  location: CtaLocation;
+  className?: string;
+  children: ReactNode;
+}) {
+  const { trackCall } = useLauncher();
+  return (
+    <a href={CTS_PHONE_HREF} className={className} onClick={() => trackCall(location)}>
+      {children}
+    </a>
+  );
+}
+
+/** Fixed bar at the bottom of a phone screen once the hero button has scrolled out of sight: the price, a "Call us" link and the enquiry button. Hidden while the sheet is open, and never shown from `lg` up, where the form is already beside the content. */
 export function StickyCtaBar({ priceLine, ctaLabel = 'Send Enquiry' }: { priceLine: string; ctaLabel?: string }) {
   const { isOpen, open } = useLauncher();
   const [pastHero, setPastHero] = useState(false);
@@ -221,20 +252,29 @@ export function StickyCtaBar({ priceLine, ctaLabel = 'Send Enquiry' }: { priceLi
     <div
       aria-hidden={!visible}
       className={[
-        'fixed inset-x-0 bottom-0 z-30 border-t border-warm-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur',
+        'fixed inset-x-0 bottom-0 z-30 border-t border-warm-200 bg-white/95 px-4 pt-3 shadow-[0_-4px_16px_rgba(0,0,0,0.08)] backdrop-blur lg:hidden',
         'pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300',
         visible ? 'visible translate-y-0' : 'invisible translate-y-full',
       ].join(' ')}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
-        <p className="text-sm font-semibold text-gray-900">{priceLine}</p>
-        <button
-          type="button"
-          onClick={(event) => open('sticky_bar', event.currentTarget)}
-          className="rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow"
-        >
-          {ctaLabel}
-        </button>
+      <div className="mx-auto max-w-6xl">
+        <p className="text-sm font-semibold leading-snug text-gray-900">{priceLine}</p>
+        <div className="mt-2 flex items-center gap-3">
+          <CallLink
+            location="sticky_bar"
+            className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary bg-white px-4 text-base font-semibold text-primary"
+          >
+            <Phone aria-hidden="true" className="h-5 w-5" />
+            Call us
+          </CallLink>
+          <button
+            type="button"
+            onClick={(event) => open('sticky_bar', event.currentTarget)}
+            className="min-h-[48px] flex-1 whitespace-nowrap rounded-full bg-primary px-4 text-base font-semibold text-white shadow"
+          >
+            {ctaLabel}
+          </button>
+        </div>
       </div>
     </div>
   );

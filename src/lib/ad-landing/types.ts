@@ -12,8 +12,8 @@
  * - A picture is described by what is visible in it (see public/images/tours/IMAGE-PROVENANCE.md), never by its file name.
  */
 
-/** Hero compositions. Each one is a different layout, not a recolour. */
-export type HeroVariantId = 'water-town' | 'river-cruise';
+/** Hero compositions. Each one is a different layout, not a recolour. A new tour family adds its own id and component. */
+export type HeroVariantId = 'water-town';
 
 /** Decorative colour only: the main buttons always stay the brand red. */
 export type AccentId = 'teal' | 'emerald' | 'slate';
@@ -69,8 +69,6 @@ export interface AdLandingConfig {
     eyebrow: string;
     headline: string;
     subhead: CopyItem[];
-    /** Short selling-point tags under the headline. */
-    chips: CopyItem[];
     /** Defaults to the tour's own hero picture. */
     imageSrc?: string;
     imageAlt: string;
