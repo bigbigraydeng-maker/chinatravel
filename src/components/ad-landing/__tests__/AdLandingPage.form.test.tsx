@@ -226,8 +226,20 @@ describe('enquiry form on the ad landing page vs on a tour page', () => {
     expect(countEvent('enquiry_thank_you')).toBe(1);
 
     // Exactly one Lead. (The ad page also sends its own ViewContent when it loads; that is not an enquiry event.)
+    // It names the tour: Meta gets the tour slug (the id ViewContent uses), GA4 gets the TOUR page's address, not the
+    // ad page the visitor is on.
     expect(leadCalls()).toHaveLength(1);
-    expect(leadCalls()[0]).toEqual(['track', 'Lead', {}, expect.objectContaining({ eventID: expect.any(String) })]);
+    expect(leadCalls()[0]).toEqual([
+      'track',
+      'Lead',
+      { content_ids: [t.slug], content_type: 'product' },
+      expect.objectContaining({ eventID: expect.any(String) }),
+    ]);
+    const generateLead = gtagCalls.find((call) => call[0] === 'event' && call[1] === 'generate_lead');
+    expect(generateLead?.[2]).toEqual(
+      expect.objectContaining({ tour_slug: `/tours/${t.destination}/${t.tier}/${t.slug}` })
+    );
+    expect(generateLead?.[2]).not.toEqual(expect.objectContaining({ tour_slug: '/campaigns/shanghai-surroundings' }));
 
     expect(mockTriggerGtm).toHaveBeenCalledTimes(1);
     expect(mockTriggerGtm).toHaveBeenCalledWith(
