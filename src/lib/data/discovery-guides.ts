@@ -370,7 +370,7 @@ For NZ travellers making their first China trip, this northern route — two cit
 - [China Discovery — Xi'an City Walls](https://www.chinadiscovery.com/shaanxi/xian/ancient-city-wall.html): 13.75km perimeter, 12m height
 - [TravelChinaGuide — Beijing–Xi'an High-Speed Rail](https://www.travelchinaguide.com/china-trains/beijing-xian-highspeed.htm): journey distance and timing
 
-*Ready to take this from a reading list to a real itinerary? CTS Tours' [A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) departs Auckland in October from NZD $3,480, including international flights, 4-star accommodation in both cities, guided touring, listed meals, and the Beijing–Xi'an high-speed rail in 2nd class. For a broader look at planning a first China visit, the [Beijing & Xi'an first-visit guide for NZ travellers](/blog/beijing-xian-first-visit-guide-nz) covers the logistics questions most commonly asked before departure.*`,
+*Ready to take this from a reading list to a real itinerary? CTS Tours' [A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) departs Auckland from NZD $3,480 (see the tour page for the next departure), including international flights, 4-star accommodation in both cities, guided touring, listed meals, and the Beijing–Xi'an high-speed rail in 2nd class. For a broader look at planning a first China visit, the [Beijing & Xi'an first-visit guide for NZ travellers](/blog/beijing-xian-first-visit-guide-nz) covers the logistics questions most commonly asked before departure.*`,
     faqs: [
       {
         question: 'Is this tour too touristy?',

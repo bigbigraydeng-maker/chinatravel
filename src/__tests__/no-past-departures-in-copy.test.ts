@@ -10,6 +10,12 @@
  * leaves / leaving) followed directly by a date that is already past on the
  * Auckland calendar, e.g. "Departs 15 October 2026".
  *
+ * SECOND RULE (no date needed)
+ * Departure wording that names a month but no year, e.g. "departs Auckland in October", is flagged outright:
+ * a date check cannot see it, and a tour that has no departure in the month named makes it simply wrong.
+ * Write the full date ("departs 18 March 2027", which the date rule then keeps honest) or point at the tour
+ * page. A sentence that says sold out / has passed still passes; anything else genuine goes in YEARLESS_OK.
+ *
  * WHAT PASSES BY ITSELF
  * A sentence that says sold out / fully booked / has passed / has departed /
  * no longer; dates without a year; the date-before-word wording
@@ -36,7 +42,12 @@
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
-import { findPastDepartureMentions, type PastDepartureMention } from '@/lib/data/past-departure-scan';
+import {
+  findPastDepartureMentions,
+  findYearlessMonthDepartures,
+  type PastDepartureMention,
+  type YearlessMonthDeparture,
+} from '@/lib/data/past-departure-scan';
 import { aucklandToday } from '@/lib/data/tour-dates';
 
 // Files that still contain stale copy; each must still have a stale mention.
@@ -48,6 +59,8 @@ const KNOWN_STALE_FILES: readonly string[] = [
 ];
 // Genuine historical sentences that are allowed to mention a past departure.
 const HISTORICAL_OK: ReadonlyArray<{ file: string; snippet: string; reason: string }> = [];
+// Genuine year-less "departs in <month>" sentences (none today); same shape and rules as HISTORICAL_OK.
+const YEARLESS_OK: ReadonlyArray<{ file: string; snippet: string; reason: string }> = [];
 // Top-level directories to walk for customer-facing copy.
 const SCAN_ROOTS = ['src', 'public/campaigns'];
 // File extensions that can carry customer-facing copy.
@@ -116,6 +129,10 @@ function isAllowed(file: string, mention: PastDepartureMention): boolean {
   );
 }
 
+function isYearlessAllowed(file: string, found: YearlessMonthDeparture): boolean {
+  return YEARLESS_OK.some((entry) => entry.file === file && found.sentence.includes(entry.snippet));
+}
+
 function cutSentence(sentence: string): string {
   return sentence.length > 160 ? `${sentence.slice(0, 160)}…` : sentence;
 }
@@ -123,6 +140,7 @@ function cutSentence(sentence: string): string {
 describe('no past departures in customer-facing copy', () => {
   const today = aucklandToday();
   const mentionsByFile = new Map<string, PastDepartureMention[]>();
+  const yearlessByFile = new Map<string, YearlessMonthDeparture[]>();
 
   beforeAll(() => {
     for (const repoPath of collectScannedFiles()) {
@@ -130,6 +148,10 @@ describe('no past departures in customer-facing copy', () => {
       const mentions = findPastDepartureMentions(text, today);
       if (mentions.length > 0) {
         mentionsByFile.set(repoPath, mentions);
+      }
+      const yearless = findYearlessMonthDepartures(text);
+      if (yearless.length > 0) {
+        yearlessByFile.set(repoPath, yearless);
       }
     }
   });
@@ -175,6 +197,36 @@ describe('no past departures in customer-facing copy', () => {
       const matched = mentions.some((mention) => mention.sentence.includes(entry.snippet));
       if (!matched) {
         problems.push(`HISTORICAL_OK entry for ${entry.file} ("${entry.snippet}") matches nothing — delete it`);
+      }
+    }
+    expect(problems.join('\n')).toBe('');
+  });
+
+  it('has no departure wording that names a month but no year', () => {
+    const lines: string[] = [];
+    for (const [file, found] of yearlessByFile) {
+      for (const item of found) {
+        if (isYearlessAllowed(file, item)) continue;
+        lines.push(`${file}:${item.line}  "${item.phrase}"  ${cutSentence(item.sentence)}`);
+      }
+    }
+    const message = lines.length === 0
+      ? ''
+      : [
+          'Departure wording with a month but no year found:',
+          ...lines,
+          '',
+          'Write the full date (e.g. "departs 18 March 2027") or point at the tour page for the next departure; a genuine exception goes in YEARLESS_OK with a reason.',
+        ].join('\n');
+    expect(message).toBe('');
+  });
+
+  it('every YEARLESS_OK entry still matches a sentence', () => {
+    const problems: string[] = [];
+    for (const entry of YEARLESS_OK) {
+      const found = yearlessByFile.get(entry.file) ?? [];
+      if (!found.some((item) => item.sentence.includes(entry.snippet))) {
+        problems.push(`YEARLESS_OK entry for ${entry.file} ("${entry.snippet}") matches nothing — delete it`);
       }
     }
     expect(problems.join('\n')).toBe('');

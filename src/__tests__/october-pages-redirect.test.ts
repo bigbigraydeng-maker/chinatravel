@@ -109,4 +109,15 @@ describe('October 2026 campaign pages redirect to the live tour pages', () => {
       }),
     ).toBe(`${ORIGIN}/tours/china/discovery?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_poster`);
   });
+
+  it('no redirect sends visitors to a URL that is itself redirected (no chains or loops)', async () => {
+    const redirects = await loadRedirects();
+    const isPlainPath = (path: string) => !/[:(*?]/.test(path);
+    const plainSources = new Map(redirects.filter((r) => isPlainPath(r.source)).map((r) => [r.source, r.destination]));
+    const chained = redirects
+      .filter((r) => isPlainPath(r.destination) && plainSources.has(r.destination))
+      .map((r) => `${r.source} -> ${r.destination} -> ${plainSources.get(r.destination)}`);
+
+    expect(chained).toEqual([]);
+  });
 });
