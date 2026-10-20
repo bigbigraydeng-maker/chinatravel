@@ -56,7 +56,7 @@ All CTS tour bookings come with documentation that covers these requirements aut
 
 ## How Long Should You Go?
 
-**10 days**: Two cities, comfortably paced. Good for first-timers who want the highlights without feeling rushed. Our [10-day "A Tale of Two Cities" (Beijing & Xi'an)](/campaigns/october-2026/tale-of-two-cities) and [10-day "Shanghai & Surroundings"](/campaigns/october-2026/shanghai-surroundings) both fit this window.
+**10 days**: Two cities, comfortably paced. Good for first-timers who want the highlights without feeling rushed. Our [10-day "A Tale of Two Cities" (Beijing & Xi'an)](/tours/china/discovery/beijing-xian) and [10-day "Shanghai & Surroundings"](/tours/china/discovery/shanghai-surroundings) both fit this window.
 
 **12–14 days**: Two to three cities with more breathing room. You can add Guilin, Chengdu, or Yunnan to a Beijing/Shanghai base without feeling like you're on a treadmill.
 
@@ -97,7 +97,7 @@ Not included: personal travel insurance (strongly recommended), optional excursi
 | **Signature** | 4–5 star, premium | From NZD $4,800 |
 | **Stopover** | City break, 2–4 days | From NZD $1,200 |
 
-All prices are per person, twin share, including flights from Auckland. [Contact our team](/contact) for current pricing on specific departures — the October 2026 dates are already confirmed.
+All prices are per person, twin share, including flights from Auckland. [Contact our team](/contact) for current pricing on specific departures.
 
 ## [Small-Group Tours](/small-group-china-tours): Why We Keep Groups Small
 
@@ -107,9 +107,9 @@ The practical difference: smaller groups move faster through attractions, get be
 
 ## Best Time to Go from New Zealand
 
-**October departures** are our most popular, for good reason: autumn in China is spectacular. The Great Wall at Mutianyu in October has turning foliage; Beijing and Xi'an are crisp and clear; Guilin's karst peaks reflect in still water.
+**October** is one of the best months to go: autumn in China is spectacular. The Great Wall at Mutianyu in October has turning foliage; Beijing and Xi'an are crisp and clear; Guilin's karst peaks reflect in still water.
 
-We run October 2026 departures for both Beijing & Xi'an and Shanghai & Surroundings. These depart in the first two weeks of October, before the end of Golden Week crowds.
+Our scheduled departures are listed on each tour page — if October is your window, ask us about future dates.
 
 Full [seasonal breakdown for China travel](/best-time-to-visit-china) is on our planning guide.
 

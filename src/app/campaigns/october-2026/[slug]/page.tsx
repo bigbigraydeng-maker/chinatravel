@@ -235,7 +235,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 tour={tour}
                 campaignSlug={campaignSlug}
                 otherCampaignSlug={cfg.otherCampaignSlug}
-                otherTourTitle={otherTour?.title ?? 'Our other October Discovery departure'}
+                otherTourTitle={otherTour?.title ?? 'Our other Discovery departure'}
               />
 
               <TourHighlights highlights={tour.highlights} />
