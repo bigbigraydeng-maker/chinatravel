@@ -43,10 +43,6 @@ import { aucklandToday } from '@/lib/data/tour-dates';
 // Found by the site audit of 2026-10-20 (docs: ledger card 2026-10-19-chinatravel-site-stale-data-cleanup).
 // Every entry below is removed by the change that fixes the file, never left behind.
 const KNOWN_STALE_FILES: readonly string[] = [
-  'src/app/small-group-china-tours/page.tsx', // fixed in the "landing pages" change
-  'src/app/great-wall-travel-guide/page.tsx', // fixed in the "landing pages" change
-  'src/app/terracotta-warriors-travel-guide/page.tsx', // fixed in the "landing pages" change
-  'src/lib/data/discovery-guides.ts', // fixed in the "landing pages" change
   'src/lib/data/blogs-longtail-batch1.ts', // fixed in the "blog posts" change
   'public/campaigns/cts-china-2027.html', // static page: update or take down under ledger item 3
 ];

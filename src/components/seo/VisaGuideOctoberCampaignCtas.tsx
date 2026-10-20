@@ -2,29 +2,28 @@ import Link from 'next/link';
 import { getTourBySlug } from '@/lib/data/tours';
 
 /**
- * Mid-page CTAs on the NZ visa guide: links to October 2026 Discovery campaign LPs.
- * Anchor: #october-discovery-cta
+ * Mid-page CTAs on the NZ visa guide: links to the two 10-day Discovery tour pages, with their next departures.
+ * Anchor: #october-discovery-cta (the id is kept: the marketing board links to it).
  */
 export default function VisaGuideOctoberCampaignCtas() {
   const taleTour = getTourBySlug('china', 'discovery', 'beijing-xian');
   const shanghaiTour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
   if (!taleTour || !shanghaiTour) return null;
 
-  // Full published departures (already include the year) so late-season dates
-  // like 18 March 2027 surface here too — not just the featured October date.
-  const taleDep = taleTour.departureDates?.join(' & ') ?? '15 October 2026';
-  const shDep = shanghaiTour.departureDates?.join(' & ') ?? '14 October 2026';
+  // Every published departure (they include the year); a departure that has left is already dropped from the tour data.
+  const taleDep = taleTour.departureDates?.join(' & ') || 'Dates on request';
+  const shDep = shanghaiTour.departureDates?.join(' & ') || 'Dates on request';
 
   const cards = [
     {
-      href: '/campaigns/october-2026/tale-of-two-cities',
+      href: '/tours/china/discovery/beijing-xian',
       title: taleTour.name,
       blurb: 'Beijing & Xi’an by high-speed train — Great Wall, Forbidden City, Terracotta Warriors.',
       departure: taleDep,
       price: taleTour.price,
     },
     {
-      href: '/campaigns/october-2026/shanghai-surroundings',
+      href: '/tours/china/discovery/shanghai-surroundings',
       title: shanghaiTour.name,
       blurb: 'Yangtze Delta Discovery — Shanghai, Suzhou, Hangzhou & water towns.',
       departure: shDep,
@@ -42,11 +41,11 @@ export default function VisaGuideOctoberCampaignCtas() {
         id="october-discovery-cta-heading"
         className="font-serif text-2xl font-bold text-gray-900 md:text-3xl"
       >
-        October 2026 group departures
+        Group departures from Auckland
       </h2>
       <p className="mt-2 text-sm text-gray-600 md:text-base">
         NZ passport holders can enter China visa-free for tourism (see above). These 10-day China
-        Discovery tours fit within a 30-day stay — featured October departures from Auckland.
+        Discovery tours fit within a 30-day stay — small-group departures from Auckland.
       </p>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2">
         {cards.map((c) => (
@@ -61,7 +60,7 @@ export default function VisaGuideOctoberCampaignCtas() {
               <span className="mt-2 font-serif text-lg font-bold text-accent">{c.title}</span>
               <span className="mt-2 flex-1 text-sm text-gray-600">{c.blurb}</span>
               <span className="mt-4 text-primary font-bold">{c.price}</span>
-              <span className="mt-3 text-sm font-semibold text-primary">View campaign page →</span>
+              <span className="mt-3 text-sm font-semibold text-primary">View tour →</span>
             </Link>
           </li>
         ))}

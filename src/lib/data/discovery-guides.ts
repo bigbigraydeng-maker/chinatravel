@@ -37,7 +37,7 @@ Beijing and Xi'an together make a coherent argument. Both are northern capitals.
 
 What this guide does is work through the eight things genuinely worth your time across both cities — the well-known ones and the ones most itineraries treat as afterthoughts. Each section is honest about the trade-offs: what you get, what you don't, when to go, and who it suits. For Kiwi travellers on a first China trip, this is the northern route that justifies the flight.
 
-CTS Tours' [*A Tale of Two Cities* itinerary](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) runs 10 days from Auckland with October departures — a well-timed window that avoids summer crowds while keeping the weather workable for walking.
+CTS Tours' [*A Tale of Two Cities* itinerary](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) runs 10 days from Auckland — see the tour page for the next departures. October is a well-timed month for this route: it avoids summer crowds while keeping the weather workable for walking.
 
 ---
 
@@ -339,7 +339,7 @@ Take the G89 class daytime service from Beijing West to Xi'an North. Journey tim
 
 **Visa:** Many NZ passport holders may qualify for visa-free entry for leisure travel to China — but this depends on your specific travel dates, nationality, and entry conditions. Confirm your requirements directly with a visa specialist or the Chinese consulate before booking. Do not assume; check. The CTS website includes a [visa guide](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian#visa-nudge) linked from the tour page.
 
-**Flights:** October departures from Auckland work well for the northern China weather window — temperatures are genuinely comfortable (10–20°C in Beijing, slightly warmer in Xi'an), the summer humidity has gone, and the national holiday crowds from Golden Week (early October) have thinned by mid-month. The [*A Tale of Two Cities* October departures](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) from NZD $3,480 include international flights from Auckland, 4-star hotels across both cities, guide services, listed meals, and the G89-class HSR 2nd class ticket.
+**Flights:** An October trip from Auckland works well for the northern China weather window — temperatures are genuinely comfortable (10–20°C in Beijing, slightly warmer in Xi'an), the summer humidity has gone, and the national holiday crowds from Golden Week (early October) have thinned by mid-month. The [*A Tale of Two Cities* tour](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) from NZD $3,480 includes international flights from Auckland, 4-star hotels across both cities, guide services, listed meals, and the G89-class HSR 2nd class ticket.
 
 **Currency and connectivity:** WeChat Pay and Alipay dominate Chinese transactions. International visitors now have better access to these apps linked to foreign cards than previously, but carrying some Chinese cash (CNY) for street food and smaller vendors remains useful. A Chinese SIM card or an international roaming plan with adequate data is practical — Google services don't function in mainland China without a VPN, which is worth noting when planning navigation apps.
 
@@ -740,7 +740,7 @@ This guide covers the Shanghai and surroundings route — the Jiangnan loop thro
 
 What follows is an honest section-by-section guide to the seven main draws on this route. Each one comes with trade-offs, timing advice, and the kind of specific detail that helps you decide whether it deserves your time. This is not a brochure. If an attraction is best skipped in the wrong conditions, I'll say so. If a crowd is inevitable, I'll tell you how to work around it.
 
-For reference: [China Discovery Tours from New Zealand](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) run a 10-day Jiangnan loop at NZD $2,699 per person twin-share, departing 14 October 2026. That context informs the timing advice throughout — October is one of the better months to be in this part of China.
+For reference: [China Discovery Tours from New Zealand](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) run a 10-day Jiangnan loop at NZD $2,699 per person twin-share; see the tour page for the next departures. That context informs the timing advice throughout — October is one of the better months to be in this part of China.
 
 ---
 
@@ -1021,7 +1021,7 @@ The Jiangnan loop runs Suzhou → Wuxi → Xinshi → Hangzhou → Shanghai, wit
 
 This is also emphatically not the Beijing/Xi'an route. There is no Great Wall, no Forbidden City, no Terracotta Warriors. NZ travellers who want those should look at the northern China Discovery product. What this route offers instead is classical garden design, freshwater lakes, water-town canal architecture, China's most dynamic modern skyline, and a seasonal food calendar that October times perfectly. Different aims, different experience.
 
-### For NZ travellers on a 10-day itinerary (NZD $2,699pp twin-share, departing 14 October 2026)
+### For NZ travellers on a 10-day itinerary (NZD $2,699pp twin-share)
 
 The 10-day CTS Tours structure covers the full Jiangnan loop at a pace that allows real engagement rather than checkbox tourism. Key timing observations:
 
@@ -1073,7 +1073,7 @@ A day trip to Tongji or Wuzhen from Suzhou or Hangzhou adds a second water-town 
 - [PRNewsWire — Shanghai inbound tourism 2025](https://www.prnewswire.com/news-releases/): 9.36 million inbound visitors, +39.58% YoY
 - [Wikipedia — Shanghai Tower](https://en.wikipedia.org/wiki/Shanghai_Tower): world's third-tallest building at 632m
 
-If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,699 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
+If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,699 per person twin-share, with the next departures published on the tour page. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
 
 The Yangtze Delta is not a second-tier version of northern China. It is a different argument about what China is, and for many NZ travellers, it turns out to be the more compelling one.`,
     faqs: [
