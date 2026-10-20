@@ -36,9 +36,12 @@
  * On purpose: it turns red the day after a departure mentioned in copy has
  * left.
  *
- * NOT COVERED
- * Copy assembled from data at runtime, dates written without a year, text
- * inside images or PDFs.
+ * NOT COVERED (known gaps — do not rely on this check for these)
+ * - a comma between the departure word and the date ("Departs, 15 October 2026")
+ * - ordinal or numeric dates ("15th October 2026", "15/10/2026") and US order ("October 15, 2026")
+ * - a sentence that also says sold out / has passed is skipped as a whole, even if it advertises another past date
+ * - the date written before the word ("the 15 October 2026 departure")
+ * - copy assembled from data at runtime, dates written without a year, text inside images or PDFs
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
@@ -57,6 +60,8 @@ const KNOWN_STALE_FILES: readonly string[] = [
   'src/lib/data/blogs-longtail-batch1.ts', // fixed in the "blog posts" change
   'public/campaigns/cts-china-2027.html', // static page: update or take down under ledger item 3
 ];
+// The list above may only shrink. Lower this number whenever a file leaves the list; raising it needs a reason in review.
+const MAX_KNOWN_STALE_FILES = 2;
 // Genuine historical sentences that are allowed to mention a past departure.
 const HISTORICAL_OK: ReadonlyArray<{ file: string; snippet: string; reason: string }> = [];
 // Genuine year-less "departs in <month>" sentences (none today); same shape and rules as HISTORICAL_OK.
@@ -174,6 +179,10 @@ describe('no past departures in customer-facing copy', () => {
           'Fix by updating the copy to the next real departure, or add a HISTORICAL_OK entry with a reason.',
         ].join('\n');
     expect(message).toBe('');
+  });
+
+  it('the known-stale list never grows', () => {
+    expect(KNOWN_STALE_FILES.length).toBeLessThanOrEqual(MAX_KNOWN_STALE_FILES);
   });
 
   it('every known-stale file still has a stale mention', () => {

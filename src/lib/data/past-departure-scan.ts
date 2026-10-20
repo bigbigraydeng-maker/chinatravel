@@ -7,6 +7,11 @@
  *  - dates without a year (e.g. "Departs 15 October") — cannot be shown past;
  *  - date-before-word wording ("the 15 October 2026 departure") — only dates
  *    that follow a departure word are considered.
+ * Known gaps (it does NOT catch these, so do not claim coverage):
+ *  - a comma, full stop, ! or ? between the word and the date ("Departs, 15 October 2026");
+ *  - ordinal days ("15th October 2026"), numeric dates ("15/10/2026"), US order ("October 15, 2026");
+ *  - a sentence that also says sold out / has passed is skipped as a whole, even when it advertises
+ *    another past departure.
  *
  * Sentences that explain history — sold out, fully booked, has passed /
  * departed / left / ended / gone, already departed, no longer — are skipped.

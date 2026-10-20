@@ -2732,14 +2732,27 @@ const allTours: Tour[] = [
  * offer, even if its date is still written in the data above. So each tour's `departureDates` is worked
  * out when it is read (Auckland day), not when this module loads: it stays right on a server that runs
  * for weeks, and every reader gets the same answer without having to remember to filter.
+ *
+ * The list is built once per Auckland day and handed out as the same array on every read that day: React
+ * (in development) refuses a property that returns a fresh array each time it is read, which showed up on
+ * the upgraded tour pages that pass the tour to a client component.
  */
 function withUpcomingDepartures(tour: Tour): Tour {
   const written = tour.departureDates;
   if (!written || written.length === 0) return tour;
+  let day = '';
+  let upcoming: string[] = [];
   return Object.defineProperty({ ...tour }, 'departureDates', {
     enumerable: true,
     configurable: true,
-    get: () => upcomingDepartureLabels(written, aucklandToday()),
+    get: () => {
+      const today = aucklandToday();
+      if (today !== day) {
+        upcoming = upcomingDepartureLabels(written, today);
+        day = today;
+      }
+      return upcoming;
+    },
   });
 }
 

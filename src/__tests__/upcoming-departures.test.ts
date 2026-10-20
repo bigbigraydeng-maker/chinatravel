@@ -69,15 +69,17 @@ describe('aucklandToday', () => {
 });
 
 describe('tour departure lists never contain a departure that has left', () => {
-  it('Legacy of China lists no 2026 departure', () => {
+  it('Legacy of China lists no departure that has left', () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-10-20T00:00:00Z').getTime());
 
     const tour = getTourBySlug('china', 'signature', 'imperial-heritage');
     expect(tour?.departureDates).toBeDefined();
 
+    const today = aucklandToday();
     for (const label of tour?.departureDates ?? []) {
-      expect(label).toContain('2027');
+      const day = parseDepartureDate(label)?.toISOString().slice(0, 10) ?? '';
+      expect({ label, notPast: day >= today }).toEqual({ label, notPast: true });
     }
   });
 
@@ -113,6 +115,25 @@ describe('tour departure lists never contain a departure that has left', () => {
     }
 
     expect(offenders).toEqual([]);
+  });
+
+  it('hands out the same array on every read within a day, and a new one once the day changes', () => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date('2026-10-20T00:00:00Z').getTime()); // 13:00 on 20 October in Auckland (UTC+13)
+    const tour = tours.find((t) => (t.departureDates ?? []).length > 0);
+    expect(tour).toBeDefined();
+
+    const first = tour?.departureDates;
+    expect(tour?.departureDates).toBe(first);
+
+    jest.setSystemTime(new Date('2026-10-20T09:00:00Z').getTime()); // 22:00 the same Auckland day
+    expect(tour?.departureDates).toBe(first);
+
+    jest.setSystemTime(new Date('2026-10-20T11:30:00Z').getTime()); // 00:30 on 21 October in Auckland: a new day
+    const nextDay = tour?.departureDates;
+    expect(nextDay).not.toBe(first);
+    expect(nextDay).toEqual(first);
+    expect(tour?.departureDates).toBe(nextDay);
   });
 
   it('the list shrinks as time passes', () => {
