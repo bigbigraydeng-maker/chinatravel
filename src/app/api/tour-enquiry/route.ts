@@ -54,16 +54,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
-    // Travel window and budget band are required on the page but OPTIONAL here: a visitor whose page was loaded
-    // before this field existed still submits the old payload, and that lead must not be lost. When a value is
-    // sent it must be one of the known codes.
-    const isGiven = (value: unknown) => value !== undefined && value !== null && value !== '';
-    if (isGiven(travelWindow) && travelWindowLabel(travelWindow) === null) {
-      return NextResponse.json({ error: 'Please choose one of the listed travel windows.' }, { status: 400 });
-    }
-    if (isGiven(budgetBand) && budgetBandLabel(budgetBand) === null) {
-      return NextResponse.json({ error: 'Please choose one of the listed budget ranges.' }, { status: 400 });
-    }
+    // Travel window and budget band are required on the page but OPTIONAL here, and a value that is not one of the
+    // known codes is ignored (the email just has no row for it): a visitor whose page was loaded before this field
+    // existed, or before an option was renamed or removed, still submits the old payload, and that lead must not be
+    // lost.
 
     const selectedTour = getTourBySlug(destination, tier, tourSlug);
     if (selectedTour && !selectedTour.isActive) {

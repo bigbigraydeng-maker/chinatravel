@@ -1,10 +1,11 @@
 /** @jest-environment node */
 // WHY: the tour enquiry form now asks when the visitor plans to travel (`travelWindow`) and their budget per
 // person (`budgetBand`). They are required on the PAGE only; the API keeps them optional so a visitor whose page
-// was loaded before the change can still submit (a 400 would lose that lead), but a value that is sent must be a
-// known code. The notification email gets two extra rows at the END of its table, after every existing row, and
-// shows human labels (never codes); the subject and every existing row stay byte-for-byte as before, because the
-// CRM on the other side parses them.
+// was loaded before the change can still submit (a 400 would lose that lead). A value that is not a known code
+// (an option renamed or removed after the visitor's page loaded) is ignored for the same reason: the lead is kept
+// and the email simply has no row for that answer. The notification email gets two extra rows at the END of its
+// table, after every existing row, and shows human labels (never codes); the subject and every existing row stay
+// byte-for-byte as before, because the CRM on the other side parses them.
 const sent: Array<{ html: string; subject: string; to: string; replyTo?: string }> = [];
 jest.mock('resend', () => ({
   Resend: class {
@@ -129,25 +130,52 @@ describe('POST /api/tour-enquiry — travel window and budget', () => {
     expect(sent[0].html).not.toContain('Budget per person (NZD)');
   });
 
-  describe('an unknown value is refused and nothing is sent', () => {
-    const badTravelWindows: unknown[] = ['lt_3000', 'gt_8000', 'MAR_MAY_2027', 'March – May 2027', 5, ['mar_may_2027'], { code: 'mar_may_2027' }, true];
-    it.each(badTravelWindows)('refuses travelWindow %p', async (value) => {
+  describe('an unknown value is ignored and the lead is still sent', () => {
+    const badTravelWindows: unknown[] = ['lt_3000', 'gt_8000', 'MAR_MAY_2027', 'March – May 2027', 'constructor', '__proto__', 5, ['mar_may_2027'], { code: 'mar_may_2027' }, true];
+    it.each(badTravelWindows)('ignores travelWindow %p', async (value) => {
       sent.length = 0;
       const res = await call({ ...base, travelWindow: value });
-      expect(res.status).toBe(400);
-      const json = (await res.json()) as { error: string };
-      expect(json.error).toBe('Please choose one of the listed travel windows.');
-      expect(sent).toHaveLength(0);
+      expect(res.status).toBe(200);
+      expect(sent).toHaveLength(1);
+      expect(sent[0].html).not.toContain('Travel window');
     });
 
-    const badBudgetBands: unknown[] = ['lt_3000', 'gt_8000', 'UNDER_3000', 'Under $3,000', 5, ['under_3000'], { code: 'under_3000' }, true];
-    it.each(badBudgetBands)('refuses budgetBand %p', async (value) => {
+    const badBudgetBands: unknown[] = ['lt_3000', 'gt_8000', 'UNDER_3000', 'Under $3,000', 'constructor', '__proto__', 5, ['under_3000'], { code: 'under_3000' }, true];
+    it.each(badBudgetBands)('ignores budgetBand %p', async (value) => {
       sent.length = 0;
       const res = await call({ ...base, budgetBand: value });
-      expect(res.status).toBe(400);
-      const json = (await res.json()) as { error: string };
-      expect(json.error).toBe('Please choose one of the listed budget ranges.');
-      expect(sent).toHaveLength(0);
+      expect(res.status).toBe(200);
+      expect(sent).toHaveLength(1);
+      expect(sent[0].html).not.toContain('Budget per person (NZD)');
+    });
+
+    it('keeps the answer that is valid when the other one is unknown', async () => {
+      const retiredWindow = await call({ ...base, travelWindow: 'retired_option', budgetBand: '5000_8000' });
+      expect(retiredWindow.status).toBe(200);
+      expect(sent[0].html).not.toContain('Travel window');
+      expect(sent[0].html).toContain('$5,000 – $8,000');
+
+      sent.length = 0;
+      const retiredBudget = await call({ ...base, travelWindow: 'jun_sep_2027', budgetBand: 'retired_option' });
+      expect(retiredBudget.status).toBe(200);
+      expect(sent[0].html).toContain('June – September 2027');
+      expect(sent[0].html).not.toContain('Budget per person (NZD)');
+    });
+
+    it('gives exactly the email an older page gets, as if the unknown values had not been sent', async () => {
+      jest.useFakeTimers();
+      jest.setSystemTime(new Date('2026-10-20T03:00:00.000Z').getTime());
+
+      const res = await call({ ...base, travelWindow: 'retired_option', budgetBand: 'retired_option' });
+      expect(res.status).toBe(200);
+      expect(sent[0].subject).toBe(golden.plain.subject);
+      expect(sent[0].html).toBe(golden.plain.html);
+    });
+
+    it('never puts an unknown value into the email', async () => {
+      await call({ ...base, travelWindow: '<b>retired</b>', budgetBand: 'drop table leads' });
+      expect(sent[0].html).not.toContain('retired');
+      expect(sent[0].html).not.toContain('drop table leads');
     });
   });
 

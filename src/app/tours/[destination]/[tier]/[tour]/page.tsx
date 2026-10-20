@@ -462,7 +462,7 @@ export default function TourPage({ params }: TourPageProps) {
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
+              <div className="sticky top-24 space-y-6 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
                 <TourEnquiry
                   tourName={tour.name}
                   tourSlug={tour.slug}
