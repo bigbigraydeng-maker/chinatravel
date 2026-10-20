@@ -6,8 +6,9 @@
  * An enquiry on a tour page (or on an ad landing page, which uses the same
  * form) must tell the two conversion channels WHICH tour it is about, so ads
  * can be judged tour by tour:
- *   - GA4 `generate_lead` gets `tour_slug` = the address of the tour's own
- *     page (never the ad page the visitor came through).
+ *   - GA4 `generate_lead` gets `tour_slug` = the tour slug (the value the ad
+ *     page's other GA4 events send) and `tour_path` = the address of the
+ *     tour's own page (never the ad page the visitor came through).
  *   - Meta Pixel `Lead` gets `content_ids: [<tour slug>]` and
  *     `content_type: 'product'` — the same id and type the ViewContent event
  *     sends for that tour, so Meta can match "viewed tour X" with "enquired
@@ -55,7 +56,7 @@ const gtagCount = (name: string) =>
   mockGtag.mock.calls.filter((call) => call[0] === 'event' && call[1] === name).length;
 
 describe('fireLeadConversion with a tour', () => {
-  it('adds the tour page address to the GA4 generate_lead event as tour_slug', () => {
+  it('adds the tour slug and the tour page address to the GA4 generate_lead event as tour_slug and tour_path', () => {
     fireLeadConversion('tour_enquiry', TOUR);
 
     const conversion = gtagEvent('conversion');
@@ -64,7 +65,8 @@ describe('fireLeadConversion with a tour', () => {
     expect(lead![2]).toEqual({
       lead_source: 'tour_enquiry',
       transaction_id: conversion![2].transaction_id,
-      tour_slug: TOUR.path,
+      tour_slug: TOUR.slug,
+      tour_path: TOUR.path,
     });
   });
 
@@ -121,6 +123,7 @@ describe('fireLeadConversion with a tour', () => {
     const thankYou = gtagEvent('enquiry_thank_you');
     expect(thankYou).toBeDefined();
     expect(thankYou![2]).not.toHaveProperty('tour_slug');
+    expect(thankYou![2]).not.toHaveProperty('tour_path');
     expect(thankYou![2]).not.toHaveProperty('content_ids');
   });
 
@@ -173,6 +176,7 @@ describe('fireLeadConversion without a tour', () => {
     const lead = gtagEvent('generate_lead');
     expect(lead).toBeDefined();
     expect(lead![2]).not.toHaveProperty('tour_slug');
+    expect(lead![2]).not.toHaveProperty('tour_path');
     expect(mockFbq.mock.calls[0][2]).toEqual({});
   });
 });

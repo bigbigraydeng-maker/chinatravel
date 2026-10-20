@@ -49,10 +49,11 @@ const CURRENCY = 'NZD';
 export type LeadSource = 'contact_page' | 'tour_enquiry' | 'china_tours_hub' | 'china_visa_guide';
 
 /**
- * Which tour an enquiry is about. `path` is the address of that tour's own page (for example
- * /tours/china/discovery/shanghai-surroundings, never the ad landing page the visitor came through); it goes to GA4
- * as `tour_slug`. `slug` goes to Meta as `content_ids`: the same id the ViewContent event sends for that tour, so
- * Meta can match "viewed tour X" with "enquired about tour X".
+ * Which tour an enquiry is about. `slug` is the tour's id: GA4 gets it as `tour_slug` (the same value the ad page's
+ * enquiry_open and call_click events send, so a funnel can be read tour by tour) and Meta gets it as `content_ids`
+ * (the id the ViewContent event sends for that tour, so Meta can match "viewed tour X" with "enquired about tour X").
+ * `path` is the address of that tour's own page (for example /tours/china/discovery/shanghai-surroundings, never the
+ * ad landing page the visitor came through); GA4 gets it as `tour_path`.
  */
 export interface LeadTour {
   path: string;
@@ -107,7 +108,7 @@ export function fireLeadConversion(source: LeadSource, tour?: LeadTour): void {
         g('event', 'generate_lead', {
           lead_source: source,
           transaction_id: eventId,
-          ...(tour ? { tour_slug: tour.path } : {}),
+          ...(tour ? { tour_slug: tour.slug, tour_path: tour.path } : {}),
         });
         // One unified "an enquiry was accepted" event for every form, whether the visitor
         // is sent to /thank-you or sees an inline success message. Carries the first

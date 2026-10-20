@@ -5,9 +5,9 @@
  *
  * An enquiry on a tour page (or on an ad landing page, which uses the same
  * form) must tell the two conversion channels WHICH tour it is about, so ads
- * can be judged tour by tour. GA4 `generate_lead` gets `tour_slug` = the
- * address of the tour's own page (never the ad page the visitor came through);
- * Meta Pixel `Lead` gets `content_ids: [<tour slug>]` and
+ * can be judged tour by tour. GA4 `generate_lead` gets `tour_slug` = the tour
+ * slug and `tour_path` = the address of the tour's own page (never the ad page
+ * the visitor came through); Meta Pixel `Lead` gets `content_ids: [<tour slug>]` and
  * `content_type: 'product'` — the same id and type the ViewContent event sends
  * for that tour. Nothing else about the events changes: the Google Ads
  * conversion, the `enquiry_thank_you` event, the shared id, the once-only
@@ -100,7 +100,7 @@ function conversions() {
 }
 
 describe('TourEnquiry tells the conversion channels which tour the enquiry is about', () => {
-  it('sends the tour page address to GA4 and the tour slug to Meta', async () => {
+  it('sends the tour slug and the tour page address to GA4 and the tour slug to Meta', async () => {
     render(<TourEnquiry {...PROPS} />);
     fillAndSubmit({ name: 'Ada Lovelace', email: 'ada@example.com' });
 
@@ -110,7 +110,8 @@ describe('TourEnquiry tells the conversion channels which tour the enquiry is ab
     expect(c.ga4Lead).toHaveLength(1);
     expect(c.ga4Lead[0][2]).toMatchObject({
       lead_source: 'tour_enquiry',
-      tour_slug: '/tours/china/discovery/shanghai-surroundings',
+      tour_slug: 'shanghai-surroundings',
+      tour_path: '/tours/china/discovery/shanghai-surroundings',
     });
     expect(c.metaLead).toHaveLength(1);
     expect(c.metaLead[0]).toEqual([
@@ -131,7 +132,8 @@ describe('TourEnquiry tells the conversion channels which tour the enquiry is ab
 
     const c = conversions();
     expect(c.ga4Lead).toHaveLength(1);
-    expect(c.ga4Lead[0][2].tour_slug).toBe('/tours/china/discovery/shanghai-surroundings');
+    expect(c.ga4Lead[0][2].tour_slug).toBe('shanghai-surroundings');
+    expect(c.ga4Lead[0][2].tour_path).toBe('/tours/china/discovery/shanghai-surroundings');
   });
 
   it('follows the destination, tier and slug it is given', async () => {
@@ -149,7 +151,8 @@ describe('TourEnquiry tells the conversion channels which tour the enquiry is ab
 
     const c = conversions();
     expect(c.ga4Lead).toHaveLength(1);
-    expect(c.ga4Lead[0][2].tour_slug).toBe('/tours/china/signature/landscapes');
+    expect(c.ga4Lead[0][2].tour_slug).toBe('landscapes');
+    expect(c.ga4Lead[0][2].tour_path).toBe('/tours/china/signature/landscapes');
     expect(c.metaLead).toHaveLength(1);
     expect(c.metaLead[0][2]).toEqual({
       content_ids: ['landscapes'],
@@ -182,6 +185,7 @@ describe('TourEnquiry tells the conversion channels which tour the enquiry is ab
     const c = conversions();
     expect(c.ads).toHaveLength(1);
     expect(c.ads[0][2]).not.toHaveProperty('tour_slug');
+    expect(c.ads[0][2]).not.toHaveProperty('tour_path');
   });
 
   it('sends the events once, and none when the server refuses', async () => {
