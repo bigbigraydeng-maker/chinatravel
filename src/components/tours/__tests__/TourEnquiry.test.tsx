@@ -105,11 +105,17 @@ describe('TourEnquiry — Lead conversion timing', () => {
     expect(c.ads[0][2]).toMatchObject({
       send_to: 'AW-17984232872/y-kaCLSI9YAcEKi7xv9C',
     });
-    expect(c.ga4Lead[0][2]).toMatchObject({ lead_source: 'tour_enquiry' });
+    // The two events that name the tour: GA4 gets the tour slug and the tour page's address, Meta gets the tour slug
+    // (the same id its ViewContent event uses).
+    expect(c.ga4Lead[0][2]).toMatchObject({
+      lead_source: 'tour_enquiry',
+      tour_slug: 'beijing-xian',
+      tour_path: '/tours/china/discovery/beijing-xian',
+    });
     expect(c.metaLead[0]).toEqual([
       'track',
       'Lead',
-      {},
+      { content_ids: ['beijing-xian'], content_type: 'product' },
       { eventID: expect.stringMatching(/^cts-tour_enquiry-/) },
     ]);
   });

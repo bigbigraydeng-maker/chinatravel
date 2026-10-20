@@ -116,7 +116,7 @@ export default function TourEnquiry({
       // Google Ads conversion + Meta Pixel Lead + GA4 generate_lead — only now that the API has
       // accepted the enquiry. The /thank-you page itself no longer fires it (a direct visit is
       // not a lead).
-      fireLeadConversion('tour_enquiry');
+      fireLeadConversion('tour_enquiry', { path: `/tours/${destination}/${tier}/${tourSlug}`, slug: tourSlug });
       const q = new URLSearchParams({
         tour: tourName,
         slug: tourSlug,
