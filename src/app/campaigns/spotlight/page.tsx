@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description:
       'Golden China, a 12-day journey through Beijing, Xi’an and Shanghai, departing Auckland on 16 November 2026.',
     path: '/campaigns/spotlight',
-    ogImagePath: '/images/tours/shanghai-yuyuan-night.jpg',
+    ogImagePath: '/images/tours/shanghai-yuyuan-night-1600.jpg',
     ogImageAlt: 'Shanghai Yu Garden illuminated at night',
     keywords: [
       'China group tours 2026',
@@ -116,7 +116,7 @@ export default function October2026CampaignIndexPage() {
       <section className="relative overflow-hidden bg-accent text-white">
         <div className="absolute inset-0" aria-hidden>
           <Image
-            src="/images/tours/shanghai-yuyuan-night.jpg"
+            src="/images/tours/shanghai-yuyuan-night-1600.jpg"
             alt=""
             fill
             priority

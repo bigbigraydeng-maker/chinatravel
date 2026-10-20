@@ -1,31 +1,43 @@
 /**
  * Tour pages and tour cards point at pictures stored in public/images/tours. The site's image
- * loader returns a local file unchanged, so every visitor downloads the file exactly as it sits
- * on disk. On 2026-10-21 the Natural China ad page was found to ship a 3.5 MB hero picture
- * (mobile Largest Contentful Paint 32 s on a slow phone connection) and a 12 MB gallery picture;
- * they were replaced by compressed copies. This test keeps that from coming back: no local
- * picture that an active tour (hero or gallery) or a tour card points at may be bigger than
- * 500 KB, except the ones listed below as still waiting to be compressed. The list may only
- * shrink: an entry that is no longer needed must be deleted from it.
+ * loader returns a local file unchanged, and the photo gallery at the top of a tour page shows its
+ * pictures unresized too, so every visitor downloads the file exactly as it sits on disk. On
+ * 2026-10-21 the Natural China ad page was found to ship a 3.5 MB hero picture (mobile Largest
+ * Contentful Paint 32 s on a slow phone connection) and a 12 MB gallery picture; they were replaced
+ * by compressed copies, and the cards and photo galleries of the three advertised tours (A Tale of
+ * Two Cities, Best of China, Shanghai & Surroundings) followed. This test keeps that from coming
+ * back: no local picture that an active tour (hero, gallery or the photo gallery of its page) or a
+ * tour card points at may be bigger than 500 KB, except the ones listed below as still waiting to
+ * be compressed. The list may only shrink: an entry that is no longer needed must be deleted from
+ * it, and a picture of an advertised tour may never be on it.
  */
 
 import { existsSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { galleryForTour } from '@/components/upgrade/UpgradedTourPage';
 import { getAllActiveTours } from '@/lib/data/tours';
 import { getTourCardMedia } from '@/lib/tour-card-media';
 
 const LIMIT_BYTES = 500 * 1024;
 
-// Still to compress (tracked as the next step of the same clean-up).
+// The tours that ads send visitors to.
+const ADVERTISED_TOURS = ['beijing-xian', 'essentials', 'shanghai-surroundings'];
+
+// Still to compress, next round: the Silk Road and Imperial Heritage cards, the two Guilin
+// stopovers, and the photo galleries of the Yunnan and Zhangjiajie tours.
 const KNOWN_HEAVY: readonly string[] = [
-  '/images/tours/shanghai-yuyuan-night.jpg',
-  '/images/tours/great-wall-green.jpg',
   '/images/tours/silk-road-wall.jpg',
-  '/images/tours/xian-terracotta-2.jpg',
   '/images/tours/forbidden-city-aerial.jpg',
-  '/images/tours/beijing-temple-2.jpg',
   '/images/tours/li-river-karst-boats.jpg',
   '/images/tours/yangshuo-karst-aerial.jpg',
+  '/images/tours/shangri-la-monastery.jpg',
+  '/images/tours/shangri-la-monastery-lake.jpg',
+  '/blog/sourced/lijiang-old-town-canal.jpg',
+  '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
+  '/images/guides/zhangjiajie/sandstone-spires.jpg',
+  '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
+  '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
+  '/images/tours/tianmen-mountain-glass-walkway.jpg',
 ];
 
 function localPictures(): Map<string, string[]> {
@@ -49,6 +61,9 @@ function localPictures(): Map<string, string[]> {
       add(picture, `${tour.slug}: gallery`);
     }
     add(getTourCardMedia(tour).src, `${tour.slug}: card`);
+    for (const photo of galleryForTour(tour)) {
+      add(photo.src, `${tour.slug}: page photos`);
+    }
   }
 
   return pictures;
@@ -116,5 +131,19 @@ describe('local tour pictures stay light', () => {
     const tooHeavy = paths.filter((path) => sizeOf(path) > LIMIT_BYTES);
 
     expect(tooHeavy).toEqual([]);
+  });
+
+  it('the advertised tours show only light pictures, on their pages and on their cards', () => {
+    const heavy = [...localPictures().entries()]
+      .filter(([, users]) =>
+        users.some((user) => ADVERTISED_TOURS.some((slug) => user.startsWith(`${slug}: `))),
+      )
+      .filter(([path]) => sizeOf(path) > LIMIT_BYTES)
+      .map(
+        ([path, users]) =>
+          `${path} (${Math.round(sizeOf(path) / 1024)} KB, used by ${users.join(', ')})`,
+      );
+
+    expect(heavy).toEqual([]);
   });
 });
