@@ -31,6 +31,31 @@ export function parseDepartureDate(raw: string): Date | null {
   return date;
 }
 
+const AUCKLAND_DAY = new Intl.DateTimeFormat('en-NZ', {
+  timeZone: 'Pacific/Auckland',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
+
+/** The calendar day in Auckland as 'YYYY-MM-DD'. A departure on this day has not left yet. */
+export function aucklandToday(now = new Date()): string {
+  const parts = AUCKLAND_DAY.formatToParts(now);
+  const part = (type: string) => parts.find((p) => p.type === type)?.value;
+  return `${part('year')}-${part('month')}-${part('day')}`;
+}
+
+/**
+ * The departures that have not left yet, in the order written. A departure on `today` still counts.
+ * A label that is not a calendar date (e.g. "TBC") is kept: it cannot be shown to be in the past.
+ */
+export function upcomingDepartureLabels(labels: readonly string[], today: string = aucklandToday()): string[] {
+  return labels.filter((label) => {
+    const date = parseDepartureDate(label);
+    return !date || date.toISOString().slice(0, 10) >= today;
+  });
+}
+
 /** Formats a UTC date back to the "D Month YYYY" convention used across tours.ts. */
 export function formatScheduleDate(date: Date): string {
   const day = date.getUTCDate();

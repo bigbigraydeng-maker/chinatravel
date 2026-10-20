@@ -5,6 +5,8 @@ import { getTourBySlug } from '@/lib/data/tours';
  * Every row reads its dates straight from each tour's `departureDates` in
  * tours.ts (the same source the product-page/campaign hero uses), so the schedule
  * block and the hero can never drift apart.
+ * `dates` is read when the block renders (not once at start-up), so a departure that has
+ * left drops out of the schedule on its own.
  */
 export type DepartureScheduleRow = {
   label: string;
@@ -33,7 +35,9 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'silk-road',
     destination: 'china',
     tier: 'signature',
-    dates: departuresForTour('signature', 'silk-road'),
+    get dates() {
+      return departuresForTour('signature', 'silk-road');
+    },
     duration: durationForTour('signature', 'silk-road'),
   },
   {
@@ -41,7 +45,9 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'imperial-heritage',
     destination: 'china',
     tier: 'signature',
-    dates: departuresForTour('signature', 'imperial-heritage'),
+    get dates() {
+      return departuresForTour('signature', 'imperial-heritage');
+    },
     duration: durationForTour('signature', 'imperial-heritage'),
   },
   {
@@ -49,7 +55,9 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'grand-tour',
     destination: 'china',
     tier: 'signature',
-    dates: departuresForTour('signature', 'grand-tour'),
+    get dates() {
+      return departuresForTour('signature', 'grand-tour');
+    },
     duration: durationForTour('signature', 'grand-tour'),
   },
   {
@@ -57,7 +65,9 @@ export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'landscapes',
     destination: 'china',
     tier: 'signature',
-    dates: departuresForTour('signature', 'landscapes'),
+    get dates() {
+      return departuresForTour('signature', 'landscapes');
+    },
     duration: durationForTour('signature', 'landscapes'),
   },
 ];
@@ -68,7 +78,9 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'beijing-xian',
     destination: 'china',
     tier: 'discovery',
-    dates: departuresForTour('discovery', 'beijing-xian'),
+    get dates() {
+      return departuresForTour('discovery', 'beijing-xian');
+    },
     duration: durationForTour('discovery', 'beijing-xian'),
   },
   {
@@ -76,7 +88,9 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'essentials',
     destination: 'china',
     tier: 'discovery',
-    dates: departuresForTour('discovery', 'essentials'),
+    get dates() {
+      return departuresForTour('discovery', 'essentials');
+    },
     duration: durationForTour('discovery', 'essentials'),
   },
   {
@@ -84,7 +98,9 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
-    dates: departuresForTour('discovery', 'shanghai-surroundings'),
+    get dates() {
+      return departuresForTour('discovery', 'shanghai-surroundings');
+    },
     duration: durationForTour('discovery', 'shanghai-surroundings'),
   },
   {
@@ -92,7 +108,9 @@ export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
     slug: 'yunnan-explorer',
     destination: 'china',
     tier: 'discovery',
-    dates: departuresForTour('discovery', 'yunnan-explorer'),
+    get dates() {
+      return departuresForTour('discovery', 'yunnan-explorer');
+    },
     duration: durationForTour('discovery', 'yunnan-explorer'),
   },
 ];

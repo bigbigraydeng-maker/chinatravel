@@ -2,6 +2,7 @@
 // This can be replaced with Supabase integration later
 
 import { isDelistedSlug } from './delisted-tours';
+import { aucklandToday, upcomingDepartureLabels } from './tour-dates';
 
 export interface Tour {
   id: string;
@@ -419,7 +420,7 @@ const allTours: Tour[] = [
     metaDescription: 'Legacy of China — Beijing, Xi\'an, Lhasa, pandas, Victoria Yangtze cruise, Three Gorges Dam, Shanghai; 17 days NZD $9,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-02',
+    updatedAt: '2026-10-20',
     tags: [
       'small group',
       'Beijing',
@@ -440,7 +441,7 @@ const allTours: Tour[] = [
       'history',
       'ancient culture',
     ],
-    departureDates: ['13 August 2026', '15 October 2026', '28 May 2027'],
+    departureDates: ['28 May 2027'],
     singleSupplement: 'NZD $2,410',
     rating: 4.9,
     reviewCount: 283,
@@ -2727,10 +2728,26 @@ const allTours: Tour[] = [
 ];
 
 /**
+ * A departure that has already left must never reach a page, card, schedule, feed or structured-data
+ * offer, even if its date is still written in the data above. So each tour's `departureDates` is worked
+ * out when it is read (Auckland day), not when this module loads: it stays right on a server that runs
+ * for weeks, and every reader gets the same answer without having to remember to filter.
+ */
+function withUpcomingDepartures(tour: Tour): Tour {
+  const written = tour.departureDates;
+  if (!written || written.length === 0) return tour;
+  return Object.defineProperty({ ...tour }, 'departureDates', {
+    enumerable: true,
+    configurable: true,
+    get: () => upcomingDepartureLabels(written, aucklandToday()),
+  });
+}
+
+/**
  * Everything on sale: the entries above minus anything in the delisting registry
  * (delisted-tours.ts), so a retired tour can never reach a page, list, feed or sitemap.
  */
-export const tours: Tour[] = allTours.filter((tour) => !isDelistedSlug(tour.slug));
+export const tours: Tour[] = allTours.filter((tour) => !isDelistedSlug(tour.slug)).map(withUpcomingDepartures);
 
 // Utility Functions
 export const getTourBySlug = (destination: string, tier: string, slug: string): Tour | undefined => {
