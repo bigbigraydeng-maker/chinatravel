@@ -42,9 +42,11 @@
  * - ordinal or numeric dates ("15th October 2026", "15/10/2026") and US order ("October 15, 2026")
  * - a sentence that also says sold out / has passed is skipped as a whole, even if it advertises another past date
  * - the date written before the word ("the 15 October 2026 departure")
- * - the second rule needs a product word after the month: "the October departure" and "October departures" are not
- *   read (real copy says "register interest in a future October departure"), and neither is a month with a year
- *   ("October 2026 Discovery departures"), which the date rule cannot read either
+ * - the second rule needs "in <Month>" right after the departure word: "departs in late October", "in mid-October" and
+ *   "in early October" are not read
+ * - the second rule's month-first shape needs a product word after the month: "the October departure" and
+ *   "October departures" are not read (real copy says "register interest in a future October departure"), and
+ *   neither is a month with a year ("October 2026 Discovery departures"), which the date rule cannot read either
  * - copy assembled from data at runtime, dates written without a year, text inside images or PDFs
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';

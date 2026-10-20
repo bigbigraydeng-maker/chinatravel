@@ -23,8 +23,10 @@
  * no year, e.g. "departs Auckland in October" or "October Discovery departures": no date can be checked there,
  * and the tours have no departure in the month named, so the shape is banned outright. Write the full date, or
  * point at the tour page.
- * Known gaps of the second rule: a month with no product word before "departure(s)" ("the October departure"),
- * and a month that has a year ("October 2026 Discovery departures"), which the date rule cannot read either.
+ * Known gaps of the second rule (measured, so do not rely on it for these): a word between "in" and the month
+ * ("departs in late October", "in mid-October", "in early October"); a month with no product word before
+ * "departure(s)" ("the October departure", "October departures"); and a month that has a year
+ * ("October 2026 Discovery departures"), which the date rule cannot read either.
  */
 
 const MONTHS: Record<string, number> = {

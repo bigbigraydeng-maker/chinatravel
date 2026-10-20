@@ -236,4 +236,15 @@ describe('findYearlessMonthDepartures', () => {
   it('does not read a departure word that merely sits next to a sentence about a month', () => {
     expect(findYearlessMonthDepartures('See the tour page for the next departure. We travel in October and March.')).toEqual([]);
   });
+
+  // The blind spots written into the header of past-departure-scan.ts: this pins that the header tells the truth, and
+  // whoever closes a gap changes the header and this list together.
+  it.each([
+    'The group departs in late October.',
+    'The group departs in mid-October.',
+    'Our departures in early October fill fast.',
+    'Our October departures fill fast.',
+  ])('does not read "%s" (documented blind spot)', (text) => {
+    expect(findYearlessMonthDepartures(text)).toEqual([]);
+  });
 });
