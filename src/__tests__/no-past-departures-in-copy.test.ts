@@ -11,10 +11,11 @@
  * Auckland calendar, e.g. "Departs 15 October 2026".
  *
  * SECOND RULE (no date needed)
- * Departure wording that names a month but no year, e.g. "departs Auckland in October", is flagged outright:
- * a date check cannot see it, and a tour that has no departure in the month named makes it simply wrong.
- * Write the full date ("departs 18 March 2027", which the date rule then keeps honest) or point at the tour
- * page. A sentence that says sold out / has passed still passes; anything else genuine goes in YEARLESS_OK.
+ * Departure wording that names a month but no year, e.g. "departs Auckland in October" or "October Discovery
+ * departures", is flagged outright: a date check cannot see it, and a tour that has no departure in the month
+ * named makes it simply wrong. Write the full date ("departs 18 March 2027", which the date rule then keeps
+ * honest) or point at the tour page. A sentence that says sold out / has passed still passes; anything else
+ * genuine goes in YEARLESS_OK.
  *
  * WHAT PASSES BY ITSELF
  * A sentence that says sold out / fully booked / has passed / has departed /
@@ -41,6 +42,9 @@
  * - ordinal or numeric dates ("15th October 2026", "15/10/2026") and US order ("October 15, 2026")
  * - a sentence that also says sold out / has passed is skipped as a whole, even if it advertises another past date
  * - the date written before the word ("the 15 October 2026 departure")
+ * - the second rule needs a product word after the month: "the October departure" and "October departures" are not
+ *   read (real copy says "register interest in a future October departure"), and neither is a month with a year
+ *   ("October 2026 Discovery departures"), which the date rule cannot read either
  * - copy assembled from data at runtime, dates written without a year, text inside images or PDFs
  */
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
@@ -60,7 +64,7 @@ const KNOWN_STALE_FILES: readonly string[] = [
   'public/campaigns/cts-china-2027.html', // static page: update or take down under ledger item 3
 ];
 // The list above may only shrink. Lower this number whenever a file leaves the list; raising it needs a reason in review.
-const MAX_KNOWN_STALE_FILES = 2;
+const MAX_KNOWN_STALE_FILES = 1;
 // Genuine historical sentences that are allowed to mention a past departure.
 const HISTORICAL_OK: ReadonlyArray<{ file: string; snippet: string; reason: string }> = [];
 // Genuine year-less "departs in <month>" sentences (none today); same shape and rules as HISTORICAL_OK.

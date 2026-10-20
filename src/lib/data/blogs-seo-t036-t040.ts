@@ -11,7 +11,7 @@ export const seoT036ToT040BlogPosts: BlogPost[] = [
     slug: 'first-trip-china-beijing-or-shanghai',
     title: 'First Trip to China: Beijing or Shanghai?',
     excerpt:
-      'I compare the two gateways I get asked about most from New Zealand — history-heavy Beijing versus cosmopolitan Shanghai — and how October Discovery departures fit a visa-free trip.',
+      'I compare the two gateways I get asked about most from New Zealand — history-heavy Beijing versus cosmopolitan Shanghai — and how my 10-day Discovery tours fit a visa-free trip.',
     content: `
 I’m **Baker Gu**, CTS’s China travel specialist. **Beijing** and **Shanghai** are the two cities Kiwis ask me about most for a first China trip. Neither is wrong — they just give you a different “first impression,” and the choice should match how you want to *feel* when you land: imperial scale and northern drama, or international energy with softer Jiangnan days nearby.
 
@@ -185,7 +185,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
 
 ## Join my tour
 
-- [Shanghai & Surroundings Discovery](/tours/china/discovery/shanghai-surroundings) — full inclusions and the next departures.
+[Shanghai & Surroundings Discovery](/tours/china/discovery/shanghai-surroundings) has the full inclusions and the next departures.
 
 ## Reach out
 
@@ -228,9 +228,7 @@ I walk every Kiwi through [my visa-free checklist](/china-visa-guide-for-new-zea
 
 ## A Tale of Two Cities
 
-This is my **Discovery** line for this arc:
-
-- [A Tale of Two Cities — Beijing & Xi’an](/tours/china/discovery/beijing-xian) — see the tour page for the next departures.
+This is my **Discovery** line for this arc: [A Tale of Two Cities — Beijing & Xi’an](/tours/china/discovery/beijing-xian) — see the tour page for the next departures.
 
 ## Extra reading from our guide library
 

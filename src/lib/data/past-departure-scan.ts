@@ -20,8 +20,11 @@
  * last day of that month is strictly before `today`.
  *
  * A second, date-free rule (findYearlessMonthDepartures) catches departure wording that names a month but
- * no year, e.g. "departs Auckland in October": no date can be checked there, and the tours have no departure
- * in the month named, so the shape is banned outright. Write the full date, or point at the tour page.
+ * no year, e.g. "departs Auckland in October" or "October Discovery departures": no date can be checked there,
+ * and the tours have no departure in the month named, so the shape is banned outright. Write the full date, or
+ * point at the tour page.
+ * Known gaps of the second rule: a month with no product word before "departure(s)" ("the October departure"),
+ * and a month that has a year ("October 2026 Discovery departures"), which the date rule cannot read either.
  */
 
 const MONTHS: Record<string, number> = {
@@ -247,29 +250,51 @@ const YEARLESS_IN_MONTH = new RegExp(
   'gi',
 );
 
+/** Words that can sit between a month and "departure(s)" and say what departs: "October Discovery departures". */
+const PRODUCT_WORD = 'Discovery|Signature|Stopover|Golden China|Best of China|small[- ]group|group|guided|tours?';
+
 /**
- * Finds departure wording that names a month but no year ("departs Auckland in October"). Sentences that
- * explain history (sold out, has passed, ...) are skipped, as in findPastDepartureMentions.
+ * A month, one or two product words, then "departure(s)": "October Discovery departures", "our March small-group
+ * departure". It does not match when a day comes before the month ("the 15 October Discovery departure" is a dated
+ * departure) or a year follows it ("October 2026 Discovery departures"). It runs case-insensitively so that
+ * "Departures" in a heading counts; the caller then keeps only a month written with a capital letter.
+ */
+const MONTH_PRODUCT_DEPARTURES = new RegExp(
+  `(?<!\\d(?:st|nd|rd|th)?\\s)\\b(?:${MONTH_FULL})\\s+(?:(?:${PRODUCT_WORD})\\s+){1,2}departures?\\b`,
+  'gi',
+);
+
+/**
+ * Finds departure wording that names a month but no year: "departs Auckland in October" and "October Discovery
+ * departures". Sentences that explain history (sold out, has passed, ...) are skipped, as in
+ * findPastDepartureMentions.
  */
 export function findYearlessMonthDepartures(text: string): YearlessMonthDeparture[] {
   const normalised = text.split('\n').map(normaliseLine).join('\n');
   const flat = normalised.replace(/\n/g, ' ');
 
-  const found: YearlessMonthDeparture[] = [];
+  const found: Array<YearlessMonthDeparture & { index: number }> = [];
   const seen = new Set<string>();
-  YEARLESS_IN_MONTH.lastIndex = 0;
-  let match: RegExpExecArray | null;
-  while ((match = YEARLESS_IN_MONTH.exec(flat)) !== null) {
-    const { start, end } = sentenceBounds(normalised, match.index);
-    const sentence = collapseWhitespace(normalised.slice(start, end));
-    if (HISTORY.test(sentence)) continue;
+  for (const pattern of [YEARLESS_IN_MONTH, MONTH_PRODUCT_DEPARTURES]) {
+    pattern.lastIndex = 0;
+    let match: RegExpExecArray | null;
+    while ((match = pattern.exec(flat)) !== null) {
+      // "may" is a month only when it is written with a capital letter ("you may group departures" is not).
+      if (pattern === MONTH_PRODUCT_DEPARTURES && !/^[A-Z]/.test(match[0])) continue;
 
-    const line = lineNumberAt(normalised, match.index);
-    const phrase = collapseWhitespace(match[0]);
-    const key = `${line}\u0000${phrase}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    found.push({ line, phrase, sentence });
+      const { start, end } = sentenceBounds(normalised, match.index);
+      const sentence = collapseWhitespace(normalised.slice(start, end));
+      if (HISTORY.test(sentence)) continue;
+
+      const line = lineNumberAt(normalised, match.index);
+      const phrase = collapseWhitespace(match[0]);
+      const key = `${line}\u0000${phrase}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      found.push({ index: match.index, line, phrase, sentence });
+    }
   }
-  return found;
+  return found
+    .sort((a, b) => a.index - b.index)
+    .map(({ line, phrase, sentence }) => ({ line, phrase, sentence }));
 }
