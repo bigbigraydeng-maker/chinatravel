@@ -73,3 +73,14 @@ embedded IPTC descriptions this file relies on elsewhere.
 The licensed alternatives on file in `Dropbox/MagicLab_Studio/CTS/website/` (see `CREDITS.md`
 there) do **not** include a Yuanyang or any other Yunnan terrace frame — the one Yunnan image
 there, iStock 2236564894, is Songzanlin Monastery. Nothing was bought for this fix.
+
+## Web-weight copies (`-1600`, `-2000`)
+
+A file named `<name>-1600.jpg` (or `-2000`) is a smaller copy of `<name>.jpg`, made for the live pages because the
+site serves local pictures unresized. It is the same frame (no crop), at most 1600 (2000) px wide, JPEG quality 78,
+progressive. The credit tags (description, artist, copyright) are kept, so the `sips` check above works on the copy
+too; the rest of the metadata is dropped. The provenance of a copy is the provenance of its original, so look the
+original's name up above. The originals stay in place: other pages and the CDN cache still point at them.
+
+`shanghai-yuyuan-night-1600.jpg` was made from a file that carried a 400 KB scanner colour profile ("TIFF RGB"); the
+colours were converted to sRGB and the profile left out, so the copy looks the same in a colour-managed browser.

@@ -74,34 +74,34 @@ const galleryAlts: Record<string, string[]> = {
 
 const additionalGalleryImages: Record<string, { src: string; alt: string }[]> = {
   'beijing-xian': [
-    { src: '/images/tours/great-wall-green.jpg', alt: 'The Great Wall crossing green mountain ridges near Beijing' },
-    { src: '/images/tours/beijing-temple-2.jpg', alt: 'Imperial architecture at the Temple of Heaven in Beijing' },
-    { src: '/images/tours/xian-terracotta-2.jpg', alt: 'Rows of Terracotta Warriors in Xi’an' },
+    { src: '/images/tours/great-wall-green-1600.jpg', alt: 'The Great Wall crossing green mountain ridges near Beijing' },
+    { src: '/images/tours/beijing-temple-2-1600.jpg', alt: 'Imperial architecture at the Temple of Heaven in Beijing' },
+    { src: '/images/tours/xian-terracotta-2-1600.jpg', alt: 'Rows of Terracotta Warriors in Xi’an' },
   ],
   essentials: [
-    { src: '/images/tours/great-wall-cloud-sea.jpg', alt: 'The Great Wall rising above a sea of clouds' },
-    { src: '/images/tours/beijing-temple.jpg', alt: 'The Temple of Heaven in Beijing' },
-    { src: '/images/tours/xian-terracotta.jpg', alt: 'Terracotta Warriors archaeological site in Xi’an' },
+    { src: '/images/tours/great-wall-cloud-sea-1600.jpg', alt: 'The Great Wall rising above a sea of clouds' },
+    { src: '/images/tours/beijing-temple-1600.jpg', alt: 'The Temple of Heaven in Beijing' },
+    { src: '/images/tours/xian-terracotta-1600.jpg', alt: 'Terracotta Warriors archaeological site in Xi’an' },
   ],
   'shanghai-surroundings': [
     { src: '/images/blog/inline/jiangnan-water-town.webp', alt: 'Red lanterns beside a canal in a Jiangnan water town' },
     { src: '/images/cts-upgrade/planner-westlake.webp', alt: 'West Lake and traditional gardens in Hangzhou' },
-    { src: '/images/tours/shanghai-yuyuan-night.jpg', alt: 'Traditional architecture near Yu Garden illuminated at night' },
+    { src: '/images/tours/shanghai-yuyuan-night-1600.jpg', alt: 'Traditional architecture near Yu Garden illuminated at night' },
   ],
 };
 
 const localGallerySources: Record<string, string[]> = {
   'beijing-xian': [
-    '/images/tours/forbidden-city-gold-lion.jpg',
-    '/images/tours/xian-terracotta.jpg',
+    '/images/tours/forbidden-city-gold-lion-1600.jpg',
+    '/images/tours/xian-terracotta-1600.jpg',
   ],
   essentials: [
-    '/images/tours/shanghai-night-blue.jpg',
+    '/images/tours/shanghai-night-blue-1600.jpg',
     '/images/tours/wuzhen-canal.jpg',
   ],
   'shanghai-surroundings': [
     '/images/tours/wuzhen-canal.jpg',
-    '/images/tours/shanghai-night-red.jpg',
+    '/images/tours/shanghai-night-red-1600.jpg',
   ],
   'yunnan-explorer': [
     '/images/tours/shangri-la-monastery-lake.jpg',
@@ -136,7 +136,7 @@ function displayPrice(price: string) {
   return price.replace(/\s*(?:per\s+person|pp)\s*$/i, '');
 }
 
-function galleryForTour(tour: Tour) {
+export function galleryForTour(tour: Tour) {
   if (tour.slug === 'golden-china') return goldenPhotos;
   const sources = localGallerySources[tour.slug] ?? (tour.gallery?.length ? tour.gallery : [tour.heroImage]);
   const alts = galleryAlts[tour.slug] ?? [];
