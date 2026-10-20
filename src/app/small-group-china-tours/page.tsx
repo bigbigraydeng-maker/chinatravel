@@ -43,7 +43,7 @@ export default function SmallGroupChinaToursPage() {
   const bocDates = departuresOf('essentials');
   // '' (every departure has left) must read as "ask us", never as "departs ." — so test for a value, not for null.
   const departsLine = (tour: string, dates?: string) =>
-    dates ? `${tour} departs ${dates}.` : `Ask us about the next ${tour} departure.`;
+    dates ? `${tour} departs ${dates}.` : `${tour}: ask us for the next departure date.`;
 
   const faqs = [
     {

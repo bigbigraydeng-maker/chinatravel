@@ -3,7 +3,8 @@
  * A departure that has left drops out of the data on its own, and once a tour has none left the page must
  * say "ask us", never print an empty list ("departs ."): a join of an empty list is '' (not null), so a `??`
  * fallback does not catch it. These tests move the clock to a day when every departure has gone and read what
- * the pages actually say, in the visible text and in the FAQ structured data.
+ * the pages actually say, in the visible text and in the FAQ structured data. The "still ahead" test uses fixed fake
+ * dates (never real ones), so adding or removing a real departure in the tour data cannot break it.
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -12,8 +13,16 @@ import SmallGroupChinaToursPage from '@/app/small-group-china-tours/page';
 import GreatWallGuidePage from '@/app/great-wall-travel-guide/page';
 import TerracottaGuidePage from '@/app/terracotta-warriors-travel-guide/page';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
+import { getTourBySlug } from '@/lib/data/tours';
 
-const TODAY_CLOCK = '2026-10-20T00:00:00Z';
+// Every test reads the real tour data, except the "still ahead" test, which swaps the departures for fake ones.
+jest.mock('@/lib/data/tours', () => {
+  const actual = jest.requireActual<typeof import('@/lib/data/tours')>('@/lib/data/tours');
+  return { ...actual, getTourBySlug: jest.fn(actual.getTourBySlug) };
+});
+const actualGetTourBySlug = jest.requireActual<typeof import('@/lib/data/tours')>('@/lib/data/tours').getTourBySlug;
+const mockedGetTourBySlug = getTourBySlug as jest.MockedFunction<typeof getTourBySlug>;
+
 const ALL_GONE_CLOCK = '2035-01-01T00:00:00Z';
 
 function setClock(iso: string) {
@@ -37,6 +46,7 @@ const DANGLING = /\bdeparts\s*\.|\bDepartures\s+\./;
 
 afterEach(() => {
   jest.useRealTimers();
+  mockedGetTourBySlug.mockImplementation(actualGetTourBySlug);
 });
 
 describe('pages that print departures from the tour data, with every departure gone', () => {
@@ -48,9 +58,9 @@ describe('pages that print departures from the tour data, with every departure g
     expect(data).not.toMatch(DANGLING);
     expect(text).not.toMatch(/\bDeparts\b/); // the cards print "Departs <dates>" only when there are dates
     expect(text).toContain('Ask us for the next departure');
-    expect(data).toContain('Ask us about the next A Tale of Two Cities (Beijing + Xi\'an) departure.');
-    expect(data).toContain('Ask us about the next Shanghai & Surroundings departure.');
-    expect(data).toContain('Ask us about the next Best of China departure.');
+    expect(data).toContain('A Tale of Two Cities (Beijing + Xi\'an): ask us for the next departure date.');
+    expect(data).toContain('Shanghai & Surroundings: ask us for the next departure date.');
+    expect(data).toContain('Best of China: ask us for the next departure date.');
   });
 
   it('Great Wall and Terracotta Warriors guides: the call-to-action says to ask for the next departure', () => {
@@ -72,16 +82,31 @@ describe('pages that print departures from the tour data, with every departure g
 });
 
 describe('the same pages, while departures are still ahead', () => {
-  it('name the real dates from the tour data', () => {
-    setClock(TODAY_CLOCK);
+  // Dates that can never be real: what this pins is that each page prints exactly the dates the tour data gives it,
+  // joined with " & ", instead of the "ask us" fallback.
+  const FAKE_DEPARTURES: Record<string, string[]> = {
+    'beijing-xian': ['3 February 2099', '4 May 2099'],
+    'shanghai-surroundings': ['5 February 2099'],
+    essentials: ['6 February 2099', '7 May 2099'],
+  };
+
+  it('name the dates the tour data gives them, whatever those dates are', () => {
+    mockedGetTourBySlug.mockImplementation((destination, tier, slug) => {
+      const tour = actualGetTourBySlug(destination, tier, slug);
+      return tour && FAKE_DEPARTURES[slug] ? { ...tour, departureDates: FAKE_DEPARTURES[slug] } : tour;
+    });
     const smallGroup = readPage(<SmallGroupChinaToursPage />);
     const greatWall = readPage(<GreatWallGuidePage />);
+    const terracotta = readPage(<TerracottaGuidePage />);
     const visa = readPage(<VisaGuideOctoberCampaignCtas />);
 
-    expect(smallGroup.data).toContain('A Tale of Two Cities (Beijing + Xi\'an) departs 18 March 2027 & 10 June 2027.');
-    expect(smallGroup.data).not.toContain('Ask us about the next');
-    expect(greatWall.text).toContain('Departures 18 March 2027 & 10 June 2027.');
-    expect(visa.text).toContain('Departs · 18 March 2027 & 10 June 2027');
+    expect(smallGroup.data).toContain('A Tale of Two Cities (Beijing + Xi\'an) departs 3 February 2099 & 4 May 2099.');
+    expect(smallGroup.data).toContain('Shanghai & Surroundings departs 5 February 2099.');
+    expect(smallGroup.data).toContain('Best of China departs 6 February 2099 & 7 May 2099.');
+    expect(smallGroup.data).not.toContain('ask us for the next departure date');
+    expect(greatWall.text).toContain('Departures 3 February 2099 & 4 May 2099.');
+    expect(terracotta.text).toContain('Departures 3 February 2099 & 4 May 2099.');
+    expect(visa.text).toContain('Departs · 3 February 2099 & 4 May 2099');
   });
 });
 
