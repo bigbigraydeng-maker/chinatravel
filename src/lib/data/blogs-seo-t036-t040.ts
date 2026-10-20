@@ -41,14 +41,12 @@ I lean **Shanghai** first if you want **East-meets-West energy** — the **Bund*
 
 I still remind every client: read [my visa notes for New Zealanders](/china-visa-guide-for-new-zealanders) before you lock flights — you need **return tickets** and **accommodation proof**, and the purpose of visit must match what the policy allows.
 
-## My October 2026 Discovery picks
+## My Discovery picks
 
-I run two **10-day** small-group lines with featured October departures — both sit comfortably inside a typical **visa-free** holiday length:
+I run two **10-day** small-group lines — both sit comfortably inside a typical **visa-free** holiday length:
 
-- [A Tale of Two Cities — October 2026 (Beijing & Xi’an)](/campaigns/october-2026/tale-of-two-cities) — I am on the **15 October 2026** departure story.
-- [Shanghai & Surroundings — October 2026](/campaigns/october-2026/shanghai-surroundings) — featured **14 October 2026**.
-
-Prefer the standard pages without campaign copy? [Beijing–Xi’an Discovery](/tours/china/discovery/beijing-xian) · [Shanghai & Surroundings Discovery](/tours/china/discovery/shanghai-surroundings).
+- [A Tale of Two Cities (Beijing & Xi’an)](/tours/china/discovery/beijing-xian) — see the tour page for the next departures.
+- [Shanghai & Surroundings](/tours/china/discovery/shanghai-surroundings) — see the tour page for the next departures.
 
 ## Talk to me
 
@@ -91,14 +89,14 @@ For the full month-by-month picture, I point people to [best time to visit China
 
 I still send everyone through [my NZ entry checklist](/china-visa-guide-for-new-zealanders) — **visa-free does not mean “turn up empty-handed.”** You need the same discipline on documents as for any long-haul trip.
 
-## October 2026 departures I am pushing
+## Discovery tours I am pushing
 
-- [Shanghai & Surroundings — campaign](/campaigns/october-2026/shanghai-surroundings) — **14 October 2026**.
-- [A Tale of Two Cities — Beijing & Xi’an](/campaigns/october-2026/tale-of-two-cities) — **15 October 2026**.
+- [Shanghai & Surroundings](/tours/china/discovery/shanghai-surroundings) — 10 days; the next departures are on the tour page.
+- [A Tale of Two Cities — Beijing & Xi’an](/tours/china/discovery/beijing-xian) — 10 days; the next departures are on the tour page.
 
 ## Next step
 
-[See Discovery tours](/tours/china/discovery) or [ask me and the team](/contact) for October seats and Auckland flight timing.
+[See Discovery tours](/tours/china/discovery) or [ask me and the team](/contact) for the next departures and Auckland flight timing.
     `,
     author: 'Baker Gu',
     authorRole: 'China Travel Specialist',
@@ -144,11 +142,6 @@ Most of my Kiwi clients use the **30-day visa-free** route for tourism; you stil
 - [A Tale of Two Cities — Discovery](/tours/china/discovery/beijing-xian) — my inclusion list is on the page.
 - [Shanghai & Surroundings — Discovery](/tours/china/discovery/shanghai-surroundings) — same idea.
 
-## October 2026 campaign pages
-
-- [Beijing & Xi’an — October campaign](/campaigns/october-2026/tale-of-two-cities)
-- [Shanghai & Surroundings — October campaign](/campaigns/october-2026/shanghai-surroundings)
-
 ## Ask me directly
 
 [Contact us](/contact) with your month — I will tell you exactly what is in for that departure and what is not.
@@ -192,8 +185,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
 
 ## Join my tour
 
-- [October 2026 — Shanghai & Surroundings](/campaigns/october-2026/shanghai-surroundings) — **14 October 2026** featured departure.
-- [Year-round Discovery page](/tours/china/discovery/shanghai-surroundings) for full inclusions.
+- [Shanghai & Surroundings Discovery](/tours/china/discovery/shanghai-surroundings) — full inclusions and the next departures.
 
 ## Reach out
 
@@ -212,7 +204,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
     slug: 'beijing-xian-first-visit-guide-nz',
     title: "Beijing & Xi’an: A First-Timer’s Guide for NZ",
     excerpt:
-      'The north-China arc I sell most often: Great Wall and Forbidden City, then west to the Terracotta Army — with visa-free notes and October departures.',
+      'The north-China arc I sell most often: Great Wall and Forbidden City, then west to the Terracotta Army — with visa-free notes and the next departures.',
     content: `
 I’m **Baker Gu**. **Beijing** and **Xi’an** are the pairing I use when someone says, “I want the story of China, not every province on the first go.” North for emperors and the Wall, west for the **Terracotta Army** — the **high-speed train** in between is part of the experience I want you to enjoy, not stress over. I sell this arc because it answers the “bucket list” questions Kiwis actually ask without turning the trip into a marathon.
 
@@ -234,12 +226,11 @@ The warriors are the headline, but I always leave room for the **city wall**, **
 
 I walk every Kiwi through [my visa-free checklist](/china-visa-guide-for-new-zealanders) — **policy dates**, **return tickets**, and **hotel proof** still apply.
 
-## October 2026: A Tale of Two Cities
+## A Tale of Two Cities
 
 This is my **Discovery** line for this arc:
 
-- [October campaign — Beijing & Xi’an](/campaigns/october-2026/tale-of-two-cities) — **15 October 2026**.
-- [Standard Discovery page](/tours/china/discovery/beijing-xian) for other dates.
+- [A Tale of Two Cities — Beijing & Xi’an](/tours/china/discovery/beijing-xian) — see the tour page for the next departures.
 
 ## Extra reading from our guide library
 

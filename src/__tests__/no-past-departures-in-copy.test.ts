@@ -43,7 +43,6 @@ import { aucklandToday } from '@/lib/data/tour-dates';
 // Found by the site audit of 2026-10-20 (docs: ledger card 2026-10-19-chinatravel-site-stale-data-cleanup).
 // Every entry below is removed by the change that fixes the file, never left behind.
 const KNOWN_STALE_FILES: readonly string[] = [
-  'src/lib/data/blogs-longtail-batch1.ts', // fixed in the "blog posts" change
   'public/campaigns/cts-china-2027.html', // static page: update or take down under ledger item 3
 ];
 // Genuine historical sentences that are allowed to mention a past departure.
