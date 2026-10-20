@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Tour } from '@/lib/data/tours';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import EnquiryPanelScrollReset from '@/components/tours/EnquiryPanelScrollReset';
 import { departures } from '@/lib/tour-discovery';
 import SingleRoomPricing from '@/components/tours/SingleRoomPricing';
 
@@ -51,7 +52,8 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
   }
 
   return (
-    <aside id="enquiry" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
+    <aside id="enquiry" data-enquiry-panel className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+      <EnquiryPanelScrollReset />
       <p className="text-xs uppercase tracking-widest text-primary">Your {shortTourName(tour)} journey</p>
       <p className="mt-3 font-serif text-3xl">{displayPrice(offer?.price || tour.price)}</p>
       <p className="mt-2 text-sm text-ink-muted">Per person · twin share · NZD</p>

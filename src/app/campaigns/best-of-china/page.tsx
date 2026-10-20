@@ -12,6 +12,7 @@ import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import EnquiryPanelScrollReset from '@/components/tours/EnquiryPanelScrollReset';
 import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
@@ -270,7 +271,8 @@ export default function BestOfChinaLandingPage() {
             </div>
 
             <div id="enquiry" className="lg:col-span-1 scroll-mt-24">
-              <div className="sticky top-24 space-y-6">
+              <div data-enquiry-panel className="sticky top-24 space-y-6 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+                <EnquiryPanelScrollReset />
                 <TourEnquiry
                   tourName={tour.name}
                   tourSlug={tour.slug}
