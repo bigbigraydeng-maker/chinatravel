@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Brand and travel resources */}
           <div className="mb-10 lg:mb-0">
             <div className="mb-3">
-              <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-10 md:h-12 w-auto" />
+              <Image src="/images/brand/cts-logo-640.webp" alt="CTS Tours" width={640} height={163} className="h-10 md:h-12 w-auto" />
             </div>
             <p className="text-ink-muted text-sm mb-2">China Travel Specialists for New Zealanders</p>
             <p className="text-ink-muted text-xs mb-4">Backed by CTS | Direct China Operations</p>
