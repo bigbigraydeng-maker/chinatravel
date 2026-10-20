@@ -1,7 +1,7 @@
 import { Icon, type IconName } from '@/components/ui/Icon';
 
 /**
- * Four-card breakdown of what NZD $4,080 actually buys — pre-empts the
+ * Four-card breakdown of what the headline price actually buys — pre-empts the
  * "is that all-inclusive?" objection that paid visitors quietly ask
  * before filling the lead form. Each card states one inclusion category
  * with a 1-line plain-English answer.
@@ -40,10 +40,17 @@ const ITEMS: Inclusion[] = [
   },
 ];
 
-export default function BehindThePrice() {
+interface BehindThePriceProps {
+  /** Headline price in site format (the early bird price while that promotion is open). */
+  price: string;
+  /** Small label shown under an early bird price. */
+  priceNote?: string;
+}
+
+export default function BehindThePrice({ price, priceNote }: BehindThePriceProps) {
   return (
     <section
-      aria-label="What's included in the NZD $4,080 price"
+      aria-label={`What's included in the ${price} price`}
       className="bg-white py-12 md:py-16"
     >
       <div className="container mx-auto px-4">
@@ -51,8 +58,9 @@ export default function BehindThePrice() {
           Behind the price
         </p>
         <h2 className="text-center text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-          What NZD $4,080 actually covers
+          What {price} actually covers
         </h2>
+        {priceNote && <p className="-mt-2 mb-3 text-center text-xs text-gray-500">{priceNote}</p>}
         <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
           No add-ons, no FX surprises. This is what every Kiwi booking on Best of China gets,
           confirmed in NZD before you pay a deposit.

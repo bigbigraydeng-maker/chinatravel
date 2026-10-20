@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
  *
  * The banner confirms ad-LP messaging match in a single glance — the visitor
  * just clicked an ad about Best of China and immediately sees "Best of
- * China · 15 days · from NZD $4,080" reinforced at the top of the LP. This is
+ * China · 15 days · from NZD <lead price>" reinforced at the top of the LP. This is
  * the visual equivalent of saying "yes, you're in the right place". Industry
  * pattern: messaging match cuts bounce rate and lifts conversion 20-40%.
  *
@@ -37,7 +37,14 @@ function isPaidSource(): boolean {
   }
 }
 
-export default function CampaignWelcomeBanner() {
+interface CampaignWelcomeBannerProps {
+  /** Lead-in price in site format (the early bird price while that promotion is open). */
+  price: string;
+  /** Small label shown under an early bird price. */
+  priceNote?: string;
+}
+
+export default function CampaignWelcomeBanner({ price, priceNote }: CampaignWelcomeBannerProps) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -54,9 +61,10 @@ export default function CampaignWelcomeBanner() {
     >
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <p className="text-sm sm:text-base text-amber-900">
-          <span className="font-semibold">Best of China · 15 days</span> · from
-          NZD $4,080 · 11 March 2027 from Auckland — talk to a specialist about
+          <span className="font-semibold">Best of China · 15 days</span> · from{' '}
+          {price} · 11 March 2027 from Auckland — talk to a specialist about
           the next departure.
+          {priceNote && <span className="mt-0.5 block text-xs text-amber-800">{priceNote}</span>}
         </p>
         <a
           href="#enquiry"

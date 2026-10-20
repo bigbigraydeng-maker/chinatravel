@@ -12,6 +12,8 @@ interface Stat {
   number: string;
   label: string;
   sub: string;
+  /** Optional extra line under `sub` (the early bird label). */
+  note?: string;
 }
 
 const STATS: Stat[] = [
@@ -25,14 +27,27 @@ const STATS: Stat[] = [
     label: 'Days',
     sub: 'Comfortable, immersive pace',
   },
-  {
-    number: '$4,080',
-    label: 'NZD lead-in',
-    sub: 'Auckland return flights included',
-  },
 ];
 
-export default function BigStatsBlock() {
+/** The lead-in price card: its numeral and note follow the price the page is showing. */
+function leadInStat(price: string, priceNote?: string): Stat {
+  return {
+    number: price.replace(/^NZD\s*/i, ''),
+    label: 'NZD lead-in',
+    sub: 'Auckland return flights included',
+    note: priceNote,
+  };
+}
+
+interface BigStatsBlockProps {
+  /** Lead-in price in site format (the early bird price while that promotion is open). */
+  price: string;
+  /** Small label shown under an early bird price. */
+  priceNote?: string;
+}
+
+export default function BigStatsBlock({ price, priceNote }: BigStatsBlockProps) {
+  const stats = [...STATS, leadInStat(price, priceNote)];
   return (
     <section
       aria-label="Best of China at a glance"
@@ -40,7 +55,7 @@ export default function BigStatsBlock() {
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-4 max-w-6xl mx-auto">
-          {STATS.map((s, idx) => (
+          {stats.map((s, idx) => (
             <div
               key={s.label}
               className={`text-center px-4 md:px-6 ${
@@ -54,6 +69,7 @@ export default function BigStatsBlock() {
                 {s.label}
               </p>
               <p className="text-xs md:text-sm text-gray-600 leading-snug">{s.sub}</p>
+              {s.note && <p className="mt-1 text-xs md:text-sm text-primary leading-snug">{s.note}</p>}
             </div>
           ))}
         </div>

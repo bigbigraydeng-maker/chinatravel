@@ -10,7 +10,14 @@ import { useEffect, useState } from 'react';
  * Hides until the user scrolls past the hero (sticky-on-scroll pattern) so
  * the hero stays the visual focal point on first paint.
  */
-export default function StickyPriceBar() {
+interface StickyPriceBarProps {
+  /** Price after "From", in site format (the early bird price while that promotion is open). */
+  price: string;
+  /** Small label shown beside an early bird price. */
+  priceNote?: string;
+}
+
+export default function StickyPriceBar({ price, priceNote }: StickyPriceBarProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -37,8 +44,9 @@ export default function StickyPriceBar() {
             <span className="text-sm sm:text-base font-medium">15 Days</span>
             <span className="hidden sm:inline text-white/70">·</span>
             <span className="text-sm sm:text-base font-bold tracking-wide">
-              From NZD $4,080
+              From {price}
             </span>
+            {priceNote && <span className="text-xs text-white/85">{priceNote}</span>}
             <span className="hidden md:inline text-white/70">·</span>
             <span className="hidden md:inline text-sm">Mar 2027 from Auckland</span>
           </div>

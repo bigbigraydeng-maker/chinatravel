@@ -32,6 +32,7 @@ import {
   getTourPageFaqsForTour,
 } from '@/lib/schema-tour';
 import { getSiteUrl } from '@/lib/site';
+import { resolvePriceText, tourPriceDisplay } from '@/lib/pricing/display-price';
 import CampaignWelcomeBanner from './_components/CampaignWelcomeBanner';
 import StickyPriceBar from './_components/StickyPriceBar';
 import WhyCtsBadgeRow from './_components/WhyCtsBadgeRow';
@@ -53,19 +54,23 @@ import FloatingPhoneCta from './_components/FloatingPhoneCta';
 const TOUR_SLUG = 'essentials';
 const ENQUIRY_SOURCE = 'Campaign LP: Best of China';
 
+/** Early bird prices end on 30 November 2026: re-render every 10 minutes so this page falls back to regular prices on its own. */
+export const revalidate = 600;
+
 export function generateMetadata(): Metadata {
   const tour = getTourBySlug('china', 'discovery', TOUR_SLUG);
   if (!tour) return { title: 'Best of China | CTS Tours' };
 
   const siteUrl = getSiteUrl();
   const canonicalUrl = `${siteUrl}/campaigns/best-of-china`;
+  const description = resolvePriceText(tour.metaDescription, tour);
   return {
     title: tour.metaTitle || `${tour.name} | CTS Tours`,
-    description: tour.metaDescription,
+    description,
     keywords: [tour.name, 'China tour from New Zealand', 'CTS Tours', ...(tour.tags ?? [])],
     openGraph: {
       title: tour.name,
-      description: tour.metaDescription,
+      description,
       type: 'website',
       url: canonicalUrl,
       images: [{ url: tour.heroImage, width: 1200, height: 630, alt: tour.title }],
@@ -88,6 +93,14 @@ export default function BestOfChinaLandingPage() {
   const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
 
+  // Every price on this page comes from here: early bird while the promotion is open, regular afterwards.
+  const priceView = tourPriceDisplay(tour);
+  const nextDeparture = tour.departureDates?.[0];
+  const nextEarlyBird = nextDeparture ? priceView.earlyBird[nextDeparture] : undefined;
+  const nextDeparturePrice =
+    (nextDeparture && priceView.departurePricing?.[nextDeparture]) || priceView.headline;
+  const leadPrice = priceView.lead ? priceView.lead.price : nextDeparturePrice;
+
   const schemas = [
     generateTourSchema(tour, destination),
     generateProductSchema(tour),
@@ -106,8 +119,8 @@ export default function BestOfChinaLandingPage() {
       <SchemaMarkup data={schemas} />
       <TourViewContent tour={tour} />
 
-      <StickyPriceBar />
-      <CampaignWelcomeBanner />
+      <StickyPriceBar price={leadPrice} priceNote={priceView.label ?? undefined} />
+      <CampaignWelcomeBanner price={leadPrice} priceNote={priceView.label ?? undefined} />
 
       {/* November 2026 departure has sold out — mirror the product page banner
           so paid-traffic visitors landing here see the same signal instead of
@@ -121,8 +134,9 @@ export default function BestOfChinaLandingPage() {
             Next Departure: 11 March 2027
           </p>
           <p className="text-sm text-gray-600 mt-1">
-            From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
+            From {nextDeparturePrice} per person twin-share. Contact us to register interest in a future November departure.
           </p>
+          {nextEarlyBird && <p className="text-xs text-gray-600 mt-1">{nextEarlyBird.label}</p>}
         </div>
       </section>
 
@@ -147,7 +161,7 @@ export default function BestOfChinaLandingPage() {
             title={tour.title}
             shortDescription={tour.shortDescription}
             duration={tour.duration}
-            price={tour.price}
+            price={priceView.headline}
             heroImage={tour.heroImage}
             tier={tour.tier}
             tags={tour.tags}
@@ -155,6 +169,7 @@ export default function BestOfChinaLandingPage() {
             primaryCtaLabel="Reserve Your Place →"
             secondaryCtaLabel="View itinerary"
             singleSupplement={tour.singleSupplement}
+            earlyBirdLabel={priceView.label ?? undefined}
           />
         </div>
       </div>
@@ -177,7 +192,7 @@ export default function BestOfChinaLandingPage() {
 
       <WhyCtsBadgeRow />
 
-      <BigStatsBlock />
+      <BigStatsBlock price={leadPrice} priceNote={priceView.label ?? undefined} />
 
       <CityJourneyTimeline />
 
@@ -198,17 +213,20 @@ export default function BestOfChinaLandingPage() {
                   Quick answer
                 </p>
                 <span className="text-2xl md:text-3xl font-serif font-bold text-gray-900 leading-none">
-                  {tour.price}
+                  {priceView.headline}
                 </span>
                 <span className="text-sm md:text-base text-gray-600 font-medium">
                   · {tour.duration} · Auckland departures
                 </span>
+                {priceView.label && (
+                  <span className="text-xs md:text-sm text-amber-700 font-medium">{priceView.label}</span>
+                )}
               </div>
               <p className="text-gray-800 leading-relaxed">
                 <span className="font-bold">{tour.name}</span> is a{' '}
                 {tour.duration.toLowerCase()}, Auckland-departing China tour covering Beijing,
                 Xi&apos;an, Hangzhou, a Jiangnan water-town stop, and Shanghai. Lead-in price{' '}
-                <span className="font-semibold">{tour.price}</span> including return
+                <span className="font-semibold">{priceView.headline}</span> including return
                 international airfares from Auckland, English-speaking guides, hotel
                 accommodation, and entrance fees per itinerary.
                 {tour.departureDates && tour.departureDates.length > 0 && (
@@ -223,7 +241,7 @@ export default function BestOfChinaLandingPage() {
         </div>
       </section>
 
-      <BehindThePrice />
+      <BehindThePrice price={leadPrice} priceNote={priceView.label ?? undefined} />
 
       <CustomerTripPhotos />
 
@@ -274,6 +292,12 @@ export default function BestOfChinaLandingPage() {
                   destination={tour.destination}
                   tier={tour.tier}
                   source={ENQUIRY_SOURCE}
+                  // The sales team sees which price the visitor was shown.
+                  enquiryContext={
+                    priceView.label
+                      ? `Displayed twin-share price per person: ${priceView.headline} (${priceView.label})`
+                      : undefined
+                  }
                 />
 
                 <Testimonials variant="sidebar" tourFilter={tour.tier} />
@@ -287,7 +311,8 @@ export default function BestOfChinaLandingPage() {
                     </div>
                     <div>
                       <dt className="text-sm text-gray-600">Price</dt>
-                      <dd className="font-medium text-primary">{tour.price}</dd>
+                      <dd className="font-medium text-primary">{priceView.headline}</dd>
+                      {priceView.label && <dd className="mt-0.5 text-xs text-gray-600">{priceView.label}</dd>}
                     </div>
                   </dl>
                 </div>
