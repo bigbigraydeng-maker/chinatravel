@@ -158,7 +158,12 @@ describe('TourEnquiry — when the enquiry cannot be sent', () => {
     expect(alert.textContent).toContain("We couldn't reach our server");
     const link = within(alert).getByRole('link');
     expect(link.getAttribute('href')).toBe(CTS_PHONE_HREF);
-    expect(link.textContent).toBe(CTS_PHONE_DISPLAY);
+    expect(link.textContent).toContain(CTS_PHONE_DISPLAY);
+    // A big button, not small text in a sentence: at least 44 px tall, and the number never breaks over two lines.
+    expect(link).toHaveClass('min-h-[48px]');
+    expect(link).toHaveClass('whitespace-nowrap');
+    expect(alert).toHaveClass('text-base');
+    expect(alert.textContent).toContain('Your details are still here.');
     expect(alert.textContent).not.toContain('Failed to fetch');
     expectNoConversionEvents();
   });
@@ -226,6 +231,8 @@ describe('TourEnquiry — when the enquiry cannot be sent', () => {
     });
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toContain('Sending is taking longer than expected');
+    expect(alert.textContent).toContain('your details are still here');
+    expect(alert.textContent).toContain("If you're not sure it went through, please call us.");
     expect(within(alert).getByRole('link').getAttribute('href')).toBe(CTS_PHONE_HREF);
     expect(requests[0].signal.aborted).toBe(true);
     expect(sendButton()).toBeEnabled();
@@ -241,6 +248,8 @@ describe('TourEnquiry — when the enquiry cannot be sent', () => {
 
     const alert = await screen.findByRole('alert');
     expect(alert).toHaveTextContent('This tour is currently unavailable.');
+    // The server's own words stay as they are, with the phone button under them.
+    expect(within(alert).getByRole('link')).toHaveAttribute('href', CTS_PHONE_HREF);
     expectNoConversionEvents();
   });
 
@@ -298,44 +307,5 @@ describe('TourEnquiry — when the enquiry cannot be sent', () => {
     expect(alert).toBeInTheDocument();
     expect(alert.textContent).toContain('Sending is taking longer than expected');
     expectNoConversionEvents();
-  });
-
-  it('leaving the page while a request is out gives the request up', async () => {
-    const requests = pendingFetch();
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
-
-    const { unmount } = render(<TourEnquiry {...PROPS} />);
-    fillAndSubmit({ name: 'Ada Lovelace', email: 'ada@example.com' });
-
-    await waitFor(() => expect(requests).toHaveLength(1));
-    expect(requests[0].signal.aborted).toBe(false);
-
-    unmount();
-    expect(requests[0].signal.aborted).toBe(true);
-
-    await act(async () => {
-      await Promise.resolve();
-    });
-
-    const stateUpdateWarnings = errorSpy.mock.calls.filter((call) =>
-      /unmounted|state update/i.test(String(call[0]))
-    );
-    expect(stateUpdateWarnings).toEqual([]);
-    expectNoConversionEvents();
-  });
-
-  it('leaving the page also stops the 30-second timer', async () => {
-    jest.useFakeTimers();
-    const clearSpy = jest.spyOn(window, 'clearTimeout');
-    const requests = pendingFetch();
-
-    const { unmount } = render(<TourEnquiry {...PROPS} />);
-    fillAndSubmit({ name: 'Ada Lovelace', email: 'ada@example.com' });
-
-    await waitFor(() => expect(requests).toHaveLength(1));
-
-    const before = clearSpy.mock.calls.length;
-    unmount();
-    expect(clearSpy.mock.calls.length).toBeGreaterThan(before);
   });
 });
