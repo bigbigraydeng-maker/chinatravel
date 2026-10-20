@@ -77,10 +77,10 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
         {
           title: 'Hanfu photos and afternoon tea',
           image: {
-            src: '/images/blog/inline/jiangnan-water-town.webp',
+            src: '/images/blog/inline/jiangnan-water-town-720.webp',
             alt: 'Red paper lanterns and wooden boats along a canal in a Jiangnan water town',
-            width: 867,
-            height: 1300,
+            width: 720,
+            height: 1080,
           },
           body: [
             {
@@ -92,10 +92,10 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
         {
           title: 'West Lake and Longjing tea',
           image: {
-            src: '/images/cts-upgrade/planner-westlake.webp',
+            src: '/images/cts-upgrade/planner-westlake-720.webp',
             alt: 'A classical pavilion beside a lotus lake',
-            width: 1080,
-            height: 1620,
+            width: 720,
+            height: 1080,
           },
           body: [
             {
