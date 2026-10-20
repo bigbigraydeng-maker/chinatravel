@@ -121,7 +121,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
           'A 1,300-year-old water town on the Grand Canal in Jiangsu. Whitewashed walls, dark tile roofs and arched stone bridges have barely changed since the Ming dynasty. Evening lantern light on the canal is one of the signature scenes of any Jiangnan trip.',
         tourLink: {
           label: 'Shanghai & Surroundings · 10 days',
-          href: '/campaigns/october-2026/shanghai-surroundings',
+          href: '/tours/china/discovery/shanghai-surroundings',
         },
       },
       {

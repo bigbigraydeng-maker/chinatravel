@@ -119,8 +119,8 @@ const GA4_TOP_PAGES_STUB = [
   '/china-tours',
   '/tours/beijing/signature/ancient-wonders',
   '/china-visa-guide-for-new-zealanders',
-  '/campaigns/october-2026/tale-of-two-cities',
-  '/campaigns/october-2026/shanghai-surroundings',
+  '/tours/china/discovery/beijing-xian',
+  '/tours/china/discovery/shanghai-surroundings',
 ];
 
 function Ga4Panel({ ga4Id }: { ga4Id?: string }) {

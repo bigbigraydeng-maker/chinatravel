@@ -97,16 +97,6 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       description: 'Visa-free entry for NZ passports: documents, stay limits, and exceptions'
     },
     {
-      title: 'October 2026 · Beijing & Xi’an spotlight',
-      slug: 'campaigns/october-2026/tale-of-two-cities',
-      description: 'Campaign landing for the Beijing–Xi’an Discovery route'
-    },
-    {
-      title: 'October 2026 · Shanghai & Surroundings',
-      slug: 'campaigns/october-2026/shanghai-surroundings',
-      description: 'Campaign landing for the Jiangnan loop Discovery tour'
-    },
-    {
       title: 'Small-Group China Tours from NZ',
       slug: 'small-group-china-tours',
       description: 'Intimate small groups, expert guides, NZD pricing — 2026-27 departures open'

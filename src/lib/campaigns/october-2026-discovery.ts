@@ -1,6 +1,8 @@
 /**
  * October 2026 Discovery campaign landing pages.
  * URLs: /campaigns/october-2026/shanghai-surroundings | tale-of-two-cities
+ * Both pages (and the poster) permanently redirect to the standard tour pages since 2026-10-20 (next.config.js);
+ * the page code and this config stay in the repo, unreachable, and ad URLs built here already point at the tour pages.
  */
 export const OCTOBER_2026_DISCOVERY_SLUGS = ['shanghai-surroundings', 'tale-of-two-cities'] as const;
 
@@ -46,14 +48,15 @@ export function isOctober2026DiscoverySlug(s: string): s is October2026Discovery
   return (OCTOBER_2026_DISCOVERY_SLUGS as readonly string[]).includes(s);
 }
 
-/** Path only — no origin, no UTM. Matches `<link rel="canonical">` on campaign pages. */
+/** Path only — no origin, no UTM. Matches `<link rel="canonical">` on the (now redirected) campaign pages. */
 export function getOctober2026CampaignPath(slug: October2026DiscoverySlug): string {
   return `/campaigns/october-2026/${slug}`;
 }
 
 /**
  * Full URL for Google Ads / Meta final URLs, including UTM query string.
- * Canonical HTML must stay on the path **without** UTM; only ad links carry UTM.
+ * The October campaign pages now redirect to the standard tour pages, so the URL points straight at the tour
+ * page (no redirect hop). Only ad links carry UTM; the pages' own canonical stays without it.
  *
  * @param siteOrigin e.g. `https://www.ctstours.co.nz` (no trailing slash)
  */
@@ -69,7 +72,7 @@ export function buildOctober2026CampaignAdUrl(
   }
 ): string {
   const origin = siteOrigin.replace(/\/$/, '');
-  const path = getOctober2026CampaignPath(slug);
+  const path = `/tours/china/discovery/${OCTOBER_2026_DISCOVERY_BY_SLUG[slug].tourSlug}`;
   const q = new URLSearchParams({
     utm_source: utm.source,
     utm_medium: utm.medium,
@@ -105,7 +108,8 @@ export function buildSpotlightPosterAdUrl(
   });
   if (utm.content) q.set('utm_content', utm.content);
   if (utm.term) q.set('utm_term', utm.term);
-  return `${origin}${SPOTLIGHT_POSTER_OCT_2026_PATH}?${q.toString()}`;
+  // The poster page redirects to the Discovery list, so a printed QR lands there directly.
+  return `${origin}/tours/china/discovery?${q.toString()}`;
 }
 
 /** Production origin for UTM final URLs in marketing data (ads / board). */

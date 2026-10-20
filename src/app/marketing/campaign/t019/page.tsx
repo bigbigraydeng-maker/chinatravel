@@ -55,7 +55,7 @@ const LAUNCH_STEPS: {
     title: '搭建 Beijing / Xi’an（产品）',
     campaignInCsv: 'Search_Product_BJXA_Oct26',
     detail: '十月 Discovery：Tale of Two Cities 落地页与 RSA §4C。',
-    links: [{ href: '/campaigns/october-2026/tale-of-two-cities', label: '落地：Tale of Two Cities' }],
+    links: [{ href: '/tours/china/discovery/beijing-xian', label: '团页：Tale of Two Cities（原十月落地页已跳转到这里）' }],
   },
   {
     id: 'step-t022',
@@ -63,7 +63,7 @@ const LAUNCH_STEPS: {
     title: '搭建 Shanghai（产品）',
     campaignInCsv: 'Search_Product_SH_Oct26',
     detail: '十月 Discovery：Shanghai & Surroundings；RSA §4D。',
-    links: [{ href: '/campaigns/october-2026/shanghai-surroundings', label: '落地：Shanghai & Surroundings' }],
+    links: [{ href: '/tours/china/discovery/shanghai-surroundings', label: '团页：Shanghai & Surroundings（原十月落地页已跳转到这里）' }],
   },
   {
     id: 'step-t023',

@@ -51,7 +51,7 @@ export default function ChinaToursFromNZPage() {
     {
       name: 'Tale of Two Cities',
       slug: 'tale-of-two-cities',
-      url: '/campaigns/october-2026/tale-of-two-cities',
+      url: '/tours/china/discovery/beijing-xian',
       duration: '10 days',
       cities: 'Beijing + Xi\'an',
       price: 'NZD $3,480',
@@ -69,7 +69,7 @@ export default function ChinaToursFromNZPage() {
     {
       name: 'Shanghai & Surroundings',
       slug: 'shanghai-surroundings',
-      url: '/campaigns/october-2026/shanghai-surroundings',
+      url: '/tours/china/discovery/shanghai-surroundings',
       duration: '10 days',
       cities: 'Shanghai + Suzhou + Wuxi + Hangzhou',
       price: 'NZD $2,699',
@@ -377,7 +377,7 @@ export default function ChinaToursFromNZPage() {
                   Popular NZ planning links
                 </h2>
                 <p className="text-gray-700 text-sm md:text-base mb-4">
-                  Same routes as our standard product pages — October spotlight pages add campaign context and dates.
+                  Direct links to the product pages and guides most NZ travellers read before they enquire.
                 </p>
                 <ul className="grid gap-2 sm:grid-cols-2 text-sm">
                   <li>
@@ -396,18 +396,8 @@ export default function ChinaToursFromNZPage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/campaigns/october-2026/tale-of-two-cities" className="text-primary font-medium hover:underline">
-                      October 2026 · Beijing &amp; Xi&apos;an spotlight
-                    </Link>
-                  </li>
-                  <li>
                     <Link href="/tours/china/discovery/shanghai-surroundings" className="text-primary font-medium hover:underline">
                       Discovery · Shanghai &amp; Surroundings (standard product)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/campaigns/october-2026/shanghai-surroundings" className="text-primary font-medium hover:underline">
-                      October 2026 · Shanghai &amp; Surroundings spotlight
                     </Link>
                   </li>
                   <li>
@@ -584,7 +574,7 @@ export default function ChinaToursFromNZPage() {
                     <p className="text-xs font-bold uppercase text-primary mb-1 tracking-wide">7-10 days</p>
                     <h3 className="font-serif font-bold text-lg mb-2 text-gray-900">Short City Tour</h3>
                     <p className="text-sm text-gray-700 mb-3">Two cities, focused on highlights. Best for first-time visitors who want a taste of China without long PTO.</p>
-                    <Link href="/campaigns/october-2026/tale-of-two-cities" className="text-primary text-sm font-medium hover:underline">
+                    <Link href="/tours/china/discovery/beijing-xian" className="text-primary text-sm font-medium hover:underline">
                       Tale of Two Cities (Beijing + Xi&apos;an) →
                     </Link>
                   </div>

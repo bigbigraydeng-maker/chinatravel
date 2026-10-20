@@ -58,7 +58,7 @@ export default function BeijingToursPage() {
           { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', icon: 'map', description: 'The route most visitors miss' },
           { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', icon: 'building', description: "Old Peking's hidden laneways" },
           { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'landmark', description: "Xi'an day trip from Beijing by high-speed train" },
-          { label: 'October 2026 — Tale of Two Cities', href: '/campaigns/october-2026/tale-of-two-cities', icon: 'leaf', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
+          { label: 'A Tale of Two Cities — 2027 departures', href: '/tours/china/discovery/beijing-xian', icon: 'leaf', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
         ]}
       />
     </>
