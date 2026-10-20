@@ -564,11 +564,11 @@ const allTours: Tour[] = [
       'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
-    heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
+    heroImage: '/images/tours/three-gorges-cruise-wide-2000.jpg',
     gallery: [
-      '/images/tours/three-gorges-cruise.jpg',
-      '/images/tours/chengdu-pandas.jpg',
-      '/images/tours/tianmen-mountain-glass-walkway.jpg',
+      '/images/tours/three-gorges-cruise-1600.jpg',
+      '/images/tours/chengdu-pandas-1600.jpg',
+      '/images/tours/tianmen-mountain-glass-walkway-1600.jpg',
     ],
     highlights: [
       'Cruise the Yangtze River through the Three Gorges from Yichang to Chongqing',
@@ -618,7 +618,7 @@ const allTours: Tour[] = [
     metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-21',
     tags: [
       'Shanghai',
       'Yichang',
