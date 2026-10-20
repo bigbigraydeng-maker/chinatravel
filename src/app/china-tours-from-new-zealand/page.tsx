@@ -10,7 +10,8 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
+import { getAllChinaTours, getTourBySlug } from '@/lib/data/tours';
+import { headlinePrice } from '@/lib/tour-price';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromNZMeta } from '@/lib/data/seo-pages';
 import { getSiteUrl } from '@/lib/site';
@@ -46,7 +47,12 @@ export default function ChinaToursFromNZPage() {
   const pageUrl = `${siteUrl}/china-tours-from-new-zealand`;
 
   // 4 flagship China tours for NZ travellers — used in comparison table A
-  // and ItemList schema. Real prices, real cities — no fabricated data.
+  // and ItemList schema. Prices are read from the tour data (the same source as the tour pages), so a price
+  // change there cannot leave this table behind; a tour that is not in the data is left out, never printed blank.
+  const flagshipPrice = (tier: 'discovery' | 'signature', slug: string): string => {
+    const tour = getTourBySlug('china', tier, slug);
+    return tour ? headlinePrice(tour.price) : '';
+  };
   const flagshipTours = [
     {
       name: 'Tale of Two Cities',
@@ -54,7 +60,7 @@ export default function ChinaToursFromNZPage() {
       url: '/tours/china/discovery/beijing-xian',
       duration: '10 days',
       cities: 'Beijing + Xi\'an',
-      price: 'NZD $3,480',
+      price: flagshipPrice('discovery', 'beijing-xian'),
       bestFor: 'First-time visitors who want imperial highlights',
     },
     {
@@ -63,7 +69,7 @@ export default function ChinaToursFromNZPage() {
       url: '/campaigns/best-of-china',
       duration: '15 days',
       cities: 'Beijing + Xi\'an + Hangzhou + Shanghai',
-      price: 'NZD $4,080',
+      price: flagshipPrice('discovery', 'essentials'),
       bestFor: 'Classic 4-city loop covering imperial + modern China',
     },
     {
@@ -72,7 +78,7 @@ export default function ChinaToursFromNZPage() {
       url: '/tours/china/discovery/shanghai-surroundings',
       duration: '10 days',
       cities: 'Shanghai + Suzhou + Wuxi + Hangzhou',
-      price: 'NZD $2,699',
+      price: flagshipPrice('discovery', 'shanghai-surroundings'),
       bestFor: 'Comfort travel, lower flight fatigue, water-towns culture',
     },
     {
@@ -81,10 +87,10 @@ export default function ChinaToursFromNZPage() {
       url: '/tours/china/signature',
       duration: '18 days',
       cities: 'Xi\'an + Dunhuang + Turpan + Urumqi',
-      price: 'NZD $7,999',
+      price: flagshipPrice('signature', 'silk-road'),
       bestFor: 'Repeat China visitors, history depth, off-beat regions',
     },
-  ];
+  ].filter((tour) => tour.price !== '');
 
   // AI Overview / ChatGPT / Perplexity citation signal — Article with named
   // author Person Baker Gu, consistent with blog post schemas. Magic Engine
