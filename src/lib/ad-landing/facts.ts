@@ -97,6 +97,11 @@ export const AD_COPY_FORBIDDEN: readonly ForbiddenRule[] = [
       /\bguarantee[ds]?\b|\bselling fast\b|\bhurry\b|\b(?:limited|few)\s+(?:spots|seats|places)\b|\blast chance\b/i,
     reason: 'unbacked guarantee or urgency claim',
   },
+  { pattern: /\bsave\b/i, reason: 'discount claim ("save")' },
+  { pattern: /\bbook\s+by\b/i, reason: 'booking-deadline claim ("Book by")' },
+  { pattern: /\bearly[\s-]*bird\b/i, reason: 'early-bird claim' },
+  { pattern: /\bcountdown\b/i, reason: 'countdown claim' },
+  { pattern: /\b(?:weeks?|days?)\s+left\b/i, reason: 'time-left claim ("weeks left")' },
 ];
 
 const ALLOWED_TRANSPORT = /high-speed train and coach/gi;

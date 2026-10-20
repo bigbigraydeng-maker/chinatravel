@@ -1,15 +1,17 @@
+import { CTS_PHONE_HREF } from '@/lib/site';
+
 /**
  * The only footer an ad landing page has. The contact details and the trust line are the site footer's own words
  * (src/components/Footer.tsx); the bottom padding on phones keeps the fixed enquiry bar from covering the last lines.
  */
 export default function AdFooter() {
   return (
-    <footer className="border-t border-warm-200 bg-white pb-28 lg:pb-0">
+    <footer className="border-t border-warm-200 bg-white pb-36 lg:pb-0">
       <div className="mx-auto max-w-6xl px-4 py-8 text-sm leading-relaxed text-gray-600">
         <p className="font-semibold text-gray-900">CTS Tours</p>
         <p className="mt-1">175 Queen St, Auckland</p>
         <p>
-          <a href="tel:0800287888" className="underline">
+          <a href={CTS_PHONE_HREF} className="underline">
             0800 CTS 888
           </a>
           {' · '}

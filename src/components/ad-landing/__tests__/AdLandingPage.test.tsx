@@ -14,6 +14,7 @@ import { getAdLandingConfig } from '@/lib/ad-landing/configs';
 import { findForbiddenCopy, tourCorpus } from '@/lib/ad-landing/facts';
 import { getTourBySlug } from '@/lib/data/tours';
 import { getDepartureRows } from '@/components/tours/TourGoldenBlocks';
+import { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/lib/site';
 
 jest.mock('next/navigation', () => ({ useRouter: () => ({ push: jest.fn() }) }));
 
@@ -182,7 +183,46 @@ describe('AdLandingPage', () => {
     const hrefs = footerLinks.map((link) => link.getAttribute('href'));
     expect(hrefs).toContain('/terms-and-conditions');
     expect(hrefs).toContain('/privacy-policy');
-    expect(hrefs).toContain('tel:0800287888');
+    expect(hrefs).toContain(CTS_PHONE_HREF);
+  });
+
+  it('offers a phone call in the hero, in the bottom bar and in the footer, all with the one CTS number', () => {
+    const { container } = renderPage(PAST);
+
+    const phoneLinks = Array.from(container.querySelectorAll('a')).filter(
+      (link) => link.getAttribute('href') === CTS_PHONE_HREF,
+    );
+    expect(phoneLinks).toHaveLength(3);
+
+    const hero = container.querySelector('section[aria-labelledby="hero-heading"]');
+    expect(hero).not.toBeNull();
+    expect(within(hero as HTMLElement).getByRole('link', { name: `Call ${CTS_PHONE_DISPLAY}` })).toHaveAttribute(
+      'href',
+      CTS_PHONE_HREF,
+    );
+    // `hidden: true` because the bottom bar is aria-hidden until the visitor has scrolled past the hero button.
+    expect(screen.getByRole('link', { name: 'Call us', hidden: true })).toHaveAttribute('href', CTS_PHONE_HREF);
+  });
+
+  it('answers the shopping-stop question in the tour data own words, next to the tea tasting it sells', () => {
+    const { container } = renderPage(PAST);
+    const shopping = t.faqs?.find((item) => item.question.toLowerCase().includes('shopping stops'));
+    if (!shopping) throw new Error('the Shanghai tour data must answer the shopping-stop question');
+
+    const faq = container.querySelector('#faq');
+    expect(faq).not.toBeNull();
+    expect(faq?.textContent).toContain(shopping.question);
+    expect(faq?.textContent).toContain(shopping.answer);
+  });
+
+  it('shows a picture on every highlight card', () => {
+    const { container } = renderPage(PAST);
+
+    const cards = container.querySelectorAll('#highlights li');
+    expect(cards.length).toBeGreaterThan(0);
+    for (const card of Array.from(cards)) {
+      expect(card.querySelector('img')).not.toBeNull();
+    }
   });
 
   it('shows the hero picture with the config description and caption', () => {

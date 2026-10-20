@@ -10,6 +10,8 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { Phone } from 'lucide-react';
+import { CTS_PHONE_HREF } from '@/lib/site';
 
 /**
  * The enquiry form of an ad landing page exists ONCE in the page. On a phone it is a bottom sheet that the buttons
@@ -24,6 +26,8 @@ interface LauncherValue {
   /** `trigger` is the button that was pressed; focus goes back to it when the sheet closes. */
   open: (location: CtaLocation, trigger?: HTMLElement | null) => void;
   close: () => void;
+  /** A "call us" link was tapped: counted in GA4 only (it is not a conversion). */
+  trackCall: (location: CtaLocation) => void;
 }
 
 const LauncherContext = createContext<LauncherValue | null>(null);
@@ -59,6 +63,12 @@ function useIsDesktop(): boolean {
 function trackEnquiryOpen(location: CtaLocation, tourSlug: string): void {
   const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
   if (typeof gtag === 'function') gtag('event', 'enquiry_open', { tour_slug: tourSlug, cta_location: location });
+}
+
+/** GA4 only, and not a conversion: "someone chose to phone instead of filling in the form". */
+function trackCallClick(location: CtaLocation, tourSlug: string): void {
+  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+  if (typeof gtag === 'function') gtag('event', 'call_click', { tour_slug: tourSlug, cta_location: location });
 }
 
 export function AdEnquiryProvider({ tourSlug, children }: { tourSlug: string; children: ReactNode }) {
@@ -133,7 +143,9 @@ export function AdEnquiryProvider({ tourSlug, children }: { tourSlug: string; ch
     };
   }, [isOpen]);
 
-  const value = useMemo(() => ({ isOpen, open, close }), [isOpen, open, close]);
+  const trackCall = useCallback((location: CtaLocation) => trackCallClick(location, tourSlug), [tourSlug]);
+
+  const value = useMemo(() => ({ isOpen, open, close, trackCall }), [isOpen, open, close, trackCall]);
   return <LauncherContext.Provider value={value}>{children}</LauncherContext.Provider>;
 }
 
@@ -202,7 +214,25 @@ export function OpenEnquiryButton({
   );
 }
 
-/** Fixed bar at the bottom of a phone screen once the hero button has scrolled out of sight; hidden while the sheet is open, and never shown from `lg` up, where the form is already beside the content. */
+/** A "call us" link. Many older travellers would rather phone than fill in a form, so the page offers both; the tap is counted. */
+export function CallLink({
+  location,
+  className,
+  children,
+}: {
+  location: CtaLocation;
+  className?: string;
+  children: ReactNode;
+}) {
+  const { trackCall } = useLauncher();
+  return (
+    <a href={CTS_PHONE_HREF} className={className} onClick={() => trackCall(location)}>
+      {children}
+    </a>
+  );
+}
+
+/** Fixed bar at the bottom of a phone screen once the hero button has scrolled out of sight: the price, a "Call us" link and the enquiry button. Hidden while the sheet is open, and never shown from `lg` up, where the form is already beside the content. */
 export function StickyCtaBar({ priceLine, ctaLabel = 'Send Enquiry' }: { priceLine: string; ctaLabel?: string }) {
   const { isOpen, open } = useLauncher();
   const [pastHero, setPastHero] = useState(false);
@@ -227,15 +257,24 @@ export function StickyCtaBar({ priceLine, ctaLabel = 'Send Enquiry' }: { priceLi
         visible ? 'visible translate-y-0' : 'invisible translate-y-full',
       ].join(' ')}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+      <div className="mx-auto max-w-6xl">
         <p className="text-sm font-semibold leading-snug text-gray-900">{priceLine}</p>
-        <button
-          type="button"
-          onClick={(event) => open('sticky_bar', event.currentTarget)}
-          className="shrink-0 whitespace-nowrap rounded-full bg-primary px-6 py-3 text-base font-semibold text-white shadow"
-        >
-          {ctaLabel}
-        </button>
+        <div className="mt-2 flex items-center gap-3">
+          <CallLink
+            location="sticky_bar"
+            className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border-2 border-primary bg-white px-4 text-base font-semibold text-primary"
+          >
+            <Phone aria-hidden="true" className="h-5 w-5" />
+            Call us
+          </CallLink>
+          <button
+            type="button"
+            onClick={(event) => open('sticky_bar', event.currentTarget)}
+            className="min-h-[48px] flex-1 whitespace-nowrap rounded-full bg-primary px-4 text-base font-semibold text-white shadow"
+          >
+            {ctaLabel}
+          </button>
+        </div>
       </div>
     </div>
   );

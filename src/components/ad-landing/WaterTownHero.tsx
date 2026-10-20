@@ -1,7 +1,9 @@
 import Image from 'next/image';
+import { Phone } from 'lucide-react';
 import type { Tour } from '@/lib/data/tours';
 import type { AdLandingConfig } from '@/lib/ad-landing/types';
-import { OpenEnquiryButton } from './enquiry-launcher';
+import { CTS_PHONE_DISPLAY, CTS_PHONE_HOURS } from '@/lib/site';
+import { CallLink, OpenEnquiryButton } from './enquiry-launcher';
 
 export interface HeroProps {
   config: AdLandingConfig;
@@ -64,6 +66,16 @@ export default function WaterTownHero({ config, tour, imageSrc, fromPrice }: Her
               <span className="ml-1 text-sm text-white/75">per person</span>
             </p>
           ) : null}
+        </div>
+        <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]">
+          <CallLink
+            location="hero"
+            className="inline-flex min-h-[44px] items-center gap-2 text-lg font-semibold text-white underline decoration-white/60 underline-offset-4"
+          >
+            <Phone aria-hidden="true" className="h-5 w-5" />
+            Call {CTS_PHONE_DISPLAY}
+          </CallLink>
+          <span className="text-sm text-white/85">{CTS_PHONE_HOURS} · speak to a real person, no form needed</span>
         </div>
       </div>
     </section>

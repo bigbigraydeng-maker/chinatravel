@@ -181,6 +181,13 @@ describe('findForbiddenCopy', () => {
     'Guaranteed departure',
     'selling fast',
     'limited spots left',
+    'Save $300 when you book',
+    'Book by 30 November',
+    'Early bird price',
+    'an early-bird discount',
+    'Countdown to departure',
+    'only 12 weeks left',
+    '3 days left',
   ])('flags "%s"', (phrase) => {
     expect(findForbiddenCopy(phrase).length).toBeGreaterThan(0);
   });
@@ -199,6 +206,9 @@ describe('findForbiddenCopy', () => {
     'Maximise your time in Hangzhou',
     'Deposits are due within 3 working days',
     'Up to 60 days before departure',
+    'Your details are saved securely',
+    'Your booking is confirmed by deposit',
+    'An early start at the Great Wall',
   ])('does not mistake "%s" for a claim', (phrase) => {
     expect(findForbiddenCopy(phrase)).toEqual([]);
   });
@@ -207,8 +217,8 @@ describe('findForbiddenCopy', () => {
     expect(findForbiddenCopy('Small group tour')).toContain(AD_COPY_FORBIDDEN[0].reason);
   });
 
-  it('has exactly eight rules and none is global', () => {
-    expect(AD_COPY_FORBIDDEN).toHaveLength(8);
+  it('has exactly thirteen rules and none is global', () => {
+    expect(AD_COPY_FORBIDDEN).toHaveLength(13);
     for (const rule of AD_COPY_FORBIDDEN) {
       expect(rule.pattern.global).toBe(false);
     }

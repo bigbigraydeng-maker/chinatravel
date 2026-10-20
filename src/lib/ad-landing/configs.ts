@@ -76,7 +76,12 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
       cards: [
         {
           title: 'Hanfu photos and afternoon tea',
-          icon: 'camera',
+          image: {
+            src: '/images/blog/inline/jiangnan-water-town.webp',
+            alt: 'Red paper lanterns and wooden boats along a canal in a Jiangnan water town',
+            width: 867,
+            height: 1300,
+          },
           body: [
             {
               text: 'Dress up in Hanfu for photos, then take afternoon tea in thousand-year-old Xinshi Town.',
@@ -128,7 +133,7 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
     {
       type: 'faq',
       title: 'Questions, answered',
-      pick: ['included in the price', 'which hotels', 'optional activities', 'visa', 'how do i book'],
+      pick: ['included in the price', 'shopping stops', 'which hotels', 'optional activities', 'visa', 'how do i book'],
     },
   ],
 };

@@ -162,6 +162,17 @@ describe.each(AD_LANDING_CONFIGS.map((config) => [config.pathKey, config] as con
       }
     });
 
+    it('gives every highlight card a picture: an icon-only tile looks like a picture that failed to load', () => {
+      const bare: string[] = [];
+      for (const block of config.blocks) {
+        if (block.type !== 'featureCards') continue;
+        for (const card of block.cards) {
+          if (!card.image) bare.push(card.title);
+        }
+      }
+      expect(bare).toEqual([]);
+    });
+
     it('has the official route map when it shows one', () => {
       const hasRouteMap = config.blocks.some((block) => block.type === 'routeMap');
       if (hasRouteMap) {
