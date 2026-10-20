@@ -7,12 +7,21 @@
  *  - dates without a year (e.g. "Departs 15 October") — cannot be shown past;
  *  - date-before-word wording ("the 15 October 2026 departure") — only dates
  *    that follow a departure word are considered.
+ * Known gaps (it does NOT catch these, so do not claim coverage):
+ *  - a comma, full stop, ! or ? between the word and the date ("Departs, 15 October 2026");
+ *  - ordinal days ("15th October 2026"), numeric dates ("15/10/2026"), US order ("October 15, 2026");
+ *  - a sentence that also says sold out / has passed is skipped as a whole, even when it advertises
+ *    another past departure.
  *
  * Sentences that explain history — sold out, fully booked, has passed /
  * departed / left / ended / gone, already departed, no longer — are skipped.
  *
  * A departure ON `today` is not past. Month-year dates are past only once the
  * last day of that month is strictly before `today`.
+ *
+ * A second, date-free rule (findYearlessMonthDepartures) catches departure wording that names a month but
+ * no year, e.g. "departs Auckland in October": no date can be checked there, and the tours have no departure
+ * in the month named, so the shape is banned outright. Write the full date, or point at the tour page.
  */
 
 const MONTHS: Record<string, number> = {
@@ -219,4 +228,48 @@ export function findPastDepartureMentions(text: string, today: string): PastDepa
   }
 
   return mentions;
+}
+
+export interface YearlessMonthDeparture {
+  /** 1-based line number, in the ORIGINAL text, of the departure word. */
+  line: number;
+  /** The wording that was found, e.g. 'departs Auckland in October'. */
+  phrase: string;
+  /** The whole sentence it is in: markup removed, whitespace collapsed. */
+  sentence: string;
+}
+
+const MONTH_FULL = 'January|February|March|April|May|June|July|August|September|October|November|December';
+
+/** A departure word, then (no digits or sentence punctuation in between) "in <Month>" that is NOT followed by a year. */
+const YEARLESS_IN_MONTH = new RegExp(
+  `\\b(?:depart(?:s|ing|ure|ures)?|leaves|leaving)\\b[^.!?\\d]{0,40}?\\bin\\s+(?:${MONTH_FULL})\\b(?!\\s+\\d{4})`,
+  'gi',
+);
+
+/**
+ * Finds departure wording that names a month but no year ("departs Auckland in October"). Sentences that
+ * explain history (sold out, has passed, ...) are skipped, as in findPastDepartureMentions.
+ */
+export function findYearlessMonthDepartures(text: string): YearlessMonthDeparture[] {
+  const normalised = text.split('\n').map(normaliseLine).join('\n');
+  const flat = normalised.replace(/\n/g, ' ');
+
+  const found: YearlessMonthDeparture[] = [];
+  const seen = new Set<string>();
+  YEARLESS_IN_MONTH.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = YEARLESS_IN_MONTH.exec(flat)) !== null) {
+    const { start, end } = sentenceBounds(normalised, match.index);
+    const sentence = collapseWhitespace(normalised.slice(start, end));
+    if (HISTORY.test(sentence)) continue;
+
+    const line = lineNumberAt(normalised, match.index);
+    const phrase = collapseWhitespace(match[0]);
+    const key = `${line}\u0000${phrase}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    found.push({ line, phrase, sentence });
+  }
+  return found;
 }

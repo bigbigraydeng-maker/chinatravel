@@ -255,7 +255,7 @@ export default function ChinaTravelSpecialistsNzPage() {
                       <p className="text-primary font-semibold mt-1">From NZD $3,480</p>
                     </div>
                     <Link
-                      href="/campaigns/october-2026/tale-of-two-cities"
+                      href="/tours/china/discovery/beijing-xian"
                       className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
                     >
                       View Tour →
@@ -272,7 +272,7 @@ export default function ChinaTravelSpecialistsNzPage() {
                       <p className="text-primary font-semibold mt-1">From NZD $2,699</p>
                     </div>
                     <Link
-                      href="/campaigns/october-2026/shanghai-surroundings"
+                      href="/tours/china/discovery/shanghai-surroundings"
                       className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
                     >
                       View Tour →

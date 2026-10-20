@@ -73,7 +73,7 @@ export const SOCIAL_FEATURED_PRODUCTS: SocialFeaturedProduct[] = [
     id: 'beijing_xian',
     headline: 'A Tale of Two Cities',
     tagline: 'Beijing & Xi’an · Discovery · 十月战役主推之一',
-    campaignUrl: `${U}/campaigns/october-2026/tale-of-two-cities`,
+    campaignUrl: `${U}/tours/china/discovery/beijing-xian`,
     tourUrl: `${U}/tours/china/discovery/beijing-xian`,
     accent: 'primary',
   },
@@ -81,7 +81,7 @@ export const SOCIAL_FEATURED_PRODUCTS: SocialFeaturedProduct[] = [
     id: 'shanghai_surroundings',
     headline: 'Shanghai & Surroundings',
     tagline: '江南与城市高光 · Discovery · 十月战役主推之二',
-    campaignUrl: `${U}/campaigns/october-2026/shanghai-surroundings`,
+    campaignUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
     tourUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
     accent: 'secondary',
   },
@@ -129,7 +129,7 @@ export const SOCIAL_UTM_EXAMPLES: readonly { title: string; scenario: string; ur
   {
     title: '有机 Facebook → 上海线战役落地（对照 S08）',
     scenario: '转化帖常用战役 URL。',
-    url: buildSocialTrackedUrl(`${U}/campaigns/october-2026/shanghai-surroundings`, {
+    url: buildSocialTrackedUrl(`${U}/tours/china/discovery/shanghai-surroundings`, {
       source: 'facebook',
       medium: 'organic',
       content: 'S08',
@@ -138,7 +138,7 @@ export const SOCIAL_UTM_EXAMPLES: readonly { title: string; scenario: string; ur
   {
     title: '付费 / boost Facebook → 北京线战役落地',
     scenario: '与 organic 区分：utm_medium=paid_social；content 仍建议对齐帖或创意编号。',
-    url: buildSocialTrackedUrl(`${U}/campaigns/october-2026/tale-of-two-cities`, {
+    url: buildSocialTrackedUrl(`${U}/tours/china/discovery/beijing-xian`, {
       source: 'facebook',
       medium: 'paid_social',
       content: 'beijing_xian',
@@ -191,7 +191,7 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     channel: 'Facebook',
     pillar: 'Convert',
     topicOneLiner: 'Soft CTA: October departures — ask for a seat check (only if true)',
-    primaryUrl: `${U}/campaigns/october-2026/tale-of-two-cities`,
+    primaryUrl: `${U}/tours/china/discovery/beijing-xian`,
     assetFile: '',
     status: 'draft',
     notes: 'Rotate URL with Shanghai hub when posting that line.',
@@ -241,7 +241,7 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     channel: 'Both',
     pillar: 'Convert',
     topicOneLiner: 'Match site CTA: Enquire for October departures',
-    primaryUrl: `${U}/campaigns/october-2026/shanghai-surroundings`,
+    primaryUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
     assetFile: '',
     status: 'draft',
   },
@@ -253,7 +253,7 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     channel: 'Both',
     pillar: 'Convert',
     topicOneLiner: 'Stronger CTA + selection — only if dates/seats accurate',
-    primaryUrl: `${U}/campaigns/october-2026/tale-of-two-cities`,
+    primaryUrl: `${U}/tours/china/discovery/beijing-xian`,
     assetFile: '',
     status: 'draft',
   },
@@ -290,7 +290,7 @@ export const SOCIAL_POST_ROWS: SocialPostRow[] = [
     channel: 'Instagram',
     pillar: 'Convert',
     topicOneLiner: 'Reels-friendly: movement / food / skyline + October hook',
-    primaryUrl: `${U}/campaigns/october-2026/shanghai-surroundings`,
+    primaryUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
     assetFile: '',
     status: 'draft',
   },

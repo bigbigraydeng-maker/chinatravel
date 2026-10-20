@@ -77,6 +77,15 @@ const nextConfig = {
        * untouched — this redirect matches only the exact hub path, not its children.
        */
       { source: '/campaigns/october-2026', destination: '/campaigns/spotlight', permanent: true },
+      /**
+       * The October 2026 campaign pages (14 and 15 October departures, both gone) only said "Sold Out" and linked to the
+       * next departures. They now send visitors, ad clicks included, straight to the standard tour pages that carry those
+       * departures. Query strings (utm_*, fbclid) pass through, so Meta and Google attribution survives. Ledger
+       * 2026-10-19-chinatravel-site-stale-data-cleanup (approved 2026-10-20).
+       */
+      { source: '/campaigns/october-2026/tale-of-two-cities', destination: '/tours/china/discovery/beijing-xian', permanent: true },
+      { source: '/campaigns/october-2026/shanghai-surroundings', destination: '/tours/china/discovery/shanghai-surroundings', permanent: true },
+      { source: '/spotlight/october-2026', destination: '/tours/china/discovery', permanent: true },
       /** Liziba pages consolidated 2026-10-14: the standalone landmark page competed with the blog guide for the same queries (13 shared queries, 5.6k impressions / 28d). */
       { source: '/liziba-station-chongqing', destination: '/blog/liziba-station-chongqing-guide', permanent: true },
       /** Fire & Fuzz (chongqing-chengdu) was archived 2026-06-12 and will not return (PM 2026-10-13). Its campaign LPs now send visitors, ad clicks included, to the Chongqing hub. Query strings (UTM) pass through. */

@@ -24,8 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Core pages ──────────────────────────────────────────────────────────
   const campaignOctober2026: MetadataRoute.Sitemap = [
     `${SITE}/campaigns/spotlight`,
-    `${SITE}/campaigns/october-2026/shanghai-surroundings`,
-    `${SITE}/campaigns/october-2026/tale-of-two-cities`,
   ].map((url) => ({
     url,
     lastModified: now,

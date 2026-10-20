@@ -1,7 +1,7 @@
 // Why this exists: a customer must never be told that a departure which has
 // already left is still coming. This is the detector behind the repo-wide
 // check that scans tour copy for past departures still being advertised.
-import { findPastDepartureMentions } from '@/lib/data/past-departure-scan';
+import { findPastDepartureMentions, findYearlessMonthDepartures } from '@/lib/data/past-departure-scan';
 
 const TODAY = '2026-10-20';
 
@@ -203,5 +203,37 @@ describe('findPastDepartureMentions', () => {
     expect(mentions[0].sentence).toBe(
       'Departs 15 October 2026 from Auckland.',
     );
+  });
+});
+
+describe('findYearlessMonthDepartures', () => {
+  it('flags a departure that is placed in a month with no year', () => {
+    const found = findYearlessMonthDepartures('A Tale of Two Cities departs Auckland in October from NZD $3,480.');
+
+    expect(found).toHaveLength(1);
+    expect(found[0].phrase).toBe('departs Auckland in October');
+    expect(found[0].line).toBe(1);
+  });
+
+  it('flags "departures leave in <month>" and reports the line of the departure word', () => {
+    const found = findYearlessMonthDepartures('Intro.\nDepartures leave in March for the spring window.');
+
+    expect(found.map((f) => f.line)).toEqual([2]);
+  });
+
+  it('does not flag a month that is followed by a year', () => {
+    expect(findYearlessMonthDepartures('The group departs in March 2027 from Auckland.')).toEqual([]);
+  });
+
+  it('does not flag seasonal advice that has no departure word', () => {
+    expect(findYearlessMonthDepartures('October is the best month to be in northern China; we fly in October too.')).toEqual([]);
+  });
+
+  it('lets explained history through', () => {
+    expect(findYearlessMonthDepartures('The group departing in October has sold out.')).toEqual([]);
+  });
+
+  it('does not read a departure word that merely sits next to a sentence about a month', () => {
+    expect(findYearlessMonthDepartures('See the tour page for the next departure. We travel in October and March.')).toEqual([]);
   });
 });

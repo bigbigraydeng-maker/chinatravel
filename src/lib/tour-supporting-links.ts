@@ -11,16 +11,14 @@ const PLANNING_LINKS: SupportingContentLink[] = [
   { label: 'China tours from New Zealand', href: '/china-tours-from-new-zealand' },
 ];
 
-/** T041: October Discovery hero products → campaign LPs + matching blog (deduped with global cap). */
+/** T041: Discovery hero products → matching guide + blog (deduped with global cap). The October campaign pages were retired and redirect to the tour pages. */
 const DISCOVERY_OCTOBER_EXTRA: Record<string, SupportingContentLink[]> = {
   'beijing-xian': [
     { label: "Guide · Beijing & Xi'an Discovery", href: '/beijing-xian-discovery-guide' },
-    { label: "October 2026 · Beijing & Xi'an spotlight", href: '/campaigns/october-2026/tale-of-two-cities' },
     { label: "Blog · Beijing & Xi'an first-timer guide", href: '/blog/beijing-xian-first-visit-guide-nz' },
   ],
   'shanghai-surroundings': [
     { label: 'Guide · Shanghai & Surroundings Discovery', href: '/shanghai-surroundings-discovery-guide' },
-    { label: 'October 2026 · Shanghai & Surroundings', href: '/campaigns/october-2026/shanghai-surroundings' },
     { label: 'Blog · Shanghai & Jiangnan guide', href: '/blog/shanghai-surroundings-jiangnan-guide-nz' },
   ],
   'chongqing-chengdu': [

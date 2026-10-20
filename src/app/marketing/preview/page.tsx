@@ -71,12 +71,12 @@ export default function MarketingPreviewPage() {
 
   const campaign: Row[] = [
     {
-      label: '十月战役 · Tale of Two Cities LP',
-      path: '/campaigns/october-2026/tale-of-two-cities',
+      label: 'Tale of Two Cities 团页（原十月战役 LP 已跳转）',
+      path: '/tours/china/discovery/beijing-xian',
     },
     {
-      label: '十月战役 · Shanghai & Surroundings LP',
-      path: '/campaigns/october-2026/shanghai-surroundings',
+      label: 'Shanghai & Surroundings 团页（原十月战役 LP 已跳转）',
+      path: '/tours/china/discovery/shanghai-surroundings',
     },
     { label: 'Spotlight 索引（原十月战役索引）', path: '/campaigns/spotlight' },
   ];

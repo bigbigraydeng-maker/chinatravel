@@ -61,7 +61,7 @@ const seniorFriendlyTours = [
   {
     name: 'Shanghai & Surroundings',
     slug: 'shanghai-surroundings',
-    url: '/campaigns/october-2026/shanghai-surroundings',
+    url: '/tours/china/discovery/shanghai-surroundings',
     duration: '10 days',
     pace: 'Relaxed — multiple half-day options',
     walkingLevel: 'Low to moderate',
@@ -71,7 +71,7 @@ const seniorFriendlyTours = [
   {
     name: 'Tale of Two Cities',
     slug: 'tale-of-two-cities',
-    url: '/campaigns/october-2026/tale-of-two-cities',
+    url: '/tours/china/discovery/beijing-xian',
     duration: '10 days',
     pace: 'Moderate — built-in afternoon rest',
     walkingLevel: 'Moderate (Great Wall has alternatives)',

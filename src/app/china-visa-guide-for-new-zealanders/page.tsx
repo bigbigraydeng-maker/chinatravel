@@ -12,6 +12,9 @@ import { Icon } from '@/components/ui/Icon';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaVisaGuideMeta } from '@/lib/data/seo-pages';
 
+/** The departures block reads the tour data; refresh hourly so a departure that has left drops out without a redeploy. */
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: chinaVisaGuideMeta.title,

@@ -7,12 +7,16 @@ import TrustBar from '@/components/TrustBar';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { getTourBySlug } from '@/lib/data/tours';
+
+/** Departures in the copy come from the tour data; refresh hourly so one that has left drops out without a redeploy. */
+export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Small-Group China Tours from New Zealand | CTS Tours',
     description:
-      'Small-group China tours designed for New Zealand travellers. Intimate groups, expert guides, hand-picked hotels, NZD pricing. October 2026 departures available.',
+      'Small-group China tours designed for New Zealand travellers. Intimate groups, expert guides, hand-picked hotels, NZD pricing. 2027 departures available.',
     path: '/small-group-china-tours',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
@@ -31,6 +35,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function SmallGroupChinaToursPage() {
   const siteUrl = getSiteUrl();
+
+  // Departures come from the tour data, so a departure that has left drops out of this page on its own.
+  const departuresOf = (slug: string) => getTourBySlug('china', 'discovery', slug)?.departureDates?.join(' & ');
+  const taleDates = departuresOf('beijing-xian');
+  const shanghaiDates = departuresOf('shanghai-surroundings');
+  const bocDates = departuresOf('essentials');
+  // '' (every departure has left) must read as "ask us", never as "departs ." — so test for a value, not for null.
+  const departsLine = (tour: string, dates?: string) =>
+    dates ? `${tour} departs ${dates}.` : `Ask us about the next ${tour} departure.`;
 
   const faqs = [
     {
@@ -54,9 +67,9 @@ export default function SmallGroupChinaToursPage() {
         'Yes. Solo travellers join our scheduled departures alongside other Kiwi travellers. If you prefer not to share a room, a single supplement applies — details are listed on each tour page.',
     },
     {
-      question: 'What are the departure months for October 2026?',
+      question: 'When are the next small-group departures?',
       answer:
-        'Our October 2026 Discovery departures leave mid-October from Auckland. The Tale of Two Cities (Beijing + Xi\'an) departs 15 October 2026. Shanghai & Surroundings departs on the same window. Check each campaign page for exact dates and seat availability.',
+        `Our scheduled departures leave from Auckland. ${departsLine("A Tale of Two Cities (Beijing + Xi'an)", taleDates)} ${departsLine('Shanghai & Surroundings', shanghaiDates)} ${departsLine('Best of China', bocDates)} Check each tour page for exact dates and availability.`,
     },
   ];
 
@@ -66,7 +79,7 @@ export default function SmallGroupChinaToursPage() {
       '@type': 'WebPage',
       name: 'Small-Group China Tours from New Zealand',
       description:
-        'Small-group guided China tours from New Zealand with CTS Tours. Intimate groups, expert local guides, NZD pricing, October 2026 departures.',
+        'Small-group guided China tours from New Zealand with CTS Tours. Intimate groups, expert local guides, NZD pricing, 2027 departures.',
       url: `${siteUrl}/small-group-china-tours`,
       provider: {
         '@type': 'Organization',
@@ -138,7 +151,7 @@ export default function SmallGroupChinaToursPage() {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours runs <strong>small-group</strong> China tours from New Zealand. Groups depart from Auckland (return flights included), priced in NZD. October 2026 departures are open for Beijing &amp; Xi&apos;an and Shanghai &amp; Surroundings. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
+                  CTS Tours runs <strong>small-group</strong> China tours from New Zealand. Groups depart from Auckland (return flights included), priced in NZD. 2027 departures are open for Beijing &amp; Xi&apos;an, Shanghai &amp; Surroundings and Best of China. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
                 </p>
               </aside>
 
@@ -185,15 +198,15 @@ export default function SmallGroupChinaToursPage() {
                 </div>
               </section>
 
-              {/* Section 3: October 2026 departures */}
+              {/* Section 3: upcoming departures */}
               <section>
                 <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">
-                  October 2026 Departures
+                  Upcoming Departures
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  October is peak season in China — clear skies, crisp autumn colour, and the Great
-                  Wall blazing red and orange. Our two October 2026 small-group departures cover the
-                  most-requested Kiwi itineraries.
+                  Spring and autumn are the most comfortable seasons in China — mild temperatures, clear
+                  skies and manageable crowds. Our small-group departures cover the most-requested Kiwi
+                  itineraries.
                 </p>
                 <div className="space-y-4">
                   <div className="border-l-4 border-primary bg-warm-50 rounded-r-xl p-6">
@@ -211,11 +224,11 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $3,480</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 15 October 2026 &amp; 18 March 2027</span>
+                          <span className="text-gray-500 text-sm ml-2">· {taleDates ? `Departs ${taleDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link
-                        href="/campaigns/october-2026/tale-of-two-cities"
+                        href="/tours/china/discovery/beijing-xian"
                         className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
                       >
                         View & Enquire →
@@ -238,11 +251,11 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $2,699</span>
-                          <span className="text-gray-500 text-sm ml-2">· October 2026</span>
+                          <span className="text-gray-500 text-sm ml-2">· {shanghaiDates ? `Departs ${shanghaiDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link
-                        href="/campaigns/october-2026/shanghai-surroundings"
+                        href="/tours/china/discovery/shanghai-surroundings"
                         className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
                       >
                         View &amp; Enquire →
@@ -265,7 +278,7 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $4,080</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 11 March 2027</span>
+                          <span className="text-gray-500 text-sm ml-2">· {bocDates ? `Departs ${bocDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link
@@ -339,18 +352,18 @@ export default function SmallGroupChinaToursPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <div className="bg-accent text-white rounded-2xl p-6">
-                  <h3 className="font-serif font-bold text-lg mb-3">October 2026 seats filling fast</h3>
+                  <h3 className="font-serif font-bold text-lg mb-3">Limited places per departure</h3>
                   <p className="text-sm opacity-90 mb-4">
                     Small groups mean limited seats. Enquire now to check availability and hold your place.
                   </p>
                   <Link
-                    href="/campaigns/october-2026/tale-of-two-cities"
+                    href="/tours/china/discovery/beijing-xian"
                     className="block w-full bg-white text-accent font-bold py-3 px-4 rounded-lg text-center hover:bg-warm-50 transition mb-3"
                   >
                     Beijing &amp; Xi&apos;an →
                   </Link>
                   <Link
-                    href="/campaigns/october-2026/shanghai-surroundings"
+                    href="/tours/china/discovery/shanghai-surroundings"
                     className="block w-full border border-white/40 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-white/10 transition"
                   >
                     Shanghai &amp; Surroundings →
