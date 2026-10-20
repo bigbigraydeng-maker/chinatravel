@@ -4,8 +4,10 @@ import { getSiteUrl } from '@/lib/site';
 import {
   attributionEmailRows,
   fbclidEmailRow,
+  gclidEmailRow,
   sanitizeAttribution,
   sanitizeFbclid,
+  sanitizeGclid,
 } from '@/lib/analytics/attribution';
 import { getTourBySlug } from '@/lib/data/tours';
 import {
@@ -87,7 +89,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Ad source</td><td>${escapeHtml(adSource)}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
     ${attributionEmailRows(attribution)}
-    ${fbclidEmailRow(sanitizeFbclid(utmObj.fbclid))}${travelPreferenceRows(travelWindowLabel(travelWindow), budgetBandLabel(budgetBand))}
+    ${fbclidEmailRow(sanitizeFbclid(utmObj.fbclid))}${gclidEmailRow(sanitizeGclid(utmObj.gclid))}${travelPreferenceRows(travelWindowLabel(travelWindow), budgetBandLabel(budgetBand))}
   </table>
   ${message ? `<p style="margin-top:16px;"><strong>Message</strong></p><p style="white-space:pre-wrap;">${escapeHtml(String(message))}</p>` : ''}
 </body>

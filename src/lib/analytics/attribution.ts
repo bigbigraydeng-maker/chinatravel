@@ -104,3 +104,25 @@ export function fbclidEmailRow(fbclid: string | null): string {
   if (!fbclid) return '';
   return `<tr><td style="font-weight:bold;">Facebook click ID</td><td>${esc(fbclid)}</td></tr>`;
 }
+
+/**
+ * Google's click id (`gclid`) that the browser kept from the ad click (first-touch UTM store) and sent with the
+ * enquiry. The notification email is the only lead record, so without it a Google Ads lead cannot be matched back to
+ * its ad click later (offline conversion import). Same rule as `sanitizeFbclid`: anything that does not look like a
+ * click id (URL-safe letters, digits, `_`, `-` and `.`) is dropped, so odd input can never reach the email.
+ */
+export function sanitizeGclid(input: unknown): string | null {
+  if (typeof input !== 'string') return null;
+  const v = input.trim();
+  return /^[\w.-]{1,255}$/.test(v) ? v : null;
+}
+
+/**
+ * One extra <tr> for the notification email, same markup as `fbclidEmailRow` and appended right after it (after every
+ * existing row, before the message). Empty string when there is no gclid, so an enquiry without one produces exactly
+ * the email it produced before.
+ */
+export function gclidEmailRow(gclid: string | null): string {
+  if (!gclid) return '';
+  return `<tr><td style="font-weight:bold;">Google click ID</td><td>${esc(gclid)}</td></tr>`;
+}
