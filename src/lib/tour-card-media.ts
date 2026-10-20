@@ -27,7 +27,7 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     objectPosition: '50% 50%',
   },
   landscapes: {
-    src: '/images/tours/three-gorges-cruise-wide.jpg',
+    src: '/images/tours/three-gorges-cruise-wide-2000.jpg',
     objectPosition: '50% 48%',
   },
   'shanghai-surroundings': {
@@ -43,7 +43,7 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     objectPosition: '50% 52%',
   },
   chengdu: {
-    src: '/images/tours/chengdu-pandas.jpg',
+    src: '/images/tours/chengdu-pandas-1600.jpg',
     objectPosition: '38% 46%',
   },
   'silk-road': {
