@@ -53,6 +53,9 @@ import FloatingPhoneCta from './_components/FloatingPhoneCta';
 const TOUR_SLUG = 'essentials';
 const ENQUIRY_SOURCE = 'Campaign LP: Best of China';
 
+/** The departure schedule on this page drops departures that have left; refresh hourly so that happens without a redeploy. */
+export const revalidate = 3600;
+
 export function generateMetadata(): Metadata {
   const tour = getTourBySlug('china', 'discovery', TOUR_SLUG);
   if (!tour) return { title: 'Best of China | CTS Tours' };

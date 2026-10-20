@@ -8,6 +8,9 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedUnsplash } from '@/lib/site-media';
 import { Icon, type IconName } from '@/components/ui/Icon';
 
+/** The departure schedule on this page drops departures that have left; refresh hourly so that happens without a redeploy. */
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Asia Tours from NZ | China, Japan, Vietnam | CTS Tours',
