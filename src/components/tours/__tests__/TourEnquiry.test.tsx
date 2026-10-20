@@ -57,7 +57,7 @@ const PROPS = {
   tier: 'discovery',
 };
 
-function fillAndSubmit(values: { name?: string; email?: string; phone?: string }) {
+function fillAndSubmit(values: { name?: string; email?: string; phone?: string; travelWindow?: string | null; budgetBand?: string | null }) {
   if (values.name !== undefined) {
     fireEvent.change(screen.getByLabelText(/Full Name/i), { target: { value: values.name } });
   }
@@ -66,6 +66,15 @@ function fillAndSubmit(values: { name?: string; email?: string; phone?: string }
   }
   if (values.phone !== undefined) {
     fireEvent.change(screen.getByLabelText(/^Phone/i), { target: { value: values.phone } });
+  }
+  // The two travel questions are required on the form: choose valid answers unless a test passes null to leave one empty.
+  const travelWindow = values.travelWindow === undefined ? 'mar_may_2027' : values.travelWindow;
+  if (travelWindow !== null) {
+    fireEvent.change(screen.getByLabelText(/When are you planning to travel/i), { target: { value: travelWindow } });
+  }
+  const budgetBand = values.budgetBand === undefined ? 'under_3000' : values.budgetBand;
+  if (budgetBand !== null) {
+    fireEvent.change(screen.getByLabelText(/Estimated budget per person/i), { target: { value: budgetBand } });
   }
   fireEvent.click(screen.getByRole('button', { name: /Send Enquiry/i }));
 }

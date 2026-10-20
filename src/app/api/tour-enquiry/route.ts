@@ -8,6 +8,12 @@ import {
   sanitizeFbclid,
 } from '@/lib/analytics/attribution';
 import { getTourBySlug } from '@/lib/data/tours';
+import {
+  BUDGET_BAND_EMAIL_LABEL,
+  TRAVEL_WINDOW_EMAIL_LABEL,
+  budgetBandLabel,
+  travelWindowLabel,
+} from '@/lib/enquiry/travel-preferences';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const DEFAULT_NOTIFY = 'info@ctstours.co.nz';
@@ -38,12 +44,25 @@ export async function POST(req: NextRequest) {
       tier,
       source,
       utm,
+      travelWindow,
+      budgetBand,
     } = body;
     const attribution = sanitizeAttribution(body.attribution);
 
     // Name is required; phone OR email is enough (older travellers prefer to be called).
     if (!name || (!email && !phone) || !tourName || !tourSlug || !destination || !tier) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
+    }
+
+    // Travel window and budget band are required on the page but OPTIONAL here: a visitor whose page was loaded
+    // before this field existed still submits the old payload, and that lead must not be lost. When a value is
+    // sent it must be one of the known codes.
+    const isGiven = (value: unknown) => value !== undefined && value !== null && value !== '';
+    if (isGiven(travelWindow) && travelWindowLabel(travelWindow) === null) {
+      return NextResponse.json({ error: 'Please choose one of the listed travel windows.' }, { status: 400 });
+    }
+    if (isGiven(budgetBand) && budgetBandLabel(budgetBand) === null) {
+      return NextResponse.json({ error: 'Please choose one of the listed budget ranges.' }, { status: 400 });
     }
 
     const selectedTour = getTourBySlug(destination, tier, tourSlug);
@@ -74,7 +93,7 @@ export async function POST(req: NextRequest) {
     <tr><td style="font-weight:bold;">Ad source</td><td>${escapeHtml(adSource)}</td></tr>
     <tr><td style="font-weight:bold;">Submitted</td><td>${submittedAt}</td></tr>
     ${attributionEmailRows(attribution)}
-    ${fbclidEmailRow(sanitizeFbclid(utmObj.fbclid))}
+    ${fbclidEmailRow(sanitizeFbclid(utmObj.fbclid))}${travelPreferenceRows(travelWindowLabel(travelWindow), budgetBandLabel(budgetBand))}
   </table>
   ${message ? `<p style="margin-top:16px;"><strong>Message</strong></p><p style="white-space:pre-wrap;">${escapeHtml(String(message))}</p>` : ''}
 </body>
@@ -98,6 +117,20 @@ export async function POST(req: NextRequest) {
     console.error('tour-enquiry error:', err);
     return NextResponse.json({ error: 'Internal server error.' }, { status: 500 });
   }
+}
+
+/**
+ * The two qualifying answers as extra table rows, appended after every existing row so nothing that already
+ * parses the email moves. Empty when the visitor's page did not send them (the email is then byte-identical to
+ * the one sent before these fields existed). Values are the human-readable labels, never the codes.
+ */
+function travelPreferenceRows(travelWindow: string | null, budgetBand: string | null): string {
+  const row = (label: string, value: string) =>
+    `\n    <tr><td style="font-weight:bold;">${label}</td><td>${escapeHtml(value)}</td></tr>`;
+  return [
+    travelWindow ? row(TRAVEL_WINDOW_EMAIL_LABEL, travelWindow) : '',
+    budgetBand ? row(BUDGET_BAND_EMAIL_LABEL, budgetBand) : '',
+  ].join('');
 }
 
 function escapeHtml(s: string): string {

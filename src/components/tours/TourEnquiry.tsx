@@ -6,6 +6,12 @@ import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
+import {
+  BUDGET_BAND_FIELD_LABEL,
+  BUDGET_BAND_OPTIONS,
+  TRAVEL_WINDOW_FIELD_LABEL,
+  TRAVEL_WINDOW_OPTIONS,
+} from '@/lib/enquiry/travel-preferences';
 
 interface TourEnquiryProps {
   tourName: string;
@@ -33,6 +39,9 @@ export default function TourEnquiry({
     email: '',
     phone: '',
     message: '',
+    // Option codes (see travel-preferences.ts); '' = nothing chosen yet.
+    travelWindow: '',
+    budgetBand: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -47,6 +56,17 @@ export default function TourEnquiry({
       return;
     }
 
+    // The two questions are required on the page. (The browser normally stops an empty submit first, with the
+    // messages set on the fields below; this is the same rule for any submit that gets past it.)
+    if (!formData.travelWindow) {
+      setSubmitError('Please choose when you are planning to travel.');
+      return;
+    }
+    if (!formData.budgetBand) {
+      setSubmitError('Please choose your estimated budget per person.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     const utm = getStoredUtmParams();
@@ -58,6 +78,8 @@ export default function TourEnquiry({
       name: formData.name.trim(),
       email: formData.email.trim(),
       phone: formData.phone.trim(),
+      travelWindow: formData.travelWindow,
+      budgetBand: formData.budgetBand,
       message: [enquiryContext, formData.message.trim()].filter(Boolean).join('\n\n') || undefined,
       source,
       utm,
@@ -81,6 +103,9 @@ export default function TourEnquiry({
         form_type: 'tour_enquiry',
         tour_name: tourName,
         tour_slug: tourSlug,
+        // Option codes only — never names, contact details or labels.
+        travel_window: formData.travelWindow,
+        budget_band: formData.budgetBand,
         pagePath: window.location.pathname,
         utm_source: utm.utm_source,
         utm_medium: utm.utm_medium,
@@ -106,7 +131,9 @@ export default function TourEnquiry({
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    // A choice was made: drop the "please choose" message the browser attached to an empty required select.
+    if (e.target instanceof HTMLSelectElement) e.target.setCustomValidity('');
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -173,6 +200,50 @@ export default function TourEnquiry({
             <p className="mt-1.5 text-sm text-gray-600">
               Leave a phone or email—whichever suits you.
             </p>
+          </div>
+
+          <div>
+            <label htmlFor="eq-travel-window" className="block text-base font-medium text-gray-700 mb-1">
+              {TRAVEL_WINDOW_FIELD_LABEL} *
+            </label>
+            <select
+              id="eq-travel-window"
+              name="travelWindow"
+              required
+              value={formData.travelWindow}
+              onChange={handleChange}
+              onInvalid={(e) => e.currentTarget.setCustomValidity('Please choose when you are planning to travel.')}
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
+            >
+              <option value="">Please choose…</option>
+              {TRAVEL_WINDOW_OPTIONS.map((option) => (
+                <option key={option.code} value={option.code}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="eq-budget" className="block text-base font-medium text-gray-700 mb-1">
+              {BUDGET_BAND_FIELD_LABEL} *
+            </label>
+            <select
+              id="eq-budget"
+              name="budgetBand"
+              required
+              value={formData.budgetBand}
+              onChange={handleChange}
+              onInvalid={(e) => e.currentTarget.setCustomValidity('Please choose your estimated budget per person.')}
+              className="w-full px-4 py-3.5 border border-warm-200 rounded-xl focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all bg-warm-50/50"
+            >
+              <option value="">Please choose…</option>
+              {BUDGET_BAND_OPTIONS.map((option) => (
+                <option key={option.code} value={option.code}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
