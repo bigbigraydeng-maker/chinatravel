@@ -1,17 +1,52 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { triggerGtmEvent } from '@/components/GoogleTagManager';
 import { getStoredUtmParams } from '@/lib/utils/utm-parser';
 import { captureSubmitAttribution } from '@/lib/analytics/first-touch';
 import { fireLeadConversion } from '@/lib/analytics/lead-conversion';
+import { CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/lib/site';
 import {
   BUDGET_BAND_FIELD_LABEL,
   BUDGET_BAND_OPTIONS,
   TRAVEL_WINDOW_FIELD_LABEL,
   TRAVEL_WINDOW_OPTIONS,
 } from '@/lib/enquiry/travel-preferences';
+
+/** How long a visitor waits for the server before the request is given up (a cold start takes well under this). */
+const REQUEST_TIMEOUT_MS = 30000;
+
+/** What the form tells the visitor when an enquiry could not be sent. */
+type SubmitError = { kind: 'text'; text: string } | { kind: 'network' } | { kind: 'timeout' };
+
+/**
+ * `fetch` itself failed: the server never answered. A browser's own words ("Failed to fetch", "Load failed") mean
+ * nothing to a traveller, so the two cases that really happen get a plain sentence with the phone number.
+ */
+function describeFetchFailure(error: unknown, timedOut: boolean): SubmitError {
+  if (timedOut) return { kind: 'timeout' };
+  if (error instanceof TypeError) return { kind: 'network' };
+  return { kind: 'text', text: error instanceof Error && error.message ? error.message : 'Something went wrong.' };
+}
+
+function SubmitErrorText({ error }: { error: SubmitError }) {
+  if (error.kind === 'text') return <>{error.text}</>;
+  const call = (
+    <>
+      or call us on{' '}
+      <a href={CTS_PHONE_HREF} className="font-semibold underline">
+        {CTS_PHONE_DISPLAY}
+      </a>
+      .
+    </>
+  );
+  return error.kind === 'network' ? (
+    <>We couldn&apos;t reach our server. Please check your internet connection and try again, {call}</>
+  ) : (
+    <>Sending is taking longer than expected. Please try again, {call}</>
+  );
+}
 
 interface TourEnquiryProps {
   tourName: string;
@@ -44,7 +79,30 @@ export default function TourEnquiry({
     budgetBand: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<SubmitError | null>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
+  const mounted = useRef(true);
+  const inFlight = useRef<{ controller: AbortController; timer: ReturnType<typeof setTimeout> } | null>(null);
+
+  // Leaving the page (or the form closing) while a request is out: give the request up, stop its timeout, and let a
+  // late answer touch nothing. Setting `mounted` again on mount keeps React's development double mount honest.
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      if (inFlight.current) {
+        clearTimeout(inFlight.current.timer);
+        inFlight.current.controller.abort();
+        inFlight.current = null;
+      }
+    };
+  }, []);
+
+  // The message sits next to the button the visitor just pressed, and the form is taller than a phone screen: make
+  // sure all of it is on screen (jsdom and very old browsers have no scrollIntoView).
+  useEffect(() => {
+    if (submitError) errorRef.current?.scrollIntoView?.({ block: 'nearest', behavior: 'smooth' });
+  }, [submitError]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,18 +110,18 @@ export default function TourEnquiry({
 
     // Phone OR email — either is enough. Lowers the form burden for older travellers.
     if (!formData.email.trim() && !formData.phone.trim()) {
-      setSubmitError('Please leave a phone number or an email so we can get back to you.');
+      setSubmitError({ kind: 'text', text: 'Please leave a phone number or an email so we can get back to you.' });
       return;
     }
 
     // The two questions are required on the page. (The browser normally stops an empty submit first, with the
     // messages set on the fields below; this is the same rule for any submit that gets past it.)
     if (!formData.travelWindow) {
-      setSubmitError('Please choose when you are planning to travel.');
+      setSubmitError({ kind: 'text', text: 'Please choose when you are planning to travel.' });
       return;
     }
     if (!formData.budgetBand) {
-      setSubmitError('Please choose your estimated budget per person.');
+      setSubmitError({ kind: 'text', text: 'Please choose your estimated budget per person.' });
       return;
     }
 
@@ -86,12 +144,29 @@ export default function TourEnquiry({
       attribution: captureSubmitAttribution(),
     };
 
+    // One request, given up after REQUEST_TIMEOUT_MS or when the visitor leaves the page.
+    let timedOut = false;
+    const controller = new AbortController();
+    const timer = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, REQUEST_TIMEOUT_MS);
+    inFlight.current = { controller, timer };
+
     try {
-      const res = await fetch('/api/tour-enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+      let res: Response;
+      try {
+        res = await fetch('/api/tour-enquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          signal: controller.signal,
+        });
+      } catch (fetchError) {
+        // Only the request itself is described here; anything that goes wrong after the server answered keeps its own message.
+        if (mounted.current) setSubmitError(describeFetchFailure(fetchError, timedOut));
+        return;
+      }
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
@@ -125,9 +200,13 @@ export default function TourEnquiry({
       });
       router.push(`/thank-you?${q.toString()}`);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Something went wrong.');
+      if (mounted.current) {
+        setSubmitError({ kind: 'text', text: err instanceof Error ? err.message : 'Something went wrong.' });
+      }
     } finally {
-      setIsSubmitting(false);
+      clearTimeout(timer);
+      if (inFlight.current?.controller === controller) inFlight.current = null;
+      if (mounted.current) setIsSubmitting(false);
     }
   };
 
@@ -147,11 +226,6 @@ export default function TourEnquiry({
       </div>}
 
       <div className={compact ? "" : "p-6"}>
-        {submitError && (
-          <p className="mb-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-            {submitError}
-          </p>
-        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="eq-name" className="block text-base font-medium text-gray-700 mb-1">
@@ -261,6 +335,15 @@ export default function TourEnquiry({
             />
           </div>
 
+          {submitError && (
+            <p
+              ref={errorRef}
+              role="alert"
+              className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-4 py-3"
+            >
+              <SubmitErrorText error={submitError} />
+            </p>
+          )}
           <button
             type="submit"
             disabled={isSubmitting}
