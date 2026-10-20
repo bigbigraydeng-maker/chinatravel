@@ -41,6 +41,9 @@ export default function SmallGroupChinaToursPage() {
   const taleDates = departuresOf('beijing-xian');
   const shanghaiDates = departuresOf('shanghai-surroundings');
   const bocDates = departuresOf('essentials');
+  // '' (every departure has left) must read as "ask us", never as "departs ." — so test for a value, not for null.
+  const departsLine = (tour: string, dates?: string) =>
+    dates ? `${tour} departs ${dates}.` : `Ask us about the next ${tour} departure.`;
 
   const faqs = [
     {
@@ -66,7 +69,7 @@ export default function SmallGroupChinaToursPage() {
     {
       question: 'When are the next small-group departures?',
       answer:
-        `Our scheduled departures leave from Auckland. A Tale of Two Cities (Beijing + Xi'an) departs ${taleDates ?? 'on request'}. Shanghai & Surroundings departs ${shanghaiDates ?? 'on request'}. Best of China departs ${bocDates ?? 'on request'}. Check each tour page for exact dates and availability.`,
+        `Our scheduled departures leave from Auckland. ${departsLine("A Tale of Two Cities (Beijing + Xi'an)", taleDates)} ${departsLine('Shanghai & Surroundings', shanghaiDates)} ${departsLine('Best of China', bocDates)} Check each tour page for exact dates and availability.`,
     },
   ];
 
@@ -221,7 +224,7 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $3,480</span>
-                          <span className="text-gray-500 text-sm ml-2">· {taleDates ? `Departs ${taleDates}` : 'Dates on request'}</span>
+                          <span className="text-gray-500 text-sm ml-2">· {taleDates ? `Departs ${taleDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link
@@ -248,7 +251,7 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $2,699</span>
-                          <span className="text-gray-500 text-sm ml-2">· {shanghaiDates ? `Departs ${shanghaiDates}` : 'Dates on request'}</span>
+                          <span className="text-gray-500 text-sm ml-2">· {shanghaiDates ? `Departs ${shanghaiDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link
@@ -275,7 +278,7 @@ export default function SmallGroupChinaToursPage() {
                         </p>
                         <p className="mt-3">
                           <span className="font-bold text-primary text-lg">From NZD $4,080</span>
-                          <span className="text-gray-500 text-sm ml-2">· {bocDates ? `Departs ${bocDates}` : 'Dates on request'}</span>
+                          <span className="text-gray-500 text-sm ml-2">· {bocDates ? `Departs ${bocDates}` : 'Ask us for the next departure'}</span>
                         </p>
                       </div>
                       <Link

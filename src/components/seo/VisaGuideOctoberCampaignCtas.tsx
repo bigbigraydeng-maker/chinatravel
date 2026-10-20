@@ -11,22 +11,23 @@ export default function VisaGuideOctoberCampaignCtas() {
   if (!taleTour || !shanghaiTour) return null;
 
   // Every published departure (they include the year); a departure that has left is already dropped from the tour data.
-  const taleDep = taleTour.departureDates?.join(' & ') || 'Dates on request';
-  const shDep = shanghaiTour.departureDates?.join(' & ') || 'Dates on request';
+  const taleDates = taleTour.departureDates?.join(' & ');
+  const shanghaiDates = shanghaiTour.departureDates?.join(' & ');
+  const departsLabel = (dates?: string) => (dates ? `Departs · ${dates}` : 'Ask us for the next departure');
 
   const cards = [
     {
       href: '/tours/china/discovery/beijing-xian',
       title: taleTour.name,
       blurb: 'Beijing & Xi’an by high-speed train — Great Wall, Forbidden City, Terracotta Warriors.',
-      departure: taleDep,
+      departure: departsLabel(taleDates),
       price: taleTour.price,
     },
     {
       href: '/tours/china/discovery/shanghai-surroundings',
       title: shanghaiTour.name,
       blurb: 'Yangtze Delta Discovery — Shanghai, Suzhou, Hangzhou & water towns.',
-      departure: shDep,
+      departure: departsLabel(shanghaiDates),
       price: shanghaiTour.price,
     },
   ] as const;
@@ -55,7 +56,7 @@ export default function VisaGuideOctoberCampaignCtas() {
               className="flex h-full flex-col rounded-xl border border-warm-200 bg-white p-5 shadow-sm transition hover:border-primary/40 hover:shadow-md"
             >
               <span className="text-xs font-semibold uppercase tracking-wide text-primary">
-                Departs · {c.departure}
+                {c.departure}
               </span>
               <span className="mt-2 font-serif text-lg font-bold text-accent">{c.title}</span>
               <span className="mt-2 flex-1 text-sm text-gray-600">{c.blurb}</span>
