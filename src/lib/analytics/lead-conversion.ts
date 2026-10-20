@@ -49,6 +49,17 @@ const CURRENCY = 'NZD';
 export type LeadSource = 'contact_page' | 'tour_enquiry' | 'china_tours_hub' | 'china_visa_guide';
 
 /**
+ * Which tour an enquiry is about. `path` is the address of that tour's own page (for example
+ * /tours/china/discovery/shanghai-surroundings, never the ad landing page the visitor came through); it goes to GA4
+ * as `tour_slug`. `slug` goes to Meta as `content_ids`: the same id the ViewContent event sends for that tour, so
+ * Meta can match "viewed tour X" with "enquired about tour X".
+ */
+export interface LeadTour {
+  path: string;
+  slug: string;
+}
+
+/**
  * Fire the Google Ads conversion + Meta Pixel `Lead` for a submitted enquiry.
  *
  * The shared `eventID` lets a future server-side CAPI `Lead` event de-duplicate
@@ -73,7 +84,7 @@ function attributionParams(): Record<string, string> {
   }
 }
 
-export function fireLeadConversion(source: LeadSource): void {
+export function fireLeadConversion(source: LeadSource, tour?: LeadTour): void {
   if (typeof window === 'undefined') return;
 
   const eventId = `cts-${source}-${Date.now()}`;
@@ -96,6 +107,7 @@ export function fireLeadConversion(source: LeadSource): void {
         g('event', 'generate_lead', {
           lead_source: source,
           transaction_id: eventId,
+          ...(tour ? { tour_slug: tour.path } : {}),
         });
         // One unified "an enquiry was accepted" event for every form, whether the visitor
         // is sent to /thank-you or sees an inline success message. Carries the first
@@ -113,9 +125,10 @@ export function fireLeadConversion(source: LeadSource): void {
       const f = fbq();
       if (f) {
         // No value/currency on purpose: CTS has no real per-lead value to report, and `value` is
-        // optional for Lead in Meta's pixel reference. The empty object keeps the options argument
-        // ({ eventID }) in the 4th position that fbq expects.
-        f('track', 'Lead', {}, { eventID: eventId });
+        // optional for Lead in Meta's pixel reference. The custom-data object is always passed (empty
+        // when no tour is known) so the options argument ({ eventID }) stays in the 4th position that
+        // fbq expects.
+        f('track', 'Lead', tour ? { content_ids: [tour.slug], content_type: 'product' } : {}, { eventID: eventId });
         fbqDone = true;
       }
     }
