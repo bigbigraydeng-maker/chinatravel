@@ -7,6 +7,7 @@ import {
   type DepartureScheduleRow,
 } from '@/lib/data/departure-schedule';
 import { computeReturnDate } from '@/lib/data/tour-dates';
+import { loadPublishedDepartureOverrides } from '@/lib/data/published-tour-catalog';
 
 interface CtsDepartureScheduleBlockProps {
   /** Highlight the current tour row on detail pages */
@@ -17,11 +18,18 @@ interface CtsDepartureScheduleBlockProps {
 function RowGrid({
   rows,
   currentSlug,
+  departureOverrides,
 }: {
   rows: DepartureScheduleRow[];
   currentSlug?: string;
+  departureOverrides: Record<string, string[]> | null;
 }) {
-  const availableRows = rows.filter((row) => row.dates.length > 0);
+  const availableRows = rows
+    .map((row) => ({
+      ...row,
+      dates: departureOverrides?.[tourPath(row)] ?? row.dates,
+    }))
+    .filter((row) => row.dates.length > 0);
 
   return (
     <div className="space-y-3">
@@ -70,10 +78,12 @@ function RowGrid({
   );
 }
 
-export default function CtsDepartureScheduleBlock({
+export default async function CtsDepartureScheduleBlock({
   currentSlug,
   className = '',
 }: CtsDepartureScheduleBlockProps) {
+  const departureOverrides = await loadPublishedDepartureOverrides();
+
   return (
     <section
       id="cts-departure-schedule"
@@ -95,7 +105,7 @@ export default function CtsDepartureScheduleBlock({
             <Icon name="star" filled className="w-5 h-5 text-amber-400" />
             Signature series departures
           </h3>
-          <RowGrid rows={CHINA_SIGNATURE_DEPARTURES} currentSlug={currentSlug} />
+          <RowGrid rows={CHINA_SIGNATURE_DEPARTURES} currentSlug={currentSlug} departureOverrides={departureOverrides} />
         </div>
 
         <div>
@@ -103,7 +113,7 @@ export default function CtsDepartureScheduleBlock({
             <Icon name="star" filled className="w-5 h-5 text-amber-400" />
             Discovery series departures
           </h3>
-          <RowGrid rows={CHINA_DISCOVERY_DEPARTURES} currentSlug={currentSlug} />
+          <RowGrid rows={CHINA_DISCOVERY_DEPARTURES} currentSlug={currentSlug} departureOverrides={departureOverrides} />
         </div>
       </div>
     </section>
