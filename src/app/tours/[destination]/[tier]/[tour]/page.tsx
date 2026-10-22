@@ -43,6 +43,7 @@ import {
 import { getSiteUrl } from '@/lib/site';
 import { Icon } from '@/components/ui/Icon';
 import { computeReturnDate } from '@/lib/data/tour-dates';
+import { getTourWithPublishedDepartures } from '@/lib/data/published-tour-catalog';
 
 interface TourPageProps {
   params: {
@@ -58,10 +59,11 @@ interface TourPageProps {
  * SSG page as immutable across production deploys — a departureDates
  * edit in tours.ts silently would not show up on the live page.
  */
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
-  const tour = getTourBySlug(params.destination, params.tier, params.tour);
+  const storedTour = getTourBySlug(params.destination, params.tier, params.tour);
+  const tour = storedTour ? await getTourWithPublishedDepartures(storedTour) : undefined;
   
   if (!tour || !tour.isActive) {
     return {
@@ -115,8 +117,9 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   };
 }
 
-export default function TourPage({ params }: TourPageProps) {
-  const tour = getTourBySlug(params.destination, params.tier, params.tour);
+export default async function TourPage({ params }: TourPageProps) {
+  const storedTour = getTourBySlug(params.destination, params.tier, params.tour);
+  const tour = storedTour ? await getTourWithPublishedDepartures(storedTour) : undefined;
   
   if (!tour || !tour.isActive) {
     notFound();
