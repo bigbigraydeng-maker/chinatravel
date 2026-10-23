@@ -6,17 +6,20 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import FAQSection from '@/components/FAQSection';
 import Testimonials from '@/components/Testimonials';
 
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 import { priceNumber } from '@/lib/tour-discovery';
 
 export async function generateMetadata(): Promise<Metadata> {
+  const goldenChina = await getPublishedTours().then((tours) => tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'golden-china' && tour.isActive && !tour.soldOut));
+  const nextDeparture = goldenChina?.departureDates?.[0];
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
-    description:
-      'Golden China, a 12-day journey through Beijing, Xi’an and Shanghai, departing Auckland on 16 November 2026.',
+    description: goldenChina
+      ? `${goldenChina.name}, ${goldenChina.duration}, departing Auckland${nextDeparture ? ` on ${nextDeparture}` : ' on dates confirmed by CTS'}.`
+      : 'Browse CTS Tours China departures and check current dates with our Auckland team.',
     path: '/campaigns/spotlight',
     ogImagePath: '/images/tours/shanghai-yuyuan-night-1600.jpg',
     ogImageAlt: 'Shanghai Yu Garden illuminated at night',
@@ -26,8 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
       'New Zealand China tours',
       'CTS Tours spotlight departures',
       "Beijing Xi'an tour 2027",
-      'Best of China tour March 2027',
-      'Golden China November 2026',
+      'Best of China tour',
+      'Golden China departures',
     ],
   });
 }
@@ -60,32 +63,36 @@ const OCTOBER_HUB_FAQS = [
   },
 ];
 
-export default function October2026CampaignIndexPage() {
+export const revalidate = 15;
+
+export default async function October2026CampaignIndexPage() {
   const siteUrl = getSiteUrl();
+  const tours = await getPublishedTours();
 
   // Build cards from spotlight config + tours.ts data.
   const cards = OCTOBER_2026_SPOTLIGHT_TOURS.map((spot) => {
-    const tour = getTourBySlug(spot.destination, spot.tier, spot.slug);
-    if (!tour?.isActive) return null;
+    const tour = tours.find((item) => item.destination === spot.destination && item.tier === spot.tier && item.slug === spot.slug);
+    if (!tour?.isActive || tour.soldOut) return null;
     return {
       spot,
       tour,
     };
   })
     .filter((x): x is NonNullable<typeof x> => x !== null)
-    .sort(
-      (a, b) =>
-        new Date(a.spot.departureSortDate).valueOf() -
-        new Date(b.spot.departureSortDate).valueOf()
-    );
+    .sort((a, b) => {
+      const aDate = Date.parse(a.tour.departureDates?.[0] ?? '');
+      const bDate = Date.parse(b.tour.departureDates?.[0] ?? '');
+      return (Number.isNaN(aDate) ? Number.MAX_SAFE_INTEGER : aDate) - (Number.isNaN(bDate) ? Number.MAX_SAFE_INTEGER : bDate);
+    });
 
   // ItemList schema for rich-result eligibility.
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'CTS Spotlight China Tours',
-    description:
-      'Golden China departing Auckland on 16 November 2026.',
+    description: cards[0]
+      ? `${cards[0].tour.name}, ${cards[0].tour.duration}, departing Auckland${cards[0].tour.departureDates?.[0] ? ` on ${cards[0].tour.departureDates[0]}` : ' on dates confirmed by CTS'}.`
+      : 'No active departures are currently listed.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -98,13 +105,15 @@ export default function October2026CampaignIndexPage() {
   };
 
   const available = cards.filter(({ tour }) => !tour.soldOut);
+  const goldenChina = cards.find(({ tour }) => tour.slug === 'golden-china')?.tour;
+  const currentDeparture = goldenChina?.departureDates?.[0] ?? 'ask CTS for the next date';
   const lowestPrice = available
     .map(({ tour }) => priceNumber(tour.price))
     .filter((n): n is number => n !== null)
     .sort((a, b) => a - b)[0];
   const stats = [
     { v: String(cards.length), l: cards.length === 1 ? 'Featured Tour' : 'Featured Tours' },
-    { v: available[0] ? available[0].spot.departureLabel.split(' · ')[0] : 'Sold out', l: 'Next Departure' },
+    { v: available[0] ? (available[0].tour.departureDates?.[0] ?? 'Ask CTS') : 'Sold out', l: 'Next Departure' },
     ...(lowestPrice !== undefined ? [{ v: `NZD $${lowestPrice.toLocaleString('en-NZ')}`, l: 'From' }] : []),
   ];
 
@@ -155,7 +164,7 @@ export default function October2026CampaignIndexPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Golden China departs Auckland on 16 November 2026.
+              {goldenChina ? `${goldenChina.name} departs Auckland on ${currentDeparture}.` : 'Check current departures with our Auckland team.'}
               Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
@@ -239,7 +248,7 @@ export default function October2026CampaignIndexPage() {
                       <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      {spot.departureLabel}
+                      {tour.departureDates?.[0] ? `${tour.departureDates[0]} · Auckland` : 'Ask CTS for the next date'}
                     </div>
                     {(tour.soldOut || spot.badgeText) && (
                       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
@@ -391,7 +400,10 @@ export default function October2026CampaignIndexPage() {
       </section>
 
       {/* ─── FAQ ──────────────────────────────────────────────────────────── */}
-      <FAQSection faqs={OCTOBER_HUB_FAQS} />
+      <FAQSection faqs={OCTOBER_HUB_FAQS.map((faq) => ({
+        ...faq,
+        answer: faq.answer.replace(/16 November 2026/g, currentDeparture),
+      }))} />
 
       {/* ─── FINAL CTA ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-orange-500 text-white py-20 md:py-24">

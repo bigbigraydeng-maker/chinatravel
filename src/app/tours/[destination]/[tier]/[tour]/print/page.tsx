@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import PrintPageActions from '@/components/tours/PrintPageActions';
 
 interface PrintPageProps {
@@ -10,8 +10,10 @@ interface PrintPageProps {
   };
 }
 
-export default function TourPrintPage({ params }: PrintPageProps) {
-  const tour = getTourBySlug(params.destination, params.tier, params.tour);
+export const revalidate = 15;
+
+export default async function TourPrintPage({ params }: PrintPageProps) {
+  const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
 
   if (!tour || !tour.isActive) {
     notFound();

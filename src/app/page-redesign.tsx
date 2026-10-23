@@ -10,6 +10,7 @@ import ChinaStopovers from '@/components/ChinaStopovers';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 
 /**
  * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
@@ -88,8 +89,9 @@ const CREDENTIALS: { src: string; alt: string; wide?: boolean }[] = [
   { src: migratedSite('credentials-tourism-export-council.png'), alt: 'Tourism Export Council New Zealand', wide: true },
 ];
 
-const HomePageRedesign = () => {
+const HomePageRedesign = async () => {
   const blogPosts = getAllBlogPosts().slice(0, 3);
+  const publishedTours = await getPublishedActiveTours();
   const reviews = homeTestimonials;
 
   return (
@@ -135,7 +137,7 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      <TourSearch />
+      <TourSearch tours={publishedTours} />
 
       {/* ===== Trust bar — real accreditation logos + who ===== */}
       <section className="border-y border-warm-200 bg-white py-7">
@@ -172,10 +174,10 @@ const HomePageRedesign = () => {
       <ExperienceDiscovery />
 
       {/* ===== China Stopovers (stopover-tier tours) ===== */}
-      <ChinaStopovers />
+      <ChinaStopovers tours={publishedTours} />
 
       {/* ===== Upcoming departures (derived from tours.ts) ===== */}
-      <UpcomingDepartures />
+      <UpcomingDepartures tours={publishedTours} />
 
       {/* ===== Popular cities ===== */}
       <section className="bg-white py-12 md:py-16">

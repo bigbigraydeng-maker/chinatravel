@@ -16,11 +16,20 @@ jest.mock('@/lib/data/tours', () => {
   };
 });
 
+jest.mock('@/lib/data/published-tour-catalog', () => {
+  const actual = jest.requireActual('@/lib/data/published-tour-catalog');
+  return {
+    ...actual,
+    getPublishedToursByDestinationAndTier: (destination: string, tier: string) =>
+      destination === 'china' && tier === 'signature' ? Promise.resolve([]) : actual.getPublishedToursByDestinationAndTier(destination, tier),
+  };
+});
+
 const SITE = getSiteUrl();
 
 describe('sitemap tier pages — a tier without active tours', () => {
-  it('drops the emptied tier but keeps the others', () => {
-    const urls = sitemap().map((entry) => entry.url);
+  it('drops the emptied tier but keeps the others', async () => {
+    const urls = (await sitemap()).map((entry) => entry.url);
     expect(urls).not.toContain(`${SITE}/tours/china/signature`);
     expect(urls).toContain(`${SITE}/tours/china/discovery`);
     expect(urls).toContain(`${SITE}/tours/china/stopover`);

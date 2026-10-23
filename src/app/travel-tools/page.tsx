@@ -6,6 +6,9 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 import { TOOLS, type ToolData } from '@/lib/data/tools-data';
 import { Icon } from '@/components/ui/Icon';
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
+
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -89,8 +92,13 @@ function ToolCard({ tool }: { tool: ToolData }) {
   );
 }
 
-export default function TravelToolsPage() {
+export default async function TravelToolsPage() {
   const site = getSiteUrl();
+  const publishedTours = await getPublishedChinaTours();
+  const currentPrices = publishedTours.map((tour) => tour.price).filter(Boolean);
+  const tourCostAnswer = currentPrices.length
+    ? `Current published tour prices are ${currentPrices.join('; ')}. Departure-specific prices and availability appear on each tour page.`
+    : 'Current published tour prices and availability appear on each tour page.';
 
   const webPageSchema = {
     '@context': 'https://schema.org',
@@ -137,14 +145,17 @@ export default function TravelToolsPage() {
         name: 'How much does a China tour cost from New Zealand?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'CTS Tours China packages start from around NZD $2,999 per person for a 7–8 day Stopover tour, rising to NZD $5,000–$7,000+ for Signature 14-day tours. Flights from Auckland are additional. Use our Cost Calculator for a personalised estimate.',
+          text: `${tourCostAnswer} Use our Cost Calculator for a personalised estimate.`,
         },
       },
     ],
   };
 
-  const liveTools = TOOLS.filter((t) => t.status === 'live');
-  const comingSoonTools = TOOLS.filter((t) => t.status === 'coming-soon');
+  const currentTools = TOOLS.map((tool) => tool.id === 'cost-calculator'
+    ? { ...tool, longDescription: tourCostAnswer }
+    : tool);
+  const liveTools = currentTools.filter((t) => t.status === 'live');
+  const comingSoonTools = currentTools.filter((t) => t.status === 'coming-soon');
 
   return (
     <>
@@ -214,7 +225,7 @@ export default function TravelToolsPage() {
                 },
                 {
                   q: 'How much does a China tour cost from New Zealand?',
-                  a: 'CTS Tours China packages start from around NZD $2,999 per person for a 7–8 day Stopover tour, with Signature 14-day tours from NZD $5,000–$7,000+. Flights from Auckland are additional.',
+                  a: tourCostAnswer,
                   link: '/tailor-made',
                   linkText: 'Get a personalised quote →',
                 },
