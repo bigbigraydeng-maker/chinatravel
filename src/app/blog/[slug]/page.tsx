@@ -12,6 +12,7 @@ import FAQSection from '@/components/FAQSection';
 import { Icon } from '@/components/ui/Icon';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getBlogInlineImages } from '@/lib/data/blog-inline-images';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 interface BlogPostPageProps {
   params: {
@@ -26,7 +27,7 @@ interface BlogPostPageProps {
  * change). Hourly revalidation bounds staleness without needing a
  * manual /api/revalidate call after every blog data edit.
  */
-export const revalidate = 3600;
+export const revalidate = 15;
 
 const categoryLabels: Record<BlogPost['category'], string> = {
   'destination': 'Destinations',
@@ -51,7 +52,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = getBlogPostBySlug(params.slug);
-  
+
   if (!post) {
     return {
       title: 'Post Not Found | CTS Tours',
@@ -85,12 +86,14 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getBlogPostBySlug(params.slug);
 
   if (!post) {
     notFound();
   }
+
+  const availableTourCount = (await getPublishedTours()).filter((tour) => tour.isActive && !tour.soldOut).length;
 
   const siteUrl = getSiteUrl();
   const postUrl = `${siteUrl}/blog/${post.slug}`;
@@ -269,7 +272,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               <h4 className="text-sm font-medium text-gray-500 mb-3">TAGS</h4>
               <div className="flex flex-wrap gap-2">
                 {post.tags.map((tag) => (
-                  <span 
+                  <span
                     key={tag}
                     className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm hover:bg-gray-200 transition-colors cursor-pointer"
                   >
@@ -283,7 +286,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="mt-8 pt-8 border-t border-gray-200">
               <h4 className="text-sm font-medium text-gray-500 mb-3">SHARE THIS ARTICLE</h4>
               <div className="flex gap-4">
-                <a 
+                <a
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -293,7 +296,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </a>
-                <a 
+                <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(postUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -303,7 +306,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
                   </svg>
                 </a>
-                <a 
+                <a
                   href={`mailto:?subject=${encodeURIComponent(post.title)}&body=${encodeURIComponent(`Check out this article: ${postUrl}`)}`}
                   className="w-10 h-10 rounded-full bg-gray-600 text-white flex items-center justify-center hover:bg-gray-700 transition-colors"
                 >
@@ -465,7 +468,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/tours"
               className="text-primary hover:underline font-medium"
             >
-              View all 22 available tours →
+              View all {availableTourCount} available tours →
             </Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours, getTourBySlug } from '@/lib/data/tours';
+import { formatPublishedTourCities, getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
 import { headlinePrice } from '@/lib/tour-price';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromNZMeta } from '@/lib/data/seo-pages';
@@ -20,9 +20,11 @@ const TOUR_IMG =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
 
 export async function generateMetadata(): Promise<Metadata> {
+  const tours = await getPublishedChinaTours();
+  const description = `Compare ${tours.length} current China tours from New Zealand. Tour names, routes, durations, prices and departures reflect the latest ME publication.`;
   return buildCtsPageMetadata({
-    title: chinaToursFromNZMeta.title,
-    description: chinaToursFromNZMeta.description,
+    title: 'China Tours from New Zealand | CTS Tours',
+    description,
     path: '/china-tours-from-new-zealand',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
     ogImageAlt: 'China Tours from New Zealand - Expert-Led Itineraries with CTS Tours',
@@ -31,8 +33,10 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ChinaToursFromNZPage() {
-  const allTours = getAllChinaTours();
+export const revalidate = 15;
+
+export default async function ChinaToursFromNZPage() {
+  const allTours = await getPublishedChinaTours();
   // Feature 6-8 premium tours for this geo-targeted page
   const featuredTours = allTours.filter(t => t.tier === 'signature').slice(0, 8);
 
@@ -49,48 +53,41 @@ export default function ChinaToursFromNZPage() {
   // 4 flagship China tours for NZ travellers — used in comparison table A
   // and ItemList schema. Prices are read from the tour data (the same source as the tour pages), so a price
   // change there cannot leave this table behind; a tour that is not in the data is left out, never printed blank.
-  const flagshipPrice = (tier: 'discovery' | 'signature', slug: string): string => {
-    const tour = getTourBySlug('china', tier, slug);
-    return tour ? headlinePrice(tour.price) : '';
+  // The selected comparison products remain editorial; their current public
+  // facts always come from the ME snapshot.
+  const flagshipRefs = [
+    { tier: 'discovery', slug: 'beijing-xian', bestFor: 'First-time visitors who want imperial highlights' },
+    { tier: 'discovery', slug: 'essentials', bestFor: 'Classic China highlights and broader coverage' },
+    { tier: 'discovery', slug: 'shanghai-surroundings', bestFor: 'Water towns, gardens and culinary culture' },
+    { tier: 'signature', slug: 'silk-road', bestFor: 'Repeat visitors interested in western China' },
+  ] as const;
+  const flagshipTours = flagshipRefs.flatMap((ref) => {
+    const tour = allTours.find((item) => item.tier === ref.tier && item.slug === ref.slug && !item.soldOut);
+    if (!tour) return [];
+    return [{
+      name: tour.name,
+      slug: tour.slug,
+      url: `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
+      duration: tour.duration,
+      cities: formatPublishedTourCities(tour.tourCities, ' + '),
+      price: headlinePrice(tour.price),
+      bestFor: ref.bestFor,
+    }];
+  });
+  const flagshipBySlug = (slug: string) => flagshipTours.find((tour) => tour.slug === slug);
+  const priceValue = (price: string) => Number(price.replace(/[^\d]/g, '')) || Number.POSITIVE_INFINITY;
+  const collectionPrice = (tier: 'discovery' | 'signature') => {
+    const tour = allTours.filter((item) => item.tier === tier)
+      .sort((a, b) => priceValue(a.price) - priceValue(b.price))[0];
+    return tour ? headlinePrice(tour.price) : 'See current tours';
   };
-  const flagshipTours = [
-    {
-      name: 'Tale of Two Cities',
-      slug: 'tale-of-two-cities',
-      url: '/tours/china/discovery/beijing-xian',
-      duration: '10 days',
-      cities: 'Beijing + Xi\'an',
-      price: flagshipPrice('discovery', 'beijing-xian'),
-      bestFor: 'First-time visitors who want imperial highlights',
-    },
-    {
-      name: 'Best of China',
-      slug: 'best-of-china',
-      url: '/campaigns/best-of-china',
-      duration: '15 days',
-      cities: 'Beijing + Xi\'an + Hangzhou + Shanghai',
-      price: flagshipPrice('discovery', 'essentials'),
-      bestFor: 'Classic 4-city loop covering imperial + modern China',
-    },
-    {
-      name: 'Shanghai & Surroundings',
-      slug: 'shanghai-surroundings',
-      url: '/tours/china/discovery/shanghai-surroundings',
-      duration: '10 days',
-      cities: 'Shanghai + Suzhou + Wuxi + Hangzhou',
-      price: flagshipPrice('discovery', 'shanghai-surroundings'),
-      bestFor: 'Comfort travel, lower flight fatigue, water-towns culture',
-    },
-    {
-      name: 'Silk Road',
-      slug: 'silk-road-discovery',
-      url: '/tours/china/signature',
-      duration: '18 days',
-      cities: 'Xi\'an + Dunhuang + Turpan + Urumqi',
-      price: flagshipPrice('signature', 'silk-road'),
-      bestFor: 'Repeat China visitors, history depth, off-beat regions',
-    },
-  ].filter((tour) => tour.price !== '');
+  const flagshipSummary = flagshipTours.length
+    ? flagshipTours.map((tour) => `${tour.name} (${tour.duration}, ${tour.price})`).join('; ')
+    : 'No selected flagship tours are currently published';
+  const currentFaqs = chinaToursFromNZMeta.faqs.map((faq) => faq.question.startsWith('What are the most popular China tours')
+    ? { ...faq, answer: `Current selected published tours: ${flagshipSummary}. Routes, duration and prices are taken from the latest ME publication.` }
+    : faq);
+  const quickAnswer = `CTS Tours lists ${allTours.length} active China tours for travellers from New Zealand. Current selected products: ${flagshipSummary}. Tour facts are taken from the latest ME publication; check each product's inclusions, exclusions and departure-specific price before enquiring.`;
 
   // AI Overview / ChatGPT / Perplexity citation signal — Article with named
   // author Person Baker Gu, consistent with blog post schemas. Magic Engine
@@ -99,7 +96,7 @@ export default function ChinaToursFromNZPage() {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: chinaToursFromNZMeta.h1,
-    description: chinaToursFromNZMeta.description,
+    description: quickAnswer,
     image: `${siteUrl}/great-wall-mist.jpg`,
     datePublished: '2026-06-26',
     dateModified: '2026-06-26',
@@ -129,7 +126,7 @@ export default function ChinaToursFromNZPage() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'CTS Tours NZ — 4 Flagship China Tour Packages 2026-27',
+    name: `CTS Tours NZ — ${flagshipTours.length} selected China tours`,
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: flagshipTours.length,
     itemListElement: flagshipTours.map((tour, index) => ({
@@ -143,8 +140,8 @@ export default function ChinaToursFromNZPage() {
 
   const schemas = [
     generateWebPageSchema(
-      chinaToursFromNZMeta.title,
-      chinaToursFromNZMeta.description,
+      'China Tours from New Zealand | CTS Tours',
+      quickAnswer,
       '/china-tours-from-new-zealand',
       { name: 'New Zealand', address: 'Auckland, New Zealand' }
     ),
@@ -177,7 +174,7 @@ export default function ChinaToursFromNZPage() {
       {/* Hero */}
       <HubHero
         title={chinaToursFromNZMeta.h1}
-        subtitle={chinaToursFromNZMeta.heroSubtitle}
+        subtitle={`${allTours.length} active China tours · Current product details from ME`}
         backgroundImage={`${TOUR_IMG}/great-wall-mist.jpg`}
         imageClassName="object-[center_35%]"
       />
@@ -208,28 +205,19 @@ export default function ChinaToursFromNZPage() {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours runs China tour packages from New Zealand with direct international departures
-                  from Auckland (AKL) — flights to Shanghai or Beijing take 12–13 hours, and AKL is the
-                  only NZ airport with direct service to mainland China. For travellers based in
-                  Wellington, Christchurch or regional NZ, we arrange connecting domestic flights to
-                  Auckland; the connecting leg is quoted separately at additional cost on top of the
-                  headline tour price. All packages are priced in NZD (lead-in from NZD $2,699 for a
-                  10-day Discovery tour) and include return international airfares from AKL, hotels,
-                  English-speaking guides, and most meals. NZ ordinary passport holders enjoy visa-free
-                  entry to China for up to 30 days, currently published through 31 December 2026. CTS is
-                  TAANZ-bonded, Auckland-based, and takes Kiwis to China from our Auckland office, backed by China Travel Service.
+                  {quickAnswer} Travel logistics and entry requirements can change; confirm them with
+                  the relevant current sources before travel.
                 </p>
               </aside>
 
               {/* Table A: 4 Flagship Tours at a glance (SEO + decision aid) */}
               <section aria-labelledby="flagship-tours-heading">
                 <h2 id="flagship-tours-heading" className="text-3xl font-serif font-bold text-gray-900 mb-6">
-                  4 Flagship China Tours from NZ — Quick Compare
+                  {flagshipTours.length} Selected China Tours from NZ — Quick Compare
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Most NZ travellers narrow down to one of our four flagship China tours within the first 15 minutes of browsing.
-                  Here&apos;s the at-a-glance comparison — all prices in NZD, all include Auckland return flights, hotels, English-speaking
-                  guides, and most meals.
+                  Compare current published names, routes, durations and prices. The inclusion list on
+                  each product page is the source for what that tour provides.
                 </p>
                 <div className="overflow-x-auto rounded-xl border border-warm-200 shadow-sm">
                   <table className="w-full text-sm bg-white">
@@ -285,7 +273,7 @@ export default function ChinaToursFromNZPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">From price (per pax)</td><td className="px-4 py-3 text-gray-700">NZD $2,699</td><td className="px-4 py-3 text-gray-700">NZD $4,800</td></tr>
+                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Current lead-in price</td><td className="px-4 py-3 text-gray-700">{collectionPrice('discovery')}</td><td className="px-4 py-3 text-gray-700">{collectionPrice('signature')}</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Hotels</td><td className="px-4 py-3 text-gray-700">3–4 star city centre</td><td className="px-4 py-3 text-gray-700">4–5 star premium</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Pace</td><td className="px-4 py-3 text-gray-700">Active sightseeing</td><td className="px-4 py-3 text-gray-700">Relaxed with free time</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Meals</td><td className="px-4 py-3 text-gray-700">Daily breakfast, most lunches</td><td className="px-4 py-3 text-gray-700">Daily breakfast + most lunches + select dinners</td></tr>
@@ -580,25 +568,25 @@ export default function ChinaToursFromNZPage() {
                     <p className="text-xs font-bold uppercase text-primary mb-1 tracking-wide">7-10 days</p>
                     <h3 className="font-serif font-bold text-lg mb-2 text-gray-900">Short City Tour</h3>
                     <p className="text-sm text-gray-700 mb-3">Two cities, focused on highlights. Best for first-time visitors who want a taste of China without long PTO.</p>
-                    <Link href="/tours/china/discovery/beijing-xian" className="text-primary text-sm font-medium hover:underline">
-                      Tale of Two Cities (Beijing + Xi&apos;an) →
-                    </Link>
+                    {flagshipBySlug('beijing-xian') ? <Link href={flagshipBySlug('beijing-xian')!.url} className="text-primary text-sm font-medium hover:underline">
+                      {flagshipBySlug('beijing-xian')!.name} · {flagshipBySlug('beijing-xian')!.duration} →
+                    </Link> : null}
                   </div>
                   <div className="rounded-xl border-2 border-primary bg-primary/5 p-5">
                     <p className="text-xs font-bold uppercase text-primary mb-1 tracking-wide">⭐ 12-15 days</p>
                     <h3 className="font-serif font-bold text-lg mb-2 text-gray-900">Classic China</h3>
                     <p className="text-sm text-gray-700 mb-3">The Kiwi sweet spot — three or four cities, breathing room for jet lag, and time for at least one day trip or river cruise.</p>
-                    <Link href="/campaigns/best-of-china" className="text-primary text-sm font-medium hover:underline">
-                      Best of China (15 days, 4 cities) →
-                    </Link>
+                    {flagshipBySlug('essentials') ? <Link href={flagshipBySlug('essentials')!.url} className="text-primary text-sm font-medium hover:underline">
+                      {flagshipBySlug('essentials')!.name} · {flagshipBySlug('essentials')!.duration} · {flagshipBySlug('essentials')!.cities} →
+                    </Link> : null}
                   </div>
                   <div className="rounded-xl border border-warm-200 bg-warm-50/50 p-5">
                     <p className="text-xs font-bold uppercase text-primary mb-1 tracking-wide">18+ days</p>
                     <h3 className="font-serif font-bold text-lg mb-2 text-gray-900">Deep Discovery</h3>
                     <p className="text-sm text-gray-700 mb-3">For repeat visitors or those wanting to go beyond imperial highlights — Silk Road, Yunnan, Tibet, or extended Yangtze cruise.</p>
-                    <Link href="/tours/china/signature" className="text-primary text-sm font-medium hover:underline">
-                      Silk Road (18 days) →
-                    </Link>
+                    {flagshipBySlug('silk-road') ? <Link href={flagshipBySlug('silk-road')!.url} className="text-primary text-sm font-medium hover:underline">
+                      {flagshipBySlug('silk-road')!.name} · {flagshipBySlug('silk-road')!.duration} →
+                    </Link> : null}
                   </div>
                 </div>
               </section>
@@ -732,7 +720,7 @@ export default function ChinaToursFromNZPage() {
       </div>
 
       {/* FAQs */}
-      <FAQSection faqs={chinaToursFromNZMeta.faqs} />
+      <FAQSection faqs={currentFaqs} />
 
       {/* Final CTA */}
       <CTASection

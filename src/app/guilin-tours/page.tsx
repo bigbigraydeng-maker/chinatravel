@@ -3,16 +3,19 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
-import { guilinToursMeta } from '@/lib/data/seo-pages';
-import { guilinHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
+import { guilinToursMeta as baseMeta } from '@/lib/data/seo-pages';
+import { cityHubMetaForTours } from '@/lib/data/destination-hub-meta';
+import { guilinHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours, hubProseForTours } from '@/lib/data/destination-hubs';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 // Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
-export const revalidate = 3600;
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
+  const meta = cityHubMetaForTours(baseMeta, await getPublishedTours());
   return buildCtsPageMetadata({
-    title: guilinToursMeta.title,
-    description: guilinToursMeta.description,
+    title: meta.title,
+    description: meta.description,
     path: '/guilin-tours',
     ogImagePath: '/images/tours/yangshuo-karst-aerial.jpg',
     ogImageAlt: 'Guilin Tours - Li River Cruise, Karst Mountains, CTS Tours',
@@ -21,11 +24,13 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function GuilinToursPage() {
-  const tours = resolveHubTours(guilinHub.tourRefs);
+export default async function GuilinToursPage() {
+  const publishedTours = await getPublishedTours();
+  const meta = cityHubMetaForTours(baseMeta, publishedTours);
+  const tours = resolveHubTours(guilinHub.tourRefs, publishedTours, guilinHub.cityPattern);
 
   const schemas = [
-    generateTouristDestinationSchema('Guilin', guilinToursMeta.description, '/guilin-tours', tours),
+    generateTouristDestinationSchema('Guilin', meta.description, '/guilin-tours', tours),
     generateBreadcrumbListSchema([
       { name: 'Home', url: '/' },
       { name: 'Tours', url: '/tours' },
@@ -38,18 +43,18 @@ export default function GuilinToursPage() {
     <>
       <SchemaMarkup data={schemas} />
       <CityTourHub
-        cityName={guilinToursMeta.cityName}
-        heroTitle={guilinToursMeta.h1}
-        heroSubtitle={guilinToursMeta.heroSubtitle}
+        cityName={meta.cityName}
+        heroTitle={meta.h1}
+        heroSubtitle={meta.heroSubtitle}
         heroImage="/images/tours/yangshuo-karst-aerial.jpg"
-        introText={guilinToursMeta.introText}
-        highlights={guilinToursMeta.highlights}
-        bestTimeToVisit={guilinToursMeta.bestTimeToVisit}
+        introText={meta.introText}
+        highlights={meta.highlights}
+        bestTimeToVisit={meta.bestTimeToVisit}
         tours={tours}
-        faqs={guilinToursMeta.faqs}
-        proseSections={guilinHub.prose}
+        faqs={meta.faqs}
+        proseSections={hubProseForTours(guilinHub, publishedTours)}
         departureRows={buildDepartureRows(tours.slice(0, guilinHub.featuredCount ?? tours.length), guilinHub.cityPattern)}
-        sampleItinerary={buildSampleItinerary(guilinHub)}
+        sampleItinerary={buildSampleItinerary(guilinHub, publishedTours)}
         offerSummary={guilinHub.offerSummary}
         startingFrom={cheapestPrice(tours)}
         featuredCount={guilinHub.featuredCount}

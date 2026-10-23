@@ -1,14 +1,15 @@
 import Link from 'next/link';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 /**
  * Mid-page CTAs on the NZ visa guide: links to the two 10-day Discovery tour pages, with their next departures.
  * Anchor: #october-discovery-cta (the id is kept: the marketing board links to it).
  */
-export default function VisaGuideOctoberCampaignCtas() {
-  const taleTour = getTourBySlug('china', 'discovery', 'beijing-xian');
-  const shanghaiTour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
-  if (!taleTour || !shanghaiTour) return null;
+export default async function VisaGuideOctoberCampaignCtas() {
+  const tours = await getPublishedTours();
+  const taleTour = tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'beijing-xian');
+  const shanghaiTour = tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'shanghai-surroundings');
+  if (!taleTour?.isActive || taleTour.soldOut || !shanghaiTour?.isActive || shanghaiTour.soldOut) return null;
 
   // Every published departure (they include the year); a departure that has left is already dropped from the tour data.
   const taleDates = taleTour.departureDates?.join(' & ');
@@ -17,16 +18,16 @@ export default function VisaGuideOctoberCampaignCtas() {
 
   const cards = [
     {
-      href: '/tours/china/discovery/beijing-xian',
+      href: `/tours/${taleTour.destination}/${taleTour.tier}/${taleTour.slug}`,
       title: taleTour.name,
-      blurb: 'Beijing & Xi’an by high-speed train — Great Wall, Forbidden City, Terracotta Warriors.',
+      blurb: taleTour.highlights.slice(0, 3).join(' · ') || taleTour.shortDescription,
       departure: departsLabel(taleDates),
       price: taleTour.price,
     },
     {
-      href: '/tours/china/discovery/shanghai-surroundings',
+      href: `/tours/${shanghaiTour.destination}/${shanghaiTour.tier}/${shanghaiTour.slug}`,
       title: shanghaiTour.name,
-      blurb: 'Yangtze Delta Discovery — Shanghai, Suzhou, Hangzhou & water towns.',
+      blurb: shanghaiTour.highlights.slice(0, 3).join(' · ') || shanghaiTour.shortDescription,
       departure: departsLabel(shanghaiDates),
       price: shanghaiTour.price,
     },
@@ -45,8 +46,7 @@ export default function VisaGuideOctoberCampaignCtas() {
         Group departures from Auckland
       </h2>
       <p className="mt-2 text-sm text-gray-600 md:text-base">
-        NZ passport holders can enter China visa-free for tourism (see above). These 10-day China
-        Discovery tours fit within a 30-day stay — small-group departures from Auckland.
+        NZ passport holders can enter China visa-free for tourism (see above). The current tour duration, departure, route and price in each card come from CTS&apos;s published catalogue.
       </p>
       <ul className="mt-6 grid gap-4 sm:grid-cols-2">
         {cards.map((c) => (

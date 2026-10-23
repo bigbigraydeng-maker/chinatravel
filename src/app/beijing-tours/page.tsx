@@ -1,11 +1,14 @@
 import { Metadata } from 'next';
 import CityTourHub from '@/components/seo/CityTourHub';
+import type { GuideLinkCard } from '@/components/seo/GuideLinksSection';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
+import { getPublishedToursByCityName } from '@/lib/data/published-tour-catalog';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { beijingToursMeta } from '@/lib/data/seo-pages';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -19,8 +22,24 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function BeijingToursPage() {
-  const tours = getToursByCityName('beijing');
+export default async function BeijingToursPage() {
+  const tours = await getPublishedToursByCityName('beijing');
+  const taleTour = tours.find((tour) => tour.slug === 'beijing-xian' && !tour.soldOut);
+  const guideLinks: GuideLinkCard[] = [
+    { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', icon: 'landmark', description: 'History, hikes & access tips' },
+    { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', icon: 'landmark', description: 'Imperial palace inside out' },
+    { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', icon: 'building', description: 'Full city visitor guide' },
+    { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', icon: 'footprints', description: 'Which section, how steep, best time' },
+    { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', icon: 'map', description: 'The route most visitors miss' },
+    { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', icon: 'building', description: "Old Peking's hidden laneways" },
+    { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'landmark', description: "Xi'an day trip from Beijing by high-speed train" },
+    ...(taleTour ? [{
+      label: `${taleTour.name} — published tour`,
+      href: `/tours/${taleTour.destination}/${taleTour.tier}/${taleTour.slug}`,
+      icon: 'leaf' as const,
+      description: `${taleTour.duration} · ${taleTour.price}`,
+    }] : []),
+  ];
 
   const schemas = [
     generateTouristDestinationSchema(
@@ -50,16 +69,7 @@ export default function BeijingToursPage() {
         bestTimeToVisit={beijingToursMeta.bestTimeToVisit}
         tours={tours}
         faqs={beijingToursMeta.faqs}
-        guideLinks={[
-          { label: 'Great Wall Travel Guide', href: '/great-wall-travel-guide', icon: 'landmark', description: 'History, hikes & access tips' },
-          { label: 'Forbidden City Travel Guide', href: '/forbidden-city-travel-guide', icon: 'landmark', description: 'Imperial palace inside out' },
-          { label: 'Beijing Travel Guide', href: '/beijing-travel-guide', icon: 'building', description: 'Full city visitor guide' },
-          { label: 'Great Wall Trekking Guide', href: '/blog/great-wall-trekking-guide', icon: 'footprints', description: 'Which section, how steep, best time' },
-          { label: 'Forbidden City Insider Tips', href: '/blog/forbidden-city-insider-tips', icon: 'map', description: 'The route most visitors miss' },
-          { label: 'Beijing Hutong Culture', href: '/blog/beijing-hutong-culture', icon: 'building', description: "Old Peking's hidden laneways" },
-          { label: 'Terracotta Warriors Guide', href: '/terracotta-warriors-travel-guide', icon: 'landmark', description: "Xi'an day trip from Beijing by high-speed train" },
-          { label: 'A Tale of Two Cities — 2027 departures', href: '/tours/china/discovery/beijing-xian', icon: 'leaf', description: 'Beijing + Xi\'an, 10 days from NZD $3,480' },
-        ]}
+        guideLinks={guideLinks}
       />
     </>
   );

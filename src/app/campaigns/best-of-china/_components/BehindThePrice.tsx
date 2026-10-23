@@ -1,85 +1,43 @@
 import { Icon, type IconName } from '@/components/ui/Icon';
+import type { Tour } from '@/lib/data/tours';
 
-/**
- * Four-card breakdown of what NZD $4,080 actually buys — pre-empts the
- * "is that all-inclusive?" objection that paid visitors quietly ask
- * before filling the lead form. Each card states one inclusion category
- * with a 1-line plain-English answer.
- */
-interface Inclusion {
-  icon: IconName;
-  title: string;
-  body: string;
-  accent: string;
-}
-
-const ITEMS: Inclusion[] = [
-  {
-    icon: 'plane',
-    title: 'Return Flights',
-    body: 'International airfares Auckland ↔ China included in the headline price.',
-    accent: 'from-sky-50 to-sky-100 border-sky-100',
-  },
-  {
-    icon: 'building',
-    title: 'Hotels & Transfers',
-    body: '3–4★ hotels across 4 cities · all airport, city & day-tour transfers.',
-    accent: 'from-amber-50 to-amber-100 border-amber-100',
-  },
-  {
-    icon: 'users',
-    title: 'English Guides',
-    body: 'Local CTS guides on the ground in every city, plus a single tour leader end-to-end.',
-    accent: 'from-emerald-50 to-emerald-100 border-emerald-100',
-  },
-  {
-    icon: 'utensils',
-    title: 'Meals & Entries',
-    body: 'Daily breakfasts, most lunches, and all entrance fees per the day-by-day itinerary.',
-    accent: 'from-rose-50 to-rose-100 border-rose-100',
-  },
+const ICONS: IconName[] = ['plane', 'building', 'users', 'utensils'];
+const ACCENTS = [
+  'from-sky-50 to-sky-100 border-sky-100',
+  'from-amber-50 to-amber-100 border-amber-100',
+  'from-emerald-50 to-emerald-100 border-emerald-100',
+  'from-rose-50 to-rose-100 border-rose-100',
 ];
 
-export default function BehindThePrice() {
+export default function BehindThePrice({ tour }: { tour: Tour }) {
+  const inclusions = tour.inclusions.map((body, index) => ({
+    body,
+    icon: ICONS[index % ICONS.length],
+    accent: ACCENTS[index % ACCENTS.length],
+  }));
   return (
-    <section
-      aria-label="What's included in the NZD $4,080 price"
-      className="bg-white py-12 md:py-16"
-    >
+    <section aria-label={`What's included in ${tour.price}`} className="bg-white py-12 md:py-16">
       <div className="container mx-auto px-4">
-        <p className="text-center text-sm font-bold uppercase tracking-widest text-primary mb-2">
-          Behind the price
-        </p>
+        <p className="text-center text-sm font-bold uppercase tracking-widest text-primary mb-2">Tour inclusions</p>
         <h2 className="text-center text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-          What NZD $4,080 actually covers
+          What {tour.price} includes
         </h2>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
-          No add-ons, no FX surprises. This is what every Kiwi booking on Best of China gets,
-          confirmed in NZD before you pay a deposit.
-        </p>
-
+        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">Current inclusions published for {tour.name}.</p>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
-          {ITEMS.map((it) => (
-            <li
-              key={it.title}
-              className={`relative bg-gradient-to-br ${it.accent} border rounded-2xl p-6 flex flex-col`}
-            >
+          {inclusions.map((item, index) => (
+            <li key={`${index}-${item.body}`} className={`relative bg-gradient-to-br ${item.accent} border rounded-2xl p-6 flex flex-col`}>
               <div className="w-11 h-11 rounded-full bg-white/80 backdrop-blur flex items-center justify-center mb-3 shadow-sm">
-                <Icon name={it.icon} className="w-5 h-5 text-gray-800" />
+                <Icon name={item.icon} className="w-5 h-5 text-gray-800" />
               </div>
-              <h3 className="text-lg md:text-xl font-serif font-bold text-gray-900 mb-2">
-                {it.title}
-              </h3>
-              <p className="text-sm text-gray-700 leading-relaxed">{it.body}</p>
+              <p className="text-sm text-gray-700 leading-relaxed">{item.body}</p>
             </li>
           ))}
         </ul>
-
-        <p className="text-center text-xs text-gray-500 mt-8 max-w-3xl mx-auto">
-          Exclusions: travel insurance, personal expenses, tips, single-room supplement.
-          Wellington / Christchurch / regional NZ departures use a connecting domestic flight
-          to Auckland, quoted separately.
-        </p>
+        {tour.exclusions.length > 0 && (
+          <p className="text-center text-xs text-gray-500 mt-8 max-w-3xl mx-auto">
+            Not included: {tour.exclusions.join(' · ')}
+          </p>
+        )}
       </div>
     </section>
   );

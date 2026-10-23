@@ -27,7 +27,8 @@ import { join } from 'node:path';
 const REPO_ROOT = join(__dirname, '..', '..');
 const read = (p: string) => readFileSync(join(REPO_ROOT, p), 'utf8');
 
-const DESTINATION_GUIDE = 'src/components/seo/DestinationGuide.tsx';
+const DESTINATION_GUIDE = 'src/components/seo/DestinationGuideClient.tsx';
+const DESTINATION_GUIDE_SERVER_BOUNDARY = 'src/components/seo/DestinationGuide.tsx';
 const CITY_TOUR_HUB = 'src/components/seo/CityTourHub.tsx';
 const FAQ_SECTION = 'src/components/FAQSection.tsx';
 const TRUST_BAR = 'src/components/TrustBar.tsx';
@@ -79,9 +80,14 @@ describe('anchor ids the table of contents and inbound links depend on', () => {
 });
 
 describe('client-component boundaries', () => {
-  // DestinationGuide runs a lightbox on useState. Losing the directive turns
-  // it into a server component and the build fails at a non-obvious place.
-  it('DestinationGuide stays a client component', () => {
+  // The server wrapper reads the published catalog, then hydrates the guide renderer,
+  // which owns the lightbox and in-page interaction state.
+  it('DestinationGuide keeps its catalog reader on the server boundary', () => {
+    expect(read(DESTINATION_GUIDE_SERVER_BOUNDARY).split('\n')[0].trim()).not.toBe("'use client';");
+    expect(read(DESTINATION_GUIDE_SERVER_BOUNDARY)).toContain('getPublishedTours');
+  });
+
+  it('DestinationGuideClient stays a client component', () => {
     expect(read(DESTINATION_GUIDE).split('\n')[0].trim()).toBe("'use client';");
   });
 });

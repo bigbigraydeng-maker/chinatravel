@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getToursByDestination, getToursByDestinationAndTier } from '@/lib/data/tours';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 export const metadata: Metadata = {
   title: 'Tour data check (internal) | CTS Tours',
@@ -7,14 +7,19 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function TestToursPage() {
-  const japanTours = getToursByDestination('japan');
-  const vietnamTours = getToursByDestination('vietnam');
-  const chinaTours = getToursByDestination('china');
+export const revalidate = 15;
+
+export default async function TestToursPage() {
+  const allTours = await getPublishedTours();
+  const byDestination = (destination: string) => allTours.filter((tour) => tour.destination === destination && tour.isActive);
+  const byTier = (destination: string, tier: string) => allTours.filter((tour) => tour.destination === destination && tour.tier === tier && tour.isActive);
+  const japanTours = byDestination('japan');
+  const vietnamTours = byDestination('vietnam');
+  const chinaTours = byDestination('china');
   
-  const japanSignatureTours = getToursByDestinationAndTier('japan', 'signature');
-  const japanDiscoveryTours = getToursByDestinationAndTier('japan', 'discovery');
-  const vietnamDiscoveryTours = getToursByDestinationAndTier('vietnam', 'discovery');
+  const japanSignatureTours = byTier('japan', 'signature');
+  const japanDiscoveryTours = byTier('japan', 'discovery');
+  const vietnamDiscoveryTours = byTier('vietnam', 'discovery');
 
   return (
     <div className="container mx-auto px-4 py-12">

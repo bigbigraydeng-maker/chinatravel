@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByRegion } from '@/lib/data/tours';
+import { getPublishedToursByRegion } from '@/lib/data/published-tour-catalog';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { yunnanToursMeta } from '@/lib/data/seo-pages';
 
@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function YunnanToursPage() {
-  const tours = getToursByRegion(['yunnan', 'lijiang', 'dali', 'shangri-la', 'kunming']);
+export default async function YunnanToursPage() {
+  const tours = await getPublishedToursByRegion(['yunnan', 'lijiang', 'dali', 'shangri-la', 'kunming']);
 
   const schemas = [
     generateTouristDestinationSchema('Yunnan', yunnanToursMeta.description, '/yunnan-tours', tours),

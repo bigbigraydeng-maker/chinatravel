@@ -14,7 +14,7 @@
  * tours.ts and the Product Owner's table in step.
  */
 export const STAGED_DEPARTURE_PRICES: Record<string, Record<string, string>> = {
-  // Natural China: June onwards is +NZD $500 on the March / May price.
+  // Natural China: future 2027 departures are held until they are published in ME.
   landscapes: {
     '14 June 2027': 'NZD $7,849',
     '8 August 2027': 'NZD $7,849',

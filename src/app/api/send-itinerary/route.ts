@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import { getSiteUrl } from '@/lib/site';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
     }
 
-    const tour = getTourBySlug(destination, tier, tourSlug);
+    const tour = await getPublishedTourBySlug(destination, tier, tourSlug);
 
     if (!tour || !tour.isActive) {
       return NextResponse.json({ error: 'Tour not found.' }, { status: 404 });

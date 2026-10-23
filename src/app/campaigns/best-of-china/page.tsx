@@ -2,10 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
-  getTourBySlug,
-  getToursByDestinationAndTier,
   getDestinationBySlug,
 } from '@/lib/data/tours';
+import { getPublishedTourBySlug, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
@@ -55,10 +54,10 @@ const TOUR_SLUG = 'essentials';
 const ENQUIRY_SOURCE = 'Campaign LP: Best of China';
 
 /** The departure schedule on this page drops departures that have left; refresh hourly so that happens without a redeploy. */
-export const revalidate = 3600;
+export const revalidate = 15;
 
-export function generateMetadata(): Metadata {
-  const tour = getTourBySlug('china', 'discovery', TOUR_SLUG);
+export async function generateMetadata(): Promise<Metadata> {
+  const tour = await getPublishedTourBySlug('china', 'discovery', TOUR_SLUG);
   if (!tour) return { title: 'Best of China | CTS Tours' };
 
   const siteUrl = getSiteUrl();
@@ -78,19 +77,22 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function BestOfChinaLandingPage() {
-  const tour = getTourBySlug('china', 'discovery', TOUR_SLUG);
-  if (!tour) notFound();
+export default async function BestOfChinaLandingPage() {
+  const tour = await getPublishedTourBySlug('china', 'discovery', TOUR_SLUG);
+  if (!tour?.isActive || tour.soldOut) notFound();
 
   const destination = getDestinationBySlug(tour.destination);
   if (!destination) notFound();
 
-  const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
+  const relatedTours = (await getPublishedToursByDestinationAndTier(tour.destination, tour.tier))
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 3);
 
   const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
+  const nextDeparture = tour.departureDates?.[0];
+  const nextDeparturePrice = (nextDeparture && tour.departurePricing?.[nextDeparture]) || tour.price;
+  const routeDescription = tour.tourCities?.join(', ') || 'the destinations in its published itinerary';
 
   const schemas = [
     generateTourSchema(tour, destination),
@@ -110,22 +112,19 @@ export default function BestOfChinaLandingPage() {
       <SchemaMarkup data={schemas} />
       <TourViewContent tour={tour} />
 
-      <StickyPriceBar />
-      <CampaignWelcomeBanner />
+      <StickyPriceBar tour={tour} />
+      <CampaignWelcomeBanner tour={tour} />
 
-      {/* November 2026 departure has sold out — mirror the product page banner
-          so paid-traffic visitors landing here see the same signal instead of
-          filling out an enquiry for the wrong date. */}
       <section className="bg-amber-50 border-y border-amber-200 py-4">
         <div className="container mx-auto px-4 text-center">
           <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-            November 2026 Departure Sold Out
+            {tour.soldOut ? 'Current departure sold out' : 'Current departure information'}
           </p>
           <p className="text-lg font-serif font-bold text-gray-900">
-            Next Departure: 11 March 2027
+            {nextDeparture ? `Next Departure: ${nextDeparture}` : 'Contact CTS for the next departure'}
           </p>
           <p className="text-sm text-gray-600 mt-1">
-            From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
+            {nextDeparturePrice}. Contact us to confirm availability before booking.
           </p>
         </div>
       </section>
@@ -181,9 +180,9 @@ export default function BestOfChinaLandingPage() {
 
       <WhyCtsBadgeRow />
 
-      <BigStatsBlock />
+      <BigStatsBlock tour={tour} />
 
-      <CityJourneyTimeline />
+      <CityJourneyTimeline tour={tour} />
 
       {/* LLM-friendly TL;DR for AI Overview / ChatGPT / Perplexity citation
           (mirror of the Quick Answer block PR #72 added to /china-tours).
@@ -210,8 +209,7 @@ export default function BestOfChinaLandingPage() {
               </div>
               <p className="text-gray-800 leading-relaxed">
                 <span className="font-bold">{tour.name}</span> is a{' '}
-                {tour.duration.toLowerCase()}, Auckland-departing China tour covering Beijing,
-                Xi&apos;an, Hangzhou, a Jiangnan water-town stop, and Shanghai. Lead-in price{' '}
+                {tour.duration.toLowerCase()}, Auckland-departing China tour covering {routeDescription}. Lead-in price{' '}
                 <span className="font-semibold">{tour.price}</span> including return
                 international airfares from Auckland, English-speaking guides, hotel
                 accommodation, and entrance fees per itinerary.
@@ -227,7 +225,7 @@ export default function BestOfChinaLandingPage() {
         </div>
       </section>
 
-      <BehindThePrice />
+      <BehindThePrice tour={tour} />
 
       <CustomerTripPhotos />
 

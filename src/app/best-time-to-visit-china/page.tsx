@@ -9,7 +9,7 @@ import HubHero from '@/components/seo/HubHero';
 import TourGrid from '@/components/seo/TourGrid';
 import MonthPickerWidget from '@/components/seo/MonthPickerWidget';
 import { Icon, type IconName } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
 import { generateArticleSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { bestTimeToVisitChinaMeta } from '@/lib/data/seo-pages';
 
@@ -40,8 +40,10 @@ function StarRating({ count }: { count: number }) {
   );
 }
 
-export default function BestTimeToVisitChinaPage() {
-  const tours = getAllChinaTours().slice(0, 6);
+export const revalidate = 15;
+
+export default async function BestTimeToVisitChinaPage() {
+  const tours = (await getPublishedChinaTours()).slice(0, 6);
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },

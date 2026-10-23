@@ -3,8 +3,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
-  getTourBySlug, 
-  getToursByDestinationAndTier,
   getDestinationBySlug,
 } from '@/lib/data/tours';
 import TourHero from '@/components/tours/TourHero';
@@ -43,7 +41,7 @@ import {
 import { getSiteUrl } from '@/lib/site';
 import { Icon } from '@/components/ui/Icon';
 import { computeReturnDate } from '@/lib/data/tour-dates';
-import { getTourWithPublishedDepartures } from '@/lib/data/published-tour-catalog';
+import { getPublishedTourBySlug, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 
 interface TourPageProps {
   params: {
@@ -59,11 +57,10 @@ interface TourPageProps {
  * SSG page as immutable across production deploys — a departureDates
  * edit in tours.ts silently would not show up on the live page.
  */
-export const revalidate = 60;
+export const revalidate = 15;
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
-  const storedTour = getTourBySlug(params.destination, params.tier, params.tour);
-  const tour = storedTour ? await getTourWithPublishedDepartures(storedTour) : undefined;
+  const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour || !tour.isActive) {
     return {
@@ -118,8 +115,7 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
 }
 
 export default async function TourPage({ params }: TourPageProps) {
-  const storedTour = getTourBySlug(params.destination, params.tier, params.tour);
-  const tour = storedTour ? await getTourWithPublishedDepartures(storedTour) : undefined;
+  const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour || !tour.isActive) {
     notFound();
@@ -130,7 +126,7 @@ export default async function TourPage({ params }: TourPageProps) {
     notFound();
   }
 
-  const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
+  const relatedTours = (await getPublishedToursByDestinationAndTier(tour.destination, tour.tier))
     .filter(t => t.slug !== tour.slug)
     .slice(0, 3);
 
@@ -227,12 +223,8 @@ export default async function TourPage({ params }: TourPageProps) {
         departurePricing={tour.departurePricing}
         singleSupplementNote={tour.singleSupplementNote}
         showAvailability={tour.departureDates?.[0] !== 'TBC'}
-        // October 2026 departures for both `beijing-xian` and `shanghai-surroundings`
-        // have sold out — soften the hero CTA so it doesn't promise a departure
-        // window CTS can no longer fulfil, while still capturing enquiries for
-        // the confirmed 2027 departures.
-        primaryCtaLabel={isOctoberCampaignTour ? 'Enquire about a future departure' : undefined}
-        secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
+        primaryCtaLabel={tour.soldOut || !tour.departureDates?.length ? 'Enquire about availability' : undefined}
+        secondaryCtaLabel={tour.soldOut || !tour.departureDates?.length ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
         maxGroupSize={tour.maxGroupSize}
       />
@@ -254,56 +246,18 @@ export default async function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
-      {/* Essentials: November 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'essentials' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
+      {tour.soldOut || !tour.departureDates?.length ? (
+        <section className="border-y border-amber-200 bg-amber-50 py-4">
           <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              November 2026 Departure Sold Out
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">
+              {tour.soldOut ? 'Currently sold out' : 'No published departure dates'}
             </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 11 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
+            <p className="text-sm text-gray-700">
+              Contact CTS to ask about future availability. The tour status, price and dates shown above use the latest ME publication.
             </p>
           </div>
         </section>
-      )}
-
-      {/* Tale of Two Cities: 15 October 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'beijing-xian' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              October 2026 Departure Sold Out
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 18 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $3,480 per person twin-share. Contact us to register interest in a future October departure.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* Shanghai & Surroundings: 14 October 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'shanghai-surroundings' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              October 2026 Departure Sold Out
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 25 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $2,699 per person twin-share. Contact us to register interest in a future October departure.
-            </p>
-          </div>
-        </section>
-      )}
+      ) : null}
 
       {/* Tour Content */}
       <div className="bg-white">
