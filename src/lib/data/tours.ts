@@ -3,6 +3,7 @@
 
 import { isDelistedSlug } from './delisted-tours';
 import { aucklandToday, upcomingDepartureLabels } from './tour-dates';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export interface Tour {
   id: string;
@@ -286,6 +287,9 @@ const allTours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1507025793886-e20cd4685fae'), // Dunhuang desert dunes
+      migratedUnsplash('photo-1438919848714-206d008562bb'), // Great Wall of China
     ],
     highlights: [
       'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
@@ -370,7 +374,11 @@ const allTours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
+      migratedUnsplash('photo-1746243044880-4b71e10be164'), // Forbidden City aerial, Beijing
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1729862564079-9bf368402110'), // Giant panda, Chengdu
+      migratedUnsplash('photo-1491552222800-c124480c9b02'), // Yangtze River Three Gorges mist
     ],
     highlights: [
       'Temple of Heaven with optional Tai Chi among locals; Tian\'anmen Square and Forbidden City (see itinerary for Monday closure & ticket substitution)',
