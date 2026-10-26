@@ -11,7 +11,9 @@ jest.mock('resend', () => ({
     emails = { send: async (m: { html: string; subject: string; to: string }) => { sent.push(m); return { error: null }; } };
   },
 }));
-jest.mock('@/lib/data/tours', () => ({ getTourBySlug: () => null }));
+jest.mock('@/lib/data/published-tour-catalog', () => ({
+  getPublishedTourBySlug: async () => ({ isActive: true, soldOut: false }),
+}));
 
 import { POST } from '@/app/api/tour-enquiry/route';
 

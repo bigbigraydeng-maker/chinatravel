@@ -569,7 +569,7 @@ const allTours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
     quickAnswer:
-      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The current 2027 departure and return dates are shown in the schedule below. Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide-2000.jpg',
@@ -623,10 +623,10 @@ const allTours: Tour[] = [
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
-    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
+    metaDescription: 'Explore China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. From NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-21',
+    updatedAt: '2026-10-23',
     tags: [
       'Shanghai',
       'Yichang',
@@ -640,8 +640,8 @@ const allTours: Tour[] = [
       'Tianmen Mountain',
       'Huangpu River cruise',
     ],
-    departureDates: ['26 March 2027', '28 May 2027'],
-    departurePricing: { '26 March 2027': 'NZD $7,349', '28 May 2027': 'NZD $7,349' },
+    departureDates: ['28 May 2027'],
+    departurePricing: { '28 May 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     goldenBlocks: true,
@@ -657,7 +657,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+          'Natural China is NZD $7,349 per person twin share. Current departure and return dates are listed in the schedule on this page. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
@@ -693,7 +693,7 @@ const allTours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $1,895 extra, cruise included) for the 26 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us which current departure you prefer and whether you would like your own room (NZD $1,895 extra, cruise included), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],

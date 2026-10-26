@@ -72,8 +72,8 @@ describe('October 2026 campaign pages redirect to the live tour pages', () => {
     expect(rules[0].destination).toBe('/campaigns/spotlight');
   });
 
-  it('the sitemap no longer lists the redirected pages', () => {
-    const urls = sitemap().map((e) => e.url);
+  it('the sitemap no longer lists the redirected pages', async () => {
+    const urls = (await sitemap()).map((e) => e.url);
     expect(urls.filter((u) => u.includes('/campaigns/october-2026/'))).toEqual([]);
     expect(urls.filter((u) => u.includes('/spotlight/october-2026'))).toEqual([]);
     expect(urls.some((u) => u.endsWith('/campaigns/spotlight'))).toBe(true);

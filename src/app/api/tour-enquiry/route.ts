@@ -9,7 +9,7 @@ import {
   sanitizeFbclid,
   sanitizeGclid,
 } from '@/lib/analytics/attribution';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import {
   BUDGET_BAND_EMAIL_LABEL,
   TRAVEL_WINDOW_EMAIL_LABEL,
@@ -61,8 +61,8 @@ export async function POST(req: NextRequest) {
     // existed, or before an option was renamed or removed, still submits the old payload, and that lead must not be
     // lost.
 
-    const selectedTour = getTourBySlug(destination, tier, tourSlug);
-    if (selectedTour && !selectedTour.isActive) {
+    const selectedTour = await getPublishedTourBySlug(destination, tier, tourSlug);
+    if (!selectedTour || !selectedTour.isActive) {
       return NextResponse.json({ error: 'This tour is currently unavailable.' }, { status: 404 });
     }
 

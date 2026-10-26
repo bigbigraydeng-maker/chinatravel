@@ -8,7 +8,7 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Icon, type IconName } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursFromAucklandMeta } from '@/lib/data/seo-pages';
 
@@ -24,8 +24,10 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ChinaToursFromAucklandPage() {
-  const allTours = getAllChinaTours();
+export const revalidate = 15;
+
+export default async function ChinaToursFromAucklandPage() {
+  const allTours = await getPublishedChinaTours();
   const featuredTours = allTours.filter(t => t.tier === 'signature').slice(0, 8);
 
   const breadcrumbs = [

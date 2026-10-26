@@ -23,6 +23,7 @@ const MAP_SLUGS = [
   'landscapes',
   'yunnan-explorer',
   'zhangjiajie',
+  'china-unveiled',
 ] as const;
 
 const TOUR_MAPS: Record<string, TourMapAssets> = Object.fromEntries(

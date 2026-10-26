@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { 
-  getDestinationBySlug, 
-  getToursByDestinationAndTier,
+import {
+  getDestinationBySlug,
   destinations
 } from '@/lib/data/tours';
+import { getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 import TourCard from '@/components/tours/TourCard';
 import ChinaStopoverLandingPage from '@/components/tours/ChinaStopoverLandingPage';
 
@@ -20,7 +20,7 @@ interface TierPageProps {
 // Generate static params for all destination/tier combinations
 export async function generateStaticParams() {
   const params: { destination: string; tier: string }[] = [];
-  
+
   destinations.forEach((destination) => {
     destination.tiers.forEach((tier) => {
       params.push({
@@ -29,13 +29,13 @@ export async function generateStaticParams() {
       });
     });
   });
-  
+
   return params;
 }
 
 export async function generateMetadata({ params }: TierPageProps): Promise<Metadata> {
   const destination = getDestinationBySlug(params.destination);
-  
+
   if (!destination) {
     return {
       title: 'Not Found | CTS Tours',
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: TierPageProps): Promise<Metad
   }
 
   const tier = destination.tiers.find(t => t.slug === params.tier);
-  
+
   if (!tier) {
     return {
       title: 'Not Found | CTS Tours',
@@ -109,20 +109,22 @@ export async function generateMetadata({ params }: TierPageProps): Promise<Metad
   };
 }
 
-export default function TierPage({ params }: TierPageProps) {
+export const revalidate = 15;
+
+export default async function TierPage({ params }: TierPageProps) {
   const destination = getDestinationBySlug(params.destination);
-  
+
   if (!destination) {
     notFound();
   }
 
   const tier = destination.tiers.find(t => t.slug === params.tier);
-  
+
   if (!tier) {
     notFound();
   }
 
-  const tours = getToursByDestinationAndTier(params.destination, params.tier);
+  const tours = await getPublishedToursByDestinationAndTier(params.destination, params.tier);
 
   if (params.destination === 'china' && params.tier === 'stopover') {
     return <ChinaStopoverLandingPage tours={tours} />;
@@ -155,7 +157,7 @@ export default function TierPage({ params }: TierPageProps) {
               </li>
               <li>/</li>
               <li>
-                <Link 
+                <Link
                   href={`/tours/${destination.slug}`}
                   className="hover:text-white transition-colors"
                 >
@@ -202,8 +204,8 @@ export default function TierPage({ params }: TierPageProps) {
           <div className="max-w-4xl mx-auto">
             <div className="space-y-4">
               {tier.definingCharacteristics.map((characteristic, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <div className="flex-shrink-0 w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
@@ -227,7 +229,7 @@ export default function TierPage({ params }: TierPageProps) {
               {tours.length} {tours.length === 1 ? 'Tour' : 'Tours'} Available
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Choose from our carefully curated {destination.name} {tier.name} collection. 
+              Choose from our carefully curated {destination.name} {tier.name} collection.
               Each journey is designed to provide an unforgettable experience.
             </p>
           </div>
@@ -235,8 +237,8 @@ export default function TierPage({ params }: TierPageProps) {
           {tours.length > 0 ? (
             <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
               {tours.map((tour) => (
-                <TourCard 
-                  key={tour.id} 
+                <TourCard
+                  key={tour.id}
                   tour={tour}
                   destination={destination.slug}
                   tier={tier.slug}
@@ -248,7 +250,7 @@ export default function TierPage({ params }: TierPageProps) {
               <p className="text-gray-600 text-lg">
                 No tours available in this category at the moment.
               </p>
-              <Link 
+              <Link
                 href={`/tours/${destination.slug}`}
                 className="inline-block mt-4 text-primary hover:underline"
               >
@@ -299,17 +301,17 @@ export default function TierPage({ params }: TierPageProps) {
             Need Help Choosing?
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto mb-8">
-            Our travel specialists are here to help you find the perfect {destination.name} journey. 
+            Our travel specialists are here to help you find the perfect {destination.name} journey.
             Get personalized recommendations based on your interests and travel style.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
+            <Link
               href="/contact"
               className="inline-block px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Speak to a Specialist
             </Link>
-            <Link 
+            <Link
               href={`/tours/${destination.slug}`}
               className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors"
             >

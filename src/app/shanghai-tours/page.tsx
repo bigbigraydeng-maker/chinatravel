@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
+import { getPublishedToursByCityName } from '@/lib/data/published-tour-catalog';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { shanghaiToursMeta } from '@/lib/data/seo-pages';
 
@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ShanghaiToursPage() {
-  const tours = getToursByCityName('shanghai');
+export default async function ShanghaiToursPage() {
+  const tours = await getPublishedToursByCityName('shanghai');
 
   const schemas = [
     generateTouristDestinationSchema('Shanghai', shanghaiToursMeta.description, '/shanghai-tours', tours),

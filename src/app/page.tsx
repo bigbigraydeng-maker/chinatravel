@@ -10,7 +10,7 @@ import { getSiteUrl } from '@/lib/site';
  * homepage layout is preserved in git history (rollback = revert this change).
  */
 
-export const revalidate = 3600;
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import SectionTitle from '@/components/SectionTitle';
 import TourTierCard from '@/components/TourTierCard';
-import { getTourBySlug } from '@/lib/data/tours';
+import { formatPublishedTourCity, getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 
 /**
  * Season spotlight — pairs with primary paid + editorial pushes (see `home-spotlight.ts`).
  */
-export default function SpotlightTours() {
+export default async function SpotlightTours() {
+  const tours = await getPublishedTours();
   return (
     <section
       id="spotlight"
@@ -38,8 +39,8 @@ export default function SpotlightTours() {
         </p>
         <div className="grid grid-cols-1 items-start md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {HOME_SPOTLIGHT_TOURS.map((ref) => {
-            const t = getTourBySlug(ref.destination, ref.tier, ref.slug);
-            if (!t) return null;
+            const t = tours.find((tour) => tour.destination === ref.destination && tour.tier === ref.tier && tour.slug === ref.slug);
+            if (!t?.isActive || t.soldOut) return null;
             return (
               <TourTierCard
                 key={ref.slug}
@@ -50,8 +51,8 @@ export default function SpotlightTours() {
                 image_url={t.heroImage}
                 slug={t.slug}
                 tier="discovery"
-                departure={ref.departureLabel}
-                route={ref.route}
+                departure={t.departureDates?.[0] ?? 'Ask CTS for the next departure'}
+                route={t.tourCities?.length ? t.tourCities.map(formatPublishedTourCity) : ref.route}
                 href={ref.campaignHref}
                 spotlightFeatured
               />
@@ -71,7 +72,7 @@ export default function SpotlightTours() {
             </svg>
           </Link>
           <p className="mt-3 text-sm text-gray-600">
-            All October &amp; November 2026 group tours · Limited seats
+            Currently published group tour departures
           </p>
         </div>
       </div>

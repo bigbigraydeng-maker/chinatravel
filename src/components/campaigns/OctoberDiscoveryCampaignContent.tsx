@@ -6,17 +6,18 @@ type Props = {
   tour: Tour;
   campaignSlug: October2026DiscoverySlug;
   otherCampaignSlug: October2026DiscoverySlug;
-  otherTourTitle: string;
+  otherTour?: Tour;
 };
 
 export default function OctoberDiscoveryCampaignContent({
   tour,
   campaignSlug,
   otherCampaignSlug,
-  otherTourTitle,
+  otherTour,
 }: Props) {
   const mainTourHref = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
   const otherCampaignHref = `/campaigns/october-2026/${otherCampaignSlug}`;
+  const availableOtherTour = otherTour?.isActive && !otherTour.soldOut ? otherTour : undefined;
 
   if (campaignSlug === 'shanghai-surroundings') {
     return (
@@ -50,15 +51,14 @@ export default function OctoberDiscoveryCampaignContent({
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
             Compare with our other October spotlight
           </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          {availableOtherTour && <p className="text-gray-700 leading-relaxed mb-4">
             If your priority is <strong>imperial Beijing</strong>, the <strong>Great Wall</strong>, and{' '}
             <strong>Xi&apos;an</strong> including the <strong>Terracotta Warriors</strong> linked by{' '}
-            <strong>high-speed train</strong>, see{' '}
+            <strong>high-speed train</strong>, compare{' '}
             <Link href={otherCampaignHref} className="text-primary font-semibold hover:underline">
-              {otherTourTitle}
-            </Link>{' '}
-            (featured <strong>15 October</strong> departure).
-          </p>
+              {availableOtherTour.name}
+            </Link>{' '}({availableOtherTour.duration}, {availableOtherTour.price}; current departures are on its tour page).
+          </p>}
           <p className="text-gray-700 leading-relaxed">
             This Shanghai &amp; Surroundings route does <strong>not</strong> include Beijing or Xi&apos;an —
             it is a <strong>single-region Delta + Shanghai</strong> journey at <strong>{tour.price}</strong>{' '}
@@ -103,14 +103,13 @@ export default function OctoberDiscoveryCampaignContent({
         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
           Compare with Shanghai &amp; Surroundings (14 Oct)
         </h2>
-        <p className="text-gray-700 leading-relaxed mb-4">
-          Want <strong>Jiangnan gardens</strong>, <strong>West Lake</strong>, and <strong>Shanghai</strong>{' '}
-          instead of Beijing and Xi&apos;an? See{' '}
-          <Link href={otherCampaignHref} className="text-primary font-semibold hover:underline">
-            {otherTourTitle}
-          </Link>{' '}
-          — <strong>10 days from NZD $2,699</strong> per person on the published page.
-        </p>
+          {availableOtherTour && <p className="text-gray-700 leading-relaxed mb-4">
+            Want <strong>Jiangnan gardens</strong>, <strong>West Lake</strong>, and <strong>Shanghai</strong>{' '}
+            instead of Beijing and Xi&apos;an? See{' '}
+            <Link href={otherCampaignHref} className="text-primary font-semibold hover:underline">
+              {availableOtherTour.name}
+            </Link>{' '}({availableOtherTour.duration}, {availableOtherTour.price}; current departures are on its tour page).
+          </p>}
         <p className="text-gray-700 leading-relaxed">
           This Beijing &amp; Xi&apos;an route is priced <strong>{tour.price}</strong> for {tour.duration.toLowerCase()}{' '}
           on the published page.
