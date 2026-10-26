@@ -30,14 +30,6 @@ const KNOWN_HEAVY: readonly string[] = [
   '/images/tours/forbidden-city-aerial.jpg',
   '/images/tours/li-river-karst-boats.jpg',
   '/images/tours/yangshuo-karst-aerial.jpg',
-  '/images/tours/shangri-la-monastery.jpg',
-  '/images/tours/shangri-la-monastery-lake.jpg',
-  '/blog/sourced/lijiang-old-town-canal.jpg',
-  '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
-  '/images/guides/zhangjiajie/sandstone-spires.jpg',
-  '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
-  '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
-  '/images/tours/tianmen-mountain-glass-walkway.jpg',
 ];
 
 function localPictures(): Map<string, string[]> {
