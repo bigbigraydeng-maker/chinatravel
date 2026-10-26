@@ -39,60 +39,61 @@
   <!-- MAP CARD -->
   <rect x="30" y="178" width="740" height="512" rx="10" fill="#DCEBF3" stroke="#C7D6DF" stroke-width="1.5"/>
   <g clip-path="url(#mapClipM)">
-    <g transform="translate(-60.76,-909.67) scale(2.2)">
+    <g transform="translate(-8.31,-634.01) scale(1.7)">
       <path d="M 706.5,-60.4 L 756.1,-51.3 L 789.8,-31.0 L 801.4,-4.3 L 844.7,-4.2 L 869.4,-15.5 L 916.5,-23.9 L 901.5,1.8 L 890.5,12.2 L 880.7,43.4 L 861.5,71.1 L 826.9,66.1 L 802.5,76.2 L 810.0,100.6 L 805.9,134.2 L 791.3,135.0 L 791.5,149.5 L 773.1,132.7 L 761.8,148.6 L 717.7,160.9 L 722.2,175.9 L 697.5,174.9 L 684.0,166.0 L 664.4,186.2 L 633.0,201.5 L 609.8,219.8 L 570.0,228.1 L 549.0,241.4 L 518.3,249.2 L 533.5,236.0 L 527.5,224.9 L 550.1,205.7 L 535.0,190.8 L 510.2,200.8 L 478.0,220.7 L 460.4,239.1 L 432.5,240.4 L 417.9,253.7 L 433.0,273.0 L 456.3,277.7 L 457.2,290.5 L 479.8,298.8 L 511.7,278.4 L 537.0,289.5 L 555.5,290.3 L 560.1,305.2 L 519.7,313.2 L 506.4,328.6 L 478.7,342.9 L 464.1,362.8 L 494.7,378.5 L 505.9,406.5 L 523.3,432.6 L 542.6,454.5 L 542.2,475.7 L 524.3,483.5 L 531.1,498.7 L 547.9,507.5 L 543.5,530.7 L 536.3,553.3 L 520.3,555.9 L 499.5,586.7 L 476.4,624.1 L 450.0,658.1 L 410.8,684.5 L 371.1,708.4 L 339.0,711.7 L 321.6,724.4 L 311.7,715.1 L 295.6,729.3 L 255.8,743.6 L 225.6,747.9 L 215.9,778.0 L 200.1,779.7 L 192.6,759.0 L 199.4,748.0 L 161.2,738.9 L 147.7,743.5 L 119.0,736.1 L 105.4,724.5 L 109.9,708.1 L 83.9,702.9 L 70.1,692.2 L 45.8,707.4 L 18.1,710.7 L -4.6,710.5 L -19.9,717.5 L -34.7,721.7 L -30.4,754.3 L -45.6,753.5 L -48.1,746.8 L -49.0,735.0 L -69.9,743.3 L -82.2,738.1 L -103.4,727.4 L -95.1,703.7 L -113.1,698.2 L -119.9,671.9 L -150.0,676.7 L -146.6,642.9 L -119.6,619.1 L -118.5,595.6 L -119.3,573.7 L -131.7,567.0 L -141.3,550.2 L -157.9,552.3 L -188.7,548.0 L -179.0,536.1 L -192.4,518.3 L -212.7,530.3 L -236.6,523.3 L -269.5,541.5 L -295.4,562.7 L -318.4,566.3 L -330.9,558.6 L -345.9,557.9 L -366.3,551.3 L -381.7,558.5 L -400.5,579.7 L -402.9,557.3 L -420.3,563.3 L -453.5,560.5 L -485.8,553.9 L -508.9,541.4 L -531.1,535.8 L -540.6,522.1 L -556.6,518.0 L -585.4,499.5 L -608.3,490.7 L -620.1,497.5 L -659.7,477.6 L -687.7,459.5 L -695.7,428.1 L -675.2,432.0 L -674.3,417.4 L -685.6,402.8 L -682.8,379.6 L -713.4,346.2 L -760.3,334.6 L -768.7,312.7 L -789.7,299.5 L -794.8,291.3 L -799.1,275.0 L -798.1,264.0 L -815.4,257.5 L -824.8,260.3 L -832.0,234.0 L -823.9,227.4 L -827.8,220.8 L -800.6,207.3 L -780.9,201.7 L -750.7,205.6 L -740.0,187.4 L -703.4,184.0 L -693.3,172.7 L -648.3,157.2 L -644.3,150.8 L -646.6,134.5 L -627.1,127.1 L -652.7,77.6 L -596.3,66.2 L -581.7,59.9 L -561.1,8.8 L -504.6,18.2 L -488.7,5.3 L -487.4,-23.2 L -463.7,-25.9 L -442.0,-44.9 L -430.8,-47.2 L -423.4,-27.3 L -399.4,-12.2 L -358.7,-1.5 L -339.1,21.4 L -350.1,54.7 L -339.8,67.1 L -305.9,72.0 L -267.5,75.9 L -233.1,93.7 L -215.5,96.9 L -202.5,123.1 L -185.8,140.1 L -154.4,139.4 L -95.5,145.8 L -57.6,141.8 L -29.5,146.1 L 12.6,163.4 L 47.1,163.4 L 59.8,172.2 L 92.9,156.9 L 139.0,147.0 L 181.7,145.9 L 215.0,135.9 L 235.4,120.7 L 255.4,111.1 L 250.8,101.7 L 241.7,90.7 L 256.6,72.3 L 272.7,74.9 L 302.0,80.7 L 330.4,65.6 L 373.8,54.5 L 394.7,35.7 L 414.8,27.6 L 456.2,23.8 L 478.7,27.0 L 481.8,16.9 L 455.9,-3.0 L 433.1,-12.2 L 411.2,-1.6 L 383.1,-6.1 L 366.9,-2.5 L 359.6,-14.1 L 379.7,-42.6 L 393.6,-64.1 L 427.8,-53.3 L 468.0,-71.3 L 467.7,-83.9 L 493.4,-114.1 L 509.3,-123.2 L 508.9,-139.0 L 493.3,-145.7 L 516.8,-159.9 L 552.3,-165.1 L 590.0,-165.8 L 632.7,-157.3 L 657.7,-146.8 L 675.3,-118.1 L 686.0,-105.8 L 695.9,-88.3 L 706.5,-60.4 Z" fill="#EEF1F0" stroke="#B9C4CB" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
     </g>
-    <path d="M 591.0,627.3 Q 530.8,503.2 394.6,481.1" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 394.6,481.1 Q 416.9,511.5 439.2,541.8" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 394.6,481.1 Q 405.6,366.3 416.6,251.6" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 416.6,251.6 Q 381.6,282.8 361.4,325.0" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 361.4,325.0 Q 277.8,251.5 170.0,224.0" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
-    <path d="M 170.0,224.0 Q 703.1,88.9 591.0,627.3" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round" stroke-dasharray="11 9"/>
-    <g transform="translate(450.9,495.7) rotate(-159.6)"><use href="#arrowM"/></g>
-    <circle cx="521.4" cy="536.3" r="15" fill="#FFFFFF"/><use href="#trainM" x="521.4" y="536.3"/>
-    <g transform="translate(429.4,528.5) rotate(53.7)"><use href="#arrowM"/></g>
-    <circle cx="414.7" cy="508.4" r="15" fill="#FFFFFF"/><use href="#boatM" x="414.7" y="508.4"/>
-    <g transform="translate(411.7,302.1) rotate(-84.5)"><use href="#arrowM"/></g>
-    <circle cx="404.5" cy="377.8" r="15" fill="#FFFFFF"/><use href="#trainM" x="404.5" y="377.8"/>
-    <g transform="translate(371.0,306.9) rotate(120.6)"><use href="#arrowM"/></g>
-    <circle cx="388.1" cy="281.9" r="15" fill="#FFFFFF"/><use href="#coachM" x="388.1" y="281.9"/>
-    <g transform="translate(216.3,238.3) rotate(-159.8)"><use href="#arrowM"/></g>
-    <circle cx="281.2" cy="268.2" r="15" fill="#FFFFFF"/><use href="#trainM" x="281.2" y="268.2"/>
-    <g transform="translate(609.1,423.0) rotate(85.6)"><use href="#arrowM"/></g>
-    <circle cx="519.2" cy="238.8" r="15" fill="#FFFFFF"/><use href="#planeM" x="519.2" y="238.8"/>
-    <path d="M 591.0,627.3 L 700,618" fill="none" stroke="#1B2E40" stroke-width="3.5" stroke-dasharray="3 8" stroke-linecap="round"/>
-    <circle cx="591.0" cy="627.3" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/>
-    <circle cx="591.0" cy="627.3" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
-    <circle cx="394.6" cy="481.1" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
-    <circle cx="394.6" cy="481.1" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-    <circle cx="439.2" cy="541.8" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
-    <circle cx="439.2" cy="541.8" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-    <circle cx="416.6" cy="251.6" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
-    <circle cx="416.6" cy="251.6" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-    <circle cx="361.4" cy="325.0" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
-    <circle cx="361.4" cy="325.0" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
-    <circle cx="170.0" cy="224.0" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
-    <circle cx="170.0" cy="224.0" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+    <path d="M 495.3,553.7 Q 448.4,455.8 341.3,437.9" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 341.3,437.9 Q 362.2,464.8 383.0,491.7" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 341.3,437.9 Q 350.9,350.6 360.5,263.3" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 360.5,263.3 Q 333.5,287.4 317.9,320.0" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 317.9,320.0 Q 253.3,263.3 170.0,242.0" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 170.0,242.0 Q 582.0,137.6 495.3,553.7" fill="none" stroke="#D22A2E" stroke-width="5" stroke-linecap="round" stroke-dasharray="11 9"/>
+    <g transform="translate(385.5,449.7) rotate(-159.3)"><use href="#arrowM"/></g>
+    <circle cx="440.9" cy="481.8" r="15" fill="#FFFFFF"/><use href="#trainM" x="440.9" y="481.8"/>
+    <g transform="translate(373.8,479.9) rotate(52.2)"><use href="#arrowM"/></g>
+    <circle cx="360.1" cy="462.1" r="15" fill="#FFFFFF"/><use href="#boatM" x="360.1" y="462.1"/>
+    <g transform="translate(356.3,301.7) rotate(-83.7)"><use href="#arrowM"/></g>
+    <circle cx="350.0" cy="359.4" r="15" fill="#FFFFFF"/><use href="#trainM" x="350.0" y="359.4"/>
+    <g transform="translate(325.3,306.1) rotate(120.6)"><use href="#arrowM"/></g>
+    <circle cx="338.5" cy="286.7" r="15" fill="#FFFFFF"/><use href="#coachM" x="338.5" y="286.7"/>
+    <g transform="translate(205.7,253.1) rotate(-159.8)"><use href="#arrowM"/></g>
+    <circle cx="256.0" cy="276.1" r="15" fill="#FFFFFF"/><use href="#trainM" x="256.0" y="276.1"/>
+    <g transform="translate(509.3,395.8) rotate(85.6)"><use href="#arrowM"/></g>
+    <circle cx="439.8" cy="253.4" r="15" fill="#FFFFFF"/><use href="#planeM" x="439.8" y="253.4"/>
+    <path d="M 495.3,553.7 L 539.3,645.7" fill="none" stroke="#1B2E40" stroke-width="3.5" stroke-dasharray="3 8" stroke-linecap="round"/>
+    <g transform="translate(519.5,604.3) rotate(154)"><use href="#planeM"/></g>
+    <circle cx="495.3" cy="553.7" r="18" fill="none" stroke="#D22A2E" stroke-width="3.5"/>
+    <circle cx="495.3" cy="553.7" r="10" fill="#D22A2E" stroke="#FFFFFF" stroke-width="3"/>
+    <circle cx="341.3" cy="437.9" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
+    <circle cx="341.3" cy="437.9" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="383.0" cy="491.7" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
+    <circle cx="383.0" cy="491.7" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="360.5" cy="263.3" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
+    <circle cx="360.5" cy="263.3" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="317.9" cy="320.0" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
+    <circle cx="317.9" cy="320.0" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
+    <circle cx="170.0" cy="242.0" r="15" fill="none" stroke="#D22A2E" stroke-width="3"/>
+    <circle cx="170.0" cy="242.0" r="9" fill="#1B2E40" stroke="#FFFFFF" stroke-width="2.5"/>
   </g>
 
   <g paint-order="stroke" stroke="#DCEBF3" stroke-width="4.5">
-    <text x="565.0" y="625.3" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Guangzhou</text>
-    <text x="565.0" y="648.3" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
-    <text x="370.6" y="483.1" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Guilin</text>
-    <text x="370.6" y="506.1" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">2 nights</text>
-    <text x="415.2" y="549.8" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Yangshuo</text>
-    <text x="415.2" y="572.8" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
-    <text x="442.6" y="259.6" fill="#1B2E40" font-size="24" font-weight="800">Zhangjiajie</text>
-    <text x="442.6" y="282.6" fill="#5E6B76" font-size="15" font-weight="700">3 nights</text>
-    <text x="337.4" y="327.0" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Fenghuang</text>
-    <text x="337.4" y="350.0" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
-    <text x="108.0" y="182.0" fill="#1B2E40" font-size="24" font-weight="800">Chongqing</text>
-    <text x="108.0" y="205.0" fill="#5E6B76" font-size="15" font-weight="700">3 nights</text>
+    <text x="469.3" y="551.7" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Guangzhou</text>
+    <text x="469.3" y="574.7" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
+    <text x="317.3" y="439.9" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Guilin</text>
+    <text x="317.3" y="462.9" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">2 nights</text>
+    <text x="359.0" y="499.7" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Yangshuo</text>
+    <text x="359.0" y="522.7" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
+    <text x="386.5" y="271.3" fill="#1B2E40" font-size="24" font-weight="800">Zhangjiajie</text>
+    <text x="386.5" y="294.3" fill="#5E6B76" font-size="15" font-weight="700">3 nights</text>
+    <text x="293.9" y="322.0" fill="#1B2E40" font-size="24" font-weight="800" text-anchor="end">Fenghuang</text>
+    <text x="293.9" y="345.0" fill="#5E6B76" font-size="15" font-weight="700" text-anchor="end">1 night</text>
+    <text x="108.0" y="200.0" fill="#1B2E40" font-size="24" font-weight="800">Chongqing</text>
+    <text x="108.0" y="223.0" fill="#5E6B76" font-size="15" font-weight="700">3 nights</text>
   </g>
   <g paint-order="stroke" stroke="#DCEBF3" stroke-width="4">
-    <text x="565.0" y="669.3" fill="#D22A2E" font-size="14" font-weight="800" letter-spacing="0.5" text-anchor="end">START &amp; FINISH</text>
-    <text x="692" y="652" fill="#1B2E40" font-size="15" font-weight="800" text-anchor="middle">✈ AUCKLAND</text>
-    <text x="692" y="672" fill="#5E6B76" font-size="13" font-weight="600" text-anchor="middle">fly in &amp; out</text>
+    <text x="469.3" y="595.7" fill="#D22A2E" font-size="14" font-weight="800" letter-spacing="0.5" text-anchor="end">START &amp; FINISH</text>
+    <text x="545.2969136976666" y="675.6595579873285" fill="#1B2E40" font-size="15" font-weight="800" text-anchor="middle">✈ AUCKLAND</text>
+    <text x="545.2969136976666" y="695.6595579873285" fill="#5E6B76" font-size="13" font-weight="600" text-anchor="middle">fly in &amp; out</text>
   </g>
 
   <g transform="translate(60,714)"><use href="#trainM" transform="scale(0.72)"/></g>
