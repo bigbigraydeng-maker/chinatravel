@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import type { Tour } from '@/lib/data/tours';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import EnquiryPanelScrollReset from '@/components/tours/EnquiryPanelScrollReset';
 import { departures } from '@/lib/tour-discovery';
 import SingleRoomPricing from '@/components/tours/SingleRoomPricing';
 
@@ -32,26 +33,24 @@ export default function UpgradedTourBooking({ tour }: { tour: Tour }) {
 
   if (tour.soldOut) {
     const soldOutDate = tour.departureDates?.[0];
-    const isGoldenChina = tour.slug === 'golden-china';
     return (
       <aside id="enquiry" className="rounded-2xl border border-warm-200 bg-white p-6 lg:sticky lg:top-28">
         <p className="font-serif text-3xl text-primary">Sold Out</p>
         <p className="mt-4 text-ink-muted">
-          {isGoldenChina
-            ? 'The 16 November 2026 Golden China departure is fully booked.'
-            : soldOutDate
-              ? `The ${soldOutDate} ${shortTourName(tour)} departure is fully booked.`
-              : 'This departure is fully booked.'}
+          {soldOutDate
+            ? `The ${soldOutDate} ${shortTourName(tour)} departure is fully booked.`
+            : 'This tour is currently sold out.'}
         </p>
-        <a href="/campaigns/spotlight" className="mt-6 block rounded-full bg-primary px-6 py-3 text-center font-semibold text-white">
-          {isGoldenChina ? 'Explore December tours →' : 'Explore available tours →'}
+        <a href="/tours/china/discovery" className="mt-6 block rounded-full bg-primary px-6 py-3 text-center font-semibold text-white">
+          Explore available tours →
         </a>
       </aside>
     );
   }
 
   return (
-    <aside id="enquiry" className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28">
+    <aside id="enquiry" data-enquiry-panel className="scroll-mt-28 rounded-2xl border border-warm-200 bg-white p-5 shadow-sm lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+      <EnquiryPanelScrollReset />
       <p className="text-xs uppercase tracking-widest text-primary">Your {shortTourName(tour)} journey</p>
       <p className="mt-3 font-serif text-3xl">{displayPrice(offer?.price || tour.price)}</p>
       <p className="mt-2 text-sm text-ink-muted">Per person · twin share · NZD</p>

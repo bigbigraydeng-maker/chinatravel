@@ -6,30 +6,31 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import FAQSection from '@/components/FAQSection';
 import Testimonials from '@/components/Testimonials';
 
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { priceNumber } from '@/lib/tour-discovery';
 
 export async function generateMetadata(): Promise<Metadata> {
+  const goldenChina = await getPublishedTours().then((tours) => tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'golden-china' && tour.isActive && !tour.soldOut));
+  const nextDeparture = goldenChina?.departureDates?.[0];
   return buildCtsPageMetadata({
     title: 'Spotlight China Tours from New Zealand | CTS Tours',
-    description:
-      'Compare Golden China departing Auckland on 16 November 2026 with Christmas & New Year tours departing Auckland or Christchurch on 22 December 2026.',
+    description: goldenChina
+      ? `${goldenChina.name}, ${goldenChina.duration}, departing Auckland${nextDeparture ? ` on ${nextDeparture}` : ' on dates confirmed by CTS'}.`
+      : 'Browse CTS Tours China departures and check current dates with our Auckland team.',
     path: '/campaigns/spotlight',
-    ogImagePath: '/images/tours/shanghai-yuyuan-night.jpg',
-    ogImageAlt: 'Shanghai Yu Garden illuminated at night for the CTS Christmas and New Year China tours',
+    ogImagePath: '/images/tours/shanghai-yuyuan-night-1600.jpg',
+    ogImageAlt: 'Shanghai Yu Garden illuminated at night',
     keywords: [
       'China group tours 2026',
       'China group tours 2027',
       'New Zealand China tours',
       'CTS Tours spotlight departures',
-      'Christmas & New Year in China',
-      'Christmas in China tour',
       "Beijing Xi'an tour 2027",
-      'Best of China tour March 2027',
-      'China tours December 2026',
-      'Golden China November 2026',
+      'Best of China tour',
+      'Golden China departures',
     ],
   });
 }
@@ -43,7 +44,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Yes — Golden China and both December departures include return international airfares from their respective New Zealand departure city, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See each tour’s own inclusions list for the exact detail.',
+      'Yes — Golden China includes return international airfares from Auckland, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See the tour’s own inclusions list for the exact detail.',
   },
   {
     question: 'Do I need a visa to visit China?',
@@ -58,16 +59,19 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these departures sell out?',
     answer:
-      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026 or either 22 December 2026 departure, along with the deposit and cancellation terms before booking.',
+      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026, along with the deposit and cancellation terms before booking.',
   },
 ];
 
-export default function October2026CampaignIndexPage() {
+export const revalidate = 15;
+
+export default async function October2026CampaignIndexPage() {
   const siteUrl = getSiteUrl();
+  const tours = await getPublishedTours();
 
   // Build cards from spotlight config + tours.ts data.
   const cards = OCTOBER_2026_SPOTLIGHT_TOURS.map((spot) => {
-    const tour = getTourBySlug(spot.destination, spot.tier, spot.slug);
+    const tour = tours.find((item) => item.destination === spot.destination && item.tier === spot.tier && item.slug === spot.slug);
     if (!tour?.isActive || tour.soldOut) return null;
     return {
       spot,
@@ -75,19 +79,20 @@ export default function October2026CampaignIndexPage() {
     };
   })
     .filter((x): x is NonNullable<typeof x> => x !== null)
-    .sort(
-      (a, b) =>
-        new Date(a.spot.departureSortDate).valueOf() -
-        new Date(b.spot.departureSortDate).valueOf()
-    );
+    .sort((a, b) => {
+      const aDate = Date.parse(a.tour.departureDates?.[0] ?? '');
+      const bDate = Date.parse(b.tour.departureDates?.[0] ?? '');
+      return (Number.isNaN(aDate) ? Number.MAX_SAFE_INTEGER : aDate) - (Number.isNaN(bDate) ? Number.MAX_SAFE_INTEGER : bDate);
+    });
 
   // ItemList schema for rich-result eligibility.
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'CTS Spotlight China Tours',
-    description:
-      'Golden China departing Auckland on 16 November 2026, plus Christmas and New Year group tours departing Auckland and Christchurch on 22 December 2026.',
+    description: cards[0]
+      ? `${cards[0].tour.name}, ${cards[0].tour.duration}, departing Auckland${cards[0].tour.departureDates?.[0] ? ` on ${cards[0].tour.departureDates[0]}` : ' on dates confirmed by CTS'}.`
+      : 'No active departures are currently listed.',
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     numberOfItems: cards.length,
     itemListElement: cards.map((c, idx) => ({
@@ -99,6 +104,19 @@ export default function October2026CampaignIndexPage() {
     })),
   };
 
+  const available = cards.filter(({ tour }) => !tour.soldOut);
+  const goldenChina = cards.find(({ tour }) => tour.slug === 'golden-china')?.tour;
+  const currentDeparture = goldenChina?.departureDates?.[0] ?? 'ask CTS for the next date';
+  const lowestPrice = available
+    .map(({ tour }) => priceNumber(tour.price))
+    .filter((n): n is number => n !== null)
+    .sort((a, b) => a - b)[0];
+  const stats = [
+    { v: String(cards.length), l: cards.length === 1 ? 'Featured Tour' : 'Featured Tours' },
+    { v: available[0] ? (available[0].tour.departureDates?.[0] ?? 'Ask CTS') : 'Sold out', l: 'Next Departure' },
+    ...(lowestPrice !== undefined ? [{ v: `NZD $${lowestPrice.toLocaleString('en-NZ')}`, l: 'From' }] : []),
+  ];
+
   return (
     <>
       <SchemaMarkup data={itemListSchema} />
@@ -107,7 +125,7 @@ export default function October2026CampaignIndexPage() {
       <section className="relative overflow-hidden bg-accent text-white">
         <div className="absolute inset-0" aria-hidden>
           <Image
-            src="/images/tours/shanghai-yuyuan-night.jpg"
+            src="/images/tours/shanghai-yuyuan-night-1600.jpg"
             alt=""
             fill
             priority
@@ -138,7 +156,7 @@ export default function October2026CampaignIndexPage() {
           <div className="max-w-3xl">
             <p className="inline-flex items-center gap-2 rounded-full bg-primary/15 border border-primary/30 backdrop-blur-sm px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary mb-6">
               <span className="inline-block h-2 w-2 rounded-full bg-orange-400 animate-pulse" aria-hidden />
-              Limited Departures · Book Now
+              Featured Departures
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight mb-6">
@@ -146,18 +164,13 @@ export default function October2026CampaignIndexPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-white/85 leading-relaxed max-w-2xl mb-8">
-              Golden China departs Auckland on 16 November, followed by Christmas &amp; New Year journeys from Auckland or Christchurch on 22 December 2026.
-              Limited seats. Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
+              {goldenChina ? `${goldenChina.name} departs Auckland on ${currentDeparture}.` : 'Check current departures with our Auckland team.'}
+              Book direct with New Zealand&apos;s Kiwi-led China specialists — CTS Tours NZ, Auckland-based and backed by CTS Group.
             </p>
 
             {/* Stats Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 max-w-2xl">
-              {[
-                { v: '3', l: 'Featured Tours' },
-                { v: '2', l: 'NZ Departure Cities' },
-                { v: 'Nov–Dec', l: '2026 Departures' },
-                { v: 'NZD $4,999', l: 'From' },
-              ].map((s) => (
+              {stats.map((s) => (
                 <div
                   key={s.l}
                   className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm px-4 py-3"
@@ -207,7 +220,7 @@ export default function October2026CampaignIndexPage() {
               Choose Your Journey
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-              Each tour is a confirmed group departure with set dates, fixed pricing, and limited seats.
+              Each tour is a confirmed group departure with set dates and fixed pricing.
               Click for full itineraries, day-by-day inclusions, and bookings.
             </p>
           </div>
@@ -235,11 +248,11 @@ export default function October2026CampaignIndexPage() {
                       <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      {spot.departureLabel}
+                      {tour.departureDates?.[0] ? `${tour.departureDates[0]} · Auckland` : 'Ask CTS for the next date'}
                     </div>
-                    {spot.badgeText && (
+                    {(tour.soldOut || spot.badgeText) && (
                       <div className="bg-gradient-to-r from-orange-500 via-red-500 to-primary text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">
-                        {spot.badgeText}
+                        {tour.soldOut ? 'Sold out' : spot.badgeText}
                       </div>
                     )}
                   </div>
@@ -286,6 +299,16 @@ export default function October2026CampaignIndexPage() {
               </Link>
             ))}
           </div>
+
+          {cards.length === 0 && (
+            <p className="text-center text-gray-600">
+              No featured departures are listed right now.{' '}
+              <Link href="/tours/china/discovery" className="text-primary underline">
+                See all Discovery tours
+              </Link>
+              .
+            </p>
+          )}
         </div>
       </section>
 
@@ -377,7 +400,10 @@ export default function October2026CampaignIndexPage() {
       </section>
 
       {/* ─── FAQ ──────────────────────────────────────────────────────────── */}
-      <FAQSection faqs={OCTOBER_HUB_FAQS} />
+      <FAQSection faqs={OCTOBER_HUB_FAQS.map((faq) => ({
+        ...faq,
+        answer: faq.answer.replace(/16 November 2026/g, currentDeparture),
+      }))} />
 
       {/* ─── FINAL CTA ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-orange-500 text-white py-20 md:py-24">
@@ -395,8 +421,7 @@ export default function October2026CampaignIndexPage() {
           </h2>
           <p className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed">
             Book a featured group departure above, or talk to our Auckland team about a
-            fully tailor-made private trip. Either way — limited seats, and pricing locks in
-            once you confirm.
+            fully tailor-made private trip. Either way, pricing locks in once you confirm.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link

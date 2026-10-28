@@ -15,23 +15,23 @@ interface TourCardMedia {
  */
 const CARD_MEDIA: Record<string, TourCardMedia> = {
   'beijing-xian': {
-    src: '/images/tours/xian-terracotta-2.jpg',
+    src: '/images/tours/xian-terracotta-2-1600.jpg',
     objectPosition: '50% 60%',
   },
   essentials: {
-    src: '/images/tours/beijing-temple-2.jpg',
+    src: '/images/tours/beijing-temple-2-1600.jpg',
     objectPosition: '43% 57%',
   },
   'grand-tour': {
-    src: '/images/tours/great-wall-green.jpg',
+    src: '/images/tours/great-wall-green-1600.jpg',
     objectPosition: '50% 50%',
   },
   landscapes: {
-    src: '/images/tours/three-gorges-cruise-wide.jpg',
+    src: '/images/tours/three-gorges-cruise-wide-2000.jpg',
     objectPosition: '50% 48%',
   },
   'shanghai-surroundings': {
-    src: '/images/tours/shanghai-yuyuan-night.jpg',
+    src: '/images/tours/shanghai-yuyuan-night-1600.jpg',
     objectPosition: '50% 55%',
   },
   'guangzhou-shenzhen': {
@@ -43,7 +43,7 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
     objectPosition: '50% 52%',
   },
   chengdu: {
-    src: '/images/tours/chengdu-pandas.jpg',
+    src: '/images/tours/chengdu-pandas-1600.jpg',
     objectPosition: '38% 46%',
   },
   'silk-road': {
@@ -53,14 +53,6 @@ const CARD_MEDIA: Record<string, TourCardMedia> = {
   'imperial-heritage': {
     src: '/images/tours/forbidden-city-aerial.jpg',
     objectPosition: '50% 54%',
-  },
-  'china-icons-collection': {
-    src: '/images/campaigns/christmas-new-year/festive-china-og.webp',
-    objectPosition: '50% 52%',
-  },
-  'china-icons-collection-christchurch': {
-    src: '/images/tours/great-wall-mist.jpg',
-    objectPosition: '50% 48%',
   },
 };
 

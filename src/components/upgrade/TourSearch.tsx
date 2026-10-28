@@ -1,8 +1,7 @@
-import { getAllActiveTours } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 import TourSearchControls from './TourSearchControls';
 import { departures, tourCities, priceNumber, matchingOffer, tourUrl } from '@/lib/tour-discovery';
-export default function TourSearch() {
-  const tours = getAllActiveTours();
+export default function TourSearch({ tours }: { tours: Tour[] }) {
   const available = tours.filter(t=>matchingOffer(t,{}));
   const rows = available.flatMap(t=>{const dates=departures(t);return (dates.length?dates:[{date:'',price:t.price}]).map(d=>({id:t.id,cities:tourCities(t),month:d.date.slice(0,7),price:priceNumber(d.price)}));});
   const upcoming = available.map(t=>({tour:t,offer:matchingOffer(t,{})!})).filter(item=>item.offer.date).sort((a,b)=>a.offer.date.localeCompare(b.offer.date)).slice(0,3);

@@ -38,12 +38,12 @@ interface TourHeroProps {
    */
   departurePricing?: Record<string, string>;
   /**
-   * Seasonal framing for a specific departure (e.g. Christmas & New Year).
+   * Seasonal framing for a specific departure (e.g. a festive-season departure).
    * Renders a warm badge above the title and a soft amber glow over the hero
    * photo. Deliberately restrained — research on comparable festive tour
-   * pages (Wendy Wu's Christmas-in-China line) shows the mood is carried by
-   * warm night photography and a single badge, not holiday iconography, so
-   * there's no snowflakes/santa-hat treatment here, just warmth and light.
+   * pages shows the mood is carried by warm night photography and a single
+   * badge, not holiday iconography, so there's no snowflakes/santa-hat
+   * treatment here, just warmth and light.
    */
   seasonalBadge?: { label: string };
   /**

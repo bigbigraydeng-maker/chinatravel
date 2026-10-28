@@ -3,8 +3,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
-  getTourBySlug, 
-  getToursByDestinationAndTier,
   getDestinationBySlug,
 } from '@/lib/data/tours';
 import TourHero from '@/components/tours/TourHero';
@@ -16,6 +14,7 @@ import TourTabs from '@/components/tours/TourTabs';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import RecommendedReading from '@/components/RecommendedReading';
@@ -42,6 +41,7 @@ import {
 import { getSiteUrl } from '@/lib/site';
 import { Icon } from '@/components/ui/Icon';
 import { computeReturnDate } from '@/lib/data/tour-dates';
+import { getPublishedTourBySlug, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 
 interface TourPageProps {
   params: {
@@ -57,10 +57,10 @@ interface TourPageProps {
  * SSG page as immutable across production deploys — a departureDates
  * edit in tours.ts silently would not show up on the live page.
  */
-export const revalidate = 3600;
+export const revalidate = 15;
 
 export async function generateMetadata({ params }: TourPageProps): Promise<Metadata> {
-  const tour = getTourBySlug(params.destination, params.tier, params.tour);
+  const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour || !tour.isActive) {
     return {
@@ -114,8 +114,8 @@ export async function generateMetadata({ params }: TourPageProps): Promise<Metad
   };
 }
 
-export default function TourPage({ params }: TourPageProps) {
-  const tour = getTourBySlug(params.destination, params.tier, params.tour);
+export default async function TourPage({ params }: TourPageProps) {
+  const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
   
   if (!tour || !tour.isActive) {
     notFound();
@@ -126,7 +126,7 @@ export default function TourPage({ params }: TourPageProps) {
     notFound();
   }
 
-  const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
+  const relatedTours = (await getPublishedToursByDestinationAndTier(tour.destination, tour.tier))
     .filter(t => t.slug !== tour.slug)
     .slice(0, 3);
 
@@ -156,8 +156,6 @@ export default function TourPage({ params }: TourPageProps) {
   // Roll the approved Golden China detail design out one product at a time.
   const upgradedTourSlugs = new Set([
     'golden-china',
-    'china-icons-collection',
-    'china-icons-collection-christchurch',
     'essentials',
     'beijing-xian',
     'shanghai-surroundings',
@@ -165,12 +163,13 @@ export default function TourPage({ params }: TourPageProps) {
     'zhangjiajie',
   ]);
   if (upgradedTourSlugs.has(tour.slug)) {
-    return <><SchemaMarkup data={schemas} /><UpgradedTourPage tour={tour} /></>;
+    return <><SchemaMarkup data={schemas} /><TourViewContent tour={tour} /><UpgradedTourPage tour={tour} /></>;
   }
 
   return (
     <>
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       {/* Breadcrumb Navigation */}
       <nav className="bg-gray-50 border-b border-gray-200">
@@ -224,28 +223,10 @@ export default function TourPage({ params }: TourPageProps) {
         departurePricing={tour.departurePricing}
         singleSupplementNote={tour.singleSupplementNote}
         showAvailability={tour.departureDates?.[0] !== 'TBC'}
-        // October 2026 departures for both `beijing-xian` and `shanghai-surroundings`
-        // have sold out — soften the hero CTA so it doesn't promise a departure
-        // window CTS can no longer fulfil, while still capturing enquiries for
-        // the confirmed 2027 departures.
-        primaryCtaLabel={isOctoberCampaignTour ? 'Enquire about a future departure' : undefined}
-        secondaryCtaLabel={isOctoberCampaignTour ? 'View day-by-day itinerary' : undefined}
+        primaryCtaLabel={tour.soldOut || !tour.departureDates?.length ? 'Enquire about availability' : undefined}
+        secondaryCtaLabel={tour.soldOut || !tour.departureDates?.length ? 'View day-by-day itinerary' : undefined}
         singleSupplement={tour.singleSupplement}
         maxGroupSize={tour.maxGroupSize}
-        seasonalBadge={
-          tour.slug === 'china-icons-collection' || tour.slug === 'china-icons-collection-christchurch'
-            ? { label: 'Christmas & New Year Departure' }
-            : undefined
-        }
-        fareSavingsBadge={
-          tour.slug === 'china-icons-collection-christchurch'
-            ? {
-                logoSrc: '/images/airlines/china-southern-tail-badge.png',
-                logoAlt: 'China Southern Airlines',
-                text: "South Island fare saving — NZD $1,000 lower than the Auckland departure, thanks to China Southern's resumed Christchurch–Guangzhou route.",
-              }
-            : undefined
-        }
       />
 
       {/* Quick-facts strip — anchors that jump into the tour tabs */}
@@ -265,91 +246,18 @@ export default function TourPage({ params }: TourPageProps) {
 
       <TourTrustSignals />
 
-      {/* China Icons Collection: cross-link to the sibling Christchurch/Auckland departure */}
-      {(tour.slug === 'china-icons-collection' || tour.slug === 'china-icons-collection-christchurch') && (
-        <section className="bg-red-50 border-y border-red-200 py-4">
+      {tour.soldOut || !tour.departureDates?.length ? (
+        <section className="border-y border-amber-200 bg-amber-50 py-4">
           <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-red-700 font-semibold mb-1">
-              {tour.slug === 'china-icons-collection'
-                ? 'Departing From the South Island?'
-                : 'Departing From the North Island?'}
+            <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">
+              {tour.soldOut ? 'Currently sold out' : 'No published departure dates'}
             </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              {tour.slug === 'china-icons-collection'
-                ? '15-Day Christchurch Departure Available'
-                : '16-Day Auckland Departure Available'}
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              {tour.slug === 'china-icons-collection' ? (
-                <>
-                  Fly direct ex-Christchurch via Guangzhou —{' '}
-                  <Link href="/tours/china/discovery/china-icons-collection-christchurch" className="text-primary underline">
-                    view the 15-day Christchurch itinerary
-                  </Link>
-                </>
-              ) : (
-                <>
-                  Prefer to fly ex-Auckland with an extra day in Guangzhou?{' '}
-                  <Link href="/tours/china/discovery/china-icons-collection" className="text-primary underline">
-                    view the 16-day Auckland itinerary
-                  </Link>
-                </>
-              )}
+            <p className="text-sm text-gray-700">
+              Contact CTS to ask about future availability. The tour status, price and dates shown above use the latest ME publication.
             </p>
           </div>
         </section>
-      )}
-
-      {/* Essentials: November 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'essentials' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              November 2026 Departure Sold Out
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 11 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $4,080 per person twin-share. Contact us to register interest in a future November departure.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* Tale of Two Cities: 15 October 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'beijing-xian' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              October 2026 Departure Sold Out
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 18 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $3,480 per person twin-share. Contact us to register interest in a future October departure.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* Shanghai & Surroundings: 14 October 2026 departure sold out, now selling March 2027 */}
-      {tour.slug === 'shanghai-surroundings' && (
-        <section className="bg-amber-50 border-y border-amber-200 py-4">
-          <div className="container mx-auto px-4 text-center">
-            <p className="text-xs uppercase tracking-wider text-amber-700 font-semibold mb-1">
-              October 2026 Departure Sold Out
-            </p>
-            <p className="text-lg font-serif font-bold text-gray-900">
-              Next Departure: 25 March 2027
-            </p>
-            <p className="text-sm text-gray-600 mt-1">
-              From NZD $2,699 per person twin-share. Contact us to register interest in a future October departure.
-            </p>
-          </div>
-        </section>
-      )}
+      ) : null}
 
       {/* Tour Content */}
       <div className="bg-white">
@@ -511,7 +419,7 @@ export default function TourPage({ params }: TourPageProps) {
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-24 space-y-6">
+              <div className="sticky top-24 space-y-6 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
                 <TourEnquiry
                   tourName={tour.name}
                   tourSlug={tour.slug}

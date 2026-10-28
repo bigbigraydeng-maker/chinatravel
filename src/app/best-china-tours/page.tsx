@@ -4,15 +4,48 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import FAQSection from '@/components/FAQSection';
 import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
-import { Icon } from '@/components/ui/Icon';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { formatPublishedTourCities, getPublishedTours } from '@/lib/data/published-tour-catalog';
+import type { Tour } from '@/lib/data/tours';
+
+export const revalidate = 15;
+
+const COMPARE_TOUR_REFS = [
+  { slug: 'shanghai-surroundings', bestFor: 'Gardens · water towns · culinary' },
+  { slug: 'beijing-xian', bestFor: 'First visits · Great Wall · Terracotta Warriors' },
+  { slug: 'essentials', bestFor: 'Broad coverage · China highlights' },
+  { slug: 'silk-road', bestFor: 'Western China · Mogao Caves · ancient routes' },
+] as const;
+
+interface TourCompareRow {
+  tour: Tour;
+  href: string;
+  cities: string;
+  bestFor: string;
+}
+
+function compareRows(tours: Tour[]): TourCompareRow[] {
+  return COMPARE_TOUR_REFS.flatMap((ref) => {
+    const tour = tours.find((item) => item.destination === 'china' && item.slug === ref.slug && item.isActive && !item.soldOut);
+    if (!tour) return [];
+    return [{
+      tour,
+      href: `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
+      cities: formatPublishedTourCities(tour.tourCities),
+      bestFor: ref.bestFor,
+    }];
+  });
+}
 
 export async function generateMetadata(): Promise<Metadata> {
+  const rows = compareRows(await getPublishedTours());
+  const comparison = rows.map(({ tour }) => `${tour.name} (${tour.duration}, ${tour.price})`).join(' · ');
   return buildCtsPageMetadata({
-    title: 'Best China Tours from NZ 2026-27 · Compare 4 Itineraries | CTS',
-    description:
-      'Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($2,699) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS; Auckland-based team.',
+    title: 'Best China Tours from NZ · Compare Current Itineraries | CTS',
+    description: comparison
+      ? `Compare currently published China tours from New Zealand: ${comparison}. See current itinerary details and departures from CTS.`
+      : 'Compare currently published China tours from New Zealand and see each itinerary and departure directly from CTS.',
     path: '/best-china-tours',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
@@ -30,88 +63,45 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-interface TourCompareRow {
-  name: string;
-  slug: string;
-  tier: 'Discovery' | 'Signature';
-  days: number;
-  priceNZD: number;
-  cities: string;
-  bestFor: string;
-}
-
-const TOURS: TourCompareRow[] = [
-  {
-    name: 'Shanghai & Surroundings',
-    slug: '/tours/china/discovery/shanghai-surroundings',
-    tier: 'Discovery',
-    days: 10,
-    priceNZD: 2699,
-    cities: 'Shanghai · Suzhou · Wuxi · Hangzhou',
-    bestFor: 'Lowest entry price · gardens · water towns · culinary',
-  },
-  {
-    name: 'Tale of Two Cities',
-    slug: '/tours/china/discovery/beijing-xian',
-    tier: 'Discovery',
-    days: 10,
-    priceNZD: 3480,
-    cities: 'Beijing · Xi\'an',
-    bestFor: 'First-timers · Great Wall + Terracotta Warriors essentials',
-  },
-  {
-    name: 'Best of China',
-    slug: '/tours/china/discovery/essentials',
-    tier: 'Discovery',
-    days: 15,
-    priceNZD: 3880,
-    cities: 'Beijing · Xi\'an · Shanghai · Guilin',
-    bestFor: 'Most coverage · 4 must-see cities · best NZD/day value',
-  },
-  {
-    name: 'Silk Road',
-    slug: '/tours/china/signature/silk-road',
-    tier: 'Signature',
-    days: 18,
-    priceNZD: 7999,
-    cities: 'Xi\'an · Lanzhou · Dunhuang · Turpan · Urumqi',
-    bestFor: 'Bucket-list adventure · UNESCO Mogao Caves · ancient routes',
-  },
-];
-
-export default function BestChinaToursPage() {
+export default async function BestChinaToursPage() {
+  const rows = compareRows(await getPublishedTours());
+  const firstTripTour = rows.find(({ tour }) => tour.slug === 'beijing-xian')?.tour;
+  const valueTour = rows.find(({ tour }) => tour.slug === 'shanghai-surroundings')?.tour;
+  const broadTour = rows.find(({ tour }) => tour.slug === 'essentials')?.tour;
+  const adventureTour = rows.find(({ tour }) => tour.slug === 'silk-road')?.tour;
   const siteUrl = getSiteUrl();
 
   const faqs = [
     {
-      question: 'What are the best China tours from New Zealand in 2026-27?',
-      answer:
-        'CTS Tours\' four headline China itineraries for Kiwi travellers in 2026-27 are: Shanghai & Surroundings (10 days, NZD $2,699, Discovery tier — lowest entry price); Tale of Two Cities — Beijing + Xi\'an (10 days, NZD $3,480, Discovery — best for first-timers); Best of China (15 days, NZD $4,080, Discovery — most coverage); Silk Road (18 days, NZD $7,999, Signature — bucket-list). All four are Kiwi-led, Auckland-based, with NZD pricing and English-speaking guides on the ground in China.',
+      question: 'Which China tours are currently published for New Zealand travellers?',
+      answer: `The currently published comparison includes ${rows.map(({ tour }) => `${tour.name} (${tour.duration}, ${tour.price})`).join('; ') || 'no active tours at this time'}. The table below is built from the latest published ME tour records.`,
     },
     {
       question: 'Which is the best China tour for first-time visitors from NZ?',
-      answer:
-        'Tale of Two Cities (10 days, NZD $3,480) is our recommended first-timer tour: it covers Beijing\'s Forbidden City, Great Wall and hutongs plus Xi\'an\'s Terracotta Warriors and ancient City Wall — the two cities every Kiwi should see on a first China trip. The 10-day length is comfortable, the Discovery-tier 3-4 star hotels are well-located, and the pace gives you depth without exhaustion. If you want to add Shanghai for the modern skyline contrast, step up to Best of China (15 days).',
+      answer: firstTripTour
+        ? `${firstTripTour.name} is a strong first-trip option, with ${firstTripTour.duration} and a route through ${formatPublishedTourCities(firstTripTour.tourCities, ', ')}. See its current itinerary and price on the tour page.`
+        : 'The first-trip comparison will appear here when that tour is active in the published ME catalogue.',
     },
     {
       question: 'Which China tour has the lowest NZD price?',
-      answer:
-        'Shanghai & Surroundings (10 days) starts from NZD $2,699 — the lowest published entry price across our four flagship China tours. It covers Shanghai, Suzhou, Wuxi and Hangzhou — the Jiangnan loop famous for classical gardens, canal towns and Chinese tea culture. Includes return international flights from Auckland.',
+      answer: valueTour
+        ? `${valueTour.name} currently displays ${valueTour.price} for ${valueTour.duration}. Prices and included services can change when CTS publishes a new tour version; check the live tour page before enquiring.`
+        : 'Current tour prices appear in the comparison table when tours are active in the published ME catalogue.',
     },
     {
       question: 'What is the most comprehensive China tour you offer?',
-      answer:
-        'Best of China (15 days, NZD $4,080, Discovery tier) covers the four must-see cities — Beijing, Xi\'an, Shanghai and Guilin — making it the most coverage you can get at Discovery-tier pricing. The Silk Road (18 days, NZD $7,999, Signature tier) is longer but focuses on the western desert route rather than China\'s mainstream highlights.',
+      answer: broadTour
+        ? `${broadTour.name} currently covers ${formatPublishedTourCities(broadTour.tourCities, ', ')} over ${broadTour.duration}. Its published inclusions and itinerary are shown on the tour page.`
+        : 'The broad-coverage option will appear here when it is active in the published ME catalogue.',
     },
     {
       question: 'How is "best" decided — by price, length, or destination?',
-      answer:
-        'Different tours win on different criteria. For lowest price → Shanghai & Surroundings ($2,699). For first-timers → Tale of Two Cities (Beijing + Xi\'an essentials). For coverage → Best of China (4 cities, 15 days). For adventure → Silk Road (UNESCO Mogao Caves, 18 days). All four are Kiwi-led from Auckland, with NZD pricing and English-speaking guides. Compare the table below to find the right fit, or ask our Auckland team for a personalised recommendation.',
+      answer: `Compare current published routes, durations and prices in the table below${adventureTour ? `, including ${adventureTour.name} for travellers interested in western China` : ''}. Tour details on this page come from the latest version published in ME.`,
     },
     {
       question: 'Are the prices final or are there extras?',
       answer:
-        'Published prices include return international flights from Auckland (AKL), hotel accommodation per tour tier, English-speaking local guides throughout, entrance fees per itinerary, and meals as specified. Excluded: travel insurance, personal expenses, and tips. Single supplement applies if you don\'t share a room. If you depart from Wellington, Christchurch or regional NZ, our team books a connecting domestic flight to Auckland for an additional fee — quoted separately based on your city and dates.',
+        'Check the selected tour’s published inclusions, exclusions and single-room supplement on its tour page. Those fields update from the latest tour version published by CTS in ME.',
     },
   ];
 
@@ -125,9 +115,8 @@ export default function BestChinaToursPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      name: 'Best China Tours from New Zealand 2026-27',
-      description:
-        'Compare the four best China tours from New Zealand for 2026-27 — side-by-side price, length, cities, and best-for guidance.',
+      name: 'Best China Tours from New Zealand',
+      description: 'Compare currently active China tours by published price, duration and route.',
       url: `${siteUrl}/best-china-tours`,
       provider: {
         '@type': 'TravelAgency',
@@ -143,19 +132,19 @@ export default function BestChinaToursPage() {
       '@context': 'https://schema.org',
       '@type': 'ItemList',
       itemListOrder: 'https://schema.org/ItemListOrderAscending',
-      numberOfItems: TOURS.length,
-      itemListElement: TOURS.map((t, i) => ({
+      numberOfItems: rows.length,
+      itemListElement: rows.map(({ tour, href, cities }, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         item: {
           '@type': 'TouristTrip',
-          name: t.name,
-          url: `${siteUrl}${t.slug}`,
-          itinerary: t.cities,
-          duration: `P${t.days}D`,
+          name: tour.name,
+          url: `${siteUrl}${href}`,
+          itinerary: cities,
+          duration: `P${tour.duration.match(/\d+/)?.[0] ?? ''}D`,
           offers: {
             '@type': 'Offer',
-            price: t.priceNZD,
+            price: tour.price.replace(/[^\d.]/g, ''),
             priceCurrency: 'NZD',
             availability: 'https://schema.org/InStock',
           },
@@ -201,7 +190,7 @@ export default function BestChinaToursPage() {
             Best China Tours from New Zealand
           </h1>
           <p className="text-xl text-gray-700 mb-6">
-            Compare 4 Kiwi-led itineraries · 2026-27 departures · NZD $2,699–7,999
+            Compare {rows.length} active itineraries · current routes and prices
           </p>
           <p className="text-base text-gray-600 leading-relaxed">
             Four China tours, four very different reasons to go. Below you&apos;ll find a side-by-side
@@ -224,15 +213,13 @@ export default function BestChinaToursPage() {
               Quick answer
             </p>
             <p className="text-gray-800 leading-relaxed">
-              CTS Tours&apos; four headline China itineraries from New Zealand for 2026-27:{' '}
-              <strong>Shanghai &amp; Surroundings</strong> (10 days, NZD $2,699 — lowest entry
-              price),{' '}
-              <strong>Tale of Two Cities</strong> (Beijing + Xi&apos;an, 10 days, NZD $3,480 —
-              best for first-timers),{' '}
-              <strong>Best of China</strong> (15 days, NZD $4,080 — most coverage),{' '}
-              <strong>Silk Road</strong> (18 days, NZD $7,999 — bucket-list
-              adventure). All include Auckland return flights, English-speaking guides, and NZD
-              pricing. Backed by CTS — global travel brand; CTS Tours NZ is Auckland-based.
+              CTS Tours&apos; currently published China itineraries:{' '}
+              {rows.map(({ tour }, index) => (
+                <span key={tour.id}>
+                  {index > 0 ? '; ' : ''}<strong>{tour.name}</strong> ({tour.duration}, {tour.price})
+                </span>
+              ))}
+              {rows.length === 0 ? ' There are no active tours to compare at this time.' : '. Current itinerary, cities, price and availability are read from the ME published catalogue.'}
             </p>
           </aside>
 
@@ -255,23 +242,23 @@ export default function BestChinaToursPage() {
                 </tr>
               </thead>
               <tbody>
-                {TOURS.map((t) => (
-                  <tr key={t.slug} className="border-b border-gray-100 hover:bg-warm-50/30">
+                {rows.map(({ tour, href, cities, bestFor }) => (
+                  <tr key={tour.id} className="border-b border-gray-100 hover:bg-warm-50/30">
                     <td className="py-3 px-3">
                       <Link
-                        href={t.slug}
+                        href={href}
                         className="font-bold text-primary hover:underline"
                       >
-                        {t.name}
+                        {tour.name}
                       </Link>
                     </td>
-                    <td className="py-3 px-3 text-gray-700">{t.tier}</td>
-                    <td className="py-3 px-3 text-gray-700">{t.days}</td>
+                    <td className="py-3 px-3 text-gray-700">{tour.tier}</td>
+                    <td className="py-3 px-3 text-gray-700">{tour.duration}</td>
                     <td className="py-3 px-3 text-gray-900 font-bold">
-                      ${t.priceNZD.toLocaleString()}
+                      {tour.price}
                     </td>
-                    <td className="py-3 px-3 text-gray-700 hidden md:table-cell">{t.cities}</td>
-                    <td className="py-3 px-3 text-gray-700">{t.bestFor}</td>
+                    <td className="py-3 px-3 text-gray-700 hidden md:table-cell">{cities || 'See itinerary'}</td>
+                    <td className="py-3 px-3 text-gray-700">{bestFor}</td>
                   </tr>
                 ))}
               </tbody>
@@ -284,74 +271,18 @@ export default function BestChinaToursPage() {
               How to Pick the Right Tour
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-emerald-50 border border-emerald-100 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <Icon name="sparkles" className="w-5 h-5 text-emerald-600" />
-                  First trip to China?
-                </h3>
-                <p className="text-gray-700 mb-3">
-                  Start with <strong>Tale of Two Cities</strong> (Beijing + Xi&apos;an, 10 days, NZD
-                  $3,480). The Great Wall + Terracotta Warriors combination is the essential
-                  first-visit pairing.
-                </p>
-                <Link
-                  href="/tours/china/discovery/beijing-xian"
-                  className="text-primary font-bold hover:underline"
-                >
-                  View Tale of Two Cities →
-                </Link>
-              </div>
-              <div className="bg-amber-50 border border-amber-100 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <Icon name="star" filled className="w-5 h-5 text-amber-500" />
-                  Want lowest price?
-                </h3>
-                <p className="text-gray-700 mb-3">
-                  <strong>Shanghai &amp; Surroundings</strong> from NZD $2,699 covers the
-                  Jiangnan loop (Shanghai · Suzhou · Wuxi · Hangzhou) — gardens, canal towns,
-                  Chinese tea culture.
-                </p>
-                <Link
-                  href="/tours/china/discovery/shanghai-surroundings"
-                  className="text-primary font-bold hover:underline"
-                >
-                  View Shanghai &amp; Surroundings →
-                </Link>
-              </div>
-              <div className="bg-blue-50 border border-blue-100 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <Icon name="heart" filled className="w-5 h-5 text-blue-600" />
-                  Most coverage in one trip?
-                </h3>
-                <p className="text-gray-700 mb-3">
-                  <strong>Best of China</strong> (15 days, NZD $4,080) covers the 4 must-see
-                  cities — Beijing · Xi&apos;an · Shanghai · Guilin — at Discovery-tier
-                  pricing.
-                </p>
-                <Link
-                  href="/tours/china/discovery/essentials"
-                  className="text-primary font-bold hover:underline"
-                >
-                  View Best of China →
-                </Link>
-              </div>
-              <div className="bg-purple-50 border border-purple-100 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2 flex items-center gap-2">
-                  <Icon name="sparkles" className="w-5 h-5 text-purple-600" />
-                  Bucket-list adventure?
-                </h3>
-                <p className="text-gray-700 mb-3">
-                  <strong>Silk Road</strong> (18 days, NZD $7,999, Signature tier)
-                  follows the ancient routes through Xi&apos;an, Dunhuang&apos;s Mogao Caves,
-                  Turpan and Urumqi.
-                </p>
-                <Link
-                  href="/tours/china/signature/silk-road"
-                  className="text-primary font-bold hover:underline"
-                >
-                  View Silk Road →
-                </Link>
-              </div>
+              {rows.map(({ tour, href, cities, bestFor }) => (
+                <div key={tour.id} className="rounded-xl border border-warm-100 bg-warm-50/50 p-6">
+                  <h3 className="mb-2 text-lg font-bold">{tour.name}</h3>
+                  <p className="mb-3 text-gray-700">
+                    {bestFor}. {tour.duration} · {tour.price}{cities ? ` · ${cities}` : ''}.
+                  </p>
+                  <Link href={href} className="font-bold text-primary hover:underline">
+                    View live itinerary →
+                  </Link>
+                </div>
+              ))}
+              {rows.length === 0 ? <p className="text-gray-700">No China tours are currently active in the ME published catalogue.</p> : null}
             </div>
           </section>
         </div>

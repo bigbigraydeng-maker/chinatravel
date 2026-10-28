@@ -95,9 +95,9 @@ The itinerary returns to Beijing for the international connection home. Dependin
 
 ## Book the Tour
 
-CTS Tours offers **A Tale of Two Cities** — a 10-day Discovery tour covering exactly this itinerary, from NZD $3,480 per person (twin share). Departs October 2026 from Auckland.
+CTS Tours offers **A Tale of Two Cities** — a 10-day Discovery tour covering exactly this itinerary, from NZD $3,480 per person (twin share). See the tour page for the next departures from Auckland.
 
-Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027), in addition to the October 2026 departure.
+Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027).
 
 [View the full tour details →](/tours/china/discovery/beijing-xian)
     `
@@ -162,8 +162,6 @@ Yes. China has very low rates of petty crime, the tourist infrastructure in Beij
 
 If you're flexible on timing, October is the best month for northern China. The summer heat and humidity have passed, the skies are clearer after the monsoon season, and the temperature (10–20°C in October) is ideal for walking. The trees around the Summer Palace and hutong neighbourhoods turn golden, and the Great Wall in autumn light is genuinely stunning.
 
-CTS Tours' October 2026 departure for this itinerary leaves from Auckland on 15 October — timed specifically for the best conditions in both cities.
-
 ## Visa for New Zealand Travellers
 
 Many New Zealand passport holders currently qualify for China's visa-free entry policy for short leisure visits (typically up to 15 days). This makes a 10-day trip accessible without the lead time of a full visa application. Confirm the current requirements with CTS or the Chinese Embassy before booking, as policies are subject to change.
@@ -172,7 +170,7 @@ Many New Zealand passport holders currently qualify for China's visa-free entry 
 
 CTS Tours offers **A Tale of Two Cities** — 10 days, Beijing + Xi'an, guided throughout, from NZD $3,480 per person (twin share). Includes international airfares from Auckland, 4-star hotels, high-speed train, entrance fees, and English-speaking guide.
 
-Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027), in addition to the October 2026 departure.
+Confirmed 2027 group departures leave Auckland on 18 March 2027 (returns 27 March 2027) and 10 June 2027 (returns 19 June 2027).
 
 [View tour details and departure dates →](/tours/china/discovery/beijing-xian)
     `
@@ -374,9 +372,7 @@ This pricing includes international airfares from Auckland. If you're used to se
 
 **October** is the best month for northern China. The summer heat has passed, the skies are typically clear after the monsoon season, temperatures are 10–20°C — ideal for walking — and the autumn foliage around the Summer Palace and hutong areas is genuinely beautiful.
 
-CTS Tours' 2026 October departure leaves Auckland on **15 October**. This timing is chosen deliberately for the best conditions.
-
-**April–May** is the second-best window — spring blossoms, good temperatures, before the summer humidity arrives. We also run spring departures; enquire for dates.
+**April–May** is the second-best window — spring blossoms, good temperatures, before the summer humidity arrives. We run spring departures; enquire for dates.
 
 **Avoid:** July and August in Beijing are hot (35°C+) and humid, and July–August is peak domestic tourism season in China, which means larger crowds at all major sites.
 
@@ -435,7 +431,7 @@ Several meals on this tour are deliberately left as own expense — a design cho
 
 ## Best Time to Visit: October
 
-October is the strongest month for this route. The summer heat and humidity have passed, the West Lake in Hangzhou takes on its autumn character, the tea harvest season is ending, and the region's famous silk-producing industry is in full operation. The CTS October 2026 departure leaves Auckland on **14 October** — timed for these conditions.
+October is the strongest month for this route. The summer heat and humidity have passed, the West Lake in Hangzhou takes on its autumn character, the tea harvest season is ending, and the region's famous silk-producing industry is in full operation.
 
 ## Visa and Pricing
 
@@ -491,7 +487,7 @@ The atmosphere in the early morning is genuine religious activity rather than to
 
 Hangzhou is best experienced as part of the Jiangnan triangle: Suzhou for the classical gardens and canals, Hangzhou for West Lake and tea culture, Shanghai for the modern city and the Bund. The three are connected by comfortable inter-city distances, and the contrast between them — ancient, romantic, modern — is itself one of the pleasures of the route.
 
-CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,699 per person from Auckland, departing 14 October 2026.
+CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,699 per person from Auckland; see the tour page for the next departures.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -540,7 +536,7 @@ Beyond the gardens, Suzhou has an ancient canal district that has been the city'
 
 Suzhou is approximately 1 hour by high-speed train from Shanghai and 1.5–2 hours from Hangzhou — perfectly positioned as the first stop on a Yangtze Delta tour. CTS Tours allocates 2 nights in Suzhou within the **Shanghai & Surroundings** itinerary, covering the Humble Administrator's Garden, Master of the Nets, and the canal district.
 
-The tour is priced from NZD $2,699 per person (twin share) from Auckland, departing 14 October 2026.
+The tour is priced from NZD $2,699 per person (twin share) from Auckland; see the tour page for the next departures.
 
 [View the full Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -603,7 +599,7 @@ Return to Shanghai for the international connection. Depending on flight timing,
 
 **October weather:** Warm days (18–24°C), cooler evenings (10–15°C), generally clear skies. Light layers recommended. The autumn light on West Lake is worth the timing specifically.
 
-The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $2,699 per person (twin share) including international airfares from Auckland. Departs 14 October 2026.
+The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $2,699 per person (twin share) including international airfares from Auckland. See the tour page for the next departures.
 
 [View full tour details →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -683,7 +679,7 @@ This is the easiest region in China to travel independently or in a small group:
 
 ## Experiencing Jiangnan With CTS
 
-Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop, with the October departure timed for the region's best weather. From NZD 2,699 per person twin share including airfares from Auckland.
+Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop. From NZD 2,699 per person twin share including airfares from Auckland.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings), or browse [Shanghai](/shanghai-tours), [Suzhou](/suzhou-tours) and [Hangzhou](/hangzhou-tours) tours.
     `

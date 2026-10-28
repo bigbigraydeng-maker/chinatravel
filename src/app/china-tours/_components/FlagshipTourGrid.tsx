@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import { getAllChinaTours, type Tour } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 import { getTourCardMedia } from '@/lib/tour-card-media';
 
 interface FlagshipTourGridProps {
+  tours?: Tour[];
   /**
    * How many flagship cards to render. Defaults to the full roster. FB
    * Leadform thankyou traffic (utm_medium=ab_test_leadform_thankyou) passes a
@@ -22,11 +23,17 @@ interface FlagshipTourGridProps {
   intro?: string;
 }
 
-// December departures are the primary promotion, approved 17 September 2026.
-const FLAGSHIP_TOURS = [
-  { slug: 'china-icons-collection', ribbon: '22 December · Auckland', href: '/tours/china/discovery/china-icons-collection', imageOverride: undefined },
-  { slug: 'china-icons-collection-christchurch', ribbon: '22 December · Christchurch', href: '/tours/china/discovery/china-icons-collection-christchurch', imageOverride: undefined },
-];
+interface FlagshipEntry {
+  slug: string;
+  ribbon: string;
+  href: string;
+  imageOverride?: string;
+}
+
+// Tours featured on the China Tours page, e.g.
+// { slug: 'beijing-xian', ribbon: '18 March · Auckland', href: '/tours/china/discovery/beijing-xian' }.
+// While this list is empty the grid renders nothing.
+const FLAGSHIP_TOURS: FlagshipEntry[] = [];
 
 /**
  * Strip the "From " prefix and " per person" suffix so prices render with
@@ -54,9 +61,9 @@ function nextDepartureChip(t?: Tour): string | null {
   return `${m[1].slice(0, 3)} ${m[2]}`;
 }
 
-export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }: FlagshipTourGridProps = {}) {
+export default function FlagshipTourGrid({ tours = [], limit, mobileLimit, heading, intro }: FlagshipTourGridProps = {}) {
   const toursBySlug = new Map<string, Tour>(
-    getAllChinaTours().map((t) => [t.slug, t])
+    tours.map((t) => [t.slug, t])
   );
 
   // Never silently drop a card — Meta/Google ads land here and a missing
@@ -73,16 +80,18 @@ export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }:
     return { ...entry, tour };
   }).slice(0, limit ?? FLAGSHIP_TOURS.length);
 
+  if (cards.length === 0) return null;
+
   return (
     <section className="bg-warm-50 border-y border-warm-100">
       <div className="container mx-auto px-4 py-14 md:py-16">
         <div className="max-w-3xl mb-8">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-3">
-            {heading ?? 'Christmas & New Year in China'}
+            {heading ?? 'Featured China journeys'}
           </h2>
           <p className="text-lg text-gray-700">
             {intro ??
-              'Depart on 22 December 2026 from Auckland or Christchurch. Choose your festive journey and ask our specialists about availability.'}
+              'Choose your journey and ask our specialists about availability.'}
           </p>
         </div>
 

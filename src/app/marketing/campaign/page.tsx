@@ -4,6 +4,7 @@ import { marketingPlanAccessKey } from '@/lib/auth/marketing-plan-session';
 import TodayW1Panel from './TodayW1Panel';
 import CampaignCollapsibleSection from './CampaignCollapsibleSection';
 import {
+  OCTOBER_2026_DISCOVERY_BY_SLUG,
   OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS,
   OCTOBER_2026_GOOGLE_ADS_URL_ROWS,
   OCTOBER_2026_GOOGLE_ADS_UTM_CAMPAIGN,
@@ -458,7 +459,7 @@ export default function MarketingPlanPage() {
                   className="rounded-2xl border border-primary/15 bg-gradient-to-b from-white to-warm-50/80 p-4 shadow-soft sm:p-5"
                 >
                   <h3 className="font-serif text-base font-semibold text-accent">{g.productLabel}</h3>
-                  <p className="mt-1 font-mono text-[11px] text-gray-500">/campaigns/october-2026/{g.slug}</p>
+                  <p className="mt-1 font-mono text-[11px] text-gray-500">/tours/china/discovery/{OCTOBER_2026_DISCOVERY_BY_SLUG[g.slug].tourSlug}</p>
                   <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:flex-wrap">
                     <ReadOnlyCampaignUrl id={`${baseId}-g-rsa`} label="Google · Search RSA（cpc）" url={g.searchRsaUrl} />
                     <ReadOnlyCampaignUrl id={`${baseId}-g-pmax`} label="Google · Performance Max（cpc）" url={g.pmaxUrl} />

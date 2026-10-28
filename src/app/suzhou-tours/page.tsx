@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
+import { getPublishedToursByCityName } from '@/lib/data/published-tour-catalog';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { suzhouToursMeta } from '@/lib/data/seo-pages';
 
@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function SuzhouToursPage() {
-  const tours = getToursByCityName('suzhou');
+export default async function SuzhouToursPage() {
+  const tours = await getPublishedToursByCityName('suzhou');
 
   const schemas = [
     generateTouristDestinationSchema('Suzhou', suzhouToursMeta.description, '/suzhou-tours', tours),

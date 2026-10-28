@@ -7,12 +7,16 @@ import TrustBar from '@/components/TrustBar';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { formatPublishedTourCities, getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
+
+/** Published tours and departures refresh after each ME publish and at most every 15 seconds. */
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Small-Group China Tours from New Zealand | CTS Tours',
     description:
-      'Small-group China tours designed for New Zealand travellers. Intimate groups, expert guides, hand-picked hotels, NZD pricing. October 2026 departures available.',
+      'Small-group China tours designed for New Zealand travellers. Compare current itineraries, published prices and departure dates from CTS Tours.',
     path: '/small-group-china-tours',
     ogImagePath:
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
@@ -29,8 +33,15 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function SmallGroupChinaToursPage() {
+export default async function SmallGroupChinaToursPage() {
   const siteUrl = getSiteUrl();
+  const tours = await getPublishedChinaTours();
+
+  const featuredTours = ['beijing-xian', 'shanghai-surroundings', 'essentials'].flatMap((slug) => {
+    const tour = tours.find((item) => item.tier === 'discovery' && item.slug === slug && !item.soldOut);
+    if (!tour) return [];
+    return [{ tour, href: `/tours/${tour.destination}/${tour.tier}/${tour.slug}` }];
+  });
 
   const faqs = [
     {
@@ -54,9 +65,9 @@ export default function SmallGroupChinaToursPage() {
         'Yes. Solo travellers join our scheduled departures alongside other Kiwi travellers. If you prefer not to share a room, a single supplement applies — details are listed on each tour page.',
     },
     {
-      question: 'What are the departure months for October 2026?',
+      question: 'When are the next small-group departures?',
       answer:
-        'Our October 2026 Discovery departures leave mid-October from Auckland. The Tale of Two Cities (Beijing + Xi\'an) departs 15 October 2026. Shanghai & Surroundings departs on the same window. Check each campaign page for exact dates and seat availability.',
+        `Our scheduled departures leave from Auckland. ${featuredTours.map(({ tour }) => `${tour.name}${tour.departureDates?.length ? ` departs ${tour.departureDates.join(' & ')}` : ': ask us for the next departure date'}`).join('. ')}. Check each live tour page for exact dates and availability.`,
     },
   ];
 
@@ -66,7 +77,7 @@ export default function SmallGroupChinaToursPage() {
       '@type': 'WebPage',
       name: 'Small-Group China Tours from New Zealand',
       description:
-        'Small-group guided China tours from New Zealand with CTS Tours. Intimate groups, expert local guides, NZD pricing, October 2026 departures.',
+        'Small-group guided China tours from New Zealand with CTS Tours. Current tour facts and departure dates come from the published CTS catalogue.',
       url: `${siteUrl}/small-group-china-tours`,
       provider: {
         '@type': 'Organization',
@@ -115,7 +126,7 @@ export default function SmallGroupChinaToursPage() {
             Small-Group China Tours from New Zealand
           </h1>
           <p className="text-xl opacity-90">
-            Intimate groups. Expert guides. 2026-27 departures open.
+            Intimate groups. Expert guides. {featuredTours.length} active featured tours.
           </p>
         </div>
       </section>
@@ -138,7 +149,7 @@ export default function SmallGroupChinaToursPage() {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours runs <strong>small-group</strong> China tours from New Zealand. Groups depart from Auckland (return flights included), priced in NZD. October 2026 departures are open for Beijing &amp; Xi&apos;an and Shanghai &amp; Surroundings. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
+                  CTS Tours runs <strong>small-group</strong> China tours from New Zealand. Compare {featuredTours.map(({ tour }) => `${tour.name} (${tour.duration}, ${tour.price})`).join('; ') || 'currently active published tours'} below. Names, duration, routes, itinerary highlights, prices and departure dates come from the latest ME version CTS has published. NZ passport holders can enter China visa-free for up to 30 days — no visa application needed.
                 </p>
               </aside>
 
@@ -185,97 +196,37 @@ export default function SmallGroupChinaToursPage() {
                 </div>
               </section>
 
-              {/* Section 3: October 2026 departures */}
+              {/* Section 3: upcoming departures */}
               <section>
-                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">
-                  October 2026 Departures
-                </h2>
+                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">Upcoming Departures</h2>
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  October is peak season in China — clear skies, crisp autumn colour, and the Great
-                  Wall blazing red and orange. Our two October 2026 small-group departures cover the
-                  most-requested Kiwi itineraries.
+                  Current product details below come from tours that are active in the latest ME publication.
                 </p>
                 <div className="space-y-4">
-                  <div className="border-l-4 border-primary bg-warm-50 rounded-r-xl p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                      <div>
-                        <h3 className="font-serif font-bold text-xl text-gray-900">
-                          A Tale of Two Cities
-                        </h3>
-                        <p className="text-gray-600 mt-1">
-                          10 days · Beijing + Xi&apos;an by high-speed train
-                        </p>
-                        <p className="text-gray-700 text-sm mt-2">
-                          Great Wall (Mutianyu), Forbidden City, Tiananmen Square, Terracotta Warriors,
-                          Xi&apos;an City Wall, Muslim Quarter
-                        </p>
-                        <p className="mt-3">
-                          <span className="font-bold text-primary text-lg">From NZD $3,480</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 15 October 2026 &amp; 18 March 2027</span>
-                        </p>
+                  {featuredTours.map(({ tour, href }, index) => (
+                    <div key={tour.id} className="border-l-4 border-primary bg-warm-50 rounded-r-xl p-6">
+                      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <h3 className="font-serif font-bold text-xl text-gray-900">{tour.name}</h3>
+                          <p className="text-gray-600 mt-1">
+                            {tour.duration}{tour.tourCities?.length ? ` · ${formatPublishedTourCities(tour.tourCities, ' + ')}` : ''}
+                          </p>
+                          {tour.highlights.length ? <p className="text-gray-700 text-sm mt-2">{tour.highlights.slice(0, 5).join(' · ')}</p> : null}
+                          <p className="mt-3">
+                            <span className="font-bold text-primary text-lg">{tour.price}</span>
+                            <span className="text-gray-500 text-sm ml-2">· {tour.departureDates?.length ? `Departs ${tour.departureDates.join(' · ')}` : 'Ask us for the next departure'}</span>
+                          </p>
+                        </div>
+                        <Link
+                          href={href}
+                          className="shrink-0 rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-semibold text-white transition hover:opacity-90"
+                        >
+                          View &amp; Enquire →
+                        </Link>
                       </div>
-                      <Link
-                        href="/campaigns/october-2026/tale-of-two-cities"
-                        className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                      >
-                        View & Enquire →
-                      </Link>
                     </div>
-                  </div>
-
-                  <div className="border-l-4 border-secondary bg-warm-50 rounded-r-xl p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                      <div>
-                        <h3 className="font-serif font-bold text-xl text-gray-900">
-                          Shanghai &amp; Surroundings
-                        </h3>
-                        <p className="text-gray-600 mt-1">
-                          10 days · Yangtze Delta loop
-                        </p>
-                        <p className="text-gray-700 text-sm mt-2">
-                          Suzhou gardens, Wuxi Taihu Lake, Hangzhou West Lake, Meijiawu tea
-                          plantation, Shanghai Bund and Yu Garden
-                        </p>
-                        <p className="mt-3">
-                          <span className="font-bold text-primary text-lg">From NZD $2,699</span>
-                          <span className="text-gray-500 text-sm ml-2">· October 2026</span>
-                        </p>
-                      </div>
-                      <Link
-                        href="/campaigns/october-2026/shanghai-surroundings"
-                        className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                      >
-                        View &amp; Enquire →
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="border-l-4 border-accent bg-warm-50 rounded-r-xl p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                      <div>
-                        <h3 className="font-serif font-bold text-xl text-gray-900">
-                          Best of China — 15 Days
-                        </h3>
-                        <p className="text-gray-600 mt-1">
-                          15 days · Beijing, Xi&apos;an, Puyuan, Hangzhou, Shanghai
-                        </p>
-                        <p className="text-gray-700 text-sm mt-2">
-                          The full five-city loop — ancient capitals, water towns, tea plantations,
-                          and Shanghai. More breathing room than any 10-day tour.
-                        </p>
-                        <p className="mt-3">
-                          <span className="font-bold text-primary text-lg">From NZD $4,080</span>
-                          <span className="text-gray-500 text-sm ml-2">· Departs 11 March 2027</span>
-                        </p>
-                      </div>
-                      <Link
-                        href="/tours/china/discovery/essentials"
-                        className="shrink-0 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                      >
-                        View &amp; Enquire →
-                      </Link>
-                    </div>
-                  </div>
+                  ))}
+                  {featuredTours.length === 0 ? <p className="text-gray-700">No featured tours are currently active.</p> : null}
                 </div>
               </section>
 
@@ -339,18 +290,18 @@ export default function SmallGroupChinaToursPage() {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-6">
                 <div className="bg-accent text-white rounded-2xl p-6">
-                  <h3 className="font-serif font-bold text-lg mb-3">October 2026 seats filling fast</h3>
+                  <h3 className="font-serif font-bold text-lg mb-3">Limited places per departure</h3>
                   <p className="text-sm opacity-90 mb-4">
                     Small groups mean limited seats. Enquire now to check availability and hold your place.
                   </p>
                   <Link
-                    href="/campaigns/october-2026/tale-of-two-cities"
+                    href="/tours/china/discovery/beijing-xian"
                     className="block w-full bg-white text-accent font-bold py-3 px-4 rounded-lg text-center hover:bg-warm-50 transition mb-3"
                   >
                     Beijing &amp; Xi&apos;an →
                   </Link>
                   <Link
-                    href="/campaigns/october-2026/shanghai-surroundings"
+                    href="/tours/china/discovery/shanghai-surroundings"
                     className="block w-full border border-white/40 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-white/10 transition"
                   >
                     Shanghai &amp; Surroundings →

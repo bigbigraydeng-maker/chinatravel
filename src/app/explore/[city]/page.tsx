@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getCityBySlug, cities } from '@/lib/data/cities';
-import { getToursByCityName } from '@/lib/data/tours';
+import { getPublishedToursByCityName } from '@/lib/data/published-tour-catalog';
 import TourCard from '@/components/tours/TourCard';
 import CTASection from '@/components/CTASection';
 
@@ -51,14 +51,14 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
-export default function CityPage({ params }: CityPageProps) {
+export default async function CityPage({ params }: CityPageProps) {
   const city = getCityBySlug(params.city);
 
   if (!city) {
     notFound();
   }
 
-  const relatedTours = getToursByCityName(city.name);
+  const relatedTours = await getPublishedToursByCityName(city.name);
 
   return (
     <div>

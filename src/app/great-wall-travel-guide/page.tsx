@@ -5,6 +5,10 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { getGuideBySlug } from '@/lib/data/guides';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
+
+/** The linked tour facts and departures come from ME's published catalogue. */
+export const revalidate = 15;
 
 const SLUG = 'great-wall-travel-guide';
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,10 +28,14 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function GuidePage() {
+export default async function GuidePage() {
   const siteUrl = getSiteUrl();
   const guide = getGuideBySlug(SLUG);
   if (!guide) return <div className="text-center py-20 text-gray-500">Guide not found</div>;
+
+  const taleTour = await getPublishedTourBySlug('china', 'discovery', 'beijing-xian');
+  const taleAvailable = taleTour?.isActive && !taleTour.soldOut;
+  const taleDepartures = taleTour?.departureDates?.join(' & ');
 
   const schema = [
     {
@@ -84,7 +92,7 @@ export default function GuidePage() {
         priceCurrency: 'NZD',
         lowPrice: '3480',
         availability: 'https://schema.org/InStock',
-        url: `${siteUrl}/campaigns/october-2026/tale-of-two-cities`,
+        url: `${siteUrl}/tours/china/discovery/beijing-xian`,
       },
       provider: { '@type': 'Organization', name: 'CTS Tours', url: siteUrl },
     },
@@ -120,22 +128,21 @@ export default function GuidePage() {
           </a>
         </div>
       </section>
-      {/* October 2026 urgency CTA */}
+      {/* Next departures CTA */}
       <section className="bg-accent text-white py-12">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-xs uppercase tracking-wider mb-2 opacity-80">Limited Departures</p>
+          <p className="text-xs uppercase tracking-wider mb-2 opacity-80">Current tour availability</p>
           <h2 className="font-serif text-3xl font-semibold mb-3">
-            October 2026 — Includes Mutianyu Great Wall
+            Includes Mutianyu Great Wall
           </h2>
           <p className="mb-6 max-w-2xl mx-auto opacity-90">
-            A Tale of Two Cities: Beijing &amp; Xi&apos;an by high-speed train. 10 days from{' '}
-            <strong>NZD $3,480</strong>. Departures 15 October 2026 &amp; 18 March 2027.
+            {taleAvailable ? <>{taleTour.name} · {taleTour.duration} · {taleTour.price}.{' '}{taleDepartures ? `Departures ${taleDepartures}.` : 'Ask us for the next departure.'}</> : 'Explore current Beijing tours and ask CTS for an active departure.'}
           </p>
           <Link
-            href="/campaigns/october-2026/tale-of-two-cities"
+            href={taleAvailable ? '/tours/china/discovery/beijing-xian' : '/beijing-tours'}
             className="inline-block bg-white text-accent px-8 py-3 rounded-full font-semibold hover:bg-warm-50 transition"
           >
-            See Tale of Two Cities October Departure →
+            {taleAvailable ? `See ${taleTour.name} departures →` : 'Explore Beijing tours →'}
           </Link>
         </div>
       </section>

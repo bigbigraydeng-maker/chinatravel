@@ -7,14 +7,13 @@ import TrustBar from '@/components/TrustBar';
 import RelatedGuides from '@/components/seo/RelatedGuides';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Icon } from '@/components/ui/Icon';
-import { getAllChinaTours } from '@/lib/data/tours';
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { generateCollectionPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { chinaToursMeta } from '@/lib/data/seo-pages';
 import HeroWithLeadForm from '@/components/seo/HeroWithLeadForm';
 import UtmAwareBanner from './_components/UtmAwareBanner';
 import FlagshipTourGrid from './_components/FlagshipTourGrid';
-import SouthIslandDeparture from './_components/SouthIslandDeparture';
 import CustomerTripPhotos from './_components/CustomerTripPhotos';
 import ReviewsHighlights from './_components/ReviewsHighlights';
 
@@ -24,9 +23,11 @@ const HERO_POSTER =
 const HERO_VIDEO: string | undefined = '/videos/china-tours-hero.mp4';
 
 export async function generateMetadata(): Promise<Metadata> {
+  const tours = await getPublishedChinaTours();
+  const description = `Compare ${tours.length} currently published CTS China tours from New Zealand. Current names, routes, prices and departures are shown from the latest ME publication.`;
   return buildCtsPageMetadata({
-    title: chinaToursMeta.title,
-    description: chinaToursMeta.description,
+    title: 'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
+    description,
     path: '/china-tours',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
     ogImageAlt: 'China Tours, CTS Tours',
@@ -42,8 +43,8 @@ export async function generateMetadata(): Promise<Metadata> {
       'CTS Tours',
     ],
     ogType: 'website',
-    openGraphTitle: chinaToursMeta.title,
-    openGraphDescription: chinaToursMeta.description,
+    openGraphTitle: 'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
+    openGraphDescription: description,
   });
 }
 
@@ -55,7 +56,7 @@ interface PageProps {
  * FB Leadform ThankYou traffic (utm_medium=ab_test_leadform_thankyou) has
  * already submitted contact info on Meta and is landing here as a *hot lead*.
  * These visitors don't need the full hub — they need focused reassurance +
- * 3 curated options + strong social proof. Everything else (long intro,
+ * strong social proof. Everything else (long intro,
  * all-tours grid, tier callouts, related guides, FAQs) is noise for them
  * and hurts the trust-building moment. Toggle drives the simplified layout.
  */
@@ -65,9 +66,35 @@ function isFbLeadformThankyou(searchParams: PageProps['searchParams']): boolean 
   return value === 'ab_test_leadform_thankyou';
 }
 
-export default function ChinaToursPage({ searchParams }: PageProps) {
-  const tours = getAllChinaTours();
+export const revalidate = 15;
+
+export default async function ChinaToursPage({ searchParams }: PageProps) {
+  const tours = await getPublishedChinaTours();
   const thankyou = isFbLeadformThankyou(searchParams);
+  const pageDescription = `Compare ${tours.length} currently published CTS China tours from New Zealand. Current names, routes, prices and departures are shown from the latest ME publication.`;
+  const pageIntro = chinaToursMeta.introText
+    .replace(/Browse more than fifty curated itineraries below/, `Browse ${tours.length} currently published China tours below`);
+  const currentFaqs = chinaToursMeta.faqs.map((faq) => {
+    if (faq.question.startsWith('What are the best China tours')) {
+      return { ...faq, answer: `The current published China tours are listed below with their latest route, duration, price and departure information. Availability is controlled by the latest ME publication.` };
+    }
+    if (faq.question.startsWith('How much does a China tour package')) {
+      const prices = tours.map((tour) => tour.price).filter(Boolean);
+      return { ...faq, answer: prices.length
+        ? `Current published lead-in prices are shown on each tour card and detail page: ${prices.join('; ')}. Departure-specific prices appear beside their matching departure when provided.`
+        : 'Current tour prices appear on each published tour page. Availability and pricing are controlled by the latest ME publication.' };
+    }
+    if (faq.question.startsWith('Which is the best China tour package')) {
+      return { ...faq, answer: 'Compare the active routes, durations, inclusions and current departures listed below, then choose the itinerary that matches your travel plans.' };
+    }
+    if (faq.question.startsWith('What China tour packages does CTS offer?')) {
+      return { ...faq, answer: 'The current China collections and available products are listed below. Product details and availability come from the latest ME publication.' };
+    }
+    if (faq.question.startsWith('What is included in a CTS China travel package?')) {
+      return { ...faq, answer: 'Inclusions and exclusions vary by tour. Check the inclusions and exclusions shown on each current published tour page.' };
+    }
+    return faq;
+  });
 
   const breadcrumbs = [
     { name: 'Home', url: '/' },
@@ -77,8 +104,8 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
 
   const schemas = [
     generateCollectionPageSchema(
-      chinaToursMeta.title,
-      chinaToursMeta.description,
+      'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
+      pageDescription,
       '/china-tours',
       tours
     ),
@@ -96,16 +123,6 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       title: 'China Entry Guide for NZ Citizens (Visa-Free)',
       slug: 'china-visa-guide-for-new-zealanders',
       description: 'Visa-free entry for NZ passports: documents, stay limits, and exceptions'
-    },
-    {
-      title: 'October 2026 · Beijing & Xi’an spotlight',
-      slug: 'campaigns/october-2026/tale-of-two-cities',
-      description: 'Campaign landing for the Beijing–Xi’an Discovery route'
-    },
-    {
-      title: 'October 2026 · Shanghai & Surroundings',
-      slug: 'campaigns/october-2026/shanghai-surroundings',
-      description: 'Campaign landing for the Jiangnan loop Discovery tour'
     },
     {
       title: 'Small-Group China Tours from NZ',
@@ -155,7 +172,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       </nav>
 
       {/* UTM-aware welcome banner (only renders when arriving from meta/google ads) */}
-      <UtmAwareBanner />
+      <UtmAwareBanner bestOfChinaTour={tours.find((tour) => tour.slug === 'essentials')} />
 
       {/* Hero — winner video background (poster fallback) + inline lead form.
           FB Leadform ThankYou traffic gets a reassurance headline instead of
@@ -166,7 +183,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
         title={thankyou ? 'Thanks — a China specialist will be in touch' : chinaToursMeta.h1}
         subtitle={
           thankyou
-            ? 'One of our Auckland-based specialists will call or email you within 1 NZ business day. In the meantime — here are the three routes New Zealand travellers most often ask about.'
+            ? 'One of our Auckland-based specialists will call or email you within 1 NZ business day.'
             : chinaToursMeta.heroSubtitle
         }
         posterImage={HERO_POSTER}
@@ -179,10 +196,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
         <TrustBar />
       </div>
 
-      {/* Social proof stack: traveller photos → 5-star reviews → flagship tour grid.
-          Order is deliberate — show real Kiwi travellers + their words before the
-          product grid, so the four flagship cards land with social proof already
-          established.
+      {/* Social proof stack: traveller photos → 5-star reviews.
 
           Mobile thankyou traffic: hide the 6-tile photo grid entirely (scroll
           fatigue) and cap Reviews to 1. Desktop thankyou keeps the full stack. */}
@@ -194,8 +208,10 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       {/* Flagship itineraries — full roster by default; FB Leadform ThankYou
           traffic drops to 2 (Hick's Law — fewer choices convert hot leads
           faster). The heading + intro also flip to "these are the most
-          popular" framing for post-lead reassurance. */}
+          popular" framing for post-lead reassurance. Renders nothing while the
+          roster in FlagshipTourGrid.tsx is empty. */}
       <FlagshipTourGrid
+        tours={tours}
         limit={thankyou ? 2 : undefined}
         mobileLimit={thankyou ? 1 : undefined}
         heading={thankyou ? 'Our most-requested China itineraries' : undefined}
@@ -206,17 +222,10 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
         }
       />
 
-      {/* South Island departure — its own band, not a flagship card. Every
-          other tour here departs Auckland, so "flies direct from Christchurch"
-          is a distinct offer that gets lost when mixed into the grid. Hidden
-          from FB Leadform thankyou traffic for the same focus reason as the
-          sections below. */}
-      {!thankyou && <SouthIslandDeparture />}
-
       {/* Main Content — hub-only. FB Leadform ThankYou traffic skips the
           long intro / all-tours grid / tier callouts / related guides / FAQ
-          because their attention should stay on the 3 flagship + social
-          proof they've already scrolled. */}
+          because their attention should stay on the social proof they've
+          already scrolled. */}
       {!thankyou && (
         <>
       {/* Main Content */}
@@ -234,12 +243,9 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                   Quick answer
                 </p>
                 <p className="text-gray-800 leading-relaxed">
-                  CTS Tours offers three China holiday package collections from New Zealand: Signature
-                  (premium 5-star, small groups up to 16), Discovery (great value 3–4 star guided
-                  tours, from NZD $2,699), and Stopover (2–4 day city breaks). All packages include
-                  return international flights from Auckland, NZD pricing, and English-speaking guides.
-                  TAANZ-bonded and Auckland-based, backed by China Travel Service. NZ ordinary passport holders currently enjoy
-                  visa-free entry of up to 30 days, published through 31 December 2026.
+                  CTS Tours currently lists {tours.length} active China tours from New Zealand. Names,
+                  routes, durations, prices, inclusions and available departures on this page are read
+                  from the latest ME publication. Check each tour record for its current details.
                 </p>
               </aside>
 
@@ -249,7 +255,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                   Explore Our Collections
                 </h2>
                 <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                  {chinaToursMeta.introText.split(/\n\n+/).map((para, i) => (
+                  {pageIntro.split(/\n\n+/).map((para, i) => (
                     <p key={i}>{para.trim()}</p>
                   ))}
                 </div>
@@ -358,7 +364,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
       />
 
       {/* FAQs */}
-      <FAQSection faqs={chinaToursMeta.faqs} />
+      <FAQSection faqs={currentFaqs} />
         </>
       )}
 

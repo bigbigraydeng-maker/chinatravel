@@ -3,16 +3,19 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
-import { xianToursMeta } from '@/lib/data/seo-pages';
-import { xianHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours } from '@/lib/data/destination-hubs';
+import { xianToursMeta as baseMeta } from '@/lib/data/seo-pages';
+import { cityHubMetaForTours } from '@/lib/data/destination-hub-meta';
+import { xianHub, buildDepartureRows, buildSampleItinerary, cheapestPrice, resolveHubTours, hubProseForTours } from '@/lib/data/destination-hubs';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 // Departures and prices come from tours.ts; revalidate so a data edit reaches the live page.
-export const revalidate = 3600;
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
+  const meta = cityHubMetaForTours(baseMeta, await getPublishedTours());
   return buildCtsPageMetadata({
-    title: xianToursMeta.title,
-    description: xianToursMeta.description,
+    title: meta.title,
+    description: meta.description,
     path: '/xian-tours',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg',
     ogImageAlt: "Xi'an Tours - Terracotta Warriors, Ancient City Wall, CTS Tours",
@@ -21,11 +24,13 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function XianToursPage() {
-  const tours = resolveHubTours(xianHub.tourRefs);
+export default async function XianToursPage() {
+  const publishedTours = await getPublishedTours();
+  const meta = cityHubMetaForTours(baseMeta, publishedTours);
+  const tours = resolveHubTours(xianHub.tourRefs, publishedTours, xianHub.cityPattern);
 
   const schemas = [
-    generateTouristDestinationSchema("Xi'an", xianToursMeta.description, '/xian-tours', tours),
+    generateTouristDestinationSchema("Xi'an", meta.description, '/xian-tours', tours),
     generateBreadcrumbListSchema([
       { name: 'Home', url: '/' },
       { name: 'Tours', url: '/tours' },
@@ -38,18 +43,18 @@ export default function XianToursPage() {
     <>
       <SchemaMarkup data={schemas} />
       <CityTourHub
-        cityName={xianToursMeta.cityName}
-        heroTitle={xianToursMeta.h1}
-        heroSubtitle={xianToursMeta.heroSubtitle}
+        cityName={meta.cityName}
+        heroTitle={meta.h1}
+        heroSubtitle={meta.heroSubtitle}
         heroImage="https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/xian-terracotta.jpg"
-        introText={xianToursMeta.introText}
-        highlights={xianToursMeta.highlights}
-        bestTimeToVisit={xianToursMeta.bestTimeToVisit}
+        introText={meta.introText}
+        highlights={meta.highlights}
+        bestTimeToVisit={meta.bestTimeToVisit}
         tours={tours}
-        faqs={xianToursMeta.faqs}
-        proseSections={xianHub.prose}
+        faqs={meta.faqs}
+        proseSections={hubProseForTours(xianHub, publishedTours)}
         departureRows={buildDepartureRows(tours.slice(0, xianHub.featuredCount ?? tours.length), xianHub.cityPattern)}
-        sampleItinerary={buildSampleItinerary(xianHub)}
+        sampleItinerary={buildSampleItinerary(xianHub, publishedTours)}
         offerSummary={xianHub.offerSummary}
         startingFrom={cheapestPrice(tours)}
         featuredCount={xianHub.featuredCount}

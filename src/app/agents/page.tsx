@@ -20,7 +20,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 
-import { getTourBySlug } from '@/lib/data/tours';
+import { formatPublishedTourCities, getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 
 export const metadata: Metadata = {
@@ -54,9 +54,6 @@ export const metadata: Metadata = {
 // All agent buttons go to the join page, which handles both login (already registered)
 // and registration (new agents), so nobody lands on login without signing up first.
 const CHINA_UNLOCKED_JOIN_URL = 'https://agents.ctstours.co.nz/join';
-
-const CHRISTMAS_HERO_IMAGE =
-  'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg';
 
 const partnershipPillars = [
   {
@@ -126,18 +123,11 @@ const digitalAgentTools = [
   },
 ];
 
-const AgentsPage = () => {
-  const christmasAkl = getTourBySlug('china', 'discovery', 'china-icons-collection');
-  const christmasChc = getTourBySlug(
-    'china',
-    'discovery',
-    'china-icons-collection-christchurch',
-  );
-  const otherSpotlight = OCTOBER_2026_SPOTLIGHT_TOURS.filter(
-    (card) => card.slug !== 'china-icons-collection',
-  ).map((card) => ({
+const AgentsPage = async () => {
+  const tours = await getPublishedTours();
+  const otherSpotlight = OCTOBER_2026_SPOTLIGHT_TOURS.map((card) => ({
     card,
-    tour: getTourBySlug(card.destination, card.tier, card.slug),
+    tour: tours.find((item) => item.destination === card.destination && item.tier === card.tier && item.slug === card.slug),
   }));
 
   return (
@@ -436,63 +426,9 @@ const AgentsPage = () => {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-3xl border border-warm-100 bg-white shadow-sm">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative min-h-[360px]">
-                <Image
-                  src={CHRISTMAS_HERO_IMAGE}
-                  alt="Shanghai skyline at night for the Christmas and New Year China tour"
-                  fill
-                  className="object-cover"
-                  sizes="(min-width:1024px) 50vw, 100vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-                <div className="absolute inset-x-6 bottom-6 text-white">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">
-                    22 December 2026
-                  </p>
-                  <p className="mt-2 font-serif text-2xl">Christmas &amp; New Year in China</p>
-                </div>
-              </div>
-              <div className="p-7 md:p-10">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-warm-50 p-5">
-                    <p className="text-xs font-bold uppercase tracking-widest text-gray-500">Ex Auckland</p>
-                    <p className="mt-2 font-serif text-xl font-semibold text-gray-900">
-                      {christmasAkl?.duration ?? '16 Days'}
-                    </p>
-                    <p className="mt-1 font-bold text-primary">From NZD $7,188pp</p>
-                  </div>
-                  <div className="rounded-2xl bg-warm-50 p-5">
-                    <p className="text-xs font-bold uppercase tracking-widest text-gray-500">Ex Christchurch</p>
-                    <p className="mt-2 font-serif text-xl font-semibold text-gray-900">
-                      {christmasChc?.duration ?? '15 Days'}
-                    </p>
-                    <p className="mt-1 font-bold text-primary">From NZD $6,188pp</p>
-                  </div>
-                </div>
-                <p className="mt-6 leading-relaxed text-gray-600">
-                  Shanghai, Beijing, Xi&apos;an and Chongqing across the festive season, with two
-                  New Zealand departure options for your clients.
-                </p>
-                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                  <Link href="/tours/china/discovery/china-icons-collection" className="btn-primary text-center">
-                    Auckland itinerary →
-                  </Link>
-                  <Link
-                    href="/tours/china/discovery/china-icons-collection-christchurch"
-                    className="btn-secondary text-center"
-                  >
-                    Christchurch itinerary →
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-7 grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {otherSpotlight.map(({ card, tour }) => {
-              if (!tour) return null;
+              if (!tour?.isActive || tour.soldOut) return null;
               const displayName = tour.name.replace(/^China Discovery — /, '');
               return (
                 <Link
@@ -511,11 +447,11 @@ const AgentsPage = () => {
                   </div>
                   <div className="flex flex-col justify-center p-6">
                     <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                      {card.departureLabel}
+                      {tour.departureDates?.[0] ?? 'Ask CTS for the next departure'}
                     </p>
                     <h3 className="mt-3 font-serif text-2xl font-semibold text-gray-900">{displayName}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                      {tour.duration} · {card.routeCities.join(' · ')}
+                      {tour.duration} · {tour.tourCities?.length ? formatPublishedTourCities(tour.tourCities) : card.routeCities.join(' · ')}
                     </p>
                     <p className="mt-4 font-bold text-primary">{tour.price}</p>
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-gray-900 group-hover:text-primary">

@@ -8,7 +8,13 @@
  * - CTA scrolls to #china-tours-hero (matches the hero section id)
  */
 import { render, screen, act } from '@testing-library/react';
+import type { Tour } from '@/lib/data/tours';
 import UtmAwareBanner from '../UtmAwareBanner';
+
+const currentBestOfChina = {
+  name: 'Best of China', duration: '15 Days', price: 'From NZD $4,080',
+  departureDates: ['11 March 2027'], isActive: true, soldOut: false,
+} as unknown as Tour;
 
 function setQuery(qs: string) {
   window.history.replaceState({}, '', `/china-tours${qs}`);
@@ -28,7 +34,7 @@ describe('UtmAwareBanner', () => {
   it('renders default welcome copy for utm_source=meta with no campaign', async () => {
     setQuery('?utm_source=meta');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     const region = screen.getByRole('region', { name: /campaign welcome message/i });
     expect(region).toBeInTheDocument();
@@ -40,7 +46,7 @@ describe('UtmAwareBanner', () => {
   it('renders default copy for utm_source=facebook (Meta synonym)', async () => {
     setQuery('?utm_source=facebook');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('region')).toHaveAttribute('data-variant', 'default');
   });
@@ -48,7 +54,7 @@ describe('UtmAwareBanner', () => {
   it('renders default copy for utm_source=google (Google Ads)', async () => {
     setQuery('?utm_source=google');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('region')).toHaveAttribute('data-variant', 'default');
   });
@@ -56,7 +62,7 @@ describe('UtmAwareBanner', () => {
   it('hides when utm_source is outside the allow-list (e.g. newsletter)', async () => {
     setQuery('?utm_source=newsletter&utm_campaign=visa-free-2026');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     // Even with a visa campaign, organic / non-paid sources stay silent.
     expect(screen.queryByRole('region')).toBeNull();
@@ -65,7 +71,7 @@ describe('UtmAwareBanner', () => {
   it('swaps to visa-pain copy when utm_campaign contains "visa"', async () => {
     setQuery('?utm_source=google&utm_campaign=visa-free-2026');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     const region = screen.getByRole('region');
     expect(region).toHaveAttribute('data-variant', 'visa');
@@ -77,7 +83,7 @@ describe('UtmAwareBanner', () => {
   it('also matches visa variant case-insensitively (utm_campaign=NZ-Visa-Pain)', async () => {
     setQuery('?utm_source=meta&utm_campaign=NZ-Visa-Pain');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('region')).toHaveAttribute('data-variant', 'visa');
   });
@@ -85,7 +91,7 @@ describe('UtmAwareBanner', () => {
   it('CTA links to the hero anchor in both variants', async () => {
     setQuery('?utm_source=google&utm_campaign=visa-free-2026');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('link', { name: /Talk to a specialist/i })).toHaveAttribute(
       'href',
@@ -97,18 +103,18 @@ describe('UtmAwareBanner', () => {
   it('swaps to best_of_china copy when utm_campaign matches /best-of-china/', async () => {
     setQuery('?utm_source=google&utm_campaign=best-of-china');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     const region = screen.getByRole('region');
     expect(region).toHaveAttribute('data-variant', 'best_of_china');
     expect(screen.getByText(/Best of China · 15 days/i)).toBeInTheDocument();
-    expect(screen.getByText(/from NZD \$3,880/i)).toBeInTheDocument();
+    expect(screen.getByText(/from NZD \$4,080/i)).toBeInTheDocument();
   });
 
   it('best_of_china CTA points at the campaign LP (not the hero anchor)', async () => {
     setQuery('?utm_source=meta&utm_campaign=best-of-china-oct26');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('link', { name: /See Best of China/i })).toHaveAttribute(
       'href',
@@ -119,7 +125,7 @@ describe('UtmAwareBanner', () => {
   it('best_of_china also matches the underscored form (utm_campaign=best_of_china)', async () => {
     setQuery('?utm_source=meta&utm_campaign=best_of_china');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('region')).toHaveAttribute('data-variant', 'best_of_china');
   });
@@ -128,7 +134,7 @@ describe('UtmAwareBanner', () => {
     // utm_campaign=best-of-china-visa-2026 → product copy, not the visa banner.
     setQuery('?utm_source=google&utm_campaign=best-of-china-visa-2026');
     await act(async () => {
-      render(<UtmAwareBanner />);
+      render(<UtmAwareBanner bestOfChinaTour={currentBestOfChina} />);
     });
     expect(screen.getByRole('region')).toHaveAttribute('data-variant', 'best_of_china');
   });

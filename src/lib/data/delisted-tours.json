@@ -1,0 +1,109 @@
+[
+  {
+    "slug": "china-icons-collection",
+    "destination": "china",
+    "tier": "discovery",
+    "nameKeywords": [
+      "Christmas & New Year in China",
+      "Christmas & New Year Departure",
+      "Christmas & New Year tours",
+      "Christmas & New Year journeys",
+      "Christmas & New Year departures",
+      "Christmas and New Year tours",
+      "Christmas and New Year journeys",
+      "Christmas and New Year departures",
+      "China Icons Collection"
+    ],
+    "patterns": [
+      "nz\\$\\s?7,?188",
+      "\\b7,?188\\b",
+      "\\b6,?188\\b",
+      "\\b22 dec(?:ember)?\\.? 2026\\b",
+      "christmas[\\s_-]+in[\\s_-]+china",
+      "\\bxmas\\b",
+      "christmas[\\s_/-]+new[\\s_/-]+year",
+      "and new year in china",
+      "christmas\\s*(?:&|and)\\s*new year\\s+(?:tour|journey|departure|trip|holiday|package|itinerary)s?"
+    ],
+    "redirectTo": "/tours/china/discovery",
+    "extraPaths": [
+      "/christmas-new-year-china"
+    ],
+    "knownResidue": [
+      {
+        "path": "public/brochures/CTS-Tours-2026-2027-Brochure.pdf",
+        "reason": "Public brochure PDF still lists the retired tours (22 Dec 2026, NZ$7,188 / NZ$6,188) and links to the old tour page; welcome emails link to it, so it stays until it is re-exported. Binary, so the scan cannot read it",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/catalogue/data.py",
+        "reason": "Source data of the printed catalogue still holds the retired tours; changes together with the brochure re-export",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/catalogue/SOURCES-2026-09-22.md",
+        "reason": "Source notes for the catalogue data (prices and slugs of the retired tours); changes together with the brochure re-export",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/brochure/data/china-icons-collection.json",
+        "reason": "Page data of the brochure generator for the retired tour; removed when the brochure is re-exported",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/brochure/render.js",
+        "reason": "Brochure generator still names the retired tour as its example; changes with the brochure re-export",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/brochure/README.md",
+        "reason": "Brochure generator docs use the retired tour as the worked example; changes with the brochure re-export",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/brochure/__tests__/brochure.test.js",
+        "reason": "Brochure generator test uses the retired tour's data file; changes with the brochure re-export",
+        "card": "2026-10-19-chinatravel-brochure-reexport-without-christmas"
+      },
+      {
+        "path": "scripts/fix-1928-wording-round2.py",
+        "reason": "One-off wording-fix script that already ran; it quotes the old SEO text of the retired tours. Not shipped",
+        "card": "2026-10-19-chinatravel-site-stale-data-cleanup"
+      },
+      {
+        "path": "scripts/homepage-v2-urls.json",
+        "reason": "Record of homepage images uploaded to Supabase (includes the retired tour's upcoming-departures image name). Not shipped",
+        "card": "2026-10-19-chinatravel-site-stale-data-cleanup"
+      },
+      {
+        "path": "scripts/upload-homepage-v2-images.cjs",
+        "reason": "One-off upload script listing the homepage image names, including the retired tour's. Not shipped",
+        "card": "2026-10-19-chinatravel-site-stale-data-cleanup"
+      },
+      {
+        "path": "scripts/catalogue/assets-istock/LICENCES.json",
+        "reason": "Stock-photo licence notes naming the retired tour's homepage image. Not shipped",
+        "card": "2026-10-19-chinatravel-site-stale-data-cleanup"
+      }
+    ],
+    "delistedOn": "2026-10-19"
+  },
+  {
+    "slug": "china-icons-collection-christchurch",
+    "destination": "china",
+    "tier": "discovery",
+    "nameKeywords": [
+      "Christmas & New Year in China (Christchurch Departure)"
+    ],
+    "patterns": [
+      "christchurch departure",
+      "\\bex[\\s-]+christchurch\\b",
+      "south island (?:departure|traveller|travel)",
+      "direct (?:from|ex) christchurch"
+    ],
+    "redirectTo": "/tours/china/discovery",
+    "extraPaths": [],
+    "knownResidue": [],
+    "delistedOn": "2026-10-19"
+  }
+]

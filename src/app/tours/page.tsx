@@ -1,12 +1,16 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { destinations, getAllActiveTours } from '@/lib/data/tours';
+import { destinations } from '@/lib/data/tours';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 import TourCard from '@/components/tours/TourCard';
 import CtsDepartureScheduleBlock from '@/components/tours/CtsDepartureScheduleBlock';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { migratedUnsplash } from '@/lib/site-media';
 import { Icon, type IconName } from '@/components/ui/Icon';
+
+/** The departure schedule on this page drops departures that have left; refresh hourly so that happens without a redeploy. */
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -20,8 +24,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ToursPage() {
-  const featuredTours = getAllActiveTours().slice(0, 6);
+export default async function ToursPage() {
+  const featuredTours = (await getPublishedActiveTours()).slice(0, 6);
 
   return (
     <>

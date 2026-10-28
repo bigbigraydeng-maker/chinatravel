@@ -6,10 +6,11 @@ import Footer from '@/components/Footer';
 import VisaFreeBanner from '@/components/VisaFreeBanner';
 import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import { useGtmTracking } from '@/components/GoogleTagManager';
+import { shouldHideSiteChrome } from '@/lib/site-chrome';
 
 export default function ConditionalChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hideSiteChrome = pathname?.startsWith('/admin') || pathname?.startsWith('/dev/');
+  const hideSiteChrome = shouldHideSiteChrome(pathname);
   useGtmTracking();
 
   return (

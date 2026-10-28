@@ -54,6 +54,10 @@ describe('Close alternatives for a small catalogue',()=>{
 });
 
 describe('Golden China reopened availability',()=>{
+ // A tour's departure list only holds departures still ahead, judged by the clock; these tests ask about `today`,
+ // so the clock must be at `today` too (otherwise they fail the day after the 16 November 2026 departure).
+ beforeAll(()=>{ jest.useFakeTimers(); jest.setSystemTime(new Date(`${today}T00:00:00Z`).getTime()); });
+ afterAll(()=>{ jest.useRealTimers(); });
  test('restores the original URL and its November sales offer',()=>{
   expect(golden.soldOut).toBe(false);
   expect(golden.isActive).toBe(true);

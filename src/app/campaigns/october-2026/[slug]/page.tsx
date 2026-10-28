@@ -1,17 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import {
-  getTourBySlug,
-  getToursByDestinationAndTier,
-  getDestinationBySlug,
-} from '@/lib/data/tours';
+import { getDestinationBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
 import TourInclusions from '@/components/tours/TourInclusions';
 import TourGallery from '@/components/tours/TourGallery';
 import TourEnquiry from '@/components/tours/TourEnquiry';
+import TourViewContent from '@/components/tours/TourViewContent';
 import Testimonials from '@/components/Testimonials';
 import RelatedTours from '@/components/tours/RelatedTours';
 import TrustBar from '@/components/TrustBar';
@@ -54,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Campaign | CTS Tours' };
   }
   const cfg = OCTOBER_2026_DISCOVERY_BY_SLUG[params.slug];
-  const tour = getTourBySlug('china', 'discovery', cfg.tourSlug);
+  const tour = await getPublishedTourBySlug('china', 'discovery', cfg.tourSlug);
   if (!tour) {
     return { title: 'Campaign | CTS Tours' };
   }
@@ -84,14 +82,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function October2026DiscoveryCampaignPage({ params }: PageProps) {
+export const revalidate = 15;
+
+export default async function October2026DiscoveryCampaignPage({ params }: PageProps) {
   if (!isOctober2026DiscoverySlug(params.slug)) {
     notFound();
   }
 
   const campaignSlug: October2026DiscoverySlug = params.slug;
   const cfg = OCTOBER_2026_DISCOVERY_BY_SLUG[campaignSlug];
-  const tour = getTourBySlug('china', 'discovery', cfg.tourSlug);
+  const tour = await getPublishedTourBySlug('china', 'discovery', cfg.tourSlug);
 
   if (!tour) {
     notFound();
@@ -103,7 +103,8 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
   }
 
   const otherCfg = OCTOBER_2026_DISCOVERY_BY_SLUG[cfg.otherCampaignSlug];
-  const otherTour = getTourBySlug('china', 'discovery', otherCfg.tourSlug);
+  const otherTour = await getPublishedTourBySlug('china', 'discovery', otherCfg.tourSlug);
+  const currentOtherTour = otherTour?.isActive && !otherTour.soldOut ? otherTour : undefined;
 
   // The 14 & 15 October 2026 departures have both sold out. The LPs stay live
   // so paid traffic already booked against them lands on a real page (and CTS
@@ -115,7 +116,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
   const nextDeparture = tour.departureDates?.[0];
   const nextReturnDate = nextDeparture ? computeReturnDate(nextDeparture, tour.duration) : null;
 
-  const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
+  const relatedTours = (await getPublishedToursByDestinationAndTier(tour.destination, tour.tier))
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 3);
 
@@ -139,6 +140,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
     <>
       <OctoberCampaignScrollTracker />
       <SchemaMarkup data={schemas} />
+      <TourViewContent tour={tour} />
 
       <nav className="bg-gray-50 border-b border-gray-200">
         <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
@@ -233,7 +235,7 @@ export default function October2026DiscoveryCampaignPage({ params }: PageProps) 
                 tour={tour}
                 campaignSlug={campaignSlug}
                 otherCampaignSlug={cfg.otherCampaignSlug}
-                otherTourTitle={otherTour?.title ?? 'Our other October Discovery departure'}
+                otherTour={currentOtherTour}
               />
 
               <TourHighlights highlights={tour.highlights} />

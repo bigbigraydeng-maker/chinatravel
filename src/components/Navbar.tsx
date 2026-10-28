@@ -151,7 +151,7 @@ const Navbar = () => {
       {/* py-4 gives the ~80px nav row Ceepii uses (48px logo + 16px above/below). */}
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <Image src="/logo.png" alt="CTS Tours" width={180} height={48} className="h-12 w-auto" />
+          <Image src="/images/brand/cts-logo-640.webp" alt="CTS Tours" width={640} height={163} className="h-12 w-auto" />
         </Link>
 
         {/* Desktop Navigation

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { Tour } from '@/lib/data/tours';
 
 /**
  * Always-visible sticky strip at the top of /campaigns/best-of-china.
@@ -10,7 +11,7 @@ import { useEffect, useState } from 'react';
  * Hides until the user scrolls past the hero (sticky-on-scroll pattern) so
  * the hero stays the visual focal point on first paint.
  */
-export default function StickyPriceBar() {
+export default function StickyPriceBar({ tour }: { tour: Tour }) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -32,15 +33,15 @@ export default function StickyPriceBar() {
       <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-orange-500 shadow-lg">
         <div className="container mx-auto px-4 py-2.5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="flex items-center gap-3 text-white flex-wrap">
-            <span className="text-base sm:text-lg font-serif font-bold">Best of China</span>
+            <span className="text-base sm:text-lg font-serif font-bold">{tour.name}</span>
             <span className="hidden sm:inline text-white/70">·</span>
-            <span className="text-sm sm:text-base font-medium">15 Days</span>
+            <span className="text-sm sm:text-base font-medium">{tour.duration}</span>
             <span className="hidden sm:inline text-white/70">·</span>
             <span className="text-sm sm:text-base font-bold tracking-wide">
-              From NZD $4,080
+              {tour.price}
             </span>
             <span className="hidden md:inline text-white/70">·</span>
-            <span className="hidden md:inline text-sm">Mar 2027 from Auckland</span>
+            <span className="hidden md:inline text-sm">{tour.departureDates?.[0] ?? 'Ask CTS for next dates'} · Auckland</span>
           </div>
           <a
             href="#enquiry"

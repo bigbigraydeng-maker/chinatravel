@@ -5,6 +5,7 @@ import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getSiteUrl } from '@/lib/site';
 import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
+import { formatPublishedTourCities, getPublishedTours } from '@/lib/data/published-tour-catalog';
 
 /**
  * NEW Pillar — /china-tours-for-seniors (CTS topic cluster).
@@ -30,13 +31,15 @@ import { generateWebPageSchema, generateBreadcrumbListSchema } from '@/lib/schem
 const TOUR_IMG =
   'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images';
 
-const PAGE_TITLE = 'China Tours for Seniors 2026-27 · NZ-Friendly Pace, Mobility-Aware | CTS Tours';
+const PAGE_TITLE = 'China Tours for Seniors · NZ-Friendly Pace, Mobility-Aware | CTS Tours';
 const PAGE_DESCRIPTION =
-  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Arranging China trips for Kiwi retirees. Visa-free for NZ passports through 31 Dec 2026.';
+  'China tours for NZ seniors — compare current published itineraries, route, duration and price, with mobility-aware travel advice from CTS Tours.';
 // JSON-LD copy of PAGE_DESCRIPTION without company-history wording (metadata copy is pending PM approval).
 const PAGE_SCHEMA_DESCRIPTION =
-  'China tours for NZ seniors — relaxed pace, mobility-aware itineraries, English-speaking guides, and Auckland direct flights. Lead-in NZD $2,699. Visa-free for NZ passports through 31 Dec 2026.';
-const PAGE_H1 = 'China Tours for New Zealand Seniors (2026-27)';
+  'China tours for NZ seniors — current itineraries, route, duration and price with mobility-aware travel advice.';
+const PAGE_H1 = 'China Tours for New Zealand Seniors';
+
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -57,48 +60,23 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-const seniorFriendlyTours = [
+const SENIOR_TOUR_REFS = [
   {
-    name: 'Shanghai & Surroundings',
-    slug: 'shanghai-surroundings',
-    url: '/campaigns/october-2026/shanghai-surroundings',
-    duration: '10 days',
-    pace: 'Relaxed — multiple half-day options',
+    slug: 'shanghai-surroundings', pace: 'Relaxed — multiple half-day options',
     walkingLevel: 'Low to moderate',
-    priceFrom: 'NZD $2,699',
-    seniorWhy: 'Flat city terrain, hotels in central walkable areas, water town day trip on smooth boat decks',
+    seniorWhy: 'Flat city terrain, central hotels and a water-town day trip.',
   },
   {
-    name: 'Tale of Two Cities',
-    slug: 'tale-of-two-cities',
-    url: '/campaigns/october-2026/tale-of-two-cities',
-    duration: '10 days',
-    pace: 'Moderate — built-in afternoon rest',
+    slug: 'beijing-xian', pace: 'Moderate — built-in afternoon rest',
     walkingLevel: 'Moderate (Great Wall has alternatives)',
-    priceFrom: 'NZD $3,480',
-    seniorWhy: 'Imperial highlights without overload; Mutianyu Great Wall has cable car alternative for both up and down',
+    seniorWhy: 'Imperial highlights with a cable-car alternative at Mutianyu.',
   },
   {
-    name: 'Best of China',
-    slug: 'best-of-china',
-    url: '/campaigns/best-of-china',
-    duration: '15 days',
-    pace: 'Relaxed — 4 cities at sensible pace',
-    walkingLevel: 'Moderate (cable cars + private coach transfers)',
-    priceFrom: 'NZD $3,880',
-    seniorWhy: 'Most popular with NZ retirees — see iconic China with built-in breathing room',
+    slug: 'essentials', pace: 'Relaxed — broader coverage at a considered pace',
+    walkingLevel: 'Moderate (cable cars and coach transfers)',
+    seniorWhy: 'A wider route for travellers who have more time.',
   },
-  {
-    name: 'Best of China + Yangtze Cruise',
-    slug: 'best-of-china-yangtze',
-    url: '/yangtze-river-cruise',
-    duration: '14-18 days',
-    pace: 'Most relaxed — ship is the hotel for 3 nights',
-    walkingLevel: 'Low (most touring from cruise + elevators onboard)',
-    priceFrom: 'NZD $4,500',
-    seniorWhy: 'NZ seniors\' favourite — unpack once for cruise leg, slow river travel, lecture programs onboard',
-  },
-];
+] as const;
 
 const mobilityCheckpoints = [
   {
@@ -132,12 +110,12 @@ const faqs = [
   {
     question: 'Are CTS China tours suitable for seniors and retirees?',
     answer:
-      'Yes — NZ seniors are one of our most common client groups. CTS Tours NZ designs tours specifically with mobility-aware planning: cable car alternatives at the Great Wall (Mutianyu has cable car up AND down), electric shuttles at major sites, private coach transfers between hotels, ground-level rooms when requested, and pace adjusted to the group. Our most popular senior itineraries are 10-day Shanghai & Surroundings (low walking demand) and 14-15 day Best of China with optional Yangtze Cruise. Auckland-based team understands NZ retirees\' preferences and expectations.',
+      'Yes — CTS Tours NZ plans mobility-aware travel, including cable-car alternatives at the Great Wall, electric shuttles at major sites, private coach transfers, ground-level rooms when requested, and a pace adjusted to the group. Check the live tour comparison below for the current route, duration and published itinerary.',
   },
   {
     question: 'What\'s the best China tour for first-time senior travellers?',
     answer:
-      'For most NZ seniors travelling to China for the first time, we recommend Tale of Two Cities (10 days, Beijing + Xi\'an, NZD $3,480) or Shanghai & Surroundings (10 days, NZD $2,699). Both pace at moderate levels, cover iconic sights without overload, and offer afternoon free time. For seniors with more travel experience or longer holidays, Best of China (15 days, 4 cities, NZD $3,880) is the most popular — see iconic China with breathing room. If mobility is a primary concern, add the Yangtze River Cruise (3 nights cabin accommodation, ship is the hotel) — many senior travellers consider this the most enjoyable leg.',
+      'For a first China trip, compare the current published routes, durations and inclusions in the table below, then discuss mobility needs and rest time with a CTS consultant. Names, routes, duration and prices there update from the latest ME publication.',
   },
   {
     question: 'How walking-intensive are CTS senior China tours?',
@@ -172,7 +150,26 @@ const breadcrumbs = [
   { name: 'For Seniors', url: '/china-tours-for-seniors' },
 ];
 
-export default function ChinaToursForSeniorsPage() {
+export default async function ChinaToursForSeniorsPage() {
+  const publishedTours = await getPublishedTours();
+  const seniorFriendlyTours = SENIOR_TOUR_REFS.flatMap((ref) => {
+    const tour = publishedTours.find((item) => item.destination === 'china' && item.slug === ref.slug && item.isActive && !item.soldOut);
+    if (!tour) return [];
+    return [{
+      tour,
+      name: tour.name,
+      slug: tour.slug,
+      url: `/tours/${tour.destination}/${tour.tier}/${tour.slug}`,
+      duration: tour.duration,
+      cities: formatPublishedTourCities(tour.tourCities),
+      priceFrom: tour.price,
+      pace: ref.pace,
+      walkingLevel: ref.walkingLevel,
+      seniorWhy: ref.seniorWhy,
+    }];
+  });
+  const seniorLeadIn = [...seniorFriendlyTours]
+    .sort((a, b) => Number(a.priceFrom.replace(/[^\d]/g, '')) - Number(b.priceFrom.replace(/[^\d]/g, '')))[0];
   const siteUrl = getSiteUrl();
   const pageUrl = `${siteUrl}/china-tours-for-seniors`;
 
@@ -205,14 +202,14 @@ export default function ChinaToursForSeniorsPage() {
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'CTS Tours NZ — Senior-Friendly China Tour Packages 2026-27',
+    name: 'CTS Tours NZ — Senior-Friendly China Tours',
     numberOfItems: seniorFriendlyTours.length,
     itemListElement: seniorFriendlyTours.map((tour, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       url: `${siteUrl}${tour.url}`,
       name: tour.name,
-      description: `${tour.duration} · ${tour.pace} · from ${tour.priceFrom}`,
+      description: `${tour.duration} · ${tour.cities} · ${tour.pace} · ${tour.priceFrom}`,
     })),
   };
 
@@ -274,7 +271,7 @@ export default function ChinaToursForSeniorsPage() {
               {PAGE_H1}
             </h1>
             <p className="text-white/90 text-lg">
-              Relaxed pace · Mobility-aware itineraries · Auckland direct flights · NZD pricing · Visa-free entry
+              Relaxed pace · Mobility-aware itineraries · Auckland support · Current published tour details
             </p>
           </div>
         </div>
@@ -304,11 +301,9 @@ export default function ChinaToursForSeniorsPage() {
                   relaxed pace with built-in afternoon rest, mobility-aware planning (cable cars at the Great
                   Wall, electric shuttles at major sites, private coach transfers), English-speaking guides
                   who understand Western seniors&apos; expectations, and Auckland-based booking support.
-                  Most popular senior itineraries: <strong>Shanghai &amp; Surroundings (10 days, NZD $2,699)</strong>
-                  {' '}for low-walking comfort, <strong>Tale of Two Cities (10 days, NZD $3,480)</strong>{' '}
-                  for first-time imperial highlights, and <strong>Best of China + Yangtze River Cruise
-                  (15-18 days)</strong> for senior travellers&apos; favourite — the cruise leg means unpacking
-                  once for 3 nights. NZ passport holders enter visa-free up to 30 days (through 31 Dec 2026).
+                  Compare {seniorFriendlyTours.map(({ tour }, index) => (
+                    <span key={tour.id}>{index ? '; ' : ''}<strong>{tour.name} ({tour.duration}, {tour.price})</strong></span>
+                  ))}. Current route, duration and price are read from the published tour records. NZ passport holders enter visa-free up to 30 days (check current entry rules before travel).
                   Our Auckland-based, Kiwi-led team arranges China tours for Kiwi retirees.
                 </p>
               </aside>
@@ -316,18 +311,18 @@ export default function ChinaToursForSeniorsPage() {
               {/* Senior-friendly tour comparison */}
               <section aria-labelledby="senior-tours-heading">
                 <h2 id="senior-tours-heading" className="text-3xl font-serif font-bold text-gray-900 mb-6">
-                  4 Most Senior-Friendly China Itineraries
+                  Published China Tours for Senior Travellers
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Not all CTS Tours fit every traveller. These four are the ones our Auckland-based consultants
-                  most often recommend for NZ seniors and retirees based on actual pace, walking demand, and
-                  built-in rest opportunities.
+                  Not all CTS Tours fit every traveller. This comparison lists active tours selected for senior travellers. Product facts come from the ME publication; pace and walking guidance are CTS editorial recommendations.
                 </p>
                 <div className="overflow-x-auto rounded-xl border border-warm-200 shadow-sm">
                   <table className="w-full text-sm bg-white">
                     <thead className="bg-warm-50 text-gray-900">
                       <tr>
                         <th className="text-left px-4 py-3 font-bold">Tour</th>
+                        <th className="text-left px-4 py-3 font-bold">Duration</th>
+                        <th className="text-left px-4 py-3 font-bold">Route</th>
                         <th className="text-left px-4 py-3 font-bold">Pace</th>
                         <th className="text-left px-4 py-3 font-bold">Walking</th>
                         <th className="text-left px-4 py-3 font-bold">From (NZD)</th>
@@ -342,6 +337,8 @@ export default function ChinaToursForSeniorsPage() {
                               {tour.name}
                             </Link>
                           </td>
+                          <td className="px-4 py-3 text-gray-700">{tour.duration}</td>
+                          <td className="px-4 py-3 text-gray-700">{tour.cities || 'See itinerary'}</td>
                           <td className="px-4 py-3 text-gray-700">{tour.pace}</td>
                           <td className="px-4 py-3 text-gray-700">{tour.walkingLevel}</td>
                           <td className="px-4 py-3 font-semibold text-gray-900">{tour.priceFrom}</td>
@@ -352,8 +349,7 @@ export default function ChinaToursForSeniorsPage() {
                   </table>
                 </div>
                 <p className="text-xs text-gray-500 mt-3">
-                  All four include Auckland return flights, hotels, English-speaking guides, daily breakfast, most lunches,
-                  and Auckland-based pre-trip support. Connecting domestic flights from regional NZ to Auckland quoted separately.
+                  Check each linked tour page for its current inclusions and exclusions. Connecting domestic flights from regional NZ to Auckland are quoted separately.
                 </p>
               </section>
 
@@ -517,11 +513,11 @@ export default function ChinaToursForSeniorsPage() {
                   <dl className="space-y-3 text-sm">
                     <div>
                       <dt className="text-gray-600">Lead-in price</dt>
-                      <dd className="font-medium">NZD $2,699</dd>
+                      <dd className="font-medium">{seniorLeadIn?.priceFrom ?? 'See current tours'}</dd>
                     </div>
                     <div>
-                      <dt className="text-gray-600">Most-booked senior trip</dt>
-                      <dd className="font-medium">Best of China + Yangtze (14-18d)</dd>
+                      <dt className="text-gray-600">Published senior-friendly tours</dt>
+                      <dd className="font-medium">{seniorFriendlyTours.length}</dd>
                     </div>
                     <div>
                       <dt className="text-gray-600">Flight from Auckland</dt>

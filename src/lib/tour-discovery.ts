@@ -1,5 +1,5 @@
 import type { Tour } from '@/lib/data/tours';
-import { parseDepartureDate } from '@/lib/data/tour-dates';
+import { aucklandToday, parseDepartureDate } from '@/lib/data/tour-dates';
 import { extractRouteFromItinerary } from '@/lib/itinerary-map/extractRouteFromItinerary';
 import experiences from '@/lib/data/experiences.json';
 export { experiences };
@@ -10,11 +10,7 @@ export function tourCities(tour: Tour): string[] {
   const cities = [...(tour.tourCities ?? []), ...(extractRouteFromItinerary(tour.itinerary)?.stops.map(s => s.label) ?? [])];
   return Array.from(new Set(cities.map(c => labels[normalizeCity(c)] ?? c.toLowerCase().replace(/\b\w/g, l=>l.toUpperCase()))));
 }
-export function aucklandToday(now = new Date()): string {
-  const parts = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(now);
-  const part = (type: string) => parts.find(p => p.type === type)?.value;
-  return `${part('year')}-${part('month')}-${part('day')}`;
-}
+export { aucklandToday };
 export function departures(tour: Tour, today = aucklandToday()) {
   if (tour.soldOut || !tour.isActive) return [];
   return (tour.departureDates ?? []).flatMap(label => {

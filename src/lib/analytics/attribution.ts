@@ -82,3 +82,47 @@ export function attributionEmailRows(a: Attribution | null): string {
     row('Tour pages viewed', a.viewed_tour_paths.join(', ')),
   ].join('\n    ');
 }
+
+/**
+ * Meta's click id (`fbclid`) that the browser kept from the ad click (first-touch UTM store) and sent
+ * with the enquiry. Returns null for anything that does not look like one, so odd input can never
+ * reach the notification email. Real fbclids are URL-safe tokens of letters, digits, `_`, `-` and `.`.
+ */
+export function sanitizeFbclid(input: unknown): string | null {
+  if (typeof input !== 'string') return null;
+  const v = input.trim();
+  return /^[\w.-]{1,255}$/.test(v) ? v : null;
+}
+
+/**
+ * One extra <tr> for the notification email, using the same markup as attributionEmailRows. It is
+ * appended after every existing row (and before the message), so existing labels and their order
+ * are untouched; the CRM mirror reads rows by label and ignores labels it does not know.
+ * Empty string when there is no fbclid.
+ */
+export function fbclidEmailRow(fbclid: string | null): string {
+  if (!fbclid) return '';
+  return `<tr><td style="font-weight:bold;">Facebook click ID</td><td>${esc(fbclid)}</td></tr>`;
+}
+
+/**
+ * Google's click id (`gclid`) that the browser kept from the ad click (first-touch UTM store) and sent with the
+ * enquiry. The notification email is the only lead record, so without it a Google Ads lead cannot be matched back to
+ * its ad click later (offline conversion import). Same rule as `sanitizeFbclid`: anything that does not look like a
+ * click id (URL-safe letters, digits, `_`, `-` and `.`) is dropped, so odd input can never reach the email.
+ */
+export function sanitizeGclid(input: unknown): string | null {
+  if (typeof input !== 'string') return null;
+  const v = input.trim();
+  return /^[\w.-]{1,255}$/.test(v) ? v : null;
+}
+
+/**
+ * One extra <tr> for the notification email, same markup as `fbclidEmailRow` and appended right after it (after every
+ * existing row, before the message). Empty string when there is no gclid, so an enquiry without one produces exactly
+ * the email it produced before.
+ */
+export function gclidEmailRow(gclid: string | null): string {
+  if (!gclid) return '';
+  return `<tr><td style="font-weight:bold;">Google click ID</td><td>${esc(gclid)}</td></tr>`;
+}

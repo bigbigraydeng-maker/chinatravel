@@ -8,23 +8,23 @@ import {
   faqVisaRequirements,
   faqBestTimeTravel,
 } from '@/lib/data/faq-pages';
-import { getAllActiveTours } from '@/lib/data/tours';
+import { destinations } from '@/lib/data/tours';
+import { getPublishedActiveTours, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 import { getAllCities } from '@/lib/data/cities';
 import { getAllPlayQuizSlugs } from '@/lib/data/play-quizzes';
 import { getAllGuides } from '@/lib/data/guides';
 import { getAllBlogPosts } from '@/lib/data/blogs';
+import { isDelistedUrl } from '@/lib/data/delisted-tours';
 
 const SITE = getSiteUrl();
 
 // All static routes with their priority and change frequency
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date().toISOString();
 
   // ── Core pages ──────────────────────────────────────────────────────────
   const campaignOctober2026: MetadataRoute.Sitemap = [
     `${SITE}/campaigns/spotlight`,
-    `${SITE}/campaigns/october-2026/shanghai-surroundings`,
-    `${SITE}/campaigns/october-2026/tale-of-two-cities`,
   ].map((url) => ({
     url,
     lastModified: now,
@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const corePages: MetadataRoute.Sitemap = [
     { url: SITE, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${SITE}/tours`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${SITE}/tours/china`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
     { url: `${SITE}/china-tours`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${SITE}/tailor-made`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/travel-tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
@@ -49,7 +50,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/experts/baker-gu`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/experts/lisa-li`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE}/campaigns/best-of-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.65 },
-    { url: `${SITE}/christmas-new-year-china`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/best-china-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/china-tours-for-seniors`, lastModified: now, changeFrequency: 'monthly', priority: 0.65 },
     { url: `${SITE}/chongqing-tours`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
@@ -109,10 +109,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // ── Tour tier pages (/tours/china/discovery …) ──────────────────────────
+  // The category page of one tier, which every tour page breadcrumbs to. Derived from the
+  // destination data (China only, like the tour pages below) and only for tiers that currently
+  // have an active tour, so an empty tier cannot become a thin sitemap entry. The retired tours
+  // 301 to /tours/china/discovery, so search engines must be able to find that page here.
+  const chinaTiers = destinations
+    .filter((destination) => destination.slug === 'china')
+    .flatMap((destination) => destination.tiers.map((tier) => tier.slug));
+  const tierAvailability = await Promise.all(chinaTiers.map(async (tier) => ({
+    tier,
+    hasTours: (await getPublishedToursByDestinationAndTier('china', tier)).length > 0,
+  })));
+  const tierPages: MetadataRoute.Sitemap = tierAvailability
+    .filter(({ hasTours }) => hasTours)
+    .map(({ tier }) => ({
+      url: `${SITE}/tours/china/${tier}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    }));
+
   // ── Tour pages ──────────────────────────────────────────────────────────
   // 从 tours.ts 派生,不再手写 slug 列表。手写列表会和数据漂移 ——
   // 曾经出现过 isActive:false 的产品仍留在 sitemap 里,成为站内无入口的孤儿页。
-  const tourSlugs: MetadataRoute.Sitemap = getAllActiveTours()
+  const tourSlugs: MetadataRoute.Sitemap = (await getPublishedActiveTours())
     .filter((tour) => tour.destination === 'china')
     .map((tour) => ({
       url: `${SITE}/tours/china/${tour.tier}/${tour.slug}`,
@@ -169,5 +190,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tourSlugs, ...blogPages];
+  return [...corePages, ...campaignOctober2026, ...hubPages, ...discoveryGuides, ...guidePages, ...faqPages, ...explorePages, ...playPages, ...tierPages, ...tourSlugs, ...blogPages]
+    .filter((entry) => !isDelistedUrl(entry.url));
 }

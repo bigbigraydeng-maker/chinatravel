@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon';
-import { getAllActiveTours, type Tour } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 
 /**
  * Upcoming departures table — the nearest scheduled departures across all
@@ -10,21 +10,6 @@ import { getAllActiveTours, type Tour } from '@/lib/data/tours';
  * data has no seat inventory, so we only show fields we can stand behind:
  * departure date, journey, duration, from-price, and a link.
  */
-
-// Figma-exact card photos for the tours currently in the "next 6 departures"
-// slot — homepage-only, kept separate from tour.heroImage (which also renders
-// on each tour's own detail page and must stay that tour's real photo). As the
-// list rotates over time, a tour without an entry here just falls back to its
-// own tour.heroImage — never a missing or mismatched image.
-const DEPARTURE_IMAGE_OVERRIDE: Record<string, string> = {
-  'yunnan-explorer': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-yunnan-v2.webp',
-  'shanghai-surroundings': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-shanghai-surroundings-v2.webp',
-  'imperial-heritage': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-legacy-of-china-v2.webp',
-  'beijing-xian': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-tale-of-two-cities-v2.webp',
-  'golden-china': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-golden-china-v2.webp',
-  'china-icons-collection': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/upcoming-christmas-new-year-v2.webp',
-  'china-icons-collection-christchurch': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
-};
 
 const MONTHS: Record<string, number> = {
   january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
@@ -56,13 +41,13 @@ interface Props {
   limit?: number;
 }
 
-export default function UpcomingDepartures({ limit = 6 }: Props) {
+export default function UpcomingDepartures({ limit = 6, tours }: Props & { tours: Tour[] }) {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
 
   const rows: DepartureRow[] = [];
-  for (const tour of getAllActiveTours()) {
-    if (!tour.departureDates?.length) continue;
+  for (const tour of tours) {
+    if (!tour.isActive || tour.soldOut || !tour.departureDates?.length) continue;
     for (const dateStr of tour.departureDates) {
       const date = parseDepartureDate(dateStr, now);
       if (!date || date < now) continue;
@@ -101,7 +86,7 @@ export default function UpcomingDepartures({ limit = 6 }: Props) {
               >
                 <div className="relative h-24 w-24 flex-none overflow-hidden rounded-xl md:h-28 md:w-28">
                   <Image
-                    src={DEPARTURE_IMAGE_OVERRIDE[tour.slug] ?? tour.heroImage}
+                    src={tour.heroImage}
                     alt={tour.name}
                     fill
                     sizes="112px"

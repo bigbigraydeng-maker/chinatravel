@@ -127,7 +127,7 @@ const TourTierCard = ({
           {spotlightFeatured && (
             <p className="mb-2 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
               <span className="inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-orange-500" aria-hidden />
-              Trending · Limited October departures
+              Trending · Limited departures
             </p>
           )}
           <h3 className="text-xl font-semibold mb-2 font-serif group-hover:text-primary transition-colors line-clamp-2">{title}</h3>

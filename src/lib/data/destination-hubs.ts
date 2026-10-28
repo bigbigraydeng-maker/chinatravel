@@ -4,9 +4,10 @@
 // tours.ts at render time, so a departure or price edit there flows to these pages. Hand-written prose
 // below only restates what the tour itineraries and existing guide pages already say.
 
-import { getTourBySlug, type DayItinerary, type Tour } from '@/lib/data/tours';
+import type { DayItinerary, Tour } from '@/lib/data/tours';
 import { computeReturnDate } from '@/lib/data/tour-dates';
 import { departures, priceNumber, tourUrl } from '@/lib/tour-discovery';
+import { resolvePublishedTourCopyTokens } from '@/lib/data/tour-copy';
 
 export type TourTier = 'signature' | 'discovery' | 'stopover';
 export type TourRef = { tier: TourTier; slug: string };
@@ -49,8 +50,6 @@ export interface DestinationHubConfig {
   cityPattern: RegExp;
   /** Tour that supplies the day-by-day sample itinerary. */
   sampleRef: TourRef;
-  sampleHeading: string;
-  sampleIntro: string;
   prose: HubProseSection[];
 }
 
@@ -63,10 +62,14 @@ export function cheapestPrice(tours: Tour[]): string | undefined {
   return priced.reduce((a, b) => ((b.n as number) < (a.n as number) ? b : a)).t.price;
 }
 
-export function resolveHubTours(refs: TourRef[]): Tour[] {
-  return refs.flatMap((ref) => {
-    const tour = getTourBySlug('china', ref.tier, ref.slug);
-    return tour && tour.isActive && !tour.soldOut ? [tour] : [];
+export function resolveHubTours(refs: TourRef[], tourList: Tour[], cityPattern?: RegExp): Tour[] {
+  const keys = new Set(refs.map((ref) => `${ref.tier}/${ref.slug}`));
+  return tourList.filter((tour) => {
+    if (tour.destination !== 'china' || !tour.isActive || tour.soldOut) return false;
+    if (keys.has(`${tour.tier}/${tour.slug}`)) return true;
+    if (!cityPattern) return false;
+    return (tour.tourCities ?? []).some((city) => cityPattern.test(city)) ||
+      tour.itinerary.some((day) => cityPattern.test(day.title));
   });
 }
 
@@ -98,12 +101,14 @@ export function buildDepartureRows(tours: Tour[], pattern: RegExp): HubDeparture
   });
 }
 
-export function buildSampleItinerary(config: DestinationHubConfig): HubSampleItinerary | null {
-  const tour = getTourBySlug('china', config.sampleRef.tier, config.sampleRef.slug);
+export function buildSampleItinerary(config: DestinationHubConfig, tourList: Tour[]): HubSampleItinerary | null {
+  const preferred = tourList.find((item) => item.destination === 'china' && item.tier === config.sampleRef.tier && item.slug === config.sampleRef.slug);
+  const tour = preferred?.isActive && !preferred.soldOut ? preferred : tourList.find((item) => item.destination === 'china' && item.isActive && !item.soldOut &&
+    ((item.tourCities ?? []).some((city) => config.cityPattern.test(city)) || item.itinerary.some((day) => config.cityPattern.test(day.title))));
   if (!tour || !tour.isActive) return null;
   return {
-    heading: config.sampleHeading,
-    intro: config.sampleIntro,
+    heading: `${tour.name} — current itinerary`,
+    intro: 'This day-by-day plan comes from the latest published tour record.',
     tourName: tour.name,
     tourHref: tourUrl(tour),
     price: tour.price,
@@ -113,7 +118,18 @@ export function buildSampleItinerary(config: DestinationHubConfig): HubSampleIti
   };
 }
 
-const price = (tier: TourTier, slug: string): string => getTourBySlug('china', tier, slug)?.price.replace(/^From/, 'from') ?? '';
+const price = (tier: TourTier, slug: string): string => `[[TOUR_PRICE:${tier}:${slug}]]`;
+
+/** Resolve tour prices embedded in the site's explanatory copy from the published feed. */
+export function hubProseForTours(config: DestinationHubConfig, tourList: Tour[]): HubProseSection[] {
+  return config.prose.map((section) => ({
+    ...section,
+    paragraphs: section.paragraphs.map((paragraph) => paragraph.map((part) => {
+      if (typeof part === 'string') return resolvePublishedTourCopyTokens(part, tourList);
+      return { ...part, text: resolvePublishedTourCopyTokens(part.text, tourList) };
+    })),
+  }));
+}
 
 export const chengduHub: DestinationHubConfig = {
   tourRefs: [
@@ -126,29 +142,26 @@ export const chengduHub: DestinationHubConfig = {
     'trips from New Zealand: a land-only stopover, plus Signature group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /chengdu/i,
   sampleRef: { tier: 'stopover', slug: 'chengdu' },
-  sampleHeading: 'A 3-day Chengdu itinerary',
-  sampleIntro:
-    'The stopover is our shortest way to see Chengdu: a guide meets you at the airport and the days below are set out in full on the tour page.',
   prose: [
     {
       heading: 'Three ways to see Chengdu with CTS',
       paragraphs: [
         [
           'The quickest is the ',
-          link('3-day Chengdu stopover', '/tours/china/stopover/chengdu'),
-          ` (${price('stopover', 'chengdu')}, land only, so airfare is not included). It covers the Giant Panda Breeding and Research Centre, tea at People's Park, Jinli Street and Broad and Narrow Alley, then the Dujiangyan Irrigation System on departure day.`,
+          link('[[TOUR_NAME:stopover:chengdu]]', '/tours/china/stopover/chengdu'),
+          ` ([[TOUR_DURATION:stopover:chengdu]] · ${price('stopover', 'chengdu')}). See its live itinerary for current inclusions and day plans.`,
         ],
         [
-          'Chengdu also sits inside three of our Signature group tours, which include international and domestic flights. On ',
-          link('Natural China', '/tours/china/signature/landscapes'),
-          " (16 days) you take the high-speed train from Chongqing, see Wuhou Shrine and Jinli Ancient Street, then spend a day at the panda base, People's Park, Taikoo Li and Kuanzhai Alley before continuing to Zhangjiajie.",
+          'Chengdu appears in the current published itinerary for ',
+          link('[[TOUR_NAME:signature:landscapes]]', '/tours/china/signature/landscapes'),
+          ' ([[TOUR_DURATION:signature:landscapes]]). Open the tour page for its current route, day-by-day plan and inclusions.',
         ],
         [
           'On ',
-          link('Legacy of China', '/tours/china/signature/imperial-heritage'),
-          ' (17 days) Chengdu follows Lhasa: a Sichuan dinner, then the panda base before the train to Chongqing and the Yangtze cruise. On ',
-          link('China Panorama', '/tours/china/signature/grand-tour'),
-          " (27 days) you arrive from Chongqing by high-speed train and visit the Panda Breeding Base, People's Park, Wide & Narrow Alleys and Taikoo Li before an evening flight to Dali.",
+          link('[[TOUR_NAME:signature:imperial-heritage]]', '/tours/china/signature/imperial-heritage'),
+          ' ([[TOUR_DURATION:signature:imperial-heritage]]) and ',
+          link('[[TOUR_NAME:signature:grand-tour]]', '/tours/china/signature/grand-tour'),
+          ' ([[TOUR_DURATION:signature:grand-tour]]) also appear in the published Chengdu listings. Their current routes and day plans are on each tour page.',
         ],
       ],
     },
@@ -156,7 +169,7 @@ export const chengduHub: DestinationHubConfig = {
       heading: 'Choosing your Chengdu trip',
       paragraphs: [
         [
-          'Short on time, or already have flights booked? Start with the stopover. Want a river cruise as well? All three group tours include one: the Three Gorges on Natural China (which then goes on to Zhangjiajie), the Yangtze on Legacy of China and China Panorama. Still deciding between Sichuan and Chongqing? Read ',
+          'Short on time, or already have flights booked? Start with the stopover. Compare the currently published itineraries to see which include a river cruise and where they go next. Still deciding between Sichuan and Chongqing? Read ',
           link('Chongqing vs Chengdu', '/blog/chongqing-vs-chengdu'),
           ' first, or ask us for a ',
           link('tailor-made itinerary', '/tailor-made'),
@@ -194,8 +207,6 @@ export const xianHub: DestinationHubConfig = {
     { tier: 'signature', slug: 'imperial-heritage' },
     { tier: 'signature', slug: 'grand-tour' },
     { tier: 'discovery', slug: 'golden-china' },
-    { tier: 'discovery', slug: 'china-icons-collection' },
-    { tier: 'discovery', slug: 'china-icons-collection-christchurch' },
   ],
   /** First N tours are shown as cards; the rest sit in a collapsed list. */
   featuredCount: 4,
@@ -203,35 +214,32 @@ export const xianHub: DestinationHubConfig = {
     'trips from New Zealand: a land-only stopover, plus group tours with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
   cityPattern: /xi.?an/i,
   sampleRef: { tier: 'discovery', slug: 'beijing-xian' },
-  sampleHeading: 'A 10-day Beijing and Xi\'an itinerary',
-  sampleIntro:
-    'A Tale of Two Cities is our shortest group tour that includes Xi\'an: Beijing first, then the high-speed train to Xi\'an for the last four days.',
   prose: [
     {
       heading: 'Where Xi\'an fits in our trips',
       paragraphs: [
         [
           'Xi\'an is the home of the Terracotta Warriors, and you can reach it on several of our trips. The ',
-          link('3-day Xi\'an stopover', '/tours/china/stopover/xian'),
-          ` (${price('stopover', 'xian')}, land only, so airfare is not included) covers the Terracotta Warriors, the Muslim Quarter, the Great Mosque, the Shaanxi History Museum and a dumpling banquet with a cultural show.`,
+          link('[[TOUR_NAME:stopover:xian]]', '/tours/china/stopover/xian'),
+          ` ([[TOUR_DURATION:stopover:xian]] · ${price('stopover', 'xian')}). See its live itinerary for current inclusions and day plans.`,
         ],
         [
           'For a first trip, ',
-          link('A Tale of Two Cities', '/tours/china/discovery/beijing-xian'),
-          ' (10 days) takes the high-speed train from Beijing to Xi\'an for the Terracotta Warriors, the City Wall, the Big Wild Goose Pagoda and Huimin Street. ',
-          link('Best of China', '/tours/china/discovery/essentials'),
-          ' (15 days) and ',
-          link('Golden China', '/tours/china/discovery/golden-china'),
-          ' (12 days) add Shanghai after Xi\'an (Best of China also stops in Hangzhou).',
+          link('[[TOUR_NAME:discovery:beijing-xian]]', '/tours/china/discovery/beijing-xian'),
+          ' ([[TOUR_DURATION:discovery:beijing-xian]]), ',
+          link('[[TOUR_NAME:discovery:essentials]]', '/tours/china/discovery/essentials'),
+          ' ([[TOUR_DURATION:discovery:essentials]]), and ',
+          link('[[TOUR_NAME:discovery:golden-china]]', '/tours/china/discovery/golden-china'),
+          ' ([[TOUR_DURATION:discovery:golden-china]]) all have current itineraries linked here. Compare the tour pages for their latest stops.',
         ],
         [
           'On the ',
-          link('Silk Road tour', '/tours/china/signature/silk-road'),
-          ' (18 days) Xi\'an is the starting point, before the route heads west to Lanzhou, Dunhuang, Turpan and Urumqi. ',
-          link('Legacy of China', '/tours/china/signature/imperial-heritage'),
+          link('[[TOUR_NAME:signature:silk-road]]', '/tours/china/signature/silk-road'),
+          ' ([[TOUR_DURATION:signature:silk-road]]) and the current ',
+          link('[[TOUR_NAME:signature:imperial-heritage]]', '/tours/china/signature/imperial-heritage'),
           ' and ',
-          link('China Panorama', '/tours/china/signature/grand-tour'),
-          ' also stop in Xi\'an for the Terracotta Warriors and the City Wall.',
+          link('[[TOUR_NAME:signature:grand-tour]]', '/tours/china/signature/grand-tour'),
+          ' itineraries show their current Xi\'an stops and routes.',
         ],
       ],
     },
@@ -283,29 +291,27 @@ export const guilinHub: DestinationHubConfig = {
     { tier: 'stopover', slug: 'guilin' },
   ],
   offerSummary:
-    'trips from New Zealand: land-only stopovers, plus the 27-day China Panorama group tour with flights from Auckland included. Pricing is in NZD, with English-speaking guides',
+    'trips from New Zealand: land-only stopovers and scheduled group tours. Check each live tour page for current inclusions, dates and pricing.',
   cityPattern: /guilin|yangshuo|li river/i,
   sampleRef: { tier: 'stopover', slug: 'guilin' },
-  sampleHeading: 'A 3-day Guilin itinerary',
-  sampleIntro: 'The Guilin stopover puts the Li River cruise at the centre of the trip. The days below are set out in full on the tour page.',
   prose: [
     {
       heading: 'Guilin on a short stay or a long tour',
       paragraphs: [
         [
-          'In our programme Guilin is mostly a short-stay destination. The ',
-          link('3-day Guilin stopover', '/tours/china/stopover/guilin'),
-          ` (${price('stopover', 'guilin')}, land only, so airfare is not included) is built around a 5–6 hour Li River cruise to Yangshuo, with Reed Flute Cave and Elephant Trunk Hill on the last day.`,
+          'The current short-stay option is ',
+          link('[[TOUR_NAME:stopover:guilin]]', '/tours/china/stopover/guilin'),
+          ` ([[TOUR_DURATION:stopover:guilin]] · ${price('stopover', 'guilin')}). See its live itinerary for current stops and inclusions.`,
         ],
         [
           'The ',
-          link('4-day Guilin & Surrounds stopover', '/tours/china/stopover/guilin-surrounds'),
-          ` (${price('stopover', 'guilin-surrounds')}, also land only) adds a full day at Longsheng, with the Longji terraces and Zhuang and Yao villages, then a Li River cruise and time in Yangshuo.`,
+          link('[[TOUR_NAME:stopover:guilin-surrounds]]', '/tours/china/stopover/guilin-surrounds'),
+          ` ([[TOUR_DURATION:stopover:guilin-surrounds]] · ${price('stopover', 'guilin-surrounds')}). See its live itinerary for current stops and inclusions.`,
         ],
         [
           'Guilin also appears on our group tour ',
-          link('China Panorama', '/tours/china/signature/grand-tour'),
-          ' (27 days, flights from Auckland included): you fly in from Kunming, cruise the Li River to Yangshuo, spend a day there with a morning Tai Chi session, a countryside tour and cormorant fishing, and return to Guilin for Elephant Trunk Hill, Reed Flute Cave and the Sun & Moon Pagodas.',
+          link('[[TOUR_NAME:signature:grand-tour]]', '/tours/china/signature/grand-tour'),
+          ' ([[TOUR_DURATION:signature:grand-tour]]) includes the latest published Guilin itinerary. Check the linked page for current routing and inclusions.',
         ],
       ],
     },
@@ -313,7 +319,7 @@ export const guilinHub: DestinationHubConfig = {
       heading: 'Short stop or whole-of-China?',
       paragraphs: [
         [
-          'Want the Li River without committing to a long tour? Choose a stopover; the 4-day Guilin & Surrounds trip adds the rice terraces. Want Guilin as one part of a whole-of-China journey? China Panorama is the only group tour that includes it. For anything else, ask us about a ',
+          'Want the Li River without committing to a longer tour? Compare the current Guilin stopovers. For Guilin as one part of a whole-of-China journey, check the current group tour listings. For anything else, ask us about a ',
           link('tailor-made itinerary', '/tailor-made'),
           '.',
         ],

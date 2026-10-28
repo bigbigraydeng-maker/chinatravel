@@ -1,6 +1,10 @@
 // CMS Data Model for Tours
 // This can be replaced with Supabase integration later
 
+import { isDelistedSlug } from './delisted-tours';
+import { aucklandToday, upcomingDepartureLabels } from './tour-dates';
+import { migratedUnsplash } from '@/lib/site-media';
+
 export interface Tour {
   id: string;
   slug: string;
@@ -268,7 +272,7 @@ export const destinations: Destination[] = [
 
 
 // Tours Data — migrated from ctstours.co.nz
-export const tours: Tour[] = [
+const allTours: Tour[] = [
   // China Signature Tours
   {
     id: 'tour-cn-sig-1',
@@ -283,6 +287,9 @@ export const tours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1507025793886-e20cd4685fae'), // Dunhuang desert dunes
+      migratedUnsplash('photo-1438919848714-206d008562bb'), // Great Wall of China
     ],
     highlights: [
       'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
@@ -336,7 +343,7 @@ export const tours: Tour[] = [
     metaDescription: 'Journey along China\'s ancient Silk Road — Terracotta Warriors, Danxia Mountains, Mogao Caves, Heavenly Lake. 18 days from NZD $7,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-05-22',
+    updatedAt: '2026-10-19',
     tags: [
       'small group',
       'Ancient Silk Road',
@@ -348,6 +355,7 @@ export const tours: Tour[] = [
       'high-speed train',
     ],
     departureDates: ['13 May 2027', '21 October 2027'],
+    departurePricing: { '13 May 2027': 'NZD $7,999', '21 October 2027': 'NZD $8,499' },
     singleSupplement: 'NZD $1,488',
     rating: 4.8,
     reviewCount: 127,
@@ -366,7 +374,11 @@ export const tours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
+      migratedUnsplash('photo-1746243044880-4b71e10be164'), // Forbidden City aerial, Beijing
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1729862564079-9bf368402110'), // Giant panda, Chengdu
+      migratedUnsplash('photo-1491552222800-c124480c9b02'), // Yangtze River Three Gorges mist
     ],
     highlights: [
       'Temple of Heaven with optional Tai Chi among locals; Tian\'anmen Square and Forbidden City (see itinerary for Monday closure & ticket substitution)',
@@ -416,7 +428,7 @@ export const tours: Tour[] = [
     metaDescription: 'Legacy of China — Beijing, Xi\'an, Lhasa, pandas, Victoria Yangtze cruise, Three Gorges Dam, Shanghai; 17 days NZD $9,999. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-04-02',
+    updatedAt: '2026-10-20',
     tags: [
       'small group',
       'Beijing',
@@ -437,7 +449,7 @@ export const tours: Tour[] = [
       'history',
       'ancient culture',
     ],
-    departureDates: ['13 August 2026', '15 October 2026', '28 May 2027'],
+    departureDates: ['28 May 2027'],
     singleSupplement: 'NZD $2,410',
     rating: 4.9,
     reviewCount: 283,
@@ -520,7 +532,7 @@ export const tours: Tour[] = [
     metaDescription: 'The ultimate 27-day China experience — Great Wall, Forbidden City, Terracotta Warriors, Yangtze cruise, pandas, Li River, West Lake, and Shanghai. From NZD $10,899. Book with CTS Tours.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-03-29',
+    updatedAt: '2026-10-19',
     tags: [
       'small group',
       'Beijing',
@@ -542,6 +554,7 @@ export const tours: Tour[] = [
       'Suzhou gardens',
     ],
     departureDates: ['8 May 2027', '16 October 2027'],
+    departurePricing: { '8 May 2027': 'NZD $10,899', '16 October 2027': 'NZD $11,399' },
     singleSupplement: 'NZD $2,555',
     rating: 4.7,
     reviewCount: 94,
@@ -556,14 +569,14 @@ export const tours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
     quickAnswer:
-      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The current 2027 departure and return dates are shown in the schedule below. Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
-    heroImage: '/images/tours/three-gorges-cruise-wide.jpg',
+    heroImage: '/images/tours/three-gorges-cruise-wide-2000.jpg',
     gallery: [
-      '/images/tours/three-gorges-cruise.jpg',
-      '/images/tours/chengdu-pandas.jpg',
-      '/images/tours/tianmen-mountain-glass-walkway.jpg',
+      '/images/tours/three-gorges-cruise-1600.jpg',
+      '/images/tours/chengdu-pandas-1600.jpg',
+      '/images/tours/tianmen-mountain-glass-walkway-1600.jpg',
     ],
     highlights: [
       'Cruise the Yangtze River through the Three Gorges from Yichang to Chongqing',
@@ -610,10 +623,10 @@ export const tours: Tour[] = [
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
-    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
+    metaDescription: 'Explore China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. From NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-23',
     tags: [
       'Shanghai',
       'Yichang',
@@ -627,8 +640,8 @@ export const tours: Tour[] = [
       'Tianmen Mountain',
       'Huangpu River cruise',
     ],
-    departureDates: ['26 March 2027', '28 May 2027'],
-    departurePricing: { '26 March 2027': 'NZD $7,349', '28 May 2027': 'NZD $7,349' },
+    departureDates: ['28 May 2027'],
+    departurePricing: { '28 May 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     goldenBlocks: true,
@@ -644,7 +657,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+          'Natural China is NZD $7,349 per person twin share. Current departure and return dates are listed in the schedule on this page. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
@@ -680,7 +693,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $1,895 extra, cruise included) for the 26 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us which current departure you prefer and whether you would like your own room (NZD $1,895 extra, cruise included), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
@@ -697,7 +710,7 @@ export const tours: Tour[] = [
     shortDescription:
       'Beijing\'s Forbidden City, Great Wall, and hutongs, then high-speed rail to Xi\'an for the Terracotta Warriors. Many NZ leisure trips can use China\'s visa-free entry (confirm before you book); confirmed 2027 group departures listed on this page.',
     quickAnswer:
-      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share. A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
+      'A Tale of Two Cities is a 10-day escorted tour from Auckland through Beijing and Xi\'an, from NZD $3,480 per person twin share (NZD $3,680 on 10 June). A private room adds NZD $395. Scheduled 2027 departures: 18 March (returning 27 March) and 10 June (returning 19 June). In Beijing: the Forbidden City, Great Wall, Temple of Heaven and a hutong pedi-cab tour; then a high-speed train (about four hours) to Xi\'an for the Terracotta Warriors and City Wall. Airfares, 4-star hotels, English-speaking guides, listed meals and entrances are included.',
     duration: '10 Days',
     price: 'From NZD $3,480',
     singleSupplement: 'NZD $395',
@@ -805,7 +818,7 @@ export const tours: Tour[] = [
       'China specialist–led Beijing & Xi\'an Discovery from New Zealand — 18 March 2027 & 10 June 2027 departures (the 15 October 2026 departure has sold out), Forbidden City, Great Wall, Terracotta Warriors, high-speed train. From NZD $3,480. Visa-free options for many NZ travellers — see CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-19',
     tags: [
       'Beijing',
       'Xi\'an',
@@ -824,7 +837,7 @@ export const tours: Tour[] = [
     departureDates: ['18 March 2027', '10 June 2027'],
     departurePricing: {
       '18 March 2027': 'NZD $3,480',
-      '10 June 2027': 'NZD $3,480',
+      '10 June 2027': 'NZD $3,680',
     },
     tourCities: ['beijing', 'xian'],
     goldenBlocks: true,
@@ -838,7 +851,7 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on A Tale of Two Cities, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) and 10 June (returning 19 June), priced from NZD $3,480 per person twin share. A private room adds NZD $395.',
+          'The scheduled 2027 departures from Auckland are 18 March (returning 27 March) at NZD $3,480 and 10 June (returning 19 June) at NZD $3,680, per person twin share. A private room adds NZD $395.',
       },
       {
         question: 'What is included in the price?',
@@ -1037,7 +1050,7 @@ export const tours: Tour[] = [
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     quickAnswer:
-      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, at NZD $2,699 per person twin share. A private room adds NZD $400. The scheduled 2027 departure is 25 March, returning 3 April. Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
+      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1088,7 +1101,7 @@ export const tours: Tour[] = [
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-13',
+    updatedAt: '2026-10-19',
     tags: [
       'Shanghai',
       'The Bund',
@@ -1103,8 +1116,8 @@ export const tours: Tour[] = [
      * the hero, sticky bar, and Offers schema, so hiding it here removes the
      * date from every surface that reads `departureDates`.
      */
-    departureDates: ['25 March 2027'],
-    departurePricing: { '25 March 2027': 'NZD $2,699' },
+    departureDates: ['25 March 2027', '5 November 2027'],
+    departurePricing: { '25 March 2027': 'NZD $2,699', '5 November 2027': 'NZD $2,899' },
     tourCities: ['suzhou', 'wuxi', 'xinshi', 'hangzhou', 'shanghai'],
     singleSupplement: 'NZD $400',
     goldenBlocks: true,
@@ -1118,10 +1131,10 @@ export const tours: Tour[] = [
       {
         question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
         answer:
-          'The scheduled 2027 departure from Auckland is 25 March (returning 3 April), at NZD $2,699 per person twin share. A private room adds NZD $400.',
+          'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at NZD $2,699 and 5 November (returning 14 November) at NZD $2,899, per person twin share. A private room adds NZD $400.',
       },
       {
-        question: 'What is included in the NZD $2,699 price?',
+        question: 'What is included in the price?',
         answer:
           'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
       },
@@ -1159,7 +1172,7 @@ export const tours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $400 extra) for the 25 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you want the 25 March or 5 November departure and whether you would like your own room (NZD $400 extra), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
@@ -1391,540 +1404,6 @@ export const tours: Tour[] = [
     departureDates: ['1 November 2026'],
     tourCities: ['chongqing', 'chengdu'],
     singleSupplement: 'NZD $400',
-  },
-
-  {
-    id: 'tour-cn-dis-8',
-    slug: 'china-icons-collection',
-    destination: 'china',
-    tier: 'discovery',
-    name: 'China Discovery — Christmas & New Year in China',
-    title: 'China Discovery — Christmas & New Year in China',
-    shortDescription: 'A 16-day festive journey through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors, futuristic Chongqing and a Cantonese Yum Cha finale in Guangzhou.',
-    duration: '16 Days',
-    price: 'From NZD $7,188 per person',
-    heroImage: 'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
-    gallery: [
-      'https://glbdnayojixmexgofbsd.supabase.co/storage/v1/object/public/visual-assets/group-tours/christmas-shanghai/hero.png',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
-    ],
-    highlights: [
-      'Christmas Eve in Shanghai: the Xintiandi Shikumen Christmas lighting ceremony, and the Bund Source German Christmas Market with European wooden stalls, mulled wine, gingerbread and a double-decker carousel',
-      'New Year\'s Eve in Xi\'an at the Tang Dynasty Ever-Bright City, with performances, float parades and festive crowds',
-      'The Great Wall at Mutianyu and the Forbidden City, Tian\'anmen Square and the Summer Palace in Beijing',
-      'The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot',
-      'Zhujiajiao Watertown, a pedi-cab Hutong tour with a local family visit and a Beijing Duck banquet',
-      'Chongqing\'s Hongyadong night view, Ciqikou, Liziba and Eye in the Clouds, then Yum Cha in Guangzhou',
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Auckland — Guangzhou',
-        description: 'Depart Auckland for Guangzhou on flight CZ 306, 2210/0510+1. Overnight on board.',
-        meals: [],
-      },
-      {
-        day: 2,
-        title: 'Guangzhou — Shanghai',
-        description: 'On arrival in Guangzhou you will clear immigration and customs, then transfer to your domestic flight CZ3533 0700/0915 to Shanghai. Upon arrival in Shanghai you will be met and greeted by our local representative, who will escort you to the hotel.',
-        meals: [
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 3,
-        title: 'Shanghai',
-        festiveLabel: 'Christmas Eve',
-        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. During the Christmas season the Xintiandi Shikumen complex hosts a grand lighting ceremony and themed decorations, letting you experience a strong Christmas atmosphere in the heart of Shanghai. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. We will also visit Bund Source — home to one of Shanghai\'s most popular German Christmas markets, where you can stroll European-style wooden stalls, taste mulled wine and gingerbread, and take photos beside the giant Christmas tree and the double-decker carousel. In the evening, take a Huangpu River cruise and celebrate Christmas Eve with Shanghai\'s locals.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 4,
-        title: 'Shanghai — Zhujiajiao Watertown',
-        description: 'Christmas morning is spent in Zhujiajiao, an ancient water town on Shanghai\'s outskirts often called the \'Venice of Shanghai\', with a history stretching back over a thousand years. Cross its arched stone bridges as the canal runs beneath, wander streets lined with Ming and Qing dynasty buildings, and sample local snacks sold straight from the doorways — a quiet, unhurried Christmas Day on the water.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 5,
-        title: 'Shanghai — Beijing',
-        description: 'Transfer to the railway station to take the high-speed train to Beijing. Upon arrival, meet and greet, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 6,
-        title: 'Beijing',
-        description: 'Tour Tian\'anmen Square, the biggest public square in the world. You will also have a photo stop at the National Centre for the Performing Arts, formerly known as the National Grand Theatre and colloquially described as The Egg. Afterwards, visit the Forbidden City, the vast complex of palaces which was home to successive Emperors for more than 500 years; included is admission to the living quarters, museum and jewellery sections. Continue to Beihai Park, an imperial garden to the northwest of the Forbidden City. Tonight you will experience the famous Beijing Duck banquet for your welcome dinner.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 7,
-        title: 'Beijing — Great Wall at Mutianyu',
-        description: 'Morning tour to the Great Wall at the Mutianyu section, stretching almost 4,000 miles from the Pacific Ocean to the sands of Central Asia and befittingly crowned one of the ten wonders of the world.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 8,
-        title: 'Beijing — Hutong & Summer Palace',
-        description: 'This morning we enjoy a pedi-cab tour of the Hutong — the \'old city\' neighbourhoods of narrow alleyways and courtyard gardens — and experience local life on a family visit. After lunch, tour the Summer Palace, the largest and best preserved of all imperial palace gardens, which boasts such delights as the famous Marble Boat and the ornately painted \'Long Corridor\', and take a boat ride on Lake Kunming if the weather permits.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 9,
-        title: 'Beijing — Xi\'an',
-        description: 'Transfer to the railway station to take the high-speed train to Xi\'an. Upon arrival, meet and greet, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 10,
-        title: 'Xi\'an — Terracotta Warriors & New Year\'s Eve',
-        festiveLabel: 'New Year\'s Eve',
-        description: 'Morning tour to the greatest archaeological discovery of the century, the more than 2,000-year-old Terracotta Warriors interred with the Emperor Qin Shi Huang; included are the Circle Vision Movie and Bronze Chariot. In the evening, go to the Tang Dynasty Ever-Bright City for a New Year\'s Eve steeped in history: this pedestrian street transforms into a grand New Year\'s stage with performances such as poetry duels with \'Li Bai\', float parades and music parties — a fantastic place to soak in the atmosphere of a \'prosperous Chang\'an\'. Other iconic celebration spots include Bell and Drum Tower Square, where you can join the crowd to watch the giant LED screen countdown to midnight, with the nearby Muslim Quarter open for late-night snacks; the Big Wild Goose Pagoda, where the traditional bell-ringing ceremony at Da Ci\'en Temple from 23:30 offers a more serene experience, the 108 bell rings symbolically welcoming the new year; and the Xi\'an City Wall at Yongning Gate, specially open for night visits on New Year\'s Eve.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 11,
-        title: 'Xi\'an — City Wall & Muslim Quarter',
-        description: 'Visit the Xi\'an City Wall, a well-preserved ancient city rampart encircling central Xi\'an, where visitors may walk or cycle on top for old-town views. Continue to the Yongxingfang Food Block with bowl-smashing wine — a folk-themed food precinct with authentic Shaanxi snacks, where bowl-smashing wine is a symbolic local ritual for blessings. Then Bell & Drum Tower Square, home to the historic Bell and Drum Towers; bustling Muslim Street, offering Hui-flavoured street food; and the Great Mosque of Xi\'an, which features a unique mix of Chinese and Islamic architectural styles.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 12,
-        title: 'Xi\'an — Chongqing',
-        description: 'Transfer to the railway station to take the train to Chongqing. Upon arrival, meet and greet, visit the Hongyadong night view, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
-      },
-      {
-        day: 13,
-        title: 'Chongqing',
-        description: 'Visit Ciqikou, Liziba, Kuixing Tower, Jiefangbei and Eye in the Clouds.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
-      },
-      {
-        day: 14,
-        title: 'Chongqing — Guangzhou',
-        description: 'Transfer to the airport to take flight CZ3426 1715/1915 to Guangzhou. Upon arrival, meet and greet, then free shopping until the transfer to the airport.',
-        meals: [
-          'Breakfast',
-        ],
-        accommodation: 'Elong Hotel Guangzhou or similar 4-star (No 293, Guangzhou Road, Yuexiu District, Guangzhou)',
-      },
-      {
-        day: 15,
-        title: 'Guangzhou — Departure',
-        description: 'Enjoy an authentic Yum Cha in the birthplace of Yum Cha, Guangzhou, in the late morning, before you are taken to the airport for your outward flight CZ335 1430/0630+1.',
-        meals: [],
-      },
-      {
-        day: 16,
-        title: 'Auckland',
-        description: 'Arrive in Auckland.',
-        meals: [],
-      },
-    ],
-    inclusions: [
-      'International and domestic airfares',
-      'Accommodation in 4-star hotels',
-      'Meals as specified in the itinerary',
-      'Private airport transfers',
-      'English-speaking local guides',
-      'Private transport for sightseeing',
-      'Entrance fees to listed attractions',
-      '2nd class train tickets as per the itinerary',
-    ],
-    exclusions: [
-      'China visa (if applicable at time of travel)',
-      'Travel insurance',
-      'Personal expenses',
-      'Tips for guides and drivers (NZD 10 per person per day)',
-    ],
-    metaTitle: 'Christmas & New Year in China 16 Days | CTS Tours',
-    metaDescription: 'Celebrate Christmas in Shanghai and New Year\'s Eve in ancient Xi\'an on a 16-day China tour: Great Wall, Forbidden City, Terracotta Warriors, Chongqing and Guangzhou.',
-    isActive: true,
-    createdAt: '2026-08-17',
-    updatedAt: '2026-08-18',
-    tags: [
-      'Shanghai',
-      'Christmas',
-      'New Year',
-      'Beijing',
-      'Great Wall',
-      'Forbidden City',
-      'Xi\'an',
-      'Terracotta Warriors',
-      'Chongqing',
-      'Hongyadong',
-      'Guangzhou',
-      'high-speed train',
-      'festive season',
-    ],
-    departureDates: ['22 December 2026'],
-    departurePricing: {
-      '22 December 2026': 'NZD $7,188',
-    },
-    singleSupplement: 'NZD $968',
-    tourCities: ['shanghai', 'beijing', 'xian', 'chongqing', 'guangzhou'],
-    faqs: [
-      {
-        question: 'Do New Zealand passport holders need a visa for China?',
-        answer:
-          'Most leisure trips qualify for visa-free entry: NZ ordinary passport holders can usually stay up to 30 days without a tourist visa under current policy (published to 31 December 2026). Bring a valid passport, return or onward travel, and hotel or tour documentation. If your trip exceeds 30 days or is for work, study, or other restricted purposes, you may need a traditional visa — CTS can point you to current requirements and our NZ entry guide.',
-      },
-      {
-        question: 'What is typically included in the tour price?',
-        answer:
-          'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
-      },
-      {
-        question: 'Are international flights from New Zealand included?',
-        answer:
-          'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
-      },
-      {
-        question: 'Why is the Christchurch departure cheaper?',
-        answer:
-          "The Christchurch departure is a South Island-only fare: China Southern Airlines — celebrating its 70th anniversary in 2026 — resumed its Christchurch–Guangzhou route post-pandemic, and CTS passes that route's better fare straight through to South Island travellers — NZD $1,000 less than this Auckland departure.",
-        link: {
-          href: '/tours/china/discovery/china-icons-collection-christchurch',
-          label: 'View the 15-day Christchurch departure →',
-        },
-      },
-      {
-        question: 'Why does China celebrate on Christmas Eve rather than Christmas Day?',
-        answer:
-          'In China the big night is Christmas Eve, known as Ping\'an Ye ("peaceful night"). It\'s tradition to give apples wrapped in gold foil, because the Mandarin word for apple (píngguǒ) sounds close to the word for peace (píng\'ān) — a custom that took off in the early 2000s and has stuck ever since. In a city like Shanghai this makes for a lively, lit-up Christmas Eve, which is exactly why this itinerary puts you in Shanghai on the 24th rather than the 25th.',
-      },
-      {
-        question: 'What\'s the weather like in China in December?',
-        answer:
-          'Cold and dry rather than wet — pack proper winter layers, not a raincoat. Beijing sits around freezing during the day and well below overnight, with darkness falling before 5pm; Xi\'an is cold and dry and Shanghai cold and damp, before Chongqing and Guangzhou turn milder toward the end of the trip. The upside: December is China\'s quiet season, so the Forbidden City and the Great Wall at Mutianyu (open year-round, with its cable car running and good footing on the restored steps) are far less crowded than in autumn, and Kunming Lake at the Summer Palace freezes solid — a sight summer visitors never see.',
-      },
-      {
-        question: 'How do I book and what payment options are available?',
-        answer:
-          'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, finalise details, and outline deposit and balance payment steps.',
-      },
-    ],
-  },
-
-  {
-    id: 'tour-cn-dis-9',
-    slug: 'china-icons-collection-christchurch',
-    destination: 'china',
-    tier: 'discovery',
-    name: 'China Discovery — Christmas & New Year in China (Christchurch Departure)',
-    title: 'China Discovery — Christmas & New Year in China (Christchurch Departure)',
-    shortDescription: 'A 15-day festive journey departing direct from Christchurch through China\'s greatest icons — Christmas markets and skyline views in Shanghai, New Year\'s Eve celebrations in ancient Xi\'an, the Great Wall and Forbidden City in Beijing, the Terracotta Warriors and futuristic Chongqing.',
-    duration: '15 Days',
-    price: 'From NZD $6,188 per person',
-    heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
-    gallery: [
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/christchurch-departure-v2.webp',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/shanghai-night-red/shanghai-night-red.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/great-wall-mist/great-wall-mist.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/xian-terracotta/xian-terracotta.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/china-pagoda-night/china-pagoda-night.jpg',
-    ],
-    highlights: [
-      'A direct South Island departure — fly ex-Christchurch via Guangzhou, no Auckland transfer required',
-      'Christmas Eve in Shanghai: the Xintiandi Shikumen Christmas lighting ceremony, and the Bund Source German Christmas Market with European wooden stalls, mulled wine, gingerbread and a double-decker carousel',
-      'New Year\'s Eve in Xi\'an at the Tang Dynasty Ever-Bright City, with performances, float parades and festive crowds',
-      'The Great Wall at Mutianyu and the Forbidden City, Tian\'anmen Square and the Summer Palace in Beijing',
-      'The 2,000-year-old Terracotta Warriors, including the Circle Vision Movie and Bronze Chariot',
-      'Zhujiajiao Watertown, a pedi-cab Hutong tour with a local family visit and a Beijing Duck banquet',
-      'Chongqing\'s Hongyadong night view, Ciqikou, Liziba and Eye in the Clouds',
-    ],
-    itinerary: [
-      {
-        day: 1,
-        title: 'Christchurch — Guangzhou',
-        description: 'Depart Christchurch for Guangzhou on flight CZ618, 2230/0520+1. Overnight on board. This direct Christchurch–Guangzhou service resumed post-pandemic, operated by China Southern Airlines — celebrating its 70th anniversary in 2026.',
-        meals: [],
-        operatorLogo: { src: '/images/airlines/china-southern-horizontal.png', alt: 'China Southern Airlines' },
-      },
-      {
-        day: 2,
-        title: 'Guangzhou — Shanghai',
-        description: 'On arrival in Guangzhou you will clear immigration and customs, then transfer to your domestic flight CZ3533 0700/0915 to Shanghai. Upon arrival in Shanghai you will be met and greeted by our local representative, who will escort you to the hotel.',
-        meals: [
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 3,
-        title: 'Shanghai',
-        festiveLabel: 'Christmas Eve',
-        description: 'We will visit the Old Town with its winding alleyways, lined with shops, teahouses and restaurants, and then Yu Garden, Xintiandi and Tianzifang, appreciating the charm of Shikumen. During the Christmas season the Xintiandi Shikumen complex hosts a grand lighting ceremony and themed decorations, letting you experience a strong Christmas atmosphere in the heart of Shanghai. Then to the top of the Shanghai Oriental Pearl Tower, overlooking the beautiful scenery on both sides of the Huangpu River. We will also visit Bund Source — home to one of Shanghai\'s most popular German Christmas markets, where you can stroll European-style wooden stalls, taste mulled wine and gingerbread, and take photos beside the giant Christmas tree and the double-decker carousel. In the evening, take a Huangpu River cruise and celebrate Christmas Eve with Shanghai\'s locals.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 4,
-        title: 'Shanghai — Zhujiajiao Watertown',
-        description: 'Christmas morning is spent in Zhujiajiao, an ancient water town on Shanghai\'s outskirts often called the \'Venice of Shanghai\', with a history stretching back over a thousand years. Cross its arched stone bridges as the canal runs beneath, wander streets lined with Ming and Qing dynasty buildings, and sample local snacks sold straight from the doorways — a quiet, unhurried Christmas Day on the water.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Metropark Jichen Hotel Shanghai or similar 4-star (No 818, Wanhangdu Road, Jing\'an District, Shanghai)',
-      },
-      {
-        day: 5,
-        title: 'Shanghai — Beijing',
-        description: 'Transfer to the railway station to take the high-speed train to Beijing. Upon arrival, meet and greet, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 6,
-        title: 'Beijing',
-        description: 'Tour Tian\'anmen Square, the biggest public square in the world. You will also have a photo stop at the National Centre for the Performing Arts, formerly known as the National Grand Theatre and colloquially described as The Egg. Afterwards, visit the Forbidden City, the vast complex of palaces which was home to successive Emperors for more than 500 years; included is admission to the living quarters, museum and jewellery sections. Continue to Beihai Park, an imperial garden to the northwest of the Forbidden City. Tonight you will experience the famous Beijing Duck banquet for your welcome dinner.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 7,
-        title: 'Beijing — Great Wall at Mutianyu',
-        description: 'Morning tour to the Great Wall at the Mutianyu section, stretching almost 4,000 miles from the Pacific Ocean to the sands of Central Asia and befittingly crowned one of the ten wonders of the world.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 8,
-        title: 'Beijing — Hutong & Summer Palace',
-        description: 'This morning we enjoy a pedi-cab tour of the Hutong — the \'old city\' neighbourhoods of narrow alleyways and courtyard gardens — and experience local life on a family visit. After lunch, tour the Summer Palace, the largest and best preserved of all imperial palace gardens, which boasts such delights as the famous Marble Boat and the ornately painted \'Long Corridor\', and take a boat ride on Lake Kunming if the weather permits.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'New World Tongpai or similar 4-star (No 3-18, Chongwenmenwai Road, Dongcheng District, Beijing)',
-      },
-      {
-        day: 9,
-        title: 'Beijing — Xi\'an',
-        description: 'Transfer to the railway station to take the high-speed train to Xi\'an. Upon arrival, meet and greet, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 10,
-        title: 'Xi\'an — Terracotta Warriors & New Year\'s Eve',
-        festiveLabel: 'New Year\'s Eve',
-        description: 'Morning tour to the greatest archaeological discovery of the century, the more than 2,000-year-old Terracotta Warriors interred with the Emperor Qin Shi Huang; included are the Circle Vision Movie and Bronze Chariot. In the evening, go to the Tang Dynasty Ever-Bright City for a New Year\'s Eve steeped in history: this pedestrian street transforms into a grand New Year\'s stage with performances such as poetry duels with \'Li Bai\', float parades and music parties — a fantastic place to soak in the atmosphere of a \'prosperous Chang\'an\'. Other iconic celebration spots include Bell and Drum Tower Square, where you can join the crowd to watch the giant LED screen countdown to midnight, with the nearby Muslim Quarter open for late-night snacks; the Big Wild Goose Pagoda, where the traditional bell-ringing ceremony at Da Ci\'en Temple from 23:30 offers a more serene experience, the 108 bell rings symbolically welcoming the new year; and the Xi\'an City Wall at Yongning Gate, specially open for night visits on New Year\'s Eve.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 11,
-        title: 'Xi\'an — City Wall & Muslim Quarter',
-        description: 'Visit the Xi\'an City Wall, a well-preserved ancient city rampart encircling central Xi\'an, where visitors may walk or cycle on top for old-town views. Continue to the Yongxingfang Food Block with bowl-smashing wine — a folk-themed food precinct with authentic Shaanxi snacks, where bowl-smashing wine is a symbolic local ritual for blessings. Then Bell & Drum Tower Square, home to the historic Bell and Drum Towers; bustling Muslim Street, offering Hui-flavoured street food; and the Great Mosque of Xi\'an, which features a unique mix of Chinese and Islamic architectural styles.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Mercure Downtown or similar 4-star (No 8, Xixin Road, Xincheng District, Xi\'an)',
-      },
-      {
-        day: 12,
-        title: 'Xi\'an — Chongqing',
-        description: 'Transfer to the railway station to take the train to Chongqing. Upon arrival, meet and greet, visit the Hongyadong night view, then private transfer to the hotel.',
-        meals: [
-          'Breakfast',
-          'Dinner',
-        ],
-        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
-      },
-      {
-        day: 13,
-        title: 'Chongqing',
-        description: 'Visit Ciqikou, Liziba, Kuixing Tower, Jiefangbei and Eye in the Clouds.',
-        meals: [
-          'Breakfast',
-          'Lunch',
-          'Dinner',
-        ],
-        accommodation: 'Fairfield by Marriott or similar 4-star (No 9, Jiangnan Road, Nan\'an District, Chongqing)',
-      },
-      {
-        day: 14,
-        title: 'Chongqing — Guangzhou — Departure',
-        description: 'Transfer to the airport to take flight CZ3426 1715/1915 to Guangzhou. On arrival, wait at Guangzhou airport for the late-night return flight CZ617, departing 0050 — no hotel is booked for this connection.',
-        meals: [
-          'Breakfast',
-        ],
-      },
-      {
-        day: 15,
-        title: 'Arrive in Christchurch',
-        description: 'Arrive back in Christchurch — your festive China journey concludes.',
-        meals: [],
-      },
-    ],
-    inclusions: [
-      'International and domestic airfares',
-      'Accommodation in 4-star hotels',
-      'Meals as specified in the itinerary',
-      'Private airport transfers',
-      'English-speaking local guides',
-      'Private transport for sightseeing',
-      'Entrance fees to listed attractions',
-      '2nd class train tickets as per the itinerary',
-    ],
-    exclusions: [
-      'China visa (if applicable at time of travel)',
-      'Travel insurance',
-      'Personal expenses',
-      'Tips for guides and drivers (NZD 10 per person per day)',
-    ],
-    metaTitle: 'Christmas & New Year in China — Christchurch Departure | CTS Tours',
-    metaDescription: 'A 15-day South Island departure: Christmas in Shanghai, New Year\'s Eve in Xi\'an, the Great Wall, Forbidden City and Terracotta Warriors — flying direct ex-Christchurch via Guangzhou.',
-    isActive: true,
-    createdAt: '2026-08-18',
-    updatedAt: '2026-08-18',
-    tags: [
-      'Shanghai',
-      'Christmas',
-      'New Year',
-      'Beijing',
-      'Great Wall',
-      'Forbidden City',
-      'Xi\'an',
-      'Terracotta Warriors',
-      'Chongqing',
-      'Hongyadong',
-      'high-speed train',
-      'festive season',
-      'Christchurch departure',
-      'South Island',
-    ],
-    departureDates: ['22 December 2026'],
-    departurePricing: {
-      '22 December 2026': 'NZD $6,188',
-    },
-    singleSupplement: 'NZD $968',
-    tourCities: ['shanghai', 'beijing', 'xian', 'chongqing', 'guangzhou'],
-    faqs: [
-      {
-        question: 'Do New Zealand passport holders need a visa for China?',
-        answer:
-          'Most leisure trips qualify for visa-free entry: NZ ordinary passport holders can usually stay up to 30 days without a tourist visa under current policy (published to 31 December 2026). Bring a valid passport, return or onward travel, and hotel or tour documentation. If your trip exceeds 30 days or is for work, study, or other restricted purposes, you may need a traditional visa — CTS can point you to current requirements and our NZ entry guide.',
-      },
-      {
-        question: 'What is typically included in the tour price?',
-        answer:
-          'Our tours include return international airfares from New Zealand, hotel accommodation as specified in the itinerary, English-speaking tour guide, entrance fees and meals as specified, and all land transfers. Each tour page lists the full inclusions and exclusions — check the Inclusions section on this page for details.',
-      },
-      {
-        question: 'Are international flights from New Zealand included?',
-        answer:
-          'Yes. Return international airfares from New Zealand are included in our tour prices. We arrange the most convenient routing from your nearest New Zealand airport. Check the Inclusions section on each tour page for confirmation.',
-      },
-      {
-        question: 'Why is the Christchurch departure priced differently to Auckland?',
-        answer:
-          "China Southern Airlines — celebrating its 70th anniversary in 2026 — resumed its Christchurch–Guangzhou route post-pandemic, and CTS passes that route's better fare straight through to travellers departing the South Island — NZD $1,000 less than the equivalent Auckland departure.",
-      },
-      {
-        question: 'Why does China celebrate on Christmas Eve rather than Christmas Day?',
-        answer:
-          'In China the big night is Christmas Eve, known as Ping\'an Ye ("peaceful night"). It\'s tradition to give apples wrapped in gold foil, because the Mandarin word for apple (píngguǒ) sounds close to the word for peace (píng\'ān) — a custom that took off in the early 2000s and has stuck ever since. In a city like Shanghai this makes for a lively, lit-up Christmas Eve, which is exactly why this itinerary puts you in Shanghai on the 24th rather than the 25th.',
-      },
-      {
-        question: 'What\'s the weather like in China in December?',
-        answer:
-          'Cold and dry rather than wet — pack proper winter layers, not a raincoat. Beijing sits around freezing during the day and well below overnight, with darkness falling before 5pm; Xi\'an is cold and dry and Shanghai cold and damp, before Chongqing and Guangzhou turn milder toward the end of the trip. The upside: December is China\'s quiet season, so the Forbidden City and the Great Wall at Mutianyu (open year-round, with its cable car running and good footing on the restored steps) are far less crowded than in autumn, and Kunming Lake at the Summer Palace freezes solid — a sight summer visitors never see.',
-      },
-      {
-        question: 'How do I book and what payment options are available?',
-        answer:
-          'Submit an enquiry via this page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability, finalise details, and outline deposit and balance payment steps.',
-      },
-    ],
   },
 
   // China Stopover Tours
@@ -3255,6 +2734,41 @@ export const tours: Tour[] = [
     ],
   },
 ];
+
+/**
+ * A departure that has already left must never reach a page, card, schedule, feed or structured-data
+ * offer, even if its date is still written in the data above. So each tour's `departureDates` is worked
+ * out when it is read (Auckland day), not when this module loads: it stays right on a server that runs
+ * for weeks, and every reader gets the same answer without having to remember to filter.
+ *
+ * The list is built once per Auckland day and handed out as the same array on every read that day: React
+ * (in development) refuses a property that returns a fresh array each time it is read, which showed up on
+ * the upgraded tour pages that pass the tour to a client component.
+ */
+function withUpcomingDepartures(tour: Tour): Tour {
+  const written = tour.departureDates;
+  if (!written || written.length === 0) return tour;
+  let day = '';
+  let upcoming: string[] = [];
+  return Object.defineProperty({ ...tour }, 'departureDates', {
+    enumerable: true,
+    configurable: true,
+    get: () => {
+      const today = aucklandToday();
+      if (today !== day) {
+        upcoming = upcomingDepartureLabels(written, today);
+        day = today;
+      }
+      return upcoming;
+    },
+  });
+}
+
+/**
+ * Everything on sale: the entries above minus anything in the delisting registry
+ * (delisted-tours.ts), so a retired tour can never reach a page, list, feed or sitemap.
+ */
+export const tours: Tour[] = allTours.filter((tour) => !isDelistedSlug(tour.slug)).map(withUpcomingDepartures);
 
 // Utility Functions
 export const getTourBySlug = (destination: string, tier: string, slug: string): Tour | undefined => {

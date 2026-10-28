@@ -19,11 +19,11 @@ const MAP_SLUGS = [
   'essentials',
   'silk-road',
   'grand-tour',
+  'imperial-heritage',
   'landscapes',
-  'china-icons-collection',
-  'china-icons-collection-christchurch',
   'yunnan-explorer',
   'zhangjiajie',
+  'china-unveiled',
 ] as const;
 
 const TOUR_MAPS: Record<string, TourMapAssets> = Object.fromEntries(

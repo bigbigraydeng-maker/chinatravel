@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 import {
@@ -11,9 +11,9 @@ import {
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
-    title: 'Spotlight Poster | October–December 2026 China Tours',
+    title: 'Spotlight Poster | October–November 2026 China Tours',
     description:
-      "Newspaper-style Spotlight poster for CTS Tours' October to December 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities, Best of China and the Christmas & New Year in China journey.",
+      "Newspaper-style Spotlight poster for CTS Tours' October and November 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities and Best of China.",
     path: '/spotlight/october-2026',
     /** Print / QR-only: not linked from site nav; keep out of organic results. */
     robots: { index: false, follow: true },
@@ -23,12 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [
       'China spotlight tours',
       'October 2026 China departures',
-      'December 2026 China departures',
       'Shanghai and Surroundings',
       'Beijing and Xian tour',
       'Best of China 15 day tour',
-      'Christmas & New Year in China',
-      'Christmas in China tour',
       'CTS Tours',
     ],
     ogType: 'website',
@@ -41,15 +38,22 @@ type SpotlightPosterPageProps = {
   };
 };
 
-export default function October2026SpotlightPosterPage({ searchParams }: SpotlightPosterPageProps) {
-  const shanghaiTour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
-  const twoCitiesTour = getTourBySlug('china', 'discovery', 'beijing-xian');
-  const bestOfChinaTour = getTourBySlug('china', 'discovery', 'essentials');
-  const iconsTour = getTourBySlug('china', 'discovery', 'china-icons-collection');
+export const revalidate = 15;
 
-  if (!shanghaiTour || !twoCitiesTour) {
+export default async function October2026SpotlightPosterPage({ searchParams }: SpotlightPosterPageProps) {
+  const tours = await getPublishedTours();
+  const shanghaiTour = tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'shanghai-surroundings');
+  const twoCitiesTour = tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'beijing-xian');
+  const bestOfChinaTour = tours.find((tour) => tour.destination === 'china' && tour.tier === 'discovery' && tour.slug === 'essentials');
+
+  if (!shanghaiTour?.isActive || shanghaiTour.soldOut || !twoCitiesTour?.isActive || twoCitiesTour.soldOut || !bestOfChinaTour?.isActive || bestOfChinaTour.soldOut) {
     return null;
   }
+  const firstDeparture = (tour: typeof shanghaiTour) => tour.departureDates?.[0] ?? 'Ask CTS for the next departure';
+  const departurePrice = (tour: typeof shanghaiTour) => {
+    const date = tour.departureDates?.[0];
+    return (date && tour.departurePricing?.[date]) || tour.price || 'Ask CTS for current pricing';
+  };
 
   const siteUrl = getSiteUrl();
   const newspaperQrHubUrl = buildSpotlightPosterAdUrl(siteUrl, {
@@ -78,28 +82,13 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
       utm_content: 'discovery_best_of_china',
     }
   ).toString()}`;
-  const iconsUtmUrl = `${siteUrl.replace(/\/$/, '')}/tours/china/discovery/china-icons-collection?${new URLSearchParams(
-    {
-      utm_source: 'nz_newspaper',
-      utm_medium: 'print',
-      utm_campaign: 'tour_spotlight_202612',
-      utm_content: 'discovery_china_icons_collection',
-    }
-  ).toString()}`;
   const posterHeroImage =
     'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/silk-road-wall.jpg';
-  const posterShanghaiImage =
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shanghai-night-blue.jpg';
-  const posterBeijingXianImage =
-    'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-lion.jpg';
-  const posterBestOfChinaImage = '/blog/group-great-wall-cts.jpg';
-  const posterIconsImage = '/blog/group-shanghai-bund-skyline.jpg';
 
   const focus = searchParams?.focus;
   const highlightShanghai = focus === 'shanghai-surroundings';
   const highlightTwoCities = focus === 'tale-of-two-cities';
   const highlightBestOfChina = focus === 'essentials';
-  const highlightIcons = focus === 'china-icons-collection';
 
   return (
     <main className="bg-[#f3f0eb]">
@@ -135,9 +124,8 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 </p>
                 <p className="mt-1.5 text-[10px] leading-[1.2] text-gray-800 md:text-[11px]">
                   Explore China&apos;s most iconic destinations this October &mdash; from the elegance of Shanghai
-                  and its surrounding water towns to the history of Beijing and Xi&apos;an &mdash; or spend Christmas
-                  and New Year there on our 16-day festive journey. Designed for first-time travellers, these
-                  small-group journeys make it easy to experience the very best of China.
+                  and its surrounding water towns to the history of Beijing and Xi&apos;an. Designed for first-time
+                  travellers, these small-group journeys make it easy to experience the very best of China.
                 </p>
               </div>
             </div>
@@ -165,7 +153,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
             >
               <div className="relative h-56 md:h-64">
                 <Image
-                  src={posterShanghaiImage}
+                  src={shanghaiTour.heroImage}
                   alt="Shanghai skyline at dusk"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -174,24 +162,23 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
               </div>
               <div className="p-4 md:p-5">
                 <h2 className="font-serif text-[46px] font-bold leading-[0.95] text-[#c72235]">
-                  Shanghai &amp; Surroundings
+                  {shanghaiTour.name.replace(/^China Discovery — /, '')}
                 </h2>
                 <p className="mt-2 inline-block bg-black px-3 py-1 text-[14px] font-bold uppercase tracking-widest text-white">
-                  14 October 2026 · Sold Out
+                  {shanghaiTour.soldOut ? 'Currently sold out' : `Next departure · ${firstDeparture(shanghaiTour)}`}
                 </p>
                 <p className="mt-2 text-[24px] leading-tight font-semibold text-black">
-                  10 Days | Next Departure 25 March 2027
+                  {shanghaiTour.duration} | Next Departure {firstDeparture(shanghaiTour)}
                 </p>
                 <p className="mt-2 text-[18px] leading-relaxed text-black">
-                  &bull; Suzhou gardens &bull; Wuxi lakeside sights &bull; Xinshi water town &bull; Hangzhou&apos;s West Lake
+                  {shanghaiTour.highlights.slice(0, 4).join(' · ')}
                 </p>
                 <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                  Discover the elegance of China&apos;s Yangtze Delta, where ancient water towns, classical
-                  gardens and modern city life blend into one easy, small-group journey.
+                  {shanghaiTour.shortDescription}
                 </p>
                 <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
                   <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                  <p className="text-4xl font-bold">$2,699pp</p>
+                  <p className="text-2xl font-bold">{departurePrice(shanghaiTour)}</p>
                 </div>
                 <div className="mt-5">
                   <Link
@@ -211,7 +198,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
             >
               <div className="relative h-56 md:h-64">
                 <Image
-                  src={posterBeijingXianImage}
+                  src={twoCitiesTour.heroImage}
                   alt="Golden lion statue at the Forbidden City"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -220,24 +207,23 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
               </div>
               <div className="p-4 md:p-5">
                 <h2 className="font-serif text-[44px] font-bold leading-[0.95] text-[#c72235]">
-                  A Tale of Two Cities &mdash; Beijing &amp; Xi&apos;an
+                  {twoCitiesTour.name.replace(/^China Discovery — /, '')}
                 </h2>
                 <p className="mt-2 inline-block bg-black px-3 py-1 text-[14px] font-bold uppercase tracking-widest text-white">
-                  15 October 2026 · Sold Out
+                  {twoCitiesTour.soldOut ? 'Currently sold out' : `Next departure · ${firstDeparture(twoCitiesTour)}`}
                 </p>
                 <p className="mt-2 text-[24px] leading-tight font-semibold text-black">
-                  10 Days | Next Departure 18 March 2027
+                  {twoCitiesTour.duration} | Next Departure {firstDeparture(twoCitiesTour)}
                 </p>
                 <p className="mt-2 text-[18px] leading-relaxed text-black">
-                  &bull; Forbidden City &bull; Great Wall &bull; Hutong experience &bull; Terracotta Warriors
+                  {twoCitiesTour.highlights.slice(0, 4).join(' · ')}
                 </p>
                 <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                  Tick off China&apos;s ultimate bucket-list icons in one unforgettable trip, with high-speed
-                  rail between Beijing and Xi&apos;an plus expert local guidance from start to finish.
+                  {twoCitiesTour.shortDescription}
                 </p>
                 <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
                   <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                  <p className="text-4xl font-bold">$3,480pp</p>
+                  <p className="text-2xl font-bold">{departurePrice(twoCitiesTour)}</p>
                 </div>
                 <div className="mt-5">
                   <Link
@@ -266,7 +252,7 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
               >
                 <div className="relative h-56 md:h-auto md:min-h-[280px]">
                   <Image
-                    src={posterBestOfChinaImage}
+                    src={bestOfChinaTour.heroImage}
                     alt="A CTS group on the Great Wall of China"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -278,19 +264,17 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                     Best of China
                   </h2>
                   <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
-                    15 Days | Depart 11 March 2027
+                    {bestOfChinaTour.duration} | Depart {firstDeparture(bestOfChinaTour)}
                   </p>
                   <p className="mt-2 text-[16px] leading-relaxed text-black">
-                    &bull; Great Wall &amp; Forbidden City &bull; Terracotta Warriors &bull; West Lake, Hangzhou &bull; Shanghai Bund
+                    {bestOfChinaTour.highlights.slice(0, 4).join(' · ')}
                   </p>
                   <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                    The classic first-timer&apos;s route, end to end: imperial Beijing, high-speed rail to Xi&apos;an
-                    and its warriors, the Song-style waterways of Puyuan, Longjing tea by West Lake, and Shanghai to
-                    finish.
+                    {bestOfChinaTour.shortDescription}
                   </p>
                   <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
                     <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                    <p className="text-4xl font-bold">$4,080pp</p>
+                    <p className="text-2xl font-bold">{departurePrice(bestOfChinaTour)}</p>
                   </div>
                   <div className="mt-4 grid grid-cols-4 gap-1.5">
                     {[
@@ -311,74 +295,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                       className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"
                     >
                       View Best of China tour
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            </section>
-          )}
-
-          {iconsTour && (
-            <section className="bg-[#ece9e4] px-4 pb-6 md:px-6 md:pb-6">
-              <div className="mb-3 flex items-center gap-3">
-                <div className="h-px flex-1 bg-[#d3203b]/30" />
-                <span className="text-xs font-bold uppercase tracking-widest text-[#d3203b]">
-                  Christmas &amp; New Year Departure
-                </span>
-                <div className="h-px flex-1 bg-[#d3203b]/30" />
-              </div>
-              <article
-                className={`overflow-hidden bg-white shadow-sm transition md:grid md:grid-cols-2 ${
-                  highlightIcons ? 'ring-4 ring-[#d3203b]/40 shadow-xl' : ''
-                }`}
-              >
-                <div className="relative h-56 md:h-auto md:min-h-[280px]">
-                  <Image
-                    src={posterIconsImage}
-                    alt="CTS travellers on the Shanghai Bund with the Pudong skyline behind them"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover object-center"
-                  />
-                </div>
-                <div className="p-4 md:p-5">
-                  <h2 className="font-serif text-[42px] font-bold leading-[0.95] text-[#c72235]">
-                    Christmas &amp; New Year in China
-                  </h2>
-                  <p className="mt-2 text-[28px] leading-tight font-semibold text-black">
-                    16 Days | Depart 22 December 2026
-                  </p>
-                  <p className="mt-2 text-[16px] leading-relaxed text-black">
-                    &bull; Christmas in Shanghai &bull; New Year&apos;s Eve in Xi&apos;an &bull; Great Wall at Mutianyu &bull; Terracotta Warriors
-                  </p>
-                  <p className="mt-2 text-[14px] leading-relaxed text-gray-700">
-                    Spend Christmas among Shanghai&apos;s markets and skyline, then count down to the New Year
-                    at Xi&apos;an&apos;s Tang Dynasty Ever-Bright City. Beijing, Chongqing and a Cantonese
-                    yum cha finale in Guangzhou complete the journey.
-                  </p>
-                  <div className="mt-4 inline-block bg-[#d3203b] px-4 py-2 text-white">
-                    <p className="text-sm font-semibold uppercase tracking-wide">All-inclusive from</p>
-                    <p className="text-4xl font-bold">$7,188pp</p>
-                  </div>
-                  <div className="mt-4 grid grid-cols-4 gap-1.5">
-                    {[
-                      { src: '/blog/group-shanghai-bund-selfie.jpg', alt: 'CTS travellers photographing themselves on the Shanghai Bund' },
-                      { src: '/blog/group-ancient-gate-night.jpg', alt: 'Travellers at a floodlit ancient city gate at night' },
-                      { src: '/blog/chongqing-night-skyline-hongyadong.jpg', alt: 'Hongyadong stilt houses lit up above the river in Chongqing' },
-                      { src: '/blog/group-walking-shanghai-lane.jpg', alt: 'Travellers walking a Shanghai lane with a local guide' },
-                    ].map((img) => (
-                      <div key={img.src} className="relative aspect-square rounded overflow-hidden">
-                        <Image src={img.src} alt={img.alt} fill className="object-cover object-top" sizes="80px" />
-                      </div>
-                    ))}
-                  </div>
-                  <p className="mt-1.5 text-[11px] text-gray-500 italic">Shanghai, Xi&apos;an and Chongqing on recent CTS departures</p>
-                  <div className="mt-4">
-                    <Link
-                      href={iconsUtmUrl}
-                      className="inline-flex rounded-full border-2 border-[#d3203b] px-5 py-2 text-sm font-bold text-[#d3203b] transition hover:bg-[#d3203b] hover:text-white"
-                    >
-                      View Christmas &amp; New Year in China
                     </Link>
                   </div>
                 </div>
@@ -422,16 +338,6 @@ export default function October2026SpotlightPosterPage({ searchParams }: Spotlig
                 <p className="font-semibold text-gray-900">Best of China:</p>
                 <a href={bestOfChinaUtmUrl} className="break-all text-primary underline underline-offset-2">
                   {bestOfChinaUtmUrl}
-                </a>
-              </div>
-            )}
-            {iconsTour && (
-              <div>
-                <p className="font-semibold text-gray-900">
-                  Christmas &amp; New Year in China:
-                </p>
-                <a href={iconsUtmUrl} className="break-all text-primary underline underline-offset-2">
-                  {iconsUtmUrl}
                 </a>
               </div>
             )}

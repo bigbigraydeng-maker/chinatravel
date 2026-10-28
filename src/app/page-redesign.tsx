@@ -4,16 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import ContactChannels from '@/components/ContactChannels';
 import { Icon, type IconName } from '@/components/ui/Icon';
-import { getTourBySlug } from '@/lib/data/tours';
-import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import UpcomingDepartures from '@/components/UpcomingDepartures';
-import FestiveChinaPreview from '@/components/FestiveChinaPreview';
 import ChinaStopovers from '@/components/ChinaStopovers';
 import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
-import { getTourCardMedia } from '@/lib/tour-card-media';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 
 /**
  * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
@@ -21,10 +18,7 @@ import { getTourCardMedia } from '@/lib/tour-card-media';
  *
  * Editorial direction (approved via Stitch), wired to real data. Decisions:
  *  1. Enquiry-led — WhatsApp / Email / Phone, no online booking.
- *  2. Primary push = the Spotlight tours (HOME_SPOTLIGHT_TOURS), which
- *     marketing updates periodically; the "Curated Journeys" block reads
- *     straight from that config.
- *  3. "No forced shopping stops" is a confirmed, truthful trust signal.
+ *  2. "No forced shopping stops" is a confirmed, truthful trust signal.
  * Global Navbar + Footer come from the root layout. Live homepage untouched.
  */
 
@@ -95,13 +89,9 @@ const CREDENTIALS: { src: string; alt: string; wide?: boolean }[] = [
   { src: migratedSite('credentials-tourism-export-council.png'), alt: 'Tourism Export Council New Zealand', wide: true },
 ];
 
-const HomePageRedesign = () => {
-  const spotlight = HOME_SPOTLIGHT_TOURS
-    .map((ref) => ({ ref, tour: getTourBySlug(ref.destination, ref.tier, ref.slug) }))
-    .filter((x): x is { ref: (typeof HOME_SPOTLIGHT_TOURS)[number]; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour?.isActive && !x.tour.soldOut));
-  const featured = spotlight[0];
-  const sides = spotlight.slice(1, 3);
+const HomePageRedesign = async () => {
   const blogPosts = getAllBlogPosts().slice(0, 3);
+  const publishedTours = await getPublishedActiveTours();
   const reviews = homeTestimonials;
 
   return (
@@ -147,7 +137,7 @@ const HomePageRedesign = () => {
         </div>
       </section>
 
-      <TourSearch />
+      <TourSearch tours={publishedTours} />
 
       {/* ===== Trust bar — real accreditation logos + who ===== */}
       <section className="border-y border-warm-200 bg-white py-7">
@@ -183,77 +173,11 @@ const HomePageRedesign = () => {
 
       <ExperienceDiscovery />
 
-      {/* ===== Curated journeys — driven by Spotlight config ===== */}
-      {featured && (
-        <section className="bg-surface py-12 md:py-16">
-          <div className="mx-auto max-w-7xl px-4 md:px-8">
-            <div className="mb-10 max-w-2xl">
-              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.1em] text-primary">
-                December 2026 · Auckland & Christchurch
-              </span>
-              <h2 className="mb-4 font-serif text-4xl leading-tight text-ink md:text-5xl">Christmas &amp; New Year in China</h2>
-              <p className="max-w-xl text-lg leading-relaxed text-ink-muted">
-                Choose your departure city and spend Christmas and New Year exploring China. Both journeys depart on 22 December 2026.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              {[featured, ...sides.map((s) => ({ ref: s.ref, tour: s.tour }))].map(({ ref, tour }) => {
-                const media = getTourCardMedia(tour);
-                return (
-                <article key={ref.slug} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-editorial">
-                  <div className="relative aspect-video overflow-hidden">
-                    <Image
-                      src={media.src}
-                      alt={tour.name}
-                      fill
-                      unoptimized={media.src.startsWith('/')}
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                      style={{ objectPosition: media.objectPosition }}
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink backdrop-blur-sm">
-                      {ref.departureLabel}
-                    </span>
-                  </div>
-                  <div className="flex flex-grow flex-col p-6">
-                    <p className="mb-1 text-xs text-ink-muted">{ref.route.join(' · ')}</p>
-                    <h3 className="mb-3 font-serif text-xl leading-snug text-ink">{tour.name}</h3>
-                    <span className="mb-4 font-serif text-lg font-semibold text-ink">
-                      {tour.price} <span className="font-sans text-xs font-normal text-ink-muted">pp</span>
-                    </span>
-                    <Link
-                      href={ref.campaignHref}
-                      className="mt-auto inline-flex items-center gap-1.5 self-start border-b-2 border-primary pb-1 text-xs font-bold uppercase tracking-wider text-primary transition-colors hover:text-ink"
-                    >
-                      Explore Tour <ArrowRight className="h-3.5 w-3.5" />
-                    </Link>
-                  </div>
-                </article>
-                );
-              })}
-            </div>
-
-            <div className="mt-12 flex justify-center">
-              <Link
-                href="/tours"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-red-700"
-              >
-                View all tours <ArrowRight />
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ===== Festive-season guide — answers winter concerns without repeating a tour card ===== */}
-      <FestiveChinaPreview />
-
       {/* ===== China Stopovers (stopover-tier tours) ===== */}
-      <ChinaStopovers />
+      <ChinaStopovers tours={publishedTours} />
 
       {/* ===== Upcoming departures (derived from tours.ts) ===== */}
-      <UpcomingDepartures />
+      <UpcomingDepartures tours={publishedTours} />
 
       {/* ===== Popular cities ===== */}
       <section className="bg-white py-12 md:py-16">

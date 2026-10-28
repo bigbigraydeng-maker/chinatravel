@@ -6,6 +6,9 @@ import CTASection from '@/components/CTASection';
 import TrustBar from '@/components/TrustBar';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
+import { formatPublishedTourCities, getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
+
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -28,7 +31,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function ChinaTravelSpecialistsNzPage() {
+export default async function ChinaTravelSpecialistsNzPage() {
+  const tours = (await getPublishedChinaTours()).filter((tour) => !tour.soldOut);
+  const featuredTours = ['beijing-xian', 'shanghai-surroundings', 'essentials'].flatMap((slug) => {
+    const tour = tours.find((item) => item.slug === slug);
+    return tour ? [{ tour, href: `/tours/${tour.destination}/${tour.tier}/${tour.slug}` }] : [];
+  });
   const siteUrl = getSiteUrl();
 
   const faqs = [
@@ -75,24 +83,15 @@ export default function ChinaTravelSpecialistsNzPage() {
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'China Tours from New Zealand',
-        itemListElement: [
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'TouristTrip',
-              name: 'China Discovery — A Tale of Two Cities',
-              description: 'Beijing + Xi\'an by high-speed train, 10 days from NZD $3,480',
-            },
+        itemListElement: featuredTours.map(({ tour, href }) => ({
+          '@type': 'Offer',
+          url: `${siteUrl}${href}`,
+          itemOffered: {
+            '@type': 'TouristTrip',
+            name: tour.name,
+            description: `${tour.duration} · ${formatPublishedTourCities(tour.tourCities)} · ${tour.price}`,
           },
-          {
-            '@type': 'Offer',
-            itemOffered: {
-              '@type': 'TouristTrip',
-              name: 'China Discovery — Shanghai & Surroundings',
-              description: 'Yangtze Delta loop, 10 days from NZD $2,699',
-            },
-          },
-        ],
+        })),
       },
     },
     {
@@ -240,62 +239,24 @@ export default function ChinaTravelSpecialistsNzPage() {
 
               {/* Section 4: Most-Booked Tours */}
               <section>
-                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">
-                  Our Most-Booked Tours
-                </h2>
+                <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">Tours your clients can enquire about</h2>
                 <div className="space-y-4">
-                  <div className="border border-warm-200 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-gray-900">
-                        A Tale of Two Cities — Beijing &amp; Xi&apos;an
-                      </h3>
-                      <p className="text-gray-600 text-sm mt-1">
-                        10 days · Great Wall, Forbidden City, high-speed train, Terracotta Warriors
-                      </p>
-                      <p className="text-primary font-semibold mt-1">From NZD $3,480</p>
+                  {featuredTours.map(({ tour, href }) => (
+                    <div key={tour.id} className="flex flex-col gap-4 rounded-xl border border-warm-200 p-6 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900">{tour.name}</h3>
+                        <p className="mt-1 text-sm text-gray-600">
+                          {tour.duration}{tour.tourCities?.length ? ` · ${formatPublishedTourCities(tour.tourCities)}` : ''}
+                        </p>
+                        <p className="mt-1 font-semibold text-primary">{tour.price}</p>
+                        {tour.departureDates?.length ? <p className="mt-1 text-xs text-gray-500">Departs {tour.departureDates.join(' · ')}</p> : null}
+                      </div>
+                      <Link href={href} className="shrink-0 rounded-lg bg-primary px-5 py-2 text-center text-sm font-semibold text-white transition hover:opacity-90">
+                        View Tour →
+                      </Link>
                     </div>
-                    <Link
-                      href="/campaigns/october-2026/tale-of-two-cities"
-                      className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                    >
-                      View Tour →
-                    </Link>
-                  </div>
-                  <div className="border border-warm-200 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-gray-900">
-                        Shanghai &amp; Surroundings
-                      </h3>
-                      <p className="text-gray-600 text-sm mt-1">
-                        10 days · Suzhou, Wuxi, Hangzhou West Lake, Shanghai Bund
-                      </p>
-                      <p className="text-primary font-semibold mt-1">From NZD $2,699</p>
-                    </div>
-                    <Link
-                      href="/campaigns/october-2026/shanghai-surroundings"
-                      className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                    >
-                      View Tour →
-                    </Link>
-                  </div>
-                  <div className="border border-warm-200 rounded-xl p-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-gray-900">
-                        Best of China — 15 Days
-                      </h3>
-                      <p className="text-gray-600 text-sm mt-1">
-                        15 days · Beijing, Xi&apos;an, Puyuan, Hangzhou, Shanghai
-                      </p>
-                      <p className="text-primary font-semibold mt-1">From NZD $4,080</p>
-                      <p className="text-gray-500 text-xs mt-0.5">Departs 11 March 2027</p>
-                    </div>
-                    <Link
-                      href="/tours/china/discovery/essentials"
-                      className="shrink-0 bg-primary text-white px-5 py-2 rounded-lg font-semibold text-sm hover:opacity-90 transition text-center"
-                    >
-                      View Tour →
-                    </Link>
-                  </div>
+                  ))}
+                  {featuredTours.length === 0 ? <p className="text-gray-700">No featured China tours are currently available.</p> : null}
                 </div>
               </section>
 

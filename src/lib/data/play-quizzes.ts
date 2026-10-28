@@ -121,7 +121,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
           'A 1,300-year-old water town on the Grand Canal in Jiangsu. Whitewashed walls, dark tile roofs and arched stone bridges have barely changed since the Ming dynasty. Evening lantern light on the canal is one of the signature scenes of any Jiangnan trip.',
         tourLink: {
           label: 'Shanghai & Surroundings · 10 days',
-          href: '/campaigns/october-2026/shanghai-surroundings',
+          href: '/tours/china/discovery/shanghai-surroundings',
         },
       },
       {
@@ -144,7 +144,7 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         story:
           '600 years old, 9,999 rooms, and the centre of imperial China for almost 500 years. The Meridian Gate (Wumen) is where emperors received victorious generals. Both our Best of China and Tale of Two Cities tours spend a full guided day here.',
         tourLink: {
-          label: 'Best of China · 15 days from NZD $3,880',
+          label: 'Best of China · 15 days from NZD $4,080',
           href: '/campaigns/best-of-china',
         },
       },

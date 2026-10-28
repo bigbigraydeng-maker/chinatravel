@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog'
 
 /**
  * Shared footer below every /play quiz reveal page.
@@ -18,6 +19,7 @@ const TOUR_IMG_LIB =
 
 interface FlagshipTour {
   href: string
+  productSlug?: string
   title: string
   duration: string
   blurb: string
@@ -28,8 +30,9 @@ interface FlagshipTour {
 const FLAGSHIP_TOURS: FlagshipTour[] = [
   {
     href: '/campaigns/best-of-china',
+    productSlug: 'essentials',
     title: 'Best of China',
-    duration: '15 days · from NZD $3,880',
+    duration: '15 days · from NZD $4,080',
     blurb:
       "Beijing · Xi'an · Shanghai · Suzhou — our most-booked grand tour, with the Great Wall, Terracotta Army and Yangtze Delta in one trip.",
     image: `${TOUR_IMG_LIB}/forbidden-city-aerial.jpg`,
@@ -82,7 +85,23 @@ const FLAGSHIP_TOURS: FlagshipTour[] = [
   },
 ]
 
-export default function TourDiscoveryFooter() {
+export const revalidate = 15;
+
+export default async function TourDiscoveryFooter() {
+  const publishedTours = await getPublishedChinaTours();
+  const tours = FLAGSHIP_TOURS.flatMap((card) => {
+    if (!card.productSlug) return [card];
+    const product = publishedTours.find((tour) => tour.slug === card.productSlug && !tour.soldOut);
+    if (!product) return [];
+    return [{
+      ...card,
+      href: `/tours/${product.destination}/${product.tier}/${product.slug}`,
+      title: product.name,
+      duration: `${product.duration} · ${product.price}`,
+      blurb: product.shortDescription,
+      image: product.heroImage || card.image,
+    }];
+  });
   return (
     <section className="bg-warm-50 border-t border-warm-100">
       <div className="container mx-auto px-4 py-12 md:py-16 max-w-6xl">
@@ -94,13 +113,13 @@ export default function TourDiscoveryFooter() {
             See China for yourself
           </h2>
           <p className="text-base text-gray-700">
-            Six ways to start. All tours include NZD pricing, Auckland departures,
-            and local Mandarin-speaking guides on the ground.
+            Explore current published tours and destination guides, with product
+            details kept in sync with the latest ME publication.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {FLAGSHIP_TOURS.map((tour) => (
+          {tours.map((tour) => (
             <Link
               key={tour.href}
               href={tour.href}
