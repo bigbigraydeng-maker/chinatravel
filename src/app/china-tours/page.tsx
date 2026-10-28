@@ -278,7 +278,7 @@ export default async function ChinaToursPage({ searchParams }: PageProps) {
                     <span>CTS Signature Collection</span>
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Our premium collection features boutique 4-5 star accommodations, small group sizes, and locally-led experiences designed by our China specialists. Perfect for travellers seeking depth and immersion.
+                    Our premium collection features boutique 5-star accommodations, small group sizes, and locally-led experiences designed by our China specialists. Perfect for travellers seeking depth and immersion.
                   </p>
                   <a
                     href="/tours/china/signature"

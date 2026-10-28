@@ -676,7 +676,7 @@ Recommended NZ providers: Southern Cross Travel Insurance, Cover-More, IAG/AMI. 
 - Personal spending (lunches, souvenirs, tips): NZD 600–900
 - <strong>Total: NZD 4,130–5,970</strong>
 
-<strong>Signature tailor-made (4-star hotels):</strong>
+<strong>Signature tailor-made (5-star hotels):</strong>
 - Tour package: NZD 5,500–7,500 per person
 - Personal spending: NZD 800–1,200
 - <strong>Total: NZD 6,630–9,170</strong>

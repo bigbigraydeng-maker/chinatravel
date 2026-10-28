@@ -94,7 +94,7 @@ Not included: personal travel insurance (strongly recommended), optional excursi
 | Collection | Style | Starting Price |
 |-----------|-------|---------------|
 | **Discovery** | 3–4 star, great value | From NZD $2,699 |
-| **Signature** | 4–5 star, premium | From NZD $4,800 |
+| **Signature** | 5-star, premium | From NZD $4,800 |
 | **Stopover** | City break, 2–4 days | From NZD $1,200 |
 
 All prices are per person, twin share, including flights from Auckland. [Contact our team](/contact) for current pricing on specific departures.
