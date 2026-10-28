@@ -140,11 +140,11 @@ export const destinations: Destination[] = [
         slug: 'signature',
         name: 'Signature',
         description: 'CTS\'s premium programme for travellers who want depth over coverage. Boutique accommodation, smaller groups or private departures, and itineraries designed around access and immersion.',
-        features: ['Small groups', '4-5 star hotels', 'Locally-led experiences', 'Baker Gu\'s oversight'],
+        features: ['Small groups', '5-star hotels', 'Locally-led experiences', 'Baker Gu\'s oversight'],
         agentOneLiner: 'China Signature is their premium programme — boutique hotels, small groups, deeper experiences designed by their China specialist.',
         definingCharacteristics: [
           'Small group, or private departure',
-          '4-5 star hotels selected for character and location, not just star rating',
+          '5-star hotels selected for character and location, not just star rating',
           'Locally-led experiences, off-circuit access, itinerary depth over destination count',
           'Baker Gu\'s direct product oversight',
           'Airline selection is product-specific, not a tier-level promise'
@@ -318,7 +318,7 @@ export const tours: Tour[] = [
     ],
     inclusions: [
       'International and domestic airfares',
-      '4–5 star hotel accommodation',
+      '5-star hotel accommodation',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transport'
@@ -502,7 +502,7 @@ export const tours: Tour[] = [
     inclusions: [
       'Return international airfares from Auckland',
       'Domestic airfares within China',
-      '4–5 star hotel accommodation',
+      '5-star hotel accommodation',
       'Victoria Yangtze River Cruise (International 5-star)',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
@@ -597,7 +597,7 @@ export const tours: Tour[] = [
     inclusions: [
       'Return international airfares from Auckland',
       'Domestic airfares within China',
-      '4–5 star hotel accommodation',
+      '5-star hotel accommodation',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transport including high-speed trains (First Class)'
@@ -649,7 +649,7 @@ export const tours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international airfares from Auckland, domestic airfares within China, 4–5 star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
+          'Return international airfares from Auckland, domestic airfares within China, 5-star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
       },
       {
         question: 'Which hotels do we stay in?',

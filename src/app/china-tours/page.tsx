@@ -235,7 +235,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                 </p>
                 <p className="text-gray-800 leading-relaxed">
                   CTS Tours offers three China holiday package collections from New Zealand: Signature
-                  (premium 4–5 star, small groups up to 16), Discovery (great value 3–4 star guided
+                  (premium 5-star, small groups up to 16), Discovery (great value 3–4 star guided
                   tours, from NZD $2,699), and Stopover (2–4 day city breaks). All packages include
                   return international flights from Auckland, NZD pricing, and English-speaking guides.
                   TAANZ-bonded and Auckland-based, backed by China Travel Service. NZ ordinary passport holders currently enjoy
@@ -272,7 +272,7 @@ export default function ChinaToursPage({ searchParams }: PageProps) {
                     <span>CTS Signature Collection</span>
                   </h3>
                   <p className="text-gray-700 mb-4">
-                    Our premium collection features boutique 4-5 star accommodations, small group sizes, and locally-led experiences designed by our China specialists. Perfect for travellers seeking depth and immersion.
+                    Our premium collection features boutique 5-star accommodations, small group sizes, and locally-led experiences designed by our China specialists. Perfect for travellers seeking depth and immersion.
                   </p>
                   <a
                     href="/tours/china/signature"
