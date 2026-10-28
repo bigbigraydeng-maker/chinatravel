@@ -280,7 +280,7 @@ export default function ChinaToursFromNZPage() {
                     </thead>
                     <tbody>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">From price (per pax)</td><td className="px-4 py-3 text-gray-700">NZD $2,699</td><td className="px-4 py-3 text-gray-700">NZD $4,800</td></tr>
-                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Hotels</td><td className="px-4 py-3 text-gray-700">3–4 star city centre</td><td className="px-4 py-3 text-gray-700">4–5 star premium</td></tr>
+                      <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Hotels</td><td className="px-4 py-3 text-gray-700">3–4 star city centre</td><td className="px-4 py-3 text-gray-700">5-star premium</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Pace</td><td className="px-4 py-3 text-gray-700">Active sightseeing</td><td className="px-4 py-3 text-gray-700">Relaxed with free time</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Meals</td><td className="px-4 py-3 text-gray-700">Daily breakfast, most lunches</td><td className="px-4 py-3 text-gray-700">Daily breakfast + most lunches + select dinners</td></tr>
                       <tr className="border-t border-warm-100"><td className="px-4 py-3 font-semibold">Best for</td><td className="px-4 py-3 text-gray-700">Value-conscious first-timers</td><td className="px-4 py-3 text-gray-700">Premium experience, smaller groups</td></tr>
