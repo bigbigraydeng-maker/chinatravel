@@ -20,7 +20,7 @@ function RowGrid({ rows, currentSlug }: { rows: DepartureScheduleRow[]; currentS
       {rows.map((row) => (
         <div
           key={row.slug}
-          className={`grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-2 sm:gap-6 py-3 px-4 rounded-xl border transition-colors ${
+          className={`grid grid-cols-1 sm:grid-cols-[minmax(14rem,18rem)_minmax(0,1fr)] gap-2 sm:gap-6 py-3 px-4 rounded-xl border transition-colors ${
             currentSlug === row.slug
               ? 'bg-primary/5 border-primary/40 ring-1 ring-primary/20'
               : 'bg-white border-warm-100 hover:border-warm-200'
