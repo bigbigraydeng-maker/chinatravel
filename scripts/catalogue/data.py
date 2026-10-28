@@ -407,7 +407,7 @@ TOURS = [
         "included": [
             "Return international airfares from Auckland",
             "Domestic airfares within China",
-            "4–5 star hotel accommodation (13 nights)",
+            "5-star hotel accommodation (13 nights)",
             "English-speaking tour guide",
             "Entrance fees and meals as specified",
             "Land transport including high-speed trains (First Class)",
@@ -455,7 +455,7 @@ TOURS = [
         "included": [
             "Return international airfares from Auckland",
             "Domestic China airfares",
-            "4–5 star accommodation (24 nights)",
+            "5-star accommodation (24 nights)",
             "Victoria Yangtze River cruise (5-star)",
             "English-speaking guide",
             "Entrance fees and specified meals",
@@ -502,7 +502,7 @@ TOURS = [
         ],
         "included": [
             "International and domestic airfares",
-            "4–5 star hotel accommodation (15 nights)",
+            "5-star hotel accommodation (15 nights)",
             "English-speaking tour guide",
             "Entrance fees and meals as specified in the itinerary",
             "Land transport",

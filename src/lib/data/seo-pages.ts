@@ -34,7 +34,7 @@ export const chinaToursMeta: SeoPageMeta = {
   h1: 'China Tours from New Zealand',
   heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland & Christchurch departures',
   introText:
-    'CTS Tours NZ is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland, backed by China Travel Service which runs direct China operations. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
+    'CTS Tours NZ is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland, backed by China Travel Service which runs direct China operations. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 5-star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
   faqs: [
     {
       question: 'What are the best China tours from New Zealand in 2026-27?',
@@ -42,7 +42,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'What China tour packages does CTS offer?',
-      answer: 'CTS offers three collections of China tour packages: Signature (premium 4–5 star hotels, small groups up to 16, bespoke itineraries), Discovery (great-value guided packages with comfortable 3–4 star hotels, ideal for first-time visitors), and Stopover (short 2–4 day city breaks). All packages include international flights from New Zealand, accommodation, guides, and most meals.'
+      answer: 'CTS offers three collections of China tour packages: Signature (premium 5-star hotels, small groups up to 16, bespoke itineraries), Discovery (great-value guided packages with comfortable 3–4 star hotels, ideal for first-time visitors), and Stopover (short 2–4 day city breaks). All packages include international flights from New Zealand, accommodation, guides, and most meals.'
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
@@ -291,7 +291,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What is included vs not included in a CTS China tour package?',
-      answer: 'Included in every CTS published tour price: return international flights from Auckland (AKL), all hotels (3-4 star Discovery / 4-5 star Signature), all in-China internal flights and high-speed rail transfers, English-speaking local guides in each city, daily breakfast and most lunches, all entrance fees per itinerary, and emergency support from the Auckland office during your trip. Not included (budget separately): travel insurance (strongly recommended), drinks beyond meals, optional shore excursions, tips for guides and drivers (typically NZD 10-20 per day per person), personal expenses, and connecting domestic flights from Wellington/Christchurch/regional NZ to Auckland (quoted separately).'
+      answer: 'Included in every CTS published tour price: return international flights from Auckland (AKL), all hotels (3-4 star Discovery / 5-star Signature), all in-China internal flights and high-speed rail transfers, English-speaking local guides in each city, daily breakfast and most lunches, all entrance fees per itinerary, and emergency support from the Auckland office during your trip. Not included (budget separately): travel insurance (strongly recommended), drinks beyond meals, optional shore excursions, tips for guides and drivers (typically NZD 10-20 per day per person), personal expenses, and connecting domestic flights from Wellington/Christchurch/regional NZ to Auckland (quoted separately).'
     },
     {
       question: 'How does CTS Tours compare to Wendy Wu Tours or Intrepid for China from New Zealand?',
@@ -299,7 +299,7 @@ export const chinaToursFromNZMeta: SeoPageMeta = {
     },
     {
       question: 'What is the difference between Discovery and Signature tour collections?',
-      answer: 'Discovery (from NZD $2,699) uses 3-4 star city centre hotels, larger groups, and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 4-5 star premium hotels, smaller groups, more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
+      answer: 'Discovery (from NZD $2,699) uses 3-4 star city centre hotels, larger groups, and a more active sightseeing pace — great value for first-time visitors. Signature (from NZD $4,800) uses 5-star premium hotels, smaller groups, more relaxed pacing with built-in free time and exclusive experiences (e.g. private hutong dining, after-hours museum visits). Both include all the headline sights, English-speaking guides, and CTS Auckland support. Choose Signature if you value smaller groups and premium hotels; Discovery if you want excellent value and don\'t mind a faster pace.'
     },
     {
       question: 'What travel insurance do New Zealanders need for a China tour?',
