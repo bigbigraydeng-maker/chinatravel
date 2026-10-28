@@ -324,13 +324,14 @@ const allTours: Tour[] = [
       { day: 18, title: 'Arrive in New Zealand', description: 'Arrive back in New Zealand — your memorable Silk Road journey concludes.', meals: [] }
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       '5-star hotel accommodation',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transport'
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'China visa fee (if required)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
@@ -410,13 +411,14 @@ const allTours: Tour[] = [
       { day: 17, title: 'Auckland', description: 'Arrival in New Zealand — timing depends on your flight arrangements. Tour concludes.', meals: [] },
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       '5-star hotel accommodation (and international-standard Yangtze cruise) as specified in the itinerary',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transport including high-speed trains (first class where specified)',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -513,7 +515,7 @@ const allTours: Tour[] = [
     ],
     inclusions: [
       'Return international airfares from Auckland',
-      'Domestic airfares within China',
+      'All flights within China',
       '5-star hotel accommodation',
       'Victoria Yangtze River Cruise (International 5-star)',
       'English-speaking tour guide',
@@ -521,6 +523,7 @@ const allTours: Tour[] = [
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -609,13 +612,14 @@ const allTours: Tour[] = [
     tourCities: ['shanghai', 'yichang', 'chongqing', 'chengdu', 'zhangjiajie'],
     inclusions: [
       'Return international airfares from Auckland',
-      'Domestic airfares within China',
+      'All flights within China',
       '5-star hotel accommodation',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transport including high-speed trains (First Class)'
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -662,7 +666,7 @@ const allTours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international airfares from Auckland, domestic airfares within China, 5-star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
+          'Return international airfares from Auckland, all flights within China, 5-star hotel accommodation, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transport including First Class high-speed trains. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional activities such as the Sichuan Opera face-changing performance.',
       },
       {
         question: 'Which hotels do we stay in?',
@@ -799,7 +803,7 @@ const allTours: Tour[] = [
       }
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       '4-star hotel accommodation throughout',
       'English-speaking tour guide',
       'Entrance fees as specified in the itinerary',
@@ -807,6 +811,7 @@ const allTours: Tour[] = [
       'Land transfers'
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -856,7 +861,7 @@ const allTours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international and domestic airfares, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional evening shows.',
+          'Return international flights from Auckland, all flights within China, 4-star hotel accommodation throughout, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. The Beijing to Xi\'an sector is by high-speed train G89 (or similar), 2nd class. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional evening shows.',
       },
       {
         question: 'Which hotels do we stay in?',
@@ -941,13 +946,14 @@ const allTours: Tour[] = [
       { day: 15, title: 'Auckland', description: 'Arrive back in New Zealand.', meals: [] },
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       'Hotel accommodation as specified in the itinerary',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transfer',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -999,7 +1005,7 @@ const allTours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'Return international airfares from Auckland, domestic airfares within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional extras such as the acrobatic show and the Tang Palace show.',
+          'Return international airfares from Auckland, all flights within China, hotel accommodation as specified in the itinerary, an English-speaking tour guide, entrance fees and meals as specified in the itinerary, and land transfers. Not included: travel insurance (strongly recommended), personal expenses, transport and guide services during free time, meals not listed in the itinerary, and optional extras such as the acrobatic show and the Tang Palace show.',
       },
       {
         question: 'Which hotels do we stay in?',
@@ -1082,13 +1088,14 @@ const allTours: Tour[] = [
       { day: 10, title: 'Auckland', description: 'Arrive in Auckland in the morning.', meals: [] },
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       'Hotel accommodation as specified in the itinerary',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transfer',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -1136,7 +1143,7 @@ const allTours: Tour[] = [
       {
         question: 'What is included in the price?',
         answer:
-          'The tour is priced per person twin-share and includes international flights from Auckland, domestic connections as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
+          'The tour is priced per person twin-share and includes return international flights from Auckland, all flights within China as per the itinerary, hotels as named or similar, English-speaking guides, entrance fees and meals where specified in the day-by-day programme, and land transport between cities. It does not include travel insurance, personal spending, most dinners where marked "at own expense", or optional extras — full detail is in Inclusions and Exclusions on this page.',
       },
       {
         question: 'Which hotels do we stay in?',
@@ -1215,13 +1222,14 @@ const allTours: Tour[] = [
       { day: 11, title: 'Beijing — Auckland', description: 'Depart Beijing on your return flight to Auckland.', meals: [] },
     ],
     inclusions: [
-      'International and domestic airfares',
+      'Return international flights from Auckland, plus all flights within China',
       '4-star hotel accommodation',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Land transfer',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
@@ -1246,7 +1254,7 @@ const allTours: Tour[] = [
     ],
     tourCities: ['beijing', 'dali', 'lijiang', 'shangri-la', 'yunnan'],
     quickAnswer:
-      'Colorful Yunnan is an 11-day CTS journey from Auckland via Beijing, combining Dali and Erhai Lake, Lijiang and the Tea Horse Road, Tiger Leaping Gorge, and Shangri-La. International and domestic flights, four-star hotels, specified meals, guides, transfers, and listed admissions are included. The published September 2026 departure has passed, so enquire for the next available date.',
+      'Colorful Yunnan is an 11-day CTS journey from Auckland via Beijing, combining Dali and Erhai Lake, Lijiang and the Tea Horse Road, Tiger Leaping Gorge, and Shangri-La. Return international flights from Auckland and all flights within China, four-star hotels, specified meals, guides, transfers, and listed admissions are included. The published September 2026 departure has passed, so enquire for the next available date.',
     faqs: [
       {
         question: 'What places are included in the Colorful Yunnan itinerary?',
@@ -1256,7 +1264,7 @@ const allTours: Tour[] = [
       {
         question: 'Are flights included in the Colorful Yunnan price?',
         answer:
-          'Yes. The published inclusions cover international and domestic airfares, four-star hotel accommodation, English-speaking guides, land transfers, listed admissions, and the meals specified in the day-by-day itinerary.',
+          'Yes. The published inclusions cover return international flights from Auckland, all flights within China, four-star hotel accommodation, English-speaking guides, land transfers, listed admissions, and the meals specified in the day-by-day itinerary.',
       },
       {
         question: 'Which Yunnan activities cost extra?',
@@ -1378,7 +1386,7 @@ const allTours: Tour[] = [
       },
     ],
     inclusions: [
-      'International and domestic return airfares (Auckland-Beijing-Chongqing; Chengdu-Beijing-Auckland)',
+      'Return international flights from Auckland and all flights within China (Auckland-Beijing-Chongqing; Chengdu-Beijing-Auckland)',
       '4-star centrally located hotel accommodation (twin share)',
       'Coach transfers throughout',
       'High-speed train Chongqing to Chengdu (2nd class)',
@@ -1387,6 +1395,7 @@ const allTours: Tour[] = [
       'Meals as specified in the itinerary (B = Breakfast, L = Lunch)',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Tips (suggested NZD $10 per person per day)',
       'Meals not listed in the itinerary',
@@ -2321,7 +2330,7 @@ const allTours: Tour[] = [
     inclusions: [
       'Return international airfares from Auckland',
       '4-star hotel accommodation',
-      'Transportation by tour coach and domestic flights',
+      'Transportation by tour coach and flights within Vietnam',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Ha Long Bay overnight deluxe cruise'
@@ -2381,7 +2390,7 @@ const allTours: Tour[] = [
     inclusions: [
       'Return international airfares from Auckland',
       '4-star hotel accommodation',
-      'Transportation by tour coach and domestic flights',
+      'Transportation by tour coach and flights within Vietnam',
       'English-speaking tour guide',
       'Entrance fees and meals as specified in the itinerary',
       'Ha Long Bay overnight deluxe cruise'
@@ -2530,6 +2539,7 @@ const allTours: Tour[] = [
       '4-star hotel accommodation throughout'
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Visa fees (if required)',
       'Tips (recommended NZD $15 per person per day)',
       'Travel insurance (strongly recommended)',
@@ -2701,7 +2711,7 @@ const allTours: Tour[] = [
       },
     ],
     inclusions: [
-      'International and domestic flights',
+      'Return international flights from Auckland, plus all flights within China',
       '4-star hotel accommodation throughout',
       'Meals as per the itinerary',
       'English-speaking guide',
@@ -2710,6 +2720,7 @@ const allTours: Tour[] = [
       '2nd-class high-speed train from Beijing to Xi\'an',
     ],
     exclusions: [
+      'Flights within New Zealand to Auckland (connecting flights from other NZ cities are quoted separately)',
       'Travel insurance (strongly recommended)',
       'Personal expenses',
       'Transportation and guide services during free time',
