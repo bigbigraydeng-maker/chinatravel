@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const tours = await getPublishedChinaTours();
   const description = `Compare ${tours.length} currently published CTS China tours from New Zealand. Current names, routes, prices and departures are shown from the latest ME publication.`;
   return buildCtsPageMetadata({
-    title: 'China Tours from New Zealand | CTS Tours',
+    title: 'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
     description,
     path: '/china-tours',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/forbidden-city-aerial.jpg',
@@ -43,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'CTS Tours',
     ],
     ogType: 'website',
-    openGraphTitle: 'China Tours from New Zealand | CTS Tours',
+    openGraphTitle: 'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
     openGraphDescription: description,
   });
 }
@@ -104,7 +104,7 @@ export default async function ChinaToursPage({ searchParams }: PageProps) {
 
   const schemas = [
     generateCollectionPageSchema(
-      'China Tours from New Zealand | CTS Tours',
+      'All China Tours: Compare Routes, Prices & Dates | CTS Tours',
       pageDescription,
       '/china-tours',
       tours

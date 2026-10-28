@@ -31,7 +31,7 @@ export const chinaToursMeta: SeoPageMeta = {
   title: 'China Tours from New Zealand 2026-27 | CTS Tours',
   description:
     'Featured China tours from NZ 2026-27: Best of China from $4,080 (11 Mar 2027). Backed by CTS; Auckland-based team. TAANZ-bonded. Free quote.',
-  h1: 'China Tours from New Zealand',
+  h1: 'All China Tours: Compare Routes & Dates',
   heroSubtitle: 'Kiwi-Led China itineraries 2026-27 · 10-18 days · Auckland departures',
   introText:
     'CTS Tours NZ is New Zealand\'s dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland, backed by China Travel Service which runs direct China operations. Our Auckland consultants design and operate every China holiday package and china trip in our collection.\n\nWe offer three distinct China tour packages to suit different budgets and travel styles: Signature (boutique 4–5 star hotels, small groups up to 16), Discovery (excellent-value escorted China travel packages with 3–4 star stays), and Stopover (2–4 day city breaks, perfect as an add-on to business travel or a taster before a longer trip).\n\nNew Zealand ordinary passport holders currently enjoy visa-free entry to China for up to 30 days — making booking a China holiday package faster and simpler than ever. Browse more than fifty curated itineraries below, or contact our Auckland team for a tailor-made china trip.',
