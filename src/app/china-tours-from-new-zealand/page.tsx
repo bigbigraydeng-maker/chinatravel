@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const tours = await getPublishedChinaTours();
   const description = `Compare ${tours.length} current China tours from New Zealand. Tour names, routes, durations, prices and departures reflect the latest ME publication.`;
   return buildCtsPageMetadata({
-    title: 'China Tours from New Zealand | CTS Tours',
+    title: 'China Tour Packages from NZ, Airfare Included | CTS Tours',
     description,
     path: '/china-tours-from-new-zealand',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/great-wall-mist.jpg',
