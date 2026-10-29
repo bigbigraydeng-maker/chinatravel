@@ -46,7 +46,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Do you offer China holiday packages from New Zealand?',
-      answer: 'Yes. Our China holiday packages are priced in NZD and include return international airfares from Auckland. Travellers based elsewhere can ask about domestic connections, quoted separately. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
+      answer: 'Yes. Our China holiday packages are priced in NZD and include return international airfares from Auckland. Travellers based elsewhere in New Zealand can ask about a connecting flight to Auckland, quoted separately. Our team handles everything else — international flights, hotels, China guides, domestic transport in China, and visa-free entry advice for NZ passport holders.'
     },
     {
       question: 'What is included in a CTS China travel package?',

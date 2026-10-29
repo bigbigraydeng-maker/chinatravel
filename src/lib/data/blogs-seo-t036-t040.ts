@@ -17,7 +17,7 @@ I’m **Baker Gu**, CTS’s China travel specialist. **Beijing** and **Shanghai*
 
 ## Why the gateway matters for New Zealand travellers
 
-Most of you fly **Auckland → Shanghai or Beijing** non-stop. I care about jet lag, how many domestic connections you add later, and whether your first week feels coherent. I also care that you understand **visa-free tourism** for NZ ordinary passports (policy published to **31 December 2026**) — it is not a blank cheque; you still need return tickets, accommodation proof, and a passport with enough validity. I summarise what to carry in [my visa notes for New Zealanders](/china-visa-guide-for-new-zealanders).
+Most of you fly **Auckland → Shanghai or Beijing** non-stop. I care about jet lag, how many connecting flights within China you add later, and whether your first week feels coherent. I also care that you understand **visa-free tourism** for NZ ordinary passports (policy published to **31 December 2026**) — it is not a blank cheque; you still need return tickets, accommodation proof, and a passport with enough validity. I summarise what to carry in [my visa notes for New Zealanders](/china-visa-guide-for-new-zealanders).
 
 ## Beijing first: when I steer you north
 

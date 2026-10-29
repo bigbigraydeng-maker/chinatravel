@@ -201,7 +201,7 @@ If you’re still deciding shape, our [China holiday packages guide](/blog/china
   "@context": "https://schema.org",
   "@type": "TouristTrip",
   "name": "Best of China — Discovery (15 days)",
-  "description": "Fifteen-day inclusive group tour from Auckland: Beijing, Xi’an, Puyuan, Hangzhou and Shanghai. Return international flights, domestic transport, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals included.",
+  "description": "Fifteen-day inclusive group tour from Auckland: Beijing, Xi’an, Puyuan, Hangzhou and Shanghai. Return international flights, transport within China, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals included.",
   "touristType": "Cultural tourism",
   "itinerary": {
     "@type": "ItemList",
