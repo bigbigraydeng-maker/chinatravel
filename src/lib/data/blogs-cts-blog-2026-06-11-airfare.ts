@@ -64,7 +64,7 @@ This is not a criticism of operators that sell land-only — it’s a legitimate
 | What you’re paying for | Inclusive (with airfare from Auckland) | Land-only (no airfare) |
 |------------------------|---------------------------------------|------------------------|
 | Return international flight from Auckland | included | you book separately |
-| Domestic flights inside China | included | included |
+| Flights within China | included | included |
 | High-speed rail sectors | included | included |
 | Airport transfers in China | included | included |
 | Hotel accommodation | included | included |
