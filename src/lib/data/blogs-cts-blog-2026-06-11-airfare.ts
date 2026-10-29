@@ -209,7 +209,7 @@ A few next steps depending on where you are:
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "CTS Tours Best of China — Inclusive 15-Day Package (Airfare from Auckland)",
-  "description": "Fifteen-day inclusive group China tour departing Auckland: return international flights, domestic transport in China, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals. November 2026 and March 2027 departures.",
+  "description": "Fifteen-day inclusive group China tour departing Auckland: return international flights, transport within China, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals. November 2026 and March 2027 departures.",
   "brand": {
     "@type": "Organization",
     "name": "CTS Tours NZ"

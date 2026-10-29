@@ -91,7 +91,7 @@ The itinerary returns to Beijing for the international connection home. Dependin
 
 **Weather in October:** Beijing and Xi'an in October are excellent — clear skies, mild temperatures (10–20°C), the city trees turning golden. It's arguably the best month of the year to visit northern China.
 
-**What's included with CTS:** International airfares from Auckland, all domestic travel, 4-star hotels, English-speaking guide throughout, entrance fees to all listed sites, meals as per itinerary. Tips are suggested at NZD $10 per person per day.
+**What's included with CTS:** International airfares from Auckland, all travel within China, 4-star hotels, English-speaking guide throughout, entrance fees to all listed sites, meals as per itinerary. Tips are suggested at NZD $10 per person per day.
 
 ## Book the Tour
 

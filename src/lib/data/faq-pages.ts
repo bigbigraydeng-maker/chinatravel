@@ -580,7 +580,7 @@ For travel during peak periods — October Golden Week (Oct 1–7), Chinese New 
 For travel during shoulder seasons (March–May, November), 3 months is generally sufficient for group tours. Tailor-made itineraries need slightly more time for careful planning — 4 months is ideal.
 
 Key items that require early booking:
-- Domestic flight tickets during peak periods
+- Flights within China during peak periods
 - High-speed rail tickets on popular routes (Beijing–Xi'an)
 - Accommodation in major cities at quality properties
 - Specialist experiences (panda volunteer programme, private Great Wall access)`
@@ -593,7 +593,7 @@ Key items that require early booking:
 
 <strong>Usually included:</strong>
 - Airport transfers (arrival and departure)
-- All domestic transport (private vehicle, domestic flights or high-speed rail between cities)
+- All transport within China (private vehicle, flights within China or high-speed rail between cities)
 - Accommodation (twin or double room as specified)
 - Breakfast daily; some dinners as noted
 - English-speaking local guide at each destination
