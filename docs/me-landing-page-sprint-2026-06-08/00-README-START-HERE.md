@@ -56,7 +56,7 @@ docs/me-landing-page-sprint-2026-06-08/ 目录下。
 
 > **2026-06-08 PM 修正**：
 > - **Best of China (Essentials)** 是 #1 主推
-> - **Oct 两团**（Tale of Two Cities + Shanghai & Surroundings）是辅助焦点
+> - **Oct 两团**（Tale of Two Cities + Shanghai & Beyond）是辅助焦点
 > - **Fire & Fuzz 已从本轮推广移除** — `/campaigns/fire-fuzz` + `chongqing-chengdu` tour 模板不在范围
 
 | 页面 | 现状 | 角色 | 目标 |

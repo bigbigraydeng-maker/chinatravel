@@ -280,7 +280,7 @@ Separately, China runs a **240-hour visa-free transit** scheme for passengers co
 
 ## What Should NZ Travellers Do With This?
 
-The practical effect: a China holiday now books like a Fiji or Bali holiday — passport, flights, go. Our 10-day Discovery tours — [A Tale of Two Cities (Beijing and Xi'an)](/tours/china/discovery/beijing-xian) and [Shanghai and Surroundings](/tours/china/discovery/shanghai-surroundings) — both sit well inside the 30-day window, as does every package on our [China tours page](/china-tours).
+The practical effect: a China holiday now books like a Fiji or Bali holiday — passport, flights, go. Our 10-day Discovery tours — [A Tale of Two Cities (Beijing and Xi'an)](/tours/china/discovery/beijing-xian) and [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings) — both sit well inside the 30-day window, as does every package on our [China tours page](/china-tours).
 
 Before you book, two sensible checks:
 

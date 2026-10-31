@@ -81,7 +81,7 @@ Each departure is followed by a full-page mosaic, defined in `MOSAICS` in
 2. **Where two tours differ, the photo must differ.** Golden China walks the
    wall at Juyongguan; the Christmas departures and Legacy of China go to
    Mutianyu. The stock library's wall photos are Mutianyu, so Golden China gets
-   a CTS group photo captioned without a section. Shanghai & Surroundings goes
+   a CTS group photo captioned without a section. Shanghai & Beyond goes
    to Xinshi, not Wuzhen — the Wuzhen photos belong to the "Shanghai & Wuzhen"
    stopover route and nowhere else.
 

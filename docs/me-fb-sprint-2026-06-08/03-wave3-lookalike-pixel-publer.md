@@ -74,7 +74,7 @@ Meta Audiences → Create Audience → Custom Audience → Customer List
 
 - **Campaign A Best of China**: 1% LAL + Custom Audience（retargeting 历史客户）
 - **Campaign B Tale of Two Cities**: 1% LAL + 关键词兴趣 (China travel)
-- **Campaign C Shanghai & Surroundings**: 1-3% LAL + 关键词兴趣 (Asia travel)
+- **Campaign C Shanghai & Beyond**: 1-3% LAL + 关键词兴趣 (Asia travel)
 
 ---
 
@@ -168,7 +168,7 @@ PM 每天 5 分钟 check：
 - 6/15 Campaign 启动:
   - Campaign A Best of China: ACTIVE (start 2026-06-XX)
   - Campaign B Tale of Two Cities: ACTIVE (2026-06-15)
-  - Campaign C Shanghai & Surroundings: ACTIVE (2026-06-15)
+  - Campaign C Shanghai & Beyond: ACTIVE (2026-06-15)
 
 ## 待 PM 决策
 - [ ] Best of China 立即启动日: PM 拍板 XX

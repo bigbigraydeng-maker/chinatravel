@@ -61,7 +61,7 @@ const SCHEDULE: Record<string, Array<[string, string]>> = {
   ],
 };
 
-// Dates held back from the page until CTS confirms them. 25 May 2027 Shanghai & Surroundings:
+// Dates held back from the page until CTS confirms them. 25 May 2027 Shanghai & Beyond:
 // the internal schedule returns on 2 June (9 days) but the product is a 10-day itinerary, so the
 // real return date is unknown. Showing a computed 3 June would be a guess.
 const HELD_BACK: Record<string, string[]> = { 'shanghai-surroundings': ['25 May 2027'] };

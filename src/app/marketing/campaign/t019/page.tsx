@@ -62,8 +62,8 @@ const LAUNCH_STEPS: {
     code: 'T022',
     title: '搭建 Shanghai（产品）',
     campaignInCsv: 'Search_Product_SH_Oct26',
-    detail: '十月 Discovery：Shanghai & Surroundings；RSA §4D。',
-    links: [{ href: '/tours/china/discovery/shanghai-surroundings', label: '团页：Shanghai & Surroundings（原十月落地页已跳转到这里）' }],
+    detail: '十月 Discovery：Shanghai & Beyond；RSA §4D。',
+    links: [{ href: '/tours/china/discovery/shanghai-surroundings', label: '团页：Shanghai & Beyond（原十月落地页已跳转到这里）' }],
   },
   {
     id: 'step-t023',

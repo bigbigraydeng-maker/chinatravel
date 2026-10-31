@@ -1,4 +1,4 @@
-# T044 — Shanghai & Surroundings Master Brief (Jiangnan Discovery)
+# T044 — Shanghai & Beyond Master Brief (Jiangnan Discovery)
 
 Single source of truth for **organic social**, **paid creative**, **blog**, and **AI-generated copy** for this Discovery product. When site copy changes, update this file in the same PR or immediately after deploy.
 
@@ -6,7 +6,7 @@ Single source of truth for **organic social**, **paid creative**, **blog**, and 
 
 | Field | Value |
 |--------|--------|
-| Marketing name | **Shanghai & Surroundings** (China Discovery) |
+| Marketing name | **Shanghai & Beyond** (China Discovery) |
 | `tours.ts` slug | `shanghai-surroundings` |
 | Route | **Yangtze Delta loop** — Suzhou, Wuxi, Xinshi, Hangzhou, Shanghai — **no Beijing, no Xi’an, no Terracotta** |
 | Duration | 10 days |
@@ -24,7 +24,7 @@ Single source of truth for **organic social**, **paid creative**, **blog**, and 
 
 **October hero departure (campaign config):** first date in `OCTOBER_2026_DISCOVERY_BY_SLUG['shanghai-surroundings'].heroDepartureOrder` — **14 October** (confirm live on LP).
 
-**Enquiry source string (forms on campaign LP):** `Campaign LP: Oct 2026 — Shanghai & Surroundings`
+**Enquiry source string (forms on campaign LP):** `Campaign LP: Oct 2026 — Shanghai & Beyond`
 
 Canonical HTML has **no UTM**; ads and social tracked links append UTM per `october-2026-discovery.ts` / marketing board.
 

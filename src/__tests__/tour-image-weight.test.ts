@@ -5,7 +5,7 @@
  * 2026-10-21 the Natural China ad page was found to ship a 3.5 MB hero picture (mobile Largest
  * Contentful Paint 32 s on a slow phone connection) and a 12 MB gallery picture; they were replaced
  * by compressed copies, and the cards and photo galleries of the three advertised tours (A Tale of
- * Two Cities, Best of China, Shanghai & Surroundings) followed. This test keeps that from coming
+ * Two Cities, Best of China, Shanghai & Beyond) followed. This test keeps that from coming
  * back: no local picture that an active tour (hero, gallery or the photo gallery of its page) or a
  * tour card points at may be bigger than 500 KB, except the ones listed below as still waiting to
  * be compressed. The list may only shrink: an entry that is no longer needed must be deleted from

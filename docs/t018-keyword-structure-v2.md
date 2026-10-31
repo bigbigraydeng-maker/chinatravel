@@ -52,7 +52,7 @@ Headlines
 
 Descriptions
 - Plan your China journey with CTS specialists in New Zealand. Guided support from enquiry to arrival.
-- Two featured October Discovery tours: Beijing and Xi'an, or Shanghai and Surroundings.
+- Two featured October Discovery tours: Beijing and Xi'an, or Shanghai & Beyond.
 - Trusted local operations and clear pre-departure guidance for NZ travellers.
 - Start with a quick enquiry and get the right itinerary for your timeline and budget.
 
@@ -96,10 +96,10 @@ Descriptions
 - Strong value, clear pacing, and reliable support for New Zealand travellers.
 - Enquire now for October departures and detailed day-by-day inclusions.
 
-### D) Shanghai/Surroundings（Search_Product_SH_Oct26）
+### D) Shanghai & Beyond（Search_Product_SH_Oct26）
 
 Headlines
-- Shanghai And Surroundings Tour
+- Shanghai & Beyond Tour
 - Modern City Meets Jiangnan
 - Suzhou Hangzhou Water Towns
 - East Meets West Experience

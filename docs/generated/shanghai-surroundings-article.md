@@ -1,10 +1,10 @@
-# 7 Top Things to Do in Shanghai & Surroundings
+# 7 Top Things to Do in Shanghai & Beyond
 
 Your NZ Traveller's Guide to Shanghai Energy and Jiangnan Elegance
 
 Most NZ travellers planning a first trip to China get pulled toward the northern route: Beijing, the Great Wall, Xi'an, the Terracotta Warriors. That is a legitimate trip. But it is not the only one — and for many people, it is not the right one. If you are more drawn to water-town lanes, classical gardens, lakeside tea terraces, and a skyline that actually makes you stop walking to stare, then the Yangtze Delta is where you want to be.
 
-This guide covers the Shanghai and surroundings route — the Jiangnan loop through Suzhou, Wuxi, Xinshi, Hangzhou, and back to Shanghai — not Beijing or Xi'an. You will not find the Terracotta Warriors in this article, and that is the point. The Jiangnan region (literally "south of the Yangtze") is China's other great civilisational corridor: silk, scholars, refined gardens, freshwater lakes, and one of the world's most photogenic city skylines. It is a different trip, and for many Kiwi travellers aged 40 and over, it is actually the more satisfying one.
+This guide covers the Shanghai & Beyond route — the Jiangnan loop through Suzhou, Wuxi, Xinshi, Hangzhou, and back to Shanghai — not Beijing or Xi'an. You will not find the Terracotta Warriors in this article, and that is the point. The Jiangnan region (literally "south of the Yangtze") is China's other great civilisational corridor: silk, scholars, refined gardens, freshwater lakes, and one of the world's most photogenic city skylines. It is a different trip, and for many Kiwi travellers aged 40 and over, it is actually the more satisfying one.
 
 What follows is an honest section-by-section guide to the seven main draws on this route. Each one comes with trade-offs, timing advice, and the kind of specific detail that helps you decide whether it deserves your time. This is not a brochure. If an attraction is best skipped in the wrong conditions, I'll say so. If a crowd is inevitable, I'll tell you how to work around it.
 
@@ -123,7 +123,7 @@ The trade-off is that West Lake is not a hidden gem. It is one of China's most c
 
 **For first-time NZ travellers:** West Lake is the stop that most reliably surprises people who expect China to be purely cities and monuments. The landscape tradition here is genuinely different from anything in New Zealand, and the scale is intimate enough to absorb without rushing.
 
-A [well-planned Shanghai and surroundings itinerary](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) typically allows a full day in Hangzhou, which is the right amount of time to cover the lake and the Longjing tea area without feeling rushed.
+A [well-planned Shanghai & Beyond itinerary](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) typically allows a full day in Hangzhou, which is the right amount of time to cover the lake and the Longjing tea area without feeling rushed.
 
 ---
 
@@ -259,13 +259,13 @@ The trade-off with Pudong is that it is urban spectacle rather than cultural dep
 
 **For retirees:** The observation deck involves elevators rather than stairs, and the physical demands are minimal. The main consideration is queuing time — arrive when it opens (8:30am) to minimise this.
 
-This is where a [CTS Tours Shanghai and surroundings itinerary](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) typically concentrates the final days: the earlier Jiangnan loop has been the cultural preparation, and Shanghai Modern is the punctuation mark.
+This is where a [CTS Tours Shanghai & Beyond itinerary](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) typically concentrates the final days: the earlier Jiangnan loop has been the cultural preparation, and Shanghai Modern is the punctuation mark.
 
 ---
 
 <a id="comparison"></a>
 
-## Top 7 Things to Do in Shanghai & Surroundings — Comparison
+## Top 7 Things to Do in Shanghai & Beyond — Comparison
 
 | Attraction | Complexity (🔄) | Resources / Cost (⚡) | Expected Experience (⭐) | Ideal Use Cases (📊) | Key Advantages & Quick Tip (💡) |
 |---|---:|---:|---|---|---|
@@ -328,6 +328,6 @@ A day trip to Tongji or Wuzhen from Suzhou or Hangzhou adds a second water-town 
 
 ---
 
-If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Surroundings Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,999 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
+If you are ready to turn this into an actual departure, the [CTS Tours Shanghai & Beyond Discovery product](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) covers the full Jiangnan loop for NZD $2,999 per person twin-share, with the 14 October 2026 departure already published. CTS is a New Zealand–based China travel specialist — not a global booking platform — which means the people who built the itinerary are in Auckland and can answer questions in plain English before you commit to anything.
 
 The Yangtze Delta is not a second-tier version of northern China. It is a different argument about what China is, and for many NZ travellers, it turns out to be the more compelling one.

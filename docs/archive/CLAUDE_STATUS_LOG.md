@@ -123,7 +123,7 @@
 
 ## 2026-09-07 · Phase 11: 三个团标 Sold Out（PR #172）
 
-- **起因:** CTS 员工反馈客户还在对着已卖光的团下单——A Tale of Two Cities（10月15日）、Shanghai & Surroundings（10月14日）、Best of China（11月3日，Best of China 主产品页此前已处理，广告落地页漏了）
+- **起因:** CTS 员工反馈客户还在对着已卖光的团下单——A Tale of Two Cities（10月15日）、Shanghai & Beyond（10月14日）、Best of China（11月3日，Best of China 主产品页此前已处理，广告落地页漏了）
 - **改动:** `tours.ts` 拉掉卖光的出发日期；主产品页 + 两个 10 月广告落地页 + Best of China 广告落地页 + 海报页 `/spotlight/october-2026` 一律加"Sold Out — 下一趟 XX 日"横条；10 月广告页原有的倒计时组件（`OctoberUrgencyBar`）换掉，因为它还在往卖光的日期倒计时
 - **验证:** `npm test`（543 tests 全绿）、`npm run build` 干净、本地起 dev server 逐页看过横条位置
 - **发现的经验（已存为项目记忆 `cts-sold-out-multi-surface-checklist`）:** 标一个团 Sold Out 至少要同步 5 处（数据 + 主产品页 + 广告落地页 + 海报页 + hero 按钮文案），CI 的 `shared-blocks.test.ts` 只查组件存在与否，查不到这种条件横条的内容，得人工过一遍

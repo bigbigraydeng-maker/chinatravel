@@ -25,7 +25,7 @@ export const STAGED_DEPARTURE_PRICES: Record<string, Record<string, string>> = {
   'imperial-heritage': {
     '3 September 2027': 'NZD $10,499',
   },
-  // Shanghai & Surroundings: the NZD $2,699 promotional price is 25 March 2027 only (live);
+  // Shanghai & Beyond: the NZD $2,699 promotional price is 25 March 2027 only (live);
   // 5 November 2027 is live at NZD $2,899.
   // Held back: CTS has not confirmed the 25 May return date, so it must not go live yet.
   'shanghai-surroundings': {

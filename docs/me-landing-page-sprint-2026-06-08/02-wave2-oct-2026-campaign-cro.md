@@ -2,7 +2,7 @@
 
 > **2026-06-08 PM 修正**：
 > - Wave 2 主推：**Best of China (Essentials) 11/3 出发** #1 优先级
-> - Oct 两团辅助：Tale of Two Cities + Shanghai & Surroundings
+> - Oct 两团辅助：Tale of Two Cities + Shanghai & Beyond
 > - **Fire & Fuzz 已从本轮推广移除**（PM 2026-06-08 决定）
 > - 共 **3 个落地页**
 >
@@ -24,7 +24,7 @@
 
 **辅助 — Oct 2026 Spotlight 两团 (Focus campaign)**：
 1. **Tale of Two Cities** (Beijing + Xi'an) — 10/15 出发，NZD $3,480 / 10 天
-2. **Shanghai & Surroundings** — 10/14 出发，NZD $3,399 / 10 天
+2. **Shanghai & Beyond** — 10/14 出发，NZD $3,399 / 10 天
 
 **已移除**：Fire & Fuzz (Chongqing × Chengdu) — PM 2026-06-08 决定不在本轮推广。`/campaigns/fire-fuzz` LP **不在本 Wave 2 范围**，跳过。
 
@@ -184,7 +184,7 @@ Read src/components/TourSupportingContentLinks.tsx (#planning-resources)
 - **出发日期**：10/14 October 2026
 - **价格**：NZD $3,399
 - **Tour 数据**：`getTourBySlug('china', 'discovery', 'shanghai-surroundings')`
-- **enquirySource**：`Campaign LP: Oct 2026 — Shanghai & Surroundings`
+- **enquirySource**：`Campaign LP: Oct 2026 — Shanghai & Beyond`
 
 由于这两个 campaign LP 用的是同一个动态路由 `[slug]/page.tsx`，改动是**一次性**：改了 page.tsx 两个 slug 都受益。
 

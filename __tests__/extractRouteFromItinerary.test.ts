@@ -14,7 +14,7 @@ describe('extractRouteFromItinerary', () => {
     expect(route!.segments).toHaveLength(route!.stops.length - 1);
   });
 
-  it('builds a route for Shanghai & Surroundings delta tour', () => {
+  it('builds a route for Shanghai & Beyond delta tour', () => {
     const tour = getTourBySlug('china', 'discovery', 'shanghai-surroundings');
     expect(tour).toBeTruthy();
     const route = extractRouteFromItinerary(tour!.itinerary);

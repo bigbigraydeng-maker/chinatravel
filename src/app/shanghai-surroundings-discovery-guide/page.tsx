@@ -78,7 +78,7 @@ export default async function DiscoveryGuidePage() {
 
       {/* Immersive hero with full-bleed photo */}
       <ImmersivePageHero
-        eyebrow="Discovery Guide · Shanghai & Surroundings"
+        eyebrow="Discovery Guide · Shanghai & Beyond"
         title={guide.h1}
         imageSrc={guide.heroImage}
         imageAlt={guide.destinationName}

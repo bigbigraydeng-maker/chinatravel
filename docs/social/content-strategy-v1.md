@@ -66,7 +66,7 @@
 | Tour | Brief | Slug | 价格 | 出发 | 当前 Airtable 条数 |
 |---|---|---|---|---|---|
 | **Tale of Two Cities** | T043 | `beijing-xian` | NZD $3,480 | Oct 2026 | 13 |
-| **Shanghai & Surroundings** | T044 | `shanghai-surroundings` | NZD $2,999 | Oct 2026 | 13 |
+| **Shanghai & Beyond** | T044 | `shanghai-surroundings` | NZD $2,999 | Oct 2026 | 13 |
 | **Fire & Fuzz** (Chongqing+Chengdu) | T045 | `chongqing-chengdu` | **NZD $2,999** ⚠️ brief 写 $2,750 是错的 | **1 Nov 2026** | 8 (新加) |
 
 **注意 brief 错误**：T045 master brief 显示 NZD $2,750 但**实际是 $2,999**。所有 Fire & Fuzz 内容用 $2,999。
@@ -88,7 +88,7 @@
 | Tour | 当前 | 目标 | 缺口 |
 |---|---|---|---|
 | Tale of Two Cities | 13 | 22 | +9 |
-| Shanghai & Surroundings | 13 | 22 | +9 |
+| Shanghai & Beyond | 13 | 22 | +9 |
 | Fire & Fuzz | 8 | 22 | +14 |
 | **共享/通用** (visa, NZ, October Tips) | ~14 | 8 | -6（保留 8 条精华即可）|
 | **Total** | 48 | 74 | +28 待补 |

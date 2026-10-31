@@ -27,9 +27,9 @@ export const OCTOBER_2026_DISCOVERY_BY_SLUG: Record<
     // Retained for downstream code (spotlight lookups, canonical UTM structure)
     // even though the 14 Oct 2026 seat is now sold out.
     heroDepartureOrder: ['14 October 2026'],
-    enquirySource: 'Campaign LP: Oct 2026 — Shanghai & Surroundings',
+    enquirySource: 'Campaign LP: Oct 2026 — Shanghai & Beyond',
     otherCampaignSlug: 'tale-of-two-cities',
-    metaTitleSuffix: 'Shanghai & Surroundings — 2027 departure | CTS NZ',
+    metaTitleSuffix: 'Shanghai & Beyond — 2027 departure | CTS NZ',
     metaDescription:
       'Yangtze Delta Discovery from NZ: Suzhou, Wuxi, Xinshi, Hangzhou & Shanghai. 10 days from NZD $2,699. The 14 October 2026 departure has sold out — next departure 25 March 2027, enquire with CTS Auckland.',
   },
@@ -181,7 +181,7 @@ export const OCTOBER_2026_META_FACEBOOK_SURFACE_URLS: October2026FacebookSurface
   },
   {
     slug: 'shanghai-surroundings',
-    productLabel: 'Shanghai & Surroundings',
+    productLabel: 'Shanghai & Beyond',
     postUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'post'),
     reelsUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'reels'),
     storyUrl: buildOctober2026MetaFacebookSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'story'),
@@ -236,7 +236,7 @@ export const OCTOBER_2026_GOOGLE_ADS_URL_ROWS: October2026GoogleAdsRow[] = [
   },
   {
     slug: 'shanghai-surroundings',
-    productLabel: 'Shanghai & Surroundings',
+    productLabel: 'Shanghai & Beyond',
     searchRsaUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'search_rsa'),
     pmaxUrl: buildOctober2026GoogleAdsUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'pmax'),
   },
@@ -253,7 +253,7 @@ export const OCTOBER_2026_FACEBOOK_ORGANIC_SURFACE_URLS: October2026FacebookSurf
   },
   {
     slug: 'shanghai-surroundings',
-    productLabel: 'Shanghai & Surroundings',
+    productLabel: 'Shanghai & Beyond',
     postUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'post'),
     reelsUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'reels'),
     storyUrl: buildOctober2026FacebookOrganicSurfaceUrl(CTS_SITE_ORIGIN, 'shanghai-surroundings', 'story'),
