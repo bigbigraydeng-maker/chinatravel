@@ -1560,9 +1560,9 @@ export const daliGuide: DestinationGuide = {
   keywords: ['Dali', 'Bai culture', 'Three Pagodas', 'Erhai Lake', 'Silk Road'],
   h1: 'Dali: Where Silk Road Dreams Meet Mountain Beauty',
   heroSubtitle: 'Ancient Nanzhao Kingdom Capital',
-  heroImage: '/blog/sourced/dali-three-pagodas.jpg',
+  heroImage: '/blog/sourced/dali-chongsheng-temple-dusk.jpg',
   heroImageClassName: 'object-[center_45%]',
-  heroImageCredit: 'Photo: CEphoto, Uwe Aranas, CC BY-SA 3.0, via Wikimedia Commons',
+  heroImageCredit: 'Photo: Alexander Savin, CC BY 2.0, via Wikimedia Commons',
   introText: [
     'Dali served as capital of the Nanzhao Kingdom (738-1095 AD), a powerful state controlling southwestern China, parts of Burma, and Tibet. The kingdom\'s merchants, diplomats, and monks traversed the South Silk Road, bringing goods, ideas, and religions to this mountain valley. The Three Pagodas, visible across the valley, stand as physical testament to centuries of religious, political, and commercial importance.',
     'The modern town preserves Ming and Qing architecture within the walled Old Town. Bai ethnic people, numbering approximately 1.9 million and concentrated in Yunnan\'s Dali area, maintain distinctive cultural practices: traditional clothing, handicrafts, and architectural conventions visible throughout the town. Whitewashed buildings with dark tile roofs, ornate wooden doors, and intricate carvings reflect Bai aesthetic preferences.',
@@ -1665,8 +1665,9 @@ export const kunmingGuide: DestinationGuide = {
   keywords: ['Kunming', 'Stone Forest', 'eternal spring', 'Yunnan gateway', 'temples'],
   h1: 'Kunming: Yunnan\'s Gateway of Eternal Spring',
   heroSubtitle: 'Year-Round Mild Climate and Cultural Hub',
-  heroImage: `${TI}/kunming-dianchi-lake.jpg`,
+  heroImage: '/blog/sourced/kunming-stone-forest.jpg',
   heroImageClassName: 'object-[center_40%]',
+  heroImageCredit: 'Photo: Ngguls, CC BY-SA 4.0, via Wikimedia Commons',
   introText: [
     'Kunming, capital of Yunnan Province (population 4 million), earns the nickname "City of Eternal Spring" due to its consistently mild climate. The city functions as primary gateway to Yunnan for most international visitors, hosting international airport and serving as transport hub for rail and bus networks. Despite its modern development and urban scale, Kunming retains cultural character: temples, colonial-era architecture, vibrant markets, and proximity to natural attractions.',
     'The city\'s location at 1,891 metres elevation creates pleasant year-round weather. Winters rarely freeze; summers remain comfortable compared to coastal cities. This climatic stability, combined with agricultural abundance (Yunnan\'s location on Tropic of Cancer supports diverse crops), historically attracted merchants, pilgrims, and scholars to this region.',
