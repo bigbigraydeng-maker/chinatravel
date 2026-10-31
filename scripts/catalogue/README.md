@@ -1,12 +1,12 @@
 # The public catalogue generator
 
 > **Status, 2026-11-01: this generator no longer makes the live file.**
-> `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` is now the 26-page **v5**
-> brochure (final on 2026-11-01), built by a separate pipeline that lives in the
-> product owner's Dropbox, not in this repo:
-> `by-client/01_CTS_Tours/Tours/brochure-source-v5/` (`build.py`, `data.py`,
+> `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` is now the 28-page **v8**
+> brochure (swapped in on 2026-11-01 at 05:23 NZ time, chinatravel#289), built by a
+> separate pipeline that lives in the product owner's Dropbox, not in this repo:
+> `by-client/01_CTS_Tours/Tours/brochure-source-v8/` (`build.py`, `data.py`,
 > `verify.py`, the provenance table and the verification record). The file name
-> and URL are unchanged, so links already sent in emails open v5. This directory
+> and URL are unchanged, so links already sent in emails open v8. This directory
 > had stopped being the source on 2026-10-29, when PR #284 swapped in the
 > 25-page v6 from the same pipeline (`brochure-source-v6/`).
 >
