@@ -2962,17 +2962,17 @@ export const beijingXianDiscoveryGuide: DestinationGuide = {
 };
 
 // ============================================================================
-// SHANGHAI & SURROUNDINGS DISCOVERY GUIDE
+// SHANGHAI & BEYOND DISCOVERY GUIDE
 // ============================================================================
 
 export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
   id: 'guide-shanghai-surroundings-discovery',
   slug: 'shanghai-surroundings-discovery-guide',
-  destinationName: 'Shanghai & Surroundings Discovery',
-  metaTitle: 'Shanghai & Surroundings Guide | Modern City + Ancient Water Towns',
+  destinationName: 'Shanghai & Beyond Discovery',
+  metaTitle: 'Shanghai & Beyond Guide | Modern City + Ancient Water Towns',
   metaDescription: 'Discover dynamic Shanghai\'s Bund and discover classical Jiangnan water towns like Zhujiajiao and Tongli. Perfect blend of contemporary China and timeless traditions.',
   keywords: ['Shanghai', 'water towns', 'Jiangnan', 'Zhujiajiao', 'Tongli', 'Bund', 'discovery tour'],
-  h1: 'Shanghai & Surroundings: Modern Metropolis Meets Timeless Water Towns',
+  h1: 'Shanghai & Beyond: Modern Metropolis Meets Timeless Water Towns',
   heroSubtitle: 'Contemporary Energy and Classical Beauty',
   heroImage: 'https://images.unsplash.com/photo-1689827515397-51140415eb6d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   introText: [

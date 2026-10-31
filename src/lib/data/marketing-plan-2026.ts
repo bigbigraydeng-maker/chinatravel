@@ -65,7 +65,7 @@ export const MARKETING_PLAN_META = {
   lastSiteSyncNote:
     'October 双战役 LP：统筹页「广告链接」#ad-urls 汇总 Google（Search RSA / PMax）与 Meta 付费 FB 分面 UTM；「内容支点」保留 Facebook 双表与有机发帖。NZ Herald 平面：T058–T060。4 月下旬起：FB/INS 有机内容采用 Claude Cowork（图文提示词 + 英文 caption）→ LoveArt 出图 → Buffer 排期；口径以 T043/T044 master brief 与 T026 为准，任务 T061。',
   /** 主推产品 */
-  heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Surroundings'],
+  heroProducts: ['Beijing & Xi’an — A Tale of Two Cities', 'Shanghai & Beyond'],
   /**
    * Obsidian 项目目录（库内相对路径；与仓库本文件双轨）。
    * 长文案、四周柱、素材清单放此目录；验收链接仍以本站为准。
@@ -138,7 +138,7 @@ export const CONTENT_PIVOT = {
       label: 'A Tale of Two Cities（北京 · 西安；无上海）',
       path: '/tours/china/discovery/beijing-xian',
     },
-    { label: 'Shanghai & Surroundings', path: '/tours/china/discovery/shanghai-surroundings' },
+    { label: 'Shanghai & Beyond', path: '/tours/china/discovery/shanghai-surroundings' },
   ],
   octoberCampaigns: [
     {
@@ -146,7 +146,7 @@ export const CONTENT_PIVOT = {
       path: '/tours/china/discovery/beijing-xian',
     },
     {
-      label: 'October 2026 · Shanghai & Surroundings',
+      label: 'October 2026 · Shanghai & Beyond',
       path: '/tours/china/discovery/shanghai-surroundings',
     },
   ],
@@ -503,7 +503,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: 'tours.ts shortDescription + metaDescription（十月/NZ/免签提示）。',
     reviewLinks: [
       { label: 'A Tale of Two Cities 产品页', href: '/tours/china/discovery/beijing-xian' },
-      { label: 'Shanghai & Surroundings 产品页', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'Shanghai & Beyond 产品页', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -523,7 +523,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
         href: '/china-visa-guide-for-new-zealanders#october-discovery-cta',
       },
       { label: '免签条 · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#visa-nudge' },
-      { label: '免签条 · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
+      { label: '免签条 · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
       { label: '免签条 · October · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#visa-nudge' },
       { label: '免签条 · October · Shanghai', href: '/tours/china/discovery/shanghai-surroundings#visa-nudge' },
     ],
@@ -540,7 +540,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: 'TourHero primaryCtaLabel / secondaryCtaLabel 十月线专用文案（标准页 + October 战役 LP）。',
     reviewLinks: [
       { label: '首屏 CTA · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
-      { label: '首屏 CTA · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: '首屏 CTA · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
       { label: '首屏 CTA · October · Tale', href: '/tours/china/discovery/beijing-xian' },
       { label: '首屏 CTA · October · Shanghai', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
@@ -558,7 +558,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
       'Tour 可选字段 `faqs` + getTourPageFaqsForTour；十月两条 Discovery 各 8 条线路向问答（产品页与 October 战役页同数据）。',
     reviewLinks: [
       { label: 'FAQ · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian#faq' },
-      { label: 'FAQ · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings#faq' },
+      { label: 'FAQ · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings#faq' },
       { label: 'FAQ · October · Tale', href: '/tours/china/discovery/beijing-xian#faq' },
       { label: 'FAQ · October · Shanghai', href: '/tours/china/discovery/shanghai-surroundings#faq' },
     ],
@@ -732,7 +732,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     reviewLinks: [
       { label: '统筹页 · 广告链接速取（Google + Meta UTM）', href: '/marketing/campaign#ad-urls' },
       { label: '工作台 · T022 步骤', href: '/marketing/campaign/t019#step-t022' },
-      { label: 'October · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'October · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -793,7 +793,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
         href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t026-meta-cold-video-brief.md',
       },
       { label: 'October · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
-      { label: 'October · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'October · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
       {
         label: 'Meta 冷流量 UTM · Tale · Post',
         href: 'https://www.ctstours.co.nz/tours/china/discovery/beijing-xian?utm_source=facebook&utm_medium=paid_social&utm_campaign=oct2026_meta_cold&utm_content=tale_fb_post',
@@ -984,7 +984,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
   {
     id: 'T039',
     module: 'SEO / GEO',
-    name: '文章 5：Shanghai & surroundings guide',
+    name: '文章 5：Shanghai & Beyond guide',
     priority: 'P2',
     startWeek: 'W3',
     endWeek: 'W4',
@@ -1022,7 +1022,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
         href: '/china-visa-guide-for-new-zealanders#october-discovery-cta',
       },
       { label: 'October · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
-      { label: 'October · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'October · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
       { label: 'Beijing–Xi’an · Plan your trip', href: '/tours/china/discovery/beijing-xian#planning-resources' },
       { label: 'Shanghai · Plan your trip', href: '/tours/china/discovery/shanghai-surroundings#planning-resources' },
     ],
@@ -1039,7 +1039,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     notes: 'tours.ts 中两条 Discovery 的 metaTitle / metaDescription 定稿；产品页 generateMetadata 使用 metaTitle 与 Open Graph / Twitter 一致。',
     reviewLinks: [
       { label: 'Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
-      { label: 'Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
     ],
   },
   {
@@ -1238,7 +1238,7 @@ export const MARKETING_TASKS: MarketingTask[] = [
     reviewLinks: [
       { label: 'Spotlight 海报页（已跳转到 Discovery 列表）', href: '/tours/china/discovery' },
       {
-        label: 'UTM · Shanghai & Surroundings',
+        label: 'UTM · Shanghai & Beyond',
         href: 'https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings?utm_source=nz_newspaper&utm_medium=print&utm_campaign=oct2026_spotlight&utm_content=shanghai_surroundings',
       },
       {
@@ -1306,14 +1306,14 @@ export const MARKETING_TASKS: MarketingTask[] = [
         href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t061-claude-cowork-fb-ig-orchestration-brief.md',
       },
       { label: 'T043 · Beijing / Xi’an master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t043-beijing-xian-master-brief.md' },
-      { label: 'T044 · Shanghai & Surroundings master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t044-shanghai-surroundings-master-brief.md' },
+      { label: 'T044 · Shanghai & Beyond master brief', href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t044-shanghai-surroundings-master-brief.md' },
       {
         label: 'T026 Meta 冷流量视频 brief',
         href: 'https://github.com/bigbigraydeng-maker/chinatravel/blob/main/docs/t026-meta-cold-video-brief.md',
       },
       { label: 'NZ 签证指南（Visa-free 簇）', href: '/china-visa-guide-for-new-zealanders' },
       { label: 'October · Tale of Two Cities', href: '/tours/china/discovery/beijing-xian' },
-      { label: 'October · Shanghai & Surroundings', href: '/tours/china/discovery/shanghai-surroundings' },
+      { label: 'October · Shanghai & Beyond', href: '/tours/china/discovery/shanghai-surroundings' },
       { label: '统筹页', href: '/marketing/campaign' },
     ],
   },

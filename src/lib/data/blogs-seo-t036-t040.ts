@@ -34,7 +34,7 @@ I lean **Shanghai** first if you want **East-meets-West energy** — the **Bund*
 ## How I split the decision in practice
 
 - If your dream is **Great Wall + Terracotta Warriors + the train between them**, I put you on a **Beijing + Xi’an** line — that is the classic north-China arc.
-- If you want **Shanghai + the Delta + gardens and canals** without flying north, I put you on **Shanghai & Surroundings**.
+- If you want **Shanghai + the Delta + gardens and canals** without flying north, I put you on **Shanghai & Beyond**.
 - If you are **time-poor** and only want one mega-city plus a taste of countryside, tell me honestly — I will match you to Discovery pacing instead of a Signature multi-region loop.
 
 ## Visa-free from New Zealand
@@ -46,7 +46,7 @@ I still remind every client: read [my visa notes for New Zealanders](/china-visa
 I run two **10-day** small-group lines — both sit comfortably inside a typical **visa-free** holiday length:
 
 - [A Tale of Two Cities (Beijing & Xi’an)](/tours/china/discovery/beijing-xian) — see the tour page for the next departures.
-- [Shanghai & Surroundings](/tours/china/discovery/shanghai-surroundings) — see the tour page for the next departures.
+- [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings) — see the tour page for the next departures.
 
 ## Talk to me
 
@@ -91,7 +91,7 @@ I still send everyone through [my NZ entry checklist](/china-visa-guide-for-new-
 
 ## Discovery tours I am pushing
 
-- [Shanghai & Surroundings](/tours/china/discovery/shanghai-surroundings) — 10 days; the next departures are on the tour page.
+- [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings) — 10 days; the next departures are on the tour page.
 - [A Tale of Two Cities — Beijing & Xi’an](/tours/china/discovery/beijing-xian) — 10 days; the next departures are on the tour page.
 
 ## Next step
@@ -140,7 +140,7 @@ Most of my Kiwi clients use the **30-day visa-free** route for tourism; you stil
 ## See my own itineraries (inclusions on the page)
 
 - [A Tale of Two Cities — Discovery](/tours/china/discovery/beijing-xian) — my inclusion list is on the page.
-- [Shanghai & Surroundings — Discovery](/tours/china/discovery/shanghai-surroundings) — same idea.
+- [Shanghai & Beyond — Discovery](/tours/china/discovery/shanghai-surroundings) — same idea.
 
 ## Ask me directly
 
@@ -157,13 +157,13 @@ Most of my Kiwi clients use the **30-day visa-free** route for tourism; you stil
   {
     id: 'blog-seo-t039',
     slug: 'shanghai-surroundings-jiangnan-guide-nz',
-    title: 'Shanghai & Surroundings: Why Jiangnan Works for NZ',
+    title: 'Shanghai & Beyond: Why Jiangnan Works for NZ',
     excerpt:
       'How I package the Yangtze Delta — Shanghai plus Suzhou, Hangzhou, and water towns — for first-time visitors from New Zealand.',
     content: `
-I’m **Baker Gu**. **Shanghai** gets the skyline shots, but the **Jiangnan** region is where many of my clients quietly fall for “classical China” — canals, silk, tea houses, gardens that have been painted for a thousand years. I package this as **Shanghai & Surroundings** so you get **city energy** and **country calm** in one loop without domestic flights every second day.
+I’m **Baker Gu**. **Shanghai** gets the skyline shots, but the **Jiangnan** region is where many of my clients quietly fall for “classical China” — canals, silk, tea houses, gardens that have been painted for a thousand years. I package this as **Shanghai & Beyond** so you get **city energy** and **country calm** in one loop without domestic flights every second day.
 
-## What I mean by “Shanghai & Surroundings”
+## What I mean by “Shanghai & Beyond”
 
 When I design this route, I balance **city nights** with **calmer days** in Suzhou’s UNESCO gardens, Hangzhou’s lake, and towns where you can breathe. I want **variety** without bouncing you on endless domestic flights — that is how Kiwis stay fresh enough to enjoy the food and the walking.
 
@@ -185,7 +185,7 @@ I still maintain standalone [Shanghai](/shanghai-travel-guide), [Suzhou](/suzhou
 
 ## Join my tour
 
-[Shanghai & Surroundings Discovery](/tours/china/discovery/shanghai-surroundings) has the full inclusions and the next departures.
+[Shanghai & Beyond Discovery](/tours/china/discovery/shanghai-surroundings) has the full inclusions and the next departures.
 
 ## Reach out
 

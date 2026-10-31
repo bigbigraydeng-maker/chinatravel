@@ -304,7 +304,7 @@ export default async function SmallGroupChinaToursPage() {
                     href="/tours/china/discovery/shanghai-surroundings"
                     className="block w-full border border-white/40 text-white font-semibold py-3 px-4 rounded-lg text-center hover:bg-white/10 transition"
                   >
-                    Shanghai &amp; Surroundings →
+                    Shanghai &amp; Beyond →
                   </Link>
                 </div>
 

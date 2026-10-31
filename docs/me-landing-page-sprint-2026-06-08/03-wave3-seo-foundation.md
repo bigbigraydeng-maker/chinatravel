@@ -76,7 +76,7 @@ Section 3: 1,200+ Kiwi Travellers Trust Us
 
 Section 4: Our Most-Booked Tours
 - Tale of Two Cities (Beijing + Xi'an) — NZD $3,480
-- Shanghai & Surroundings — NZD $3,399
+- Shanghai & Beyond — NZD $3,399
 - + 链到 destinations
 
 Section 5: FAQ
@@ -203,7 +203,7 @@ Section 2: vs Mass-Market Tours
 
 Section 3: Our Small-Group Tours
 - October 2026 Tale of Two Cities — 10 days, NZD $3,480
-- October 2026 Shanghai & Surroundings — 10 days, NZD $3,399
+- October 2026 Shanghai & Beyond — 10 days, NZD $3,399
 - + 链到 tour pages
 
 Section 4: Testimonials

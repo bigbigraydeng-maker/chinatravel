@@ -1045,12 +1045,12 @@ const allTours: Tour[] = [
     slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Shanghai & Surroundings',
-    title: 'China Discovery — Shanghai & Surroundings',
+    name: 'China Discovery — Shanghai & Beyond',
+    title: 'China Discovery — Shanghai & Beyond',
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     quickAnswer:
-      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
+      'Shanghai & Beyond is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1096,7 +1096,7 @@ const allTours: Tour[] = [
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
-    metaTitle: 'Shanghai & Surroundings Discovery | March 2027 | CTS NZ',
+    metaTitle: 'Shanghai & Beyond Discovery | March 2027 | CTS NZ',
     metaDescription:
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
@@ -1129,7 +1129,7 @@ const allTours: Tour[] = [
     ],
     faqs: [
       {
-        question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
+        question: 'When can I depart on Shanghai & Beyond, and what does it cost?',
         answer:
           'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at NZD $2,699 and 5 November (returning 14 November) at NZD $2,899, per person twin share. A private room adds NZD $400.',
       },
@@ -1161,7 +1161,7 @@ const allTours: Tour[] = [
       {
         question: 'Does this tour visit Beijing or the Terracotta Warriors?',
         answer:
-          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
+          'No — Shanghai & Beyond is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
       },
       {
         question: 'Do New Zealand passport holders need a visa for China?',

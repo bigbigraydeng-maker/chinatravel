@@ -713,7 +713,7 @@ Our guides handle payments for group activities; this is most relevant for perso
 
 <strong>Discovery Tours (group departures):</strong>
 - <a href="/tours/china/discovery/beijing-xian">A Tale of Two Cities — Beijing & Xi'an</a> (7 days)
-- <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Surroundings</a> (7 days)
+- <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Beyond</a> (7 days)
 - Fixed departure dates throughout the year
 - Small group departures
 - Includes accommodation, transport, guide, major entrance fees

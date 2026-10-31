@@ -2,7 +2,7 @@
 
 Last updated: 2026-04-14
 Owner: CTS / ChinaTravel
-Scope: Brand + Visa Free + Discovery 双产品（Beijing/Xi'an, Shanghai/Surroundings）+ Generic
+Scope: Brand + Visa Free + Discovery 双产品（Beijing/Xi'an, Shanghai & Beyond）+ Generic
 
 ## 1) 结构总览（Campaign -> Ad Group）
 
@@ -100,7 +100,7 @@ attractions_wall_warriors
 - beijing xian attractions tour
 - china history highlights tour
 
-### D. Shanghai + Surroundings（现代 x 江南）
+### D. Shanghai & Beyond（现代 x 江南）
 
 shanghai_city_core
 - shanghai tour package
@@ -110,7 +110,7 @@ shanghai_city_core
 - shanghai culture tour
 
 shanghai_surroundings_core
-- shanghai surroundings tour
+- Shanghai & Beyond tour
 - shanghai suzhou hangzhou tour
 - shanghai and water town tour
 - shanghai suzhou tour package

@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
     title: 'Spotlight Poster | October–November 2026 China Tours',
     description:
-      "Newspaper-style Spotlight poster for CTS Tours' October and November 2026 departures, featuring Shanghai & Surroundings, A Tale of Two Cities and Best of China.",
+      "Newspaper-style Spotlight poster for CTS Tours' October and November 2026 departures, featuring Shanghai & Beyond, A Tale of Two Cities and Best of China.",
     path: '/spotlight/october-2026',
     /** Print / QR-only: not linked from site nav; keep out of organic results. */
     robots: { index: false, follow: true },
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [
       'China spotlight tours',
       'October 2026 China departures',
-      'Shanghai and Surroundings',
+      'Shanghai & Beyond',
       'Beijing and Xian tour',
       'Best of China 15 day tour',
       'CTS Tours',
@@ -322,7 +322,7 @@ export default async function October2026SpotlightPosterPage({ searchParams }: S
           </div>
           <div className="mt-4 space-y-4 text-sm">
             <div>
-              <p className="font-semibold text-gray-900">Shanghai &amp; Surroundings:</p>
+              <p className="font-semibold text-gray-900">Shanghai &amp; Beyond:</p>
               <a href={shanghaiUtmUrl} className="break-all text-primary underline underline-offset-2">
                 {shanghaiUtmUrl}
               </a>

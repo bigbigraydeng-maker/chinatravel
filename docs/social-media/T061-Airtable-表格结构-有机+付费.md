@@ -13,7 +13,7 @@
 2. Day_of_Week - Single line text
 3. Time_NZST - Single line text
 4. Platform - Single select (Instagram, Facebook)
-5. Product - Single select (Shanghai & Surroundings, A Tale of Two Cities, Visa-Free Education, Planning Tips, Social Proof)
+5. Product - Single select (Shanghai & Beyond, A Tale of Two Cities, Visa-Free Education, Planning Tips, Social Proof)
 6. Format - Single select (Reel, Feed, Story)
 7. Ratio - Single line text
 8. Headline_EN - Single line text
@@ -47,7 +47,7 @@
    例如：Oct2026_Discovery_FB_Paid、Oct2026_Discovery_IG_Paid
 
 3. Product (产品线) - Single select
-   选项：Shanghai & Surroundings、A Tale of Two Cities、Visa-Free Education、Social Proof
+   选项：Shanghai & Beyond、A Tale of Two Cities、Visa-Free Education、Social Proof
 
 4. Platform (平台) - Single select
    选项：Facebook、Instagram

@@ -17,7 +17,7 @@
   - ❌ 不写进 18 个 paid ad creative
   - ❌ Lookalike / Pixel 不针对这团做受众
   - ⚠️ master_brief promotional_urgency pillar 原 example "Only 4 seats left: Fire & Fuzz" 已删除
-- **替换**: Best of China 9/3 出发 或 Oct 两团 (Tale of Two Cities / Shanghai & Surroundings)
+- **替换**: Best of China 9/3 出发 或 Oct 两团 (Tale of Two Cities / Shanghai & Beyond)
 
 ### 2. 2027 Yunnan Discovery
 
@@ -84,7 +84,7 @@
 
 **辅助 Oct 两团**:
 - **Tale of Two Cities** (Beijing+Xi'an) — 10/15 出发 NZD $3,480 / 10 天
-- **Shanghai & Surroundings** — 10/14 出发 NZD $3,399 / 10 天
+- **Shanghai & Beyond** — 10/14 出发 NZD $3,399 / 10 天
 
 **已移除**:
 - Fire & Fuzz (Chongqing × Chengdu) — 真实业务但本轮退场
@@ -103,7 +103,7 @@
 2. **客户名红线**: Margaret&John / Sarah 等具体客户名 audit 通过才能用
 3. **出发日红线**: 只用真实 tour data 的出发日 (Best of China 9/3 / Tale of Two Cities 10/15 / Shanghai 10/14)
 4. **价格红线**: 只用 src/lib/data/tours.ts + src/lib/campaigns/october-2026-discovery.ts 真实价
-5. **团名红线**: 只用 PM 拍板的 3 团 (Best of China + Tale of Two Cities + Shanghai & Surroundings)，不写 Fire & Fuzz / Yunnan / Zhangjiajie tour names
+5. **团名红线**: 只用 PM 拍板的 3 团 (Best of China + Tale of Two Cities + Shanghai & Beyond)，不写 Fire & Fuzz / Yunnan / Zhangjiajie tour names
 
 ### 遇到新业务点 (不在本文档列表) 的判定流程
 

@@ -331,7 +331,7 @@ TOURS = [
         "key": "shanghai-surroundings",
         "short": "Mar 2027",
         "collection": "China Discovery",
-        "name": "Shanghai &amp; Surroundings",
+        "name": "Shanghai &amp; Beyond",
         "flag": "GARDENS, CANALS AND WEST LAKE",
         "days": 10,
         "depart": "Auckland 25 Mar 2027",
@@ -636,7 +636,7 @@ CC_CREDITS = [
 #     stranger's face at full size and almost no wall.
 #   * China Panorama ALSO walks the wall at Juyongguan, not Mutianyu — caught by
 #     the Jev caption audit after it had already been missed here once.
-#   * Shanghai & Surroundings goes to XINSHI, not Wuzhen. The Wuzhen photos
+#   * Shanghai & Beyond goes to XINSHI, not Wuzhen. The Wuzhen photos
 #     belong to the "Shanghai & Wuzhen" stopover route and nowhere else.
 #
 # Keys starting "i:" are the paid iStock set (scripts/catalogue/assets-istock,

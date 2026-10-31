@@ -60,7 +60,7 @@ export default function OctoberDiscoveryCampaignContent({
             </Link>{' '}({availableOtherTour.duration}, {availableOtherTour.price}; current departures are on its tour page).
           </p>}
           <p className="text-gray-700 leading-relaxed">
-            This Shanghai &amp; Surroundings route does <strong>not</strong> include Beijing or Xi&apos;an —
+            This Shanghai &amp; Beyond route does <strong>not</strong> include Beijing or Xi&apos;an —
             it is a <strong>single-region Delta + Shanghai</strong> journey at <strong>{tour.price}</strong>{' '}
             for {tour.duration.toLowerCase()}.
           </p>
@@ -101,7 +101,7 @@ export default function OctoberDiscoveryCampaignContent({
 
       <section>
         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-          Compare with Shanghai &amp; Surroundings (14 Oct)
+          Compare with Shanghai &amp; Beyond (14 Oct)
         </h2>
           {availableOtherTour && <p className="text-gray-700 leading-relaxed mb-4">
             Want <strong>Jiangnan gardens</strong>, <strong>West Lake</strong>, and <strong>Shanghai</strong>{' '}

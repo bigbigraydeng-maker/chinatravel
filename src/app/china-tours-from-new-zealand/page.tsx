@@ -391,7 +391,7 @@ export default async function ChinaToursFromNZPage() {
                   </li>
                   <li>
                     <Link href="/tours/china/discovery/shanghai-surroundings" className="text-primary font-medium hover:underline">
-                      Discovery · Shanghai &amp; Surroundings (standard product)
+                      Discovery · Shanghai &amp; Beyond (standard product)
                     </Link>
                   </li>
                   <li>

@@ -4,7 +4,7 @@
 
 - Campaign scope: Meta cold traffic preparation for two October 2026 Discovery products.
 - Product A: `A Tale of Two Cities` (`beijing-xian`)
-- Product B: `Shanghai & Surroundings` (`shanghai-surroundings`)
+- Product B: `Shanghai & Beyond` (`shanghai-surroundings`)
 - Current stage: Preparation and creative validation (Phase 1b), not full scale.
 
 ## Objective
@@ -67,7 +67,7 @@
 - Visual priorities:
   - Great Wall / Forbidden City / Terracotta Warriors / city rhythm transition.
 
-### Shanghai & Surroundings
+### Shanghai & Beyond
 
 - Hook options:
   - "Want modern China plus classic water-town charm?"

@@ -45,7 +45,7 @@
 | **Day_of_Week** | Single line text | Monday, Tuesday... ✓ |
 | **Time_NZST** | Single line text | 08:00, 10:30... ✓ |
 | **Platform** | Single select | 选项：Instagram, Facebook ✓ |
-| **Product** | Single select | Shanghai & Surroundings, A Tale of Two Cities, Visa-Free Education, Planning Tips, Social Proof |
+| **Product** | Single select | Shanghai & Beyond, A Tale of Two Cities, Visa-Free Education, Planning Tips, Social Proof |
 | **Format** | Single select | Reel, Feed, Story |
 | **Ratio** | Single line text | 9:16, 4:5 ✓ |
 | **Headline_EN** | Single line text | ✓ |

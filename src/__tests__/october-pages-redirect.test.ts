@@ -30,7 +30,7 @@ describe('October 2026 campaign pages redirect to the live tour pages', () => {
     expect(rules[0].permanent).toBe(true);
   });
 
-  it('sends the Shanghai & Surroundings page to its tour page, permanently', async () => {
+  it('sends the Shanghai & Beyond page to its tour page, permanently', async () => {
     const rules = (await loadRedirects()).filter((r) => r.source === SHANGHAI.source);
     expect(rules).toHaveLength(1);
     expect(rules[0].destination).toBe(SHANGHAI.destination);

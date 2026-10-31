@@ -4,7 +4,7 @@ import { migratedUnsplash, tourImage } from '@/lib/site-media';
 /**
  * Long-tail SEO batch 1 — 15 articles across 3 tour lines
  * Line A: Beijing / Xi'an (5 posts)
- * Line B: Shanghai & Surroundings (5 posts)
+ * Line B: Shanghai & Beyond (5 posts)
  * Line C: Chongqing / Chengdu (5 posts)
  * Target: GSC impression data after 4 weeks to determine ad spend priority
  */
@@ -391,7 +391,7 @@ We run China tours for New Zealand travellers. We know what Kiwi travellers find
   },
 
   // ─────────────────────────────────────────────
-  // LINE B: SHANGHAI & SURROUNDINGS
+  // LINE B: SHANGHAI & BEYOND
   // ─────────────────────────────────────────────
 
   {
@@ -413,7 +413,7 @@ A tour combining Shanghai with Suzhou, Wuxi, and Hangzhou gives you both faces o
 
 ## The Route
 
-The CTS **Shanghai & Surroundings** tour runs as a Yangtze Delta loop: fly into Shanghai, travel through Suzhou and Wuxi toward Hangzhou, then return to Shanghai for departure. The inter-city distances are short — often 1–1.5 hours by coach — which means less time in transit and more time in each place.
+The CTS **Shanghai & Beyond** tour runs as a Yangtze Delta loop: fly into Shanghai, travel through Suzhou and Wuxi toward Hangzhou, then return to Shanghai for departure. The inter-city distances are short — often 1–1.5 hours by coach — which means less time in transit and more time in each place.
 
 **Suzhou (2 nights)** is the classical gardens capital. The city has nine UNESCO World Heritage gardens, built by retired officials and scholars over several centuries as private retreats. The Humble Administrator's Garden (Zhuozheng Yuan) and the Master of the Nets Garden are the finest, but each of the nine has a distinct character. Suzhou also has an ancient canal district that predates Venice as a water city.
 
@@ -435,9 +435,9 @@ October is the strongest month for this route. The summer heat and humidity have
 
 ## Visa and Pricing
 
-Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Surroundings** Discovery tour is priced from **NZD $2,699** per person (twin share), including international airfares from Auckland. A confirmed 2027 group departure leaves Auckland on 25 March 2027 (returns 3 April 2027).
+Many NZ passport holders currently qualify for China's visa-free entry. Confirm before booking. The **Shanghai & Beyond** Discovery tour is priced from **NZD $2,699** per person (twin share), including international airfares from Auckland. A confirmed 2027 group departure leaves Auckland on 25 March 2027 (returns 3 April 2027).
 
-[View the Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
+[View the Shanghai & Beyond tour →](/tours/china/discovery/shanghai-surroundings)
     `
   },
 
@@ -487,7 +487,7 @@ The atmosphere in the early morning is genuine religious activity rather than to
 
 Hangzhou is best experienced as part of the Jiangnan triangle: Suzhou for the classical gardens and canals, Hangzhou for West Lake and tea culture, Shanghai for the modern city and the Bund. The three are connected by comfortable inter-city distances, and the contrast between them — ancient, romantic, modern — is itself one of the pleasures of the route.
 
-CTS Tours' **Shanghai & Surroundings** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,699 per person from Auckland; see the tour page for the next departures.
+CTS Tours' **Shanghai & Beyond** tour allocates 2 nights in Hangzhou, which is the minimum needed to cover the lake, a tea plantation, and the Lingyin Temple without rushing. The tour is priced from NZD $2,699 per person from Auckland; see the tour page for the next departures.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -534,11 +534,11 @@ Beyond the gardens, Suzhou has an ancient canal district that has been the city'
 
 ## Combining Suzhou with Hangzhou and Shanghai
 
-Suzhou is approximately 1 hour by high-speed train from Shanghai and 1.5–2 hours from Hangzhou — perfectly positioned as the first stop on a Yangtze Delta tour. CTS Tours allocates 2 nights in Suzhou within the **Shanghai & Surroundings** itinerary, covering the Humble Administrator's Garden, Master of the Nets, and the canal district.
+Suzhou is approximately 1 hour by high-speed train from Shanghai and 1.5–2 hours from Hangzhou — perfectly positioned as the first stop on a Yangtze Delta tour. CTS Tours allocates 2 nights in Suzhou within the **Shanghai & Beyond** itinerary, covering the Humble Administrator's Garden, Master of the Nets, and the canal district.
 
 The tour is priced from NZD $2,699 per person (twin share) from Auckland; see the tour page for the next departures.
 
-[View the full Shanghai & Surroundings tour →](/tours/china/discovery/shanghai-surroundings)
+[View the full Shanghai & Beyond tour →](/tours/china/discovery/shanghai-surroundings)
     `
   },
 
@@ -599,7 +599,7 @@ Return to Shanghai for the international connection. Depending on flight timing,
 
 **October weather:** Warm days (18–24°C), cooler evenings (10–15°C), generally clear skies. Light layers recommended. The autumn light on West Lake is worth the timing specifically.
 
-The CTS **Shanghai & Surroundings** Discovery tour covers this route from NZD $2,699 per person (twin share) including international airfares from Auckland. See the tour page for the next departures.
+The CTS **Shanghai & Beyond** Discovery tour covers this route from NZD $2,699 per person (twin share) including international airfares from Auckland. See the tour page for the next departures.
 
 [View full tour details →](/tours/china/discovery/shanghai-surroundings)
     `
@@ -679,7 +679,7 @@ This is the easiest region in China to travel independently or in a small group:
 
 ## Experiencing Jiangnan With CTS
 
-Our **Shanghai and Surroundings** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop. From NZD 2,699 per person twin share including airfares from Auckland.
+Our **Shanghai & Beyond** Discovery tour covers this exact region — Shanghai, Suzhou, Hangzhou and a water town in one comfortable loop. From NZD 2,699 per person twin share including airfares from Auckland.
 
 [View the full tour →](/tours/china/discovery/shanghai-surroundings), or browse [Shanghai](/shanghai-tours), [Suzhou](/suzhou-tours) and [Hangzhou](/hangzhou-tours) tours.
     `

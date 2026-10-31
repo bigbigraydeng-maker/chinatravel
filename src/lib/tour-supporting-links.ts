@@ -18,7 +18,7 @@ const DISCOVERY_OCTOBER_EXTRA: Record<string, SupportingContentLink[]> = {
     { label: "Blog · Beijing & Xi'an first-timer guide", href: '/blog/beijing-xian-first-visit-guide-nz' },
   ],
   'shanghai-surroundings': [
-    { label: 'Guide · Shanghai & Surroundings Discovery', href: '/shanghai-surroundings-discovery-guide' },
+    { label: 'Guide · Shanghai & Beyond Discovery', href: '/shanghai-surroundings-discovery-guide' },
     { label: 'Blog · Shanghai & Jiangnan guide', href: '/blog/shanghai-surroundings-jiangnan-guide-nz' },
   ],
   'chongqing-chengdu': [
