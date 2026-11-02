@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { migratedSite } from '@/lib/site-media';
-import { getAllActiveTours } from '@/lib/data/tours';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
+import type { Tour } from '@/lib/data/tours';
 import { upcomingDates, type TourOption } from '@/lib/traveller-form';
 import TravellerDetailsForm from './TravellerDetailsForm';
 
@@ -23,9 +24,9 @@ function capitalise(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-function buildTourOptions(): TourOption[] {
+function buildTourOptions(tours: Tour[]): TourOption[] {
   const today = new Date();
-  return getAllActiveTours()
+  return tours
     .map((tour) => {
       const name = tour.title || tour.name;
       const group = `${capitalise(tour.destination)} ${capitalise(tour.tier)}`;
@@ -42,8 +43,8 @@ function buildTourOptions(): TourOption[] {
     .sort((a, b) => a.group.localeCompare(b.group) || a.shortName.localeCompare(b.shortName));
 }
 
-export default function TravellerDetailsPage() {
-  const tourOptions = buildTourOptions();
+export default async function TravellerDetailsPage() {
+  const tourOptions = buildTourOptions(await getPublishedActiveTours());
   return (
     <div>
       <ImmersivePageHero

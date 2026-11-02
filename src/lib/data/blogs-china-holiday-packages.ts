@@ -47,7 +47,7 @@ I send the most groups in **April–May** and **September–October**. Mild temp
 
 - **Spring (April–May):** Cherry blossom in the north, blooming rice terraces in Yunnan, comfortable walking weather everywhere. My favourite time for [Beijing and Xi'an](/tours/china/discovery/beijing-xian).
 - **Summer (June–August):** Hot and humid, peak domestic crowds — but also festival season and lush green scenery in Guilin and Zhangjiajie.
-- **Autumn (September–October):** My personal favourite. The afternoon light in Guilin is extraordinary. Foliage turns in October. The [Shanghai and Surroundings](/tours/china/discovery/shanghai-surroundings) route is at its best.
+- **Autumn (September–October):** My personal favourite. The afternoon light in Guilin is extraordinary. Foliage turns in October. The [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings) route is at its best.
 - **Winter:** Quieter, and the Forbidden City in snow is something else. Some travellers find the pace slower than they expected.
 
 ## Festivals worth timing your trip around

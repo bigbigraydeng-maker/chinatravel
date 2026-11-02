@@ -1,26 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Icon } from '@/components/ui/Icon';
-import { getTourBySlug } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 import { HOME_STOPOVER_TOURS, type HomeStopoverRef } from '@/lib/data/home-stopovers';
 
 /**
- * "China Stopovers" — homepage cards for the stopover-tier tours, real data
- * from tours.ts (name, price, duration). Figma-exact card photos, kept
- * separate from tour.heroImage (which also renders on the tour's own detail
- * page and must stay that tour's real photo, not the homepage mockup's
- * stand-in).
+ * Homepage stopover cards read managed product fields from the published tour.
  */
-const STOPOVER_IMAGE_OVERRIDE: Record<string, string> = {
-  beijing: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-beijing-v2.webp',
-  shanghai: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-shanghai-v2.webp',
-  'shanghai-suzhou': 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/figma-exact/stopover-shanghai-suzhou-v2.webp',
-};
-
-export default function ChinaStopovers() {
+export default function ChinaStopovers({ tours }: { tours: Tour[] }) {
   const stopovers = HOME_STOPOVER_TOURS
-    .map((ref) => ({ ref, tour: getTourBySlug('china', 'stopover', ref.slug) }))
-    .filter((x): x is { ref: HomeStopoverRef; tour: NonNullable<ReturnType<typeof getTourBySlug>> } => Boolean(x.tour));
+    .map((ref) => ({ ref, tour: tours.find((tour) => tour.destination === 'china' && tour.tier === 'stopover' && tour.slug === ref.slug) }))
+    .filter((x): x is { ref: HomeStopoverRef; tour: Tour } => Boolean(x.tour?.isActive && !x.tour.soldOut));
 
   if (stopovers.length === 0) return null;
 
@@ -34,7 +24,7 @@ export default function ChinaStopovers() {
       >
         <div className="relative h-64 flex-none overflow-hidden">
           <Image
-            src={STOPOVER_IMAGE_OVERRIDE[ref.slug] ?? tour.heroImage}
+            src={tour.heroImage}
             alt={tour.name}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
@@ -49,7 +39,7 @@ export default function ChinaStopovers() {
           <h3 className="font-serif text-3xl text-ink">
             {tour.name.replace(/^China Stopover — /, '').replace(/\s*\(\d+ Days?\)$/, '')}
           </h3>
-          <p className="text-ink-muted">{ref.highlights}</p>
+          <p className="text-ink-muted">{tour.highlights.slice(0, 3).join(' · ') || ref.highlights}</p>
           <p className="text-lg font-medium text-ink">
             {tour.duration} &bull; {fromPrice}
           </p>

@@ -113,7 +113,7 @@ Ad_Performance (Lookup):
 6. Product_Category (Single select, required)
    选项：
      ├─ A Tale of Two Cities (北京+西安)
-     ├─ Shanghai & Surroundings (江南)
+     ├─ Shanghai & Beyond (江南)
      ├─ Visa-Free Education
      ├─ Planning Tips
      └─ Social Proof

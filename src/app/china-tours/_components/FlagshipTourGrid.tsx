@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import { getAllChinaTours, type Tour } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 import { getTourCardMedia } from '@/lib/tour-card-media';
 
 interface FlagshipTourGridProps {
+  tours?: Tour[];
   /**
    * How many flagship cards to render. Defaults to the full roster. FB
    * Leadform thankyou traffic (utm_medium=ab_test_leadform_thankyou) passes a
@@ -60,9 +61,9 @@ function nextDepartureChip(t?: Tour): string | null {
   return `${m[1].slice(0, 3)} ${m[2]}`;
 }
 
-export default function FlagshipTourGrid({ limit, mobileLimit, heading, intro }: FlagshipTourGridProps = {}) {
+export default function FlagshipTourGrid({ tours = [], limit, mobileLimit, heading, intro }: FlagshipTourGridProps = {}) {
   const toursBySlug = new Map<string, Tour>(
-    getAllChinaTours().map((t) => [t.slug, t])
+    tours.map((t) => [t.slug, t])
   );
 
   // Never silently drop a card — Meta/Google ads land here and a missing

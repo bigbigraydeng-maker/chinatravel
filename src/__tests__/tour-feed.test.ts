@@ -143,7 +143,7 @@ describe('tour feed mapping', () => {
 });
 
 describe('GET /api/internal/tours', () => {
-  test('returns one product per tour, each with all new keys, envelope unchanged', async () => {
+  test('returns one product per active saleable published tour, each with all new keys', async () => {
     const response = await GET();
     const body = (await response.json()) as {
       source: string;
@@ -152,15 +152,16 @@ describe('GET /api/internal/tours', () => {
     };
 
     expect(body.source).toBe('chinatravel.tours');
+    const publicTours = tours.filter((tour) => tour.isActive && !tour.soldOut);
     expect(body.source_version).toBe(
-      tours.reduce((latest, tour) => (tour.updatedAt > latest ? tour.updatedAt : latest), ''),
+      publicTours.reduce((latest, tour) => (tour.updatedAt > latest ? tour.updatedAt : latest), ''),
     );
-    expect(body.products.length).toBe(tours.length);
+    expect(body.products.length).toBe(publicTours.length);
     for (const product of body.products) {
       for (const key of NEW_KEYS) {
         expect(Object.prototype.hasOwnProperty.call(product, key)).toBe(true);
       }
     }
-    expect(body.products).toEqual(JSON.parse(JSON.stringify(tours.map(tourToFeed))));
+    expect(body.products).toEqual(JSON.parse(JSON.stringify(publicTours.map(tourToFeed))));
   });
 });

@@ -5,8 +5,10 @@ import ImmersivePageHero from '@/components/ImmersivePageHero';
 import { getDiscoveryGuideBySlug } from '@/lib/data/discovery-guides';
 import { getSiteUrl } from '@/lib/site';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
+import { formatPublishedTourCities, getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 
 const SLUG = 'beijing-xian-discovery-guide';
+export const revalidate = 15;
 
 export async function generateMetadata(): Promise<Metadata> {
   const guide = getDiscoveryGuideBySlug(SLUG);
@@ -25,10 +27,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function DiscoveryGuidePage() {
+export default async function DiscoveryGuidePage() {
   const siteUrl = getSiteUrl();
   const guide = getDiscoveryGuideBySlug(SLUG);
   if (!guide) return <div className="text-center py-20 text-gray-500">Guide not found</div>;
+  const tour = await getPublishedTourBySlug('china', 'discovery', 'beijing-xian');
+  const tourAvailable = tour?.isActive && !tour.soldOut;
 
   const schema = [
     {
@@ -133,16 +137,13 @@ export default function DiscoveryGuidePage() {
         <div className="container mx-auto px-4 max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">Ready to Go?</p>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-accent mb-5">
-            Beijing &amp; Xi&apos;an: A Tale of Two Cities
+            {tourAvailable ? tour.name : 'Explore current Beijing & Xi’an tours'}
           </h2>
           <p className="text-gray-600 mb-8 leading-relaxed text-base md:text-lg">
-            10 days from Auckland. Forbidden City, Great Wall, Terracotta Warriors — guided by specialists who know when to arrive, where to linger, and what to skip. From <strong className="text-accent">NZD $3,480</strong>.
+            {tourAvailable ? <>{tour.duration} · {tour.price}{tour.tourCities?.length ? ` · ${formatPublishedTourCities(tour.tourCities, ' + ')}` : ''}. See the current itinerary and published departures.</> : 'This tour is not currently active. Browse current Beijing tour options.'}
           </p>
-          <a
-            href="/tours/china/discovery/beijing-xian"
-            className="inline-block bg-primary text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition text-base shadow-md hover:shadow-lg"
-          >
-            View the Beijing &amp; Xi&apos;an Tour →
+          <a href={tourAvailable ? `/tours/${tour.destination}/${tour.tier}/${tour.slug}` : '/beijing-tours'} className="inline-block bg-primary text-white font-semibold px-10 py-4 rounded-full hover:opacity-90 transition text-base shadow-md hover:shadow-lg">
+            {tourAvailable ? `View ${tour.name} →` : 'View Beijing tours →'}
           </a>
         </div>
       </section>

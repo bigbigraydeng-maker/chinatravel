@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSeoPageMeta } from '@/lib/data/seo-pages';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import { getGuideBySlug } from '@/lib/data/guides';
 import { blogPosts } from '@/lib/data/blogs';
 
@@ -159,7 +159,7 @@ export async function GET(request: NextRequest) {
     const destination = segments[1];
     const tier = segments[2];
     const slug = segments[3];
-    const tour = getTourBySlug(destination, tier, slug);
+    const tour = await getPublishedTourBySlug(destination, tier, slug);
     if (tour) {
       const itineraryText = tour.itinerary
         .map((d) => `Day ${d.day}: ${d.title}\n${d.description}`)

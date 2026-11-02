@@ -5,7 +5,7 @@
  * 2026-10-21 the Natural China ad page was found to ship a 3.5 MB hero picture (mobile Largest
  * Contentful Paint 32 s on a slow phone connection) and a 12 MB gallery picture; they were replaced
  * by compressed copies, and the cards and photo galleries of the three advertised tours (A Tale of
- * Two Cities, Best of China, Shanghai & Surroundings) followed. This test keeps that from coming
+ * Two Cities, Best of China, Shanghai & Beyond) followed. This test keeps that from coming
  * back: no local picture that an active tour (hero, gallery or the photo gallery of its page) or a
  * tour card points at may be bigger than 500 KB, except the ones listed below as still waiting to
  * be compressed. The list may only shrink: an entry that is no longer needed must be deleted from
@@ -30,14 +30,6 @@ const KNOWN_HEAVY: readonly string[] = [
   '/images/tours/forbidden-city-aerial.jpg',
   '/images/tours/li-river-karst-boats.jpg',
   '/images/tours/yangshuo-karst-aerial.jpg',
-  '/images/tours/shangri-la-monastery.jpg',
-  '/images/tours/shangri-la-monastery-lake.jpg',
-  '/blog/sourced/lijiang-old-town-canal.jpg',
-  '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
-  '/images/guides/zhangjiajie/sandstone-spires.jpg',
-  '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
-  '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
-  '/images/tours/tianmen-mountain-glass-walkway.jpg',
 ];
 
 function localPictures(): Map<string, string[]> {

@@ -110,7 +110,7 @@ What’s not included — and where to budget extra:
 Best of China isn’t the only inclusive package we run from Auckland. The 2026 – 27 line-up I’d put in front of a Kiwi traveller:
 
 - **Beijing – Xi’an Discovery** — a focused 10-day option for travellers who want the headline north only. See [Beijing – Xi’an](/tours/china/discovery/beijing-xian).
-- **Shanghai and Surroundings** — a Yangtze Delta loop through Suzhou, Wuxi, the water towns and Hangzhou. Browse [Shanghai Surroundings](/tours/china/discovery/shanghai-surroundings).
+- **Shanghai & Beyond** — a Yangtze Delta loop through Suzhou, Wuxi, the water towns and Hangzhou. Browse [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings).
 - **Grand Tour of China** — a longer Signature route that adds Guilin’s karst landscape onto the headline cities. See the [Grand Tour](/tours/china/signature/grand-tour).
 - **Yunnan Explorer** — Dali, Lijiang, Shangri-La and Tiger Leaping Gorge, routed Auckland — Beijing — Dali. The [Yunnan Explorer](/tours/china/discovery/yunnan-explorer) page has the full itinerary.
 
@@ -201,7 +201,7 @@ If you’re still deciding shape, our [China holiday packages guide](/blog/china
   "@context": "https://schema.org",
   "@type": "TouristTrip",
   "name": "Best of China — Discovery (15 days)",
-  "description": "Fifteen-day inclusive group tour from Auckland: Beijing, Xi’an, Puyuan, Hangzhou and Shanghai. Return international flights, domestic transport, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals included.",
+  "description": "Fifteen-day inclusive group tour from Auckland: Beijing, Xi’an, Puyuan, Hangzhou and Shanghai. Return international flights, transport within China, 4-star hotels (5-star at Puyuan), English-speaking guides and most meals included.",
   "touristType": "Cultural tourism",
   "itinerary": {
     "@type": "ItemList",

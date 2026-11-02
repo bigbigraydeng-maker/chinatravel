@@ -1,5 +1,20 @@
 # The public catalogue generator
 
+> **Status, 2026-11-01: this generator no longer makes the live file.**
+> `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` is now the 28-page **v8**
+> brochure (swapped in on 2026-11-01 at 05:23 NZ time, chinatravel#289), built by a
+> separate pipeline that lives in the product owner's Dropbox, not in this repo:
+> `by-client/01_CTS_Tours/Tours/brochure-source-v8/` (`build.py`, `data.py`,
+> `verify.py`, the provenance table and the verification record). The file name
+> and URL are unchanged, so links already sent in emails open v8. This directory
+> had stopped being the source on 2026-10-29, when PR #284 swapped in the
+> 25-page v6 from the same pipeline (`brochure-source-v6/`).
+>
+> Everything below describes the 2026-09-22 build only. Do not re-run `build.py`
+> and commit its output over the live file: it still carries copy that has since
+> left the site (the 1928 / "25 years" company history, group-size limits, the
+> retired Christmas departures, older prices).
+
 Builds `public/brochures/CTS-Tours-2026-2027-Brochure.pdf` — the 34-page A4
 catalogue the website serves and the welcome email links to.
 
@@ -81,7 +96,7 @@ Each departure is followed by a full-page mosaic, defined in `MOSAICS` in
 2. **Where two tours differ, the photo must differ.** Golden China walks the
    wall at Juyongguan; the Christmas departures and Legacy of China go to
    Mutianyu. The stock library's wall photos are Mutianyu, so Golden China gets
-   a CTS group photo captioned without a section. Shanghai & Surroundings goes
+   a CTS group photo captioned without a section. Shanghai & Beyond goes
    to Xinshi, not Wuzhen — the Wuzhen photos belong to the "Shanghai & Wuzhen"
    stopover route and nowhere else.
 

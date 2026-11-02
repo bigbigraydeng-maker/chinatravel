@@ -159,6 +159,9 @@ const Footer = () => {
               <p className="text-ink-muted text-xs mt-2 leading-relaxed">
                 Verified Google reviews from CTS travellers. Tap the score to read them on Google.
               </p>
+              <p className="text-ink-muted text-xs mt-1 leading-relaxed">
+                Latest 4★+ review: {GOOGLE_RATING.latestGoodReviewAgo} (checked {GOOGLE_RATING.verifiedOnLabel})
+              </p>
             </div>
 
             {/* Travel Aware — NZ MFAT SafeTravel */}

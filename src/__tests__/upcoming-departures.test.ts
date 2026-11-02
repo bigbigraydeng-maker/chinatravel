@@ -12,7 +12,7 @@
 
 import { aucklandToday, upcomingDepartureLabels, parseDepartureDate } from '@/lib/data/tour-dates';
 import { getTourBySlug, tours } from '@/lib/data/tours';
-import { CHINA_DISCOVERY_DEPARTURES, CHINA_SIGNATURE_DEPARTURES } from '@/lib/data/departure-schedule';
+import { publishedDepartureRows } from '@/lib/data/departure-schedule';
 
 afterEach(() => {
   jest.useRealTimers();
@@ -182,16 +182,13 @@ describe('tour departure lists never contain a departure that has left', () => {
 
 describe('departure schedule rows', () => {
   it('read their dates when the block renders', () => {
-    const rows = [...CHINA_SIGNATURE_DEPARTURES, ...CHINA_DISCOVERY_DEPARTURES];
-
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2035-01-01T00:00:00Z').getTime());
-    for (const row of rows) {
-      expect(row.dates).toEqual([]);
-    }
+    expect(publishedDepartureRows(tours, 'signature').length).toBe(0);
+    expect(publishedDepartureRows(tours, 'discovery').length).toBe(0);
 
     jest.setSystemTime(new Date('2026-10-20T00:00:00Z').getTime());
-    const nonEmpty = rows.filter((row) => row.dates.length > 0);
+    const nonEmpty = [...publishedDepartureRows(tours, 'signature'), ...publishedDepartureRows(tours, 'discovery')];
     expect(nonEmpty.length).toBeGreaterThan(0);
   });
 });

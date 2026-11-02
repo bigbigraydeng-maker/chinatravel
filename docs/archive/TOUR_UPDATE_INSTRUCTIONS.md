@@ -15,7 +15,7 @@
 | China Panorama-27D | `grand-tour` | `tour-cn-sig-3` | signature | Update price, itinerary, details |
 | Best of China | `essentials` | `tour-cn-dis-3` | discovery | Update name, duration, price, itinerary, details |
 | Colorful Yunnan | `yunnan-explorer` | `tour-cn-dis-7` | discovery | Update name, duration, price, itinerary, details |
-| Shanghai & Surroundings | `shanghai-surroundings` | `tour-cn-dis-4` | discovery | Update name, duration, price, itinerary, details |
+| Shanghai & Beyond | `shanghai-surroundings` | `tour-cn-dis-4` | discovery | Update name, duration, price, itinerary, details |
 | A Tale of Two Cities | `beijing-xian` | `tour-cn-dis-2` | discovery | Beijing + Xi’an (no Shanghai); legacy URL 308 from `beijing-shanghai` |
 
 ---
@@ -1198,7 +1198,7 @@ updatedAt: '2026-03-29'
 
 ---
 
-## Tour 7: Shanghai & Surroundings (Discovery — Shanghai & Beyond)
+## Tour 7: Shanghai & Beyond (Discovery — Shanghai & Beyond)
 
 **Tour ID:** `tour-cn-dis-4`
 **Slug:** `shanghai-surroundings` (legacy `shanghai-beyond` → 308 redirect)
@@ -1206,8 +1206,8 @@ updatedAt: '2026-03-29'
 ### Fields to Update:
 
 ```typescript
-name: 'China Discovery — Shanghai & Surroundings',
-title: 'China Discovery — Shanghai & Surroundings',
+name: 'China Discovery — Shanghai & Beyond',
+title: 'China Discovery — Shanghai & Beyond',
 shortDescription: 'A 10-day exploration of the Yangtze River Delta — from the classical gardens of Suzhou and lakeside Wuxi to the ancient water town of Xinshi, the beauty of West Lake in Hangzhou, and the vibrant Bund of Shanghai.',
 duration: '10 Days',
 price: 'From NZD $2,999',
@@ -1328,7 +1328,7 @@ exclusions: [
 ### Meta:
 
 ```typescript
-metaTitle: 'China Discovery — Shanghai & Surroundings | 10 Days | CTS Tours',
+metaTitle: 'China Discovery — Shanghai & Beyond | 10 Days | CTS Tours',
 metaDescription: 'Explore Shanghai and the Yangtze Delta — Suzhou gardens, Wuxi, Xinshi water town, West Lake, the Bund. 10 days from NZD $2,999. Book with CTS Tours.',
 updatedAt: '2026-03-29'
 ```
@@ -1487,7 +1487,7 @@ updatedAt: '2026-03-29'
 | China Panorama 27D | `grand-tour` | (old) | NZD $10,899 | NZD $2,555 |
 | Best of China 15D | `essentials` | NZD $3,599 | NZD $4,539 | NZD $695 |
 | Colorful Yunnan 11D | `yunnan-explorer` | (old) | NZD $3,899 | NZD $340 |
-| Shanghai & Surroundings 10D | `shanghai-surroundings` | (old) | NZD $2,999 | NZD $400 |
+| Shanghai & Beyond 10D | `shanghai-surroundings` | (old) | NZD $2,999 | NZD $400 |
 | A Tale of Two Cities 10D | `beijing-xian` | NZD $3,099 | NZD $3,480 | NZD $395 |
 
 ## Implementation Notes

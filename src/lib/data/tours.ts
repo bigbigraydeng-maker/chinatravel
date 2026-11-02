@@ -3,6 +3,7 @@
 
 import { isDelistedSlug } from './delisted-tours';
 import { aucklandToday, upcomingDepartureLabels } from './tour-dates';
+import { migratedUnsplash } from '@/lib/site-media';
 
 export interface Tour {
   id: string;
@@ -286,6 +287,9 @@ const allTours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/silk-road-wall/silk-road-wall.jpg',
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1507025793886-e20cd4685fae'), // Dunhuang desert dunes
+      migratedUnsplash('photo-1438919848714-206d008562bb'), // Great Wall of China
     ],
     highlights: [
       'Visit Heavenly Lake (Tianchi) in the Tianshan Mountains',
@@ -370,7 +374,11 @@ const allTours: Tour[] = [
     heroImage: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
     gallery: [
       'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-aerial/forbidden-city-aerial.jpg',
-      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg'
+      'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/tours/forbidden-city-gold-lion/forbidden-city-gold-lion.jpg',
+      migratedUnsplash('photo-1746243044880-4b71e10be164'), // Forbidden City aerial, Beijing
+      migratedUnsplash('photo-1782913403748-9cb44b6a5159'), // Terracotta Warriors, Xi'an
+      migratedUnsplash('photo-1729862564079-9bf368402110'), // Giant panda, Chengdu
+      migratedUnsplash('photo-1491552222800-c124480c9b02'), // Yangtze River Three Gorges mist
     ],
     highlights: [
       'Temple of Heaven with optional Tai Chi among locals; Tian\'anmen Square and Forbidden City (see itinerary for Monday closure & ticket substitution)',
@@ -561,7 +569,7 @@ const allTours: Tour[] = [
     title: 'China Signature — Natural China',
     shortDescription: 'Discover China\'s dramatic natural landscapes on a 16-day journey from Shanghai through the Yangtze River Three Gorges to Chongqing, Chengdu and Zhangjiajie.',
     quickAnswer:
-      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The scheduled 2027 departures are 26 March (returning 10 April) and 28 May (returning 12 June). Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
+      'Natural China is a 16-day escorted tour from Auckland: Shanghai, a four-night Yangtze River Three Gorges cruise, Chongqing, Chengdu and Zhangjiajie, at NZD $7,349 per person twin share. A private room (single supplement) adds NZD $1,895, which covers the land hotels and the cruise. The current 2027 departure and return dates are shown in the schedule below. Highlights include giant pandas, Chongqing\'s Liziba monorail that runs through an apartment building, Tianmen Mountain and Zhangjiajie National Forest Park, with named hotels and First Class high-speed trains.',
     duration: '16 Days',
     price: 'NZD $7,349',
     heroImage: '/images/tours/three-gorges-cruise-wide-2000.jpg',
@@ -615,10 +623,10 @@ const allTours: Tour[] = [
       'Any items not specifically mentioned as included'
     ],
     metaTitle: 'China Signature — Natural China | 16 Days | CTS Tours',
-    metaDescription: 'Discover China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. Departs 26 March 2027 from NZD $7,349 per person.',
+    metaDescription: 'Explore China\'s natural landscapes on a 16-day tour from Shanghai through the Yangtze River Three Gorges, Chongqing, Chengdu and Zhangjiajie. From NZD $7,349 per person.',
     isActive: true,
     createdAt: '2024-01-01',
-    updatedAt: '2026-10-21',
+    updatedAt: '2026-10-23',
     tags: [
       'Shanghai',
       'Yichang',
@@ -632,8 +640,8 @@ const allTours: Tour[] = [
       'Tianmen Mountain',
       'Huangpu River cruise',
     ],
-    departureDates: ['26 March 2027', '28 May 2027'],
-    departurePricing: { '26 March 2027': 'NZD $7,349', '28 May 2027': 'NZD $7,349' },
+    departureDates: ['28 May 2027'],
+    departurePricing: { '28 May 2027': 'NZD $7,349' },
     singleSupplement: 'NZD $1,895',
     singleSupplementNote: 'Covers land hotel accommodation and the Three Gorges cruise.',
     goldenBlocks: true,
@@ -649,7 +657,7 @@ const allTours: Tour[] = [
       {
         question: 'When can I depart on Natural China, and what does it cost?',
         answer:
-          'The scheduled 2027 departures from Auckland are 26 March (returning 10 April) and 28 May (returning 12 June), at NZD $7,349 per person twin share. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
+          'Natural China is NZD $7,349 per person twin share. Current departure and return dates are listed in the schedule on this page. A private room adds NZD $1,895, which covers the land hotels and the Three Gorges cruise.',
       },
       {
         question: 'What is included in the price?',
@@ -685,7 +693,7 @@ const allTours: Tour[] = [
       {
         question: 'How do I book?',
         answer:
-          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us whether you would like your own room (NZD $1,895 extra, cruise included) for the 26 March departure, and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
+          'Send an enquiry using the form on this page, or call us on 0800 CTS 888 (0800 287 888). Tell us which current departure you prefer and whether you would like your own room (NZD $1,895 extra, cruise included), and we will check seats and confirm your final quote. The NZD $1,000 per person deposit is due within 3 working days of reserving. Full terms are on our Terms & Conditions page.',
         link: { href: '/terms-and-conditions', label: 'Read the full booking terms' },
       },
     ],
@@ -1037,12 +1045,12 @@ const allTours: Tour[] = [
     slug: 'shanghai-surroundings',
     destination: 'china',
     tier: 'discovery',
-    name: 'China Discovery — Shanghai & Surroundings',
-    title: 'China Discovery — Shanghai & Surroundings',
+    name: 'China Discovery — Shanghai & Beyond',
+    title: 'China Discovery — Shanghai & Beyond',
     shortDescription:
       'Yangtze Delta loop from Auckland: Suzhou gardens and Shantang Street, Wuxi lakeside sights and Three Kingdoms City, Hanfu and afternoon tea in Xinshi water town, Hangzhou\'s West Lake and Longjing tea, then Shanghai\'s Bund. Visa-free entry may apply for many NZ trips (confirm dates); next confirmed departure 25 March 2027.',
     quickAnswer:
-      'Shanghai & Surroundings is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
+      'Shanghai & Beyond is a 10-day escorted Yangtze Delta loop from Auckland through Suzhou, Wuxi, Xinshi water town, Hangzhou and Shanghai, from NZD $2,699 per person twin share (NZD $2,899 on 5 November). A private room adds NZD $400. The scheduled 2027 departures are 25 March (returning 3 April) and 5 November (returning 14 November). Highlights are Suzhou\'s classical gardens, West Lake and Longjing tea, Hanfu photos in Xinshi, and the Bund, with named hotels and an English-speaking guide.',
     duration: '10 Days',
     price: 'NZD $2,699 per person',
     maxGroupSize: 18,
@@ -1088,7 +1096,7 @@ const allTours: Tour[] = [
       'Optional activities (e.g. Shanghai Acrobatics Show, Maglev ride)',
       'Any items not specifically mentioned as included in the itinerary',
     ],
-    metaTitle: 'Shanghai & Surroundings Discovery | March 2027 | CTS NZ',
+    metaTitle: 'Shanghai & Beyond Discovery | March 2027 | CTS NZ',
     metaDescription:
       'China specialist–led Shanghai & Jiangnan loop from NZ — 25 March 2027 departure (the 14 October 2026 departure has sold out), Suzhou, Wuxi, Xinshi, Hangzhou West Lake, the Bund. From NZD $2,699. Visa-free options for many NZ travellers — CTS China visa guide.',
     isActive: true,
@@ -1121,7 +1129,7 @@ const allTours: Tour[] = [
     ],
     faqs: [
       {
-        question: 'When can I depart on Shanghai & Surroundings, and what does it cost?',
+        question: 'When can I depart on Shanghai & Beyond, and what does it cost?',
         answer:
           'The scheduled 2027 departures from Auckland are 25 March (returning 3 April) at NZD $2,699 and 5 November (returning 14 November) at NZD $2,899, per person twin share. A private room adds NZD $400.',
       },
@@ -1153,7 +1161,7 @@ const allTours: Tour[] = [
       {
         question: 'Does this tour visit Beijing or the Terracotta Warriors?',
         answer:
-          'No — Shanghai & Surroundings is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
+          'No — Shanghai & Beyond is a Yangtze Delta loop from Shanghai: Suzhou classical gardens and Shantang Street, Wuxi lakeside and Three Kingdoms City, the ancient town of Xinshi (including Hanfu dress-up and afternoon tea), Hangzhou\'s West Lake and tea culture, then Shanghai\'s Bund and city sights. It is built for travellers who want Jiangnan water towns and modern Shanghai without flying north to Beijing or Xi\'an.',
       },
       {
         question: 'Do New Zealand passport holders need a visa for China?',

@@ -7,7 +7,7 @@
 
 ## 一、产品事实速查（对外口径须与行程页一致）
 
-| 项目 | Shanghai & Surroundings | A Tale of Two Cities |
+| 项目 | Shanghai & Beyond | A Tale of Two Cities |
 |------|-------------------------|------------------------|
 | **数据 slug** | `shanghai-surroundings` | `beijing-xian`（行程 **北京 + 西安**） |
 | **主产品 URL** | `/tours/china/discovery/shanghai-surroundings` | `/tours/china/discovery/beijing-xian` |
@@ -29,7 +29,7 @@
 
 ### 2.2 关键词簇（英文主市场，可映射到页面 H2/FAQ）
 
-**Shanghai & Surroundings**
+**Shanghai & Beyond**
 
 - 核心：*China tour from New Zealand*, *Yangtze Delta tour*, *Suzhou Hangzhou Shanghai tour*, *small group China*, *China discovery tour NZ*  
 - 长尾：*Shanghai Suzhou Wuxi itinerary*, *West Lake tour from NZ*, *China group tour October*  

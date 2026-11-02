@@ -35,7 +35,7 @@ Cowork 输出应让 LoveArt **无需再猜**「画什么、几张、比例、主
 | 产品 | 文档 | 核心事实 |
 |------|------|----------|
 | **A Tale of Two Cities**（北京 + 西安，无上海） | `docs/t043-beijing-xian-master-brief.md` | 10 天；lead-in **NZD $3,480**；北京→西安高铁；**无上海、无江南**；视觉：长城、故宫、兵马俑、胡同、火车 |
-| **Shanghai & Surroundings**（长三角 loop） | `docs/t044-shanghai-surroundings-master-brief.md` | 10 天；**NZD $2,999** pp twin；**无北京、无兵马俑**；视觉：外滩、西湖、园林、水乡质感 |
+| **Shanghai & Beyond**（长三角 loop） | `docs/t044-shanghai-surroundings-master-brief.md` | 10 天；**NZD $2,999** pp twin；**无北京、无兵马俑**；视觉：外滩、西湖、园林、水乡质感 |
 
 **禁止串线：** 北方线帖子里不写 Terracotta 以外的江南地标；江南线不写长城/兵马俑。
 
@@ -107,7 +107,7 @@ Cowork 需为 **每一主槽** 输出一行结构化记录（见 §6 模板）�
 Slot ID: APR2026-__
 Date (NZ): ____-__-__
 Platform: Facebook | Instagram Feed | Instagram Reels | Stories
-Product: Tale of Two Cities | Shanghai & Surroundings | Supporting (visa / other tour)
+Product: Tale of Two Cities | Shanghai & Beyond | Supporting (visa / other tour)
 Ratio: 4:5 | 1:1 | 9:16
 
 Headline (EN, for image):

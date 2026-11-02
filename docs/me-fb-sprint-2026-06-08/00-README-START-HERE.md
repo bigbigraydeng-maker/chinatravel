@@ -97,7 +97,7 @@ docs/me-fb-sprint-2026-06-08/ 目录下。
 
 **辅助**（Oct 两团各 10%）：
 - **Tale of Two Cities** — 10/15 出发, NZD $3,480 / 10 天, `/campaigns/october-2026/tale-of-two-cities`
-- **Shanghai & Surroundings** — 10/14 出发, NZD $3,399 / 10 天, `/campaigns/october-2026/shanghai-surroundings`
+- **Shanghai & Beyond** — 10/14 出发, NZD $3,399 / 10 天, `/campaigns/october-2026/shanghai-surroundings`
 
 **已移除**：
 - Fire & Fuzz (Chongqing × Chengdu) — PM 2026-06-08 决定不在本轮推广

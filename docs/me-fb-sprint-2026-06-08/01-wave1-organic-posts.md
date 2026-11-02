@@ -79,7 +79,7 @@ PM 已确认按 master_brief 重新定调 — 但要避免突兀。建议：
 ## 主推团权重统计
 - Best of China: 18/28 = 64% ✓ (符合 70%+ 目标±)
 - Tale of Two Cities: 3/28 = ~11%
-- Shanghai & Surroundings: 3/28 = ~11%
+- Shanghai & Beyond: 3/28 = ~11%
 - 通用品牌故事: 4/28 = 14%
 ```
 
@@ -207,7 +207,7 @@ warm gold and teal color palette, photorealistic editorial style, 16:9 aspect ra
 ## 主推团权重
 - Best of China: X 篇
 - Tale of Two Cities: Y 篇
-- Shanghai & Surroundings: Z 篇
+- Shanghai & Beyond: Z 篇
 - 通用: W 篇
 
 ## Pillar 配比

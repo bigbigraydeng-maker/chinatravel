@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getTourBySlug, getDestinationBySlug, getToursByDestinationAndTier } from '@/lib/data/tours';
+import { getDestinationBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug, getPublishedToursByDestinationAndTier } from '@/lib/data/published-tour-catalog';
 import TourHero from '@/components/tours/TourHero';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
@@ -33,10 +34,12 @@ import { FIRE_FUZZ_CONFIG } from '@/lib/campaigns/fire-fuzz';
 
 export async function generateMetadata(): Promise<Metadata> {
   // Share the tour's own hero so the social card can't drift from the page again.
-  const ogTour = getTourBySlug('china', 'discovery', FIRE_FUZZ_CONFIG.tourSlug);
+  const ogTour = await getPublishedTourBySlug('china', 'discovery', FIRE_FUZZ_CONFIG.tourSlug);
   return buildCtsPageMetadata({
-    title: FIRE_FUZZ_CONFIG.metaTitle,
-    description: FIRE_FUZZ_CONFIG.metaDescription,
+    title: ogTour?.metaTitle || `${ogTour?.name ?? 'Fire & Fuzz'} | CTS Tours`,
+    description: ogTour
+      ? `${ogTour.shortDescription} ${ogTour.duration}. ${ogTour.price}${ogTour.departureDates?.[0] ? `; next departure ${ogTour.departureDates[0]}` : '; contact CTS for upcoming dates'}.`
+      : FIRE_FUZZ_CONFIG.metaDescription,
     path: FIRE_FUZZ_CONFIG.campaignPath,
     ogImagePath: ogTour?.heroImage ?? `${getSiteUrl()}/blog/chongqing-night-skyline-hongyadong.jpg`,
     keywords: [
@@ -52,19 +55,23 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function FireFuzzCampaignPage() {
-  const tour = getTourBySlug('china', 'discovery', FIRE_FUZZ_CONFIG.tourSlug);
-  if (!tour) notFound();
+export const revalidate = 15;
+
+export default async function FireFuzzCampaignPage() {
+  const tour = await getPublishedTourBySlug('china', 'discovery', FIRE_FUZZ_CONFIG.tourSlug);
+  if (!tour?.isActive) notFound();
 
   const destination = getDestinationBySlug(tour.destination);
   if (!destination) notFound();
 
-  const relatedTours = getToursByDestinationAndTier(tour.destination, tour.tier)
+  const relatedTours = (await getPublishedToursByDestinationAndTier(tour.destination, tour.tier))
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 3);
 
   const faqs = getTourPageFaqsForTour(tour, destination.name);
   const siteUrl = getSiteUrl();
+  const nextDeparture = tour.departureDates?.[0];
+  const departureSortDate = nextDeparture ? new Date(nextDeparture).toISOString().slice(0, 10) : null;
 
   const schemas = [
     generateTourSchema(tour, destination),
@@ -128,13 +135,13 @@ export default function FireFuzzCampaignPage() {
         heroImage={tour.heroImage}
         tier={tour.tier}
         tags={tour.tags}
-        departureDates={[FIRE_FUZZ_CONFIG.heroDepartureDate]}
+        departureDates={tour.departureDates}
         primaryCtaLabel="Reserve My Seat →"
         secondaryCtaLabel="View itinerary"
         singleSupplement={tour.singleSupplement}
       />
 
-      <OctoberUrgencyBar departureSortDate="2026-11-01" />
+      {departureSortDate && !tour.soldOut ? <OctoberUrgencyBar departureSortDate={departureSortDate} /> : null}
 
       <ChinaVisaNudge />
 
@@ -161,7 +168,7 @@ export default function FireFuzzCampaignPage() {
                     Featured departure
                   </p>
                   <p className="text-2xl font-serif font-bold text-gray-900">
-                    {FIRE_FUZZ_CONFIG.heroDepartureDate} 2026
+                    {nextDeparture ?? 'Ask CTS for the next departure'}
                   </p>
                   <p className="mt-1 text-sm text-gray-600">
                     Minimum 15 passengers. Enquire to confirm availability and hold your seat.
@@ -229,7 +236,7 @@ export default function FireFuzzCampaignPage() {
                     )}
                     <div>
                       <dt className="text-gray-500">Departure</dt>
-                      <dd className="font-semibold text-gray-900">{FIRE_FUZZ_CONFIG.heroDepartureDate} 2026</dd>
+                      <dd className="font-semibold text-gray-900">{nextDeparture ?? 'Ask CTS for next dates'}</dd>
                     </div>
                     <div>
                       <dt className="text-gray-500">Min. passengers</dt>

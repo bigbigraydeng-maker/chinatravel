@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
-import { tours } from '@/lib/data/tours';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 import { tourToFeed } from '@/lib/tour-feed';
 
-export const revalidate = 3600;
+export const revalidate = 15;
 
 /**
  * Read-only, structured feed for approved first-party Tour data.
@@ -10,6 +10,7 @@ export const revalidate = 3600;
  * availability/seats are deliberately not inferred here.
  */
 export async function GET() {
+  const tours = await getPublishedActiveTours();
   const sourceVersion = tours.reduce(
     (latest, tour) => (tour.updatedAt > latest ? tour.updatedAt : latest),
     '',

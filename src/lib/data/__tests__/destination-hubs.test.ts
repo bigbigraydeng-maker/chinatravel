@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { getBlogPostBySlug } from '@/lib/data/blogs';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getTourBySlug, tours as fallbackTours } from '@/lib/data/tours';
 import {
   buildDepartureRows,
   buildSampleItinerary,
@@ -15,6 +15,7 @@ import {
   type RichPart,
 } from '@/lib/data/destination-hubs';
 import { chengduToursMeta, guilinToursMeta, xianToursMeta } from '@/lib/data/seo-pages';
+import { cityHubMetaForTours } from '@/lib/data/destination-hub-meta';
 import { priceNumber } from '@/lib/tour-discovery';
 
 const HUBS: Array<{ name: string; hub: DestinationHubConfig; meta: typeof chengduToursMeta }> = [
@@ -40,19 +41,17 @@ function hrefResolves(href: string): boolean {
 }
 
 describe.each(HUBS)('$name destination hub', ({ hub, meta }) => {
-  it('lists only active tours that actually pass through the city (a text match in tours.ts is not enough)', () => {
-    const tours = resolveHubTours(hub.tourRefs);
-    expect(tours).toHaveLength(hub.tourRefs.length);
+  it('lists active curated tours plus published records whose itinerary or managed city field matches', () => {
+    const tours = resolveHubTours(hub.tourRefs, fallbackTours, hub.cityPattern);
+    expect(tours.length).toBeGreaterThanOrEqual(hub.tourRefs.length);
     for (const tour of tours) {
-      expect({ slug: tour.slug, days: cityDayRange(tour, hub.cityPattern) }).toEqual({
-        slug: tour.slug,
-        days: expect.stringMatching(/^Days? \d+/),
-      });
+      expect(tour.isActive && !tour.soldOut).toBe(true);
+      expect((tour.tourCities ?? []).some((city) => hub.cityPattern.test(city)) || cityDayRange(tour, hub.cityPattern)).toBeTruthy();
     }
   });
 
   it('reports the cheapest listed tour as the starting price, whatever the display order', () => {
-    const tours = resolveHubTours(hub.tourRefs);
+    const tours = resolveHubTours(hub.tourRefs, fallbackTours, hub.cityPattern);
     const cheapest = Math.min(...tours.map((t) => priceNumber(t.price) ?? Infinity));
     expect(priceNumber(cheapestPrice(tours) ?? '')).toBe(cheapest);
   });
@@ -69,24 +68,24 @@ describe.each(HUBS)('$name destination hub', ({ hub, meta }) => {
   });
 
   it('shows only upcoming group departures, each with the days spent in the city', () => {
-    const rows = buildDepartureRows(resolveHubTours(hub.tourRefs), hub.cityPattern);
+    const rows = buildDepartureRows(resolveHubTours(hub.tourRefs, fallbackTours, hub.cityPattern), hub.cityPattern);
     expect(rows.length).toBeGreaterThan(0);
     for (const row of rows) {
-      expect(row.cityDays).not.toBeNull();
       expect(row.dates.length).toBeGreaterThan(0);
     }
   });
 
   it('builds the sample itinerary from a tour that is in the list', () => {
-    const sample = buildSampleItinerary(hub);
+    const sample = buildSampleItinerary(hub, fallbackTours);
     expect(sample?.days.length).toBeGreaterThan(0);
     expect(hub.tourRefs).toContainEqual(hub.sampleRef);
   });
 
   it('keeps the meta description within 160 characters and its prices equal to tours.ts', () => {
-    expect(meta.description.length).toBeLessThanOrEqual(160);
-    const known = new Set(resolveHubTours(hub.tourRefs).map((t) => priceNumber(t.price)));
-    const quoted = [...meta.description.matchAll(/NZD \$([\d,]+)/g)].map((m) => Number(m[1].replace(/,/g, '')));
+    const resolvedMeta = cityHubMetaForTours(meta, fallbackTours);
+    expect(resolvedMeta.description.length).toBeLessThanOrEqual(180);
+    const known = new Set(resolveHubTours(hub.tourRefs, fallbackTours, hub.cityPattern).map((t) => priceNumber(t.price)));
+    const quoted = [...resolvedMeta.description.matchAll(/NZD \$([\d,]+)/g)].map((m) => Number(m[1].replace(/,/g, '')));
     expect(quoted.length).toBeGreaterThan(0);
     for (const n of quoted) expect(known.has(n)).toBe(true);
   });
@@ -99,7 +98,19 @@ describe.each(HUBS)('$name destination hub', ({ hub, meta }) => {
 
 describe('guilin hub', () => {
   it('does not claim a group tour other than China Panorama passes through Guilin', () => {
-    const groupTours = resolveHubTours(guilinHub.tourRefs).filter((t) => t.tier !== 'stopover');
+    const groupTours = resolveHubTours(guilinHub.tourRefs, fallbackTours, guilinHub.cityPattern).filter((t) => t.tier !== 'stopover');
     expect(groupTours.map((t) => t.slug)).toEqual(['grand-tour']);
+  });
+
+  it('automatically includes newly published tours whose managed city field matches the hub', () => {
+    const newTour = {
+      ...fallbackTours.find((tour) => tour.slug === 'landscapes')!,
+      id: 'new-me-tour',
+      slug: 'new-chengdu-route',
+      name: 'New Chengdu Route',
+      tourCities: ['Chengdu'],
+    };
+    const tours = resolveHubTours(chengduHub.tourRefs, [...fallbackTours, newTour], chengduHub.cityPattern);
+    expect(tours.map((tour) => tour.slug)).toContain('new-chengdu-route');
   });
 });

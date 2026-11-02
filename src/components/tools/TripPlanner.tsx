@@ -8,7 +8,6 @@ import type { BlogPost } from '@/lib/data/blogs';
 import type { DestinationGuide } from '@/lib/data/guides';
 import { getAllBlogPosts } from '@/lib/data/blogs';
 import { getAllGuides } from '@/lib/data/guides';
-import { getAllChinaTours } from '@/lib/data/tours';
 import {
   TRIP_BUDGET_OPTIONS,
   TRIP_DURATION_OPTIONS,
@@ -27,7 +26,7 @@ import {
 } from '@/lib/tools/trip-planner-logic';
 
 export interface TripPlannerProps {
-  tours?: Tour[];
+  tours: Tour[];
   blogPosts?: BlogPost[];
   guides?: DestinationGuide[];
 }
@@ -40,11 +39,10 @@ const initialAnswers = (): TripPlannerAnswers => ({
 });
 
 export default function TripPlanner({
-  tours: toursProp,
+  tours,
   blogPosts: blogPostsProp,
   guides: guidesProp,
 }: TripPlannerProps) {
-  const tours = toursProp ?? getAllChinaTours();
   const blogPosts = blogPostsProp ?? getAllBlogPosts();
   const guides = guidesProp ?? getAllGuides();
 

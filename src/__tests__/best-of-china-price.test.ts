@@ -247,7 +247,7 @@ describe('the detector itself', () => {
 
   it('does not confuse other numbers and other products with the stale figure', () => {
     const samples = [
-      'Shanghai & Surroundings from NZD $3,880',
+      'Shanghai & Beyond from NZD $3,880',
       'Best of China from NZD $13,880',
       'Best of China from NZD $4,080 ' + 'x'.repeat(400) + ' NZD $3,880',
     ];
@@ -255,6 +255,6 @@ describe('the detector itself', () => {
       expect(staleFigureProblems(sample)).toEqual([]);
     }
     expect(structuredPriceProblems("{ name: 'Best of China + Yangtze Cruise', priceFrom: 'NZD $5,999' }", 4080)).toEqual([]);
-    expect(structuredPriceProblems("{ name: 'Shanghai & Surroundings', price: 'NZD $2,699' }", 4080)).toEqual([]);
+    expect(structuredPriceProblems("{ name: 'Shanghai & Beyond', price: 'NZD $2,699' }", 4080)).toEqual([]);
   });
 });
