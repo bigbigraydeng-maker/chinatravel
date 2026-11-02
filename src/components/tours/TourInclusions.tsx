@@ -37,12 +37,15 @@ interface HotelStay {
   nights: number;
 }
 
-function extractHotelStays(itinerary: DayItinerary[]): HotelStay[] {
+// "On board international flight" fills the accommodation slot on flight days; it is not a property or a hotel night.
+const IN_FLIGHT_PATTERN = /\b(on board|in-flight)\b|\bflight\b/i;
+
+export function extractHotelStays(itinerary: DayItinerary[]): HotelStay[] {
   const stays: HotelStay[] = [];
   let current: HotelStay | null = null;
   for (const day of itinerary) {
     const hotel = day.accommodation?.trim();
-    if (!hotel) {
+    if (!hotel || IN_FLIGHT_PATTERN.test(hotel)) {
       current = null;
       continue;
     }
