@@ -1,12 +1,11 @@
+import type { Tour } from '@/lib/data/tours';
+
 /**
  * Large-numerals visual stat block for /campaigns/best-of-china.
  *
- * Four conversion-relevant data points rendered as oversized serif numerals
- * — designed to read in a single glance and reinforce the headline
- * differentiators that won on the RSA-3a ad angle (price + length + cities
- * + NZ tenure). Sits between the badge row and the Quick Answer so the
- * paid visitor builds the "why this tour, why CTS" picture before scrolling
- * into the longer-form sections.
+ * Current route size, duration and price rendered as oversized serif numerals.
+ * The values come from the published tour record so this campaign panel stays
+ * aligned when Tour Management updates the product.
  */
 interface Stat {
   number: string;
@@ -14,25 +13,14 @@ interface Stat {
   sub: string;
 }
 
-const STATS: Stat[] = [
-  {
-    number: '4',
-    label: 'Cities',
-    sub: 'Beijing · Xi’an · Hangzhou · Shanghai',
-  },
-  {
-    number: '15',
-    label: 'Days',
-    sub: 'Comfortable, immersive pace',
-  },
-  {
-    number: '$4,080',
-    label: 'NZD lead-in',
-    sub: 'Auckland return flights included',
-  },
-];
-
-export default function BigStatsBlock() {
+export default function BigStatsBlock({ tour }: { tour: Tour }) {
+  const durationDays = tour.duration.match(/\d+/)?.[0] ?? tour.duration;
+  const route = tour.tourCities?.map((city) => city.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())).join(' · ') || '';
+  const stats: Stat[] = [
+    { number: String(tour.tourCities?.length ?? 0), label: 'Cities', sub: route },
+    { number: durationDays, label: 'Days', sub: 'Tour duration' },
+    { number: tour.price, label: 'Price', sub: 'Current published tour price' },
+  ];
   return (
     <section
       aria-label="Best of China at a glance"
@@ -40,7 +28,7 @@ export default function BigStatsBlock() {
     >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-4 max-w-6xl mx-auto">
-          {STATS.map((s, idx) => (
+          {stats.map((s, idx) => (
             <div
               key={s.label}
               className={`text-center px-4 md:px-6 ${

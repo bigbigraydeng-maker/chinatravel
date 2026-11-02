@@ -26,7 +26,7 @@ export interface SocialPostRow {
 
 export const SOCIAL_CAMPAIGN_META = {
   title: 'October 2026 · 社媒发帖计划（有机内容）',
-  subtitle: '双产品战役：Beijing & Xi’an · Shanghai & Surroundings',
+  subtitle: '双产品战役：Beijing & Xi’an · Shanghai & Beyond',
   lastUpdated: '2026-04-14',
   cadence:
     '冷启动建议：Facebook 每周 3–4 帖；Instagram 每周 3–4 帖（可同主题但文案/首图区分，勿完全复制）。与付费 pillar 对齐；主 URL 与营销统筹「全站两簇」一致：签证指南、china-tours 枢纽、双 Discovery 产品。长文案在 Obsidian「01-Magiclab/Projects/China Travel」锁稿。',
@@ -79,7 +79,7 @@ export const SOCIAL_FEATURED_PRODUCTS: SocialFeaturedProduct[] = [
   },
   {
     id: 'shanghai_surroundings',
-    headline: 'Shanghai & Surroundings',
+    headline: 'Shanghai & Beyond',
     tagline: '江南与城市高光 · Discovery · 十月战役主推之二',
     campaignUrl: `${U}/tours/china/discovery/shanghai-surroundings`,
     tourUrl: `${U}/tours/china/discovery/shanghai-surroundings`,

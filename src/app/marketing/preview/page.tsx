@@ -64,7 +64,7 @@ export default function MarketingPreviewPage() {
       path: '/tours/china/discovery/beijing-xian',
     },
     {
-      label: 'Discovery · Shanghai & Surroundings',
+      label: 'Discovery · Shanghai & Beyond',
       path: '/tours/china/discovery/shanghai-surroundings',
     },
   ];
@@ -75,7 +75,7 @@ export default function MarketingPreviewPage() {
       path: '/tours/china/discovery/beijing-xian',
     },
     {
-      label: 'Shanghai & Surroundings 团页（原十月战役 LP 已跳转）',
+      label: 'Shanghai & Beyond 团页（原十月战役 LP 已跳转）',
       path: '/tours/china/discovery/shanghai-surroundings',
     },
     { label: 'Spotlight 索引（原十月战役索引）', path: '/campaigns/spotlight' },

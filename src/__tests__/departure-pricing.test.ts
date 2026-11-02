@@ -16,7 +16,6 @@ import { getDepartureRows } from '@/components/tours/TourGoldenBlocks';
 // slug -> [departure label, NZD per person twin share], from the Product Owner's table.
 const PRICE_TABLE_2027: Record<string, Array<[string, number]>> = {
   landscapes: [
-    ['26 March 2027', 7349],
     ['28 May 2027', 7349],
     ['14 June 2027', 7849],
     ['8 August 2027', 7849],
@@ -56,6 +55,10 @@ const PRICE_TABLE_2027: Record<string, Array<[string, number]>> = {
   ],
 };
 
+const CANCELLED_DEPARTURES: Record<string, string[]> = {
+  landscapes: ['26 March 2027'],
+};
+
 const tourBySlug = (slug: string) => {
   const t = tours.find((x) => x.slug === slug && x.destination === 'china');
   if (!t) throw new Error(`missing tour ${slug}`);
@@ -71,6 +74,17 @@ beforeAll(() => {
 afterAll(() => jest.useRealTimers());
 
 describe('2027 departure prices follow the Product Owner price table', () => {
+  it('cancelled departures stay out of live and staged tour data', () => {
+    for (const [slug, dates] of Object.entries(CANCELLED_DEPARTURES)) {
+      const tour = tourBySlug(slug);
+      for (const date of dates) {
+        expect(tour.departureDates ?? []).not.toContain(date);
+        expect(tour.departurePricing ?? {}).not.toHaveProperty(date);
+        expect(STAGED_DEPARTURE_PRICES[slug] ?? {}).not.toHaveProperty(date);
+      }
+    }
+  });
+
   it('every live departure shows the table price', () => {
     const mismatches: string[] = [];
     for (const [slug, rows] of Object.entries(PRICE_TABLE_2027)) {

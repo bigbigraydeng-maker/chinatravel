@@ -1,119 +1,28 @@
-import { getTourBySlug } from '@/lib/data/tours';
+import type { Tour } from '@/lib/data/tours';
 
-/**
- * China Signature & Discovery group departures — schedule UI.
- * Every row reads its dates straight from each tour's `departureDates` in
- * tours.ts (the same source the product-page/campaign hero uses), so the schedule
- * block and the hero can never drift apart.
- * `dates` is read when the block renders (not once at start-up), so a departure that has
- * left drops out of the schedule on its own.
- */
+/** A schedule row is projected directly from the published ME tour record. */
 export type DepartureScheduleRow = {
-  label: string;
-  slug: string;
+  slug: Tour['slug'];
+  name: Tour['name'];
   destination: 'china';
   tier: 'signature' | 'discovery';
   dates: string[];
-  /** This tour's own duration (e.g. "10 Days") — used to compute each date's return date. */
-  duration: string;
+  duration: Tour['duration'];
 };
 
-/** Departure dates for a China tour, sourced from tours.ts (empty if none published). */
-function departuresForTour(tier: 'signature' | 'discovery', slug: string): string[] {
-  const tour = getTourBySlug('china', tier, slug);
-  return tour?.isActive ? tour.departureDates ?? [] : [];
+/** Build rows from all currently sellable ME records, so new tours join automatically. */
+export function publishedDepartureRows(tours: readonly Tour[], tier: 'signature' | 'discovery'): DepartureScheduleRow[] {
+  return tours
+    .filter((tour) => tour.destination === 'china' && tour.tier === tier && tour.isActive && !tour.soldOut && Boolean(tour.departureDates?.length))
+    .map((tour) => ({
+      slug: tour.slug,
+      name: tour.name,
+      destination: 'china' as const,
+      tier,
+      dates: tour.departureDates ?? [],
+      duration: tour.duration,
+    }));
 }
-
-/** This tour's duration, sourced from tours.ts (empty string if the tour isn't found). */
-function durationForTour(tier: 'signature' | 'discovery', slug: string): string {
-  return getTourBySlug('china', tier, slug)?.duration ?? '';
-}
-
-export const CHINA_SIGNATURE_DEPARTURES: DepartureScheduleRow[] = [
-  {
-    label: 'Silk Road',
-    slug: 'silk-road',
-    destination: 'china',
-    tier: 'signature',
-    get dates() {
-      return departuresForTour('signature', 'silk-road');
-    },
-    duration: durationForTour('signature', 'silk-road'),
-  },
-  {
-    label: 'Legacy of China',
-    slug: 'imperial-heritage',
-    destination: 'china',
-    tier: 'signature',
-    get dates() {
-      return departuresForTour('signature', 'imperial-heritage');
-    },
-    duration: durationForTour('signature', 'imperial-heritage'),
-  },
-  {
-    label: 'China Panorama',
-    slug: 'grand-tour',
-    destination: 'china',
-    tier: 'signature',
-    get dates() {
-      return departuresForTour('signature', 'grand-tour');
-    },
-    duration: durationForTour('signature', 'grand-tour'),
-  },
-  {
-    label: 'Natural China',
-    slug: 'landscapes',
-    destination: 'china',
-    tier: 'signature',
-    get dates() {
-      return departuresForTour('signature', 'landscapes');
-    },
-    duration: durationForTour('signature', 'landscapes'),
-  },
-];
-
-export const CHINA_DISCOVERY_DEPARTURES: DepartureScheduleRow[] = [
-  {
-    label: 'A Tale of Two Cities',
-    slug: 'beijing-xian',
-    destination: 'china',
-    tier: 'discovery',
-    get dates() {
-      return departuresForTour('discovery', 'beijing-xian');
-    },
-    duration: durationForTour('discovery', 'beijing-xian'),
-  },
-  {
-    label: 'Best of China',
-    slug: 'essentials',
-    destination: 'china',
-    tier: 'discovery',
-    get dates() {
-      return departuresForTour('discovery', 'essentials');
-    },
-    duration: durationForTour('discovery', 'essentials'),
-  },
-  {
-    label: 'Shanghai & Surroundings',
-    slug: 'shanghai-surroundings',
-    destination: 'china',
-    tier: 'discovery',
-    get dates() {
-      return departuresForTour('discovery', 'shanghai-surroundings');
-    },
-    duration: durationForTour('discovery', 'shanghai-surroundings'),
-  },
-  {
-    label: 'Colourful Yunnan',
-    slug: 'yunnan-explorer',
-    destination: 'china',
-    tier: 'discovery',
-    get dates() {
-      return departuresForTour('discovery', 'yunnan-explorer');
-    },
-    duration: durationForTour('discovery', 'yunnan-explorer'),
-  },
-];
 
 export function tourPath(row: Pick<DepartureScheduleRow, 'destination' | 'tier' | 'slug'>): string {
   return `/tours/${row.destination}/${row.tier}/${row.slug}`;

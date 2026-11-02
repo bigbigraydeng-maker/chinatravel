@@ -1560,9 +1560,9 @@ export const daliGuide: DestinationGuide = {
   keywords: ['Dali', 'Bai culture', 'Three Pagodas', 'Erhai Lake', 'Silk Road'],
   h1: 'Dali: Where Silk Road Dreams Meet Mountain Beauty',
   heroSubtitle: 'Ancient Nanzhao Kingdom Capital',
-  heroImage: '/blog/sourced/dali-three-pagodas.jpg',
+  heroImage: '/blog/sourced/dali-chongsheng-temple-dusk.jpg',
   heroImageClassName: 'object-[center_45%]',
-  heroImageCredit: 'Photo: CEphoto, Uwe Aranas, CC BY-SA 3.0, via Wikimedia Commons',
+  heroImageCredit: 'Photo: Alexander Savin, CC BY 2.0, via Wikimedia Commons',
   introText: [
     'Dali served as capital of the Nanzhao Kingdom (738-1095 AD), a powerful state controlling southwestern China, parts of Burma, and Tibet. The kingdom\'s merchants, diplomats, and monks traversed the South Silk Road, bringing goods, ideas, and religions to this mountain valley. The Three Pagodas, visible across the valley, stand as physical testament to centuries of religious, political, and commercial importance.',
     'The modern town preserves Ming and Qing architecture within the walled Old Town. Bai ethnic people, numbering approximately 1.9 million and concentrated in Yunnan\'s Dali area, maintain distinctive cultural practices: traditional clothing, handicrafts, and architectural conventions visible throughout the town. Whitewashed buildings with dark tile roofs, ornate wooden doors, and intricate carvings reflect Bai aesthetic preferences.',
@@ -1665,8 +1665,9 @@ export const kunmingGuide: DestinationGuide = {
   keywords: ['Kunming', 'Stone Forest', 'eternal spring', 'Yunnan gateway', 'temples'],
   h1: 'Kunming: Yunnan\'s Gateway of Eternal Spring',
   heroSubtitle: 'Year-Round Mild Climate and Cultural Hub',
-  heroImage: `${TI}/kunming-dianchi-lake.jpg`,
+  heroImage: '/blog/sourced/kunming-stone-forest.jpg',
   heroImageClassName: 'object-[center_40%]',
+  heroImageCredit: 'Photo: Ngguls, CC BY-SA 4.0, via Wikimedia Commons',
   introText: [
     'Kunming, capital of Yunnan Province (population 4 million), earns the nickname "City of Eternal Spring" due to its consistently mild climate. The city functions as primary gateway to Yunnan for most international visitors, hosting international airport and serving as transport hub for rail and bus networks. Despite its modern development and urban scale, Kunming retains cultural character: temples, colonial-era architecture, vibrant markets, and proximity to natural attractions.',
     'The city\'s location at 1,891 metres elevation creates pleasant year-round weather. Winters rarely freeze; summers remain comfortable compared to coastal cities. This climatic stability, combined with agricultural abundance (Yunnan\'s location on Tropic of Cancer supports diverse crops), historically attracted merchants, pilgrims, and scholars to this region.',
@@ -2962,17 +2963,17 @@ export const beijingXianDiscoveryGuide: DestinationGuide = {
 };
 
 // ============================================================================
-// SHANGHAI & SURROUNDINGS DISCOVERY GUIDE
+// SHANGHAI & BEYOND DISCOVERY GUIDE
 // ============================================================================
 
 export const shanghaiSurroundingsDiscoveryGuide: DestinationGuide = {
   id: 'guide-shanghai-surroundings-discovery',
   slug: 'shanghai-surroundings-discovery-guide',
-  destinationName: 'Shanghai & Surroundings Discovery',
-  metaTitle: 'Shanghai & Surroundings Guide | Modern City + Ancient Water Towns',
+  destinationName: 'Shanghai & Beyond Discovery',
+  metaTitle: 'Shanghai & Beyond Guide | Modern City + Ancient Water Towns',
   metaDescription: 'Discover dynamic Shanghai\'s Bund and discover classical Jiangnan water towns like Zhujiajiao and Tongli. Perfect blend of contemporary China and timeless traditions.',
   keywords: ['Shanghai', 'water towns', 'Jiangnan', 'Zhujiajiao', 'Tongli', 'Bund', 'discovery tour'],
-  h1: 'Shanghai & Surroundings: Modern Metropolis Meets Timeless Water Towns',
+  h1: 'Shanghai & Beyond: Modern Metropolis Meets Timeless Water Towns',
   heroSubtitle: 'Contemporary Energy and Classical Beauty',
   heroImage: 'https://images.unsplash.com/photo-1689827515397-51140415eb6d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   introText: [

@@ -4,6 +4,7 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import { getSiteUrl } from '@/lib/site';
 import { migratedUnsplash } from '@/lib/site-media';
+import { getPublishedChinaTours } from '@/lib/data/published-tour-catalog';
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildCtsPageMetadata({
@@ -17,8 +18,11 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function TripPlannerPage() {
+export const revalidate = 15;
+
+export default async function TripPlannerPage() {
   const site = getSiteUrl();
+  const tours = await getPublishedChinaTours();
 
   const webPageSchema = {
     '@context': 'https://schema.org',
@@ -135,7 +139,7 @@ export default function TripPlannerPage() {
   return (
     <>
       <SchemaMarkup data={[webPageSchema, breadcrumbSchema, faqSchema]} />
-      <TripPlanner />
+      <TripPlanner tours={tours} />
     </>
   );
 }

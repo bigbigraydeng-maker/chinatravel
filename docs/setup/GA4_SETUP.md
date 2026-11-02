@@ -178,7 +178,7 @@ So Google treats the campaign page as the primary URL; **UTM parameters belong o
 
 | Tour | Path |
 |------|------|
-| Shanghai & Surroundings (14 Oct spotlight) | `/campaigns/october-2026/shanghai-surroundings` |
+| Shanghai & Beyond (14 Oct spotlight) | `/campaigns/october-2026/shanghai-surroundings` |
 | A Tale of Two Cities — Beijing & Xi’an (15 Oct spotlight) | `/campaigns/october-2026/tale-of-two-cities` |
 
 **UTM (paste after your live origin, e.g. `https://www.ctstours.co.nz`):**

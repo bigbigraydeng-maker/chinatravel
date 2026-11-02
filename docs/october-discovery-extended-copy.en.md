@@ -2,14 +2,14 @@
 
 **Source of truth:** On-site tour pages only — do not add cities, sights, or inclusions not listed there.
 
-- [China Discovery — Shanghai & Surroundings](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) (`shanghai-surroundings`)
+- [China Discovery — Shanghai & Beyond](https://www.ctstours.co.nz/tours/china/discovery/shanghai-surroundings) (`shanghai-surroundings`)
 - [China Discovery — A Tale of Two Cities](https://www.ctstours.co.nz/tours/china/discovery/beijing-xian) (`beijing-xian` — itinerary is **Beijing + Xi’an**, high-speed train; legacy `/beijing-shanghai` redirects here)
 
 **Use:** Paste sections into CMS / campaign LPs. Replace bracketed notes after internal review (e.g. inventory, visa wording).
 
 ---
 
-## 1. China Discovery — Shanghai & Surroundings
+## 1. China Discovery — Shanghai & Beyond
 
 **Departure highlighted:** 14 October 2026 (as published; confirm year and availability at booking.)  
 **Duration / from:** 10 days · NZD $2,999 per person (as published.)
@@ -42,7 +42,7 @@ Your group departure date is published as **14 October** (with year **2026** whe
 
 ### Section: How this differs from “A Tale of Two Cities”
 
-**Shanghai & Surroundings** is a **single-region depth** journey: the **Delta + Shanghai**. It does **not** include **Beijing**, the **Great Wall**, or **Xi’an / Terracotta Warriors**. If those icons are your priority, compare our **A Tale of Two Cities** itinerary instead.
+**Shanghai & Beyond** is a **single-region depth** journey: the **Delta + Shanghai**. It does **not** include **Beijing**, the **Great Wall**, or **Xi’an / Terracotta Warriors**. If those icons are your priority, compare our **A Tale of Two Cities** itinerary instead.
 
 ---
 
@@ -74,9 +74,9 @@ International routing on the published page: **Auckland — Beijing** on Day 1 (
 
 Published departures for this tour include **13 August**, **15 October**, and **2 November** (year as per site — **confirm at booking**). For this campaign LP, lead with **15 October** and repeat the same contact paths as above.
 
-### Section: Choosing between this tour and Shanghai & Surroundings
+### Section: Choosing between this tour and Shanghai & Beyond
 
-| | **A Tale of Two Cities** | **Shanghai & Surroundings** |
+| | **A Tale of Two Cities** | **Shanghai & Beyond** |
 |---|---------------------------|-----------------------------|
 | **Geography** | **Beijing** + **Xi’an** (high-speed train) | **Yangtze Delta** cities + **Shanghai** |
 | **Iconic draws (as published)** | Great Wall, Forbidden City, Terracotta Warriors, hutong visit, Xi’an wall & pagodas | Gardens, lakes, canals, Hanfu town, West Lake & Longjing, Bund & Nanjing Road |
@@ -87,8 +87,8 @@ Published departures for this tour include **13 August**, **15 October**, and **
 
 ## 3. Optional homepage microcopy (two cards)
 
-**Card A — Shanghai & Surroundings · 14 Oct 2026**  
-Headline: `Shanghai & Surroundings`  
+**Card A — Shanghai & Beyond · 14 Oct 2026**  
+Headline: `Shanghai & Beyond`  
 Sub: `10 days · Yangtze Delta + Shanghai · from NZD $2,999 pp`  
 CTA: `View 14 Oct departure`
 

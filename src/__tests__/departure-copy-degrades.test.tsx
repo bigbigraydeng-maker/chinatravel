@@ -13,15 +13,33 @@ import SmallGroupChinaToursPage from '@/app/small-group-china-tours/page';
 import GreatWallGuidePage from '@/app/great-wall-travel-guide/page';
 import TerracottaGuidePage from '@/app/terracotta-warriors-travel-guide/page';
 import VisaGuideOctoberCampaignCtas from '@/components/seo/VisaGuideOctoberCampaignCtas';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedChinaTours, getPublishedTourBySlug, getPublishedTours } from '@/lib/data/published-tour-catalog';
+import { tours } from '@/lib/data/tours';
 
-// Every test reads the real tour data, except the "still ahead" test, which swaps the departures for fake ones.
-jest.mock('@/lib/data/tours', () => {
-  const actual = jest.requireActual<typeof import('@/lib/data/tours')>('@/lib/data/tours');
-  return { ...actual, getTourBySlug: jest.fn(actual.getTourBySlug) };
+// This suite asserts page departure copy; the guide's async editorial renderer is outside that surface.
+jest.mock('@/components/seo/DestinationGuide', () => ({ __esModule: true, default: () => null }));
+
+// Pages now read the shared ME-published catalog. These tests provide the same local fixture through that reader.
+jest.mock('@/lib/data/published-tour-catalog', () => {
+  const actual = jest.requireActual<typeof import('@/lib/data/published-tour-catalog')>('@/lib/data/published-tour-catalog');
+  return {
+    ...actual,
+    getPublishedTours: jest.fn(),
+    getPublishedChinaTours: jest.fn(),
+    getPublishedTourBySlug: jest.fn(),
+  };
 });
-const actualGetTourBySlug = jest.requireActual<typeof import('@/lib/data/tours')>('@/lib/data/tours').getTourBySlug;
-const mockedGetTourBySlug = getTourBySlug as jest.MockedFunction<typeof getTourBySlug>;
+const mockedGetPublishedTours = getPublishedTours as jest.MockedFunction<typeof getPublishedTours>;
+const mockedGetPublishedChinaTours = getPublishedChinaTours as jest.MockedFunction<typeof getPublishedChinaTours>;
+const mockedGetPublishedTourBySlug = getPublishedTourBySlug as jest.MockedFunction<typeof getPublishedTourBySlug>;
+
+function setPublishedCatalog(items: typeof tours) {
+  mockedGetPublishedTours.mockResolvedValue(items);
+  mockedGetPublishedChinaTours.mockResolvedValue(items.filter((tour) => tour.destination === 'china' && tour.isActive && !tour.soldOut));
+  mockedGetPublishedTourBySlug.mockImplementation(async (destination, tier, slug) =>
+    items.find((tour) => tour.destination === destination && tour.tier === tier && tour.slug === slug),
+  );
+}
 
 const ALL_GONE_CLOCK = '2035-01-01T00:00:00Z';
 
@@ -31,8 +49,9 @@ function setClock(iso: string) {
 }
 
 /** Everything the page shows as text, plus the answers inside its structured data. */
-function readPage(element: React.ReactElement) {
-  const { container, unmount } = render(element);
+async function readPage(element: React.ReactElement | null | Promise<React.ReactElement | null>) {
+  const resolved = await element;
+  const { container, unmount } = render(resolved);
   const text = (container.textContent ?? '').replace(/\s+/g, ' ');
   const data = Array.from(container.querySelectorAll('script[type="application/ld+json"]'))
     .map((script) => script.textContent ?? '')
@@ -46,35 +65,38 @@ const DANGLING = /\bdeparts\s*\.|\bDepartures\s+\./;
 
 afterEach(() => {
   jest.useRealTimers();
-  mockedGetTourBySlug.mockImplementation(actualGetTourBySlug);
+  setPublishedCatalog(tours);
 });
 
+beforeEach(() => setPublishedCatalog(tours));
+
 describe('pages that print departures from the tour data, with every departure gone', () => {
-  it('small-group tours: the visible text and the FAQ data say "ask us", not "departs ."', () => {
+  it('small-group tours: the visible text and the FAQ data say "ask us", not "departs ."', async () => {
     setClock(ALL_GONE_CLOCK);
-    const { text, data } = readPage(<SmallGroupChinaToursPage />);
+    const { text, data } = await readPage(SmallGroupChinaToursPage());
 
     expect(text).not.toMatch(DANGLING);
     expect(data).not.toMatch(DANGLING);
     expect(text).not.toMatch(/\bDeparts\b/); // the cards print "Departs <dates>" only when there are dates
     expect(text).toContain('Ask us for the next departure');
-    expect(data).toContain('A Tale of Two Cities (Beijing + Xi\'an): ask us for the next departure date.');
-    expect(data).toContain('Shanghai & Surroundings: ask us for the next departure date.');
-    expect(data).toContain('Best of China: ask us for the next departure date.');
+    for (const slug of ['beijing-xian', 'shanghai-surroundings', 'essentials']) {
+      const tour = tours.find((item) => item.slug === slug)!;
+      expect(data).toContain(`${tour.name}: ask us for the next departure date.`);
+    }
   });
 
-  it('Great Wall and Terracotta Warriors guides: the call-to-action says to ask for the next departure', () => {
+  it('Great Wall and Terracotta Warriors guides: the call-to-action says to ask for the next departure', async () => {
     setClock(ALL_GONE_CLOCK);
-    for (const page of [<GreatWallGuidePage key="gw" />, <TerracottaGuidePage key="tw" />]) {
-      const { text } = readPage(page);
+    for (const page of [GreatWallGuidePage(), TerracottaGuidePage()]) {
+      const { text } = await readPage(page);
       expect(text).not.toMatch(DANGLING);
       expect(text).toContain('Ask us for the next departure.');
     }
   });
 
-  it('visa guide block: the cards say "Ask us for the next departure" instead of an empty "Departs ·"', () => {
+  it('visa guide block: the cards say "Ask us for the next departure" instead of an empty "Departs ·"', async () => {
     setClock(ALL_GONE_CLOCK);
-    const { text } = readPage(<VisaGuideOctoberCampaignCtas />);
+    const { text } = await readPage(VisaGuideOctoberCampaignCtas());
 
     expect(text).not.toContain('Departs ·'); // an empty "Departs · " label
     expect(text).toContain('Ask us for the next departure');
@@ -90,19 +112,18 @@ describe('the same pages, while departures are still ahead', () => {
     essentials: ['6 February 2099', '7 May 2099'],
   };
 
-  it('name the dates the tour data gives them, whatever those dates are', () => {
-    mockedGetTourBySlug.mockImplementation((destination, tier, slug) => {
-      const tour = actualGetTourBySlug(destination, tier, slug);
-      return tour && FAKE_DEPARTURES[slug] ? { ...tour, departureDates: FAKE_DEPARTURES[slug] } : tour;
-    });
-    const smallGroup = readPage(<SmallGroupChinaToursPage />);
-    const greatWall = readPage(<GreatWallGuidePage />);
-    const terracotta = readPage(<TerracottaGuidePage />);
-    const visa = readPage(<VisaGuideOctoberCampaignCtas />);
+  it('name the dates the published catalogue gives them, whatever those dates are', async () => {
+    setPublishedCatalog(tours.map((tour) => FAKE_DEPARTURES[tour.slug]
+      ? { ...tour, departureDates: FAKE_DEPARTURES[tour.slug] }
+      : tour));
+    const smallGroup = await readPage(SmallGroupChinaToursPage());
+    const greatWall = await readPage(GreatWallGuidePage());
+    const terracotta = await readPage(TerracottaGuidePage());
+    const visa = await readPage(VisaGuideOctoberCampaignCtas());
 
-    expect(smallGroup.data).toContain('A Tale of Two Cities (Beijing + Xi\'an) departs 3 February 2099 & 4 May 2099.');
-    expect(smallGroup.data).toContain('Shanghai & Surroundings departs 5 February 2099.');
-    expect(smallGroup.data).toContain('Best of China departs 6 February 2099 & 7 May 2099.');
+    expect(smallGroup.data).toContain(`${tours.find((tour) => tour.slug === 'beijing-xian')!.name} departs 3 February 2099 & 4 May 2099.`);
+    expect(smallGroup.data).toContain(`${tours.find((tour) => tour.slug === 'shanghai-surroundings')!.name} departs 5 February 2099.`);
+    expect(smallGroup.data).toContain(`${tours.find((tour) => tour.slug === 'essentials')!.name} departs 6 February 2099 & 7 May 2099.`);
     expect(smallGroup.data).not.toContain('ask us for the next departure date');
     expect(greatWall.text).toContain('Departures 3 February 2099 & 4 May 2099.');
     expect(terracotta.text).toContain('Departures 3 February 2099 & 4 May 2099.');

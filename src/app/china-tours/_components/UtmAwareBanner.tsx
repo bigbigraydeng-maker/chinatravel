@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { Tour } from '@/lib/data/tours';
 
 /**
  * UTM-aware welcome banner for /china-tours.
@@ -73,9 +74,8 @@ const COPY: Record<Variant, BannerCopy> = {
   best_of_china: {
     message: (
       <>
-        <span className="font-semibold">Best of China · 15 days</span>
-        {' '}· from NZD $4,080 · next departure 11 March 2027 from Auckland —
-        talk to a specialist about your dates.
+        <span className="font-semibold">Best of China</span>
+        {' '}— see current published tour details and departures.
       </>
     ),
     cta: 'See Best of China →',
@@ -94,7 +94,7 @@ const COPY: Record<Variant, BannerCopy> = {
   },
 };
 
-export default function UtmAwareBanner() {
+export default function UtmAwareBanner({ bestOfChinaTour }: { bestOfChinaTour?: Tour }) {
   const [variant, setVariant] = useState<Variant | null>(null);
 
   useEffect(() => {
@@ -115,7 +115,15 @@ export default function UtmAwareBanner() {
   }, []);
 
   if (!variant) return null;
+  if (variant === 'best_of_china' && (!bestOfChinaTour || !bestOfChinaTour.isActive || bestOfChinaTour.soldOut)) return null;
   const copy = COPY[variant];
+  const message = variant === 'best_of_china' && bestOfChinaTour ? (
+    <>
+      <span className="font-semibold">{bestOfChinaTour.name} · {bestOfChinaTour.duration}</span>
+      {' '}· {bestOfChinaTour.price} · next departure {bestOfChinaTour.departureDates?.[0] ?? 'Ask CTS for current dates'} —
+      talk to a specialist about your dates.
+    </>
+  ) : copy.message;
 
   return (
     <div
@@ -125,7 +133,7 @@ export default function UtmAwareBanner() {
       className="bg-amber-50 border-b border-amber-200"
     >
       <div className="container mx-auto px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-        <p className="text-sm sm:text-base text-amber-900">{copy.message}</p>
+        <p className="text-sm sm:text-base text-amber-900">{message}</p>
         <a
           href={copy.ctaHref ?? '#china-tours-hero'}
           className="inline-flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors whitespace-nowrap"

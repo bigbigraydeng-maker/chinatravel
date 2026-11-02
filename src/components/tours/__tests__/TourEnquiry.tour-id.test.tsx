@@ -53,7 +53,7 @@ afterEach(() => {
 });
 
 const PROPS = {
-  tourName: 'Shanghai & Surroundings',
+  tourName: 'Shanghai & Beyond',
   tourSlug: 'shanghai-surroundings',
   destination: 'china',
   tier: 'discovery',

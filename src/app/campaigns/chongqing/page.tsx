@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getTourBySlug } from '@/lib/data/tours';
+import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import TrustBar from '@/components/TrustBar';
 import TourEnquiry from '@/components/tours/TourEnquiry';
 import Testimonials from '@/components/Testimonials';
@@ -78,8 +78,11 @@ const FAQS: FaqItem[] = [
   },
 ];
 
-export default function ChongqingLandingPage() {
-  const tour = getTourBySlug('china', 'discovery', 'chongqing-chengdu');
+export const revalidate = 15;
+
+export default async function ChongqingLandingPage() {
+  const tour = await getPublishedTourBySlug('china', 'discovery', 'chongqing-chengdu');
+  const nextDeparture = tour?.departureDates?.[0];
   const siteUrl = getSiteUrl();
 
   const schema = {
@@ -179,7 +182,7 @@ export default function ChongqingLandingPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
             {/* ── Packaged tour card ── */}
-            <div className="rounded-2xl border-2 border-primary/20 overflow-hidden flex flex-col">
+            {tour?.isActive && !tour.soldOut && <div className="rounded-2xl border-2 border-primary/20 overflow-hidden flex flex-col">
               <div className="relative h-52">
                 <Image
                   src={HERO_IMAGE}
@@ -192,18 +195,18 @@ export default function ChongqingLandingPage() {
                   Packaged Tour
                 </span>
                 <span className="absolute bottom-3 right-3 bg-white text-accent text-sm font-bold px-3 py-1 rounded-full">
-                  {tour?.price ?? 'From NZD $2,999'}
+                  {tour.price}
                 </span>
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-serif text-xl font-bold text-accent mb-1">
-                  China Discovery — Fire &amp; Fuzz
+                  {tour.name}
                 </h3>
                 <p className="text-sm text-gray-500 mb-3">
-                  {tour?.duration ?? '10 Days'} · Chongqing + Chengdu · Small group
+                  {tour.duration} · Chongqing + Chengdu · Small group
                 </p>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
-                  Chongqing&apos;s neon skyline, Liziba monorail, and UNESCO Dazu Rock Carvings — then Chengdu&apos;s giant pandas by bullet train. Expert English guide throughout. Departs 1 November 2026.
+                  {tour.shortDescription}{nextDeparture ? ` Next departure: ${nextDeparture}.` : ''}
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1 mb-5">
                   <li className="flex items-start gap-2"><Icon name="check" className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" /> Hongyadong, Liziba &amp; Raffles City</li>
@@ -221,7 +224,7 @@ export default function ChongqingLandingPage() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </div>}
 
             {/* ── Tailor-made card ── */}
             <div id="custom" className="rounded-2xl border-2 border-gray-200 overflow-hidden flex flex-col scroll-mt-20">
@@ -254,7 +257,7 @@ export default function ChongqingLandingPage() {
       </section>
 
       {/* ── Tour Enquiry sidebar (packaged) ── */}
-      {tour && (
+      {tour?.isActive && !tour.soldOut && (
         <section className="py-12 bg-warm-50 border-t border-warm-100">
           <div className="container mx-auto px-4 max-w-lg">
             <h2 className="font-serif text-2xl font-bold text-center text-accent mb-2">

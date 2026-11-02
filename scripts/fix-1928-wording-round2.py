@@ -130,12 +130,12 @@ REPLACEMENTS = [
         "CTS Tours NZ is New Zealand's dedicated China travel specialist — a TAANZ member and IATA-accredited agency, operating from Auckland since 2000 (25 years), backed by China Travel Service (founded 1928) which runs direct China operations.",
     ),
     (
-        "Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand since 1928, NZ team 25 years.",
-        "Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.",
+        "Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Beyond ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by CTS — global brand since 1928, NZ team 25 years.",
+        "Compare 4 China tours from New Zealand 2026-27: Tale of Two Cities ($3,480) · Best of China ($3,880) · Shanghai & Beyond ($3,399) · Silk Road ($7,999). All include Auckland return flights. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.",
     ),
     (
-        "Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS — global brand since 1928, NZ team 25 years.",
-        "Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Surroundings ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.",
+        "Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Beyond ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by CTS — global brand since 1928, NZ team 25 years.",
+        "Compare the 4 best China tours from New Zealand for 2026-27: Tale of Two Cities (NZD $3,480) · Best of China ($4,080) · Shanghai & Beyond ($3,399) · Silk Road ($7,999). Side-by-side price, length, cities, hotel tier. Backed by China Travel Service (founded 1928); CTS Tours NZ team in Auckland for 25 years.",
     ),
     # component seo/CityTourHub
     (

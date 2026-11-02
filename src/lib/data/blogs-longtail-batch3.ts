@@ -33,7 +33,7 @@ export const longtailBatch3Posts: BlogPost[] = [
       },
       {
         question: 'Which cities should I include on a first China trip?',
-        answer: 'For a first China trip, Beijing + Xi\'an covers the imperial highlights (Great Wall, Forbidden City, Terracotta Warriors) and works well in 10 days. Add Shanghai for a cosmopolitan contrast. CTS "A Tale of Two Cities" (Beijing + Xi\'an) and "Shanghai & Surroundings" are our most popular first-timer itineraries.'
+        answer: 'For a first China trip, Beijing + Xi\'an covers the imperial highlights (Great Wall, Forbidden City, Terracotta Warriors) and works well in 10 days. Add Shanghai for a cosmopolitan contrast. CTS "A Tale of Two Cities" (Beijing + Xi\'an) and "Shanghai & Beyond" are our most popular first-timer itineraries.'
       }
     ],
     content: `
@@ -56,7 +56,7 @@ All CTS tour bookings come with documentation that covers these requirements aut
 
 ## How Long Should You Go?
 
-**10 days**: Two cities, comfortably paced. Good for first-timers who want the highlights without feeling rushed. Our [10-day "A Tale of Two Cities" (Beijing & Xi'an)](/tours/china/discovery/beijing-xian) and [10-day "Shanghai & Surroundings"](/tours/china/discovery/shanghai-surroundings) both fit this window.
+**10 days**: Two cities, comfortably paced. Good for first-timers who want the highlights without feeling rushed. Our [10-day "A Tale of Two Cities" (Beijing & Xi'an)](/tours/china/discovery/beijing-xian) and [10-day "Shanghai & Beyond"](/tours/china/discovery/shanghai-surroundings) both fit this window.
 
 **12–14 days**: Two to three cities with more breathing room. You can add Guilin, Chengdu, or Yunnan to a Beijing/Shanghai base without feeling like you're on a treadmill.
 
@@ -94,7 +94,7 @@ Not included: personal travel insurance (strongly recommended), optional excursi
 | Collection | Style | Starting Price |
 |-----------|-------|---------------|
 | **Discovery** | 3–4 star, great value | From NZD $2,699 |
-| **Signature** | 4–5 star, premium | From NZD $4,800 |
+| **Signature** | 5-star, premium | From NZD $4,800 |
 | **Stopover** | City break, 2–4 days | From NZD $1,200 |
 
 All prices are per person, twin share, including flights from Auckland. [Contact our team](/contact) for current pricing on specific departures.

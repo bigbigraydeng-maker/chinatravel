@@ -141,8 +141,8 @@ describe('a delisted tour cannot be reached through the tour data', () => {
     expect(slugs.filter((slug) => isDelistedSlug(slug))).toEqual([]);
   });
 
-  it('is absent from the sitemap', () => {
-    const urls = sitemap().map((entry) => entry.url);
+  it('is absent from the sitemap', async () => {
+    const urls = (await sitemap()).map((entry) => entry.url);
     expect(urls.filter((url) => isDelistedUrl(url))).toEqual([]);
     const slugs = DELISTED_TOURS.map((entry) => entry.slug);
     expect(urls.filter((url) => slugs.some((slug) => url.includes(slug)))).toEqual([]);

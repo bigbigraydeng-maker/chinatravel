@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { 
-  getDestinationBySlug, 
-  getToursByDestination,
-  destinations 
+import {
+  getDestinationBySlug,
+  destinations
 } from '@/lib/data/tours';
+import { getPublishedToursByDestination } from '@/lib/data/published-tour-catalog';
 import TourCard from '@/components/tours/TourCard';
 
 interface DestinationPageProps {
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: DestinationPageProps): Promise<Metadata> {
   const destination = getDestinationBySlug(params.destination);
-  
+
   if (!destination) {
     return {
       title: 'Not Found | CTS Tours',
@@ -61,14 +61,16 @@ export async function generateMetadata({ params }: DestinationPageProps): Promis
   };
 }
 
-export default function DestinationPage({ params }: DestinationPageProps) {
+export const revalidate = 15;
+
+export default async function DestinationPage({ params }: DestinationPageProps) {
   const destination = getDestinationBySlug(params.destination);
-  
+
   if (!destination) {
     notFound();
   }
 
-  const allTours = getToursByDestination(params.destination);
+  const allTours = await getPublishedToursByDestination(params.destination);
   const featuredTours = allTours.slice(0, 3);
 
   return (
@@ -142,7 +144,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
           <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
             Choose from our carefully curated collections, each designed to offer a unique perspective on {destination.name}
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {destination.tiers.map((tier) => {
               const tierTours = allTours.filter(t => t.tier === tier.slug);
@@ -188,20 +190,20 @@ export default function DestinationPage({ params }: DestinationPageProps) {
             <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
               Our most popular journeys, carefully selected for unforgettable experiences
             </p>
-            
+
             <div className="grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredTours.map((tour) => (
-                <TourCard 
-                  key={tour.id} 
+                <TourCard
+                  key={tour.id}
                   tour={tour}
                   destination={destination.slug}
                   tier={tour.tier}
                 />
               ))}
             </div>
-            
+
             <div className="text-center mt-12">
-              <Link 
+              <Link
                 href={`/tours/${destination.slug}/${destination.tiers[0].slug}`}
                 className="inline-block px-8 py-4 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors"
               >
@@ -253,17 +255,17 @@ export default function DestinationPage({ params }: DestinationPageProps) {
             Ready to Explore {destination.name}?
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto mb-8">
-            Let our travel specialists help you plan the perfect journey. 
+            Let our travel specialists help you plan the perfect journey.
             Get personalized recommendations and expert advice.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
+            <Link
               href="/contact"
               className="inline-block px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-gray-100 transition-colors"
             >
               Speak to a Specialist
             </Link>
-            <Link 
+            <Link
               href="/tours"
               className="inline-block px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors"
             >

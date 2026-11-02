@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Suspense } from 'react';
 import TourFinder from '@/components/TourFinder';
-import { getAllActiveTours } from '@/lib/data/tours';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 import { tourImage } from '@/lib/site-media';
 
 export const metadata: Metadata = {
@@ -28,8 +28,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FindTourPage() {
-  const allTours = getAllActiveTours();
+export const revalidate = 15;
+
+export default async function FindTourPage() {
+  const allTours = await getPublishedActiveTours();
 
   return (
     <>

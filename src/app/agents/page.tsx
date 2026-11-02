@@ -20,7 +20,7 @@ import {
   UsersRound,
 } from 'lucide-react';
 
-import { getTourBySlug } from '@/lib/data/tours';
+import { formatPublishedTourCities, getPublishedTours } from '@/lib/data/published-tour-catalog';
 import { OCTOBER_2026_SPOTLIGHT_TOURS } from '@/lib/campaigns/october-2026-spotlight';
 
 export const metadata: Metadata = {
@@ -123,10 +123,11 @@ const digitalAgentTools = [
   },
 ];
 
-const AgentsPage = () => {
+const AgentsPage = async () => {
+  const tours = await getPublishedTours();
   const otherSpotlight = OCTOBER_2026_SPOTLIGHT_TOURS.map((card) => ({
     card,
-    tour: getTourBySlug(card.destination, card.tier, card.slug),
+    tour: tours.find((item) => item.destination === card.destination && item.tier === card.tier && item.slug === card.slug),
   }));
 
   return (
@@ -427,7 +428,7 @@ const AgentsPage = () => {
 
           <div className="grid gap-6 md:grid-cols-2">
             {otherSpotlight.map(({ card, tour }) => {
-              if (!tour) return null;
+              if (!tour?.isActive || tour.soldOut) return null;
               const displayName = tour.name.replace(/^China Discovery — /, '');
               return (
                 <Link
@@ -446,11 +447,11 @@ const AgentsPage = () => {
                   </div>
                   <div className="flex flex-col justify-center p-6">
                     <p className="text-xs font-bold uppercase tracking-widest text-primary">
-                      {card.departureLabel}
+                      {tour.departureDates?.[0] ?? 'Ask CTS for the next departure'}
                     </p>
                     <h3 className="mt-3 font-serif text-2xl font-semibold text-gray-900">{displayName}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                      {tour.duration} · {card.routeCities.join(' · ')}
+                      {tour.duration} · {tour.tourCities?.length ? formatPublishedTourCities(tour.tourCities) : card.routeCities.join(' · ')}
                     </p>
                     <p className="mt-4 font-bold text-primary">{tour.price}</p>
                     <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-gray-900 group-hover:text-primary">

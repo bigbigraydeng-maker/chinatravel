@@ -16,7 +16,7 @@ Scope: Organic SEO + editorial briefs; aligns with `CONTENT_PIVOT` in `src/lib/d
 | Product | Standard product URL | October campaign LP | Core head terms (EN) |
 |---------|----------------------|---------------------|----------------------|
 | Beijing & Xi’an — A Tale of Two Cities | `/tours/china/discovery/beijing-xian` | `/campaigns/october-2026/tale-of-two-cities` | beijing xian tour, great wall terracotta warriors, first time china, NZ departure |
-| Shanghai & Surroundings (Jiangnan loop) | `/tours/china/discovery/shanghai-surroundings` | `/campaigns/october-2026/shanghai-surroundings` | shanghai surroundings tour, west lake, jiangnan, NZ departure |
+| Shanghai & Beyond (Jiangnan loop) | `/tours/china/discovery/shanghai-surroundings` | `/campaigns/october-2026/shanghai-surroundings` | Shanghai & Beyond tour, west lake, jiangnan, NZ departure |
 
 ## 3) Supporting blog ↔ URL map (T036–T040)
 

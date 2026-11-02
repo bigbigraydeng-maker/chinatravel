@@ -580,7 +580,7 @@ For travel during peak periods — October Golden Week (Oct 1–7), Chinese New 
 For travel during shoulder seasons (March–May, November), 3 months is generally sufficient for group tours. Tailor-made itineraries need slightly more time for careful planning — 4 months is ideal.
 
 Key items that require early booking:
-- Domestic flight tickets during peak periods
+- Flights within China during peak periods
 - High-speed rail tickets on popular routes (Beijing–Xi'an)
 - Accommodation in major cities at quality properties
 - Specialist experiences (panda volunteer programme, private Great Wall access)`
@@ -593,7 +593,7 @@ Key items that require early booking:
 
 <strong>Usually included:</strong>
 - Airport transfers (arrival and departure)
-- All domestic transport (private vehicle, domestic flights or high-speed rail between cities)
+- All transport within China (private vehicle, flights within China or high-speed rail between cities)
 - Accommodation (twin or double room as specified)
 - Breakfast daily; some dinners as noted
 - English-speaking local guide at each destination
@@ -676,7 +676,7 @@ Recommended NZ providers: Southern Cross Travel Insurance, Cover-More, IAG/AMI. 
 - Personal spending (lunches, souvenirs, tips): NZD 600–900
 - <strong>Total: NZD 4,130–5,970</strong>
 
-<strong>Signature tailor-made (4-star hotels):</strong>
+<strong>Signature tailor-made (5-star hotels):</strong>
 - Tour package: NZD 5,500–7,500 per person
 - Personal spending: NZD 800–1,200
 - <strong>Total: NZD 6,630–9,170</strong>
@@ -713,7 +713,7 @@ Our guides handle payments for group activities; this is most relevant for perso
 
 <strong>Discovery Tours (group departures):</strong>
 - <a href="/tours/china/discovery/beijing-xian">A Tale of Two Cities — Beijing & Xi'an</a> (7 days)
-- <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Surroundings</a> (7 days)
+- <a href="/tours/china/discovery/shanghai-surroundings">Shanghai & Beyond</a> (7 days)
 - Fixed departure dates throughout the year
 - Small group departures
 - Includes accommodation, transport, guide, major entrance fees

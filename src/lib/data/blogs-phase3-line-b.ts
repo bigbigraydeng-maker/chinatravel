@@ -2,7 +2,7 @@ import type { BlogPost } from '@/lib/types/blog-post';
 import { migratedUnsplash, tourImage } from '@/lib/site-media';
 
 /**
- * Phase 3 — Line B: Shanghai & Surroundings (5 posts)
+ * Phase 3 — Line B: Shanghai & Beyond (5 posts)
  * Slugs: shanghai-skyline-modern-china, suzhou-gardens-classical-beauty,
  *        hangzhou-west-lake-romance, zhujiajiao-water-village,
  *        yangtze-river-cruise-journey
@@ -66,7 +66,7 @@ What you are seeing is what China built in 30 years — the physical manifestati
 - **Must-visit at night:** The Bund promenade (7–9pm), Tianzifang laneway area (lively after dark), Bar Rouge for the Pudong view.
 - **Day trips:** Suzhou (30 minutes by high-speed rail), Hangzhou (45 minutes), Zhujiajiao water village (1 hour by bus).
 
-Shanghai is the gateway for our [Shanghai & Surroundings Discovery tour](/tours/china/discovery/shanghai-surroundings) and can be added to any custom itinerary. [Contact us](/contact) to discuss.
+Shanghai is the gateway for our [Shanghai & Beyond Discovery tour](/tours/china/discovery/shanghai-surroundings) and can be added to any custom itinerary. [Contact us](/contact) to discuss.
     `
   },
 
@@ -119,7 +119,7 @@ The city of Suzhou itself is worth a half-day beyond the gardens: the old canal 
 
 **Day trip from Shanghai:** High-speed rail from Shanghai Hongqiao or Shanghai Railway Station to Suzhou takes 25–35 minutes. Tickets cost CNY 26–41. Taxis from Suzhou station to the garden district take 10 minutes and cost CNY 15–20.
 
-We include Suzhou on our [Shanghai & Surroundings Discovery tour](/tours/china/discovery/shanghai-surroundings). Read our full [Suzhou travel guide](/suzhou-travel-guide) for more detail on the city.
+We include Suzhou on our [Shanghai & Beyond Discovery tour](/tours/china/discovery/shanghai-surroundings). Read our full [Suzhou travel guide](/suzhou-travel-guide) for more detail on the city.
     `
   },
 
@@ -174,7 +174,7 @@ The hills surrounding the lake contain temples, Buddhist statuary, tea plantatio
 - **Best time:** Spring (March–April) for the tea harvest and early flowers; autumn (October) for cool temperatures and autumn colour. Avoid summer weekends when the lake is very crowded.
 - **Accommodation:** Staying overnight is worth it — West Lake in the early morning before tour groups arrive is a different experience from the midday chaos.
 
-We include Hangzhou on our [Shanghai & Surroundings Discovery tour](/tours/china/discovery/shanghai-surroundings). For the full regional context, read our [Hangzhou travel guide](/hangzhou-travel-guide).
+We include Hangzhou on our [Shanghai & Beyond Discovery tour](/tours/china/discovery/shanghai-surroundings). For the full regional context, read our [Hangzhou travel guide](/hangzhou-travel-guide).
     `
   },
 
@@ -220,7 +220,7 @@ Zhujiajiao's defining feature among the water towns is its bridges. Fangsheng Br
 - **Food:** Zongzi (sticky rice in bamboo leaves), braised pork trotters, and freshwater fish are the local specialities. The restaurants along the back canal lanes are substantially better value than the main street tourist operations.
 - **Time required:** Half a day is sufficient; a full day if you want to linger.
 
-Zhujiajiao is included as an optional excursion on our [Shanghai & Surroundings Discovery tour](/tours/china/discovery/shanghai-surroundings). It also pairs naturally with a morning in Suzhou or an afternoon in Hangzhou as part of a Jiangnan region exploration.
+Zhujiajiao is included as an optional excursion on our [Shanghai & Beyond Discovery tour](/tours/china/discovery/shanghai-surroundings). It also pairs naturally with a morning in Suzhou or an afternoon in Hangzhou as part of a Jiangnan region exploration.
     `
   },
 

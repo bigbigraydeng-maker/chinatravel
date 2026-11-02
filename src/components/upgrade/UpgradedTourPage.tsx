@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { type Tour, getAllActiveTours, getDestinationBySlug } from '@/lib/data/tours';
+import { type Tour, getDestinationBySlug } from '@/lib/data/tours';
+import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
 import { getTourPageFaqsForTour } from '@/lib/schema-tour';
 import { experiences, includesExperience, matchingOffer, tourUrl } from '@/lib/tour-discovery';
 import JourneyGallery from './JourneyGallery';
@@ -15,109 +16,6 @@ import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import FAQSection from '@/components/FAQSection';
 import { TourDepartureTable, TourBookingTerms, hasDepartureRows } from '@/components/tours/TourGoldenBlocks';
 import { getSoloTourPrice } from '@/lib/tour-price';
-
-const goldenDayHeadings: Record<number, string> = {
-  1: 'Your journey begins',
-  2: 'A welcome to Beijing',
-  3: 'The heart of imperial Beijing',
-  4: 'Walk the Great Wall',
-  5: 'Hutong life & palace gardens',
-  6: 'By rail to ancient Xi’an',
-  7: 'Meet the Terracotta Warriors',
-  8: 'City walls to Shanghai skylines',
-  9: 'A water town & an evening river cruise',
-  10: 'Gardens, museums & the Bund',
-  11: 'Shanghai at your own pace',
-  12: 'Welcome home',
-};
-
-const relatedImages: Record<string, { src: string; alt: string }> = {
-  'beijing-xian': { src: '/images/cts-upgrade/tour-terracotta.webp', alt: 'Terracotta Warriors in Xi’an' },
-  essentials: { src: '/images/cts-upgrade/spotlight-temple-landscape.webp', alt: 'The complete Temple of Heaven seen through an arch in Beijing' },
-};
-
-const goldenPhotos = [
-  { src: '/images/cts-upgrade/experience-wall.webp', alt: 'The Great Wall, China' },
-  { src: '/images/cts-upgrade/tour-terracotta.webp', alt: 'The Terracotta Warriors in Xi’an' },
-  { src: '/images/cts-upgrade/search-bund.webp', alt: 'Shanghai’s waterfront skyline' },
-  { src: '/images/cts-upgrade/tour-temple.webp', alt: 'The Temple of Heaven in Beijing' },
-];
-
-const galleryAlts: Record<string, string[]> = {
-  'beijing-xian': [
-    'Golden guardian lion at Beijing’s Forbidden City',
-    'The Terracotta Warriors in Xi’an',
-  ],
-  essentials: [
-    'Shanghai’s illuminated skyline at night',
-    'Canals and traditional buildings in a Jiangnan water town',
-  ],
-  'shanghai-surroundings': [
-    'A traditional canal town in the Yangtze Delta',
-    'Shanghai’s illuminated waterfront at night',
-  ],
-  'yunnan-explorer': [
-    'Songzanlin Monastery reflected in Lamuyangcuo Lake, Shangri-La',
-    'The Three Pagodas beneath the Cangshan Mountains near Dali',
-    'A canal running through Lijiang Old Town',
-    'A traditional village in Yunnan’s highland landscape',
-    'Songzanlin Monastery in Shangri-La',
-  ],
-  zhangjiajie: [
-    'Sandstone peaks across Zhangjiajie National Forest Park',
-    'The Avatar-like sandstone spires of Zhangjiajie',
-    'Zhangjiajie Grand Canyon Glass Bridge',
-    'The cliff-edge glass walkway on Tianmen Mountain',
-    'Zhangjiajie railway station, the starting point for this stopover',
-  ],
-};
-
-const additionalGalleryImages: Record<string, { src: string; alt: string }[]> = {
-  'beijing-xian': [
-    { src: '/images/tours/great-wall-green-1600.jpg', alt: 'The Great Wall crossing green mountain ridges near Beijing' },
-    { src: '/images/tours/beijing-temple-2-1600.jpg', alt: 'Imperial architecture at the Temple of Heaven in Beijing' },
-    { src: '/images/tours/xian-terracotta-2-1600.jpg', alt: 'Rows of Terracotta Warriors in Xi’an' },
-  ],
-  essentials: [
-    { src: '/images/tours/great-wall-cloud-sea-1600.jpg', alt: 'The Great Wall rising above a sea of clouds' },
-    { src: '/images/tours/beijing-temple-1600.jpg', alt: 'The Temple of Heaven in Beijing' },
-    { src: '/images/tours/xian-terracotta-1600.jpg', alt: 'Terracotta Warriors archaeological site in Xi’an' },
-  ],
-  'shanghai-surroundings': [
-    { src: '/images/blog/inline/jiangnan-water-town.webp', alt: 'Red lanterns beside a canal in a Jiangnan water town' },
-    { src: '/images/cts-upgrade/planner-westlake.webp', alt: 'West Lake and traditional gardens in Hangzhou' },
-    { src: '/images/tours/shanghai-yuyuan-night-1600.jpg', alt: 'Traditional architecture near Yu Garden illuminated at night' },
-  ],
-};
-
-const localGallerySources: Record<string, string[]> = {
-  'beijing-xian': [
-    '/images/tours/forbidden-city-gold-lion-1600.jpg',
-    '/images/tours/xian-terracotta-1600.jpg',
-  ],
-  essentials: [
-    '/images/tours/shanghai-night-blue-1600.jpg',
-    '/images/tours/wuzhen-canal.jpg',
-  ],
-  'shanghai-surroundings': [
-    '/images/tours/wuzhen-canal.jpg',
-    '/images/tours/shanghai-night-red-1600.jpg',
-  ],
-  'yunnan-explorer': [
-    '/images/tours/shangri-la-monastery-lake.jpg',
-    '/blog/sourced/dali-three-pagodas.jpg',
-    '/blog/sourced/lijiang-old-town-canal.jpg',
-    '/images/tours/yunnan-village.jpg',
-    '/images/tours/shangri-la-monastery.jpg',
-  ],
-  zhangjiajie: [
-    '/images/guides/zhangjiajie/huangshizhai-panorama.jpg',
-    '/images/guides/zhangjiajie/sandstone-spires.jpg',
-    '/images/guides/zhangjiajie/grand-canyon-glass-bridge.jpg',
-    '/images/tours/tianmen-mountain-glass-walkway.jpg',
-    '/images/guides/zhangjiajie/zhangjiajie-railway-station.jpg',
-  ],
-};
 
 const overviewHeadings: Record<string, string> = {
   'golden-china': 'A journey through China’s icons.',
@@ -137,30 +35,25 @@ function displayPrice(price: string) {
 }
 
 export function galleryForTour(tour: Tour) {
-  if (tour.slug === 'golden-china') return goldenPhotos;
-  const sources = localGallerySources[tour.slug] ?? (tour.gallery?.length ? tour.gallery : [tour.heroImage]);
-  const alts = galleryAlts[tour.slug] ?? [];
-  const primary = sources.map((src, index) => ({
+  const sources = tour.gallery?.length ? tour.gallery : [tour.heroImage];
+  return sources.map((src, index) => ({
     src,
-    alt: alts[index] ?? `${shortTourName(tour)} journey photograph ${index + 1}`,
+    alt: `${shortTourName(tour)} journey photograph ${index + 1}`,
   }));
-  return [...primary, ...(additionalGalleryImages[tour.slug] ?? [])];
 }
 
-function dayHeading(tour: Tour, day: Tour['itinerary'][number]) {
-  if (tour.slug === 'golden-china') return goldenDayHeadings[day.day] || day.title;
+function dayHeading(day: Tour['itinerary'][number]) {
   if (day.festiveLabel && !day.title.toLowerCase().includes(day.festiveLabel.toLowerCase())) {
     return `${day.festiveLabel}: ${day.title}`;
   }
   return day.title;
 }
 
-export default function UpgradedTourPage({ tour }: { tour: Tour }) {
+export default async function UpgradedTourPage({ tour }: { tour: Tour }) {
   const destination = getDestinationBySlug(tour.destination)!;
   const photos = galleryForTour(tour);
-  const related = getAllActiveTours()
-    .filter((candidate) => candidate.slug !== tour.slug && candidate.destination === tour.destination && matchingOffer(candidate, {}))
-    .sort((a, b) => Number(b.departureDates?.some((date) => date.includes('December 2026'))) - Number(a.departureDates?.some((date) => date.includes('December 2026'))))
+  const related = (await getPublishedActiveTours())
+    .filter((candidate) => candidate.slug !== tour.slug && candidate.destination === tour.destination && !candidate.soldOut && matchingOffer(candidate, {}))
     .slice(0, 3);
   const leadDeparture = tour.departureDates?.[0];
   const leadPrice = (leadDeparture && tour.departurePricing?.[leadDeparture]) || tour.price;
@@ -176,7 +69,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
           <p className="text-xs font-semibold uppercase tracking-[.2em] text-primary">
             {destination.name} · {tour.tier} · {tour.duration}
           </p>
-          <h1 className="mt-4 font-serif text-4xl md:text-6xl">{shortTourName(tour)}</h1>
+          <h1 className="mt-4 font-serif text-4xl md:text-6xl">{tour.title || shortTourName(tour)}</h1>
           <p className="mt-5 text-lg leading-relaxed text-ink-muted">{tour.shortDescription}</p>
         </div>
         {tour.soldOut && (
@@ -295,7 +188,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
                       Day {String(day.day).padStart(2, '0')}{day.festiveLabel ? ` · ${day.festiveLabel}` : ''}
                     </span>
                     <h3 className="mt-2 flex justify-between gap-4 font-serif text-xl md:text-2xl">
-                      {dayHeading(tour, day)}<span className="text-lg text-primary" aria-hidden>＋</span>
+                      {dayHeading(day)}<span className="text-lg text-primary" aria-hidden>＋</span>
                     </h3>
                     <p className="mt-2 text-sm text-ink-muted">
                       {day.meals.length ? `${day.meals.join(', ')} · ` : ''}View full day
@@ -336,7 +229,7 @@ export default function UpgradedTourPage({ tour }: { tour: Tour }) {
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {related.map((candidate) => {
             const offer = matchingOffer(candidate, {})!;
-            const photo = relatedImages[candidate.slug] ?? { src: candidate.heroImage, alt: candidate.name };
+            const photo = { src: candidate.heroImage, alt: candidate.title || candidate.name };
             return (
               <Link href={`${tourUrl(candidate)}${offer.date ? `?date=${offer.date}` : ''}`} key={candidate.id} className="overflow-hidden rounded-2xl border border-warm-200 bg-white">
                 <div className="relative aspect-[16/10]">

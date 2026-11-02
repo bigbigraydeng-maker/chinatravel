@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { buildCtsPageMetadata } from '@/lib/seo-metadata';
 import CityTourHub from '@/components/seo/CityTourHub';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getToursByCityName } from '@/lib/data/tours';
+import { getPublishedToursByCityName } from '@/lib/data/published-tour-catalog';
 import { generateTouristDestinationSchema, generateBreadcrumbListSchema } from '@/lib/schema-seo';
 import { hangzhouToursMeta } from '@/lib/data/seo-pages';
 
@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function HangzhouToursPage() {
-  const tours = getToursByCityName('hangzhou');
+export default async function HangzhouToursPage() {
+  const tours = await getPublishedToursByCityName('hangzhou');
 
   const schemas = [
     generateTouristDestinationSchema('Hangzhou', hangzhouToursMeta.description, '/hangzhou-tours', tours),

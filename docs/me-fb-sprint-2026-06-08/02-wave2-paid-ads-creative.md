@@ -1,6 +1,6 @@
 # Wave 2 — 18 个 paid ad creative (3 Campaign × 6)
 
-> **目标**：18 个 FB Ads creative (3 Campaign 各 6) — Best of China 主推 + Tale of Two Cities + Shanghai & Surroundings
+> **目标**：18 个 FB Ads creative (3 Campaign 各 6) — Best of China 主推 + Tale of Two Cities + Shanghai & Beyond
 > **预计耗时**：4-6 小时
 > **风险等级**：低（creative 本质是内容，启动需要 Token 但内容可先做）
 
@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | **Campaign A — Best of China (Essentials 主推)** | Essentials 9/3 NZD $4,539 | NZ 45-70 文化深度游 + 1% LAL of past 2yr buyers | **60%** (NZD 1,260) | `/tours/china/discovery/essentials` |
 | **Campaign B — Tale of Two Cities** | Beijing+Xi'an 10/15 NZD $3,480 | NZ 50-70 culture seekers + lookalike past 2yr | 20% (NZD 420) | `/campaigns/october-2026/tale-of-two-cities` |
-| **Campaign C — Shanghai & Surroundings** | Shanghai 10/14 NZD $3,399 | NZ 40-60 first-timer travelers | 20% (NZD 420) | `/campaigns/october-2026/shanghai-surroundings` |
+| **Campaign C — Shanghai & Beyond** | Shanghai 10/14 NZD $3,399 | NZ 40-60 first-timer travelers | 20% (NZD 420) | `/campaigns/october-2026/shanghai-surroundings` |
 
 ---
 
@@ -122,7 +122,7 @@ Wave 2 creative 内容可以**立即写**（不依赖 Token）。但**实际推�
 ## 完成
 - Campaign A Best of China: 6 creative ✅ docs/me-fb-sprint-2026-06-08/wave2-paid-ads/campaign-best-of-china/
 - Campaign B Tale of Two Cities: 6 creative ✅
-- Campaign C Shanghai & Surroundings: 6 creative ✅
+- Campaign C Shanghai & Beyond: 6 creative ✅
 
 ## R1 audit 状态
 - Wave 1 R1 audit 结果应用到 Wave 2 ad copy: ✅ 一致
@@ -131,7 +131,7 @@ Wave 2 creative 内容可以**立即写**（不依赖 Token）。但**实际推�
 ## 主推权重
 - Campaign A 60% (Best of China 主推)
 - Campaign B 20% (Tale of Two Cities)
-- Campaign C 20% (Shanghai & Surroundings)
+- Campaign C 20% (Shanghai & Beyond)
 
 ## 待 PM 决策
 - [ ] 18 个 creative 文案是否批准

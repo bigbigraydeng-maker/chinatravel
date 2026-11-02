@@ -331,7 +331,7 @@ TOURS = [
         "key": "shanghai-surroundings",
         "short": "Mar 2027",
         "collection": "China Discovery",
-        "name": "Shanghai &amp; Surroundings",
+        "name": "Shanghai &amp; Beyond",
         "flag": "GARDENS, CANALS AND WEST LAKE",
         "days": 10,
         "depart": "Auckland 25 Mar 2027",
@@ -407,7 +407,7 @@ TOURS = [
         "included": [
             "Return international airfares from Auckland",
             "Domestic airfares within China",
-            "4–5 star hotel accommodation (13 nights)",
+            "5-star hotel accommodation (13 nights)",
             "English-speaking tour guide",
             "Entrance fees and meals as specified",
             "Land transport including high-speed trains (First Class)",
@@ -455,7 +455,7 @@ TOURS = [
         "included": [
             "Return international airfares from Auckland",
             "Domestic China airfares",
-            "4–5 star accommodation (24 nights)",
+            "5-star accommodation (24 nights)",
             "Victoria Yangtze River cruise (5-star)",
             "English-speaking guide",
             "Entrance fees and specified meals",
@@ -502,7 +502,7 @@ TOURS = [
         ],
         "included": [
             "International and domestic airfares",
-            "4–5 star hotel accommodation (15 nights)",
+            "5-star hotel accommodation (15 nights)",
             "English-speaking tour guide",
             "Entrance fees and meals as specified in the itinerary",
             "Land transport",
@@ -636,7 +636,7 @@ CC_CREDITS = [
 #     stranger's face at full size and almost no wall.
 #   * China Panorama ALSO walks the wall at Juyongguan, not Mutianyu — caught by
 #     the Jev caption audit after it had already been missed here once.
-#   * Shanghai & Surroundings goes to XINSHI, not Wuzhen. The Wuzhen photos
+#   * Shanghai & Beyond goes to XINSHI, not Wuzhen. The Wuzhen photos
 #     belong to the "Shanghai & Wuzhen" stopover route and nowhere else.
 #
 # Keys starting "i:" are the paid iStock set (scripts/catalogue/assets-istock,

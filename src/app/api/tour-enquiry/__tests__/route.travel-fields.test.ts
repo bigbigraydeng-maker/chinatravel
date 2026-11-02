@@ -17,7 +17,9 @@ jest.mock('resend', () => ({
     };
   },
 }));
-jest.mock('@/lib/data/tours', () => ({ getTourBySlug: () => null }));
+jest.mock('@/lib/data/published-tour-catalog', () => ({
+  getPublishedTourBySlug: async () => ({ isActive: true, soldOut: false }),
+}));
 
 import { POST } from '../route';
 import goldenRaw from './fixtures/email-before-travel-fields.json';

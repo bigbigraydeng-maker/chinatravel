@@ -16,7 +16,7 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
   hero: {
     variant: 'water-town',
     eyebrow: 'China Discovery',
-    headline: 'Shanghai & Surroundings',
+    headline: 'Shanghai & Beyond',
     subhead: [
       { text: 'Suzhou gardens', source: 'Master of the Nets Garden' },
       { text: 'Hanfu photos and afternoon tea in a water town', source: 'Hanfu dress-up for photos and afternoon tea' },

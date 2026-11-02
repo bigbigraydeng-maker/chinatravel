@@ -36,7 +36,7 @@ wordCount: 1200
 
 <p>Shanghai is a city that moves fast and looks good doing it. The Bund — that famous waterfront promenade of colonial-era banking houses facing a skyline of futuristic towers — is one of the great urban views on earth, best appreciated at dusk when both sides of the Huangpu River glow. Beyond the view, Shanghai rewards exploration: the French Concession's tree-lined streets, the traditional Yuyuan Garden tucked amid tea houses and craft stalls, and a dining scene that rivals any city in Asia.</p>
 
-<p>For those keen to combine Shanghai with day trips to classical water towns like Suzhou or Tongli, the <a href="https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings">October 2026 Shanghai & Surroundings departure</a> is a well-paced option that shows you how much the region rewards a slower, more curious approach.</p>
+<p>For those keen to combine Shanghai with day trips to classical water towns like Suzhou or Tongli, the <a href="https://www.ctstours.co.nz/campaigns/october-2026/shanghai-surroundings">October 2026 Shanghai & Beyond departure</a> is a well-paced option that shows you how much the region rewards a slower, more curious approach.</p>
 
 <h2>Guilin & Yangshuo: The Landscape That Inspired a Thousand Paintings</h2>
 

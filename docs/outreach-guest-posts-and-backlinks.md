@@ -42,7 +42,7 @@ Use **one primary link** per article (contextual in body or author bio). UTM onl
 | Visa | China visa for New Zealand passport holders: what changed and what to book first | `/china-visa-guide-for-new-zealanders` |
 | Seasonality | Best time to visit China (by region): a Kiwi planner’s cheat sheet | `/best-time-to-visit-china` |
 | Product / campaign | 10 days in China: Yangtze Delta vs Beijing & Xi’an — how to choose | `/campaigns/spotlight` or specific tour below |
-| Shanghai line | Shanghai & Surroundings: Suzhou, Hangzhou, and the Delta in one trip | `/tours/china/discovery/shanghai-surroundings` |
+| Shanghai line | Shanghai & Beyond: Suzhou, Hangzhou, and the Delta in one trip | `/tours/china/discovery/shanghai-surroundings` |
 | Beijing–Xi’an line | Beijing, Xi’an, and high-speed rail: a practical intro for NZ travellers | `/tours/china/discovery/beijing-xian` |
 | Hub | China tours hub (only if article is broad commercial) | `/china-tours` |
 | Destination depth | [Beijing / Xi’an / …] for Kiwis: what to expect on the ground | `/beijing-travel-guide`, `/xian-travel-guide`, etc. (match article) |

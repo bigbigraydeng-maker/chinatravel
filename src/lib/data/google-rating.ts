@@ -9,7 +9,7 @@
  * scores when available"，只是一直没人替换。
  *
  * 实际去查 CTS 的 Google 商家页（2026-08-30 经 DataForSEO 拉取，
- * 地图 CID 15893702765970614450）：**4.4 分，12 条评价**。
+ * 地图 CID 15893702765970614450）：**4.4 分，12 条评价**（2026-11-01 复查：4.5 分，15 条）。
  *
  * 这不只是数字不好看的问题：
  * - aggregateRating 是专门给搜索引擎读的，Google 拿它在搜索结果里显示星级。
@@ -31,11 +31,19 @@
 /** Google 商家页真实聚合评分 */
 export const GOOGLE_RATING = {
   /** 平均分 */
-  value: 4.4,
+  value: 4.5,
   /** 评价总数 */
-  count: 12,
+  count: 15,
   /** 上次人工核实日期 —— 改数字必须同时改这里 */
-  verifiedOn: '2026-08-30',
+  verifiedOn: '2026-11-01',
+  /**
+   * 最近一条 4 星以上评价的时间。Google 只给相对时间（「3 个月前」），
+   * 不给具体日期，所以这里照实写「约」，不要编成具体日期。
+   * 改它必须同时改 verifiedOn。
+   */
+  latestGoodReviewAgo: 'about 3 months ago',
+  /** 人看的核实日期，页脚展示用 */
+  verifiedOnLabel: '1 Nov 2026',
   /** 评价来源页，供页面链接过去让人自己核对 */
   profileUrl: 'https://www.google.com/maps?cid=15893702765970614450',
 } as const

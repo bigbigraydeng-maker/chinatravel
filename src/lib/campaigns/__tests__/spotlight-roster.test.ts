@@ -3,10 +3,8 @@ import { HOME_SPOTLIGHT_TOURS } from '@/lib/data/home-spotlight';
 import { getTourBySlug } from '@/lib/data/tours';
 
 describe('Spotlight tour roster', () => {
-  it('features only Golden China on the spotlight hub and nothing on the homepage', () => {
-    expect(OCTOBER_2026_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([
-      'golden-china',
-    ]);
+  it('features nothing on the spotlight hub or the homepage while Golden China is taken down', () => {
+    expect(OCTOBER_2026_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([]);
 
     expect(HOME_SPOTLIGHT_TOURS.map(tour => tour.slug)).toEqual([]);
   });

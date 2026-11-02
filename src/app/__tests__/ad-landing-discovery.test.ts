@@ -5,8 +5,8 @@ import robots from '@/app/robots';
 import { AD_LANDING_CONFIGS } from '@/lib/ad-landing/configs';
 
 describe('ad landing pages and search engines', () => {
-  it('are not in the sitemap', () => {
-    const urls = sitemap().map((entry) => entry.url);
+  it('are not in the sitemap', async () => {
+    const urls = (await sitemap()).map((entry) => entry.url);
     expect(urls.length).toBeGreaterThan(50);
     for (const config of AD_LANDING_CONFIGS) {
       const path = `/campaigns/${config.pathKey}`;
