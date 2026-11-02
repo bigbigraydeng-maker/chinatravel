@@ -8,6 +8,7 @@ import { buildHeroFacts, selectFaqs } from '@/lib/ad-landing/facts';
 import type { AdLandingConfig, BlockSpec, HeroVariantId } from '@/lib/ad-landing/types';
 import AdFooter from './AdFooter';
 import AdHeader from './AdHeader';
+import BookCallCard from './BookCallCard';
 import CityLoop from './CityLoop';
 import FactStrip from './FactStrip';
 import FaqAccordion from './FaqAccordion';
@@ -18,6 +19,7 @@ import OtherTours from './OtherTours';
 import PriceBannerHero from './PriceBannerHero';
 import PriceDepartures from './PriceDepartures';
 import RouteMapBlock from './RouteMapBlock';
+import TravellerReviews from './TravellerReviews';
 import WaterTownHero, { type HeroProps } from './WaterTownHero';
 import { AdEnquiryPanel, AdEnquiryProvider, OpenEnquiryButton, StickyCtaBar } from './enquiry-launcher';
 
@@ -71,6 +73,10 @@ export default function AdLandingPage({
         return <LatestContent key={block.type} title={block.title} item={latest} accent={accent} />;
       case 'priceDepartures':
         return <PriceDepartures key={block.type} tour={tour} title={block.title} accent={accent} today={today} />;
+      case 'bookCall':
+        return <BookCallCard key={block.type} title={block.title} />;
+      case 'travellerReviews':
+        return <TravellerReviews key={block.type} title={block.title} note={block.note} accent={accent} />;
       case 'otherTours':
         return <OtherTours key={block.type} title={block.title} tours={otherTours} accent={accent} />;
       case 'trust':

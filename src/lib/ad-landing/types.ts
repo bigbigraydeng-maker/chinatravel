@@ -54,6 +54,10 @@ export type BlockSpec =
   | { type: 'priceDepartures'; title: string }
   /** Links to the other tours on sale, read from the published tour catalog. Needs the `otherTours` prop on the page. */
   | { type: 'otherTours'; title: string }
+  /** Real Google review excerpts with the trip each traveller took. */
+  | { type: 'travellerReviews'; title: string; note: string }
+  /** A call-to-action card: ring the consultant or send an enquiry. */
+  | { type: 'bookCall'; title: string }
   /** The site's own credentials strip (TourTrustSignals), reused as it is. */
   | { type: 'trust' }
   | { type: 'inclusions'; title: string }

@@ -19,7 +19,7 @@ import { CTS_PHONE_HREF } from '@/lib/site';
  * through this context, so the form, its fields and its conversion events are the same however the visitor reached it.
  */
 
-export type CtaLocation = 'hero' | 'sticky_bar' | 'price' | 'closing';
+export type CtaLocation = 'hero' | 'sticky_bar' | 'price' | 'closing' | 'book_call';
 
 interface LauncherValue {
   isOpen: boolean;
