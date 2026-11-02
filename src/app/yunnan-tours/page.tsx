@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: '/yunnan-tours',
     ogImagePath: 'https://qbturrydultenhlfmdcm.supabase.co/storage/v1/object/public/tour-images/shangri-la-monastery.jpg',
     ogImageAlt: 'Yunnan Tours - Lijiang, Dali, Kunming, CTS Tours',
-    keywords: ['Yunnan tours New Zealand', 'Lijiang Dali tours', 'Colorful Yunnan', 'CTS Tours'],
+    keywords: ['Yunnan tours New Zealand', 'Lijiang Dali tours', 'CTS Tours'],
     ogType: 'website',
   });
 }

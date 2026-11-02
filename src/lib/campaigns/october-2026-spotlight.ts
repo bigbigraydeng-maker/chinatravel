@@ -11,19 +11,9 @@ export type SpotlightTourCard = {
   badgeText?: string;
 };
 
-// Retain the export name for existing consumers. The campaign hub features the
-// November departure; the homepage roster (HOME_SPOTLIGHT_TOURS) is currently empty.
+// Retain the export name for existing consumers. Golden China was taken down on
+// 2026-11-02, so nothing is featured on the hub until a new spotlight tour is added.
 export const OCTOBER_2026_SPOTLIGHT_TOURS: SpotlightTourCard[] = [
-  {
-    slug: 'golden-china',
-    destination: 'china',
-    tier: 'discovery',
-    href: '/tours/china/discovery/golden-china',
-    departureLabel: '16 Nov 2026 · Auckland',
-    departureSortDate: '2026-11-16',
-    routeCities: ['Beijing', "Xi'an", 'Shanghai'],
-    badgeText: 'Now available',
-  },
   ...HOME_SPOTLIGHT_TOURS.map(ref => ({
     slug: ref.slug,
     destination: ref.destination,

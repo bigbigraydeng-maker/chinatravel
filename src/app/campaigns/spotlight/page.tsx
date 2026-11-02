@@ -30,7 +30,6 @@ export async function generateMetadata(): Promise<Metadata> {
       'CTS Tours spotlight departures',
       "Beijing Xi'an tour 2027",
       'Best of China tour',
-      'Golden China departures',
     ],
   });
 }
@@ -44,7 +43,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'Are international flights from New Zealand included?',
     answer:
-      'Yes — Golden China includes return international airfares from Auckland, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See the tour’s own inclusions list for the exact detail.',
+      'Yes — CTS group tours include return international airfares from Auckland, alongside hotels, listed meals, transfers, English-speaking guides, entrance fees, and high-speed rail/internal flights as scheduled. See the tour’s own inclusions list for the exact detail.',
   },
   {
     question: 'Do I need a visa to visit China?',
@@ -59,7 +58,7 @@ const OCTOBER_HUB_FAQS = [
   {
     question: 'How fast do these departures sell out?',
     answer:
-      'Availability can change. Contact CTS to confirm seats and room options for Golden China on 16 November 2026, along with the deposit and cancellation terms before booking.',
+      'Availability can change. Contact CTS to confirm seats and room options for the departure you are considering, along with the deposit and cancellation terms before booking.',
   },
 ];
 
