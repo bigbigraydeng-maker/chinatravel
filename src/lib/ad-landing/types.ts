@@ -13,7 +13,7 @@
  */
 
 /** Hero compositions. Each one is a different layout, not a recolour. A new tour family adds its own id and component. */
-export type HeroVariantId = 'water-town';
+export type HeroVariantId = 'water-town' | 'price-banner';
 
 /** Decorative colour only: the main buttons always stay the brand red. */
 export type AccentId = 'teal' | 'emerald' | 'slate';
@@ -52,6 +52,8 @@ export type BlockSpec =
   | { type: 'routeMap'; title: string; caption: string }
   | { type: 'latestContent'; title: string }
   | { type: 'priceDepartures'; title: string }
+  /** Links to the other tours on sale, read from the published tour catalog. Needs the `otherTours` prop on the page. */
+  | { type: 'otherTours'; title: string }
   /** The site's own credentials strip (TourTrustSignals), reused as it is. */
   | { type: 'trust' }
   | { type: 'inclusions'; title: string }
