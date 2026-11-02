@@ -58,6 +58,8 @@ export type BlockSpec =
   | { type: 'travellerReviews'; title: string; note: string }
   /** A call-to-action card: ring the consultant or send an enquiry. */
   | { type: 'bookCall'; title: string }
+  /** The site's real traveller photos, with no quotes attached. */
+  | { type: 'tripPhotos'; title: string; note: string }
   /** The site's own credentials strip (TourTrustSignals), reused as it is. */
   | { type: 'trust' }
   | { type: 'inclusions'; title: string }

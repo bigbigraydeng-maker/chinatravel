@@ -20,6 +20,7 @@ import PriceBannerHero from './PriceBannerHero';
 import PriceDepartures from './PriceDepartures';
 import RouteMapBlock from './RouteMapBlock';
 import TravellerReviews from './TravellerReviews';
+import TripPhotos from './TripPhotos';
 import WaterTownHero, { type HeroProps } from './WaterTownHero';
 import { AdEnquiryPanel, AdEnquiryProvider, OpenEnquiryButton, StickyCtaBar } from './enquiry-launcher';
 
@@ -77,6 +78,8 @@ export default function AdLandingPage({
         return <BookCallCard key={block.type} title={block.title} />;
       case 'travellerReviews':
         return <TravellerReviews key={block.type} title={block.title} note={block.note} accent={accent} />;
+      case 'tripPhotos':
+        return <TripPhotos key={block.type} title={block.title} note={block.note} accent={accent} />;
       case 'otherTours':
         return <OtherTours key={block.type} title={block.title} tours={otherTours} accent={accent} />;
       case 'trust':

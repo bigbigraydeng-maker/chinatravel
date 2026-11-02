@@ -188,6 +188,11 @@ const SHANGHAI_BEYOND_EMAIL: AdLandingConfig = {
     },
     { type: 'priceDepartures', title: 'Dates, price and booking' },
     { type: 'otherTours', title: 'More China tours to look at' },
+    {
+      type: 'tripPhotos',
+      title: 'Scenes from our travellers\' trips',
+      note: 'Photos shared with us by CTS travellers on their China trips.',
+    },
     { type: 'trust' },
     {
       type: 'faq',
