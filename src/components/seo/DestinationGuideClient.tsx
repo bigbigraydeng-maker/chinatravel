@@ -132,7 +132,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'yunnan-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Lijiang Travel Guide', slug: 'lijiang-travel-guide', emoji: '🏘️' },
@@ -144,7 +143,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'lijiang-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -156,7 +154,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'dali-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -168,7 +165,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'kunming-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
@@ -180,7 +176,6 @@ const GUIDE_CONFIG: Record<string, GuideConfig> = {
   'shangri-la-travel-guide': {
     hubUrl: '/yunnan-tours', hubLabel: 'All Yunnan Tours',
     relatedTours: [
-      { name: 'Colorful Yunnan (11 Days)', duration: '11 Days', price: 'NZD $3,899', url: '/tours/china/discovery/yunnan-explorer', image: `${TI}/shangri-la-monastery.jpg`, tier: 'discovery' },
     ],
     relatedGuides: [
       { name: 'Yunnan Travel Guide', slug: 'yunnan-travel-guide', emoji: '🌄' },
