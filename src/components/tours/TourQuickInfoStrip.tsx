@@ -58,7 +58,7 @@ export default function TourQuickInfoStrip({
     {
       label: 'Accommodation',
       value: `${hotelNights} nights`,
-      sub: tier === 'stopover' ? 'See listed hotel standard' : '4–5 star hotels',
+      sub: tier === 'stopover' ? 'See listed hotel standard' : tier === 'discovery' ? '4 star hotels' : '4–5 star hotels',
       href: '#inclusions',
     },
     {
