@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
+import { planBeacon, sendBeacon } from '@/lib/me-click-beacon';
 import { ADMIN_COOKIE_NAME } from '@/lib/auth/admin-cookie';
 import {
   MARKETING_PLAN_COOKIE_NAME,
@@ -154,8 +155,16 @@ function handleAdmin(request: NextRequest): NextResponse {
   return NextResponse.redirect(loginUrl);
 }
 
-export async function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest, event: NextFetchEvent) {
   const { pathname } = request.nextUrl;
+
+  // A link from a Magic Engine CRM mail (?me=<token>): report the click in the background and send the browser to the
+  // same address without the token. Production host only; never waits on Magic Engine (see lib/me-click-beacon.ts).
+  const beacon = planBeacon({ host: request.headers.get('host'), url: request.nextUrl, method: request.method, headers: request.headers });
+  if (beacon) {
+    if (beacon.report) event.waitUntil(sendBeacon(beacon.report));
+    return NextResponse.redirect(beacon.cleanUrl, 302);
+  }
 
   // v3.1 Phase 0: staging basic auth runs before every other gate. Bypasses
   // /api/*, /_next/*, and a few well-known paths (see checkStagingBasicAuth).
