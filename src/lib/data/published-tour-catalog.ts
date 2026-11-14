@@ -1,4 +1,4 @@
-import { tours as fallbackTours, type DayItinerary, type Tour } from '@/lib/data/tours';
+import { tours as fallbackTours, type DayItinerary, type Tour, type TourRouteVariant } from '@/lib/data/tours';
 import { isDelistedSlug } from '@/lib/data/delisted-tours';
 
 /** Shared Next data-cache tag. The ME publish callback invalidates this tag. */
@@ -35,7 +35,7 @@ export const PUBLISHED_TOUR_CATALOG_CONTRACT = {
       'hero_image', 'meta_title', 'meta_description', 'is_active', 'sold_out', 'updated_at', 'tour_cities',
       'highlights', 'itinerary', 'inclusions', 'exclusions', 'gallery', 'tags', 'faqs',
       'single_supplement', 'single_supplement_note', 'max_group_size', 'rating', 'review_count',
-      'review_summary', 'related_blog_slugs', 'quick_answer',
+      'review_summary', 'related_blog_slugs', 'route_variants', 'quick_answer',
     ],
     departure: ['tour_id', 'depart_on', 'status', 'price_text_override'],
   },
@@ -49,6 +49,11 @@ export const PUBLISHED_TOUR_CATALOG_CONTRACT = {
       record: 'tour offer and product content',
       fields: ['title', 'short_description', 'duration', 'price', 'hero_image', 'updated_at', 'tour_cities', 'highlights', 'itinerary', 'inclusions', 'exclusions', 'gallery', 'faqs', 'single_supplement', 'single_supplement_note', 'max_group_size', 'rating', 'review_count', 'review_summary', 'quick_answer'],
       surfaceGroups: ['listing and search', 'product and campaign pages', 'conversion and trip tools', 'SEO, guides and planning'],
+    },
+    {
+      record: 'alternative routes for some departures',
+      fields: ['route_variants'],
+      surfaceGroups: ['product and campaign pages'],
     },
     {
       record: 'tour metadata and relationships',
@@ -127,6 +132,8 @@ type PublishedCatalogProduct = {
   review_count: number | null;
   review_summary: string | null;
   related_blog_slugs: string[];
+  /** Optional: older feeds do not send it. Read leniently, never blocks the catalog. */
+  route_variants?: unknown;
   quick_answer: string | null;
 };
 
@@ -153,6 +160,29 @@ function isWebsiteItineraryDay(value: unknown): value is DayItinerary {
   if (value.operatorLogo !== undefined && (!isRecord(value.operatorLogo) ||
     typeof value.operatorLogo.src !== 'string' || typeof value.operatorLogo.alt !== 'string')) return false;
   return true;
+}
+
+/**
+ * Route variants are optional extras. A variant that is unreadable is skipped on its own;
+ * it must never make the whole catalog (and so the whole site) unreadable.
+ */
+export function readRouteVariants(value: unknown): TourRouteVariant[] {
+  if (!Array.isArray(value)) return [];
+  const variants: TourRouteVariant[] = [];
+  for (const item of value) {
+    if (!isRecord(item) || typeof item.id !== 'string' || typeof item.label !== 'string') continue;
+    if (!isStringArray(item.departure_dates) || item.departure_dates.length === 0) continue;
+    if (!Array.isArray(item.itinerary) || item.itinerary.length === 0 || !item.itinerary.every(isWebsiteItineraryDay)) continue;
+    variants.push({
+      id: item.id,
+      label: item.label,
+      ...(typeof item.note === 'string' && item.note.trim() !== '' ? { note: item.note } : {}),
+      departureDates: item.departure_dates,
+      ...(typeof item.map_slug === 'string' && item.map_slug !== '' ? { mapSlug: item.map_slug } : {}),
+      itinerary: item.itinerary,
+    });
+  }
+  return variants;
 }
 
 function isPublishedFaq(value: unknown): value is PublishedFaq {
@@ -273,6 +303,7 @@ function toSiteTour(product: PublishedCatalogProduct, base?: Tour): Tour {
     reviewCount: product.review_count ?? undefined,
     reviewSummary: product.review_summary ?? undefined,
     relatedBlogSlugs: product.related_blog_slugs,
+    routeVariants: readRouteVariants(product.route_variants),
     quickAnswer: product.quick_answer ?? undefined,
     maxGroupSize: product.max_group_size ?? undefined,
     // These are site-owned presentation settings, intentionally retained by slug.

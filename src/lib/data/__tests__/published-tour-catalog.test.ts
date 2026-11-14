@@ -37,6 +37,7 @@ type WebsiteProduct = {
   review_count: number | null;
   review_summary: string | null;
   related_blog_slugs: string[];
+  route_variants?: unknown;
   quick_answer: string | null;
 };
 
@@ -162,5 +163,43 @@ describe('published tour catalog adapter', () => {
 
     await expect(getPublishedTours()).resolves.toEqual(await getPublishedTours());
     expect((await getPublishedTours())[0].name).toBe('Natural China');
+  });
+});
+
+describe('route variants in the published record', () => {
+  const OCT = {
+    id: 'oct-2027', label: '16 October 2027', note: 'Zhangjiajie replaces Yunnan.',
+    departure_dates: ['16 October 2027'], map_slug: 'grand-tour-oct-2027',
+    itinerary: [{ day: 1, title: 'Oct day 1', description: 'Different route', meals: [], accommodation: 'Hotel' }],
+  };
+
+  it('carries a valid variant onto the tour, leaving the default itinerary alone', async () => {
+    setFeedResponse({ published: true, version: 9, products: [product({ route_variants: [OCT] })] });
+    const tour = await getPublishedTourBySlug('china', 'signature', 'landscapes');
+    expect(tour?.itinerary[0].title).toBe('Day 1');
+    expect(tour?.routeVariants).toEqual([{
+      id: 'oct-2027', label: '16 October 2027', note: 'Zhangjiajie replaces Yunnan.',
+      departureDates: ['16 October 2027'], mapSlug: 'grand-tour-oct-2027', itinerary: OCT.itinerary,
+    }]);
+  });
+
+  it('has no variants when the feed does not send the field (older feed)', async () => {
+    setFeedResponse({ published: true, version: 10, products: [product()] });
+    const tour = await getPublishedTourBySlug('china', 'signature', 'landscapes');
+    expect(tour?.routeVariants).toEqual([]);
+  });
+
+  it('skips a broken variant without losing the catalog or the tour', async () => {
+    const broken = [{ id: 'x' }, 'nope', { ...OCT, id: 'no-days', itinerary: [] }, { ...OCT, id: 'bad-day', itinerary: [{ day: 'one' }] }, OCT];
+    setFeedResponse({ published: true, version: 11, products: [product({ route_variants: broken })] });
+    const tours = await getPublishedTours();
+    expect(tours).toHaveLength(1);
+    expect(tours[0].routeVariants?.map((v) => v.id)).toEqual(['oct-2027']);
+  });
+
+  it('ignores a route_variants value that is not a list', async () => {
+    setFeedResponse({ published: true, version: 12, products: [product({ route_variants: 'oops' })] });
+    const tour = await getPublishedTourBySlug('china', 'signature', 'landscapes');
+    expect(tour?.routeVariants).toEqual([]);
   });
 });

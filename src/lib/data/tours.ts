@@ -5,6 +5,23 @@ import { isDelistedSlug } from './delisted-tours';
 import { aucklandToday, upcomingDepartureLabels } from './tour-dates';
 import { migratedUnsplash } from '@/lib/site-media';
 
+/**
+ * A second way to run one tour, for the departures whose route differs (e.g. China Panorama's
+ * October departure). The tour's own `itinerary` stays the default route.
+ */
+export interface TourRouteVariant {
+  id: string;
+  /** Button text, e.g. "16 Oct 2027". */
+  label: string;
+  /** One line about what is different. */
+  note?: string;
+  /** Departure dates that run this route, in the same text as `Tour.departureDates`. */
+  departureDates: string[];
+  /** Route-map drawing for this route (see TourRouteMap); none when absent. */
+  mapSlug?: string;
+  itinerary: DayItinerary[];
+}
+
 export interface Tour {
   id: string;
   slug: string;
@@ -39,6 +56,8 @@ export interface Tour {
    * Example: { '16 November 2026': 'NZD $4,999', '11 March 2027': 'NZD $4,080' }
    */
   departurePricing?: Record<string, string>;
+  /** Extra routes for some departures; the default route is `itinerary`. */
+  routeVariants?: TourRouteVariant[];
   /** City IDs for itinerary route map, in order (e.g. ['beijing', 'xian']) */
   tourCities?: string[];
   /** When set, product and campaign pages use these FAQs instead of destination-generic defaults */

@@ -11,6 +11,8 @@ interface TourInclusionsProps {
    *  - sample hotels grouped by consecutive nights per property
    */
   itinerary?: DayItinerary[];
+  /** Element id of the section; a second route's copy needs a different one. */
+  sectionId?: string;
 }
 
 interface MealTally {
@@ -59,14 +61,14 @@ export function extractHotelStays(itinerary: DayItinerary[]): HotelStay[] {
   return stays;
 }
 
-export default function TourInclusions({ inclusions, exclusions, itinerary }: TourInclusionsProps) {
+export default function TourInclusions({ inclusions, exclusions, itinerary, sectionId = 'inclusions' }: TourInclusionsProps) {
   const meals = itinerary ? countMeals(itinerary) : null;
   const totalMeals = meals ? meals.breakfast + meals.lunch + meals.dinner : 0;
   const stays = itinerary ? extractHotelStays(itinerary) : [];
   const totalHotelNights = stays.reduce((sum, s) => sum + s.nights, 0);
 
   return (
-    <section id="inclusions" className="scroll-mt-24">
+    <section id={sectionId} className="scroll-mt-24">
       <h2 className="text-3xl font-serif font-bold text-gray-900 mb-8">
         What&apos;s Included
       </h2>

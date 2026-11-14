@@ -7,6 +7,13 @@ import {
 } from '@/lib/data/tours';
 import TourHero from '@/components/tours/TourHero';
 import TourQuickInfoStrip from '@/components/tours/TourQuickInfoStrip';
+import {
+  BASE_ROUTE_ID,
+  RouteVariantProvider,
+  RouteVariantSwitcher,
+  RouteVariantView,
+  type RouteChoice,
+} from '@/components/tours/RouteVariantSwitch';
 import TourHighlights from '@/components/tours/TourHighlights';
 import TourItinerary from '@/components/tours/TourItinerary';
 import TourRouteMap from '@/components/tours/TourRouteMap';
@@ -166,8 +173,19 @@ export default async function TourPage({ params }: TourPageProps) {
     return <><SchemaMarkup data={schemas} /><TourViewContent tour={tour} /><UpgradedTourPage tour={tour} /></>;
   }
 
+  // A tour whose route differs on some departures shows a picker; every other tour is unchanged.
+  const routeVariants = tour.routeVariants ?? [];
+  const variantDates = new Set(routeVariants.flatMap((variant) => variant.departureDates));
+  const baseDates = (tour.departureDates ?? []).filter((date) => !variantDates.has(date));
+  const routeChoices: RouteChoice[] = routeVariants.length
+    ? [
+        { id: BASE_ROUTE_ID, label: baseDates.join(' · ') || 'Standard route', departureDates: baseDates },
+        ...routeVariants.map(({ id, label, note, departureDates }) => ({ id, label, note, departureDates })),
+      ]
+    : [];
+
   return (
-    <>
+    <RouteVariantProvider choices={routeChoices}>
       <SchemaMarkup data={schemas} />
       <TourViewContent tour={tour} />
 
@@ -229,13 +247,32 @@ export default async function TourPage({ params }: TourPageProps) {
         maxGroupSize={tour.maxGroupSize}
       />
 
+      <RouteVariantSwitcher />
+
       {/* Quick-facts strip — anchors that jump into the tour tabs */}
-      <TourQuickInfoStrip
-        duration={tour.duration}
-        price={tour.price}
-        itinerary={tour.itinerary}
-        tier={tour.tier}
-        singleSupplement={tour.singleSupplement}
+      <RouteVariantView
+        views={{
+          [BASE_ROUTE_ID]: (
+            <TourQuickInfoStrip
+              duration={tour.duration}
+              price={tour.price}
+              itinerary={tour.itinerary}
+              tier={tour.tier}
+              singleSupplement={tour.singleSupplement}
+            />
+          ),
+          ...Object.fromEntries(routeVariants.map((variant) => [
+            variant.id,
+            <TourQuickInfoStrip
+              key={variant.id}
+              duration={tour.duration}
+              price={tour.price}
+              itinerary={variant.itinerary}
+              tier={tour.tier}
+              singleSupplement={tour.singleSupplement}
+            />,
+          ])),
+        }}
       />
 
       <BakerTourFirstPerson tourSlug={tour.slug} tourName={tour.name} destination={tour.destination} />
@@ -273,16 +310,36 @@ export default async function TourPage({ params }: TourPageProps) {
                     label: 'Itinerary',
                     content: (
                       <>
-    {/* Route Map */}
-                  <TourRouteMap slug={tour.slug} tourName={tour.name} />
-    {/* Itinerary */}
-                  <TourItinerary
-                    itinerary={tour.itinerary}
-                    tourCities={tour.tourCities}
-                    tourName={tour.name}
-                    tourSlug={tour.slug}
-                    destination={tour.destination}
-                    tier={tour.tier}
+    {/* Route Map + Itinerary: one block per route; the picker decides which one shows */}
+                  <RouteVariantView
+                    anchorId="itinerary"
+                    views={{
+                      [BASE_ROUTE_ID]: (
+                        <>
+                          <TourRouteMap slug={tour.slug} tourName={tour.name} />
+                          <TourItinerary
+                            itinerary={tour.itinerary}
+                            tourCities={tour.tourCities}
+                            tourName={tour.name}
+                            tourSlug={tour.slug}
+                            destination={tour.destination}
+                            tier={tour.tier}
+                          />
+                        </>
+                      ),
+                      ...Object.fromEntries(routeVariants.map((variant) => [
+                        variant.id,
+                        <div key={variant.id}>
+                          {variant.mapSlug ? <TourRouteMap slug={variant.mapSlug} tourName={tour.name} /> : null}
+                          <TourItinerary
+                            itinerary={variant.itinerary}
+                            tourCities={tour.tourCities}
+                            tier={tour.tier}
+                            sectionId={`itinerary-${variant.id}`}
+                          />
+                        </div>,
+                      ])),
+                    }}
                   />
     {/* Flipbook Beta - Guilin Stopover */}
                   {tour.destination === 'china' && tour.tier === 'stopover' && tour.slug === 'guilin' && (
@@ -386,10 +443,27 @@ export default async function TourPage({ params }: TourPageProps) {
                     content: (
                       <>
                         {/* Inclusions & Exclusions */}
-                        <TourInclusions
-                          inclusions={tour.inclusions}
-                          exclusions={tour.exclusions}
-                          itinerary={tour.itinerary}
+                        <RouteVariantView
+                          anchorId="inclusions"
+                          views={{
+                            [BASE_ROUTE_ID]: (
+                              <TourInclusions
+                                inclusions={tour.inclusions}
+                                exclusions={tour.exclusions}
+                                itinerary={tour.itinerary}
+                              />
+                            ),
+                            ...Object.fromEntries(routeVariants.map((variant) => [
+                              variant.id,
+                              <TourInclusions
+                                key={variant.id}
+                                inclusions={tour.inclusions}
+                                exclusions={tour.exclusions}
+                                itinerary={variant.itinerary}
+                                sectionId={`inclusions-${variant.id}`}
+                              />,
+                            ])),
+                          }}
                         />
                       </>
                     ),
@@ -526,6 +600,6 @@ export default async function TourPage({ params }: TourPageProps) {
         tourSlug={tour.slug}
         enquirySectionId="enquiry"
       />
-    </>
+    </RouteVariantProvider>
   );
 }
