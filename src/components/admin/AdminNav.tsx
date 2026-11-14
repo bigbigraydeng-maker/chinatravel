@@ -10,12 +10,14 @@ const links = [
   { href: '/admin/images/upload', label: 'Upload' },
   { href: '/admin/images/analyze', label: 'Analyze' },
   { href: '/admin/tour-parser', label: '行程解析' },
+  { href: '/admin/passports', label: '护照' },
 ];
 
 /** 标题跟着当前模块走 —— dashboard 根页面不该顶着 "Image management" */
 function sectionTitle(pathname: string | null): string {
   if (pathname?.startsWith('/admin/image')) return 'Image management';
   if (pathname?.startsWith('/admin/tour-parser')) return 'Tour parser';
+  if (pathname?.startsWith('/admin/passports')) return '护照管理';
   return 'CTS operations';
 }
 

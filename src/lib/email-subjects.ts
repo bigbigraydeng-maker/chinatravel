@@ -18,3 +18,7 @@ export function itineraryEmailSubject(days: number, destination: string): string
   const name = DESTINATION_NAMES_EN[destination] ?? destination;
   return `Your ${days}-day ${name} itinerary`;
 }
+
+export function passportUploadSubject(tourName: string, isReminder: boolean): string {
+  return `${isReminder ? 'Reminder: ' : ''}Please upload your passport photo — ${tourName}`;
+}
