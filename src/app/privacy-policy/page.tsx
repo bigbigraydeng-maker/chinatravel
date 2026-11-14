@@ -39,7 +39,10 @@ const sections: { id: string; heading: string; body: React.ReactNode }[] = [
         <ul className="list-disc pl-6 space-y-1">
           <li>Your name, email address, and phone number</li>
           <li>Your travel preferences and itinerary requirements</li>
-          <li>Passport details (only when booking a tour)</li>
+          <li>
+            Passport details and a photo of your passport photo page (only when booking a tour &mdash; see
+            &ldquo;Passport information&rdquo; below)
+          </li>
           <li>Emergency contact details (only when booking a tour)</li>
           <li>Payment information (processed by our payment provider, not stored by us)</li>
           <li>Any correspondence you send us</li>
@@ -102,6 +105,48 @@ const sections: { id: string; heading: string; body: React.ReactNode }[] = [
     ),
   },
   {
+    id: 'passport-information',
+    heading: 'Passport information',
+    body: (
+      <>
+        <p>
+          When you book a tour we need your passport details exactly as printed, because airlines,
+          hotels, our partners in China and border authorities require them. You can send us a
+          photo of your passport photo page through a personal upload link we email you, or give it
+          to your CTS consultant.
+        </p>
+        <ul className="list-disc pl-6 space-y-1">
+          <li>
+            <strong>What we keep:</strong> your name (including any Chinese name), sex, date of
+            birth, nationality, passport number, date and place of issue, and expiry date, linked to
+            your booking.
+          </li>
+          <li>
+            <strong>How we read it:</strong> the photo is read automatically, partly by an AI
+            service (Anthropic, based in the United States) under commercial terms that do not
+            allow your data to be used to train its models. A CTS staff member then checks every
+            detail against the photo.
+          </li>
+          <li>
+            <strong>How we protect it:</strong> photos and passport numbers are encrypted when
+            stored. Only CTS staff with access to our booking system can see them, passport numbers
+            are hidden by default, and every view, change and export is logged.
+          </li>
+          <li>
+            <strong>How long we keep it:</strong> the photo of your passport is deleted 6 months
+            after your tour returns. The passport details themselves are kept with your booking
+            records (see &ldquo;How long we keep your information&rdquo;).
+          </li>
+          <li>
+            <strong>Upload links</strong> are personal to you, stop working after 14 days or once
+            you have submitted. They always come from info@ctstours.co.nz and always open a page on
+            ctstours.co.nz.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
     id: 'sharing',
     heading: 'Who we share your information with',
     body: (
@@ -118,6 +163,10 @@ const sections: { id: string; heading: string; body: React.ReactNode }[] = [
           <li>Airlines, hotels, and other travel suppliers required to fulfil your booking</li>
           <li>Our payment provider for processing payments</li>
           <li>Our website hosting and email service providers under strict confidentiality</li>
+          <li>
+            Our AI service provider (Anthropic), only to read passport photos you send us, as
+            described under &ldquo;Passport information&rdquo;
+          </li>
           <li>Government authorities where legally required (e.g. for visa or border processes)</li>
         </ul>
         <p>
@@ -175,6 +224,9 @@ const sections: { id: string; heading: string; body: React.ReactNode }[] = [
           <li>
             Booking and travel records: up to 7 years to meet tax, accounting, and insurance
             requirements
+          </li>
+          <li>
+            Photos of passports: deleted 6 months after the tour they were provided for returns
           </li>
           <li>
             Marketing subscribers: until you unsubscribe, after which we retain only minimal data
@@ -288,7 +340,7 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-3xl mx-auto">
           <header className="mb-12">
             <h1 className="text-4xl md:text-5xl font-serif font-bold mb-3">Privacy Policy</h1>
-            <p className="text-gray-500">Last updated: 14 June 2026</p>
+            <p className="text-gray-500">Last updated: 15 November 2026</p>
           </header>
 
           <nav aria-label="Table of contents" className="mb-12 p-6 bg-light rounded-lg">

@@ -190,7 +190,7 @@ function TravellerCard({
 
           <div>
             <label htmlFor={`passportExpiry-${index}`} className={labelClass}>
-              Passport expiry date <span className="text-gray-500">(optional — we never ask for your passport number here)</span>
+              Passport expiry date <span className="text-gray-500">(optional — for your passport number and photo, your CTS consultant will send you a personal, secure upload link)</span>
             </label>
             <input
               id={`passportExpiry-${index}`}
