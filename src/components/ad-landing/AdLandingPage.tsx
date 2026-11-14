@@ -8,19 +8,25 @@ import { buildHeroFacts, selectFaqs } from '@/lib/ad-landing/facts';
 import type { AdLandingConfig, BlockSpec, HeroVariantId } from '@/lib/ad-landing/types';
 import AdFooter from './AdFooter';
 import AdHeader from './AdHeader';
+import BookCallCard from './BookCallCard';
 import CityLoop from './CityLoop';
 import FactStrip from './FactStrip';
 import FaqAccordion from './FaqAccordion';
 import FeatureCards from './FeatureCards';
 import InclusionsBlock from './InclusionsBlock';
 import LatestContent from './LatestContent';
+import OtherTours from './OtherTours';
+import PriceBannerHero from './PriceBannerHero';
 import PriceDepartures from './PriceDepartures';
 import RouteMapBlock from './RouteMapBlock';
+import TravellerReviews from './TravellerReviews';
+import TripPhotos from './TripPhotos';
 import WaterTownHero, { type HeroProps } from './WaterTownHero';
 import { AdEnquiryPanel, AdEnquiryProvider, OpenEnquiryButton, StickyCtaBar } from './enquiry-launcher';
 
 const HEROES: Record<HeroVariantId, ComponentType<HeroProps>> = {
   'water-town': WaterTownHero,
+  'price-banner': PriceBannerHero,
 };
 
 /**
@@ -34,10 +40,13 @@ export default function AdLandingPage({
   config,
   tour,
   today,
+  otherTours = [],
 }: {
   config: AdLandingConfig;
   tour: Tour;
   today?: string;
+  /** The other tours on sale, for configs with an `otherTours` block. Empty hides the block. */
+  otherTours?: Tour[];
 }) {
   const facts = buildHeroFacts(tour, today);
   const latest = getLatestApprovedItem(AD_CONTENT_FEED, tour.slug, new Date());
@@ -65,6 +74,14 @@ export default function AdLandingPage({
         return <LatestContent key={block.type} title={block.title} item={latest} accent={accent} />;
       case 'priceDepartures':
         return <PriceDepartures key={block.type} tour={tour} title={block.title} accent={accent} today={today} />;
+      case 'bookCall':
+        return <BookCallCard key={block.type} title={block.title} />;
+      case 'travellerReviews':
+        return <TravellerReviews key={block.type} title={block.title} note={block.note} accent={accent} />;
+      case 'tripPhotos':
+        return <TripPhotos key={block.type} title={block.title} note={block.note} accent={accent} />;
+      case 'otherTours':
+        return <OtherTours key={block.type} title={block.title} tours={otherTours} accent={accent} />;
       case 'trust':
         return (
           <div key={block.type} className="overflow-hidden rounded-2xl border border-warm-200">
