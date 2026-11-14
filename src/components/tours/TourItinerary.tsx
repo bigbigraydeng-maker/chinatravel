@@ -13,6 +13,8 @@ interface TourItineraryProps {
   tourSlug?: string;
   destination?: string;
   tier?: string;
+  /** Element id of the section; a second route's copy needs a different one. */
+  sectionId?: string;
 }
 
 export default function TourItinerary({
@@ -21,6 +23,7 @@ export default function TourItinerary({
   tourSlug,
   destination,
   tier,
+  sectionId = 'itinerary',
 }: TourItineraryProps) {
   const showSaveActions = Boolean(tourSlug && tourName && destination && tier);
   const [expandedDays, setExpandedDays] = useState<Set<number>>(
@@ -28,7 +31,7 @@ export default function TourItinerary({
   );
 
   return (
-    <section id="itinerary" className="scroll-mt-24">
+    <section id={sectionId} className="scroll-mt-24">
       <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <h2 className="font-serif text-3xl font-bold text-gray-900">Day-by-Day Itinerary</h2>
         {showSaveActions ? (

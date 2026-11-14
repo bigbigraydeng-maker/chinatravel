@@ -19,6 +19,8 @@ const MAP_SLUGS = [
   'essentials',
   'silk-road',
   'grand-tour',
+  // China Panorama, October 2027 departure (its route differs from the May one).
+  'grand-tour-oct-2027',
   'imperial-heritage',
   'landscapes',
   'yunnan-explorer',
