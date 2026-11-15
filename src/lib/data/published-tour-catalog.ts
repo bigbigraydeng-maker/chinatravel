@@ -169,10 +169,14 @@ function isWebsiteItineraryDay(value: unknown): value is DayItinerary {
 export function readRouteVariants(value: unknown): TourRouteVariant[] {
   if (!Array.isArray(value)) return [];
   const variants: TourRouteVariant[] = [];
+  const seenIds = new Set<string>(['base']);
   for (const item of value) {
     if (!isRecord(item) || typeof item.id !== 'string' || typeof item.label !== 'string') continue;
+    // "base" is the default route's own id, and a repeated id would overwrite another route.
+    if (seenIds.has(item.id)) continue;
     if (!isStringArray(item.departure_dates) || item.departure_dates.length === 0) continue;
     if (!Array.isArray(item.itinerary) || item.itinerary.length === 0 || !item.itinerary.every(isWebsiteItineraryDay)) continue;
+    seenIds.add(item.id);
     variants.push({
       id: item.id,
       label: item.label,

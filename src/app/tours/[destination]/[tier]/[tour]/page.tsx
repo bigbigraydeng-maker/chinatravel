@@ -330,7 +330,7 @@ export default async function TourPage({ params }: TourPageProps) {
                       ...Object.fromEntries(routeVariants.map((variant) => [
                         variant.id,
                         <div key={variant.id}>
-                          {variant.mapSlug ? <TourRouteMap slug={variant.mapSlug} tourName={tour.name} /> : null}
+                          {variant.mapSlug ? <TourRouteMap slug={variant.mapSlug} tourName={tour.name} lazy /> : null}
                           <TourItinerary
                             itinerary={variant.itinerary}
                             tourCities={tour.tourCities}

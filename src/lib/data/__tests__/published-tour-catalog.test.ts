@@ -197,6 +197,13 @@ describe('route variants in the published record', () => {
     expect(tours[0].routeVariants?.map((v) => v.id)).toEqual(['oct-2027']);
   });
 
+  it('drops a variant whose id is "base" or repeats an earlier one', async () => {
+    const clash = [{ ...OCT, id: 'base' }, OCT, { ...OCT, label: 'Duplicate of oct' }];
+    setFeedResponse({ published: true, version: 12, products: [product({ route_variants: clash })] });
+    const tour = await getPublishedTourBySlug('china', 'signature', 'landscapes');
+    expect(tour?.routeVariants?.map((v) => [v.id, v.label])).toEqual([['oct-2027', '16 October 2027']]);
+  });
+
   it('ignores a route_variants value that is not a list', async () => {
     setFeedResponse({ published: true, version: 12, products: [product({ route_variants: 'oops' })] });
     const tour = await getPublishedTourBySlug('china', 'signature', 'landscapes');

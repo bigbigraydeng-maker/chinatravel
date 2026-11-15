@@ -32,6 +32,14 @@ describe('TourRouteMap', () => {
     }
   });
 
+  it('defers loading both images only when asked to (maps in a hidden alternative route)', () => {
+    const lazy = render(<TourRouteMap slug="grand-tour-oct-2027" tourName="x" lazy />);
+    expect(Array.from(lazy.container.querySelectorAll('img')).map((i) => i.getAttribute('loading'))).toEqual(['lazy', 'lazy']);
+    lazy.unmount();
+    const eager = render(<TourRouteMap slug="grand-tour-oct-2027" tourName="x" />);
+    expect(Array.from(eager.container.querySelectorAll('img')).map((i) => i.getAttribute('loading'))).toEqual([null, null]);
+  });
+
   it('renders nothing for a tour that has no map', () => {
     const { container } = render(<TourRouteMap slug="not-a-mapped-tour" tourName="x" />);
     expect(container).toBeEmptyDOMElement();
