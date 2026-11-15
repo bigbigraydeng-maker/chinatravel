@@ -1,3 +1,4 @@
+import { BASE_ROUTE_ID } from '@/lib/data/route-ids';
 import UpgradedTourPage from '@/components/upgrade/UpgradedTourPage';
 import { Metadata } from 'next';
 import Link from 'next/link';
@@ -8,7 +9,6 @@ import {
 import TourHero from '@/components/tours/TourHero';
 import TourQuickInfoStrip from '@/components/tours/TourQuickInfoStrip';
 import {
-  BASE_ROUTE_ID,
   RouteVariantProvider,
   RouteVariantSwitcher,
   RouteVariantView,
