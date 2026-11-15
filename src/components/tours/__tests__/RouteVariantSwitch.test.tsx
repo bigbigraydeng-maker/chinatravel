@@ -1,7 +1,7 @@
 import { TextEncoder } from 'util';
 import { act, fireEvent, render, screen } from '@testing-library/react';
+import { BASE_ROUTE_ID } from '@/lib/data/route-ids';
 import {
-  BASE_ROUTE_ID,
   RouteVariantProvider,
   RouteVariantSwitcher,
   RouteVariantView,

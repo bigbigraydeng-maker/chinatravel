@@ -1,9 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
-
-/** Id of the tour's own (default) route. */
-export const BASE_ROUTE_ID = 'base';
+import { BASE_ROUTE_ID } from '@/lib/data/route-ids';
 
 export interface RouteChoice {
   id: string;
