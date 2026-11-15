@@ -17,6 +17,29 @@ describe('TourRouteMap', () => {
     ]);
   });
 
+  it('has its own drawing for the China Panorama October 2027 route, with Zhangjiajie and no Yunnan', () => {
+    render(<TourRouteMap slug="grand-tour-oct-2027" tourName="China Panorama" />);
+    expect(screen.getAllByRole('img').map((i) => i.getAttribute('src'))).toEqual([
+      '/tour-maps/grand-tour-oct-2027.svg',
+      '/tour-maps/grand-tour-oct-2027-mobile.svg',
+    ]);
+    for (const file of ['grand-tour-oct-2027.svg', 'grand-tour-oct-2027-mobile.svg']) {
+      const svg = readFileSync(join(process.cwd(), 'public', 'tour-maps', file), 'utf8');
+      expect(svg.slice(0, 600)).toMatch(/<svg viewBox="0 0 \d+ \d+"/);
+      expect(svg).toContain('16 October 2027 departure');
+      expect(svg).toContain('Zhangjiajie');
+      expect(svg).not.toMatch(/Kunming|Dali/);
+    }
+  });
+
+  it('defers loading both images only when asked to (maps in a hidden alternative route)', () => {
+    const lazy = render(<TourRouteMap slug="grand-tour-oct-2027" tourName="x" lazy />);
+    expect(Array.from(lazy.container.querySelectorAll('img')).map((i) => i.getAttribute('loading'))).toEqual(['lazy', 'lazy']);
+    lazy.unmount();
+    const eager = render(<TourRouteMap slug="grand-tour-oct-2027" tourName="x" />);
+    expect(Array.from(eager.container.querySelectorAll('img')).map((i) => i.getAttribute('loading'))).toEqual([null, null]);
+  });
+
   it('renders nothing for a tour that has no map', () => {
     const { container } = render(<TourRouteMap slug="not-a-mapped-tour" tourName="x" />);
     expect(container).toBeEmptyDOMElement();

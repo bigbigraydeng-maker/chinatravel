@@ -1,6 +1,8 @@
 interface TourRouteMapProps {
   slug: string;
   tourName: string;
+  /** Defer loading the images; for maps inside a hidden alternative-route block. */
+  lazy?: boolean;
 }
 
 interface TourMapAssets {
@@ -19,6 +21,8 @@ const MAP_SLUGS = [
   'essentials',
   'silk-road',
   'grand-tour',
+  // China Panorama, October 2027 departure (its route differs from the May one).
+  'grand-tour-oct-2027',
   'imperial-heritage',
   'landscapes',
   'yunnan-explorer',
@@ -33,7 +37,7 @@ const TOUR_MAPS: Record<string, TourMapAssets> = Object.fromEntries(
   ]),
 );
 
-export default function TourRouteMap({ slug, tourName }: TourRouteMapProps) {
+export default function TourRouteMap({ slug, tourName, lazy = false }: TourRouteMapProps) {
   const assets = TOUR_MAPS[slug];
   if (!assets) return null;
 
@@ -45,12 +49,14 @@ export default function TourRouteMap({ slug, tourName }: TourRouteMapProps) {
       <img
         src={assets.desktop}
         alt={alt}
+        {...(lazy ? { loading: 'lazy' as const } : {})}
         className="hidden w-full h-auto rounded-lg border border-gray-200 shadow-sm md:block"
       />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={assets.mobile}
         alt={alt}
+        {...(lazy ? { loading: 'lazy' as const } : {})}
         className="block w-full h-auto rounded-lg border border-gray-200 shadow-sm md:hidden"
       />
     </figure>
