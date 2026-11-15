@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import PrintPageActions from '@/components/tours/PrintPageActions';
+import { resolveTourRoute } from '@/lib/data/tour-route';
 
 interface PrintPageProps {
   params: {
@@ -8,16 +9,19 @@ interface PrintPageProps {
     tier: string;
     tour: string;
   };
+  searchParams?: { route?: string | string[] };
 }
 
 export const revalidate = 15;
 
-export default async function TourPrintPage({ params }: PrintPageProps) {
+export default async function TourPrintPage({ params, searchParams }: PrintPageProps) {
   const tour = await getPublishedTourBySlug(params.destination, params.tier, params.tour);
 
   if (!tour || !tour.isActive) {
     notFound();
   }
+
+  const { itinerary, variant } = resolveTourRoute(tour, searchParams?.route);
 
   return (
     <>
@@ -62,6 +66,12 @@ export default async function TourPrintPage({ params }: PrintPageProps) {
           <p style={{ fontSize: '14px', color: '#4b5563', lineHeight: 1.6 }}>
             {tour.shortDescription}
           </p>
+          {variant ? (
+            <p style={{ fontSize: '13px', color: '#111827', lineHeight: 1.6, marginTop: '10px', fontWeight: 600 }}>
+              Itinerary for the {variant.label} departure
+              {variant.note ? <span style={{ fontWeight: 400, color: '#4b5563' }}> — {variant.note}</span> : null}
+            </p>
+          ) : null}
         </div>
 
         {/* Quick Facts */}
@@ -101,7 +111,7 @@ export default async function TourPrintPage({ params }: PrintPageProps) {
             Day-by-Day Itinerary
           </h2>
           <div>
-            {tour.itinerary.map((day) => (
+            {itinerary.map((day) => (
               <div key={day.day} className="day-row" style={{ display: 'flex', gap: '16px', marginBottom: '16px', paddingBottom: '16px', borderBottom: '1px solid #f3f4f6' }}>
                 <div style={{ flexShrink: 0, width: '40px', height: '40px', background: '#c0392b', color: 'white', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '13px' }}>
                   {day.day}

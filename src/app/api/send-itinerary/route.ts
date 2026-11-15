@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 import { getSiteUrl } from '@/lib/site';
+import { resolveTourRoute } from '@/lib/data/tour-route';
 
 const FROM_ADDRESS = 'CTS Tours <info@ctstours.co.nz>';
 const REPLY_TO = 'info@ctstours.co.nz';
@@ -14,7 +15,7 @@ export async function POST(req: NextRequest) {
   }
   const resend = new Resend(apiKey);
   try {
-    const { email, name, tourSlug, destination, tier } = await req.json();
+    const { email, name, tourSlug, destination, tier, route } = await req.json();
 
     if (!email || !tourSlug || !destination || !tier) {
       return NextResponse.json({ error: 'Missing required fields.' }, { status: 400 });
@@ -26,10 +27,11 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Tour not found.' }, { status: 404 });
     }
 
+    const { itinerary, variant } = resolveTourRoute(tour, route);
     const greeting = name ? `Hi ${name},` : 'Hi there,';
     const tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
 
-    const itineraryRows = tour.itinerary
+    const itineraryRows = itinerary
       .map(
         (day) => `
         <tr>
@@ -97,7 +99,8 @@ export async function POST(req: NextRequest) {
               <p style="margin:0 0 12px;font-size:14px;color:#374151;">${greeting}</p>
               <p style="margin:0;font-size:14px;color:#374151;line-height:1.6;">
                 Here's the full itinerary for <strong>${tour.title}</strong>. We hope it gives you a great sense of the journey ahead.
-              </p>
+              </p>${variant ? `
+              <p style="margin:12px 0 0;font-size:14px;color:#374151;line-height:1.6;">This is the itinerary for the <strong>${variant.label}</strong> departure${variant.note ? ` — ${variant.note}` : ''}</p>` : ''}
             </td>
           </tr>
 
@@ -192,7 +195,7 @@ export async function POST(req: NextRequest) {
       from: FROM_ADDRESS,
       to: email,
       replyTo: REPLY_TO,
-      subject: `Your Itinerary: ${tour.title} (${tour.duration})`,
+      subject: `Your Itinerary: ${tour.title} (${tour.duration})${variant ? ` — ${variant.label} departure` : ''}`,
       html,
     });
 

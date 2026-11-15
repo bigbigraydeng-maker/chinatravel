@@ -334,7 +334,11 @@ export default async function TourPage({ params }: TourPageProps) {
                           <TourItinerary
                             itinerary={variant.itinerary}
                             tourCities={tour.tourCities}
+                            tourName={tour.name}
+                            tourSlug={tour.slug}
+                            destination={tour.destination}
                             tier={tour.tier}
+                            route={variant.id}
                             sectionId={`itinerary-${variant.id}`}
                           />
                         </div>,

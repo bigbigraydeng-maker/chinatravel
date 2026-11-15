@@ -8,6 +8,7 @@ interface ItineraryEmailModalProps {
   tourSlug: string;
   destination: string;
   tier: string;
+  route?: string;
   onClose: () => void;
 }
 
@@ -16,6 +17,7 @@ export default function ItineraryEmailModal({
   tourSlug,
   destination,
   tier,
+  route,
   onClose,
 }: ItineraryEmailModalProps) {
   const [email, setEmail] = useState('');
@@ -32,7 +34,7 @@ export default function ItineraryEmailModal({
       const res = await fetch('/api/send-itinerary', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, name, tourSlug, destination, tier }),
+        body: JSON.stringify({ email, name, tourSlug, destination, tier, ...(route ? { route } : {}) }),
       });
 
       const data = await res.json();

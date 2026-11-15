@@ -9,6 +9,8 @@ interface ItineraryActionsProps {
   tourSlug: string;
   destination: string;
   tier: string;
+  /** Alternative-route id (e.g. oct-2027); omit for the tour's own route. */
+  route?: string;
   /** block: standalone row with bottom margin; toolbar: sits in itinerary header next to title */
   variant?: 'block' | 'toolbar';
 }
@@ -18,6 +20,7 @@ export default function ItineraryActions({
   tourSlug,
   destination,
   tier,
+  route,
   variant = 'block',
 }: ItineraryActionsProps) {
   const [showEmailModal, setShowEmailModal] = useState(false);
@@ -31,7 +34,7 @@ export default function ItineraryActions({
       timestamp: Date.now(),
     });
     window.open(
-      `/tours/${destination}/${tier}/${tourSlug}/print`,
+      `/tours/${destination}/${tier}/${tourSlug}/print${route ? `?route=${encodeURIComponent(route)}` : ''}`,
       '_blank',
       'noopener,noreferrer'
     );
@@ -73,6 +76,7 @@ export default function ItineraryActions({
           tourSlug={tourSlug}
           destination={destination}
           tier={tier}
+          route={route}
           onClose={() => setShowEmailModal(false)}
         />
       )}

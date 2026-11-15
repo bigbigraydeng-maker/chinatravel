@@ -13,6 +13,8 @@ interface TourItineraryProps {
   tourSlug?: string;
   destination?: string;
   tier?: string;
+  /** Alternative-route id for the Print / Email buttons; omit for the tour's own route. */
+  route?: string;
   /** Element id of the section; a second route's copy needs a different one. */
   sectionId?: string;
 }
@@ -23,6 +25,7 @@ export default function TourItinerary({
   tourSlug,
   destination,
   tier,
+  route,
   sectionId = 'itinerary',
 }: TourItineraryProps) {
   const showSaveActions = Boolean(tourSlug && tourName && destination && tier);
@@ -40,6 +43,7 @@ export default function TourItinerary({
             tourSlug={tourSlug!}
             destination={destination!}
             tier={tier!}
+            route={route}
             variant="toolbar"
           />
         ) : null}
