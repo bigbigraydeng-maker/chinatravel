@@ -222,16 +222,16 @@ export default async function BlackFridayLandingPage() {
           </p>
 
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
+            <div className="min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
               <h3 className="text-2xl font-serif font-bold" style={{ color: RED }}>
                 Travel with your Bestie or Mate
               </h3>
               <p className="mt-2 text-gray-700">The more of you on one booking, the more each of you saves.</p>
-              <table className="mt-5 w-full text-left text-sm md:text-base">
+              <table className="mt-5 w-full text-left text-[13px] sm:text-sm md:text-base">
                 <thead>
                   <tr className="border-b border-gray-200 text-gray-500">
-                    <th className="py-2 font-semibold">People on the booking</th>
-                    <th className="py-2 font-semibold">Signature (each)</th>
+                    <th className="py-2 pr-2 font-semibold">People</th>
+                    <th className="py-2 pr-2 font-semibold">Signature (each)</th>
                     <th className="py-2 font-semibold">Discovery (each)</th>
                   </tr>
                 </thead>
@@ -250,12 +250,12 @@ export default async function BlackFridayLandingPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl bg-white p-6 shadow-sm border border-gray-100">
+            <div className="min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
               <h3 className="text-2xl font-serif font-bold" style={{ color: RED }}>
                 Couple &amp; Family Travel
               </h3>
               <p className="mt-2 text-gray-700">Book together as a family — couples count as family.</p>
-              <div className="mt-5 grid grid-cols-2 gap-4">
+              <div className="mt-5 grid grid-cols-2 gap-3 md:gap-4">
                 <div className="rounded-xl bg-[#FBF7F0] p-4">
                   <p className="text-sm text-gray-600">Signature tours</p>
                   <p className="mt-1 text-3xl font-serif font-bold text-gray-900">{nzd(FAMILY_SAVING.signature)}</p>
