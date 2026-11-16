@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import '../styles/globals.css';
 import ConditionalChrome from '@/components/ConditionalChrome'
 import TrackingScripts from '@/components/TrackingScripts';
+import MePageViewBeacon from '@/components/MePageViewBeacon';
 import FirstTouchTracker from '@/components/FirstTouchTracker';
 import { META_PIXEL_IDS } from '@/lib/analytics/meta-pixels';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
@@ -75,6 +76,7 @@ export default function RootLayout({
       <body className="font-sans antialiased" suppressHydrationWarning>
         <ConditionalChrome>{children}</ConditionalChrome>
         <TrackingScripts />
+        <MePageViewBeacon />
         <FirstTouchTracker />
         <GoogleAnalytics />
         {/* No-JS PageView fallback — mirrors both datasets initialised in <TrackingScripts>. */}
