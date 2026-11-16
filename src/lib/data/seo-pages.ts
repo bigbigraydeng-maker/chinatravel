@@ -70,7 +70,7 @@ export const chinaToursMeta: SeoPageMeta = {
     },
     {
       question: 'Which is the best China tour package for first-time visitors?',
-      answer: 'For first-time visitors, Golden China is a focused 12-day journey through Beijing, Xi\'an and Shanghai, departing Auckland on 16 November 2026 from NZD $4,999. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
+      answer: 'For first-time visitors, Golden China is a focused 12-day journey through Beijing, Xi\'an and Shanghai; it has no departure published right now — contact us for upcoming dates. For a shorter trip, compare our 2027 Tale of Two Cities departures.'
     },
     {
       question: 'What makes CTS Tours different from other China travel agencies in NZ?',

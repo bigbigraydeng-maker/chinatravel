@@ -96,15 +96,15 @@ If you’re trying to set a budget, this is the band Kiwi travellers should plan
 |------------|--------|---------------------------------------------------------------|
 | Stopover / city break | 3 – 5 days | From around NZD $1,500 – $2,500 per person |
 | Discovery 10-day route (e.g. Beijing – Xi’an) | 10 days | From around NZD $2,800 – $3,500 per person |
-| Discovery 12-day Golden China (16 Nov 2026) | 12 days | **NZD $4,999 per person** |
+| Discovery 12-day Golden China | 12 days | No departure published right now — contact us for upcoming dates |
 | Discovery 15-day Best of China (11 Mar 2027) | 15 days | **NZD $4,080 per person** |
 | Yunnan Explorer or specialist Discovery routes | 14 – 17 days | From around NZD $4,500 – $5,500 per person |
 | Signature small-cap, boutique 4 – 5 star | 14 – 21 days | From around NZD $6,000 – $8,000 per person |
 | Bespoke private (tailor-made) | Any | Quoted per itinerary; varies significantly |
 
-Golden China is open for enquiries for its 16 November 2026 departure at NZD $4,999 per person twin-share. Best of China prices are published for its listed departures. Everything else is the range I’d quote a traveller as a starting point — the exact figure depends on the itinerary, the season and the routing.
+Golden China has no departure published right now — contact us for upcoming dates. Best of China prices are published for its listed departures. Everything else is the range I’d quote a traveller as a starting point — the exact figure depends on the itinerary, the season and the routing.
 
-For the 15-day Best of China specifically, see the published itinerary, departures and inclusions on the [Best of China tour page](/tours/china/discovery/essentials). Note our 3 November 2026 Best of China departure has **sold out** — the confirmed 2027 departures are 11 March 2027 and 13 May 2027. The 12-day [Golden China](/tours/china/discovery/golden-china) departure on 16 November 2026 is open for enquiries from NZD $4,999 per person twin-share.
+For the 15-day Best of China specifically, see the published itinerary, departures and inclusions on the [Best of China tour page](/tours/china/discovery/essentials). Note our 3 November 2026 Best of China departure has **sold out** — the confirmed 2027 departures are 11 March 2027 and 13 May 2027. The 12-day Golden China tour has no departure published right now — contact us for upcoming dates, or compare our current [China Discovery tours](/tours/china/discovery).
 
 ## How airfare seasonality shows up in the price
 
@@ -161,7 +161,7 @@ A few next steps depending on where you are:
 <p>Yes. All CTS Tours’ published Discovery and Signature group tours sold to New Zealand travellers include return international flights from Auckland as part of the lead-in price, plus the domestic flights inside China that the itinerary requires. You don’t book the international ticket separately.</p>
 
 <h3>What does an inclusive 15-day China tour cost from Auckland in 2026 – 27?</h3>
-<p>For CTS Tours’ 15-day Best of China inclusive package, the lead-in price is NZD $4,080 per person twin-share for the confirmed 2027 departures on 11 March 2027 and 13 May 2027 (the 3 November 2026 departure has sold out). The 12-day Golden China departure on 16 November 2026 is open for enquiries from NZD $4,999 per person twin-share. See each departure’s inclusions for international airfare details.</p>
+<p>For CTS Tours’ 15-day Best of China inclusive package, the lead-in price is NZD $4,080 per person twin-share for the confirmed 2027 departures on 11 March 2027 and 13 May 2027 (the 3 November 2026 departure has sold out). The 12-day Golden China tour has no departure published right now — contact us for upcoming dates. See each departure’s inclusions for international airfare details.</p>
 
 <h3>Which airline operates the Auckland to China flights on CTS tours?</h3>
 <p>CTS Tours uses scheduled commercial carriers on the Auckland to China corridor. China Eastern Airlines has been a primary partner on Auckland – Beijing and Auckland – Shanghai routings; routing on any specific booking depends on dates and availability. We confirm the exact carrier and routing in writing before you commit.</p>
@@ -233,15 +233,6 @@ A few next steps depending on where you are:
       "availability": "https://schema.org/InStock",
       "url": "https://ctstours.co.nz/tours/china/discovery/essentials",
       "itemCondition": "https://schema.org/NewCondition"
-    },
-    {
-      "@type": "Offer",
-      "name": "Golden China — 16 November 2026",
-      "price": "4999",
-      "priceCurrency": "NZD",
-      "availability": "https://schema.org/InStock",
-      "url": "https://ctstours.co.nz/tours/china/discovery/golden-china",
-      "itemCondition": "https://schema.org/NewCondition"
     }
   ]
 }
@@ -265,7 +256,7 @@ A few next steps depending on where you are:
       "name": "What does an inclusive 15-day China tour cost from Auckland in 2026 – 27?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CTS Tours’ 15-day Best of China inclusive package is NZD $4,080 per person twin-share for the confirmed 2027 departures on 11 March 2027 and 13 May 2027; the 3 November 2026 departure has sold out. The 12-day Golden China departure on 16 November 2026 is open for enquiries from NZD $4,999 per person twin-share. See each departure’s inclusions for international airfare details."
+        "text": "CTS Tours’ 15-day Best of China inclusive package is NZD $4,080 per person twin-share for the confirmed 2027 departures on 11 March 2027 and 13 May 2027; the 3 November 2026 departure has sold out. The 12-day Golden China tour has no departure published right now — contact us for upcoming dates. See each departure’s inclusions for international airfare details."
       }
     },
     {
