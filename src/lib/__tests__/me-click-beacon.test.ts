@@ -1,4 +1,4 @@
-import { ME_CLICK_ENDPOINT, planBeacon, sendBeacon, type BeaconInput } from '@/lib/me-click-beacon';
+import { ME_CLICK_ENDPOINT, isTrackedPage, planBeacon, planPageView, sendBeacon, tokenToRemember, type BeaconInput } from '@/lib/me-click-beacon';
 
 const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1';
 
@@ -68,5 +68,49 @@ describe('sendBeacon', () => {
       throw new Error('down');
     };
     await expect(sendBeacon({ token: 'AbC123xyZ789' }, failing)).resolves.toBeUndefined();
+  });
+});
+
+// Why: after the first click, staff want to know which tours the guest went on to read — but only for guests who came
+// in through our own mail, only tour pages, and never a token that could belong to someone else's site.
+describe('remembering the guest after the first click', () => {
+  it('remembers a well-formed token on the production host only', () => {
+    expect(tokenToRemember(input('https://www.ctstours.co.nz/brochures/b.pdf?me=AbC123xyZ789'))).toBe('AbC123xyZ789');
+    expect(tokenToRemember(input('https://www.ctstours.co.nz/brochures/b.pdf?me=AbC123xyZ789', { host: 'staging.chinatravel.co.nz' }))).toBeNull();
+    expect(tokenToRemember(input('https://www.ctstours.co.nz/brochures/b.pdf?me=short'))).toBeNull();
+    expect(tokenToRemember(input('https://www.ctstours.co.nz/brochures/b.pdf'))).toBeNull();
+  });
+});
+
+describe('planPageView', () => {
+  const base = { host: 'www.ctstours.co.nz', token: 'AbC123xyZ789', ua: UA };
+
+  it('reports a tour page view as kind page_view (Magic Engine judges it without a document navigation)', () => {
+    expect(planPageView({ ...base, path: '/tours/china/discovery/essentials' })).toEqual({
+      token: 'AbC123xyZ789',
+      path: '/tours/china/discovery/essentials',
+      method: 'GET',
+      ua: UA,
+      fetchSite: null,
+      fetchMode: null,
+      fetchDest: null,
+      kind: 'page_view',
+    });
+  });
+
+  it('does not report pages that are not about tours, other hosts, missing or bad tokens, or junk paths', () => {
+    expect(planPageView({ ...base, path: '/about' })).toBeNull();
+    expect(planPageView({ ...base, path: '/contact' })).toBeNull();
+    expect(planPageView({ ...base, host: 'staging.chinatravel.co.nz', path: '/tours/china/discovery/essentials' })).toBeNull();
+    expect(planPageView({ ...base, token: null, path: '/tours/china/discovery/essentials' })).toBeNull();
+    expect(planPageView({ ...base, token: 'bad!token!!!', path: '/tours/china/discovery/essentials' })).toBeNull();
+    expect(planPageView({ ...base, path: 'https://evil.example/tours/x' })).toBeNull();
+    expect(planPageView({ ...base, path: 42 })).toBeNull();
+    expect(planPageView({ ...base, path: `/tours/${'x'.repeat(400)}` })).toBeNull();
+  });
+
+  it('tracked pages are the tour pages, the tour lists and the brochure', () => {
+    expect(['/tours', '/tours/china/discovery/essentials', '/china-tours', '/brochures/b.pdf'].every(isTrackedPage)).toBe(true);
+    expect(['/', '/about', '/blog/x', '/admin'].some(isTrackedPage)).toBe(false);
   });
 });

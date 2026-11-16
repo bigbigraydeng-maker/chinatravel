@@ -72,3 +72,53 @@ export function sendBeacon(report: Record<string, string | null>, fetcher: typeo
     return Promise.resolve();
   }
 }
+
+/**
+ * Page views after the first click (magic-engine docs/specs/2026-11-17-cts-online-brochure-tracking-v0.md §4).
+ *
+ * The first click on a mail link leaves two first-party cookies on www.ctstours.co.nz:
+ *  - `cts_me`: the 12-character token, HttpOnly — only this site's server reads it;
+ *  - `cts_me_on`: "1", readable by the page — only so the page knows whether reporting a view is worth a request.
+ * Afterwards, each tour page the visitor opens on that device is reported to Magic Engine as a page view of that guest.
+ * Only tour pages, the all-tours page and the brochure count; visitors who never came in through a mail are not reported.
+ */
+export const VIEW_COOKIE = 'cts_me';
+export const VIEW_FLAG_COOKIE = 'cts_me_on';
+export const VIEW_COOKIE_MAX_AGE = 60 * 60 * 24 * 60;
+
+/** The token to remember on this device after a first click, or null (not ours, wrong host, malformed). */
+export function tokenToRemember(input: BeaconInput): string | null {
+  const token = input.url.searchParams.get('me');
+  if (token === null || !TOKEN_RE.test(token)) return null;
+  if ((input.host ?? '').toLowerCase() !== PRODUCTION_HOST) return null;
+  return token;
+}
+
+/** Pages whose views are worth telling staff about. */
+export function isTrackedPage(path: string): boolean {
+  return path.startsWith('/tours/') || path === '/tours' || path === '/china-tours' || path.startsWith('/brochures/');
+}
+
+export interface PageViewInput {
+  host: string | null;
+  token: string | null;
+  path: unknown;
+  ua: string | null;
+}
+
+/** Pure: the page-view report for Magic Engine, or null when this view should not be reported. */
+export function planPageView(input: PageViewInput): Record<string, string | null> | null {
+  if ((input.host ?? '').toLowerCase() !== PRODUCTION_HOST) return null;
+  if (input.token === null || !TOKEN_RE.test(input.token)) return null;
+  if (typeof input.path !== 'string' || input.path.length > 300 || !input.path.startsWith('/') || !isTrackedPage(input.path)) return null;
+  return {
+    token: input.token,
+    path: input.path,
+    method: 'GET',
+    ua: (input.ua ?? '').slice(0, 400),
+    fetchSite: null,
+    fetchMode: null,
+    fetchDest: null,
+    kind: 'page_view',
+  };
+}

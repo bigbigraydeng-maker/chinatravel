@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextFetchEvent, NextRequest } from 'next/server';
-import { planBeacon, sendBeacon } from '@/lib/me-click-beacon';
+import { VIEW_COOKIE, VIEW_COOKIE_MAX_AGE, VIEW_FLAG_COOKIE, planBeacon, sendBeacon, tokenToRemember } from '@/lib/me-click-beacon';
 import { ADMIN_COOKIE_NAME } from '@/lib/auth/admin-cookie';
 import {
   MARKETING_PLAN_COOKIE_NAME,
@@ -163,7 +163,14 @@ export async function middleware(request: NextRequest, event: NextFetchEvent) {
   const beacon = planBeacon({ host: request.headers.get('host'), url: request.nextUrl, method: request.method, headers: request.headers });
   if (beacon) {
     if (beacon.report) event.waitUntil(sendBeacon(beacon.report));
-    return NextResponse.redirect(beacon.cleanUrl, 302);
+    const res = NextResponse.redirect(beacon.cleanUrl, 302);
+    // Remember who this is on this device, so later tour page views can be told to staff (lib/me-click-beacon.ts).
+    const remember = tokenToRemember({ host: request.headers.get('host'), url: request.nextUrl, method: request.method, headers: request.headers });
+    if (remember !== null) {
+      res.cookies.set(VIEW_COOKIE, remember, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: VIEW_COOKIE_MAX_AGE });
+      res.cookies.set(VIEW_FLAG_COOKIE, '1', { httpOnly: false, secure: true, sameSite: 'lax', path: '/', maxAge: VIEW_COOKIE_MAX_AGE });
+    }
+    return res;
   }
 
   // v3.1 Phase 0: staging basic auth runs before every other gate. Bypasses
