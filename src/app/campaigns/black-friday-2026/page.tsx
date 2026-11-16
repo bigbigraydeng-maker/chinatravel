@@ -21,6 +21,7 @@ import {
 } from '@/lib/campaigns/black-friday-2026';
 import { loadBlackFridayTours } from './_lib/load-tours';
 import BlackFridayEnquiry from './_components/BlackFridayEnquiry';
+import RealTravellers from './_components/RealTravellers';
 
 /**
  * Black Friday 2026 landing page — the destination for the Black Friday Facebook posts, ads and emails.
@@ -375,6 +376,25 @@ export default async function BlackFridayLandingPage() {
       <TrustBar />
       <TourTrustSignals />
 
+      {/* Real travellers — CTS's own group photos plus verbatim Google reviews */}
+      <section id="reviews" className="bg-white scroll-mt-24">
+        <div className="container mx-auto px-4 py-14">
+          <p className="text-sm font-extrabold uppercase tracking-[0.18em]" style={{ color: RED }}>
+            Real CTS travellers
+          </p>
+          <h2 className="mt-2 text-3xl md:text-4xl font-serif font-bold text-gray-900">Our groups, on tour in China</h2>
+          <p className="mt-3 max-w-3xl text-gray-700">
+            Photos from recent CTS groups — and what our travellers say about us on Google.
+          </p>
+          <div className="mt-8">
+            <RealTravellers />
+          </div>
+          <div className="mt-10">
+            <Testimonials variant="compact" maxItems={4} />
+          </div>
+        </div>
+      </section>
+
       {/* Enquiry */}
       <section id="enquiry" className="bg-[#FBF7F0] scroll-mt-24">
         <div className="container mx-auto px-4 py-14 grid gap-10 lg:grid-cols-2">
@@ -388,9 +408,6 @@ export default async function BlackFridayLandingPage() {
               </a>
               .
             </p>
-            <div className="mt-8">
-              <Testimonials variant="compact" maxItems={2} />
-            </div>
           </div>
           <div className="rounded-2xl bg-white p-6 shadow-sm">
             <BlackFridayEnquiry
