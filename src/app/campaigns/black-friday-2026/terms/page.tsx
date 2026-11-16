@@ -77,11 +77,13 @@ export default async function BlackFridayTermsPage() {
         ]}
       />
 
-      <section className="bg-[#111010] text-white">
+      <section className="bg-[#FFF4DE]">
         <div className="container mx-auto px-4 py-12">
-          <p className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#D6A756]">CTS Tours · Black Friday 2026</p>
-          <h1 className="mt-3 font-serif text-4xl md:text-5xl font-bold">Black Friday offer terms</h1>
-          <p className="mt-4 max-w-3xl text-gray-200">
+          <p className="text-sm font-extrabold uppercase tracking-[0.2em]" style={{ color: RED }}>
+            CTS Tours · Black Friday 2026
+          </p>
+          <h1 className="mt-3 font-serif text-4xl md:text-5xl font-bold text-gray-900">Black Friday offer terms</h1>
+          <p className="mt-4 max-w-3xl text-gray-700">
             The full rules of our Black Friday offer on 2027 China tours, in plain English. If anything here is unclear for
             your booking, please ask us before you book — call{' '}
             <a href={CTS_PHONE_HREF} className="font-bold underline">
@@ -89,7 +91,7 @@ export default async function BlackFridayTermsPage() {
             </a>
             .
           </p>
-          <Link href={LP_PATH} className="mt-6 inline-block font-bold text-[#D6A756] underline underline-offset-4">
+          <Link href={LP_PATH} className="mt-6 inline-block font-bold underline underline-offset-4" style={{ color: RED }}>
             ← Back to the Black Friday sale
           </Link>
         </div>

@@ -36,6 +36,20 @@ const PATH = '/campaigns/black-friday-2026';
 const RED = '#B61E2E';
 const GOLD = '#D6A756';
 
+/**
+ * Hero background footage: a short muted loop of travellers enjoying the places on these tours.
+ * Set this to the licensed clip once it is bought; until then the hero shows the first tour's photo.
+ * A local preview can point at a watermarked comp with BF26_HERO_VIDEO_PREVIEW — never honoured in production,
+ * so an unlicensed comp can never go live.
+ */
+const LICENSED_HERO_VIDEO: { src: string; poster: string } | null = null;
+
+function heroVideo(): { src: string; poster: string } | null {
+  const preview = process.env.NODE_ENV !== 'production' ? process.env.BF26_HERO_VIDEO_PREVIEW : undefined;
+  if (preview) return { src: preview, poster: preview.replace(/watermarked\.mp4$/, 'poster.jpg') };
+  return LICENSED_HERO_VIDEO;
+}
+
 export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = getSiteUrl();
   const title = 'Black Friday Sale on 2027 China Tours | CTS Tours';
@@ -88,6 +102,7 @@ export default async function BlackFridayLandingPage() {
   const tours = await loadBlackFridayTours();
   const open = isOfferOpen(now);
   const siteUrl = getSiteUrl();
+  const video = heroVideo();
 
   const schemas = [
     generateBreadcrumbSchema(
@@ -103,75 +118,97 @@ export default async function BlackFridayLandingPage() {
     <>
       <SchemaMarkup data={schemas} />
 
-      {/* Hero */}
-      <section id="hero" className="bg-[#111010] text-white">
-        <div className="container mx-auto px-4 py-12 md:py-20 grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <p className="text-sm md:text-base font-extrabold uppercase tracking-[0.2em]" style={{ color: GOLD }}>
-              2027 China tours · 17 Nov – 4 Dec 2026
-            </p>
-            <h1 className="mt-3 font-sans text-6xl md:text-8xl font-black uppercase leading-[0.9] tracking-tight">
-              Black Friday
-            </h1>
-            <div className="mt-4 flex flex-wrap items-center gap-4">
-              <span
-                className="inline-block -rotate-3 px-4 py-1 text-3xl md:text-5xl font-black uppercase tracking-[0.14em] text-white"
-                style={{ backgroundColor: RED }}
-              >
-                Sale
-              </span>
-              <span className="text-sm md:text-base font-extrabold uppercase tracking-wide">
-                Couples, families &amp; friends save more
-              </span>
-            </div>
-            <p className="mt-6 max-w-xl text-lg text-gray-200 leading-relaxed">
-              Early-bird prices on our 2027 China tours are held until 4 December, and you can save more when you travel
-              together.
-            </p>
-            {!open && (
-              <p className="mt-4 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-sm text-gray-100">
-                This offer is for bookings made 17 November – 4 December 2026. Please contact us for current prices.
-              </p>
+      {/* Sale strip — dates only, no countdown (CTS copy rule) */}
+      <div className="text-white text-center text-sm font-semibold px-4 py-2" style={{ backgroundColor: RED }}>
+        <span className="font-black uppercase tracking-wider">Black Friday Sale</span> · Book 17 Nov – 4 Dec 2026 ·
+        Save up to NZ$2,000 on 2027 China tours
+      </div>
+
+      {/* Hero — bright footage card on a white page */}
+      <section id="hero" className="bg-white">
+        <div className="container mx-auto px-4 pt-6 md:pt-8">
+          <div className="relative overflow-hidden rounded-3xl min-h-[460px] md:min-h-[540px]">
+            {video ? (
+              <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src={video.src}
+                poster={video.poster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-hidden="true"
+              />
+            ) : (
+              tours[0] && (
+                <Image src={tours[0].tour.heroImage} alt="" fill priority sizes="100vw" className="object-cover" />
+              )
             )}
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href="#tours"
-                className="rounded-full px-6 py-3 font-bold text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: RED }}
-              >
-                See the tours
-              </a>
-              <a
-                href="#enquiry"
-                className="rounded-full border-2 px-6 py-3 font-bold transition-colors hover:bg-white hover:text-[#111010]"
-                style={{ borderColor: GOLD, color: GOLD }}
-              >
-                Enquire now
-              </a>
-              <a href={CTS_PHONE_HREF} className="rounded-full px-6 py-3 font-bold text-white underline-offset-4 hover:underline">
-                Call {CTS_PHONE_DISPLAY}
-              </a>
+            {/* Soft shade only behind the words, so the footage stays bright */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/10 to-transparent" />
+
+            <div className="relative flex min-h-[460px] md:min-h-[540px] flex-col justify-end p-6 md:p-12 text-white">
+              <p className="inline-flex w-fit items-center gap-2 rounded-full bg-white/90 px-4 py-1 text-xs md:text-sm font-extrabold uppercase tracking-[0.18em]" style={{ color: RED }}>
+                2027 China tours · Book by 4 Dec
+              </p>
+              <h1 className="mt-4 font-sans text-5xl md:text-7xl font-black leading-[0.95] tracking-tight drop-shadow">
+                Black Friday <span style={{ color: GOLD }}>Sale</span>
+              </h1>
+              <p className="mt-3 text-2xl md:text-4xl font-extrabold drop-shadow [font-variant-numeric:lining-nums]">
+                Travel together, save up to NZ$2,000
+              </p>
+              <p className="mt-3 max-w-xl text-base md:text-lg text-white/95 drop-shadow">
+                Bring your bestie, your mates or the whole family — early-bird prices are held until 4 December.
+              </p>
+              {!open && (
+                <p className="mt-4 max-w-xl rounded-lg bg-white/90 px-4 py-3 text-sm text-gray-900">
+                  This offer is for bookings made 17 November – 4 December 2026. Please contact us for current prices.
+                </p>
+              )}
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="#tours"
+                  className="rounded-full px-6 py-3 font-bold text-white shadow-lg transition-transform hover:-translate-y-0.5"
+                  style={{ backgroundColor: RED }}
+                >
+                  See the tours
+                </a>
+                <a
+                  href="#enquiry"
+                  className="rounded-full bg-white px-6 py-3 font-bold text-gray-900 shadow-lg transition-transform hover:-translate-y-0.5"
+                >
+                  Enquire now
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Offer badges */}
-          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+          {/* Offer chips — light and friendly */}
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {[
-              { label: 'Couple Travel', big: '$1,000', small: 'save up to · per couple' },
-              { label: 'Bestie or Mate', big: '$2,000', small: 'save up to · group of 4' },
-              { label: 'Family Travel', big: '$500', small: 'save · per person' },
+              { label: 'Couple Travel', big: 'NZ$1,000', small: 'save up to, per couple', bg: '#FDECEC' },
+              { label: 'Bestie or Mate', big: 'NZ$2,000', small: 'save up to, group of 4', bg: '#FFF4DE' },
+              { label: 'Family Travel', big: 'NZ$500', small: 'save per person', bg: '#EAF6EF' },
             ].map((b) => (
-              <div
-                key={b.label}
-                className="rounded-2xl p-5 text-center"
-                style={{ backgroundColor: RED, boxShadow: `0 0 0 3px #111010, 0 0 0 5px ${GOLD}` }}
-              >
-                <p className="text-xs font-extrabold uppercase tracking-widest">{b.label}</p>
-                <p className="mt-1 font-serif text-5xl font-black leading-none [font-variant-numeric:lining-nums]">{b.big}</p>
-                <p className="mt-2 text-xs font-bold uppercase tracking-wider">NZD · {b.small}</p>
+              <div key={b.label} className="rounded-2xl px-6 py-5 text-center" style={{ backgroundColor: b.bg }}>
+                <div>
+                  <p className="text-xs font-extrabold uppercase tracking-widest text-gray-600">{b.label}</p>
+                  <p className="text-3xl font-black leading-tight [font-variant-numeric:lining-nums]" style={{ color: RED }}>
+                    {b.big}
+                  </p>
+                  <p className="text-sm text-gray-700">{b.small}</p>
+                </div>
               </div>
             ))}
           </div>
+          <p className="mt-4 text-center text-sm text-gray-600">
+            Questions? Call{' '}
+            <a href={CTS_PHONE_HREF} className="font-bold underline underline-offset-2" style={{ color: RED }}>
+              {CTS_PHONE_DISPLAY}
+            </a>{' '}
+            — our Auckland team is happy to help.
+          </p>
         </div>
       </section>
 
@@ -305,11 +342,9 @@ export default async function BlackFridayLandingPage() {
       </section>
 
       {/* How to book */}
-      <section className="bg-[#111010] text-white">
+      <section className="bg-[#FFF4DE]">
         <div className="container mx-auto px-4 py-14">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold" style={{ color: GOLD }}>
-            How to book
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">How to book</h2>
           <ol className="mt-8 grid gap-6 md:grid-cols-3">
             {[
               ['Choose your tour and date', 'Pick any 2027 departure from May onward listed above.'],
@@ -319,18 +354,18 @@ export default async function BlackFridayLandingPage() {
               ],
               ['Your saving comes off the final payment', 'We apply the offer that saves you more — one per booking.'],
             ].map(([title, body], i) => (
-              <li key={title} className="rounded-2xl border border-white/15 p-6">
-                <p className="text-4xl font-black" style={{ color: RED }}>
+              <li key={title} className="rounded-2xl bg-white p-6 shadow-sm">
+                <p className="flex h-11 w-11 items-center justify-center rounded-full text-xl font-black text-white" style={{ backgroundColor: RED }}>
                   {i + 1}
                 </p>
-                <p className="mt-2 text-lg font-bold">{title}</p>
-                <p className="mt-1 text-gray-300">{body}</p>
+                <p className="mt-3 text-lg font-bold text-gray-900">{title}</p>
+                <p className="mt-1 text-gray-700">{body}</p>
               </li>
             ))}
           </ol>
-          <p className="mt-6 text-gray-300">
+          <p className="mt-6 text-gray-700">
             Full rules, eligible departures and worked examples:{' '}
-            <Link href={`${PATH}/terms`} className="font-bold underline underline-offset-4" style={{ color: GOLD }}>
+            <Link href={`${PATH}/terms`} className="font-bold underline underline-offset-4" style={{ color: RED }}>
               Black Friday offer terms
             </Link>
           </p>
