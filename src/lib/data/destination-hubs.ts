@@ -226,11 +226,9 @@ export const xianHub: DestinationHubConfig = {
         [
           'For a first trip, ',
           link('[[TOUR_NAME:discovery:beijing-xian]]', '/tours/china/discovery/beijing-xian'),
-          ' ([[TOUR_DURATION:discovery:beijing-xian]]), ',
+          ' ([[TOUR_DURATION:discovery:beijing-xian]]) and ',
           link('[[TOUR_NAME:discovery:essentials]]', '/tours/china/discovery/essentials'),
-          ' ([[TOUR_DURATION:discovery:essentials]]), and ',
-          link('[[TOUR_NAME:discovery:golden-china]]', '/tours/china/discovery/golden-china'),
-          ' ([[TOUR_DURATION:discovery:golden-china]]) all have current itineraries linked here. Compare the tour pages for their latest stops.',
+          ' ([[TOUR_DURATION:discovery:essentials]]) both have current itineraries linked here. Compare the tour pages for their latest stops.',
         ],
         [
           'On the ',
