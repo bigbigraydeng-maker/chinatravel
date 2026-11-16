@@ -1,8 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
-import type { Tour } from '@/lib/data/tours';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import Testimonials from '@/components/Testimonials';
@@ -12,15 +10,13 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { generateBreadcrumbSchema } from '@/lib/schema-tour';
 import { getSiteUrl, CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/lib/site';
 import {
-  BF_TOURS,
   BF_DEPOSIT_PER_PERSON_NZD,
   FAMILY_SAVING,
   FRIENDS_SAVING,
   bestSavingPerPerson,
-  eligibleDepartures,
   isOfferOpen,
-  type OfferTier,
 } from '@/lib/campaigns/black-friday-2026';
+import { loadBlackFridayTours } from './_lib/load-tours';
 import BlackFridayEnquiry from './_components/BlackFridayEnquiry';
 
 /**
@@ -49,25 +45,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const nzd = (n: number) => `NZ$${n.toLocaleString('en-NZ')}`;
-
-interface LoadedTour {
-  tour: Tour;
-  tier: OfferTier;
-  departures: string[];
-}
-
-async function loadTours(): Promise<LoadedTour[]> {
-  const loaded = await Promise.all(
-    BF_TOURS.map(async (ref) => {
-      const tour = await getPublishedTourBySlug(ref.destination, ref.tier, ref.slug);
-      if (!tour?.isActive || tour.soldOut) return null;
-      const departures = eligibleDepartures(tour.departureDates);
-      if (departures.length === 0) return null;
-      return { tour, tier: ref.tier, departures };
-    })
-  );
-  return loaded.filter((t): t is LoadedTour => t !== null);
-}
 
 const FAQS = [
   {
@@ -98,7 +75,7 @@ const FAQS = [
 ];
 
 export default async function BlackFridayLandingPage() {
-  const tours = await loadTours();
+  const tours = await loadBlackFridayTours();
   const open = isOfferOpen(new Date());
   const siteUrl = getSiteUrl();
 
@@ -341,6 +318,12 @@ export default async function BlackFridayLandingPage() {
               </li>
             ))}
           </ol>
+          <p className="mt-6 text-gray-300">
+            Full rules, eligible departures and worked examples:{' '}
+            <Link href={`${PATH}/terms`} className="font-bold underline underline-offset-4" style={{ color: GOLD }}>
+              Black Friday offer terms
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -374,6 +357,14 @@ export default async function BlackFridayLandingPage() {
               }))}
             />
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="container mx-auto px-4 pt-12 text-center">
+          <Link href={`${PATH}/terms`} className="font-bold underline underline-offset-4" style={{ color: RED }}>
+            Read the full Black Friday offer terms →
+          </Link>
         </div>
       </section>
 

@@ -77,7 +77,7 @@ export const PUBLISHED_TOUR_CATALOG_CONTRACT = {
     'src/app/api/send-itinerary/route.ts', 'src/app/api/site-analyzer/route.ts', 'src/app/api/tour-enquiry/route.ts',
     'src/app/beijing-tours/page.tsx', 'src/app/best-china-tours/page.tsx', 'src/app/best-time-to-visit-china/page.tsx',
     'src/app/blog/[slug]/page.tsx', 'src/app/campaigns/[tour]/page.tsx', 'src/app/campaigns/best-of-china/page.tsx',
-    'src/app/campaigns/black-friday-2026/page.tsx', 'src/app/campaigns/chongqing/page.tsx', 'src/app/campaigns/fire-fuzz/page.tsx',
+    'src/app/campaigns/black-friday-2026/_lib/load-tours.ts', 'src/app/campaigns/chongqing/page.tsx', 'src/app/campaigns/fire-fuzz/page.tsx',
     'src/app/campaigns/october-2026/[slug]/page.tsx', 'src/app/campaigns/spotlight/page.tsx',
     'src/app/beijing-xian-discovery-guide/page.tsx', 'src/app/shanghai-surroundings-discovery-guide/page.tsx',
     'src/app/chengdu-tours/page.tsx', 'src/app/china-tours-from-auckland/page.tsx',
