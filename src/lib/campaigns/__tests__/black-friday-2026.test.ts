@@ -2,7 +2,9 @@ import {
   bestSavingPerPerson,
   eligibleDepartures,
   isOfferOpen,
+  isOfferOver,
   parseDepartureLabel,
+  BF_AFTER_OFFER_REDIRECT,
   FRIENDS_SAVING,
   FAMILY_SAVING,
 } from '../black-friday-2026';
@@ -56,6 +58,21 @@ describe('eligibleDepartures — only 2027 departures from 1 May', () => {
   it('leaves out labels it cannot read instead of calling them eligible', () => {
     expect(eligibleDepartures(['TBC', 'May 2027', '1 May 2027'])).toEqual(['1 May 2027']);
     expect(parseDepartureLabel('Sometime')).toBeNull();
+  });
+});
+
+describe('isOfferOver — when the landing page stops showing savings', () => {
+  it('is false on the last day (4 Dec NZDT) and true from 5 Dec 2026 00:00 NZDT', () => {
+    expect(isOfferOver(new Date('2026-12-04T10:59:59Z'))).toBe(false);
+    expect(isOfferOver(new Date('2026-12-04T11:00:00Z'))).toBe(true);
+  });
+
+  it('is false before the offer starts, so a preview before 17 Nov is not redirected away', () => {
+    expect(isOfferOver(new Date('2026-11-10T00:00:00Z'))).toBe(false);
+  });
+
+  it('sends visitors to the China tours hub', () => {
+    expect(BF_AFTER_OFFER_REDIRECT).toBe('/china-tours');
   });
 });
 

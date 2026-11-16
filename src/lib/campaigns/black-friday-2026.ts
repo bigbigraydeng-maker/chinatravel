@@ -84,8 +84,20 @@ export function bestSavingPerPerson(tier: OfferTier, people: number, isFamily: b
  * to the end of 4 December 2026 NZDT (UTC+13).
  */
 export function isOfferOpen(now: Date): boolean {
-  const start = Date.UTC(2026, 10, 16, 11, 0, 0); // 17 Nov 2026 00:00 NZDT
-  const end = Date.UTC(2026, 11, 4, 11, 0, 0); // 5 Dec 2026 00:00 NZDT
   const t = now.getTime();
-  return t >= start && t < end;
+  return t >= OFFER_START_UTC && t < OFFER_END_UTC;
 }
+
+/**
+ * True from 5 December 2026 00:00 NZDT. The landing page then sends visitors to the China tours hub so nobody
+ * reads Black Friday savings that no longer apply (the terms page stays up for customers who already booked).
+ */
+export function isOfferOver(now: Date): boolean {
+  return now.getTime() >= OFFER_END_UTC;
+}
+
+/** Where the landing page sends visitors once the offer is over. */
+export const BF_AFTER_OFFER_REDIRECT = '/china-tours';
+
+const OFFER_START_UTC = Date.UTC(2026, 10, 16, 11, 0, 0); // 17 Nov 2026 00:00 NZDT
+const OFFER_END_UTC = Date.UTC(2026, 11, 4, 11, 0, 0); // 5 Dec 2026 00:00 NZDT

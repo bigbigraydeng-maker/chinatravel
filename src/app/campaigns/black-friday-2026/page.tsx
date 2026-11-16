@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import TrustBar from '@/components/TrustBar';
 import TourTrustSignals from '@/components/tours/TourTrustSignals';
 import Testimonials from '@/components/Testimonials';
@@ -15,6 +16,8 @@ import {
   FRIENDS_SAVING,
   bestSavingPerPerson,
   isOfferOpen,
+  isOfferOver,
+  BF_AFTER_OFFER_REDIRECT,
 } from '@/lib/campaigns/black-friday-2026';
 import { loadBlackFridayTours } from './_lib/load-tours';
 import BlackFridayEnquiry from './_components/BlackFridayEnquiry';
@@ -25,7 +28,9 @@ import BlackFridayEnquiry from './_components/BlackFridayEnquiry';
  * the published tour catalogue so this page never disagrees with the tour pages.
  * Copy rules (CTS): concrete dates and listed prices only — no countdowns, "limited time", "last chance" or seat counts.
  */
-export const revalidate = 3600;
+// Rendered per request (tour data itself stays cached by the catalog fetch) so the 5 Dec redirect is a real
+// server-side 307 with a Location header, not a pre-built page that redirects only once its JavaScript runs.
+export const dynamic = 'force-dynamic';
 
 const PATH = '/campaigns/black-friday-2026';
 const RED = '#B61E2E';
@@ -75,8 +80,13 @@ const FAQS = [
 ];
 
 export default async function BlackFridayLandingPage() {
+  // From 5 Dec 2026 (NZ time) the savings no longer apply: send visitors to the China tours hub instead of showing
+  // a sale that has ended.
+  const now = new Date();
+  if (isOfferOver(now)) redirect(BF_AFTER_OFFER_REDIRECT);
+
   const tours = await loadBlackFridayTours();
-  const open = isOfferOpen(new Date());
+  const open = isOfferOpen(now);
   const siteUrl = getSiteUrl();
 
   const schemas = [
