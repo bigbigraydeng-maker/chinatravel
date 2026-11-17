@@ -185,24 +185,31 @@ export default async function BlackFridayLandingPage() {
             </div>
           </div>
 
-          {/* Offer chips — light and friendly */}
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {/* The three savings, set like a printed price list */}
+          <dl className="mx-auto mt-8 max-w-3xl border-y-2 border-gray-900 [font-variant-numeric:lining-nums]">
             {[
-              { label: 'Couple Travel', big: 'NZ$1,000', small: 'save up to, per couple', bg: '#FDECEC' },
-              { label: 'Bestie or Mate', big: 'NZ$2,000', small: 'save up to, group of 4', bg: '#FFF4DE' },
-              { label: 'Family Travel', big: 'NZ$500', small: 'save per person', bg: '#EAF6EF' },
-            ].map((b) => (
-              <div key={b.label} className="rounded-2xl px-6 py-5 text-center" style={{ backgroundColor: b.bg }}>
-                <div>
-                  <p className="text-xs font-extrabold uppercase tracking-widest text-gray-600">{b.label}</p>
-                  <p className="text-3xl font-black leading-tight [font-variant-numeric:lining-nums]" style={{ color: RED }}>
-                    {b.big}
-                  </p>
-                  <p className="text-sm text-gray-700">{b.small}</p>
-                </div>
+              { label: 'Couple Travel', note: '', amount: 'NZ$1,000', pre: 'save up to', post: 'per couple' },
+              { label: 'Bestie or Mate', note: 'group of 4', amount: 'NZ$2,000', pre: 'save up to', post: '' },
+              { label: 'Family Travel', note: '', amount: 'NZ$500', pre: 'save', post: 'per person' },
+            ].map((r, i) => (
+              <div
+                key={r.label}
+                className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 ${i < 2 ? 'border-b border-gray-200' : ''}`}
+              >
+                <dt className="text-lg md:text-xl font-semibold text-gray-900">
+                  {r.label}
+                  {r.note && <span className="ml-2 text-sm font-normal text-gray-500">({r.note})</span>}
+                </dt>
+                <dd className="text-lg md:text-xl text-gray-900">
+                  {r.pre}{' '}
+                  <strong className="text-2xl md:text-3xl font-black" style={{ color: RED }}>
+                    {r.amount}
+                  </strong>
+                  {r.post && <span className="ml-1 text-gray-600">{r.post}</span>}
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
           <p className="mt-4 text-center text-sm text-gray-600">
             Questions? Call{' '}
             <a href={CTS_PHONE_HREF} className="font-bold underline underline-offset-2" style={{ color: RED }}>
