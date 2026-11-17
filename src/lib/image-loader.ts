@@ -22,7 +22,10 @@ export default function imageLoader({ src, width, quality }: ImageLoaderParams):
       '/storage/v1/object/public/',
       '/storage/v1/render/image/public/'
     );
-    return `${transformed}?width=${width}&quality=${q}`;
+    // resize=contain keeps the whole photo. Supabase's default (cover) keeps the ORIGINAL height when only a width
+    // is given, so a 640-wide request of a 2121x1414 photo came back as a 640x1414 sliver from the middle — every
+    // card then showed a blown-up, blurry crop.
+    return `${transformed}?width=${width}&quality=${q}&resize=contain`;
   }
 
   if (src.includes('images.unsplash.com')) {
