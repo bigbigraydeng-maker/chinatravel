@@ -190,7 +190,7 @@ export default async function BlackFridayLandingPage() {
             {[
               { label: 'Couple Travel', note: '', amount: 'NZ$1,000', pre: 'save up to', post: 'per couple' },
               { label: 'Bestie or Mate', note: 'group of 4', amount: 'NZ$2,000', pre: 'save up to', post: '' },
-              { label: 'Family Travel', note: '', amount: 'NZ$500', pre: 'save', post: 'per person' },
+              { label: 'Family Travel', note: '', amount: 'NZ$500', pre: 'save up to', post: 'per person' },
             ].map((r, i) => (
               <div
                 key={r.label}
