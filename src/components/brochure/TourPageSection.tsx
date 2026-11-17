@@ -10,7 +10,7 @@ function Stat({ label, value, detail }: { label: string; value: React.ReactNode;
   return (
     <div className="border-t-[5px] border-secondary bg-surface px-3 pb-4 pt-3 sm:px-4">
       <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-muted">{label}</p>
-      <p className={`${SERIF} mt-1 whitespace-nowrap text-[1.2rem] font-bold leading-tight text-ink sm:text-[1.6rem]`}>{value}</p>
+      <p className={`${SERIF} mt-1 break-words text-[1.2rem] font-bold leading-tight text-ink sm:text-[1.6rem]`}>{value}</p>
       <p className="mt-1 text-[16px] leading-snug text-ink-muted">{detail}</p>
     </div>
   );
@@ -73,7 +73,7 @@ export default function TourPageSection({ tour, call, quiz }: { tour: TourPage; 
       </div>
 
       <div className="px-5 py-7 sm:px-8 sm:py-9">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 lg:grid-cols-4">
           <Stat label="From" value={tour.fromPrice} detail="per person, twin share" />
           {tour.solo && <Stat label="Solo room" value={tour.solo.price} detail={tour.solo.note ?? 'private room, full tour'} />}
           {tour.meals && (
