@@ -10,6 +10,7 @@
  */
 
 export const ME_CLICK_ENDPOINT = 'https://app.magicengine.com.au/api/public/crm/email-link-click';
+export const ME_CALLBACK_ENDPOINT = 'https://app.magicengine.com.au/api/public/crm/site-callback-request';
 export const PRODUCTION_HOST = 'www.ctstours.co.nz';
 const TOKEN_RE = /^[A-Za-z0-9]{12}$/;
 const TIMEOUT_MS = 2000;
@@ -96,7 +97,7 @@ export function tokenToRemember(input: BeaconInput): string | null {
 
 /** Pages whose views are worth telling staff about. */
 export function isTrackedPage(path: string): boolean {
-  return path.startsWith('/tours/') || path === '/tours' || path === '/china-tours' || path.startsWith('/brochures/');
+  return path.startsWith('/tours/') || path === '/tours' || path === '/china-tours' || path === '/brochure' || path.startsWith('/brochures/');
 }
 
 export interface PageViewInput {
@@ -120,5 +121,44 @@ export function planPageView(input: PageViewInput): Record<string, string | null
     fetchMode: null,
     fetchDest: null,
     kind: 'page_view',
+  };
+}
+
+/**
+ * "Ask Baker to call me" on the brochure page. The guest picks a day and a part of the day; this site's server adds the
+ * remembered token and forwards it to Magic Engine. This is only a first filter: Magic Engine re-checks everything.
+ */
+export type CallbackWindow = 'morning' | 'afternoon' | 'evening';
+const CALLBACK_WINDOWS: readonly string[] = ['morning', 'afternoon', 'evening'];
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+export interface CallbackInput {
+  host: string | null;
+  token: string | null;
+  body: unknown;
+  ua: string | null;
+}
+
+/** Pure: the callback request for Magic Engine, or null when it should not be sent. */
+export function planCallback(input: CallbackInput): Record<string, unknown> | null {
+  // Only our own production site, and only for a guest we recognise.
+  if ((input.host ?? '').toLowerCase() !== PRODUCTION_HOST) return null;
+  if (input.token === null || !TOKEN_RE.test(input.token)) return null;
+  // The body must be a plain object.
+  if (input.body === null || typeof input.body !== 'object' || Array.isArray(input.body)) return null;
+  const body = input.body as Record<string, unknown>;
+  // A YYYY-MM-DD day (Magic Engine checks it is a real, near day), and one of the three parts of the day.
+  if (typeof body.date !== 'string' || !DATE_RE.test(body.date)) return null;
+  if (typeof body.window !== 'string' || !CALLBACK_WINDOWS.includes(body.window)) return null;
+  // The tour the guest was reading, or null for "any tour"; a missing value is not allowed.
+  const tourPath = body.tourPath;
+  if (tourPath !== null && (typeof tourPath !== 'string' || !tourPath.startsWith('/tours/') || tourPath.length > 300)) return null;
+  return {
+    token: input.token,
+    date: body.date,
+    window: body.window,
+    tourPath,
+    quiz: body.quiz ?? null,
+    ua: (input.ua ?? '').slice(0, 400),
   };
 }

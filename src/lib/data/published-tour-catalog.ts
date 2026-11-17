@@ -69,13 +69,14 @@ export const PUBLISHED_TOUR_CATALOG_CONTRACT = {
   surfaces: [
     { group: 'listing and search', routes: ['/', '/tours', '/tours/find', '/china-tours', '/small-group-china-tours', '/tours/[destination]', '/tours/[destination]/[tier]', '/beijing-tours', '/chongqing-tours', '/chengdu-tours', '/guilin-tours', '/hangzhou-tours', '/shanghai-tours', '/suzhou-tours', '/xian-tours', '/yunnan-tours', '/zhangjiajie-tours', '/explore/[city]'] },
     { group: 'product and campaign pages', routes: ['/tours/[destination]/[tier]/[tour]', '/tours/[destination]/[tier]/[tour]/print', '/campaigns/[tour]', '/campaigns/best-of-china', '/campaigns/chongqing', '/campaigns/fire-fuzz', '/campaigns/october-2026/[slug]', '/campaigns/spotlight', '/spotlight/october-2026', '/best-china-tours', '/china-tours-for-seniors', '/agents'] },
-    { group: 'conversion and trip tools', routes: ['/traveller-details', '/trip-planner', '/api/tour-enquiry', '/api/send-itinerary', '/api/internal/tours', '/api/site-analyzer'] },
+    { group: 'conversion and trip tools', routes: ['/brochure', '/traveller-details', '/trip-planner', '/api/tour-enquiry', '/api/send-itinerary', '/api/internal/tours', '/api/site-analyzer'] },
     { group: 'SEO, guides and planning', routes: ['/sitemap.xml', '/api/revalidate', '/china-tours-from-new-zealand', '/china-tours-from-auckland', '/best-time-to-visit-china', '/travel-tools', '/play/[slug]', '/beijing-travel-guide', '/xian-travel-guide', '/shanghai-travel-guide', '/chengdu-travel-guide', '/guilin-travel-guide', '/zhangjiajie-travel-guide', '/yunnan-travel-guide', '/lijiang-travel-guide', '/dali-travel-guide', '/kunming-travel-guide', '/shangri-la-travel-guide', '/great-wall-travel-guide', '/forbidden-city-travel-guide', '/terracotta-warriors-travel-guide', '/leshan-buddha-travel-guide', '/yangshuo-travel-guide', '/tianmen-mountain-travel-guide', '/hangzhou-travel-guide', '/suzhou-travel-guide', '/chongqing-travel-guide', '/li-river-travel-guide'] },
   ],
   consumerFiles: [
     'src/app/agents/page.tsx', 'src/app/api/internal/tours/route.ts', 'src/app/api/revalidate/route.ts',
     'src/app/api/send-itinerary/route.ts', 'src/app/api/site-analyzer/route.ts', 'src/app/api/tour-enquiry/route.ts',
     'src/app/beijing-tours/page.tsx', 'src/app/best-china-tours/page.tsx', 'src/app/best-time-to-visit-china/page.tsx',
+    'src/app/brochure/page.tsx',
     'src/app/blog/[slug]/page.tsx', 'src/app/campaigns/[tour]/page.tsx', 'src/app/campaigns/best-of-china/page.tsx',
     'src/app/campaigns/chongqing/page.tsx', 'src/app/campaigns/fire-fuzz/page.tsx',
     'src/app/campaigns/october-2026/[slug]/page.tsx', 'src/app/campaigns/spotlight/page.tsx',
