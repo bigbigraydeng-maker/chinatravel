@@ -1,4 +1,4 @@
-import { ME_CLICK_ENDPOINT, isTrackedPage, planBeacon, planPageView, sendBeacon, tokenToRemember, type BeaconInput } from '@/lib/me-click-beacon';
+import { ME_CALLBACK_ENDPOINT, ME_CLICK_ENDPOINT, isTrackedPage, planBeacon, planCallback, planPageView, sendBeacon, tokenToRemember, type BeaconInput } from '@/lib/me-click-beacon';
 
 const UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1';
 
@@ -110,7 +110,62 @@ describe('planPageView', () => {
   });
 
   it('tracked pages are the tour pages, the tour lists and the brochure', () => {
-    expect(['/tours', '/tours/china/discovery/essentials', '/china-tours', '/brochures/b.pdf'].every(isTrackedPage)).toBe(true);
-    expect(['/', '/about', '/blog/x', '/admin'].some(isTrackedPage)).toBe(false);
+    expect(['/tours', '/tours/china/discovery/essentials', '/china-tours', '/brochure', '/brochures/b.pdf'].every(isTrackedPage)).toBe(true);
+    expect(['/', '/about', '/blog/x', '/admin', '/brochure/x', '/brochurex'].some(isTrackedPage)).toBe(false);
+  });
+});
+
+describe('planCallback', () => {
+  const base = { host: 'www.ctstours.co.nz', token: 'AbC123xyZ789', ua: UA };
+  const body = {
+    date: '2026-11-20',
+    window: 'afternoon',
+    tourPath: '/tours/china/discovery/essentials',
+    quiz: { length: '10', firstVisit: true, pace: 'easy', picks: ['/tours/china/discovery/a', '/tours/china/signature/b'] },
+  };
+
+  it('forwards a good request', () => {
+    expect(planCallback({ ...base, body })).toEqual({
+      token: 'AbC123xyZ789',
+      date: '2026-11-20',
+      window: 'afternoon',
+      tourPath: '/tours/china/discovery/essentials',
+      quiz: body.quiz,
+      ua: UA,
+    });
+  });
+
+  it('accepts "Any tour" with no quiz', () => {
+    const result = planCallback({ ...base, body: { ...body, tourPath: null, quiz: undefined } });
+    expect(result).toEqual(expect.objectContaining({ tourPath: null, quiz: null }));
+  });
+
+  it('rejects anything it cannot vouch for', () => {
+    expect(planCallback({ ...base, host: 'staging.chinatravel.co.nz', body })).toBeNull();
+    expect(planCallback({ ...base, host: null, body })).toBeNull();
+    expect(planCallback({ ...base, token: null, body })).toBeNull();
+    expect(planCallback({ ...base, token: 'bad!token!!!', body })).toBeNull();
+    expect(planCallback({ ...base, body: null })).toBeNull();
+    expect(planCallback({ ...base, body: 'text' })).toBeNull();
+    expect(planCallback({ ...base, body: [body] })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, date: '20 Nov 2026' } })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, date: 42 } })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, window: 'night' } })).toBeNull();
+    const { window: _window, ...withoutWindow } = body;
+    expect(planCallback({ ...base, body: withoutWindow })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, tourPath: '/about' } })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, tourPath: 'https://evil.example/tours/x' } })).toBeNull();
+    expect(planCallback({ ...base, body: { ...body, tourPath: `/tours/${'x'.repeat(300)}` } })).toBeNull();
+    const { tourPath: _tourPath, ...withoutTourPath } = body;
+    expect(planCallback({ ...base, body: withoutTourPath })).toBeNull();
+  });
+
+  it('trims a long user agent to 400 characters', () => {
+    const result = planCallback({ ...base, ua: 'x'.repeat(1000), body });
+    expect((result?.ua as string).length).toBe(400);
+  });
+
+  it('the endpoint is Magic Engine\'s callback endpoint', () => {
+    expect(ME_CALLBACK_ENDPOINT).toBe('https://app.magicengine.com.au/api/public/crm/site-callback-request');
   });
 });
