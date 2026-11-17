@@ -32,7 +32,7 @@ export default function CoverHero({ view, pdfSize }: { view: BrochureView; pdfSi
   return (
     <header className="relative isolate flex min-h-[600px] items-end overflow-hidden bg-[#1A1815] text-white sm:min-h-[680px]">
       <Image
-        src="/images/tours/great-wall-cloud-sea.jpg"
+        src="/images/tours/great-wall-cloud-sea-1600.jpg"
         alt="The Great Wall above a sea of cloud"
         fill
         priority
