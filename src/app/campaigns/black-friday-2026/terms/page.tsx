@@ -133,7 +133,7 @@ export default async function BlackFridayTermsPage() {
               </tbody>
             </table>
             <p>
-              Not included: March 2027 departures, Shanghai &amp; Surroundings, and any tour or departure not listed above.
+              Not included: the 11 March 2027 Best of China departure, Shanghai &amp; Surroundings, and any tour or departure not listed above.
             </p>
           </Section>
 
