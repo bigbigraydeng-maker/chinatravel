@@ -3,7 +3,8 @@
  *
  * Two offers, one per booking (the higher one applies, never both):
  * - "Travel with your Bestie or Mate": per-person saving grows with the number of people on the booking.
- * - "Family Travel": flat per-person saving; couples count as family.
+ * - "Family Travel": flat per-person saving. Couples are NOT family: a couple is two on one booking and gets the
+ *   two-person Bestie rate (Signature NZ$600, Discovery NZ$300 in total) — PM 2026-11-19, so two people always save the same.
  *
  * All 2027 departures take part, March included (PM 2026-11-18), except the 11 March 2027 Best of China departure.
  * Shanghai & Surroundings is not in the offer at all. Prices, durations and dates are NOT stored here — the page reads

@@ -25,15 +25,20 @@ describe('Black Friday 2026 offer amounts (agreed 2026-11-16/17)', () => {
     expect(FAMILY_SAVING.discovery).toBe(200);
   });
 
-  it('headline claims hold: couple up to NZ$1,000, four friends up to NZ$2,000', () => {
-    expect(bestSavingPerPerson('signature', 2, true) * 2).toBe(1000);
+  it('headline claims hold: couple NZ$600 (Signature) / NZ$300 (Discovery), four friends up to NZ$2,000', () => {
+    expect(bestSavingPerPerson('signature', 2, false) * 2).toBe(600);
+    expect(bestSavingPerPerson('discovery', 2, false) * 2).toBe(300);
     expect(bestSavingPerPerson('signature', 4, false) * 4).toBe(2000);
   });
 });
 
 describe('bestSavingPerPerson — one offer per booking, the higher one', () => {
-  it('a couple (family) on Signature gets the family 500, not the 2-person friends 300', () => {
-    expect(bestSavingPerPerson('signature', 2, true)).toBe(500);
+  it('a couple on Signature gets the 2-person friends 300 each (600 total), same as two friends', () => {
+    expect(bestSavingPerPerson('signature', 2, false)).toBe(300);
+  });
+
+  it('a family of three on Signature gets the family 500, not the 3-person friends 400', () => {
+    expect(bestSavingPerPerson('signature', 3, true)).toBe(500);
   });
 
   it('four friends on Discovery beat the family rate (250 > 200)', () => {

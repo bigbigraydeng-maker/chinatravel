@@ -50,10 +50,11 @@ function Section({ id, n, title, children }: { id: string; n: number; title: str
 
 const EXAMPLES: Array<{ who: string; tier: 'signature' | 'discovery'; people: number; family: boolean }> = [
   { who: 'One person on a Signature tour', tier: 'signature', people: 1, family: false },
-  { who: 'A couple on a Signature tour', tier: 'signature', people: 2, family: true },
+  { who: 'A couple on a Signature tour', tier: 'signature', people: 2, family: false },
+  { who: 'A family of three on a Signature tour', tier: 'signature', people: 3, family: true },
   { who: 'Three friends on a Signature tour', tier: 'signature', people: 3, family: false },
   { who: 'Four friends on a Signature tour', tier: 'signature', people: 4, family: false },
-  { who: 'A couple on a Discovery tour', tier: 'discovery', people: 2, family: true },
+  { who: 'A couple on a Discovery tour', tier: 'discovery', people: 2, family: false },
   { who: 'Two friends on a Discovery tour', tier: 'discovery', people: 2, family: false },
   { who: 'Four friends on a Discovery tour', tier: 'discovery', people: 4, family: false },
 ];
@@ -161,20 +162,20 @@ export default async function BlackFridayTermsPage() {
               </tbody>
             </table>
             <p>
-              <strong>Couple &amp; Family Travel.</strong> When a family books together, each traveller saves{' '}
+              <strong>Family Travel.</strong> When a family books together, each traveller saves{' '}
               <strong>{nzd(FAMILY_SAVING.signature)}</strong> on a Signature tour or{' '}
-              <strong>{nzd(FAMILY_SAVING.discovery)}</strong> on a Discovery tour. Couples count as family. If you are not
-              sure whether your group counts as family, please ask us before you book.
+              <strong>{nzd(FAMILY_SAVING.discovery)}</strong> on a Discovery tour. A couple travelling together is not a
+              family booking: it saves the same as two friends ({nzd(FRIENDS_SAVING.signature[1] * 2)} in total on a Signature tour, {nzd(FRIENDS_SAVING.discovery[1] * 2)} on a Discovery tour). If you are not sure whether your group counts as family, please ask us before you book.
             </p>
           </Section>
 
           <Section id="one-offer" n={4} title="One offer per booking">
             <p>
               The two offers cannot be combined. We apply whichever one gives your booking the larger saving. For example,
-              a couple on a Signature tour receives the family saving of {nzd(FAMILY_SAVING.signature)} each, not the
-              two-person friends saving of {nzd(FRIENDS_SAVING.signature[1])} each.
+              a family of three on a Signature tour receives the family saving of {nzd(FAMILY_SAVING.signature)} each, not the
+              three-person friends saving of {nzd(FRIENDS_SAVING.signature[2])} each.
             </p>
-            <p>“Save up to NZ$1,000” is the total for a couple on a Signature tour ({nzd(FAMILY_SAVING.signature)} × 2).</p>
+            <p>“Save NZ$600” is the total for a couple on a Signature tour ({nzd(FRIENDS_SAVING.signature[1])} × 2).</p>
             <p>“Save up to NZ$2,000” is the total for four friends on one Signature booking ({nzd(FRIENDS_SAVING.signature[3])} × 4).</p>
           </Section>
 

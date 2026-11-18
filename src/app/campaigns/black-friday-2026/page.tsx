@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = getSiteUrl();
   const title = 'Black Friday Sale on 2027 China Tours | CTS Tours';
   const description =
-    'Book a 2027 China tour between 17 November and 4 December 2026: couples save up to NZ$1,000, a group of four friends saves up to NZ$2,000, and families save NZ$500 per person on Signature tours.';
+    'Book a 2027 China tour between 17 November and 4 December 2026: couples save NZ$600 (Signature) or NZ$300 (Discovery), a group of four friends saves up to NZ$2,000, and families save NZ$500 per person on Signature tours.';
   return {
     title,
     description,
@@ -80,7 +80,7 @@ const FAQS = [
   {
     question: 'Can I combine the friends and family offers?',
     answer:
-      'No — one offer per booking. We apply whichever saves you more. Couples count as family.',
+      'No — one offer per booking. We apply whichever saves you more. A couple travelling together saves the same as two friends.',
   },
   {
     question: 'When is the saving taken off?',
@@ -188,7 +188,7 @@ export default async function BlackFridayLandingPage() {
           {/* The three savings, set like a printed price list */}
           <dl className="mx-auto mt-8 max-w-3xl border-y-2 border-gray-900 [font-variant-numeric:lining-nums]">
             {[
-              { label: 'Couple Travel', note: '', amount: 'NZ$1,000', pre: 'save up to', post: 'per couple' },
+              { label: 'Couple Travel', note: 'NZ$300 on Discovery tours', amount: 'NZ$600', pre: 'save', post: 'per couple' },
               { label: 'Bestie or Mate', note: 'group of 4', amount: 'NZ$2,000', pre: 'save up to', post: '' },
               { label: 'Family Travel', note: '', amount: 'NZ$500', pre: 'save up to', post: 'per person' },
             ].map((r, i) => (
@@ -244,7 +244,7 @@ export default async function BlackFridayLandingPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {['1 person', '2 friends', '3 friends', '4 or more'].map((label, i) => (
+                  {['1 person', '2 friends or a couple', '3 friends', '4 or more'].map((label, i) => (
                     <tr key={label} className="border-b border-gray-100">
                       <td className="py-2 text-gray-900">{label}</td>
                       <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.signature[i])}</td>
@@ -260,9 +260,9 @@ export default async function BlackFridayLandingPage() {
 
             <div className="min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
               <h3 className="text-2xl font-serif font-bold" style={{ color: RED }}>
-                Couple &amp; Family Travel
+                Family Travel
               </h3>
-              <p className="mt-2 text-gray-700">Book together as a family — couples count as family.</p>
+              <p className="mt-2 text-gray-700">Book together as a family.</p>
               <div className="mt-5 grid grid-cols-2 gap-3 md:gap-4">
                 <div className="rounded-xl bg-[#FBF7F0] p-4">
                   <p className="text-sm text-gray-600">Signature tours</p>
@@ -276,7 +276,7 @@ export default async function BlackFridayLandingPage() {
                 </div>
               </div>
               <p className="mt-3 text-sm text-gray-600">
-                A couple on a Signature tour saves {nzd(FAMILY_SAVING.signature * 2)}.
+                A family of three on a Signature tour saves {nzd(FAMILY_SAVING.signature * 3)}.
               </p>
             </div>
           </div>
@@ -293,7 +293,7 @@ export default async function BlackFridayLandingPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {tours.map(({ tour, tier, departures }) => {
               const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
-              const couple = bestSavingPerPerson(tier, 2, true);
+              const couple = bestSavingPerPerson(tier, 2, false) * 2;
               const four = bestSavingPerPerson(tier, 4, false);
               return (
                 <article key={tour.slug} className="flex flex-col overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
@@ -321,7 +321,7 @@ export default async function BlackFridayLandingPage() {
                       {tour.duration} · {tour.price}
                     </p>
                     <p className="mt-3 text-sm font-semibold" style={{ color: RED }}>
-                      Couples save {nzd(couple)} each · four friends save {nzd(four)} each
+                      Couples save {nzd(couple)} in total · four friends save {nzd(four)} each
                     </p>
                     <p className="mt-3 text-sm text-gray-700">
                       <span className="font-semibold">Departures:</span> {departures.join(' · ')}
