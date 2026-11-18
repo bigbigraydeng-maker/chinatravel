@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import VisaFreeBanner from '@/components/VisaFreeBanner';
 import BlackFridayStrip from '@/components/BlackFridayStrip';
 import NewsletterPopup from '@/components/newsletter/NewsletterPopup';
 import { useGtmTracking } from '@/components/GoogleTagManager';
@@ -17,7 +16,6 @@ export default function ConditionalChrome({ children }: { children: React.ReactN
   return (
     <>
       {!hideSiteChrome && <BlackFridayStrip />}
-      {!hideSiteChrome && <VisaFreeBanner />}
       {!hideSiteChrome && <Navbar />}
       {children}
       {!hideSiteChrome && <Footer />}
