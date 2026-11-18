@@ -70,7 +70,7 @@ const FAQS = [
   {
     question: 'Which tours and departures are in the Black Friday sale?',
     answer:
-      'All 2027 departures from May onward of China Panorama, Legacy of China, Silk Road, Natural China, Best of China and A Tale of Two Cities, as listed on this page. March 2027 departures and Shanghai & Surroundings are not included.',
+      'All 2027 departures of China Panorama, Legacy of China, Silk Road, Natural China, Best of China, A Tale of Two Cities and China Unveiled, as listed on this page. The 11 March 2027 Best of China departure and Shanghai & Surroundings are not included.',
   },
   {
     question: 'When do I need to book?',
@@ -288,7 +288,7 @@ export default async function BlackFridayLandingPage() {
         <div className="container mx-auto px-4 py-14">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">Tours in the sale</h2>
           <p className="mt-3 max-w-3xl text-gray-700">
-            2027 departures from May onward. Prices are per person, twin share, including return flights from Auckland.
+            2027 departures. Prices are per person, twin share, including return flights from Auckland.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {tours.map(({ tour, tier, departures }) => {
@@ -355,7 +355,7 @@ export default async function BlackFridayLandingPage() {
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">How to book</h2>
           <ol className="mt-8 grid gap-6 md:grid-cols-3">
             {[
-              ['Choose your tour and date', 'Pick any 2027 departure from May onward listed above.'],
+              ['Choose your tour and date', 'Pick any 2027 departure listed above.'],
               [
                 'Book by 4 December 2026',
                 `Pay a ${nzd(BF_DEPOSIT_PER_PERSON_NZD)} deposit per person within 3 working days to secure your seats.`,

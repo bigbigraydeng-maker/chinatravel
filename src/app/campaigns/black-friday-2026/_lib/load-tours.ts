@@ -5,7 +5,7 @@ import { BF_TOURS, eligibleDepartures, type OfferTier } from '@/lib/campaigns/bl
 export interface BlackFridayTour {
   tour: Tour;
   tier: OfferTier;
-  /** 2027 departures from 1 May that take part in the offer. */
+  /** 2027 departures that take part in the offer. */
   departures: string[];
 }
 
@@ -19,7 +19,7 @@ export async function loadBlackFridayTours(): Promise<BlackFridayTour[]> {
     BF_TOURS.map(async (ref) => {
       const tour = await getPublishedTourBySlug(ref.destination, ref.tier, ref.slug);
       if (!tour?.isActive || tour.soldOut) return null;
-      const departures = eligibleDepartures(tour.departureDates);
+      const departures = eligibleDepartures(tour.departureDates, ref.slug);
       if (departures.length === 0) return null;
       return { tour, tier: ref.tier, departures };
     })

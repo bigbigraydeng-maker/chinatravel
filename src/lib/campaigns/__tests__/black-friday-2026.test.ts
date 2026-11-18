@@ -47,17 +47,21 @@ describe('bestSavingPerPerson — one offer per booking, the higher one', () => 
   });
 });
 
-describe('eligibleDepartures — only 2027 departures from 1 May', () => {
-  it('drops March 2027 departures (no early-bird) and keeps May onward', () => {
-    expect(eligibleDepartures(['11 March 2027', '13 May 2027', '9 September 2027'])).toEqual([
-      '13 May 2027',
-      '9 September 2027',
+describe('eligibleDepartures — every 2027 departure, except the March Best of China', () => {
+  it('keeps March 2027 departures of other tours and drops 2026 ones', () => {
+    expect(eligibleDepartures(['15 October 2026', '18 March 2027', '10 June 2027'], 'beijing-xian')).toEqual([
+      '18 March 2027',
+      '10 June 2027',
     ]);
   });
 
-  it('leaves out labels it cannot read instead of calling them eligible', () => {
+  it('drops only the 11 March 2027 Best of China (essentials) departure', () => {
+    expect(eligibleDepartures(['11 March 2027', '13 May 2027'], 'essentials')).toEqual(['13 May 2027']);
+    expect(eligibleDepartures(['11 March 2027'], 'grand-tour')).toEqual(['11 March 2027']);
+  });
+
+  it('leaves out labels that are not a full date', () => {
     expect(eligibleDepartures(['TBC', 'May 2027', '1 May 2027'])).toEqual(['1 May 2027']);
-    expect(parseDepartureLabel('Sometime')).toBeNull();
   });
 });
 

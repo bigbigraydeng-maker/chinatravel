@@ -5,8 +5,8 @@
  * - "Travel with your Bestie or Mate": per-person saving grows with the number of people on the booking.
  * - "Family Travel": flat per-person saving; couples count as family.
  *
- * Only 2027 departures from May onward take part (the March 2027 departures never had early-bird pricing),
- * and Shanghai & Surroundings is excluded. Prices, durations and dates are NOT stored here — the page reads
+ * All 2027 departures take part, March included (PM 2026-11-18), except the 11 March 2027 Best of China departure.
+ * Shanghai & Surroundings is not in the offer at all. Prices, durations and dates are NOT stored here — the page reads
  * them from the published tour catalogue so they can never drift from the tour pages.
  */
 
@@ -42,10 +42,16 @@ export const BF_TOURS: readonly BlackFridayTourRef[] = [
   { destination: 'china', tier: 'signature', slug: 'landscapes' },
   { destination: 'china', tier: 'discovery', slug: 'essentials' },
   { destination: 'china', tier: 'discovery', slug: 'beijing-xian' },
+  { destination: 'china', tier: 'discovery', slug: 'china-unveiled' },
 ];
 
-/** First departure date that takes part in the offer (inclusive). */
-const FIRST_ELIGIBLE_DEPARTURE = Date.UTC(2027, 4, 1); // 1 May 2027
+/** First departure date that takes part in the offer (inclusive): any 2027 departure. */
+const FIRST_ELIGIBLE_DEPARTURE = Date.UTC(2027, 0, 1); // 1 Jan 2027
+
+/** Departures left out of the offer, by tour slug (exact departure labels as in the tour catalogue). */
+const EXCLUDED_DEPARTURES: Readonly<Record<string, readonly string[]>> = {
+  essentials: ['11 March 2027'], // Best of China, March departure: not in the offer (PM 2026-11-18)
+};
 
 /**
  * Parses a departure label such as "13 May 2027". Returns null for anything without a day, month and year,
@@ -61,9 +67,11 @@ export function parseDepartureLabel(label: string): number | null {
 
 const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
-/** Departures in the offer: dated 1 May 2027 or later. */
-export function eligibleDepartures(labels: readonly string[] | undefined): string[] {
+/** Departures in the offer: any 2027 departure, minus the ones listed for this tour in EXCLUDED_DEPARTURES. */
+export function eligibleDepartures(labels: readonly string[] | undefined, slug?: string): string[] {
+  const excluded = slug ? EXCLUDED_DEPARTURES[slug] ?? [] : [];
   return (labels ?? []).filter((label) => {
+    if (excluded.includes(label.trim())) return false;
     const t = parseDepartureLabel(label);
     return t !== null && t >= FIRST_ELIGIBLE_DEPARTURE;
   });
