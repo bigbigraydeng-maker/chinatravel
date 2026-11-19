@@ -15,7 +15,7 @@ export const BF_OFFER_START = '2026-11-17';
 export const BF_OFFER_END = '2026-12-04';
 export const BF_DEPOSIT_PER_PERSON_NZD = 1000;
 
-/** Per-person saving (NZD) by number of people on the booking: index 0 = 1 person … index 3 = 4 or more. */
+/** Per-person saving (NZD) by number of people on the booking: index 0 = 1 person … index 3 = 4 people (the offer is for up to 4 people per booking, PM 2026-11-19). */
 export const FRIENDS_SAVING: Record<OfferTier, readonly [number, number, number, number]> = {
   signature: [200, 300, 400, 500],
   discovery: [100, 150, 200, 250],

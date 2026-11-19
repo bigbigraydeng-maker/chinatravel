@@ -89,7 +89,7 @@ const FAQS = [
   {
     question: 'How much do we save?',
     answer:
-      'Everyone on the same booking gets the same saving, and it grows with the group. On Signature tours: 1 person NZ$200, 2 people NZ$300 each, 3 people NZ$400 each, 4 or more NZ$500 each. On Discovery tours: NZ$100, NZ$150, NZ$200 and NZ$250 each.',
+      'Everyone on the same booking gets the same saving, and it grows with the group. On Signature tours: 1 person NZ$200, 2 people NZ$300 each, 3 people NZ$400 each, 4 people NZ$500 each. On Discovery tours: NZ$100, NZ$150, NZ$200 and NZ$250 each. The offer is for up to 4 people on one booking.',
   },
 ];
 
@@ -184,31 +184,45 @@ export default async function BlackFridayLandingPage() {
             </div>
           </div>
 
-          {/* The three savings, set like a printed price list */}
-          <dl className="mx-auto mt-8 max-w-3xl border-y-2 border-gray-900 [font-variant-numeric:lining-nums]">
-            {[
-              { label: 'Two of you', note: 'couple, friends or family', amount: 'NZ$600', pre: 'save', post: '' },
-              { label: 'Three of you', note: '', amount: 'NZ$1,200', pre: 'save', post: '' },
-              { label: 'Four or more', note: '', amount: 'NZ$500', pre: 'save', post: 'each' },
-            ].map((r, i) => (
-              <div
-                key={r.label}
-                className={`flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 ${i < 2 ? 'border-b border-gray-200' : ''}`}
-              >
-                <dt className="text-lg md:text-xl font-semibold text-gray-900">
-                  {r.label}
-                  {r.note && <span className="ml-2 text-sm font-normal text-gray-500">({r.note})</span>}
-                </dt>
-                <dd className="text-lg md:text-xl text-gray-900">
-                  {r.pre}{' '}
-                  <strong className="text-2xl md:text-3xl font-black" style={{ color: RED }}>
-                    {r.amount}
-                  </strong>
-                  {r.post && <span className="ml-1 text-gray-600">{r.post}</span>}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          {/* The one offer, set like a printed price list: per person, by people on one booking */}
+          <div className="mx-auto mt-8 max-w-3xl [font-variant-numeric:lining-nums]">
+            <h2 className="text-center text-2xl md:text-3xl font-serif font-bold text-gray-900">
+              The more of you, the more you save
+            </h2>
+            <p className="mt-2 text-center text-gray-600">
+              Saving per person, for up to 4 people on one booking. Couples, families and friends all count the same.
+            </p>
+            <table className="mt-5 w-full border-y-2 border-gray-900 text-left">
+              <thead>
+                <tr className="border-b border-gray-200 text-xs sm:text-sm uppercase tracking-wider text-gray-500">
+                  <th className="py-3 pr-2 font-semibold">People on one booking</th>
+                  <th className="py-3 pr-2 text-right font-semibold">Signature tours</th>
+                  <th className="py-3 text-right font-semibold">Discovery tours</th>
+                </tr>
+              </thead>
+              <tbody>
+                {['1 person', '2 people', '3 people', '4 people'].map((label, i) => (
+                  <tr key={label} className={i < 3 ? 'border-b border-gray-200' : ''}>
+                    <td className="py-3 pr-2 text-base md:text-xl font-semibold text-gray-900">{label}</td>
+                    <td className="py-3 pr-2 text-right">
+                      <strong className="text-xl md:text-3xl font-black" style={{ color: RED }}>
+                        {nzd(FRIENDS_SAVING.signature[i])}
+                      </strong>
+                    </td>
+                    <td className="py-3 text-right">
+                      <strong className="text-xl md:text-3xl font-black" style={{ color: RED }}>
+                        {nzd(FRIENDS_SAVING.discovery[i])}
+                      </strong>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="mt-3 text-center text-sm text-gray-600">
+              On a Signature tour, two of you save {nzd(FRIENDS_SAVING.signature[1] * 2)} and four of you save{' '}
+              {nzd(FRIENDS_SAVING.signature[3] * 4)}. Savings come off your final payment.
+            </p>
+          </div>
           <p className="mt-4 text-center text-sm text-gray-600">
             Questions? Call{' '}
             <a href={CTS_PHONE_HREF} className="font-bold underline underline-offset-2" style={{ color: RED }}>
@@ -216,42 +230,6 @@ export default async function BlackFridayLandingPage() {
             </a>{' '}
             — our Auckland team is happy to help.
           </p>
-        </div>
-      </section>
-
-      {/* The offer */}
-      <section className="bg-[#FBF7F0]">
-        <div className="container mx-auto px-4 py-14">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">The more of you, the more you save</h2>
-          <p className="mt-3 max-w-3xl text-gray-700">
-            One simple offer for couples, families, friends and groups. Everyone on the same booking saves the same amount
-            per person, and it comes off your final payment.
-          </p>
-
-          <div className="mt-8 max-w-3xl min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
-            <table className="w-full text-left text-[13px] sm:text-sm md:text-base">
-              <thead>
-                <tr className="border-b border-gray-200 text-gray-500">
-                  <th className="py-2 pr-2 font-semibold">People on the booking</th>
-                  <th className="py-2 pr-2 font-semibold">Signature (each)</th>
-                  <th className="py-2 font-semibold">Discovery (each)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {['1 person', '2 people', '3 people', '4 or more'].map((label, i) => (
-                  <tr key={label} className="border-b border-gray-100">
-                    <td className="py-2 text-gray-900">{label}</td>
-                    <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.signature[i])}</td>
-                    <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.discovery[i])}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="mt-3 text-sm text-gray-600">
-              On a Signature tour, two of you save {nzd(FRIENDS_SAVING.signature[1] * 2)} and four of you save{' '}
-              {nzd(FRIENDS_SAVING.signature[3] * 4)}.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -293,7 +271,7 @@ export default async function BlackFridayLandingPage() {
                       {tour.duration} · {tour.price}
                     </p>
                     <p className="mt-3 text-sm font-semibold" style={{ color: RED }}>
-                      Two of you save {nzd(couple)} · four or more save {nzd(four)} each
+                      Two of you save {nzd(couple)} · four of you save {nzd(four)} each
                     </p>
                     <p className="mt-3 text-sm text-gray-700">
                       <span className="font-semibold">Departures:</span> {departures.join(' · ')}
@@ -332,7 +310,7 @@ export default async function BlackFridayLandingPage() {
                 'Book by 4 December 2026',
                 `Pay a ${nzd(BF_DEPOSIT_PER_PERSON_NZD)} deposit per person within 3 working days to secure your seats.`,
               ],
-              ['Your saving comes off the final payment', 'We apply the offer that saves you more — one per booking.'],
+              ['Your saving comes off the final payment', 'Everyone on your booking saves the same amount per person.'],
             ].map(([title, body], i) => (
               <li key={title} className="rounded-2xl bg-white p-6 shadow-sm">
                 <p className="flex h-11 w-11 items-center justify-center rounded-full text-xl font-black text-white" style={{ backgroundColor: RED }}>

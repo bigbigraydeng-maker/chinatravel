@@ -52,7 +52,6 @@ const EXAMPLES: Array<{ who: string; tier: 'signature' | 'discovery'; people: nu
   { who: 'A couple on a Signature tour', tier: 'signature', people: 2 },
   { who: 'A family of three on a Signature tour', tier: 'signature', people: 3 },
   { who: 'Four friends on a Signature tour', tier: 'signature', people: 4 },
-  { who: 'A family of five on a Signature tour', tier: 'signature', people: 5 },
   { who: 'A couple on a Discovery tour', tier: 'discovery', people: 2 },
   { who: 'Four friends on a Discovery tour', tier: 'discovery', people: 4 },
 ];
@@ -150,7 +149,7 @@ export default async function BlackFridayTermsPage() {
                 </tr>
               </thead>
               <tbody>
-                {['1', '2', '3', '4 or more'].map((label, i) => (
+                {['1', '2', '3', '4'].map((label, i) => (
                   <tr key={label} className="border-b border-gray-100">
                     <td className="py-2">{label}</td>
                     <td className="py-2 font-semibold">{nzd(FRIENDS_SAVING.signature[i])}</td>
@@ -160,8 +159,9 @@ export default async function BlackFridayTermsPage() {
               </tbody>
             </table>
             <p>
-              The saving depends only on the number of people on the booking. Couples, families, friends and mixed groups
-              are all treated the same, and you do not need to show how you are related.
+              The offer is for up to 4 people on one booking. The saving depends only on the number of people on the
+              booking: couples, families, friends and mixed groups are all treated the same, and you do not need to show how
+              you are related. For a group of 5 or more, please contact us before you book.
             </p>
           </Section>
 
