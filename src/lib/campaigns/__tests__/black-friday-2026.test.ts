@@ -1,5 +1,6 @@
 import {
   bestSavingPerPerson,
+  BF_TOURS,
   eligibleDepartures,
   isOfferOpen,
   isOfferOver,
@@ -52,7 +53,7 @@ describe('bestSavingPerPerson — one offer per booking, the higher one', () => 
   });
 });
 
-describe('eligibleDepartures — every 2027 departure, except the March Best of China', () => {
+describe('eligibleDepartures — every 2027 departure of the tours in the sale', () => {
   it('keeps March 2027 departures of other tours and drops 2026 ones', () => {
     expect(eligibleDepartures(['15 October 2026', '18 March 2027', '10 June 2027'], 'beijing-xian')).toEqual([
       '18 March 2027',
@@ -60,9 +61,15 @@ describe('eligibleDepartures — every 2027 departure, except the March Best of 
     ]);
   });
 
-  it('drops only the 11 March 2027 Best of China (essentials) departure', () => {
-    expect(eligibleDepartures(['11 March 2027', '13 May 2027'], 'essentials')).toEqual(['13 May 2027']);
+  it('keeps March 2027 departures of tours in the sale', () => {
     expect(eligibleDepartures(['11 March 2027'], 'grand-tour')).toEqual(['11 March 2027']);
+  });
+
+  it('Best of China and Shanghai & Surroundings are not in the sale at all (PM 2026-11-19)', () => {
+    const slugs = BF_TOURS.map((t) => t.slug);
+    expect(slugs).not.toContain('essentials');
+    expect(slugs).not.toContain('shanghai-beyond');
+    expect(slugs).toHaveLength(6);
   });
 
   it('leaves out labels that are not a full date', () => {

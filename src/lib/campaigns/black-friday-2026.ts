@@ -6,8 +6,8 @@
  * - "Family Travel": flat per-person saving. Couples are NOT family: a couple is two on one booking and gets the
  *   two-person Bestie rate (Signature NZ$600, Discovery NZ$300 in total) — PM 2026-11-19, so two people always save the same.
  *
- * All 2027 departures take part, March included (PM 2026-11-18), except the 11 March 2027 Best of China departure.
- * Shanghai & Surroundings is not in the offer at all. Prices, durations and dates are NOT stored here — the page reads
+ * All 2027 departures of the tours below take part, March included (PM 2026-11-18).
+ * Best of China and Shanghai & Surroundings are not in the offer at all, for any departure (PM 2026-11-19). Prices, durations and dates are NOT stored here — the page reads
  * them from the published tour catalogue so they can never drift from the tour pages.
  */
 
@@ -41,7 +41,6 @@ export const BF_TOURS: readonly BlackFridayTourRef[] = [
   { destination: 'china', tier: 'signature', slug: 'imperial-heritage' },
   { destination: 'china', tier: 'signature', slug: 'silk-road' },
   { destination: 'china', tier: 'signature', slug: 'landscapes' },
-  { destination: 'china', tier: 'discovery', slug: 'essentials' },
   { destination: 'china', tier: 'discovery', slug: 'beijing-xian' },
   { destination: 'china', tier: 'discovery', slug: 'china-unveiled' },
 ];
@@ -51,7 +50,6 @@ const FIRST_ELIGIBLE_DEPARTURE = Date.UTC(2027, 0, 1); // 1 Jan 2027
 
 /** Departures left out of the offer, by tour slug (exact departure labels as in the tour catalogue). */
 const EXCLUDED_DEPARTURES: Readonly<Record<string, readonly string[]>> = {
-  essentials: ['11 March 2027'], // Best of China, March departure: not in the offer (PM 2026-11-18)
 };
 
 /**

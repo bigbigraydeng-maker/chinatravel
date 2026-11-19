@@ -70,7 +70,7 @@ const FAQS = [
   {
     question: 'Which tours and departures are in the Black Friday sale?',
     answer:
-      'All 2027 departures of China Panorama, Legacy of China, Silk Road, Natural China, Best of China, A Tale of Two Cities and China Unveiled, as listed on this page. The 11 March 2027 Best of China departure and Shanghai & Surroundings are not included.',
+      'All 2027 departures of China Panorama, Legacy of China, Silk Road, Natural China, A Tale of Two Cities and China Unveiled, as listed on this page. Best of China and Shanghai & Surroundings are not included.',
   },
   {
     question: 'When do I need to book?',
