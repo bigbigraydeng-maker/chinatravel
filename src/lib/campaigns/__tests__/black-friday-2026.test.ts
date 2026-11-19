@@ -88,3 +88,17 @@ describe('isOfferOpen — New Zealand time window', () => {
     expect(isOfferOpen(new Date('2026-12-04T11:00:00Z'))).toBe(false);
   });
 });
+
+describe('BF26_HERO_VIDEO', () => {
+  it('points at licensed files that are in public/ (never the watermarked comp)', () => {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { existsSync } = require('fs') as typeof import('fs');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { join } = require('path') as typeof import('path');
+    const { BF26_HERO_VIDEO } = jest.requireActual('../black-friday-2026') as typeof import('../black-friday-2026');
+    for (const p of [BF26_HERO_VIDEO.src, BF26_HERO_VIDEO.poster]) {
+      expect(p).not.toMatch(/COMP|watermark/i);
+      expect(existsSync(join(process.cwd(), 'public', p))).toBe(true);
+    }
+  });
+});
