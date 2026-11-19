@@ -12,7 +12,6 @@ import { generateBreadcrumbSchema } from '@/lib/schema-tour';
 import { getSiteUrl, CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/lib/site';
 import {
   BF_DEPOSIT_PER_PERSON_NZD,
-  FAMILY_SAVING,
   FRIENDS_SAVING,
   bestSavingPerPerson,
   isOfferOpen,
@@ -55,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = getSiteUrl();
   const title = 'Black Friday Sale on 2027 China Tours | CTS Tours';
   const description =
-    'Book a 2027 China tour between 17 November and 4 December 2026: couples save NZ$600 (Signature) or NZ$300 (Discovery), a group of four friends saves up to NZ$2,000, and families save NZ$500 per person on Signature tours.';
+    'Book a 2027 China tour between 17 November and 4 December 2026: the more of you on one booking, the more each of you saves. Two people save NZ$600 and four save NZ$2,000 on Signature tours.';
   return {
     title,
     description,
@@ -78,9 +77,9 @@ const FAQS = [
       'Book between 17 November and 4 December 2026 and pay a NZ$1,000 deposit per person within 3 working days. From 5 December 2026 tour prices return to standard.',
   },
   {
-    question: 'Can I combine the friends and family offers?',
+    question: 'Do couples, families and friends save the same?',
     answer:
-      'No — one offer per booking. We apply whichever saves you more. A couple travelling together saves the same as two friends.',
+      'Yes. The saving depends only on how many people are on the booking: couples, families, friends and mixed groups are all treated the same.',
   },
   {
     question: 'When is the saving taken off?',
@@ -88,9 +87,9 @@ const FAQS = [
       'The saving is deducted from your final payment. Your NZ$1,000 deposit per person is non-refundable, as on all CTS bookings.',
   },
   {
-    question: 'How do the friends savings work?',
+    question: 'How much do we save?',
     answer:
-      'Everyone on the same booking gets the same saving, and it grows with the group. On Signature tours: 1 person NZ$200, 2 friends NZ$300 each, 3 friends NZ$400 each, 4 or more NZ$500 each. On Discovery tours: NZ$100, NZ$150, NZ$200 and NZ$250 each.',
+      'Everyone on the same booking gets the same saving, and it grows with the group. On Signature tours: 1 person NZ$200, 2 people NZ$300 each, 3 people NZ$400 each, 4 or more NZ$500 each. On Discovery tours: NZ$100, NZ$150, NZ$200 and NZ$250 each.',
   },
 ];
 
@@ -188,9 +187,9 @@ export default async function BlackFridayLandingPage() {
           {/* The three savings, set like a printed price list */}
           <dl className="mx-auto mt-8 max-w-3xl border-y-2 border-gray-900 [font-variant-numeric:lining-nums]">
             {[
-              { label: 'Couple Travel', note: 'NZ$300 on Discovery tours', amount: 'NZ$600', pre: 'save', post: 'per couple' },
-              { label: 'Bestie or Mate', note: 'group of 4', amount: 'NZ$2,000', pre: 'save up to', post: '' },
-              { label: 'Family Travel', note: '', amount: 'NZ$500', pre: 'save up to', post: 'per person' },
+              { label: 'Two of you', note: 'couple, friends or family', amount: 'NZ$600', pre: 'save', post: '' },
+              { label: 'Three of you', note: '', amount: 'NZ$1,200', pre: 'save', post: '' },
+              { label: 'Four or more', note: '', amount: 'NZ$500', pre: 'save', post: 'each' },
             ].map((r, i) => (
               <div
                 key={r.label}
@@ -220,65 +219,38 @@ export default async function BlackFridayLandingPage() {
         </div>
       </section>
 
-      {/* The two offers */}
+      {/* The offer */}
       <section className="bg-[#FBF7F0]">
         <div className="container mx-auto px-4 py-14">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">Two ways to save</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900">The more of you, the more you save</h2>
           <p className="mt-3 max-w-3xl text-gray-700">
-            One offer per booking — we apply whichever saves you more. Savings are per person and come off your final
-            payment.
+            One simple offer for couples, families, friends and groups. Everyone on the same booking saves the same amount
+            per person, and it comes off your final payment.
           </p>
 
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <div className="min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
-              <h3 className="text-2xl font-serif font-bold" style={{ color: RED }}>
-                Travel with your Bestie or Mate
-              </h3>
-              <p className="mt-2 text-gray-700">The more of you on one booking, the more each of you saves.</p>
-              <table className="mt-5 w-full text-left text-[13px] sm:text-sm md:text-base">
-                <thead>
-                  <tr className="border-b border-gray-200 text-gray-500">
-                    <th className="py-2 pr-2 font-semibold">People</th>
-                    <th className="py-2 pr-2 font-semibold">Signature (each)</th>
-                    <th className="py-2 font-semibold">Discovery (each)</th>
+          <div className="mt-8 max-w-3xl min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
+            <table className="w-full text-left text-[13px] sm:text-sm md:text-base">
+              <thead>
+                <tr className="border-b border-gray-200 text-gray-500">
+                  <th className="py-2 pr-2 font-semibold">People on the booking</th>
+                  <th className="py-2 pr-2 font-semibold">Signature (each)</th>
+                  <th className="py-2 font-semibold">Discovery (each)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {['1 person', '2 people', '3 people', '4 or more'].map((label, i) => (
+                  <tr key={label} className="border-b border-gray-100">
+                    <td className="py-2 text-gray-900">{label}</td>
+                    <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.signature[i])}</td>
+                    <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.discovery[i])}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {['1 person', '2 friends or a couple', '3 friends', '4 or more'].map((label, i) => (
-                    <tr key={label} className="border-b border-gray-100">
-                      <td className="py-2 text-gray-900">{label}</td>
-                      <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.signature[i])}</td>
-                      <td className="py-2 font-bold text-gray-900">{nzd(FRIENDS_SAVING.discovery[i])}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className="mt-3 text-sm text-gray-600">
-                Four friends on a Signature tour save {nzd(FRIENDS_SAVING.signature[3] * 4)} in total.
-              </p>
-            </div>
-
-            <div className="min-w-0 rounded-2xl bg-white p-5 md:p-6 shadow-sm border border-gray-100">
-              <h3 className="text-2xl font-serif font-bold" style={{ color: RED }}>
-                Family Travel
-              </h3>
-              <p className="mt-2 text-gray-700">Book together as a family.</p>
-              <div className="mt-5 grid grid-cols-2 gap-3 md:gap-4">
-                <div className="rounded-xl bg-[#FBF7F0] p-4">
-                  <p className="text-sm text-gray-600">Signature tours</p>
-                  <p className="mt-1 text-3xl font-serif font-bold text-gray-900">{nzd(FAMILY_SAVING.signature)}</p>
-                  <p className="text-sm text-gray-600">off per person</p>
-                </div>
-                <div className="rounded-xl bg-[#FBF7F0] p-4">
-                  <p className="text-sm text-gray-600">Discovery tours</p>
-                  <p className="mt-1 text-3xl font-serif font-bold text-gray-900">{nzd(FAMILY_SAVING.discovery)}</p>
-                  <p className="text-sm text-gray-600">off per person</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-gray-600">
-                A family of three on a Signature tour saves {nzd(FAMILY_SAVING.signature * 3)}.
-              </p>
-            </div>
+                ))}
+              </tbody>
+            </table>
+            <p className="mt-3 text-sm text-gray-600">
+              On a Signature tour, two of you save {nzd(FRIENDS_SAVING.signature[1] * 2)} and four of you save{' '}
+              {nzd(FRIENDS_SAVING.signature[3] * 4)}.
+            </p>
           </div>
         </div>
       </section>
@@ -293,8 +265,8 @@ export default async function BlackFridayLandingPage() {
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {tours.map(({ tour, tier, departures }) => {
               const href = `/tours/${tour.destination}/${tour.tier}/${tour.slug}`;
-              const couple = bestSavingPerPerson(tier, 2, false) * 2;
-              const four = bestSavingPerPerson(tier, 4, false);
+              const couple = bestSavingPerPerson(tier, 2) * 2;
+              const four = bestSavingPerPerson(tier, 4);
               return (
                 <article key={tour.slug} className="flex flex-col overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
                   <div className="relative h-52">
@@ -321,7 +293,7 @@ export default async function BlackFridayLandingPage() {
                       {tour.duration} · {tour.price}
                     </p>
                     <p className="mt-3 text-sm font-semibold" style={{ color: RED }}>
-                      Couples save {nzd(couple)} in total · four friends save {nzd(four)} each
+                      Two of you save {nzd(couple)} · four or more save {nzd(four)} each
                     </p>
                     <p className="mt-3 text-sm text-gray-700">
                       <span className="font-semibold">Departures:</span> {departures.join(' · ')}

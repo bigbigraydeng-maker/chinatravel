@@ -1,10 +1,8 @@
 /**
  * Black Friday 2026 offer (CTS, agreed by the PM on 2026-11-16/17).
  *
- * Two offers, one per booking (the higher one applies, never both):
- * - "Travel with your Bestie or Mate": per-person saving grows with the number of people on the booking.
- * - "Family Travel": flat per-person saving. Couples are NOT family: a couple is two on one booking and gets the
- *   two-person Bestie rate (Signature NZ$600, Discovery NZ$300 in total) — PM 2026-11-19, so two people always save the same.
+ * One offer (PM 2026-11-19, after CTS feedback): the more people on one booking, the more each saves. There is no
+ * separate family or couple offer any more: a couple is two people, a family of three is three people, and so on.
  *
  * All 2027 departures of the tours below take part, March included (PM 2026-11-18).
  * Best of China and Shanghai & Surroundings are not in the offer at all, for any departure (PM 2026-11-19). Prices, durations and dates are NOT stored here — the page reads
@@ -23,11 +21,6 @@ export const FRIENDS_SAVING: Record<OfferTier, readonly [number, number, number,
   discovery: [100, 150, 200, 250],
 };
 
-/** Per-person saving (NZD) for a family booking. */
-export const FAMILY_SAVING: Record<OfferTier, number> = {
-  signature: 500,
-  discovery: 200,
-};
 
 export interface BlackFridayTourRef {
   destination: 'china';
@@ -77,13 +70,12 @@ export function eligibleDepartures(labels: readonly string[] | undefined, slug?:
 }
 
 /**
- * The saving that applies to one booking: the higher of the friends and family offers (never both).
+ * The per-person saving for one booking, by tour tier and number of people on the booking.
  * `people` below 1 is treated as 1; 4 or more uses the 4-person rate.
  */
-export function bestSavingPerPerson(tier: OfferTier, people: number, isFamily: boolean): number {
+export function bestSavingPerPerson(tier: OfferTier, people: number): number {
   const idx = Math.min(Math.max(Math.floor(people), 1), 4) - 1;
-  const friends = FRIENDS_SAVING[tier][idx];
-  return isFamily ? Math.max(friends, FAMILY_SAVING[tier]) : friends;
+  return FRIENDS_SAVING[tier][idx];
 }
 
 /**
