@@ -7,7 +7,6 @@ import {
   parseDepartureLabel,
   BF_AFTER_OFFER_REDIRECT,
   FRIENDS_SAVING,
-  FAMILY_SAVING,
 } from '../black-friday-2026';
 
 /**
@@ -15,41 +14,30 @@ import {
  * creative changing too, customers see one price in the ad and another on the page — so the agreed amounts are
  * pinned explicitly rather than derived.
  */
-describe('Black Friday 2026 offer amounts (agreed 2026-11-16/17)', () => {
-  it('Signature: 200/300/400/500 per person for friends, 500 for families', () => {
+describe('Black Friday 2026 offer amounts (one offer, PM 2026-11-19)', () => {
+  it('Signature: 200/300/400/500 per person by people on the booking', () => {
     expect(FRIENDS_SAVING.signature).toEqual([200, 300, 400, 500]);
-    expect(FAMILY_SAVING.signature).toBe(500);
   });
 
-  it('Discovery: 100/150/200/250 per person for friends, 200 for families', () => {
+  it('Discovery: 100/150/200/250 per person by people on the booking', () => {
     expect(FRIENDS_SAVING.discovery).toEqual([100, 150, 200, 250]);
-    expect(FAMILY_SAVING.discovery).toBe(200);
   });
 
-  it('headline claims hold: couple NZ$600 (Signature) / NZ$300 (Discovery), four friends up to NZ$2,000', () => {
-    expect(bestSavingPerPerson('signature', 2, false) * 2).toBe(600);
-    expect(bestSavingPerPerson('discovery', 2, false) * 2).toBe(300);
-    expect(bestSavingPerPerson('signature', 4, false) * 4).toBe(2000);
+  it('headline claims hold: two people NZ$600 (Signature) / NZ$300 (Discovery), four people NZ$2,000', () => {
+    expect(bestSavingPerPerson('signature', 2) * 2).toBe(600);
+    expect(bestSavingPerPerson('discovery', 2) * 2).toBe(300);
+    expect(bestSavingPerPerson('signature', 4) * 4).toBe(2000);
   });
 });
 
-describe('bestSavingPerPerson — one offer per booking, the higher one', () => {
-  it('a couple on Signature gets the 2-person friends 300 each (600 total), same as two friends', () => {
-    expect(bestSavingPerPerson('signature', 2, false)).toBe(300);
-  });
-
-  it('a family of three on Signature gets the family 500, not the 3-person friends 400', () => {
-    expect(bestSavingPerPerson('signature', 3, true)).toBe(500);
-  });
-
-  it('four friends on Discovery beat the family rate (250 > 200)', () => {
-    expect(bestSavingPerPerson('discovery', 4, false)).toBe(250);
-    expect(bestSavingPerPerson('discovery', 4, true)).toBe(250);
+describe('bestSavingPerPerson — depends only on the number of people', () => {
+  it('a family of three on Signature saves the 3-person rate, NZ$400 each', () => {
+    expect(bestSavingPerPerson('signature', 3)).toBe(400);
   });
 
   it('5 or more people use the 4-person rate; 0 people is treated as 1', () => {
-    expect(bestSavingPerPerson('signature', 7, false)).toBe(500);
-    expect(bestSavingPerPerson('signature', 0, false)).toBe(200);
+    expect(bestSavingPerPerson('signature', 7)).toBe(500);
+    expect(bestSavingPerPerson('signature', 0)).toBe(200);
   });
 });
 

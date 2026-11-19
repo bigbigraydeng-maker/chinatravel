@@ -5,7 +5,6 @@ import { generateBreadcrumbSchema } from '@/lib/schema-tour';
 import { getSiteUrl, CTS_PHONE_DISPLAY, CTS_PHONE_HREF } from '@/lib/site';
 import {
   BF_DEPOSIT_PER_PERSON_NZD,
-  FAMILY_SAVING,
   FRIENDS_SAVING,
   bestSavingPerPerson,
 } from '@/lib/campaigns/black-friday-2026';
@@ -26,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteUrl = getSiteUrl();
   const title = 'Black Friday 2026 Offer Terms | CTS Tours';
   const description =
-    'Full terms of the CTS Tours Black Friday 2026 offer on 2027 China tours: booking dates, eligible tours and departures, how the friends and family savings work, and examples.';
+    'Full terms of the CTS Tours Black Friday 2026 offer on 2027 China tours: booking dates, eligible tours and departures, how the saving works, and examples.';
   return {
     title,
     description,
@@ -48,15 +47,14 @@ function Section({ id, n, title, children }: { id: string; n: number; title: str
   );
 }
 
-const EXAMPLES: Array<{ who: string; tier: 'signature' | 'discovery'; people: number; family: boolean }> = [
-  { who: 'One person on a Signature tour', tier: 'signature', people: 1, family: false },
-  { who: 'A couple on a Signature tour', tier: 'signature', people: 2, family: false },
-  { who: 'A family of three on a Signature tour', tier: 'signature', people: 3, family: true },
-  { who: 'Three friends on a Signature tour', tier: 'signature', people: 3, family: false },
-  { who: 'Four friends on a Signature tour', tier: 'signature', people: 4, family: false },
-  { who: 'A couple on a Discovery tour', tier: 'discovery', people: 2, family: false },
-  { who: 'Two friends on a Discovery tour', tier: 'discovery', people: 2, family: false },
-  { who: 'Four friends on a Discovery tour', tier: 'discovery', people: 4, family: false },
+const EXAMPLES: Array<{ who: string; tier: 'signature' | 'discovery'; people: number }> = [
+  { who: 'One person on a Signature tour', tier: 'signature', people: 1 },
+  { who: 'A couple on a Signature tour', tier: 'signature', people: 2 },
+  { who: 'A family of three on a Signature tour', tier: 'signature', people: 3 },
+  { who: 'Four friends on a Signature tour', tier: 'signature', people: 4 },
+  { who: 'A family of five on a Signature tour', tier: 'signature', people: 5 },
+  { who: 'A couple on a Discovery tour', tier: 'discovery', people: 2 },
+  { who: 'Four friends on a Discovery tour', tier: 'discovery', people: 4 },
 ];
 
 export default async function BlackFridayTermsPage() {
@@ -138,10 +136,10 @@ export default async function BlackFridayTermsPage() {
             </p>
           </Section>
 
-          <Section id="offers" n={3} title="The two offers">
+          <Section id="offers" n={3} title="The offer">
             <p>
-              <strong>Travel with your Bestie or Mate.</strong> Everyone on the same booking gets the same saving per person,
-              and it grows with the number of people on the booking:
+              Everyone on the same booking gets the same saving per person, and it grows with the number of people on the
+              booking:
             </p>
             <table className="w-full text-left text-sm md:text-base">
               <thead>
@@ -162,20 +160,13 @@ export default async function BlackFridayTermsPage() {
               </tbody>
             </table>
             <p>
-              <strong>Family Travel.</strong> When a family books together, each traveller saves{' '}
-              <strong>{nzd(FAMILY_SAVING.signature)}</strong> on a Signature tour or{' '}
-              <strong>{nzd(FAMILY_SAVING.discovery)}</strong> on a Discovery tour. A couple travelling together is not a
-              family booking: it saves the same as two friends ({nzd(FRIENDS_SAVING.signature[1] * 2)} in total on a Signature tour, {nzd(FRIENDS_SAVING.discovery[1] * 2)} on a Discovery tour). If you are not sure whether your group counts as family, please ask us before you book.
+              The saving depends only on the number of people on the booking. Couples, families, friends and mixed groups
+              are all treated the same, and you do not need to show how you are related.
             </p>
           </Section>
 
-          <Section id="one-offer" n={4} title="One offer per booking">
-            <p>
-              The two offers cannot be combined. We apply whichever one gives your booking the larger saving. For example,
-              a family of three on a Signature tour receives the family saving of {nzd(FAMILY_SAVING.signature)} each, not the
-              three-person friends saving of {nzd(FRIENDS_SAVING.signature[2])} each.
-            </p>
-            <p>“Save NZ$600” is the total for a couple on a Signature tour ({nzd(FRIENDS_SAVING.signature[1])} × 2).</p>
+          <Section id="one-offer" n={4} title="How the headline savings are worked out">
+            <p>“Save NZ$600” is the total for two people, such as a couple, on one Signature booking ({nzd(FRIENDS_SAVING.signature[1])} × 2).</p>
             <p>“Save up to NZ$2,000” is the total for four friends on one Signature booking ({nzd(FRIENDS_SAVING.signature[3])} × 4).</p>
           </Section>
 
@@ -190,7 +181,7 @@ export default async function BlackFridayTermsPage() {
               </thead>
               <tbody>
                 {EXAMPLES.map((e) => {
-                  const each = bestSavingPerPerson(e.tier, e.people, e.family);
+                  const each = bestSavingPerPerson(e.tier, e.people);
                   return (
                     <tr key={e.who} className="border-b border-gray-100">
                       <td className="py-2 pr-4">{e.who}</td>
