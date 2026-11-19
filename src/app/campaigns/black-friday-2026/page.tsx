@@ -16,8 +16,7 @@ import {
   bestSavingPerPerson,
   isOfferOpen,
   isOfferOver,
-  BF_AFTER_OFFER_REDIRECT,
-} from '@/lib/campaigns/black-friday-2026';
+  BF_AFTER_OFFER_REDIRECT, BF26_HERO_VIDEO } from '@/lib/campaigns/black-friday-2026';
 import { loadBlackFridayTours } from './_lib/load-tours';
 import BlackFridayEnquiry from './_components/BlackFridayEnquiry';
 import RealTravellers from './_components/RealTravellers';
@@ -38,11 +37,11 @@ const GOLD = '#D6A756';
 
 /**
  * Hero background footage: a short muted loop of travellers enjoying the places on these tours.
- * Set this to the licensed clip once it is bought; until then the hero shows the first tour's photo.
- * A local preview can point at a watermarked comp with BF26_HERO_VIDEO_PREVIEW — never honoured in production,
- * so an unlicensed comp can never go live.
+ * Cut from 8 iStock clips licensed under the PM's Premium + Video subscription (downloaded 19 Nov 2026; IDs in
+ * src/lib/campaigns/black-friday-2026.ts BF26_HERO_VIDEO). Shared with the homepage hero during the sale.
+ * A local preview can point at a watermarked comp with BF26_HERO_VIDEO_PREVIEW — never honoured in production.
  */
-const LICENSED_HERO_VIDEO: { src: string; poster: string } | null = null;
+const LICENSED_HERO_VIDEO: { src: string; poster: string } | null = BF26_HERO_VIDEO;
 
 function heroVideo(): { src: string; poster: string } | null {
   const preview = process.env.NODE_ENV !== 'production' ? process.env.BF26_HERO_VIDEO_PREVIEW : undefined;
@@ -146,7 +145,7 @@ export default async function BlackFridayLandingPage() {
               )
             )}
             {/* Soft shade only behind the words, so the footage stays bright */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/55 via-black/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/30 to-black/5" />
 
             <div className="relative flex min-h-[460px] md:min-h-[540px] flex-col justify-end p-6 md:p-12 text-white">
               <p className="inline-flex w-fit items-center gap-2 rounded-full bg-white/90 px-4 py-1 text-xs md:text-sm font-extrabold uppercase tracking-[0.18em]" style={{ color: RED }}>

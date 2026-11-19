@@ -82,6 +82,13 @@ export function bestSavingPerPerson(tier: OfferTier, people: number): number {
  * Whether the offer is open at `now`, judged in New Zealand time: 17 November 2026 00:00 NZDT
  * to the end of 4 December 2026 NZDT (UTC+13).
  */
+/**
+ * Licensed hero footage (20.8 s muted loop, 1280x720), used by the landing page and, during the sale, the homepage.
+ * Cut from iStock clips 2280100479, 2196798141, 2272786002, 1303578810, 2181670445, 2193373193, 1297150737 and
+ * 2289791345 (standard licence, PM's Premium + Video subscription, downloaded 19 Nov 2026).
+ */
+export const BF26_HERO_VIDEO = { src: '/videos/bf26-hero.mp4', poster: '/videos/bf26-hero-poster.jpg' } as const;
+
 export function isOfferOpen(now: Date): boolean {
   const t = now.getTime();
   return t >= OFFER_START_UTC && t < OFFER_END_UTC;

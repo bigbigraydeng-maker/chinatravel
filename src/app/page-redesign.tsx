@@ -11,6 +11,7 @@ import { homeTestimonials } from '@/lib/data/home-testimonials';
 import { GOOGLE_RATING } from '@/lib/data/google-rating';
 import { migratedSite } from '@/lib/site-media';
 import { getPublishedActiveTours } from '@/lib/data/published-tour-catalog';
+import { BF26_HERO_VIDEO, isOfferOpen } from '@/lib/campaigns/black-friday-2026';
 
 /**
  * Editorial homepage body — now LIVE at `/` (rendered by src/app/page.tsx,
@@ -93,10 +94,63 @@ const HomePageRedesign = async () => {
   const blogPosts = getAllBlogPosts().slice(0, 3);
   const publishedTours = await getPublishedActiveTours();
   const reviews = homeTestimonials;
+  // Black Friday 2026: the hero plays the sale footage until 4 Dec and switches back on its own from 5 Dec 00:00 NZDT
+  // (this page revalidates every 15 s, so the switch lands within seconds).
+  const blackFriday = isOfferOpen(new Date());
 
   return (
     <div className="bg-surface font-sans text-ink">
-      {/* ===== Full-bleed editorial hero ===== */}
+      {/* ===== Full-bleed editorial hero (Black Friday footage during the sale) ===== */}
+      {blackFriday ? (
+        <>
+      {/* ===== Black Friday hero (17 Nov – 4 Dec 2026 only) ===== */}
+      <section className="relative isolate overflow-hidden bg-ink">
+        <div className="absolute inset-0 z-0">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src={BF26_HERO_VIDEO.src}
+            poster={BF26_HERO_VIDEO.poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/35 to-black/5" />
+        </div>
+        <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-end px-4 py-16 md:min-h-[540px] md:justify-center md:px-8 md:py-28">
+          <span className="inline-flex w-fit items-center rounded-full bg-white/90 px-4 py-1 text-xs font-extrabold uppercase tracking-[0.18em] text-primary md:text-sm">
+            2027 China tours · Book by 4 Dec
+          </span>
+          <h1 className="mt-4 max-w-3xl font-sans text-5xl font-black leading-[0.95] tracking-tight text-white drop-shadow md:text-7xl">
+            Black Friday <span className="text-secondary">Sale</span>
+          </h1>
+          <p className="mt-3 text-2xl font-extrabold text-white drop-shadow [font-variant-numeric:lining-nums] md:text-4xl">
+            Travel together, save up to NZ$2,000
+          </p>
+          <p className="mt-3 max-w-xl text-base text-white/95 drop-shadow md:text-lg">
+            China tours from New Zealand, curated for Kiwi travellers. Early-bird prices are held until 4 December.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link
+              href="/campaigns/black-friday-2026?utm_source=site&utm_medium=home-hero&utm_campaign=black-friday-2026"
+              className="inline-flex items-center gap-3 rounded-full bg-primary px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-white shadow-lg transition-colors hover:bg-red-700"
+            >
+              See the Black Friday deals <ArrowRight />
+            </Link>
+            <Link
+              href="/tours"
+              className="inline-flex items-center rounded-full bg-white/90 px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-ink shadow-lg transition-colors hover:bg-white"
+            >
+              All journeys
+            </Link>
+          </div>
+        </div>
+      </section>
+        </>
+      ) : (
+        <>
       <section className="relative isolate overflow-hidden bg-ink">
         <div className="absolute inset-0 z-0">
           <Image
@@ -136,6 +190,8 @@ const HomePageRedesign = async () => {
           </Link>
         </div>
       </section>
+        </>
+      )}
 
       <TourSearch tours={publishedTours} />
 
