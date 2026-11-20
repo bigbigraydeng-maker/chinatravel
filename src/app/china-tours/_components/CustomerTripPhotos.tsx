@@ -39,7 +39,7 @@ import Image from 'next/image';
  * Real client photos > stock.
  */
 
-interface TripPhoto {
+export interface TripPhoto {
   image: string;
   altText: string;
   /** 确知的拍摄地；不知道就留空 —— 不许按画面猜一个地名填进去 */
@@ -95,6 +95,9 @@ const PHOTOS: TripPhoto[] = [
     credit: 'CTS photo library',
   },
 ];
+
+/** The same photos, for pages that lay them out their own way (the ad landing pages). */
+export const CUSTOMER_TRIP_PHOTOS: readonly TripPhoto[] = PHOTOS;
 
 export default function CustomerTripPhotos() {
   return (
