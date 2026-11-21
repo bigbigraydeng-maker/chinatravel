@@ -10,6 +10,13 @@
  * full-size /logo.png stays in public/ because the page metadata (Open Graph
  * image), the structured data, the print page and the emailed itinerary still
  * use it.
+ *
+ * Changing the logo means giving the new picture a NEW file name. The 640 in
+ * cts-logo-640.webp is its width, not a version number: files under /images/ are
+ * cached for a year and marked immutable, so overwriting the file in place would
+ * leave returning visitors and Cloudflare showing the old logo for a year, and a
+ * `?v=` query string would not help either (the checks below read the file from
+ * disk by the exact address written in the component).
  */
 
 import { existsSync, readFileSync, statSync } from 'node:fs';
