@@ -243,7 +243,7 @@ Pleasant **April–May** and **September–October**; harsh mid-winter cold; sum
 
 ### Guilin, Yangshuo, Li River
 
-Misty spring; busy summer; photographers often prefer **May–June** and **September**. See [Guilin guide](/guide/guilin-travel-guide).
+Misty spring; busy summer; photographers often prefer **May–June** and **September**. See [Guilin guide](/guilin-travel-guide).
 
 ### Zhangjiajie
 
@@ -298,7 +298,7 @@ Mid-morning **fog** versus harsh noon — revisit viewpoints if visibility opens
 
 ### Li River and karst country
 
-**Mist after rain** simplifies backgrounds; manage **polariser** carefully for water glare. See [Guilin](/guide/guilin-travel-guide) for seasonal mist patterns.
+**Mist after rain** simplifies backgrounds; manage **polariser** carefully for water glare. See [Guilin](/guilin-travel-guide) for seasonal mist patterns.
 
 ### Yuanyang terraces (extended south)
 

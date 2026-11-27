@@ -46,10 +46,31 @@ export function GoogleTagManager() {
   );
 }
 
+// The GTM container is not installed on the site, so a dataLayer push alone is never
+// recorded. These interactions are also sent straight to GA4 through gtag. Keep form
+// submissions off this list: they are already reported by fireLeadConversion.
+const GA4_DIRECT_EVENTS: ReadonlySet<string> = new Set([
+  'click_to_call',
+  'itinerary_print_open',
+  'itinerary_email_sent',
+]);
+
+function sendToGa4(eventData: GtmEvent) {
+  const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+  if (!gtag || !GA4_DIRECT_EVENTS.has(eventData.event)) return;
+  const { event, tour_slug, pagePath } = eventData;
+  gtag('event', event, {
+    ...(tour_slug ? { tour_slug } : {}),
+    ...(pagePath ? { page_path: pagePath } : {}),
+  });
+}
+
 export function triggerGtmEvent(eventData: GtmEvent) {
   if (typeof window === 'undefined') {
     return; // Server-side render, skip
   }
+
+  sendToGa4(eventData);
 
   if (!GTM_ID) {
     if (process.env.NODE_ENV === 'development') {

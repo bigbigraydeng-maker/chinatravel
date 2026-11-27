@@ -126,8 +126,8 @@ const nextConfig = {
       { source: '/tour/china-panorama', destination: '/tours/china/signature/grand-tour', permanent: true },
       { source: '/tour/china-panorama/', destination: '/tours/china/signature/grand-tour', permanent: true },
       /** GSC top page: /tour/yunnan-delights/ — 11 clicks, 59 impressions (Yunnan tour landing) */
-      { source: '/tour/yunnan-delights', destination: '/tours/china/discovery/yunnan-explorer', permanent: true },
-      { source: '/tour/yunnan-delights/', destination: '/tours/china/discovery/yunnan-explorer', permanent: true },
+      { source: '/tour/yunnan-delights', destination: '/yunnan-tours', permanent: true },
+      { source: '/tour/yunnan-delights/', destination: '/yunnan-tours', permanent: true },
       { source: '/tour/:path*', destination: '/china-tours', permanent: true },
 
       /**
@@ -213,6 +213,20 @@ const nextConfig = {
         destination: '/china-tours',
         permanent: true,
       },
+
+      /**
+       * Addresses Search Console reported as Not found (2026-11-27) that have one clear live replacement.
+       * Tours that are only switched off in the tour catalogue are deliberately not listed: a redirect here
+       * would keep hiding them if they are switched back on. chongqing-chengdu will not return (PM 2026-10-13).
+       */
+      { source: '/tours/china/discovery/chongqing-chengdu', destination: '/chongqing-tours', permanent: true },
+      { source: '/guide/guilin-travel-guide', destination: '/guilin-travel-guide', permanent: true },
+      { source: '/great-wall-of-china-travel-guide', destination: '/great-wall-travel-guide', permanent: true },
+      { source: '/about/why-book-with-cts', destination: '/about', permanent: true },
+      { source: '/about/contact-us', destination: '/contact', permanent: true },
+      { source: '/about/contact-us/:path*', destination: '/contact', permanent: true },
+      { source: '/information/download-brochures/:path*', destination: '/brochure', permanent: true },
+      { source: '/download', destination: '/brochure', permanent: true },
 
       /** Common legacy travel-site URL shapes → /china-tours hub */
       { source: '/destinations', destination: '/china-tours', permanent: true },

@@ -10,7 +10,17 @@ function processInline(s: string): string {
     .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" class="text-primary hover:underline">$1</a>');
 }
 
+/** Structured data typed into a post body must reach the page untouched, or its JSON no longer parses. */
+const LD_JSON_BLOCK = /(<script type="application\/ld\+json">[\s\S]*?<\/script>)/;
+
 export function renderBlogPostHtml(content: string): string {
+  return content
+    .split(LD_JSON_BLOCK)
+    .map((part) => (LD_JSON_BLOCK.test(part) ? part : renderMarkdownBlocks(part)))
+    .join('');
+}
+
+function renderMarkdownBlocks(content: string): string {
   const blocks = content.trim().split(/\n\n+/);
   const out: string[] = [];
 

@@ -170,8 +170,8 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         story:
           'A 900-year-old Naxi minority town at 2,400m altitude, just below the snow-capped Jade Dragon Mountain. The carved wooden balconies, cobblestone lanes and waterway grid are a UNESCO World Heritage site — and a complete change of pace from imperial Beijing.',
         tourLink: {
-          label: 'Yunnan Explorer · 12 days',
-          href: '/tours/china/discovery/yunnan-explorer',
+          label: 'Yunnan travel guide',
+          href: '/yunnan-travel-guide',
         },
       },
       {
@@ -256,8 +256,8 @@ export const PLAY_QUIZZES: PlayQuiz[] = [
         factExpansion:
           'Before 2001 the town was called Zhongdian (中甸). Three other Chinese counties also competed for the official “Shangri-La” branding — Zhongdian won after a four-year campaign backed by the Yunnan provincial government.',
         tourLink: {
-          label: 'Yunnan Explorer · 12 days',
-          href: '/tours/china/discovery/yunnan-explorer',
+          label: 'Yunnan travel guide',
+          href: '/yunnan-travel-guide',
         },
       },
       {
