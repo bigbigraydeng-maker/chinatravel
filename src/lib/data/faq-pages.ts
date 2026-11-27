@@ -314,7 +314,7 @@ Closer/easier but less famous sections. Still impressive for photography.`
   ],
   relatedGuides: [
     'beijing-travel-guide',
-    'great-wall-of-china-travel-guide',
+    'great-wall-travel-guide',
     'best-time-to-visit-china'
   ],
   relatedFaqs: [
@@ -530,7 +530,7 @@ Absolutely! Hikers spend 4-6 hours on certain sections. If you're an avid hiker,
     }
   ],
   relatedGuides: [
-    'great-wall-of-china-travel-guide',
+    'great-wall-travel-guide',
     'beijing-travel-guide',
     'best-time-to-visit-china'
   ],

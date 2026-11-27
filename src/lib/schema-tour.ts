@@ -95,14 +95,6 @@ export function generateTourSchema(tour: Tour, destination: Destination) {
       '@type': 'Audience',
       audienceType: 'Travelers from New Zealand',
     },
-    ...(tour.suppressAggregateRating
-      ? {}
-      : {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ...GOOGLE_RATING_SCHEMA,
-          },
-        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',
@@ -192,14 +184,6 @@ export function generateEssentialsTouristTripSchema(tour: Tour, destination: Des
       'First-time China travellers',
       'Travelers from New Zealand',
     ],
-    ...(tour.suppressAggregateRating
-      ? {}
-      : {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ...GOOGLE_RATING_SCHEMA,
-          },
-        }),
     offers: buildTourOffers(tour, siteUrl, agency),
     itinerary: {
       '@type': 'ItemList',

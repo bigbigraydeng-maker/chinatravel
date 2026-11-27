@@ -64,7 +64,7 @@ See the full itinerary on the [Best of China page](/tours/china/discovery/essent
 
 ### 2. The deeper specialist trip: 14 – 21 days, one or two regions, slower pace
 
-Travellers who have done a city tour somewhere else in Asia, or who already know they want Yunnan, the Silk Road, or Zhangjiajie, fit here. We run dedicated routes for each — [Yunnan Explorer](/tours/china/discovery/yunnan-explorer), [Silk Road Signature](/tours/china/signature/silk-road), [Zhangjiajie](/tours/china/discovery/zhangjiajie) and others on the [China tours from New Zealand](/china-tours-from-new-zealand) hub.
+Travellers who have done a city tour somewhere else in Asia, or who already know they want Yunnan, the Silk Road, or Zhangjiajie, fit here. Have a look at the [Silk Road Signature](/tours/china/signature/silk-road), the [Zhangjiajie stopover](/tours/china/stopover/zhangjiajie), our [Yunnan travel guide](/yunnan-travel-guide), or the other routes on the [China tours from New Zealand](/china-tours-from-new-zealand) hub.
 
 ### 3. The stopover or short city break: 3 – 5 days, one city, en route to somewhere else
 
@@ -112,9 +112,8 @@ Best of China isn’t the only inclusive package we run from Auckland. The 2026 
 - **Beijing – Xi’an Discovery** — a focused 10-day option for travellers who want the headline north only. See [Beijing – Xi’an](/tours/china/discovery/beijing-xian).
 - **Shanghai & Beyond** — a Yangtze Delta loop through Suzhou, Wuxi, the water towns and Hangzhou. Browse [Shanghai & Beyond](/tours/china/discovery/shanghai-surroundings).
 - **Grand Tour of China** — a longer Signature route that adds Guilin’s karst landscape onto the headline cities. See the [Grand Tour](/tours/china/signature/grand-tour).
-- **Yunnan Explorer** — Dali, Lijiang, Shangri-La and Tiger Leaping Gorge, routed Auckland — Beijing — Dali. The [Yunnan Explorer](/tours/china/discovery/yunnan-explorer) page has the full itinerary.
 
-All four routes follow the same pattern: international flights from Auckland, internal transport in China, hotels, guides, meals as specified, and entrance fees — the package shape Kiwi travellers expect.
+All three routes follow the same pattern: international flights from Auckland, internal transport in China, hotels, guides, meals as specified, and entrance fees — the package shape Kiwi travellers expect.
 
 ## How CTS Tours actually runs your trip
 
@@ -145,7 +144,7 @@ Two ways most Kiwi travellers begin:
 
 1. **Browse and enquire** — pick a published itinerary from the [China tours hub](/china-tours-from-new-zealand), then submit the enquiry form on that page or call 0800 CTS 888 (0800 287 888). Our team will confirm availability on your dates, walk through inclusions, and answer the practical questions before you put down a deposit.
 
-2. **Tailor-made** — if you want to combine elements (say Beijing and Xi’an from Best of China, then Yunnan from Yunnan Explorer, then a Shanghai stopover), our [tailor-made service](/tailor-made) builds it as a private trip on your dates. This is how most Signature clients book.
+2. **Tailor-made** — if you want to combine elements (say Beijing and Xi’an from Best of China, then a few days in Yunnan, then a Shanghai stopover), our [tailor-made service](/tailor-made) builds it as a private trip on your dates. This is how most Signature clients book.
 
 If you’re still deciding shape, our [China holiday packages guide](/blog/china-holiday-packages-guide) walks through the tier choices.
 

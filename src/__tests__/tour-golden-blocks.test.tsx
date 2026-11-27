@@ -165,9 +165,10 @@ describe('goldenBlocks flagship pages', () => {
 });
 
 describe('rating markup stays on for pages that have not opted in', () => {
-  it('a stopover page still carries the company rating', () => {
+  it('a stopover page still carries the company rating, on the Product only', () => {
     const t = tours.find((x) => !x.goldenBlocks && x.tier === 'stopover') as Tour;
-    expect(generateTourSchema(t, destination)).toHaveProperty('aggregateRating');
+    // Google rejects review ratings on TouristTrip (Search Console, 2026-11-27).
+    expect(generateTourSchema(t, destination)).not.toHaveProperty('aggregateRating');
     expect(generateProductSchema(t)).toHaveProperty('aggregateRating');
   });
 });
