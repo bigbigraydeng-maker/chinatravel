@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import AdLandingPage from '@/components/ad-landing/AdLandingPage';
 import { AD_LANDING_CONFIGS, getAdLandingConfig } from '@/lib/ad-landing/configs';
-import { getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
+import { getPublishedActiveTours, getPublishedTourBySlug } from '@/lib/data/published-tour-catalog';
 
 // A departure that has left drops off the price block by itself; refresh hourly so it does not wait for a deploy.
 export const revalidate = 15;
@@ -26,6 +26,19 @@ async function load(pathKey: string) {
   return { config, tour };
 }
 
+/** Tours on sale other than this one, full tours only (Discovery and Signature), in the catalog's own order. */
+async function loadOtherTours(currentSlug: string) {
+  const tours = await getPublishedActiveTours();
+  return tours.filter(
+    (tour) =>
+      tour.destination === 'china' &&
+      (tour.tier === 'discovery' || tour.tier === 'signature') &&
+      tour.slug !== currentSlug &&
+      tour.isActive &&
+      !tour.soldOut,
+  );
+}
+
 /**
  * An ad landing page is for paid traffic only: no search engine should list it, and nothing links to it. There is
  * deliberately no canonical link to the tour page. "Do not index me" together with "I am a copy of that page" is a
@@ -46,5 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function AdLandingRoute({ params }: PageProps) {
   const found = await load(params.tour);
   if (!found) notFound();
-  return <AdLandingPage config={found.config} tour={found.tour} />;
+  const wantsOtherTours = found.config.blocks.some((block) => block.type === 'otherTours');
+  const otherTours = wantsOtherTours ? await loadOtherTours(found.tour.slug) : [];
+  return <AdLandingPage config={found.config} tour={found.tour} otherTours={otherTours} />;
 }

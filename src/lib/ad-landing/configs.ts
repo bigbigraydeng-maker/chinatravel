@@ -138,7 +138,71 @@ const SHANGHAI_SURROUNDINGS: AdLandingConfig = {
   ],
 };
 
-export const AD_LANDING_CONFIGS: readonly AdLandingConfig[] = [SHANGHAI_SURROUNDINGS];
+/**
+ * Same tour, built for people arriving from an email: the Reel's look (photo, red block, the price as the biggest
+ * thing on screen), then this tour's dates, then the other tours to look at.
+ */
+const SHANGHAI_BEYOND_EMAIL: AdLandingConfig = {
+  pathKey: 'shanghai-beyond',
+  tour: { tier: 'discovery', slug: 'shanghai-surroundings' },
+  accent: 'slate',
+  hero: {
+    variant: 'price-banner',
+    eyebrow: 'China Discovery',
+    headline: 'Shanghai & Beyond',
+    subhead: [
+      { text: 'Suzhou gardens', source: 'Master of the Nets Garden' },
+      { text: 'West Lake', source: 'West Lake boat tour' },
+      { text: 'the Bund', source: 'The Bund' },
+    ],
+    imageSrc: '/images/cts-upgrade/planner-westlake-720.webp',
+    imageAlt: 'A classical pavilion beside a lotus lake',
+  },
+  blocks: [
+    {
+      type: 'cityLoop',
+      title: 'Where you will go',
+      stops: [
+        {
+          city: 'Suzhou',
+          highlights: [{ text: 'Master of the Nets Garden', source: 'Master of the Nets Garden' }],
+        },
+        {
+          city: 'Hangzhou',
+          highlights: [
+            { text: 'West Lake boat tour and the Su Causeway', source: 'Su Causeway' },
+            { text: 'Longjing tea tasting at Meijiawu', source: 'Meijiawu' },
+          ],
+        },
+        {
+          city: 'Shanghai',
+          highlights: [{ text: 'The Bund', source: 'The Bund' }],
+        },
+      ],
+    },
+    { type: 'bookCall', title: 'Book a call with a travel consultant to lock your seat today!' },
+    {
+      type: 'travellerReviews',
+      title: 'What travellers say',
+      note: 'Real Google reviews from CTS travellers on A Tale of Two Cities, our Beijing and Xi\'an tour.',
+    },
+    { type: 'priceDepartures', title: 'Dates, price and booking' },
+    { type: 'otherTours', title: 'More China tours to look at' },
+    {
+      type: 'tripPhotos',
+      title: 'Scenes from our travellers\' trips',
+      note: 'Photos shared with us by CTS travellers on their China trips.',
+    },
+    { type: 'trust' },
+    {
+      type: 'faq',
+      title: 'Questions, answered',
+      pick: ['included in the price', 'visa', 'how do i book'],
+    },
+  ],
+};
+
+export const AD_LANDING_CONFIGS: readonly AdLandingConfig[] = [SHANGHAI_SURROUNDINGS, SHANGHAI_BEYOND_EMAIL];
 
 export function getAdLandingConfig(pathKey: string): AdLandingConfig | undefined {
   return AD_LANDING_CONFIGS.find((config) => config.pathKey === pathKey);

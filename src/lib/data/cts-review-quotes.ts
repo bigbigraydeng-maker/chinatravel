@@ -120,3 +120,53 @@ export function getCtsStopoverReviewQuote(slug: string): CtsReviewQuote | undefi
   if (rotationIndex === -1) return undefined;
   return NEUTRAL_QUOTES[rotationIndex % NEUTRAL_QUOTES.length];
 }
+
+/** A real Google review excerpt with what the traveller says about their own trip. */
+export interface CtsTripReview extends CtsReviewQuote {
+  /** The trip, only as far as the review itself states it. */
+  trip: string;
+  /** ISO date of the review (review_items.review_date). */
+  reviewedOn: string;
+}
+
+/**
+ * Recent real reviews of CTS's Beijing and Xi'an tour (Magic Engine `review_items`, source='gbp', client
+ * CTS Tours NZ, read 2026-11-02). Excerpts are verbatim, whole consecutive sentences, never spliced.
+ * Shanghai & Beyond has not run yet, so no review is about it; pages must say whose trip these are.
+ */
+export const CTS_TRIP_REVIEWS: CtsTripReview[] = [
+  {
+    reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT25OWmFsOUphR1ZzU0daRE1UQnJUa2RWUjNWcWIzYxAB',
+    author: 'Patricia Clarke',
+    rating: 5,
+    trip: 'A Tale of Two Cities · Beijing and Xi\'an',
+    reviewedOn: '2026-10-30',
+    excerpt:
+      'The Tour was well worth every moment from the amazing sites, Hotel accommodation, restaurants and not forgetting our wonderful, helpful experienced tour guides who had minds of information and spoke very good English. Anyone thinking of going, you won\'t be disappointed.',
+  },
+  {
+    reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT2tGeVgxUnNRbW81TVVSMFpVVkthbHBVVlRJdFRXYxAB',
+    author: 'Lisa Amin',
+    rating: 5,
+    trip: 'Beijing and Xi\'an',
+    reviewedOn: '2026-10-28',
+    excerpt:
+      'Oh my goodness! What an amazing time we had! Hotels were fabulous, the food was beyond yummy and our guides, Anthony in Beijing and Archer in Xi’an were superb!',
+  },
+  {
+    reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT25GcVZtOTJWMm93VDA1alZVeDBTMXBNWDJoWlowRRAB',
+    author: 'Geoff Heywood',
+    rating: 4,
+    trip: 'A Tale of Two Cities · Beijing and Xi\'an',
+    reviewedOn: '2026-10-29',
+    excerpt: 'A well organised tour, great accommodation and tour guides - Anthony in Beijing and Archer in Xian.',
+  },
+  {
+    reviewUid: 'Ci9DQUlRQUNvZENodHljRjlvT2xKVGFFRnhVbFUzVnpaVVdWbGZTVlZSWWxaMWRYYxAB',
+    author: 'Colin Wright',
+    rating: 5,
+    trip: 'A Tale of Two Cities · November 2025',
+    reviewedOn: '2026-06-14',
+    excerpt: 'A group tour that exceeded all expectation. We will do another for real.',
+  },
+];
